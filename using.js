@@ -9,6 +9,7 @@ var using =
     [ "WiredTiger Home Directory", "home.html", "home" ],
     [ "WiredTiger security", "security.html", null ],
     [ "WiredTiger files", "file_formats.html", "file_formats" ],
+    [ "Compressors", "compression.html", null ],
     [ "WiredTiger name spaces", "name_space.html", null ],
     [ "WiredTiger signal handling", "signals.html", null ],
     [ "Performance Tuning", "tuning.html", null ]

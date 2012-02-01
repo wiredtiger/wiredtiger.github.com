@@ -2,7 +2,6 @@ var NAVTREE =
 [
   [ "WiredTiger", "index.html", [
     [ "Reference Guide", "index.html", "index" ],
-    [ "Related Pages", "pages.html", "pages" ],
     [ "Modules", "modules.html", "modules" ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
@@ -13,7 +12,8 @@ var NAVTREE =
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
-    [ "Examples", "examples.html", "examples" ]
+    [ "Examples", "examples.html", "examples" ],
+    [ "Download", "https://github.com/wiredtiger/wiredtiger.html", null ]
   ] ]
 ];
 
