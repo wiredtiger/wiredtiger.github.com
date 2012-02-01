@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Reference Guide</title>
+<title>WiredTiger: WiredTiger security</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="wiredtiger.css" rel="stylesheet" type="text/css" />
@@ -48,8 +48,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
@@ -66,37 +66,29 @@
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('index.html','');
+  initNavTree('security.html','');
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Reference Guide </div>  </div>
+<div class="title">WiredTiger security </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger is an extensible platform for data management. This documentation describes the programming interface to WiredTiger used by developers to construct applications.</p>
-<p>We follow SQL terminology: a database is set of tables managed together. Tables consist of rows, where each row is a key and its associated value. Tables may optionally have an associated schema, splitting the value into a set of columns. Tables may also have associated indices, each of which is ordered by one or more columns.</p>
-<p>In addition to the traditional row-oriented storage where all columns of a row are stored together, WiredTiger supports column-oriented storage, where one or more columns can be stored individually, allowing more efficient access and storage.</p>
-<p>For more information about using WiredTiger, see:</p>
-<ul>
-<li><a class="el" href="install.html">How to build and install WiredTiger</a><br/>
-</li>
-</ul>
-<ul>
-<li><a class="el" href="using.html">Writing WiredTiger applications</a><br/>
-</li>
-</ul>
-<ul>
-<li><a class="el" href="group__wt.html">WiredTiger API reference manual</a></li>
-</ul>
-<ul>
-<li><a class="el" href="command_line.html">WiredTiger command line utility</a><br/>
- </li>
-</ul>
+<div class="textblock"><h2><a class="anchor" id="directory"></a>
+Database directory permissions</h2>
+<p>The WiredTiger database directory should have its permissions set to ensure database objects are not accessible to users without appropriate permissions. See <a class="el" href="home.html">WiredTiger Home Directory</a> for more information.</p>
+<h2><a class="anchor" id="file"></a>
+File permissions</h2>
+<p>WiredTiger creates file system objects readable and writable by the process owner, group and user, as modified by the process' umask value. The group ownership of created file system objects may vary depending on the system, and is not controlled by WiredTiger.</p>
+<h2><a class="anchor" id="environment_variables"></a>
+Environment variables</h2>
+<p>Consider security when configuring WiredTiger to use the WIREDTIGER_HOME environment variable, especially in applications which run with permissions other than the user's. Such applications are potentially vulnerable to allowing users access to databases they could not otherwise access. See <a class="el" href="home.html">WiredTiger Home Directory</a> for more information. </p>
 </div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
+      <li class="navelem"><a class="el" href="index.html">Reference Guide</a>      </li>
+      <li class="navelem"><a class="el" href="using.html">Writing WiredTiger applications</a>      </li>
 
     <li class="footer">Copyright (c) 2008-2011 WiredTiger.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
    </ul>
