@@ -1,6 +1,6 @@
 var struct_w_t___c_u_r_s_o_r =
 [
-    [ "close", "struct_w_t___c_u_r_s_o_r.html#ae5e6412ab3d895d68f454e59963fd391", null ],
+    [ "close", "struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b", null ],
     [ "equals", "struct_w_t___c_u_r_s_o_r.html#a24274e25873f45766139b5108f1f59f9", null ],
     [ "get_key", "struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f", null ],
     [ "get_value", "struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01", null ],

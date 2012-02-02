@@ -51,7 +51,7 @@
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
-      <li><a href="https://github.com/wiredtiger/wiredtiger"><span>Download</span></a></li>
+      <li><a href="https://github.com/wiredtiger/wiredtiger/downloads/"><span>Download</span></a></li>
     </ul>
   </div>
 </div>
@@ -218,7 +218,7 @@
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;Lorelei&quot;</span>, <span class="stringliteral">&quot;Sevii Islands&quot;</span>, <span class="stringliteral">&quot;098-765-4321&quot;</span>);
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor);
 
-        ret = cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ae5e6412ab3d895d68f454e59963fd391" title="Close the cursor.">close</a>(cursor, NULL);
+        ret = cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);
 
         <span class="comment">/*</span>
 <span class="comment">         * First query: a call arrives.  In SQL:</span>
@@ -242,7 +242,7 @@
                 ret = cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;cust.id, &amp;cust.name);
                 printf(<span class="stringliteral">&quot;Got customer record for %s\n&quot;</span>, cust.name);
         }
-        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ae5e6412ab3d895d68f454e59963fd391" title="Close the cursor.">close</a>(cursor, NULL);
+        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);
 
         <span class="comment">/*</span>
 <span class="comment">         * Next query: get the recent order history.  In SQL:</span>
@@ -302,7 +302,7 @@
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Copyright (c) 2008-2012 WiredTiger.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2012 WiredTiger, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
    </ul>
  </div>
 

@@ -51,7 +51,7 @@
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
-      <li><a href="https://github.com/wiredtiger/wiredtiger"><span>Download</span></a></li>
+      <li><a href="https://github.com/wiredtiger/wiredtiger/downloads/"><span>Download</span></a></li>
     </ul>
   </div>
   <div id="navrow2" class="tabs2">
@@ -90,8 +90,8 @@
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#ae5e6412ab3d895d68f454e59963fd391">close</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, const char *config)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the cursor.  <a href="#ae5e6412ab3d895d68f454e59963fd391"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the cursor.  <a href="#aeea071f192cab12245a50fbe71c3460b"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data access</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor,...)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the key for the current record.  <a href="#af19f6f9d9c7fc248ab38879032620b2f"></a><br/></td></tr>
@@ -141,26 +141,16 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> handle cannot be shared between threads: it may only be used within the same thread as the encapsulating <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a>. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a1">ex_access.c</a>, <a class="el" href="ex_all_8c-example.html#_a2">ex_all.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a2">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a2">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a0">ex_cursor.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a0">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a2">ex_thread.c</a>.</dd>
 </dl></div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ae5e6412ab3d895d68f454e59963fd391"></a><!-- doxytag: member="WT_CURSOR::close" ref="ae5e6412ab3d895d68f454e59963fd391" args="(WT_CURSOR *cursor, const char *config)" -->
+<a class="anchor" id="aeea071f192cab12245a50fbe71c3460b"></a><!-- doxytag: member="WT_CURSOR::close" ref="aeea071f192cab12245a50fbe71c3460b" args="(WT_CURSOR *cursor)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ae5e6412ab3d895d68f454e59963fd391">WT_CURSOR::close</a> </td>
+          <td class="memname">int <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">WT_CURSOR::close</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
-          <td class="paramname"><em>cursor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>cursor</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>config</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -168,17 +158,10 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p>Close the cursor. </p>
 <p>This releases the resources associated with the cursor handle. Cursors are closed implicitly by ending the enclosing transaction or closing the session in which they were opened.</p>
-<div class="fragment"><pre class="fragment">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ae5e6412ab3d895d68f454e59963fd391" title="Close the cursor.">close</a>(cursor, NULL);
+<div class="fragment"><pre class="fragment">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
-<tr>
-<th>Name</th><th>Effect</th><th>Values </th></tr>
-<tr>
-<td><code>clear</code></td><td>for statistics cursors, reset statistics counters.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-</table>
-</td></tr>
   </table>
   </dd>
 </dl>
@@ -763,7 +746,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
     <ul>
       <li class="navelem"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a>      </li>
 
-    <li class="footer">Copyright (c) 2008-2012 WiredTiger.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2012 WiredTiger, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
    </ul>
  </div>
 

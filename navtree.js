@@ -13,7 +13,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Examples", "examples.html", "examples" ],
-    [ "Download", "https://github.com/wiredtiger/wiredtiger.html", null ]
+    [ "Download", "https://github.com/wiredtiger/wiredtiger/downloads/", null ]
   ] ]
 ];
 
