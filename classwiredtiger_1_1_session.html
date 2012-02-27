@@ -167,10 +167,8 @@ Public Attributes</h2></td></tr>
 <p>begin_transaction(self, config) -&gt; int </p>
 <p>Start a transaction in this session. </p>
 <p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>fix when transactions supported</dd></dl>
 <p>All cursors opened in this session that support transactional semantics will operate in the context of the transaction. The transaction remains active until ended with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a>.</p>
 <p>Ignored if a transaction is in progress.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>describe nested transactions / savepoints</dd></dl>
 <div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">begin_transaction</a>(session, NULL);
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
@@ -223,7 +221,6 @@ Public Attributes</h2></td></tr>
 <p>checkpoint(self, config) -&gt; int </p>
 <p>Flush the cache and/or the log and optionally archive log files. </p>
 <p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>fix when checkpoint supported</dd></dl>
 <div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Flush the cache and/or the log and optionally archive log files.">checkpoint</a>(session, NULL);
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
@@ -309,7 +306,6 @@ Public Attributes</h2></td></tr>
 <p>commit_transaction(self, config) -&gt; int </p>
 <p>Commit the current transaction. </p>
 <p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>fix when transactions supported</dd></dl>
 <p>Any cursors opened during the transaction will be closed before the commit is processed.</p>
 <p>Ignored if no transaction is in progress.</p>
 <div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);
@@ -377,9 +373,9 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>filename</code></td><td>override the default filename derived from the object name.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>huffman_key</code></td><td>configure Huffman encoding for keys. Permitted values are empty (off), <code>"english"</code> or <code>"&lt;filename&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
+<td><code>huffman_key</code></td><td>configure Huffman encoding for keys. Permitted values are empty (off), <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>huffman_value</code></td><td>configure Huffman encoding for values. Permitted values are empty (off), <code>"english"</code> or <code>"&lt;filename&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
+<td><code>huffman_value</code></td><td>configure Huffman encoding for values. Permitted values are empty (off), <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>internal_item_max</code></td><td>the maximum key size stored on internal nodes, in bytes. If zero, a maximum is calculated to permit at least 8 keys per internal page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
@@ -607,7 +603,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for more details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>statistics</code></td><td>configure the cursor for statistics.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>
@@ -689,7 +685,6 @@ Public Attributes</h2></td></tr>
 <p>rollback_transaction(self, config) -&gt; int </p>
 <p>Roll back the current transaction. </p>
 <p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>fix when transactions supported</dd></dl>
 <p>Any cursors opened during the transaction will be closed before the rollback is processed.</p>
 <p>Ignored if no transaction is in progress.</p>
 <div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">rollback_transaction</a>(session, NULL);

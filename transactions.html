@@ -81,7 +81,6 @@
 <div class="contents">
 <div class="textblock"><p><b>Not yet supported in WiredTiger.</b></p>
 <p><b></b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd>fix when transactions supported</dd></dl>
 <p><b>This page describes the expected behavior of the 2.X releases.</b></p>
 <h2><a class="anchor" id="transactions_acid"></a>
 ACID properties</h2>
@@ -97,7 +96,6 @@ Transactional API</h2>
 <p>To configure for transactions, the database must be created with transaction support enabled. This is done by passing the configuration string <code>"transactional"</code> to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> when creating the database.</p>
 <p>In WiredTiger, the transactional context is managed by the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> class. Applications call <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">WT_SESSION::begin_transaction</a> to start a new transaction, which is only permitted when no cursors are open. Operations performed with that <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> handle are then part of the transaction, and their effects can be committed by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a>, both of which implicitly close any open cursors.</p>
 <p>When transactions are used, operations may fail with additional errors such as <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a>.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd>describe transaction error cases more fully</dd></dl>
 <h2><a class="anchor" id="transactions_cc"></a>
 Concurrency control</h2>
 <p>WiredTiger uses an optimistic concurrency control algorithm. This avoids the bottleneck of a centralized lock manager and expensive graph searching to identify deadlock cycles.</p>

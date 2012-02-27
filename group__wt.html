@@ -475,9 +475,13 @@ Statistics for file objects</h2></td></tr>
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
+<td><code>buffer_alignment</code></td><td>in-memory alignment (in bytes) for buffers used for I/O. By default, a platform-specific alignment value is used (512 bytes on Linux systems, zero elsewhere).</td><td>an integer between -1 and 1MB; default <code>-1</code>. </td></tr>
+<tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>

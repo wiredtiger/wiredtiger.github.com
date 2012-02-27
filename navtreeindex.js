@@ -27,7 +27,6 @@ var NAVTREEINDEX =
 "dump_formats.html":[0,2,0],
 "pages.html":[1],
 "architecture.html":[1,0],
-"todo.html":[1,1],
 "modules.html":[2],
 "group__wt.html":[2,0],
 "group__wt__ext.html":[2,1],

@@ -159,7 +159,6 @@ Public Member Functions</h2></td></tr>
 
 <p>Add a custom collation function. </p>
 <p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>fix when custom collation supported</dd></dl>
 <p>The application must first implement the <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records.">WT_COLLATOR</a> interface and then register the implementation with WiredTiger:</p>
 <div class="fragment"><pre class="fragment">        <span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records.">WT_COLLATOR</a> my_collator = { my_compare };
         ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8" title="Add a custom collation function.">add_collator</a>(conn, <span class="stringliteral">&quot;my_collator&quot;</span>, &amp;my_collator, NULL);
@@ -272,7 +271,6 @@ Public Member Functions</h2></td></tr>
 
 <p>Add a new type of cursor. </p>
 <p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>fix when custom cursors supported</dd></dl>
 <p>The application must first implement the <a class="el" href="struct_w_t___c_u_r_s_o_r___t_y_p_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_CURSOR class...">WT_CURSOR_TYPE</a> interface and then register the implementation with WiredTiger:</p>
 <div class="fragment"><pre class="fragment">        <span class="keyword">static</span> <a class="code" href="struct_w_t___c_u_r_s_o_r___t_y_p_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_CURSOR class...">WT_CURSOR_TYPE</a> my_ctype = { my_cursor_size, my_init_cursor };
         ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a430c0c4977fb3ad86bb139f35f82c88c" title="Add a new type of cursor.">add_cursor_type</a>(conn, NULL, &amp;my_ctype, NULL);
@@ -329,7 +327,6 @@ Public Member Functions</h2></td></tr>
 
 <p>Add a custom extractor for index keys or column groups. </p>
 <p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>fix when custom extractors supported</dd></dl>
 <p>The application must first implement the <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> interface and then register the implementation with WiredTiger:</p>
 <div class="fragment"><pre class="fragment">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> my_extractor;
         my_extractor.<a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html#a7a7069beebb84ffaa8ee02f8d7ebb162" title="Callback to extract a value for an index or column group.">extract</a> = my_extract;
