@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 1.1.2</span>
+   &#160;<span id="projectnumber">Version 1.1.5</span>
    </div>
    
   </td>
@@ -114,7 +114,7 @@ JSON compatibility</h2>
 Code samples</h2>
 <p>Open a connection to a database, creating it if it does not exist and set a cache size of 10MB, then open a session in the database:</p>
 <div class="fragment"><pre class="fragment">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,
-            <span class="stringliteral">&quot;create,cache_size=10M&quot;</span>, &amp;conn)) != 0)
+            <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn)) != 0)
                 fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,
                     home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));
 </pre></div><p> Create a table that uses C language strings for keys and values:</p>
