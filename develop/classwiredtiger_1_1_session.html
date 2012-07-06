@@ -599,6 +599,8 @@ Public Attributes</h2></td></tr>
 <tr>
 <th>URI</th><th>Type</th><th>Key/Value types </th></tr>
 <tr>
+<td><code>backup:</code></td><td>hot backup cursor</td><td>key=<code>string</code>, see <a class="el" href="hot_backup.html">Hot backup</a> for details </td></tr>
+<tr>
 <td><code>colgroup:&lt;tablename&gt;.&lt;columnset&gt;</code></td><td>column group cursor</td><td>table key, column group value(s) </td></tr>
 <tr>
 <td><code>table:&lt;tablename&gt;</code></td><td>table cursor</td><td>table key, table value(s) </td></tr>
@@ -616,7 +618,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>append</code></td><td>only supported by cursors with record number keys: append the value as a new record, creating a new record number key.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>append</code></td><td>append the value as a new record, creating a new record number key; valid only for cursors with record number keys.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>bulk</code></td><td>configure the cursor for bulk loads; bulk-load is a fast load path for empty objects and only empty objects may be bulk-loaded. Cursors configured for bulk load only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -626,7 +628,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>isolation</code></td><td>the isolation level for this cursor, ignored for transactional cursors.</td><td>a string, chosen from the following options: <code>"snapshot"</code>, <code>"read-committed"</code>, <code>"read-uncommitted"</code>; default <code>read-committed</code>. </td></tr>
 <tr>
-<td><code>next_random</code></td><td>configure the cursor to return a pseudo-random record from the object. Cursors configured for random retrieval only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>next_random</code></td><td>configure the cursor to return a pseudo-random record from the object; valid only for row-store cursors. Cursors configured with next_random only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -634,7 +636,9 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>statistics</code></td><td>configure the cursor for statistics.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>statistics_clear</code></td><td>statistics cursors only; reset statistics counters when the cursor is closed.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>statistics_clear</code></td><td>reset statistics counters when the cursor is closed; valid only for statistics cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>target</code></td><td>if non-empty, backup the list of objects; valid only for a backup data source.</td><td>a list of strings; default empty. </td></tr>
 </table>
 </td></tr>
     <tr><td class="paramname">cursorp</td><td>a pointer to the newly opened cursor </td></tr>

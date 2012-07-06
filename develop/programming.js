@@ -26,6 +26,7 @@ var programming =
       [ "Code samples", "transactions.html#transaction_example", null ]
     ] ],
     [ "Checkpoints", "checkpoints.html", null ],
+    [ "Hot backup", "hot_backup.html", null ],
     [ "Compressors", "compression.html", [
       [ "Using bzip2 compression", "compression.html#bzip2", null ],
       [ "Using snappy compression", "compression.html#snappy", null ],
@@ -43,8 +44,8 @@ var programming =
       [ "Error return name space", "name_space.html#error", null ]
     ] ],
     [ "Security", "security.html", [
-      [ "Database directory permissions", "security.html#directory", null ],
-      [ "File permissions", "security.html#file", null ],
+      [ "Database directory permissions", "security.html#directory_permissions", null ],
+      [ "File permissions", "security.html#file_permissions", null ],
       [ "Environment variables", "security.html#environment_variables", null ]
     ] ],
     [ "Signal handling", "signals.html", null ],

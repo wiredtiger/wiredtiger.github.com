@@ -89,9 +89,11 @@ Builtin data sources</h2>
 <tr>
 <th>URI</th><th>Type </th></tr>
 <tr>
+<td><code>backup:</code></td><td>hot backup cursor </td></tr>
+<tr>
 <td><code>colgroup:&lt;tablename&gt;.&lt;columnset&gt;</code></td><td>column group cursor </td></tr>
 <tr>
-<td><code>config:[&lt;uri&gt;]</code></td><td>object configuration cursor (key=config string, value=config value </td></tr>
+<td><code>config:[&lt;uri&gt;]</code></td><td>object configuration cursor (key=config string, value=config value) </td></tr>
 <tr>
 <td><code>table:&lt;tablename&gt;</code></td><td>table cursor (key=table key, value=table value) </td></tr>
 <tr>
@@ -106,6 +108,9 @@ Builtin data sources</h2>
 <tr>
 <td><code>statistics:[file</code><code>:&lt;filename&gt;]</code></td><td>database or file statistics (key=(int), value=(string)description, (string)value, (uint64_t)value) </td></tr>
 </table>
+<h3><a class="anchor" id="hot_backup_cursors"></a>
+Hot backup cursors</h3>
+<p>See <a class="el" href="hot_backup.html">Hot backup</a> for more information.</p>
 <h3><a class="anchor" id="data_files"></a>
 Raw Files</h3>
 <p>WiredTiger's schema layer can be bypassed by opening cursors with a <code>"file:"</code> URI, using the name of the underlying file. This can be useful for seeing the contents of a column group or index without reading all of the columns from the table.</p>

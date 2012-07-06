@@ -96,6 +96,18 @@ Options</h2>
 <p>Unless otherwise described by a <code>wt</code> command, the <code>wt</code> tool exits zero on success and non-zero on error.</p>
 <p>The <code>wt</code> tool supports several commands.</p>
 <hr/>
+ <h2><a class="anchor" id="utility_backup"></a>
+wt backup</h2>
+<p>Perform a hot backup of a database or set of database objects.</p>
+<p>The <code>backup</code> command performs a hot backup of the database, copying the database files to a <code>specified</code> directory, which can be subsequently opened as a WiredTiger database. See <a class="el" href="hot_backup.html">Hot backup</a> for more information, and <a class="el" href="security.html#file_permissions">File permissions</a> for specifics on the copied file permissions.</p>
+<h3><a class="anchor" id="utility_backup_synopsis"></a>
+Synopsis</h3>
+<p><code>wt [-Vv] [-C config] [-h directory] backup [-t uri] directory</code></p>
+<h3><a class="anchor" id="utility_backup_options"></a>
+Options</h3>
+<p>The following are command-specific options for the <code>backup</code> command:</p>
+<dl class="section user"><dt>-t uri</b></dt><dd>By default, the <code>backup</code> command does a hot backup of the entire database; the <code>-t</code> option changes the <code>backup</code> command to do a hot backup of only the listed <code>file:</code> and <code>table:</code> objects.</dd></dl>
+<hr/>
  <h2><a class="anchor" id="utility_create"></a>
 wt create</h2>
 <p>Create a table or file.</p>
@@ -132,7 +144,7 @@ Options</h3>
 <p>The following are command-specific options for the <code>dump</code> command:</p>
 <dl class="section user"><dt>-c</b></dt><dd>By default, the <code>dump</code> command opens the most recent version of the object; the <code>-c</code> option changes the <code>dump</code> command to open the named checkpoint.</dd></dl>
 <dl class="section user"><dt>-f</b></dt><dd>By default, the <code>dump</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
-<dl class="section user"><dt>-r</b></dt><dd>Dump in reverse order, from largest to smallest.</dd></dl>
+<dl class="section user"><dt>-r</b></dt><dd>Dump in reverse order, from largest key to smallest.</dd></dl>
 <dl class="section user"><dt>-x</b></dt><dd>Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded).</dd></dl>
 <hr/>
  <h2><a class="anchor" id="utility_dumpfile"></a>

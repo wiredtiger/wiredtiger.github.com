@@ -3,6 +3,10 @@ var command_line =
     [ "", "command_line.html#Synopsis", null ],
     [ "", "command_line.html#Description", null ],
     [ "", "command_line.html#Options", null ],
+    [ "wt backup", "command_line.html#utility_backup", [
+      [ "Synopsis", "command_line.html#utility_backup_synopsis", null ],
+      [ "Options", "command_line.html#utility_backup_options", null ]
+    ] ],
     [ "wt create", "command_line.html#utility_create", [
       [ "Synopsis", "command_line.html#utility_create_synopsis", null ],
       [ "Options", "command_line.html#utility_create_options", null ]
