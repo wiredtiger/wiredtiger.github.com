@@ -89,7 +89,7 @@
 </div><!--header-->
 <div class="contents">
 
-<p>Python wrapper around C ::__WT_CONNECTION.  
+<p>Python wrapper around C <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a>.  
  <a href="classwiredtiger_1_1_connection.html#details">More...</a></p>
 
 <p><a href="classwiredtiger_1_1_connection-members.html">List of all members.</a></p>
@@ -103,7 +103,7 @@ def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b></td></tr>
 <tr class="memitem:a8947b7cfc205725a5aeddcab87a33954"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a8947b7cfc205725a5aeddcab87a33954">close</a></td></tr>
 <tr class="memdesc:a8947b7cfc205725a5aeddcab87a33954"><td class="mdescLeft">&#160;</td><td class="mdescRight">close(self, config) -&gt; int  <a href="#a8947b7cfc205725a5aeddcab87a33954"></a><br/></td></tr>
 <tr class="memitem:a188ef87948cafc02fd3e344808f4b565"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a188ef87948cafc02fd3e344808f4b565">get_home</a></td></tr>
-<tr class="memdesc:a188ef87948cafc02fd3e344808f4b565"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_home(self) -&gt; string const *  <a href="#a188ef87948cafc02fd3e344808f4b565"></a><br/></td></tr>
+<tr class="memdesc:a188ef87948cafc02fd3e344808f4b565"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_home(self) -&gt; string  <a href="#a188ef87948cafc02fd3e344808f4b565"></a><br/></td></tr>
 <tr class="memitem:a12690b2abf2eec707f53cd6387204f24"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a12690b2abf2eec707f53cd6387204f24">is_new</a></td></tr>
 <tr class="memdesc:a12690b2abf2eec707f53cd6387204f24"><td class="mdescLeft">&#160;</td><td class="mdescRight">is_new(self) -&gt; int  <a href="#a12690b2abf2eec707f53cd6387204f24"></a><br/></td></tr>
 <tr class="memitem:a101a315055c064cab278d30aa1b13dab"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a101a315055c064cab278d30aa1b13dab">open_session</a></td></tr>
@@ -116,8 +116,7 @@ Public Attributes</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>this</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Python wrapper around C ::__WT_CONNECTION. </p>
-<p>:<b><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> :</b><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> </p>
+<div class="textblock"><p>Python wrapper around C <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a>. </p>
 </div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a8947b7cfc205725a5aeddcab87a33954"></a>
 <div class="memitem">
@@ -145,6 +144,16 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>close(self, config) -&gt; int </p>
+<p>Close a connection.  Any open sessions will be closed.<div class="fragment"><pre class="fragment">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">close</a>(conn, NULL);
+</pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+ </p>
 
 </div>
 </div>
@@ -173,7 +182,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get_home(self) -&gt; string const * </p>
+<p>get_home(self) -&gt; string </p>
 <p>The home directory of the connection.  <div class="fragment"><pre class="fragment">        printf(<span class="stringliteral">&quot;The database home is %s\n&quot;</span>, conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640" title="The home directory of the connection.">get_home</a>(conn));
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
