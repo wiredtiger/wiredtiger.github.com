@@ -651,12 +651,17 @@ Public Attributes</h2></td></tr>
 
 <p>Open a cursor. </p>
 <p>Open a new cursor on the specified data source. Cursor handles should be discarded by calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a>.</p>
-<p>Cursors are light-weight objects but may hold references to heavier-weight objects. Applications should usually not cache cursors as a performance optimization, instead, a new cursor should be opened for new groups of operations.</p>
 <p>Cursors are opened in the context of the current transaction. The cursor must be closed before the transaction can end. If <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a> are called with cursors open in the transaction, the cursor handles will be closed implicitly and must not be accessed again.</p>
-<p>An existing cursor can be duplicated by passing it as the <code>to_dup</code> parameter and setting the <code>uri</code> parameter to <code>NULL</code>, otherwise the <code>to_dup</code> parameter should be <code>NULL</code>. Successfully duplicated cursors are positioned at the same place in the data source as the existing cursor.</p>
 <div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);
-</pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
+</pre></div><p> An existing cursor can be duplicated by passing it as the <code>to_dup</code> parameter and setting the <code>uri</code> parameter to <code>NULL</code>, otherwise the <code>to_dup</code> parameter should be <code>NULL</code>. Successfully duplicated cursors are positioned at the same place in the data source as the existing cursor.</p>
+<div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);
+        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);
+        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, NULL, cursor, NULL, &amp;duplicate);
+</pre></div><p> Cursors are relatively light-weight objects but may hold references to heavier-weight objects; applications should re-use cursors when possible, but instantiating new cursors is not so expensive that applications need to cache cursors at all cost.</p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">uri</td><td>the data source on which the cursor operates; cursors are usually opened on tables, however, cursors can be opened on any data source, regardless of whether it is ultimately stored in a table. Some cursor types may have limited functionality (for example, be read-only or not support transactional updates). See <a class="el" href="data_sources.html">Data Sources</a> for more information. <br/>
