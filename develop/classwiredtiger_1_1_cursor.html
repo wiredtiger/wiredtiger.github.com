@@ -225,17 +225,20 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>equals(self, other) -&gt; int </p>
-<p>Test whether two cursors refer to the same item.  To be equal, both cursors must have the same data source, have valid keys, and the keys must be equal.<div class="fragment"><pre class="fragment">        <span class="keywordflow">if</span> (cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a24274e25873f45766139b5108f1f59f9" title="Test whether two cursors refer to the same item.">equals</a>(cursor, other)) {
+<p>Test whether two cursors refer to the same item.  To be equal, both cursors must have the same data source, have valid keys, and the keys must be equal.<div class="fragment"><pre class="fragment">        <span class="keywordtype">int</span> equal;
+        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">equals</a>(cursor, other, &amp;equal);
+        <span class="keywordflow">if</span> (equal) {
                 <span class="comment">/* Take some action. */</span>
         }
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
     <tr><td class="paramname">other</td><td>another cursor handle </td></tr>
+    <tr><td class="paramname">equalp</td><td>the status of the comparison: non-zero if the cursors refer to the same item, or zero if the cursors do not refer to the same item. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns:</dt><dd>true (non-zero) if both cursors reference the same item, false (zero) otherwise </dd></dl>
+<dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
  </p>
 
 </div>
