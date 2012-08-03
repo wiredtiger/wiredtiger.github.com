@@ -144,7 +144,7 @@ print_database_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" titl
         <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor;
         <span class="keywordtype">int</span> ret;
 
-        <span class="keywordflow">if</span> ((ret = session-&gt;<a name="a5"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        <span class="keywordflow">if</span> ((ret = session-&gt;<a name="a5"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor)) != 0)
                 <span class="keywordflow">return</span> (ret);
 
@@ -157,7 +157,7 @@ print_file_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="A
         <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor;
         <span class="keywordtype">int</span> ret;
 
-        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;statistics:file:access.wt&quot;</span>, NULL, NULL, &amp;cursor)) != 0)
                 <span class="keywordflow">return</span> (ret);
 
@@ -172,7 +172,7 @@ print_overflow_pages(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" titl
         uint64_t value;
         <span class="keywordtype">int</span> ret;
 
-        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;statistics:file:access.wt&quot;</span>, NULL, NULL, &amp;cursor)) != 0)
                 <span class="keywordflow">return</span> (ret);
 

@@ -114,8 +114,6 @@ def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b></td></tr>
 <tr class="memdesc:abefae69957c8b81be3b26bf3a14a9129"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove(self) -&gt; int  <a href="#abefae69957c8b81be3b26bf3a14a9129"></a><br/></td></tr>
 <tr class="memitem:a8d037500ab0d9a89411c5a00a7d6d6f7"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_cursor.html#a8d037500ab0d9a89411c5a00a7d6d6f7">close</a></td></tr>
 <tr class="memdesc:a8d037500ab0d9a89411c5a00a7d6d6f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">close(self, config) -&gt; int  <a href="#a8d037500ab0d9a89411c5a00a7d6d6f7"></a><br/></td></tr>
-<tr class="memitem:ada54dbb7d80cdb8565af0681ca940937"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_cursor.html#ada54dbb7d80cdb8565af0681ca940937">reconfigure</a></td></tr>
-<tr class="memdesc:ada54dbb7d80cdb8565af0681ca940937"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconfigure(self, config) -&gt; int  <a href="#ada54dbb7d80cdb8565af0681ca940937"></a><br/></td></tr>
 <tr class="memitem:aba732b2e8a0e08390abc3c4e7f6913c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba732b2e8a0e08390abc3c4e7f6913c4"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_cursor.html#aba732b2e8a0e08390abc3c4e7f6913c4">equals</a></td></tr>
 <tr class="memdesc:aba732b2e8a0e08390abc3c4e7f6913c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">equals(self, other) -&gt; PyObject * <br/></td></tr>
@@ -352,15 +350,12 @@ Public Attributes</h2></td></tr>
 
 <p>insert(self) -&gt; int </p>
 <p>Insert a record, and optionally overwrite an existing record.  If the cursor was not configured with "append" or "overwrite", both the key and value must be set and the record must not already exist; the record will be inserted.If the cursor was configured with "overwrite", both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted.In a cursor with record number keys was configured with "append", the value must be set; a new record will be appended and the record number set as the cursor key value.Inserting a new record after the current maximum record in a fixed-length column-store implicitly creates skipped records as records with a value of 0.<div class="fragment"><pre class="fragment">        <span class="comment">/* Insert a new record. */</span>
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;
+        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor);
 </pre></div> <div class="fragment"><pre class="fragment">        <span class="comment">/* Insert a new record or overwrite an existing record. */</span>
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;cursor);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);
@@ -368,7 +363,7 @@ Public Attributes</h2></td></tr>
 </pre></div> <div class="fragment"><pre class="fragment">        <span class="comment">/* Insert a new record and assign a record number. */</span>
         uint64_t recno;
         <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor);
@@ -453,51 +448,6 @@ Public Attributes</h2></td></tr>
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
- </p>
-
-</div>
-</div>
-<a class="anchor" id="ada54dbb7d80cdb8565af0681ca940937"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def <a class="el" href="classwiredtiger_1_1_cursor.html#ada54dbb7d80cdb8565af0681ca940937">wiredtiger.Cursor.reconfigure</a> </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>reconfigure(self, config) -&gt; int </p>
-<p>Reconfigure a cursor at run-time.  <div class="fragment"><pre class="fragment">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a" title="Reconfigure a cursor at run-time.">reconfigure</a>(cursor, <span class="stringliteral">&quot;append=true&quot;</span>);
-</pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
-<tr>
-<th>Name</th><th>Effect</th><th>Values </th></tr>
-<tr>
-<td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-</table>
-</td></tr>
   </table>
   </dd>
 </dl>
@@ -734,8 +684,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>update(self) -&gt; int </p>
-<p>Update a record.  Both key and value must be set, the key must exist, and the value of the key's record will be updated.<div class="fragment"><pre class="fragment">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;
+<p>Update a record.  Both key and value must be set, the key must exist, and the value of the key's record will be updated.<div class="fragment"><pre class="fragment">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor);

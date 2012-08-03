@@ -114,13 +114,13 @@ Checksums</h2>
 Performance monitoring with statistics</h2>
 <p>WiredTiger maintains a variety of statistics that can be read with a cursor. The statistics are at two levels: per-database statistics and per-underlying file statistics. The database statistics are the default; the underlying file statistics are available by specifying the appropriate uri.</p>
 <p>The following is an example of printing run-time statistics about the WiredTiger engine:</p>
-<div class="fragment"><pre class="fragment">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+<div class="fragment"><pre class="fragment">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor)) != 0)
                 <span class="keywordflow">return</span> (ret);
 
         <span class="keywordflow">return</span> (print_cursor(cursor));
 </pre></div><p> The following is an example of printing statistics about an underlying file:</p>
-<div class="fragment"><pre class="fragment">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+<div class="fragment"><pre class="fragment">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;statistics:file:access.wt&quot;</span>, NULL, NULL, &amp;cursor)) != 0)
                 <span class="keywordflow">return</span> (ret);
 

@@ -130,7 +130,7 @@
                     home, <a name="a5"></a><a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));
         ret = session-&gt;<a name="a6"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,
             <span class="stringliteral">&quot;table:access&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);
-        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;table:access&quot;</span>, NULL, NULL, &amp;cursor);
         cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;key1&quot;</span>);        <span class="comment">/* Insert a record. */</span>
         cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;value1&quot;</span>);

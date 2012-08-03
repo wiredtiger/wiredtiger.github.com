@@ -127,7 +127,7 @@ Code samples</h2>
 </pre></div><p> Walk a transactional cursor through the table:</p>
 <div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">begin_transaction</a>(session, <span class="stringliteral">&quot;priority=100,name=mytxn&quot;</span>);
 
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;config:&quot;</span>, NULL, NULL, &amp;cursor);
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;config:&quot;</span>, NULL, NULL, &amp;cursor);
 
         <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {
                 cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;key);

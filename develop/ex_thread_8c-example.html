@@ -133,7 +133,7 @@ scan_thread(<span class="keywordtype">void</span> *arg)
         <span class="keywordtype">int</span> ret;
 
         ret = conn-&gt;<a name="a3"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(conn, NULL, NULL, &amp;session);
-        ret = session-&gt;<a name="a4"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>,
+        ret = session-&gt;<a name="a4"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>,
             NULL, NULL, &amp;cursor);
 
         <span class="comment">/* Show all records. */</span>
@@ -163,7 +163,7 @@ main(<span class="keywordtype">void</span>)
         ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(conn, NULL, NULL, &amp;session);
         ret = session-&gt;<a name="a10"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>,
             <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL,
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL,
             <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;cursor);
         cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;key1&quot;</span>);
         cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;value1&quot;</span>);

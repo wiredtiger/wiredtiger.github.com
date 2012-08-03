@@ -163,7 +163,7 @@ Format types</h2>
 Columns in key and values</h2>
 <p>Every table has a key format and a value format as describe in <a class="el" href="schema.html#schema_types">Column types</a>. These types are configured when the table is created by passing <code>key_format</code> and <code>value_format</code> keys to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</p>
 <p>Cursors for a table have the same key format as the table itself. The key columns of a cursor are set with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> and accessed with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>. <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> is analogous to <code>printf</code>, and takes a list of values in the order the key columns are configured in <code>key_format</code>. The columns values are accessed with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>, which is analogous to <code>scanf</code>, and takes a list of pointers to values in the same order.</p>
-<p>Cursors for a table have the same value format as the table, unless a projection is specified to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">WT_SESSION::open_cursor</a>. <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> is used to set value columns, and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> is used to get value columns.</p>
+<p>Cursors for a table have the same value format as the table, unless a projection is specified to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>. <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> is used to set value columns, and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> is used to get value columns.</p>
 <h2><a class="anchor" id="schema_columns"></a>
 Describing columns</h2>
 <p>The columns in a table can be assigned names by passing a <code>columns</code> key to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. The column names are assigned first to the columns in the <code>key_format</code>, and then to the columns in <code>value_format</code>. There must be a name for every column, and no column names may be repeated.</p>
@@ -175,7 +175,7 @@ Storing groups of columns together</h2>
 <h2><a class="anchor" id="schema_indices"></a>
 Adding an index</h2>
 <p>Schema columns can also be used to configure indices on tables. To create an index, call <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> using the URI <code>index:&lt;table&gt;:&lt;index name&gt;</code> and include a <code>columns</code> key in the configuration. WiredTiger updates all indices for a table whenever the table is modified.</p>
-<p>A cursor can be opened on an index by passing the index URI to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">WT_SESSION::open_cursor</a>. Index cursors use the specified index key columns for <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a>, and by default return all of the table value columns in <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>.</p>
+<p>A cursor can be opened on an index by passing the index URI to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>. Index cursors use the specified index key columns for <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a>, and by default return all of the table value columns in <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>.</p>
 <p>Index cursors are read-only: they cannot be used to perform updates.</p>
 <p>Index cursors for column-store objects may not be created using the record number as the index key.</p>
 <h2><a class="anchor" id="schema_examples"></a>
@@ -217,7 +217,7 @@ Code samples</h2>
         ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;index:population:country_year&quot;</span>,
             <span class="stringliteral">&quot;columns=(country,year)&quot;</span>);
 
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:population&quot;</span>,
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:population&quot;</span>,
             NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);
 
         endp = pop_data + (<span class="keyword">sizeof</span> (pop_data) / <span class="keyword">sizeof</span>(pop_data[0]));
@@ -228,7 +228,7 @@ Code samples</h2>
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);
 
         <span class="comment">/* Now just read through the countries we know about */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;index:population:country_year(id)&quot;</span>,
             NULL, NULL, &amp;cursor);
 
@@ -300,7 +300,7 @@ Code samples</h2>
             <span class="stringliteral">&quot;index:customers:phone&quot;</span>, <span class="stringliteral">&quot;columns=(phone)&quot;</span>);
 
         <span class="comment">/* Populate the customers table with some data. */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:customers&quot;</span>, NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);
         <span class="keywordflow">for</span> (custp = cust_sample; custp-&gt;name != NULL; custp++) {
                 cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor,
@@ -326,7 +326,7 @@ Code samples</h2>
             <span class="stringliteral">&quot;columns=(cust_id,call_date)&quot;</span>);
 
         <span class="comment">/* Populate the calls table with some data. */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:calls&quot;</span>, NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);
         <span class="keywordflow">for</span> (callp = call_sample; callp-&gt;call_type != NULL; callp++) {
                 cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, callp-&gt;call_date, callp-&gt;cust_id,
@@ -348,7 +348,7 @@ Code samples</h2>
 <span class="comment">         * Specify the columns we want: the customer ID and the name.  This</span>
 <span class="comment">         * means the cursor&#39;s value format will be &quot;rS&quot;.</span>
 <span class="comment">         */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;index:customers:phone(id,name)&quot;</span>, NULL, NULL, &amp;cursor);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;123-456-7890&quot;</span>);
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);
@@ -372,7 +372,7 @@ Code samples</h2>
 <span class="comment">         * all covered by the index, the primary would not have to be accessed.)</span>
 <span class="comment">         * Stop after getting 3 records.</span>
 <span class="comment">         */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;index:calls:cust_date(cust_id,call_type,notes)&quot;</span>,
             NULL, NULL, &amp;cursor);
 

@@ -101,7 +101,7 @@
         ret = mkdir(<span class="stringliteral">&quot;/path/database.backup&quot;</span>, 077);
 
         <span class="comment">/* Open the hot backup data source. */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;backup:&quot;</span>, NULL, NULL, &amp;cursor);
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;backup:&quot;</span>, NULL, NULL, &amp;cursor);
 
         <span class="comment">/* Copy the list of files. */</span>
         <span class="keywordflow">while</span> (

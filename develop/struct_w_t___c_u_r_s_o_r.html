@@ -98,8 +98,6 @@
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aeea071f192cab12245a50fbe71c3460b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
 <tr class="memdesc:aeea071f192cab12245a50fbe71c3460b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the cursor.  <a href="#aeea071f192cab12245a50fbe71c3460b"></a><br/></td></tr>
-<tr class="memitem:ad6a97a309e2c1ada7ca32a422c46612a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a">reconfigure</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, const char *config)</td></tr>
-<tr class="memdesc:ad6a97a309e2c1ada7ca32a422c46612a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure a cursor at run-time.  <a href="#ad6a97a309e2c1ada7ca32a422c46612a"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data access</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><div class="fragment"><pre class="fragment">      </pre></div> </div></td></tr>
 <tr class="memitem:af19f6f9d9c7fc248ab38879032620b2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor,...)</td></tr>
@@ -138,7 +136,7 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a050e8dfd68303048921e528fa591a00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The session handle for this cursor.  <a href="#a050e8dfd68303048921e528fa591a00c"></a><br/></td></tr>
 <tr class="memitem:a9158605cfaab4e3b00c5ef1af3d3bc3f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9158605cfaab4e3b00c5ef1af3d3bc3f"></a>
 const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a9158605cfaab4e3b00c5ef1af3d3bc3f">uri</a></td></tr>
-<tr class="memdesc:a9158605cfaab4e3b00c5ef1af3d3bc3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the data source for the cursor, matches the <code>uri</code> parameter to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">WT_SESSION::open_cursor</a> used to open the cursor. <br/></td></tr>
+<tr class="memdesc:a9158605cfaab4e3b00c5ef1af3d3bc3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the data source for the cursor, matches the <code>uri</code> parameter to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> used to open the cursor. <br/></td></tr>
 <tr class="memitem:a21f35d032987318a8c3b9eb1b0c6a1dc"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a21f35d032987318a8c3b9eb1b0c6a1dc">key_format</a></td></tr>
 <tr class="memdesc:a21f35d032987318a8c3b9eb1b0c6a1dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The format of the data packed into key items.  <a href="#a21f35d032987318a8c3b9eb1b0c6a1dc"></a><br/></td></tr>
 <tr class="memitem:abe668c6625fa16b5595a1c393f71862d"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#abe668c6625fa16b5595a1c393f71862d">value_format</a></td></tr>
@@ -148,7 +146,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="textblock"><p>A <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> handle is the interface to a cursor. </p>
 <p>Cursors allow data to be searched, stepped through and updated: the so-called CRUD operations (create, read, update and delete).</p>
 <p>Raw data is represented by key/value pairs of <a class="el" href="struct_w_t___i_t_e_m.html" title="A raw item of data to be managed.">WT_ITEM</a> structures, but cursors can also provide access to fields within the key and value if the formats are described in the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method.</p>
-<p>A cursor can be positioned in a collection of data. Cursors are opened in the context of a session (which may have an associated transaction), and can query and update records. In the common case, a cursor is used to access records in a table. However, cursors can be used on subsets of tables (such as a single column or a projection of multiple columns), as an interface to statistics, configuration data or application-specific data sources. See <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">WT_SESSION::open_cursor</a> for more information.</p>
+<p>A cursor can be positioned in a collection of data. Cursors are opened in the context of a session (which may have an associated transaction), and can query and update records. In the common case, a cursor is used to access records in a table. However, cursors can be used on subsets of tables (such as a single column or a projection of multiple columns), as an interface to statistics, configuration data or application-specific data sources. See <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> for more information.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> handle is not usually shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a1">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a2">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a2">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a0">ex_cursor.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a0">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a2">ex_thread.c</a>.</dd>
 </dl></div><hr/><h2>Member Function Documentation</h2>
@@ -334,15 +332,12 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>In a cursor with record number keys was configured with "append", the value must be set; a new record will be appended and the record number set as the cursor key value.</p>
 <p>Inserting a new record after the current maximum record in a fixed-length column-store implicitly creates skipped records as records with a value of 0.</p>
 <div class="fragment"><pre class="fragment">        <span class="comment">/* Insert a new record. */</span>
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;
+        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor);
 </pre></div> <div class="fragment"><pre class="fragment">        <span class="comment">/* Insert a new record or overwrite an existing record. */</span>
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;cursor);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);
@@ -350,7 +345,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </pre></div> <div class="fragment"><pre class="fragment">        <span class="comment">/* Insert a new record and assign a record number. */</span>
         uint64_t recno;
         <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor);
@@ -421,50 +416,6 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_call_center_8c-example.html#a15">ex_call_center.c</a>, and <a class="el" href="ex_cursor_8c-example.html#a4">ex_cursor.c</a>.</dd>
 </dl>
-</div>
-</div>
-<a class="anchor" id="ad6a97a309e2c1ada7ca32a422c46612a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a">WT_CURSOR::reconfigure</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
-          <td class="paramname"><em>cursor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>config</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Reconfigure a cursor at run-time. </p>
-<div class="fragment"><pre class="fragment">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a" title="Reconfigure a cursor at run-time.">reconfigure</a>(cursor, <span class="stringliteral">&quot;append=true&quot;</span>);
-</pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
-<tr>
-<th>Name</th><th>Effect</th><th>Values </th></tr>
-<tr>
-<td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-</table>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-
 </div>
 </div>
 <a class="anchor" id="abbba24fe607fee519c4c9c4669cd4455"></a>
@@ -739,8 +690,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p>Update a record. </p>
 <p>Both key and value must be set, the key must exist, and the value of the key's record will be updated.</p>
-<div class="fragment"><pre class="fragment">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;
-        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;
+<div class="fragment"><pre class="fragment">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);
         cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor);

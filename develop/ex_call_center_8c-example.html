@@ -205,7 +205,7 @@
             <span class="stringliteral">&quot;index:customers:phone&quot;</span>, <span class="stringliteral">&quot;columns=(phone)&quot;</span>);
 
         <span class="comment">/* Populate the customers table with some data. */</span>
-        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:customers&quot;</span>, NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);
         <span class="keywordflow">for</span> (custp = cust_sample; custp-&gt;name != NULL; custp++) {
                 cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor,
@@ -231,7 +231,7 @@
             <span class="stringliteral">&quot;columns=(cust_id,call_date)&quot;</span>);
 
         <span class="comment">/* Populate the calls table with some data. */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(
             session, <span class="stringliteral">&quot;table:calls&quot;</span>, NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);
         <span class="keywordflow">for</span> (callp = call_sample; callp-&gt;call_type != NULL; callp++) {
                 cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, callp-&gt;call_date, callp-&gt;cust_id,
@@ -253,7 +253,7 @@
 <span class="comment">         * Specify the columns we want: the customer ID and the name.  This</span>
 <span class="comment">         * means the cursor&#39;s value format will be &quot;rS&quot;.</span>
 <span class="comment">         */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;index:customers:phone(id,name)&quot;</span>, NULL, NULL, &amp;cursor);
         cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;123-456-7890&quot;</span>);
         ret = cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);
@@ -277,7 +277,7 @@
 <span class="comment">         * all covered by the index, the primary would not have to be accessed.)</span>
 <span class="comment">         * Stop after getting 3 records.</span>
 <span class="comment">         */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;index:calls:cust_date(cust_id,call_type,notes)&quot;</span>,
             NULL, NULL, &amp;cursor);
 

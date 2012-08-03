@@ -11,7 +11,6 @@ var classwiredtiger_1_1_cursor =
     [ "insert", "classwiredtiger_1_1_cursor.html#a6f9bb264bbc0d4ea070ba2dd713fe878", null ],
     [ "next", "classwiredtiger_1_1_cursor.html#a06199585b19bf03feb1ad8088b5002e0", null ],
     [ "prev", "classwiredtiger_1_1_cursor.html#aaae57c402842cb09518d8b9a4e1ee8bf", null ],
-    [ "reconfigure", "classwiredtiger_1_1_cursor.html#ada54dbb7d80cdb8565af0681ca940937", null ],
     [ "remove", "classwiredtiger_1_1_cursor.html#abefae69957c8b81be3b26bf3a14a9129", null ],
     [ "reset", "classwiredtiger_1_1_cursor.html#a742a5fe96e8c5e93eb7990ea33e1b0e5", null ],
     [ "search", "classwiredtiger_1_1_cursor.html#a72f554e3f35a1defb103f42937714d07", null ],

@@ -236,14 +236,14 @@ cursor_remove(<a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_C
             <span class="stringliteral">&quot;key_format=r,value_format=5sii,&quot;</span>
             <span class="stringliteral">&quot;columns=(id,country,population,area)&quot;</span>);
 
-        ret = session-&gt;<a name="a19"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:world&quot;</span>, NULL, NULL, &amp;cursor);
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        ret = session-&gt;<a name="a19"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:world&quot;</span>, NULL, NULL, &amp;cursor);
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;table:world(country,population)&quot;</span>, NULL, NULL, &amp;cursor);
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor);
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor);
         <span class="comment">/* Create a simple string table to illustrate basic operations. */</span>
         ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:map&quot;</span>,
             <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:map&quot;</span>, NULL, NULL, &amp;cursor);
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:map&quot;</span>, NULL, NULL, &amp;cursor);
         ret = cursor_insert(cursor);
         ret = cursor_reset(cursor);
         ret = cursor_forward_scan(cursor);

@@ -180,7 +180,7 @@ POP_RECORD pop_data[] = {
         ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;index:population:country_year&quot;</span>,
             <span class="stringliteral">&quot;columns=(country,year)&quot;</span>);
 
-        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:population&quot;</span>,
+        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:population&quot;</span>,
             NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);
 
         endp = pop_data + (<span class="keyword">sizeof</span> (pop_data) / <span class="keyword">sizeof</span>(pop_data[0]));
@@ -191,7 +191,7 @@ POP_RECORD pop_data[] = {
         ret = cursor-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);
 
         <span class="comment">/* Now just read through the countries we know about */</span>
-        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a cursor.">open_cursor</a>(session,
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,
             <span class="stringliteral">&quot;index:population:country_year(id)&quot;</span>,
             NULL, NULL, &amp;cursor);
 
