@@ -79,7 +79,7 @@
 <div class="title">Performance Tuning </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="cache"></a>
+<div class="textblock"><h2><a class="anchor" id="tuning_cache_size"></a>
 Cache size</h2>
 <p>The cache size for the database is configurable by setting the <code>cache_size</code> configuration string when calling the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function.</p>
 <p>The effectiveness of the cache can be measured by reviewing the page eviction statistics for the database.</p>
@@ -88,7 +88,7 @@ Cache size</h2>
             <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn)) != 0)
                 fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,
                     home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));
-</pre></div> <h2><a class="anchor" id="page"></a>
+</pre></div> <h2><a class="anchor" id="tuning_page_size"></a>
 Page and overflow sizes</h2>
 <p>There are four page and item size configuration values: <code>internal_page_max</code>, <code>internal_item_max</code>, <code>leaf_page_max</code> and <code>leaf_item_max</code>. All four should be specified to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method, that is, they are configurable on a per-file basis.</p>
 <p>The <code>internal_page_max</code> and <code>leaf_page_max</code> configuration values specify the maximum size for Btree internal and leaf pages. That is, when an internal or leaf page reaches the specified size, it splits into two pages. Generally, internal pages should be sized to fit into the system's L1 or L2 caches in order to minimize cache misses when searching the tree, while leaf pages should be sized to maximize I/O performance (if reading from disk is necessary, it is usually desirable to read a large amount of data, assuming some locality of reference in the application's access pattern).</p>
@@ -104,13 +104,13 @@ Page and overflow sizes</h2>
             <span class="stringliteral">&quot;key_format=u,&quot;</span>
             <span class="stringliteral">&quot;internal_page_max=32KB,internal_item_max=1KB,&quot;</span>
             <span class="stringliteral">&quot;leaf_page_max=1MB,leaf_item_max=32KB&quot;</span>);
-</pre></div> <h2><a class="anchor" id="memory"></a>
+</pre></div> <h2><a class="anchor" id="tuning_memory_allocation"></a>
 Memory allocation</h2>
 <p>I/O intensive threaded applications, where the working set does not fit into the available cache, can be dominated by memory allocation because the WiredTiger engine has to free and re-allocate memory as part of many queries. Replacing the system's malloc implementation with one that has better threaded performance (for example, Google's <a href="http://goog-perftools.sourceforge.net/doc/tcmalloc.html">tcmalloc</a>, or <a href="http://www.canonware.com/jemalloc">jemalloc</a>), can dramatically improve throughput.</p>
-<h2><a class="anchor" id="checksums"></a>
+<h2><a class="anchor" id="tuning_checksums"></a>
 Checksums</h2>
 <p>WiredTiger configures checksums on file reads and writes, by default. In read-only applications, or when file compression provides any necessary checksum functionality, or when using backing storage systems where blocks require no validation, performance can be increased by turning off checksum support when calling the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method.</p>
-<h2><a class="anchor" id="statistics"></a>
+<h2><a class="anchor" id="tuning_statistics"></a>
 Performance monitoring with statistics</h2>
 <p>WiredTiger maintains a variety of statistics that can be read with a cursor. The statistics are at two levels: per-database statistics and per-underlying file statistics. The database statistics are the default; the underlying file statistics are available by specifying the appropriate uri.</p>
 <p>The following is an example of printing run-time statistics about the WiredTiger engine:</p>

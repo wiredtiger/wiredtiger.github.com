@@ -4,7 +4,7 @@ var NAVTREE =
     [ "Reference Guide", "index.html", null ],
     [ "WiredTiger Architecture", "architecture.html", [
       [ "Multi-core scaling", "architecture.html#multi_core", null ],
-      [ "Cache size", "architecture.html#cache", null ],
+      [ "Hot caches", "architecture.html#cache", null ],
       [ "Making I/O more valuable", "architecture.html#io", null ],
       [ "Production quality", "architecture.html#quality", null ],
       [ "NoSQL and Open Source", "architecture.html#nosql", null ]

@@ -50,10 +50,10 @@ var programming =
     ] ],
     [ "Signal handling", "signals.html", null ],
     [ "Performance Tuning", "tuning.html", [
-      [ "Cache size", "tuning.html#cache", null ],
-      [ "Page and overflow sizes", "tuning.html#page", null ],
-      [ "Memory allocation", "tuning.html#memory", null ],
-      [ "Checksums", "tuning.html#checksums", null ],
-      [ "Performance monitoring with statistics", "tuning.html#statistics", null ]
+      [ "Cache size", "tuning.html#tuning_cache_size", null ],
+      [ "Page and overflow sizes", "tuning.html#tuning_page_size", null ],
+      [ "Memory allocation", "tuning.html#tuning_memory_allocation", null ],
+      [ "Checksums", "tuning.html#tuning_checksums", null ],
+      [ "Performance monitoring with statistics", "tuning.html#tuning_statistics", null ]
     ] ]
 ];
