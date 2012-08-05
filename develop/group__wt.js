@@ -72,6 +72,7 @@ var group__wt =
     [ "WT_STAT_rwlock_wrlock", "group__wt.html#gaca40a2f4e3ba835efef6c67ee7d9ea2d", null ],
     [ "WT_STAT_total_read_io", "group__wt.html#gabc28bab1587decbcf8d2842c367a4d51", null ],
     [ "WT_STAT_total_write_io", "group__wt.html#gabfbdfcaead2dac5970325f8c8185d363", null ],
+    [ "WT_STAT_txn_ancient", "group__wt.html#gad5784bb98fd68e8e41e278239f920ccf", null ],
     [ "WT_STAT_txn_begin", "group__wt.html#gae48016cd3fa0017f7abcb7ff3bcf3b56", null ],
     [ "WT_STAT_txn_commit", "group__wt.html#gae98d38002fe2e20a22ef6438d1db9fdc", null ],
     [ "WT_STAT_txn_rollback", "group__wt.html#ga3de26e371d78859372b02c9df98c9449", null ],

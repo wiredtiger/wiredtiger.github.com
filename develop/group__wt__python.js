@@ -80,6 +80,7 @@ var group__wt__python =
     [ "WT_STAT_rwlock_wrlock", "group__wt__python.html#ga78ca183fe3451d97447e38244342ac89", null ],
     [ "WT_STAT_total_read_io", "group__wt__python.html#gaee003642dd658da22e47b2550087fec3", null ],
     [ "WT_STAT_total_write_io", "group__wt__python.html#gab31482cef7454640a6897a20822fa1ce", null ],
+    [ "WT_STAT_txn_ancient", "group__wt__python.html#ga1a60cb6dceb935d7f2a7c05d6c071ec8", null ],
     [ "WT_STAT_txn_begin", "group__wt__python.html#ga687a40fa43bae7dd07a840ed71032a97", null ],
     [ "WT_STAT_txn_commit", "group__wt__python.html#gaebd03097698337b5d5641d671c7dacd3", null ],
     [ "WT_STAT_txn_rollback", "group__wt__python.html#ga18dde410989057fdb0549265b3059d1a", null ],
