@@ -403,8 +403,8 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Create a table, column group, index or file. </p>
-<div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,
-            <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);
+<div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,
+            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -416,6 +416,8 @@ Public Attributes</h2></td></tr>
 <td><code>allocation_size</code></td><td>the file unit allocation size, in bytes, must a power-of-two; smaller values decrease the file space required by overflow items, and the default value of 512B is a good choice absent requirements from the operating system or storage device.</td><td>an integer between 512B and 128MB; default <code>512B</code>. </td></tr>
 <tr>
 <td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are empty (off) or <code>"bzip2"</code>, <code>"snappy"</code> or custom compression engine <code>"name"</code> created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>cache_resident</code></td><td>do not ever evict the object's pages; see <a class="el" href="tuning.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>checksum</code></td><td>configure file block checksums; if false, the block manager is free to not write or check block checksums. This can increase performance in applications where compression provides checksum functionality or read-only applications where blocks require no verification.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>

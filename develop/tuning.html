@@ -88,6 +88,13 @@ Cache size</h2>
             <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn)) != 0)
                 fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,
                     home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));
+</pre></div> <h2><a class="anchor" id="tuning_cache_resident"></a>
+Cache resident objects</h2>
+<p>Cache resident objects (objects never considered for the purposes of cache eviction), can be configured with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> "cache_resident" configuration string.</p>
+<p>Configuring a cache resident object has two effects: first, once the object's page have been instantiated in memory, no further I/O cost is ever paid for object access, minimizing potential latency. Second, in-memory objects can be accessed faster than objects tracked for potential eviction, and applications able to guarantee sufficient memory that an object need never be evicted can significantly increase their performance.</p>
+<p>An example of configuring a cache-resident object:</p>
+<div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,
+            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=r,value_format=S,cache_resident=true&quot;</span>);
 </pre></div> <h2><a class="anchor" id="tuning_page_size"></a>
 Page and overflow sizes</h2>
 <p>There are four page and item size configuration values: <code>internal_page_max</code>, <code>internal_item_max</code>, <code>leaf_page_max</code> and <code>leaf_item_max</code>. All four should be specified to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method, that is, they are configurable on a per-file basis.</p>
