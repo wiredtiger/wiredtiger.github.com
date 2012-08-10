@@ -10,6 +10,7 @@ var classwiredtiger_1_1_session =
     [ "dumpfile", "classwiredtiger_1_1_session.html#adaf9ba553a6d9a0247d4313366f9cd81", null ],
     [ "msg_printf", "classwiredtiger_1_1_session.html#a4b01fb98ddc63825a3db3414d0058c26", null ],
     [ "open_cursor", "classwiredtiger_1_1_session.html#aa7f8ff75031b4ee2f337cf2776361a79", null ],
+    [ "reconfigure", "classwiredtiger_1_1_session.html#aa761c6e0840b09436289b4a7db0befc2", null ],
     [ "rename", "classwiredtiger_1_1_session.html#a661a9bb6dcaf9d6484758ec81d8772b9", null ],
     [ "rollback_transaction", "classwiredtiger_1_1_session.html#a56d07de3ee9db0059fe25f160c9f9cd3", null ],
     [ "salvage", "classwiredtiger_1_1_session.html#ac77449102799219855d198197426af5e", null ],

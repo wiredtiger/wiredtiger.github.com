@@ -9,6 +9,7 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "dumpfile", "struct_w_t___s_e_s_s_i_o_n.html#a221decf62735bf1b31e84c9b9421f8bd", null ],
     [ "msg_printf", "struct_w_t___s_e_s_s_i_o_n.html#a7ac96e4c2574fbb2b43c17666326f8a8", null ],
     [ "open_cursor", "struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d", null ],
+    [ "reconfigure", "struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6", null ],
     [ "rename", "struct_w_t___s_e_s_s_i_o_n.html#a52f78bc88e48e3905158277c518b80d4", null ],
     [ "rollback_transaction", "struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1", null ],
     [ "salvage", "struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e", null ],

@@ -98,6 +98,8 @@
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a96f25dfa6447034aea1f67ab02ab5698"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a96f25dfa6447034aea1f67ab02ab5698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the session handle.  <a href="#a96f25dfa6447034aea1f67ab02ab5698"></a><br/></td></tr>
+<tr class="memitem:a578f0fbd8a83339f1f9c00e135f006e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6">reconfigure</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
+<tr class="memdesc:a578f0fbd8a83339f1f9c00e135f006e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure a session handle.  <a href="#a578f0fbd8a83339f1f9c00e135f006e6"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Cursor handles</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><div class="fragment"><pre class="fragment">      </pre></div> </div></td></tr>
 <tr class="memitem:afb5b4a69c2c5cafe411b2b04fdc1c75d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *to_dup, const char *config, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **cursorp)</td></tr>
@@ -143,7 +145,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>All data operations are performed in the context of a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a>. </p>
 <p>This encapsulates the thread and transactional context of the operation.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> handle is not usually shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a1">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a14">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#_a1">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a1">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a1">ex_thread.c</a>, and <a class="el" href="ex_transaction_8c-example.html#_a1">ex_transaction.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a1">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a14">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#_a1">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a1">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a1">ex_thread.c</a>.</dd>
 </dl></div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a7e26b16b26b5870498752322fad790bf"></a>
 <div class="memitem">
@@ -181,7 +183,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>isolation</code></td><td>the isolation level for this transaction.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"snapshot"</code>; default <code>snapshot</code>. </td></tr>
+<td><code>isolation</code></td><td>the isolation level for this transaction; defaults to the session's isolation level.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default empty. </td></tr>
 <tr>
 <td><code>name</code></td><td>name of the transaction for tracing and debugging.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -194,7 +196,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_config_8c-example.html#a7">ex_config.c</a>, and <a class="el" href="ex_transaction_8c-example.html#a5">ex_transaction.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_config_8c-example.html#a7">ex_config.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -367,7 +369,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_config_8c-example.html#a12">ex_config.c</a>, and <a class="el" href="ex_transaction_8c-example.html#a6">ex_transaction.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_config_8c-example.html#a12">ex_config.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -713,8 +715,6 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>dump</code></td><td>configure the cursor for dump format inputs and outputs: "hex" selects a simple hexadecimal format, "print" selects a format where only non-printing characters are hexadecimal encoded. The cursor dump format is compatible with the <a class="el" href="command_line.html#utility_dump">wt dump</a> and <a class="el" href="command_line.html#utility_load">wt load</a> commands.</td><td>a string, chosen from the following options: <code>"hex"</code>, <code>"print"</code>; default empty. </td></tr>
 <tr>
-<td><code>isolation</code></td><td>the isolation level for this cursor, ignored for transactional cursors.</td><td>a string, chosen from the following options: <code>"snapshot"</code>, <code>"read-committed"</code>, <code>"read-uncommitted"</code>; default <code>read-committed</code>. </td></tr>
-<tr>
 <td><code>next_random</code></td><td>configure the cursor to return a pseudo-random record from the object; valid only for row-store cursors. Cursors configured with next_random only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
@@ -735,6 +735,50 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a7">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a7">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a8">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a19">ex_cursor.c</a>, <a class="el" href="ex_schema_8c-example.html#a7">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a5">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a4">ex_thread.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="a578f0fbd8a83339f1f9c00e135f006e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6">WT_SESSION::reconfigure</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reconfigure a session handle. </p>
+<div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6" title="Reconfigure a session handle.">reconfigure</a>(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);
+</pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>isolation</code></td><td>the default isolation level for operations in this session.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default <code>read-committed</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a52f78bc88e48e3905158277c518b80d4"></a>

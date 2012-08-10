@@ -100,6 +100,8 @@ Public Member Functions</h2></td></tr>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b></td></tr>
 <tr class="memitem:a63f702c75007d8d25165ebf55ee92739"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_session.html#a63f702c75007d8d25165ebf55ee92739">close</a></td></tr>
 <tr class="memdesc:a63f702c75007d8d25165ebf55ee92739"><td class="mdescLeft">&#160;</td><td class="mdescRight">close(self, config) -&gt; int  <a href="#a63f702c75007d8d25165ebf55ee92739"></a><br/></td></tr>
+<tr class="memitem:aa761c6e0840b09436289b4a7db0befc2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_session.html#aa761c6e0840b09436289b4a7db0befc2">reconfigure</a></td></tr>
+<tr class="memdesc:aa761c6e0840b09436289b4a7db0befc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconfigure(self, config) -&gt; int  <a href="#aa761c6e0840b09436289b4a7db0befc2"></a><br/></td></tr>
 <tr class="memitem:aa7f8ff75031b4ee2f337cf2776361a79"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_session.html#aa7f8ff75031b4ee2f337cf2776361a79">open_cursor</a></td></tr>
 <tr class="memdesc:aa7f8ff75031b4ee2f337cf2776361a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">open_cursor(self, uri, to_dup, config) -&gt; int  <a href="#aa7f8ff75031b4ee2f337cf2776361a79"></a><br/></td></tr>
 <tr class="memitem:a05806032431c2420bf709d7cfdb6937c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_session.html#a05806032431c2420bf709d7cfdb6937c">create</a></td></tr>
@@ -170,7 +172,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>isolation</code></td><td>the isolation level for this transaction.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"snapshot"</code>; default <code>snapshot</code>. </td></tr>
+<td><code>isolation</code></td><td>the isolation level for this transaction; defaults to the session's isolation level.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default empty. </td></tr>
 <tr>
 <td><code>name</code></td><td>name of the transaction for tracing and debugging.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -654,8 +656,6 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>dump</code></td><td>configure the cursor for dump format inputs and outputs: "hex" selects a simple hexadecimal format, "print" selects a format where only non-printing characters are hexadecimal encoded. The cursor dump format is compatible with the <a class="el" href="command_line.html#utility_dump">wt dump</a> and <a class="el" href="command_line.html#utility_load">wt load</a> commands.</td><td>a string, chosen from the following options: <code>"hex"</code>, <code>"print"</code>; default empty. </td></tr>
 <tr>
-<td><code>isolation</code></td><td>the isolation level for this cursor, ignored for transactional cursors.</td><td>a string, chosen from the following options: <code>"snapshot"</code>, <code>"read-committed"</code>, <code>"read-uncommitted"</code>; default <code>read-committed</code>. </td></tr>
-<tr>
 <td><code>next_random</code></td><td>configure the cursor to return a pseudo-random record from the object; valid only for row-store cursors. Cursors configured with next_random only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
@@ -670,6 +670,51 @@ Public Attributes</h2></td></tr>
 </table>
 </td></tr>
     <tr><td class="paramname">cursorp</td><td>a pointer to the newly opened cursor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+ </p>
+
+</div>
+</div>
+<a class="anchor" id="aa761c6e0840b09436289b4a7db0befc2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def <a class="el" href="classwiredtiger_1_1_session.html#aa761c6e0840b09436289b4a7db0befc2">wiredtiger.Session.reconfigure</a> </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>reconfigure(self, config) -&gt; int </p>
+<p>Reconfigure a session handle.  <div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6" title="Reconfigure a session handle.">reconfigure</a>(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);
+</pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>isolation</code></td><td>the default isolation level for operations in this session.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default <code>read-committed</code>. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>

@@ -95,6 +95,20 @@
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:af535c517df851eeac8ebf3594d40b545"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *config)</td></tr>
+<tr class="memdesc:af535c517df851eeac8ebf3594d40b545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a connection.  <a href="#af535c517df851eeac8ebf3594d40b545"></a><br/></td></tr>
+<tr class="memitem:a579141678af06217b22869cbc604c6d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4">reconfigure</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *config)</td></tr>
+<tr class="memdesc:a579141678af06217b22869cbc604c6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure a connection handle.  <a href="#a579141678af06217b22869cbc604c6d4"></a><br/></td></tr>
+<tr class="memitem:a488fcba6b5abcdfca439d456564e8640"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640">get_home</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection)</td></tr>
+<tr class="memdesc:a488fcba6b5abcdfca439d456564e8640"><td class="mdescLeft">&#160;</td><td class="mdescRight">The home directory of the connection.  <a href="#a488fcba6b5abcdfca439d456564e8640"></a><br/></td></tr>
+<tr class="memitem:ae2bacefe9777b8ab32d8b22c292c4f39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39">is_new</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection)</td></tr>
+<tr class="memdesc:ae2bacefe9777b8ab32d8b22c292c4f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if opening this handle created the database.  <a href="#ae2bacefe9777b8ab32d8b22c292c4f39"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Session handles</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><div class="fragment"><pre class="fragment">      </pre></div> </div></td></tr>
+<tr class="memitem:afc75c44ff4497627c59d9b6aaa64c9d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *errhandler, const char *config, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> **sessionp)</td></tr>
+<tr class="memdesc:afc75c44ff4497627c59d9b6aaa64c9d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a session.  <a href="#afc75c44ff4497627c59d9b6aaa64c9d8"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Extensions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><div class="fragment"><pre class="fragment">      </pre></div> </div></td></tr>
 <tr class="memitem:ab6a56facfd217e5ff687aa4c012e8d68"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68">load_extension</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *path, const char *config)</td></tr>
 <tr class="memdesc:ab6a56facfd217e5ff687aa4c012e8d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an extension.  <a href="#ab6a56facfd217e5ff687aa4c012e8d68"></a><br/></td></tr>
 <tr class="memitem:a459c1b71346bbcecb552ad73d43f27ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea">add_data_source</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *prefix, <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *data_source, const char *config)</td></tr>
@@ -105,23 +119,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a4f26bfa799ae5e72b536ac93d6200783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a compression function.  <a href="#a4f26bfa799ae5e72b536ac93d6200783"></a><br/></td></tr>
 <tr class="memitem:a2d65a70a305838e2a2a728fe5cb54903"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903">add_extractor</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *name, <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> *extractor, const char *config)</td></tr>
 <tr class="memdesc:a2d65a70a305838e2a2a728fe5cb54903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a custom extractor for index keys or column groups.  <a href="#a2d65a70a305838e2a2a728fe5cb54903"></a><br/></td></tr>
-<tr class="memitem:af535c517df851eeac8ebf3594d40b545"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *config)</td></tr>
-<tr class="memdesc:af535c517df851eeac8ebf3594d40b545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a connection.  <a href="#af535c517df851eeac8ebf3594d40b545"></a><br/></td></tr>
-<tr class="memitem:a488fcba6b5abcdfca439d456564e8640"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640">get_home</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection)</td></tr>
-<tr class="memdesc:a488fcba6b5abcdfca439d456564e8640"><td class="mdescLeft">&#160;</td><td class="mdescRight">The home directory of the connection.  <a href="#a488fcba6b5abcdfca439d456564e8640"></a><br/></td></tr>
-<tr class="memitem:ae2bacefe9777b8ab32d8b22c292c4f39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39">is_new</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection)</td></tr>
-<tr class="memdesc:ae2bacefe9777b8ab32d8b22c292c4f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if opening this handle created the database.  <a href="#ae2bacefe9777b8ab32d8b22c292c4f39"></a><br/></td></tr>
-<tr class="memitem:afc75c44ff4497627c59d9b6aaa64c9d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *errhandler, const char *config, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> **sessionp)</td></tr>
-<tr class="memdesc:afc75c44ff4497627c59d9b6aaa64c9d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a session.  <a href="#afc75c44ff4497627c59d9b6aaa64c9d8"></a><br/></td></tr>
-<tr class="memitem:a579141678af06217b22869cbc604c6d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4">reconfigure</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *config)</td></tr>
-<tr class="memdesc:a579141678af06217b22869cbc604c6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure a connection at run-time.  <a href="#a579141678af06217b22869cbc604c6d4"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A connection to a WiredTiger database. </p>
 <p>The connection may be opened within the same address space as the caller or accessed over a socket connection.</p>
 <p>Most applications will open a single connection to a database for each process. The first process to open a connection to a database will access the database in its own address space. Subsequent connections (if allowed) will communicate with the first process over a socket connection to perform their operations.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> handle may be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a0">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a0">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a0">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a13">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#_a4">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#_a0">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#_a0">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#_a0">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a0">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a9">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a0">ex_thread.c</a>, and <a class="el" href="ex_transaction_8c-example.html#_a0">ex_transaction.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a0">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a0">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a0">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a13">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#_a4">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#_a0">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#_a0">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#_a0">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a0">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a9">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a0">ex_thread.c</a>.</dd>
 </dl></div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a89290382c55f20e5a4e1bc9216c7a8c8"></a>
 <div class="memitem">
@@ -389,7 +393,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a15">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a16">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a13">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a21">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a9">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a6">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a5">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a8">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a14">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a13">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#a15">ex_thread.c</a>, and <a class="el" href="ex_transaction_8c-example.html#a7">ex_transaction.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a15">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a16">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a13">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a21">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a9">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a6">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a5">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a8">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a14">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a13">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a15">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -546,13 +550,19 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, the connection's error handler is used </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>isolation</code></td><td>the default isolation level for operations in this session.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default <code>read-committed</code>. </td></tr>
+</table>
+</td></tr>
     <tr><td class="paramname">sessionp</td><td>the new session handle </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a4">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a5">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a5">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a17">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a8">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a3">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a4">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a4">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a5">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a11">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#a3">ex_thread.c</a>, and <a class="el" href="ex_transaction_8c-example.html#a4">ex_transaction.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a4">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a5">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a5">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a17">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a8">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a3">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a4">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a4">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a5">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a11">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a3">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -581,8 +591,8 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Reconfigure a connection at run-time. </p>
-<div class="fragment"><pre class="fragment">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection at run-time.">reconfigure</a>(conn, <span class="stringliteral">&quot;eviction_target=75&quot;</span>);
+<p>Reconfigure a connection handle. </p>
+<div class="fragment"><pre class="fragment">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">reconfigure</a>(conn, <span class="stringliteral">&quot;eviction_target=75&quot;</span>);
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>

@@ -15,15 +15,14 @@ var programming =
     [ "Multithreading", "threads.html", [
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
-    [ "File formats", "file_formats.html", "file_formats" ],
     [ "Schemas", "schema.html", "schema" ],
+    [ "File formats", "file_formats.html", "file_formats" ],
     [ "Transactions", "transactions.html", [
       [ "ACID properties", "transactions.html#transactions_acid", null ],
       [ "Transactional API", "transactions.html#transactions_api", null ],
-      [ "Concurrency control", "transactions.html#transactions_cc", null ],
+      [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
       [ "Isolation levels", "transactions.html#transaction_isolation", null ],
-      [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ],
-      [ "Code samples", "transactions.html#transaction_example", null ]
+      [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
     ] ],
     [ "Checkpoints", "checkpoints.html", null ],
     [ "Hot backup", "hot_backup.html", null ],

@@ -98,18 +98,18 @@
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a82c88c844dddc2ff0acca03247d1fa75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82c88c844dddc2ff0acca03247d1fa75"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b></td></tr>
-<tr class="memitem:aa377943ec15f44df582af25f92062d85"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#aa377943ec15f44df582af25f92062d85">load_extension</a></td></tr>
-<tr class="memdesc:aa377943ec15f44df582af25f92062d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">load_extension(self, path, config) -&gt; int  <a href="#aa377943ec15f44df582af25f92062d85"></a><br/></td></tr>
 <tr class="memitem:a8947b7cfc205725a5aeddcab87a33954"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a8947b7cfc205725a5aeddcab87a33954">close</a></td></tr>
 <tr class="memdesc:a8947b7cfc205725a5aeddcab87a33954"><td class="mdescLeft">&#160;</td><td class="mdescRight">close(self, config) -&gt; int  <a href="#a8947b7cfc205725a5aeddcab87a33954"></a><br/></td></tr>
+<tr class="memitem:a109a28f176b20dae0735150444ec57d3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a109a28f176b20dae0735150444ec57d3">reconfigure</a></td></tr>
+<tr class="memdesc:a109a28f176b20dae0735150444ec57d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconfigure(self, config) -&gt; int  <a href="#a109a28f176b20dae0735150444ec57d3"></a><br/></td></tr>
 <tr class="memitem:a188ef87948cafc02fd3e344808f4b565"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a188ef87948cafc02fd3e344808f4b565">get_home</a></td></tr>
 <tr class="memdesc:a188ef87948cafc02fd3e344808f4b565"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_home(self) -&gt; string  <a href="#a188ef87948cafc02fd3e344808f4b565"></a><br/></td></tr>
 <tr class="memitem:a12690b2abf2eec707f53cd6387204f24"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a12690b2abf2eec707f53cd6387204f24">is_new</a></td></tr>
 <tr class="memdesc:a12690b2abf2eec707f53cd6387204f24"><td class="mdescLeft">&#160;</td><td class="mdescRight">is_new(self) -&gt; int  <a href="#a12690b2abf2eec707f53cd6387204f24"></a><br/></td></tr>
 <tr class="memitem:a101a315055c064cab278d30aa1b13dab"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a101a315055c064cab278d30aa1b13dab">open_session</a></td></tr>
 <tr class="memdesc:a101a315055c064cab278d30aa1b13dab"><td class="mdescLeft">&#160;</td><td class="mdescRight">open_session(self, config) -&gt; int  <a href="#a101a315055c064cab278d30aa1b13dab"></a><br/></td></tr>
-<tr class="memitem:a109a28f176b20dae0735150444ec57d3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#a109a28f176b20dae0735150444ec57d3">reconfigure</a></td></tr>
-<tr class="memdesc:a109a28f176b20dae0735150444ec57d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconfigure(self, config) -&gt; int  <a href="#a109a28f176b20dae0735150444ec57d3"></a><br/></td></tr>
+<tr class="memitem:aa377943ec15f44df582af25f92062d85"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_connection.html#aa377943ec15f44df582af25f92062d85">load_extension</a></td></tr>
+<tr class="memdesc:aa377943ec15f44df582af25f92062d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">load_extension(self, path, config) -&gt; int  <a href="#aa377943ec15f44df582af25f92062d85"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a970df3076d90edeae53d9c0629bf099e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a970df3076d90edeae53d9c0629bf099e"></a>
@@ -315,7 +315,13 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, the connection's error handler is used </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>isolation</code></td><td>the default isolation level for operations in this session.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default <code>read-committed</code>. </td></tr>
+</table>
+</td></tr>
     <tr><td class="paramname">sessionp</td><td>the new session handle </td></tr>
   </table>
   </dd>
@@ -351,7 +357,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>reconfigure(self, config) -&gt; int </p>
-<p>Reconfigure a connection at run-time.  <div class="fragment"><pre class="fragment">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection at run-time.">reconfigure</a>(conn, <span class="stringliteral">&quot;eviction_target=75&quot;</span>);
+<p>Reconfigure a connection handle.  <div class="fragment"><pre class="fragment">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">reconfigure</a>(conn, <span class="stringliteral">&quot;eviction_target=75&quot;</span>);
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>

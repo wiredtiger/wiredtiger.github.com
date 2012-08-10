@@ -88,7 +88,7 @@ ACID properties</h2>
 <li>Isolation: developers can reason about transactions as if they run single-threaded.</li>
 <li>Durability: once a transaction commits, its updates cannot be lost.</li>
 </ul>
-<p>In WiredTiger release 1.2, support for transactions was added with the following caveats to the ACID properties:</p>
+<p>WiredTiger supports transactions with the following caveats to the ACID properties:</p>
 <ul>
 <li>the maximum level of isolation supported is snapshot isolation. See <a class="el" href="transactions.html#transaction_isolation">Isolation levels</a> for more details.</li>
 <li>only coarse-grained durability is supported: updates become durable when they are part of a checkpoint, not at commit time. If there is a crash, commits since the last checkpoint will be lost.</li>
@@ -96,27 +96,76 @@ ACID properties</h2>
 <h2><a class="anchor" id="transactions_api"></a>
 Transactional API</h2>
 <p>In WiredTiger, the transactional context is managed by the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> class. Applications call <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">WT_SESSION::begin_transaction</a> to start a new transaction, which is only permitted when no cursors are open. Operations performed with that <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> handle are then part of the transaction, and their effects can be committed by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a>, both of which implicitly close any open cursors.</p>
-<p>When transactions are used, concurrent update operations will fail with the <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a> error if they conflict with a concurrent transaction. Transactions should be rolled back with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a> and retried if this error occurs.</p>
-<h2><a class="anchor" id="transactions_cc"></a>
+<div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">begin_transaction</a>(session, NULL);
+
+        ret =
+            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);
+        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;some-key&quot;</span>);
+        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;some-value&quot;</span>);
+        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor);
+
+        <span class="comment">/* Resolving the transaction closes the open cursors. */</span>
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);
+</pre></div><p> When transactions are used, update operations that conflict with a concurrent transaction will fail with the <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a> error. Transactions should be rolled back with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a> and retried if this error occurs.</p>
+<div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">begin_transaction</a>(session, NULL);
+
+        ret =
+            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);
+        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;some-key&quot;</span>);
+        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;some-value&quot;</span>);
+        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor);
+
+        <span class="comment">/* Resolving the transaction closes the open cursors. */</span>
+        <span class="keywordflow">switch</span> (ret) {
+        <span class="keywordflow">case</span> 0:
+                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);
+                <span class="keywordflow">break</span>;
+        <span class="keywordflow">case</span> <a class="code" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a>:                       <span class="comment">/* Conflict */</span>
+        <span class="keywordflow">default</span>:                                <span class="comment">/* Other error */</span>
+                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">rollback_transaction</a>(session, NULL);
+                <span class="keywordflow">break</span>;
+        }
+</pre></div> <h2><a class="anchor" id="transactions_concurrency"></a>
 Concurrency control</h2>
-<p>WiredTiger uses optimistic concurrency control algorithms. This avoids the bottleneck of a centralized lock manager, and means that transactional operations do not block: reads do not block writes, and vice versa.</p>
-<p>Further, writes do not block writes, but as mentioned above, concurrent transactions updating the same value will fail with <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a>. Some applications may benefit from application-level synchronization to avoid repeated attempts to rollback and update the same value.</p>
+<p>WiredTiger uses optimistic concurrency control algorithms. This avoids the bottleneck of a centralized lock manager and ensures transactional operations do not block: reads do not block writes, and vice versa.</p>
+<p>Further, writes do not block writes, although concurrent transactions updating the same value will fail with <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a>. Some applications may benefit from application-level synchronization to avoid repeated attempts to rollback and update the same value.</p>
 <h2><a class="anchor" id="transaction_isolation"></a>
 Isolation levels</h2>
-<p>The default isolation level is <code>snapshot</code>, which means that each transaction reads the versions of records that were committed before the transaction started.</p>
-<p>Snapshot isolation is a strong guarantee, but not equivalent to a single-threaded execution of the transactions, known as serializable isolation. Concurrent transactions T1 and T2 running under snapshot isolation may both commit and produce a state that neither (T1 followed by T2) or (T2 followed by T1) could have produced, if there is overlap between T1's reads and T2's writes, and between T1's writes and T2's reads.</p>
-<p>Weaker isolation levels are also provided, including <code>read-uncommitted</code>, which always reads the most recent version of data, regardless of whether it is committed.</p>
-<h2><a class="anchor" id="transaction_recovery"></a>
+<p>WiredTiger supports <code>read-uncommitted</code>, <code>read-committed</code> and <code>snapshot</code> isolation levels; the default isolation level is is <code>read-committed</code>.</p>
+<ul>
+<li><code>read-uncommitted</code>: Transactions can see changes made by other transactions before those transactions are committed. Dirty reads, non-repeatable reads and phantoms are possible.</li>
+</ul>
+<ul>
+<li><code>read-committed</code>: Transactions cannot see changes made by other transactions before those transactions are committed. Dirty reads are not possible; non-repeatable reads and phantoms are possible.</li>
+</ul>
+<ul>
+<li><code>snapshot</code>: Transactions read the versions of records committed before the transaction started. Dirty reads and non-repeatable reads are not possible; phantoms are possible.<br/>
+<br/>
+ Snapshot isolation is a strong guarantee, but not equivalent to a single-threaded execution of the transactions, known as serializable isolation. Concurrent transactions T1 and T2 running under snapshot isolation may both commit and produce a state that neither (T1 followed by T2) or (T2 followed by T1) could have produced, if there is overlap between T1's reads and T2's writes, and between T1's writes and T2's reads.</li>
+</ul>
+<p>The transaction isolation level can be configured on a per-transaction basis:</p>
+<div class="fragment"><pre class="fragment">        <span class="comment">/* A single transaction configured for snapshot isolation. */</span>
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">begin_transaction</a>(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);
+
+        ret =
+            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);
+        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;some-key&quot;</span>);
+        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;some-value&quot;</span>);
+        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor);
+
+        <span class="comment">/* Resolving the transaction closes the open cursors. */</span>
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);
+</pre></div><p> Additionally, the default transaction isolation can be configured and re-configured on a per-session basis:</p>
+<div class="fragment"><pre class="fragment">        <span class="comment">/* Open a session configured for read-uncommitted isolation. */</span>
+        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(
+            conn, NULL, <span class="stringliteral">&quot;isolation=read_uncommitted&quot;</span>, &amp;session);
+</pre></div> <div class="fragment"><pre class="fragment">        <span class="comment">/* Re-configure a session for snapshot isolation. */</span>
+        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6" title="Reconfigure a session handle.">reconfigure</a>(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);
+</pre></div> <h2><a class="anchor" id="transaction_recovery"></a>
 Checkpoints and Recovery</h2>
 <p>Recovery is run automatically when a data source is opened. Any changes since the last checkpoint are discarded, and the application restarts from a consistent point in the transaction history.</p>
-<p>This suggests the importance of regular checkpoints: they limit the volume of commits that may be lost in a crash. See <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> and <a class="el" href="checkpoints.html">Checkpoints</a> for further information about checkpoints.</p>
-<h2><a class="anchor" id="transaction_example"></a>
-Code samples</h2>
-<p>The code below is taken from the complete example program <a class="el" href="ex_transaction_8c-example.html">ex_transaction.c</a>.</p>
-<div class="fragment"><pre class="fragment">        session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">begin_transaction</a>(session, NULL);
-        <span class="comment">/* ... */</span>
-        session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);
-</pre></div></div></div><!-- contents -->
+<p>This demonstrates the importance of regular checkpoints: they limit the volume of commits that may be lost in a crash. See <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> and <a class="el" href="checkpoints.html">Checkpoints</a> for further information. </p>
+</div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
