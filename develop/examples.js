@@ -10,5 +10,6 @@ var examples =
     [ "ex_pack.c", "ex_pack_8c-example.html", null ],
     [ "ex_schema.c", "ex_schema_8c-example.html", null ],
     [ "ex_stat.c", "ex_stat_8c-example.html", null ],
-    [ "ex_thread.c", "ex_thread_8c-example.html", null ]
+    [ "ex_thread.c", "ex_thread_8c-example.html", null ],
+    [ "ex_transaction.c", "ex_transaction_8c-example.html", null ]
 ];
