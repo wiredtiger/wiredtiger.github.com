@@ -121,7 +121,7 @@
         ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);
 </pre></div><p> In cases where the backup is desired for a checkpoint other than the most recent, applications can discard all checkpoints subsequent to the checkpoint they want using the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method. For example:</p>
 <div class="fragment"><pre class="fragment">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(from=June01),name=June01&quot;</span>);
-</pre></div><p> The <a class="el" href="command_line.html#utility_backup">wt backup</a> command may also be used to create hot backups:</p>
+</pre></div><p> The <a class="el" href="command_line.html#util_backup">wt backup</a> command may also be used to create hot backups:</p>
 <div class="fragment"><pre class="fragment">rm -rf /path/database.backup &amp;&amp;
     mkdir /path/database.backup &amp;&amp;
     wt -h /path/database.source backup /path/database.backup

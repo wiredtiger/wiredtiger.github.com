@@ -20,6 +20,7 @@ var programming =
     [ "Transactions", "transactions.html", [
       [ "ACID properties", "transactions.html#transactions_acid", null ],
       [ "Transactional API", "transactions.html#transactions_api", null ],
+      [ "Implicit transactions", "transactions.html#transactions_implicit", null ],
       [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
       [ "Isolation levels", "transactions.html#transaction_isolation", null ],
       [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
