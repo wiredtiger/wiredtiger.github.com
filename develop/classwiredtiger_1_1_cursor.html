@@ -522,7 +522,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>reset(self) -&gt; int </p>
-<p>Reset the position of the cursor.  Any resources held by the cursor are released, and the cursor position is no longer valid. Subsequent iteration with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> will move to the first record, or with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record.">WT_CURSOR::prev</a> will move to the last record.<div class="fragment"><pre class="fragment">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the position of the cursor.">reset</a>(cursor);
+<p>Reset the position of the cursor.  Any resources held by the cursor are released, and the cursor's key and position are no longer valid. A subsequent iteration with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> will move to the first record, or with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record.">WT_CURSOR::prev</a> will move to the last record.<div class="fragment"><pre class="fragment">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the position of the cursor.">reset</a>(cursor);
 </pre></div> <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>

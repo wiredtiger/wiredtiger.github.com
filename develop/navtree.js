@@ -17,8 +17,7 @@ var NAVTREE =
       [ "Changing compiler or loader options", "install.html#compiler", null ]
     ] ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
-      [ "Version 1.3 API changes", "upgrading.html#version_13_api", null ],
-      [ "Version 1.3 file format changes", "upgrading.html#version13file", null ]
+      [ "Upgrading to Version 1.3", "upgrading.html#version_13", null ]
     ] ],
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
