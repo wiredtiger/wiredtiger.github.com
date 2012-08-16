@@ -75,7 +75,7 @@ Upgrading to Version 1.3</h1>
 <ul>
 <li>
 <p class="startli"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION.checkpoint</a><br/>
- The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method's <code>snapshot</code> configuration string has been renamed to <code>name</code>.</p>
+ The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method's <code>snapshot</code> configuration string has been renamed to <code>name</code>. The name assigned to checkpoints without a specified <code>name</code> configuration is now <code>"WiredTigerCheckpoint"</code>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -108,7 +108,8 @@ wt dump, list -s<br/>
 <p class="enddd"></p>
 </dd>
 <dt>Default transactional isolation level </dt>
-<dd><p class="startdd">In releases before 1.3, the default isolation level was <code>snapshot</code>; in 1.3, the default isolation level is <code>read-committed</code>. </p>
+<dd><p class="startdd">In releases before 1.3, the default isolation level for transaction was <code>snapshot</code>, and the default isolation level for non-transaction operations was <code>read-uncommitted</code>; in 1.3, the default isolation level for all operations is <code>read-committed</code>.</p>
+<p>The default can be overridden for a session using the <code>isolation</code> setting in WT_CONNECTION::open_cursor. </p>
 <p class="enddd"></p>
 </dd>
 <dt><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR.equals</a> </dt>
