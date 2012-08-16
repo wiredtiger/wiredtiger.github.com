@@ -67,21 +67,61 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version13api"></a>
-Version 1.3 API changes</h1>
-<p>The checkpoint functionality supported by <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> and the snapshot functionality supported by WT_SESSION::sync have been merged into a single piece of functionality.</p>
-<dl class="section user"><dt>WT_SESSION.checkpoint</dt><dd>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method's <code>snapshot</code> configuration string has been renamed to <code>name</code>.</dd></dl>
-<dl class="section user"><dt>WT_SESSION.drop</dt><dd>In releases before 1.3, the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) an object.">WT_SESSION::drop</a> method was used to delete snapshots. In 1.3, the functionality of deleting snapshots has been moved to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method, specifically, snapshots are discarded using the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method's <code>drop</code> configuration string.</dd></dl>
-<dl class="section user"><dt>WT_SESSION.sync</dt><dd>The WT_SESSION::sync method has been removed from the 1.3 release; the functionality of creating an object snapshot has moved to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method, specifically, creating a snapshot of a one or more objects is done using the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method's <code>target</code> configuration string.</dd></dl>
-<dl class="section user"><dt>wt drop -s</dt><dd>The <code>-s</code> option to the <code>drop</code> command for the <code>wt</code> command line utility has been removed, and object snapshots may no longer be removed from the command line.</dd></dl>
-<dl class="section user"><dt>wt dump, list -s</dt><dd>The <code>-s</code> options to the <code>dump</code> and <code>list</code> commands for the <code>wt</code> command line utility have been renamed to be <code>-c</code>.</dd></dl>
-<p>Other changes:</p>
-<dl class="section user"><dt>WT_SESSION.open_cursor</dt><dd>In releases before 1.3, the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method could duplicate cursors that were not positioned in an object; in 1.3, a cursor must be positioned in order to be duplicated.</dd></dl>
-<dl class="section user"><dt>WT_CURSOR.equals</dt><dd>In releases before 1.3, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR::equals</a> method returned zero/non-zero to indicate cursor equality; in 1.3, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR::equals</a> returns a standard error status, and cursor equality is returned in an additional parameter specified to the method.</dd></dl>
-<h1><a class="anchor" id="version13file"></a>
-Version 1.3 file format changes</h1>
-<p>The underlying file formats changed in the 1.3 release; tables and files should be dumped and re-loaded into a new database. </p>
-</div></div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="version_13"></a>
+Upgrading to Version 1.3</h1>
+<dl>
+<dt>Checkpoint and Snapshot </dt>
+<dd><p class="startdd">The checkpoint functionality supported by <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> and the snapshot functionality supported by WT_SESSION::sync have been merged into a single piece of functionality.</p>
+<ul>
+<li>
+<p class="startli"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION.checkpoint</a><br/>
+ The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method's <code>snapshot</code> configuration string has been renamed to <code>name</code>.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) an object.">WT_SESSION.drop</a><br/>
+ In releases before 1.3, the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) an object.">WT_SESSION::drop</a> method was used to delete snapshots. In 1.3, the functionality of deleting snapshots has been moved to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method, specifically, snapshots are discarded using the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method's <code>drop</code> configuration string.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">WT_SESSION.sync<br/>
+ The WT_SESSION::sync method has been removed from the 1.3 release; the functionality of creating an object snapshot has moved to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method, specifically, creating a snapshot of a one or more objects is done using the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> method's <code>target</code> configuration string.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">wt drop -s<br/>
+ The <code>-s</code> option to the <code>drop</code> command for the <code>wt</code> command line utility has been removed, and object snapshots may no longer be removed from the command line.</p>
+<p class="endli"></p>
+</li>
+<li>
+wt dump, list -s<br/>
+ The <code>-s</code> options to the <code>dump</code> and <code>list</code> commands for the <code>wt</code> command line utility have been renamed to be <code>-c</code>. </li>
+</ul>
+<p class="enddd"></p>
+</dd>
+<dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION.open_cursor</a> </dt>
+<dd><p class="startdd">In releases before 1.3, the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method could duplicate cursors that were not positioned in an object; in 1.3, a cursor must be positioned in order to be duplicated. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Transactional cursors </dt>
+<dd><p class="startdd">In releases before 1.3, ending a transaction by calling the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a> methods implicitly closed all open cursors; in 1.3, the cursors remain open, but are reset (discarding their positions and cursor values). This means applications must change to either close cursors explicitly, or rely on an eventual <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698" title="Close the session handle.">WT_SESSION::close</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a> methods to implicitly close open cursors. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Default transactional isolation level </dt>
+<dd><p class="startdd">In releases before 1.3, the default isolation level was <code>snapshot</code>; in 1.3, the default isolation level is <code>read-committed</code>. </p>
+<p class="enddd"></p>
+</dd>
+<dt><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR.equals</a> </dt>
+<dd><p class="startdd">In releases before 1.3, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR::equals</a> method returned zero/non-zero to indicate cursor equality; in 1.3, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR::equals</a> returns a standard error status, and cursor equality is returned in an additional parameter specified to the method. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Version 1.3 file format changes </dt>
+<dd><p class="startdd">The underlying file formats changed in the 1.3 release; tables and files should be dumped and re-loaded into a new database. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

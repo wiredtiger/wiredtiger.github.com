@@ -84,6 +84,9 @@ Opening a cursor</h1>
 </div><!-- fragment --><p> In addition to traditional data sources, cursors in WiredTiger are used to access projections and even created data sources such as the run-time statistics:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor);</div>
 </div><!-- fragment --><p> See <a class="el" href="cursors.html">Cursors</a> for more information on available cursor types.</p>
+<h1><a class="anchor" id="cursor_closing"></a>
+Closing a cursor</h1>
+<p>Cursors remain open until either <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> is called or the cursor's session is closed, which may either be in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698" title="Close the session handle.">WT_SESSION::close</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a>.</p>
 <h1><a class="anchor" id="cursor_position"></a>
 Positioning a cursor</h1>
 <p>Cursors may be positioned at the beginning of the data source, the end of the data source, at an exact key within the data source, and near a key within the data source.</p>
@@ -159,7 +162,8 @@ Positioning a cursor</h1>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="cursor_writes"></a>
+</div><!-- fragment --><p> Cursor positions do not survive transactions: cursors that are open during <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">WT_SESSION::begin_transaction</a>, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a> will lose their position as if <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the position of the cursor.">WT_CURSOR::reset</a> was called.</p>
+<h1><a class="anchor" id="cursor_writes"></a>
 Inserting and updating</h1>
 <p>To insert new data, and optionally update existing data, using a cursor, use the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a> method:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span></div>
@@ -191,8 +195,7 @@ Inserting and updating</h1>
 <div class="line">}</div>
 </div><!-- fragment --> <h1><a class="anchor" id="cursor_error"></a>
 Cursor position after error</h1>
-<p>After any cursor handle method failure, the cursor's position is undetermined. Applications that cannot re-position the cursor after failure must duplicate the cursor before calling a cursor method that will attempt to re-position the cursor. <b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>fix when cursor duplication supported</dd></dl>
+<p>After any cursor handle method failure, the cursor's position is undetermined. Applications that cannot re-position the cursor after failure must duplicate the cursor before calling a cursor method that will attempt to re-position the cursor. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
