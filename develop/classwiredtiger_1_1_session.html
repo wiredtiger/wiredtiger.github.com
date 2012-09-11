@@ -956,8 +956,10 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>truncate(self, name, start, stop, config) -&gt; int </p>
-<p>Truncate a file, table or a cursor range.  <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or a cursor range.">truncate</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, NULL);</div>
-</div><!-- fragment --> <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *start, *stop;</div>
+<p>Truncate a file, table or cursor range.  Truncate a file or table. </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range.">truncate</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, NULL);</div>
+</div><!-- fragment --><p> Truncate a cursor range. When truncating based on a cursor position, it is not required the cursor reference a record in the object, only that the key be set. This allows applications to discard portions of the object name space without knowing exactly what records the object contains. </p>
+<div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *start, *stop;</div>
 <div class="line"></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;start);</div>
@@ -969,13 +971,13 @@ Public Attributes</h2></td></tr>
 <div class="line">        stop-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(stop, <span class="stringliteral">&quot;June30&quot;</span>);</div>
 <div class="line">        ret = stop-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(stop);</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or a cursor range.">truncate</a>(session, NULL, start, stop, NULL);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range.">truncate</a>(session, NULL, start, stop, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">name</td><td>the URI of the file or table to truncate </td></tr>
-    <tr><td class="paramname">start</td><td>optional cursor marking the first record discarded; if <code>NULL</code>, the truncate starts from the beginning of the table </td></tr>
-    <tr><td class="paramname">stop</td><td>optional cursor marking the last record discarded; if <code>NULL</code>, the truncate continues to the end of the table </td></tr>
+    <tr><td class="paramname">start</td><td>optional cursor marking the first record discarded; if <code>NULL</code>, the truncate starts from the beginning of the object </td></tr>
+    <tr><td class="paramname">stop</td><td>optional cursor marking the last record discarded; if <code>NULL</code>, the truncate continues to the end of the object </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
   </table>
   </dd>

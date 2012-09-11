@@ -112,8 +112,12 @@ wt dump, list -s<br/>
 <p>The default can be overridden for a session using the <code>isolation</code> setting in WT_CONNECTION::open_cursor. </p>
 <p class="enddd"></p>
 </dd>
-<dt><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR.equals</a> </dt>
-<dd><p class="startdd">In releases before 1.3, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR::equals</a> method returned zero/non-zero to indicate cursor equality; in 1.3, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">WT_CURSOR::equals</a> returns a standard error status, and cursor equality is returned in an additional parameter specified to the method. </p>
+<dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range.">WT_SESSION.truncate</a> </dt>
+<dd><p class="startdd">In releases before 1.3, the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range.">WT_SESSION::truncate</a> method required cursors used for truncation of a cursor range to reference existing keys in the object; in 1.3, the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range.">WT_SESSION::truncate</a> method has been changed to allow cursors to reference any valid key in the object's name space so applications may discard portions of the object name space without knowing exactly what records the object contains. </p>
+<p class="enddd"></p>
+</dd>
+<dt>WT_CURSOR.equals </dt>
+<dd><p class="startdd">In releases before 1.3, the WT_CURSOR::equals method returned zero/non-zero to indicate cursor equality; in 1.3, the WT_CURSOR::equals method has been replaced with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#acd3f345e375e26d223ad5c6f35dc15e8" title="Return the ordering relationship between two cursors: both cursors must have the same data source and...">WT_CURSOR::compare</a>, which compares two cursors and returns a cursor comparison status (less than 0, equal to 0, or greater than 0) depending on the cursors' key order. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Version 1.3 file format changes </dt>

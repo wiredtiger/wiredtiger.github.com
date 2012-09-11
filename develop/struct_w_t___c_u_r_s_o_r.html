@@ -101,9 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a27f7cbd0cd3e561f6a145704813ad64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the value for the next operation.  <a href="#a27f7cbd0cd3e561f6a145704813ad64c"></a><br/></td></tr>
 <tr class="separator:a27f7cbd0cd3e561f6a145704813ad64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Cursor positioning</div></td></tr>
-<tr class="memitem:a6736da9b394239a201ba97761b7b941b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b">equals</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *other, int *equalp)</td></tr>
-<tr class="memdesc:a6736da9b394239a201ba97761b7b941b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test whether two cursors refer to the same item.  <a href="#a6736da9b394239a201ba97761b7b941b"></a><br/></td></tr>
-<tr class="separator:a6736da9b394239a201ba97761b7b941b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd3f345e375e26d223ad5c6f35dc15e8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#acd3f345e375e26d223ad5c6f35dc15e8">compare</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *other, int *comparep)</td></tr>
+<tr class="memdesc:acd3f345e375e26d223ad5c6f35dc15e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the ordering relationship between two cursors: both cursors must have the same data source and have valid keys.  <a href="#acd3f345e375e26d223ad5c6f35dc15e8"></a><br/></td></tr>
+<tr class="separator:acd3f345e375e26d223ad5c6f35dc15e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0503f16bd8f3d05aa3552f229b3a8e1b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
 <tr class="memdesc:a0503f16bd8f3d05aa3552f229b3a8e1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next record.  <a href="#a0503f16bd8f3d05aa3552f229b3a8e1b"></a><br/></td></tr>
 <tr class="separator:a0503f16bd8f3d05aa3552f229b3a8e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,12 +182,12 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </dl>
 </div>
 </div>
-<a class="anchor" id="a6736da9b394239a201ba97761b7b941b"></a>
+<a class="anchor" id="acd3f345e375e26d223ad5c6f35dc15e8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int WT_CURSOR::equals </td>
+          <td class="memname">int WT_CURSOR::compare </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
           <td class="paramname"><em>cursor</em>, </td>
@@ -202,7 +202,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>equalp</em>&#160;</td>
+          <td class="paramname"><em>comparep</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -212,18 +212,21 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
       </table>
 </div><div class="memdoc">
 
-<p>Test whether two cursors refer to the same item. </p>
-<p>To be equal, both cursors must have the same data source, have valid keys, and the keys must be equal.</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">int</span> equal;</div>
-<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Test whether two cursors refer to the same item.">equals</a>(cursor, other, &amp;equal);</div>
-<div class="line">        <span class="keywordflow">if</span> (equal) {</div>
-<div class="line">                <span class="comment">/* Take some action. */</span></div>
+<p>Return the ordering relationship between two cursors: both cursors must have the same data source and have valid keys. </p>
+<div class="fragment"><div class="line">        <span class="keywordtype">int</span> <a class="code" href="struct_w_t___c_u_r_s_o_r.html#acd3f345e375e26d223ad5c6f35dc15e8" title="Return the ordering relationship between two cursors: both cursors must have the same data source and...">compare</a>;</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#acd3f345e375e26d223ad5c6f35dc15e8" title="Return the ordering relationship between two cursors: both cursors must have the same data source and...">compare</a>(cursor, other, &amp;compare);</div>
+<div class="line">        <span class="keywordflow">if</span> (compare == 0) {</div>
+<div class="line">                <span class="comment">/* Cursors reference the same key */</span></div>
+<div class="line">        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (compare &lt; 0) {</div>
+<div class="line">                <span class="comment">/* Cursor key less than other key */</span></div>
+<div class="line">        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (compare &gt; 0) {</div>
+<div class="line">                <span class="comment">/* Cursor key greater than other key */</span></div>
 <div class="line">        }</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
     <tr><td class="paramname">other</td><td>another cursor handle </td></tr>
-    <tr><td class="paramname">equalp</td><td>the status of the comparison: non-zero if the cursors refer to the same item, or zero if the cursors do not refer to the same item. </td></tr>
+    <tr><td class="paramname">comparep</td><td>the status of the comparison: &lt; 0 if <code>cursor</code> refers to a key that appears before <code>other</code>, 0 if the cursors refer to the same key, and &gt; 0 if <code>cursor</code> refers to a key that appears after <code>other</code>. </td></tr>
   </table>
   </dd>
 </dl>
