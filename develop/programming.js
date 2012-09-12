@@ -16,7 +16,10 @@ var programming =
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
     [ "Schemas", "schema.html", "schema" ],
-    [ "File formats", "file_formats.html", "file_formats" ],
+    [ "File formats", "file_formats.html", [
+      [ "File formats", "file_formats.html#file_formats_formats", null ],
+      [ "File formats and compression", "file_formats.html#file_formats_compression", null ]
+    ] ],
     [ "Transactions", "transactions.html", [
       [ "ACID properties", "transactions.html#transactions_acid", null ],
       [ "Transactional API", "transactions.html#transactions_api", null ],

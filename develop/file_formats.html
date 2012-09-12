@@ -78,9 +78,33 @@ File formats</h1>
 <p>WiredTiger allocates space from the underlying files in block units. The minimum file allocation unit WiredTiger supports is 512B and the maximum file allocation unit is 512MB. File block offsets are 64-bit (meaning the maximum file size is very, very large).</p>
 <h1><a class="anchor" id="file_formats_compression"></a>
 File formats and compression</h1>
-<p>Row-stores support three types of compression: prefix compression (where any identical portion of each key byte string is only stored once), Huffman encoding of individual key/value items, (see <a class="el" href="huffman.html">Huffman Encoding</a> for details), and stream compression of the blocks in the file (see <a class="el" href="compression.html">Compressors</a> for details).</p>
-<p>Column-stores with variable-length byte string values support three types of compression: run-length encoding (where duplicate values are only stored a single time), Huffman encoding of individual value items, (see <a class="el" href="huffman.html">Huffman Encoding</a> for details), and stream compression of the blocks in the file (see <a class="el" href="compression.html">Compressors</a> for details).</p>
-<p>Column-stores with fixed-length byte values support a single type of compression: stream compression of the blocks in the file (see <a class="el" href="compression.html">Compressors</a> for details). </p>
+<p>Row-stores support four types of compression: prefix compression, dictionary compression, Huffman encoding and stream compression.</p>
+<ul>
+<li>Prefix compression reduces the size requirement of both in-memory and on-disk objects by storing any identical key prefix only once per page. The cost is minor additional CPU memory use when searching the in-memory tree and when writing pages to disk.</li>
+</ul>
+<ul>
+<li>Dictionary compression reduces the size requirement of both the in-memory and on-disk objects by storing any identical value only once per page. The cost is minor additional CPU and memory use when returning values from the in-memory tree and when writing pages to disk. Note that dictionary compression in WiredTiger is intended for relatively small dictionaries of unique values; configuring dictionaries of tens of thousands of values might result in a higher CPU cost.</li>
+</ul>
+<ul>
+<li>Huffman encoding reduces the size requirement of both the in-memory and on-disk objects by compressing individual key/value items, and can be separately configured either or both keys and values. The cost is additional CPU and memory use when searching the in-memory tree (if keys are encoded), and additional CPU and memory use when returning values from the in-memory tree and when writing pages to disk. Note the additional CPU cost of Huffman encoding can be high, and should be considered. (See <a class="el" href="huffman.html">Huffman Encoding</a> for details)</li>
+</ul>
+<ul>
+<li>Stream compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of stream compression can be high, and should be considered. (See <a class="el" href="compression.html">Compressors</a> for details).</li>
+</ul>
+<p>Column-stores with variable-length byte string values support three types of compression: run-length encoding, Huffman encoding and block stream compression.</p>
+<ul>
+<li>Run-length encoding reduces the size requirement of both the in-memory and on-disk objects by storing sequential, duplicate values in the store only a single time (with an associated count). The cost is minor additional CPU and memory use when returning values from the in-memory tree and when writing pages to disk.</li>
+</ul>
+<ul>
+<li>Huffman encoding reduces the size requirement of both the in-memory and on-disk objects by compressing individual value items. The cost is additional CPU and memory use when returning values from the in-memory tree and when writing pages to disk. Note the additional CPU cost of Huffman encoding can be high, and should be considered. (See <a class="el" href="huffman.html">Huffman Encoding</a> for details)</li>
+</ul>
+<ul>
+<li>Stream compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of stream compression can be high, and should be considered. (See <a class="el" href="compression.html">Compressors</a> for details).</li>
+</ul>
+<p>Column-stores with fixed-length byte values support a single type of compression: stream compression.</p>
+<ul>
+<li>Stream compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of stream compression can be high, and should be considered. (See <a class="el" href="compression.html">Compressors</a> for details). </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

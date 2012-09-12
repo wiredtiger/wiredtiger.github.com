@@ -115,6 +115,7 @@ var group__wt =
     [ "WT_STAT_overflow_read", "group__wt.html#gaed94afdf62f648e2b24afcbff9099b89", null ],
     [ "WT_STAT_page_read", "group__wt.html#ga6f014b87d1ec2e0397c2194facf7806f", null ],
     [ "WT_STAT_page_write", "group__wt.html#ga3a2118526114de728a6f20badf390dff", null ],
+    [ "WT_STAT_rec_dictionary", "group__wt.html#ga88570b328357075023a21265ac905f7d", null ],
     [ "WT_STAT_rec_hazard", "group__wt.html#ga34cb5b72f37f81e54948217ec8bf8599", null ],
     [ "WT_STAT_rec_ovfl_key", "group__wt.html#gabfe0f8845f3079add1b04bc76e4536e9", null ],
     [ "WT_STAT_rec_ovfl_value", "group__wt.html#ga7d8ba9f9fd61a355e8f3b02e86bbe7e2", null ],

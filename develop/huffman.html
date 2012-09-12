@@ -68,6 +68,7 @@ $(document).ready(function(){initNavTree('huffman.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Keys in row-stores and variable-length values in either row- or column-stores can be compressed with Huffman encoding.</p>
+<p>The additional CPU cost of Huffman coding can be high, and should be considered.</p>
 <p>Huffman compression is maintained in memory as well as on disk, and can increase the amount of usable data the cache can hold as well as decrease the size of the data on disk.</p>
 <p>To configure Huffman encoding for the key in a row-store, specify <code>"huffman_key=english"</code>, <code>"huffman_key=utf8&lt;file&gt;"</code> or <code>"huffman_key=utf16&lt;file&gt;"</code> in the configuration passed to <code><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a></code>.</p>
 <p>To configure Huffman encoding for a variable-length value in either a row-store or a column-store, specify "huffman_value=english", <code>"huffman_value=utf8&lt;file&gt;"</code> or <code>"huffman_value=utf16&lt;file&gt;"</code> in the configuration passed to <code><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a></code>.</p>
@@ -92,7 +93,6 @@ letter and bigram frequency counts from large-scale English corpora"</code>, by 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li><li class="navelem"><a class="el" href="file_formats.html">File formats</a></li>
     <li class="footer">Copyright (c) 2008-2012 WiredTiger, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
