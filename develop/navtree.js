@@ -27,6 +27,7 @@ var NAVTREE =
       [ "3rd party software included in the WiredTiger distribution", "license.html#distribution", null ],
       [ "Public domain software", "license.html#pd", null ]
     ] ],
+    [ "Cursor random", "cursor_random.html", null ],
     [ "Huffman Encoding", "huffman.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -46,7 +47,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"group__wt.html#gaf115b8645c6f564995970c95b51a5878"
+"group__wt.html#gaed94afdf62f648e2b24afcbff9099b89"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
