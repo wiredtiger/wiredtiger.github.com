@@ -1,7 +1,7 @@
 var data_sources =
 [
     [ "Builtin data sources", "data_sources.html#data_builtin", [
-      [ "Hot backup cursors", "data_sources.html#hot_backup_cursors", null ],
+      [ "Hot backup cursors", "data_sources.html#data_backup", null ],
       [ "Raw Files", "data_sources.html#data_files", null ],
       [ "Table Index data", "data_sources.html#data_indices", null ],
       [ "Statistics Data", "data_sources.html#data_statistics", null ]

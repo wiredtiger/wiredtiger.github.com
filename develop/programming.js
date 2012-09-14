@@ -16,9 +16,19 @@ var programming =
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
     [ "Schemas", "schema.html", "schema" ],
-    [ "File formats", "file_formats.html", [
-      [ "File formats", "file_formats.html#file_formats_formats", null ],
-      [ "File formats and compression", "file_formats.html#file_formats_compression", null ]
+    [ "File formats", "file_formats.html", "file_formats" ],
+    [ "Log-Structured Merge Trees", "lsm.html", [
+      [ "Background", "lsm.html#lsm_background", null ],
+      [ "Description of LSM trees", "lsm.html#lsm_description", null ],
+      [ "Interface to LSM trees", "lsm.html#lsm_api", null ],
+      [ "Merging", "lsm.html#lsm_merge", null ],
+      [ "Bloom filters", "lsm.html#lsm_bloom", null ],
+      [ "Caveats", "lsm.html#lsm_caveats", [
+        [ "Hazard configuration", "lsm.html#lsm_hazard", null ],
+        [ "Creating tables using LSM trees", "lsm.html#lsm_schema", null ],
+        [ "Empty values", "lsm.html#lsm_tombstones", null ],
+        [ "Transactional access", "lsm.html#lsm_txn", null ]
+      ] ]
     ] ],
     [ "Transactions", "transactions.html", [
       [ "ACID properties", "transactions.html#transactions_acid", null ],

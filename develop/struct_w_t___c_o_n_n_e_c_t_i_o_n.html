@@ -276,7 +276,6 @@ Public Member Functions</h2></td></tr>
 <div class="line">                my_drop,</div>
 <div class="line">                my_open_cursor,</div>
 <div class="line">                my_rename,</div>
-<div class="line">                my_sync,</div>
 <div class="line">                my_truncate</div>
 <div class="line">        };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source.">add_data_source</a>(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL);</div>
@@ -594,7 +593,7 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>eviction_trigger</code></td><td>trigger eviction when the cache becomes this full (as a percentage).</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"ckpt"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"mutex"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"verify"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"ckpt"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"lsm"</code>, <code>"mutex"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"verify"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>

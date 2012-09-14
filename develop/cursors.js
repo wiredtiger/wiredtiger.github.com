@@ -11,5 +11,6 @@ var cursors =
       [ "Inserting and updating", "cursor_ops.html#cursor_writes", null ],
       [ "Cursor position after error", "cursor_ops.html#cursor_error", null ]
     ] ],
-    [ "Data Sources", "data_sources.html", "data_sources" ]
+    [ "Data Sources", "data_sources.html", "data_sources" ],
+    [ "Cursor random", "cursor_random.html", null ]
 ];

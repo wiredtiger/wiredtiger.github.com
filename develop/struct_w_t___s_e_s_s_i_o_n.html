@@ -505,6 +505,12 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device.</td><td>an integer between 512B and 512MB; default <code>1MB</code>. </td></tr>
 <tr>
+<td><code>lsm_bloom_bit_count</code></td><td>the number of bits used per item for LSM bloom filters..</td><td>an integer between 2 and 1000; default <code>8</code>. </td></tr>
+<tr>
+<td><code>lsm_bloom_hash_count</code></td><td>the number of hash values per item used for LSM bloom filters..</td><td>an integer between 2 and 100; default <code>4</code>. </td></tr>
+<tr>
+<td><code>lsm_chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree.</td><td>an integer between 512K and 500MB; default <code>2MB</code>. </td></tr>
+<tr>
 <td><code>prefix_compression</code></td><td>configure row-store format key prefix compression.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>split_pct</code></td><td>the Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size.</td><td>an integer between 25 and 100; default <code>75</code>. </td></tr>
@@ -765,7 +771,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>dump</code></td><td>configure the cursor for dump format inputs and outputs: "hex" selects a simple hexadecimal format, "print" selects a format where only non-printing characters are hexadecimal encoded. The cursor dump format is compatible with the <a class="el" href="command_line.html#util_dump">wt dump</a> and <a class="el" href="command_line.html#util_load">wt load</a> commands.</td><td>a string, chosen from the following options: <code>"hex"</code>, <code>"print"</code>; default empty. </td></tr>
 <tr>
-<td><code>next_random</code></td><td>configure the cursor to return a pseudo-random record from the object; valid only for row-store cursors. Cursors configured with next_random only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods. See <a class="el" href="cursor_random.html">Cursor random</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>next_random</code></td><td>configure the cursor to return a pseudo-random record from the object; valid only for row-store cursors. Cursors configured with next_random only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods. See <a class="el" href="cursors.html">Cursor random</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
