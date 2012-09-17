@@ -71,10 +71,13 @@ $(document).ready(function(){initNavTree('lsm.html','');});
 Background</h1>
 <p>A common requirement is sustained throughput under a workload that consists of random inserts, where either the key range is chosen so that inserts are very unlikely to conflict (e.g., 128-bit hashes), or where inserts are expected to overwrite existing values.</p>
 <p>With traditional btree variants, inserts are very fast while the data set remains in cache, but once the tree overflows the cache, performance drops significantly. There are two factors involved:</p>
-<p>1. once the data fills the cache, new inserts have some probability of going to a page that is not in cache, requiring a read; and 2. the cache is full of dirty pages, so pages have to be written to free space in the cache before the read can be satisfied.</p>
+<ol type="1">
+<li>once the data fills the cache, new inserts have some probability of going to a page that is not in cache, requiring a read; and</li>
+<li>the cache is full of dirty pages, so pages have to be written to free space in the cache before the read can be satisfied.</li>
+</ol>
 <h1><a class="anchor" id="lsm_description"></a>
 Description of LSM trees</h1>
-<p>Log-Structured Merge Trees were described in this paper by Patrick O'Neil1 , Edward Cheng, Dieter Gawlick and Elizabeth O'Neil1: <a href="http://www.cs.umb.edu/~poneil/lsmtree.pdf">http://www.cs.umb.edu/~poneil/lsmtree.pdf</a></p>
+<p>Log-Structured Merge Trees are described in this paper by Patrick O'Neil, Edward Cheng, Dieter Gawlick and Elizabeth O'Neil: <a href="http://www.cs.umb.edu/~poneil/lsmtree.pdf">http://www.cs.umb.edu/~poneil/lsmtree.pdf</a></p>
 <p>A logical tree is split into several physical pieces so that the most-recently-updated portion of data is in a tree that fits entirely in memory. The size of the in-memory chunk can be configured with the <code>"lsm_chunk_size"</code> configuration key to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</p>
 <p>Once the in-memory tree reaches a threshold size, a new in-memory tree is created and the old tree synced to disk. Once written to disk, trees are read-only, though they are merged in the background with other on-disk trees to reduce the cost of reads.</p>
 <p>With this structure, "blind writes" can be performed entirely on the in-memory tree. Deletes are implemented by inserting a special "tombstone" record into the in-memory tree.</p>
@@ -109,7 +112,7 @@ Bloom filters</h1>
 Caveats</h1>
 <h2><a class="anchor" id="lsm_hazard"></a>
 Hazard configuration</h2>
-<p>Reads from an LSM cursor may need to position a cursor in each active chunk. The number of chunks depends on the chunk size, and how many chunks have been merged. There must be at least as many hazard references available as there are chunks in the tree. The number of hazard references is configured with the <code>"hazard_max"</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>.</p>
+<p>Reads from an LSM cursor may need to position a cursor in each active chunk. The number of chunks depends on the chunk size, and how many chunks have been merged. There must be at least as many hazard references available as there are chunks in the tree for each cursor that is open on the LSM tree. The number of hazard references is configured with the <code>"hazard_max"</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>.</p>
 <h2><a class="anchor" id="lsm_schema"></a>
 Creating tables using LSM trees</h2>
 <p>It is not yet possible to create tables or indices using LSM trees for storage. This will be addressed in a future release of WiredTiger.</p>
