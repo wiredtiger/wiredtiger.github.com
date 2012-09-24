@@ -481,7 +481,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>columns</code></td><td>list of the column names. Comma-separated list of the form <code>(column[,...])</code>. For tables, the number of entries must match the total number of values in <code>key_format</code> and <code>value_format</code>. For colgroups and indices, all column names must appear in the list of columns for the table.</td><td>a list of strings; default empty. </td></tr>
 <tr>
-<td><code>dictionary</code></td><td>the number of entries maintained in the Btree row-store leaf page value dictionary; see <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>dictionary</code></td><td>the maximum number of unique values remembered in the Btree row-store leaf page value dictionary; see <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>exclusive</code></td><td>fail if the object exists. When false (the default), if the object exists, check that its settings match the specified configuration.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
