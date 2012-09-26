@@ -511,6 +511,8 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>lsm_chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree.</td><td>an integer between 512K and 500MB; default <code>2MB</code>. </td></tr>
 <tr>
+<td><code>lsm_merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between 2 and 100; default <code>15</code>. </td></tr>
+<tr>
 <td><code>prefix_compression</code></td><td>configure row-store format key prefix compression.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>split_pct</code></td><td>the Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size.</td><td>an integer between 25 and 100; default <code>75</code>. </td></tr>
