@@ -131,6 +131,7 @@ var group__wt =
     [ "WT_STAT_txn_ancient", "group__wt.html#gad5784bb98fd68e8e41e278239f920ccf", null ],
     [ "WT_STAT_txn_begin", "group__wt.html#gae48016cd3fa0017f7abcb7ff3bcf3b56", null ],
     [ "WT_STAT_txn_commit", "group__wt.html#gae98d38002fe2e20a22ef6438d1db9fdc", null ],
+    [ "WT_STAT_txn_fail_cache", "group__wt.html#gaa737d8c0c64273bc72666136192bee4d", null ],
     [ "WT_STAT_txn_rollback", "group__wt.html#ga3de26e371d78859372b02c9df98c9449", null ],
     [ "WT_STAT_update_conflict", "group__wt.html#gaa3b7732efa5d01eeeb6c3e185187671d", null ],
     [ "wiredtiger_open", "group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed", null ],
