@@ -124,6 +124,7 @@ Implicit transactions</h1>
 Concurrency control</h1>
 <p>WiredTiger uses optimistic concurrency control algorithms. This avoids the bottleneck of a centralized lock manager and ensures transactional operations do not block: reads do not block writes, and vice versa.</p>
 <p>Further, writes do not block writes, although concurrent transactions updating the same value will fail with <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a>. Some applications may benefit from application-level synchronization to avoid repeated attempts to rollback and update the same value.</p>
+<p>Operations in transactions may also fail with the <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a> error if some resource cannot be allocated after repeated attempts. For example, if the cache is not large enough to hold the updates required to satisfy transactional readers, an operation may fail and return <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a>.</p>
 <h1><a class="anchor" id="transaction_isolation"></a>
 Isolation levels</h1>
 <p>WiredTiger supports <code>read-uncommitted</code>, <code>read-committed</code> and <code>snapshot</code> isolation levels; the default isolation level is is <code>read-committed</code>.</p>

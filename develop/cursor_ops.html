@@ -195,7 +195,8 @@ Inserting and updating</h1>
 <div class="line">}</div>
 </div><!-- fragment --> <h1><a class="anchor" id="cursor_error"></a>
 Cursor position after error</h1>
-<p>After any cursor handle method failure, the cursor's position is undetermined. Applications that cannot re-position the cursor after failure must duplicate the cursor before calling a cursor method that will attempt to re-position the cursor. </p>
+<p>After any cursor handle method failure, the cursor's position is undetermined. For cursor operations that expect a key to be set before the operation begins (including <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">WT_CURSOR::search</a>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a>), the application's key and value will not be cleared by an error.</p>
+<p>Applications that cannot re-position the cursor after failure must duplicate the cursor by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> and passing the cursor as the <code>to_dup</code> parameter before calling a cursor method that will attempt to re-position the cursor. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
