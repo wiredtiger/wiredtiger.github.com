@@ -108,6 +108,7 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line"><span class="keywordtype">int</span> print_cursor(<a name="_a0"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *);</div>
 <div class="line"><span class="keywordtype">int</span> print_database_stats(<a name="_a1"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *);</div>
 <div class="line"><span class="keywordtype">int</span> print_file_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *);</div>
+<div class="line"><span class="keywordtype">int</span> print_lsm_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *);</div>
 <div class="line"><span class="keywordtype">int</span> print_overflow_pages(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *);</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home = <span class="stringliteral">&quot;WT_TEST&quot;</span>;</div>
@@ -153,6 +154,23 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> </div>
+<div class="line">print_lsm_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session)</div>
+<div class="line">{</div>
+<div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor;</div>
+<div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Create an LSM tree, and add some content. */</span></div>
+<div class="line">        ret = session-&gt;<a name="a6"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;lsm:access&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;statistics:lsm:access&quot;</span>, NULL, NULL, &amp;cursor)) != 0)</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">return</span> (print_cursor(cursor));</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> </div>
 <div class="line">print_overflow_pages(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor;</div>
@@ -164,8 +182,8 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">            <span class="stringliteral">&quot;statistics:file:access.wt&quot;</span>, NULL, NULL, &amp;cursor)) != 0)</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line"></div>
-<div class="line">        cursor-&gt;<a name="a6"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <a name="a7"></a><a class="code" href="group__wt.html#ga5650719af708b5916db094159b908c91" title="overflow pages">WT_STAT_file_overflow</a>);</div>
-<div class="line">        ret = cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
+<div class="line">        cursor-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <a name="a8"></a><a class="code" href="group__wt.html#ga5650719af708b5916db094159b908c91" title="overflow pages">WT_STAT_file_overflow</a>);</div>
+<div class="line">        ret = cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;desc, &amp;pvalue, &amp;value);</div>
 <div class="line">        printf(<span class="stringliteral">&quot;%s=%s\n&quot;</span>, desc, pvalue);</div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
@@ -174,18 +192,20 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
-<div class="line">        <a name="_a9"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *conn;</div>
+<div class="line">        <a name="_a10"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
-<div class="line">        ret = <a name="a10"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn);</div>
-<div class="line">        ret = conn-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(conn, NULL, NULL, &amp;session);</div>
-<div class="line">        ret = session-&gt;<a name="a12"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(</div>
+<div class="line">        ret = <a name="a11"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn);</div>
+<div class="line">        ret = conn-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(conn, NULL, NULL, &amp;session);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:access&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        ret = print_database_stats(session);</div>
 <div class="line"></div>
 <div class="line">        ret = print_file_stats(session);</div>
+<div class="line"></div>
+<div class="line">        ret = print_lsm_stats(session);</div>
 <div class="line"></div>
 <div class="line">        ret = print_overflow_pages(session);</div>
 <div class="line"></div>
