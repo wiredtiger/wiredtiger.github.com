@@ -37,8 +37,7 @@ var NAVTREE =
       [ "Variables", "functions_vars.html", null ]
     ] ],
     [ "Examples", "examples.html", "examples" ],
-    [ "License", "license.html", null ],
-    [ "Download", "^https://github.com/wiredtiger/wiredtiger/downloads/", null ]
+    [ "License", "license.html", null ]
   ] ]
 ];
 
