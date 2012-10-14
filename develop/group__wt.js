@@ -115,6 +115,7 @@ var group__wt =
     [ "WT_STAT_overflow_read", "group__wt.html#gaed94afdf62f648e2b24afcbff9099b89", null ],
     [ "WT_STAT_overflow_value_cache", "group__wt.html#ga3a7a62ae839ae04d1f2cb83907ed6295", null ],
     [ "WT_STAT_page_evict", "group__wt.html#ga00b56aecf69d82e5c910e823bee33872", null ],
+    [ "WT_STAT_page_evict_fail", "group__wt.html#gaa8e30e59b1cdac74668744e7aebb431c", null ],
     [ "WT_STAT_page_read", "group__wt.html#ga6f014b87d1ec2e0397c2194facf7806f", null ],
     [ "WT_STAT_page_write", "group__wt.html#ga3a2118526114de728a6f20badf390dff", null ],
     [ "WT_STAT_rec_dictionary", "group__wt.html#ga88570b328357075023a21265ac905f7d", null ],
