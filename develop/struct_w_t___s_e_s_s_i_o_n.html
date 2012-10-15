@@ -506,11 +506,15 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device.</td><td>an integer between 512B and 512MB; default <code>1MB</code>. </td></tr>
 <tr>
-<td><code>lsm_bloom</code></td><td>create bloom filters for LSM trees..</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>lsm_bloom</code></td><td>create bloom filters on LSM tree chunks as they are merged..</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>lsm_bloom_bit_count</code></td><td>the number of bits used per item for LSM bloom filters..</td><td>an integer between 2 and 1000; default <code>8</code>. </td></tr>
 <tr>
 <td><code>lsm_bloom_hash_count</code></td><td>the number of hash values per item used for LSM bloom filters..</td><td>an integer between 2 and 100; default <code>4</code>. </td></tr>
+<tr>
+<td><code>lsm_bloom_newest</code></td><td>create a bloom filter on an LSM tree chunk before it's first merge. Only supported if bloom filters are enabled..</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>lsm_bloom_oldest</code></td><td>create a bloom filter on the oldest LSM tree chunk. Only supported if bloom filters are enabled..</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>lsm_chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree.</td><td>an integer between 512K and 500MB; default <code>2MB</code>. </td></tr>
 <tr>
