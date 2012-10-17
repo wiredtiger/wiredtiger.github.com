@@ -97,6 +97,17 @@ Options</h2>
 <p>The following are command-specific options for the <code>backup</code> command:</p>
 <dl class="section user"><dt>-t uri</dt><dd>By default, the <code>backup</code> command does a hot backup of the entire database; the <code>-t</code> option changes the <code>backup</code> command to do a hot backup of only the named objects.</dd></dl>
 <hr/>
+ <h1><a class="anchor" id="util_compact"></a>
+wt compact</h1>
+<p>Compact a table or file.</p>
+<p>The <code>compact</code> command attempts to rewrite the specified table or file to consume less disk space.</p>
+<h2><a class="anchor" id="util_compact_synopsis"></a>
+Synopsis</h2>
+<p><code>wt [-Vv] [-C config] [-h directory] compact uri</code></p>
+<h2><a class="anchor" id="util_compact_options"></a>
+Options</h2>
+<p>The <code>compact</code> command has no command-specific options.</p>
+<hr/>
  <h1><a class="anchor" id="util_create"></a>
 wt create</h1>
 <p>Create a table or file.</p>
@@ -135,18 +146,6 @@ Options</h2>
 <dl class="section user"><dt>-f</dt><dd>By default, the <code>dump</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
 <dl class="section user"><dt>-r</dt><dd>Dump in reverse order, from largest key to smallest.</dd></dl>
 <dl class="section user"><dt>-x</dt><dd>Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded).</dd></dl>
-<hr/>
- <h1><a class="anchor" id="util_dumpfile"></a>
-wt dumpfile</h1>
-<p>Dump a file in a debugging format.</p>
-<p>The <code>dumpfile</code> command dumps the specified physical file in a non-portable, debugging format, exiting success if the file is correct, and failure if the file is corrupted.</p>
-<h2><a class="anchor" id="util_dumpfile_synopsis"></a>
-Synopsis</h2>
-<p><code>wt [-Vv] [-C config] [-h directory] dumpfile [-f output] file</code></p>
-<h2><a class="anchor" id="util_dumpfile_options"></a>
-Options</h2>
-<p>The following are command-specific options for the <code>dumpfile</code> command:</p>
-<dl class="section user"><dt>-f</dt><dd>By default, the <code>dumpfile</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
 <hr/>
  <h1><a class="anchor" id="util_list"></a>
 wt list</h1>

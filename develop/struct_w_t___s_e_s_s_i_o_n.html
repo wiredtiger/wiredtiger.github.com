@@ -99,6 +99,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a358ca4141d59c345f401c58501276bbb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:a358ca4141d59c345f401c58501276bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a table, column group, index or file.  <a href="#a358ca4141d59c345f401c58501276bbb"></a><br/></td></tr>
 <tr class="separator:a358ca4141d59c345f401c58501276bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
+<tr class="memdesc:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact an object.  <a href="#aafa7a12a4891a5bfdc98673a5b8f9c69"></a><br/></td></tr>
+<tr class="separator:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:adf785ef53c16d9dcc77e22cc04c87b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#adf785ef53c16d9dcc77e22cc04c87b70"></a><br/></td></tr>
 <tr class="separator:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,9 +134,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6550c9079198955c5071583941c85bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#a6550c9079198955c5071583941c85bbf"></a><br/></td></tr>
 <tr class="separator:a6550c9079198955c5071583941c85bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Debugging</div></td></tr>
-<tr class="memitem:a221decf62735bf1b31e84c9b9421f8bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a221decf62735bf1b31e84c9b9421f8bd">dumpfile</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
-<tr class="memdesc:a221decf62735bf1b31e84c9b9421f8bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump a physical file in debugging mode.  <a href="#a221decf62735bf1b31e84c9b9421f8bd"></a><br/></td></tr>
-<tr class="separator:a221decf62735bf1b31e84c9b9421f8bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ac96e4c2574fbb2b43c17666326f8a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7ac96e4c2574fbb2b43c17666326f8a8">msg_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *fmt,...)</td></tr>
 <tr class="memdesc:a7ac96e4c2574fbb2b43c17666326f8a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a string to the message handler for debugging.  <a href="#a7ac96e4c2574fbb2b43c17666326f8a8"></a><br/></td></tr>
 <tr class="separator:a7ac96e4c2574fbb2b43c17666326f8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -309,6 +309,8 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>drop</code></td><td>specify a list of checkpoints to drop. The list may additionally contain one of the following keys: <code>"from=all"</code> to drop all checkpoints, <code>"from=&lt;checkpoint&gt;"</code> to drop all checkpoints after and including the named checkpoint, or <code>"to=&lt;checkpoint&gt;"</code> to drop all checkpoints before and including the named checkpoint. Checkpoints cannot be dropped while a hot backup is in progress or if open in a cursor.</td><td>a list of strings; default empty. </td></tr>
 <tr>
+<td><code>force</code></td><td>checkpoints may be skipped if the underlying object has not been modified, this option forces the checkpoint.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
 <td><code>name</code></td><td>if non-empty, specify a name for the checkpoint.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>target</code></td><td>if non-empty, checkpoint the list of objects.</td><td>a list of strings; default empty. </td></tr>
@@ -425,6 +427,50 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_config_8c-example.html#a12">ex_config.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="aafa7a12a4891a5bfdc98673a5b8f9c69"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::compact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compact an object. </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact an object.">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">name</td><td>the URI of the object to drop, such as <code>"table:stock"</code> </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a358ca4141d59c345f401c58501276bbb"></a>
@@ -580,51 +626,6 @@ Public Attributes</h2></td></tr>
 <td><code>force</code></td><td>return success if the object does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>
 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a221decf62735bf1b31e84c9b9421f8bd"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int WT_SESSION::dumpfile </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
-          <td class="paramname"><em>session</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>config</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Dump a physical file in debugging mode. </p>
-<p>The specified file is displayed in a non-portable debugging mode to the application's standard output.</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a221decf62735bf1b31e84c9b9421f8bd" title="Dump a physical file in debugging mode.">dumpfile</a>(session, <span class="stringliteral">&quot;file:myfile&quot;</span>, NULL);</div>
-</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">name</td><td>the URI of the file to dump </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1172,7 +1173,17 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">name</td><td>the URI of the file or table to verify </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>dump_address</code></td><td>Display addresses and page types as pages are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>dump_blocks</code></td><td>Display the contents of on-disk blocks as they are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>dump_pages</code></td><td>Display the contents of in-memory pages as they are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>

@@ -7,6 +7,10 @@ var command_line =
       [ "Synopsis", "command_line.html#util_backup_synopsis", null ],
       [ "Options", "command_line.html#util_backup_options", null ]
     ] ],
+    [ "wt compact", "command_line.html#util_compact", [
+      [ "Synopsis", "command_line.html#util_compact_synopsis", null ],
+      [ "Options", "command_line.html#util_compact_options", null ]
+    ] ],
     [ "wt create", "command_line.html#util_create", [
       [ "Synopsis", "command_line.html#util_create_synopsis", null ],
       [ "Options", "command_line.html#util_create_options", null ]
@@ -18,10 +22,6 @@ var command_line =
     [ "wt dump", "command_line.html#util_dump", [
       [ "Synopsis", "command_line.html#util_dump_synopsis", null ],
       [ "Options", "command_line.html#util_dump_options", null ]
-    ] ],
-    [ "wt dumpfile", "command_line.html#util_dumpfile", [
-      [ "Synopsis", "command_line.html#util_dumpfile_synopsis", null ],
-      [ "Options", "command_line.html#util_dumpfile_options", null ]
     ] ],
     [ "wt list", "command_line.html#util_list", [
       [ "Synopsis", "command_line.html#util_list_synopsis", null ],
