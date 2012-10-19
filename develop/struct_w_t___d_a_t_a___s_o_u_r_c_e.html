@@ -90,9 +90,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ac5f93f2d017533b3fb0238f4e55940da"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ac5f93f2d017533b3fb0238f4e55940da">drop</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *cfg[])</td></tr>
 <tr class="memdesc:ac5f93f2d017533b3fb0238f4e55940da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to drop an object.  <a href="#ac5f93f2d017533b3fb0238f4e55940da"></a><br/></td></tr>
 <tr class="separator:ac5f93f2d017533b3fb0238f4e55940da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ce18e27ef3fabbdda8249a8c5de1d6e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a6ce18e27ef3fabbdda8249a8c5de1d6e">open_cursor</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *obj, const char *cfg[], <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</td></tr>
-<tr class="memdesc:a6ce18e27ef3fabbdda8249a8c5de1d6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to initialize a cursor.  <a href="#a6ce18e27ef3fabbdda8249a8c5de1d6e"></a><br/></td></tr>
-<tr class="separator:a6ce18e27ef3fabbdda8249a8c5de1d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73eddca0e95e7369381ffdb6ee42682b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a73eddca0e95e7369381ffdb6ee42682b">open_cursor</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *obj, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *owner, const char *cfg[], <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</td></tr>
+<tr class="memdesc:a73eddca0e95e7369381ffdb6ee42682b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to initialize a cursor.  <a href="#a73eddca0e95e7369381ffdb6ee42682b"></a><br/></td></tr>
+<tr class="separator:a73eddca0e95e7369381ffdb6ee42682b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad534774631e56f855999043c2f0d0677"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad534774631e56f855999043c2f0d0677">rename</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *oldname, const char *newname, const char *cfg[])</td></tr>
 <tr class="memdesc:ad534774631e56f855999043c2f0d0677"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to rename an object.  <a href="#ad534774631e56f855999043c2f0d0677"></a><br/></td></tr>
 <tr class="separator:ad534774631e56f855999043c2f0d0677"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,12 +167,12 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a6ce18e27ef3fabbdda8249a8c5de1d6e"></a>
+<a class="anchor" id="a73eddca0e95e7369381ffdb6ee42682b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_DATA_SOURCE::open_cursor)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *obj, const char *cfg[], <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</td>
+          <td class="memname">int(* WT_DATA_SOURCE::open_cursor)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *obj, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *owner, const char *cfg[], <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -180,13 +180,15 @@ Public Attributes</h2></td></tr>
 <p>Callback to initialize a cursor. </p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">my_open_cursor(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *obj, <span class="keyword">const</span> <span class="keywordtype">char</span> *cfg[], <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> **new_cursor)</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *obj, <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *owner, <span class="keyword">const</span> <span class="keywordtype">char</span> *cfg[],</div>
+<div class="line">    <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> **new_cursor)</div>
 <div class="line">{</div>
 <div class="line">        <span class="comment">/* Unused parameters */</span></div>
 <div class="line">        (void)dsrc;</div>
 <div class="line"></div>
 <div class="line">        (void)session;</div>
 <div class="line">        (void)obj;</div>
+<div class="line">        (void)owner;</div>
 <div class="line">        (void)cfg;</div>
 <div class="line">        (void)new_cursor;</div>
 <div class="line"></div>
