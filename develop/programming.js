@@ -23,9 +23,9 @@ var programming =
       [ "Interface to LSM trees", "lsm.html#lsm_api", null ],
       [ "Merging", "lsm.html#lsm_merge", null ],
       [ "Bloom filters", "lsm.html#lsm_bloom", null ],
+      [ "Creating tables using LSM trees", "lsm.html#lsm_schema", null ],
       [ "Caveats", "lsm.html#lsm_caveats", [
         [ "Hazard configuration", "lsm.html#lsm_hazard", null ],
-        [ "Creating tables using LSM trees", "lsm.html#lsm_schema", null ],
         [ "Empty values", "lsm.html#lsm_tombstones", null ],
         [ "Transactional access", "lsm.html#lsm_txn", null ]
       ] ]
