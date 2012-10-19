@@ -41,9 +41,10 @@ var programming =
     [ "Checkpoints", "checkpoints.html", null ],
     [ "Hot backup", "hot_backup.html", null ],
     [ "Compressors", "compression.html", [
-      [ "Using bzip2 compression", "compression.html#bzip2", null ],
-      [ "Using snappy compression", "compression.html#snappy", null ],
-      [ "Custom compression engines", "compression.html#custom", null ]
+      [ "Using bzip2 compression", "compression.html#compression_bzip2", null ],
+      [ "Using snappy compression", "compression.html#compression_snappy", null ],
+      [ "Upgrading compression engines", "compression.html#compression_upgrading", null ],
+      [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
     [ "Database Home Directory", "home.html", null ],
     [ "Database Configuration", "database_config.html", [

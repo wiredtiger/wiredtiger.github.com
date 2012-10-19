@@ -69,7 +69,7 @@ $(document).ready(function(){initNavTree('compression.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This section explains how to configure WiredTiger's builtin support for the bzip2 and snappy compression engines.</p>
-<h1><a class="anchor" id="bzip2"></a>
+<h1><a class="anchor" id="compression_bzip2"></a>
 Using bzip2 compression</h1>
 <p>To use the builtin support for <a href="http://www.bzip.org/">bzip2</a> compression, first check that bzip2 is installed in include and library directories searched by the compiler. Once bzip2 is installed, you can enable bzip2 using the <code>&ndash;enable-bzip2</code> option to configure.</p>
 <p>If bzip2 is installed in a non-standard location, you'll need to modify the <code>CPPFLAGS</code> and <code>LDFLAGS</code> to indicate these locations. For example, with the bzip2 includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you should run configure as follows:</p>
@@ -79,7 +79,7 @@ Using bzip2 compression</h1>
 <div class="fragment"><div class="line">cd build_posix</div>
 <div class="line">python ../test/suite/run.py compress</div>
 </div><!-- fragment --><p>Review the test output to verify the bzip2 part of the test passes and was not skipped.</p>
-<h1><a class="anchor" id="snappy"></a>
+<h1><a class="anchor" id="compression_snappy"></a>
 Using snappy compression</h1>
 <p>To use the builtin support for Google's <a href="http://code.google.com/p/snappy/">snappy</a> compression, first check that snappy is installed in include and library directories searched by the compiler. Once snappy is installed, you can enable snappy using the <code>&ndash;enable-snappy</code> option to configure.</p>
 <p>If snappy is installed in a non-standard location, you'll need to modify the <code>CPPFLAGS</code> and <code>LDFLAGS</code> to indicate these locations. For example, with the snappy includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you should run configure as follows:</p>
@@ -89,7 +89,10 @@ Using snappy compression</h1>
 <div class="fragment"><div class="line">cd build_posix</div>
 <div class="line">python ../test/suite/run.py compress</div>
 </div><!-- fragment --><p>Review the test output to verify the snappy part of the test passes and was not skipped.</p>
-<h1><a class="anchor" id="custom"></a>
+<h1><a class="anchor" id="compression_upgrading"></a>
+Upgrading compression engines</h1>
+<p>WiredTiger does not store information with file blocks to identify the compression engine used to compressed the block. Applications wanting to upgrade to some future compression engine (without requiring a file dump and re-load), should ensure each compressed block includes enough information to identify the compression engine used, so its compression code can correctly decompress old and new blocks.</p>
+<h1><a class="anchor" id="compression_custom"></a>
 Custom compression engines</h1>
 <p>WiredTiger may be extended by adding custom compression engines; see <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html">WT_COMPRESSOR</a> for more information. </p>
 </div></div><!-- contents -->

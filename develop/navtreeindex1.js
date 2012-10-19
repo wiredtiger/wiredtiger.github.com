@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"group__wt.html#gae0630ba5790d50e331a495345d3ccbbc":[9,0,69],
 "group__wt.html#gae48016cd3fa0017f7abcb7ff3bcf3b56":[9,0,78],
 "group__wt.html#gae65d1cae5c261a13b984b463fd4ada75":[9,0,46],
 "group__wt.html#gae72c41bf15fdde2cc104d8307a12fa8c":[9,0,24],
@@ -24,8 +25,8 @@ var NAVTREEINDEX1 =
 "hierarchy.html":[11],
 "home.html":[6,0],
 "home.html":[3,11],
-"hot_backup.html":[6,2],
 "hot_backup.html":[3,9],
+"hot_backup.html":[6,2],
 "huffman.html":[3,5,2],
 "index.html":[],
 "index.html":[0],
