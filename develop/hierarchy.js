@@ -1,6 +1,6 @@
 var hierarchy =
 [
-    [ "_object", null, [
+    [ "object", null, [
       [ "wiredtiger.Connection", "classwiredtiger_1_1_connection.html", null ],
       [ "wiredtiger.Cursor", "classwiredtiger_1_1_cursor.html", null ],
       [ "wiredtiger.Session", "classwiredtiger_1_1_session.html", null ]
