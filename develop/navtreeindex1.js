@@ -30,11 +30,11 @@ var NAVTREEINDEX1 =
 "hierarchy.html":[11],
 "home.html":[6,0],
 "home.html":[3,11],
-"hot_backup.html":[6,2],
 "hot_backup.html":[3,9],
+"hot_backup.html":[6,2],
 "huffman.html":[3,5,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "install.html":[2],
 "install.html#building":[2,1],
 "install.html#compiler":[2,4],
@@ -173,5 +173,6 @@ var NAVTREEINDEX1 =
 "tuning.html#tuning_page_size":[3,16,2],
 "tuning.html#tuning_statistics":[3,16,5],
 "upgrading.html":[5],
-"upgrading.html#version_13":[5,0]
+"upgrading.html#version_13":[5,1],
+"upgrading.html#version_135":[5,0]
 };
