@@ -19,6 +19,7 @@ var NAVTREE =
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
+      [ "Upgrading to Version 1.3.6", "upgrading.html#version_136", null ],
       [ "Upgrading to Version 1.3.5", "upgrading.html#version_135", null ],
       [ "Upgrading to Version 1.3", "upgrading.html#version_13", null ]
     ] ],
