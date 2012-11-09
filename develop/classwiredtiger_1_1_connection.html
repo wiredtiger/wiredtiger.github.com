@@ -366,15 +366,7 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>thisown</b></td></tr
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>cache</code></td><td>cache configuration setup.</td><td>a set of related configuration options defined below. </td></tr>
-<tr>
-<td><code>cache.size</code></td><td>maximum heap memory to allocate for the cache.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
-<tr>
-<td><code>cache.pool</code></td><td>name of a cache pool that is shared between databases.</td><td>a string; default empty. </td></tr>
-<tr>
-<td><code>cache.pool_min</code></td><td>minimum amount of cache a connection in a cache pool can have.</td><td>an integer between 1MB and 10TB; default <code></code>. </td></tr>
-<tr>
-<td><code>cache.pool_chunk</code></td><td>the granularity that a cache pool is shared out. Only valid if the cache_pool option is also specified.</td><td>an integer between 1MB and 10TB; default <code></code>. </td></tr>
+<td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -382,7 +374,7 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>thisown</b></td></tr
 <tr>
 <td><code>eviction_trigger</code></td><td>trigger eviction when the cache becomes this full (as a percentage).</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"cache_pool"</code>, <code>"ckpt"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"lsm"</code>, <code>"mutex"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"verify"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"ckpt"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"lsm"</code>, <code>"mutex"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"verify"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
