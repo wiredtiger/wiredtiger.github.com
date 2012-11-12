@@ -586,7 +586,7 @@ Public Member Functions</h2></td></tr>
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
+<td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either a cache_size or a shared_cache not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -594,7 +594,19 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>eviction_trigger</code></td><td>trigger eviction when the cache becomes this full (as a percentage).</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"ckpt"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"lsm"</code>, <code>"mutex"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"verify"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;chunk</code></td><td>the granularity that a shared cache is redistributed as a percentage.</td><td>an integer between 1 and 100; default <code>5</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;min</code></td><td>minimum amount of cache a database in a shared cache can have as a percentage.</td><td>an integer between 1 and 100; default <code>10</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>name of a cache that is shared between databases.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;size</code></td><td>maximum memory to allocate for the shared cache.</td><td>an integer between 1MB and 10TB; default <code>500MB</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"shared_cache"</code>, <code>"ckpt"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"lsm"</code>, <code>"mutex"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"verify"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>

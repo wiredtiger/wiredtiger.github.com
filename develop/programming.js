@@ -38,6 +38,11 @@ var programming =
       [ "Isolation levels", "transactions.html#transaction_isolation", null ],
       [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
     ] ],
+    [ "Cache configuration", "cache_configuration.html", [
+      [ "Overview of WiredTiger cache configuration.", "cache_configuration.html#cache_basic", null ],
+      [ "Overview of WiredTiger shared cache configuration.", "cache_configuration.html#shared_cache", null ],
+      [ "Overview of WiredTiger eviction configuration.", "cache_configuration.html#cache_eviction", null ]
+    ] ],
     [ "Checkpoints", "checkpoints.html", null ],
     [ "Hot backup", "hot_backup.html", null ],
     [ "Compressors", "compression.html", [
