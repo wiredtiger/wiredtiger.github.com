@@ -644,9 +644,9 @@ The number of bytes in the data item. </td></tr>
 <tr>
 <td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;chunk</code></td><td>the granularity that a shared cache is redistributed as a percentage.</td><td>an integer between 1 and 100; default <code>5</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;chunk</code></td><td>the granularity that a shared cache is redistributed.</td><td>an integer between 1MB and 10TB; default <code>10MB</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;min</code></td><td>minimum amount of cache a database in a shared cache can have as a percentage.</td><td>an integer between 1 and 100; default <code>10</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;min</code></td><td>minimum amount of cache a database in a shared cache can have.</td><td>an integer between 10MB and 10TB; default <code>50MB</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;name</code></td><td>name of a cache that is shared between databases.</td><td>a string; default empty. </td></tr>
 <tr>
