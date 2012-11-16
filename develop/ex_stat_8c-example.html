@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">            <span class="stringliteral">&quot;statistics:file:access.wt&quot;</span>, NULL, NULL, &amp;cursor)) != 0)</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line"></div>
-<div class="line">        cursor-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <a name="a8"></a><a class="code" href="group__wt.html#ga5650719af708b5916db094159b908c91" title="overflow pages">WT_STAT_file_overflow</a>);</div>
+<div class="line">        cursor-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <a name="a8"></a><a class="code" href="group__wt.html#ga3d9cfcc424b4e3caf2e838b5808d5bc2" title="overflow pages">WT_STAT_DSRC_OVERFLOW_PAGE</a>);</div>
 <div class="line">        ret = cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;desc, &amp;pvalue, &amp;value);</div>
 <div class="line">        printf(<span class="stringliteral">&quot;%s=%s\n&quot;</span>, desc, pvalue);</div>

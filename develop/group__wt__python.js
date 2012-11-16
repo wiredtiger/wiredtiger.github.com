@@ -2,6 +2,7 @@ var group__wt__python =
 [
     [ "Cursor", "classwiredtiger_1_1_cursor.html", [
       [ "__init__", "classwiredtiger_1_1_cursor.html#a9f958bb88be84925174aaad0ed3fcd0c", null ],
+      [ "__getitem__", "classwiredtiger_1_1_cursor.html#af3d4d481a63b9fdf7c7fbda76a765faa", null ],
       [ "__iter__", "classwiredtiger_1_1_cursor.html#a922487ba5a4f33189ebe734f2fc32ba8", null ],
       [ "close", "classwiredtiger_1_1_cursor.html#a8d037500ab0d9a89411c5a00a7d6d6f7", null ],
       [ "compare", "classwiredtiger_1_1_cursor.html#a497fb791b13995032e019e1db539e3d0", null ],

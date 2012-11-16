@@ -5,8 +5,9 @@ var hierarchy =
       [ "wiredtiger.Cursor", "classwiredtiger_1_1_cursor.html", null ],
       [ "wiredtiger.Session", "classwiredtiger_1_1_session.html", null ]
     ] ],
-    [ "wiredtiger.filestat", "classwiredtiger_1_1filestat.html", null ],
     [ "wiredtiger.stat", "classwiredtiger_1_1stat.html", null ],
+    [ "wiredtiger.stat.conn", "classwiredtiger_1_1stat.html#classwiredtiger_1_1stat_1_1conn", null ],
+    [ "wiredtiger.stat.dsrc", "classwiredtiger_1_1stat.html#classwiredtiger_1_1stat_1_1dsrc", null ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", null ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", null ],
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", null ],
