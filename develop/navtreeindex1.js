@@ -50,8 +50,8 @@ var NAVTREEINDEX1 =
 "hot_backup.html":[6,2],
 "hot_backup.html":[3,10],
 "huffman.html":[3,5,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "install.html":[2],
 "install.html#building":[2,1],
 "install.html#compiler":[2,4],
@@ -99,8 +99,8 @@ var NAVTREEINDEX1 =
 "security.html#directory_permissions":[6,4,0],
 "security.html#environment_variables":[3,15,2],
 "security.html#environment_variables":[6,4,2],
-"security.html#file_permissions":[3,15,1],
 "security.html#file_permissions":[6,4,1],
+"security.html#file_permissions":[3,15,1],
 "signals.html":[3,16],
 "struct_w_t___c_o_l_l_a_t_o_r.html":[9,1,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html#a9a6de866802dcd1a587cb1dbd69887df":[9,1,0,0],
@@ -190,7 +190,8 @@ var NAVTREEINDEX1 =
 "tuning.html#tuning_page_size":[3,17,2],
 "tuning.html#tuning_statistics":[3,17,5],
 "upgrading.html":[5],
-"upgrading.html#version_13":[5,2],
-"upgrading.html#version_135":[5,1],
-"upgrading.html#version_136":[5,0]
+"upgrading.html#version_13":[5,3],
+"upgrading.html#version_135":[5,2],
+"upgrading.html#version_136":[5,1],
+"upgrading.html#version_138":[5,0]
 };
