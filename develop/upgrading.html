@@ -68,7 +68,24 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_138"></a>
+<div class="textblock"><h1><a class="anchor" id="version_139"></a>
+Upgrading to Version 1.3.9</h1>
+<dl>
+<dt>Compression </dt>
+<dd><p class="startdd">A new member, <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a9f1ce6dca12efba27b6a5ce02c473d39" title="Callback to compress a list of byte strings.">WT_COMPRESSOR::compress_raw</a>, was added to the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> extension API. Applications using the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> extension API should add a NULL as the second field of that structure. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Checksums </dt>
+<dd><p class="startdd">The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method's <code>checksum</code> configuration string has been changed from a boolean type to a string type. Applications using the checksum configuration string should change a value of <code>true</code> to the string <code>on</code>, and a value of <code>false</code> to the string <code>off</code> or the string <code>uncompressed</code>. </p>
+<p class="enddd"></p>
+</dd>
+<dt>File format changes </dt>
+<dd><p class="startdd">The underlying file formats changed in the 1.3.9 release; tables and files should be dumped and re-loaded into a new database. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ <h1><a class="anchor" id="version_138"></a>
 Upgrading to Version 1.3.8</h1>
 <dl>
 <dt>Statistics keys </dt>
@@ -76,7 +93,8 @@ Upgrading to Version 1.3.8</h1>
 <p class="enddd"></p>
 </dd>
 </dl>
-<h1><a class="anchor" id="version_136"></a>
+<hr/>
+ <h1><a class="anchor" id="version_136"></a>
 Upgrading to Version 1.3.6</h1>
 <dl>
 <dt>Installed library names </dt>

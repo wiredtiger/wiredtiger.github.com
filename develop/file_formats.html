@@ -79,9 +79,9 @@ File formats</h1>
 <p>WiredTiger allocates space from the underlying files in block units. The minimum file allocation unit WiredTiger supports is 512B and the maximum file allocation unit is 512MB. File block offsets are 64-bit (meaning the maximum file size is very, very large).</p>
 <h1><a class="anchor" id="file_formats_compression"></a>
 File formats and compression</h1>
-<p>Row-stores support four types of compression: prefix compression, dictionary compression, Huffman encoding and block compression.</p>
+<p>Row-stores support four types of compression: key prefix compression, dictionary compression, Huffman encoding and block compression.</p>
 <ul>
-<li>Prefix compression reduces the size requirement of both in-memory and on-disk objects by storing any identical key prefix only once per page. The cost is minor additional CPU memory use when searching the in-memory tree and when writing pages to disk.</li>
+<li>Key prefix compression reduces the size requirement of both in-memory and on-disk objects by storing any identical key prefix only once per page. The cost is minor additional CPU and memory use when reading pages into memory, when searching the in-memory tree and when writing pages to disk. Applications with poor cache locality of reference may choose to turn off key prefix compression to avoid this additional cost.</li>
 </ul>
 <ul>
 <li>Dictionary compression reduces the size requirement of both the in-memory and on-disk objects by storing any identical value only once per page. The cost is minor additional CPU and memory use when returning values from the in-memory tree and when writing pages to disk.</li>

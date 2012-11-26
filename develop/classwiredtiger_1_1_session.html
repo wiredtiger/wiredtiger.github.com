@@ -460,7 +460,13 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>connection</b></td><
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">name</td><td>the URI of the object to drop, such as <code>"table:stock"</code> </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>trigger</code></td><td>Compaction will not be attempted unless the specified percentage of the underlying objects is expected to be recovered by compaction.</td><td>an integer between 10 and 50; default <code>30</code>. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -510,7 +516,7 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>connection</b></td><
 <tr>
 <td><code>cache_resident</code></td><td>do not ever evict the object's pages; see <a class="el" href="tuning.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>checksum</code></td><td>configure file block checksums; if false, the block manager is free to not write or check block checksums. This can increase performance in applications where compression provides checksum functionality or read-only applications where blocks require no verification.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>checksum</code></td><td>configure file block checksums; permitted values are <code>on</code> (checksum all file blocks), <code>off</code> (checksum no file blocks) and <code>uncompresssed</code> (checksum only file blocks which are not compressed for some reason). The <code>uncompressed</code> value is for applications which can reasonably rely on decompression to fail if a block has been corrupted.</td><td>a string, chosen from the following options: <code>"on"</code>, <code>"off"</code>, <code>"uncompressed"</code>; default <code>on</code>. </td></tr>
 <tr>
 <td><code>colgroups</code></td><td>comma-separated list of names of column groups. Each column group is stored separately, keyed by the primary key of the table. If no column groups are specified, all columns are stored together in a single file. All value columns in the table must appear in at least one column group. Each column group must be created with a separate call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</td><td>a list of strings; default empty. </td></tr>
 <tr>
@@ -532,7 +538,7 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>connection</b></td><
 <tr>
 <td><code>internal_key_truncate</code></td><td>configure internal key truncation, discarding unnecessary trailing bytes on internal keys (ignored for custom collators).</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>internal_page_max</code></td><td>the maximum page size for internal nodes, in bytes; the size must be a multiple of the allocation size and is significant for applications wanting to avoid excessive L2 cache misses while searching the tree.</td><td>an integer between 512B and 512MB; default <code>2KB</code>. </td></tr>
+<td><code>internal_page_max</code></td><td>the maximum page size for internal nodes, in bytes; the size must be a multiple of the allocation size and is significant for applications wanting to avoid excessive L2 cache misses while searching the tree. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>2KB</code>. </td></tr>
 <tr>
 <td><code>key_format</code></td><td>the format of the data packed into key items. See <a class="el" href="schema.html#schema_format_types">Format types</a> for details. By default, the key_format is <code>'u'</code> and applications use <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structures to manipulate raw byte arrays. By default, records are stored in row-store files: keys of type <code>'r'</code> are record numbers and records referenced by record number are stored in column-store files.</td><td>a format string; default <code>u</code>. </td></tr>
 <tr>
@@ -540,7 +546,7 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>connection</b></td><
 <tr>
 <td><code>leaf_item_max</code></td><td>the maximum key or value size stored on leaf nodes, in bytes. If zero, a size is calculated to permit at least 8 items (values or row store keys) per leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
-<td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device.</td><td>an integer between 512B and 512MB; default <code>1MB</code>. </td></tr>
+<td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>1MB</code>. </td></tr>
 <tr>
 <td><code>lsm_bloom</code></td><td>create bloom filters on LSM tree chunks as they are merged.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>

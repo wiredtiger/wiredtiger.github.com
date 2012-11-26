@@ -19,6 +19,7 @@ var NAVTREE =
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
+      [ "Upgrading to Version 1.3.9", "upgrading.html#version_139", null ],
       [ "Upgrading to Version 1.3.8", "upgrading.html#version_138", null ],
       [ "Upgrading to Version 1.3.6", "upgrading.html#version_136", null ],
       [ "Upgrading to Version 1.3.5", "upgrading.html#version_135", null ],
@@ -47,7 +48,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"group__wt.html#ga9efff35e3dd928596ac41c4200f7bb5c"
+"group__wt.html#ga992742999438b40be8885ea893bc045c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
