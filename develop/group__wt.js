@@ -102,6 +102,7 @@ var group__wt =
     [ "WT_STAT_DSRC_BLOOM_PAGE_EVICT", "group__wt.html#ga938bad149669551b3f0e921dd1bde5d5", null ],
     [ "WT_STAT_DSRC_BLOOM_PAGE_READ", "group__wt.html#ga253b2126413546418ce7555c91641ffd", null ],
     [ "WT_STAT_DSRC_BLOOM_SIZE", "group__wt.html#ga0b5b20ddddd005d15c565c106fc888b9", null ],
+    [ "WT_STAT_DSRC_BYTE_CHANGED", "group__wt.html#gad2e4d92d2a82d086d9495cbf449843b4", null ],
     [ "WT_STAT_DSRC_BYTE_READ", "group__wt.html#ga31aad6e68e26ae6998b7eb7ac1f16a50", null ],
     [ "WT_STAT_DSRC_BYTE_WRITE", "group__wt.html#gabfc809d0f3c17fcd56e0e277e689ae68", null ],
     [ "WT_STAT_DSRC_CKPT_SIZE", "group__wt.html#ga29db8df87d87d2428335f4e0f9f4fa8b", null ],
