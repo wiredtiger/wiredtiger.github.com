@@ -163,6 +163,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1063bbdd02fd0df6a8296232380508d7">WT_STAT_CONN_BYTE_WRITE</a></td></tr>
 <tr class="memdesc:ga1063bbdd02fd0df6a8296232380508d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">bytes written to a file <br/></td></tr>
 <tr class="separator:ga1063bbdd02fd0df6a8296232380508d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga53d833462039bfd0868e10d96cb359b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga53d833462039bfd0868e10d96cb359b0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga53d833462039bfd0868e10d96cb359b0">WT_STAT_CONN_CACHE_BYTES_DIRTY</a></td></tr>
+<tr class="memdesc:ga53d833462039bfd0868e10d96cb359b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: tracked dirty bytes in the cache <br/></td></tr>
+<tr class="separator:ga53d833462039bfd0868e10d96cb359b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5d9371b0feab441fda3d791cb51992c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5d9371b0feab441fda3d791cb51992c4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5d9371b0feab441fda3d791cb51992c4">WT_STAT_CONN_CACHE_BYTES_INUSE</a></td></tr>
 <tr class="memdesc:ga5d9371b0feab441fda3d791cb51992c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: bytes currently held in the cache <br/></td></tr>
@@ -191,6 +195,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga681fa5dad1468d5c17b2380b2e5cb790">WT_STAT_CONN_CACHE_EVICT_UNMODIFIED</a></td></tr>
 <tr class="memdesc:ga681fa5dad1468d5c17b2380b2e5cb790"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: unmodified pages evicted <br/></td></tr>
 <tr class="separator:ga681fa5dad1468d5c17b2380b2e5cb790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a1cf2f6e874f367461426aeeb68ae3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6a1cf2f6e874f367461426aeeb68ae3a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6a1cf2f6e874f367461426aeeb68ae3a">WT_STAT_CONN_CACHE_PAGES_DIRTY</a></td></tr>
+<tr class="memdesc:ga6a1cf2f6e874f367461426aeeb68ae3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: tracked dirty pages in the cache <br/></td></tr>
+<tr class="separator:ga6a1cf2f6e874f367461426aeeb68ae3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab5a819ba891f98903ee2be2df3c565f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab5a819ba891f98903ee2be2df3c565f1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab5a819ba891f98903ee2be2df3c565f1">WT_STAT_CONN_CACHE_PAGES_INUSE</a></td></tr>
 <tr class="memdesc:gab5a819ba891f98903ee2be2df3c565f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages currently held in the cache <br/></td></tr>
@@ -689,6 +697,8 @@ The number of bytes in the data item. </td></tr>
 <td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>eviction_dirty_target</code></td><td>continue evicting until the cache has less dirty pages than this (as a percentage). Dirty pages will only be evicted if the cache is full enough to trigger eviction.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
 <tr>
 <td><code>eviction_target</code></td><td>continue evicting until the cache becomes less full than this (as a percentage). Must be less than <code>eviction_trigger</code>.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
 <tr>

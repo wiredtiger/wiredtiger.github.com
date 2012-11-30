@@ -153,6 +153,9 @@ Variables</h2></td></tr>
 <tr class="memitem:ga8bf2bcadc700774e988b1de19ae72d4a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8bf2bcadc700774e988b1de19ae72d4a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_STAT_CONN_BYTE_WRITE</b></td></tr>
 <tr class="separator:ga8bf2bcadc700774e988b1de19ae72d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29104c072da4d107cd62146230024dea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga29104c072da4d107cd62146230024dea"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_STAT_CONN_CACHE_BYTES_DIRTY</b></td></tr>
+<tr class="separator:ga29104c072da4d107cd62146230024dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaffdd8044f4017cb2b1f8ec51029c9d67"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaffdd8044f4017cb2b1f8ec51029c9d67"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_STAT_CONN_CACHE_BYTES_INUSE</b></td></tr>
 <tr class="separator:gaffdd8044f4017cb2b1f8ec51029c9d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,6 +177,9 @@ Variables</h2></td></tr>
 <tr class="memitem:ga11764ce1ccd5bd681b7e94ebece1075b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga11764ce1ccd5bd681b7e94ebece1075b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_STAT_CONN_CACHE_EVICT_UNMODIFIED</b></td></tr>
 <tr class="separator:ga11764ce1ccd5bd681b7e94ebece1075b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1aaeba0e3367c93dce6518bf645a5774"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1aaeba0e3367c93dce6518bf645a5774"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_STAT_CONN_CACHE_PAGES_DIRTY</b></td></tr>
+<tr class="separator:ga1aaeba0e3367c93dce6518bf645a5774"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga92a9a6edfe5baf4a4c0612ead8401c9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga92a9a6edfe5baf4a4c0612ead8401c9e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_STAT_CONN_CACHE_PAGES_INUSE</b></td></tr>
 <tr class="separator:ga92a9a6edfe5baf4a4c0612ead8401c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -445,6 +451,8 @@ Variables</h2></td></tr>
 <td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>eviction_dirty_target</code></td><td>continue evicting until the cache has less dirty pages than this (as a percentage). Dirty pages will only be evicted if the cache is full enough to trigger eviction.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
 <tr>
 <td><code>eviction_target</code></td><td>continue evicting until the cache becomes less full than this (as a percentage). Must be less than <code>eviction_trigger</code>.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
 <tr>

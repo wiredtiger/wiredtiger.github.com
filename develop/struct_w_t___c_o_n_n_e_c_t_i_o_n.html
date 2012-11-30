@@ -590,6 +590,8 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>
+<td><code>eviction_dirty_target</code></td><td>continue evicting until the cache has less dirty pages than this (as a percentage). Dirty pages will only be evicted if the cache is full enough to trigger eviction.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
+<tr>
 <td><code>eviction_target</code></td><td>continue evicting until the cache becomes less full than this (as a percentage). Must be less than <code>eviction_trigger</code>.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
 <tr>
 <td><code>eviction_trigger</code></td><td>trigger eviction when the cache becomes this full (as a percentage).</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
