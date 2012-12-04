@@ -108,36 +108,40 @@ Checksums</h1>
 <p>WiredTiger configures checksums on file reads and writes, by default. In read-only applications, or when file compression provides any necessary checksum functionality, or when using backing storage systems where blocks require no validation, performance can be increased by turning off checksum support when calling the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method.</p>
 <h1><a class="anchor" id="tuning_statistics"></a>
 Performance monitoring with statistics</h1>
-<p>WiredTiger maintains a variety of statistics that can be read with a cursor. The statistics are at two levels: per-database statistics and per-underlying file statistics. The database statistics are the default; the underlying file statistics are available by specifying the appropriate uri.</p>
-<p>The following is an example of printing run-time statistics about the WiredTiger engine:</p>
+<p>WiredTiger maintains a variety of statistics that can be read with a cursor. See <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for general information about accessing statistics.</p>
+<p>The statistics gathered by WiredTiger can be combined to derive information about the system's behavior. For example, a cursor can be opened on the statistics for a table:</p>
 <div class="fragment"><div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor)) != 0)</div>
+<div class="line">            <span class="stringliteral">&quot;statistics:table:access&quot;</span>, NULL, NULL, &amp;cursor)) != 0)</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
+</div><!-- fragment --><p> Then this code calculates the "fragmentation" of a table, defined here as the percentage of the table that is not part of the current checkpoint:</p>
+<div class="fragment"><div class="line">        uint64_t ckpt_size, file_size;</div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga29db8df87d87d2428335f4e0f9f4fa8b" title="checkpoint size">WT_STAT_DSRC_CKPT_SIZE</a>, &amp;ckpt_size);</div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#gad1741603348a40b5cccd7745f505c293" title="file size">WT_STAT_DSRC_FILE_SIZE</a>, &amp;file_size);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (print_cursor(cursor));</div>
-</div><!-- fragment --><p> The following is an example of printing statistics about an underlying file:</p>
-<div class="fragment"><div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;statistics:file:access.wt&quot;</span>, NULL, NULL, &amp;cursor)) != 0)</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;File is %d%% fragmented\n&quot;</span>,</div>
+<div class="line">            (<span class="keywordtype">int</span>)(100 * (file_size - ckpt_size) / file_size));</div>
+</div><!-- fragment --><p> The following example calculates the "write amplification", defined here as the ratio of bytes written to the filesystem versus the total bytes inserted, updated and removed by the application.</p>
+<div class="fragment"><div class="line">        uint64_t app_writes, fs_writes;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (print_cursor(cursor));</div>
-</div><!-- fragment --><p> Both examples can use a common display routine that iterates through the statistics until the cursor returns the end of the list.</p>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#gabfc809d0f3c17fcd56e0e277e689ae68" title="bytes written from cache">WT_STAT_DSRC_BYTE_WRITE</a>, &amp;fs_writes);</div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#gad2e4d92d2a82d086d9495cbf449843b4" title="approximate measure of bytes changed: counts key and value bytes inserted with cursor.insert, value bytes updated with cursor.update and key bytes removed using cursor.remove">WT_STAT_DSRC_BYTE_CHANGED</a>, &amp;app_writes);</div>
+<div class="line"></div>
+<div class="line">        printf(<span class="stringliteral">&quot;Write amplification is %.2lf\n&quot;</span>,</div>
+<div class="line">            (<span class="keywordtype">double</span>)fs_writes / app_writes);</div>
+</div><!-- fragment --><p> Both examples use this helper function to retrieve statistics values from a cursor:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span></div>
-<div class="line">print_cursor(<a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor)</div>
+<div class="line">get_stat(<a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor, <span class="keywordtype">int</span> stat_field, uint64_t *valuep)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *desc, *pvalue;</div>
-<div class="line">        uint64_t value;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">while</span> (</div>
-<div class="line">            (ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0 &amp;&amp;</div>
-<div class="line">            (ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;desc, &amp;pvalue, &amp;value)) == 0)</div>
-<div class="line">                printf(<span class="stringliteral">&quot;%s=%s\n&quot;</span>, desc, pvalue);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, stat_field);</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor)) != 0)</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Cursor item not found.">WT_NOTFOUND</a> ? 0 : ret);</div>
+<div class="line">        <span class="keywordflow">return</span> (cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;desc, &amp;pvalue, valuep));</div>
 <div class="line">}</div>
-</div><!-- fragment --><p> Note the raw value of the statistic is available from the <code>value</code> field, as well as a printable string version of the value. </p>
-</div></div><!-- contents -->
+</div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
