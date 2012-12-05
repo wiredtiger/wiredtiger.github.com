@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('architecture.html','');});
 <p>WiredTiger's design is focused on a few core principles:</p>
 <h1><a class="anchor" id="multi_core"></a>
 Multi-core scaling</h1>
-<p>WiredTiger scales on modern, multi-CPU architectures. Using a variety of programming techniques such as hazard references, lock-free algorithms, fast latching and message passing, WiredTiger performs more work per CPU core than alternative engines.</p>
+<p>WiredTiger scales on modern, multi-CPU architectures. Using a variety of programming techniques such as hazard pointers, lock-free algorithms, fast latching and message passing, WiredTiger performs more work per CPU core than alternative engines.</p>
 <p>WiredTiger's transactions use optimistic concurrency control algorithms that avoid the bottleneck of a centralized lock manager. Transactional operations in one thread do not block operations in other threads, but strong isolation is provided and update conflicts are detected to preserve data consistency.</p>
 <h1><a class="anchor" id="cache"></a>
 Hot caches</h1>

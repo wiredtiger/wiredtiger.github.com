@@ -80,30 +80,34 @@ $(document).ready(function(){initNavTree('cursors.html','');});
 <h1><a class="anchor" id="cursors_transactions"></a>
 Cursors and Transactions</h1>
 <p>If there is a transaction active in a session, cursors operate in the context of that transaction. Reads performed while a transaction is active inherit the isolation level of the transaction, and updates performed within a transaction are made durable by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a>, or discarded by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a>.</p>
-<p>If no transaction is active, cursor reads are performed at the isolation level of the session, set with the <code>isolation</code> key to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">WT_CONNECTION::open_session</a> and successful updates are automatically committed before the update operation completes.</p>
+<p>If no transaction is active, cursor reads are performed at the isolation level of the session, set with the <code>isolation</code> configuration key to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">WT_CONNECTION::open_session</a> and successful updates are automatically committed before the update operation completes.</p>
 <p>Any operation that consists of multiple related updates should be enclosed in an explicit transaction to ensure that the updates are applied atomically.</p>
 <p>At <code>read-committed</code> (the default) or <code>snapshot</code> isolation levels, committed changes from concurrent transactions become visible when no cursor is positioned. In other words, at these isolation levels, all cursors in a session read from a stable snapshot while any cursor in the session remains positioned.</p>
-<p>Cursor positions do not survive transaction boundaries. When a transaction is started with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a>:begin_transaction or ended with either <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a>, all open cursors are reset, as if the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the position of the cursor.">WT_CURSOR::reset</a> method was called. The cursor reset discards any cursor position as well as the key and value.</p>
+<p>Cursor positions do not survive transaction boundaries. When a transaction is started with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">WT_SESSION::begin_transaction</a> or ended with either <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a>, all open cursors are reset, as if the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the position of the cursor.">WT_CURSOR::reset</a> method was called. The cursor reset discards any cursor position as well as the key and value.</p>
 <p>Applications that need to continue an operation across a transaction boundary must make a copy of the cursor's key, and re-position the cursor with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">WT_CURSOR::search</a> to continue the operation, dealing with cases where the record may no longer be available due to a <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a>.</p>
 <p>See <a class="el" href="transactions.html">Transactions</a> for more information.</p>
 <h1><a class="anchor" id="cursor_types"></a>
 Cursor types</h1>
-<p>The following are some of common builtin cursor types:</p>
+<p>The following are some of the common builtin cursor types:</p>
 <table class="doxtable">
 <tr>
-<th>URI</th><th>Type </th></tr>
+<th>URI</th><th>Type</th><th>Notes </th></tr>
 <tr>
-<td><code>colgroup:&lt;tablename&gt;.&lt;columnset&gt;</code></td><td>column group cursor </td></tr>
+<td><code>backup:</code></td><td>hot backup cursor</td><td>See also: <a class="el" href="hot_backup.html">Hot backup</a> </td></tr>
 <tr>
-<td><code>table:&lt;tablename&gt;</code></td><td>table cursor (key=table key, value=table value) </td></tr>
+<td><code>colgroup:&lt;tablename&gt;.&lt;columnset&gt;</code></td><td>column group cursor</td><td></td></tr>
 <tr>
-<td><code>file:&lt;filename&gt;</code></td><td>file cursor (key=file key, value=file value) </td></tr>
+<td><code>config:[&lt;uri&gt;]</code></td><td>object configuration cursor (key=config string, value=config value)</td><td></td></tr>
 <tr>
-<td><code>index:&lt;tablename&gt;.&lt;indexname&gt;</code></td><td>index cursor (key=index key, value=table value) </td></tr>
+<td><code>file:&lt;filename&gt;</code></td><td>file cursor (key=file key, value=file value)</td><td></td></tr>
 <tr>
-<td><code>lsm:&lt;name&gt;</code></td><td>LSM cursor (key=LSM key, value=LSM value)</td><td>see <a class="el" href="lsm.html">Log-Structured Merge Trees</a> </td></tr>
+<td><code>index:&lt;tablename&gt;.&lt;indexname&gt;</code></td><td>index cursor (key=index key, value=table value)</td><td></td></tr>
 <tr>
-<td><code>statistics:[file</code><code>:&lt;filename&gt;]</code></td><td>database or file statistics (key=(int), value=(string)description, (string)value, (uint64_t)value) </td></tr>
+<td><code>lsm:&lt;name&gt;</code></td><td>LSM cursor (key=LSM key, value=LSM value)</td><td>See also: <a class="el" href="lsm.html">Log-Structured Merge Trees</a> </td></tr>
+<tr>
+<td><code>statistics:[file</code><code>:&lt;filename&gt;]</code></td><td>database or file statistics (key=(int), value=(string)description, (string)value, (uint64_t)value)</td><td></td></tr>
+<tr>
+<td><code>table:&lt;tablename&gt;</code></td><td>table cursor (key=table key, value=table value)</td><td></td></tr>
 </table>
 <p>See <a class="el" href="data_sources.html">Data Sources</a> for the full list.</p>
 <h1><a class="anchor" id="cursor_projections"></a>
@@ -114,9 +118,9 @@ Projections</h1>
 Raw mode</h1>
 <p>Cursors can be configured for raw mode by specifying the <code>"raw"</code> config keyword to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>. In this mode, the methods <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> all take a single <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> in the variable-length argument list instead of a separate argument for each column.</p>
 <p>For <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> in raw mode, the <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> can be split into columns by calling <a class="el" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8" title="Unpack a structure from a buffer.">wiredtiger_struct_unpack</a> with the cursor's <code>key_format</code> or <code>value_format</code>, respectively. For <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> in raw mode, the <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> should be equivalent to calling <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer.">wiredtiger_struct_pack</a> for the cursor's <code>key_format</code> or <code>value_format</code>, respectively.</p>
-<h1><a class="anchor" id="cursor_random"></a>
-Cursor random</h1>
-<p>Cursors can be configured to return pseudo-random records from row-store objects. See <a class="el" href="cursors.html">Cursor random</a> for details. </p>
+<h1><a class="anchor" id="cursor_rand"></a>
+Random lookup</h1>
+<p>Cursors can be configured to return pseudo-random records from row-store objects. See <a class="el" href="cursor_random.html">Cursor random</a> for details. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
