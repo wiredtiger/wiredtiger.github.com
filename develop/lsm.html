@@ -108,17 +108,17 @@ Merging</h1>
 <h1><a class="anchor" id="lsm_bloom"></a>
 Bloom filters</h1>
 <p>WiredTiger creates a Bloom filter when merging. This is an additional file that contains a configurable number of bits per key (default 8). Keys are hashed a configurable number of times (default 4), and the corresponding bits set. The Bloom filter is used to avoid reading from a chunk if the key cannot be present.</p>
-<p>With the defaults, they Bloom filter only requires one byte per key, so it usually fits in cache. The Bloom parameters can be configured with <code>"lsm_bloom_bit_count"</code> and <code>"lsm_bloom_hash_count"</code> configuration keys to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. The Bloom file can be configured with the <code>"lsm_bloom_config"</code> key.</p>
+<p>With the defaults, the Bloom filter only requires one byte per key, so it usually fits in cache. The Bloom parameters can be configured with <code>"lsm_bloom_bit_count"</code> and <code>"lsm_bloom_hash_count"</code> configuration keys to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. The Bloom file can be configured with the <code>"lsm_bloom_config"</code> key.</p>
 <h1><a class="anchor" id="lsm_schema"></a>
 Creating tables using LSM trees</h1>
-<p>Tables or indices can be stored using LSM trees Schema support is provided for LSM as with an extension to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method:</p>
+<p>Tables or indices can be stored using LSM trees. Schema support is provided for LSM as an extension to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method:</p>
 <div class="fragment"><div class="line">session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:T&quot;</span>, <span class="stringliteral">&quot;type=lsm&quot;</span>);</div>
 </div><!-- fragment --><p>The default type for all schema objects will continue to be btree.</p>
 <h1><a class="anchor" id="lsm_caveats"></a>
 Caveats</h1>
 <h2><a class="anchor" id="lsm_hazard"></a>
 Hazard configuration</h2>
-<p>Reads from an LSM cursor may need to position a cursor in each active chunk. The number of chunks depends on the chunk size, and how many chunks have been merged. There must be at least as many hazard references available as there are chunks in the tree for each cursor that is open on the LSM tree. The number of hazard references is configured with the <code>"hazard_max"</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>.</p>
+<p>Reads from an LSM cursor may need to position a cursor in each active chunk. The number of chunks depends on the chunk size, and how many chunks have been merged. There must be at least as many hazard pointers available as there are chunks in the tree for each cursor that is open on the LSM tree. The number of hazard pointers is configured with the <code>"hazard_max"</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>.</p>
 <h2><a class="anchor" id="lsm_tombstones"></a>
 Empty values</h2>
 <p>Internally, WiredTiger's LSM trees use an empty value to represent a record that has been removed (also known as a "tombstone"). For this reason, applications cannot store records in LSM trees with empty values.</p>
@@ -126,7 +126,7 @@ Empty values</h2>
 Transactional access</h2>
 <p>There are currently some significant limitations in transactional access to data stored in LSM trees:</p>
 <ul>
-<li>if an update transaction runs for long enough that the chunk it started writing to has been replaced, its data may not be included in the checkpoint when that chunk is swapped to "on disk" mode, and thus may not become visible to readers of the tree immediately when the transaction commits;</li>
+<li>if an update transaction runs long enough so that the chunk it started writing has been replaced, its data may not be included in the checkpoint when that chunk is swapped to "on disk" mode, and thus may not become visible to readers of the tree immediately when the transaction commits;</li>
 </ul>
 <ul>
 <li>update transactions running at snapshot isolation may be permitted to commit if they conflict with an update in a concurrent transaction and the current chunk has been replaced;</li>

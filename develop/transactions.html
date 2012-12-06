@@ -128,7 +128,7 @@ Concurrency control</h1>
 <p>Operations in transactions may also fail with the <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a> error if some resource cannot be allocated after repeated attempts. For example, if the cache is not large enough to hold the updates required to satisfy transactional readers, an operation may fail and return <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a>.</p>
 <h1><a class="anchor" id="transaction_isolation"></a>
 Isolation levels</h1>
-<p>WiredTiger supports <code>read-uncommitted</code>, <code>read-committed</code> and <code>snapshot</code> isolation levels; the default isolation level is is <code>read-committed</code>.</p>
+<p>WiredTiger supports <code>read-uncommitted</code>, <code>read-committed</code> and <code>snapshot</code> isolation levels; the default isolation level is <code>read-committed</code>.</p>
 <ul>
 <li><code>read-uncommitted</code>: Transactions can see changes made by other transactions before those transactions are committed. Dirty reads, non-repeatable reads and phantoms are possible.</li>
 </ul>
@@ -138,7 +138,7 @@ Isolation levels</h1>
 <ul>
 <li><code>snapshot</code>: Transactions read the versions of records committed before the transaction started. Dirty reads and non-repeatable reads are not possible; phantoms are possible.<br/>
 <br/>
- Snapshot isolation is a strong guarantee, but not equivalent to a single-threaded execution of the transactions, known as serializable isolation. Concurrent transactions T1 and T2 running under snapshot isolation may both commit and produce a state that neither (T1 followed by T2) or (T2 followed by T1) could have produced, if there is overlap between T1's reads and T2's writes, and between T1's writes and T2's reads.</li>
+ Snapshot isolation is a strong guarantee, but not equivalent to a single-threaded execution of the transactions, known as serializable isolation. Concurrent transactions T1 and T2 running under snapshot isolation may both commit and produce a state that neither (T1 followed by T2) nor (T2 followed by T1) could have produced, if there is overlap between T1's reads and T2's writes, and between T1's writes and T2's reads.</li>
 </ul>
 <p>The transaction isolation level can be configured on a per-transaction basis:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* A single transaction configured for snapshot isolation. */</span></div>

@@ -115,19 +115,22 @@ Performance monitoring with statistics</h1>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 </div><!-- fragment --><p> Then this code calculates the "fragmentation" of a table, defined here as the percentage of the table that is not part of the current checkpoint:</p>
 <div class="fragment"><div class="line">        uint64_t ckpt_size, file_size;</div>
-<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga29db8df87d87d2428335f4e0f9f4fa8b" title="checkpoint size">WT_STAT_DSRC_CKPT_SIZE</a>, &amp;ckpt_size);</div>
-<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#gad1741603348a40b5cccd7745f505c293" title="file size">WT_STAT_DSRC_FILE_SIZE</a>, &amp;file_size);</div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga3ba4d6c12abe10285dc3b599f082a4e4" title="checkpoint size">WT_STAT_DSRC_BLOCK_CHECKPOINT_SIZE</a>, &amp;ckpt_size);</div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga2af5c768712ce6c6b840badd17dd13b9" title="block manager size">WT_STAT_DSRC_BLOCK_SIZE</a>, &amp;file_size);</div>
 <div class="line"></div>
 <div class="line">        printf(<span class="stringliteral">&quot;File is %d%% fragmented\n&quot;</span>,</div>
 <div class="line">            (<span class="keywordtype">int</span>)(100 * (file_size - ckpt_size) / file_size));</div>
 </div><!-- fragment --><p> The following example calculates the "write amplification", defined here as the ratio of bytes written to the filesystem versus the total bytes inserted, updated and removed by the application.</p>
-<div class="fragment"><div class="line">        uint64_t app_writes, fs_writes;</div>
+<div class="fragment"><div class="line">        uint64_t app_insert, app_remove, app_update, fs_writes;</div>
 <div class="line"></div>
-<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#gabfc809d0f3c17fcd56e0e277e689ae68" title="bytes written from cache">WT_STAT_DSRC_BYTE_WRITE</a>, &amp;fs_writes);</div>
-<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#gad2e4d92d2a82d086d9495cbf449843b4" title="approximate measure of bytes changed: counts key and value bytes inserted with cursor.insert, value bytes updated with cursor.update and key bytes removed using cursor.remove">WT_STAT_DSRC_BYTE_CHANGED</a>, &amp;app_writes);</div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#gaec7145b45392656825b8404ae1fb4f46" title="cursor-insert key and value bytes inserted">WT_STAT_DSRC_CURSOR_INSERT_BYTES</a>, &amp;app_insert);</div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#gaf9cc721c75f42a110e0f6af104087b4d" title="cursor-remove key bytes removed">WT_STAT_DSRC_CURSOR_REMOVE_BYTES</a>, &amp;app_remove);</div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga21596e9d2f3d0c992bcade65b85cb5eb" title="cursor-update value bytes updated">WT_STAT_DSRC_CURSOR_UPDATE_BYTES</a>, &amp;app_update);</div>
+<div class="line"></div>
+<div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga212a7e9d219e279da8b10adfaaab2afc" title="bytes written from cache">WT_STAT_DSRC_CACHE_BYTES_WRITE</a>, &amp;fs_writes);</div>
 <div class="line"></div>
 <div class="line">        printf(<span class="stringliteral">&quot;Write amplification is %.2lf\n&quot;</span>,</div>
-<div class="line">            (<span class="keywordtype">double</span>)fs_writes / app_writes);</div>
+<div class="line">            (<span class="keywordtype">double</span>)fs_writes / (app_insert + app_remove + app_update));</div>
 </div><!-- fragment --><p> Both examples use this helper function to retrieve statistics values from a cursor:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span></div>
 <div class="line">get_stat(<a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor, <span class="keywordtype">int</span> stat_field, uint64_t *valuep)</div>
