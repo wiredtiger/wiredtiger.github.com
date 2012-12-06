@@ -771,7 +771,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>colgroup:&lt;tablename&gt;.&lt;columnset&gt;</code></td><td>column group cursor</td><td>table key, column group value(s) </td></tr>
 <tr>
-<td><code>config:</code></td><td>object configuration cursor (key=config string, value=config value </td></tr>
+<td><code>config:[&lt;uri&gt;]</code></td><td>object configuration cursor</td><td>(key=config string, value=config value)</td><td></td></tr>
 <tr>
 <td><code>file:&lt;filename&gt;</code></td><td>file cursor</td><td>file key, file value(s) </td></tr>
 <tr>
@@ -785,7 +785,6 @@ Public Attributes</h2></td></tr>
 </table>
 </td></tr>
     <tr><td class="paramname">to_dup</td><td>a cursor to duplicate </td></tr>
-    <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
@@ -803,8 +802,6 @@ Public Attributes</h2></td></tr>
 <td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
-<td><code>statistics</code></td><td>configure the cursor for statistics.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>statistics_clear</code></td><td>reset statistics counters when the cursor is closed; valid only for statistics cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
