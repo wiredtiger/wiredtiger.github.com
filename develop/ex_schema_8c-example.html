@@ -108,30 +108,36 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line"></div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home = <span class="stringliteral">&quot;WT_TEST&quot;</span>;</div>
 <div class="line"></div>
-<div class="line"><span class="comment">/* The C struct for the data we are storing with WiredTiger. */</span></div>
+<div class="line"><span class="comment">/* The C struct for the data we are storing in a WiredTiger table. */</span></div>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line">        <span class="keywordtype">char</span> country[5];</div>
-<div class="line">        uint16_t year;</div>
-<div class="line">        uint64_t population;</div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> year;</div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> population;</div>
 <div class="line">} POP_RECORD;</div>
-<div class="line">POP_RECORD pop_data[] = {</div>
-<div class="line">        { <span class="stringliteral">&quot;USA&quot;</span>, 1980, 226542250 },</div>
-<div class="line">        { <span class="stringliteral">&quot;USA&quot;</span>, 2009, 307006550 },</div>
-<div class="line">        { <span class="stringliteral">&quot;UK&quot;</span>, 2008, 61414062 },</div>
-<div class="line">        { <span class="stringliteral">&quot;CAN&quot;</span>, 2008, 33311400 },</div>
-<div class="line">        { <span class="stringliteral">&quot;AU&quot;</span>, 2008, 21431800 }</div>
-<div class="line">};</div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line">POP_RECORD pop_data[] = {</div>
+<div class="line">        { <span class="stringliteral">&quot;AU&quot;</span>,  1900,    4000000 },</div>
+<div class="line">        { <span class="stringliteral">&quot;AU&quot;</span>,  2000,   19053186 },</div>
+<div class="line">        { <span class="stringliteral">&quot;CAN&quot;</span>, 1900,    5500000 },</div>
+<div class="line">        { <span class="stringliteral">&quot;CAN&quot;</span>, 2000,   31099561 },</div>
+<div class="line">        { <span class="stringliteral">&quot;UK&quot;</span>,  1900,  369000000 },</div>
+<div class="line">        { <span class="stringliteral">&quot;UK&quot;</span>,  2000,   59522468 },</div>
+<div class="line">        { <span class="stringliteral">&quot;USA&quot;</span>, 1900,   76212168 },</div>
+<div class="line">        { <span class="stringliteral">&quot;USA&quot;</span>, 2000,  301279593 },</div>
+<div class="line">        { <span class="stringliteral">&quot;&quot;</span>, 0, 0 }</div>
+<div class="line">};</div>
+<div class="line"><span class="keywordtype">int</span></div>
+<div class="line">main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line">        POP_RECORD *p;</div>
 <div class="line">        <a name="_a0"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *conn;</div>
-<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session;</div>
-<div class="line">        <a name="_a2"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor;</div>
-<div class="line">        POP_RECORD *p, *endp;</div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *country;</div>
+<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor;</div>
+<div class="line">        <a name="_a2"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session;</div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> population;</div>
 <div class="line">        uint64_t recno;</div>
-<div class="line">        uint16_t year;</div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> year;</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *country;</div>
+<div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
 <div class="line">        ret = <a name="a3"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn);</div>
 <div class="line">        <span class="keywordflow">if</span> (ret != 0)</div>
@@ -143,55 +149,136 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Create the population table.</span></div>
-<div class="line"><span class="comment">         * Keys are record numbers, the format for values is</span></div>
-<div class="line"><span class="comment">         * (5-byte string, short, long).</span></div>
+<div class="line"><span class="comment">         * Keys are record numbers, the format for values is (5-byte string,</span></div>
+<div class="line"><span class="comment">         * unsigned short, unsigned long long).</span></div>
 <div class="line"><span class="comment">         * See ::wiredtiger_struct_pack for details of the format strings.</span></div>
-<div class="line"><span class="comment">         *</span></div>
-<div class="line"><span class="comment">         * If this program is run multiple times so the table already exists,</span></div>
-<div class="line"><span class="comment">         * this call will verify that the table exists.  It is not required in</span></div>
-<div class="line"><span class="comment">         * that case, but is a safety check that the schema matches what the</span></div>
-<div class="line"><span class="comment">         * program expects.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a name="a6"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:population&quot;</span>,</div>
+<div class="line">        ret = session-&gt;<a name="a6"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;key_format=r,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;value_format=5sHQ,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;columns=(id,country,year,population),&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;colgroups=(main,population)&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Create the column groups to store population in its own file. */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;colgroup:population:main&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;columns=(country,year)&quot;</span>);</div>
-<div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;colgroup:population:population&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;columns=(population)&quot;</span>);</div>
-<div class="line"></div>
-<div class="line">        <span class="comment">/* Create an index with composite key (country,year). */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;index:population:country_year&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;columns=(country,year)&quot;</span>);</div>
-<div class="line"></div>
-<div class="line">        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:population&quot;</span>,</div>
-<div class="line">            NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);</div>
-<div class="line"></div>
-<div class="line">        endp = pop_data + (<span class="keyword">sizeof</span> (pop_data) / <span class="keyword">sizeof</span>(pop_data[0]));</div>
-<div class="line">        <span class="keywordflow">for</span> (p = pop_data; p &lt; endp; p++) {</div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Create two column groups: a primary column group with the country</span></div>
+<div class="line"><span class="comment">         * code, year and population (named &quot;main&quot;), and a population column</span></div>
+<div class="line"><span class="comment">         * group with the population by itself (named &quot;population&quot;).</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;colgroup:mytable:main&quot;</span>, <span class="stringliteral">&quot;columns=(country,year,population)&quot;</span>);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;colgroup:mytable:population&quot;</span>, <span class="stringliteral">&quot;columns=(population)&quot;</span>);</div>
+<div class="line">        <span class="comment">/* Create an index with a simple key. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:mytable:country&quot;</span>, <span class="stringliteral">&quot;columns=(country)&quot;</span>);</div>
+<div class="line">        <span class="comment">/* Create an index with a composite key (country,year). */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year&quot;</span>, <span class="stringliteral">&quot;columns=(country,year)&quot;</span>);</div>
+<div class="line">        <span class="comment">/* Insert the records into the table. */</span></div>
+<div class="line">        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor);</div>
+<div class="line">        <span class="keywordflow">for</span> (p = pop_data; p-&gt;year != 0; p++) {</div>
 <div class="line">                cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, p-&gt;country, p-&gt;year, p-&gt;population);</div>
 <div class="line">                ret = cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Now just read through the countries we know about */</span></div>
+<div class="line">        <span class="comment">/* List the records in the table. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:population:country_year(id)&quot;</span>,</div>
-<div class="line">            NULL, NULL, &amp;cursor);</div>
-<div class="line"></div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
-<div class="line">                cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
-<div class="line">                cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;recno);</div>
-<div class="line"></div>
-<div class="line">                printf(<span class="stringliteral">&quot;Got country %s : row ID %d\n&quot;</span>, country, (<span class="keywordtype">int</span>)recno);</div>
+<div class="line">                cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;recno);</div>
+<div class="line">                cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u, population %llu\n&quot;</span>,</div>
+<div class="line">                    recno, country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
 <div class="line">        }</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">close</a>(conn, NULL);</div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Open a cursor on the main column group, and return the information</span></div>
+<div class="line"><span class="comment">         * for a particular country.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;colgroup:mytable:main&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, 2);</div>
+<div class="line">        ret = cursor-&gt;<a name="a15"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;ID 2: country %s, year %u, population %llu\n&quot;</span>,</div>
+<div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Open a cursor on the population column group, and return the</span></div>
+<div class="line"><span class="comment">         * population of a particular country.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;colgroup:mytable:population&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, 2);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;population);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;ID 2: population %llu\n&quot;</span>, population);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Search in a simple index. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:mytable:country&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;AU: country %s, year %u, population %llu\n&quot;</span>,</div>
+<div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Search in a composite index. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;USA\0\0&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>)1900);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;US 1900: country %s, year %u, population %llu\n&quot;</span>,</div>
+<div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Return the table&#39;s record number key using an index. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year(id)&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
+<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
+<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;recno);</div>
+<div class="line">                printf(</div>
+<div class="line">                    <span class="stringliteral">&quot;row ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u\n&quot;</span>,</div>
+<div class="line">                    recno, country, year);</div>
+<div class="line">        }</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Return just the population column using an index. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year(population)&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
+<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
+<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;population);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;population %llu: country %s, year %u\n&quot;</span>,</div>
+<div class="line">                    population, country, year);</div>
+<div class="line">        }</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Avoid accessing any other column groups when using an index.</span></div>
+<div class="line"><span class="comment">         *</span></div>
+<div class="line"><span class="comment">         * It is illegal to use an empty list as the subset of the value columns</span></div>
+<div class="line"><span class="comment">         * to be returned when configuring the index cursor, the list must have</span></div>
+<div class="line"><span class="comment">         * a valid column.  List a key column to avoid accessing another column</span></div>
+<div class="line"><span class="comment">         * group.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year(year)&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
+<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %u\n&quot;</span>, country, year);</div>
+<div class="line">        }</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line">        ret = conn-&gt;<a name="a16"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">close</a>(conn, NULL);</div>
+<div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
