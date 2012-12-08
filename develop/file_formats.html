@@ -71,10 +71,10 @@ $(document).ready(function(){initNavTree('file_formats.html','');});
 <div class="textblock"><h1><a class="anchor" id="file_formats_formats"></a>
 File formats</h1>
 <p>WiredTiger supports two underlying file formats: row-store and column-store, both are key/value stores.</p>
-<p>In a row-store, both keys and data are variable-length byte strings. In a column-store, keys are 64-bit record numbers (format type 'r'), and data items are either variable- or fixed-length byte strings.</p>
+<p>In a row-store, both keys and data are variable-length byte strings. In a column-store, keys are 64-bit record numbers (key_format type 'r'), and values are either variable- or fixed-length byte strings.</p>
 <p>Generally, row-stores are faster for queries where all of the columns are required by every lookup (because there's only a single set of meta-data pages to read into the cache and search). Column-stores are faster when most queries require only a subset of the columns (because columns can be separated into multiple files and only the columns being returned need be present in the cache).</p>
 <p>Row-store keys and values, and variable-length column-store values, can be up to (4GB - 512B) in length. Keys and values too large to fit on a normal page are stored as overflow items in the file, and are likely to require additional file I/O to access.</p>
-<p>Fixed-length column-store values (format type 't'), are limited to 8-bits, and only values between 0 and 255 may be stored. Additionally, there is no out-of-band fixed-length "deleted" value, and deleting a value is the same as storing a value of 0. For the same reason, storing a value of 0 will cause cursor scans to skip the record.</p>
+<p>Fixed-length column-store values (value_format type 't'), are limited to 8-bits, and only values between 0 and 255 may be stored. Additionally, there is no out-of-band fixed-length "deleted" value, and deleting a value is the same as storing a value of 0. For the same reason, storing a value of 0 will cause cursor scans to skip the record.</p>
 <p>WiredTiger does not support duplicate data items: there can be only a single value for any given key, and applications are responsible for creating unique key/value pairs.</p>
 <p>WiredTiger allocates space from the underlying files in block units. The minimum file allocation unit WiredTiger supports is 512B and the maximum file allocation unit is 512MB. File block offsets are 64-bit (meaning the maximum file size is very, very large).</p>
 <h1><a class="anchor" id="file_formats_compression"></a>
