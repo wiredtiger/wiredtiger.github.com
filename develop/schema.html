@@ -314,14 +314,13 @@ Column indices</h1>
 <div class="line">                printf(<span class="stringliteral">&quot;population %llu: country %s, year %u\n&quot;</span>,</div>
 <div class="line">                    population, country, year);</div>
 <div class="line">        }</div>
-</div><!-- fragment --><p> For performance reasons, it may be desirable to include a copy of all commonly needed data in the index, so it's possible to perform index-only searches where no column group other than the index is accessed. In this case, all of the "hot" columns should be included in the index (always list the "real" index key columns first, so they will determine the sort order). Then, open a cursor on the index that doesn't return any value columns, and no column groups other than the index will be accessed.</p>
+</div><!-- fragment --><p> For performance reasons, it may be desirable to include a copy of all commonly needed data in the index, so it's possible to perform index-only searches where no file other than the index is accessed. In this case, all of the "hot" columns should be included in the index (always list the "real" index key columns first, so they will determine the sort order). Then, open a cursor on the index that doesn't return any value columns, and no file other than the index will be accessed.</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Avoid accessing any other column groups when using an index.</span></div>
 <div class="line"><span class="comment">         *</span></div>
 <div class="line"><span class="comment">         * It is illegal to use an empty list as the subset of the value columns</span></div>
 <div class="line"><span class="comment">         * to be returned when configuring the index cursor, the list must have</span></div>
-<div class="line"><span class="comment">         * a valid column.  List a key column to avoid accessing another column</span></div>
-<div class="line"><span class="comment">         * group.</span></div>
+<div class="line"><span class="comment">         * a valid column.  List a key column to avoid accessing other files.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year(year)&quot;</span>, NULL, NULL, &amp;cursor);</div>
