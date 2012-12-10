@@ -166,16 +166,17 @@ Cursor formats</h1>
 <div class="fragment"><div class="line">        uint64_t recno = 37;    <span class="comment">/* Set the cursor&#39;s record number key. */</span></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, recno);</div>
 </div><!-- fragment --><p> A more complex example, setting a composite key for a row-store table where the key_format was <code>"SiS"</code>, would be done as follows:</p>
-<div class="fragment"><div class="line">                                <span class="comment">/* Set the cursor&#39;s composite key. */</span></div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;first&quot;</span>, 5, <span class="stringliteral">&quot;second&quot;</span>);</div>
+<div class="fragment"><div class="line">                        <span class="comment">/* Set the cursor&#39;s &quot;SiH&quot; format composite key. */</span></div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;first&quot;</span>, (int32_t)5, (uint16_t)7);</div>
 </div><!-- fragment --><p> The key's values are accessed with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>, which is analogous to <code>scanf</code>, and takes a list of pointers to values in the same order:</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key;        <span class="comment">/* Get the cursor&#39;s string key. */</span></div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;key);</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        uint64_t recno;         <span class="comment">/* Get the cursor&#39;s record number key. */</span></div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;recno);</div>
-</div><!-- fragment --><div class="fragment"><div class="line">                                <span class="comment">/* Get the cursor&#39;s composite key. */</span></div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *first, *third;</div>
-<div class="line">        <span class="keywordtype">int</span> second;</div>
+</div><!-- fragment --><div class="fragment"><div class="line">                        <span class="comment">/* Get the cursor&#39;s &quot;SiH&quot; format composite key. */</span></div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *first;</div>
+<div class="line">        int32_t second;</div>
+<div class="line">        uint16_t third;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;first, &amp;second, &amp;third);</div>
 </div><!-- fragment --><p> Cursors for a table have the same value format as the table, unless a projection is specified to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>.</p>
 <p><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> is used to set value columns, and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> is used to get value columns, in the same way as described for <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>.</p>
@@ -185,7 +186,7 @@ Columns</h1>
 <p>For example, a column-store table with an employee ID as the key and three columns (department, salary and first year of employment), might be created as follows:</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Create a table with columns: keys are record numbers, values are</span></div>
-<div class="line"><span class="comment">         * (string, integer, unsigned short).</span></div>
+<div class="line"><span class="comment">         * (string, signed 32-bit integer, unsigned 16-bit integer).</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=SiH&quot;</span></div>
@@ -219,7 +220,7 @@ Column groups</h1>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Create the population table.</span></div>
 <div class="line"><span class="comment">         * Keys are record numbers, the format for values is (5-byte string,</span></div>
-<div class="line"><span class="comment">         * unsigned short, unsigned long long).</span></div>
+<div class="line"><span class="comment">         * uint16_t, uint64_t).</span></div>
 <div class="line"><span class="comment">         * See ::wiredtiger_struct_pack for details of the format strings.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:poptable&quot;</span>,</div>
@@ -291,7 +292,7 @@ Column indices</h1>
 <div class="fragment"><div class="line">        <span class="comment">/* Search in a composite index. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;USA\0\0&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>)1900);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;USA\0\0&quot;</span>, (uint16_t)1900);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
 <div class="line">        printf(<span class="stringliteral">&quot;US 1900: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
