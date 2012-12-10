@@ -142,6 +142,9 @@ Error returns</h2></td></tr>
 <tr class="memitem:ga3c9e1b494d95cf34404ab7a974af6bf8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></td></tr>
 <tr class="memdesc:ga3c9e1b494d95cf34404ab7a974af6bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cursor item not found.  <a href="#ga3c9e1b494d95cf34404ab7a974af6bf8"></a><br/></td></tr>
 <tr class="separator:ga3c9e1b494d95cf34404ab7a974af6bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf4fc8744eb8fe4f1c6e125d0f2361992"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992">WT_PANIC</a></td></tr>
+<tr class="memdesc:gaf4fc8744eb8fe4f1c6e125d0f2361992"><td class="mdescLeft">&#160;</td><td class="mdescRight">The application must exit the database.  <a href="#gaf4fc8744eb8fe4f1c6e125d0f2361992"></a><br/></td></tr>
+<tr class="separator:gaf4fc8744eb8fe4f1c6e125d0f2361992"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Connection statistics</h2></td></tr>
@@ -594,7 +597,7 @@ The number of bytes in the data item. </td></tr>
 </div><div class="memdoc">
 
 <p>Conflict between concurrent operations. </p>
-<p>This error is generated when an operation cannot be completed due to a conflict with concurrent operations. The operation should be retried. If a transaction is in progress, it should be rolled back and the operation retried in a new transaction. </p>
+<p>This error is generated when an operation cannot be completed due to a conflict with concurrent operations. The operation may be retried; if a transaction is in progress, it should be rolled back and the operation retried in a new transaction. </p>
 
 </div>
 </div>
@@ -624,7 +627,7 @@ The number of bytes in the data item. </td></tr>
 </div><div class="memdoc">
 
 <p>Non-specific WiredTiger error. </p>
-<p>This error is generated for cases that are not covered by specific error returns. </p>
+<p>This error is returned when an error is not covered by a specific error return. </p>
 
 </div>
 </div>
@@ -672,6 +675,21 @@ The number of bytes in the data item. </td></tr>
 <p>This error indicates a cursor operation did not find a record to return. This includes search and other operations where no record matched the cursor's search key such as <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a>. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_stat_8c-example.html#a4">ex_stat.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="gaf4fc8744eb8fe4f1c6e125d0f2361992"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_PANIC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The application must exit the database. </p>
+<p>This error indicates an underlying problem that requires the application exit the database and restart. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -797,7 +815,7 @@ Additionally, if a file named <code>WiredTiger.config</code> appears in the Wire
 </div><div class="memdoc">
 
 <p>Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX 1003.1-2001 function strerror. </p>
-<div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
+<div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a>(cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>

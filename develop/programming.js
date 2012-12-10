@@ -11,6 +11,7 @@ var programming =
       [ "JSON compatibility", "config_strings.html#config_json", null ],
       [ "Code samples", "config_strings.html#config_examples", null ]
     ] ],
+    [ "Error handling", "error_handling.html", null ],
     [ "Cursors", "cursors.html", "cursors" ],
     [ "Multithreading", "threads.html", [
       [ "Code samples", "threads.html#threads_example", null ]

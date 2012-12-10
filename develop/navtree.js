@@ -31,6 +31,7 @@ var NAVTREE =
       [ "3rd party software included in the WiredTiger distribution", "license.html#distribution", null ],
       [ "Public domain software", "license.html#pd", null ]
     ] ],
+    [ "Cursor random", "cursor_random.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Class List", "annotated.html", "annotated" ],

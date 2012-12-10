@@ -66,6 +66,7 @@ var group__wt =
     [ "WT_INTPACK32_MAXSIZE", "group__wt.html#ga56fdfd15cc3721bcb251cfc859a915ad", null ],
     [ "WT_INTPACK64_MAXSIZE", "group__wt.html#ga562d6f7fd9a3ffdb4089c1469b1609f8", null ],
     [ "WT_NOTFOUND", "group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8", null ],
+    [ "WT_PANIC", "group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992", null ],
     [ "WT_STAT_CONN_BLOCK_BYTE_READ", "group__wt.html#ga178a70adb0b784ec0675071df67379b9", null ],
     [ "WT_STAT_CONN_BLOCK_BYTE_WRITE", "group__wt.html#gad53e03f089bc873e93f65be5b8a73585", null ],
     [ "WT_STAT_CONN_BLOCK_READ", "group__wt.html#ga53e57feada7f17a1693b69f37d9830fc", null ],

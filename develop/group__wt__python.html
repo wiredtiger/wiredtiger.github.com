@@ -138,6 +138,9 @@ Variables</h2></td></tr>
 <tr class="memitem:gaa399de28ad3f640f8c84f90929630d0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa399de28ad3f640f8c84f90929630d0a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_NOTFOUND</b></td></tr>
 <tr class="separator:gaa399de28ad3f640f8c84f90929630d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga51790ec02363fea523e9348171b6c651"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga51790ec02363fea523e9348171b6c651"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_PANIC</b></td></tr>
+<tr class="separator:ga51790ec02363fea523e9348171b6c651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaeaf77e0bc29f21f89a5fa24d7f44583"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaeaf77e0bc29f21f89a5fa24d7f44583"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger.WT_RESTART</b></td></tr>
 <tr class="separator:gaaeaf77e0bc29f21f89a5fa24d7f44583"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -542,7 +545,7 @@ Additionally, if a file named <code>WiredTiger.config</code> appears in the Wire
 </div><div class="memdoc">
 
 <p>wiredtiger_strerror(err) -&gt; string </p>
-<p>Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX 1003.1-2001 function strerror.  <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
+<p>Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX 1003.1-2001 function strerror.  <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a>(cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>
