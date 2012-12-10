@@ -97,55 +97,55 @@ Tables, rows and columns</h1>
 <p>Applications describe the format of their data by supplying a schema to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. This specifies how the application's data can be split into fields and mapped onto rows and columns.</p>
 <h1><a class="anchor" id="schema_column_types"></a>
 Column types</h1>
-<p>By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structure. Keys and values may be up to (4GB - 512B) bytes in size. See <a class="el" href="keyvalue.html">Key/Value pairs</a> for more details on raw key / value items.</p>
-<p>The schema layer allows key and value types to be chosen from a list, or composite keys or values made up of columns with any combination of types. The size (4GB - 512B) byte limit on keys and values still applies.</p>
-<p>WiredTiger's uses format strings similar to those specified in the Python struct module to describe the types of columns in a table: <a href="http://docs.python.org/library/struct">http://docs.python.org/library/struct</a></p>
+<p>By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structure. Key and value types may also be chosen from a list, or composed of multiple columns with any combination of types. Keys and values may be up to (<code>4GB - 512B</code>) bytes in size.</p>
+<p>See <a class="el" href="keyvalue.html">Key/Value pairs</a> for more details on raw key / value items.</p>
 <h1><a class="anchor" id="schema_format_types"></a>
 Format types</h1>
+<p>WiredTiger's uses format strings similar to those specified in the Python struct module to describe the types of columns in a table: <a href="http://docs.python.org/library/struct">http://docs.python.org/library/struct</a></p>
 <table class="doxtable">
 <tr>
-<th>Format</th><th>C Type</th><th>Java type</th><th>Python type</th><th>Standard size </th></tr>
+<th>Format</th><th>C Type</th><th>Java type</th><th>Python type</th><th>Notes </th></tr>
 <tr>
-<td>x</td><td>pad byte</td><td>N/A</td><td>N/A</td><td>1 </td></tr>
+<td><code>x</code> </td><td>N/A</td><td>N/A</td><td>N/A</td><td>pad byte, no associated value </td></tr>
 <tr>
-<td>b</td><td>signed char</td><td>byte</td><td>integer</td><td>1 </td></tr>
+<td><code>b</code> </td><td><code>int8_t</code> </td><td><code>byte</code> </td><td><code>int</code> </td><td>signed byte </td></tr>
 <tr>
-<td>B</td><td>unsigned char</td><td>byte</td><td>integer</td><td>1 </td></tr>
+<td><code>B</code> </td><td><code>uint8_t</code> </td><td><code>byte</code> </td><td><code>int</code> </td><td>unsigned byte </td></tr>
 <tr>
-<td>h</td><td>short</td><td>short</td><td>integer</td><td>2 </td></tr>
+<td><code>h</code> </td><td><code>int16_t</code> </td><td><code>short</code> </td><td><code>int</code> </td><td>signed 16-bit </td></tr>
 <tr>
-<td>H</td><td>unsigned short</td><td>short</td><td>integer</td><td>2 </td></tr>
+<td><code>H</code> </td><td><code>uint16_t</code> </td><td><code>short</code> </td><td><code>int</code> </td><td>unsigned 16-bit </td></tr>
 <tr>
-<td>i</td><td>int</td><td>int</td><td>integer</td><td>4 </td></tr>
+<td><code>i</code> </td><td><code>int32_t</code> </td><td><code>int</code> </td><td><code>int</code> </td><td>signed 32-bit </td></tr>
 <tr>
-<td>I</td><td>unsigned int</td><td>int</td><td>integer</td><td>4 </td></tr>
+<td><code>I</code> </td><td><code>uint32_t</code> </td><td><code>int</code> </td><td><code>int</code> </td><td>unsigned 32-bit </td></tr>
 <tr>
-<td>l</td><td>long</td><td>int</td><td>integer</td><td>4 </td></tr>
+<td><code>l</code> </td><td><code>int32_t</code> </td><td><code>int</code> </td><td><code>int</code> </td><td>signed 32-bit </td></tr>
 <tr>
-<td>L</td><td>unsigned long</td><td>int</td><td>integer</td><td>4 </td></tr>
+<td><code>L</code> </td><td><code>uint32_t</code> </td><td><code>int</code> </td><td><code>int</code> </td><td>unsigned 32-bit </td></tr>
 <tr>
-<td>q</td><td>long long</td><td>long</td><td>integer</td><td>8 </td></tr>
+<td><code>q</code> </td><td><code>int64_t</code> </td><td><code>long</code> </td><td><code>int</code> </td><td>signed 64-bit </td></tr>
 <tr>
-<td>Q</td><td>unsigned long long</td><td>long</td><td>integer</td><td>8 </td></tr>
+<td><code>Q</code> </td><td><code>uint64_t</code> </td><td><code>long</code> </td><td><code>int</code> </td><td>unsigned 64-bit </td></tr>
 <tr>
-<td>r</td><td>uint64_t</td><td>long</td><td>integer</td><td>8 </td></tr>
+<td><code>r</code> </td><td><code>uint64_t</code> </td><td><code>long</code> </td><td><code>int</code> </td><td>record number </td></tr>
 <tr>
-<td>s</td><td>char[]</td><td>String</td><td>string</td><td>fixed length </td></tr>
+<td><code>s</code> </td><td><code>char</code>[]</td><td><code>String</code> </td><td><code>str</code> </td><td>fixed-length string </td></tr>
 <tr>
-<td>S</td><td>char[]</td><td>String</td><td>string</td><td>variable </td></tr>
+<td><code>S</code> </td><td><code>char</code>[]</td><td><code>String</code> </td><td><code>str</code> </td><td>NUL-terminated string </td></tr>
 <tr>
-<td>t</td><td>unsigned char</td><td>byte</td><td>integer</td><td>fixed bit length </td></tr>
+<td><code>t</code> </td><td><code>uint8_t</code> </td><td><code>byte</code> </td><td><code>int</code> </td><td>fixed-length bit field </td></tr>
 <tr>
-<td>u</td><td><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> *</td><td>byte[]</td><td>string</td><td>variable </td></tr>
+<td><code>u</code> </td><td><code><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> *</code></td><td><code>byte[]</code></td><td><code>str</code> </td><td>raw byte array </td></tr>
 </table>
-<p>The <code>'r'</code> type is used for record number keys in column stores.</p>
+<p>The <code>'r'</code> type is used for record number keys in column stores. It is otherwise identical to the <code>'Q'</code> type.</p>
 <p>The <code>'S'</code> type is encoded as a C language string terminated by a NUL character.</p>
-<p>The <code>'t'</code> type is used for fixed-length bit field values. If it is preceded by a size, that indicates the number of bits to store, between 1 and 8. That number of low-order bits will be stored in the table. The default is a size of 1 bit: that is, a boolean. The application must always use an <code>unsigned char</code> type (or equivalently, <code>uint8_t</code>) for calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a>, and a pointer to the same for calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>. If a bit field value is combined with other types in a packing format, it is equivalent to <code>'B'</code>, and a full byte is used to store it.</p>
+<p>The <code>'t'</code> type is used for fixed-length bit field values. If it is preceded by a size, that indicates the number of bits to store, between 1 and 8. That number of low-order bits will be stored in the table. The default is a size of 1 bit: that is, a boolean. C applications must always use a <code>uint8_t</code> type (or equivalently, <code>unsigned char</code>) for calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a>, and a pointer to the same for calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>. If a bit field value is combined with other types in a packing format, it is equivalent to <code>'B'</code>, and a full byte is used to store it.</p>
 <p>When referenced by a record number (that is, a key format of <code>'r'</code>), the <code>'t'</code> type will be stored in a fixed-length column-store, and will not have an out-of-band value to indicate the record does not exist. In this case, a 0 byte value is used to indicate the record does not exist. This means removing a record with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a> is equivalent to storing a value of 0 in the record with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> (and storing a value of 0 in the record will cause cursor scans to skip the record). Additionally, creating a record past the end of an object implies the creation of any missing intermediate records, with byte values of 0.</p>
 <p>The <code>'u'</code> type is for raw byte arrays: if it appears at the end of a format string (including in the default <code>"u"</code> format for untyped tables), the size is not stored explicitly. When <code>'u'</code> appears within a format string, the size is stored as a 32-bit integer in the same byte order as the rest of the format string, followed by the data.</p>
 <p>There is a default collator that gives lexicographic (byte-wise) comparisons, and the default encoding is designed so that lexicographic ordering of encoded keys is usually the expected ordering. For example, the variable-length encoding of integers is designed so that they have the natural integer ordering under the default collator.</p>
 <p>See <a class="el" href="packing.html">Packing and Unpacking Data</a> for details of WiredTiger's packing format.</p>
-<p>WiredTiger can also be extended with <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a>.</p>
+<p>WiredTiger can also be extended with custom collators by implementing the <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records.">WT_COLLATOR</a> interface.</p>
 <h1><a class="anchor" id="schema_key_and_value_formats"></a>
 Key and value formats</h1>
 <p>Every table has a key format and a value format as describe in <a class="el" href="schema.html#schema_column_types">Column types</a>. These types are configured when the table is created by passing <code>key_format</code> and <code>value_format</code> keys to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</p>
@@ -165,7 +165,7 @@ Cursor formats</h1>
 </div><!-- fragment --><p> For example, setting the key for a column-store table would be done as follows:</p>
 <div class="fragment"><div class="line">        uint64_t recno = 37;    <span class="comment">/* Set the cursor&#39;s record number key. */</span></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, recno);</div>
-</div><!-- fragment --><p> A more complex example, setting a composite key for a row-store table where the key_format was <code>SiS</code>, would be done as follows:</p>
+</div><!-- fragment --><p> A more complex example, setting a composite key for a row-store table where the key_format was <code>"SiS"</code>, would be done as follows:</p>
 <div class="fragment"><div class="line">                                <span class="comment">/* Set the cursor&#39;s composite key. */</span></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;first&quot;</span>, 5, <span class="stringliteral">&quot;second&quot;</span>);</div>
 </div><!-- fragment --><p> The key's values are accessed with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>, which is analogous to <code>scanf</code>, and takes a list of pointers to values in the same order:</p>
@@ -200,8 +200,8 @@ Column groups</h1>
 <div class="fragment"><div class="line"><span class="comment">/* The C struct for the data we are storing in a WiredTiger table. */</span></div>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line">        <span class="keywordtype">char</span> country[5];</div>
-<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> year;</div>
-<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> population;</div>
+<div class="line">        uint16_t year;</div>
+<div class="line">        uint64_t population;</div>
 <div class="line">} POP_RECORD;</div>
 <div class="line"></div>
 <div class="line">POP_RECORD pop_data[] = {</div>
@@ -222,7 +222,7 @@ Column groups</h1>
 <div class="line"><span class="comment">         * unsigned short, unsigned long long).</span></div>
 <div class="line"><span class="comment">         * See ::wiredtiger_struct_pack for details of the format strings.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:poptable&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;key_format=r,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;value_format=5sHQ,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;columns=(id,country,year,population),&quot;</span></div>
@@ -234,9 +234,9 @@ Column groups</h1>
 <div class="line"><span class="comment">         * group with the population by itself (named &quot;population&quot;).</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;colgroup:mytable:main&quot;</span>, <span class="stringliteral">&quot;columns=(country,year,population)&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;colgroup:poptable:main&quot;</span>, <span class="stringliteral">&quot;columns=(country,year,population)&quot;</span>);</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;colgroup:mytable:population&quot;</span>, <span class="stringliteral">&quot;columns=(population)&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;colgroup:poptable:population&quot;</span>, <span class="stringliteral">&quot;columns=(population)&quot;</span>);</div>
 </div><!-- fragment --><p> Column groups always have the same key as the table. This is particularly useful for column stores, because record numbers are not stored explicitly on disk, so there is no repetition of keys across multiple files. Keys will be replicated in multiple files in the case of row-store column groups.</p>
 <p>A cursor can be opened on a column group by passing the column group's URI to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method. For example, the population can be retrieved from both of the column groups we created:</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
@@ -244,22 +244,24 @@ Column groups</h1>
 <div class="line"><span class="comment">         * for a particular country.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;colgroup:mytable:main&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            session, <span class="stringliteral">&quot;colgroup:poptable:main&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, 2);</div>
-<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;ID 2: country %s, year %u, population %llu\n&quot;</span>,</div>
-<div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor)) == 0) {</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;ID 2: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                    country, year, population);</div>
+<div class="line">        }</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Open a cursor on the population column group, and return the</span></div>
 <div class="line"><span class="comment">         * population of a particular country.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;colgroup:mytable:population&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            <span class="stringliteral">&quot;colgroup:poptable:population&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, 2);</div>
-<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;population);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;ID 2: population %llu\n&quot;</span>, population);</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor)) == 0) {</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;population);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;ID 2: population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>, population);</div>
+<div class="line">        }</div>
 </div><!-- fragment --><p> Key columns may not be included in the list of columns for a column group. Because column groups always have the same key as the table, key columns for column groups are retrieved using <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>, not <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>.</p>
 <h1><a class="anchor" id="schema_column_indices"></a>
 Column indices</h1>
@@ -270,62 +272,64 @@ Column indices</h1>
 <p>Continuing the example, we might open an index on the <code>country</code> column:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Create an index with a simple key. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:mytable:country&quot;</span>, <span class="stringliteral">&quot;columns=(country)&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, <span class="stringliteral">&quot;columns=(country)&quot;</span>);</div>
 </div><!-- fragment --><p> Cursors are opened on indices by passing the index's URI to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method.</p>
 <p>Index cursors use the specified index key columns for <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a>. For example, we can retrieve information from the <code>country</code> index as follows:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Search in a simple index. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:mytable:country&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;AU: country %s, year %u, population %llu\n&quot;</span>,</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;AU: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
 </div><!-- fragment --><p> To create an index with a composite key, specify more than one column to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> call:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Create an index with a composite key (country,year). */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year&quot;</span>, <span class="stringliteral">&quot;columns=(country,year)&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year&quot;</span>, <span class="stringliteral">&quot;columns=(country,year)&quot;</span>);</div>
 </div><!-- fragment --><p> To retrieve information from a composite index requires a more complicated <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> call, but is otherwise the same:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Search in a composite index. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;USA\0\0&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>)1900);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;US 1900: country %s, year %u, population %llu\n&quot;</span>,</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;US 1900: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
 </div><!-- fragment --><p> By default, index cursors return all of the table's value columns from <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>. To configure the cursor to return a key column or a subset of the available value columns, specify a list of columns in the cursor URI when the cursor is opened. For example:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Return the table&#39;s record number key using an index. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year(id)&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year(id)&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
-<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
-<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;recno);</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;recno);</div>
 <div class="line">                printf(</div>
 <div class="line">                    <span class="stringliteral">&quot;row ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u\n&quot;</span>,</div>
 <div class="line">                    recno, country, year);</div>
 <div class="line">        }</div>
-</div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/* Return just the population column using an index. */</span></div>
+</div><!-- fragment --> <h1><a class="anchor" id="schema_index_projections"></a>
+Index cursor projections</h1>
+<p>When opening an index cursor, the application can specify that a subset of the usual columns should be returned in calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> by appending a list of columns to the <code>uri</code> parameter of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> call. This is called a <em>projection</em>, see <a class="el" href="cursors.html#cursor_projections">Projections</a> for more details.</p>
+<p>In the case of index cursors, a projection can be used to avoid lookups in column groups that do not hold columns relevant to the operation. For example:</p>
+<div class="fragment"><div class="line">        <span class="comment">/* Return just the population column using an index. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year(population)&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year(population)&quot;</span>,</div>
+<div class="line">            NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
-<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
-<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;population);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;population %llu: country %s, year %u\n&quot;</span>,</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;population);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;population %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u\n&quot;</span>,</div>
 <div class="line">                    population, country, year);</div>
 <div class="line">        }</div>
-</div><!-- fragment --><p> For performance reasons, it may be desirable to include a copy of all commonly needed data in the index, so it's possible to perform index-only searches where no file other than the index is accessed. In this case, all of the "hot" columns should be included in the index (always list the "real" index key columns first, so they will determine the sort order). Then, open a cursor on the index that doesn't return any value columns, and no file other than the index will be accessed.</p>
+</div><!-- fragment --><p> For performance reasons, it may be desirable to include all columns for a performance-critical operation in an index, so that it is possible to perform index-only lookups where no column group from the table is accessed. In this case, all of the "hot" columns should be included in the index (always list the "real" index key columns first, so they will determine the sort order). Then, open a cursor on the index that doesn't return any value columns, and no column group will be accessed.</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * Avoid accessing any other column groups when using an index.</span></div>
-<div class="line"><span class="comment">         *</span></div>
-<div class="line"><span class="comment">         * It is illegal to use an empty list as the subset of the value columns</span></div>
-<div class="line"><span class="comment">         * to be returned when configuring the index cursor, the list must have</span></div>
-<div class="line"><span class="comment">         * a valid column.  List a key column to avoid accessing other files.</span></div>
+<div class="line"><span class="comment">         * Avoid accessing any other column groups when using an index: supply</span></div>
+<div class="line"><span class="comment">         * an empty list of value columns.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:mytable:country_plus_year(year)&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year()&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
-<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;country, &amp;year);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;country %s, year %u\n&quot;</span>, country, year);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><p> Index cursors for column-store objects may not be created using the record number as the index key (there is no use for a secondary index on a column-store where the index key is the record number).</p>
