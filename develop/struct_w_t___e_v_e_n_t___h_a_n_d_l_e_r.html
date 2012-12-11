@@ -109,7 +109,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle error messages; by default, error messages are written to the stderr stream. </p>
-<p>If the handler returns non-zero, the application's current operation will return an error.</p>
+<p>Error handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">error</td><td>a WiredTiger, C99 or POSIX error code, which can be converted to a string using <a class="el" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a> </td></tr>
@@ -131,7 +131,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle informational messages; by default, informational messages are written to the stdout stream. </p>
-<p>If the handler returns non-zero, the application's current operation will return an error.</p>
+<p>Message handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>an informational string </td></tr>
@@ -152,7 +152,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle progress messages; by default, no progress messages are written. </p>
-<p>If the handler returns non-zero, the application's current operation will return an error.</p>
+<p>Progress handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">operation</td><td>a string representation of the operation </td></tr>
