@@ -7,7 +7,7 @@ var schema =
     [ "Cursor formats", "schema.html#schema_cursor_formats", null ],
     [ "Columns", "schema.html#schema_columns", null ],
     [ "Column groups", "schema.html#schema_column_groups", null ],
-    [ "Column indices", "schema.html#schema_column_indices", null ],
+    [ "Indices", "schema.html#schema_indices", null ],
     [ "Index cursor projections", "schema.html#schema_index_projections", null ],
     [ "Code samples", "schema.html#schema_examples", null ],
     [ "Key/Value pairs", "keyvalue.html", null ],
