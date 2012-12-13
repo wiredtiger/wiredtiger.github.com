@@ -25,7 +25,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 1.4.0</span>
+   &#160;<span id="projectnumber">Version 1.4.1</span>
    </div>
   </td>
  </tr>
@@ -164,6 +164,7 @@ Positioning a cursor</h1>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> Cursor positions do not survive transactions: cursors that are open during <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">WT_SESSION::begin_transaction</a>, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a> will lose their position as if <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the position of the cursor.">WT_CURSOR::reset</a> was called.</p>
+<p>Cursors can be configured to move to a random position with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> is called, see <a class="el" href="cursor_random.html">Cursor random</a> for details.</p>
 <h1><a class="anchor" id="cursor_writes"></a>
 Inserting and updating</h1>
 <p>To insert new data, and optionally update existing data, using a cursor, use the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a> method:</p>

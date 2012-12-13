@@ -5,11 +5,5 @@ var data_sources =
       [ "Table Index data", "data_sources.html#data_indices", null ],
       [ "Statistics Data", "data_sources.html#data_statistics", null ]
     ] ],
-    [ "Cursor operations", "cursor_ops.html", [
-      [ "Opening a cursor", "cursor_ops.html#cursor_opening", null ],
-      [ "Closing a cursor", "cursor_ops.html#cursor_closing", null ],
-      [ "Positioning a cursor", "cursor_ops.html#cursor_position", null ],
-      [ "Inserting and updating", "cursor_ops.html#cursor_writes", null ],
-      [ "Cursor position after error", "cursor_ops.html#cursor_error", null ]
-    ] ]
+    [ "Cursor operations", "cursor_ops.html", "cursor_ops" ]
 ];
