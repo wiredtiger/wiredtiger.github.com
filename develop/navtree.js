@@ -1,36 +1,7 @@
 var NAVTREE =
 [
   [ "WiredTiger", "index.html", [
-    [ "Reference Guide", "index.html", null ],
-    [ "WiredTiger Architecture", "architecture.html", [
-      [ "Multi-core scaling", "architecture.html#multi_core", null ],
-      [ "Hot caches", "architecture.html#cache", null ],
-      [ "Making I/O more valuable", "architecture.html#io", null ],
-      [ "Production quality", "architecture.html#quality", null ],
-      [ "NoSQL and Open Source", "architecture.html#nosql", null ]
-    ] ],
-    [ "How to build and install WiredTiger", "install.html", [
-      [ "Building using Git and GitHub", "install.html#github", null ],
-      [ "Building WiredTiger", "install.html#building", null ],
-      [ "Installing WiredTiger", "install.html#installing", null ],
-      [ "Configuring WiredTiger", "install.html#configure", null ],
-      [ "Changing compiler or loader options", "install.html#compiler", null ]
-    ] ],
-    [ "Writing WiredTiger applications", "programming.html", "programming" ],
-    [ "WiredTiger command line utility", "command_line.html", "command_line" ],
-    [ "Upgrading WiredTiger applications", "upgrading.html", [
-      [ "Upgrading to Version 1.3.9", "upgrading.html#version_139", null ],
-      [ "Upgrading to Version 1.3.8", "upgrading.html#version_138", null ],
-      [ "Upgrading to Version 1.3.6", "upgrading.html#version_136", null ],
-      [ "Upgrading to Version 1.3.5", "upgrading.html#version_135", null ],
-      [ "Upgrading to Version 1.3", "upgrading.html#version_13", null ]
-    ] ],
-    [ "Managing WiredTiger databases", "admin.html", "admin" ],
-    [ "WiredTiger license", "license.html", [
-      [ "3rd party software included in the WiredTiger library binary", "license.html#library", null ],
-      [ "3rd party software included in the WiredTiger distribution", "license.html#distribution", null ],
-      [ "Public domain software", "license.html#pd", null ]
-    ] ],
+    [ "Reference Guide", "index.html", "index" ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Class List", "annotated.html", "annotated" ],
@@ -48,7 +19,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"group__wt.html#ga83162e41a1eede606d6319717c3a893b"
+"group__wt.html#ga8c3e1ba9bffaf856f43b8690bcc97dbe"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
@@ -118,7 +89,7 @@ function getScript(scriptName,func,show)
   script.onload = func; 
   script.src = scriptName+'.js'; 
   if ($.browser.msie && $.browser.version<=8) { 
-    // script.onload does work with older versions of IE
+    // script.onload does not work with older versions of IE
     script.onreadystatechange = function() {
       if (script.readyState=='complete' || script.readyState=='loaded') { 
         func(); if (show) showRoot(); 
@@ -130,24 +101,22 @@ function getScript(scriptName,func,show)
 
 function createIndent(o,domNode,node,level)
 {
-  if (node.parentNode && node.parentNode.parentNode) {
-    createIndent(o,domNode,node.parentNode,level+1);
-  }
+  var level=-1;
+  var n = node;
+  while (n.parentNode) { level++; n=n.parentNode; }
   var imgNode = document.createElement("img");
-  imgNode.width = 16;
+  imgNode.style.paddingLeft=(16*level).toString()+'px';
+  imgNode.width  = 16;
   imgNode.height = 22;
-  if (level==0 && node.childrenData) {
+  imgNode.border = 0;
+  if (node.childrenData) {
     node.plus_img = imgNode;
     node.expandToggle = document.createElement("a");
     node.expandToggle.href = "javascript:void(0)";
     node.expandToggle.onclick = function() {
       if (node.expanded) {
         $(node.getChildrenUL()).slideUp("fast");
-        if (node.isLast) {
-          node.plus_img.src = node.relpath+"ftv2plastnode.png";
-        } else {
-          node.plus_img.src = node.relpath+"ftv2pnode.png";
-        }
+        node.plus_img.src = node.relpath+"ftv2pnode.png";
         node.expanded = false;
       } else {
         expandNode(o, node, false, false);
@@ -155,33 +124,39 @@ function createIndent(o,domNode,node,level)
     }
     node.expandToggle.appendChild(imgNode);
     domNode.appendChild(node.expandToggle);
+    imgNode.src = node.relpath+"ftv2pnode.png";
   } else {
+    imgNode.src = node.relpath+"ftv2node.png";
     domNode.appendChild(imgNode);
+  } 
+}
+
+var animationInProgress = false;
+
+function gotoAnchor(anchor,aname,updateLocation)
+{
+  var pos, docContent = $('#doc-content');
+  if (anchor.parent().attr('class')=='memItemLeft' ||
+      anchor.parent().attr('class')=='fieldtype' ||
+      anchor.parent().is(':header')) 
+  {
+    pos = anchor.parent().position().top;
+  } else if (anchor.position()) {
+    pos = anchor.position().top;
   }
-  if (level==0) {
-    if (node.isLast) {
-      if (node.childrenData) {
-        imgNode.src = node.relpath+"ftv2plastnode.png";
-      } else {
-        imgNode.src = node.relpath+"ftv2lastnode.png";
-        domNode.appendChild(imgNode);
-      }
-    } else {
-      if (node.childrenData) {
-        imgNode.src = node.relpath+"ftv2pnode.png";
-      } else {
-        imgNode.src = node.relpath+"ftv2node.png";
-        domNode.appendChild(imgNode);
-      }
-    }
-  } else {
-    if (node.isLast) {
-      imgNode.src = node.relpath+"ftv2blank.png";
-    } else {
-      imgNode.src = node.relpath+"ftv2vertline.png";
-    }
+  if (pos) {
+    var dist = Math.abs(Math.min(
+               pos-docContent.offset().top,
+               docContent[0].scrollHeight-
+               docContent.height()-docContent.scrollTop()));
+    animationInProgress=true;
+    docContent.animate({
+      scrollTop: pos + docContent.scrollTop() - docContent.offset().top
+    },Math.max(50,Math.min(500,dist)),function(){
+      if (updateLocation) window.location.href=aname;
+      animationInProgress=false;
+    });
   }
-  imgNode.border = "0";
 }
 
 function newNode(o, po, text, link, childrenData, lastNode)
@@ -225,7 +200,7 @@ function newNode(o, po, text, link, childrenData, lastNode)
       var aname = '#'+link.split('#')[1];
       var srcPage = stripPath($(location).attr('pathname'));
       var targetPage = stripPath(link.split('#')[0]);
-      a.href = srcPage!=targetPage ? url : '#';
+      a.href = srcPage!=targetPage ? url : "javascript:void(0)"; 
       a.onclick = function(){
         storeLink(link);
         if (!$(a).parent().parent().hasClass('selected'))
@@ -235,23 +210,8 @@ function newNode(o, po, text, link, childrenData, lastNode)
           $(a).parent().parent().addClass('selected');
           $(a).parent().parent().attr('id','selected');
         }
-        var pos, anchor = $(aname), docContent = $('#doc-content');
-        if (anchor.parent().attr('class')=='memItemLeft') {
-          pos = anchor.parent().position().top;
-        } else if (anchor.position()) {
-          pos = anchor.position().top;
-        }
-        if (pos) {
-          var dist = Math.abs(Math.min(
-                     pos-docContent.offset().top,
-                     docContent[0].scrollHeight-
-                     docContent.height()-docContent.scrollTop()));
-          docContent.animate({
-            scrollTop: pos + docContent.scrollTop() - docContent.offset().top
-          },Math.max(50,Math.min(500,dist)),function(){
-            window.location.replace(aname);
-          });
-        }
+        var anchor = $(aname);
+        gotoAnchor(anchor,aname,true);
       };
     } else {
       a.href = url;
@@ -332,7 +292,8 @@ function glowEffect(n,duration)
 
 function highlightAnchor()
 {
-  var anchor = $($(location).attr('hash'));
+  var aname = $(location).attr('hash');
+  var anchor = $(aname);
   if (anchor.parent().attr('class')=='memItemLeft'){
     var rows = $('.memberdecls tr[class$="'+
                window.location.hash.substring(1)+'"]');
@@ -346,6 +307,7 @@ function highlightAnchor()
   } else {
     glowEffect(anchor.next(),1000); // normal member
   }
+  gotoAnchor(anchor,aname,false);
 }
 
 function selectAndHighlight(hash,n)
@@ -362,6 +324,11 @@ function selectAndHighlight(hash,n)
   } else if (n) {
     $(n.itemDiv).addClass('selected');
     $(n.itemDiv).attr('id','selected');
+  }
+  if ($('#nav-tree-contents .item:first').hasClass('selected')) {
+    $('#nav-sync').css('top','30px');
+  } else {
+    $('#nav-sync').css('top','5px');
   }
   showRoot();
 }
@@ -399,7 +366,7 @@ function showNode(o, node, index, hash)
           },true);
         } else {
           var rootBase = stripPath(o.toroot.replace(/\..+$/, ''));
-          if (rootBase=="index" || rootBase=="pages") {
+          if (rootBase=="index" || rootBase=="pages" || rootBase=="search") {
             expandNode(o, n, true, true);
           }
           selectAndHighlight(hash,n);
@@ -446,11 +413,6 @@ function navTo(o,root,hash,relpath)
     if (parts.length>1) hash = '#'+parts[1];
     else hash='';
   }
-  if (root==NAVTREE[0][1]) {
-    $('#nav-sync').css('top','30px');
-  } else {
-    $('#nav-sync').css('top','5px');
-  }
   if (hash.match(/^#l\d+$/)) {
     var anchor=$('a[name='+hash.substring(1)+']');
     glowEffect(anchor.parent(),1000); // line number
@@ -460,6 +422,7 @@ function navTo(o,root,hash,relpath)
   var url=root+hash;
   var i=-1;
   while (NAVTREEINDEX[i+1]<=url) i++;
+  if (i==-1) { i=0; root=NAVTREE[0][1]; } // fallback: show index
   if (navTreeSubIndices[i]) {
     gotoNode(o,i,root,hash,relpath)
   } else {
@@ -479,7 +442,7 @@ function showSyncOff(n,relpath)
 
 function showSyncOn(n,relpath)
 {
-    n.html('<img src="'+relpath+'sync_on.png"/ title="'+SYNCONMSG+'">');
+    n.html('<img src="'+relpath+'sync_on.png" title="'+SYNCONMSG+'"/>');
 }
 
 function toggleSyncButton(relpath)
@@ -543,6 +506,11 @@ function initNavTree(toroot,relpath)
        }
        var link=stripPath2($(location).attr('pathname'));
        navTo(o,link,$(location).attr('hash'),relpath);
+     } else if (!animationInProgress) {
+       $('#doc-content').scrollTop(0);
+       $('.item').removeClass('selected');
+       $('.item').removeAttr('id');
+       navTo(o,toroot,window.location.hash,relpath);
      }
   })
 

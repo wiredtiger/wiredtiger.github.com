@@ -1,0 +1,32 @@
+var index =
+[
+    [ "WiredTiger Architecture", "architecture.html", [
+      [ "Multi-core scaling", "architecture.html#multi_core", null ],
+      [ "Hot caches", "architecture.html#cache", null ],
+      [ "Making I/O more valuable", "architecture.html#io", null ],
+      [ "Production quality", "architecture.html#quality", null ],
+      [ "NoSQL and Open Source", "architecture.html#nosql", null ]
+    ] ],
+    [ "How to build and install WiredTiger", "install.html", [
+      [ "Building using Git and GitHub", "install.html#github", null ],
+      [ "Building WiredTiger", "install.html#building", null ],
+      [ "Installing WiredTiger", "install.html#installing", null ],
+      [ "Configuring WiredTiger", "install.html#configure", null ],
+      [ "Changing compiler or loader options", "install.html#compiler", null ]
+    ] ],
+    [ "Writing WiredTiger applications", "programming.html", "programming" ],
+    [ "WiredTiger command line utility", "command_line.html", "command_line" ],
+    [ "Upgrading WiredTiger applications", "upgrading.html", [
+      [ "Upgrading to Version 1.3.9", "upgrading.html#version_139", null ],
+      [ "Upgrading to Version 1.3.8", "upgrading.html#version_138", null ],
+      [ "Upgrading to Version 1.3.6", "upgrading.html#version_136", null ],
+      [ "Upgrading to Version 1.3.5", "upgrading.html#version_135", null ],
+      [ "Upgrading to Version 1.3", "upgrading.html#version_13", null ]
+    ] ],
+    [ "Managing WiredTiger databases", "admin.html", "admin" ],
+    [ "WiredTiger license", "license.html", [
+      [ "3rd party software included in the WiredTiger library binary", "license.html#library", null ],
+      [ "3rd party software included in the WiredTiger distribution", "license.html#distribution", null ],
+      [ "Public domain software", "license.html#pd", null ]
+    ] ]
+];

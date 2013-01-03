@@ -20,10 +20,7 @@ var group__wt__python =
       [ "set_key", "classwiredtiger_1_1_cursor.html#acbd568b465c94a6ad7183c36483fa58d", null ],
       [ "set_value", "classwiredtiger_1_1_cursor.html#aa02dee9e709301533332d1857083c83d", null ],
       [ "update", "classwiredtiger_1_1_cursor.html#a62366c8ac370ad4a04068213ca3bbe9f", null ],
-      [ "session", "classwiredtiger_1_1_cursor.html#a9d3a4a17af1d5de408c5cad61f693070", null ],
-      [ "this", "classwiredtiger_1_1_cursor.html#a6d37152159dbe1f84dbffac0cb9c5aca", null ],
-      [ "thisown", "classwiredtiger_1_1_cursor.html#a3928938ee5b62282f3e5beada05c2b95", null ],
-      [ "uri", "classwiredtiger_1_1_cursor.html#a61549fb6746dbdce43caa6dd195d6664", null ]
+      [ "this", "classwiredtiger_1_1_cursor.html#a6d37152159dbe1f84dbffac0cb9c5aca", null ]
     ] ],
     [ "Session", "classwiredtiger_1_1_session.html", [
       [ "__init__", "classwiredtiger_1_1_session.html#aed00603cc6df8c4b75585003157c1ffd", null ],
@@ -43,9 +40,7 @@ var group__wt__python =
       [ "truncate", "classwiredtiger_1_1_session.html#a80a9ee8697a61a1ad13d893d67d981bb", null ],
       [ "upgrade", "classwiredtiger_1_1_session.html#a10d14f378fa6368b0f5d1923a3473188", null ],
       [ "verify", "classwiredtiger_1_1_session.html#a30e548e0d6121f50de5b401f76ccdc39", null ],
-      [ "connection", "classwiredtiger_1_1_session.html#a4c82c4adfa1d66df06734e161e8d2b43", null ],
-      [ "this", "classwiredtiger_1_1_session.html#ad3453e7cb4601a5c0c6e512fa5bffe3b", null ],
-      [ "thisown", "classwiredtiger_1_1_session.html#af5c1f8c931bf1db6a16d3fe8c5f3aaf1", null ]
+      [ "this", "classwiredtiger_1_1_session.html#ad3453e7cb4601a5c0c6e512fa5bffe3b", null ]
     ] ],
     [ "Connection", "classwiredtiger_1_1_connection.html", [
       [ "__init__", "classwiredtiger_1_1_connection.html#a82c88c844dddc2ff0acca03247d1fa75", null ],
@@ -55,8 +50,7 @@ var group__wt__python =
       [ "load_extension", "classwiredtiger_1_1_connection.html#aa377943ec15f44df582af25f92062d85", null ],
       [ "open_session", "classwiredtiger_1_1_connection.html#a101a315055c064cab278d30aa1b13dab", null ],
       [ "reconfigure", "classwiredtiger_1_1_connection.html#a109a28f176b20dae0735150444ec57d3", null ],
-      [ "this", "classwiredtiger_1_1_connection.html#a970df3076d90edeae53d9c0629bf099e", null ],
-      [ "thisown", "classwiredtiger_1_1_connection.html#a8262d5b28e41e1621a8a668d6e92de3b", null ]
+      [ "this", "classwiredtiger_1_1_connection.html#a970df3076d90edeae53d9c0629bf099e", null ]
     ] ],
     [ "wiredtiger_open", "group__wt__python.html#ga6e5cb1184d8f4e45474c3b2165d078b2", null ],
     [ "wiredtiger_strerror", "group__wt__python.html#ga4b3922901bb5a5363eac84d0130b6a66", null ],
