@@ -71,19 +71,30 @@ $(document).ready(function(){initNavTree('config_strings.html','');});
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="config_intro"></a>
 Introduction</h1>
-<p>Many operations in WiredTiger accept a string to configure options. These strings all have the same format:</p>
+<p>Methods in WiredTiger take a configuration string to provide optional arguments and configure non-standard behaviors. These strings are simple comma-separated lists of <code>"&lt;key&gt;=&lt;value&gt;"</code> pairs, and all have the same format:</p>
 <pre>
   [key['='value]][','[key['='value]]]*
-</pre><p>That is, they are simple comma-separated lists of <code>"&lt;key&gt;=&lt;value&gt;"</code> pairs. If the <code>"=&lt;value&gt;"</code> part is omitted, the value of 1 is assumed.</p>
-<p>To handle more complex configuration, such as specifying a schema, values may be nested lists using parentheses. For example:</p>
-<pre>
-  schema=(keyfmt=S,valuefmt=S,columns=(name,notes))
-</pre><p>Empty configuration strings may be represented in C or C++ by passing <code>NULL</code>.</p>
+</pre><p>For example, a configuration string is used when opening a connection to a database to specify if the database should be created and to set the cache size:</p>
+<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(</div>
+<div class="line">            <span class="stringliteral">&quot;WiredTigerHome&quot;</span>, NULL, <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn);</div>
+</div><!-- fragment --><p> Configuration strings are also used to configure the table schema. For example, to create a table that uses C language strings for keys and values:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
+</div><!-- fragment --><p> To handle more complex schema configuration, such as specifying multiple columns in a table, values are nested using parentheses. For example:</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Create a table with columns: keys are record numbers, values are</span></div>
+<div class="line"><span class="comment">         * (string, signed 32-bit integer, unsigned 16-bit integer).</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=SiH&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;columns=(id,department,salary,year-started)&quot;</span>);</div>
+</div><!-- fragment --><p> If no value is specified for an integer key, a default value of 1 is assumed.</p>
+<p>Configuration strings are processed in order from left to right, with later settings overriding earlier ones (unless multiple settings for a key are supported by the method).</p>
 <p>Superfluous commas and whitespace in the configuration string are ignored (including at the beginning and end of the string), so it is always safe to combine two configuration strings by concatenating them with a comma in between.</p>
-<p>Keys are processed in order from left to right, with later settings overriding earlier ones unless multiple settings for a key are permitted.</p>
+<p>Empty configuration strings may be represented in C or C++ by passing <code>NULL</code>.</p>
 <h1><a class="anchor" id="config_json"></a>
-JSON compatibility</h1>
-<p>The parser for configuration strings will accept additional formatting as follows:</p>
+JavaScript Object Notation (JSON) compatibility</h1>
+<p>WiredTiger configuration strings are compatible with <a href="http://www.json.org/">JavaScript Object Notation (JSON)</a>, and will accept additional formatting as follows:</p>
 <ul>
 <li>parentheses may be round or square brackets or curly braces: <code>'()'</code>, <code>'[]'</code> or <code>'{}'</code></li>
 <li>the whole configuration string may optionally be wrapped in parentheses</li>
@@ -101,31 +112,13 @@ JSON compatibility</h1>
 <div class="line">    <span class="stringliteral">&quot;colgroup.population&quot;</span> : [<span class="stringliteral">&quot;population&quot;</span>],</div>
 <div class="line">    <span class="stringliteral">&quot;index.country_year&quot;</span> : [<span class="stringliteral">&quot;country&quot;</span>, <span class="stringliteral">&quot;year&quot;</span>]</div>
 <div class="line">})</div>
-</div><!-- fragment --><h1><a class="anchor" id="config_examples"></a>
-Code samples</h1>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>improve the example</dd></dl>
-<p>Open a connection to a database, creating it if it does not exist and set a cache size of 500MB, then open a session in the database:</p>
-<div class="fragment"><div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn)) != 0)</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));</div>
-</div><!-- fragment --><p> Create a table that uses C language strings for keys and values:</p>
-<div class="fragment"><div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(conn, NULL, NULL, &amp;session);</div>
-<div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:access&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
-</div><!-- fragment --><p> Walk a transactional cursor through the table:</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">begin_transaction</a>(session, <span class="stringliteral">&quot;priority=100,name=mytxn&quot;</span>);</div>
-<div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;config:&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
-<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;key);</div>
-<div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;value);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;configuration value: %s = %s\n&quot;</span>, key, value);</div>
-<div class="line">        }</div>
-<div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);</div>
+</div><!-- fragment --><p>Because JSON compatibility allows colons to be used as key/value separators, WiredTiger URIs may require quoting. For example, the following <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a> call specifies a set of URIs as checkpoint targets, using double-quote characters to keep the parser from treating the colon characters as JSON name/value separators:</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Checkpoint a list of objects.</span></div>
+<div class="line"><span class="comment">         * JSON parsing requires quoting the list of target URIs.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = session-&gt;</div>
+<div class="line">            checkpoint(session, <span class="stringliteral">&quot;target=(\&quot;table:table1\&quot;,\&quot;table:table2\&quot;)&quot;</span>);</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

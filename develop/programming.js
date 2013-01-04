@@ -8,8 +8,7 @@ var programming =
     ] ],
     [ "Configuration Strings", "config_strings.html", [
       [ "Introduction", "config_strings.html#config_intro", null ],
-      [ "JSON compatibility", "config_strings.html#config_json", null ],
-      [ "Code samples", "config_strings.html#config_examples", null ]
+      [ "JavaScript Object Notation (JSON) compatibility", "config_strings.html#config_json", null ]
     ] ],
     [ "Error handling", "error_handling.html", null ],
     [ "Cursors", "cursors.html", "cursors" ],

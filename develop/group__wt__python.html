@@ -461,10 +461,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>wiredtiger_open(home, config) -&gt; int </p>
-<p>Open a connection to a database.  <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *conn;</div>
-<div class="line"></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(</div>
-<div class="line">            <span class="stringliteral">&quot;WiredTigerHome&quot;</span>, NULL, <span class="stringliteral">&quot;create,transactional&quot;</span>, &amp;conn);</div>
+<p>Open a connection to a database.  <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(</div>
+<div class="line">            <span class="stringliteral">&quot;WiredTigerHome&quot;</span>, NULL, <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>

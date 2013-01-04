@@ -129,11 +129,10 @@ var NAVTREEINDEX0 =
 "compression.html#compression_snappy":[0,2,12,1],
 "compression.html#compression_upgrading":[0,2,12,2],
 "config_strings.html":[0,2,1],
-"config_strings.html#config_examples":[0,2,1,2],
 "config_strings.html#config_intro":[0,2,1,0],
 "config_strings.html#config_json":[0,2,1,1],
-"cursor_ops.html":[0,2,3,4],
 "cursor_ops.html":[0,2,3,5,1],
+"cursor_ops.html":[0,2,3,4],
 "cursor_ops.html#cursor_closing":[0,2,3,4,1],
 "cursor_ops.html#cursor_closing":[0,2,3,5,1,1],
 "cursor_ops.html#cursor_error":[0,2,3,4,4],
@@ -249,5 +248,6 @@ var NAVTREEINDEX0 =
 "group__wt.html#ga84207e07606c0ac409e4227e969c0017":[2,0,107],
 "group__wt.html#ga85b86b7210be0ae6fb6688dedf0f8c43":[2,0,67],
 "group__wt.html#ga89fc3c2ab4ee14451d9adf0b608ed4b5":[2,0,39],
-"group__wt.html#ga8bacfcb1989b797fcc50f12ea7696ecc":[2,0,33]
+"group__wt.html#ga8bacfcb1989b797fcc50f12ea7696ecc":[2,0,33],
+"group__wt.html#ga8c3e1ba9bffaf856f43b8690bcc97dbe":[2,0,46]
 };

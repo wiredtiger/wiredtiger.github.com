@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"group__wt.html#ga8c3e1ba9bffaf856f43b8690bcc97dbe":[2,0,46],
 "group__wt.html#ga91ac734607500ed665f6192fb3ac6d34":[2,0,38],
 "group__wt.html#ga938bad149669551b3f0e921dd1bde5d5":[2,0,58],
 "group__wt.html#ga94f3c473b10646f7ed3d047e275786db":[2,0,30],
@@ -110,8 +109,8 @@ var NAVTREEINDEX1 =
 "schema.html#schema_key_and_value_formats":[0,2,5,3],
 "security.html":[0,2,16],
 "security.html":[0,5,4],
-"security.html#directory_permissions":[0,5,4,0],
 "security.html#directory_permissions":[0,2,16,0],
+"security.html#directory_permissions":[0,5,4,0],
 "security.html#environment_variables":[0,2,16,2],
 "security.html#environment_variables":[0,5,4,2],
 "security.html#file_permissions":[0,5,4,1],
