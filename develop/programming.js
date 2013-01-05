@@ -16,7 +16,7 @@ var programming =
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
     [ "Schemas", "schema.html", "schema" ],
-    [ "File formats", "file_formats.html", "file_formats" ],
+    [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],
       [ "Description of LSM trees", "lsm.html#lsm_description", null ],
