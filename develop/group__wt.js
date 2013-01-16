@@ -164,6 +164,7 @@ var group__wt =
     [ "WT_STAT_DSRC_REC_SPLIT_INTL", "group__wt.html#ga5e609a1a469e6bbfcfca882e1532ba50", null ],
     [ "WT_STAT_DSRC_REC_SPLIT_LEAF", "group__wt.html#ga84207e07606c0ac409e4227e969c0017", null ],
     [ "WT_STAT_DSRC_REC_WRITTEN", "group__wt.html#gab67e2420d620c0cb42569dacd88d39cb", null ],
+    [ "WT_STAT_DSRC_SESSION_COMPACT", "group__wt.html#gae3a08df82d5b3571c61bed609980f845", null ],
     [ "WT_STAT_DSRC_TXN_UPDATE_CONFLICT", "group__wt.html#gab3edfe41012927e52357fc5a723b4e85", null ],
     [ "WT_STAT_DSRC_TXN_WRITE_CONFLICT", "group__wt.html#ga3ecf7542243d8e125d8e31b85c509d0b", null ],
     [ "wiredtiger_open", "group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed", null ],
