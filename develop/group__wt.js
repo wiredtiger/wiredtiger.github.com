@@ -123,6 +123,7 @@ var group__wt =
     [ "WT_STAT_DSRC_BTREE_COMPACT_REWRITE", "group__wt.html#ga4c9e3f8e923ee1ead8b217fd68d21a7f", null ],
     [ "WT_STAT_DSRC_BTREE_ENTRIES", "group__wt.html#ga2f77a9a08f6d5b6a848950b34e940fb8", null ],
     [ "WT_STAT_DSRC_BTREE_FIXED_LEN", "group__wt.html#ga85b86b7210be0ae6fb6688dedf0f8c43", null ],
+    [ "WT_STAT_DSRC_BTREE_MAXIMUM_DEPTH", "group__wt.html#gafb4226554ecfbd0ee3b16c4db04213a3", null ],
     [ "WT_STAT_DSRC_BTREE_MAXINTLITEM", "group__wt.html#gab55322767ba6c0fbf8ffb933fc0a78f4", null ],
     [ "WT_STAT_DSRC_BTREE_MAXINTLPAGE", "group__wt.html#ga22de92ecc40b89e5da9cf61ff2189c81", null ],
     [ "WT_STAT_DSRC_BTREE_MAXLEAFITEM", "group__wt.html#ga46d59ac6c0cd06b56f96d9f79929bc65", null ],
