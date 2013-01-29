@@ -1,9 +1,10 @@
 var classwiredtiger_1_1_cursor =
 [
     [ "__init__", "classwiredtiger_1_1_cursor.html#a9f958bb88be84925174aaad0ed3fcd0c", null ],
+    [ "__getitem__", "classwiredtiger_1_1_cursor.html#af3d4d481a63b9fdf7c7fbda76a765faa", null ],
     [ "__iter__", "classwiredtiger_1_1_cursor.html#a922487ba5a4f33189ebe734f2fc32ba8", null ],
     [ "close", "classwiredtiger_1_1_cursor.html#a8d037500ab0d9a89411c5a00a7d6d6f7", null ],
-    [ "equals", "classwiredtiger_1_1_cursor.html#aba732b2e8a0e08390abc3c4e7f6913c4", null ],
+    [ "compare", "classwiredtiger_1_1_cursor.html#a497fb791b13995032e019e1db539e3d0", null ],
     [ "get_key", "classwiredtiger_1_1_cursor.html#a1e7a878d3d84c2fbb5ca9edc808ec1a8", null ],
     [ "get_keys", "classwiredtiger_1_1_cursor.html#af4fcf5c8d46a5a25ebc039962d53a8a8", null ],
     [ "get_value", "classwiredtiger_1_1_cursor.html#a5a0b58f2e2a11ec5bc964f1ce256097e", null ],
