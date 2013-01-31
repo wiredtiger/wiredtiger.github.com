@@ -77,6 +77,19 @@ Cache size</h1>
 <div class="line">            <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn)) != 0)</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));</div>
+</div><!-- fragment --> <h1><a class="anchor" id="tuning_memory_allocation"></a>
+Memory allocation</h1>
+<p>The performance of heavily-threaded WiredTiger applications can be dominated by memory allocation because the WiredTiger engine has to free and re-allocate memory as part of many queries. Replacing the system's malloc implementation with one that has better threaded performance (for example, Google's <a href="http://goog-perftools.sourceforge.net/doc/tcmalloc.html">tcmalloc</a>, or <a href="http://www.canonware.com/jemalloc">jemalloc</a>), can dramatically improve throughput.</p>
+<h1><a class="anchor" id="tuning_read_only_objects"></a>
+Read-only objects</h1>
+<p>Cursors opened on checkpoints (either named, or using the special "last
+checkpoint" name "WiredTigerCheckpoint") are read-only objects. Unless memory mapping is configured off (using the "mmap" configuration string to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>), read-only objects are mapped into process memory instead of being read through the WiredTiger cache. Using read-only objects where possible minimizes the amount of buffer cache memory required by WiredTiger applications and the work required for buffer cache management, as well as reducing the number of memory copies from the operating system buffer cache into application memory.</p>
+<p>To open a named checkpoint, use the configuration string "checkpoint" to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method: </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;checkpoint=midnight&quot;</span>, &amp;cursor);</div>
+</div><!-- fragment --><p> To open the last checkpoint taken in the object, use the configuration string "checkpoint" with the name "WiredTigerCheckpoint" to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method: </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;checkpoint=WiredTigerCheckpoint&quot;</span>, &amp;cursor);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="tuning_cache_resident"></a>
 Cache resident objects</h1>
 <p>Cache resident objects (objects never considered for the purposes of cache eviction), can be configured with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> "cache_resident" configuration string.</p>
@@ -100,12 +113,27 @@ Page and overflow sizes</h1>
 <div class="line">            <span class="stringliteral">&quot;key_format=u,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;internal_page_max=32KB,internal_item_max=1KB,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;leaf_page_max=1MB,leaf_item_max=32KB&quot;</span>);</div>
-</div><!-- fragment --> <h1><a class="anchor" id="tuning_memory_allocation"></a>
-Memory allocation</h1>
-<p>I/O intensive threaded applications, where the working set does not fit into the available cache, can be dominated by memory allocation because the WiredTiger engine has to free and re-allocate memory as part of many queries. Replacing the system's malloc implementation with one that has better threaded performance (for example, Google's <a href="http://goog-perftools.sourceforge.net/doc/tcmalloc.html">tcmalloc</a>, or <a href="http://www.canonware.com/jemalloc">jemalloc</a>), can dramatically improve throughput.</p>
-<h1><a class="anchor" id="tuning_checksums"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="tuning_checksums"></a>
 Checksums</h1>
-<p>WiredTiger configures checksums on file reads and writes, by default. In read-only applications, or when file compression provides any necessary checksum functionality, or when using backing storage systems where blocks require no validation, performance can be increased by turning off checksum support when calling the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method.</p>
+<p>WiredTiger checksums file reads and writes, by default. In read-only applications, or when file compression provides any necessary checksum functionality, or when using backing storage systems where blocks require no validation, performance can be increased by turning off checksum support when calling the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method.</p>
+<p>Checksums can be configured to be "off" or "on", as well as "uncompressed". The "uncompressed" configuration checksums blocks not otherwise protected by compression. For example, in a system where the compression algorithms provide sufficient protection against corruption, and when writing a block which is too small to be usefully compressed, setting the checksum configuration value to "uncompressed" causes WiredTiger to checksum the blocks which are not compressed:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S,checksum=uncompressed&quot;</span>);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="tuning_direct_io"></a>
+Direct I/O</h1>
+<p>WiredTiger optionally supports direct I/O, based on the non-standard <code>O_DIRECT</code> flag to the POSIX 1003.1 open system call. Configuring direct I/O may be useful for applications wanting to minimize the operating system cache effects of I/O to and from WiredTiger's buffer cache.</p>
+<p>Direct I/O is configured using the "direct_io" configuration string to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function. An example of configuring direct I/O for WiredTiger's data files:</p>
+<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,direct_io=[data]&quot;</span>, &amp;conn);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="tuning_compression"></a>
+Compression</h1>
+<p>WiredTiger configures key prefix compression for row-store objects, and column-store compression for both row-store and column-store objects, by default. These forms of compression minimize in-memory and on-disk space, but at some CPU cost when rows are read and written. Turning these forms of compression off may increase application throughput.</p>
+<p>For example, turning off row-store key prefix compression:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S,prefix_compression=false&quot;</span>);</div>
+</div><!-- fragment --><p> For example, turning off row-store or column-store dictionary compression:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S,dictionary=false&quot;</span>);</div>
+</div><!-- fragment --><p> WiredTiger does not configure Huffman encoding or block compression by default, but these forms of compression can also impact overall throughput. See <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information.</p>
 <h1><a class="anchor" id="tuning_statistics"></a>
 Performance monitoring with statistics</h1>
 <p>WiredTiger maintains a variety of statistics that can be read with a cursor. See <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for general information about accessing statistics.</p>

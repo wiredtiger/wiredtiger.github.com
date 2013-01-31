@@ -150,6 +150,10 @@ Error returns</h2></td></tr>
 Connection statistics</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp0d9397794d2c87537349cf396b2e3fa2"></a><a class="anchor" id="statistics_keys"></a><a class="anchor" id="statistics_conn"></a>Statistics are accessed through cursors with <code>"statistics:"</code> URIs. Individual statistics can be queried through the cursor using the following keys. See <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for more information. </p>
 </td></tr>
+<tr class="memitem:ga902d17d446dc12fd91bffca8f2270884"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga902d17d446dc12fd91bffca8f2270884"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga902d17d446dc12fd91bffca8f2270884">WT_STAT_CONN_BLOCK_BYTE_MAP_READ</a></td></tr>
+<tr class="memdesc:ga902d17d446dc12fd91bffca8f2270884"><td class="mdescLeft">&#160;</td><td class="mdescRight">mapped bytes read by the block manager <br/></td></tr>
+<tr class="separator:ga902d17d446dc12fd91bffca8f2270884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga178a70adb0b784ec0675071df67379b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga178a70adb0b784ec0675071df67379b9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga178a70adb0b784ec0675071df67379b9">WT_STAT_CONN_BLOCK_BYTE_READ</a></td></tr>
 <tr class="memdesc:ga178a70adb0b784ec0675071df67379b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">bytes read by the block manager <br/></td></tr>
@@ -158,6 +162,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad53e03f089bc873e93f65be5b8a73585">WT_STAT_CONN_BLOCK_BYTE_WRITE</a></td></tr>
 <tr class="memdesc:gad53e03f089bc873e93f65be5b8a73585"><td class="mdescLeft">&#160;</td><td class="mdescRight">bytes written by the block manager <br/></td></tr>
 <tr class="separator:gad53e03f089bc873e93f65be5b8a73585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade470cf41e9e9e8d086178ed154033e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gade470cf41e9e9e8d086178ed154033e8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gade470cf41e9e9e8d086178ed154033e8">WT_STAT_CONN_BLOCK_MAP_READ</a></td></tr>
+<tr class="memdesc:gade470cf41e9e9e8d086178ed154033e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">mapped blocks read by the block manager <br/></td></tr>
+<tr class="separator:gade470cf41e9e9e8d086178ed154033e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga53e57feada7f17a1693b69f37d9830fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga53e57feada7f17a1693b69f37d9830fc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga53e57feada7f17a1693b69f37d9830fc">WT_STAT_CONN_BLOCK_READ</a></td></tr>
 <tr class="memdesc:ga53e57feada7f17a1693b69f37d9830fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">blocks read by the block manager <br/></td></tr>
@@ -807,6 +815,8 @@ The number of bytes in the data item. </td></tr>
 <td><code>logging</code></td><td>enable logging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>lsm_merge</code></td><td>merge LSM chunks where possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code>mmap</code></td><td>Use memory mapping to access files when possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>multiprocess</code></td><td>permit sharing between processes (will automatically start an RPC server for primary processes and use RPC for secondary processes). <b>Not yet supported in WiredTiger</b>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
