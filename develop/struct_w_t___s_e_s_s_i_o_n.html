@@ -545,7 +545,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>huffman_value</code></td><td>configure Huffman encoding for values. Permitted values are empty (off), <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>internal_item_max</code></td><td>the maximum key size stored on internal nodes, in bytes. If zero, a maximum is calculated to permit at least 8 keys per internal page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>internal_item_max</code></td><td>the largest key stored within an internal node, in bytes. If non-zero, any key larger than the specified size will be stored as an overflow item (which may require additional I/O to access). If zero, a default size is chosen that permits at least 8 keys per internal page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>internal_key_truncate</code></td><td>configure internal key truncation, discarding unnecessary trailing bytes on internal keys (ignored for custom collators).</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
@@ -555,7 +555,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>key_gap</code></td><td>the maximum gap between instantiated keys in a Btree leaf page, constraining the number of keys processed to instantiate a random Btree leaf page key.</td><td>an integer greater than or equal to 0; default <code>10</code>. </td></tr>
 <tr>
-<td><code>leaf_item_max</code></td><td>the maximum key or value size stored on leaf nodes, in bytes. If zero, a size is calculated to permit at least 8 items (values or row store keys) per leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>leaf_item_max</code></td><td>the largest key or value stored within a leaf node, in bytes. If non-zero, any key or value larger than the specified size will be stored as an overflow item (which may require additional I/O to access). If zero, a default size is chosen that permits at least 4 key and value pairs per leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>1MB</code>. </td></tr>
 <tr>
