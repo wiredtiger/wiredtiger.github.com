@@ -15,6 +15,15 @@ var programming =
     [ "Multithreading", "threads.html", [
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
+    [ "Transactions", "transactions.html", [
+      [ "ACID properties", "transactions.html#transactions_acid", null ],
+      [ "Transactional API", "transactions.html#transactions_api", null ],
+      [ "Implicit transactions", "transactions.html#transactions_implicit", null ],
+      [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
+      [ "Isolation levels", "transactions.html#transaction_isolation", null ],
+      [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
+    ] ],
+    [ "Checkpoints", "checkpoints.html", null ],
     [ "Schemas", "schema.html", "schema" ],
     [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
@@ -30,27 +39,19 @@ var programming =
         [ "Transactional access", "lsm.html#lsm_txn", null ]
       ] ]
     ] ],
-    [ "Transactions", "transactions.html", [
-      [ "ACID properties", "transactions.html#transactions_acid", null ],
-      [ "Transactional API", "transactions.html#transactions_api", null ],
-      [ "Implicit transactions", "transactions.html#transactions_implicit", null ],
-      [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
-      [ "Isolation levels", "transactions.html#transaction_isolation", null ],
-      [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
-    ] ],
+    [ "Bulk-load", "bulk_load.html", null ],
     [ "Cache configuration", "cache_configuration.html", [
-      [ "Overview of WiredTiger cache configuration.", "cache_configuration.html#cache_basic", null ],
-      [ "Overview of WiredTiger shared cache configuration.", "cache_configuration.html#shared_cache", null ],
-      [ "Overview of WiredTiger eviction configuration.", "cache_configuration.html#cache_eviction", null ]
+      [ "Cache configuration", "cache_configuration.html#cache_basic", null ],
+      [ "Shared cache configuration", "cache_configuration.html#shared_cache", null ],
+      [ "Eviction configuration", "cache_configuration.html#cache_eviction", null ]
     ] ],
-    [ "Checkpoints", "checkpoints.html", null ],
-    [ "Hot backup", "hot_backup.html", null ],
     [ "Compressors", "compression.html", [
       [ "Using bzip2 compression", "compression.html#compression_bzip2", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],
       [ "Upgrading compression engines", "compression.html#compression_upgrading", null ],
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
+    [ "Hot backup", "hot_backup.html", null ],
     [ "Database Home Directory", "home.html", null ],
     [ "Database Configuration", "database_config.html", [
       [ "WiredTiger.config file", "database_config.html#config_file", null ],

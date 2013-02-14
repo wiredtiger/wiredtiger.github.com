@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Writing WiredTiger applications</title>
+<title>WiredTiger: Bulk-load</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,51 +60,26 @@
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('programming.html','');});
+$(document).ready(function(){initNavTree('bulk_load.html','');});
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Writing WiredTiger applications </div>  </div>
+<div class="title">Bulk-load </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This section covers topics of interest for programmers writing WiredTiger applications:</p>
-<ul>
-<li><a class="el" href="basic_api.html">Getting Started with the API</a></li>
-<li><a class="el" href="config_strings.html">Configuration Strings</a></li>
-<li><a class="el" href="error_handling.html">Error handling</a></li>
-</ul>
-<ul>
-<li><a class="el" href="cursors.html">Cursors</a></li>
-<li><a class="el" href="threads.html">Multithreading</a></li>
-<li><a class="el" href="transactions.html">Transactions</a></li>
-<li><a class="el" href="checkpoints.html">Checkpoints</a></li>
-</ul>
-<ul>
-<li><a class="el" href="schema.html">Schemas</a></li>
-<li><a class="el" href="file_formats.html">File formats and compression</a></li>
-<li><a class="el" href="lsm.html">Log-Structured Merge Trees</a></li>
-</ul>
-<ul>
-<li><a class="el" href="bulk_load.html">Bulk-load</a></li>
-<li><a class="el" href="cache_configuration.html">Cache configuration</a></li>
-<li><a class="el" href="compression.html">Compressors</a></li>
-<li><a class="el" href="hot_backup.html">Hot backup</a></li>
-</ul>
-<ul>
-<li><a class="el" href="home.html">Database Home Directory</a></li>
-<li><a class="el" href="database_config.html">Database Configuration</a></li>
-<li><a class="el" href="name_space.html">Programmatic name spaces</a></li>
-<li><a class="el" href="security.html">Security</a></li>
-<li><a class="el" href="signals.html">Signal handling</a></li>
-<li><a class="el" href="tuning.html">Performance Tuning</a> </li>
-</ul>
+<div class="textblock"><p>WiredTiger cursors can be configured for bulk-load using the <code>bulk</code> configuration keyword to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>.</p>
+<p>Bulk-load is a "fast
+path" for quickly loading a large number of rows. Bulk-load may only be used on newly created objects, and an object being bulk-loaded is not accessible from other cursors.</p>
+<p>Cursors configured for bulk-load only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods.</p>
+<p>When bulk-loading row-store objects, keys must be loaded in sorted order.</p>
+<p>When bulk-loading fixed-length column store objects, the <code>bulk</code> configuration string value <code>bitmap</code> allows chunks of a memory resident bitmap to be loaded directly into an object by passing a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a>, where the size field indicates the number of records in the bitmap (as specified by the object's <code>value_format</code> configuration). Bulk-loaded bitmap values must end on a byte boundary relative to the bit count (except for the last set of values loaded). </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li>
+    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
     <li class="footer">Copyright (c) 2008-2013 WiredTiger, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
