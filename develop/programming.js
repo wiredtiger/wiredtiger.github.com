@@ -10,11 +10,7 @@ var programming =
       [ "Introduction", "config_strings.html#config_intro", null ],
       [ "JavaScript Object Notation (JSON) compatibility", "config_strings.html#config_json", null ]
     ] ],
-    [ "Error handling", "error_handling.html", null ],
     [ "Cursors", "cursors.html", "cursors" ],
-    [ "Multithreading", "threads.html", [
-      [ "Code samples", "threads.html#threads_example", null ]
-    ] ],
     [ "Transactions", "transactions.html", [
       [ "ACID properties", "transactions.html#transactions_acid", null ],
       [ "Transactional API", "transactions.html#transactions_api", null ],
@@ -23,9 +19,8 @@ var programming =
       [ "Isolation levels", "transactions.html#transaction_isolation", null ],
       [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
     ] ],
-    [ "Checkpoints", "checkpoints.html", null ],
+    [ "Error handling", "error_handling.html", null ],
     [ "Schemas", "schema.html", "schema" ],
-    [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],
       [ "Description of LSM trees", "lsm.html#lsm_description", null ],
@@ -39,12 +34,14 @@ var programming =
         [ "Transactional access", "lsm.html#lsm_txn", null ]
       ] ]
     ] ],
+    [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Bulk-load", "bulk_load.html", null ],
     [ "Cache configuration", "cache_configuration.html", [
       [ "Cache configuration", "cache_configuration.html#cache_basic", null ],
       [ "Shared cache configuration", "cache_configuration.html#shared_cache", null ],
       [ "Eviction configuration", "cache_configuration.html#cache_eviction", null ]
     ] ],
+    [ "Checkpoints", "checkpoints.html", null ],
     [ "Compressors", "compression.html", [
       [ "Using bzip2 compression", "compression.html#compression_bzip2", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],
@@ -52,6 +49,9 @@ var programming =
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
     [ "Hot backup", "hot_backup.html", null ],
+    [ "Multithreading", "threads.html", [
+      [ "Code samples", "threads.html#threads_example", null ]
+    ] ],
     [ "Database Home Directory", "home.html", null ],
     [ "Database Configuration", "database_config.html", [
       [ "WiredTiger.config file", "database_config.html#config_file", null ],
