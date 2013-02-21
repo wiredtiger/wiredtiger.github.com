@@ -71,7 +71,7 @@ $(document).ready(function(){initNavTree('statistics_log.html','');});
 <div class="textblock"><p>WiredTiger will optionally log the current database statistics into a file when configured the <code>statistics_log.log</code> configuration string of the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function is set.</p>
 <p>The following example logs statistics every 30 seconds:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(</div>
-<div class="line">            home, NULL, <span class="stringliteral">&quot;create,statistics_log=(log=true,wait=30)&quot;</span>, &amp;conn);</div>
+<div class="line">            home, NULL, <span class="stringliteral">&quot;create,statistics_log=(wait=30)&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Each statistics record is formatted as a space-separated timestamp, unsigned 64-bit value and a variable length string which describes the statistic. For example:</p>
 <div class="fragment"><div class="line">Mar 08 11:38:23 463 pthread mutex condition wait calls</div>
 <div class="line">Mar 08 11:38:23 0 files currently open</div>
@@ -84,7 +84,7 @@ $(document).ready(function(){initNavTree('statistics_log.html','');});
 <p>The following example logs statistics into files named with the month, day and year:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;statistics_log=(log=true,path=\&quot;/log/log.%m.%d.%y\&quot;)&quot;</span>, &amp;conn);</div>
+<div class="line">            <span class="stringliteral">&quot;statistics_log=(wait=120,path=\&quot;/log/log.%m.%d.%y\&quot;)&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> A Python script that parses the default logging output and uses the gnuplot utility to generate Portable Network Graphics (PNG) format graphs is included in the WiredTiger distribution in the file <code>tools/statlog.py</code>. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
