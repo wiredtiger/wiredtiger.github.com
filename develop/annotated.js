@@ -1,14 +1,5 @@
 var annotated =
 [
-    [ "wiredtiger", null, [
-      [ "Cursor", "classwiredtiger_1_1_cursor.html", "classwiredtiger_1_1_cursor" ],
-      [ "Session", "classwiredtiger_1_1_session.html", "classwiredtiger_1_1_session" ],
-      [ "Connection", "classwiredtiger_1_1_connection.html", "classwiredtiger_1_1_connection" ],
-      [ "stat", "classwiredtiger_1_1stat.html", [
-        [ "conn", "classwiredtiger_1_1stat.html#classwiredtiger_1_1stat_1_1conn", null ],
-        [ "dsrc", "classwiredtiger_1_1stat.html#classwiredtiger_1_1stat_1_1dsrc", null ]
-      ] ]
-    ] ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", "struct_w_t___c_o_l_l_a_t_o_r" ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", "struct_w_t___c_o_m_p_r_e_s_s_o_r" ],
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", "struct_w_t___c_o_n_n_e_c_t_i_o_n" ],

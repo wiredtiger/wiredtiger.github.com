@@ -57,7 +57,7 @@ var programming =
       [ "WiredTiger.config file", "database_config.html#config_file", null ],
       [ "WIREDTIGER_CONFIG environment variable", "database_config.html#config_env", null ]
     ] ],
-    [ "Programmatic name spaces", "name_space.html", [
+    [ "Name spaces", "name_space.html", [
       [ "Process' environment name space", "name_space.html#env", null ],
       [ "C language name space", "name_space.html#c", null ],
       [ "File system name space", "name_space.html#filename", null ],

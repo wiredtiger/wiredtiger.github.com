@@ -190,7 +190,7 @@ Columns</h1>
 <div class="line"><span class="comment">         * (string, signed 32-bit integer, unsigned 16-bit integer).</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=SiH&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=SiH,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;columns=(id,department,salary,year-started)&quot;</span>);</div>
 </div><!-- fragment --><p> In this example, the key's column name is <code>id</code>, and the value's column names are <code>department</code>, <code>salary</code>, and <code>year-started</code> (where <code>id</code> maps to the column format <code>r</code>, <code>department</code> maps to the column value format <code>S</code>, <code>salary</code> maps to the value format <code>i</code> and <code>year-started</code> maps to the value format <code>H</code>).</p>
 <p>Once the table is created, there is no need to call <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> during subsequent runs of the application. However, it's worthwhile making the call anyway as it both verifies the table exists and the table schema matches the schema expected by the application.</p>

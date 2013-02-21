@@ -84,7 +84,7 @@ Introduction</h1>
 <div class="line"><span class="comment">         * (string, signed 32-bit integer, unsigned 16-bit integer).</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=SiH&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=SiH,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;columns=(id,department,salary,year-started)&quot;</span>);</div>
 </div><!-- fragment --><p> Values of type of "boolean" can be set to any of <code>false</code>, <code>true</code>, <code>0</code> or <code>1</code>. If no value is specified for a key, the value <code>1</code> is implied. For example, all of the following forms of the <code>overwrite</code> configuration string are identical:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL,</div>
