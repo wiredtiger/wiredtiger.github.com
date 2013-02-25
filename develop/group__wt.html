@@ -840,6 +840,14 @@ The number of bytes in the data item. </td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either a cache_size or a shared_cache not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
+<td><code>checkpoint = (</code></td><td>periodically checkpoint the database.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>the checkpoint name.</td><td>a string; default <code>"WiredTigerCheckpoint"</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each checkpoint; setting this value configures periodic checkpoints.</td><td>an integer between 1 and 100000; default <code>0</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
