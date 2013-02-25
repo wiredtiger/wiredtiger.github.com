@@ -52,6 +52,10 @@ var group__wt__python =
       [ "reconfigure", "classwiredtiger_1_1_connection.html#a109a28f176b20dae0735150444ec57d3", null ],
       [ "this", "classwiredtiger_1_1_connection.html#a970df3076d90edeae53d9c0629bf099e", null ]
     ] ],
+    [ "stat", "group__wt__python.html#classwiredtiger_1_1stat", [
+      [ "conn", "group__wt__python.html#classwiredtiger_1_1stat_1_1conn", null ],
+      [ "dsrc", "group__wt__python.html#classwiredtiger_1_1stat_1_1dsrc", null ]
+    ] ],
     [ "wiredtiger_open", "group__wt__python.html#ga6e5cb1184d8f4e45474c3b2165d078b2", null ],
     [ "wiredtiger_strerror", "group__wt__python.html#ga4b3922901bb5a5363eac84d0130b6a66", null ],
     [ "wiredtiger_version", "group__wt__python.html#ga1958ceeacb3f9cdecc0c83f8199072b5", null ]

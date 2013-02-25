@@ -6,6 +6,7 @@ var NAVTREE =
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Class List", "annotated.html", "annotated" ],
+    [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
     [ "Class Members", "functions.html", [
       [ "All", "functions.html", null ],
       [ "Functions", "functions_func.html", null ],
@@ -18,8 +19,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"admin.html",
-"group__wt.html#gae05160290d3496e9de487c66a01fcdee"
+".html",
+"group__wt.html#ga1ba4c12657409038488d86e1af93963b",
+"struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

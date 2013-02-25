@@ -1,5 +1,25 @@
 var annotated =
 [
+    [ "com", null, [
+      [ "wiredtiger", null, [
+        [ "db", null, [
+          [ "PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream" ],
+          [ "PackInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream" ],
+          [ "PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream" ],
+          [ "WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception" ],
+          [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ]
+        ] ]
+      ] ]
+    ] ],
+    [ "wiredtiger", null, [
+      [ "Cursor", "classwiredtiger_1_1_cursor.html", "classwiredtiger_1_1_cursor" ],
+      [ "Session", "classwiredtiger_1_1_session.html", "classwiredtiger_1_1_session" ],
+      [ "Connection", "classwiredtiger_1_1_connection.html", "classwiredtiger_1_1_connection" ],
+      [ "stat", "group__wt__python.html#classwiredtiger_1_1stat", [
+        [ "conn", "group__wt__python.html#classwiredtiger_1_1stat_1_1conn", null ],
+        [ "dsrc", "group__wt__python.html#classwiredtiger_1_1stat_1_1dsrc", null ]
+      ] ]
+    ] ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", "struct_w_t___c_o_l_l_a_t_o_r" ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", "struct_w_t___c_o_m_p_r_e_s_s_o_r" ],
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", "struct_w_t___c_o_n_n_e_c_t_i_o_n" ],

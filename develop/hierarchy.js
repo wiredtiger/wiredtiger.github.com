@@ -1,13 +1,21 @@
 var hierarchy =
 [
+    [ "com.wiredtiger.db.PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", null ],
+    [ "com.wiredtiger.db.PackInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html", null ],
+    [ "com.wiredtiger.db.PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html", null ],
+    [ "Exception", null, [
+      [ "com.wiredtiger.db.WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", [
+        [ "com.wiredtiger.db.WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", null ]
+      ] ]
+    ] ],
     [ "object", null, [
       [ "wiredtiger.Connection", "classwiredtiger_1_1_connection.html", null ],
       [ "wiredtiger.Cursor", "classwiredtiger_1_1_cursor.html", null ],
       [ "wiredtiger.Session", "classwiredtiger_1_1_session.html", null ]
     ] ],
-    [ "wiredtiger.stat", "classwiredtiger_1_1stat.html", null ],
-    [ "wiredtiger.stat.conn", "classwiredtiger_1_1stat.html#classwiredtiger_1_1stat_1_1conn", null ],
-    [ "wiredtiger.stat.dsrc", "classwiredtiger_1_1stat.html#classwiredtiger_1_1stat_1_1dsrc", null ],
+    [ "wiredtiger.stat", "group__wt__python.html#classwiredtiger_1_1stat", null ],
+    [ "wiredtiger.stat.conn", "group__wt__python.html#classwiredtiger_1_1stat_1_1conn", null ],
+    [ "wiredtiger.stat.dsrc", "group__wt__python.html#classwiredtiger_1_1stat_1_1dsrc", null ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", null ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", null ],
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", null ],
