@@ -3,10 +3,17 @@ var annotated =
     [ "com", null, [
       [ "wiredtiger", null, [
         [ "db", null, [
+          [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", "classcom_1_1wiredtiger_1_1db_1_1_connection" ],
+          [ "Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", "classcom_1_1wiredtiger_1_1db_1_1_cursor" ],
           [ "PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream" ],
           [ "PackInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream" ],
           [ "PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream" ],
+          [ "SearchStatus", "enumcom_1_1wiredtiger_1_1db_1_1_search_status.html", "enumcom_1_1wiredtiger_1_1db_1_1_search_status" ],
+          [ "Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html", "classcom_1_1wiredtiger_1_1db_1_1_session" ],
+          [ "wiredtiger", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger.html", null ],
+          [ "wiredtigerConstants", "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html", null ],
           [ "WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception" ],
+          [ "wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
           [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ]
         ] ]
       ] ]

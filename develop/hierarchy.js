@@ -1,8 +1,16 @@
 var hierarchy =
 [
+    [ "com.wiredtiger.db.Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", null ],
+    [ "com.wiredtiger.db.Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", null ],
     [ "com.wiredtiger.db.PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", null ],
     [ "com.wiredtiger.db.PackInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html", null ],
     [ "com.wiredtiger.db.PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html", null ],
+    [ "com.wiredtiger.db.SearchStatus", "enumcom_1_1wiredtiger_1_1db_1_1_search_status.html", null ],
+    [ "com.wiredtiger.db.Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html", null ],
+    [ "com.wiredtiger.db.wiredtigerConstants", "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html", [
+      [ "com.wiredtiger.db.wiredtiger", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger.html", null ]
+    ] ],
+    [ "com.wiredtiger.db.wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
     [ "Exception", null, [
       [ "com.wiredtiger.db.WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", [
         [ "com.wiredtiger.db.WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", null ]
