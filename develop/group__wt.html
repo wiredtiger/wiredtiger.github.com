@@ -111,6 +111,15 @@ Functions</h2></td></tr>
 <tr class="memitem:gac95e70a24d09cf6928398512990e1474"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a> (int err)</td></tr>
 <tr class="memdesc:gac95e70a24d09cf6928398512990e1474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX 1003.1-2001 function strerror.  <a href="#gac95e70a24d09cf6928398512990e1474">More...</a><br/></td></tr>
 <tr class="separator:gac95e70a24d09cf6928398512990e1474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a> (int *majorp, int *minorp, int *patchp)</td></tr>
+<tr class="memdesc:ga1b29826f4b418891d67e86850f7cbcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get version information.  <a href="#ga1b29826f4b418891d67e86850f7cbcf4">More...</a><br/></td></tr>
+<tr class="separator:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Data packing and unpacking</h2></td></tr>
+<tr class="memitem:gac4f8b4621bcafad9db744e87be24a798"><td class="memItemLeft" align="right" valign="top">typedef struct __wt_pack_stream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a></td></tr>
+<tr class="memdesc:gac4f8b4621bcafad9db744e87be24a798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Streaming interface to packing.  <a href="#gac4f8b4621bcafad9db744e87be24a798">More...</a><br/></td></tr>
+<tr class="separator:gac4f8b4621bcafad9db744e87be24a798"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga58d055cb4d054715bebd58a2cb713b2d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d">wiredtiger_struct_pack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *buffer, size_t size, const char *format,...)</td></tr>
 <tr class="memdesc:ga58d055cb4d054715bebd58a2cb713b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a structure into a buffer.  <a href="#ga58d055cb4d054715bebd58a2cb713b2d">More...</a><br/></td></tr>
 <tr class="separator:ga58d055cb4d054715bebd58a2cb713b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,9 +129,39 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const void *buffer, size_t size, const char *format,...)</td></tr>
 <tr class="memdesc:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a structure from a buffer.  <a href="#ga1db8298185374dbb61b398a4e9a3d1c8">More...</a><br/></td></tr>
 <tr class="separator:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a> (int *majorp, int *minorp, int *patchp)</td></tr>
-<tr class="memdesc:ga1b29826f4b418891d67e86850f7cbcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get version information.  <a href="#ga1b29826f4b418891d67e86850f7cbcf4">More...</a><br/></td></tr>
-<tr class="separator:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d1cae063863dd7f48a48b5cb65be253"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253">wiredtiger_pack_start</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format, void *buffer, size_t size, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **psp)</td></tr>
+<tr class="memdesc:ga7d1cae063863dd7f48a48b5cb65be253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a packing operation into a buffer with the given format string.  <a href="#ga7d1cae063863dd7f48a48b5cb65be253">More...</a><br/></td></tr>
+<tr class="separator:ga7d1cae063863dd7f48a48b5cb65be253"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad93973bfd0e21ba845878ba3c4b97d96"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad93973bfd0e21ba845878ba3c4b97d96">wiredtiger_unpack_start</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format, const void *buffer, size_t size, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **psp)</td></tr>
+<tr class="memdesc:gad93973bfd0e21ba845878ba3c4b97d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start an unpacking operation from a buffer with the given format string.  <a href="#gad93973bfd0e21ba845878ba3c4b97d96">More...</a><br/></td></tr>
+<tr class="separator:gad93973bfd0e21ba845878ba3c4b97d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad506573d475f00f3e6aae9ce36d8bc53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad506573d475f00f3e6aae9ce36d8bc53">wiredtiger_pack_close</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, size_t *usedp)</td></tr>
+<tr class="memdesc:gad506573d475f00f3e6aae9ce36d8bc53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a packing stream.  <a href="#gad506573d475f00f3e6aae9ce36d8bc53">More...</a><br/></td></tr>
+<tr class="separator:gad506573d475f00f3e6aae9ce36d8bc53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga94e4c63cd5cc0a714ede12431a8e228c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga94e4c63cd5cc0a714ede12431a8e228c">wiredtiger_pack_item</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *item)</td></tr>
+<tr class="memdesc:ga94e4c63cd5cc0a714ede12431a8e228c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack an item into a packing stream.  <a href="#ga94e4c63cd5cc0a714ede12431a8e228c">More...</a><br/></td></tr>
+<tr class="separator:ga94e4c63cd5cc0a714ede12431a8e228c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad939363f1fa51697062d10d06e42fcca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad939363f1fa51697062d10d06e42fcca">wiredtiger_pack_int</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, int64_t i)</td></tr>
+<tr class="memdesc:gad939363f1fa51697062d10d06e42fcca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a signed integer into a packing stream.  <a href="#gad939363f1fa51697062d10d06e42fcca">More...</a><br/></td></tr>
+<tr class="separator:gad939363f1fa51697062d10d06e42fcca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1039d39f6e34ed3ab0964f581b4cd013"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1039d39f6e34ed3ab0964f581b4cd013">wiredtiger_pack_str</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, const char *s)</td></tr>
+<tr class="memdesc:ga1039d39f6e34ed3ab0964f581b4cd013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a string into a packing stream.  <a href="#ga1039d39f6e34ed3ab0964f581b4cd013">More...</a><br/></td></tr>
+<tr class="separator:ga1039d39f6e34ed3ab0964f581b4cd013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ed9313371aeee5334edb751df23992e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2ed9313371aeee5334edb751df23992e">wiredtiger_pack_uint</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, uint64_t u)</td></tr>
+<tr class="memdesc:ga2ed9313371aeee5334edb751df23992e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack an unsigned integer into a packing stream.  <a href="#ga2ed9313371aeee5334edb751df23992e">More...</a><br/></td></tr>
+<tr class="separator:ga2ed9313371aeee5334edb751df23992e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade96c761e77521b46ba9d5fc455b3486"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gade96c761e77521b46ba9d5fc455b3486">wiredtiger_unpack_item</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *item)</td></tr>
+<tr class="memdesc:gade96c761e77521b46ba9d5fc455b3486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack an item from a packing stream.  <a href="#gade96c761e77521b46ba9d5fc455b3486">More...</a><br/></td></tr>
+<tr class="separator:gade96c761e77521b46ba9d5fc455b3486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6bb9dbe835af62495c1de4f31eb6ec49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6bb9dbe835af62495c1de4f31eb6ec49">wiredtiger_unpack_int</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, int64_t *ip)</td></tr>
+<tr class="memdesc:ga6bb9dbe835af62495c1de4f31eb6ec49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a signed integer from a packing stream.  <a href="#ga6bb9dbe835af62495c1de4f31eb6ec49">More...</a><br/></td></tr>
+<tr class="separator:ga6bb9dbe835af62495c1de4f31eb6ec49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf46b9dd314c216293141b26341b7b0e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf46b9dd314c216293141b26341b7b0e">wiredtiger_unpack_str</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, const char **sp)</td></tr>
+<tr class="memdesc:gacf46b9dd314c216293141b26341b7b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a string from a packing stream.  <a href="#gacf46b9dd314c216293141b26341b7b0e">More...</a><br/></td></tr>
+<tr class="separator:gacf46b9dd314c216293141b26341b7b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8d121ab997028a85598e73771609bb4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad8d121ab997028a85598e73771609bb4">wiredtiger_unpack_uint</a> (<a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, uint64_t *up)</td></tr>
+<tr class="memdesc:gad8d121ab997028a85598e73771609bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack an unsigned integer from a packing stream.  <a href="#gad8d121ab997028a85598e73771609bb4">More...</a><br/></td></tr>
+<tr class="separator:gad8d121ab997028a85598e73771609bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Error returns</h2></td></tr>
@@ -789,6 +828,22 @@ The number of bytes in the data item. </td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="gac4f8b4621bcafad9db744e87be24a798"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct __wt_pack_stream <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Streaming interface to packing. </p>
+<p>This allows applications to pack or unpack records one field at a time. This is an opaque handle returned by <a class="el" href="group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253" title="Start a packing operation into a buffer with the given format string.">wiredtiger_pack_start</a> or <a class="el" href="group__wt.html#gad93973bfd0e21ba845878ba3c4b97d96" title="Start an unpacking operation from a buffer with the given format string.">wiredtiger_unpack_start</a>. It must be closed with <a class="el" href="group__wt.html#gad506573d475f00f3e6aae9ce36d8bc53" title="Close a packing stream.">wiredtiger_pack_close</a>. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="ga9e6adae3fc6964ef837a62795c7840ed"></a>
 <div class="memitem">
@@ -830,9 +885,9 @@ The number of bytes in the data item. </td></tr>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>
-    <tr><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, a builtin error handler is installed that writes error messages to stderr </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+    <tr><td class="paramdir"></td><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, a builtin error handler is installed that writes error messages to stderr </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
@@ -910,13 +965,251 @@ The number of bytes in the data item. </td></tr>
 <td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"shared_cache"</code>, <code>"ckpt"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"lsm"</code>, <code>"mutex"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"verify"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 Additionally, if a file named <code>WiredTiger.config</code> appears in the WiredTiger home directory, it is read for configuration values (see <a class="el" href="database_config.html#config_file">WiredTiger.config file</a> for details). Configuration values specified in the <code>config</code> argument to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function override configuration values specified in the <code>WiredTiger.config</code> file. </td></tr>
-    <tr><td class="paramname">connectionp</td><td>A pointer to the newly opened connection handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">connectionp</td><td>A pointer to the newly opened connection handle </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a3">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a3">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a3">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a15">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a5">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a2">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a2">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a2">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a3">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a17">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a8">ex_thread.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="gad506573d475f00f3e6aae9ce36d8bc53"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_pack_close </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>usedp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Close a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">usedp</td><td>the number of bytes in the buffer used by the stream </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad939363f1fa51697062d10d06e42fcca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_pack_int </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pack a signed integer into a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">i</td><td>a signed integer to pack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga94e4c63cd5cc0a714ede12431a8e228c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_pack_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pack an item into a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">item</td><td>an item to pack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7d1cae063863dd7f48a48b5cb65be253"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_pack_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **&#160;</td>
+          <td class="paramname"><em>psp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start a packing operation into a buffer with the given format string. </p>
+<p>This should be followed by a series of calls to <a class="el" href="group__wt.html#ga94e4c63cd5cc0a714ede12431a8e228c" title="Pack an item into a packing stream.">wiredtiger_pack_item</a>, <a class="el" href="group__wt.html#gad939363f1fa51697062d10d06e42fcca" title="Pack a signed integer into a packing stream.">wiredtiger_pack_int</a>, <a class="el" href="group__wt.html#ga1039d39f6e34ed3ab0964f581b4cd013" title="Pack a string into a packing stream.">wiredtiger_pack_str</a> or <a class="el" href="group__wt.html#ga2ed9313371aeee5334edb751df23992e" title="Pack an unsigned integer into a packing stream.">wiredtiger_pack_uint</a> to fill in the values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">buffer</td><td>a pointer to memory to hold the packed data </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>the size of the buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">psp</td><td>the new packing stream handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1039d39f6e34ed3ab0964f581b4cd013"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_pack_str </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pack a string into a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">s</td><td>a string to pack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2ed9313371aeee5334edb751df23992e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_pack_uint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pack an unsigned integer into a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">u</td><td>an unsigned integer to pack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="gac95e70a24d09cf6928398512990e1474"></a>
@@ -1136,6 +1429,208 @@ Packing Examples</h1>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_pack_8c-example.html#a7">ex_pack.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="ga6bb9dbe835af62495c1de4f31eb6ec49"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_unpack_int </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t *&#160;</td>
+          <td class="paramname"><em>ip</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unpack a signed integer from a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">ip</td><td>the unpacked signed integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gade96c761e77521b46ba9d5fc455b3486"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_unpack_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unpack an item from a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">item</td><td>an item to unpack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad93973bfd0e21ba845878ba3c4b97d96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_unpack_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **&#160;</td>
+          <td class="paramname"><em>psp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start an unpacking operation from a buffer with the given format string. </p>
+<p>This should be followed by a series of calls to <a class="el" href="group__wt.html#gade96c761e77521b46ba9d5fc455b3486" title="Unpack an item from a packing stream.">wiredtiger_unpack_item</a>, <a class="el" href="group__wt.html#ga6bb9dbe835af62495c1de4f31eb6ec49" title="Unpack a signed integer from a packing stream.">wiredtiger_unpack_int</a>, <a class="el" href="group__wt.html#gacf46b9dd314c216293141b26341b7b0e" title="Unpack a string from a packing stream.">wiredtiger_unpack_str</a> or <a class="el" href="group__wt.html#gad8d121ab997028a85598e73771609bb4" title="Unpack an unsigned integer from a packing stream.">wiredtiger_unpack_uint</a> to retrieve the packed values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">buffer</td><td>a pointer to memory holding the packed data </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>the size of the buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">psp</td><td>the new packing stream handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gacf46b9dd314c216293141b26341b7b0e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_unpack_str </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>sp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unpack a string from a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">sp</td><td>the unpacked string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad8d121ab997028a85598e73771609bb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_unpack_uint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *&#160;</td>
+          <td class="paramname"><em>ps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>up</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unpack an unsigned integer from a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">up</td><td>the unpacked unsigned integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ga1b29826f4b418891d67e86850f7cbcf4"></a>

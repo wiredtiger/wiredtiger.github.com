@@ -535,16 +535,16 @@ Public Member Functions</h2></td></tr>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(conn, NULL, NULL, &amp;session);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
-    <tr><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, the connection's error handler is used </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+    <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, the connection's error handler is used </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
 <td><code>isolation</code></td><td>the default isolation level for operations in this session.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default <code>read-committed</code>. </td></tr>
 </table>
 </td></tr>
-    <tr><td class="paramname">sessionp</td><td>the new session handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">sessionp</td><td>the new session handle </td></tr>
   </table>
   </dd>
 </dl>
