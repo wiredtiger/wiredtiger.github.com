@@ -49,8 +49,22 @@ var programming =
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
     [ "Hot backup", "hot_backup.html", null ],
+    [ "Statistics", "statistics.html", [
+      [ "Statistics logging", "statistics.html#statistics_log", null ]
+    ] ],
     [ "Multithreading", "threads.html", [
       [ "Code samples", "threads.html#threads_example", null ]
+    ] ],
+    [ "Performance Tuning", "tuning.html", [
+      [ "Cache size", "tuning.html#tuning_cache_size", null ],
+      [ "Memory allocation", "tuning.html#tuning_memory_allocation", null ],
+      [ "Read-only objects", "tuning.html#tuning_read_only_objects", null ],
+      [ "Cache resident objects", "tuning.html#tuning_cache_resident", null ],
+      [ "Page and overflow sizes", "tuning.html#tuning_page_size", null ],
+      [ "Checksums", "tuning.html#tuning_checksums", null ],
+      [ "Direct I/O", "tuning.html#tuning_direct_io", null ],
+      [ "Compression", "tuning.html#tuning_compression", null ],
+      [ "Performance monitoring with statistics", "tuning.html#tuning_statistics", null ]
     ] ],
     [ "Database Home Directory", "home.html", null ],
     [ "Database Configuration", "database_config.html", [
@@ -68,16 +82,5 @@ var programming =
       [ "File permissions", "security.html#file_permissions", null ],
       [ "Environment variables", "security.html#environment_variables", null ]
     ] ],
-    [ "Signal handling", "signals.html", null ],
-    [ "Performance Tuning", "tuning.html", [
-      [ "Cache size", "tuning.html#tuning_cache_size", null ],
-      [ "Memory allocation", "tuning.html#tuning_memory_allocation", null ],
-      [ "Read-only objects", "tuning.html#tuning_read_only_objects", null ],
-      [ "Cache resident objects", "tuning.html#tuning_cache_resident", null ],
-      [ "Page and overflow sizes", "tuning.html#tuning_page_size", null ],
-      [ "Checksums", "tuning.html#tuning_checksums", null ],
-      [ "Direct I/O", "tuning.html#tuning_direct_io", null ],
-      [ "Compression", "tuning.html#tuning_compression", null ],
-      [ "Performance monitoring with statistics", "tuning.html#tuning_statistics", null ]
-    ] ]
+    [ "Signal handling", "signals.html", null ]
 ];

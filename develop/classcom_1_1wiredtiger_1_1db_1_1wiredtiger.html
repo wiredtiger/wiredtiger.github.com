@@ -586,16 +586,18 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_D
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>statistics_log = (</code></td><td>log database connection statistics into a file. See <a class="el" href="statistics_log.html">Statistics logging</a> for more information.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>statistics</code></td><td>Maintain database statistics that may impact performance.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;clear</code></td><td>clear the statistics values after each set of log records are written.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>statistics_log = (</code></td><td>log database connection statistics into a file when the <code>statistics</code> configuration value is set to true. See <a class="el" href="statistics.html#statistics_log">Statistics logging</a> for more information.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;clear</code></td><td>reset statistics counters after each set of log records are written.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the pathname to a file into which the log records are written, may contain strftime conversion specifications. If the value is not an absolute path name, the file is created relative to the database home.</td><td>a string; default <code>"WiredTigerStat.%H"</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;timestamp</code></td><td>a timestamp prepended to each log record, may contain strftime conversion specifications.</td><td>a string; default <code>"%b %d
   %H:%M:%S"</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each write of the log records; setting this value configures statistics logging.</td><td>an integer between 5 and 100000; default <code>0</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each write of the log records; setting this value configures <code>statistics</code> and statistics logging.</td><td>an integer between 5 and 100000; default <code>0</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>

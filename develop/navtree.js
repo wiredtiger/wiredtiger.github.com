@@ -2,7 +2,6 @@ var NAVTREE =
 [
   [ "WiredTiger", "index.html", [
     [ "Reference Guide", "index.html", "index" ],
-    [ "Statistics logging", "statistics_log.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Class List", "annotated.html", "annotated" ],

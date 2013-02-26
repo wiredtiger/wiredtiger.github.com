@@ -76,9 +76,7 @@ Using bzip2 compression</h1>
 <div class="fragment"><div class="line">cd build_posix</div>
 <div class="line">../configure --enable-bzip2 CPPFLAGS=<span class="stringliteral">&quot;-I/usr/local/include&quot;</span> LDFLAGS=<span class="stringliteral">&quot;-L/usr/local/include&quot;</span></div>
 </div><!-- fragment --><p>When opening the WiredTiger database, load the bzip2 shared library as an extension. For example, with the bzip2 library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
-<div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *conn;</div>
-<div class="line"></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
+<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;extensions=[\&quot;/usr/local/lib/wiredtiger_bzip2.so\&quot;]&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>bzip2:</code> </p>
@@ -96,9 +94,7 @@ Using snappy compression</h1>
 <div class="fragment"><div class="line">cd build_posix</div>
 <div class="line">../configure --enable-snappy CPPFLAGS=<span class="stringliteral">&quot;-I/usr/local/include&quot;</span> LDFLAGS=<span class="stringliteral">&quot;-L/usr/local/include&quot;</span></div>
 </div><!-- fragment --><p>When opening the WiredTiger database, load the snappy shared library as an extension. For example, with the snappy library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
-<div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *conn;</div>
-<div class="line"></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
+<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;extensions=[\&quot;/usr/local/lib/wiredtiger_snappy.so\&quot;]&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>snappy:</code> </p>
