@@ -20,7 +20,7 @@ var NAVTREEINDEX =
 [
 ".html",
 "command_line.html#util_printlog_synopsis",
-"group__wt__python.html#ga4b3922901bb5a5363eac84d0130b6a66"
+"group__wt__python.html#ga1958ceeacb3f9cdecc0c83f8199072b5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
