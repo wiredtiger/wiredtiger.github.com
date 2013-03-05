@@ -2,6 +2,7 @@ var NAVTREE =
 [
   [ "WiredTiger", "index.html", [
     [ "Reference Guide", "index.html", "index" ],
+    [ "WiredTiger community and contact information", "community.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Class List", "annotated.html", "annotated" ],
@@ -12,6 +13,7 @@ var NAVTREE =
       [ "Variables", "functions_vars.html", null ]
     ] ],
     [ "Examples", "examples.html", "examples" ],
+    [ "Community", "community.html", null ],
     [ "License", "license.html", null ]
   ] ]
 ];
@@ -20,7 +22,7 @@ var NAVTREEINDEX =
 [
 ".html",
 "command_line.html#util_printlog_synopsis",
-"group__wt__python.html#ga1958ceeacb3f9cdecc0c83f8199072b5"
+"group__wt__python.html#classwiredtiger_1_1stat_1_1conn"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
