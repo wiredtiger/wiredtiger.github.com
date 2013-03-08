@@ -580,7 +580,9 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>50 * leaf_page_max</code>. This limit is soft - it is possible for pages to be temporarily larger than this value.</td><td>an integer between 512B and 10TB; default <code>5MB</code>. </td></tr>
 <tr>
-<td><code>os_cache_max</code></td><td>maximum filesystem cache. If non-zero, WiredTiger will attempt to flush the operating system buffer cache whenever this amount of I/O is performed.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<tr>
+<td><code>os_cache_max</code></td><td>maximum system buffer cache usage, in bytes. If non-zero, evict object blocks from the system buffer cache after that many bytes from this object are read or written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>prefix_compression</code></td><td>configure row-store format key prefix compression.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
