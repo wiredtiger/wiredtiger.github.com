@@ -586,11 +586,11 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>prefix_compression</code></td><td>configure row-store format key prefix compression.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>source</code></td><td>override the default data source URI derived from the object name.</td><td>a string; default empty. </td></tr>
+<td><code>source</code></td><td>set a custom data source URI for a column group, index or simple table. By default, the data source URI is derived from the <code>type</code> and the column group or index name. Applications can create tables from existing data sources by supplying a <code>source</code> configuration.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>split_pct</code></td><td>the Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size.</td><td>an integer between 25 and 100; default <code>75</code>. </td></tr>
 <tr>
-<td><code>type</code></td><td>set the data source type. This setting overrides the URI prefix for the data source, if no <code>source</code> configuration setting is provided.</td><td>a string, chosen from the following options: <code>"file"</code>, <code>"lsm"</code>; default <code>file</code>. </td></tr>
+<td><code>type</code></td><td>set the type of data source used to store a column group, index or simple table. By default, a <code>"file:"</code> URI is derived from the object name. The <code>type</code> configuration can be used to switch to a different storage format, such as LSM. Ignored if an explicit URI is supplied with a <code>source</code> configuration.</td><td>a string, chosen from the following options: <code>"file"</code>, <code>"lsm"</code>; default <code>file</code>. </td></tr>
 <tr>
 <td><code>value_format</code></td><td>the format of the data packed into value items. See <a class="el" href="schema.html#schema_format_types">Format types</a> for details. By default, the value_format is <code>'u'</code> and applications use a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structure to manipulate raw byte arrays. Value items of type 't' are bitfields, and when configured with record number type keys, will be stored using a fixed-length store.</td><td>a format string; default <code>u</code>. </td></tr>
 </table>
