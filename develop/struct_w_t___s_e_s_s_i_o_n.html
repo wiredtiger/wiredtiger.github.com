@@ -776,19 +776,19 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>backup:</code></td><td>hot backup cursor</td><td>key=<code>string</code>, see <a class="el" href="hot_backup.html">Hot backup</a> for details </td></tr>
 <tr>
-<td><code>colgroup:&lt;tablename&gt;.&lt;columnset&gt;</code></td><td>column group cursor</td><td>table key, column group value(s) </td></tr>
+<td><code>colgroup:&lt;table name&gt;:&lt;column group name&gt;</code></td><td>column group cursor</td><td>table key, column group value(s) </td></tr>
 <tr>
 <td><code>config:[&lt;uri&gt;]</code></td><td>object configuration cursor</td><td>(key=config string, value=config value) </td></tr>
 <tr>
-<td><code>file:&lt;filename&gt;</code></td><td>file cursor</td><td>file key, file value(s) </td></tr>
+<td><code>file:&lt;file name&gt;</code></td><td>file cursor</td><td>file key, file value(s) </td></tr>
 <tr>
-<td><code>index:&lt;tablename&gt;.&lt;indexname&gt;</code></td><td>index cursor</td><td>key=index key, value=table value(s) </td></tr>
+<td><code>index:&lt;table name&gt;:&lt;index name&gt;</code></td><td>index cursor</td><td>key=index key, value=table value(s) </td></tr>
 <tr>
 <td><code>lsm:&lt;name&gt;</code></td><td>LSM cursor (key=LSM key, value=LSM value)</td><td>See also: <a class="el" href="lsm.html">Log-Structured Merge Trees</a> </td></tr>
 <tr>
-<td><code>statistics:[file</code><code>:&lt;filename&gt;]</code></td><td>database or file statistics cursor</td><td>key=<code>int id</code>, value=(<code>string description, string value, uint64_t value</code>), see <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for details </td></tr>
+<td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database or data source statistics cursor</td><td>key=<code>int id</code>, value=(<code>string description, string value, uint64_t value</code>), see <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for details </td></tr>
 <tr>
-<td><code>table:&lt;tablename&gt;</code></td><td>table cursor</td><td>table key, table value(s) </td></tr>
+<td><code>table:&lt;table name&gt;</code></td><td>table cursor</td><td>table key, table value(s) </td></tr>
 </table>
 </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">to_dup</td><td>a cursor to duplicate </td></tr>
