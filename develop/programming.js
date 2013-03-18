@@ -56,13 +56,20 @@ var programming =
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
     [ "Performance Tuning", "tuning.html", [
-      [ "Cache size", "tuning.html#tuning_cache_size", null ],
-      [ "Memory allocation", "tuning.html#tuning_memory_allocation", null ],
-      [ "Read-only objects", "tuning.html#tuning_read_only_objects", null ],
-      [ "Cache resident objects", "tuning.html#tuning_cache_resident", null ],
+      [ "WiredTiger's cache", "tuning.html#tuning_cache", [
+        [ "Cache size", "tuning.html#tuning_cache_size", null ],
+        [ "Read-only objects", "tuning.html#tuning_read_only_objects", null ],
+        [ "Cache resident objects", "tuning.html#tuning_cache_resident", null ]
+      ] ],
+      [ "Memory allocator", "tuning.html#tuning_memory_allocator", null ],
+      [ "Cursor persistence", "tuning.html#tuning_cursor_persistence", null ],
       [ "Page and overflow sizes", "tuning.html#tuning_page_size", null ],
+      [ "System buffer cache", "tuning.html#tuning_system_buffer_cache", [
+        [ "Direct I/O", "tuning.html#tuning_system_buffer_cache_direct_io", null ],
+        [ "os_cache_dirty_max", "tuning.html#tuning_system_buffer_cache_os_cache_dirty_max", null ],
+        [ "os_cache_max", "tuning.html#tuning_system_buffer_cache_os_cache_max", null ]
+      ] ],
       [ "Checksums", "tuning.html#tuning_checksums", null ],
-      [ "Direct I/O", "tuning.html#tuning_direct_io", null ],
       [ "Compression", "tuning.html#tuning_compression", null ],
       [ "Performance monitoring with statistics", "tuning.html#tuning_statistics", null ]
     ] ],
