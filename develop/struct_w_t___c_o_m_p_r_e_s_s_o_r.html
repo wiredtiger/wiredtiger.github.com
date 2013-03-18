@@ -103,7 +103,11 @@ Public Attributes</h2></td></tr>
 <p>Compressors must implement the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> interface: the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a87c339a3442b719896fa5cbe2c530843" title="Callback to compress a chunk of data.">WT_COMPRESSOR::compress</a> and <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#acf978486348484d467bd4f4032cf3795" title="Callback to decompress a chunk of data.">WT_COMPRESSOR::decompress</a> callbacks must be specified, and <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02" title="Callback to size a destination buffer for compression.">WT_COMPRESSOR::pre_size</a> is optional. To build your own compressor, use one of the compressors in <code>ext/compressors</code> as a template: <code>ext/nop_compress</code> is a simple compressor that passes through data unchanged, and is a reasonable starting point.</p>
 <p>Applications register their implementation with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>.</p>
 <div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> my_compressor = {</div>
-<div class="line">            my_compress, NULL, my_decompress, my_pre_size };</div>
+<div class="line">            my_compress,</div>
+<div class="line">            my_compress_raw,            <span class="comment">/* NULL, if no raw compression */</span></div>
+<div class="line">            my_decompress,</div>
+<div class="line">            my_pre_size                 <span class="comment">/* NULL, if pre-sizing not needed */</span></div>
+<div class="line">        };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">add_compressor</a>(conn, <span class="stringliteral">&quot;my_compress&quot;</span>, &amp;my_compressor, NULL);</div>
 </div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a87c339a3442b719896fa5cbe2c530843"></a>
