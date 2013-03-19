@@ -22,7 +22,7 @@ var NAVTREEINDEX =
 [
 ".html",
 "command_line.html#util_printlog_synopsis",
-"group__wt__python.html#classwiredtiger_1_1stat_1_1conn"
+"group__wt__python.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
