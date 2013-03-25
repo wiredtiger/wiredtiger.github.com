@@ -136,8 +136,8 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 <tr class="memitem:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#ae8a3a848702a49b9c3cb8e1ed1c1afd3">checkpoint</a> (String config)</td></tr>
 <tr class="memdesc:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#ae8a3a848702a49b9c3cb8e1ed1c1afd3">More...</a><br/></td></tr>
 <tr class="separator:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc61edbe05447e070a2d0729bd36a084"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc61edbe05447e070a2d0729bd36a084"></a>
-<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>open_cursor</b> (String uri, <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a> to_dup, String config)</td></tr>
+<tr class="memitem:adc61edbe05447e070a2d0729bd36a084"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#adc61edbe05447e070a2d0729bd36a084">open_cursor</a> (String uri, <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a> to_dup, String config)</td></tr>
+<tr class="memdesc:adc61edbe05447e070a2d0729bd36a084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a new cursor on a data source or duplicate an existing cursor.  <a href="#adc61edbe05447e070a2d0729bd36a084">More...</a><br/></td></tr>
 <tr class="separator:adc61edbe05447e070a2d0729bd36a084"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -595,6 +595,122 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <td><code>force</code></td><td>return success if the object does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>
 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adc61edbe05447e070a2d0729bd36a084"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a> com.wiredtiger.db.Session.open_cursor </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>uri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a>&#160;</td>
+          <td class="paramname"><em>to_dup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open a new cursor on a data source or duplicate an existing cursor. </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+</div><!-- fragment --><p> An existing cursor can be duplicated by passing it as the <code>to_dup</code> parameter and setting the <code>uri</code> parameter to <code>NULL:</code> </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Duplicate the cursor. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, NULL, cursor, NULL, &amp;duplicate);</div>
+</div><!-- fragment --><p> Cursors being duplicated must have a key set, and successfully duplicated cursors are positioned at the same place in the data source as the original.</p>
+<p>To reconfigure a cursor, duplicate it with a new configuration value:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Reconfigure the cursor to overwrite the record. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
+<div class="line">            session, NULL, cursor, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;overwrite_cursor);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        overwrite_cursor-&gt;set_value(overwrite_cursor, value);</div>
+<div class="line">        ret = overwrite_cursor-&gt;insert(cursor);</div>
+</div><!-- fragment --><p> Cursor handles should be discarded by calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a>.</p>
+<p>Cursors capable of supporting transactional operations operate in the context of the current transaction, if any. Ending a transaction implicitly resets all open cursors.</p>
+<p>Cursors are relatively light-weight objects but may hold references to heavier-weight objects; applications should re-use cursors when possible, but instantiating new cursors is not so expensive that applications need to cache cursors at all cost.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">uri</td><td>the data source on which the cursor operates; cursors are usually opened on tables, however, cursors can be opened on any data source, regardless of whether it is ultimately stored in a table. Some cursor types may have limited functionality (for example, they may be read-only or not support transactional updates). See <a class="el" href="data_sources.html">Data Sources</a> for more information. <br/>
+ The following are the builtin cursor types: <table class="doxtable">
+<tr>
+<th>URI</th><th>Type</th><th>Key/Value types </th></tr>
+<tr>
+<td><code>backup:</code></td><td>hot backup cursor</td><td>key=<code>string</code>, see <a class="el" href="hot_backup.html">Hot backup</a> for details </td></tr>
+<tr>
+<td><code>colgroup:&lt;table name&gt;:&lt;column group name&gt;</code></td><td>column group cursor</td><td>table key, column group value(s) </td></tr>
+<tr>
+<td><code>config:[&lt;uri&gt;]</code></td><td>object configuration cursor</td><td>(key=config string, value=config value) </td></tr>
+<tr>
+<td><code>file:&lt;file name&gt;</code></td><td>file cursor</td><td>file key, file value(s) </td></tr>
+<tr>
+<td><code>index:&lt;table name&gt;:&lt;index name&gt;</code></td><td>index cursor</td><td>key=index key, value=table value(s) </td></tr>
+<tr>
+<td><code>lsm:&lt;name&gt;</code></td><td>LSM cursor (key=LSM key, value=LSM value)</td><td>See also: <a class="el" href="lsm.html">Log-Structured Merge Trees</a> </td></tr>
+<tr>
+<td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database or data source statistics cursor</td><td>key=<code>int id</code>, value=(<code>string description, string value, uint64_t value</code>), see <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for details </td></tr>
+<tr>
+<td><code>table:&lt;table name&gt;</code></td><td>table cursor</td><td>table key, table value(s) </td></tr>
+</table>
+</td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">to_dup</td><td>a cursor to duplicate </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>append</code></td><td>append the value as a new record, creating a new record number key; valid only for cursors with record number keys.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>bulk</code></td><td>configure the cursor for bulk-loading, a fast, initial load path (see <a class="el" href="bulk_load.html">Bulk-load</a> for more information). Bulk-load may only be used for newly created objects and cursors configured for bulk-load only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods. When bulk-loading row-store objects, keys must be loaded in sorted order. The value is usually a true/false flag; when bulk-loading fixed-length column store objects, the special value <code>bitmap</code> allows chunks of a memory resident bitmap to be loaded directly into a file by passing a <code><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a></code> to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> where the <code>size</code> field indicates the number of records in the bitmap (as specified by the object's <code>value_format</code> configuration). Bulk-loaded bitmap values must end on a byte boundary relative to the bit count (except for the last set of values loaded).</td><td>a string; default <code>false</code>. </td></tr>
+<tr>
+<td><code>checkpoint</code></td><td>the name of a checkpoint to open (the reserved name "WiredTigerCheckpoint" opens the most recent internal checkpoint taken for the object). The cursor does not support data modification.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>dump</code></td><td>configure the cursor for dump format inputs and outputs: "hex" selects a simple hexadecimal format, "print" selects a format where only non-printing characters are hexadecimal encoded. The cursor dump format is compatible with the <a class="el" href="command_line.html#util_dump">wt dump</a> and <a class="el" href="command_line.html#util_load">wt load</a> commands.</td><td>a string, chosen from the following options: <code>"hex"</code>, <code>"print"</code>; default empty. </td></tr>
+<tr>
+<td><code>next_random</code></td><td>configure the cursor to return a pseudo-random record from the object; valid only for row-store cursors. Cursors configured with next_random only support the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> methods. See <a class="el" href="cursor_random.html">Cursor random</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>overwrite</code></td><td>change the behavior of the cursor's insert method to overwrite previously existing values.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>statistics_clear</code></td><td>reset statistics counters when the cursor is closed; valid only for statistics cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>statistics_fast</code></td><td>only gather statistics that don't require traversing the tree; valid only for statistics cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>target</code></td><td>if non-empty, backup the list of objects; valid only for a backup data source.</td><td>a list of strings; default empty. </td></tr>
+</table>
+</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cursorp</td><td>a pointer to the newly opened cursor </td></tr>
   </table>
   </dd>
 </dl>
