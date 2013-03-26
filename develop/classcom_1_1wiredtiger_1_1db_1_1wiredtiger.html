@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 1.5.0</span>
+   &#160;<span id="projectnumber">Version 1.5.1</span>
    </div>
   </td>
  </tr>
@@ -610,7 +610,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_D
 <tr>
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the pathname to a file into which the log records are written, may contain strftime conversion specifications. If the value is not an absolute path name, the file is created relative to the database home.</td><td>a string; default <code>"WiredTigerStat.%H"</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;sources</code></td><td>if non-empty, include statistics for the list of data source URIs. No statistics that require traversing a tree are reported, as if the <code>statistics_fast</code> configuration string were set.</td><td>a list of strings; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;sources</code></td><td>if non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging. The list may include URIs matching a single data source ("table:mytable"), or a URI matching all data sources of a particular type ("table:"). No statistics that require the traversal of a tree are reported, as if the <code>statistics_fast</code> configuration string were set.</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;timestamp</code></td><td>a timestamp prepended to each log record, may contain strftime conversion specifications.</td><td>a string; default <code>"%b %d %H:%M:%S"</code>. </td></tr>
 <tr>
