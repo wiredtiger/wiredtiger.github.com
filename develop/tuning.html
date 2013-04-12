@@ -192,8 +192,9 @@ Performance monitoring with statistics</h1>
 <div class="line"></div>
 <div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga212a7e9d219e279da8b10adfaaab2afc" title="bytes written from cache">WT_STAT_DSRC_CACHE_BYTES_WRITE</a>, &amp;fs_writes);</div>
 <div class="line"></div>
-<div class="line">        printf(<span class="stringliteral">&quot;Write amplification is %.2lf\n&quot;</span>,</div>
-<div class="line">            (<span class="keywordtype">double</span>)fs_writes / (app_insert + app_remove + app_update));</div>
+<div class="line">        <span class="keywordflow">if</span> (app_insert + app_remove + app_update != 0)</div>
+<div class="line">                printf(<span class="stringliteral">&quot;Write amplification is %.2lf\n&quot;</span>,</div>
+<div class="line">                    (<span class="keywordtype">double</span>)fs_writes / (app_insert + app_remove + app_update));</div>
 </div><!-- fragment --><p> Both examples use this helper function to retrieve statistics values from a cursor:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span></div>
 <div class="line">get_stat(<a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor, <span class="keywordtype">int</span> stat_field, uint64_t *valuep)</div>
