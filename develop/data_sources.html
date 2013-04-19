@@ -90,7 +90,7 @@ Builtin data sources</h1>
 <td><code>index:&lt;table name&gt;:&lt;index name&gt;</code></td><td>index cursor (key=index key, value=table value)</td><td></td></tr>
 <tr>
 <td><code>join:&lt;cursor1&gt;&amp;&lt;cursor2&gt;[&amp;&lt;cursor3&gt;...]</code></td><td>join cursor</td><td><p class="starttd"><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>fix when join cursors supported</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>fix when join cursors supported</dd></dl>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -139,7 +139,7 @@ Statistics Data</h2>
 <div class="line">                <span class="keywordflow">if</span> (value != 0)</div>
 <div class="line">                        printf(<span class="stringliteral">&quot;%s=%s\n&quot;</span>, desc, pvalue);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Cursor item not found.">WT_NOTFOUND</a> ? 0 : ret);</div>
+<div class="line">        <span class="keywordflow">return</span> (ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found.">WT_NOTFOUND</a> ? 0 : ret);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> Individual statistics values can be retrieved by searching for the corresponding key, as shown in the following example:</p>
 <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor;</div>

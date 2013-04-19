@@ -100,6 +100,9 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 <tr class="memitem:ad52f0d0c36bcedfa2214f233f3ee020a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad52f0d0c36bcedfa2214f233f3ee020a"></a>
 String&#160;</td><td class="memItemRight" valign="bottom"><b>get_home</b> ()</td></tr>
 <tr class="separator:ad52f0d0c36bcedfa2214f233f3ee020a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b9848afb4bfe4b790579490e6e2263c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1b9848afb4bfe4b790579490e6e2263c">configure_method</a> (String method, String uri, String config, String type, String check)</td></tr>
+<tr class="memdesc:a1b9848afb4bfe4b790579490e6e2263c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add configuration options for a method.  <a href="#a1b9848afb4bfe4b790579490e6e2263c">More...</a><br/></td></tr>
+<tr class="separator:a1b9848afb4bfe4b790579490e6e2263c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ba72791fba4a03984c0d9b8faca1284"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a7ba72791fba4a03984c0d9b8faca1284">is_new</a> ()</td></tr>
 <tr class="memdesc:a7ba72791fba4a03984c0d9b8faca1284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if opening this handle created the database.  <a href="#a7ba72791fba4a03984c0d9b8faca1284">More...</a><br/></td></tr>
 <tr class="separator:a7ba72791fba4a03984c0d9b8faca1284"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,6 +158,81 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1b9848afb4bfe4b790579490e6e2263c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Connection.configure_method </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>uri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>check</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add configuration options for a method. </p>
+<p>See <a class="el" href="custom_data_sources.html#custom_ds_config_add">Creating data-specific configuration strings</a> for more information.</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div>
+<div class="line"><span class="comment">         * have an additional configuration option &quot;entries&quot;, which is an</span></div>
+<div class="line"><span class="comment">         * integer type, defaults to 5, and must be an integer between 1 and 10.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137" title="Add configuration options for a method.">configure_method</a>(conn,</div>
+<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;entries=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1,max=10&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div>
+<div class="line"><span class="comment">         * have an additional configuration option &quot;devices&quot;, which is a list</span></div>
+<div class="line"><span class="comment">         * of strings.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137" title="Add configuration options for a method.">configure_method</a>(conn,</div>
+<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;devices&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramname">method</td><td>the name of the method </td></tr>
+    <tr><td class="paramname">uri</td><td>the object type or NULL for all object types </td></tr>
+    <tr><td class="paramname">config</td><td>the additional configuration's name and default value </td></tr>
+    <tr><td class="paramname">type</td><td>the additional configuration's type (must be one of <code>"boolean"\</code>, <code>"int"</code>, <code>"list"</code> or <code>"string"</code>) </td></tr>
+    <tr><td class="paramname">check</td><td>the additional configuration check string, or NULL if none </td></tr>
   </table>
   </dd>
 </dl>
@@ -223,9 +301,11 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>entry</code></td><td>the entry point of the extension.</td><td>a string; default <code>wiredtiger_extension_init</code>. </td></tr>
+<td><code>entry</code></td><td>the entry point of the extension, called to initialize the extension when it is loaded. The signature of the function must match <a class="el" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded.">wiredtiger_extension_init</a>.</td><td>a string; default <code>wiredtiger_extension_init</code>. </td></tr>
 <tr>
 <td><code>prefix</code></td><td>a prefix for all names registered by this extension (e.g., to make namespaces distinct or during upgrades.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>terminate</code></td><td>a optional function in the extension that is called before the extension is unloaded during <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a>. The signature of the function must match <a class="el" href="group__wt__ext.html#ga3b904ac0bedaa0d1d59d04baaf915f7f" title="Optional cleanup function for an extension, called during WT_CONNECTION::close.">wiredtiger_extension_terminate</a>.</td><td>a string; default <code>wiredtiger_extension_terminate</code>. </td></tr>
 </table>
 </td></tr>
   </table>

@@ -180,7 +180,7 @@ Error returns</h2></td></tr>
 <tr class="memdesc:gafdfe4d6ca06cb7337272f883f60c991e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-specific WiredTiger error.  <a href="#gafdfe4d6ca06cb7337272f883f60c991e">More...</a><br/></td></tr>
 <tr class="separator:gafdfe4d6ca06cb7337272f883f60c991e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3c9e1b494d95cf34404ab7a974af6bf8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></td></tr>
-<tr class="memdesc:ga3c9e1b494d95cf34404ab7a974af6bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cursor item not found.  <a href="#ga3c9e1b494d95cf34404ab7a974af6bf8">More...</a><br/></td></tr>
+<tr class="memdesc:ga3c9e1b494d95cf34404ab7a974af6bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item not found.  <a href="#ga3c9e1b494d95cf34404ab7a974af6bf8">More...</a><br/></td></tr>
 <tr class="separator:ga3c9e1b494d95cf34404ab7a974af6bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf4fc8744eb8fe4f1c6e125d0f2361992"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992">WT_PANIC</a></td></tr>
 <tr class="memdesc:gaf4fc8744eb8fe4f1c6e125d0f2361992"><td class="mdescLeft">&#160;</td><td class="mdescRight">WiredTiger library panic.  <a href="#gaf4fc8744eb8fe4f1c6e125d0f2361992">More...</a><br/></td></tr>
@@ -832,8 +832,8 @@ The number of bytes in the data item. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Cursor item not found. </p>
-<p>This error indicates a cursor operation did not find a record to return. This includes search and other operations where no record matched the cursor's search key such as <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a>. </p>
+<p>Item not found. </p>
+<p>This error indicates an operation did not find a value to return. This includes cursor search and other operations where no record matched the cursor's search key such as <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a>. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_stat_8c-example.html#a4">ex_stat.c</a>.</dd>
 </dl>
 </div>

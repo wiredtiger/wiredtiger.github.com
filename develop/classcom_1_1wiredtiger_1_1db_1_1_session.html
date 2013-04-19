@@ -109,9 +109,9 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 <tr class="memitem:a08aa0622c56a5839b7c38f420b1f2a85"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a08aa0622c56a5839b7c38f420b1f2a85">drop</a> (String name, String config)</td></tr>
 <tr class="memdesc:a08aa0622c56a5839b7c38f420b1f2a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#a08aa0622c56a5839b7c38f420b1f2a85">More...</a><br/></td></tr>
 <tr class="separator:a08aa0622c56a5839b7c38f420b1f2a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4d3e9dd89a3ecee04b8edeb706d7456"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#af4d3e9dd89a3ecee04b8edeb706d7456">rename</a> (String oldname, String newname, String config)</td></tr>
-<tr class="memdesc:af4d3e9dd89a3ecee04b8edeb706d7456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#af4d3e9dd89a3ecee04b8edeb706d7456">More...</a><br/></td></tr>
-<tr class="separator:af4d3e9dd89a3ecee04b8edeb706d7456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2acb7e037b0d4bf9c8d812d264376465"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a2acb7e037b0d4bf9c8d812d264376465">rename</a> (String uri, String newuri, String config)</td></tr>
+<tr class="memdesc:a2acb7e037b0d4bf9c8d812d264376465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#a2acb7e037b0d4bf9c8d812d264376465">More...</a><br/></td></tr>
+<tr class="separator:a2acb7e037b0d4bf9c8d812d264376465"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4687837f13f03699d9c295fdd4380398"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a4687837f13f03699d9c295fdd4380398">salvage</a> (String name, String config)</td></tr>
 <tr class="memdesc:a4687837f13f03699d9c295fdd4380398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salvage a file or table.  <a href="#a4687837f13f03699d9c295fdd4380398">More...</a><br/></td></tr>
 <tr class="separator:a4687837f13f03699d9c295fdd4380398"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -752,7 +752,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 </div>
 </div>
-<a class="anchor" id="af4d3e9dd89a3ecee04b8edeb706d7456"></a>
+<a class="anchor" id="a2acb7e037b0d4bf9c8d812d264376465"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -760,13 +760,13 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
           <td class="memname">int com.wiredtiger.db.Session.rename </td>
           <td>(</td>
           <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>oldname</em>, </td>
+          <td class="paramname"><em>uri</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>newname</em>, </td>
+          <td class="paramname"><em>newuri</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -783,12 +783,12 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Rename an object. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a52f78bc88e48e3905158277c518b80d4" title="Rename an object.">rename</a>(session, <span class="stringliteral">&quot;table:old&quot;</span>, <span class="stringliteral">&quot;table:new&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614" title="Rename an object.">rename</a>(session, <span class="stringliteral">&quot;table:old&quot;</span>, <span class="stringliteral">&quot;table:new&quot;</span>, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">oldname</td><td>the current URI of the object, such as <code>"table:old"</code> </td></tr>
-    <tr><td class="paramname">newname</td><td>the new name of the object, such as <code>"table:new"</code> </td></tr>
+    <tr><td class="paramname">uri</td><td>the current URI of the object, such as <code>"table:old"</code> </td></tr>
+    <tr><td class="paramname">newuri</td><td>the new URI of the object, such as <code>"table:new"</code> </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
   </table>
   </dd>

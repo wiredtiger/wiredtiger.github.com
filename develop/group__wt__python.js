@@ -31,7 +31,6 @@ var group__wt__python =
       [ "compact", "classwiredtiger_1_1_session.html#afbf37a8455a785f7aabbfc29e91cde81", null ],
       [ "create", "classwiredtiger_1_1_session.html#a05806032431c2420bf709d7cfdb6937c", null ],
       [ "drop", "classwiredtiger_1_1_session.html#aa5636db260be86b90228978057daea34", null ],
-      [ "msg_printf", "classwiredtiger_1_1_session.html#a4b01fb98ddc63825a3db3414d0058c26", null ],
       [ "open_cursor", "classwiredtiger_1_1_session.html#aa7f8ff75031b4ee2f337cf2776361a79", null ],
       [ "reconfigure", "classwiredtiger_1_1_session.html#aa761c6e0840b09436289b4a7db0befc2", null ],
       [ "rename", "classwiredtiger_1_1_session.html#a661a9bb6dcaf9d6484758ec81d8772b9", null ],
@@ -45,6 +44,7 @@ var group__wt__python =
     [ "Connection", "classwiredtiger_1_1_connection.html", [
       [ "__init__", "classwiredtiger_1_1_connection.html#a82c88c844dddc2ff0acca03247d1fa75", null ],
       [ "close", "classwiredtiger_1_1_connection.html#a8947b7cfc205725a5aeddcab87a33954", null ],
+      [ "configure_method", "classwiredtiger_1_1_connection.html#abb4cbf5a61bf95d329b90e1d1838625b", null ],
       [ "get_home", "classwiredtiger_1_1_connection.html#a188ef87948cafc02fd3e344808f4b565", null ],
       [ "is_new", "classwiredtiger_1_1_connection.html#a12690b2abf2eec707f53cd6387204f24", null ],
       [ "load_extension", "classwiredtiger_1_1_connection.html#aa377943ec15f44df582af25f92062d85", null ],

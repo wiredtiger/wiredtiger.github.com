@@ -94,6 +94,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a488fcba6b5abcdfca439d456564e8640"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640">get_home</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection)</td></tr>
 <tr class="memdesc:a488fcba6b5abcdfca439d456564e8640"><td class="mdescLeft">&#160;</td><td class="mdescRight">The home directory of the connection.  <a href="#a488fcba6b5abcdfca439d456564e8640">More...</a><br/></td></tr>
 <tr class="separator:a488fcba6b5abcdfca439d456564e8640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81828b0c9dccc1ccf3d8ef863804137"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137">configure_method</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *method, const char *uri, const char *config, const char *type, const char *check)</td></tr>
+<tr class="memdesc:ab81828b0c9dccc1ccf3d8ef863804137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add configuration options for a method.  <a href="#ab81828b0c9dccc1ccf3d8ef863804137">More...</a><br/></td></tr>
+<tr class="separator:ab81828b0c9dccc1ccf3d8ef863804137"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2bacefe9777b8ab32d8b22c292c4f39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39">is_new</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection)</td></tr>
 <tr class="memdesc:ae2bacefe9777b8ab32d8b22c292c4f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if opening this handle created the database.  <a href="#ae2bacefe9777b8ab32d8b22c292c4f39">More...</a><br/></td></tr>
 <tr class="separator:ae2bacefe9777b8ab32d8b22c292c4f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,6 +120,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2d65a70a305838e2a2a728fe5cb54903"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903">add_extractor</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *name, <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> *extractor, const char *config)</td></tr>
 <tr class="memdesc:a2d65a70a305838e2a2a728fe5cb54903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a custom extractor for index keys or column groups.  <a href="#a2d65a70a305838e2a2a728fe5cb54903">More...</a><br/></td></tr>
 <tr class="separator:a2d65a70a305838e2a2a728fe5cb54903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99df5b3a17564eb5b3e4ec076590133d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *wt_conn)</td></tr>
+<tr class="memdesc:a99df5b3a17564eb5b3e4ec076590133d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the WiredTiger extension functions.  <a href="#a99df5b3a17564eb5b3e4ec076590133d">More...</a><br/></td></tr>
+<tr class="separator:a99df5b3a17564eb5b3e4ec076590133d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A connection to a WiredTiger database. </p>
@@ -274,15 +280,17 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a custom data source. </p>
-<p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>fix when custom data sources supported</dd></dl>
+<p>See <a class="el" href="custom_data_sources.html">Custom Data Sources</a> for more information.</p>
 <p>The application must first implement the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> interface and then register the implementation with WiredTiger:</p>
 <div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> my_dsrc = {</div>
 <div class="line">                my_create,</div>
+<div class="line">                my_compact,</div>
 <div class="line">                my_drop,</div>
 <div class="line">                my_open_cursor,</div>
 <div class="line">                my_rename,</div>
-<div class="line">                my_truncate</div>
+<div class="line">                my_salvage,</div>
+<div class="line">                my_truncate,</div>
+<div class="line">                my_verify</div>
 <div class="line">        };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source.">add_data_source</a>(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
@@ -336,7 +344,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Add a custom extractor for index keys or column groups. </p>
 <p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>fix when custom extractors supported</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>fix when custom extractors supported</dd></dl>
 <p>The application must first implement the <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> interface and then register the implementation with WiredTiger:</p>
 <div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> my_extractor;</div>
 <div class="line">        my_extractor.<a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html#a7a7069beebb84ffaa8ee02f8d7ebb162" title="Callback to extract a value for an index or column group.">extract</a> = my_extract;</div>
@@ -391,6 +399,121 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a15">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a16">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a13">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a21">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a9">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a6">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a5">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a8">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a16">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a23">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a15">ex_thread.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="ab81828b0c9dccc1ccf3d8ef863804137"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CONNECTION::configure_method </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>uri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>check</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add configuration options for a method. </p>
+<p>See <a class="el" href="custom_data_sources.html#custom_ds_config_add">Creating data-specific configuration strings</a> for more information.</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div>
+<div class="line"><span class="comment">         * have an additional configuration option &quot;entries&quot;, which is an</span></div>
+<div class="line"><span class="comment">         * integer type, defaults to 5, and must be an integer between 1 and 10.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137" title="Add configuration options for a method.">configure_method</a>(conn,</div>
+<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;entries=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1,max=10&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div>
+<div class="line"><span class="comment">         * have an additional configuration option &quot;devices&quot;, which is a list</span></div>
+<div class="line"><span class="comment">         * of strings.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137" title="Add configuration options for a method.">configure_method</a>(conn,</div>
+<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;devices&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramname">method</td><td>the name of the method </td></tr>
+    <tr><td class="paramname">uri</td><td>the object type or NULL for all object types </td></tr>
+    <tr><td class="paramname">config</td><td>the additional configuration's name and default value </td></tr>
+    <tr><td class="paramname">type</td><td>the additional configuration's type (must be one of <code>"boolean"\</code>, <code>"int"</code>, <code>"list"</code> or <code>"string"</code>) </td></tr>
+    <tr><td class="paramname">check</td><td>the additional configuration check string, or NULL if none </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a99df5b3a17564eb5b3e4ec076590133d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a>* WT_CONNECTION::get_extension_api </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *&#160;</td>
+          <td class="paramname"><em>wt_conn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a reference to the WiredTiger extension functions. </p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;wiredtiger_ext.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> *wt_api;</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
+<div class="line">my_data_source_init(<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *conn)</div>
+<div class="line">{</div>
+<div class="line">        wt_api = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d" title="Return a reference to the WiredTiger extension functions.">get_extension_api</a>(conn);</div>
+<div class="line">}</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wt_conn</td><td>the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a reference to a <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> structure. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a488fcba6b5abcdfca439d456564e8640"></a>
@@ -487,9 +610,11 @@ Public Member Functions</h2></td></tr>
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>entry</code></td><td>the entry point of the extension.</td><td>a string; default <code>wiredtiger_extension_init</code>. </td></tr>
+<td><code>entry</code></td><td>the entry point of the extension, called to initialize the extension when it is loaded. The signature of the function must match <a class="el" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded.">wiredtiger_extension_init</a>.</td><td>a string; default <code>wiredtiger_extension_init</code>. </td></tr>
 <tr>
 <td><code>prefix</code></td><td>a prefix for all names registered by this extension (e.g., to make namespaces distinct or during upgrades.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>terminate</code></td><td>a optional function in the extension that is called before the extension is unloaded during <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a>. The signature of the function must match <a class="el" href="group__wt__ext.html#ga3b904ac0bedaa0d1d59d04baaf915f7f" title="Optional cleanup function for an extension, called during WT_CONNECTION::close.">wiredtiger_extension_terminate</a>.</td><td>a string; default <code>wiredtiger_extension_terminate</code>. </td></tr>
 </table>
 </td></tr>
   </table>

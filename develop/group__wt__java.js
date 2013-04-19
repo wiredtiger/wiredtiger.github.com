@@ -3,6 +3,7 @@ var group__wt__java =
     [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", [
       [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a9f3713033d9e9a1a84f4670da907c55d", null ],
       [ "close", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2458441ed6301620ef4db71f3ef5c47c", null ],
+      [ "configure_method", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1b9848afb4bfe4b790579490e6e2263c", null ],
       [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a0e8af34ebdff2b71b682095ed085cebe", null ],
       [ "get_home", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad52f0d0c36bcedfa2214f233f3ee020a", null ],
       [ "is_new", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a7ba72791fba4a03984c0d9b8faca1284", null ],
@@ -91,7 +92,7 @@ var group__wt__java =
       [ "getConnection", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2f267cf49f92a76b4bad57015a05ba88", null ],
       [ "open_cursor", "classcom_1_1wiredtiger_1_1db_1_1_session.html#adc61edbe05447e070a2d0729bd36a084", null ],
       [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ab26e9fa8589c722544049adae0e70ad9", null ],
-      [ "rename", "classcom_1_1wiredtiger_1_1db_1_1_session.html#af4d3e9dd89a3ecee04b8edeb706d7456", null ],
+      [ "rename", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2acb7e037b0d4bf9c8d812d264376465", null ],
       [ "rollback_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a46ce42cc35d30590975054b12f8e2013", null ],
       [ "salvage", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a4687837f13f03699d9c295fdd4380398", null ],
       [ "truncate", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2c58845dfd2f75cc3935185c12d29329", null ],

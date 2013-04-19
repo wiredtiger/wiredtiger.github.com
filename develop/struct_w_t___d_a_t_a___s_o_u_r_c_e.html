@@ -85,42 +85,71 @@ $(document).ready(function(){initNavTree('struct_w_t___d_a_t_a___s_o_u_r_c_e.htm
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a214f53ea79c931550a6b51de3e3aaa94"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a214f53ea79c931550a6b51de3e3aaa94">create</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, int exclusive, const char *config)</td></tr>
-<tr class="memdesc:a214f53ea79c931550a6b51de3e3aaa94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to create a new object.  <a href="#a214f53ea79c931550a6b51de3e3aaa94">More...</a><br/></td></tr>
-<tr class="separator:a214f53ea79c931550a6b51de3e3aaa94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5f93f2d017533b3fb0238f4e55940da"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ac5f93f2d017533b3fb0238f4e55940da">drop</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *cfg[])</td></tr>
-<tr class="memdesc:ac5f93f2d017533b3fb0238f4e55940da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to drop an object.  <a href="#ac5f93f2d017533b3fb0238f4e55940da">More...</a><br/></td></tr>
-<tr class="separator:ac5f93f2d017533b3fb0238f4e55940da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af34269487e490e280344687be36a24b0"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#af34269487e490e280344687be36a24b0">open_cursor</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *owner, const char *cfg[], <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</td></tr>
-<tr class="memdesc:af34269487e490e280344687be36a24b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to initialize a cursor.  <a href="#af34269487e490e280344687be36a24b0">More...</a><br/></td></tr>
-<tr class="separator:af34269487e490e280344687be36a24b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad534774631e56f855999043c2f0d0677"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad534774631e56f855999043c2f0d0677">rename</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *oldname, const char *newname, const char *cfg[])</td></tr>
-<tr class="memdesc:ad534774631e56f855999043c2f0d0677"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to rename an object.  <a href="#ad534774631e56f855999043c2f0d0677">More...</a><br/></td></tr>
-<tr class="separator:ad534774631e56f855999043c2f0d0677"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab19f5230a8282cdaa8159f79c94e7508"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ab19f5230a8282cdaa8159f79c94e7508">truncate</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *cfg[])</td></tr>
-<tr class="memdesc:ab19f5230a8282cdaa8159f79c94e7508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to truncate an object.  <a href="#ab19f5230a8282cdaa8159f79c94e7508">More...</a><br/></td></tr>
-<tr class="separator:ab19f5230a8282cdaa8159f79c94e7508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf5e6a2d9c55c997af107bd4a5fb3a0c"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf5e6a2d9c55c997af107bd4a5fb3a0c">create</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:aaf5e6a2d9c55c997af107bd4a5fb3a0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to create a new object.  <a href="#aaf5e6a2d9c55c997af107bd4a5fb3a0c">More...</a><br/></td></tr>
+<tr class="separator:aaf5e6a2d9c55c997af107bd4a5fb3a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85e984645fb506a3d28881a26e7f79a0"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a85e984645fb506a3d28881a26e7f79a0">compact</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:a85e984645fb506a3d28881a26e7f79a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to compact an object.  <a href="#a85e984645fb506a3d28881a26e7f79a0">More...</a><br/></td></tr>
+<tr class="separator:a85e984645fb506a3d28881a26e7f79a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec4be1404f44dbe1f252bdaf1dc4557"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aeec4be1404f44dbe1f252bdaf1dc4557">drop</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:aeec4be1404f44dbe1f252bdaf1dc4557"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to drop an object.  <a href="#aeec4be1404f44dbe1f252bdaf1dc4557">More...</a><br/></td></tr>
+<tr class="separator:aeec4be1404f44dbe1f252bdaf1dc4557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a919c6b21ecaaffdbde671daab0440f71"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a919c6b21ecaaffdbde671daab0440f71">open_cursor</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</td></tr>
+<tr class="memdesc:a919c6b21ecaaffdbde671daab0440f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to initialize a cursor.  <a href="#a919c6b21ecaaffdbde671daab0440f71">More...</a><br/></td></tr>
+<tr class="separator:a919c6b21ecaaffdbde671daab0440f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31c11e23e67bc774060a0619c1fb4b57"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a31c11e23e67bc774060a0619c1fb4b57">rename</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *newuri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:a31c11e23e67bc774060a0619c1fb4b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to rename an object.  <a href="#a31c11e23e67bc774060a0619c1fb4b57">More...</a><br/></td></tr>
+<tr class="separator:a31c11e23e67bc774060a0619c1fb4b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14537b1218f8c98462ddcd6df83fd1d1"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a14537b1218f8c98462ddcd6df83fd1d1">salvage</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:a14537b1218f8c98462ddcd6df83fd1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to salvage an object.  <a href="#a14537b1218f8c98462ddcd6df83fd1d1">More...</a><br/></td></tr>
+<tr class="separator:a14537b1218f8c98462ddcd6df83fd1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97ab1fed33fffb8ead55ec854370e41a"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a97ab1fed33fffb8ead55ec854370e41a">truncate</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:a97ab1fed33fffb8ead55ec854370e41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to truncate an object.  <a href="#a97ab1fed33fffb8ead55ec854370e41a">More...</a><br/></td></tr>
+<tr class="separator:a97ab1fed33fffb8ead55ec854370e41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6487a12a6248371e43884cfef7715da"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad6487a12a6248371e43884cfef7715da">verify</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:ad6487a12a6248371e43884cfef7715da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to verify an object.  <a href="#ad6487a12a6248371e43884cfef7715da">More...</a><br/></td></tr>
+<tr class="separator:ad6487a12a6248371e43884cfef7715da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Applications can extend WiredTiger by providing new implementations of the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> class. </p>
-<p>Each data source supports a different URI scheme for data sources to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> and related methods.</p>
+<p>Each data source supports a different URI scheme for data sources to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> and related methods. See <a class="el" href="custom_data_sources.html">Custom Data Sources</a> for more information.</p>
 <p><b>Thread safety:</b> WiredTiger may invoke methods on the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> interface from multiple threads concurrently. It is the responsibility of the implementation to protect any shared data.</p>
 <p>Applications register their implementation with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source.">WT_CONNECTION::add_data_source</a>.</p>
 <div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> my_dsrc = {</div>
 <div class="line">                my_create,</div>
+<div class="line">                my_compact,</div>
 <div class="line">                my_drop,</div>
 <div class="line">                my_open_cursor,</div>
 <div class="line">                my_rename,</div>
-<div class="line">                my_truncate</div>
+<div class="line">                my_salvage,</div>
+<div class="line">                my_truncate,</div>
+<div class="line">                my_verify</div>
 <div class="line">        };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source.">add_data_source</a>(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL);</div>
 </div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a214f53ea79c931550a6b51de3e3aaa94"></a>
+<a class="anchor" id="a85e984645fb506a3d28881a26e7f79a0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_DATA_SOURCE::create)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, int exclusive, const char *config)</td>
+          <td class="memname">int(* WT_DATA_SOURCE::compact)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to compact an object. </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">my_compact(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aaf5e6a2d9c55c997af107bd4a5fb3a0c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_DATA_SOURCE::create)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -128,26 +157,16 @@ Public Attributes</h2></td></tr>
 <p>Callback to create a new object. </p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">my_create(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">int</span> exclusive, <span class="keyword">const</span> <span class="keywordtype">char</span> *config)</div>
-<div class="line">{</div>
-<div class="line">        <span class="comment">/* Unused parameters */</span></div>
-<div class="line">        (void)dsrc;</div>
-<div class="line">        (void)session;</div>
-<div class="line">        (void)name;</div>
-<div class="line">        (void)exclusive;</div>
-<div class="line">        (void)config;</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="ac5f93f2d017533b3fb0238f4e55940da"></a>
+<a class="anchor" id="aeec4be1404f44dbe1f252bdaf1dc4557"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_DATA_SOURCE::drop)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *cfg[])</td>
+          <td class="memname">int(* WT_DATA_SOURCE::drop)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -155,25 +174,16 @@ Public Attributes</h2></td></tr>
 <p>Callback to drop an object. </p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">my_drop(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *cfg[])</div>
-<div class="line">{</div>
-<div class="line">        <span class="comment">/* Unused parameters */</span></div>
-<div class="line">        (void)dsrc;</div>
-<div class="line">        (void)session;</div>
-<div class="line">        (void)name;</div>
-<div class="line">        (void)cfg;</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="af34269487e490e280344687be36a24b0"></a>
+<a class="anchor" id="a919c6b21ecaaffdbde671daab0440f71"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_DATA_SOURCE::open_cursor)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *owner, const char *cfg[], <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</td>
+          <td class="memname">int(* WT_DATA_SOURCE::open_cursor)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -181,29 +191,16 @@ Public Attributes</h2></td></tr>
 <p>Callback to initialize a cursor. </p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">my_open_cursor(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *obj, <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *owner, <span class="keyword">const</span> <span class="keywordtype">char</span> *cfg[],</div>
-<div class="line">    <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> **new_cursor)</div>
-<div class="line">{</div>
-<div class="line">        <span class="comment">/* Unused parameters */</span></div>
-<div class="line">        (void)dsrc;</div>
-<div class="line"></div>
-<div class="line">        (void)session;</div>
-<div class="line">        (void)obj;</div>
-<div class="line">        (void)owner;</div>
-<div class="line">        (void)cfg;</div>
-<div class="line">        (void)new_cursor;</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config, <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> **new_cursor)</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="ad534774631e56f855999043c2f0d0677"></a>
+<a class="anchor" id="a31c11e23e67bc774060a0619c1fb4b57"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_DATA_SOURCE::rename)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *oldname, const char *newname, const char *cfg[])</td>
+          <td class="memname">int(* WT_DATA_SOURCE::rename)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *newuri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -211,26 +208,33 @@ Public Attributes</h2></td></tr>
 <p>Callback to rename an object. </p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">my_rename(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *oldname, <span class="keyword">const</span> <span class="keywordtype">char</span> *newname, <span class="keyword">const</span> <span class="keywordtype">char</span> *cfg[])</div>
-<div class="line">{</div>
-<div class="line">        <span class="comment">/* Unused parameters */</span></div>
-<div class="line">        (void)dsrc;</div>
-<div class="line">        (void)session;</div>
-<div class="line">        (void)oldname;</div>
-<div class="line">        (void)newname;</div>
-<div class="line">        (void)cfg;</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <span class="keyword">const</span> <span class="keywordtype">char</span> *newname, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="ab19f5230a8282cdaa8159f79c94e7508"></a>
+<a class="anchor" id="a14537b1218f8c98462ddcd6df83fd1d1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_DATA_SOURCE::truncate)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *cfg[])</td>
+          <td class="memname">int(* WT_DATA_SOURCE::salvage)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to salvage an object. </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">my_salvage(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a97ab1fed33fffb8ead55ec854370e41a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_DATA_SOURCE::truncate)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -238,16 +242,24 @@ Public Attributes</h2></td></tr>
 <p>Callback to truncate an object. </p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">my_truncate(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *cfg[])</div>
-<div class="line">{</div>
-<div class="line">        <span class="comment">/* Unused parameters */</span></div>
-<div class="line">        (void)dsrc;</div>
-<div class="line">        (void)session;</div>
-<div class="line">        (void)name;</div>
-<div class="line">        (void)cfg;</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ad6487a12a6248371e43884cfef7715da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_DATA_SOURCE::verify)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to verify an object. </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">my_verify(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
 </div><!-- fragment -->
 </div>
 </div>

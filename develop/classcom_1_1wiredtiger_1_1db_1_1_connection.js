@@ -2,6 +2,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_connection =
 [
     [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a9f3713033d9e9a1a84f4670da907c55d", null ],
     [ "close", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2458441ed6301620ef4db71f3ef5c47c", null ],
+    [ "configure_method", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1b9848afb4bfe4b790579490e6e2263c", null ],
     [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a0e8af34ebdff2b71b682095ed085cebe", null ],
     [ "get_home", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad52f0d0c36bcedfa2214f233f3ee020a", null ],
     [ "is_new", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a7ba72791fba4a03984c0d9b8faca1284", null ],

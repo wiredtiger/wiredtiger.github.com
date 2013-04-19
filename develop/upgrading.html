@@ -69,7 +69,56 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_143"></a>
+<div class="textblock"><h1><a class="anchor" id="version_153"></a>
+Upgrading to Version 1.5.3</h1>
+<dl>
+<dt>Configuration strings </dt>
+<dd><p class="startdd">An undocumented feature where configuration string case was ignored has been removed, and all configuration strings are now case-dependent. Applications may require modifications to resolve run-time errors. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Loading extensions and <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> </dt>
+<dd><p class="startdd">The following changes are only applicable to applications loading extensions and/or using the WiredTiger extension functions described in <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a>.</p>
+<ul>
+<li>
+<p class="startli">The signature of <a class="el" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded.">wiredtiger_extension_init</a> has changed from <code>(<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session, <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> *api)</code> to <code>(<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *connection)</code>. As no <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> handle reference is passed to the function, the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d" title="Return a reference to the WiredTiger extension functions.">WT_CONNECTION::get_extension_api</a> has been added to support retrieval of the extension API. Applications may require modifications.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The type of all configuration arguments to extension methods has changed from <code>"const char *"</code> to <code>"WT_CONFIG_ARG *"</code>, and the WT_EXTENSION::config method added to support configuration parsing; applications may require modifications.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The undocumented <code>wiredtiger_XXX</code> defines for <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> extension methods have been removed from the <code>wiredtiger_ext.h</code> include file; applications should instead use the method handles referenced by the <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> handle to call extension functions.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The extension API methods have all changed to require an additional parameter, the <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> method handle; applications may require modifications.</p>
+<p class="endli"></p>
+</li>
+<li>
+The WT_SESSION::msg_printf method was replaced by <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a460e65aa13990254a2cd83fe96d4865a" title="Insert a message into the WiredTiger message stream.">WT_EXTENSION_API::msg_printf</a>; applications may require modifications. </li>
+</ul>
+<p class="enddd"></p>
+</dd>
+<dt><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> </dt>
+<dd><p class="startdd">The following changes are only applicable to applications providing new implementations of the WiredTiger <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> class.</p>
+<ul>
+<li>
+<p class="startli">The <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> class has three new methods: <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a85e984645fb506a3d28881a26e7f79a0" title="Callback to compact an object.">WT_DATA_SOURCE::compact</a>, <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a14537b1218f8c98462ddcd6df83fd1d1" title="Callback to salvage an object.">WT_DATA_SOURCE::salvage</a>, and <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad6487a12a6248371e43884cfef7715da" title="Callback to verify an object.">WT_DATA_SOURCE::verify</a>; applications may require modifications to resolve compile errors.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The <code>owner</code> argument to the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a919c6b21ecaaffdbde671daab0440f71" title="Callback to initialize a cursor.">WT_DATA_SOURCE::open_cursor</a> method has been removed; applications may require modifications to resolve compile errors.</p>
+<p class="endli"></p>
+</li>
+<li>
+The <code>exclusive</code> argument to the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf5e6a2d9c55c997af107bd4a5fb3a0c" title="Callback to create a new object.">WT_DATA_SOURCE::create</a> method has been removed; applications may require modifications to resolve compile errors. </li>
+</ul>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ <h1><a class="anchor" id="version_143"></a>
 Upgrading to Version 1.4.3</h1>
 <dl>
 <dt>Statistics </dt>

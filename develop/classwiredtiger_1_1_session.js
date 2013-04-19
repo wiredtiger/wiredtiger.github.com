@@ -8,7 +8,6 @@ var classwiredtiger_1_1_session =
     [ "compact", "classwiredtiger_1_1_session.html#afbf37a8455a785f7aabbfc29e91cde81", null ],
     [ "create", "classwiredtiger_1_1_session.html#a05806032431c2420bf709d7cfdb6937c", null ],
     [ "drop", "classwiredtiger_1_1_session.html#aa5636db260be86b90228978057daea34", null ],
-    [ "msg_printf", "classwiredtiger_1_1_session.html#a4b01fb98ddc63825a3db3414d0058c26", null ],
     [ "open_cursor", "classwiredtiger_1_1_session.html#aa7f8ff75031b4ee2f337cf2776361a79", null ],
     [ "reconfigure", "classwiredtiger_1_1_session.html#aa761c6e0840b09436289b4a7db0befc2", null ],
     [ "rename", "classwiredtiger_1_1_session.html#a661a9bb6dcaf9d6484758ec81d8772b9", null ],

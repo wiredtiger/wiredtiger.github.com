@@ -106,9 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:adf785ef53c16d9dcc77e22cc04c87b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#adf785ef53c16d9dcc77e22cc04c87b70">More...</a><br/></td></tr>
 <tr class="separator:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52f78bc88e48e3905158277c518b80d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a52f78bc88e48e3905158277c518b80d4">rename</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *oldname, const char *newname, const char *config)</td></tr>
-<tr class="memdesc:a52f78bc88e48e3905158277c518b80d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#a52f78bc88e48e3905158277c518b80d4">More...</a><br/></td></tr>
-<tr class="separator:a52f78bc88e48e3905158277c518b80d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d24b02549009f78b7c6463da0247614"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *newuri, const char *config)</td></tr>
+<tr class="memdesc:a1d24b02549009f78b7c6463da0247614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#a1d24b02549009f78b7c6463da0247614">More...</a><br/></td></tr>
+<tr class="separator:a1d24b02549009f78b7c6463da0247614"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3399430e474f7005bd5ea20e6ec7a8e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e">salvage</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:ab3399430e474f7005bd5ea20e6ec7a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salvage a file or table.  <a href="#ab3399430e474f7005bd5ea20e6ec7a8e">More...</a><br/></td></tr>
 <tr class="separator:ab3399430e474f7005bd5ea20e6ec7a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,10 +134,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6550c9079198955c5071583941c85bbf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a6550c9079198955c5071583941c85bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#a6550c9079198955c5071583941c85bbf">More...</a><br/></td></tr>
 <tr class="separator:a6550c9079198955c5071583941c85bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Debugging</div></td></tr>
-<tr class="memitem:a7ac96e4c2574fbb2b43c17666326f8a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7ac96e4c2574fbb2b43c17666326f8a8">msg_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *fmt,...)</td></tr>
-<tr class="memdesc:a7ac96e4c2574fbb2b43c17666326f8a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a string to the message handler for debugging.  <a href="#a7ac96e4c2574fbb2b43c17666326f8a8">More...</a><br/></td></tr>
-<tr class="separator:a7ac96e4c2574fbb2b43c17666326f8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -653,50 +649,6 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7ac96e4c2574fbb2b43c17666326f8a8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int WT_SESSION::msg_printf </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
-          <td class="paramname"><em>session</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>fmt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send a string to the message handler for debugging. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7ac96e4c2574fbb2b43c17666326f8a8" title="Send a string to the message handler for debugging.">msg_printf</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;process ID %&quot;</span> PRIuMAX, (uintmax_t)getpid());</div>
-</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">fmt</td><td>a printf-like format specification </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="afb5b4a69c2c5cafe411b2b04fdc1c75d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -870,7 +822,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a52f78bc88e48e3905158277c518b80d4"></a>
+<a class="anchor" id="a1d24b02549009f78b7c6463da0247614"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -884,13 +836,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>oldname</em>, </td>
+          <td class="paramname"><em>uri</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>newname</em>, </td>
+          <td class="paramname"><em>newuri</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -907,12 +859,12 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Rename an object. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a52f78bc88e48e3905158277c518b80d4" title="Rename an object.">rename</a>(session, <span class="stringliteral">&quot;table:old&quot;</span>, <span class="stringliteral">&quot;table:new&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614" title="Rename an object.">rename</a>(session, <span class="stringliteral">&quot;table:old&quot;</span>, <span class="stringliteral">&quot;table:new&quot;</span>, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">oldname</td><td>the current URI of the object, such as <code>"table:old"</code> </td></tr>
-    <tr><td class="paramname">newname</td><td>the new name of the object, such as <code>"table:new"</code> </td></tr>
+    <tr><td class="paramname">uri</td><td>the current URI of the object, such as <code>"table:old"</code> </td></tr>
+    <tr><td class="paramname">newuri</td><td>the new URI of the object, such as <code>"table:new"</code> </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
   </table>
   </dd>

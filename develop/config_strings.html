@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('config_strings.html','');});
 Introduction</h1>
 <p>Methods in WiredTiger take a configuration string to provide optional arguments and configure non-standard behaviors. These strings are simple comma-separated lists of <code>"&lt;key&gt;=&lt;value&gt;"</code> pairs, and all have the same format:</p>
 <pre>
-  [key['='value]][','[key['='value]]]*
+    [key['='value]][','[key['='value]]]*
 </pre><p>For example, a configuration string is used when opening a connection to a database to specify if the database should be created and to set the cache size:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Configuration strings are also used to configure the table schema. For example, to create a table that uses C language strings for keys and values:</p>
@@ -87,7 +87,37 @@ Introduction</h1>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=SiH,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;columns=(id,department,salary,year-started)&quot;</span>);</div>
-</div><!-- fragment --><p> Values of type of "boolean" can be set to any of <code>false</code>, <code>true</code>, <code>0</code> or <code>1</code>. If no value is specified for a key, the value <code>1</code> is implied. For example, all of the following forms of the <code>overwrite</code> configuration string are identical:</p>
+</div><!-- fragment --><p> Values may of type "integer" may have multiplier characters appended to them, as follows:</p>
+<table class="doxtable">
+<tr>
+<th>Character</th><th>Meaning</th><th>Change to value </th></tr>
+<tr>
+<td><code>B</code> </td><td>byte</td><td>no change </td></tr>
+<tr>
+<td><code>b</code> </td><td>byte</td><td>no change </td></tr>
+<tr>
+<td><code>K</code> </td><td>kilobyte</td><td>multiply by 2^10 </td></tr>
+<tr>
+<td><code>k</code> </td><td>kilobyte</td><td>multiply by 2^10 </td></tr>
+<tr>
+<td><code>M</code> </td><td>megabyte</td><td>multiply by 2^20 </td></tr>
+<tr>
+<td><code>m</code> </td><td>megabyte</td><td>multiply by 2^20 </td></tr>
+<tr>
+<td><code>G</code> </td><td>gigabyte</td><td>multiply by 2^30 </td></tr>
+<tr>
+<td><code>g</code> </td><td>gigabyte</td><td>multiply by 2^30 </td></tr>
+<tr>
+<td><code>T</code> </td><td>terabyte</td><td>multiply by 2^40 </td></tr>
+<tr>
+<td><code>t</code> </td><td>terabyte</td><td>multiply by 2^40 </td></tr>
+<tr>
+<td><code>P</code> </td><td>petabyte</td><td>multiply by 2^50 </td></tr>
+<tr>
+<td><code>p</code> </td><td>petabyte</td><td>multiply by 2^50 </td></tr>
+</table>
+<p>For example, the configuration string <code>500B</code> is the same as entering the number <code>500</code>, the string <code>500K</code> is the same as entering the number <code>512000</code>, the string <code>500G</code> is the same as entering the number <code>536870912000</code> and the string <code>500T</code> is the same as entering the number <code>549755813888000</code>.</p>
+<p>Values of type of "boolean" can be set to any of <code>false</code>, <code>true</code>, <code>0</code> or <code>1</code>. If no value is specified for a key, the value <code>1</code> is implied. For example, all of the following forms of the <code>overwrite</code> configuration string are identical:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;cursor);</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL,</div>

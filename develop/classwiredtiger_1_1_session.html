@@ -111,7 +111,7 @@ def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b></td></tr>
 <tr class="memdesc:aa5636db260be86b90228978057daea34"><td class="mdescLeft">&#160;</td><td class="mdescRight">drop(self, name, config) -&gt; int  <a href="#aa5636db260be86b90228978057daea34">More...</a><br/></td></tr>
 <tr class="separator:aa5636db260be86b90228978057daea34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a661a9bb6dcaf9d6484758ec81d8772b9"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_session.html#a661a9bb6dcaf9d6484758ec81d8772b9">rename</a></td></tr>
-<tr class="memdesc:a661a9bb6dcaf9d6484758ec81d8772b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">rename(self, oldname, newname, config) -&gt; int  <a href="#a661a9bb6dcaf9d6484758ec81d8772b9">More...</a><br/></td></tr>
+<tr class="memdesc:a661a9bb6dcaf9d6484758ec81d8772b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">rename(self, uri, newuri, config) -&gt; int  <a href="#a661a9bb6dcaf9d6484758ec81d8772b9">More...</a><br/></td></tr>
 <tr class="separator:a661a9bb6dcaf9d6484758ec81d8772b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac77449102799219855d198197426af5e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_session.html#ac77449102799219855d198197426af5e">salvage</a></td></tr>
 <tr class="memdesc:ac77449102799219855d198197426af5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">salvage(self, name, config) -&gt; int  <a href="#ac77449102799219855d198197426af5e">More...</a><br/></td></tr>
@@ -137,9 +137,6 @@ def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b></td></tr>
 <tr class="memitem:a7a8b13b96530447f26a07e7d85521659"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_session.html#a7a8b13b96530447f26a07e7d85521659">checkpoint</a></td></tr>
 <tr class="memdesc:a7a8b13b96530447f26a07e7d85521659"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint(self, config) -&gt; int  <a href="#a7a8b13b96530447f26a07e7d85521659">More...</a><br/></td></tr>
 <tr class="separator:a7a8b13b96530447f26a07e7d85521659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b01fb98ddc63825a3db3414d0058c26"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiredtiger_1_1_session.html#a4b01fb98ddc63825a3db3414d0058c26">msg_printf</a></td></tr>
-<tr class="memdesc:a4b01fb98ddc63825a3db3414d0058c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">msg_printf(self, fmt) -&gt; int  <a href="#a4b01fb98ddc63825a3db3414d0058c26">More...</a><br/></td></tr>
-<tr class="separator:a4b01fb98ddc63825a3db3414d0058c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -362,35 +359,6 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>connection</b></td><
 
 </div>
 </div>
-<a class="anchor" id="a4b01fb98ddc63825a3db3414d0058c26"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def wiredtiger.Session.msg_printf </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>msg_printf(self, fmt) -&gt; int </p>
-<p>Send a string to the message handler for debugging. </p>
-
-</div>
-</div>
 <a class="anchor" id="aa7f8ff75031b4ee2f337cf2776361a79"></a>
 <div class="memitem">
 <div class="memproto">
@@ -473,7 +441,7 @@ tuple&#160;</td><td class="memItemRight" valign="bottom"><b>connection</b></td><
       </table>
 </div><div class="memdoc">
 
-<p>rename(self, oldname, newname, config) -&gt; int </p>
+<p>rename(self, uri, newuri, config) -&gt; int </p>
 <p>Rename an object. </p>
 
 </div>
