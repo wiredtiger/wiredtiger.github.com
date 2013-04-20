@@ -91,6 +91,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a460e65aa13990254a2cd83fe96d4865a"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a460e65aa13990254a2cd83fe96d4865a">msg_printf</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *fmt,...)</td></tr>
 <tr class="memdesc:a460e65aa13990254a2cd83fe96d4865a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a message into the WiredTiger message stream.  <a href="#a460e65aa13990254a2cd83fe96d4865a">More...</a><br/></td></tr>
 <tr class="separator:a460e65aa13990254a2cd83fe96d4865a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6218dcf11a0129f0c3a21abc04157e5f"><td class="memItemLeft" align="right" valign="top">const char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6218dcf11a0129f0c3a21abc04157e5f">strerror</a> )(int err)</td></tr>
+<tr class="memdesc:a6218dcf11a0129f0c3a21abc04157e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about an error as a string; the strerror method is a superset of the ISO C99/POSIX 1003.1-2001 function strerror.  <a href="#a6218dcf11a0129f0c3a21abc04157e5f">More...</a><br/></td></tr>
+<tr class="separator:a6218dcf11a0129f0c3a21abc04157e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72da81054ac80fc95226a98ef094df2f"><td class="memItemLeft" align="right" valign="top">void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a72da81054ac80fc95226a98ef094df2f">scr_alloc</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, size_t bytes)</td></tr>
 <tr class="memdesc:a72da81054ac80fc95226a98ef094df2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate short-term use scratch memory.  <a href="#a72da81054ac80fc95226a98ef094df2f">More...</a><br/></td></tr>
 <tr class="separator:a72da81054ac80fc95226a98ef094df2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -424,6 +427,29 @@ Public Attributes</h2></td></tr>
 </dl>
 <div class="fragment"><div class="line">        wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aba236f198ae9227793fff13cff1ba159" title="Free short-term use scratch memory.">scr_free</a>(wt_api, session, buffer);</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a6218dcf11a0129f0c3a21abc04157e5f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char*(* WT_EXTENSION_API::strerror)(int err)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return information about an error as a string; the strerror method is a superset of the ISO C99/POSIX 1003.1-2001 function strerror. </p>
+<div class="fragment"><div class="line">        (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039" title="Insert an error message into the WiredTiger error stream.">err_printf</a>(wt_api,</div>
+<div class="line">            session, <span class="stringliteral">&quot;WiredTiger error return: %s&quot;</span>, wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6218dcf11a0129f0c3a21abc04157e5f" title="Return information about an error as a string; the strerror method is a superset of the ISO C99/POSIX...">strerror</a>(ret));</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">err</td><td>a return value from a WiredTiger, C library or POSIX function </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
