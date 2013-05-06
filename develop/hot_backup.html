@@ -117,7 +117,10 @@ $(document).ready(function(){initNavTree('hot_backup.html','');});
 <li>The cursor must not be closed until all of the files have been copied, however, there is no requirement that the files be copied in any order or in any relationship to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> calls, only that all files have been copied before the cursor is closed.</li>
 </ul>
 <ul>
-<li>During the period the hot backup cursor is open, database checkpoints can be created, but no checkpoints can be deleted. This may result in significant file growth. </li>
+<li>During the period the hot backup cursor is open, database checkpoints can be created, but no checkpoints can be deleted. This may result in significant file growth.</li>
+</ul>
+<ul>
+<li>Many Linux systems do not support mixing <code>O_DIRECT</code> and memory mapping or normal I/O to the same file. If <code>O_DIRECT</code> is configured for data files on Linux systems (using the wiredtiger_open <code>direct_io</code> configuration), the utilities used to copy the database files should probably also specify <code>O_DIRECT</code> when configuring their file access. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

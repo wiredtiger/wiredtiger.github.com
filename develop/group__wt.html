@@ -978,7 +978,7 @@ The number of bytes in the data item. </td></tr>
 <tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
+<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Many Linux systems do not support mixing <code>O_DIRECT</code> and memory mapping or normal I/O to the same file. If <code>O_DIRECT</code> is configured for data files on Linux systems, memory mapping should probably be turned off using the <code>mmap=false</code> configuration string and any utilities used to copy the database files for the purposes of hot backup should probably also specify <code>O_DIRECT</code> when configuring their file access.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>
