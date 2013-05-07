@@ -39,7 +39,7 @@ var NAVTREEINDEX =
 [
 ".html",
 "command_line.html#util_printlog_options",
-"group__wt.html#gac78ea635ba2fe17c8d4e4eb09f928eef"
+"group__wt.html#gac95e70a24d09cf6928398512990e1474"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
