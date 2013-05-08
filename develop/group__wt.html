@@ -980,7 +980,7 @@ The number of bytes in the data item. </td></tr>
 <tr>
 <td><code>eviction_trigger</code></td><td>trigger eviction when the cache becomes this full (as a percentage).</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
 <tr>
-<td><code>extensions</code></td><td>list of shared library extensions to load (using dlopen). Optional values are passed as the <code>config</code> parameter to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68" title="Load an extension.">WT_CONNECTION::load_extension</a>. Complex paths may require quoting, for example, <code>extensions=("/path/ext.so"="entry=my_entry")</code>.</td><td>a list of strings; default empty. </td></tr>
+<td><code>extensions</code></td><td>list of shared library extensions to load (using dlopen). Optional values are passed as the <code>config</code> parameter to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68" title="Load an extension.">WT_CONNECTION::load_extension</a>. For example, <code>extensions=(/path/ext.so={entry=my_entry})</code>.</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>hazard_max</code></td><td>maximum number of simultaneous hazard pointers per session handle.</td><td>an integer greater than or equal to 15; default <code>1000</code>. </td></tr>
 <tr>

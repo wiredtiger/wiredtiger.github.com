@@ -277,15 +277,15 @@ Creating data-specific configuration strings</h2>
 <div class="line"><span class="comment">         * to /home.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137" title="Add configuration options for a method.">configure_method</a>(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;target=\&quot;/home\&quot;&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;choices=[\&quot;/device\&quot;, \&quot;/home\&quot;, \&quot;/target\&quot;]&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;target=/home&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;choices=[/device, /home, /target]&quot;</span>);</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Limit the paths list to one or more of /device, /home, /mnt or</span></div>
 <div class="line"><span class="comment">         * /target; default to /mnt.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137" title="Add configuration options for a method.">configure_method</a>(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;paths=[\&quot;/mnt\&quot;]&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;choices=[\&quot;/device\&quot;, \&quot;/home\&quot;, \&quot;/mnt\&quot;, \&quot;/target\&quot;]&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;paths=[/mnt]&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;choices=[/device, /home, /mnt, /target]&quot;</span>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="custom_ds_cursor_collator"></a>
 WT_COLLATOR</h1>
 <p>Custom data sources do not support custom ordering of records, and attempting to create a custom data source with a collator configured will fail.</p>

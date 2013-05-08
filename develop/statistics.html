@@ -109,7 +109,7 @@ Statistics logging</h1>
 <p>The following example logs statistics into files named with the month, day and year:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;statistics_log=(wait=120,path=\&quot;/log/log.%m.%d.%y\&quot;)&quot;</span>, &amp;conn);</div>
+<div class="line">            <span class="stringliteral">&quot;statistics_log=(wait=120,path=/log/log.%m.%d.%y)&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> A Python script that parses the default logging output and uses the <a href="http://www.gnuplot.info/">gnuplot</a>, utility to generate Portable Network Graphics (PNG) format graphs is included in the WiredTiger distribution in the file <code>tools/statlog.py</code>. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

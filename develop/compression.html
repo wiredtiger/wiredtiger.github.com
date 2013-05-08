@@ -79,7 +79,7 @@ Using bzip2 compression</h1>
 </div><!-- fragment --><p>When opening the WiredTiger database, load the bzip2 shared library as an extension. For example, with the bzip2 library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;extensions=[\&quot;/usr/local/lib/wiredtiger_bzip2.so\&quot;]&quot;</span>, &amp;conn);</div>
+<div class="line">            <span class="stringliteral">&quot;extensions=[/usr/local/lib/wiredtiger_bzip2.so]&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>bzip2:</code> </p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
@@ -97,7 +97,7 @@ Using snappy compression</h1>
 </div><!-- fragment --><p>When opening the WiredTiger database, load the snappy shared library as an extension. For example, with the snappy library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;extensions=[\&quot;/usr/local/lib/wiredtiger_snappy.so\&quot;]&quot;</span>, &amp;conn);</div>
+<div class="line">            <span class="stringliteral">&quot;extensions=[/usr/local/lib/wiredtiger_snappy.so]&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>snappy:</code> </p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
