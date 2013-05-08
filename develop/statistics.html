@@ -75,8 +75,7 @@ $(document).ready(function(){initNavTree('statistics.html','');});
 </div><!-- fragment --><p> Note that maintaining statistics involves updating shared-memory data structures and may decrease application performance.</p>
 <h1><a class="anchor" id="statistics_log"></a>
 Statistics logging</h1>
-<p>WiredTiger will optionally log the current database statistics into a file when configured the <code>statistics_log.log</code> configuration string of the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function is set.</p>
-<p>The following example logs statistics every 30 seconds:</p>
+<p>WiredTiger will optionally log database statistics into a file when the the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> <code>statistics_log</code> configuration is set. The following example logs statistics every 30 seconds:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(</div>
 <div class="line">            home, NULL, <span class="stringliteral">&quot;create,statistics_log=(wait=30)&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Each record is formatted as a space-separated timestamp, unsigned 64-bit value and a variable length string which describes the statistic.</p>
