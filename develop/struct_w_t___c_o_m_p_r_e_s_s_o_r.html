@@ -97,6 +97,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a0ae8cd41e9f3d65187a5e0209a075f02"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02">pre_size</a> )(<a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html">WT_COMPRESSOR</a> *compressor, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, uint8_t *src, size_t src_len, size_t *result_lenp)</td></tr>
 <tr class="memdesc:a0ae8cd41e9f3d65187a5e0209a075f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to size a destination buffer for compression.  <a href="#a0ae8cd41e9f3d65187a5e0209a075f02">More...</a><br/></td></tr>
 <tr class="separator:a0ae8cd41e9f3d65187a5e0209a075f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c0741f5e8b8c8f661911210b530fb9"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#aa7c0741f5e8b8c8f661911210b530fb9">terminate</a> )(<a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html">WT_COMPRESSOR</a> *compressor, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
+<tr class="memdesc:aa7c0741f5e8b8c8f661911210b530fb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, a callback performed when the database is closed.  <a href="#aa7c0741f5e8b8c8f661911210b530fb9">More...</a><br/></td></tr>
+<tr class="separator:aa7c0741f5e8b8c8f661911210b530fb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The interface implemented by applications to provide custom compression. </p>
@@ -106,7 +109,8 @@ Public Attributes</h2></td></tr>
 <div class="line">            my_compress,</div>
 <div class="line">            my_compress_raw,            <span class="comment">/* NULL, if no raw compression */</span></div>
 <div class="line">            my_decompress,</div>
-<div class="line">            my_pre_size                 <span class="comment">/* NULL, if pre-sizing not needed */</span></div>
+<div class="line">            my_pre_size,                <span class="comment">/* NULL, if pre-sizing not needed */</span></div>
+<div class="line">            NULL                        <span class="comment">/* NULL, if no termination cleanup */</span></div>
 <div class="line">        };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">add_compressor</a>(conn, <span class="stringliteral">&quot;my_compress&quot;</span>, &amp;my_compressor, NULL);</div>
 </div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
@@ -293,6 +297,21 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aa7c0741f5e8b8c8f661911210b530fb9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_COMPRESSOR::terminate)(<a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html">WT_COMPRESSOR</a> *compressor, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If non-NULL, a callback performed when the database is closed. </p>
+<p>The <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#aa7c0741f5e8b8c8f661911210b530fb9" title="If non-NULL, a callback performed when the database is closed.">WT_COMPRESSOR::terminate</a> callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger. </p>
+
 </div>
 </div>
 </div><!-- contents -->

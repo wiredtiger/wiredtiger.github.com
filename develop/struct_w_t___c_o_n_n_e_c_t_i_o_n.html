@@ -169,7 +169,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Add a custom collation function. </p>
 <p>The application must first implement the <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records.">WT_COLLATOR</a> interface and then register the implementation with WiredTiger:</p>
-<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records.">WT_COLLATOR</a> my_collator = { my_compare };</div>
+<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records.">WT_COLLATOR</a> my_collator = { my_compare, NULL };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8" title="Add a custom collation function.">add_collator</a>(conn, <span class="stringliteral">&quot;my_collator&quot;</span>, &amp;my_collator, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -227,7 +227,8 @@ Public Member Functions</h2></td></tr>
 <div class="line">            my_compress,</div>
 <div class="line">            my_compress_raw,            <span class="comment">/* NULL, if no raw compression */</span></div>
 <div class="line">            my_decompress,</div>
-<div class="line">            my_pre_size                 <span class="comment">/* NULL, if pre-sizing not needed */</span></div>
+<div class="line">            my_pre_size,                <span class="comment">/* NULL, if pre-sizing not needed */</span></div>
+<div class="line">            NULL                        <span class="comment">/* NULL, if no termination cleanup */</span></div>
 <div class="line">        };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">add_compressor</a>(conn, <span class="stringliteral">&quot;my_compress&quot;</span>, &amp;my_compressor, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
@@ -290,7 +291,8 @@ Public Member Functions</h2></td></tr>
 <div class="line">                my_rename,</div>
 <div class="line">                my_salvage,</div>
 <div class="line">                my_truncate,</div>
-<div class="line">                my_verify</div>
+<div class="line">                my_verify,</div>
+<div class="line">                my_terminate</div>
 <div class="line">        };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source.">add_data_source</a>(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
@@ -346,8 +348,8 @@ Public Member Functions</h2></td></tr>
 <p><b>Not yet supported in WiredTiger.</b> </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>fix when custom extractors supported</dd></dl>
 <p>The application must first implement the <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> interface and then register the implementation with WiredTiger:</p>
-<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> my_extractor;</div>
-<div class="line">        my_extractor.<a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html#a7a7069beebb84ffaa8ee02f8d7ebb162" title="Callback to extract a value for an index or column group.">extract</a> = my_extract;</div>
+<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> my_extractor = {my_extract};</div>
+<div class="line"></div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups.">add_extractor</a>(conn, <span class="stringliteral">&quot;my_extractor&quot;</span>, &amp;my_extractor, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

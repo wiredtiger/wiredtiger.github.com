@@ -92,8 +92,8 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The interface implemented by applications to provide custom extraction of index keys or column group values. </p>
 <p>Applications register implementations with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups.">WT_CONNECTION::add_extractor</a>.</p>
-<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> my_extractor;</div>
-<div class="line">        my_extractor.<a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html#a7a7069beebb84ffaa8ee02f8d7ebb162" title="Callback to extract a value for an index or column group.">extract</a> = my_extract;</div>
+<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> my_extractor = {my_extract};</div>
+<div class="line"></div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups.">add_extractor</a>(conn, <span class="stringliteral">&quot;my_extractor&quot;</span>, &amp;my_extractor, NULL);</div>
 </div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a7a7069beebb84ffaa8ee02f8d7ebb162"></a>

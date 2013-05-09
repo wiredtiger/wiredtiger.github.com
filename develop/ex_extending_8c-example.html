@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('ex_extending_8c-example.html','');});
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records.">WT_COLLATOR</a> nocasecoll = { __compare_nocase };</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records.">WT_COLLATOR</a> nocasecoll = { __compare_nocase, NULL };</div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * Comparator that only compares the first N prefix characters of the string.</span></div>
 <div class="line"><span class="comment"> * This has associated data, so we need to extend WT_COLLATOR.</span></div>
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('ex_extending_8c-example.html','');});
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">static</span> PREFIX_COLLATOR pcoll10 = { {__compare_prefixes}, 10 };</div>
+<div class="line"><span class="keyword">static</span> PREFIX_COLLATOR pcoll10 = { {__compare_prefixes, NULL}, 10 };</div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>

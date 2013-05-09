@@ -1,13 +1,15 @@
 var group__wt__ext =
 [
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", [
-      [ "compare", "struct_w_t___c_o_l_l_a_t_o_r.html#a9a6de866802dcd1a587cb1dbd69887df", null ]
+      [ "compare", "struct_w_t___c_o_l_l_a_t_o_r.html#a9a6de866802dcd1a587cb1dbd69887df", null ],
+      [ "terminate", "struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f", null ]
     ] ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", [
       [ "compress", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a87c339a3442b719896fa5cbe2c530843", null ],
       [ "compress_raw", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a3cc0f6e03443cd12d86b385dd5bc7f37", null ],
       [ "decompress", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#acf978486348484d467bd4f4032cf3795", null ],
-      [ "pre_size", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02", null ]
+      [ "pre_size", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02", null ],
+      [ "terminate", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#aa7c0741f5e8b8c8f661911210b530fb9", null ]
     ] ],
     [ "WT_DATA_SOURCE", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html", [
       [ "compact", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a85e984645fb506a3d28881a26e7f79a0", null ],
@@ -16,6 +18,7 @@ var group__wt__ext =
       [ "open_cursor", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a919c6b21ecaaffdbde671daab0440f71", null ],
       [ "rename", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a31c11e23e67bc774060a0619c1fb4b57", null ],
       [ "salvage", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a14537b1218f8c98462ddcd6df83fd1d1", null ],
+      [ "terminate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ab92be74825433258ff5e3631873ce57f", null ],
       [ "truncate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a97ab1fed33fffb8ead55ec854370e41a", null ],
       [ "verify", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad6487a12a6248371e43884cfef7715da", null ]
     ] ],
