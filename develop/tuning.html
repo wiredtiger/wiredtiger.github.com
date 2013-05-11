@@ -133,6 +133,14 @@ Direct I/O</h2>
 <p>Direct I/O is configured using the "direct_io" configuration string to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function. An example of configuring direct I/O for WiredTiger's data files:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,direct_io=[data]&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Direct I/O implies a writing thread waits for the write to complete (which is a slower operation than writing into the system buffer cache), and configuring direct I/O is likely to decrease overall application performance.</p>
+<p>Many Linux systems do not support mixing <code>O_DIRECT</code> and memory mapping or normal I/O to the same file, and attempting to do so can result in data loss or corruption. For this reason:</p>
+<ul>
+<li>WiredTiger silently ignores the setting of the <code>mmap</code> configuration to the wiredtiger_open function in those cases, and will never memory map a file which is configured for direct I/O.</li>
+</ul>
+<ul>
+<li>If <code>O_DIRECT</code> is configured for data files on Linux systems, any system utilities used to copy database files for the purposes of hot backup should also specify <code>O_DIRECT</code> when configuring their file access.</li>
+</ul>
+<p>Additionally, many Linux systems require specific alignment for buffers used for I/O when direct I/O is configured, and using the wrong alignment can cause data loss or corruption. When direct I/O is configured on Linux systems, WiredTiger aligns I/O buffers to 4KB; if different alignment is required by your system, the <code>buffer_alignment</code> configuration to the wiredtiger_open call should be configured to the correct value.</p>
 <p>Direct I/O is based on the non-standard <code>O_DIRECT</code> flag to the POSIX 1003.1 open system call and may not available on all platforms.</p>
 <h2><a class="anchor" id="tuning_system_buffer_cache_os_cache_dirty_max"></a>
 os_cache_dirty_max</h2>
