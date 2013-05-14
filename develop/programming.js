@@ -64,6 +64,7 @@ var programming =
       [ "Memory allocator", "tuning.html#tuning_memory_allocator", null ],
       [ "Cursor persistence", "tuning.html#tuning_cursor_persistence", null ],
       [ "Page and overflow sizes", "tuning.html#tuning_page_size", null ],
+      [ "File growth", "tuning.html#tuning_system_file_growth", null ],
       [ "System buffer cache", "tuning.html#tuning_system_buffer_cache", [
         [ "Direct I/O", "tuning.html#tuning_system_buffer_cache_direct_io", null ],
         [ "os_cache_dirty_max", "tuning.html#tuning_system_buffer_cache_os_cache_dirty_max", null ],
