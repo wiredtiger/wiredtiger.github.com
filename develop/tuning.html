@@ -146,6 +146,7 @@ Direct I/O</h2>
 <li>If <code>O_DIRECT</code> is configured for data files on Linux systems, any system utilities used to copy database files for the purposes of hot backup should also specify <code>O_DIRECT</code> when configuring their file access. A standard Linux system utility that supports <code>O_DIRECT</code> is the <code>dd</code> utility, when using the <code>iflag=direct</code> command-line option.</li>
 </ul>
 <p>Additionally, many Linux systems require specific alignment for buffers used for I/O when direct I/O is configured, and using the wrong alignment can cause data loss or corruption. When direct I/O is configured on Linux systems, WiredTiger aligns I/O buffers to 4KB; if different alignment is required by your system, the <code>buffer_alignment</code> configuration to the wiredtiger_open call should be configured to the correct value.</p>
+<p>Finally, if direct I/O is configured on any system, WiredTiger will silently change the file unit allocation size and the maximum leaf and internal page sizes to be at least as large as the <code>buffer_alignment</code> value as well as a multiple of that value.</p>
 <p>Direct I/O is based on the non-standard <code>O_DIRECT</code> flag to the POSIX 1003.1 open system call and may not be available on all platforms.</p>
 <h2><a class="anchor" id="tuning_system_buffer_cache_os_cache_dirty_max"></a>
 os_cache_dirty_max</h2>

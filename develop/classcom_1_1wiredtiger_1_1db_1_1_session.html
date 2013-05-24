@@ -478,7 +478,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>allocation_size</code></td><td>the file unit allocation size, in bytes, must a power-of-two; smaller values decrease the file space required by overflow items, and the default value of 512B is a good choice absent requirements from the operating system or storage device.</td><td>an integer between 512B and 128MB; default <code>512B</code>. </td></tr>
+<td><code>allocation_size</code></td><td>the file unit allocation size, in bytes, must a power-of-two; smaller values decrease the file space required by overflow items, and the default value of 4KB is a good choice absent requirements from the operating system or storage device.</td><td>an integer between 512B and 128MB; default <code>4KB</code>. </td></tr>
 <tr>
 <td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are empty (off) or <code>"bzip2"</code>, <code>"snappy"</code> or custom compression engine <code>"name"</code> created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -506,7 +506,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>internal_key_truncate</code></td><td>configure internal key truncation, discarding unnecessary trailing bytes on internal keys (ignored for custom collators).</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>internal_page_max</code></td><td>the maximum page size for internal nodes, in bytes; the size must be a multiple of the allocation size and is significant for applications wanting to avoid excessive L2 cache misses while searching the tree. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>2KB</code>. </td></tr>
+<td><code>internal_page_max</code></td><td>the maximum page size for internal nodes, in bytes; the size must be a multiple of the allocation size and is significant for applications wanting to avoid excessive L2 cache misses while searching the tree. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>4KB</code>. </td></tr>
 <tr>
 <td><code>key_format</code></td><td>the format of the data packed into key items. See <a class="el" href="schema.html#schema_format_types">Format types</a> for details. By default, the key_format is <code>'u'</code> and applications use <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structures to manipulate raw byte arrays. By default, records are stored in row-store files: keys of type <code>'r'</code> are record numbers and records referenced by record number are stored in column-store files.</td><td>a format string; default <code>u</code>. </td></tr>
 <tr>

@@ -17,6 +17,7 @@ var index =
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
+      [ "Upgrading to Version 1.6.1", "upgrading.html#version_161", null ],
       [ "Upgrading to Version 1.6.0", "upgrading.html#version_160", null ],
       [ "Upgrading to Version 1.5.3", "upgrading.html#version_153", null ],
       [ "Upgrading to Version 1.4.3", "upgrading.html#version_143", null ],
