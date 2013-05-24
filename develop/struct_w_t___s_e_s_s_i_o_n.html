@@ -306,9 +306,9 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>drop</code></td><td>specify a list of checkpoints to drop. The list may additionally contain one of the following keys: <code>"from=all"</code> to drop all checkpoints, <code>"from=&lt;checkpoint&gt;"</code> to drop all checkpoints after and including the named checkpoint, or <code>"to=&lt;checkpoint&gt;"</code> to drop all checkpoints before and including the named checkpoint. Checkpoints cannot be dropped while a hot backup is in progress or if open in a cursor.</td><td>a list of strings; default empty. </td></tr>
 <tr>
-<td><code>force</code></td><td>checkpoints may be skipped if the underlying object has not been modified, this option forces the checkpoint.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>force</code></td><td>by default, checkpoints may be skipped if the underlying object has not been modified, this option forces the checkpoint.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>name</code></td><td>if non-empty, specify a name for the checkpoint.</td><td>a string; default empty. </td></tr>
+<td><code>name</code></td><td>if non-empty, specify a name for the checkpoint (note that checkpoints including LSM trees may not be named).</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>target</code></td><td>if non-empty, checkpoint the list of objects.</td><td>a list of strings; default empty. </td></tr>
 </table>
