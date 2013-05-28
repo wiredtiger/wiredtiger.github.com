@@ -350,6 +350,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
+<td><code>&#160;&#160;&#160;&#160;enable</code></td><td>whether the connection is using a shared cache.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
 <td><code>&#160;&#160;&#160;&#160;chunk</code></td><td>the granularity that a shared cache is redistributed.</td><td>an integer between 1MB and 10TB; default <code>10MB</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;reserve</code></td><td>amount of cache this database is guaranteed to have available from the shared cache. This setting is per database. Defaults to the chunk size.</td><td>an integer; default <code>0</code>. </td></tr>
