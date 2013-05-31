@@ -1,5 +1,10 @@
 var programming =
 [
+    [ "Using the API", "programming.html#programming_api", null ],
+    [ "Storage options", "programming.html#programming_storage", null ],
+    [ "Deployment considerations", "programming.html#programming_deployment", null ],
+    [ "Extending WiredTiger", "programming.html#programming_extending", null ],
+    [ "Administering a WiredTiger database", "programming.html#programming_admin", null ],
     [ "Getting Started with the API", "basic_api.html", [
       [ "Connecting to a database", "basic_api.html#basic_connection", null ],
       [ "Creating a table", "basic_api.html#basic_create_table", null ],
@@ -20,6 +25,12 @@ var programming =
       [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
     ] ],
     [ "Error handling", "error_handling.html", null ],
+    [ "Name spaces", "name_space.html", [
+      [ "Process' environment name space", "name_space.html#env", null ],
+      [ "C language name space", "name_space.html#c", null ],
+      [ "File system name space", "name_space.html#filename", null ],
+      [ "Error return name space", "name_space.html#error", null ]
+    ] ],
     [ "Schemas", "schema.html", "schema" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],
@@ -36,18 +47,18 @@ var programming =
     ] ],
     [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Bulk-load", "bulk_load.html", null ],
-    [ "Cache configuration", "cache_configuration.html", [
-      [ "Cache configuration", "cache_configuration.html#cache_basic", null ],
-      [ "Shared cache configuration", "cache_configuration.html#shared_cache", null ],
-      [ "Eviction configuration", "cache_configuration.html#cache_eviction", null ]
-    ] ],
-    [ "Checkpoints", "checkpoints.html", null ],
     [ "Compressors", "compression.html", [
       [ "Using bzip2 compression", "compression.html#compression_bzip2", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],
       [ "Upgrading compression engines", "compression.html#compression_upgrading", null ],
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
+    [ "Cache configuration", "cache_configuration.html", [
+      [ "Cache configuration", "cache_configuration.html#cache_basic", null ],
+      [ "Shared cache configuration", "cache_configuration.html#shared_cache", null ],
+      [ "Eviction configuration", "cache_configuration.html#cache_eviction", null ]
+    ] ],
+    [ "Checkpoints", "checkpoints.html", null ],
     [ "Hot backup", "hot_backup.html", null ],
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
@@ -94,12 +105,6 @@ var programming =
     [ "Database Configuration", "database_config.html", [
       [ "WiredTiger.config file", "database_config.html#config_file", null ],
       [ "WIREDTIGER_CONFIG environment variable", "database_config.html#config_env", null ]
-    ] ],
-    [ "Name spaces", "name_space.html", [
-      [ "Process' environment name space", "name_space.html#env", null ],
-      [ "C language name space", "name_space.html#c", null ],
-      [ "File system name space", "name_space.html#filename", null ],
-      [ "Error return name space", "name_space.html#error", null ]
     ] ],
     [ "Security", "security.html", [
       [ "Database directory permissions", "security.html#directory_permissions", null ],

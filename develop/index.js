@@ -32,5 +32,6 @@ var index =
       [ "3rd party software included in the WiredTiger library binary", "license.html#library", null ],
       [ "3rd party software included in the WiredTiger distribution", "license.html#distribution", null ],
       [ "Public domain software", "license.html#public_domain", null ]
-    ] ]
+    ] ],
+    [ "WiredTiger community and contact information", "community.html", null ]
 ];
