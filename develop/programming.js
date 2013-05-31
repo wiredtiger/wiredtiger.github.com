@@ -74,6 +74,22 @@ var programming =
       [ "Compression", "tuning.html#tuning_compression", null ],
       [ "Performance monitoring with statistics", "tuning.html#tuning_statistics", null ]
     ] ],
+    [ "Custom Data Sources", "custom_data_sources.html", [
+      [ "WT_DATA_SOURCE methods", "custom_data_sources.html#custom_ds_methods", [
+        [ "WT_DATA_SOURCE::create method", "custom_data_sources.html#custom_ds_create", null ]
+      ] ],
+      [ "WT_CURSOR methods", "custom_data_sources.html#custom_ds_cursor_methods", [
+        [ "WT_CURSOR::insert method", "custom_data_sources.html#custom_ds_cursor_insert", null ]
+      ] ],
+      [ "WT_CURSOR key/value fields", "custom_data_sources.html#custom_ds_cursor_fields", null ],
+      [ "Error handling", "custom_data_sources.html#custom_ds_error_handling", null ],
+      [ "Configuration strings", "custom_data_sources.html#custom_ds_config", [
+        [ "Parsing configuration strings", "custom_data_sources.html#custom_ds_config_parsing", null ],
+        [ "Creating data-specific configuration strings", "custom_data_sources.html#custom_ds_config_add", null ]
+      ] ],
+      [ "WT_COLLATOR", "custom_data_sources.html#custom_ds_cursor_collator", null ],
+      [ "Serialization", "custom_data_sources.html#custom_data_source_cursor_serialize", null ]
+    ] ],
     [ "Database Home Directory", "home.html", null ],
     [ "Database Configuration", "database_config.html", [
       [ "WiredTiger.config file", "database_config.html#config_file", null ],
