@@ -223,14 +223,50 @@ Public Member Functions</h2></td></tr>
 
 <p>Add a compression function. </p>
 <p>The application must first implement the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> interface and then register the implementation with WiredTiger:</p>
-<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> my_compressor = {</div>
-<div class="line">            my_compress,</div>
-<div class="line">            my_compress_raw,            <span class="comment">/* NULL, if no raw compression */</span></div>
-<div class="line">            my_decompress,</div>
-<div class="line">            my_pre_size,                <span class="comment">/* NULL, if pre-sizing not needed */</span></div>
-<div class="line">            NULL                        <span class="comment">/* NULL, if no termination cleanup */</span></div>
-<div class="line">        };</div>
-<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">add_compressor</a>(conn, <span class="stringliteral">&quot;my_compress&quot;</span>, &amp;my_compressor, NULL);</div>
+<div class="fragment"><div class="line"><span class="comment">/* Local compressor structure. */</span></div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line">        <a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> compressor;               <span class="comment">/* Must come first */</span></div>
+<div class="line"></div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> *wt_api;               <span class="comment">/* Extension API */</span></div>
+<div class="line">} NOP_COMPRESSOR;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * A simple shared library compression example.</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="keywordtype">int</span></div>
+<div class="line"><a class="code" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded.">wiredtiger_extension_init</a>(<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *connection, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
+<div class="line">{</div>
+<div class="line">        NOP_COMPRESSOR *nop_compressor;</div>
+<div class="line"></div>
+<div class="line">        (void)config;                           <span class="comment">/* Unused parameters */</span></div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> ((nop_compressor = calloc(1, <span class="keyword">sizeof</span>(NOP_COMPRESSOR))) == NULL)</div>
+<div class="line">                <span class="keywordflow">return</span> (errno);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Allocate a local compressor structure, with a WT_COMPRESSOR structure</span></div>
+<div class="line"><span class="comment">         * as the first field, allowing us to treat references to either type of</span></div>
+<div class="line"><span class="comment">         * structure as a reference to the other type.</span></div>
+<div class="line"><span class="comment">         *</span></div>
+<div class="line"><span class="comment">         * This could be simplified if only a single database is opened in the</span></div>
+<div class="line"><span class="comment">         * application, we could use a static WT_COMPRESSOR structure, and a</span></div>
+<div class="line"><span class="comment">         * static reference to the WT_EXTENSION_API methods, then we don&#39;t need</span></div>
+<div class="line"><span class="comment">         * to allocate memory when the compressor is initialized or free it when</span></div>
+<div class="line"><span class="comment">         * the compressor is terminated.  However, this approach is more general</span></div>
+<div class="line"><span class="comment">         * purpose and supports multiple databases per application.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        nop_compressor-&gt;compressor.compress = nop_compress;</div>
+<div class="line">        nop_compressor-&gt;compressor.compress_raw = NULL;</div>
+<div class="line">        nop_compressor-&gt;compressor.decompress = nop_decompress;</div>
+<div class="line">        nop_compressor-&gt;compressor.pre_size = nop_pre_size;</div>
+<div class="line">        nop_compressor-&gt;compressor.terminate = nop_terminate;</div>
+<div class="line"></div>
+<div class="line">        nop_compressor-&gt;wt_api = connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d" title="Return a reference to the WiredTiger extension functions.">get_extension_api</a>(connection);</div>
+<div class="line"></div>
+<div class="line">                                                <span class="comment">/* Load the compressor */</span></div>
+<div class="line">        <span class="keywordflow">return</span> (connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">add_compressor</a>(</div>
+<div class="line">            connection, <span class="stringliteral">&quot;nop&quot;</span>, (<a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> *)nop_compressor, NULL));</div>
+<div class="line">}</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
