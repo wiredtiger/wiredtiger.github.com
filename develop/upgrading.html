@@ -76,6 +76,10 @@ Upgrading to Version 1.6.2</h1>
 <dd><p class="startdd">In the 1.6.2 release, new entries were added to the list of WiredTiger extension methods; applications using the extension methods will require recompilation. </p>
 <p class="enddd"></p>
 </dd>
+<dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> no longer accepts a "source" configuration </dt>
+<dd><p class="startdd">The <code>"source"</code> configuration key has been removed from <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. Normal applications should not have been using it, and there were a number of bugs associated with it. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_161"></a>

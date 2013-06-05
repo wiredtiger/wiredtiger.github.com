@@ -584,8 +584,6 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>prefix_compression</code></td><td>configure row-store format key prefix compression.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>source</code></td><td>set a custom data source URI for a column group, index or simple table. By default, the data source URI is derived from the <code>type</code> and the column group or index name. Applications can create tables from existing data sources by supplying a <code>source</code> configuration.</td><td>a string; default empty. </td></tr>
-<tr>
 <td><code>split_pct</code></td><td>the Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size.</td><td>an integer between 25 and 100; default <code>75</code>. </td></tr>
 <tr>
 <td><code>type</code></td><td>set the type of data source used to store a column group, index or simple table. By default, a <code>"file:"</code> URI is derived from the object name. The <code>type</code> configuration can be used to switch to a different data source, such as LSM or an extension configured by the application..</td><td>a string; default <code>file</code>. </td></tr>
