@@ -23,7 +23,7 @@ var NAVTREEINDEX =
 ".html",
 "command_line.html#util_printlog_options",
 "group__wt.html#gac92ab5e2c05538a95879edd25fddb0bd",
-"upgrading.html#version_135"
+"tuning.html#tuning_system_buffer_cache_os_cache_dirty_max"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
