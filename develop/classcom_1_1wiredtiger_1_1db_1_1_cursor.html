@@ -320,7 +320,7 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
 
 <p>Close the cursor. </p>
 <p>This releases the resources associated with the cursor handle. Cursors are closed implicitly by ending the enclosing connection or closing the session in which they were opened.</p>
-<div class="fragment"><div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="fragment"><div class="line">        ret = cursor-&gt;close(cursor);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
@@ -1171,7 +1171,7 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
 
 <p>Reset the position of the cursor. </p>
 <p>Any resources held by the cursor are released, and the cursor's key and position are no longer valid. A subsequent iteration with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> will move to the first record, or with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record.">WT_CURSOR::prev</a> will move to the last record.</p>
-<div class="fragment"><div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the position of the cursor.">reset</a>(cursor);</div>
+<div class="fragment"><div class="line">        ret = cursor-&gt;reset(cursor);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>

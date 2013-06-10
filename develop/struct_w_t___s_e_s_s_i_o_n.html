@@ -184,9 +184,9 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * The begin_transaction call resets all open cursors.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line"></div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor)) {</div>
+<div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
+<div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;update(cursor)) {</div>
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);</div>
 <div class="line">                <span class="comment">/*</span></div>
@@ -397,9 +397,9 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * The begin_transaction call resets all open cursors.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line"></div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor)) {</div>
+<div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
+<div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;update(cursor)) {</div>
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);</div>
 <div class="line">                <span class="comment">/*</span></div>
@@ -699,8 +699,8 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment --><p> An existing cursor can be duplicated by passing it as the <code>to_dup</code> parameter and setting the <code>uri</code> parameter to <code>NULL:</code> </p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
-<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
+<div class="line">        cursor-&gt;set_key(cursor, key);</div>
+<div class="line">        ret = cursor-&gt;search(cursor);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Duplicate the cursor. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, NULL, cursor, NULL, &amp;duplicate);</div>
@@ -708,12 +708,12 @@ Public Attributes</h2></td></tr>
 <p>To reconfigure a cursor, duplicate it with a new configuration value:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
+<div class="line">        cursor-&gt;set_key(cursor, key);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Reconfigure the cursor to overwrite the record. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
 <div class="line">            session, NULL, cursor, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;overwrite_cursor);</div>
-<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line">        ret = cursor-&gt;close(cursor);</div>
 <div class="line"></div>
 <div class="line">        overwrite_cursor-&gt;set_value(overwrite_cursor, value);</div>
 <div class="line">        ret = overwrite_cursor-&gt;insert(cursor);</div>
@@ -911,9 +911,9 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * The begin_transaction call resets all open cursors.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line"></div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor)) {</div>
+<div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
+<div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;update(cursor)) {</div>
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">commit_transaction</a>(session, NULL);</div>
 <div class="line">                <span class="comment">/*</span></div>
