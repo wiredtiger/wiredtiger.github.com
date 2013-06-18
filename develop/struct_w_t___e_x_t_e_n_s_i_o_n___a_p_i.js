@@ -17,6 +17,6 @@ var struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i =
     [ "struct_pack", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab76f3d59a5d23f88eab880a0c4f9ba81", null ],
     [ "struct_size", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a9d6f902821f1cb4f2d887f9a7f0f50e0", null ],
     [ "struct_unpack", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a66984eb018b0ed2eb2482750d8622515", null ],
-    [ "txn_id", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aaaeab35d8952d9d72dc2f7226154e340", null ],
-    [ "txn_visible", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a9ac90c35d696080f84c15f720ce8e7a4", null ]
+    [ "transaction_id", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab4ee3c5636982e2e86fe89c14fc780ce", null ],
+    [ "transaction_visible", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6894b928a1c41f7d194a6dff9bc36a85", null ]
 ];
