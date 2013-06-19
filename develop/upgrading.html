@@ -69,7 +69,18 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_162"></a>
+<div class="textblock"><h1><a class="anchor" id="version_163"></a>
+Upgrading to Version 1.6.3</h1>
+<dl>
+<dt>Cursor overwrite configuration </dt>
+<dd><p class="startdd">In previous releases, the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> <code>overwrite</code> configuration string behaved inconsistently across Btree and LSM data sources. In Btree, <code>overwrite</code> was <code>false</code> by default and was limited to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a> method, changing an insert to succeed regardless of whether or not the record previously existed. In LSM trees, <code>overwrite</code> was <code>true</code> by default, and applied to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> methods, configuring all three methods to ignore the existing state of the record.</p>
+<p>In the 1.6.3 release, the <code>overwrite</code> configuration is consistent across both Btree and LSM tree data sources. For performance reasons, the default is the behavior previously described for LSM trees: in other words, <code>overwrite</code> is <code>true</code> by default, causing <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> to ignore the current state of the record, and these methods will succeed regardless of whether or not the record previously exists. When an application configures <code>overwrite</code> to <code>false</code>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a> will fail with <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key.">WT_DUPLICATE_KEY</a> if the record previously exists, and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a> will fail with <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found.">WT_NOTFOUND</a> if the record does not previously exist.</p>
+<p><b>This is a potentially serious API change that will not be detected by compilation.</b> Application cursors should be reviewed to confirm they are configured for the desired behavior. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ <h1><a class="anchor" id="version_162"></a>
 Upgrading to Version 1.6.2</h1>
 <dl>
 <dt>Table of WiredTiger extension methods </dt>
