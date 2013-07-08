@@ -650,7 +650,7 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>entry</code></td><td>the entry point of the extension, called to initialize the extension when it is loaded. The signature of the function must match <a class="el" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded.">wiredtiger_extension_init</a>.</td><td>a string; default <code>wiredtiger_extension_init</code>. </td></tr>
 <tr>
-<td><code>prefix</code></td><td>a prefix for all names registered by this extension (e.g., to make namespaces distinct or during upgrades.</td><td>a string; default empty. </td></tr>
+<td><code>prefix</code></td><td>a prefix for all names registered by this extension (e.g., to make namespaces distinct or during upgrades).</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>terminate</code></td><td>a optional function in the extension that is called before the extension is unloaded during <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a>. The signature of the function must match <a class="el" href="group__wt__ext.html#ga3b904ac0bedaa0d1d59d04baaf915f7f" title="Optional cleanup function for an extension, called during WT_CONNECTION::close.">wiredtiger_extension_terminate</a>.</td><td>a string; default <code>wiredtiger_extension_terminate</code>. </td></tr>
 </table>
