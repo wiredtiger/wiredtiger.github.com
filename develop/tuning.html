@@ -123,8 +123,8 @@ Page and overflow sizes</h1>
 </div><!-- fragment --> <h1><a class="anchor" id="tuning_system_file_growth"></a>
 File growth</h1>
 <p>It's faster on some filesystems to grow a file in chunks rather than to extend it a block at a time as new blocks are written. By configuring the wiredtiger_open functions <code>file_extend</code> value, applications can grow files ahead of the blocks being written.</p>
-<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create,file_extend=(type=[data],size=16MB)&quot;</span>, &amp;conn);</div>
+<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(</div>
+<div class="line">            home, NULL, <span class="stringliteral">&quot;create,file_extend=(data=16MB)&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="tuning_system_buffer_cache"></a>
 System buffer cache</h1>
 <h2><a class="anchor" id="tuning_system_buffer_cache_direct_io"></a>
