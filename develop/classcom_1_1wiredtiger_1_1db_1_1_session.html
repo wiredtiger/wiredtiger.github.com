@@ -109,6 +109,9 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 <tr class="memitem:a08aa0622c56a5839b7c38f420b1f2a85"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a08aa0622c56a5839b7c38f420b1f2a85">drop</a> (String name, String config)</td></tr>
 <tr class="memdesc:a08aa0622c56a5839b7c38f420b1f2a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#a08aa0622c56a5839b7c38f420b1f2a85">More...</a><br/></td></tr>
 <tr class="separator:a08aa0622c56a5839b7c38f420b1f2a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a094ae49ac5f0533817961284c89b8327"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a094ae49ac5f0533817961284c89b8327">log_printf</a> (String fmt)</td></tr>
+<tr class="memdesc:a094ae49ac5f0533817961284c89b8327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print something to the log file.  <a href="#a094ae49ac5f0533817961284c89b8327">More...</a><br/></td></tr>
+<tr class="separator:a094ae49ac5f0533817961284c89b8327"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2acb7e037b0d4bf9c8d812d264376465"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a2acb7e037b0d4bf9c8d812d264376465">rename</a> (String uri, String newuri, String config)</td></tr>
 <tr class="memdesc:a2acb7e037b0d4bf9c8d812d264376465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#a2acb7e037b0d4bf9c8d812d264376465">More...</a><br/></td></tr>
 <tr class="separator:a2acb7e037b0d4bf9c8d812d264376465"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -601,6 +604,33 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a094ae49ac5f0533817961284c89b8327"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Session.log_printf </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>fmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print something to the log file. </p>
+<p>The database must be configured for logging when this method is called.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">fmt</td><td>a printf format specifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>

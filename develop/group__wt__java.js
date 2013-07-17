@@ -90,6 +90,7 @@ var group__wt__java =
       [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_session.html#abd928363a1ed03e95e27c287efaa6363", null ],
       [ "drop", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a08aa0622c56a5839b7c38f420b1f2a85", null ],
       [ "getConnection", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2f267cf49f92a76b4bad57015a05ba88", null ],
+      [ "log_printf", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a094ae49ac5f0533817961284c89b8327", null ],
       [ "open_cursor", "classcom_1_1wiredtiger_1_1db_1_1_session.html#adc61edbe05447e070a2d0729bd36a084", null ],
       [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ab26e9fa8589c722544049adae0e70ad9", null ],
       [ "rename", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2acb7e037b0d4bf9c8d812d264376465", null ],

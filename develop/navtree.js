@@ -21,8 +21,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"cursors.html#cursor_types",
-"lsm.html#lsm_api"
+"cursors.html#cursor_raw",
+"index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

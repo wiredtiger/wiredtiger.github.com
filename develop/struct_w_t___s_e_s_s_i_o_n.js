@@ -7,6 +7,7 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "compact", "struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69", null ],
     [ "create", "struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb", null ],
     [ "drop", "struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70", null ],
+    [ "log_printf", "struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9", null ],
     [ "open_cursor", "struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d", null ],
     [ "reconfigure", "struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6", null ],
     [ "rename", "struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614", null ],

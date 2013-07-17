@@ -106,6 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:adf785ef53c16d9dcc77e22cc04c87b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#adf785ef53c16d9dcc77e22cc04c87b70">More...</a><br/></td></tr>
 <tr class="separator:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504625d0b35da78f738d08530a409be9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *fmt,...)</td></tr>
+<tr class="memdesc:a504625d0b35da78f738d08530a409be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print something to the log file.  <a href="#a504625d0b35da78f738d08530a409be9">More...</a><br/></td></tr>
+<tr class="separator:a504625d0b35da78f738d08530a409be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d24b02549009f78b7c6463da0247614"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *newuri, const char *config)</td></tr>
 <tr class="memdesc:a1d24b02549009f78b7c6463da0247614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#a1d24b02549009f78b7c6463da0247614">More...</a><br/></td></tr>
 <tr class="separator:a1d24b02549009f78b7c6463da0247614"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -648,6 +651,49 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a504625d0b35da78f738d08530a409be9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::log_printf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print something to the log file. </p>
+<p>The database must be configured for logging when this method is called.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">fmt</td><td>a printf format specifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>
