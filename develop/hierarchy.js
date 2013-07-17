@@ -16,14 +16,6 @@ var hierarchy =
         [ "com.wiredtiger.db.WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", null ]
       ] ]
     ] ],
-    [ "object", null, [
-      [ "wiredtiger.Connection", "classwiredtiger_1_1_connection.html", null ],
-      [ "wiredtiger.Cursor", "classwiredtiger_1_1_cursor.html", null ],
-      [ "wiredtiger.Session", "classwiredtiger_1_1_session.html", null ]
-    ] ],
-    [ "wiredtiger.stat", "group__wt__python.html#classwiredtiger_1_1stat", null ],
-    [ "wiredtiger.stat.conn", "group__wt__python.html#classwiredtiger_1_1stat_1_1conn", null ],
-    [ "wiredtiger.stat.dsrc", "group__wt__python.html#classwiredtiger_1_1stat_1_1dsrc", null ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", null ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", null ],
     [ "WT_CONFIG_ITEM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html", null ],
