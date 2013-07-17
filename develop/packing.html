@@ -84,9 +84,9 @@ $(document).ready(function(){initNavTree('packing.html','');});
 <td><code>@</code></td><td>native</td><td>native</td><td>native </td></tr>
 </table>
 <p>If the first character is not one of these, '.' (big-endian, packed) is assumed: it naturally sorts in lexicographic order, and the packed format uses variable-sized encoding of values to reduce the data size.</p>
-<p><b>Not yet supported in WiredTiger.</b> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>fix when format types supported</dd></dl>
-<p><b>Only the default big-endian, packed format is currently supported.</b></p>
+<p>Note: <b> little-endian format</b> not yet supported in WiredTiger. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>fix when little-endian format supported</dd></dl>
+<p>Only the default big-endian, packed format is currently supported.</p>
 <p>The remaining characters in the format string specify the type of each field to be packed into or unpacked from a byte array. See <a class="el" href="schema.html#schema_column_types">Column types</a> for the list of supported types.</p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Describe the variable-length integer packing in sufficient detail that it can be re-implemented in other programming languages or in network clients.</dd></dl>
 <h1><a class="anchor" id="config_examples"></a>

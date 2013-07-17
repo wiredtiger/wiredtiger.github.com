@@ -381,7 +381,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a custom extractor for index keys or column groups. </p>
-<p><b>Not yet supported in WiredTiger.</b> </p>
+<p>Note: <b> custom extractors</b> not yet supported in WiredTiger. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>fix when custom extractors supported</dd></dl>
 <p>The application must first implement the <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> interface and then register the implementation with WiredTiger:</p>
 <div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html" title="The interface implemented by applications to provide custom extraction of index keys or column group ...">WT_EXTRACTOR</a> my_extractor = {my_extract};</div>

@@ -180,7 +180,7 @@ Cursor formats</h1>
 <div class="line">        int32_t second;</div>
 <div class="line">        uint16_t third;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;first, &amp;second, &amp;third);</div>
-</div><!-- fragment --><p> Cursors for a table have the same value format as the table, unless a projection is specified to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>.</p>
+</div><!-- fragment --><p> Cursors for a table have the same value format as the table, unless a projection is configured with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>. See <a class="el" href="cursors.html#cursor_projections">Projections</a> for more information.</p>
 <p><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> is used to set value columns, and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> is used to get value columns, in the same way as described for <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>.</p>
 <h1><a class="anchor" id="schema_columns"></a>
 Columns</h1>
@@ -304,7 +304,10 @@ Index cursor projections</h1>
 <p>By default, index cursors return all of the table's value columns from <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>. The application can specify that a subset of the usual columns should be returned in calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> by appending a list of columns to the <code>uri</code> parameter of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> call. This is called a <em>projection</em>, see <a class="el" href="cursors.html#cursor_projections">Projections</a> for more details.</p>
 <p>In the case of index cursors, a projection can be used to avoid lookups in column groups that do not hold columns relevant to the operation.</p>
 <p>The following example will return just the table's primary key (a record number, in this case) from the index:</p>
-<div class="fragment"><div class="line">        <span class="comment">/* Return the table&#39;s record number key using an index. */</span></div>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Use a projection to return just the table&#39;s record number key</span></div>
+<div class="line"><span class="comment">         * from an index.</span></div>
+<div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year(id)&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
@@ -314,8 +317,11 @@ Index cursor projections</h1>
 <div class="line">                    <span class="stringliteral">&quot;row ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u\n&quot;</span>,</div>
 <div class="line">                    recno, country, year);</div>
 <div class="line">        }</div>
-</div><!-- fragment --><p> Here is an example of a projection that return a subset of columns from the index:</p>
-<div class="fragment"><div class="line">        <span class="comment">/* Return just the population column using an index. */</span></div>
+</div><!-- fragment --><p> Here is an example of a projection that returns a subset of columns from the index:</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Use a projection to return just the population column from an</span></div>
+<div class="line"><span class="comment">         * index.</span></div>
+<div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year(population)&quot;</span>,</div>
 <div class="line">            NULL, NULL, &amp;cursor);</div>
@@ -327,8 +333,8 @@ Index cursor projections</h1>
 <div class="line">        }</div>
 </div><!-- fragment --><p> For performance reasons, it may be desirable to include all columns for a performance-critical operation in an index, so that it is possible to perform index-only lookups where no column group from the table is accessed. In this case, all of the "hot" columns should be included in the index (always list the "real" index key columns first, so they will determine the sort order). Then, open a cursor on the index that doesn't return any value columns, and no column group will be accessed.</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * Avoid accessing any other column groups when using an index: supply</span></div>
-<div class="line"><span class="comment">         * an empty list of value columns.</span></div>
+<div class="line"><span class="comment">         * Use a projection to avoid accessing any other column groups when</span></div>
+<div class="line"><span class="comment">         * using an index: supply an empty list of value columns.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year()&quot;</span>, NULL, NULL, &amp;cursor);</div>

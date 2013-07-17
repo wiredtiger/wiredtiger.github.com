@@ -242,7 +242,22 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Return the table&#39;s record number key using an index. */</span></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Use a projection to return just the table&#39;s country and year</span></div>
+<div class="line"><span class="comment">         * columns.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:poptable(country,year)&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;country, &amp;year);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %u\n&quot;</span>, country, year);</div>
+<div class="line">        }</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Use a projection to return just the table&#39;s record number key</span></div>
+<div class="line"><span class="comment">         * from an index.</span></div>
+<div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year(id)&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
@@ -254,7 +269,10 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Return just the population column using an index. */</span></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Use a projection to return just the population column from an</span></div>
+<div class="line"><span class="comment">         * index.</span></div>
+<div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year(population)&quot;</span>,</div>
 <div class="line">            NULL, NULL, &amp;cursor);</div>
@@ -267,8 +285,8 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * Avoid accessing any other column groups when using an index: supply</span></div>
-<div class="line"><span class="comment">         * an empty list of value columns.</span></div>
+<div class="line"><span class="comment">         * Use a projection to avoid accessing any other column groups when</span></div>
+<div class="line"><span class="comment">         * using an index: supply an empty list of value columns.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year()&quot;</span>, NULL, NULL, &amp;cursor);</div>
