@@ -31,7 +31,7 @@ var programming =
       [ "File system name space", "name_space.html#filename", null ],
       [ "Error return name space", "name_space.html#error", null ]
     ] ],
-    [ "Schemas", "schema.html", "schema" ],
+    [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],
       [ "Description of LSM trees", "lsm.html#lsm_description", null ],
