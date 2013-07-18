@@ -86,11 +86,11 @@ Description of LSM trees</h1>
 <h1><a class="anchor" id="lsm_api"></a>
 Interface to LSM trees</h1>
 <p>An LSM tree can be created as follows, in much the same way as a WiredTiger btree file:</p>
-<div class="fragment"><div class="line">session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;lsm:bucket&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
+<div class="fragment"><div class="line">session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:bucket&quot;</span>, <span class="stringliteral">&quot;type=lsm,key_format=S,value_format=S&quot;</span>);</div>
 </div><!-- fragment --><p>Once created, the LSM tree can be accessed using the same cursor interface as other data sources in WiredTiger:</p>
 <div class="fragment"><div class="line"><a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *c;</div>
 <div class="line"></div>
-<div class="line">session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;lsm:bucket&quot;</span>, NULL, NULL, &amp;c);</div>
+<div class="line">session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:bucket&quot;</span>, NULL, NULL, &amp;c);</div>
 <div class="line"><span class="keywordflow">for</span>(;;) {</div>
 <div class="line">    c-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(<span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">    c-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(<span class="stringliteral">&quot;data&quot;</span>);</div>
