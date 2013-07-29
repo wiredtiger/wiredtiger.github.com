@@ -96,13 +96,7 @@ Interface to LSM trees</h1>
 <div class="line">    c-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(<span class="stringliteral">&quot;data&quot;</span>);</div>
 <div class="line">    c-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>();</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Unlike ordinary file cursors, LSM cursors default to <code>overwrite</code> mode, where:</p>
-<ul>
-<li><a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">WT_CURSOR::insert</a> will update existing values without checking;</li>
-<li><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">WT_CURSOR::update</a> will insert values regardless of whether they exist; and</li>
-<li><a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a> will succeed regardless of whether the specified record exists.</li>
-</ul>
-<p>This behavior can be disabled by passing <code>"overwrite=false"</code> to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>, but the result will be a search through the levels of the LSM tree before every modification.</p>
+</div><!-- fragment --><p>If an LSM cursor is configured with <code>"overwrite=false"</code> passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>, the result will be a search through the levels of the LSM tree before every modification.</p>
 <h1><a class="anchor" id="lsm_merge"></a>
 Merging</h1>
 <p>A background thread is opened for each active LSM tree. This thread is responsible for both writing old chunks to stable storage, and for merging multiple chunks together so that reads can be satisfied from a small number of files. There is currently no way to configure merges: they are performed automatically by the background thread.</p>

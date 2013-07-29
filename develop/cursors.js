@@ -5,5 +5,11 @@ var cursors =
     [ "Projections", "cursors.html#cursor_projections", null ],
     [ "Raw mode", "cursors.html#cursor_raw", null ],
     [ "Cursor operations", "cursor_ops.html", "cursor_ops" ],
-    [ "Data Sources", "data_sources.html", "data_sources" ]
+    [ "Data Sources", "data_sources.html", [
+      [ "Builtin data sources", "data_sources.html#data_builtin", [
+        [ "Raw Files", "data_sources.html#data_files", null ],
+        [ "Table Index data", "data_sources.html#data_indices", null ],
+        [ "Statistics Data", "data_sources.html#data_statistics", null ]
+      ] ]
+    ] ]
 ];

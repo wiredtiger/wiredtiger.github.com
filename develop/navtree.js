@@ -21,8 +21,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"cursors.html#cursor_raw",
-"index.html"
+"custom_data_sources.html#custom_ds_config_add",
+"install.html#github"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

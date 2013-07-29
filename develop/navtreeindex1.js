@@ -1,11 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"cursors.html#cursor_raw":[0,2,7,3],
-"cursors.html#cursor_types":[0,2,7,1],
-"cursors.html#cursors_transactions":[0,2,7,0],
-"custom_data_sources.html":[0,2,22],
-"custom_data_sources.html#custom_data_source_cursor_serialize":[0,2,22,6],
-"custom_data_sources.html#custom_ds_config":[0,2,22,4],
 "custom_data_sources.html#custom_ds_config_add":[0,2,22,4,1],
 "custom_data_sources.html#custom_ds_config_parsing":[0,2,22,4,0],
 "custom_data_sources.html#custom_ds_create":[0,2,22,0,0],
@@ -247,7 +241,13 @@ var NAVTREEINDEX1 =
 "hierarchy.html":[4],
 "home.html":[0,2,23],
 "home.html":[0,5,0],
-"hot_backup.html":[0,2,18],
 "hot_backup.html":[0,5,2],
-"huffman.html":[0,2,13,2]
+"hot_backup.html":[0,2,18],
+"huffman.html":[0,2,13,2],
+"index.html":[],
+"index.html":[0],
+"install.html":[0,1],
+"install.html#building":[0,1,1],
+"install.html#compiler":[0,1,4],
+"install.html#configure":[0,1,3]
 };
