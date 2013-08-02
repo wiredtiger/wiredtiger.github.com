@@ -238,15 +238,13 @@ Cursor key/value memory scoping</h1>
 <div class="line"><span class="comment">                 * Check that get_key/value behave as expected after the</span></div>
 <div class="line"><span class="comment">                 * operation.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
-<div class="line">                expected = op-&gt;post_op_ret;</div>
-<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;key)) != expected ||</div>
-<div class="line">                    (ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;value)) != expected) {</div>
+<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;key)) != 0 ||</div>
+<div class="line">                    (op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a> &amp;&amp;</div>
+<div class="line">                    (ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;value)) != 0)) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;Error in get_key/value: %s\n&quot;</span>,</div>
 <div class="line">                            <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">                }</div>
-<div class="line">                <span class="keywordflow">if</span> (expected != 0)</div>
-<div class="line">                        <span class="keywordflow">continue</span>;</div>
 <div class="line"></div>
 <div class="line">                <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                 * The application now has pointers to memory that is owned by</span></div>
@@ -255,14 +253,17 @@ Cursor key/value memory scoping</h1>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line"></div>
 <div class="line">                <span class="comment">/* Check that the cursor&#39;s key and value are what we expect. */</span></div>
-<div class="line">                <span class="keywordflow">if</span> (key == keybuf || value == valuebuf) {</div>
+<div class="line">                <span class="keywordflow">if</span> (key == keybuf ||</div>
+<div class="line">                    (op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a> &amp;&amp;</div>
+<div class="line">                    value == valuebuf)) {</div>
 <div class="line">                        fprintf(stderr,</div>
 <div class="line">                            <span class="stringliteral">&quot;Cursor points at application memory!\n&quot;</span>);</div>
 <div class="line">                        <span class="keywordflow">return</span> (EINVAL);</div>
 <div class="line">                }</div>
 <div class="line"></div>
 <div class="line">                <span class="keywordflow">if</span> (strcmp(key, op-&gt;key) != 0 ||</div>
-<div class="line">                    strcmp(value, op-&gt;value) != 0) {</div>
+<div class="line">                    (op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a> &amp;&amp;</div>
+<div class="line">                    strcmp(value, op-&gt;value) != 0)) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;Unexpected key / value!\n&quot;</span>);</div>
 <div class="line">                        <span class="keywordflow">return</span> (EINVAL);</div>
 <div class="line">                }</div>
