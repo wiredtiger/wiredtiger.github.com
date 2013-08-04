@@ -165,17 +165,17 @@ Options</h2>
 wt load</h1>
 <p>Load a table or file from dump output.</p>
 <p>The <code>load</code> command reads the standard input for data and loads it into a table or file, creating the table or file if it does not yet exist. The data should be the format produced by the <code>dump</code> command; see <a class="el" href="dump_formats.html">Dump Formats</a> for details.</p>
-<p>By default, if the table or file already exists, data in the file or table cannot be overwritten by the new data (use the <code>-o</code> option to overwrite existing data).</p>
+<p>By default, if the table or file already exists, data in the file or table will be overwritten by the new data (use the <code>-n</code> option to make an attempt to overwrite existing data return an error).</p>
 <h2><a class="anchor" id="util_load_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-Vv] [-C config] [-h directory] load [-ao] [-f input] [-r name] [uri configuration ...]</code></p>
+<p><code>wt [-Vv] [-C config] [-h directory] load [-an] [-f input] [-r name] [uri configuration ...]</code></p>
 <h2><a class="anchor" id="util_load_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>load</code> command:</p>
 <dl class="section user"><dt>-a</dt><dd>If the <code>-a</code> option is specified, record number keys in the input are ignored and the data is appended to the data source and assigned new record number keys. The <code>-a</code> option is only applicable when loading into a column store.</dd></dl>
 <dl class="section user"><dt>-f</dt><dd>By default, the <code>load</code> command reads from the standard input; the <code>-f</code> option reads the input from the specified file.</dd></dl>
+<dl class="section user"><dt>-n</dt><dd>By default, input data will overwrite existing data where the key/value pair already exists in the data source; the <code>-n</code> option causes the <code>load</code> command to fail if there's an attempt to overwrite already existing data.</dd></dl>
 <dl class="section user"><dt>-r</dt><dd>By default, the <code>load</code> command uses the table or file name taken from the input; the <code>-r</code> option renames the data source.</dd></dl>
-<dl class="section user"><dt>-o</dt><dd>By default, input data will not overwrite existing data where the key/value pair already exists in the data source, and the attempt will fail; the <code>-o</code> option causes the <code>load</code> command to overwrite already existing data.</dd></dl>
 <p>Additionally, <code>uri</code> and <code>configuration</code> pairs may be specified to the <code>load</code> command. Each of these pairs will be appended to the configuration string from the dump header passed to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> call.</p>
 <hr/>
  <h1><a class="anchor" id="util_loadtext"></a>

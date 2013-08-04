@@ -76,6 +76,10 @@ Upgrading to Version 1.6.4</h1>
 <dd><p class="startdd">The underlying file formats changed in the 1.6.4 release; tables and files should be dumped and re-loaded into a new database. </p>
 <p class="enddd"></p>
 </dd>
+<dt>wt utility load command </dt>
+<dd><p class="startdd">The default behavior of the <code>wt</code> utility's <code>load</code> command has been changed to overwrite existing data, by default, and the <code>-o</code> flag to the <code>load</code> command (overwrite existing data) has been replaced with the <code>-n</code> flag (do not overwrite existing data). Applications requiring the previous default behavior of not overwriting existing data should add the <code>-n</code> option to their command line configuration; applications previously using the <code>-o</code> option on their command line configurations should remove it. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_163"></a>
