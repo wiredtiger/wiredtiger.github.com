@@ -94,7 +94,7 @@ Interface to LSM trees</h1>
 <div class="line"><span class="keywordflow">for</span>(;;) {</div>
 <div class="line">    c-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(<span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">    c-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(<span class="stringliteral">&quot;data&quot;</span>);</div>
-<div class="line">    c-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>();</div>
+<div class="line">    c-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a>();</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>If an LSM cursor is configured with <code>"overwrite=false"</code> passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>, the result will be a search through the levels of the LSM tree before every modification.</p>
 <h1><a class="anchor" id="lsm_merge"></a>

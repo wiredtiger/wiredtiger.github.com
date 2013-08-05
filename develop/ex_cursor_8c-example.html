@@ -189,7 +189,7 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html','');});
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;foo&quot;</span>);</div>
 <div class="line">        cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;bar&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (cursor-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor));</div>
+<div class="line">        <span class="keywordflow">return</span> (cursor-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a>(cursor));</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">cursor_update(<a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor)</div>
@@ -197,7 +197,7 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html','');});
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;foo&quot;</span>);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, <span class="stringliteral">&quot;newbar&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record.">update</a>(cursor));</div>
+<div class="line">        <span class="keywordflow">return</span> (cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record and optionally insert an existing record.">update</a>(cursor));</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">cursor_remove(<a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor)</div>

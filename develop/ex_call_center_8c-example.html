@@ -200,7 +200,7 @@ $(document).ready(function(){initNavTree('ex_call_center_8c-example.html','');})
 <div class="line">        <span class="keywordflow">for</span> (custp = cust_sample; custp-&gt;name != NULL; custp++) {</div>
 <div class="line">                cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor,</div>
 <div class="line">                    custp-&gt;name, custp-&gt;address, custp-&gt;phone);</div>
-<div class="line">                ret = cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor);</div>
+<div class="line">                ret = cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a>(cursor);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
 <div class="line"></div>
@@ -226,7 +226,7 @@ $(document).ready(function(){initNavTree('ex_call_center_8c-example.html','');})
 <div class="line">        <span class="keywordflow">for</span> (callp = call_sample; callp-&gt;call_type != NULL; callp++) {</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, callp-&gt;call_date, callp-&gt;cust_id,</div>
 <div class="line">                    callp-&gt;emp_id, callp-&gt;call_type, callp-&gt;notes);</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record, and optionally overwrite an existing record.">insert</a>(cursor);</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a>(cursor);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">close</a>(cursor);</div>
 <div class="line"></div>
