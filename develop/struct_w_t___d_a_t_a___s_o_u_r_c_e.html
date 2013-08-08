@@ -106,9 +106,15 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a97ab1fed33fffb8ead55ec854370e41a"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a97ab1fed33fffb8ead55ec854370e41a">truncate</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
 <tr class="memdesc:a97ab1fed33fffb8ead55ec854370e41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to truncate an object.  <a href="#a97ab1fed33fffb8ead55ec854370e41a">More...</a><br/></td></tr>
 <tr class="separator:a97ab1fed33fffb8ead55ec854370e41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb903c629a7ae97494c670d90f40b71e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#afb903c629a7ae97494c670d90f40b71e">range_truncate</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *start, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *stop)</td></tr>
+<tr class="memdesc:afb903c629a7ae97494c670d90f40b71e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to truncate a range of an object.  <a href="#afb903c629a7ae97494c670d90f40b71e">More...</a><br/></td></tr>
+<tr class="separator:afb903c629a7ae97494c670d90f40b71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6487a12a6248371e43884cfef7715da"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad6487a12a6248371e43884cfef7715da">verify</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
 <tr class="memdesc:ad6487a12a6248371e43884cfef7715da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to verify an object.  <a href="#ad6487a12a6248371e43884cfef7715da">More...</a><br/></td></tr>
 <tr class="separator:ad6487a12a6248371e43884cfef7715da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada2d177d8eeb2ea334b9285d86b3a476"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ada2d177d8eeb2ea334b9285d86b3a476">checkpoint</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:ada2d177d8eeb2ea334b9285d86b3a476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to checkpoint the database.  <a href="#ada2d177d8eeb2ea334b9285d86b3a476">More...</a><br/></td></tr>
+<tr class="separator:ada2d177d8eeb2ea334b9285d86b3a476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab92be74825433258ff5e3631873ce57f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ab92be74825433258ff5e3631873ce57f">terminate</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
 <tr class="memdesc:ab92be74825433258ff5e3631873ce57f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, a callback performed when the database is closed.  <a href="#ab92be74825433258ff5e3631873ce57f">More...</a><br/></td></tr>
 <tr class="separator:ab92be74825433258ff5e3631873ce57f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,11 +132,29 @@ Public Attributes</h2></td></tr>
 <div class="line">                my_rename,</div>
 <div class="line">                my_salvage,</div>
 <div class="line">                my_truncate,</div>
+<div class="line">                my_range_truncate,</div>
 <div class="line">                my_verify,</div>
+<div class="line">                my_checkpoint,</div>
 <div class="line">                my_terminate</div>
 <div class="line">        };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source.">add_data_source</a>(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL);</div>
 </div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ada2d177d8eeb2ea334b9285d86b3a476"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_DATA_SOURCE::checkpoint)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to checkpoint the database. </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">my_checkpoint(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a85e984645fb506a3d28881a26e7f79a0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -230,6 +254,23 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="comment">/* Return combined cursor to WiredTiger. */</span></div>
 <div class="line">        *new_cursor = (<a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *)cursor;</div>
 <div class="line"></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="afb903c629a7ae97494c670d90f40b71e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_DATA_SOURCE::range_truncate)(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *start, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *stop)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to truncate a range of an object. </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">my_range_truncate(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
+<div class="line">    <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *start, <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *stop)</div>
 </div><!-- fragment -->
 </div>
 </div>

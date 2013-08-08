@@ -1,5 +1,7 @@
 var struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i =
 [
+    [ "collate", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aee6e3e96ba7e7edacc0591b3d8c4edc9", null ],
+    [ "collator_config", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a445b10efa57169a0db318743685ab08b", null ],
     [ "config_get", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1f23ff3b17d86decfe92ba232f988fd6", null ],
     [ "config_scan_begin", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ac071d945745773aea0cbb7d231f78206", null ],
     [ "config_scan_end", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a14b3e055d1e61781f0f6e784e3439cd7", null ],
@@ -17,6 +19,9 @@ var struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i =
     [ "struct_pack", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab76f3d59a5d23f88eab880a0c4f9ba81", null ],
     [ "struct_size", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a9d6f902821f1cb4f2d887f9a7f0f50e0", null ],
     [ "struct_unpack", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a66984eb018b0ed2eb2482750d8622515", null ],
-    [ "transaction_id", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab4ee3c5636982e2e86fe89c14fc780ce", null ],
+    [ "transaction_id", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7e50575fa13ffedfade19f67c59ea136", null ],
+    [ "transaction_isolation_level", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a52c99b55eb7e4459ebdc69d224f33b30", null ],
+    [ "transaction_notify", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af45eb85f087fb22c8d6fae45d875630e", null ],
+    [ "transaction_oldest", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ac7d3b24f8b9acb6716220931fd6f8bee", null ],
     [ "transaction_visible", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6894b928a1c41f7d194a6dff9bc36a85", null ]
 ];
