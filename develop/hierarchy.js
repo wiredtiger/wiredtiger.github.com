@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "WT_TXN_NOTIFY", "struct____wt__txn__notify.html", null ],
     [ "com.wiredtiger.db.Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", null ],
     [ "com.wiredtiger.db.Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", null ],
     [ "com.wiredtiger.db.PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", null ],

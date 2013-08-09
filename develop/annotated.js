@@ -18,6 +18,7 @@ var annotated =
         ] ]
       ] ]
     ] ],
+    [ "WT_TXN_NOTIFY", "struct____wt__txn__notify.html", "struct____wt__txn__notify" ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", "struct_w_t___c_o_l_l_a_t_o_r" ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", "struct_w_t___c_o_m_p_r_e_s_s_o_r" ],
     [ "WT_CONFIG_ITEM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html", "struct_w_t___c_o_n_f_i_g___i_t_e_m" ],

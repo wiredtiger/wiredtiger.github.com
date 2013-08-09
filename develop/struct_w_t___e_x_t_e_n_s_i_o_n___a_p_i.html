@@ -148,9 +148,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a52c99b55eb7e4459ebdc69d224f33b30"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a52c99b55eb7e4459ebdc69d224f33b30">transaction_isolation_level</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
 <tr class="memdesc:a52c99b55eb7e4459ebdc69d224f33b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current transaction's isolation level; returns one of <a class="el" href="group__wt__ext.html#ga84ae45d6803da8dab05bb72c2e69aa0f" title="Read-committed isolation level, returned by WT_EXTENSION_API::transaction_isolation_level.">WT_TXN_ISO_READ_COMMITTED</a>, <a class="el" href="group__wt__ext.html#ga604e4478bcef2026786b0826e34f5262" title="Read-uncommitted isolation level, returned by WT_EXTENSION_API::transaction_isolation_level.">WT_TXN_ISO_READ_UNCOMMITTED</a>, or <a class="el" href="group__wt__ext.html#ga36207e3a80d960f7e0c822e8ab483014" title="Snapshot isolation level, returned by WT_EXTENSION_API::transaction_isolation_level.">WT_TXN_ISO_SNAPSHOT</a>.  <a href="#a52c99b55eb7e4459ebdc69d224f33b30">More...</a><br/></td></tr>
 <tr class="separator:a52c99b55eb7e4459ebdc69d224f33b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af45eb85f087fb22c8d6fae45d875630e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af45eb85f087fb22c8d6fae45d875630e">transaction_notify</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, int(*notify)(<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *cookie, uint64_t txnid, int committed), void *cookie)</td></tr>
-<tr class="memdesc:af45eb85f087fb22c8d6fae45d875630e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request notification of transaction resolution by specifying a function to be called when the session's current transaction is either committed or rolled back.  <a href="#af45eb85f087fb22c8d6fae45d875630e">More...</a><br/></td></tr>
-<tr class="separator:af45eb85f087fb22c8d6fae45d875630e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eef675c9cdf030f2f1d0110c4d79e71"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7eef675c9cdf030f2f1d0110c4d79e71">transaction_notify</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, WT_TXN_NOTIFY *notify)</td></tr>
+<tr class="memdesc:a7eef675c9cdf030f2f1d0110c4d79e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request notification of transaction resolution by specifying a function to be called when the session's current transaction is either committed or rolled back.  <a href="#a7eef675c9cdf030f2f1d0110c4d79e71">More...</a><br/></td></tr>
+<tr class="separator:a7eef675c9cdf030f2f1d0110c4d79e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7d3b24f8b9acb6716220931fd6f8bee"><td class="memItemLeft" align="right" valign="top">uint64_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ac7d3b24f8b9acb6716220931fd6f8bee">transaction_oldest</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api)</td></tr>
 <tr class="memdesc:ac7d3b24f8b9acb6716220931fd6f8bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the oldest transaction ID not yet visible to a running transaction.  <a href="#ac7d3b24f8b9acb6716220931fd6f8bee">More...</a><br/></td></tr>
 <tr class="separator:ac7d3b24f8b9acb6716220931fd6f8bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -910,12 +910,12 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="af45eb85f087fb22c8d6fae45d875630e"></a>
+<a class="anchor" id="a7eef675c9cdf030f2f1d0110c4d79e71"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_EXTENSION_API::transaction_notify)(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, int(*notify)(<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *cookie, uint64_t txnid, int committed), void *cookie)</td>
+          <td class="memname">int(* WT_EXTENSION_API::transaction_notify)(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, WT_TXN_NOTIFY *notify)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -926,14 +926,14 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">wt_api</td><td>the extension handle </td></tr>
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">notify</td><td>a function called when the session's current transaction is committed or rolled back; the resolution function is passed the session handle, a memory reference, the transaction ID, and an integer value which is non-zero if the transaction is being committed </td></tr>
-    <tr><td class="paramname">cookie</td><td>a cookie passed to the resolution function </td></tr>
+    <tr><td class="paramname">notify</td><td>a handler for commit or rollback events </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
-<div class="fragment"><div class="line">        ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af45eb85f087fb22c8d6fae45d875630e" title="Request notification of transaction resolution by specifying a function to be called when the session...">transaction_notify</a>(</div>
-<div class="line">            wt_api, session, data_source_notify, cookie);</div>
+<div class="fragment"><div class="line">        WT_TXN_NOTIFY handler;</div>
+<div class="line">        handler.notify = data_source_notify;</div>
+<div class="line">        ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7eef675c9cdf030f2f1d0110c4d79e71" title="Request notification of transaction resolution by specifying a function to be called when the session...">transaction_notify</a>(wt_api, session, &amp;handler);</div>
 </div><!-- fragment -->
 </div>
 </div>
