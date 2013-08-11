@@ -83,7 +83,7 @@ Building the WiredTiger Memrata Support</h1>
 </div><!-- fragment --><h1><a class="anchor" id="memrata_load"></a>
 Loading the WiredTiger Memrata Support</h1>
 <p>Second, change your application to load the Memrata shared library. The following example loads the Memrata shared library, configuring and naming two separate Memrata device pools. The first device pool is named <code>dev1</code>, the second device pool is named <code>dev2</code>. Device pool <code>dev1</code> has two underlying Memrata devices, <code>/dev/ssd0</code> and <code>/dev/ssd1</code>. Device pool <code>dev2</code> has a single underlying Memrata device, <code>/dev/ssd2</code>.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define MEMRATA_LIBRARY_PATH    &quot;/usr/local/memrata/libkvs.so&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define MEMRATA_LIBRARY_PATH    &quot;test/memrata/.libs/libwiredtiger_memrata.so&quot;&quot;</span></div>
 <div class="line"><span class="preprocessor"></span>ret = connection-&gt;load_extension(connection, MEMRATA_LIBRARY_PATH,</div>
 <div class="line">    <span class="stringliteral">&quot;config=[&quot;</span></div>
 <div class="line">    <span class="stringliteral">&quot;dev1=[kvs_devices=[/dev/ssd0,/dev/ssd1],kvs_open_o_truncate=1],&quot;</span></div>
