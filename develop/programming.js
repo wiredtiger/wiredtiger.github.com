@@ -101,6 +101,13 @@ var programming =
       [ "WT_COLLATOR", "custom_data_sources.html#custom_ds_cursor_collator", null ],
       [ "Serialization", "custom_data_sources.html#custom_data_source_cursor_serialize", null ]
     ] ],
+    [ "WiredTiger Memrata support", "memrata.html", [
+      [ "Building the WiredTiger Memrata Support", "memrata.html#memrata_build", null ],
+      [ "Loading the WiredTiger Memrata Support", "memrata.html#memrata_load", null ],
+      [ "Creating Memrata-backed objects", "memrata.html#memrata_objects", null ],
+      [ "Memrata notes", "memrata.html#memrata_notes", null ],
+      [ "Memrata limitations", "memrata.html#memrata_limitations", null ]
+    ] ],
     [ "Database Home Directory", "home.html", null ],
     [ "Database Configuration", "database_config.html", [
       [ "WiredTiger.config file", "database_config.html#config_file", null ],
