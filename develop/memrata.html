@@ -90,7 +90,7 @@ Loading the WiredTiger Memrata Support</h1>
 <div class="line">    <span class="stringliteral">&quot;dev2=[kvs_devices=[/dev/ssd2],kvs_open_o_truncate=1]]&quot;</span>);</div>
 </div><!-- fragment --><p>The <code>kvs_devices</code> configuration string takes a WiredTiger configuration list, that is, a comma-separated list of Memrata devices.</p>
 <p>In this example, both device pools are configured to be truncated (that is, all previously existing contents discarded), when they are configured.</p>
-<p>When loading a Memrata device, the following configuration strings are supported:</p>
+<p>When loading a Memrata device, the following additional configuration strings are supported:</p>
 <table class="doxtable">
 <tr>
 <th>String</th><th>Type </th></tr>
@@ -134,7 +134,7 @@ Creating Memrata-backed objects</h1>
 <div class="line"></div>
 <div class="line"><span class="comment">/* Open a cursor on the access table. */</span></div>
 <div class="line">ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session, <span class="stringliteral">&quot;table:dev1/access&quot;</span>, NULL, NULL, &amp;cursor);</div>
-</div><!-- fragment --><p>When opening a Memrata-backed object, the following configuration strings are supported:</p>
+</div><!-- fragment --><p>When creating a Memrata-backed object with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method, the following additional configuration strings are supported:</p>
 <table class="doxtable">
 <tr>
 <th>String</th><th>Type </th></tr>
@@ -144,7 +144,13 @@ Creating Memrata-backed objects</h1>
 <td>kvs_open_o_truncate</td><td>boolean </td></tr>
 </table>
 <p>See the Memrata device documentation for details on their use.</p>
-<h1><a class="anchor" id="memrata_notes"></a>
+<p>For example, creating and truncating a table could be done as follows:</p>
+<div class="fragment"><div class="line"><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* Create and truncate the access table. */</span></div>
+<div class="line">ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:dev1/access&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;key_format=S,value_format=S,type=memrata,kvs_open_o_truncate=1&quot;</span>);</div>
+</div><!-- fragment --><h1><a class="anchor" id="memrata_notes"></a>
 Memrata notes</h1>
 <ul>
 <li>Memrata devices do not support named checkpoints.</li>
