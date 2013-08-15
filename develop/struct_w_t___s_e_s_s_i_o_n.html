@@ -553,8 +553,6 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>key_format</code></td><td>the format of the data packed into key items. See <a class="el" href="schema.html#schema_format_types">Format types</a> for details. By default, the key_format is <code>'u'</code> and applications use <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structures to manipulate raw byte arrays. By default, records are stored in row-store files: keys of type <code>'r'</code> are record numbers and records referenced by record number are stored in column-store files.</td><td>a format string; default <code>u</code>. </td></tr>
 <tr>
-<td><code>key_gap</code></td><td>the maximum gap between instantiated keys in a Btree leaf page, constraining the number of keys processed to instantiate a random Btree leaf page key.</td><td>an integer greater than or equal to 0; default <code>10</code>. </td></tr>
-<tr>
 <td><code>leaf_item_max</code></td><td>the largest key or value stored within a leaf node, in bytes. If non-zero, any key or value larger than the specified size will be stored as an overflow item (which may require additional I/O to access). If zero, a default size is chosen that permits at least 4 key and value pairs per leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>1MB</code>. </td></tr>
@@ -586,6 +584,8 @@ Public Attributes</h2></td></tr>
 <td><code>os_cache_max</code></td><td>maximum system buffer cache usage, in bytes. If non-zero, evict object blocks from the system buffer cache after that many bytes from this object are read or written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>prefix_compression</code></td><td>configure prefix compression on row-store leaf pages.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code>prefix_compression_min</code></td><td>minimum gain before prefix compression will be used on row-store leaf pages.</td><td>an integer greater than or equal to 0; default <code>4</code>. </td></tr>
 <tr>
 <td><code>split_pct</code></td><td>the Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size.</td><td>an integer between 25 and 100; default <code>75</code>. </td></tr>
 <tr>

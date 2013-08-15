@@ -90,7 +90,10 @@ checkpoint" name "WiredTigerCheckpoint") are read-only objects. Unless memory ma
 </div><!-- fragment --><p> To open the last checkpoint taken in the object, use the configuration string "checkpoint" with the name "WiredTigerCheckpoint" to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method: </p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;checkpoint=WiredTigerCheckpoint&quot;</span>, &amp;cursor);</div>
-</div><!-- fragment --> <h2><a class="anchor" id="tuning_cache_resident"></a>
+</div><!-- fragment --> <h2><a class="anchor" id="tuning_bulk_load"></a>
+Bulk load</h2>
+<p>When loading a large amount of data into a new object, using a cursor with the <code>bulk</code> configuration string enabled and loading the data in sorted order will be much faster than doing out-of-order inserts. See <a class="el" href="bulk_load.html">Bulk-load</a> for more information.</p>
+<h2><a class="anchor" id="tuning_cache_resident"></a>
 Cache resident objects</h2>
 <p>Cache resident objects (objects never considered for the purposes of cache eviction), can be configured with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> "cache_resident" configuration string.</p>
 <p>Configuring a cache resident object has two effects: first, once the object's pages have been instantiated in memory, no further I/O cost is ever paid for object access, minimizing potential latency. Second, in-memory objects can be accessed faster than objects tracked for potential eviction, and applications able to guarantee sufficient memory that an object need never be evicted can significantly increase their performance.</p>

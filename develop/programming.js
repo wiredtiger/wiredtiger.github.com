@@ -70,6 +70,7 @@ var programming =
       [ "WiredTiger's cache", "tuning.html#tuning_cache", [
         [ "Cache size", "tuning.html#tuning_cache_size", null ],
         [ "Read-only objects", "tuning.html#tuning_read_only_objects", null ],
+        [ "Bulk load", "tuning.html#tuning_bulk_load", null ],
         [ "Cache resident objects", "tuning.html#tuning_cache_resident", null ]
       ] ],
       [ "Memory allocator", "tuning.html#tuning_memory_allocator", null ],
