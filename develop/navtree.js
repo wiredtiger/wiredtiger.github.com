@@ -13,7 +13,6 @@ var NAVTREE =
       [ "Enumerator", "functions_eval.html", null ]
     ] ],
     [ "Examples", "examples.html", "examples" ],
-    [ "Memrata", "memrata.html", null ],
     [ "Community", "community.html", null ],
     [ "License", "license.html", null ]
   ] ]

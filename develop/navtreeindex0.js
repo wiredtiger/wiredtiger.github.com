@@ -224,7 +224,7 @@ var NAVTREEINDEX0 =
 "command_line.html#util_write":[0,3,18],
 "command_line.html#util_write_options":[0,3,18,1],
 "command_line.html#util_write_synopsis":[0,3,18,0],
-"community.html":[8],
+"community.html":[7],
 "community.html":[0,7],
 "compression.html":[0,2,15],
 "compression.html#compression_bzip2":[0,2,15,0],
