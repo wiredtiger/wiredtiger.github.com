@@ -42,7 +42,7 @@ var programming =
       [ "Caveats", "lsm.html#lsm_caveats", [
         [ "Hazard configuration", "lsm.html#lsm_hazard", null ],
         [ "Empty values", "lsm.html#lsm_tombstones", null ],
-        [ "Transactional access", "lsm.html#lsm_txn", null ]
+        [ "Named checkpoints", "lsm.html#lsm_checkpoints", null ]
       ] ]
     ] ],
     [ "File formats and compression", "file_formats.html", "file_formats" ],
