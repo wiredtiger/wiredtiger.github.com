@@ -91,6 +91,10 @@ Upgrading to Version 1.6.3</h1>
 <p><b>This is a potentially serious API change that will not be detected by compilation.</b> Application cursors should be reviewed to confirm they are configured for the desired behavior. </p>
 <p class="enddd"></p>
 </dd>
+<dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> no longer accepts a <code>transactional</code> configuration </dt>
+<dd><p class="startdd">The <code>transactional</code> configuration key has been removed from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>. Any application setting it should simply remove it, no change in application behavior is needed. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_162"></a>
