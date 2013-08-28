@@ -663,6 +663,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_D
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
+<td><code>checkpoint_sync</code></td><td>flush files to stable storage when closing or writing checkpoints.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tuning.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
@@ -731,7 +733,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_D
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>sync</code></td><td>flush files to stable storage when closing or writing checkpoints.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>transaction_sync</code></td><td>how to sync log records when the transaction commits.</td><td>a string, chosen from the following options: <code>"dsync"</code>, <code>"fsync"</code>, <code>"none"</code>; default <code>dsync</code>. </td></tr>
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables regardless of whether or not the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
