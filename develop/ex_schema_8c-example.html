@@ -199,14 +199,17 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:poptable&quot;</span>, NULL, <span class="stringliteral">&quot;raw&quot;</span>, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">next</a>(cursor)) == 0) {</div>
-<div class="line">                <a name="_a14"></a><a class="code" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> value;</div>
+<div class="line">                <a name="_a14"></a><a class="code" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> key, value;</div>
 <div class="line"></div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;recno);</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;value);</div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;key);</div>
 <div class="line">                ret = <a name="a15"></a><a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8" title="Unpack a structure from a buffer.">wiredtiger_struct_unpack</a>(session,</div>
-<div class="line">                    value.<a name="a16"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>, value.<a name="a17"></a><a class="code" href="group__wt.html#a9e1d1275a33219850da45f7b54ce86d5" title="The number of bytes in the data item.">size</a>,</div>
-<div class="line">                    <span class="stringliteral">&quot;5sHQ&quot;</span>, &amp;country, &amp;year, &amp;population);</div>
+<div class="line">                    key.<a name="a16"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>, key.<a name="a17"></a><a class="code" href="group__wt.html#a9e1d1275a33219850da45f7b54ce86d5" title="The number of bytes in the data item.">size</a>, <span class="stringliteral">&quot;r&quot;</span>, &amp;recno);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64, recno);</div>
+<div class="line"></div>
+<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;value);</div>
+<div class="line">                ret = <a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8" title="Unpack a structure from a buffer.">wiredtiger_struct_unpack</a>(session,</div>
+<div class="line">                    value.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>, value.<a class="code" href="group__wt.html#a9e1d1275a33219850da45f7b54ce86d5" title="The number of bytes in the data item.">size</a>,</div>
+<div class="line">                    <span class="stringliteral">&quot;5sHQ&quot;</span>, &amp;country, &amp;year, &amp;population);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
