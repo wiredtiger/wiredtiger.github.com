@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Related Pages</title>
+<title>WiredTiger: Metadata</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,21 +61,21 @@
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('pages.html','');});
+$(document).ready(function(){initNavTree('metadata.html','');});
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Related Pages</div>  </div>
+<div class="title">Metadata </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all related documentation pages:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><a class="el" href="metadata.html" target="_self">Metadata</a></td><td class="desc">WiredTiger cursors provide access to data from a variety of sources</td></tr>
-<tr id="row_1_"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><a class="el" href="todo.html" target="_self">Todo List</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><p>WiredTiger cursors provide access to data from a variety of sources.</p>
+<p>One of these sources is the list of objects in the database.</p>
+<p>To retrieve the list of database objects, open a cursor on the uri <code>metadata:</code>. Each returned key will be a database object and each returned value will be the information stored in the metadata for object named by the key.</p>
+<p>For example:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;metadata:&quot;</span>, NULL, NULL, &amp;cursor);</div>
+</div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
