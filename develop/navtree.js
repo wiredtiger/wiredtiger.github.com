@@ -2,7 +2,6 @@ var NAVTREE =
 [
   [ "WiredTiger", "index.html", [
     [ "Reference Guide", "index.html", "index" ],
-    [ "Metadata", "metadata.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Class List", "annotated.html", "annotated" ],
@@ -22,8 +21,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"custom_data_sources.html#custom_ds_config_add",
-"group__wt.html#gaf92a2b38966634fe4588cb1d17c8bf8b"
+"custom_data_sources.html#custom_ds_config",
+"group__wt.html#gaf67215f83cbfe1fe2cf775bca4e1bda0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

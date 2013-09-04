@@ -100,7 +100,7 @@ Cursor types</h1>
 <tr>
 <td><code>index:&lt;table name&gt;:&lt;index name&gt;</code></td><td>index cursor (key=index key, value=table value)</td><td></td></tr>
 <tr>
-<td><code>metadata:</code></td><td>metadata cursor</td><td>See also: <a class="el" href="metadata.html">Metadata</a> </td></tr>
+<td><code>metadata:</code></td><td>metadata cursor</td><td>See also: <a class="el" href="cursors.html#metadata">Reading WiredTiger Metadata</a> </td></tr>
 <tr>
 <td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database or file statistics (key=(int), value=(string)description, (string)value, (uint64_t)value)</td><td></td></tr>
 <tr>
@@ -168,6 +168,13 @@ Raw mode</h1>
 <div class="line">                    session, value.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>, value.<a class="code" href="group__wt.html#a9e1d1275a33219850da45f7b54ce86d5" title="The number of bytes in the data item.">size</a>, <span class="stringliteral">&quot;5sH&quot;</span>, &amp;country, &amp;year);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;country %s, year %u\n&quot;</span>, country, year);</div>
 <div class="line">        }</div>
+</div><!-- fragment --> <h1><a class="anchor" id="metadata"></a>
+Reading WiredTiger Metadata</h1>
+<p>WiredTiger cursors provide access to data from a variety of sources. One of these sources is the list of objects in the database.</p>
+<p>To retrieve the list of database objects, open a cursor on the uri <code>metadata:</code>. Each returned key will be a database object and each returned value will be the information stored in the metadata for object named by the key.</p>
+<p>For example:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;metadata:&quot;</span>, NULL, NULL, &amp;cursor);</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
