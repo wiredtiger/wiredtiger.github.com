@@ -333,7 +333,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Insert a record and optionally update an existing record. </p>
-<p>If the cursor was configured with "overwrite" (the default), both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted.</p>
+<p>If the cursor was configured with "overwrite=true" (the default), both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Insert a new record or overwrite an existing record. */</span></div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
@@ -341,7 +341,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a>(cursor);</div>
-</div><!-- fragment --><p> If the cursor was not configured with "overwrite", both the key and value must be set and the record must not already exist; the record will be inserted.</p>
+</div><!-- fragment --><p> If the cursor was not configured with "overwrite=true", both the key and value must be set and the record must not already exist; the record will be inserted.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Insert a new record and fail if the record exists. */</span></div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
@@ -349,7 +349,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a>(cursor);</div>
-</div><!-- fragment --><p> If a cursor with record number keys was configured with "append", the value must be set; a new record will be appended and the record number set as the cursor key value.</p>
+</div><!-- fragment --><p> If a cursor with record number keys was configured with "append=true" (not the default), the value must be set; a new record will be appended and the record number set as the cursor key value.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Insert a new record and assign a record number. */</span></div>
 <div class="line">        uint64_t recno;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
@@ -441,13 +441,13 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Remove a record. </p>
-<p>If the cursor was configured with "overwrite" (the default), the key must be set; the key's record will be removed if it exists, no error will be returned if the record does not exist.</p>
+<p>If the cursor was configured with "overwrite=true" (the default), the key must be set; the key's record will be removed if it exists, no error will be returned if the record does not exist.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a>(cursor);</div>
-</div><!-- fragment --><p> If the cursor was not configured with "overwrite", the key must be set and the key's record must exist; the record will be removed.</p>
+</div><!-- fragment --><p> If the cursor was not configured with "overwrite=true", the key must be set and the key's record must exist; the record will be removed.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite=false&quot;</span>, &amp;cursor);</div>
@@ -700,14 +700,14 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Update a record and optionally insert an existing record. </p>
-<p>If the cursor was configured with "overwrite" (the default), both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted.</p>
+<p>If the cursor was configured with "overwrite=true" (the default), both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, key);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, value);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record and optionally insert an existing record.">update</a>(cursor);</div>
-</div><!-- fragment --><p> If the cursor was not configured with "overwrite", both the key and value must be set and the record must already exist; the record will be updated.</p>
+</div><!-- fragment --><p> If the cursor was not configured with "overwrite=true", both the key and value must be set and the record must already exist; the record will be updated.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite=false&quot;</span>, &amp;cursor);</div>
