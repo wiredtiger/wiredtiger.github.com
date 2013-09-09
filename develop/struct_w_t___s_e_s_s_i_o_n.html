@@ -101,7 +101,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a358ca4141d59c345f401c58501276bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a table, column group, index or file.  <a href="#a358ca4141d59c345f401c58501276bbb">More...</a><br/></td></tr>
 <tr class="separator:a358ca4141d59c345f401c58501276bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
-<tr class="memdesc:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact an object.  <a href="#aafa7a12a4891a5bfdc98673a5b8f9c69">More...</a><br/></td></tr>
+<tr class="memdesc:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact a row- or column-store btree (log-structured merge trees cannot be compacted).  <a href="#aafa7a12a4891a5bfdc98673a5b8f9c69">More...</a><br/></td></tr>
 <tr class="separator:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:adf785ef53c16d9dcc77e22cc04c87b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#adf785ef53c16d9dcc77e22cc04c87b70">More...</a><br/></td></tr>
@@ -458,8 +458,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Compact an object. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact an object.">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<p>Compact a row- or column-store btree (log-structured merge trees cannot be compacted). </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a row- or column-store btree (log-structured merge trees cannot be compacted).">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>

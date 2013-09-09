@@ -104,7 +104,7 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 <tr class="memdesc:af9af2da9814436f1fc35a45584ae5ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a table, column group, index or file.  <a href="#af9af2da9814436f1fc35a45584ae5ac7">More...</a><br/></td></tr>
 <tr class="separator:af9af2da9814436f1fc35a45584ae5ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e9a2527158abf55b92f9994441a97d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a3e9a2527158abf55b92f9994441a97d6">compact</a> (String name, String config)</td></tr>
-<tr class="memdesc:a3e9a2527158abf55b92f9994441a97d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact an object.  <a href="#a3e9a2527158abf55b92f9994441a97d6">More...</a><br/></td></tr>
+<tr class="memdesc:a3e9a2527158abf55b92f9994441a97d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact a row- or column-store btree (log-structured merge trees cannot be compacted).  <a href="#a3e9a2527158abf55b92f9994441a97d6">More...</a><br/></td></tr>
 <tr class="separator:a3e9a2527158abf55b92f9994441a97d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08aa0622c56a5839b7c38f420b1f2a85"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a08aa0622c56a5839b7c38f420b1f2a85">drop</a> (String name, String config)</td></tr>
 <tr class="memdesc:a08aa0622c56a5839b7c38f420b1f2a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#a08aa0622c56a5839b7c38f420b1f2a85">More...</a><br/></td></tr>
@@ -424,8 +424,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
       </table>
 </div><div class="memdoc">
 
-<p>Compact an object. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact an object.">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<p>Compact a row- or column-store btree (log-structured merge trees cannot be compacted). </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a row- or column-store btree (log-structured merge trees cannot be compacted).">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
