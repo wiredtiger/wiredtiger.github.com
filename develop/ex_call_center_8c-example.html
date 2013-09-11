@@ -246,7 +246,7 @@ $(document).ready(function(){initNavTree('ex_call_center_8c-example.html','');})
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;index:customers:phone(id,name)&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;123-456-7890&quot;</span>);</div>
-<div class="line">        ret = cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor);</div>
+<div class="line">        ret = cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Return the record matching the key.">search</a>(cursor);</div>
 <div class="line">        <span class="keywordflow">if</span> (ret == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;cust.id, &amp;cust.name);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;Read customer record for %s (ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;)\n&quot;</span>,</div>
@@ -278,7 +278,7 @@ $(document).ready(function(){initNavTree('ex_call_center_8c-example.html','');})
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        cust.id = 1;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, cust.id + 1, 0);</div>
-<div class="line">        ret = cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c" title="Move to the record matching the key if it exists, or a record that would be adjacent.">search_near</a>(cursor, &amp;exact);</div>
+<div class="line">        ret = cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c" title="Return the record matching the key if it exists, or an adjacent record.">search_near</a>(cursor, &amp;exact);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * If the table is empty, search_near will return WT_NOTFOUND, else the</span></div>

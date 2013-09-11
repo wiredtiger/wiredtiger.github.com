@@ -69,7 +69,16 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_164"></a>
+<div class="textblock"><h1><a class="anchor" id="version_165"></a>
+Upgrading to Version 1.6.5</h1>
+<dl>
+<dt><a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> behavior </dt>
+<dd><p class="startdd">In previous releases, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> ended positioned at the inserted record. To minimize the cursor resources held by applications inserting many records, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> method has been changed to end without any position. Application insert cursors should be reviewed to confirm they do not attempt to iterate after an insert. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ <h1><a class="anchor" id="version_164"></a>
 Upgrading to Version 1.6.4</h1>
 <dl>
 <dt>File format changes </dt>

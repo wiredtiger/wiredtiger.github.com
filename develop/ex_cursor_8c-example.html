@@ -153,7 +153,7 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html','');});
 <div class="line"></div>
 <div class="line">        cursor-&gt;<a name="a6"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;foo&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Move to the record matching the key.">search</a>(cursor)) != 0)</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Return the record matching the key.">search</a>(cursor)) != 0)</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">get_value</a>(cursor, &amp;value);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
@@ -166,7 +166,7 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html','');});
 <div class="line"></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, <span class="stringliteral">&quot;foo&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c" title="Move to the record matching the key if it exists, or a record that would be adjacent.">search_near</a>(cursor, &amp;exact)) == 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c" title="Return the record matching the key if it exists, or an adjacent record.">search_near</a>(cursor, &amp;exact)) == 0) {</div>
 <div class="line">                <span class="keywordflow">switch</span> (exact) {</div>
 <div class="line">                <span class="keywordflow">case</span> -1:        <span class="comment">/* Returned key smaller than search key */</span></div>
 <div class="line">                        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">get_key</a>(cursor, &amp;key);</div>
