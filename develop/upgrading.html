@@ -76,6 +76,10 @@ Upgrading to Version 1.6.5</h1>
 <dd><p class="startdd">In previous releases, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> ended positioned at the inserted record. To minimize the cursor resources held by applications inserting many records, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> method has been changed to end without any position. Application insert cursors should be reviewed to confirm they do not attempt to iterate after an insert. </p>
 <p class="enddd"></p>
 </dd>
+<dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> statistics_fast configuration </dt>
+<dd><p class="startdd">In previous releases, the default <code>statistics_fast</code> configuration to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method was <code>false</code>; in the 1.6.5 release, the default statistics_fast configuration is <code>true</code>. Applications opening statistics cursors should be reviewed to confirm they have the correct behavior. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_164"></a>
