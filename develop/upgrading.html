@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 1.6.5</span>
+   &#160;<span id="projectnumber">Version 1.6.6</span>
    </div>
   </td>
  </tr>
@@ -78,6 +78,10 @@ Upgrading to Version 1.6.5</h1>
 </dd>
 <dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> statistics_fast configuration </dt>
 <dd><p class="startdd">In previous releases, the default <code>statistics_fast</code> configuration to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method was <code>false</code>; in the 1.6.5 release, the default statistics_fast configuration is <code>true</code>. Applications opening statistics cursors should be reviewed to confirm they have the correct behavior. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Synchronous checkpoint configuration </dt>
+<dd><p class="startdd">The <code>sync</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> has been renamed <code>checkpoint_sync</code>. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
