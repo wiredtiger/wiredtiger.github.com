@@ -117,7 +117,7 @@ Configuring WiredTiger</h1>
 <dl class="section user"><dt><code>&ndash;enable-python</code> </dt><dd>Build the WiredTiger <a href="http://www.python.org">Python</a> API.</dd></dl>
 <dl class="section user"><dt><code>&ndash;enable-snappy</code> </dt><dd>Configure WiredTiger for <a href="http://code.google.com/p/snappy/">snappy</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
 <dl class="section user"><dt><code>&ndash;enable-verbose</code> </dt><dd>Configure WiredTiger to support the <code>verbose</code> configuration string to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>.</dd></dl>
-<dl class="section user"><dt>&ndash;with-spinlock</dt><dd>Configure WiredTiger to use a specific mutex type, options are <code>pthread_mutex</code> (the default, which configures WiredTiger to use POSIX 1003.1c pthread mutexes for serialization) or <code>gcc</code> (which configures WiredTiger to use gcc-based spinlocks for serialization).</dd></dl>
+<dl class="section user"><dt>&ndash;with-spinlock</dt><dd>Configure WiredTiger to use a specific mutex type for serialization; options are <code>pthread</code> (the default, which configures WiredTiger to use POSIX 1003.1c pthread mutexes) or <code>gcc</code> (which configures WiredTiger to use gcc-based spinlocks).</dd></dl>
 <h1><a class="anchor" id="compiler"></a>
 Changing compiler or loader options</h1>
 <p>To change the compiler or loader behavior during the build, use the <code>CC</code>, <code>CFLAGS</code>, <code>LDFLAGS</code>, or <code>LIBS</code> environment variables:</p>
