@@ -74,6 +74,8 @@ var programming =
         [ "Cache resident objects", "tuning.html#tuning_cache_resident", null ]
       ] ],
       [ "Memory allocator", "tuning.html#tuning_memory_allocator", null ],
+      [ "Linux transparent huge pages", "tuning.html#transparent_huge_pages", null ],
+      [ "Linux zone reclamation memory management", "tuning.html#numa_zone_reclamation", null ],
       [ "Cursor persistence", "tuning.html#tuning_cursor_persistence", null ],
       [ "Page and overflow sizes", "tuning.html#tuning_page_size", null ],
       [ "File growth", "tuning.html#tuning_system_file_growth", null ],
