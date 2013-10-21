@@ -69,7 +69,20 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_165"></a>
+<div class="textblock"><h1><a class="anchor" id="version_166"></a>
+Upgrading to Version 1.6.6</h1>
+<dl>
+<dt>Statistics configuration </dt>
+<dd><p class="startdd">In previous releases, the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function took a <code>statistics</code> configuration, which defaulted to false; when set to true, additional, generally performance-expensive statistics were maintained by the database, above and beyond a default set of statistics. In version 1.6.6, the <code>statistics</code> configuration is a list which may be set to "all", "fast" or "none". When set to "none", no statistics are maintained by the database; when set to "fast", only relatively performance-inexpensive statistics are maintained, and when set to "all", all statistics are maintained, regardless of cost.</p>
+<p>In previous releases, the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function took a <code>statistics_log</code> configuration which logged the performance-inexpensive database statistics to a file. In version 1.6.6, the <code>statistics_log</code> configuration logs whatever statistics are configured for the database. If the database is configured with <code>statistics</code> to "none", no statistics will be logged to the file; if the database is configured with "all" or "fast", the corresponding statistics will be logged to the file.</p>
+<p>In previous releases, the WT_SESSION::cursor method took <code>statistics_clear</code> and a <code>statistics_fast</code> configurations. The <code>statistics_clear</code> configuration defaulted to false; when set to true, statistics counters were reset after they were gathered by the cursor. The <code>statistics_fast</code> configuration defaulted to true; when set to true, the cursor only gathered performance-inexpensive statistics for the cursor, and when set to false, the cursor gathered all available statistics, regardless of cost.</p>
+<p>In version 1.6.6, these two configuration booleans have been replaced with a new configuration list <code>statistics</code>, which may be set from the values "clear", "fast" and "all". When "fast" is configured, only relatively performance-inexpensive statistics are gathered, and when "all" is configured, all statistics are gathered, regardless of cost. When "clear" is configured, statistics counters are reset after they are gathered.</p>
+<p>Additionally, in version 1.6.6, statistics cursors must be configured to agree with the database statistics configuration; when the database statistics are configured to "none", attempts to open a statistics cursor will fail; when the database statistics are configured to "fast", a statistics cursor must also be configured to "fast"; when the database statistics are configured to "all", a statistics cursor may be configured to either "fast" or "all". Opening a statistics cursor without configuring either "fast" or "all" will configure the cursor to be the same as the current database configuration.</p>
+<p>Applications may require modifications to resolve run-time errors; application statistics configuration and cursors should be reviewed to confirm they are configured for the desired behavior; </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<h1><a class="anchor" id="version_165"></a>
 Upgrading to Version 1.6.5</h1>
 <dl>
 <dt><a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> behavior </dt>
