@@ -115,9 +115,11 @@ $(document).ready(function(){initNavTree('ex_access_8c-example.html','');});
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a3"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0 ||</div>
-<div class="line">            (ret = conn-&gt;<a name="a4"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(conn, NULL, NULL, &amp;session)) != 0)</div>
+<div class="line">            (ret = conn-&gt;<a name="a4"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session.">open_session</a>(conn, NULL, NULL, &amp;session)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home, <a name="a5"></a><a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        }</div>
 <div class="line">        ret = session-&gt;<a name="a6"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:access&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
 <div class="line">        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
