@@ -85,26 +85,51 @@ $(document).ready(function(){initNavTree('struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa5ff5f145c32fc942ca0e8208ed58990"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#aa5ff5f145c32fc942ca0e8208ed58990">handle_error</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, int error, const char *message)</td></tr>
-<tr class="memdesc:aa5ff5f145c32fc942ca0e8208ed58990"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle error messages; by default, error messages are written to the stderr stream.  <a href="#aa5ff5f145c32fc942ca0e8208ed58990">More...</a><br/></td></tr>
-<tr class="separator:aa5ff5f145c32fc942ca0e8208ed58990"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8b1db0f51de5d0fef737e3fbc05bad4"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af8b1db0f51de5d0fef737e3fbc05bad4">handle_message</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, const char *message)</td></tr>
-<tr class="memdesc:af8b1db0f51de5d0fef737e3fbc05bad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle informational messages; by default, informational messages are written to the stdout stream.  <a href="#af8b1db0f51de5d0fef737e3fbc05bad4">More...</a><br/></td></tr>
-<tr class="separator:af8b1db0f51de5d0fef737e3fbc05bad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ba889a298a839a03ed12df77bb16c52"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a7ba889a298a839a03ed12df77bb16c52">handle_progress</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, const char *operation, uint64_t progress)</td></tr>
-<tr class="memdesc:a7ba889a298a839a03ed12df77bb16c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle progress messages; by default, no progress messages are written.  <a href="#a7ba889a298a839a03ed12df77bb16c52">More...</a><br/></td></tr>
-<tr class="separator:a7ba889a298a839a03ed12df77bb16c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af26a6817fcc22499496c15b47c0ef788"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af26a6817fcc22499496c15b47c0ef788">handle_error</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, int error, const char *message)</td></tr>
+<tr class="memdesc:af26a6817fcc22499496c15b47c0ef788"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle error messages; by default, error messages are written to the stderr stream.  <a href="#af26a6817fcc22499496c15b47c0ef788">More...</a><br/></td></tr>
+<tr class="separator:af26a6817fcc22499496c15b47c0ef788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b8a4d66d1e4ae5c1e4a87b2eda618d9"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a4b8a4d66d1e4ae5c1e4a87b2eda618d9">handle_message</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *message)</td></tr>
+<tr class="memdesc:a4b8a4d66d1e4ae5c1e4a87b2eda618d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle informational messages; by default, informational messages are written to the stdout stream.  <a href="#a4b8a4d66d1e4ae5c1e4a87b2eda618d9">More...</a><br/></td></tr>
+<tr class="separator:a4b8a4d66d1e4ae5c1e4a87b2eda618d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14a2a760c981563efb02555c0d0b267d"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a14a2a760c981563efb02555c0d0b267d">handle_progress</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *operation, uint64_t progress)</td></tr>
+<tr class="memdesc:a14a2a760c981563efb02555c0d0b267d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle progress messages; by default, no progress messages are written.  <a href="#a14a2a760c981563efb02555c0d0b267d">More...</a><br/></td></tr>
+<tr class="separator:a14a2a760c981563efb02555c0d0b267d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97c41f95e363a2a7aa9a9739be4d9ac8"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a97c41f95e363a2a7aa9a9739be4d9ac8">handle_close</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
+<tr class="memdesc:a97c41f95e363a2a7aa9a9739be4d9ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle automatic close of a WiredTiger handle.  <a href="#a97c41f95e363a2a7aa9a9739be4d9ac8">More...</a><br/></td></tr>
+<tr class="separator:a97c41f95e363a2a7aa9a9739be4d9ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The interface implemented by applications to handle error, informational and progress messages. </p>
 <p>Entries set to NULL are ignored and the default handlers will continue to be used. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="aa5ff5f145c32fc942ca0e8208ed58990"></a>
+<a class="anchor" id="a97c41f95e363a2a7aa9a9739be4d9ac8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_EVENT_HANDLER::handle_error)(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, int error, const char *message)</td>
+          <td class="memname">int(* WT_EVENT_HANDLER::handle_close)(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to handle automatic close of a WiredTiger handle. </p>
+<p>Close handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>The session handle that is being closed if the cursor parameter is NULL. </td></tr>
+    <tr><td class="paramname">cursor</td><td>The cursor handle that is being closed, or NULL if it is a session handle being closed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af26a6817fcc22499496c15b47c0ef788"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EVENT_HANDLER::handle_error)(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, int error, const char *message)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -113,6 +138,7 @@ Public Attributes</h2></td></tr>
 <p>Error handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">session</td><td>the WiredTiger session handle in use when the error was generated. The handle may have been created by the application or automatically by WiredTiger. </td></tr>
     <tr><td class="paramname">error</td><td>a WiredTiger, C99 or POSIX error code, which can be converted to a string using <a class="el" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a> </td></tr>
     <tr><td class="paramname">message</td><td>an error string </td></tr>
   </table>
@@ -121,12 +147,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af8b1db0f51de5d0fef737e3fbc05bad4"></a>
+<a class="anchor" id="a4b8a4d66d1e4ae5c1e4a87b2eda618d9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_EVENT_HANDLER::handle_message)(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, const char *message)</td>
+          <td class="memname">int(* WT_EVENT_HANDLER::handle_message)(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *message)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -135,6 +161,7 @@ Public Attributes</h2></td></tr>
 <p>Message handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">session</td><td>the WiredTiger session handle in use when the message was generated. The handle may have been created by the application or automatically by WiredTiger. </td></tr>
     <tr><td class="paramname">message</td><td>an informational string </td></tr>
   </table>
   </dd>
@@ -142,12 +169,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7ba889a298a839a03ed12df77bb16c52"></a>
+<a class="anchor" id="a14a2a760c981563efb02555c0d0b267d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_EVENT_HANDLER::handle_progress)(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, const char *operation, uint64_t progress)</td>
+          <td class="memname">int(* WT_EVENT_HANDLER::handle_progress)(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *operation, uint64_t progress)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -156,6 +183,7 @@ Public Attributes</h2></td></tr>
 <p>Progress handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">session</td><td>the WiredTiger session handle in use when the progress message was generated. The handle may have been created by the application or automatically by WiredTiger. </td></tr>
     <tr><td class="paramname">operation</td><td>a string representation of the operation </td></tr>
     <tr><td class="paramname">progress</td><td>a counter </td></tr>
   </table>
