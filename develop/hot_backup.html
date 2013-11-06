@@ -76,6 +76,19 @@ $(document).ready(function(){initNavTree('hot_backup.html','');});
 <p>2. Copy each file returned by the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> method into a different directory.</p>
 <p>3. Close the cursor; the cursor must not be closed until all of the files have been copied.</p>
 <p>The directory to which the files are copied may subsequently be specified as an directory to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function and accessed as a WiredTiger database home.</p>
+<p>Notes:</p>
+<ul>
+<li>Copying the database files for a hot backup does not require any special alignment or block size (specifically, Linux or Windows filesystems that do not support read/write isolation can be safely read for hot backups).</li>
+</ul>
+<ul>
+<li>The cursor must not be closed until all of the files have been copied, however, there is no requirement the files be copied in any order or in any relationship to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> calls, only that all files have been copied before the cursor is closed. For example, applications might aggregate the file names from the cursor and then list the file names as arguments to a file archiver such as the system tar utility.</li>
+</ul>
+<ul>
+<li>During the period the hot backup cursor is open, database checkpoints can be created, but no checkpoints can be deleted. This may result in significant file growth.</li>
+</ul>
+<ul>
+<li>Many Linux systems do not support mixing <code>O_DIRECT</code> and memory mapping or normal I/O to the same file. If <code>O_DIRECT</code> is configured for data files on Linux systems (using the wiredtiger_open <code>direct_io</code> configuration), the utilities used to copy the database files should probably also specify <code>O_DIRECT</code> when configuring their file access.</li>
+</ul>
 <p>The following is a programmatic example of creating a hot backup:</p>
 <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *filename;</div>
@@ -109,20 +122,7 @@ $(document).ready(function(){initNavTree('hot_backup.html','');});
 <div class="fragment"><div class="line">rm -rf /path/database.backup &amp;&amp;</div>
 <div class="line">    mkdir /path/database.backup &amp;&amp;</div>
 <div class="line">    wt -h /path/database.source backup /path/database.backup</div>
-</div><!-- fragment --><p>Notes:</p>
-<ul>
-<li>Copying the database files for a hot backup does not require any special alignment or block size (specifically, Linux or Windows filesystems that do not support read/write isolation can be safely read for hot backups).</li>
-</ul>
-<ul>
-<li>The cursor must not be closed until all of the files have been copied, however, there is no requirement that the files be copied in any order or in any relationship to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> calls, only that all files have been copied before the cursor is closed.</li>
-</ul>
-<ul>
-<li>During the period the hot backup cursor is open, database checkpoints can be created, but no checkpoints can be deleted. This may result in significant file growth.</li>
-</ul>
-<ul>
-<li>Many Linux systems do not support mixing <code>O_DIRECT</code> and memory mapping or normal I/O to the same file. If <code>O_DIRECT</code> is configured for data files on Linux systems (using the wiredtiger_open <code>direct_io</code> configuration), the utilities used to copy the database files should probably also specify <code>O_DIRECT</code> when configuring their file access. </li>
-</ul>
-</div></div><!-- contents -->
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
