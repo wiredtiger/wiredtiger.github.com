@@ -59,6 +59,7 @@ var programming =
       [ "Eviction configuration", "cache_configuration.html#cache_eviction", null ]
     ] ],
     [ "Checkpoints", "checkpoints.html", null ],
+    [ "Compaction", "compaction.html", null ],
     [ "Hot backup", "hot_backup.html", null ],
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
@@ -78,7 +79,10 @@ var programming =
       [ "Linux zone reclamation memory management", "tuning.html#numa_zone_reclamation", null ],
       [ "Cursor persistence", "tuning.html#tuning_cursor_persistence", null ],
       [ "Page and overflow sizes", "tuning.html#tuning_page_size", null ],
-      [ "File growth", "tuning.html#tuning_system_file_growth", null ],
+      [ "File block allocation", "tuning.html#tuning_system_file_block", [
+        [ "File growth", "tuning.html#tuning_system_file_block_grow", null ],
+        [ "File allocation", "tuning.html#tuning_system_file_block_allocation", null ]
+      ] ],
       [ "System buffer cache", "tuning.html#tuning_system_buffer_cache", [
         [ "Direct I/O", "tuning.html#tuning_system_buffer_cache_direct_io", null ],
         [ "os_cache_dirty_max", "tuning.html#tuning_system_buffer_cache_os_cache_dirty_max", null ],

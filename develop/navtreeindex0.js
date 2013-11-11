@@ -226,6 +226,7 @@ var NAVTREEINDEX0 =
 "command_line.html#util_write_synopsis":[0,3,18,0],
 "community.html":[7],
 "community.html":[0,7],
+"compaction.html":[0,2,18],
 "compression.html":[0,2,15],
 "compression.html#compression_bzip2":[0,2,15,0],
 "compression.html#compression_custom":[0,2,15,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "cursors.html#cursor_types":[0,2,7,1],
 "cursors.html#cursors_transactions":[0,2,7,0],
 "cursors.html#metadata":[0,2,7,4],
-"custom_data_sources.html":[0,2,22],
-"custom_data_sources.html#custom_data_source_cursor_serialize":[0,2,22,6]
+"custom_data_sources.html":[0,2,23]
 };

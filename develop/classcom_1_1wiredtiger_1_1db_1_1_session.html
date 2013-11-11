@@ -104,7 +104,7 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 <tr class="memdesc:af9af2da9814436f1fc35a45584ae5ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a table, column group, index or file.  <a href="#af9af2da9814436f1fc35a45584ae5ac7">More...</a><br/></td></tr>
 <tr class="separator:af9af2da9814436f1fc35a45584ae5ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e9a2527158abf55b92f9994441a97d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a3e9a2527158abf55b92f9994441a97d6">compact</a> (String name, String config)</td></tr>
-<tr class="memdesc:a3e9a2527158abf55b92f9994441a97d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact a row- or column-store btree (log-structured merge trees cannot be compacted).  <a href="#a3e9a2527158abf55b92f9994441a97d6">More...</a><br/></td></tr>
+<tr class="memdesc:a3e9a2527158abf55b92f9994441a97d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact a live row- or column-store btree (log-structured merge trees cannot be compacted).  <a href="#a3e9a2527158abf55b92f9994441a97d6">More...</a><br/></td></tr>
 <tr class="separator:a3e9a2527158abf55b92f9994441a97d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08aa0622c56a5839b7c38f420b1f2a85"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a08aa0622c56a5839b7c38f420b1f2a85">drop</a> (String name, String config)</td></tr>
 <tr class="memdesc:a08aa0622c56a5839b7c38f420b1f2a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#a08aa0622c56a5839b7c38f420b1f2a85">More...</a><br/></td></tr>
@@ -424,19 +424,13 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
       </table>
 </div><div class="memdoc">
 
-<p>Compact a row- or column-store btree (log-structured merge trees cannot be compacted). </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a row- or column-store btree (log-structured merge trees cannot be compacted).">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<p>Compact a live row- or column-store btree (log-structured merge trees cannot be compacted). </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree (log-structured merge trees cannot be compacted).">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">name</td><td>the URI of the object to compact, such as <code>"table:stock"</code> </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
-<tr>
-<th>Name</th><th>Effect</th><th>Values </th></tr>
-<tr>
-<td><code>trigger</code></td><td>Compaction will not be attempted unless the specified percentage of the underlying objects is expected to be recovered by compaction.</td><td>an integer between 10 and 50; default <code>30</code>. </td></tr>
-</table>
-</td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
   </table>
   </dd>
 </dl>
@@ -480,6 +474,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
 <td><code>allocation_size</code></td><td>the file unit allocation size, in bytes, must a power-of-two; smaller values decrease the file space required by overflow items, and the default value of 4KB is a good choice absent requirements from the operating system or storage device.</td><td>an integer between 512B and 128MB; default <code>4KB</code>. </td></tr>
+<tr>
+<td><code>block_allocation</code></td><td>configure block allocation. Permitted values are <code>"first"</code> or <code>"best"</code>; the <code>"first"</code> configuration uses a first-available algorithm during block allocation, the <code>"best"</code> configuration uses a best-fit algorithm.</td><td>a string, chosen from the following options: <code>"first"</code>, <code>"best"</code>; default <code>best</code>. </td></tr>
 <tr>
 <td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are empty (off) or <code>"bzip2"</code>, <code>"snappy"</code> or custom compression engine <code>"name"</code> created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>

@@ -503,14 +503,14 @@ Connection statistics</h2></td></tr>
 Statistics for data sources</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp230e61a861a98ff5c2c96de5e7b639be"></a><a class="anchor" id="statistics_dsrc"></a></p>
 </td></tr>
+<tr class="memitem:ga3bb2ca006c10411eb0d652544b13f18f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3bb2ca006c10411eb0d652544b13f18f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3bb2ca006c10411eb0d652544b13f18f">WT_STAT_DSRC_ALLOCATION_SIZE</a></td></tr>
+<tr class="memdesc:ga3bb2ca006c10411eb0d652544b13f18f"><td class="mdescLeft">&#160;</td><td class="mdescRight">block manager file allocation unit size <br/></td></tr>
+<tr class="separator:ga3bb2ca006c10411eb0d652544b13f18f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7c1d0d9b801bff8c643ad99ae303fb57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7c1d0d9b801bff8c643ad99ae303fb57"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7c1d0d9b801bff8c643ad99ae303fb57">WT_STAT_DSRC_BLOCK_ALLOC</a></td></tr>
 <tr class="memdesc:ga7c1d0d9b801bff8c643ad99ae303fb57"><td class="mdescLeft">&#160;</td><td class="mdescRight">blocks allocated <br/></td></tr>
 <tr class="separator:ga7c1d0d9b801bff8c643ad99ae303fb57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8c3e1ba9bffaf856f43b8690bcc97dbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8c3e1ba9bffaf856f43b8690bcc97dbe"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8c3e1ba9bffaf856f43b8690bcc97dbe">WT_STAT_DSRC_BLOCK_ALLOCSIZE</a></td></tr>
-<tr class="memdesc:ga8c3e1ba9bffaf856f43b8690bcc97dbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">block manager file allocation unit size <br/></td></tr>
-<tr class="separator:ga8c3e1ba9bffaf856f43b8690bcc97dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3ba4d6c12abe10285dc3b599f082a4e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3ba4d6c12abe10285dc3b599f082a4e4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3ba4d6c12abe10285dc3b599f082a4e4">WT_STAT_DSRC_BLOCK_CHECKPOINT_SIZE</a></td></tr>
 <tr class="memdesc:ga3ba4d6c12abe10285dc3b599f082a4e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint size <br/></td></tr>
@@ -1136,7 +1136,7 @@ The number of bytes in the data item. </td></tr>
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables regardless of whether or not the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"ckpt"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"log"</code>, <code>"lsm"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"block"</code>, <code>"ckpt"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"hazard"</code>, <code>"log"</code>, <code>"lsm"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"readserver"</code>, <code>"reconcile"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 Additionally, if a file named <code>WiredTiger.config</code> appears in the WiredTiger home directory, it is read for configuration values (see <a class="el" href="database_config.html#config_file">WiredTiger.config file</a> for details). Configuration values specified in the <code>config</code> argument to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function override configuration values specified in the <code>WiredTiger.config</code> file. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">connectionp</td><td>A pointer to the newly opened connection handle </td></tr>

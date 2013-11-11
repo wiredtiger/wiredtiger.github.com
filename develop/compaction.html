@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Writing WiredTiger applications</title>
+<title>WiredTiger: Compaction</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,65 +61,23 @@
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('programming.html','');});
+$(document).ready(function(){initNavTree('compaction.html','');});
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Writing WiredTiger applications </div>  </div>
+<div class="title">Compaction </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This section covers topics of interest for programmers writing WiredTiger applications:</p>
-<h1><a class="anchor" id="programming_api"></a>
-Using the API</h1>
-<ul>
-<li><a class="el" href="basic_api.html">Getting Started with the API</a></li>
-<li><a class="el" href="config_strings.html">Configuration Strings</a></li>
-<li><a class="el" href="cursors.html">Cursors</a></li>
-<li><a class="el" href="transactions.html">Transactions</a></li>
-<li><a class="el" href="error_handling.html">Error handling</a></li>
-<li><a class="el" href="name_space.html">Name spaces</a></li>
-</ul>
-<h1><a class="anchor" id="programming_storage"></a>
-Storage options</h1>
-<ul>
-<li><a class="el" href="schema.html">Schema, Columns, Column Groups, Indices and Projections</a></li>
-<li><a class="el" href="lsm.html">Log-Structured Merge Trees</a></li>
-<li><a class="el" href="file_formats.html">File formats and compression</a></li>
-<li><a class="el" href="bulk_load.html">Bulk-load</a></li>
-<li><a class="el" href="compression.html">Compressors</a></li>
-</ul>
-<h1><a class="anchor" id="programming_deployment"></a>
-Deployment considerations</h1>
-<ul>
-<li><a class="el" href="cache_configuration.html">Cache configuration</a></li>
-<li><a class="el" href="checkpoints.html">Checkpoints</a></li>
-<li><a class="el" href="compaction.html">Compaction</a></li>
-<li><a class="el" href="hot_backup.html">Hot backup</a></li>
-<li><a class="el" href="statistics.html">Statistics</a></li>
-<li><a class="el" href="threads.html">Multithreading</a></li>
-<li><a class="el" href="tuning.html">Performance Tuning</a></li>
-</ul>
-<h1><a class="anchor" id="programming_extending"></a>
-Extending WiredTiger</h1>
-<ul>
-<li><a class="el" href="custom_data_sources.html">Custom Data Sources</a></li>
-<li><a class="el" href="memrata.html">WiredTiger Memrata support</a></li>
-</ul>
-<h1><a class="anchor" id="programming_admin"></a>
-Administering a WiredTiger database</h1>
-<ul>
-<li><a class="el" href="home.html">Database Home Directory</a></li>
-<li><a class="el" href="database_config.html">Database Configuration</a></li>
-<li><a class="el" href="security.html">Security</a></li>
-<li><a class="el" href="signals.html">Signal handling</a> </li>
-</ul>
+<div class="textblock"><p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree (log-structured merge trees cannot be compacted).">WT_SESSION::compact</a> method can be used to compact a row- or column-store btree (log-structured merge trees cannot be compacted).</p>
+<p>The data source does not have to be quiescent, compaction may be performed on a live data source.</p>
+<p>Because checkpoints named by the application are not discarded until explicitly removed or replaced, they may prevent <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree (log-structured merge trees cannot be compacted).">WT_SESSION::compact</a> from accomplishing anything. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li>
+    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
     <li class="footer">Copyright (c) 2008-2013 WiredTiger, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
