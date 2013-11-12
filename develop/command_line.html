@@ -246,10 +246,14 @@ wt stat</h1>
 <p>The <code>stat</code> command outputs run-time statistics for the WiredTiger engine, or, if specified, for the URI on the command-line.</p>
 <h2><a class="anchor" id="util_stat_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-Vv] [-C config] [-h directory] stat [uri]</code></p>
+<p><code>wt [-Vv] [-C config] [-h directory] stat [-a] [uri]</code></p>
 <h2><a class="anchor" id="util_stat_options"></a>
 Options</h2>
 <p>The <code>stat</code> command has no command-specific options.</p>
+<h2><a class="anchor" id="util_stat_options"></a>
+Options</h2>
+<p>The following are command-specific options for the <code>stat</code> command:</p>
+<dl class="section user"><dt>-a</dt><dd>Include all statistics in the output (equivalent to passing <code>statistics=(all)</code>) to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>.</dd></dl>
 <hr/>
  <h1><a class="anchor" id="util_upgrade"></a>
 wt upgrade</h1>
