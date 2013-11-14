@@ -72,6 +72,10 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="textblock"><h1><a class="anchor" id="version_166"></a>
 Upgrading to Version 1.6.6</h1>
 <dl>
+<dt>File format changes </dt>
+<dd><p class="startdd">The underlying file formats changed in the 1.6.6 release; tables and files should be dumped and re-loaded into a new database. </p>
+<p class="enddd"></p>
+</dd>
 <dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> allocation_size configuration </dt>
 <dd><p class="startdd">In previous releases, the <code>allocation_size</code> configuration string to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method specified the file unit allocation size; in the 1.6.6 release, this configuration string has been renamed to <code>allocation_size</code> for consistency with other configuration options. Applications may require modifications to resolve run-time errors. </p>
 <p class="enddd"></p>
