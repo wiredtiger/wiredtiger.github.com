@@ -208,9 +208,9 @@ Cursor key/value memory scoping</h1>
 <p>If such an operation fails (for example, due to a <a class="el" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47" title="Conflict between concurrent operations.">WT_DEADLOCK</a> error), it may be retried without calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> again. That is, the cursor may still reference the application-supplied memory until it is successfully positioned.</p>
 <p>Any pointers returned by <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> are only valid until the cursor is positioned. These pointers may reference private WiredTiger data structures that must not be modified or freed by the application. If a longer scope is required, the application must make a copy of the memory before the cursor is positioned.</p>
 <p>The comments in this example code explain when the application can safely modify memory passed to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a>:</p>
-<div class="fragment"><div class="line">                strcpy(keybuf, op-&gt;key);</div>
+<div class="fragment"><div class="line">                (void)snprintf(keybuf, <span class="keyword">sizeof</span>(keybuf), <span class="stringliteral">&quot;%s&quot;</span>, op-&gt;key);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">set_key</a>(cursor, keybuf);</div>
-<div class="line">                strcpy(valuebuf, op-&gt;value);</div>
+<div class="line">                (void)snprintf(valuebuf, <span class="keyword">sizeof</span>(valuebuf), <span class="stringliteral">&quot;%s&quot;</span>, op-&gt;value);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">set_value</a>(cursor, valuebuf);</div>
 <div class="line"></div>
 <div class="line">                <span class="comment">/*</span></div>
@@ -256,18 +256,18 @@ Cursor key/value memory scoping</h1>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line"></div>
 <div class="line">                <span class="comment">/* Check that the cursor&#39;s key and value are what we expect. */</span></div>
-<div class="line">                <span class="keywordflow">if</span> ((key == keybuf &amp;&amp; op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a>) ||</div>
-<div class="line">                    (value == valuebuf &amp;&amp;</div>
-<div class="line">                    op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a> &amp;&amp;</div>
-<div class="line">                    op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a>)) {</div>
-<div class="line">                        fprintf(stderr,</div>
-<div class="line">                            <span class="stringliteral">&quot;Cursor points at application memory!\n&quot;</span>);</div>
-<div class="line">                        <span class="keywordflow">return</span> (EINVAL);</div>
-<div class="line">                }</div>
+<div class="line">                <span class="keywordflow">if</span> (op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">insert</a>)</div>
+<div class="line">                        <span class="keywordflow">if</span> (key == keybuf ||</div>
+<div class="line">                            (op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a> &amp;&amp;</div>
+<div class="line">                            value == valuebuf)) {</div>
+<div class="line">                                fprintf(stderr,</div>
+<div class="line">                                    <span class="stringliteral">&quot;Cursor points at application memory!\n&quot;</span>);</div>
+<div class="line">                                <span class="keywordflow">return</span> (EINVAL);</div>
+<div class="line">                        }</div>
 <div class="line"></div>
 <div class="line">                <span class="keywordflow">if</span> (strcmp(key, op-&gt;key) != 0 ||</div>
-<div class="line">                    (strcmp(value, op-&gt;value) != 0 &amp;&amp;</div>
-<div class="line">                    op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a>)) {</div>
+<div class="line">                    (op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">remove</a> &amp;&amp;</div>
+<div class="line">                    strcmp(value, op-&gt;value) != 0)) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;Unexpected key / value!\n&quot;</span>);</div>
 <div class="line">                        <span class="keywordflow">return</span> (EINVAL);</div>
 <div class="line">                }</div>
