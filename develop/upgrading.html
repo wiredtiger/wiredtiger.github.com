@@ -89,6 +89,11 @@ Upgrading to Version 1.6.6</h1>
 <p>Applications may require modifications to resolve run-time errors; application statistics configuration and cursors should be reviewed to confirm they are configured for the desired behavior; </p>
 <p class="enddd"></p>
 </dd>
+<dt><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html" title="The interface implemented by applications to handle error, informational and progress messages...">WT_EVENT_HANDLER</a> interface changes </dt>
+<dd><p class="startdd">Add a new <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a97c41f95e363a2a7aa9a9739be4d9ac8" title="Callback to handle automatic close of a WiredTiger handle.">WT_EVENT_HANDLER::handle_close</a> callback that WiredTiger will call any time it automatically closes an application session or cursor handle.</p>
+<p>Additionally add a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> parameter into the existing <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af26a6817fcc22499496c15b47c0ef788" title="Callback to handle error messages; by default, error messages are written to the stderr stream...">WT_EVENT_HANDLER::handle_error</a>, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a4b8a4d66d1e4ae5c1e4a87b2eda618d9" title="Callback to handle informational messages; by default, informational messages are written to the stdo...">WT_EVENT_HANDLER::handle_message</a> and <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a14a2a760c981563efb02555c0d0b267d" title="Callback to handle progress messages; by default, no progress messages are written.">WT_EVENT_HANDLER::handle_progress</a> callback functions. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <h1><a class="anchor" id="version_165"></a>
 Upgrading to Version 1.6.5</h1>
