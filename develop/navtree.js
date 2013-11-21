@@ -22,8 +22,8 @@ var NAVTREEINDEX =
 [
 ".html",
 "cursors.html#cursors_transactions",
-"group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c",
-"upgrading.html#version_139"
+"group__wt.html#gae536a122add18fad5e849ded8cfe623d",
+"tuning.html#tuning_system_file_block_grow"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

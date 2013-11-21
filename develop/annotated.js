@@ -21,7 +21,7 @@ var annotated =
     [ "WT_TXN_NOTIFY", "struct____wt__txn__notify.html", "struct____wt__txn__notify" ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", "struct_w_t___c_o_l_l_a_t_o_r" ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", "struct_w_t___c_o_m_p_r_e_s_s_o_r" ],
-    [ "WT_CONFIG_ITEM", "group__wt__ext.html#struct_w_t___c_o_n_f_i_g___i_t_e_m", "group__wt__ext" ],
+    [ "WT_CONFIG_ITEM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html", "struct_w_t___c_o_n_f_i_g___i_t_e_m" ],
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", "struct_w_t___c_o_n_n_e_c_t_i_o_n" ],
     [ "WT_CURSOR", "struct_w_t___c_u_r_s_o_r.html", "struct_w_t___c_u_r_s_o_r" ],
     [ "WT_DATA_SOURCE", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html", "struct_w_t___d_a_t_a___s_o_u_r_c_e" ],
