@@ -6,6 +6,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_connection =
     [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a0e8af34ebdff2b71b682095ed085cebe", null ],
     [ "get_home", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad52f0d0c36bcedfa2214f233f3ee020a", null ],
     [ "is_new", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a7ba72791fba4a03984c0d9b8faca1284", null ],
+    [ "java_init", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a0ba0590fcde7f51b426a5ceec5013581", null ],
     [ "load_extension", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1c404c400a9873926810241ad0997a4a", null ],
     [ "open_session", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad03cfc01de34342ab8c76934accb8745", null ],
     [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a5e67d007427eb9a0b1c749b8c85468e2", null ],

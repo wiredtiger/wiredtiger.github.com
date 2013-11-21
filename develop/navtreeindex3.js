@@ -1,5 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"upgrading.html#version_139":[0,4,9],
+"upgrading.html#version_143":[0,4,8],
+"upgrading.html#version_153":[0,4,7],
 "upgrading.html#version_160":[0,4,6],
 "upgrading.html#version_161":[0,4,5],
 "upgrading.html#version_162":[0,4,4],
