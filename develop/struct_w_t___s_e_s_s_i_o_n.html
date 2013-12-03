@@ -563,6 +563,8 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>lsm_bloom_oldest</code></td><td>create a bloom filter on the oldest LSM tree chunk. Only supported if bloom filters are enabled.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>lsm_chunk_max</code></td><td>the maximum size a single chunk can be. Chunks larger than this size will not be considered for further merges. This is a soft limit - chunks somewhat larger than this value can be created. Must be larger than lsm_chunk_size.</td><td>an integer between 100MB and 10TB; default <code>5GB</code>. </td></tr>
+<tr>
 <td><code>lsm_chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree.</td><td>an integer between 512K and 500MB; default <code>2MB</code>. </td></tr>
 <tr>
 <td><code>lsm_merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between 2 and 100; default <code>15</code>. </td></tr>
