@@ -514,25 +514,29 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>1MB</code>. </td></tr>
 <tr>
-<td><code>lsm_auto_throttle</code></td><td>Throttle inserts into LSM trees if flushing to disk isn't keeping up.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>lsm = (</code></td><td>options only relevant for LSM data sources.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>lsm_bloom</code></td><td>create bloom filters on LSM tree chunks as they are merged.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;auto_throttle</code></td><td>Throttle inserts into LSM trees if flushing to disk isn't keeping up.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>lsm_bloom_bit_count</code></td><td>the number of bits used per item for LSM bloom filters.</td><td>an integer between 2 and 1000; default <code>8</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom</code></td><td>create bloom filters on LSM tree chunks as they are merged.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>lsm_bloom_config</code></td><td>config string used when creating Bloom filter files, passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom_config</code></td><td>config string used when creating Bloom filter files, passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>lsm_bloom_hash_count</code></td><td>the number of hash values per item used for LSM bloom filters.</td><td>an integer between 2 and 100; default <code>4</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom_bit_count</code></td><td>the number of bits used per item for LSM bloom filters.</td><td>an integer between 2 and 1000; default <code>8</code>. </td></tr>
 <tr>
-<td><code>lsm_bloom_oldest</code></td><td>create a bloom filter on the oldest LSM tree chunk. Only supported if bloom filters are enabled.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom_hash_count</code></td><td>the number of hash values per item used for LSM bloom filters.</td><td>an integer between 2 and 100; default <code>4</code>. </td></tr>
 <tr>
-<td><code>lsm_chunk_max</code></td><td>the maximum size a single chunk can be. Chunks larger than this size will not be considered for further merges. This is a soft limit - chunks somewhat larger than this value can be created. Must be larger than lsm_chunk_size.</td><td>an integer between 100MB and 10TB; default <code>5GB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom_oldest</code></td><td>create a bloom filter on the oldest LSM tree chunk. Only supported if bloom filters are enabled.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>lsm_chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree.</td><td>an integer between 512K and 500MB; default <code>2MB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;chunk_max</code></td><td>the maximum size a single chunk can be. Chunks larger than this size are not considered for further merges. This is a soft limit, and chunks larger than this value can be created. Must be larger than chunk_size.</td><td>an integer between 100MB and 10TB; default <code>5GB</code>. </td></tr>
 <tr>
-<td><code>lsm_merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between 2 and 100; default <code>15</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree.</td><td>an integer between 512K and 500MB; default <code>2MB</code>. </td></tr>
 <tr>
-<td><code>lsm_merge_threads</code></td><td>the number of thread to perform merge operations.</td><td>an integer between 1 and 10; default <code>1</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between 2 and 100; default <code>15</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;merge_threads</code></td><td>the number of thread to perform merge operations.</td><td>an integer between 1 and 10; default <code>1</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>50 * leaf_page_max</code>. This limit is soft - it is possible for pages to be temporarily larger than this value.</td><td>an integer between 512B and 10TB; default <code>5MB</code>. </td></tr>
 <tr>

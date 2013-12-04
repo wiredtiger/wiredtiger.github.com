@@ -80,7 +80,7 @@ Background</h1>
 <h1><a class="anchor" id="lsm_description"></a>
 Description of LSM trees</h1>
 <p>Log-Structured Merge Trees are described in this paper by Patrick O'Neil, Edward Cheng, Dieter Gawlick and Elizabeth O'Neil: <a href="http://www.cs.umb.edu/~poneil/lsmtree.pdf">http://www.cs.umb.edu/~poneil/lsmtree.pdf</a></p>
-<p>A logical tree is split into several physical pieces so that the most-recently-updated portion of data is in a tree that fits entirely in memory. The size of the in-memory chunk can be configured with the <code>"lsm_chunk_size"</code> configuration key to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</p>
+<p>A logical tree is split into several physical pieces so that the most-recently-updated portion of data is in a tree that fits entirely in memory. The size of the in-memory chunk can be configured with the <code>"lsm=(chunk_size)"</code> configuration key to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</p>
 <p>Once the in-memory tree reaches a threshold size, a new in-memory tree is created and the old tree synced to disk. Once written to disk, trees are read-only, though they are merged in the background with other on-disk trees to reduce the cost of reads.</p>
 <p>With this structure, "blind writes" can be performed entirely on the in-memory tree. Deletes are implemented by inserting a special "tombstone" record into the in-memory tree.</p>
 <h1><a class="anchor" id="lsm_api"></a>
@@ -103,7 +103,7 @@ Merging</h1>
 <h1><a class="anchor" id="lsm_bloom"></a>
 Bloom filters</h1>
 <p>WiredTiger creates a Bloom filter when merging. This is an additional file that contains a configurable number of bits per key (default 8). Keys are hashed a configurable number of times (default 4), and the corresponding bits set. The Bloom filter is used to avoid reading from a chunk if the key cannot be present.</p>
-<p>With the defaults, the Bloom filter only requires one byte per key, so it usually fits in cache. The Bloom parameters can be configured with <code>"lsm_bloom_bit_count"</code> and <code>"lsm_bloom_hash_count"</code> configuration keys to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. The Bloom file can be configured with the <code>"lsm_bloom_config"</code> key.</p>
+<p>With the defaults, the Bloom filter only requires one byte per key, so it usually fits in cache. The Bloom parameters can be configured with <code>"lsm=(bloom_bit_count)"</code> and <code>"lsm=(bloom_hash_count)"</code> configuration keys to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. The Bloom file can be configured with the <code>"lsm=(bloom_config)"</code> key.</p>
 <h1><a class="anchor" id="lsm_schema"></a>
 Creating tables using LSM trees</h1>
 <p>Tables or indices can be stored using LSM trees. Schema support is provided for LSM as an extension to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method:</p>
