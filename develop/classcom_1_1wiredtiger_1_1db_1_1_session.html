@@ -433,7 +433,13 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">name</td><td>the URI of the object to compact, such as <code>"table:stock"</code> </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>timeout</code></td><td>maximum amount of time to allow for compact in seconds. The actual amount of time spent in compact may exceed the configured value. A value of zero disables the timeout.</td><td>an integer; default <code>1200</code>. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>
