@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.0.0</span>
+   &#160;<span id="projectnumber">Version 2.0.1</span>
    </div>
   </td>
  </tr>
@@ -69,15 +69,15 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_200"></a>
-Upgrading to Version 2.0.0</h1>
+<div class="textblock"><h1><a class="anchor" id="version_20"></a>
+Upgrading to Version 2.0</h1>
 <dl>
 <dt>File format changes </dt>
-<dd><p class="startdd">The underlying file format is unchanged in 2.0.0 </p>
+<dd><p class="startdd">The underlying file format is unchanged in 2.0 </p>
 <p class="enddd"></p>
 </dd>
 <dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> LSM configuration options </dt>
-<dd><p class="startdd">In the 2.0.0 release of WiredTiger the LSM configuration options have been collected into a configuration option subgroup. All configuration options to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> that previously had a prefix of <code>lsm_</code> now belong to the <code>lsm</code> configuration group. If you are explicitly configuring any of the following options, you should review the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> documentation for details of the updated syntax: lsm_auto_throttle, lsm_bloom, lsm_bloom_config, lsm_bloom_bit_count, lsm_bloom_hash_count, lsm_bloom_oldest, lsm_chunk_max, lsm_chunk_size, lsm_merge_max and lsm_merge_threads. </p>
+<dd><p class="startdd">In the 2.0 release of WiredTiger the LSM configuration options have been collected into a configuration option subgroup. All configuration options to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> that previously had a prefix of <code>lsm_</code> now belong to the <code>lsm</code> configuration group. If you are explicitly configuring any of the following options, you should review the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> documentation for details of the updated syntax: lsm_auto_throttle, lsm_bloom, lsm_bloom_config, lsm_bloom_bit_count, lsm_bloom_hash_count, lsm_bloom_oldest, lsm_chunk_max, lsm_chunk_size, lsm_merge_max and lsm_merge_threads. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
