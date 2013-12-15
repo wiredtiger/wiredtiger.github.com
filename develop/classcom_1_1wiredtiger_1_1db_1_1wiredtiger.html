@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.0.1</span>
+   &#160;<span id="projectnumber">Version 2.0.2</span>
    </div>
   </td>
  </tr>
@@ -751,7 +751,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_D
 <tr>
 <td><code>statistics_log = (</code></td><td>log any statistics the database is configured to maintain, to a file. See <a class="el" href="statistics.html">Statistics</a> for more information.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the pathname to a file into which the log records are written, may contain ISO C standard strftime conversion specifications. If the value is not an absolute path name, the file is created relative to the database home.</td><td>a string; default <code>"WiredTigerStat.%H"</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the pathname to a file into which the log records are written, may contain ISO C standard strftime conversion specifications. If the value is not an absolute path name, the file is created relative to the database home.</td><td>a string; default <code>"WiredTigerStat.%d.%H"</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;sources</code></td><td>if non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging. The list may include URIs matching a single data source ("table:mytable"), or a URI matching all data sources of a particular type ("table:").</td><td>a list of strings; default empty. </td></tr>
 <tr>
