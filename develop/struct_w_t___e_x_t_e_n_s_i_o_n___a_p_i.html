@@ -245,13 +245,13 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
-<div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> first, second;</div>
+<div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> first, second;</div>
 <div class="line">        <span class="keywordtype">int</span> cmp;</div>
 <div class="line"></div>
 <div class="line">        first.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a> = key1;</div>
-<div class="line">        first.<a class="code" href="group__wt.html#a9e1d1275a33219850da45f7b54ce86d5" title="The number of bytes in the data item.">size</a> = key1_len;</div>
+<div class="line">        first.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55" title="The number of bytes in the data item.">size</a> = key1_len;</div>
 <div class="line">        second.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a> = key2;</div>
-<div class="line">        second.<a class="code" href="group__wt.html#a9e1d1275a33219850da45f7b54ce86d5" title="The number of bytes in the data item.">size</a> = key2_len;</div>
+<div class="line">        second.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55" title="The number of bytes in the data item.">size</a> = key2_len;</div>
 <div class="line"></div>
 <div class="line">        ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aee6e3e96ba7e7edacc0591b3d8c4edc9" title="The extension collator method.">collate</a>(wt_api, session, &amp;first, &amp;second, &amp;cmp);</div>
 <div class="line">        <span class="keywordflow">if</span> (cmp == 0)</div>

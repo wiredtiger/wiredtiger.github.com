@@ -132,7 +132,7 @@ WT_CURSOR::insert method</h2>
 WT_CURSOR key/value fields</h1>
 <p>Custom data source cursor methods are expected to use the <code>recno</code>, <code>key</code> and <code>value</code> fields of the <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> handle.</p>
 <p>The <code>recno</code> field is a uint64_t type and is the record number set or retrieved using the cursor when the data source was configured for record number keys.</p>
-<p>The <code>key</code> and <code>value</code> fields are <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structures. The <code>key.data</code>, <code>key.size</code>, <code>value.data</code> and <code>value.size</code> fields are read by the cursor methods storing items in the underlying data source and set by the cursor methods retrieving items from the underlying data source.</p>
+<p>The <code>key</code> and <code>value</code> fields are <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> structures. The <code>key.data</code>, <code>key.size</code>, <code>value.data</code> and <code>value.size</code> fields are read by the cursor methods storing items in the underlying data source and set by the cursor methods retrieving items from the underlying data source.</p>
 <h1><a class="anchor" id="custom_ds_error_handling"></a>
 Error handling</h1>
 <p>Some specific errors should be mapped to WiredTiger errors: </p>

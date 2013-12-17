@@ -99,7 +99,7 @@ Tables, rows and columns</h1>
 <p>Applications describe the format of their data by supplying a schema to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. This specifies how the application's data can be split into fields and mapped onto rows and columns.</p>
 <h1><a class="anchor" id="schema_column_types"></a>
 Column types</h1>
-<p>By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structure. Key and value types may also be chosen from a list, or composed of multiple columns with any combination of types. Keys and values may be up to (<code>4GB - 512B</code>) bytes in size.</p>
+<p>By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> structure. Key and value types may also be chosen from a list, or composed of multiple columns with any combination of types. Keys and values may be up to (<code>4GB - 512B</code>) bytes in size.</p>
 <p>See <a class="el" href="keyvalue.html">Key/Value pairs</a> for more details on raw key / value items.</p>
 <h1><a class="anchor" id="schema_format_types"></a>
 Format types</h1>
@@ -138,7 +138,7 @@ Format types</h1>
 <tr>
 <td><code>t</code> </td><td><code>uint8_t</code> </td><td><code>byte</code> </td><td><code>int</code> </td><td>fixed-length bit field </td></tr>
 <tr>
-<td><code>u</code> </td><td><code><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> *</code></td><td><code>byte[]</code></td><td><code>str</code> </td><td>raw byte array </td></tr>
+<td><code>u</code> </td><td><code><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> *</code></td><td><code>byte[]</code></td><td><code>str</code> </td><td>raw byte array </td></tr>
 </table>
 <p>The <code>'r'</code> type is used for record number keys in column stores. It is otherwise identical to the <code>'Q'</code> type.</p>
 <p>The <code>'S'</code> type is encoded as a C language string terminated by a NUL character.</p>

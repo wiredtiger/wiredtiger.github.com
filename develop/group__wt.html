@@ -80,7 +80,7 @@ $(document).ready(function(){initNavTree('group__wt.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:struct_w_t___i_t_e_m"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></td></tr>
-<tr class="memdesc:struct_w_t___i_t_e_m"><td class="mdescLeft">&#160;</td><td class="mdescRight">A raw item of data to be managed.  <a href="group__wt.html#struct_w_t___i_t_e_m">More...</a><br/></td></tr>
+<tr class="memdesc:struct_w_t___i_t_e_m"><td class="mdescLeft">&#160;</td><td class="mdescRight">A raw item of data to be managed, including a pointer to the data and a length.  <a href="group__wt.html#struct_w_t___i_t_e_m">More...</a><br/></td></tr>
 <tr class="separator:struct_w_t___i_t_e_m"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> handle is the interface to a cursor.  <a href="struct_w_t___c_u_r_s_o_r.html#details">More...</a><br/></td></tr>
@@ -892,8 +892,8 @@ Statistics for data sources</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"><p>A raw item of data to be managed. </p>
-<p>Data items have a pointer to the data and a length (limited to 4GB for items stored in tables). <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed.">WT_ITEM</a> structures do not need to be cleared before use. </p>
+<div class="textblock"><p>A raw item of data to be managed, including a pointer to the data and a length. </p>
+<p><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> structures do not need to be cleared before use. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_extending_8c-example.html#_a2">ex_extending.c</a>, and <a class="el" href="ex_schema_8c-example.html#_a14">ex_schema.c</a>.</dd>
 </dl></div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
@@ -905,11 +905,12 @@ data</td>
 The memory reference of the data item. <p>For items returned by a <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a>, the pointer is only valid until the next operation on that cursor. Applications that need to keep an item across multiple cursor operations must make a copy. </p>
 </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a9e1d1275a33219850da45f7b54ce86d5"></a>uint32_t</td>
+<a class="anchor" id="abd8b1299dfb5c54dc049fa42a4680b55"></a>size_t</td>
 <td class="fieldname">
 size</td>
 <td class="fielddoc">
-The number of bytes in the data item. </td></tr>
+The number of bytes in the data item. <p>The maximum length of a single column stored in a table is not fixed (as it partially depends on the underlying file configuration), but is always a small number of bytes less than 4GB. </p>
+</td></tr>
 </table>
 
 </div>
