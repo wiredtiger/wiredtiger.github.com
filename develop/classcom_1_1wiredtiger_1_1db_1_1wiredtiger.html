@@ -301,12 +301,6 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:ab6289ada6c3ffc3f217cab2e8c0c34a0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6289ada6c3ffc3f217cab2e8c0c34a0"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_SLOT_RACES</b></td></tr>
 <tr class="separator:ab6289ada6c3ffc3f217cab2e8c0c34a0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6518bb07262fb7dbe8f9b78239fd6ff0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6518bb07262fb7dbe8f9b78239fd6ff0"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_SLOT_READY_WAIT_TIMEOUT</b></td></tr>
-<tr class="separator:a6518bb07262fb7dbe8f9b78239fd6ff0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd1a10a0f0fb6bb48ad6d8821767151c inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd1a10a0f0fb6bb48ad6d8821767151c"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_SLOT_RELEASE_WAIT_TIMEOUT</b></td></tr>
-<tr class="separator:abd1a10a0f0fb6bb48ad6d8821767151c inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4117b518087a680c766ad1a3c223ed4b inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4117b518087a680c766ad1a3c223ed4b"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_SLOT_SWITCH_FAILS</b></td></tr>
 <tr class="separator:a4117b518087a680c766ad1a3c223ed4b inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -761,7 +755,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_D
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>transaction_sync</code></td><td>how to sync log records when the transaction commits.</td><td>a string, chosen from the following options: <code>"dsync"</code>, <code>"fsync"</code>, <code>"none"</code>; default <code>dsync</code>. </td></tr>
+<td><code>transaction_sync</code></td><td>how to sync log records when the transaction commits.</td><td>a string, chosen from the following options: <code>"dsync"</code>, <code>"fsync"</code>, <code>"none"</code>; default <code>fsync</code>. </td></tr>
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables regardless of whether or not the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>

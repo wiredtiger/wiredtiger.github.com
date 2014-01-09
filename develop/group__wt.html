@@ -426,14 +426,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad72653bf305cdda2de8d4480d8cf0a86">WT_STAT_CONN_LOG_SLOT_RACES</a></td></tr>
 <tr class="memdesc:gad72653bf305cdda2de8d4480d8cf0a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: consolidated slot join races <br/></td></tr>
 <tr class="separator:gad72653bf305cdda2de8d4480d8cf0a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac0ade799cbee480b01387a088cdedb63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac0ade799cbee480b01387a088cdedb63"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac0ade799cbee480b01387a088cdedb63">WT_STAT_CONN_LOG_SLOT_READY_WAIT_TIMEOUT</a></td></tr>
-<tr class="memdesc:gac0ade799cbee480b01387a088cdedb63"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log slot ready wait timeouts <br/></td></tr>
-<tr class="separator:gac0ade799cbee480b01387a088cdedb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga92e4062974aedb64d76b1cf218933b26"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga92e4062974aedb64d76b1cf218933b26"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga92e4062974aedb64d76b1cf218933b26">WT_STAT_CONN_LOG_SLOT_RELEASE_WAIT_TIMEOUT</a></td></tr>
-<tr class="memdesc:ga92e4062974aedb64d76b1cf218933b26"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log slot release wait timeouts <br/></td></tr>
-<tr class="separator:ga92e4062974aedb64d76b1cf218933b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4a15a89691bda7bf834cfe6affe487b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4a15a89691bda7bf834cfe6affe487b7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4a15a89691bda7bf834cfe6affe487b7">WT_STAT_CONN_LOG_SLOT_SWITCH_FAILS</a></td></tr>
 <tr class="memdesc:ga4a15a89691bda7bf834cfe6affe487b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: slots selected for switching that were unavailable <br/></td></tr>
@@ -1165,7 +1157,7 @@ The number of bytes in the data item. <p>The maximum length of a single column s
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>transaction_sync</code></td><td>how to sync log records when the transaction commits.</td><td>a string, chosen from the following options: <code>"dsync"</code>, <code>"fsync"</code>, <code>"none"</code>; default <code>dsync</code>. </td></tr>
+<td><code>transaction_sync</code></td><td>how to sync log records when the transaction commits.</td><td>a string, chosen from the following options: <code>"dsync"</code>, <code>"fsync"</code>, <code>"none"</code>; default <code>fsync</code>. </td></tr>
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables regardless of whether or not the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
