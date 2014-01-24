@@ -73,9 +73,9 @@ $(document).ready(function(){initNavTree('hot_backup.html','');});
 <p>One of these sources is the list of files required to perform a hot backup of the database. The list may be the files required by all of the objects in the database, or a subset of the objects in the database.</p>
 <p>To perform a hot backup:</p>
 <p>1. Open a cursor on the backup data source, which begins the process of a hot backup.</p>
-<p>2. Copy each file returned by the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> method into a different directory.</p>
+<p>2. Copy each file returned by the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> method to the hot backup location, for example, a different directory.</p>
 <p>3. Close the cursor; the cursor must not be closed until all of the files have been copied.</p>
-<p>The directory to which the files are copied may subsequently be specified as an directory to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function and accessed as a WiredTiger database home.</p>
+<p>A directory to which the files are copied may subsequently be specified as an directory to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function and accessed as a WiredTiger database home.</p>
 <p>Notes:</p>
 <ul>
 <li>Copying the database files for a hot backup does not require any special alignment or block size (specifically, Linux or Windows filesystems that do not support read/write isolation can be safely read for hot backups).</li>
