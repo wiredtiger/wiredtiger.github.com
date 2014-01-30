@@ -573,7 +573,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;chunk_max</code></td><td>the maximum size a single chunk can be. Chunks larger than this size are not considered for further merges. This is a soft limit, and chunks larger than this value can be created. Must be larger than chunk_size.</td><td>an integer between 100MB and 10TB; default <code>5GB</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree.</td><td>an integer between 512K and 500MB; default <code>10MB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree. This limit is soft - it is possible for chunks to be temporarily larger than this value. This overrides the <code>memory_page_max</code> setting.</td><td>an integer between 512K and 500MB; default <code>10MB</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between 2 and 100; default <code>15</code>. </td></tr>
 <tr>
@@ -583,7 +583,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>50 * leaf_page_max</code>. This limit is soft - it is possible for pages to be temporarily larger than this value.</td><td>an integer between 512B and 10TB; default <code>5MB</code>. </td></tr>
+<td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>50 * leaf_page_max</code>. This limit is soft - it is possible for pages to be temporarily larger than this value. This setting is ignored for LSM trees, see <code>chunk_size</code>.</td><td>an integer between 512B and 10TB; default <code>5MB</code>. </td></tr>
 <tr>
 <td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
