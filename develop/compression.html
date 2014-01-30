@@ -69,44 +69,34 @@ $(document).ready(function(){initNavTree('compression.html','');});
 <div class="title">Compressors </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This section explains how to configure WiredTiger's builtin support for the bzip2 and snappy compression engines.</p>
-<h1><a class="anchor" id="compression_bzip2"></a>
-Using bzip2 compression</h1>
-<p>To use the builtin support for <a href="http://www.bzip.org/">Julian Seward's bzip2</a> compression, first check that bzip2 is installed in include and library directories searched by the compiler. Once bzip2 is installed, you can enable bzip2 using the <code>&ndash;enable-bzip2</code> option to configure.</p>
-<p>If bzip2 is installed in a location not normally searched by the compiler toolchain, you'll need to modify the <code>CPPFLAGS</code> and <code>LDFLAGS</code> to indicate these locations. For example, with the bzip2 includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you should run configure as follows:</p>
-<div class="fragment"><div class="line">cd build_posix</div>
-<div class="line">../configure --enable-bzip2 CPPFLAGS=<span class="stringliteral">&quot;-I/usr/local/include&quot;</span> LDFLAGS=<span class="stringliteral">&quot;-L/usr/local/include&quot;</span></div>
-</div><!-- fragment --><p>When opening the WiredTiger database, load the bzip2 shared library as an extension. For example, with the bzip2 library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
-<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;extensions=[/usr/local/lib/wiredtiger_bzip2.so]&quot;</span>, &amp;conn);</div>
-</div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>bzip2:</code> </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;block_compressor=bzip2,key_format=S,value_format=S&quot;</span>);</div>
-</div><!-- fragment --><p> If necessary, you can confirm the compressor is working by running the compression part of the test suite:</p>
-<div class="fragment"><div class="line">cd build_posix</div>
-<div class="line">python ../test/suite/run.py compress</div>
-</div><!-- fragment --><p>Review the test output to verify the bzip2 part of the test passes and was not skipped.</p>
+<div class="textblock"><p>This section explains how to configure WiredTiger's builtin support for the snappy and bzip2 compression engines.</p>
 <h1><a class="anchor" id="compression_snappy"></a>
 Using snappy compression</h1>
 <p>To use the builtin support for <a href="http://code.google.com/p/snappy/">Google's snappy</a> compression, first check that snappy is installed in include and library directories searched by the compiler. Once snappy is installed, you can enable snappy using the <code>&ndash;enable-snappy</code> option to configure.</p>
-<p>If snappy is installed in a location not normally searched by the compiler toolchain, you'll need to modify the <code>CPPFLAGS</code> and <code>LDFLAGS</code> to indicate these locations. For example, with the snappy includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you should run configure as follows:</p>
-<div class="fragment"><div class="line">cd build_posix</div>
-<div class="line">../configure --enable-snappy CPPFLAGS=<span class="stringliteral">&quot;-I/usr/local/include&quot;</span> LDFLAGS=<span class="stringliteral">&quot;-L/usr/local/include&quot;</span></div>
-</div><!-- fragment --><p>When opening the WiredTiger database, load the snappy shared library as an extension. For example, with the snappy library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
+<p>If snappy is installed in a location not normally searched by the compiler toolchain, you'll need to modify the <code>CPPFLAGS</code> and <code>LDFLAGS</code> to indicate these locations. For example, with the snappy includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you would run configure with the following additional arguments:</p>
+<div class="fragment"><div class="line">--enable-snappy CPPFLAGS=<span class="stringliteral">&quot;-I/usr/local/include&quot;</span> LDFLAGS=<span class="stringliteral">&quot;-L/usr/local/include&quot;</span></div>
+</div><!-- fragment --><p>When opening the WiredTiger database, load the snappy shared library as an extension. For example, with the WiredTiger library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;extensions=[/usr/local/lib/wiredtiger_snappy.so]&quot;</span>, &amp;conn);</div>
+<div class="line">            <span class="stringliteral">&quot;extensions=[/usr/local/lib/libwiredtiger_snappy.so]&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>snappy:</code> </p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;block_compressor=snappy,key_format=S,value_format=S&quot;</span>);</div>
-</div><!-- fragment --><p> If necessary, you can confirm the compressor is working by running the compression part of the test suite:</p>
-<div class="fragment"><div class="line">cd build_posix</div>
-<div class="line">python ../test/suite/run.py compress</div>
-</div><!-- fragment --><p>Review the test output to verify the snappy part of the test passes and was not skipped.</p>
-<h1><a class="anchor" id="compression_upgrading"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="compression_bzip2"></a>
+Using bzip2 compression</h1>
+<p>To use the builtin support for <a href="http://www.bzip.org/">Julian Seward's bzip2</a> compression, first check that bzip2 is installed in include and library directories searched by the compiler. Once bzip2 is installed, you can enable bzip2 using the <code>&ndash;enable-bzip2</code> option to configure.</p>
+<p>If bzip2 is installed in a location not normally searched by the compiler toolchain, you'll need to modify the <code>CPPFLAGS</code> and <code>LDFLAGS</code> to indicate these locations. For example, with the bzip2 includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you would run configure with the following additional arguments:</p>
+<div class="fragment"><div class="line">--enable-bzip2 CPPFLAGS=<span class="stringliteral">&quot;-I/usr/local/include&quot;</span> LDFLAGS=<span class="stringliteral">&quot;-L/usr/local/include&quot;</span></div>
+</div><!-- fragment --><p>When opening the WiredTiger database, load the bzip2 shared library as an extension. For example, with the WiredTiger library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
+<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
+<div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;extensions=[/usr/local/lib/libwiredtiger_bzip2.so]&quot;</span>, &amp;conn);</div>
+</div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>bzip2:</code> </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;block_compressor=bzip2,key_format=S,value_format=S&quot;</span>);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="compression_upgrading"></a>
 Upgrading compression engines</h1>
 <p>WiredTiger does not store information with file blocks to identify the compression engine used to compressed the block. Applications wanting to upgrade to some future compression engine (without requiring a file dump and re-load), should ensure each compressed block includes enough information to identify the compression engine used, so its compression code can correctly decompress old and new blocks.</p>
 <h1><a class="anchor" id="compression_custom"></a>

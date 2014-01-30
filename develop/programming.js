@@ -48,8 +48,8 @@ var programming =
     [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Bulk-load", "bulk_load.html", null ],
     [ "Compressors", "compression.html", [
-      [ "Using bzip2 compression", "compression.html#compression_bzip2", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],
+      [ "Using bzip2 compression", "compression.html#compression_bzip2", null ],
       [ "Upgrading compression engines", "compression.html#compression_upgrading", null ],
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
