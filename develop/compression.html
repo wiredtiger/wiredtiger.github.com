@@ -70,7 +70,20 @@ $(document).ready(function(){initNavTree('compression.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This section explains how to configure WiredTiger's builtin support for the snappy and bzip2 compression engines.</p>
-<h1><a class="anchor" id="compression_snappy"></a>
+<h1><a class="anchor" id="compression_zlib"></a>
+Using zlib compression</h1>
+<p>To use the builtin support for Greg Roelofs' and Mark Adler's <a href="http://www.zlib.net/">zlib</a> compression, first check that zlib is installed in include and library directories searched by the compiler. Once zlib is installed, you can enable zlib using the <code>&ndash;enable-zlib</code> option to configure.</p>
+<p>If zlib is installed in a location not normally searched by the compiler toolchain, you'll need to modify the <code>CPPFLAGS</code> and <code>LDFLAGS</code> to indicate these locations. For example, with the zlib includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you would run configure with the following additional arguments:</p>
+<div class="fragment"><div class="line">--enable-zlib CPPFLAGS=<span class="stringliteral">&quot;-I/usr/local/include&quot;</span> LDFLAGS=<span class="stringliteral">&quot;-L/usr/local/include&quot;</span></div>
+</div><!-- fragment --><p>When opening the WiredTiger database, load the zlib shared library as an extension. For example, with the WiredTiger library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
+<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
+<div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;extensions=[/usr/local/lib/libwiredtiger_zlib.so]&quot;</span>, &amp;conn);</div>
+</div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>zlib:</code> </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;block_compressor=zlib,key_format=S,value_format=S&quot;</span>);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="compression_snappy"></a>
 Using snappy compression</h1>
 <p>To use the builtin support for <a href="http://code.google.com/p/snappy/">Google's snappy</a> compression, first check that snappy is installed in include and library directories searched by the compiler. Once snappy is installed, you can enable snappy using the <code>&ndash;enable-snappy</code> option to configure.</p>
 <p>If snappy is installed in a location not normally searched by the compiler toolchain, you'll need to modify the <code>CPPFLAGS</code> and <code>LDFLAGS</code> to indicate these locations. For example, with the snappy includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you would run configure with the following additional arguments:</p>

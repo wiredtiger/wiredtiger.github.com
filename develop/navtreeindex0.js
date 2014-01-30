@@ -231,10 +231,11 @@ var NAVTREEINDEX0 =
 "community.html":[0,7],
 "compaction.html":[0,2,18],
 "compression.html":[0,2,15],
-"compression.html#compression_bzip2":[0,2,15,1],
-"compression.html#compression_custom":[0,2,15,3],
-"compression.html#compression_snappy":[0,2,15,0],
-"compression.html#compression_upgrading":[0,2,15,2],
+"compression.html#compression_bzip2":[0,2,15,2],
+"compression.html#compression_custom":[0,2,15,4],
+"compression.html#compression_snappy":[0,2,15,1],
+"compression.html#compression_upgrading":[0,2,15,3],
+"compression.html#compression_zlib":[0,2,15,0],
 "config_strings.html":[0,2,6],
 "config_strings.html#config_intro":[0,2,6,0],
 "config_strings.html#config_json":[0,2,6,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "cursor_random.html":[0,2,7,5,6],
 "cursors.html":[0,2,7],
 "cursors.html#cursor_projections":[0,2,7,2],
-"cursors.html#cursor_raw":[0,2,7,3],
-"cursors.html#cursor_types":[0,2,7,1]
+"cursors.html#cursor_raw":[0,2,7,3]
 };

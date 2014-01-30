@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"group__wt.html#gae536a122add18fad5e849ded8cfe623d":[2,0,27],
 "group__wt.html#gae795fdf9e9c5c43514837297566c1132":[2,0,94],
 "group__wt.html#gae89e1624b3cbde7cd825e2984bb073b6":[2,0,99],
 "group__wt.html#gae98d672955f1a11067e1e9122e2db475":[2,0,85],
@@ -39,11 +40,11 @@ var NAVTREEINDEX2 =
 "hierarchy.html":[4],
 "home.html":[0,2,25],
 "home.html":[0,5,0],
-"hot_backup.html":[0,2,19],
 "hot_backup.html":[0,5,2],
+"hot_backup.html":[0,2,19],
 "huffman.html":[0,2,13,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "install.html":[0,1],
 "install.html#building":[0,1,1],
 "install.html#compiler":[0,1,4],
@@ -94,14 +95,14 @@ var NAVTREEINDEX2 =
 "schema.html#schema_indices":[0,2,11,7],
 "schema.html#schema_intro":[0,2,11,0],
 "schema.html#schema_key_and_value_formats":[0,2,11,3],
-"security.html":[0,5,4],
 "security.html":[0,2,27],
-"security.html#directory_permissions":[0,2,27,0],
+"security.html":[0,5,4],
 "security.html#directory_permissions":[0,5,4,0],
-"security.html#environment_variables":[0,5,4,2],
+"security.html#directory_permissions":[0,2,27,0],
 "security.html#environment_variables":[0,2,27,2],
-"security.html#file_permissions":[0,2,27,1],
+"security.html#environment_variables":[0,5,4,2],
 "security.html#file_permissions":[0,5,4,1],
+"security.html#file_permissions":[0,2,27,1],
 "signals.html":[0,2,28],
 "statistics.html":[0,2,20],
 "statistics.html#statistics_log":[0,2,20,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "tuning.html#tuning_system_buffer_cache_direct_io":[0,2,22,7,0],
 "tuning.html#tuning_system_buffer_cache_os_cache_dirty_max":[0,2,22,7,1],
 "tuning.html#tuning_system_buffer_cache_os_cache_max":[0,2,22,7,2],
-"tuning.html#tuning_system_file_block":[0,2,22,6],
-"tuning.html#tuning_system_file_block_allocation":[0,2,22,6,1]
+"tuning.html#tuning_system_file_block":[0,2,22,6]
 };
