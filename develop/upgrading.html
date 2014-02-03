@@ -76,6 +76,10 @@ Upgrading to Version 2.1</h1>
 <dd><p class="startdd">In the 2.1 release of WiredTiger <a class="el" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55" title="The number of bytes in the data item.">WT_ITEM::size</a> type has changed from <code>uint32_t</code> to <code>size_t</code>. Applications may require modifications to resolve compile-time errors. </p>
 <p class="enddd"></p>
 </dd>
+<dt><a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a44483644eddbedd07f34e31c5beaf6b5" title="Callback to compress a list of byte strings.">WT_COMPRESSOR::compress_raw</a> signature </dt>
+<dd><p class="startdd">In the 2.1 release of WiredTiger, the behavior of the compress_raw callback has changed so that it will only be retried if it returns <code>EAGAIN</code>. If it returns zero and sets <code>result_slots</code> to zero, WiredTiger will assume that raw compression has failed and will fall back to calling <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a87c339a3442b719896fa5cbe2c530843" title="Callback to compress a chunk of data.">WT_COMPRESSOR::compress</a>. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <h1><a class="anchor" id="version_20"></a>
 Upgrading to Version 2.0</h1>
