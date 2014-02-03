@@ -80,6 +80,10 @@ Upgrading to Version 2.1</h1>
 <dd><p class="startdd">In the 2.1 release of WiredTiger, the behavior of the compress_raw callback has changed so that it will only be retried if it returns <code>EAGAIN</code>. If it returns zero and sets <code>result_slots</code> to zero, WiredTiger will assume that raw compression has failed and will fall back to calling <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a87c339a3442b719896fa5cbe2c530843" title="Callback to compress a chunk of data.">WT_COMPRESSOR::compress</a>. </p>
 <p class="enddd"></p>
 </dd>
+<dt>Transaction sync default setting </dt>
+<dd><p class="startdd">In the 2.1 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> <code>transaction_sync</code> configuration setting default value has changed from "dsync" to "fsync". This is due to enhancements to the group commit implementation in WiredTiger - which mean that greater throughput can be achieved with explicit "fsync" calls than by enabling "dsync" on a file handle. Applications that don't execute concurrent transactions may see better throughput with transaction_sync set to "dsync". </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <h1><a class="anchor" id="version_20"></a>
 Upgrading to Version 2.0</h1>
