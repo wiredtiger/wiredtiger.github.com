@@ -76,7 +76,7 @@ Introduction</h1>
     [key['='value]][','[key['='value]]]*
 </pre><p>Keys and values and values that consist of alphanumeric characters can be specified directly. More precisely, keys or values that match this regular expression do not require quotes:</p>
 <pre>
-    [-_0-9A-Za-z/][^\t\r\n :=,\])}]*
+    [-_0-9A-Za-z./][^\t\r\n :=,\])}]*
 </pre><p>More complex keys and values can be specified by quoting them with double quotes.</p>
 <p>For example, a configuration string is used when opening a connection to a database to specify if the database should be created and to set the cache size:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn);</div>
