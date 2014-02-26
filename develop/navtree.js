@@ -22,7 +22,7 @@ var NAVTREEINDEX =
 [
 ".html",
 "cursors.html#cursor_types",
-"group__wt.html#gad72653bf305cdda2de8d4480d8cf0a86",
+"group__wt.html#gade96c761e77521b46ba9d5fc455b3486",
 "tuning.html#tuning_statistics"
 ];
 
