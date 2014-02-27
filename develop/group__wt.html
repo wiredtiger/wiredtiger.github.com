@@ -1172,7 +1172,7 @@ The number of bytes in the data item. <p>The maximum length of a single column s
 <tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tuning.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
+<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tuning.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to use <code>O_DIRECT</code>, including <code>"log"</code> will cause WiredTiger log files to use <code>O_DIRECT</code>, and including <code>"checkpoint"</code> will cause WiredTiger data files opened at a checkpoint (i.e: read only) to use <code>O_DIRECT</code>.</td><td>a list, with values chosen from the following options: <code>"checkpoint"</code>, <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>
