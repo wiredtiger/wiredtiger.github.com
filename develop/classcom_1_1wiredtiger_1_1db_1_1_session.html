@@ -518,7 +518,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>leaf_item_max</code></td><td>the largest key or value stored within a leaf node, in bytes. If non-zero, any key or value larger than the specified size will be stored as an overflow item (which may require additional I/O to access). If zero, a default size is chosen that permits at least 4 key and value pairs per leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
-<td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>1MB</code>. </td></tr>
+<td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>32KB</code>. </td></tr>
 <tr>
 <td><code>lsm = (</code></td><td>options only relevant for LSM data sources.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
