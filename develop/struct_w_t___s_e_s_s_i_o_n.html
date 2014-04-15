@@ -525,7 +525,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are empty (off) or <code>"bzip2"</code>, <code>"snappy"</code> or custom compression engine <code>"name"</code> created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>cache_resident</code></td><td>do not ever evict the object's pages; see <a class="el" href="tuning.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>cache_resident</code></td><td>do not ever evict the object's pages; see <a class="el" href="cache_configuration.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>checksum</code></td><td>configure block checksums; permitted values are <code>on</code> (checksum all blocks), <code>off</code> (checksum no blocks) and <code>uncompresssed</code> (checksum only blocks which are not compressed for any reason). The <code>uncompressed</code> setting is for applications which can rely on decompression to fail if a block has been corrupted.</td><td>a string, chosen from the following options: <code>"on"</code>, <code>"off"</code>, <code>"uncompressed"</code>; default <code>uncompressed</code>. </td></tr>
 <tr>

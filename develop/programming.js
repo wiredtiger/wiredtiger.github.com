@@ -2,6 +2,8 @@ var programming =
 [
     [ "Using the API", "programming.html#programming_api", null ],
     [ "Storage options", "programming.html#programming_storage", null ],
+    [ "Application notes", "programming.html#application_notes", null ],
+    [ "Performance tuning", "programming.html#tuning", null ],
     [ "Deployment considerations", "programming.html#programming_deployment", null ],
     [ "Extending WiredTiger", "programming.html#programming_extending", null ],
     [ "Administering a WiredTiger database", "programming.html#programming_admin", null ],
@@ -25,12 +27,6 @@ var programming =
       [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
     ] ],
     [ "Error handling", "error_handling.html", null ],
-    [ "Name spaces", "name_space.html", [
-      [ "Process' environment name space", "name_space.html#env", null ],
-      [ "C language name space", "name_space.html#c", null ],
-      [ "File system name space", "name_space.html#filename", null ],
-      [ "Error return name space", "name_space.html#error", null ]
-    ] ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],
@@ -54,44 +50,47 @@ var programming =
       [ "Upgrading compression engines", "compression.html#compression_upgrading", null ],
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
+    [ "Multithreading", "threads.html", [
+      [ "Code samples", "threads.html#threads_example", null ]
+    ] ],
+    [ "Name spaces", "name_space.html", [
+      [ "Process' environment name space", "name_space.html#env", null ],
+      [ "C language name space", "name_space.html#c", null ],
+      [ "File system name space", "name_space.html#filename", null ],
+      [ "Error return name space", "name_space.html#error", null ]
+    ] ],
+    [ "Signal handling", "signals.html", null ],
+    [ "Memory allocator", "tune_memory_allocator.html", null ],
+    [ "Page and overflow item sizes", "tune_page_sizes.html", null ],
     [ "Cache configuration", "cache_configuration.html", [
       [ "Cache configuration", "cache_configuration.html#cache_basic", null ],
+      [ "Cache size", "cache_configuration.html#tuning_cache_size", null ],
+      [ "Cache resident objects", "cache_configuration.html#tuning_cache_resident", null ],
       [ "Shared cache configuration", "cache_configuration.html#shared_cache", null ],
       [ "Eviction configuration", "cache_configuration.html#cache_eviction", null ]
     ] ],
+    [ "Bulk-load", "bulk_load.html", null ],
+    [ "Cursor persistence", "tune_cursor_persist.html", null ],
+    [ "Read-only objects", "tune_read_only_objects.html", null ],
+    [ "Checksums", "tune_checksum.html", null ],
+    [ "Compression", "tune_compression.html", null ],
+    [ "File allocation", "tune_file_alloc.html", [
+      [ "File growth", "tune_file_alloc.html#tuning_system_file_block_grow", null ],
+      [ "File block allocation", "tune_file_alloc.html#tuning_system_file_block_allocation", null ]
+    ] ],
+    [ "System buffer cache", "tune_system_buffer_cache.html", [
+      [ "Direct I/O", "tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io", null ],
+      [ "os_cache_dirty_max", "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max", null ],
+      [ "os_cache_max", "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max", null ]
+    ] ],
+    [ "Linux transparent huge pages", "tune_transparent_huge_pages.html", null ],
+    [ "Linux zone reclamation memory management", "tune_zone_reclaim.html", null ],
+    [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Checkpoints", "checkpoints.html", null ],
     [ "Compaction", "compaction.html", null ],
     [ "Hot backup", "hot_backup.html", null ],
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
-    ] ],
-    [ "Multithreading", "threads.html", [
-      [ "Code samples", "threads.html#threads_example", null ]
-    ] ],
-    [ "Performance Tuning", "tuning.html", [
-      [ "WiredTiger's cache", "tuning.html#tuning_cache", [
-        [ "Cache size", "tuning.html#tuning_cache_size", null ],
-        [ "Read-only objects", "tuning.html#tuning_read_only_objects", null ],
-        [ "Bulk load", "tuning.html#tuning_bulk_load", null ],
-        [ "Cache resident objects", "tuning.html#tuning_cache_resident", null ]
-      ] ],
-      [ "Memory allocator", "tuning.html#tuning_memory_allocator", null ],
-      [ "Linux transparent huge pages", "tuning.html#transparent_huge_pages", null ],
-      [ "Linux zone reclamation memory management", "tuning.html#numa_zone_reclamation", null ],
-      [ "Cursor persistence", "tuning.html#tuning_cursor_persistence", null ],
-      [ "Page and overflow sizes", "tuning.html#tuning_page_size", null ],
-      [ "File block allocation", "tuning.html#tuning_system_file_block", [
-        [ "File growth", "tuning.html#tuning_system_file_block_grow", null ],
-        [ "File allocation", "tuning.html#tuning_system_file_block_allocation", null ]
-      ] ],
-      [ "System buffer cache", "tuning.html#tuning_system_buffer_cache", [
-        [ "Direct I/O", "tuning.html#tuning_system_buffer_cache_direct_io", null ],
-        [ "os_cache_dirty_max", "tuning.html#tuning_system_buffer_cache_os_cache_dirty_max", null ],
-        [ "os_cache_max", "tuning.html#tuning_system_buffer_cache_os_cache_max", null ]
-      ] ],
-      [ "Checksums", "tuning.html#tuning_checksums", null ],
-      [ "Compression", "tuning.html#tuning_compression", null ],
-      [ "Performance monitoring with statistics", "tuning.html#tuning_statistics", null ]
     ] ],
     [ "Custom Data Sources", "custom_data_sources.html", [
       [ "WT_DATA_SOURCE methods", "custom_data_sources.html#custom_ds_methods", [
@@ -125,6 +124,5 @@ var programming =
       [ "Database directory permissions", "security.html#directory_permissions", null ],
       [ "File permissions", "security.html#file_permissions", null ],
       [ "Environment variables", "security.html#environment_variables", null ]
-    ] ],
-    [ "Signal handling", "signals.html", null ]
+    ] ]
 ];

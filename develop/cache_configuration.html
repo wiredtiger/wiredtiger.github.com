@@ -71,9 +71,25 @@ $(document).ready(function(){initNavTree('cache_configuration.html','');});
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="cache_basic"></a>
 Cache configuration</h1>
-<p>The WiredTiger cache implements an approximation of a least recently used algorithm. Ideally the cache should be configured to be large enough to hold an application's working set.</p>
+<p>The WiredTiger cache implements an approximation of a least recently used algorithm. The size of the cache is the single most important tuning knob for a WiredTiger application. Ideally the cache should be configured to be large enough to hold an application's working set.</p>
 <p>The WiredTiger cache size can be configured when first opening a database via <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a> or changed after open using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">WT_CONNECTION::reconfigure</a> method.</p>
-<h1><a class="anchor" id="shared_cache"></a>
+<h1><a class="anchor" id="tuning_cache_size"></a>
+Cache size</h1>
+<p>The cache size for the database is configurable by setting the <code>cache_size</code> configuration string when calling the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function.</p>
+<p>The effectiveness of the cache can be measured by reviewing the page eviction statistics for the database.</p>
+<p>An example of setting a cache size to 500MB:</p>
+<div class="fragment"><div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
+<div class="line">            <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn)) != 0)</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
+<div class="line">                    home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));</div>
+</div><!-- fragment --> <h1><a class="anchor" id="tuning_cache_resident"></a>
+Cache resident objects</h1>
+<p>Cache resident objects (objects never considered for the purposes of cache eviction), can be configured with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> "cache_resident" configuration string.</p>
+<p>Configuring a cache resident object has two effects: first, once the object's pages have been instantiated in memory, no further I/O cost is ever paid for object access, minimizing potential latency. Second, in-memory objects can be accessed faster than objects tracked for potential eviction, and applications able to guarantee sufficient memory that an object need never be evicted can significantly increase their performance.</p>
+<p>An example of configuring a cache-resident object:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=r,value_format=S,cache_resident=true&quot;</span>);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="shared_cache"></a>
 Shared cache configuration</h1>
 <p>WiredTiger supports sharing a single cache among multiple databases within a process.</p>
 <p>An application configures a shared cache by specifying a shared_cache name to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a> function. Applications can optionally set a minimum amount of cache any connection in the pool will be assigned and the granularity at which the cache pool is redistributed among connections - called the chunk size.</p>
