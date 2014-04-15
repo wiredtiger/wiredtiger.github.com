@@ -119,7 +119,7 @@ Empty values</h2>
 <p>Internally, WiredTiger's LSM trees use an empty value to represent a record that has been removed (also known as a "tombstone"). For this reason, applications cannot store records in LSM trees with empty values.</p>
 <h2><a class="anchor" id="lsm_checkpoints"></a>
 Named checkpoints</h2>
-<p>Named checkpoints are not supported on LSM trees.</p>
+<p>Named checkpoints are not supported on LSM trees, and cursors cannot be opened with a non-empty <code>"checkpoint"</code> configuration.</p>
 <p>We intend to address these limitations in future releases. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
