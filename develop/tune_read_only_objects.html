@@ -78,7 +78,8 @@ checkpoint" name "WiredTigerCheckpoint") are read-only objects.</p>
 </div><!-- fragment --><p> To open the last checkpoint taken in the object, use the configuration string "checkpoint" with the name "WiredTigerCheckpoint" to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> method: </p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;checkpoint=WiredTigerCheckpoint&quot;</span>, &amp;cursor);</div>
-</div><!-- fragment --></div></div><!-- contents -->
+</div><!-- fragment --><p> Reading from checkpoints is only supported on row- and column-store objects, LSM cursors cannot be opened with a non-empty <code>"checkpoint"</code> configuration. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
