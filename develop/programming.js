@@ -86,6 +86,7 @@ var programming =
     [ "Linux transparent huge pages", "tune_transparent_huge_pages.html", null ],
     [ "Linux zone reclamation memory management", "tune_zone_reclaim.html", null ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
+    [ "Connection close", "tune_close.html", null ],
     [ "Checkpoints", "checkpoints.html", null ],
     [ "Compaction", "compaction.html", null ],
     [ "Hot backup", "hot_backup.html", null ],

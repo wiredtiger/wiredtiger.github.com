@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io":[0,2,29,0],
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max":[0,2,29,1],
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,2,29,2],
 "tune_transparent_huge_pages.html":[0,2,30],

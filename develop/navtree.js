@@ -23,7 +23,7 @@ var NAVTREEINDEX =
 ".html",
 "cursors.html",
 "group__wt.html#gade710ac8febe12adefabcfaa119a54f5",
-"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max"
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
