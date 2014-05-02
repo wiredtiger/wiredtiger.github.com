@@ -76,6 +76,10 @@ Upgrading to Version 2.1.2</h1>
 <dd><p class="startdd">In the 2.1.2 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> <code>shared_cache</code> configuration option group have changed. The option that was named <code>enable</code> is no longer available. To enable a <code>shared_cache</code> it is compulsory to name the pool being shared. We are now also enforcing that only one of <code>cache_size</code> and <code>shared_cache</code> are specified in the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> configuration string. </p>
 <p class="enddd"></p>
 </dd>
+<dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> prefix_compression disabled by default </dt>
+<dd><p class="startdd">In the 2.1.2 release, prefix compression default to <code>false</code>. Applications that benefit from prefix compression will need to explicitly set <code>prefix_compression=true</code> when creating tables. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <h1><a class="anchor" id="version_211"></a>
 Upgrading to Version 2.1.1</h1>

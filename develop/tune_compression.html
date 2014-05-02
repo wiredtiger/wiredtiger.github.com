@@ -69,16 +69,16 @@ $(document).ready(function(){initNavTree('tune_compression.html','');});
 <div class="title">Compression </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger includes a number of different compression techniques, some configured by default and some not.</p>
-<p>Compression minimizes in-memory and on-disk resource requirements and potentially decreases the amount of I/O, at some CPU cost, when rows are read and written.</p>
-<p>Configuring compression on or off may change application throughput. For example, in applications using solid-state drives (where I/O is less expensive), turning off compression may increase application performance by reducing CPU costs; in applications where I/O costs are more expensive, turning on compression may increase application performance by reducing the overall number of I/O operations.</p>
-<p>For example, turning off row-store key prefix compression:</p>
+<div class="textblock"><p>WiredTiger includes a number of optional compression techniques.</p>
+<p>Configuring compression generally decreases on-disk and in-memory resource requirements and the amount of I/O, and increases CPU cost when rows are read and written.</p>
+<p>Configuring compression may change application throughput. For example, in applications using solid-state drives (where I/O is less expensive), turning off compression may increase application performance by reducing CPU costs; in applications where I/O costs are more expensive, turning on compression may increase application performance by reducing the overall number of I/O operations.</p>
+<p>An example of turning on row-store key prefix compression:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S,prefix_compression=false&quot;</span>);</div>
-</div><!-- fragment --><p> For example, turning on row-store or column-store dictionary compression:</p>
+<div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S,prefix_compression=true&quot;</span>);</div>
+</div><!-- fragment --><p> An example of turning on row-store or column-store dictionary compression:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S,dictionary=1000&quot;</span>);</div>
-</div><!-- fragment --><p> See <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information. </p>
+</div><!-- fragment --><p> See <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information on available compression techniques. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
