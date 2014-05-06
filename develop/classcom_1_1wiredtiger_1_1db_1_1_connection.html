@@ -91,6 +91,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0e8af34ebdff2b71b682095ed085cebe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e8af34ebdff2b71b682095ed085cebe"></a>
 synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</b> ()</td></tr>
 <tr class="separator:a0e8af34ebdff2b71b682095ed085cebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ca4a22fe3c729d68cd56c5abb047498"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a6ca4a22fe3c729d68cd56c5abb047498">async_flush</a> ()</td></tr>
+<tr class="memdesc:a6ca4a22fe3c729d68cd56c5abb047498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for all outstanding operations to complete.  <a href="#a6ca4a22fe3c729d68cd56c5abb047498">More...</a><br/></td></tr>
+<tr class="separator:a6ca4a22fe3c729d68cd56c5abb047498"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2458441ed6301620ef4db71f3ef5c47c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2458441ed6301620ef4db71f3ef5c47c">close</a> (String config)</td></tr>
 <tr class="memdesc:a2458441ed6301620ef4db71f3ef5c47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a connection.  <a href="#a2458441ed6301620ef4db71f3ef5c47c">More...</a><br/></td></tr>
 <tr class="separator:a2458441ed6301620ef4db71f3ef5c47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,6 +112,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>get_home</b> ()</td
 <tr class="memitem:a1c404c400a9873926810241ad0997a4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1c404c400a9873926810241ad0997a4a">load_extension</a> (String path, String config)</td></tr>
 <tr class="memdesc:a1c404c400a9873926810241ad0997a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an extension.  <a href="#a1c404c400a9873926810241ad0997a4a">More...</a><br/></td></tr>
 <tr class="separator:a1c404c400a9873926810241ad0997a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97804f3cf6195edab4ee67619a129d18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97804f3cf6195edab4ee67619a129d18"></a>
+<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a>&#160;</td><td class="memItemRight" valign="bottom"><b>async_new_opwrap</b> (String uri, String config)</td></tr>
+<tr class="separator:a97804f3cf6195edab4ee67619a129d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad03cfc01de34342ab8c76934accb8745"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad03cfc01de34342ab8c76934accb8745"></a>
 <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a>&#160;</td><td class="memItemRight" valign="bottom"><b>open_session</b> (String config)</td></tr>
 <tr class="separator:ad03cfc01de34342ab8c76934accb8745"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,6 +146,31 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <p>Most applications will open a single connection to a database for each process. The first process to open a connection to a database will access the database in its own address space. Subsequent connections (if allowed) will communicate with the first process over a socket connection to perform their operations.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> handle may be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6ca4a22fe3c729d68cd56c5abb047498"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Connection.async_flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wait for all outstanding operations to complete. </p>
+<div class="fragment"><div class="line">        wt_conn-&gt;async_flush(wt_conn);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a2458441ed6301620ef4db71f3ef5c47c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -350,6 +381,16 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>async = (</code></td><td>asynchronous operations configuration options..</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable asynchronous operation.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;ops_max</code></td><td>maximum number of expected simultaneous asynchronous operations..</td><td>an integer between 10 and 4096; default <code>1024</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;threads</code></td><td>the number of worker threads to service asynchronous requests.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either a cache_size or a shared_cache not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>

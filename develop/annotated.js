@@ -3,6 +3,7 @@ var annotated =
     [ "com", null, [
       [ "wiredtiger", null, [
         [ "db", null, [
+          [ "AsyncOp", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html", "classcom_1_1wiredtiger_1_1db_1_1_async_op" ],
           [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", "classcom_1_1wiredtiger_1_1db_1_1_connection" ],
           [ "Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", "classcom_1_1wiredtiger_1_1db_1_1_cursor" ],
           [ "PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream" ],
@@ -14,10 +15,13 @@ var annotated =
           [ "wiredtigerConstants", "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html", null ],
           [ "WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception" ],
           [ "wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
-          [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ]
+          [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ],
+          [ "WT_ASYNC_OPTYPE", "enumcom_1_1wiredtiger_1_1db_1_1_w_t___a_s_y_n_c___o_p_t_y_p_e.html", "enumcom_1_1wiredtiger_1_1db_1_1_w_t___a_s_y_n_c___o_p_t_y_p_e" ]
         ] ]
       ] ]
     ] ],
+    [ "WT_ASYNC_CALLBACK", "struct____wt__async__callback.html", "struct____wt__async__callback" ],
+    [ "WT_ASYNC_OP", "struct____wt__async__op.html", "struct____wt__async__op" ],
     [ "WT_TXN_NOTIFY", "struct____wt__txn__notify.html", "struct____wt__txn__notify" ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", "struct_w_t___c_o_l_l_a_t_o_r" ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", "struct_w_t___c_o_m_p_r_e_s_s_o_r" ],

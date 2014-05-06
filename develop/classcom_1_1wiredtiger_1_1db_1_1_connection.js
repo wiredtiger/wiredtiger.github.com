@@ -1,6 +1,8 @@
 var classcom_1_1wiredtiger_1_1db_1_1_connection =
 [
     [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a9f3713033d9e9a1a84f4670da907c55d", null ],
+    [ "async_flush", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a6ca4a22fe3c729d68cd56c5abb047498", null ],
+    [ "async_new_opwrap", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a97804f3cf6195edab4ee67619a129d18", null ],
     [ "close", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2458441ed6301620ef4db71f3ef5c47c", null ],
     [ "configure_method", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1b9848afb4bfe4b790579490e6e2263c", null ],
     [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a0e8af34ebdff2b71b682095ed085cebe", null ],
