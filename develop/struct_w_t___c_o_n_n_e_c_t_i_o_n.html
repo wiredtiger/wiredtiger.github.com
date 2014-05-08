@@ -893,6 +893,14 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either a cache_size or a shared_cache not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
+<td><code>checkpoint = (</code></td><td>periodically checkpoint the database.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>the checkpoint name.</td><td>a string; default <code>"WiredTigerCheckpoint"</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each checkpoint; setting this value above 0 configures periodic checkpoints.</td><td>an integer between 0 and 100000; default <code>0</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>eviction_dirty_target</code></td><td>continue evicting until the cache has less dirty pages than this (as a percentage). Dirty pages will only be evicted if the cache is full enough to trigger eviction.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
