@@ -110,10 +110,13 @@ Public Attributes</h2></td></tr>
 <div class="line">        <a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> compressor;               <span class="comment">/* Must come first */</span></div>
 <div class="line"></div>
 <div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods.">WT_EXTENSION_API</a> *wt_api;               <span class="comment">/* Extension API */</span></div>
-<div class="line">} NOP_COMPRESSOR;</div>
 <div class="line"></div>
-<div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * A simple shared library compression example.</span></div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> nop_calls;                <span class="comment">/* Count of calls */</span></div>
+<div class="line"></div>
+<div class="line">} NOP_COMPRESSOR;</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * wiredtiger_extension_init --</span></div>
+<div class="line"><span class="comment"> *      A simple shared library compression example.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line"><a class="code" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded.">wiredtiger_extension_init</a>(<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> *connection, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4" title="A configuration object passed to some extension interfaces.">WT_CONFIG_ARG</a> *config)</div>
@@ -177,7 +180,8 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero for success, non-zero to indicate an error.</dd></dl>
 <div class="fragment"><div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * A simple compression example that passes data through unchanged.</span></div>
+<div class="line"><span class="comment"> * nop_compress --</span></div>
+<div class="line"><span class="comment"> *      A simple compression example that passes data through unchanged.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">nop_compress(<a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> *compressor, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
@@ -185,8 +189,11 @@ Public Attributes</h2></td></tr>
 <div class="line">    uint8_t *dst, <span class="keywordtype">size_t</span> dst_len,</div>
 <div class="line">    <span class="keywordtype">size_t</span> *result_lenp, <span class="keywordtype">int</span> *compression_failed)</div>
 <div class="line">{</div>
-<div class="line">        (void)compressor;                       <span class="comment">/* Unused parameters */</span></div>
-<div class="line">        (void)session;</div>
+<div class="line">        NOP_COMPRESSOR *nop_compressor = (NOP_COMPRESSOR *)compressor;</div>
+<div class="line"></div>
+<div class="line">        (void)session;                          <span class="comment">/* Unused parameters */</span></div>
+<div class="line"></div>
+<div class="line">        ++nop_compressor-&gt;nop_calls;            <span class="comment">/* Call count */</span></div>
 <div class="line"></div>
 <div class="line">        *compression_failed = 0;</div>
 <div class="line">        <span class="keywordflow">if</span> (dst_len &lt; src_len) {</div>
@@ -273,7 +280,8 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero for success, non-zero to indicate an error.</dd></dl>
 <div class="fragment"><div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * A simple compression example that passes data through unchanged.</span></div>
+<div class="line"><span class="comment"> * nop_decompress --</span></div>
+<div class="line"><span class="comment"> *      A simple decompression example that passes data through unchanged.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">nop_decompress(<a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> *compressor, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
@@ -281,9 +289,12 @@ Public Attributes</h2></td></tr>
 <div class="line">    uint8_t *dst, <span class="keywordtype">size_t</span> dst_len,</div>
 <div class="line">    <span class="keywordtype">size_t</span> *result_lenp)</div>
 <div class="line">{</div>
-<div class="line">        (void)compressor;                       <span class="comment">/* Unused parameters */</span></div>
-<div class="line">        (void)session;</div>
+<div class="line">        NOP_COMPRESSOR *nop_compressor = (NOP_COMPRESSOR *)compressor;</div>
+<div class="line"></div>
+<div class="line">        (void)session;                          <span class="comment">/* Unused parameters */</span></div>
 <div class="line">        (void)src_len;</div>
+<div class="line"></div>
+<div class="line">        ++nop_compressor-&gt;nop_calls;            <span class="comment">/* Call count */</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * The destination length is the number of uncompressed bytes we&#39;re</span></div>
@@ -321,17 +332,20 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero for success, non-zero to indicate an error.</dd></dl>
 <div class="fragment"><div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * A simple pre-size example that returns the source length.</span></div>
+<div class="line"><span class="comment"> * nop_pre_size --</span></div>
+<div class="line"><span class="comment"> *      A simple pre-size example that returns the source length.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">nop_pre_size(<a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> *compressor, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session,</div>
 <div class="line">    uint8_t *src, <span class="keywordtype">size_t</span> src_len,</div>
 <div class="line">    <span class="keywordtype">size_t</span> *result_lenp)</div>
 <div class="line">{</div>
-<div class="line">        <span class="comment">/* Unused parameters */</span></div>
-<div class="line">        (void)compressor;</div>
-<div class="line">        (void)session;</div>
+<div class="line">        NOP_COMPRESSOR *nop_compressor = (NOP_COMPRESSOR *)compressor;</div>
+<div class="line"></div>
+<div class="line">        (void)session;                          <span class="comment">/* Unused parameters */</span></div>
 <div class="line">        (void)src;</div>
+<div class="line"></div>
+<div class="line">        ++nop_compressor-&gt;nop_calls;            <span class="comment">/* Call count */</span></div>
 <div class="line"></div>
 <div class="line">        *result_lenp = src_len;</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
@@ -352,14 +366,21 @@ Public Attributes</h2></td></tr>
 <p>If non-NULL, a callback performed when the database is closed. </p>
 <p>The <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#aa7c0741f5e8b8c8f661911210b530fb9" title="If non-NULL, a callback performed when the database is closed.">WT_COMPRESSOR::terminate</a> callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger.</p>
 <div class="fragment"><div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * A simple termination example that frees the allocated memory.</span></div>
+<div class="line"><span class="comment"> * nop_terminate --</span></div>
+<div class="line"><span class="comment"> *      WiredTiger no-op compression termination.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">nop_terminate(<a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression.">WT_COMPRESSOR</a> *compressor, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
+<div class="line">        NOP_COMPRESSOR *nop_compressor = (NOP_COMPRESSOR *)compressor;</div>
+<div class="line"></div>
 <div class="line">        (void)session;                          <span class="comment">/* Unused parameters */</span></div>
 <div class="line"></div>
+<div class="line">        ++nop_compressor-&gt;nop_calls;            <span class="comment">/* Call count */</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Free the allocated memory. */</span></div>
 <div class="line">        free(compressor);</div>
+<div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 </div><!-- fragment -->
