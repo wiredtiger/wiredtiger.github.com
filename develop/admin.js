@@ -2,8 +2,9 @@ var admin =
 [
     [ "Database Home Directory", "home.html", null ],
     [ "Database Configuration", "database_config.html", [
-      [ "WiredTiger.config file", "database_config.html#config_file", null ],
+      [ "Configuration ordering", "database_config.html#config_order", null ],
       [ "WIREDTIGER_CONFIG environment variable", "database_config.html#config_env", null ],
+      [ "WiredTiger.config file", "database_config.html#config_file", null ],
       [ "WiredTiger.basecfg file", "database_config.html#config_base", null ]
     ] ],
     [ "Hot backup", "hot_backup.html", null ],

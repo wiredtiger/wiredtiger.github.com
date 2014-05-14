@@ -86,12 +86,14 @@ var NAVTREEINDEX1 =
 "data_sources.html#data_statistics":[0,2,9,6,0,2],
 "database_config.html":[0,2,41],
 "database_config.html":[0,5,1],
-"database_config.html#config_base":[0,2,41,2],
-"database_config.html#config_base":[0,5,1,2],
+"database_config.html#config_base":[0,2,41,3],
+"database_config.html#config_base":[0,5,1,3],
 "database_config.html#config_env":[0,2,41,1],
 "database_config.html#config_env":[0,5,1,1],
-"database_config.html#config_file":[0,2,41,0],
-"database_config.html#config_file":[0,5,1,0],
+"database_config.html#config_file":[0,2,41,2],
+"database_config.html#config_file":[0,5,1,2],
+"database_config.html#config_order":[0,2,41,0],
+"database_config.html#config_order":[0,5,1,0],
 "dump_formats.html":[0,3,19],
 "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html":[3,0,0,0,2],
 "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#a08673ec19005842fa0b90af84a4f0304":[3,0,0,0,2,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga6bb9dbe835af62495c1de4f31eb6ec49":[2,0,212],
 "group__wt.html#ga6dfc47dfc17e2d42055c6be1a47872e2":[2,0,167],
 "group__wt.html#ga7111b3912e9e1162ef965d0637e27b34":[2,0,74],
-"group__wt.html#ga711a805006e520943f77365f4f45cff5":[2,0,69],
-"group__wt.html#ga74576de052c86fb6bc8d465e3b2fb4fe":[2,0,115],
-"group__wt.html#ga754a35883bd35aff144c73002fa6b030":[2,0,103]
+"group__wt.html#ga711a805006e520943f77365f4f45cff5":[2,0,69]
 };

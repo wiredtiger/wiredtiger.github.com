@@ -69,11 +69,25 @@ $(document).ready(function(){initNavTree('database_config.html','');});
 <div class="title">Database Configuration </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger databases are accessed through the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> call, which takes a configuration string argument.</p>
-<p>In addition to this, the database configuration can be specified in a file or an environment variable.</p>
+<div class="textblock"><p>WiredTiger databases are configured using the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> call, which takes a configuration string argument.</p>
+<p>In addition to this, the database configuration can be specified using the <code>WiredTiger.config</code> file or the WIREDTIGER_CONFIG environment variable.</p>
+<p>When a WiredTiger database is created, the configuration string passed to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> is saved to a WiredTiger home directory file named <code>WiredTiger.basecfg</code>, and that configuration file is read whenever the database is subsequently opened.</p>
+<h1><a class="anchor" id="config_order"></a>
+Configuration ordering</h1>
+<p>When a database is created or opened, the order of configuration is:</p>
+<ul>
+<li>Any <code>WiredTiger.basecfg</code> file,</li>
+<li>which is overridden by the <code>WiredTiger.config</code> file,</li>
+<li>which is overridden by the <code>WIREDTIGER_CONFIG</code> environment variable,</li>
+<li>which is overridden by the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> configuration string argument.</li>
+</ul>
+<h1><a class="anchor" id="config_env"></a>
+WIREDTIGER_CONFIG environment variable</h1>
+<p>If the <code>WIREDTIGER_CONFIG</code> environment variable is set, it is read as a configuration string.</p>
+<p>If the process is running with special privileges and <code>WIREDTIGER_CONFIG</code> is set, the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function must be configured with the <code>use_environment_priv</code> flag, or the call to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> will fail. See <a class="el" href="home.html">Database Home Directory</a> for more details.</p>
 <h1><a class="anchor" id="config_file"></a>
 WiredTiger.config file</h1>
-<p>If a file named <code>WiredTiger.config</code> appears in the WiredTiger home directory, it is read as a configuration string. Configuration values specified in the <code>config</code> argument to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> override configuration values specified in the <code>WIREDTIGER_CONFIG</code> environment variable, which in turn override values in the <code>WiredTiger.config</code> file.</p>
+<p>If a file named <code>WiredTiger.config</code> appears in the WiredTiger home directory, it is read as a configuration string.</p>
 <p>The file is minimally parsed in order to build configuration strings for the WiredTiger configuration parser:</p>
 <ul>
 <li>
@@ -91,13 +105,10 @@ WiredTiger.config file</h1>
 <li>
 Otherwise, all lines are concatenated and the newline characters replaced with commas. </li>
 </ul>
-<h1><a class="anchor" id="config_env"></a>
-WIREDTIGER_CONFIG environment variable</h1>
-<p>If set, the <code>WIREDTIGER_CONFIG</code> environment variable will read, and the string added to the configuration values for <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>. Configuration values specified in the <code>config</code> argument to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> override configuration values specified in the <code>WIREDTIGER_CONFIG</code> environment variable, which in turn override values in the <code>WiredTiger.config</code> file.</p>
-<p>If the process is running with special privileges and <code>WIREDTIGER_CONFIG</code> is set, the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function must be configured with the <code>use_environment_priv</code> flag, or the call to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> will fail. See <a class="el" href="home.html">Database Home Directory</a> for more details.</p>
 <h1><a class="anchor" id="config_base"></a>
 WiredTiger.basecfg file</h1>
-<p>When a database is created, the config string passed to `wiredtiger_open` is saved to a file called <code>WiredTiger.basecfg</code>. This configuration is read when the database is subsequently opened. Users should not edit this file, create a <a class="el" href="database_config.html#config_file">WiredTiger.config file</a> instead: settings there will override <code>WiredTiger.basecfg</code>. </p>
+<p>When a WiredTiger database is created, the configuration string passed to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> is saved to a WiredTiger home directory file named <code>WiredTiger.basecfg</code>, and that configuration file is read whenever the database is subsequently opened.</p>
+<p>Users should not edit this file, set the <code>WIREDTIGER_CONFIG</code> environment variable or create a <code>WiredTiger.config</code> file instead. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
