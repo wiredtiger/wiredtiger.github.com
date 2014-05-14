@@ -3,7 +3,9 @@ var hierarchy =
     [ "WT_ASYNC_CALLBACK", "struct____wt__async__callback.html", null ],
     [ "WT_ASYNC_OP", "struct____wt__async__op.html", null ],
     [ "WT_TXN_NOTIFY", "struct____wt__txn__notify.html", null ],
+    [ "com.wiredtiger.db.AsyncCallback", "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html", null ],
     [ "com.wiredtiger.db.AsyncOp", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html", null ],
+    [ "com.wiredtiger.db.AsyncOpType", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html", null ],
     [ "com.wiredtiger.db.Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", null ],
     [ "com.wiredtiger.db.Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", null ],
     [ "com.wiredtiger.db.PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", null ],
@@ -15,7 +17,6 @@ var hierarchy =
       [ "com.wiredtiger.db.wiredtiger", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger.html", null ]
     ] ],
     [ "com.wiredtiger.db.wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
-    [ "com.wiredtiger.db.WT_ASYNC_OPTYPE", "enumcom_1_1wiredtiger_1_1db_1_1_w_t___a_s_y_n_c___o_p_t_y_p_e.html", null ],
     [ "Exception", null, [
       [ "com.wiredtiger.db.WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", [
         [ "com.wiredtiger.db.WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", null ]

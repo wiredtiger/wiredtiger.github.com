@@ -3,7 +3,9 @@ var annotated =
     [ "com", null, [
       [ "wiredtiger", null, [
         [ "db", null, [
+          [ "AsyncCallback", "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html", "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback" ],
           [ "AsyncOp", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html", "classcom_1_1wiredtiger_1_1db_1_1_async_op" ],
+          [ "AsyncOpType", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type" ],
           [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", "classcom_1_1wiredtiger_1_1db_1_1_connection" ],
           [ "Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", "classcom_1_1wiredtiger_1_1db_1_1_cursor" ],
           [ "PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream" ],
@@ -15,8 +17,7 @@ var annotated =
           [ "wiredtigerConstants", "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html", null ],
           [ "WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception" ],
           [ "wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
-          [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ],
-          [ "WT_ASYNC_OPTYPE", "enumcom_1_1wiredtiger_1_1db_1_1_w_t___a_s_y_n_c___o_p_t_y_p_e.html", "enumcom_1_1wiredtiger_1_1db_1_1_w_t___a_s_y_n_c___o_p_t_y_p_e" ]
+          [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ]
         ] ]
       ] ]
     ] ],

@@ -112,9 +112,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>get_home</b> ()</td
 <tr class="memitem:a1c404c400a9873926810241ad0997a4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1c404c400a9873926810241ad0997a4a">load_extension</a> (String path, String config)</td></tr>
 <tr class="memdesc:a1c404c400a9873926810241ad0997a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an extension.  <a href="#a1c404c400a9873926810241ad0997a4a">More...</a><br/></td></tr>
 <tr class="separator:a1c404c400a9873926810241ad0997a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97804f3cf6195edab4ee67619a129d18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97804f3cf6195edab4ee67619a129d18"></a>
-<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a>&#160;</td><td class="memItemRight" valign="bottom"><b>async_new_opwrap</b> (String uri, String config)</td></tr>
-<tr class="separator:a97804f3cf6195edab4ee67619a129d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c8444703541803fab4bc54606136ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html">AsyncOp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a76c8444703541803fab4bc54606136ed">async_new_op</a> (String uri, String config, Object callbackObject)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:a76c8444703541803fab4bc54606136ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an async operation handle.  <a href="#a76c8444703541803fab4bc54606136ed">More...</a><br/></td></tr>
+<tr class="separator:a76c8444703541803fab4bc54606136ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad03cfc01de34342ab8c76934accb8745"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad03cfc01de34342ab8c76934accb8745"></a>
 <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a>&#160;</td><td class="memItemRight" valign="bottom"><b>open_session</b> (String config)</td></tr>
 <tr class="separator:ad03cfc01de34342ab8c76934accb8745"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,6 +164,76 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a76c8444703541803fab4bc54606136ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html">AsyncOp</a> com.wiredtiger.db.Connection.async_new_op </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>uri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Object&#160;</td>
+          <td class="paramname"><em>callbackObject</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>  throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a> </td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return an async operation handle. </p>
+<div class="fragment"><div class="line">                op = NULL;</div>
+<div class="line">retry:</div>
+<div class="line">                ret = wt_conn-&gt;async_new_op(wt_conn, uri, NULL, &amp;cb, &amp;op);</div>
+<div class="line">                <span class="keywordflow">if</span> (ret != 0) {</div>
+<div class="line">                        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">                         * If we used up all the ops, pause and retry to</span></div>
+<div class="line"><span class="comment">                         * give the workers a chance to process them.</span></div>
+<div class="line"><span class="comment">                         */</span></div>
+<div class="line">                        fprintf(stderr,</div>
+<div class="line">                            <span class="stringliteral">&quot;Iteration %d: async_new_op ret %d\n&quot;</span>,i,ret);</div>
+<div class="line">                        sleep(1);</div>
+<div class="line">                        <span class="keywordflow">goto</span> retry;</div>
+<div class="line">                }</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">uri</td><td>the connection handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>append</code></td><td>append the value as a new record, creating a new record number key; valid only for operations with record number keys.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>overwrite</code></td><td>configures whether the cursor's insert, update and remove methods check the existing state of the record. If <code>overwrite</code> is <code>false</code>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> fails with <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key.">WT_DUPLICATE_KEY</a> if the record exists, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record and optionally insert an existing record.">WT_CURSOR::update</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a> fail with <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found.">WT_NOTFOUND</a> if the record does not exist.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>timeout</code></td><td>maximum amount of time to allow for compact in seconds. The actual amount of time spent in compact may exceed the configured value. A value of zero disables the timeout.</td><td>an integer; default <code>1200</code>. </td></tr>
+</table>
+</td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">callback</td><td>the operation callback </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">asyncopp</td><td>the new op handle </td></tr>
   </table>
   </dd>
 </dl>

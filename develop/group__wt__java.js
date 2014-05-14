@@ -2,13 +2,12 @@ var group__wt__java =
 [
     [ "AsyncOp", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html", [
       [ "AsyncOp", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a39f23dd4fbc75463ffb11ad4c72290ec", null ],
-      [ "compact", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a67c7f54566097dd72bc6abe07b1c3449", null ],
+      [ "compact", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#adb4a7d8e5e3c32ddc21a3115f01fb1d3", null ],
       [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#aa55c5e5c8b271eed5c819102c6983c36", null ],
-      [ "get_id", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ac38cd534c3b6ccdfb258a96d95b77553", null ],
       [ "get_key_wrap", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a4a3caa9aec9c75403b414dba75fc4d16", null ],
-      [ "get_type", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ad6b0316abbc18ac12a3349f02755fcd2", null ],
       [ "get_value_wrap", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a25ae12ff0369e7886c1a067d0cfcb064", null ],
       [ "getConnection", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#aa306397a421f95bbfcbf71ecefaed7a9", null ],
+      [ "getId", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a5d5521fd573b627f44faab159608a9d9", null ],
       [ "getKey_format", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ae7659df7bb3ad82612653d96e0df885e", null ],
       [ "getKeyByte", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a25416ffdd859ba7b10f866fd21bac78e", null ],
       [ "getKeyByteArray", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a552a7341c974bb8dc5f5fdee1cf95afe", null ],
@@ -19,6 +18,7 @@ var group__wt__java =
       [ "getKeyLong", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a7d550a6abea10861ad29ff4b7a75f34f", null ],
       [ "getKeyShort", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ae265e0213dfc55b9e4ca38a69bed66f9", null ],
       [ "getKeyString", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a261d5513c6f88ecd53f0ea64354d9e3e", null ],
+      [ "getType", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a8a42ce3f7c6dda417820044208fc3b41", null ],
       [ "getValue_format", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a8a4a6d5bec41685d04575c86f2e2682f", null ],
       [ "getValueByte", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#aa04ecb5363050b03c212b67b7bfc6f82", null ],
       [ "getValueByteArray", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ae3e324562525b7602fee3b96640f1cec", null ],
@@ -63,7 +63,7 @@ var group__wt__java =
     [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", [
       [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a9f3713033d9e9a1a84f4670da907c55d", null ],
       [ "async_flush", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a6ca4a22fe3c729d68cd56c5abb047498", null ],
-      [ "async_new_opwrap", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a97804f3cf6195edab4ee67619a129d18", null ],
+      [ "async_new_op", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a76c8444703541803fab4bc54606136ed", null ],
       [ "close", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2458441ed6301620ef4db71f3ef5c47c", null ],
       [ "configure_method", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1b9848afb4bfe4b790579490e6e2263c", null ],
       [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a0e8af34ebdff2b71b682095ed085cebe", null ],
