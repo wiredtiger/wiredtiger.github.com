@@ -94,7 +94,8 @@ Public Attributes</h2></td></tr>
 <p>Applications register their implementation with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle.">WT_CONNECTION::async_new_op</a>.</p>
 <div class="fragment"><div class="line">                op = NULL;</div>
 <div class="line">retry:</div>
-<div class="line">                ret = wt_conn-&gt;async_new_op(wt_conn, uri, NULL, &amp;cb, &amp;op);</div>
+<div class="line">                ret = wt_conn-&gt;async_new_op(wt_conn, uri, NULL,</div>
+<div class="line">                    &amp;ex_asynckeys.iface, &amp;op);</div>
 <div class="line">                <span class="keywordflow">if</span> (ret != 0) {</div>
 <div class="line">                        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                         * If we used up all the ops, pause and retry to</span></div>
@@ -126,16 +127,21 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero for success, non-zero to indicate an error.</dd></dl>
-<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line">        WT_ASYNC_CALLBACK iface;</div>
+<div class="line">        uint32_t num_keys;</div>
+<div class="line">} ASYNC_KEYS;</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">cb_asyncop(WT_ASYNC_CALLBACK *cb, WT_ASYNC_OP *op, <span class="keywordtype">int</span> ret, uint32_t flags)</div>
 <div class="line">{</div>
+<div class="line">        ASYNC_KEYS *asynckey = (ASYNC_KEYS *)cb;</div>
 <div class="line">        <a class="code" href="group__wt.html#ga24152c6e1509c488192df653d511a82c" title="Asynchronous operation types.">WT_ASYNC_OPTYPE</a> type;</div>
 <div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> k, v;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *value;</div>
 <div class="line">        uint64_t id;</div>
 <div class="line">        <span class="keywordtype">int</span> t_ret;</div>
 <div class="line"></div>
-<div class="line">        (void)cb;</div>
 <div class="line">        (void)flags;</div>
 <div class="line">        type = op-&gt;get_type(op);</div>
 <div class="line">        <span class="keywordtype">id</span> = op-&gt;get_id(op);</div>
@@ -150,12 +156,14 @@ Public Attributes</h2></td></tr>
 <div class="line">                key = k.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>;</div>
 <div class="line">                t_ret = op-&gt;get_value(op, &amp;v);</div>
 <div class="line">                value = v.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>;</div>
+<div class="line">                ATOMIC_ADD(asynckey-&gt;num_keys, 1);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;Id %&quot;</span> PRIu64 <span class="stringliteral">&quot; got record: %s : %s\n&quot;</span>, <span class="keywordtype">id</span>, key, value);</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">return</span> (t_ret);</div>
 <div class="line">}</div>
 <div class="line"></div>
-<div class="line">WT_ASYNC_CALLBACK cb = { cb_asyncop };</div>
+<div class="line"><span class="keyword">static</span> ASYNC_KEYS ex_asynckeys = { {cb_asyncop}, 0 };</div>
+<div class="line"></div>
 </div><!-- fragment -->
 </div>
 </div>

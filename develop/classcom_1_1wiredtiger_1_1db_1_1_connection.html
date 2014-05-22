@@ -204,7 +204,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <p>Return an async operation handle. </p>
 <div class="fragment"><div class="line">                op = NULL;</div>
 <div class="line">retry:</div>
-<div class="line">                ret = wt_conn-&gt;async_new_op(wt_conn, uri, NULL, &amp;cb, &amp;op);</div>
+<div class="line">                ret = wt_conn-&gt;async_new_op(wt_conn, uri, NULL,</div>
+<div class="line">                    &amp;ex_asynckeys.iface, &amp;op);</div>
 <div class="line">                <span class="keywordflow">if</span> (ret != 0) {</div>
 <div class="line">                        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                         * If we used up all the ops, pause and retry to</span></div>
