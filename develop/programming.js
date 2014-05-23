@@ -1,12 +1,5 @@
 var programming =
 [
-    [ "Using the API", "programming.html#programming_api", null ],
-    [ "Storage options", "programming.html#programming_storage", null ],
-    [ "Application notes", "programming.html#application_notes", null ],
-    [ "Performance tuning", "programming.html#tuning", null ],
-    [ "Deployment considerations", "programming.html#programming_deployment", null ],
-    [ "Extending WiredTiger", "programming.html#programming_extending", null ],
-    [ "Administering a WiredTiger database", "programming.html#programming_admin", null ],
     [ "Getting Started with the API", "basic_api.html", [
       [ "Connecting to a database", "basic_api.html#basic_connection", null ],
       [ "Creating a table", "basic_api.html#basic_create_table", null ],

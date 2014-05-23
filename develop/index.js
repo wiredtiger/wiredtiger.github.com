@@ -37,6 +37,7 @@ var index =
       [ "Upgrading to Version 1.3.5", "upgrading.html#version_135", null ],
       [ "Upgrading to Version 1.3", "upgrading.html#version_13", null ]
     ] ],
+    [ "WiredTiger Change Log", "md_changelog.html", null ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "WiredTiger license", "license.html", [
       [ "3rd party software included in the WiredTiger library binary", "license.html#library", null ],
