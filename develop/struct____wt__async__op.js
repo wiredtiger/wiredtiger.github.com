@@ -11,6 +11,7 @@ var struct____wt__async__op =
     [ "set_key", "struct____wt__async__op.html#a9931651a57133df0d6d881e0cb9386ab", null ],
     [ "set_value", "struct____wt__async__op.html#a6cb91888b737850ebffd7e01215bff53", null ],
     [ "update", "struct____wt__async__op.html#afff4b702e6a6364a7f36de4a1fa6b038", null ],
+    [ "app_private", "struct____wt__async__op.html#a072a0338cc2bdd30243f2fb2e98d7aa9", null ],
     [ "connection", "struct____wt__async__op.html#aafeab82f8e38de6d72aa3c42dab096f1", null ],
     [ "key_format", "struct____wt__async__op.html#ac2eb1b30034ed905715700143a746fb7", null ],
     [ "value_format", "struct____wt__async__op.html#aad1344717c98c5ad0dbc65cf7302a2be", null ]
