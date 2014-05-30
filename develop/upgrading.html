@@ -69,7 +69,40 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_220"></a>
+<div class="textblock"><h1><a class="anchor" id="version_221"></a>
+Upgrading to Version 2.2.1</h1>
+<dl>
+<dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> configuration parsing order changed </dt>
+<dd><p class="startdd">In the 2.2.1 release, the order that configuration strings are parsed and override earlier values changed. Applications using the <code>Wiredtiger.config</code> file or <code>WIREDTIGER_CONFIG</code> environment variable may need to change. The old order: </p>
+<ol>
+<li>
+default <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> configuration </li>
+<li>
+base configuration file, created with the database </li>
+<li>
+user configuration file <code>Wiredtiger.config</code> </li>
+<li>
+user environment variable <code>WIREDTIGER_CONFIG</code> </li>
+<li>
+configuration string passed in to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> </li>
+</ol>
+<p>In the new order the user's configuration settings override:</p>
+<ol>
+<li>
+default <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> configuration </li>
+<li>
+base configuration file, created with the database </li>
+<li>
+configuration string passed in to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> </li>
+<li>
+user configuration file <code>Wiredtiger.config</code> </li>
+<li>
+user environment variable <code>WIREDTIGER_CONFIG</code> </li>
+</ol>
+<p class="enddd"></p>
+</dd>
+</dl>
+<h1><a class="anchor" id="version_220"></a>
 Upgrading to Version 2.2.0</h1>
 <dl>
 <dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> prefix_compression disabled by default </dt>
