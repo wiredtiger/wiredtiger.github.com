@@ -95,6 +95,8 @@ var NAVTREEINDEX1 =
 "database_config.html#config_order":[0,2,34,0],
 "database_config.html#config_order":[0,6,1,0],
 "dump_formats.html":[0,3,19],
+"dump_formats.html#dump_formats_json":[0,3,19,0],
+"dump_formats.html#dump_formats_text":[0,3,19,1],
 "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html":[3,0,0,0,2],
 "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#a08673ec19005842fa0b90af84a4f0304":[3,0,0,0,2,4],
 "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#a1234aee7a116e269ecaa5cfc102f4ae2":[3,0,0,0,2,0],
@@ -125,8 +127,8 @@ var NAVTREEINDEX1 =
 "file_formats.html#file_formats_formats":[0,2,7,0],
 "filesystems.html":[0,6,3],
 "filesystems.html#remote":[0,6,3,0],
-"functions.html":[5,0],
 "functions.html":[5,0,0],
+"functions.html":[5,0],
 "functions_0x62.html":[5,0,1],
 "functions_0x63.html":[5,0,2],
 "functions_0x64.html":[5,0,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga69fb4a6bb84c218ef36e633ccca0384f":[2,0,28],
 "group__wt.html#ga6a1cf2f6e874f367461426aeeb68ae3a":[2,0,53],
 "group__wt.html#ga6bb9dbe835af62495c1de4f31eb6ec49":[2,0,209],
-"group__wt.html#ga6dfc47dfc17e2d42055c6be1a47872e2":[2,0,164],
-"group__wt.html#ga7111b3912e9e1162ef965d0637e27b34":[2,0,71],
-"group__wt.html#ga711a805006e520943f77365f4f45cff5":[2,0,67]
+"group__wt.html#ga6dfc47dfc17e2d42055c6be1a47872e2":[2,0,164]
 };

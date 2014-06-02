@@ -69,9 +69,14 @@ $(document).ready(function(){initNavTree('dump_formats.html','');});
 <div class="title">Dump Formats </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The <a class="el" href="command_line.html#util_dump">wt dump</a> command produces a text representation of a table that can be loaded by <a class="el" href="command_line.html#util_load">wt load</a>.</p>
-<p>This page describes the output format of the <a class="el" href="command_line.html#util_dump">wt dump</a> command.</p>
-<p>Dump files have three parts, a prefix, a header and a body.</p>
+<div class="textblock"><p>The <a class="el" href="command_line.html#util_dump">wt dump</a> command produces a flat-text representation of a table that can be loaded by <a class="el" href="command_line.html#util_load">wt load</a>.</p>
+<p>This page describes the output formats of the <a class="el" href="command_line.html#util_dump">wt dump</a> command.</p>
+<h1><a class="anchor" id="dump_formats_json"></a>
+JSON format</h1>
+<p>JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) dump files use the standard JSON data-interchange format to specify the objects, and may be interpreted by any JSON reader.</p>
+<h1><a class="anchor" id="dump_formats_text"></a>
+Text format</h1>
+<p>Text dump files have three parts, a prefix, a header and a body.</p>
 <p>The dump prefix includes basic information about the dump including the WiredTiger version that created the dump and the dump format. The dump format consists of a line beginning with <code>"Format="</code>, and contains the following information:</p>
 <table class="doxtable">
 <tr>

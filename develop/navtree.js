@@ -22,8 +22,8 @@ var NAVTREEINDEX =
 [
 ".html",
 "command_line.html#util_drop_options",
-"group__wt.html#ga74576de052c86fb6bc8d465e3b2fb4fe",
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137"
+"group__wt.html#ga7111b3912e9e1162ef965d0637e27b34",
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

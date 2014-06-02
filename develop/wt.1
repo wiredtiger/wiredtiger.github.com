@@ -106,7 +106,7 @@ The \fCdump\fP command outputs the specified table in a portable format which ca
 .PP
 See \fBDump Formats\fP for details of the dump file formats\&.
 .SS "Synopsis"
-\fCwt [-Vv] [-C config] [-h directory] dump [-rx] [-c checkpoint] [-f output] uri\fP
+\fCwt [-Vv] [-C config] [-h directory] dump [-jrx] [-c checkpoint] [-f output] uri\fP
 .SS "Options"
 The following are command-specific options for the \fCdump\fP command:
 .PP
@@ -118,6 +118,11 @@ By default, the \fCdump\fP command opens the most recent version of the data sou
 \fB-f\fP
 .RS 4
 By default, the \fCdump\fP command output is written to the standard output; the \fC-f\fP option re-directs the output to the specified file\&.
+.RE
+.PP
+\fB-j\fP
+.RS 4
+Dump in JSON (\fCJavaScript Object Notation\fP) format\&.
 .RE
 .PP
 \fB-r\fP

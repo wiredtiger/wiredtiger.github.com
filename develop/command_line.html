@@ -139,12 +139,13 @@ wt dump</h1>
 <p>See <a class="el" href="dump_formats.html">Dump Formats</a> for details of the dump file formats.</p>
 <h2><a class="anchor" id="util_dump_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-Vv] [-C config] [-h directory] dump [-rx] [-c checkpoint] [-f output] uri</code></p>
+<p><code>wt [-Vv] [-C config] [-h directory] dump [-jrx] [-c checkpoint] [-f output] uri</code></p>
 <h2><a class="anchor" id="util_dump_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>dump</code> command:</p>
 <dl class="section user"><dt>-c</dt><dd>By default, the <code>dump</code> command opens the most recent version of the data source; the <code>-c</code> option changes the <code>dump</code> command to open the named checkpoint.</dd></dl>
 <dl class="section user"><dt>-f</dt><dd>By default, the <code>dump</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
+<dl class="section user"><dt>-j</dt><dd>Dump in JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format.</dd></dl>
 <dl class="section user"><dt>-r</dt><dd>Dump in reverse order, from largest key to smallest.</dd></dl>
 <dl class="section user"><dt>-x</dt><dd>Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded).</dd></dl>
 <hr/>

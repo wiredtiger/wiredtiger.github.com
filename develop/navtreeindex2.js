@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"group__wt.html#ga7111b3912e9e1162ef965d0637e27b34":[2,0,71],
+"group__wt.html#ga711a805006e520943f77365f4f45cff5":[2,0,67],
 "group__wt.html#ga74576de052c86fb6bc8d465e3b2fb4fe":[2,0,112],
 "group__wt.html#ga754a35883bd35aff144c73002fa6b030":[2,0,100],
 "group__wt.html#ga75d5dbdafbfcdb998e72e11c93e352e2":[2,0,117],
@@ -187,12 +189,12 @@ var NAVTREEINDEX2 =
 "schema.html#schema_key_and_value_formats":[0,2,5,3],
 "security.html":[0,2,35],
 "security.html":[0,6,4],
-"security.html#directory_permissions":[0,2,35,0],
 "security.html#directory_permissions":[0,6,4,0],
+"security.html#directory_permissions":[0,2,35,0],
 "security.html#environment_variables":[0,2,35,2],
 "security.html#environment_variables":[0,6,4,2],
-"security.html#file_permissions":[0,6,4,1],
 "security.html#file_permissions":[0,2,35,1],
+"security.html#file_permissions":[0,6,4,1],
 "signals.html":[0,2,12],
 "statistics.html":[0,2,30],
 "statistics.html#statistics_log":[0,2,30,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640":[2,0,4,9],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783":[2,0,4,1],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4":[2,0,4,13],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8":[2,0,4,0],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d":[2,0,4,8],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68":[2,0,4,11]
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8":[2,0,4,0]
 };

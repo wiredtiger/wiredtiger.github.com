@@ -67,5 +67,8 @@ var command_line =
       [ "Synopsis", "command_line.html#util_write_synopsis", null ],
       [ "Options", "command_line.html#util_write_options", null ]
     ] ],
-    [ "Dump Formats", "dump_formats.html", null ]
+    [ "Dump Formats", "dump_formats.html", [
+      [ "JSON format", "dump_formats.html#dump_formats_json", null ],
+      [ "Text format", "dump_formats.html#dump_formats_text", null ]
+    ] ]
 ];
