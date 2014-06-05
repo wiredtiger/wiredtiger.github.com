@@ -101,6 +101,8 @@ user environment variable <code>WIREDTIGER_CONFIG</code> </li>
 </ol>
 <p class="enddd"></p>
 </dd>
+<dt><code>os_cache_dirty_max</code> off for LSM </dt>
+<dd>In some earlier versions of WiredTiger, creating an LSM table automatically configured <code>os_cache_dirty_max</code>, causing additional system calls that slowed some workloads. Applications that benefit from this setting should set it explicitly in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.  </dd>
 </dl>
 <h1><a class="anchor" id="version_220"></a>
 Upgrading to Version 2.2.0</h1>
@@ -110,25 +112,19 @@ Upgrading to Version 2.2.0</h1>
 <p class="enddd"></p>
 </dd>
 <dt>wiredtiger_open verbose message changes </dt>
-<dd><p class="startdd">In the 2.2.0 release it is now necessary to include <code>&ndash;enable-verbose</code> in the configure command to be able to use verbose messages. </p>
-<p class="enddd"></p>
-</dd>
+<dd>In the 2.2.0 release it is now necessary to include <code>&ndash;enable-verbose</code> in the configure command to be able to use verbose messages.  </dd>
 </dl>
 <h1><a class="anchor" id="version_212"></a>
 Upgrading to Version 2.1.2</h1>
 <dl>
 <dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> shared_cache configuration changes </dt>
-<dd><p class="startdd">In the 2.1.2 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> <code>shared_cache</code> configuration option group have changed. The option that was named <code>enable</code> is no longer available. To enable a <code>shared_cache</code> it is compulsory to name the pool being shared. We are now also enforcing that only one of <code>cache_size</code> and <code>shared_cache</code> are specified in the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> configuration string. </p>
-<p class="enddd"></p>
-</dd>
+<dd>In the 2.1.2 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> <code>shared_cache</code> configuration option group have changed. The option that was named <code>enable</code> is no longer available. To enable a <code>shared_cache</code> it is compulsory to name the pool being shared. We are now also enforcing that only one of <code>cache_size</code> and <code>shared_cache</code> are specified in the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> configuration string.  </dd>
 </dl>
 <h1><a class="anchor" id="version_211"></a>
 Upgrading to Version 2.1.1</h1>
 <dl>
 <dt>WT_EXTENSION_API::config methods </dt>
-<dd><p class="startdd">In the 2.1.1 release of WiredTiger the configuration string parsing API has been changed and added to a new public handle. The WT_EXTENSION_API::config_strget, WT_EXTENSION_API::config_scan_begin, WT_EXTENSION_API::config_scan_next and WT_EXTENSION_API::config_scan_end have been removed. They have been replaced by a <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a31922e792668c912bfe45d9745e74d4e" title="Create a handle that can be used to parse or create configuration strings compatible with WiredTiger ...">WT_EXTENSION_API::config_parser_open</a> method, which can be used to parse configuration strings. See the <a class="el" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html" title="A handle that can be used to search and traverse configuration strings compatible with WiredTiger API...">WT_CONFIG_PARSER</a> documentation for examples on how to use the updated API. </p>
-<p class="enddd"></p>
-</dd>
+<dd>In the 2.1.1 release of WiredTiger the configuration string parsing API has been changed and added to a new public handle. The WT_EXTENSION_API::config_strget, WT_EXTENSION_API::config_scan_begin, WT_EXTENSION_API::config_scan_next and WT_EXTENSION_API::config_scan_end have been removed. They have been replaced by a <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a31922e792668c912bfe45d9745e74d4e" title="Create a handle that can be used to parse or create configuration strings compatible with WiredTiger ...">WT_EXTENSION_API::config_parser_open</a> method, which can be used to parse configuration strings. See the <a class="el" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html" title="A handle that can be used to search and traverse configuration strings compatible with WiredTiger API...">WT_CONFIG_PARSER</a> documentation for examples on how to use the updated API.  </dd>
 </dl>
 <h1><a class="anchor" id="version_21"></a>
 Upgrading to Version 2.1</h1>
@@ -142,9 +138,7 @@ Upgrading to Version 2.1</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Transaction sync default setting </dt>
-<dd><p class="startdd">In the 2.1 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> <code>transaction_sync</code> configuration setting default value has changed from "dsync" to "fsync". This is due to enhancements to the group commit implementation in WiredTiger - which mean that greater throughput can be achieved with explicit "fsync" calls than by enabling "dsync" on a file handle. Applications that don't execute concurrent transactions may see better throughput with transaction_sync set to "dsync". </p>
-<p class="enddd"></p>
-</dd>
+<dd>In the 2.1 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> <code>transaction_sync</code> configuration setting default value has changed from "dsync" to "fsync". This is due to enhancements to the group commit implementation in WiredTiger - which mean that greater throughput can be achieved with explicit "fsync" calls than by enabling "dsync" on a file handle. Applications that don't execute concurrent transactions may see better throughput with transaction_sync set to "dsync".  </dd>
 </dl>
 <h1><a class="anchor" id="version_20"></a>
 Upgrading to Version 2.0</h1>
@@ -154,9 +148,7 @@ Upgrading to Version 2.0</h1>
 <p class="enddd"></p>
 </dd>
 <dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> LSM configuration options </dt>
-<dd><p class="startdd">In the 2.0 release of WiredTiger the LSM configuration options have been collected into a configuration option subgroup. All configuration options to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> that previously had a prefix of <code>lsm_</code> now belong to the <code>lsm</code> configuration group. If you are explicitly configuring any of the following options, you should review the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> documentation for details of the updated syntax: lsm_auto_throttle, lsm_bloom, lsm_bloom_config, lsm_bloom_bit_count, lsm_bloom_hash_count, lsm_bloom_oldest, lsm_chunk_max, lsm_chunk_size, lsm_merge_max and lsm_merge_threads. </p>
-<p class="enddd"></p>
-</dd>
+<dd>In the 2.0 release of WiredTiger the LSM configuration options have been collected into a configuration option subgroup. All configuration options to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> that previously had a prefix of <code>lsm_</code> now belong to the <code>lsm</code> configuration group. If you are explicitly configuring any of the following options, you should review the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> documentation for details of the updated syntax: lsm_auto_throttle, lsm_bloom, lsm_bloom_config, lsm_bloom_bit_count, lsm_bloom_hash_count, lsm_bloom_oldest, lsm_chunk_max, lsm_chunk_size, lsm_merge_max and lsm_merge_threads.  </dd>
 </dl>
 <h1><a class="anchor" id="version_166"></a>
 Upgrading to Version 1.6.6</h1>
@@ -180,8 +172,7 @@ Upgrading to Version 1.6.6</h1>
 </dd>
 <dt><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html" title="The interface implemented by applications to handle error, informational and progress messages...">WT_EVENT_HANDLER</a> interface changes </dt>
 <dd><p class="startdd">Add a new <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a97c41f95e363a2a7aa9a9739be4d9ac8" title="Callback to handle automatic close of a WiredTiger handle.">WT_EVENT_HANDLER::handle_close</a> callback that WiredTiger will call any time it automatically closes an application session or cursor handle.</p>
-<p>Additionally add a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> parameter into the existing <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af26a6817fcc22499496c15b47c0ef788" title="Callback to handle error messages; by default, error messages are written to the stderr stream...">WT_EVENT_HANDLER::handle_error</a>, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a4b8a4d66d1e4ae5c1e4a87b2eda618d9" title="Callback to handle informational messages; by default, informational messages are written to the stdo...">WT_EVENT_HANDLER::handle_message</a> and <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a14a2a760c981563efb02555c0d0b267d" title="Callback to handle progress messages; by default, no progress messages are written.">WT_EVENT_HANDLER::handle_progress</a> callback functions. </p>
-<p class="enddd"></p>
+<p class="enddd">Additionally add a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> parameter into the existing <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af26a6817fcc22499496c15b47c0ef788" title="Callback to handle error messages; by default, error messages are written to the stderr stream...">WT_EVENT_HANDLER::handle_error</a>, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a4b8a4d66d1e4ae5c1e4a87b2eda618d9" title="Callback to handle informational messages; by default, informational messages are written to the stdo...">WT_EVENT_HANDLER::handle_message</a> and <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a14a2a760c981563efb02555c0d0b267d" title="Callback to handle progress messages; by default, no progress messages are written.">WT_EVENT_HANDLER::handle_progress</a> callback functions.  </p>
 </dd>
 </dl>
 <h1><a class="anchor" id="version_165"></a>
@@ -196,12 +187,9 @@ Upgrading to Version 1.6.5</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Synchronous checkpoint configuration </dt>
-<dd><p class="startdd">The <code>sync</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> has been renamed <code>checkpoint_sync</code>. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The <code>sync</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> has been renamed <code>checkpoint_sync</code>.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_164"></a>
+<h1><a class="anchor" id="version_164"></a>
 Upgrading to Version 1.6.4</h1>
 <dl>
 <dt>File format changes </dt>
@@ -209,12 +197,9 @@ Upgrading to Version 1.6.4</h1>
 <p class="enddd"></p>
 </dd>
 <dt>wt utility load command </dt>
-<dd><p class="startdd">The default behavior of the <code>wt</code> utility's <code>load</code> command has been changed to overwrite existing data, by default, and the <code>-o</code> flag to the <code>load</code> command (overwrite existing data) has been replaced with the <code>-n</code> flag (do not overwrite existing data). Applications requiring the previous default behavior of not overwriting existing data should add the <code>-n</code> option to their command line configuration; applications previously using the <code>-o</code> option on their command line configurations should remove it. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The default behavior of the <code>wt</code> utility's <code>load</code> command has been changed to overwrite existing data, by default, and the <code>-o</code> flag to the <code>load</code> command (overwrite existing data) has been replaced with the <code>-n</code> flag (do not overwrite existing data). Applications requiring the previous default behavior of not overwriting existing data should add the <code>-n</code> option to their command line configuration; applications previously using the <code>-o</code> option on their command line configurations should remove it.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_163"></a>
+<h1><a class="anchor" id="version_163"></a>
 Upgrading to Version 1.6.3</h1>
 <dl>
 <dt>Cursor overwrite configuration </dt>
@@ -224,12 +209,9 @@ Upgrading to Version 1.6.3</h1>
 <p class="enddd"></p>
 </dd>
 <dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> no longer accepts a <code>transactional</code> configuration </dt>
-<dd><p class="startdd">The <code>transactional</code> configuration key has been removed from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>. Any application setting it should simply remove it, no change in application behavior is needed. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The <code>transactional</code> configuration key has been removed from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>. Any application setting it should simply remove it, no change in application behavior is needed.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_162"></a>
+<h1><a class="anchor" id="version_162"></a>
 Upgrading to Version 1.6.2</h1>
 <dl>
 <dt>Table of WiredTiger extension methods </dt>
@@ -241,12 +223,9 @@ Upgrading to Version 1.6.2</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Default checksum configuration </dt>
-<dd><p class="startdd">The default file checksum configuration was changed to <code>uncompressed</code>, which means blocks that are compressed will no longer also include a checksum, by default. Applications using compression insufficient for the purposes of corrupted block identification should change their file checksum configuration to <code>on</code>. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The default file checksum configuration was changed to <code>uncompressed</code>, which means blocks that are compressed will no longer also include a checksum, by default. Applications using compression insufficient for the purposes of corrupted block identification should change their file checksum configuration to <code>on</code>.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_161"></a>
+<h1><a class="anchor" id="version_161"></a>
 Upgrading to Version 1.6.1</h1>
 <dl>
 <dt>Default page sizes </dt>
@@ -258,21 +237,15 @@ Upgrading to Version 1.6.1</h1>
 <p class="enddd"></p>
 </dd>
 <dt><a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a44483644eddbedd07f34e31c5beaf6b5" title="Callback to compress a list of byte strings.">WT_COMPRESSOR::compress_raw</a> signature </dt>
-<dd><p class="startdd">In the 1.6.1 release, the <code>split_pct</code> argument to the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a44483644eddbedd07f34e31c5beaf6b5" title="Callback to compress a list of byte strings.">WT_COMPRESSOR::compress_raw</a> function changed type from <code>u_int</code> to <code>int</code>, applications may require modification to avoid compiler warnings. </p>
-<p class="enddd"></p>
-</dd>
+<dd>In the 1.6.1 release, the <code>split_pct</code> argument to the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a44483644eddbedd07f34e31c5beaf6b5" title="Callback to compress a list of byte strings.">WT_COMPRESSOR::compress_raw</a> function changed type from <code>u_int</code> to <code>int</code>, applications may require modification to avoid compiler warnings.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_160"></a>
+<h1><a class="anchor" id="version_160"></a>
 Upgrading to Version 1.6.0</h1>
 <dl>
 <dt>File format changes </dt>
-<dd><p class="startdd">The underlying file formats changed in the 1.6.0 release; tables and files should be dumped and re-loaded into a new database. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The underlying file formats changed in the 1.6.0 release; tables and files should be dumped and re-loaded into a new database.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_153"></a>
+<h1><a class="anchor" id="version_153"></a>
 Upgrading to Version 1.5.3</h1>
 <dl>
 <dt>Configuration strings </dt>
@@ -317,20 +290,15 @@ The WT_SESSION::msg_printf method was replaced by <a class="el" href="struct_w_t
 <li>
 The <code>exclusive</code> argument to the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf5e6a2d9c55c997af107bd4a5fb3a0c" title="Callback to create a new object.">WT_DATA_SOURCE::create</a> method has been removed; applications may require modifications to resolve compile errors. </li>
 </ul>
-<p class="enddd"></p>
 </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_143"></a>
+<h1><a class="anchor" id="version_143"></a>
 Upgrading to Version 1.4.3</h1>
 <dl>
 <dt>Statistics </dt>
-<dd><p class="startdd">WiredTiger statistics are no longer maintained by default; to configure statistics, use the <code>statistics</code> configuration string to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function. </p>
-<p class="enddd"></p>
-</dd>
+<dd>WiredTiger statistics are no longer maintained by default; to configure statistics, use the <code>statistics</code> configuration string to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> function.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_139"></a>
+<h1><a class="anchor" id="version_139"></a>
 Upgrading to Version 1.3.9</h1>
 <dl>
 <dt>Compression </dt>
@@ -342,21 +310,15 @@ Upgrading to Version 1.3.9</h1>
 <p class="enddd"></p>
 </dd>
 <dt>File format changes </dt>
-<dd><p class="startdd">The underlying file formats changed in the 1.3.9 release; tables and files should be dumped and re-loaded into a new database. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The underlying file formats changed in the 1.3.9 release; tables and files should be dumped and re-loaded into a new database.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_138"></a>
+<h1><a class="anchor" id="version_138"></a>
 Upgrading to Version 1.3.8</h1>
 <dl>
 <dt>Statistics keys </dt>
-<dd><p class="startdd">The <a class="el" href="group__wt.html#statistics_keys">statistics key constants</a> have been renamed to use all capitals, and use consistent prefixes to distinguish between connection statistics and statistics for data sources. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The <a class="el" href="group__wt.html#statistics_keys">statistics key constants</a> have been renamed to use all capitals, and use consistent prefixes to distinguish between connection statistics and statistics for data sources.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_136"></a>
+<h1><a class="anchor" id="version_136"></a>
 Upgrading to Version 1.3.6</h1>
 <dl>
 <dt>Installed library names </dt>
@@ -401,20 +363,15 @@ Upgrading to Version 1.3.6</h1>
 <tr>
 <td>Snappy compression</td><td>"snappy_compress"</td><td>"snappy" </td></tr>
 </table>
-<p class="enddd"></p>
 </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_135"></a>
+<h1><a class="anchor" id="version_135"></a>
 Upgrading to Version 1.3.5</h1>
 <dl>
 <dt>File format changes </dt>
-<dd><p class="startdd">The underlying file formats changed in the 1.3.5 release; tables and files should be dumped and re-loaded into a new database. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The underlying file formats changed in the 1.3.5 release; tables and files should be dumped and re-loaded into a new database.  </dd>
 </dl>
-<hr/>
- <h1><a class="anchor" id="version_13"></a>
+<h1><a class="anchor" id="version_13"></a>
 Upgrading to Version 1.3</h1>
 <dl>
 <dt>Checkpoint and Snapshot </dt>
@@ -468,12 +425,9 @@ wt dump, list -s<br/>
 <p class="enddd"></p>
 </dd>
 <dt>File format changes </dt>
-<dd><p class="startdd">The underlying file formats changed in the 1.3 release; tables and files should be dumped and re-loaded into a new database. </p>
-<p class="enddd"></p>
-</dd>
+<dd>The underlying file formats changed in the 1.3 release; tables and files should be dumped and re-loaded into a new database.  </dd>
 </dl>
-<hr/>
- </div></div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
