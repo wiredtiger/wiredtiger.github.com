@@ -98,7 +98,7 @@ os_cache_dirty_max</h1>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;os_cache_dirty_max=500MB&quot;</span>);</div>
 </div><!-- fragment --><p> The <code>os_cache_dirty_max</code> configuration may not be used in combination with direct I/O.</p>
-<p>The <code>os_cache_dirty_max</code> configuration is based on the non-standard Linux <code>sync_file_range</code> system call and may not available on all platforms.</p>
+<p>The <code>os_cache_dirty_max</code> configuration is based on the non-standard Linux <code>sync_file_range</code> system call and will be ignored if set and that call is not available.</p>
 <h1><a class="anchor" id="tuning_system_buffer_cache_os_cache_max"></a>
 os_cache_max</h1>
 <p>The second configuration option related to the system buffer cache is <code>os_cache_max</code>, the maximum bytes an object is allowed to have in the system buffer cache. Once this many bytes from an object are either read into or written from the system buffer cache, WiredTiger will attempt to evict all of the object's blocks from the buffer cache. This configuration option allows applications to evict blocks from the system buffer cache to limit double-buffering and system buffer cache overhead.</p>
