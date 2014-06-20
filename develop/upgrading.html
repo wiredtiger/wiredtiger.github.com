@@ -102,7 +102,11 @@ user environment variable <code>WIREDTIGER_CONFIG</code> </li>
 <p class="enddd"></p>
 </dd>
 <dt><code>os_cache_dirty_max</code> off for LSM </dt>
-<dd>In some earlier versions of WiredTiger, creating an LSM table automatically configured <code>os_cache_dirty_max</code>, causing additional system calls that slowed some workloads. Applications that benefit from this setting should set it explicitly in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.  </dd>
+<dd><p class="startdd">In some earlier versions of WiredTiger, creating an LSM table automatically configured <code>os_cache_dirty_max</code>, causing additional system calls that slowed some workloads. Applications that benefit from this setting should set it explicitly in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. </p>
+<p class="enddd"></p>
+</dd>
+<dt><code>transaction_sync</code> setting change </dt>
+<dd>In the 2.2.1 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> <code>transaction_sync</code> configuration setting has changed from a string value to a structure with two fields: <code>method</code>, which corresponds to the previous value (<code>dsync</code>, <code>fsync</code> or <code>none</code>), and <code>enabled</code>, which determines whether there is a sync on every transaction commit by default. Applications can enable or disable sync for a specific transaction with the <code>sync</code> setting to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">WT_SESSION::begin_transaction</a>.  </dd>
 </dl>
 <h1><a class="anchor" id="version_220"></a>
 Upgrading to Version 2.2.0</h1>
