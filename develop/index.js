@@ -16,6 +16,8 @@ var index =
     ] ],
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
+    [ "Managing WiredTiger databases", "admin.html", "admin" ],
+    [ "WiredTiger Change Log", "md_changelog.html", null ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
       [ "Upgrading to Version 2.2.1", "upgrading.html#version_221", null ],
       [ "Upgrading to Version 2.2.0", "upgrading.html#version_220", null ],
@@ -38,12 +40,17 @@ var index =
       [ "Upgrading to Version 1.3.5", "upgrading.html#version_135", null ],
       [ "Upgrading to Version 1.3", "upgrading.html#version_13", null ]
     ] ],
-    [ "WiredTiger Change Log", "md_changelog.html", null ],
-    [ "Managing WiredTiger databases", "admin.html", "admin" ],
-    [ "WiredTiger license", "license.html", [
+    [ "WiredTiger licensing", "license.html", [
       [ "3rd party software included in the WiredTiger library binary", "license.html#library", null ],
       [ "3rd party software included in the WiredTiger distribution", "license.html#distribution", null ],
       [ "Public domain software", "license.html#public_domain", null ]
+    ] ],
+    [ "WiredTiger testing", "testing.html", [
+      [ "Unit Test Suite", "testing.html#test_suite", null ],
+      [ "Performance Testing", "testing.html#testing_performance", null ],
+      [ "Stress Testing", "testing.html#testing_stress", null ],
+      [ "Concurrency testing", "testing.html#testing_threads", null ],
+      [ "Static analysis", "testing.html#testing_static", null ]
     ] ],
     [ "WiredTiger community and contact information", "community.html", null ]
 ];

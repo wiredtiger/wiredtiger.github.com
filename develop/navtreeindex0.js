@@ -3,7 +3,7 @@ var NAVTREEINDEX0 =
 ".html":[3,0],
 ".html":[3,0,0],
 ".html":[3,0,0,0],
-"admin.html":[0,6],
+"admin.html":[0,4],
 "annotated.html":[3],
 "architecture.html":[0,0],
 "architecture.html#cache":[0,0,1],
