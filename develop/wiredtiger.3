@@ -1,4 +1,4 @@
-.TH "WiredTiger" 3 "Fri Jul 18 2014" "Version Version 2.2.2" "WiredTiger" \" -*- nroff -*-
+.TH "WiredTiger" 3 "Sun Jul 20 2014" "Version Version 2.2.2" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,12 +7,8 @@ WiredTiger applications will generally use the following classes to access and m
 .PP
 .IP "\(bu" 2
 a \fBWT_CONNECTION\fP represents a connection to a database\&. Most applications will only open one connection to a database for each process\&. All methods in \fBWT_CONNECTION\fP are thread safe\&.
-.PP
-.PP
 .IP "\(bu" 2
 a \fBWT_SESSION\fP represents a context in which database operations are performed\&. Sessions are opened on a specified connection, and applications must open a single session for each thread accessing the database\&.
-.PP
-.PP
 .IP "\(bu" 2
 a \fBWT_CURSOR\fP represents a cursor over a collection of data\&. Cursors are opened in the context of a session (which may have an associated transaction), and can query and update records\&. In the common case, a cursor is used to access records in a table\&. However, cursors can be used on subsets of tables (such as a single column or a projection of multiple columns), as an interface to statistics, configuration data or application-specific data sources\&.
 .PP
@@ -36,9 +32,9 @@ To access a database, first open a connection and create a session handle for th
         const char *key, *value;
         int ret;
 
-        if ((ret = wiredtiger_open(home, NULL, 'create', &conn)) != 0 ||
+        if ((ret = wiredtiger_open(home, NULL, "create", &conn)) != 0 ||
             (ret = conn->open_session(conn, NULL, NULL, &session)) != 0) {
-                fprintf(stderr, 'Error connecting to %s: %s\n',
+                fprintf(stderr, "Error connecting to %s: %s\n",
                     home, wiredtiger_strerror(ret));
                 return (ret);
         }
@@ -54,7 +50,7 @@ Create a table we can use to store data:
 .PP
 .nf
         ret = session->create(session,
-            'table:access', 'key_format=S,value_format=S');
+            "table:access", "key_format=S,value_format=S");
 .fi
 .PP
  This call creates a table called \fC'access'\fP, configured to use strings for its key and value columns\&. (See \fBSchema, Columns, Column Groups, Indices and Projections\fP for more information on tables with other types of key and value columns\&.)
@@ -65,7 +61,7 @@ Now that we have a table, we open a cursor to perform some operations on it:
 .PP
 .nf
         ret = session->open_cursor(session,
-            'table:access', NULL, NULL, &cursor);
+            "table:access", NULL, NULL, &cursor);
 .fi
 .PP
  Here, the string \fC'table:access'\fP specifies that we are opening the cursor on the table named \fC'access'\fP\&.
@@ -74,8 +70,8 @@ Then we insert a new row into the table\&. The \fBWT_CURSOR::set_key\fP and \fBW
 .PP
 .PP
 .nf
-        cursor->set_key(cursor, 'key1');        /* Insert a record\&. */
-        cursor->set_value(cursor, 'value1');
+        cursor->set_key(cursor, "key1");        /* Insert a record\&. */
+        cursor->set_value(cursor, "value1");
         ret = cursor->insert(cursor);
 .fi
 .PP
@@ -88,7 +84,7 @@ Then we insert a new row into the table\&. The \fBWT_CURSOR::set_key\fP and \fBW
                 ret = cursor->get_key(cursor, &key);
                 ret = cursor->get_value(cursor, &value);
 
-                printf('Got record: %s : %s\n', key, value);
+                printf("Got record: %s : %s\n", key, value);
         }
 .fi
 .PP
