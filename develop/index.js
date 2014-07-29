@@ -16,9 +16,14 @@ var index =
     ] ],
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
+    [ "LevelDB compatibility API", "leveldb.html", [
+      [ "Building and using WiredTiger's LevelDB API", "leveldb.html#leveldb_build", null ],
+      [ "Caveats", "leveldb.html#leveldb_caveats", null ]
+    ] ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "WiredTiger Change Log", "md_changelog.html", null ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
+      [ "Upgrading to Version 2.3.0", "upgrading.html#version_230", null ],
       [ "Upgrading to Version 2.2.1", "upgrading.html#version_221", null ],
       [ "Upgrading to Version 2.2.0", "upgrading.html#version_220", null ],
       [ "Upgrading to Version 2.1.2", "upgrading.html#version_212", null ],
@@ -42,7 +47,6 @@ var index =
     ] ],
     [ "WiredTiger licensing", "license.html", [
       [ "3rd party software included in the WiredTiger library", "license.html#library", null ],
-      [ "3rd party software optionally included in the WiredTiger library: LevelDB", "license.html#leveldb", null ],
       [ "3rd party software included in the WiredTiger distribution", "license.html#distribution", null ],
       [ "Public domain software", "license.html#public_domain", null ]
     ] ],

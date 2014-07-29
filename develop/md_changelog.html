@@ -69,7 +69,35 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <div class="title">WiredTiger Change Log </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>WiredTiger release 2.2.1, 2014-06-24</h2>
+<div class="textblock"><h2>WiredTiger release 2.3.0, 2014-07-29</h2>
+<p>The WiredTiger 2.3.0 release contains significant new features, performance enhancements and bug fixes. Significant changes are described below.</p>
+<p>Changes to the WiredTiger API (see upgrading documentation for details):</p>
+<ul>
+<li>Add a LevelDB API implementation for WiredTiger. This includes support for stock LevelDB as well as Basho, HyperLevelDB and RocksDB versions of the API. To build the LevelDB API include &ndash;enable-leveldb in the configure command, to specify compatability with an alternative LevelDB API use &ndash;enable-leveldb=[basho,hyper,rocksdb]. [#1028]</li>
+</ul>
+<ul>
+<li>Add ability to build some common extensions into the WiredTiger library. This means that the libraries for those extensions don't need to be dynamically loaded at runtime. Currently supported extensions are Snappy compression and zlib compression. The option can be enabled by passing &ndash;with-builtins=[snappy,zlib] to the configure command line.</li>
+</ul>
+<ul>
+<li>Add a new configuration to wiredtiger_open: statistics_log=(on_close=true), that causes a set of statistics to be logged on <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a>. [#1086]</li>
+</ul>
+<ul>
+<li>Add a new configuration to wiredtiger_open: exclusive, that causes the open to fail if the database already exists.</li>
+</ul>
+<p>Other significant changes:</p>
+<ul>
+<li>Performance improvement for high throughput workloads using multiple eviction threads. Performance of some workloads improves by over 15% [#1087]</li>
+</ul>
+<ul>
+<li>Significant performance optimizations for queries, giving up to 20% throughput improvement for in-memory query workloads. <a href="https://github.com/wiredtiger/wiredtiger/wiki/Query-throughput">https://github.com/wiredtiger/wiredtiger/wiki/Query-throughput</a></li>
+</ul>
+<ul>
+<li>Fix an off-by-one bug that could lead to ENOMEM during commit with logging. [#1104][#1121]</li>
+</ul>
+<ul>
+<li>Allow bulk loads to multiple files to complete in parallel. [#1114][#1126]</li>
+</ul>
+<h2>WiredTiger release 2.2.1, 2014-06-24</h2>
 <p>The WiredTiger 2.2.1 release contains mainly performance enhancements and bug fixes. Significant changes are described below.</p>
 <p>Changes to the WiredTiger API (see upgrading documentation for details):</p>
 <ul>
