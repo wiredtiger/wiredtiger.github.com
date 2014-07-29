@@ -53,14 +53,19 @@ var programming =
       [ "Error return name space", "name_space.html#error", null ]
     ] ],
     [ "Signal handling", "signals.html", null ],
+    [ "Checkpoints", "checkpoints.html", null ],
+    [ "Compaction", "compaction.html", null ],
+    [ "Hot backup", "hot_backup.html", null ],
+    [ "Statistics", "statistics.html", [
+      [ "Statistics logging", "statistics.html#statistics_log", null ]
+    ] ],
+    [ "Per-process shared caches", "shared_cache.html", null ],
     [ "Memory allocator", "tune_memory_allocator.html", null ],
     [ "Page and overflow item sizes", "tune_page_sizes.html", null ],
-    [ "Cache configuration", "cache_configuration.html", [
-      [ "Cache configuration", "cache_configuration.html#cache_basic", null ],
-      [ "Cache size", "cache_configuration.html#tuning_cache_size", null ],
-      [ "Cache resident objects", "cache_configuration.html#tuning_cache_resident", null ],
-      [ "Shared cache configuration", "cache_configuration.html#shared_cache", null ],
-      [ "Eviction configuration", "cache_configuration.html#cache_eviction", null ]
+    [ "Cache", "tune_cache.html", [
+      [ "Cache size", "tune_cache.html#tuning_cache_size", null ],
+      [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
+      [ "Eviction tuning", "tune_cache.html#cache_eviction", null ]
     ] ],
     [ "Bulk-load", "bulk_load.html", null ],
     [ "Cursor persistence", "tune_cursor_persist.html", null ],
@@ -80,12 +85,6 @@ var programming =
     [ "Linux zone reclamation memory management", "tune_zone_reclaim.html", null ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Connection close", "tune_close.html", null ],
-    [ "Checkpoints", "checkpoints.html", null ],
-    [ "Compaction", "compaction.html", null ],
-    [ "Hot backup", "hot_backup.html", null ],
-    [ "Statistics", "statistics.html", [
-      [ "Statistics logging", "statistics.html#statistics_log", null ]
-    ] ],
     [ "Custom Data Sources", "custom_data_sources.html", [
       [ "WT_DATA_SOURCE methods", "custom_data_sources.html#custom_ds_methods", [
         [ "WT_DATA_SOURCE::create method", "custom_data_sources.html#custom_ds_create", null ]
