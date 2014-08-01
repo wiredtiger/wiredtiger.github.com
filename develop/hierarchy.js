@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "WT_ASYNC_CALLBACK", "struct____wt__async__callback.html", null ],
     [ "WT_ASYNC_OP", "struct____wt__async__op.html", null ],
+    [ "WT_LSN", "group__wt.html#struct____wt__lsn", null ],
     [ "WT_TXN_NOTIFY", "struct____wt__txn__notify.html", null ],
     [ "com.wiredtiger.db.AsyncCallback", "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html", null ],
     [ "com.wiredtiger.db.AsyncOp", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html", null ],
@@ -24,7 +25,7 @@ var hierarchy =
     ] ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", null ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", null ],
-    [ "WT_CONFIG_ITEM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html", null ],
+    [ "WT_CONFIG_ITEM", "group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m", null ],
     [ "WT_CONFIG_PARSER", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html", null ],
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", null ],
     [ "WT_CURSOR", "struct_w_t___c_u_r_s_o_r.html", null ],

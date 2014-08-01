@@ -6,6 +6,7 @@ var cursors =
     [ "Raw mode", "cursors.html#cursor_raw", null ],
     [ "Reading WiredTiger Metadata", "cursors.html#metadata", null ],
     [ "Cursor operations", "cursor_ops.html", "cursor_ops" ],
+    [ "Log cursors", "cursor_log.html", null ],
     [ "Data Sources", "data_sources.html", [
       [ "Builtin data sources", "data_sources.html#data_builtin", [
         [ "Raw Files", "data_sources.html#data_files", null ],
