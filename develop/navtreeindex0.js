@@ -16,9 +16,7 @@ var NAVTREEINDEX0 =
 "basic_api.html#basic_connection":[0,3,0,0],
 "basic_api.html#basic_create_table":[0,3,0,1],
 "basic_api.html#basic_cursors":[0,3,0,2],
-"bulk_load.html":[0,3,8],
-"bulk_load.html":[0,3,21],
-"checkpoints.html":[0,3,13],
+"checkpoints.html":[0,3,12],
 "classcom_1_1wiredtiger_1_1db_1_1_async_op.html":[2,2,0],
 "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a09774de0d5a9e4a6c3bea35e1b443771":[2,2,0,22],
 "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a0f1b77512fee878da43e34b3d84c5f25":[2,2,0,37],
@@ -249,5 +247,7 @@ var NAVTREEINDEX0 =
 "command_line.html#util_dump":[0,4,7],
 "command_line.html#util_dump_options":[0,4,7,1],
 "command_line.html#util_dump_synopsis":[0,4,7,0],
-"command_line.html#util_global_description":[0,4,1]
+"command_line.html#util_global_description":[0,4,1],
+"command_line.html#util_global_options":[0,4,2],
+"command_line.html#util_global_synopsis":[0,4,0]
 };

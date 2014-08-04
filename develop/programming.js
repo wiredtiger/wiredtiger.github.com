@@ -35,7 +35,6 @@ var programming =
       ] ]
     ] ],
     [ "File formats and compression", "file_formats.html", "file_formats" ],
-    [ "Bulk-load", "bulk_load.html", null ],
     [ "Compressors", "compression.html", [
       [ "Using zlib compression", "compression.html#compression_zlib", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],
@@ -67,7 +66,7 @@ var programming =
       [ "Eviction tuning", "tune_cache.html#cache_eviction", null ],
       [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ]
     ] ],
-    [ "Bulk-load", "bulk_load.html", null ],
+    [ "Bulk-load", "tune_bulk_load.html", null ],
     [ "Cursor persistence", "tune_cursor_persist.html", null ],
     [ "Read-only objects", "tune_read_only_objects.html", null ],
     [ "Checksums", "tune_checksum.html", null ],
