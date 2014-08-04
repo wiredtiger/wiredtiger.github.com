@@ -85,6 +85,7 @@ var programming =
     [ "Linux zone reclamation memory management", "tune_zone_reclaim.html", null ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Connection close", "tune_close.html", null ],
+    [ "Simulating workloads with wtperf", "wtperf.html", null ],
     [ "Custom Data Sources", "custom_data_sources.html", [
       [ "WT_DATA_SOURCE methods", "custom_data_sources.html#custom_ds_methods", [
         [ "WT_DATA_SOURCE::create method", "custom_data_sources.html#custom_ds_create", null ]
@@ -114,6 +115,10 @@ var programming =
       [ "WIREDTIGER_CONFIG environment variable", "database_config.html#config_env", null ],
       [ "WiredTiger.config file", "database_config.html#config_file", null ],
       [ "WiredTiger.basecfg file", "database_config.html#config_base", null ]
+    ] ],
+    [ "Hot backup", "hot_backup.html", null ],
+    [ "Filesystems", "filesystems.html", [
+      [ "Remote file systems", "filesystems.html#remote", null ]
     ] ],
     [ "Security", "security.html", [
       [ "Database directory permissions", "security.html#directory_permissions", null ],

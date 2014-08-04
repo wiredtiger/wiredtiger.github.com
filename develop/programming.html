@@ -69,7 +69,8 @@ $(document).ready(function(){initNavTree('programming.html','');});
 <div class="title">Writing WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This section covers topics of interest for programmers writing WiredTiger applications:</p>
+<div class="textblock"><p>This section covers topics of interest for programmers writing WiredTiger applications.</p>
+<p>We follow SQL terminology: a database is set of tables managed together. Tables consist of rows, where each row is a key and its associated value. Tables may optionally have an associated schema, splitting the value into a set of columns. Tables may also have associated indices, each of which is ordered by one or more columns.</p>
 <h2>Using the API</h2>
 <ul>
 <li><a class="el" href="basic_api.html">Getting Started with the API</a></li>
@@ -117,15 +118,21 @@ $(document).ready(function(){initNavTree('programming.html','');});
 <li><a class="el" href="tune_statistics.html">Performance monitoring with statistics</a></li>
 <li><a class="el" href="tune_close.html">Connection close</a></li>
 </ul>
+<h2>Simulating workloads in Wiredtiger</h2>
+<ul>
+<li><a class="el" href="wtperf.html">Simulating workloads with wtperf</a></li>
+</ul>
 <h2>Extending WiredTiger</h2>
 <ul>
 <li><a class="el" href="custom_data_sources.html">Custom Data Sources</a></li>
 <li><a class="el" href="helium.html">WiredTiger Helium support</a></li>
 </ul>
-<h2>Administering a WiredTiger database</h2>
+<h2>Managing WiredTiger databases</h2>
 <ul>
 <li><a class="el" href="home.html">Database Home Directory</a></li>
 <li><a class="el" href="database_config.html">Database Configuration</a></li>
+<li><a class="el" href="hot_backup.html">Hot backup</a></li>
+<li><a class="el" href="filesystems.html">Filesystems</a></li>
 <li><a class="el" href="security.html">Security</a> </li>
 </ul>
 </div></div><!-- contents -->

@@ -7,19 +7,19 @@ var index =
       [ "Production quality", "architecture.html#quality", null ],
       [ "NoSQL and Open Source", "architecture.html#nosql", null ]
     ] ],
-    [ "How to build and install WiredTiger", "install.html", [
+    [ "Building and installing WiredTiger", "install.html", [
       [ "Building using Git and GitHub", "install.html#github", null ],
       [ "Building WiredTiger", "install.html#building", null ],
       [ "Installing WiredTiger", "install.html#installing", null ],
       [ "Configuring WiredTiger", "install.html#configure", null ],
       [ "Changing compiler or loader options", "install.html#compiler", null ]
     ] ],
-    [ "Writing WiredTiger applications", "programming.html", "programming" ],
-    [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "LevelDB compatibility API", "leveldb.html", [
       [ "Building and using WiredTiger's LevelDB API", "leveldb.html#leveldb_build", null ],
       [ "Caveats", "leveldb.html#leveldb_caveats", null ]
     ] ],
+    [ "Writing WiredTiger applications", "programming.html", "programming" ],
+    [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "WiredTiger Change Log", "md_changelog.html", null ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
