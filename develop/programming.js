@@ -64,8 +64,8 @@ var programming =
     [ "Page and overflow item sizes", "tune_page_sizes.html", null ],
     [ "Cache", "tune_cache.html", [
       [ "Cache size", "tune_cache.html#tuning_cache_size", null ],
-      [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
-      [ "Eviction tuning", "tune_cache.html#cache_eviction", null ]
+      [ "Eviction tuning", "tune_cache.html#cache_eviction", null ],
+      [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ]
     ] ],
     [ "Bulk-load", "bulk_load.html", null ],
     [ "Cursor persistence", "tune_cursor_persist.html", null ],

@@ -79,19 +79,12 @@ Cache size</h1>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474" title="Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX...">wiredtiger_strerror</a>(ret));</div>
 </div><!-- fragment --><p> The effectiveness of the chosen cache size can be measured by reviewing the page eviction statistics for the database.</p>
-<h1><a class="anchor" id="tuning_cache_resident"></a>
-Cache resident objects</h1>
-<p>Cache resident objects (objects never considered for the purposes of cache eviction), can be configured with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> "cache_resident" configuration string.</p>
-<p>Configuring a cache resident object has two effects: first, once the object's pages have been instantiated in memory, no further I/O cost is ever paid for object access, minimizing potential latency. Second, in-memory objects can be accessed faster than objects tracked for potential eviction, and applications able to guarantee sufficient memory that an object need never be evicted can significantly increase their performance.</p>
-<p>An example of configuring a cache-resident object:</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=r,value_format=S,cache_resident=true&quot;</span>);</div>
-</div><!-- fragment --> <h1><a class="anchor" id="cache_eviction"></a>
+<h1><a class="anchor" id="cache_eviction"></a>
 Eviction tuning</h1>
 <p>When an application approaches the maximum cache size, WiredTiger begins eviction to stop memory use from growing too large, approximating a least-recently-used algorithm.</p>
-<p>WiredTiger provides several configuration options for tuning how pages are evicted from the cache. Different values will improve performance depending on an application's particular workload. Generally, eviction tuning is more important for applications for which latency is a primary concern, because eviction can cause latency spikes for worker threads.</p>
+<p>WiredTiger provides several configuration options for tuning how pages are evicted from the cache. Different settings will improve performance depending on an application's particular workload. Customizing the eviction configuration settings can reduce latency spikes in application threads and can improve throughput in some applications.</p>
 <p>WiredTiger eviction tuning options can be configured when first opening a database via <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>, or changed after open with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">WT_CONNECTION::reconfigure</a>.</p>
-<p>The <code>eviction_trigger</code> configuration value is the percentage of the total cache size that will start eviction. By default, eviction begins when the cache is 95% full, however, an application concerned about a latency spike as the cache becomes full might want to begin eviction earlier.</p>
+<p>The <code>eviction_trigger</code> configuration value is the occupied percentage of the total cache size that causes eviction to start. By default, WiredTiger begins evicting pages when the cache is 95% full. An application concerned about a latency spike as the cache becomes full might want to begin eviction earlier.</p>
 <p>The <code>eviction_target</code> configuration value is the overall target for eviction, expressed as a percentage of total cache size; that is, once eviction begins, it will proceed until the target percentage of bytes in the cache is reached. Note the <code>eviction_target</code> configuration value is ignored until eviction is triggered.</p>
 <p>The <code>eviction_dirty_target</code> configuration value is the overall dirty byte target for eviction, expressed as a percentage of total cache size; that is, once eviction begins, it will proceed until the target percentage of dirty bytes in the cache is reached. Note the <code>eviction_dirty_target</code> configuration value is ignored until eviction is triggered.</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
@@ -104,6 +97,19 @@ Eviction tuning</h1>
 <div class="fragment"><div class="line">        <span class="comment">/* Configure an additional 4 eviction support threads. */</span></div>
 <div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,eviction_trigger=90,eviction_workers=4&quot;</span>, &amp;conn);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="tuning_cache_resident"></a>
+Cache resident objects</h1>
+<p>Objects can be created as cache resident - that is their contents will remain in cache and never be considered for the purposes of cache eviction. Cache residence can be configured with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> "cache_resident" configuration string.</p>
+<p>Configuring a cache resident object has several effects:</p>
+<ul>
+<li>Once the object's pages have been created or instantiated in memory no further I/O cost is ever paid for object access, minimizing potential latency.</li>
+<li>Cache resident objects can be accessed faster than objects tracked for potential eviction.</li>
+<li>If cache resident objects require a significant proportion of the configured cache size then non cache-resident objects can incur significantly higher I/O churn.</li>
+<li>If cache resident objects require more space than the configured cache size, then further operations will either return error or stall until space is made available by closing objects.</li>
+</ul>
+<p>An example of configuring a cache-resident object:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=r,value_format=S,cache_resident=true&quot;</span>);</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
