@@ -83,7 +83,7 @@ $(document).ready(function(){initNavTree('classcom_1_1wiredtiger_1_1db_1_1_async
 </div><!--header-->
 <div class="contents">
 
-<p> 
+<p>A <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation.">WT_ASYNC_OP</a> handle is the interface to an asynchronous operation.  
  <a href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -205,13 +205,13 @@ String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html">Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getConnection</b> ()</td></tr>
 <tr class="separator:aa306397a421f95bbfcbf71ecefaed7a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb4a7d8e5e3c32ddc21a3115f01fb1d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html#adb4a7d8e5e3c32ddc21a3115f01fb1d3">compact</a> ()  throws com.wiredtiger.db.WiredTigerException </td></tr>
-<tr class="memdesc:adb4a7d8e5e3c32ddc21a3115f01fb1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight"> <a href="#adb4a7d8e5e3c32ddc21a3115f01fb1d3">More...</a><br/></td></tr>
+<tr class="memdesc:adb4a7d8e5e3c32ddc21a3115f01fb1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact a live row- or column-store btree or LSM tree.  <a href="#adb4a7d8e5e3c32ddc21a3115f01fb1d3">More...</a><br/></td></tr>
 <tr class="separator:adb4a7d8e5e3c32ddc21a3115f01fb1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d5521fd573b627f44faab159608a9d9"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a5d5521fd573b627f44faab159608a9d9">getId</a> ()</td></tr>
-<tr class="memdesc:a5d5521fd573b627f44faab159608a9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight"> <a href="#a5d5521fd573b627f44faab159608a9d9">More...</a><br/></td></tr>
+<tr class="memdesc:a5d5521fd573b627f44faab159608a9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the unique identifier for this operation.  <a href="#a5d5521fd573b627f44faab159608a9d9">More...</a><br/></td></tr>
 <tr class="separator:a5d5521fd573b627f44faab159608a9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a42ce3f7c6dda417820044208fc3b41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html">AsyncOpType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a8a42ce3f7c6dda417820044208fc3b41">getType</a> ()</td></tr>
-<tr class="memdesc:a8a42ce3f7c6dda417820044208fc3b41"><td class="mdescLeft">&#160;</td><td class="mdescRight"> <a href="#a8a42ce3f7c6dda417820044208fc3b41">More...</a><br/></td></tr>
+<tr class="memdesc:a8a42ce3f7c6dda417820044208fc3b41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type for this operation.  <a href="#a8a42ce3f7c6dda417820044208fc3b41">More...</a><br/></td></tr>
 <tr class="separator:a8a42ce3f7c6dda417820044208fc3b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -278,7 +278,12 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
 <tr class="separator:aae3c3b05e475a2592793f4d2c45414e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"></div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>A <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation.">WT_ASYNC_OP</a> handle is the interface to an asynchronous operation. </p>
+<p>An asynchronous operation describes a data manipulation to be performed asynchronously by a WiredTiger worker thread. These operations implement the CRUD (create, read, update and delete) operations. Each operation is a self-contained work unit. The operation will be performed in the context of the worker thread's session. Each operation is performed within the context of a transaction. The application is notified of its completion with a callback. The transaction is resolved once the callback returns.</p>
+<p>The table referenced in an operation must already exist.</p>
+<p>Raw data is represented by key/value pairs of <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> structures, but operations can also provide access to fields within the key and value if the formats are described in the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method.</p>
+<p><b>Thread safety:</b> A <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation.">WT_ASYNC_OP</a> handle may not be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="adb4a7d8e5e3c32ddc21a3115f01fb1d3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -292,7 +297,20 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
       </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Compact a live row- or column-store btree or LSM tree. </p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Compact a table asynchronously, limiting the run-time to 5 minutes.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle.">async_new_op</a>(</div>
+<div class="line">            conn, <span class="stringliteral">&quot;table:async&quot;</span>, <span class="stringliteral">&quot;timeout=300&quot;</span>, &amp;ex_asynckeys.iface, &amp;op);</div>
+<div class="line">        ret = op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#ae6421d4c43369146502e8c7b54c06ac0" title="Compact a live row- or column-store btree or LSM tree.">compact</a>(op);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">op</td><td>the operation handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -309,7 +327,16 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
       </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Get the unique identifier for this operation. </p>
+<div class="fragment"><div class="line">        <span class="comment">/* Retrieve the operation&#39;s 64-bit identifier. */</span></div>
+<div class="line">        <span class="keywordtype">id</span> = op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#aa10a973cc683c48944f4909e2f18b3b9" title="Get the unique identifier for this operation.">get_id</a>(op);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">op</td><td>the operation handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -500,7 +527,18 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
       </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Get the type for this operation. </p>
+<div class="fragment"><div class="line">        <span class="comment">/* Retrieve the operation&#39;s WT_ASYNC_OPTYPE type. */</span></div>
+<div class="line">        type = op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#adb476ee741ca2483fad081c892aea420" title="Get the type for this operation.">get_type</a>(op);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">op</td><td>the operation handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the WT_ASYNC_OPTYPE of this operation </dd>
+<dd>
+zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>

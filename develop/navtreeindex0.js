@@ -11,6 +11,12 @@ var NAVTREEINDEX0 =
 "architecture.html#multi_core":[0,0,0],
 "architecture.html#nosql":[0,0,4],
 "architecture.html#quality":[0,0,3],
+"async.html":[0,3,16],
+"async.html#async_alloc":[0,3,16,1],
+"async.html#async_config":[0,3,16,0],
+"async.html#async_flush":[0,3,16,3],
+"async.html#async_operations":[0,3,16,2],
+"async.html#async_transactions":[0,3,16,4],
 "basic_api.html":[0,3,0],
 "basic_api.html#basic_close":[0,3,0,3],
 "basic_api.html#basic_connection":[0,3,0,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX0 =
 "command_line.html#util_create_synopsis":[0,4,5,0],
 "command_line.html#util_drop":[0,4,6],
 "command_line.html#util_drop_options":[0,4,6,1],
-"command_line.html#util_drop_synopsis":[0,4,6,0],
-"command_line.html#util_dump":[0,4,7],
-"command_line.html#util_dump_options":[0,4,7,1],
-"command_line.html#util_dump_synopsis":[0,4,7,0],
-"command_line.html#util_global_description":[0,4,1],
-"command_line.html#util_global_options":[0,4,2],
-"command_line.html#util_global_synopsis":[0,4,0]
+"command_line.html#util_drop_synopsis":[0,4,6,0]
 };

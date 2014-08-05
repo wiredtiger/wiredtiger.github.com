@@ -27,8 +27,8 @@ var group__wt__ext =
     [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", [
       [ "extract", "struct_w_t___e_x_t_r_a_c_t_o_r.html#a7a7069beebb84ffaa8ee02f8d7ebb162", null ]
     ] ],
-    [ "WT_TXN_NOTIFY", "struct____wt__txn__notify.html", [
-      [ "notify", "struct____wt__txn__notify.html#a37f71719969554d56292473eec533e80", null ]
+    [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", [
+      [ "notify", "struct_w_t___t_x_n___n_o_t_i_f_y.html#a37f71719969554d56292473eec533e80", null ]
     ] ],
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", [
       [ "collate", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aee6e3e96ba7e7edacc0591b3d8c4edc9", null ],

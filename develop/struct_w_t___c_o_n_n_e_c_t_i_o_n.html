@@ -104,7 +104,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a43d649d7eca3c9c281a833ec4e73473b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a43d649d7eca3c9c281a833ec4e73473b">async_flush</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection)</td></tr>
 <tr class="memdesc:a43d649d7eca3c9c281a833ec4e73473b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for all outstanding operations to complete.  <a href="#a43d649d7eca3c9c281a833ec4e73473b">More...</a><br/></td></tr>
 <tr class="separator:a43d649d7eca3c9c281a833ec4e73473b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cfd7bfb13c5b2ad8499f44e43d62672"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672">async_new_op</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *uri, const char *config, WT_ASYNC_CALLBACK *callback, WT_ASYNC_OP **asyncopp)</td></tr>
+<tr class="memitem:a0cfd7bfb13c5b2ad8499f44e43d62672"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672">async_new_op</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *uri, const char *config, <a class="el" href="struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html">WT_ASYNC_CALLBACK</a> *callback, <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html">WT_ASYNC_OP</a> **asyncopp)</td></tr>
 <tr class="memdesc:a0cfd7bfb13c5b2ad8499f44e43d62672"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an async operation handle.  <a href="#a0cfd7bfb13c5b2ad8499f44e43d62672">More...</a><br/></td></tr>
 <tr class="separator:a0cfd7bfb13c5b2ad8499f44e43d62672"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Session handles</div></td></tr>
@@ -136,7 +136,7 @@ Public Member Functions</h2></td></tr>
 <p>The connection may be opened within the same address space as the caller or accessed over a socket connection.</p>
 <p>Most applications will open a single connection to a database for each process. The first process to open a connection to a database will access the database in its own address space. Subsequent connections (if allowed) will communicate with the first process over a socket connection to perform their operations.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a> handle may be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a0">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a0">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a0">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a13">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#_a4">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#_a0">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#_a0">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#_a0">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a0">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a16">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a0">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a0">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a10">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a0">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a0">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a13">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#_a4">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#_a0">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#_a0">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#_a0">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a0">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a16">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a0">ex_thread.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a89290382c55f20e5a4e1bc9216c7a8c8"></a>
 <div class="memitem">
@@ -427,7 +427,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Wait for all outstanding operations to complete. </p>
-<div class="fragment"><div class="line">        wt_conn-&gt;async_flush(wt_conn);</div>
+<div class="fragment"><div class="line">        <span class="comment">/* Wait for all outstanding operations to complete. */</span></div>
+<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a43d649d7eca3c9c281a833ec4e73473b" title="Wait for all outstanding operations to complete.">async_flush</a>(conn);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -435,7 +436,8 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_async_8c-example.html#a19">ex_async.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a class="anchor" id="a0cfd7bfb13c5b2ad8499f44e43d62672"></a>
@@ -463,13 +465,13 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">WT_ASYNC_CALLBACK *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html">WT_ASYNC_CALLBACK</a> *&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">WT_ASYNC_OP **&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___a_s_y_n_c___o_p.html">WT_ASYNC_OP</a> **&#160;</td>
           <td class="paramname"><em>asyncopp</em>&#160;</td>
         </tr>
         <tr>
@@ -481,19 +483,18 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return an async operation handle. </p>
-<div class="fragment"><div class="line">                op = NULL;</div>
-<div class="line">retry:</div>
-<div class="line">                ret = wt_conn-&gt;async_new_op(wt_conn, uri, NULL,</div>
-<div class="line">                    &amp;ex_asynckeys.iface, &amp;op);</div>
-<div class="line">                <span class="keywordflow">if</span> (ret != 0) {</div>
+<div class="fragment"><div class="line">                <span class="keywordflow">while</span> ((ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle.">async_new_op</a>(conn,</div>
+<div class="line">                    <span class="stringliteral">&quot;table:async&quot;</span>, NULL, &amp;ex_asynckeys.iface, &amp;op)) != 0) {</div>
 <div class="line">                        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">                         * If we used up all the ops, pause and retry to</span></div>
-<div class="line"><span class="comment">                         * give the workers a chance to process them.</span></div>
+<div class="line"><span class="comment">                         * If we used up all the handles, pause and retry to</span></div>
+<div class="line"><span class="comment">                         * give the workers a chance to catch up.</span></div>
 <div class="line"><span class="comment">                         */</span></div>
 <div class="line">                        fprintf(stderr,</div>
-<div class="line">                            <span class="stringliteral">&quot;Iteration %d: async_new_op ret %d\n&quot;</span>,i,ret);</div>
-<div class="line">                        sleep(1);</div>
-<div class="line">                        <span class="keywordflow">goto</span> retry;</div>
+<div class="line">                            <span class="stringliteral">&quot;asynchronous operation handle not available\n&quot;</span>);</div>
+<div class="line">                        <span class="keywordflow">if</span> (ret == EBUSY)</div>
+<div class="line">                                sleep(1);</div>
+<div class="line">                        <span class="keywordflow">else</span></div>
+<div class="line">                                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">                }</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -518,7 +519,8 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_async_8c-example.html#a15">ex_async.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a class="anchor" id="af535c517df851eeac8ebf3594d40b545"></a>
@@ -562,7 +564,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a15">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a16">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a13">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a21">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a9">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a6">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a5">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a8">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a20">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a23">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a15">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a15">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a22">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a16">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a13">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a21">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a9">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a6">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a5">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a8">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a20">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a23">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a15">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -848,7 +850,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a4">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a5">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a5">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a17">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a8">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a3">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a4">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a4">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a5">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a18">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a3">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a4">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a13">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a5">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a5">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a17">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a8">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#a3">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#a4">ex_hello.c</a>, <a class="el" href="ex_pack_8c-example.html#a4">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a5">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a18">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a3">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>

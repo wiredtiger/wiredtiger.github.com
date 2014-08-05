@@ -160,7 +160,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Wait for all outstanding operations to complete. </p>
-<div class="fragment"><div class="line">        wt_conn-&gt;async_flush(wt_conn);</div>
+<div class="fragment"><div class="line">        <span class="comment">/* Wait for all outstanding operations to complete. */</span></div>
+<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a43d649d7eca3c9c281a833ec4e73473b" title="Wait for all outstanding operations to complete.">async_flush</a>(conn);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -202,19 +203,18 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Return an async operation handle. </p>
-<div class="fragment"><div class="line">                op = NULL;</div>
-<div class="line">retry:</div>
-<div class="line">                ret = wt_conn-&gt;async_new_op(wt_conn, uri, NULL,</div>
-<div class="line">                    &amp;ex_asynckeys.iface, &amp;op);</div>
-<div class="line">                <span class="keywordflow">if</span> (ret != 0) {</div>
+<div class="fragment"><div class="line">                <span class="keywordflow">while</span> ((ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle.">async_new_op</a>(conn,</div>
+<div class="line">                    <span class="stringliteral">&quot;table:async&quot;</span>, NULL, &amp;ex_asynckeys.iface, &amp;op)) != 0) {</div>
 <div class="line">                        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">                         * If we used up all the ops, pause and retry to</span></div>
-<div class="line"><span class="comment">                         * give the workers a chance to process them.</span></div>
+<div class="line"><span class="comment">                         * If we used up all the handles, pause and retry to</span></div>
+<div class="line"><span class="comment">                         * give the workers a chance to catch up.</span></div>
 <div class="line"><span class="comment">                         */</span></div>
 <div class="line">                        fprintf(stderr,</div>
-<div class="line">                            <span class="stringliteral">&quot;Iteration %d: async_new_op ret %d\n&quot;</span>,i,ret);</div>
-<div class="line">                        sleep(1);</div>
-<div class="line">                        <span class="keywordflow">goto</span> retry;</div>
+<div class="line">                            <span class="stringliteral">&quot;asynchronous operation handle not available\n&quot;</span>);</div>
+<div class="line">                        <span class="keywordflow">if</span> (ret == EBUSY)</div>
+<div class="line">                                sleep(1);</div>
+<div class="line">                        <span class="keywordflow">else</span></div>
+<div class="line">                                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">                }</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

@@ -58,6 +58,13 @@ var programming =
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
     ] ],
+    [ "Asynchronous operations", "async.html", [
+      [ "Configuring asynchronous operations", "async.html#async_config", null ],
+      [ "Allocating an asynchronous operations handle", "async.html#async_alloc", null ],
+      [ "Executing asynchronous operations", "async.html#async_operations", null ],
+      [ "Waiting for outstanding operations to complete", "async.html#async_flush", null ],
+      [ "Asynchronous operations and transactions", "async.html#async_transactions", null ]
+    ] ],
     [ "Per-process shared caches", "shared_cache.html", null ],
     [ "Memory allocator", "tune_memory_allocator.html", null ],
     [ "Page and overflow item sizes", "tune_page_sizes.html", null ],

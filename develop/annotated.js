@@ -21,10 +21,9 @@ var annotated =
         ] ]
       ] ]
     ] ],
-    [ "WT_ASYNC_CALLBACK", "struct____wt__async__callback.html", "struct____wt__async__callback" ],
-    [ "WT_ASYNC_OP", "struct____wt__async__op.html", "struct____wt__async__op" ],
     [ "WT_LSN", "group__wt.html#struct____wt__lsn", "group__wt" ],
-    [ "WT_TXN_NOTIFY", "struct____wt__txn__notify.html", "struct____wt__txn__notify" ],
+    [ "WT_ASYNC_CALLBACK", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k" ],
+    [ "WT_ASYNC_OP", "struct_w_t___a_s_y_n_c___o_p.html", "struct_w_t___a_s_y_n_c___o_p" ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", "struct_w_t___c_o_l_l_a_t_o_r" ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", "struct_w_t___c_o_m_p_r_e_s_s_o_r" ],
     [ "WT_CONFIG_ITEM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html", "struct_w_t___c_o_n_f_i_g___i_t_e_m" ],
@@ -36,5 +35,6 @@ var annotated =
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i" ],
     [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", "struct_w_t___e_x_t_r_a_c_t_o_r" ],
     [ "WT_ITEM", "group__wt.html#struct_w_t___i_t_e_m", "group__wt" ],
-    [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", "struct_w_t___s_e_s_s_i_o_n" ]
+    [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", "struct_w_t___s_e_s_s_i_o_n" ],
+    [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", "struct_w_t___t_x_n___n_o_t_i_f_y" ]
 ];
