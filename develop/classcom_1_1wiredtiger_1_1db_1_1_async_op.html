@@ -205,7 +205,7 @@ String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html">Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getConnection</b> ()</td></tr>
 <tr class="separator:aa306397a421f95bbfcbf71ecefaed7a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb4a7d8e5e3c32ddc21a3115f01fb1d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html#adb4a7d8e5e3c32ddc21a3115f01fb1d3">compact</a> ()  throws com.wiredtiger.db.WiredTigerException </td></tr>
-<tr class="memdesc:adb4a7d8e5e3c32ddc21a3115f01fb1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact a live row- or column-store btree or LSM tree.  <a href="#adb4a7d8e5e3c32ddc21a3115f01fb1d3">More...</a><br/></td></tr>
+<tr class="memdesc:adb4a7d8e5e3c32ddc21a3115f01fb1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoke the underlying <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> method; see that method for configuration, return and error values.  <a href="#adb4a7d8e5e3c32ddc21a3115f01fb1d3">More...</a><br/></td></tr>
 <tr class="separator:adb4a7d8e5e3c32ddc21a3115f01fb1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d5521fd573b627f44faab159608a9d9"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a5d5521fd573b627f44faab159608a9d9">getId</a> ()</td></tr>
 <tr class="memdesc:a5d5521fd573b627f44faab159608a9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the unique identifier for this operation.  <a href="#a5d5521fd573b627f44faab159608a9d9">More...</a><br/></td></tr>
@@ -297,20 +297,14 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
       </table>
 </div><div class="memdoc">
 
-<p>Compact a live row- or column-store btree or LSM tree. </p>
-<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * Compact a table asynchronously, limiting the run-time to 5 minutes.</span></div>
-<div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle.">async_new_op</a>(</div>
-<div class="line">            conn, <span class="stringliteral">&quot;table:async&quot;</span>, <span class="stringliteral">&quot;timeout=300&quot;</span>, &amp;ex_asynckeys.iface, &amp;op);</div>
-<div class="line">        ret = op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#ae6421d4c43369146502e8c7b54c06ac0" title="Compact a live row- or column-store btree or LSM tree.">compact</a>(op);</div>
-</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<p>Invoke the underlying <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> method; see that method for configuration, return and error values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">op</td><td>the operation handle </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>via the callback as described for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> </dd></dl>
 
 </div>
 </div>
@@ -536,7 +530,7 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the WT_ASYNC_OPTYPE of the operation </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="group__wt.html#ga24152c6e1509c488192df653d511a82c" title="Asynchronous operation types.">WT_ASYNC_OPTYPE</a> of the operation </dd></dl>
 
 </div>
 </div>

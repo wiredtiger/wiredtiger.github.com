@@ -152,9 +152,9 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"></div>
 <div class="line">        <span class="comment">/* If doing a search, retrieve the key/value pair. */</span></div>
 <div class="line">        <span class="keywordflow">if</span> (type == <a name="a6"></a><a class="code" href="group__wt.html#gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44" title="WT_ASYNC_OP::search.">WT_AOP_SEARCH</a>) {</div>
-<div class="line">                ret = op-&gt;<a name="a7"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a3c0ab580d7d7cc18f669ef8259254b8c" title="Get the key for the current record.">get_key</a>(op, &amp;k);</div>
+<div class="line">                ret = op-&gt;<a name="a7"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a3c0ab580d7d7cc18f669ef8259254b8c" title="Invoke the underlying WT_CURSOR::get_key method; see that method for configuration, return and error values.">get_key</a>(op, &amp;k);</div>
 <div class="line">                key = k.<a name="a8"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>;</div>
-<div class="line">                ret = op-&gt;<a name="a9"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a46ec0ae7d0294b9f4f206c390dd886b3" title="Get the value for the current record.">get_value</a>(op, &amp;v);</div>
+<div class="line">                ret = op-&gt;<a name="a9"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a46ec0ae7d0294b9f4f206c390dd886b3" title="Invoke the underlying WT_CURSOR::get_value method; see that method for configuration, return and error values.">get_value</a>(op, &amp;v);</div>
 <div class="line">                value = v.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>;</div>
 <div class="line">                ATOMIC_ADD(asynckey-&gt;num_keys, 1);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;Id %&quot;</span> PRIu64 <span class="stringliteral">&quot; got record: %s : %s\n&quot;</span>, <span class="keywordtype">id</span>, key, value);</div>
@@ -200,10 +200,10 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"><span class="comment">                 * an asynchronous insert.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                snprintf(k[i], <span class="keyword">sizeof</span>(k), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
-<div class="line">                op-&gt;<a name="a16"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a9931651a57133df0d6d881e0cb9386ab" title="Set the key for the next operation.">set_key</a>(op, k[i]);</div>
+<div class="line">                op-&gt;<a name="a16"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a9931651a57133df0d6d881e0cb9386ab" title="Invoke the underlying WT_CURSOR::set_key method; see that method for configuration, return and error values.">set_key</a>(op, k[i]);</div>
 <div class="line">                snprintf(v[i], <span class="keyword">sizeof</span>(v), <span class="stringliteral">&quot;value%d&quot;</span>, i);</div>
-<div class="line">                op-&gt;<a name="a17"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a6cb91888b737850ebffd7e01215bff53" title="Set the value for the next operation.">set_value</a>(op, v[i]);</div>
-<div class="line">                ret = op-&gt;<a name="a18"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a60ed981eeae3a80b13ca8af708e4704b" title="Insert a record and optionally update an existing record.">insert</a>(op);</div>
+<div class="line">                op-&gt;<a name="a17"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a6cb91888b737850ebffd7e01215bff53" title="Invoke the underlying WT_CURSOR::set_value method; see that method for configuration, return and error values.">set_value</a>(op, v[i]);</div>
+<div class="line">                ret = op-&gt;<a name="a18"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a60ed981eeae3a80b13ca8af708e4704b" title="Invoke the underlying WT_CURSOR::insert method; see that method for configuration, return and error values.">insert</a>(op);</div>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Wait for all outstanding operations to complete. */</span></div>
@@ -213,7 +213,7 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle.">async_new_op</a>(</div>
 <div class="line">            conn, <span class="stringliteral">&quot;table:async&quot;</span>, <span class="stringliteral">&quot;timeout=300&quot;</span>, &amp;ex_asynckeys.iface, &amp;op);</div>
-<div class="line">        ret = op-&gt;<a name="a20"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#ae6421d4c43369146502e8c7b54c06ac0" title="Compact a live row- or column-store btree or LSM tree.">compact</a>(op);</div>
+<div class="line">        ret = op-&gt;<a name="a20"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#ae6421d4c43369146502e8c7b54c06ac0" title="Invoke the underlying WT_SESSION::compact method; see that method for configuration, return and error values.">compact</a>(op);</div>
 <div class="line">        <span class="comment">/* Search for the keys we just inserted, asynchronously. */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; MAX_KEYS; i++) {</div>
 <div class="line">                <span class="keywordflow">while</span> ((ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle.">async_new_op</a>(conn,</div>
@@ -235,8 +235,8 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"><span class="comment">                 * an asynchronous search.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                snprintf(k[i], <span class="keyword">sizeof</span>(k), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
-<div class="line">                op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a9931651a57133df0d6d881e0cb9386ab" title="Set the key for the next operation.">set_key</a>(op, k[i]);</div>
-<div class="line">                op-&gt;<a name="a21"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220" title="Return the record matching the key.">search</a>(op);</div>
+<div class="line">                op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a9931651a57133df0d6d881e0cb9386ab" title="Invoke the underlying WT_CURSOR::set_key method; see that method for configuration, return and error values.">set_key</a>(op, k[i]);</div>
+<div class="line">                op-&gt;<a name="a21"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220" title="Invoke the underlying WT_CURSOR::search method; see that method for configuration, return and error values.">search</a>(op);</div>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
