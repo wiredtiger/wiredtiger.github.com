@@ -104,10 +104,10 @@ Allocating an asynchronous operations handle</h1>
 <div class="line">                                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">                }</div>
 </div><!-- fragment --><p> To aid the application in matching up an asynchronous operation with a subsequent call to the callback function, every handle contains a unique <code>uint64_t</code> identifier and <a class="el" href="group__wt.html#ga24152c6e1509c488192df653d511a82c" title="Asynchronous operation types.">WT_ASYNC_OPTYPE</a> type. Both are assigned when the asynchronous operation is performed.</p>
-<p>To retrieve the id, use the WT_ASYNC_OP::id method:</p>
+<p>To retrieve the id, use the <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#aa10a973cc683c48944f4909e2f18b3b9" title="Get the unique identifier for this operation.">WT_ASYNC_OP::get_id</a> method:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Retrieve the operation&#39;s 64-bit identifier. */</span></div>
 <div class="line">        <span class="keywordtype">id</span> = op-&gt;get_id(op);</div>
-</div><!-- fragment --><p> To retrieve the <a class="el" href="group__wt.html#ga24152c6e1509c488192df653d511a82c" title="Asynchronous operation types.">WT_ASYNC_OPTYPE</a> type, use the WT_ASYNC_OP::type method:</p>
+</div><!-- fragment --><p> To retrieve the <a class="el" href="group__wt.html#ga24152c6e1509c488192df653d511a82c" title="Asynchronous operation types.">WT_ASYNC_OPTYPE</a> type, use the <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#adb476ee741ca2483fad081c892aea420" title="Get the type for this operation.">WT_ASYNC_OP::get_type</a> method:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Retrieve the operation&#39;s WT_ASYNC_OPTYPE type. */</span></div>
 <div class="line">        type = op-&gt;get_type(op);</div>
 </div><!-- fragment --><p> WiredTiger only allows a limited number of method calls back into the library using the <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation.">WT_ASYNC_OP</a> handle, while in the callback function. The application is allowed to retrieve than handle's key value, identifier and the operation type from the <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation.">WT_ASYNC_OP</a> handle.</p>
@@ -147,7 +147,7 @@ Allocating an asynchronous operations handle</h1>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* If doing a search, retrieve the key/value pair. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> (type == <a class="code" href="group__wt.html#gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44" title="Search and return key/value pair.">WT_AOP_SEARCH</a>) {</div>
+<div class="line">        <span class="keywordflow">if</span> (type == <a class="code" href="group__wt.html#gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44" title="WT_ASYNC_OP::search.">WT_AOP_SEARCH</a>) {</div>
 <div class="line">                ret = op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a3c0ab580d7d7cc18f669ef8259254b8c" title="Get the key for the current record.">get_key</a>(op, &amp;k);</div>
 <div class="line">                key = k.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450" title="The memory reference of the data item.">data</a>;</div>
 <div class="line">                ret = op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a46ec0ae7d0294b9f4f206c390dd886b3" title="Get the value for the current record.">get_value</a>(op, &amp;v);</div>
