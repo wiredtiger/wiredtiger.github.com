@@ -54,7 +54,9 @@ var programming =
     [ "Signal handling", "signals.html", null ],
     [ "Checkpoints", "checkpoints.html", null ],
     [ "Compaction", "compaction.html", null ],
-    [ "Hot backup", "hot_backup.html", null ],
+    [ "Hot backup", "hot_backup.html", [
+      [ "Hot backup from the command line", "hot_backup.html#hot_backup_util", null ]
+    ] ],
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
     ] ],
@@ -88,21 +90,5 @@ var programming =
       [ "Creating WiredTiger objects on Helium volumes", "helium.html#helium_objects", null ],
       [ "Helium notes", "helium.html#helium_notes", null ],
       [ "Helium limitations", "helium.html#helium_limitations", null ]
-    ] ],
-    [ "Database Home Directory", "home.html", null ],
-    [ "Database Configuration", "database_config.html", [
-      [ "Configuration ordering", "database_config.html#config_order", null ],
-      [ "WIREDTIGER_CONFIG environment variable", "database_config.html#config_env", null ],
-      [ "WiredTiger.config file", "database_config.html#config_file", null ],
-      [ "WiredTiger.basecfg file", "database_config.html#config_base", null ]
-    ] ],
-    [ "Hot backup", "hot_backup.html", null ],
-    [ "Filesystems", "filesystems.html", [
-      [ "Remote file systems", "filesystems.html#remote", null ]
-    ] ],
-    [ "Security", "security.html", [
-      [ "Database directory permissions", "security.html#directory_permissions", null ],
-      [ "File permissions", "security.html#file_permissions", null ],
-      [ "Environment variables", "security.html#environment_variables", null ]
     ] ]
 ];

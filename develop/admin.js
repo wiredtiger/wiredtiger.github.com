@@ -7,7 +7,6 @@ var admin =
       [ "WiredTiger.config file", "database_config.html#config_file", null ],
       [ "WiredTiger.basecfg file", "database_config.html#config_base", null ]
     ] ],
-    [ "Hot backup", "hot_backup.html", null ],
     [ "Filesystems", "filesystems.html", [
       [ "Remote file systems", "filesystems.html#remote", null ]
     ] ],
