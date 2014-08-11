@@ -8,11 +8,13 @@ A page that displays the performance plots from Jenkins wtperf jobs. So I don't 
 
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-btree/plot/getPlot?index=0&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-btree/plot)
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-btree/plot/getPlot?index=1&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-btree/plot)
+[![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-btree/plot/getPlot?index=2&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-btree/plot)
 
 ## Checkpoint LSM [![Build Status](http://mjc.homeunix.org:8180/buildStatus/icon?job=wiredtiger-perf-ckpt-lsm)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-lsm/)
 
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-lsm/plot/getPlot?index=0&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-lsm/plot)
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-lsm/plot/getPlot?index=1&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-lsm/plot)
+[![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-lsm/plot/getPlot?index=2&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-ckpt-lsm/plot)
 
 ## Evict btree [![Build Status](http://mjc.homeunix.org:8180/buildStatus/icon?job=wiredtiger-perf-evict-btree)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-evict-btree/)
 
@@ -71,18 +73,22 @@ A page that displays the performance plots from Jenkins wtperf jobs. So I don't 
 
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-btree/plot/getPlot?index=0&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-btree/plot)
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-btree/plot/getPlot?index=1&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-btree/plot)
+[![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-btree/plot/getPlot?index=2&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-btree/plot)
 
 ## Update LSM [![Build Status](http://mjc.homeunix.org:8180/buildStatus/icon?job=wiredtiger-perf-update-lsm)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-lsm/)
 
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-lsm/plot/getPlot?index=0&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-lsm/plot)
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-lsm/plot/getPlot?index=1&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-lsm/plot)
+[![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-lsm/plot/getPlot?index=2&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-update-lsm/plot)
 
 ## Voxer 10k [![Build Status](http://mjc.homeunix.org:8180/buildStatus/icon?job=wiredtiger-perf-voxer-10k)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-10k/)
 
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-10k/plot/getPlot?index=0&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-10k/plot)
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-10k/plot/getPlot?index=1&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-10k/plot)
+[![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-10k/plot/getPlot?index=2&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-10k/plot)
 
 ## Voxer 130k [![Build Status](http://mjc.homeunix.org:8180/buildStatus/icon?job=wiredtiger-perf-voxer-130k)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-130k/)
 
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-130k/plot/getPlot?index=0&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-130k/plot)
 [![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-130k/plot/getPlot?index=1&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-130k/plot)
+[![](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-130k/plot/getPlot?index=2&width=750&height=450)](http://mjc.homeunix.org:8180/job/wiredtiger-perf-voxer-130k/plot)
