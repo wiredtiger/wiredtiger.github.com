@@ -2,10 +2,10 @@ var performance =
 [
     [ "Memory allocator", "tune_memory_allocator.html", null ],
     [ "Page and overflow item sizes", "tune_page_sizes.html", null ],
-    [ "Cache", "tune_cache.html", [
+    [ "Cache and eviction tuning", "tune_cache.html", [
       [ "Cache size", "tune_cache.html#tuning_cache_size", null ],
-      [ "Eviction tuning", "tune_cache.html#cache_eviction", null ],
-      [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ]
+      [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
+      [ "Eviction tuning", "tune_cache.html#cache_eviction", null ]
     ] ],
     [ "Bulk-load", "tune_bulk_load.html", null ],
     [ "Cursor persistence", "tune_cursor_persist.html", null ],
