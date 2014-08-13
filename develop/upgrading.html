@@ -73,8 +73,8 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 Upgrading to Version 2.3.1</h1>
 <dl>
 <dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database.">wiredtiger_open</a> eviction_workers configuration changed </dt>
-<dd><p class="startdd">The <code>eviction_workers</code> configuration setting has been replaced by <code>eviction=</code>(threads_min) and <code>eviction=</code>(threads_max) settings. To replicate the old default behavior set <code>eviction=(threads_min=1,threads_max=1)</code>.</p>
-<p class="enddd">There is also a semantic change <code>eviction_workers</code> used to configure additional threads whereas the new settings configure the total number of threads involved with eviction.  </p>
+<dd><p class="startdd">The <code>eviction_workers</code> configuration setting has been replaced by <code>eviction=</code>(threads_min) and <code>eviction=</code>(threads_max) settings.</p>
+<p class="enddd">There is also a semantic change because <code>eviction_workers</code> used to configure additional threads whereas the new settings configure the total number of threads involved with eviction.  </p>
 </dd>
 </dl>
 <h1><a class="anchor" id="version_230"></a>
