@@ -2,6 +2,7 @@ var group__wt__ext =
 [
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", [
       [ "compare", "struct_w_t___c_o_l_l_a_t_o_r.html#a9a6de866802dcd1a587cb1dbd69887df", null ],
+      [ "customize", "struct_w_t___c_o_l_l_a_t_o_r.html#afc0d169175c9f407833c7b7c69a257f4", null ],
       [ "terminate", "struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f", null ]
     ] ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", [
@@ -31,8 +32,8 @@ var group__wt__ext =
       [ "notify", "struct_w_t___t_x_n___n_o_t_i_f_y.html#a37f71719969554d56292473eec533e80", null ]
     ] ],
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", [
-      [ "collate", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aee6e3e96ba7e7edacc0591b3d8c4edc9", null ],
-      [ "collator_config", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a445b10efa57169a0db318743685ab08b", null ],
+      [ "collate", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ad23ef32a93fd906df1502c61a80a0d3c", null ],
+      [ "collator_config", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#abbacd770437321cb723dc95073877908", null ],
       [ "config_get", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1f23ff3b17d86decfe92ba232f988fd6", null ],
       [ "config_parser_open", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a31922e792668c912bfe45d9745e74d4e", null ],
       [ "err_printf", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039", null ],

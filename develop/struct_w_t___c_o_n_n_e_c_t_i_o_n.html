@@ -176,7 +176,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Add a custom collation function. </p>
 <p>The application must first implement the <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface and then register the implementation with WiredTiger:</p>
-<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> my_collator = { my_compare, NULL };</div>
+<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> my_collator = { my_compare, NULL, NULL };</div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8">add_collator</a>(conn, <span class="stringliteral">&quot;my_collator&quot;</span>, &amp;my_collator, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

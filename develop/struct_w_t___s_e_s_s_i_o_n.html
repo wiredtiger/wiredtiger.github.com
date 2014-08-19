@@ -523,6 +523,8 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>allocation_size</code></td><td>the file unit allocation size, in bytes, must a power-of-two; smaller values decrease the file space required by overflow items, and the default value of 4KB is a good choice absent requirements from the operating system or storage device.</td><td>an integer between 512B and 128MB; default <code>4KB</code>. </td></tr>
 <tr>
+<td><code>app_metadata</code></td><td>application-owned metadata for this object.</td><td>a string; default empty. </td></tr>
+<tr>
 <td><code>block_allocation</code></td><td>configure block allocation. Permitted values are <code>"first"</code> or <code>"best"</code>; the <code>"first"</code> configuration uses a first-available algorithm during block allocation, the <code>"best"</code> configuration uses a best-fit algorithm.</td><td>a string, chosen from the following options: <code>"first"</code>, <code>"best"</code>; default <code>best</code>. </td></tr>
 <tr>
 <td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are empty (off) or <code>"bzip2"</code>, <code>"snappy"</code> or custom compression engine <code>"name"</code> created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function. ">WT_CONNECTION::add_compressor</a>. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default empty. </td></tr>

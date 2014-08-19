@@ -69,7 +69,13 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_231"></a>
+<div class="textblock"><h1><a class="anchor" id="version_232"></a>
+Upgrading to Version 2.3.2</h1>
+<dl>
+<dt><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface changes </dt>
+<dd>Add a new <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#afc0d169175c9f407833c7b7c69a257f4" title="If non-NULL, this callback is called to customize the collator for each data source. ">WT_COLLATOR::customize</a> callback that WiredTiger will call (if set) for each data source configured to use the collator. Applications using the existing <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface that do not require the new functionality should set this callback to <code>NULL</code>.  </dd>
+</dl>
+<h1><a class="anchor" id="version_231"></a>
 Upgrading to Version 2.3.1</h1>
 <dl>
 <dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> eviction_workers configuration changed </dt>
