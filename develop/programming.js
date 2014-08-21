@@ -68,6 +68,11 @@ var programming =
       [ "Asynchronous operations and transactions", "async.html#async_transactions", null ]
     ] ],
     [ "Per-process shared caches", "shared_cache.html", null ],
+    [ "Extending WiredTiger", "extensions.html", [
+      [ "Loadable extensions", "extensions.html#extensions_loadable", null ],
+      [ "Extensions and recovery", "extensions.html#extensions_recovery", null ],
+      [ "Local extensions", "extensions.html#extensions_local", null ]
+    ] ],
     [ "Custom Data Sources", "custom_data_sources.html", [
       [ "WT_DATA_SOURCE methods", "custom_data_sources.html#custom_ds_methods", [
         [ "WT_DATA_SOURCE::create method", "custom_data_sources.html#custom_ds_create", null ]
