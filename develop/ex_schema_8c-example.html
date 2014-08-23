@@ -101,13 +101,14 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line"><span class="comment"> *      tables using a schema.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> home = NULL;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* The C struct for the data we are storing in a WiredTiger table. */</span></div>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
@@ -139,10 +140,21 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        uint16_t year;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
-<div class="line">        ret = <a name="a3"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn);</div>
-<div class="line">        <span class="keywordflow">if</span> (ret != 0)</div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
+<div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
+<div class="line">                home = <span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>;</div>
+<div class="line">                (void)system(<span class="stringliteral">&quot;rm -rf WIREDTIGER_HOME &amp;&amp; mkdir WIREDTIGER_HOME&quot;</span>);</div>
+<div class="line">        } <span class="keywordflow">else</span></div>
+<div class="line">                home = NULL;</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a3"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home, <a name="a4"></a><a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        }</div>
 <div class="line">        <span class="comment">/* Note: error checking omitted for clarity. */</span></div>
 <div class="line"></div>
 <div class="line">        ret = conn-&gt;<a name="a5"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>

@@ -115,6 +115,16 @@ Code samples</h1>
 <div class="line">        pthread_t threads[NUM_THREADS];</div>
 <div class="line">        <span class="keywordtype">int</span> i, ret;</div>
 <div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
+<div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
+<div class="line">                home = <span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>;</div>
+<div class="line">                (void)system(<span class="stringliteral">&quot;rm -rf WIREDTIGER_HOME &amp;&amp; mkdir WIREDTIGER_HOME&quot;</span>);</div>
+<div class="line">        } <span class="keywordflow">else</span></div>
+<div class="line">                home = NULL;</div>
+<div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0)</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>

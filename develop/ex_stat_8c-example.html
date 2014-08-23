@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line"><span class="keywordtype">int</span> get_stat(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, <span class="keywordtype">int</span> stat_field, uint64_t *valuep);</div>
 <div class="line"><span class="keywordtype">int</span> print_derived_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *);</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> home = NULL;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">print_cursor(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</div>
@@ -236,6 +236,16 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
+<div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
+<div class="line">                home = <span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>;</div>
+<div class="line">                (void)system(<span class="stringliteral">&quot;rm -rf WIREDTIGER_HOME &amp;&amp; mkdir WIREDTIGER_HOME&quot;</span>);</div>
+<div class="line">        } <span class="keywordflow">else</span></div>
+<div class="line">                home = NULL;</div>
 <div class="line"></div>
 <div class="line">        ret = <a name="a17"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,statistics=(all)&quot;</span>, &amp;conn);</div>
 <div class="line">        ret = conn-&gt;<a name="a18"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>

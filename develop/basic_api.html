@@ -88,6 +88,17 @@ Connecting to a database</h1>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *value;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
+<div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
+<div class="line">                home = <span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>;</div>
+<div class="line">                (void)system(<span class="stringliteral">&quot;rm -rf WIREDTIGER_HOME &amp;&amp; mkdir WIREDTIGER_HOME&quot;</span>);</div>
+<div class="line">        } <span class="keywordflow">else</span></div>
+<div class="line">                home = NULL;</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0 ||</div>
 <div class="line">            (ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
