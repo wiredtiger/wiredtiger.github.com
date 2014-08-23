@@ -109,22 +109,22 @@ $(document).ready(function(){initNavTree('ex_thread_8c-example.html','');});
 <div class="line"></div>
 <div class="line"><span class="keywordtype">void</span> *scan_thread(<span class="keywordtype">void</span> *arg);</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home = NULL;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> home = NULL;</div>
 <div class="line"><span class="preprocessor">#define NUM_THREADS     10</span></div>
 <div class="line"></div>
-<div class="line"><a name="_a0"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
-<div class="line"></div>
 <div class="line"><span class="keywordtype">void</span> *</div>
-<div class="line">scan_thread(<span class="keywordtype">void</span> *arg)</div>
+<div class="line">scan_thread(<span class="keywordtype">void</span> *conn_arg)</div>
 <div class="line">{</div>
+<div class="line">        <a name="_a0"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <a name="_a2"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *value;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
+<div class="line">        conn = conn_arg;</div>
 <div class="line">        ret = conn-&gt;<a name="a3"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
-<div class="line">        ret = session-&gt;<a name="a4"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>,</div>
-<div class="line">            NULL, NULL, &amp;cursor);</div>
+<div class="line">        ret = session-&gt;<a name="a4"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Show all records. */</span></div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a name="a5"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
@@ -133,40 +133,44 @@ $(document).ready(function(){initNavTree('ex_thread_8c-example.html','');});
 <div class="line"></div>
 <div class="line">                printf(<span class="stringliteral">&quot;Got record: %s : %s\n&quot;</span>, key, value);</div>
 <div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> (ret != <a name="a8"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
+<div class="line">                fprintf(stderr,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.next: %s\n&quot;</span>, <a name="a9"></a><a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (arg);</div>
+<div class="line">        <span class="keywordflow">return</span> (NULL);</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
+<div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        pthread_t threads[NUM_THREADS];</div>
 <div class="line">        <span class="keywordtype">int</span> i, ret;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a8"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a10"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0)</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a name="a9"></a><a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
 <div class="line">        <span class="comment">/* Note: further error checking omitted for clarity. */</span></div>
 <div class="line"></div>
 <div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
-<div class="line">        ret = session-&gt;<a name="a10"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>,</div>
+<div class="line">        ret = session-&gt;<a name="a11"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;cursor);</div>
-<div class="line">        cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;key1&quot;</span>);</div>
-<div class="line">        cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;value1&quot;</span>);</div>
-<div class="line">        ret = cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
-<div class="line">        ret = session-&gt;<a name="a14"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session, NULL);</div>
+<div class="line">        cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;key1&quot;</span>);</div>
+<div class="line">        cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;value1&quot;</span>);</div>
+<div class="line">        ret = cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
+<div class="line">        ret = session-&gt;<a name="a15"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session, NULL);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; NUM_THREADS; i++)</div>
-<div class="line">                ret = pthread_create(&amp;threads[i], NULL, scan_thread, NULL);</div>
+<div class="line">                ret = pthread_create(&amp;threads[i], NULL, scan_thread, conn);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; NUM_THREADS; i++)</div>
 <div class="line">                ret = pthread_join(threads[i], NULL);</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a name="a15"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
+<div class="line">        ret = conn-&gt;<a name="a16"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>

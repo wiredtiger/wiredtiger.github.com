@@ -165,13 +165,13 @@ Configuration String Parsing examples</h1>
 <div class="line">                                    <span class="stringliteral">&quot;Error creating nested configuration &quot;</span></div>
 <div class="line">                                    <span class="stringliteral">&quot;parser: %s\n&quot;</span>,</div>
 <div class="line">                                    <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                                parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser);</div>
+<div class="line">                                ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser);</div>
 <div class="line">                                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">                        }</div>
 <div class="line">                        <span class="keywordflow">while</span> ((ret = sub_parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f">next</a>(</div>
 <div class="line">                            sub_parser, &amp;k, &amp;v)) == 0)</div>
 <div class="line">                                printf(<span class="stringliteral">&quot;\t%.*s\n&quot;</span>, (<span class="keywordtype">int</span>)k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>);</div>
-<div class="line">                        sub_parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(sub_parser);</div>
+<div class="line">                        ret = sub_parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(sub_parser);</div>
 <div class="line">                }</div>
 <div class="line">        }</div>
 </div><!-- fragment --></div><h2 class="groupheader">Member Function Documentation</h2>

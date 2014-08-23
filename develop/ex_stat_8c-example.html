@@ -100,7 +100,6 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line"><span class="comment"> *      This is an example demonstrating how to query database statistics.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
@@ -114,7 +113,7 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line"><span class="keywordtype">int</span> get_stat(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, <span class="keywordtype">int</span> stat_field, uint64_t *valuep);</div>
 <div class="line"><span class="keywordtype">int</span> print_derived_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *);</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home = NULL;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> home = NULL;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">print_cursor(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</div>
@@ -248,7 +247,7 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">        cursor-&gt;<a name="a20"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
 <div class="line">        ret = cursor-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
 <div class="line">        ret = session-&gt;<a name="a22"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, NULL);</div>
 <div class="line"></div>

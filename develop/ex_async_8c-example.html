@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"><span class="preprocessor">#define ATOMIC_ADD(v, val)      __sync_add_and_fetch(&amp;(v), val)</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home = NULL;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> home = NULL;</div>
 <div class="line"><span class="keywordtype">int</span> global_error = 0;</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
@@ -236,7 +236,7 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                snprintf(k[i], <span class="keyword">sizeof</span>(k), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
 <div class="line">                op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a9931651a57133df0d6d881e0cb9386ab">set_key</a>(op, k[i]);</div>
-<div class="line">                op-&gt;<a name="a21"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220">search</a>(op);</div>
+<div class="line">                ret = op-&gt;<a name="a21"></a><a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220">search</a>(op);</div>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>

@@ -177,7 +177,7 @@ Executing asynchronous operations</h1>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                snprintf(k[i], <span class="keyword">sizeof</span>(k), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
 <div class="line">                op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a9931651a57133df0d6d881e0cb9386ab">set_key</a>(op, k[i]);</div>
-<div class="line">                op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220">search</a>(op);</div>
+<div class="line">                ret = op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220">search</a>(op);</div>
 </div><!-- fragment --><p> When a database contains multiple tables, it may be desired to compact several tables in parallel without having to manage separate threads to each call <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree. ">WT_SESSION::compact</a>. Alternatively, compacting several tables serially may take much longer. The <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#ae6421d4c43369146502e8c7b54c06ac0" title="Invoke the underlying WT_SESSION::compact method; see that method for configuration, return and error values. ">WT_ASYNC_OP::compact</a> method allows the application to compact multiple objects asynchronously.</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Compact a table asynchronously, limiting the run-time to 5 minutes.</span></div>
