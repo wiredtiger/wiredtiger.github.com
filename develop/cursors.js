@@ -12,6 +12,5 @@ var cursors =
         [ "Table Index data", "data_sources.html#data_indices", null ],
         [ "Statistics Data", "data_sources.html#data_statistics", null ]
       ] ]
-    ] ],
-    [ "Log cursors", "cursor_log.html", null ]
+    ] ]
 ];

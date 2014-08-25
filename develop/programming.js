@@ -16,8 +16,7 @@ var programming =
       [ "Transactional API", "transactions.html#transactions_api", null ],
       [ "Implicit transactions", "transactions.html#transactions_implicit", null ],
       [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
-      [ "Isolation levels", "transactions.html#transaction_isolation", null ],
-      [ "Checkpoints and Recovery", "transactions.html#transaction_recovery", null ]
+      [ "Isolation levels", "transactions.html#transaction_isolation", null ]
     ] ],
     [ "Error handling", "error_handling.html", null ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
@@ -52,13 +51,18 @@ var programming =
       [ "Error return name space", "name_space.html#error", null ]
     ] ],
     [ "Signal handling", "signals.html", null ],
-    [ "Checkpoints", "checkpoints.html", null ],
-    [ "Compaction", "compaction.html", null ],
-    [ "Hot backup", "hot_backup.html", [
-      [ "Hot backup from the command line", "hot_backup.html#hot_backup_util", null ]
+    [ "Checkpoint durability", "checkpoint.html", [
+      [ "Automatic checkpoints", "checkpoint.html#checkpoint_server", null ],
+      [ "Checkpoint cursors", "checkpoint.html#checkpoint_cursors", null ],
+      [ "Checkpoints and file compaction", "checkpoint.html#checkpoint_compaction", null ]
     ] ],
-    [ "Statistics", "statistics.html", [
-      [ "Statistics logging", "statistics.html#statistics_log", null ]
+    [ "Commit-level durability", "durability.html", [
+      [ "Checkpoints", "durability.html#durability_checkpoint", null ],
+      [ "Hot backup with logging", "durability.html#durability_hotbackup", null ],
+      [ "Log file archival", "durability.html#durability_archiving", null ],
+      [ "Tuning commit-level durability", "durability.html#durability_tuning", null ],
+      [ "Group commit", "durability.html#durability_group_commit", null ],
+      [ "Flush call configuration", "durability.html#durability_flush_config", null ]
     ] ],
     [ "Asynchronous operations", "async.html", [
       [ "Configuring asynchronous operations", "async.html#async_config", null ],
@@ -67,7 +71,15 @@ var programming =
       [ "Waiting for outstanding operations to complete", "async.html#async_flush", null ],
       [ "Asynchronous operations and transactions", "async.html#async_transactions", null ]
     ] ],
+    [ "Compaction", "compaction.html", null ],
+    [ "Hot backup", "hot_backup.html", [
+      [ "Hot backup from the command line", "hot_backup.html#hot_backup_util", null ]
+    ] ],
+    [ "Statistics", "statistics.html", [
+      [ "Statistics logging", "statistics.html#statistics_log", null ]
+    ] ],
     [ "Per-process shared caches", "shared_cache.html", null ],
+    [ "Log cursors", "cursor_log.html", null ],
     [ "Extending WiredTiger", "extensions.html", [
       [ "Loadable extensions", "extensions.html#extensions_loadable", null ],
       [ "Extensions and recovery", "extensions.html#extensions_recovery", null ],
