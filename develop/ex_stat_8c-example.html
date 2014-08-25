@@ -242,8 +242,8 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
-<div class="line">                home = <span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>;</div>
-<div class="line">                (void)system(<span class="stringliteral">&quot;rm -rf WIREDTIGER_HOME &amp;&amp; mkdir WIREDTIGER_HOME&quot;</span>);</div>
+<div class="line">                home = <span class="stringliteral">&quot;WT_HOME&quot;</span>;</div>
+<div class="line">                ret = system(<span class="stringliteral">&quot;rm -rf WT_HOME &amp;&amp; mkdir WT_HOME&quot;</span>);</div>
 <div class="line">        } <span class="keywordflow">else</span></div>
 <div class="line">                home = NULL;</div>
 <div class="line"></div>
