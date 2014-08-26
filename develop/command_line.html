@@ -88,15 +88,15 @@ Options</h1>
 <hr/>
  <h1><a class="anchor" id="util_backup"></a>
 wt backup</h1>
-<p>Perform a hot backup of a database or set of data sources.</p>
-<p>The <code>backup</code> command performs a hot backup of the database, copying the database files to a <code>specified</code> directory, which can be subsequently opened as a WiredTiger database. See <a class="el" href="hot_backup.html">Hot backup</a> for more information, and <a class="el" href="security.html#file_permissions">File permissions</a> for specifics on the copied file permissions.</p>
+<p>Perform a backup of a database or set of data sources.</p>
+<p>The <code>backup</code> command performs a backup of the database, copying the database files to a <code>specified</code> directory, which can be subsequently opened as a WiredTiger database. See <a class="el" href="backup.html">Backups</a> for more information, and <a class="el" href="security.html#file_permissions">File permissions</a> for specifics on the copied file permissions.</p>
 <h2><a class="anchor" id="util_backup_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-Vv] [-C config] [-h directory] backup [-t uri] directory</code></p>
 <h2><a class="anchor" id="util_backup_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>backup</code> command:</p>
-<dl class="section user"><dt>-t uri</dt><dd>By default, the <code>backup</code> command does a hot backup of the entire database; the <code>-t</code> option changes the <code>backup</code> command to do a hot backup of only the named data sources.</dd></dl>
+<dl class="section user"><dt>-t uri</dt><dd>By default, the <code>backup</code> command does a backup of the entire database; the <code>-t</code> option changes the <code>backup</code> command to do a backup of only the named data sources.</dd></dl>
 <hr/>
  <h1><a class="anchor" id="util_compact"></a>
 wt compact</h1>

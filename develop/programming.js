@@ -58,12 +58,19 @@ var programming =
     ] ],
     [ "Commit-level durability", "durability.html", [
       [ "Checkpoints", "durability.html#durability_checkpoint", null ],
-      [ "Hot backup with logging", "durability.html#durability_hotbackup", null ],
+      [ "Backups", "durability.html#durability_backup", null ],
+      [ "Bulk loads", "durability.html#durability_bulk", null ],
       [ "Log file archival", "durability.html#durability_archiving", null ],
       [ "Tuning commit-level durability", "durability.html#durability_tuning", [
         [ "Group commit", "durability.html#durability_group_commit", null ],
         [ "Flush call configuration", "durability.html#durability_flush_config", null ]
       ] ]
+    ] ],
+    [ "Backups", "backup.html", [
+      [ "Backup from an application", "backup.html#backup_process", null ],
+      [ "Backup from the command line", "backup.html#backup_util", null ],
+      [ "Incremental backup", "backup.html#backup_incremental", null ],
+      [ "Backup and O_DIRECT", "backup.html#backup_o_direct", null ]
     ] ],
     [ "Asynchronous operations", "async.html", [
       [ "Configuring asynchronous operations", "async.html#async_config", null ],
@@ -73,9 +80,6 @@ var programming =
       [ "Asynchronous operations and transactions", "async.html#async_transactions", null ]
     ] ],
     [ "Compaction", "compaction.html", null ],
-    [ "Hot backup", "hot_backup.html", [
-      [ "Hot backup from the command line", "hot_backup.html#hot_backup_util", null ]
-    ] ],
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
     ] ],

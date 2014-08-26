@@ -42,9 +42,9 @@ The \fCwt\fP tool supports several commands\&.
  
 .SH "wt backup"
 .PP
-Perform a hot backup of a database or set of data sources\&.
+Perform a backup of a database or set of data sources\&.
 .PP
-The \fCbackup\fP command performs a hot backup of the database, copying the database files to a \fCspecified\fP directory, which can be subsequently opened as a WiredTiger database\&. See \fBHot backup\fP for more information, and \fBFile permissions\fP for specifics on the copied file permissions\&.
+The \fCbackup\fP command performs a backup of the database, copying the database files to a \fCspecified\fP directory, which can be subsequently opened as a WiredTiger database\&. See \fBBackups\fP for more information, and \fBFile permissions\fP for specifics on the copied file permissions\&.
 .SS "Synopsis"
 \fCwt [-Vv] [-C config] [-h directory] backup [-t uri] directory\fP
 .SS "Options"
@@ -52,7 +52,7 @@ The following are command-specific options for the \fCbackup\fP command:
 .PP
 \fB-t uri\fP
 .RS 4
-By default, the \fCbackup\fP command does a hot backup of the entire database; the \fC-t\fP option changes the \fCbackup\fP command to do a hot backup of only the named data sources\&.
+By default, the \fCbackup\fP command does a backup of the entire database; the \fC-t\fP option changes the \fCbackup\fP command to do a backup of only the named data sources\&.
 .RE
 .PP
 .PP
