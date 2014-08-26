@@ -60,9 +60,10 @@ var programming =
       [ "Checkpoints", "durability.html#durability_checkpoint", null ],
       [ "Hot backup with logging", "durability.html#durability_hotbackup", null ],
       [ "Log file archival", "durability.html#durability_archiving", null ],
-      [ "Tuning commit-level durability", "durability.html#durability_tuning", null ],
-      [ "Group commit", "durability.html#durability_group_commit", null ],
-      [ "Flush call configuration", "durability.html#durability_flush_config", null ]
+      [ "Tuning commit-level durability", "durability.html#durability_tuning", [
+        [ "Group commit", "durability.html#durability_group_commit", null ],
+        [ "Flush call configuration", "durability.html#durability_flush_config", null ]
+      ] ]
     ] ],
     [ "Asynchronous operations", "async.html", [
       [ "Configuring asynchronous operations", "async.html#async_config", null ],

@@ -10,10 +10,7 @@ var performance =
     [ "Bulk-load", "tune_bulk_load.html", null ],
     [ "Cursor persistence", "tune_cursor_persist.html", null ],
     [ "Read-only objects", "tune_read_only_objects.html", null ],
-    [ "Commit-level durability", "tune_durability.html", [
-      [ "Group commit", "tune_durability.html#durability_group_commit", null ],
-      [ "Flush call configuration", "tune_durability.html#durability_flush_config", null ]
-    ] ],
+    [ "Commit-level durability", "tune_durability.html", null ],
     [ "Checksums", "tune_checksum.html", null ],
     [ "Compression", "tune_compression.html", null ],
     [ "File allocation", "tune_file_alloc.html", [

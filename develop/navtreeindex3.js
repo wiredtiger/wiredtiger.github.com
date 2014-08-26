@@ -143,8 +143,6 @@ var NAVTREEINDEX3 =
 "tune_compression.html":[0,4,8],
 "tune_cursor_persist.html":[0,4,4],
 "tune_durability.html":[0,4,6],
-"tune_durability.html#durability_flush_config":[0,4,6,1],
-"tune_durability.html#durability_group_commit":[0,4,6,0],
 "tune_file_alloc.html":[0,4,9],
 "tune_file_alloc.html#tuning_system_file_block_allocation":[0,4,9,1],
 "tune_file_alloc.html#tuning_system_file_block_grow":[0,4,9,0],
