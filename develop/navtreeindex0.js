@@ -28,8 +28,9 @@ var NAVTREEINDEX0 =
 "basic_api.html#basic_create_table":[0,3,0,1],
 "basic_api.html#basic_cursors":[0,3,0,2],
 "checkpoint.html":[0,3,12],
-"checkpoint.html#checkpoint_compaction":[0,3,12,2],
+"checkpoint.html#checkpoint_compaction":[0,3,12,3],
 "checkpoint.html#checkpoint_cursors":[0,3,12,1],
+"checkpoint.html#checkpoint_naming":[0,3,12,2],
 "checkpoint.html#checkpoint_server":[0,3,12,0],
 "classcom_1_1wiredtiger_1_1db_1_1_async_op.html":[2,2,0],
 "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a09774de0d5a9e4a6c3bea35e1b443771":[2,2,0,22],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "command_line.html":[0,5],
 "command_line.html#util_backup":[0,5,3],
 "command_line.html#util_backup_options":[0,5,3,1],
-"command_line.html#util_backup_synopsis":[0,5,3,0],
-"command_line.html#util_compact":[0,5,4]
+"command_line.html#util_backup_synopsis":[0,5,3,0]
 };

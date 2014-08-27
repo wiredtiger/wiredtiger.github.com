@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"command_line.html#util_compact":[0,5,4],
 "command_line.html#util_compact_options":[0,5,4,1],
 "command_line.html#util_compact_synopsis":[0,5,4,0],
 "command_line.html#util_create":[0,5,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga4621505f48ba6399902a137ec0af556c":[2,0,74],
 "group__wt.html#ga46d59ac6c0cd06b56f96d9f79929bc65":[2,0,154],
 "group__wt.html#ga4797cf2942d2c243f1341aa78dc50999":[2,0,170],
-"group__wt.html#ga48436e2598c916692af2860cfcfb65e5":[2,0,194],
-"group__wt.html#ga4956ab32b2a25e5bfda84279de69363c":[2,0,115]
+"group__wt.html#ga48436e2598c916692af2860cfcfb65e5":[2,0,194]
 };

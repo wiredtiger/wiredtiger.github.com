@@ -87,13 +87,13 @@ Flush call configuration</h1>
 <tr>
 <td><code>log=(enabled=false)</code></td><td>checkpoint-level durability </td></tr>
 <tr>
-<td><code>log=(enabled,transaction_sync=false)</code></td><td>no logging configured; updates durable after checkpoint or after <code>sync</code> is set in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> </td></tr>
+<td><code>log=(enabled),transaction_sync=(enabled=false)</code></td><td>in-memory buffered logging configured; updates durable after checkpoint or after <code>sync</code> is set in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> </td></tr>
 <tr>
-<td><code>log=(enabled,transaction_method=none)</code></td><td>logging configured; updates durable after application failure, but not after system failure </td></tr>
+<td><code>log=(enabled),transaction_sync=(enabled=true,method=none)</code></td><td>logging configured; updates durable after application failure, but not after system failure </td></tr>
 <tr>
-<td><code>log=(enabled,transaction_method=fsync)</code></td><td>logging configured; updates durable on application or system failure </td></tr>
+<td><code>log=(enabled),transaction_sync=(enabled=true,method=fsync)</code></td><td>logging configured; updates durable on application or system failure </td></tr>
 <tr>
-<td><code>log=(enabled,transaction_method=dsync)</code></td><td>logging configured; updates durable on application or system failure </td></tr>
+<td><code>log=(enabled),transaction_sync=(enabled=true,method=dsync)</code></td><td>logging configured; updates durable on application or system failure </td></tr>
 </table>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

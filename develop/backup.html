@@ -129,7 +129,7 @@ Incremental backup</h1>
 <li>Perform a full backup of the database (as described above).</li>
 <li>Copy the log files from the database home to the backup directory. It is not an error to copy a log file which has been copied before, but care should be taken to ensure each log file is completely copied as the most recent log file may change in size while being copied. A way to ensure safety is to copy the most recent log file copied during an incremental backup as part of the next incremental backup. For example, if log files 10 through 12 were copied in an incremental backup, the next incremental backup would begin by copying log file 12 again.</li>
 <li>Perform a checkpoint in the database.</li>
-<li>Discard log files in the database home that no longer needed. The log files that are no longer needed include the log files that were copied in step 2 except for the most recent log file in the database home at that time. For example, if log files 10 through 12 were copied in step 2, then log files 10 and 11 can be discarded once step 3 completes.</li>
+<li>Discard log files in the database home that are no longer needed. The log files that are no longer needed include the log files that were copied in step 2 except for the most recent log file in the database home at that time. For example, if log files 10 through 12 were copied in step 2, then log files 10 and 11 can be discarded once step 3 completes.</li>
 </ol>
 <p>Steps 2, 3 and 4 can be repeated any number of times before step 1 is repeated.</p>
 <h1><a class="anchor" id="backup_o_direct"></a>

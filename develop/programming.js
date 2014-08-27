@@ -54,6 +54,7 @@ var programming =
     [ "Checkpoint durability", "checkpoint.html", [
       [ "Automatic checkpoints", "checkpoint.html#checkpoint_server", null ],
       [ "Checkpoint cursors", "checkpoint.html#checkpoint_cursors", null ],
+      [ "Checkpoint naming", "checkpoint.html#checkpoint_naming", null ],
       [ "Checkpoints and file compaction", "checkpoint.html#checkpoint_compaction", null ]
     ] ],
     [ "Commit-level durability", "durability.html", [
