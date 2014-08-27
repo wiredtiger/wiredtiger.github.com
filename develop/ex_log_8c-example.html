@@ -183,11 +183,9 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">            <span class="stringliteral">&quot; txnid %&quot;</span> PRIu64 <span class="stringliteral">&quot; fileid %&quot;</span> PRIu32,</div>
 <div class="line">            lsn-&gt;<a name="a13"></a><a class="code" href="group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf">file</a>, (uint64_t)lsn-&gt;<a name="a14"></a><a class="code" href="group__wt.html#acf79ceaf0f54da0dc7dab5336fa7b72a">offset</a>, opcount,</div>
 <div class="line">            rectype, optype, txnid, fileid);</div>
-<div class="line">        printf(<span class="stringliteral">&quot; key size %zu&quot;</span>, key-&gt;<a name="a15"></a><a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>);</div>
-<div class="line">        printf(<span class="stringliteral">&quot; value size %zu&quot;</span>, value-&gt;<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>);</div>
+<div class="line">        printf(<span class="stringliteral">&quot; key size %zu value size %zu\n&quot;</span>, key-&gt;<a name="a15"></a><a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, value-&gt;<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>);</div>
 <div class="line">        <span class="keywordflow">if</span> (rectype == <a name="a16"></a><a class="code" href="group__wt.html#ga8cf04a003979e7852209079d4093d783">WT_LOGREC_MESSAGE</a>)</div>
-<div class="line">                printf(<span class="stringliteral">&quot;\n Application Record: %s&quot;</span>, (<span class="keywordtype">char</span> *)value-&gt;<a name="a17"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;Application Record: %s\n&quot;</span>, (<span class="keywordtype">char</span> *)value-&gt;<a name="a17"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
@@ -214,6 +212,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> (ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                ret = 0;</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>

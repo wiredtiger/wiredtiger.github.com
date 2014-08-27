@@ -69,10 +69,10 @@ $(document).ready(function(){initNavTree('tune_durability.html','');});
 <div class="title">Commit-level durability </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger automatically groups the flush operations for threads that commit concurrently into single calls.</p>
+<div class="textblock"><p>There are some considerations when configuring commit-level durability that can affect performance.</p>
 <h1><a class="anchor" id="durability_group_commit"></a>
 Group commit</h1>
-<p>This usually means multi-threaded workloads will achieve higher throughput than single-threaded workloads because the operating system can flush data more efficiently to the disk. No application-level configuration is required for this feature.</p>
+<p>WiredTiger automatically groups the flush operations for threads that commit concurrently into single calls. This usually means multi-threaded workloads will achieve higher throughput than single-threaded workloads because the operating system can flush data more efficiently to the disk. No application-level configuration is required for this feature.</p>
 <h1><a class="anchor" id="durability_flush_config"></a>
 Flush call configuration</h1>
 <p>By default, log records are flushed to disk before <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> returns, ensuring durability at the commit. However, the durability guarantees can be relaxed to increase performance.</p>
