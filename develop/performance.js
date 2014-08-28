@@ -23,9 +23,10 @@ var performance =
       [ "os_cache_max", "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max", null ]
     ] ],
     [ "Linux transparent huge pages", "tune_transparent_huge_pages.html", null ],
+    [ "Connection close", "tune_close.html", null ],
+    [ "Mutexes", "tune_mutex.html", null ],
     [ "Linux zone reclamation memory management", "tune_zone_reclaim.html", null ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
-    [ "Connection close", "tune_close.html", null ],
     [ "Simulating workloads with wtperf", "wtperf.html", [
       [ "Monitoring wtperf performance", "wtperf.html#monitor", null ],
       [ "Wtperf configuration options", "wtperf.html#config", null ]

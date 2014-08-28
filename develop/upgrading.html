@@ -79,6 +79,12 @@ Upgrading to Version 2.3.2</h1>
 <dt>Java include path search changes </dt>
 <dd>We have updated the configure logic used to search for Java Native Interface files. This fixes problems building WiredTiger's Java API, particularly on OS X, but may introduce problems if your build procedure relied on the old search behavior.  </dd>
 </dl>
+<dl>
+<dt>Default mutex implementation changed </dt>
+<dd><p class="startdd">The default mutex implementation has been changed from adaptive pthread mutexes to non-adaptive pthread mutexes. Installations can explicitly select adaptive pthread mutexes by specifying <code>&ndash;with-spinlock=pthread_adaptive</code> at configuration time. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
 <h1><a class="anchor" id="version_231"></a>
 Upgrading to Version 2.3.1</h1>
 <dl>
