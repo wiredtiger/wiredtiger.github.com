@@ -1,5 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"struct_w_t___a_s_y_n_c___o_p.html":[2,0,3],
+"struct_w_t___a_s_y_n_c___o_p.html#a072a0338cc2bdd30243f2fb2e98d7aa9":[2,0,3,11],
+"struct_w_t___a_s_y_n_c___o_p.html#a3c0ab580d7d7cc18f669ef8259254b8c":[2,0,3,2],
 "struct_w_t___a_s_y_n_c___o_p.html#a46ec0ae7d0294b9f4f206c390dd886b3":[2,0,3,4],
 "struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220":[2,0,3,7],
 "struct_w_t___a_s_y_n_c___o_p.html#a60ed981eeae3a80b13ca8af708e4704b":[2,0,3,5],
@@ -148,6 +151,8 @@ var NAVTREEINDEX3 =
 "tune_compression.html":[0,4,8],
 "tune_cursor_persist.html":[0,4,4],
 "tune_durability.html":[0,4,6],
+"tune_durability.html#durability_flush_config":[0,4,6,1],
+"tune_durability.html#durability_group_commit":[0,4,6,0],
 "tune_file_alloc.html":[0,4,9],
 "tune_file_alloc.html#tuning_system_file_block_allocation":[0,4,9,1],
 "tune_file_alloc.html#tuning_system_file_block_grow":[0,4,9,0],
