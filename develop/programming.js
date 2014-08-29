@@ -62,9 +62,10 @@ var programming =
       [ "Backups", "durability.html#durability_backup", null ],
       [ "Bulk loads", "durability.html#durability_bulk", null ],
       [ "Log file archival", "durability.html#durability_archiving", null ],
-      [ "Tuning commit-level durability", "durability.html#durability_tuning", null ],
-      [ "Group commit", "durability.html#durability_group_commit", null ],
-      [ "Flush call configuration", "durability.html#durability_flush_config", null ]
+      [ "Tuning commit-level durability", "durability.html#durability_tuning", [
+        [ "Group commit", "durability.html#durability_group_commit", null ],
+        [ "Flush call configuration", "durability.html#durability_flush_config", null ]
+      ] ]
     ] ],
     [ "Backups", "backup.html", [
       [ "Backup from an application", "backup.html#backup_process", null ],

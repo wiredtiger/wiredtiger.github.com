@@ -185,16 +185,16 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 <p>Start a transaction in this session. </p>
 <p>The transaction remains active until ended by <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction. ">WT_SESSION::rollback_transaction</a>. Operations performed on cursors capable of supporting transactional operations that are already open in this session, or which are opened before the transaction ends, will operate in the context of the transaction.</p>
-<p>All open cursors are reset.</p>
 <p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a> will fail if a transaction is already in progress in the session.</p>
-<div class="fragment"><div class="line">        ret =</div>
-<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
-<div class="line">        <span class="comment">/*</span></div>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Cursors may be opened before or after the transaction begins, and in</span></div>
 <div class="line"><span class="comment">         * either case, subsequent operations are included in the transaction.</span></div>
-<div class="line"><span class="comment">         * The begin_transaction call resets all open cursors.</span></div>
+<div class="line"><span class="comment">         * Opening cursors before the transaction begins allows applications to</span></div>
+<div class="line"><span class="comment">         * cache cursors and use them for multiple operations.</span></div>
 <div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret =</div>
+<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
@@ -202,18 +202,21 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
 <div class="line">                <span class="comment">/*</span></div>
-<div class="line"><span class="comment">                 * The commit_transaction call resets all open cursors.</span></div>
-<div class="line"><span class="comment">                 * If commit_transaction fails, the transaction was rolled-back.</span></div>
+<div class="line"><span class="comment">                 * If commit_transaction succeeds, cursors remain positioned; if</span></div>
+<div class="line"><span class="comment">                 * commit_transaction fails, the transaction was rolled-back and</span></div>
+<div class="line"><span class="comment">                 * and all cursors are reset.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47">WT_DEADLOCK</a>:                       <span class="comment">/* Update conflict */</span></div>
 <div class="line">        <span class="keywordflow">default</span>:                                <span class="comment">/* Other error */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL);</div>
-<div class="line">                <span class="comment">/* The rollback_transaction call resets all open cursors. */</span></div>
+<div class="line">                <span class="comment">/* The rollback_transaction call resets all cursors. */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Cursors remain open and may be used for multiple transactions. */</span></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Cursors remain open and may be used for multiple transactions.</span></div>
+<div class="line"><span class="comment">         */</span></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -365,16 +368,16 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 <p>Commit the current transaction. </p>
 <p>A transaction must be in progress when this method is called.</p>
-<p>All open cursors are reset.</p>
-<p>If <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> returns an error, the transaction was rolled-back, not committed.</p>
-<div class="fragment"><div class="line">        ret =</div>
-<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
-<div class="line">        <span class="comment">/*</span></div>
+<p>If <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> returns an error, the transaction was rolled back, not committed.</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Cursors may be opened before or after the transaction begins, and in</span></div>
 <div class="line"><span class="comment">         * either case, subsequent operations are included in the transaction.</span></div>
-<div class="line"><span class="comment">         * The begin_transaction call resets all open cursors.</span></div>
+<div class="line"><span class="comment">         * Opening cursors before the transaction begins allows applications to</span></div>
+<div class="line"><span class="comment">         * cache cursors and use them for multiple operations.</span></div>
 <div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret =</div>
+<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
@@ -382,18 +385,21 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
 <div class="line">                <span class="comment">/*</span></div>
-<div class="line"><span class="comment">                 * The commit_transaction call resets all open cursors.</span></div>
-<div class="line"><span class="comment">                 * If commit_transaction fails, the transaction was rolled-back.</span></div>
+<div class="line"><span class="comment">                 * If commit_transaction succeeds, cursors remain positioned; if</span></div>
+<div class="line"><span class="comment">                 * commit_transaction fails, the transaction was rolled-back and</span></div>
+<div class="line"><span class="comment">                 * and all cursors are reset.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47">WT_DEADLOCK</a>:                       <span class="comment">/* Update conflict */</span></div>
 <div class="line">        <span class="keywordflow">default</span>:                                <span class="comment">/* Other error */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL);</div>
-<div class="line">                <span class="comment">/* The rollback_transaction call resets all open cursors. */</span></div>
+<div class="line">                <span class="comment">/* The rollback_transaction call resets all cursors. */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Cursors remain open and may be used for multiple transactions. */</span></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Cursors remain open and may be used for multiple transactions.</span></div>
+<div class="line"><span class="comment">         */</span></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -701,7 +707,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div class="line">        overwrite_cursor-&gt;set_value(overwrite_cursor, value);</div>
 <div class="line">        ret = overwrite_cursor-&gt;insert(cursor);</div>
 </div><!-- fragment --><p> <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html" title="A WT_CURSOR handle is the interface to a cursor. ">Cursor</a> handles should be discarded by calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor. ">WT_CURSOR::close</a>.</p>
-<p>Cursors capable of supporting transactional operations operate in the context of the current transaction, if any. Ending a transaction implicitly resets all open cursors.</p>
+<p>Cursors capable of supporting transactional operations operate in the context of the current transaction, if any.</p>
+<p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction. ">WT_SESSION::rollback_transaction</a> implicitly resets all cursors.</p>
 <p>Cursors are relatively light-weight objects but may hold references to heavier-weight objects; applications should re-use cursors when possible, but instantiating new cursors is not so expensive that applications need to cache cursors at all cost.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -796,7 +803,8 @@ Advanced applications may also open the following low-level cursor types: <table
 
 <p>Reconfigure a session handle. </p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6">reconfigure</a>(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);</div>
-</div><!-- fragment --><p> <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6" title="Reconfigure a session handle. ">WT_SESSION::reconfigure</a> will fail if a transaction is in progress in the session. All open cursors are reset.</p>
+</div><!-- fragment --><p> <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6" title="Reconfigure a session handle. ">WT_SESSION::reconfigure</a> will fail if a transaction is in progress in the session.</p>
+<p>All cursors are reset.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -875,15 +883,16 @@ Advanced applications may also open the following low-level cursor types: <table
 
 <p>Roll back the current transaction. </p>
 <p>A transaction must be in progress when this method is called.</p>
-<p>All open cursors are reset.</p>
-<div class="fragment"><div class="line">        ret =</div>
-<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
-<div class="line">        <span class="comment">/*</span></div>
+<p>All cursors are reset.</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Cursors may be opened before or after the transaction begins, and in</span></div>
 <div class="line"><span class="comment">         * either case, subsequent operations are included in the transaction.</span></div>
-<div class="line"><span class="comment">         * The begin_transaction call resets all open cursors.</span></div>
+<div class="line"><span class="comment">         * Opening cursors before the transaction begins allows applications to</span></div>
+<div class="line"><span class="comment">         * cache cursors and use them for multiple operations.</span></div>
 <div class="line"><span class="comment">         */</span></div>
+<div class="line">        ret =</div>
+<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
@@ -891,18 +900,21 @@ Advanced applications may also open the following low-level cursor types: <table
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
 <div class="line">                <span class="comment">/*</span></div>
-<div class="line"><span class="comment">                 * The commit_transaction call resets all open cursors.</span></div>
-<div class="line"><span class="comment">                 * If commit_transaction fails, the transaction was rolled-back.</span></div>
+<div class="line"><span class="comment">                 * If commit_transaction succeeds, cursors remain positioned; if</span></div>
+<div class="line"><span class="comment">                 * commit_transaction fails, the transaction was rolled-back and</span></div>
+<div class="line"><span class="comment">                 * and all cursors are reset.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code" href="group__wt.html#ga9650b6e97a88921ec1302935908d0c47">WT_DEADLOCK</a>:                       <span class="comment">/* Update conflict */</span></div>
 <div class="line">        <span class="keywordflow">default</span>:                                <span class="comment">/* Other error */</span></div>
 <div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL);</div>
-<div class="line">                <span class="comment">/* The rollback_transaction call resets all open cursors. */</span></div>
+<div class="line">                <span class="comment">/* The rollback_transaction call resets all cursors. */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Cursors remain open and may be used for multiple transactions. */</span></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Cursors remain open and may be used for multiple transactions.</span></div>
+<div class="line"><span class="comment">         */</span></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>

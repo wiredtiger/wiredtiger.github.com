@@ -72,6 +72,12 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="textblock"><h1><a class="anchor" id="version_232"></a>
 Upgrading to Version 2.3.2</h1>
 <dl>
+<dt>Cursors no longer reset on transaction begin or commit </dt>
+<dd><p class="startdd">In previous versions of WiredTiger, all cursors in a session were reset at transaction boundaries (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a>, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> and <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction. ">WT_SESSION::rollback_transaction</a>). Now they are only reset by <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction. ">WT_SESSION::rollback_transaction</a>.</p>
+<p>This change means that a cursor can be used to iterate through a table and perform transactional updates based on the visited records without the cursor losing its position.</p>
+<p>Applications relying on this behavior (for example, to avoid pinning the underlying cursor resources), should reset cursors explicitly when the position is no longer required. </p>
+<p class="enddd"></p>
+</dd>
 <dt><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface changes </dt>
 <dd>Add a new <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#afc0d169175c9f407833c7b7c69a257f4" title="If non-NULL, this callback is called to customize the collator for each data source. ">WT_COLLATOR::customize</a> callback that WiredTiger will call (if set) for each data source configured to use the collator. Applications using the existing <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface that do not require the new functionality should set this callback to <code>NULL</code>.  </dd>
 <dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> lsm_merge option changed </dt>

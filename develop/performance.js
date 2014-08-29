@@ -11,8 +11,8 @@ var performance =
     [ "Cursor persistence", "tune_cursor_persist.html", null ],
     [ "Read-only objects", "tune_read_only_objects.html", null ],
     [ "Commit-level durability", "tune_durability.html", [
-      [ "Group commit", "tune_durability.html#durability_group_commit", null ],
-      [ "Flush call configuration", "tune_durability.html#durability_flush_config", null ]
+      [ "Group commit", "tune_durability.html#tune_durability_group_commit", null ],
+      [ "Flush call configuration", "tune_durability.html#tune_durability_flush_config", null ]
     ] ],
     [ "Checksums", "tune_checksum.html", null ],
     [ "Compression", "tune_compression.html", null ],

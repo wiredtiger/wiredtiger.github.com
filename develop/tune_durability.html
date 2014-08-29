@@ -70,10 +70,10 @@ $(document).ready(function(){initNavTree('tune_durability.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>There are some considerations when configuring commit-level durability that can affect performance.</p>
-<h1><a class="anchor" id="durability_group_commit"></a>
+<h1><a class="anchor" id="tune_durability_group_commit"></a>
 Group commit</h1>
 <p>WiredTiger automatically groups the flush operations for threads that commit concurrently into single calls. This usually means multi-threaded workloads will achieve higher throughput than single-threaded workloads because the operating system can flush data more efficiently to the disk. No application-level configuration is required for this feature.</p>
-<h1><a class="anchor" id="durability_flush_config"></a>
+<h1><a class="anchor" id="tune_durability_flush_config"></a>
 Flush call configuration</h1>
 <p>By default, log records are flushed to disk before <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> returns, ensuring durability at the commit. However, the durability guarantees can be relaxed to increase performance.</p>
 <p>If <code>transaction_sync=</code>(enabled=false) is configured to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>, log records will be buffered in memory, and only flushed to disk by checkpoints or calls to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> with <code>sync=true</code>. (Note that any call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> with <code>sync=true</code> will flush the log records for all committed transactions, not just the transaction where the configuration is set.) This provides the minimal guarantees, but will be significantly faster than other configurations.</p>
