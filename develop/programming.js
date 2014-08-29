@@ -44,11 +44,11 @@ var programming =
     [ "Multithreading", "threads.html", [
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
-    [ "Name spaces", "name_space.html", [
-      [ "Process' environment name space", "name_space.html#env", null ],
-      [ "C language name space", "name_space.html#c", null ],
-      [ "File system name space", "name_space.html#filename", null ],
-      [ "Error return name space", "name_space.html#error", null ]
+    [ "Name spaces", "namespace.html", [
+      [ "Process' environment name space", "namespace.html#namespace_env", null ],
+      [ "C language name space", "namespace.html#namespace_c", null ],
+      [ "File system name space", "namespace.html#namespace_filesystem", null ],
+      [ "Error return name space", "namespace.html#namespace_error", null ]
     ] ],
     [ "Signal handling", "signals.html", null ],
     [ "Checkpoint durability", "checkpoint.html", [
@@ -80,7 +80,7 @@ var programming =
       [ "Waiting for outstanding operations to complete", "async.html#async_flush", null ],
       [ "Asynchronous operations and transactions", "async.html#async_transactions", null ]
     ] ],
-    [ "Compaction", "compaction.html", null ],
+    [ "Compaction", "compact.html", null ],
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
     ] ],

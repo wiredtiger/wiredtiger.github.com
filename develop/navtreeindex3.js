@@ -159,7 +159,7 @@ var NAVTREEINDEX3 =
 "tune_memory_allocator.html":[0,4,0],
 "tune_mutex.html":[0,4,13],
 "tune_page_sizes.html":[0,4,1],
-"tune_read_only_objects.html":[0,4,5],
+"tune_read_only.html":[0,4,5],
 "tune_statistics.html":[0,4,15],
 "tune_system_buffer_cache.html":[0,4,10],
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io":[0,4,10,0],

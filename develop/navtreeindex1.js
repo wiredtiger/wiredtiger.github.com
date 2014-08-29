@@ -50,7 +50,7 @@ var NAVTREEINDEX1 =
 "command_line.html#util_write_synopsis":[0,5,18,0],
 "community.html":[0,11],
 "community.html":[7],
-"compaction.html":[0,3,16],
+"compact.html":[0,3,16],
 "compression.html":[0,3,8],
 "compression.html#compression_bzip2":[0,3,8,2],
 "compression.html#compression_custom":[0,3,8,4],
