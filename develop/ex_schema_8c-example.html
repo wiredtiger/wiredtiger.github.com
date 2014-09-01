@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* The C struct for the data we are storing in a WiredTiger table. */</span></div>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        uint64_t population;</div>
 <div class="line">} POP_RECORD;</div>
 <div class="line"></div>
-<div class="line">POP_RECORD pop_data[] = {</div>
+<div class="line"><span class="keyword">static</span> POP_RECORD pop_data[] = {</div>
 <div class="line">        { <span class="stringliteral">&quot;AU&quot;</span>,  1900,    4000000 },</div>
 <div class="line">        { <span class="stringliteral">&quot;AU&quot;</span>,  2000,   19053186 },</div>
 <div class="line">        { <span class="stringliteral">&quot;CAN&quot;</span>, 1900,    5500000 },</div>

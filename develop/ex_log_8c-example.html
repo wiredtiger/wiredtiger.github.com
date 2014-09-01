@@ -107,10 +107,10 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home1 = <span class="stringliteral">&quot;WT_HOME_LOG_1&quot;</span>;</div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home2 = <span class="stringliteral">&quot;WT_HOME_LOG_2&quot;</span>;</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home1 = <span class="stringliteral">&quot;WT_HOME_LOG_1&quot;</span>;</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home2 = <span class="stringliteral">&quot;WT_HOME_LOG_2&quot;</span>;</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> uri = <span class="stringliteral">&quot;table:logtest&quot;</span>;</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> uri = <span class="stringliteral">&quot;table:logtest&quot;</span>;</div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#define CONN_CONFIG &quot;create,cache_size=100MB,log=(archive=false,enabled=true)&quot;</span></div>
 <div class="line"><span class="preprocessor">#define MAX_KEYS        10</span></div>

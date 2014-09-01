@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html','');});
 <div class="line"><span class="keywordtype">int</span> cursor_update(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor);</div>
 <div class="line"><span class="keywordtype">int</span> cursor_remove(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor);</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">cursor_forward_scan(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</div>
@@ -206,7 +206,8 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html','');});
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;foo&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> (cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor));</div>
 <div class="line">}</div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>)</div>
+<div class="line"><span class="keywordtype">int</span></div>
+<div class="line">main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">        <a name="_a13"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
