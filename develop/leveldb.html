@@ -83,7 +83,7 @@ Building and using WiredTiger's LevelDB API</h1>
 <li>
 <p class="startli">build WiredTiger with LevelDB support:</p>
 <p><code> ./configure &ndash;enable-leveldb &ndash;with-builtins=snappy &ndash;prefix=$WT_INSTALL make install </code></p>
-<p>To include support for Basho's version of LevelDB, change the above to <code>&ndash;enable-leveldb=basho</code>. To include support for HyperLevelDB / HyperDex, change the above to <code>&ndash;enable-leveldb=hyper</code>. To include support for RocksDB, change the above to <code>&ndash;enable-leveldb=rocksdb</code>.</p>
+<p>Change the above to <code>&ndash;enable-leveldb=basho</code> to build a version of the LevelDB API compatible with Basho's Riak product, or <code>&ndash;enable-leveldb=hyper</code> to build a version of the LevelDB API compatible with the HyperDex product, or <code>&ndash;enable-leveldb=rocksdb</code> to build a version of the LevelDB API compatible with applications using Facebook's RocksDB engine.</p>
 <p class="endli"></p>
 </li>
 <li>
