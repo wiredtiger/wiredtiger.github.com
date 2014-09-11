@@ -114,13 +114,9 @@ Caveats</h1>
 <h2><a class="anchor" id="lsm_hazard"></a>
 Hazard configuration</h2>
 <p>Reads from an LSM cursor may need to position a cursor in each active chunk. The number of chunks depends on the chunk size, and how many chunks have been merged. There must be at least as many hazard pointers available as there are chunks in the tree for each cursor that is open on the LSM tree. The number of hazard pointers is configured with the <code>"hazard_max"</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.</p>
-<h2><a class="anchor" id="lsm_tombstones"></a>
-Empty values</h2>
-<p>Internally, WiredTiger's LSM trees use an empty value to represent a record that has been removed (also known as a "tombstone"). For this reason, applications cannot store records in LSM trees with empty values.</p>
 <h2><a class="anchor" id="lsm_checkpoints"></a>
 Named checkpoints</h2>
-<p>Named checkpoints are not supported on LSM trees, and cursors cannot be opened with a non-empty <code>"checkpoint"</code> configuration.</p>
-<p>We intend to address these limitations in future releases. </p>
+<p>Named checkpoints are not supported on LSM trees, and cursors cannot be opened with a non-empty <code>"checkpoint"</code> configuration (that is, only the most recent standard checkpoint can be read). </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

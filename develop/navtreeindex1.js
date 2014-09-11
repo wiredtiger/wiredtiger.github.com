@@ -139,9 +139,10 @@ var NAVTREEINDEX1 =
 "extensions.html#extensions_loadable":[0,3,20,0],
 "extensions.html#extensions_local":[0,3,20,2],
 "extensions.html#extensions_recovery":[0,3,20,1],
-"file_formats.html":[0,3,7],
-"file_formats.html#file_formats_compression":[0,3,7,1],
-"file_formats.html#file_formats_formats":[0,3,7,0],
+"file_formats.html":[0,3,6],
+"file_formats.html#file_formats_choice":[0,3,6,1],
+"file_formats.html#file_formats_compression":[0,3,6,2],
+"file_formats.html#file_formats_formats":[0,3,6,0],
 "filesystems.html":[0,6,2],
 "filesystems.html#remote":[0,6,2,0],
 "functions.html":[5,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga4282db720d963411304f5861b4ee38fb":[2,0,211],
 "group__wt.html#ga42c0304e959ce5786e8d4f6787465a08":[2,0,171],
 "group__wt.html#ga4621505f48ba6399902a137ec0af556c":[2,0,74],
-"group__wt.html#ga46d59ac6c0cd06b56f96d9f79929bc65":[2,0,157],
-"group__wt.html#ga4797cf2942d2c243f1341aa78dc50999":[2,0,173]
+"group__wt.html#ga46d59ac6c0cd06b56f96d9f79929bc65":[2,0,157]
 };

@@ -20,6 +20,7 @@ var programming =
     ] ],
     [ "Error handling", "error_handling.html", null ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
+    [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],
       [ "Description of LSM trees", "lsm.html#lsm_description", null ],
@@ -29,11 +30,9 @@ var programming =
       [ "Creating tables using LSM trees", "lsm.html#lsm_schema", null ],
       [ "Caveats", "lsm.html#lsm_caveats", [
         [ "Hazard configuration", "lsm.html#lsm_hazard", null ],
-        [ "Empty values", "lsm.html#lsm_tombstones", null ],
         [ "Named checkpoints", "lsm.html#lsm_checkpoints", null ]
       ] ]
     ] ],
-    [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Compressors", "compression.html", [
       [ "Using zlib compression", "compression.html#compression_zlib", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],
