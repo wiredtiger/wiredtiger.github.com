@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"statistics.html":[0,3,17],
+"statistics.html#statistics_log":[0,3,17,0],
+"struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html":[2,0,6],
+"struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html#a76fba7d69e5d387eee9efe9667afca54":[2,0,6,0],
 "struct_w_t___a_s_y_n_c___o_p.html":[2,0,3],
 "struct_w_t___a_s_y_n_c___o_p.html#a072a0338cc2bdd30243f2fb2e98d7aa9":[2,0,3,11],
 "struct_w_t___a_s_y_n_c___o_p.html#a3c0ab580d7d7cc18f669ef8259254b8c":[2,0,3,2],
