@@ -110,15 +110,15 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">my_extract(<a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> *extractor, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div>
-<div class="line">    <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key, <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *value,</div>
-<div class="line">    <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *result)</div>
+<div class="line">    <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key, <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *value, <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *result)</div>
 <div class="line">{</div>
 <div class="line">        <span class="comment">/* Unused parameters */</span></div>
 <div class="line">        (void)extractor;</div>
 <div class="line">        (void)session;</div>
 <div class="line">        (void)key;</div>
 <div class="line"></div>
-<div class="line">        *result = *value;</div>
+<div class="line">        result-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a> = value-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
+<div class="line">        result-&gt;<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a> = value-&gt;<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>;</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 </div><!-- fragment -->
