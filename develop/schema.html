@@ -167,7 +167,7 @@ Cursor formats</h1>
 </div><!-- fragment --><p> For example, setting the key for a column-store table would be done as follows:</p>
 <div class="fragment"><div class="line">        uint64_t recno = 37;    <span class="comment">/* Set the cursor&#39;s record number key. */</span></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, recno);</div>
-</div><!-- fragment --><p> A more complex example, setting a composite key for a row-store table where the key_format was <code>"SiS"</code>, would be done as follows:</p>
+</div><!-- fragment --><p> A more complex example, setting a composite key for a row-store table where the key_format was <code>"SiH"</code>, would be done as follows:</p>
 <div class="fragment"><div class="line">                        <span class="comment">/* Set the cursor&#39;s &quot;SiH&quot; format composite key. */</span></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;first&quot;</span>, (int32_t)5, (uint16_t)7);</div>
 </div><!-- fragment --><p> The key's values are accessed with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record. ">WT_CURSOR::get_key</a>, which is analogous to <code>scanf</code>, and takes a list of pointers to values in the same order:</p>
