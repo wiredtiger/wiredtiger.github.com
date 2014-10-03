@@ -6,7 +6,7 @@ var group__wt =
     ] ],
     [ "WT_LSN", "group__wt.html#struct_w_t___l_s_n", [
       [ "file", "group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf", null ],
-      [ "offset", "group__wt.html#acf79ceaf0f54da0dc7dab5336fa7b72a", null ]
+      [ "offset", "group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c", null ]
     ] ],
     [ "WT_CURSOR", "struct_w_t___c_u_r_s_o_r.html", [
       [ "close", "struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b", null ],
