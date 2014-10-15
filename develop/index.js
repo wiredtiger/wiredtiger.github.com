@@ -19,6 +19,7 @@ var index =
       [ "Caveats", "leveldb.html#leveldb_caveats", null ]
     ] ],
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
+    [ "Writing WiredTiger applications  in Java", "programming_lang_java.html", "programming_lang_java" ],
     [ "Performance tuning WiredTiger applications", "performance.html", "performance" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],

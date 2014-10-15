@@ -15,7 +15,7 @@ a \fBWT_CURSOR\fP represents a cursor over a collection of data\&. Cursors are o
 .PP
 Handles and operations are \fBconfigured using strings\fP, which keeps the set of methods in the API relatively small and makes the interface very similar regardless of the programming language used in the application\&. WiredTiger supports the C, C++, Java and Python programming languages (among others)\&.
 .PP
-By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a \fBWT_ITEM\fP structure\&. Keys and values may be up to (4GB - 512B) bytes in size, but depending on how \fBmaximum item sizes\fP are configured, large key and value items will be stored on overflow pages\&.
+By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a \fBWT_ITEM\fP structure\&. Keys and values may be up to (4GB - 512B) bytes in size, but depending on how \fBWT_SESSION::create\fP 'maximum item sizes' are configured, large key and value items will be stored on overflow pages\&.
 .PP
 WiredTiger also supports a \fBschema layer\fP so that keys and values types can be chosen from a list, or composite keys or values made up of columns with any combination of types\&. The size (4GB - 512B) byte limit on keys and values still applies\&.
 .PP
