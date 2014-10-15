@@ -12,7 +12,7 @@ WiredTiger includes a command line utility, \fCwt\fP\&.
 The \fCwt\fP tool is a command-line utility that provides access to various pieces of the WiredTiger functionality\&.
 .SH "Options"
 .PP
-There are three global options:
+There are four global options:
 .PP
 \fB-C config\fP
 .RS 4
@@ -167,7 +167,7 @@ The \fCload\fP command reads the standard input for data and loads it into a tab
 .PP
 By default, if the table or file already exists, data in the file or table will be overwritten by the new data (use the \fC-n\fP option to make an attempt to overwrite existing data return an error)\&.
 .SS "Synopsis"
-\fCwt [-Vv] [-C config] [-h directory] load [-an] [-f input] [-r name] [uri configuration \&.\&.\&.]\fP
+\fCwt [-Vv] [-C config] [-h directory] load [-ajn] [-f input] [-r name] [uri configuration \&.\&.\&.]\fP
 .SS "Options"
 The following are command-specific options for the \fCload\fP command:
 .PP
