@@ -26,6 +26,7 @@ var NAVTREEINDEX4 =
 "tune_transparent_huge_pages.html":[0,5,11],
 "tune_zone_reclaim.html":[0,5,14],
 "upgrade.html":[0,3,20],
+"upgrade.html":[0,4,19],
 "upgrading.html":[0,9],
 "upgrading.html#version_13":[0,9,22],
 "upgrading.html#version_135":[0,9,21],

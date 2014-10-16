@@ -82,5 +82,6 @@ var programming_lang_java =
       [ "Statistics logging", "statistics_lang_java.html#statistics_log_lang_java", null ]
     ] ],
     [ "Per-process shared caches  in Java", "shared_cache_lang_java.html", null ],
-    [ "Log cursors  in Java", "cursor_log_lang_java.html", null ]
+    [ "Log cursors  in Java", "cursor_log_lang_java.html", null ],
+    [ "Upgrading and downgrading databases", "upgrade.html", null ]
 ];
