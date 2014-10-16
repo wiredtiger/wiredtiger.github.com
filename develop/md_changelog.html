@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.3.2</span>
+   &#160;<span id="projectnumber">Version 2.4.0</span>
    </div>
   </td>
  </tr>
@@ -69,7 +69,33 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <div class="title">WiredTiger Change Log </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>WiredTiger release 2.3.1, 2014-08-14 </h2>
+<div class="textblock"><h2>WiredTiger release 2.4.0, 2014-10-15 </h2>
+<p>The WiredTiger 2.4.0 release contains significant new features, API changes and many bug fixes.</p>
+<p>New features and API changes:</p>
+<ul>
+<li>Cursors keep their position across transaction boundaries. That is <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a> and <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> no longer reset cursors. [#1181]</li>
+<li>Change cursor behavior so that when an operation returns WT_NOTFOUND, the cursor is now left pointing to the original key/value pair. [#1209]</li>
+<li>Initial support for building WiredTiger on Windows.</li>
+<li>Add ability to customize a collator for specific data sources or with application managed metadata. See upgrading documentation for more information. [#1165]</li>
+<li>Enhance extension mechanism in WiredTiger to support loading extensions from the application binary - not just a separate library. [#1174]</li>
+<li>Replace <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> "lsm=(merge_threads)" configuration option with <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> "lsm_manager=(worker_thread_max)". See upgrading documentation for more information.</li>
+<li>Enhancements to the WiredTiger Python API build process. [#1188]</li>
+<li>Add ability to dump and load WiredTiger databases in JSON format. [#1154]</li>
+<li>Add ability to automatically checkpoint based on the volume of log records generated since the last checkpoint. This is enabled using the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> configuration option "checkpoint=(log_size=size)" [#1170]</li>
+<li>Enhance functionality allowing users to write content into the WiredTiger transaction log. [#1171][#1175]</li>
+<li>Enhance the WiredTiger HyperLevelDB implementation to support log replay. [#1106][#1155]</li>
+</ul>
+<p>Other significant changes:</p>
+<ul>
+<li>Fix several bugs in the shared cache implementation. [#1180][#1176]</li>
+<li>Fix a bug where the public URI field in a cursor did not match the string passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a>. [#1235]</li>
+<li>Fix several bugs in salvage. [#1222][#1169]</li>
+<li>Several bug fixes and enhancements for <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a>. [#1214][#1172]</li>
+<li>Fix several bugs in raw compression implementation, particularly for data that compresses extremely well. [#1191]</li>
+<li>Several bug fixes and enhancements to WiredTiger LevelDB interface.</li>
+<li>Switch default build from using adaptive pthread mutexes to default pthread mutexes.</li>
+</ul>
+<h2>WiredTiger release 2.3.1, 2014-08-14 </h2>
 <p>The WiredTiger 2.3.1 release contains mainly performance enhancements and bug fixes.</p>
 <p>Changes to the WiredTiger API:</p>
 <ul>

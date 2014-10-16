@@ -50,7 +50,7 @@ var NAVTREEINDEX4 =
 "upgrading.html#version_221":[0,9,3],
 "upgrading.html#version_230":[0,9,2],
 "upgrading.html#version_231":[0,9,1],
-"upgrading.html#version_232":[0,9,0],
+"upgrading.html#version_240":[0,9,0],
 "wtperf.html":[0,5,16],
 "wtperf.html#config":[0,5,16,1],
 "wtperf.html#monitor":[0,5,16,0]
