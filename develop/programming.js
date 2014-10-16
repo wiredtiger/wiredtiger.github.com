@@ -85,6 +85,7 @@ var programming =
     ] ],
     [ "Per-process shared caches", "shared_cache.html", null ],
     [ "Log cursors", "cursor_log.html", null ],
+    [ "Upgrading and downgrading databases", "upgrade.html", null ],
     [ "Extending WiredTiger", "extensions.html", [
       [ "Loadable extensions", "extensions.html#extensions_loadable", null ],
       [ "Extensions and recovery", "extensions.html#extensions_recovery", null ],

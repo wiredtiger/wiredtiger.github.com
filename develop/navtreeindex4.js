@@ -25,6 +25,7 @@ var NAVTREEINDEX4 =
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,5,10,2],
 "tune_transparent_huge_pages.html":[0,5,11],
 "tune_zone_reclaim.html":[0,5,14],
+"upgrade.html":[0,3,20],
 "upgrading.html":[0,9],
 "upgrading.html#version_13":[0,9,22],
 "upgrading.html#version_135":[0,9,21],

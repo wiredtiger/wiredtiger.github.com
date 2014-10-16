@@ -245,9 +245,9 @@ var NAVTREEINDEX2 =
 "group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4":[2,1,9],
 "group__wt__ext.html#ga84ae45d6803da8dab05bb72c2e69aa0f":[2,1,6],
 "group__wt__java.html":[2,2],
-"helium.html":[0,3,22],
-"helium.html#helium_build":[0,3,22,0],
-"helium.html#helium_limitations":[0,3,22,4],
-"helium.html#helium_load":[0,3,22,1],
-"helium.html#helium_notes":[0,3,22,3]
+"helium.html":[0,3,23],
+"helium.html#helium_build":[0,3,23,0],
+"helium.html#helium_limitations":[0,3,23,4],
+"helium.html#helium_load":[0,3,23,1],
+"helium.html#helium_notes":[0,3,23,3]
 };

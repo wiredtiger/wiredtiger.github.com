@@ -1,6 +1,6 @@
 var NAVTREEINDEX3 =
 {
-"helium.html#helium_objects":[0,3,22,2],
+"helium.html#helium_objects":[0,3,23,2],
 "hierarchy.html":[4],
 "home.html":[0,7,0],
 "huffman.html":[0,3,7,3],
@@ -16,13 +16,13 @@ var NAVTREEINDEX3 =
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html":[3,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html#a4be4e275a37fc04a6789c4cf5e8a5fd9":[3,0,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html":[2,2,5],
-"keyvalue.html":[0,4,5,10],
 "keyvalue.html":[0,3,5,10],
+"keyvalue.html":[0,4,5,10],
 "leveldb.html":[0,2],
 "leveldb.html#leveldb_build":[0,2,0],
 "leveldb.html#leveldb_caveats":[0,2,1],
-"license.html":[8],
 "license.html":[0,10],
+"license.html":[8],
 "license.html#license_distribution":[0,10,2],
 "license.html#license_leveldb":[0,10,1],
 "license.html#license_library":[0,10,0],

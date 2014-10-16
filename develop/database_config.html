@@ -107,8 +107,10 @@ Otherwise, all lines are concatenated and the newline characters replaced with c
 </ul>
 <h1><a class="anchor" id="config_base"></a>
 WiredTiger.basecfg file</h1>
-<p>When a WiredTiger database is created, the configuration string passed to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is saved to a WiredTiger home directory file named <code>WiredTiger.basecfg</code>, and that configuration file is read whenever the database is subsequently opened.</p>
-<p>Users should not edit this file, set the <code>WIREDTIGER_CONFIG</code> environment variable or create a <code>WiredTiger.config</code> file instead. </p>
+<p>When a WiredTiger database is created, non-default configuration information specified to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is saved to a WiredTiger home directory file named <code>WiredTiger.basecfg</code>, and that configuration file is read whenever the database is subsequently opened.</p>
+<p>For example, if a shared library extensions are required, those settings will be saved to the base configuration file so it's easier to write general-purpose applications that might not be aware of how a particular database was created and configured.</p>
+<p>Users should not not edit this file, set the <code>WIREDTIGER_CONFIG</code> environment variable or create a <code>WiredTiger.config</code> file instead, as those settings override the settings in the base configuration file.</p>
+<p>This file is a potential problem for applications that want to retain the ability to downgrade to previous releases. If a new database is created after an upgrade, the base configuration file might have configuration strings that would cause a previous version of the application to fail. For this reason, applications that may want to downgrade should configure the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> value <code>config_base</code> to <code>false</code> so the base configuration file is not written as part of database create. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
