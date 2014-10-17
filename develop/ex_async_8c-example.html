@@ -103,12 +103,18 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
-<div class="line"></div>
+<div class="line"><span class="preprocessor">#ifndef _WIN32</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#include &quot;windows_shim.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#if defined(_lint)</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#define ATOMIC_ADD(v, val)      ((v) += (val), (v))</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#elif defined(_WIN32)</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define ATOMIC_ADD(v, val)      (_InterlockedExchangeAdd(&amp;(v), val) + val)</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#else</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#define ATOMIC_ADD(v, val)      __sync_add_and_fetch(&amp;(v), val)</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#endif</span></div>

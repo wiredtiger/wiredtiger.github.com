@@ -103,8 +103,13 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
-<div class="line"></div>
+<div class="line"><span class="preprocessor">#ifndef _WIN32</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"><span class="preprocessor"></span><span class="comment">/* snprintf is not supported on &lt;= VS2013 */</span></div>
+<div class="line"><span class="preprocessor">#define snprintf _snprintf</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home1 = <span class="stringliteral">&quot;WT_HOME_LOG_1&quot;</span>;</div>

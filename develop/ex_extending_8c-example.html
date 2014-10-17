@@ -107,6 +107,10 @@ $(document).ready(function(){initNavTree('ex_extending_8c-example.html','');});
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
 <div class="line"></div>
+<div class="line"><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define strcasecmp stricmp</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* A simple case insensitive comparator. */</span></div>
