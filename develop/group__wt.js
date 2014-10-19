@@ -105,7 +105,6 @@ var group__wt =
       [ "get", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#ad0b4eef618f34b00edfbac44b24c5c16", null ],
       [ "next", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f", null ]
     ] ],
-    [ "WT_DEADLOCK", "group__wt.html#ga9650b6e97a88921ec1302935908d0c47", null ],
     [ "WT_DUPLICATE_KEY", "group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c", null ],
     [ "WT_ERROR", "group__wt.html#gafdfe4d6ca06cb7337272f883f60c991e", null ],
     [ "WT_INTPACK32_MAXSIZE", "group__wt.html#ga56fdfd15cc3721bcb251cfc859a915ad", null ],
@@ -123,6 +122,7 @@ var group__wt =
     [ "WT_LOGREC_MESSAGE", "group__wt.html#ga8cf04a003979e7852209079d4093d783", null ],
     [ "WT_NOTFOUND", "group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8", null ],
     [ "WT_PANIC", "group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992", null ],
+    [ "WT_ROLLBACK", "group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8", null ],
     [ "WT_STAT_CONN_ASYNC_ALLOC_RACE", "group__wt.html#gaf2709f55d4ee4797b8a1f1c568d23f0e", null ],
     [ "WT_STAT_CONN_ASYNC_ALLOC_VIEW", "group__wt.html#ga01a389247d44f494eaff44ac9304bde6", null ],
     [ "WT_STAT_CONN_ASYNC_CUR_QUEUE", "group__wt.html#gae0788093d8b82038e000c8a4c96550f1", null ],
