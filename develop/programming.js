@@ -91,6 +91,16 @@ var programming =
       [ "Extensions and recovery", "extensions.html#extensions_recovery", null ],
       [ "Local extensions", "extensions.html#extensions_local", null ]
     ] ],
+    [ "Custom Collators", "custom_collators.html", [
+      [ "Introduction to Custom Collators", "custom_collators.html#custom_collators_intro", null ],
+      [ "Custom Collators and Recovery", "custom_collators.html#custom_collators_recovery", null ],
+      [ "Custom Collators for Indices", "custom_collators.html#custom_collators_indices", null ]
+    ] ],
+    [ "Custom Extractors", "custom_extractors.html", [
+      [ "Introduction to Custom Extractors", "custom_extractors.html#custom_extractors_intro", null ],
+      [ "Implementation notes", "custom_extractors.html#custom_extractors_notes", null ],
+      [ "Custom Collators in raw mode", "custom_extractors.html#custom_extractors_raw", null ]
+    ] ],
     [ "Custom Data Sources", "custom_data_sources.html", [
       [ "WT_DATA_SOURCE methods", "custom_data_sources.html#custom_ds_methods", [
         [ "WT_DATA_SOURCE::create method", "custom_data_sources.html#custom_ds_create", null ]

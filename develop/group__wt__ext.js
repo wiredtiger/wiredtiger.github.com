@@ -26,7 +26,9 @@ var group__wt__ext =
       [ "verify", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad6487a12a6248371e43884cfef7715da", null ]
     ] ],
     [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", [
-      [ "extract", "struct_w_t___e_x_t_r_a_c_t_o_r.html#a7a7069beebb84ffaa8ee02f8d7ebb162", null ]
+      [ "customize", "struct_w_t___e_x_t_r_a_c_t_o_r.html#ab4d736feccd18b3f6b2cea0967c3e7ea", null ],
+      [ "extract", "struct_w_t___e_x_t_r_a_c_t_o_r.html#af850a463cdbee1e4ce9a50f0b9c3d034", null ],
+      [ "terminate", "struct_w_t___e_x_t_r_a_c_t_o_r.html#ae0d82cb1e6841ada5d3e75f847411f79", null ]
     ] ],
     [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", [
       [ "notify", "struct_w_t___t_x_n___n_o_t_i_f_y.html#a37f71719969554d56292473eec533e80", null ]
@@ -39,7 +41,7 @@ var group__wt__ext =
       [ "err_printf", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039", null ],
       [ "metadata_insert", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a4b0afec13a44fe1de5433c655a421ba0", null ],
       [ "metadata_remove", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6081f75edd9a8014e7c23a237d926c37", null ],
-      [ "metadata_search", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aceb53a646270642736847d373e253bfc", null ],
+      [ "metadata_search", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#acf28a9af56690753897a6393e852cabb", null ],
       [ "metadata_update", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a91af056b94f2401cc6a4c37c7103eff1", null ],
       [ "msg_printf", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a460e65aa13990254a2cd83fe96d4865a", null ],
       [ "scr_alloc", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a72da81054ac80fc95226a98ef094df2f", null ],

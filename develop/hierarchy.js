@@ -14,9 +14,11 @@ var hierarchy =
       [ "com.wiredtiger.db.wiredtiger", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger.html", null ]
     ] ],
     [ "com.wiredtiger.db.wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
-    [ "Exception", null, [
+    [ "RuntimeException", null, [
       [ "com.wiredtiger.db.WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", [
-        [ "com.wiredtiger.db.WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", null ]
+        [ "com.wiredtiger.db.WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", null ],
+        [ "com.wiredtiger.db.WiredTigerPanicException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_panic_exception.html", null ],
+        [ "com.wiredtiger.db.WiredTigerRollbackException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_rollback_exception.html", null ]
       ] ]
     ] ],
     [ "WT_ASYNC_CALLBACK", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html", null ],

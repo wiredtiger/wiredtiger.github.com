@@ -97,7 +97,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The interface implemented by applications to provide custom ordering of records. </p>
-<p>Applications register their implementation with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8" title="Add a custom collation function. ">WT_CONNECTION::add_collator</a>.</p>
+<p>Applications register their implementation with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8" title="Add a custom collation function. ">WT_CONNECTION::add_collator</a>. See <a class="el" href="custom_collators.html">Custom Collators</a> for more information.</p>
 <div class="fragment"><div class="line">        ret = conn-&gt;add_collator(conn, <span class="stringliteral">&quot;nocase&quot;</span>, &amp;nocasecoll, NULL);</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">        ret = conn-&gt;add_collator(conn, <span class="stringliteral">&quot;prefix10&quot;</span>, &amp;pcoll10.iface, NULL);</div>
 <div class="line"></div>

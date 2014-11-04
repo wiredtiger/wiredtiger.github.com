@@ -13,6 +13,7 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "rename", "struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614", null ],
     [ "rollback_transaction", "struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1", null ],
     [ "salvage", "struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e", null ],
+    [ "transaction_pinned_range", "struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d", null ],
     [ "truncate", "struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a", null ],
     [ "upgrade", "struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69", null ],
     [ "verify", "struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3", null ],

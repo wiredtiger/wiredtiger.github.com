@@ -118,9 +118,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a6081f75edd9a8014e7c23a237d926c37"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6081f75edd9a8014e7c23a237d926c37">metadata_remove</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *key)</td></tr>
 <tr class="memdesc:a6081f75edd9a8014e7c23a237d926c37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a row from the metadata.  <a href="#a6081f75edd9a8014e7c23a237d926c37">More...</a><br/></td></tr>
 <tr class="separator:a6081f75edd9a8014e7c23a237d926c37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aceb53a646270642736847d373e253bfc"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aceb53a646270642736847d373e253bfc">metadata_search</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *key, const char **valuep)</td></tr>
-<tr class="memdesc:aceb53a646270642736847d373e253bfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a row from the metadata.  <a href="#aceb53a646270642736847d373e253bfc">More...</a><br/></td></tr>
-<tr class="separator:aceb53a646270642736847d373e253bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf28a9af56690753897a6393e852cabb"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#acf28a9af56690753897a6393e852cabb">metadata_search</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *key, char **valuep)</td></tr>
+<tr class="memdesc:acf28a9af56690753897a6393e852cabb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a row from the metadata.  <a href="#acf28a9af56690753897a6393e852cabb">More...</a><br/></td></tr>
+<tr class="separator:acf28a9af56690753897a6393e852cabb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91af056b94f2401cc6a4c37c7103eff1"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a91af056b94f2401cc6a4c37c7103eff1">metadata_update</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *key, const char *value)</td></tr>
 <tr class="memdesc:a91af056b94f2401cc6a4c37c7103eff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update a row in the metadata by either inserting a new record or updating an existing record.  <a href="#a91af056b94f2401cc6a4c37c7103eff1">More...</a><br/></td></tr>
 <tr class="separator:a91af056b94f2401cc6a4c37c7103eff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -462,12 +462,12 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="aceb53a646270642736847d373e253bfc"></a>
+<a class="anchor" id="acf28a9af56690753897a6393e852cabb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_EXTENSION_API::metadata_search)(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *key, const char **valuep)</td>
+          <td class="memname">int(* WT_EXTENSION_API::metadata_search)(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *key, char **valuep)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -487,10 +487,10 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * Insert a new WiredTiger metadata record.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;datasource_uri&quot;</span>;</div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *value;</div>
+<div class="line">        <span class="keywordtype">char</span> *value;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret =</div>
-<div class="line">            wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aceb53a646270642736847d373e253bfc">metadata_search</a>(wt_api, session, key, &amp;value)) != 0) {</div>
+<div class="line">            wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#acf28a9af56690753897a6393e852cabb">metadata_search</a>(wt_api, session, key, &amp;value)) != 0) {</div>
 <div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039">err_printf</a>(wt_api, session,</div>
 <div class="line">                    <span class="stringliteral">&quot;%s: metadata search: %s&quot;</span>, key, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>

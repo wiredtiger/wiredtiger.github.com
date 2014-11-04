@@ -137,6 +137,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6550c9079198955c5071583941c85bbf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a6550c9079198955c5071583941c85bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#a6550c9079198955c5071583941c85bbf">More...</a><br/></td></tr>
 <tr class="separator:a6550c9079198955c5071583941c85bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d108fab498cfddbb09ee23e3321a88d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">transaction_pinned_range</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, uint64_t *range)</td></tr>
+<tr class="memdesc:a1d108fab498cfddbb09ee23e3321a88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transaction ID range pinned by the session handle.  <a href="#a1d108fab498cfddbb09ee23e3321a88d">More...</a><br/></td></tr>
+<tr class="separator:a1d108fab498cfddbb09ee23e3321a88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -148,7 +151,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>All data operations are performed in the context of a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a>. </p>
 <p>This encapsulates the thread and transactional context of the operation.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a> handle is not usually shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a11">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a1">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a14">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_file_8c-example.html#_a1">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a1">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a1">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a11">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a1">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a14">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a2">ex_extractor.c</a>, <a class="el" href="ex_file_8c-example.html#_a1">ex_file.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a1">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a1">ex_thread.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a7e26b16b26b5870498752322fad790bf"></a>
 <div class="memitem">
@@ -549,6 +552,8 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>exclusive</code></td><td>fail if the object exists. When false (the default), if the object exists, check that its settings match the specified configuration.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>extractor</code></td><td>configure custom extractor for indices. Value must be an extractor name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups. ">WT_CONNECTION::add_extractor</a>.</td><td>a string; default empty. </td></tr>
+<tr>
 <td><code>format</code></td><td>the file format.</td><td>a string, chosen from the following options: <code>"btree"</code>; default <code>btree</code>. </td></tr>
 <tr>
 <td><code>huffman_key</code></td><td>configure Huffman encoding for keys. Permitted values are empty (off), <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
@@ -612,7 +617,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a6">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a14">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a6">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a6">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a18">ex_cursor.c</a>, <a class="el" href="ex_file_8c-example.html#a5">ex_file.c</a>, <a class="el" href="ex_log_8c-example.html#a30">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a6">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a19">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a11">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a6">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a14">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a6">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a6">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a18">ex_cursor.c</a>, <a class="el" href="ex_extractor_8c-example.html#a16">ex_extractor.c</a>, <a class="el" href="ex_file_8c-example.html#a5">ex_file.c</a>, <a class="el" href="ex_log_8c-example.html#a30">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a6">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a19">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a11">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -904,7 +909,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a7">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a7">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a8">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a19">ex_cursor.c</a>, <a class="el" href="ex_log_8c-example.html#a5">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a7">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a5">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a4">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a7">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a7">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a8">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a19">ex_cursor.c</a>, <a class="el" href="ex_extractor_8c-example.html#a11">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#a5">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a7">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a5">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a4">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1123,6 +1128,47 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1d108fab498cfddbb09ee23e3321a88d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::transaction_pinned_range </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>range</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the transaction ID range pinned by the session handle. </p>
+<p>The ID range is approximate and is calculated based on the oldest ID needed for the active transaction in this session, compared to the newest transaction in the system.</p>
+<div class="fragment"><div class="line">        <span class="comment">/* Check the transaction ID range pinned by the session handle. */</span></div>
+<div class="line">        uint64_t range;</div>
+<div class="line"></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">transaction_pinned_range</a>(session, &amp;range);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">range</td><td>the range of IDs pinned by this session. Zero if there is no active transaction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>

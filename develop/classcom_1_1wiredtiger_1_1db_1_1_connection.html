@@ -115,8 +115,8 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>get_home</b> ()</td
 <tr class="memitem:a76c8444703541803fab4bc54606136ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html">AsyncOp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a76c8444703541803fab4bc54606136ed">async_new_op</a> (String uri, String config, Object callbackObject)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a76c8444703541803fab4bc54606136ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an async operation handle.  <a href="#a76c8444703541803fab4bc54606136ed">More...</a><br/></td></tr>
 <tr class="separator:a76c8444703541803fab4bc54606136ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad03cfc01de34342ab8c76934accb8745"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad03cfc01de34342ab8c76934accb8745"></a>
-<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a>&#160;</td><td class="memItemRight" valign="bottom"><b>open_session</b> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memitem:ad03cfc01de34342ab8c76934accb8745"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad03cfc01de34342ab8c76934accb8745">open_session</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:ad03cfc01de34342ab8c76934accb8745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a session.  <a href="#ad03cfc01de34342ab8c76934accb8745">More...</a><br/></td></tr>
 <tr class="separator:ad03cfc01de34342ab8c76934accb8745"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -423,6 +423,42 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <td><code>terminate</code></td><td>an optional function in the extension that is called before the extension is unloaded during <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection. ">WT_CONNECTION::close</a>. The signature of the function must match <a class="el" href="group__wt__ext.html#ga3b904ac0bedaa0d1d59d04baaf915f7f" title="Optional cleanup function for an extension, called during WT_CONNECTION::close. ">wiredtiger_extension_terminate</a>.</td><td>a string; default <code>wiredtiger_extension_terminate</code>. </td></tr>
 </table>
 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad03cfc01de34342ab8c76934accb8745"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a> com.wiredtiger.db.Connection.open_session </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open a session. </p>
+<div class="fragment"><div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
+<div class="line">        ret = conn-&gt;open_session(conn, NULL, NULL, &amp;session);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, the connection's error handler is used </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>isolation</code></td><td>the default isolation level for operations in this session.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default <code>read-committed</code>. </td></tr>
+</table>
+</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">sessionp</td><td>the new session handle </td></tr>
   </table>
   </dd>
 </dl>

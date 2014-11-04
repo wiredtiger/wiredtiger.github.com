@@ -17,7 +17,9 @@ var annotated =
           [ "wiredtigerConstants", "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html", null ],
           [ "WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception" ],
           [ "wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
-          [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ]
+          [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ],
+          [ "WiredTigerPanicException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_panic_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_panic_exception" ],
+          [ "WiredTigerRollbackException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_rollback_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_rollback_exception" ]
         ] ]
       ] ]
     ] ],

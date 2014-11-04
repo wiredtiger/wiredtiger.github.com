@@ -8,7 +8,7 @@ var NAVTREE =
     [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
     [ "Class Members", "functions.html", [
       [ "All", "functions.html", "functions_dup" ],
-      [ "Functions", "functions_func.html", null ],
+      [ "Functions", "functions_func.html", "functions_func" ],
       [ "Variables", "functions_vars.html", null ],
       [ "Enumerator", "functions_eval.html", null ]
     ] ],
@@ -22,9 +22,9 @@ var NAVTREEINDEX =
 [
 ".html",
 "classcom_1_1wiredtiger_1_1db_1_1_session.html#a575d56d4413369b3db49bfeac3ff4caa",
-"group__wt.html#ga01f2c3cc7b75a0c6548e25ecbc21864d",
-"helium.html#helium_objects",
-"tune_cache.html"
+"functions_i.html",
+"group__wt.html#gaf67215f83cbfe1fe2cf775bca4e1bda0",
+"struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
