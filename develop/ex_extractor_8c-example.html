@@ -100,14 +100,11 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line"><span class="comment"> *      Example of how to use a WiredTiger custom index extractor extension.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
 <div class="line"></div>
@@ -227,19 +224,20 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line"><span class="comment">         * Pick 10 random years and read the data.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 10; i++) {</div>
-<div class="line">                year = (random() % YEAR_SPAN) + YEAR_BASE;</div>
+<div class="line">                year = (uint16_t)((random() % YEAR_SPAN) + YEAR_BASE);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, year);</div>
 <div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor)) == 0) {</div>
 <div class="line">                        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;last_name,</div>
 <div class="line">                            &amp;first_name, &amp;term_start, &amp;term_end)) != 0)</div>
-<div class="line">                                <span class="keywordflow">goto</span> err;</div>
-<div class="line">                        printf(<span class="stringliteral">&quot;Year %d: %s %s\n&quot;</span>,year, first_name, last_name);</div>
-<div class="line">                } <span class="keywordflow">else</span> {</div>
-<div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;Error %d for year %d\n&quot;</span>, ret, year);</div>
-<div class="line">                        <span class="keywordflow">goto</span> err;</div>
+<div class="line">                                <span class="keywordflow">break</span>;</div>
+<div class="line">                        printf(<span class="stringliteral">&quot;Year %d: %s %s\n&quot;</span>, year, first_name, last_name);</div>
+<div class="line">                        <span class="keywordflow">continue</span>;</div>
 <div class="line">                }</div>
+<div class="line"></div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error %d for year %d\n&quot;</span>, ret, year);</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
-<div class="line">err:    cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
+<div class="line">        ret = cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 <div class="line"></div>
