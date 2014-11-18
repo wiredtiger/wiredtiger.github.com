@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.4.1</span>
+   &#160;<span id="projectnumber">Version 2.4.2</span>
    </div>
   </td>
  </tr>
@@ -467,10 +467,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7111b3912e9e1162ef965d0637e27b34">WT_STAT_CONN_LOG_BUFFER_SIZE</a></td></tr>
 <tr class="memdesc:ga7111b3912e9e1162ef965d0637e27b34"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: total log buffer size <br/></td></tr>
 <tr class="separator:ga7111b3912e9e1162ef965d0637e27b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1c2186852b2ec90aa78525f12da3029"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa1c2186852b2ec90aa78525f12da3029"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa1c2186852b2ec90aa78525f12da3029">WT_STAT_CONN_LOG_BYTES_USER</a></td></tr>
-<tr class="memdesc:gaa1c2186852b2ec90aa78525f12da3029"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: user provided log bytes written <br/></td></tr>
-<tr class="separator:gaa1c2186852b2ec90aa78525f12da3029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4c40f5b7376197e313972dd4e337758"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae4c40f5b7376197e313972dd4e337758"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae4c40f5b7376197e313972dd4e337758">WT_STAT_CONN_LOG_BYTES_PAYLOAD</a></td></tr>
+<tr class="memdesc:gae4c40f5b7376197e313972dd4e337758"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log bytes of payload data <br/></td></tr>
+<tr class="separator:gae4c40f5b7376197e313972dd4e337758"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga58af084ac45e0367be4492c50ffaadce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga58af084ac45e0367be4492c50ffaadce"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga58af084ac45e0367be4492c50ffaadce">WT_STAT_CONN_LOG_BYTES_WRITTEN</a></td></tr>
 <tr class="memdesc:ga58af084ac45e0367be4492c50ffaadce"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log bytes written <br/></td></tr>
@@ -639,6 +639,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1eeabc1852a1dde2390f5b2c1dd4cda7">WT_STAT_CONN_TXN_CHECKPOINT_RUNNING</a></td></tr>
 <tr class="memdesc:ga1eeabc1852a1dde2390f5b2c1dd4cda7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint currently running <br/></td></tr>
 <tr class="separator:ga1eeabc1852a1dde2390f5b2c1dd4cda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa538c42c7e12859876f0a9d53baaccfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa538c42c7e12859876f0a9d53baaccfe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa538c42c7e12859876f0a9d53baaccfe">WT_STAT_CONN_TXN_CHECKPOINT_TIME_MAX</a></td></tr>
+<tr class="memdesc:gaa538c42c7e12859876f0a9d53baaccfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint max time (msecs) <br/></td></tr>
+<tr class="separator:gaa538c42c7e12859876f0a9d53baaccfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaebf2e7fc45e804290e2f6874dde1dbc7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaebf2e7fc45e804290e2f6874dde1dbc7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaebf2e7fc45e804290e2f6874dde1dbc7">WT_STAT_CONN_TXN_CHECKPOINT_TIME_MIN</a></td></tr>
+<tr class="memdesc:gaebf2e7fc45e804290e2f6874dde1dbc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint min time (msecs) <br/></td></tr>
+<tr class="separator:gaebf2e7fc45e804290e2f6874dde1dbc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa0a189dbe2755d92eb90645bed73c7e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa0a189dbe2755d92eb90645bed73c7e7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa0a189dbe2755d92eb90645bed73c7e7">WT_STAT_CONN_TXN_CHECKPOINT_TIME_RECENT</a></td></tr>
+<tr class="memdesc:gaa0a189dbe2755d92eb90645bed73c7e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint most recent time (msecs) <br/></td></tr>
+<tr class="separator:gaa0a189dbe2755d92eb90645bed73c7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5405afab183326ff46c852a237d57a41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5405afab183326ff46c852a237d57a41"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5405afab183326ff46c852a237d57a41">WT_STAT_CONN_TXN_CHECKPOINT_TIME_TOTAL</a></td></tr>
+<tr class="memdesc:ga5405afab183326ff46c852a237d57a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint total time (msecs) <br/></td></tr>
+<tr class="separator:ga5405afab183326ff46c852a237d57a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga83162e41a1eede606d6319717c3a893b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga83162e41a1eede606d6319717c3a893b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga83162e41a1eede606d6319717c3a893b">WT_STAT_CONN_TXN_COMMIT</a></td></tr>
 <tr class="memdesc:ga83162e41a1eede606d6319717c3a893b"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions committed <br/></td></tr>

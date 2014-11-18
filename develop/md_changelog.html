@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.4.1</span>
+   &#160;<span id="projectnumber">Version 2.4.2</span>
    </div>
   </td>
  </tr>
@@ -69,11 +69,32 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <div class="title">WiredTiger Change Log </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>WiredTiger release 2.4.1, TBD </h2>
-<p>The WiredTiger 2.4.1 release is currently in active development:</p>
+<div class="textblock"><h2>WiredTiger release 2.4.1, 2014-11-06 </h2>
+<p>The WiredTiger 2.4.1 release contains several new features, many bug fixes and performance enhancements.</p>
 <p>New features and API changes:</p>
 <ul>
-<li>Add a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d" title="Return the transaction ID range pinned by the session handle. ">WT_SESSION::transaction_pinned_range</a> method that helps users identify when a session is keeping a transaction ID pinned for a long time. [#1314]</li>
+<li>Add new custom extractor functionality to WiredTiger indexes. Allowing an application to define mutated and/or multiple keys for indexes. [#1199]</li>
+<li>Add a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d" title="Return the transaction ID range pinned by the session handle. ">WT_SESSION::transaction_pinned_range</a> method that allows users to identify when a session is keeping a transaction ID pinned for a long time. [#1314]</li>
+<li>Enhance statistics output so that keys are more clearly categorized. [#1313]</li>
+<li>Rename WT_DEADLOCK error return to WT_ROLLBACK. WiredTiger uses the return in cases other than traditional application deadlock. The old value is retained as an alias to maintain backward compatability. [#1204]</li>
+<li>Increase the maximum configurable cache size to 100GB.</li>
+</ul>
+<p>Other significant changes:</p>
+<ul>
+<li>Improve support for building on Windows platforms. [#1342]</li>
+<li>Fix a bug where WiredTiger could race closing handles. [#1336]</li>
+<li>Enhance performance when hot pages in cache are growing rapidly. [#1317]</li>
+<li>Fix a bug in recovery, where log files that are zero extended could result in some log records being skipped. [#1334]</li>
+<li>Updates to the Java API to improve documentation and exception handling. [#1295]</li>
+<li>Improve support for building on Oracle Solaris platform [#1329]</li>
+<li>Fix a bug where closing a handle could leave the tree in an inconsistent state on failure. [#1316]</li>
+<li>Several bug fixes and improvements to LSM including:<ul>
+<li>Improving algorithm for switching the in-memory chunk.</li>
+<li>Fixing a bug related to dropping obsolete chunks. [#1304]</li>
+</ul>
+</li>
+<li>Fix a bug in schema level operations (table create, drop, etc). If there was an explicit transaction running when the operation was performed that was subsequently rolled back the object could be left in an inconsistent state.</li>
+<li>Several enhancements to cache management when there are long running transactions present.</li>
 </ul>
 <h2>WiredTiger release 2.4.0, 2014-10-15 </h2>
 <p>The WiredTiger 2.4.0 release contains significant new features, API changes and many bug fixes.</p>

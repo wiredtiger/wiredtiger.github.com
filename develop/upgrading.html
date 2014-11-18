@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.4.1</span>
+   &#160;<span id="projectnumber">Version 2.4.2</span>
    </div>
   </td>
  </tr>
@@ -69,11 +69,19 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_241"></a>
+<div class="textblock"><h1><a class="anchor" id="version_242"></a>
+Upgrading to Version 2.4.2</h1>
+<dl>
+<dt>WT_STAT_CONN_LOG_BYTES_USER renamed WT_STAT_CONN_LOG_BYTES_PAYLOAD </dt>
+<dd>The statistic for the number of bytes written to the log minus the overhead of log record headers and padding was renamed to make the intent clearer. Any applications using the old name will need to be updated.  </dd>
+</dl>
+<h1><a class="anchor" id="version_241"></a>
 Upgrading to Version 2.4.1</h1>
 <dl>
 <dt>WT_DEADLOCK renamed </dt>
 <dd>The <code>WT_DEADLOCK</code> error return has been deprecated in favor of <a class="el" href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8" title="Conflict between concurrent operations. ">WT_ROLLBACK</a> to clarify that <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction. ">WT_SESSION::rollback_transaction</a> should be called; no program changes are required.  </dd>
+<dt>Statistics keys changed </dt>
+<dd>The names of WiredTiger statistics have been updated to be more consistently named, and simpler to categorize. Any application that was parsing the strings output by statistics will need to be updated.  </dd>
 </dl>
 <h1><a class="anchor" id="version_240"></a>
 Upgrading to Version 2.4.0</h1>

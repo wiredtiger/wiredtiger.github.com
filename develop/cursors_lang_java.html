@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.4.1</span>
+   &#160;<span id="projectnumber">Version 2.4.2</span>
    </div>
   </td>
  </tr>
@@ -180,7 +180,8 @@ Reading WiredTiger Metadata</h1>
 <p>To retrieve the list of database objects, open a cursor on the uri <code>metadata:</code>. Each returned key will be a database object and each returned value will be the information stored in the metadata for object named by the key.</p>
 <p>For example:</p>
 <div class="fragment"><div class="line">    cursor = session.open_cursor(<span class="stringliteral">&quot;metadata:&quot;</span>, null, null);</div>
-</div><!-- fragment --></div></div><!-- contents -->
+</div><!-- fragment --><p> The metadata cursor is read-only, and the metadata cannot be modified. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
