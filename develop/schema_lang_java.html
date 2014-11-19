@@ -312,6 +312,14 @@ Indices</h1>
 <div class="line">        population = cursor.getValueLong();</div>
 <div class="line">        System.out.println(<span class="stringliteral">&quot;US 1900: country &quot;</span> + country +</div>
 <div class="line">           <span class="stringliteral">&quot;, year &quot;</span> + year + <span class="stringliteral">&quot;, population &quot;</span> + population);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="schema_index_immutable_lang_java"></a>
+Immutable indices</h1>
+<p>It is possible to create an index with the <code>immutable</code> configuration setting enabled. This setting tells WiredTiger that the index keys for a record do not change when records are updated. This is an optimization that it saves a remove and insert into the index whenever a value in the primary table is updated.</p>
+<p>If immutable is configured when updates should alter the content of the index it is possible to corrupt data.</p>
+<p>An example of using an immutable index is:</p>
+<div class="fragment"><div class="line">        <span class="comment">/* Create an index with a simple key. */</span></div>
+<div class="line">        ret = session.create(<span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;columns=(year),immutable&quot;</span>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="schema_index_projections_lang_java"></a>
 Index cursor projections</h1>
 <p>By default, index cursors return all of the table's value columns from <code>Cursor.getValue*</code> calls. The application can specify that a subset of the usual columns should be returned in calls to <code>Cursor.getValue</code> by appending a list of columns to the <code>uri</code> parameter of the Session.open_cursor call. This is called a <em>projection</em>, see <a class="el" href="cursors_lang_java.html#cursor_projections_lang_java">Projections</a> for more details.</p>

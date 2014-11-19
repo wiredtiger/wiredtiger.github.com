@@ -560,6 +560,8 @@ Public Attributes</h2></td></tr>
 <tr>
 <td><code>huffman_value</code></td><td>configure Huffman encoding for values. Permitted values are empty (off), <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>
+<td><code>immutable</code></td><td>configure the index to be immutable - that is an index is not changed by any update to a record in the table.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
 <td><code>internal_item_max</code></td><td>the largest key stored within an internal node, in bytes. If non-zero, any key larger than the specified size will be stored as an overflow item (which may require additional I/O to access). If zero, a default size is chosen that permits at least 8 keys per internal page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>internal_key_truncate</code></td><td>configure internal key truncation, discarding unnecessary trailing bytes on internal keys (ignored for custom collators).</td><td>a boolean flag; default <code>true</code>. </td></tr>

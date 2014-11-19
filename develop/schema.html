@@ -299,6 +299,14 @@ Indices</h1>
 <div class="line">        ret = cursor-&gt;get_value(cursor, &amp;country, &amp;year, &amp;population);</div>
 <div class="line">        printf(<span class="stringliteral">&quot;US 1900: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="schema_index_immutable"></a>
+Immutable indices</h1>
+<p>It is possible to create an index with the <code>immutable</code> configuration setting enabled. This setting tells WiredTiger that the index keys for a record do not change when records are updated. This is an optimization that it saves a remove and insert into the index whenever a value in the primary table is updated.</p>
+<p>If immutable is configured when updates should alter the content of the index it is possible to corrupt data.</p>
+<p>An example of using an immutable index is:</p>
+<div class="fragment"><div class="line">        <span class="comment">/* Create an immutable index. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, <span class="stringliteral">&quot;columns=(year),immutable&quot;</span>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="schema_index_projections"></a>
 Index cursor projections</h1>
 <p>By default, index cursors return all of the table's value columns from <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record. ">WT_CURSOR::get_value</a>. The application can specify that a subset of the usual columns should be returned in calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record. ">WT_CURSOR::get_value</a> by appending a list of columns to the <code>uri</code> parameter of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> call. This is called a <em>projection</em>, see <a class="el" href="cursors.html#cursor_projections">Projections</a> for more details.</p>
