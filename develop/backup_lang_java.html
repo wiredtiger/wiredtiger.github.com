@@ -142,7 +142,7 @@ Incremental backup</h1>
 <ol type="1">
 <li>Perform a full backup of the database (as described above).</li>
 <li>Perform a full database checkpoint.</li>
-<li>Open a cursor on the <code>"backup:"</code> data source, with the <code>"target=(\"log:\")"</code> target specifed, which begins the process of an incremental backup.</li>
+<li>Open a cursor on the <code>"backup:"</code> data source, with the <code>"target=(\"log:\")"</code> target specified, which begins the process of an incremental backup.</li>
 <li>Copy each log file returned by the Cursor.next method to the backup directory. It is not an error to copy a log file which has been copied before, but care should be taken to ensure each log file is completely copied as the most recent log file may change in size while being copied.</li>
 <li>If all log files have been successfully copied, archive the log files by calling the Session.truncate method with the URI <code>log:</code> and specifying the backup cursor as the start cursor to that method.</li>
 <li>Close the backup cursor.</li>
