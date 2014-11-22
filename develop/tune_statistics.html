@@ -76,12 +76,14 @@ $(document).ready(function(){initNavTree('tune_statistics.html','');});
 <div class="line">            <span class="stringliteral">&quot;statistics:table:access&quot;</span>, NULL, NULL, &amp;cursor)) != 0)</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 </div><!-- fragment --><p> Then this code calculates the "fragmentation" of a table, defined here as the percentage of the table that is not part of the current checkpoint:</p>
-<div class="fragment"><div class="line">        uint64_t ckpt_size, file_size;</div>
+<div class="fragment"><div class="line">        uint64_t ckpt_size, file_size, percent;</div>
 <div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga3ba4d6c12abe10285dc3b599f082a4e4">WT_STAT_DSRC_BLOCK_CHECKPOINT_SIZE</a>, &amp;ckpt_size);</div>
 <div class="line">        ret = get_stat(cursor, <a class="code" href="group__wt.html#ga2af5c768712ce6c6b840badd17dd13b9">WT_STAT_DSRC_BLOCK_SIZE</a>, &amp;file_size);</div>
 <div class="line"></div>
-<div class="line">        printf(<span class="stringliteral">&quot;File is %d%% fragmented\n&quot;</span>,</div>
-<div class="line">            (<span class="keywordtype">int</span>)(100 * (file_size - ckpt_size) / file_size));</div>
+<div class="line">        percent = 0;</div>
+<div class="line">        <span class="keywordflow">if</span> (file_size != 0)</div>
+<div class="line">                percent = 100 * ((file_size - ckpt_size) / file_size);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;Table is %&quot;</span> PRIu64 <span class="stringliteral">&quot;%% fragmented\n&quot;</span>, percent);</div>
 </div><!-- fragment --><p> The following example calculates the "write amplification", defined here as the ratio of bytes written to the filesystem versus the total bytes inserted, updated and removed by the application.</p>
 <div class="fragment"><div class="line">        uint64_t app_insert, app_remove, app_update, fs_writes;</div>
 <div class="line"></div>
