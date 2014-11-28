@@ -77,7 +77,7 @@ File formats</h1>
 <p>Row-store keys and values, and variable-length column-store values, can be up to (4GB - 512B) in length. Keys and values too large to fit on a normal page are stored as overflow items in the file, and are likely to require additional file I/O to access.</p>
 <p>Fixed-length column-store values (value_format type 't'), are limited to 8-bits, and only values between 0 and 255 may be stored. Additionally, there is no out-of-band fixed-length "deleted" value, and deleting a value is the same as storing a value of 0. For the same reason, storing a value of 0 will cause cursor scans to skip the record.</p>
 <p>WiredTiger does not support duplicate data items: there can be only a single value associated with any given key, and applications are responsible for creating unique key/value pairs.</p>
-<p>WiredTiger allocates space from the underlying files in block units. The minimum file allocation unit WiredTiger supports is 512B and the maximum file allocation unit is 512MB. File block offsets are 64-bit (meaning the maximum file size is very, very large).</p>
+<p>WiredTiger allocates space from the underlying files in block units. The minimum file allocation unit WiredTiger supports is 512B and the maximum is 512MB. File offsets are signed 8B values, making the maximum file size very, very large.</p>
 <h1><a class="anchor" id="file_formats_choice_lang_java"></a>
 Choosing a file format</h1>
 <p>The row-store format is the default choice for most applications. When the primary key is a record number, there are advantages to storing columns in separate files, or the underlying data is a set of bits, column-store format may be a better choice.</p>
