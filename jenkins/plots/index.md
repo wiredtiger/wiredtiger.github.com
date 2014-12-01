@@ -1,3 +1,5 @@
+% WiredTiger Performance Graphs
+
 # Why
 
 This page displays all of the performance plots from Jenkins wtperf jobs so we don't need to click on lots of links.
