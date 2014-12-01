@@ -26,6 +26,18 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-evict-lsm/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-evict-lsm/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-evict-lsm/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-evict-lsm/plot)
 
+## Log Btree [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-log)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log)
+
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log/plot)
+
+## Log Btree append [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-log-append)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-append)
+
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-append/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-append/plot)
+
+## Log Btree NoCheckpoint [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-log-no-ckpt)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-no-ckpt)
+
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-no-ckpt/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-no-ckpt/plot)
+
 ## Medium btree [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-med-btree)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-btree/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-btree/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-btree/plot)
