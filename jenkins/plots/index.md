@@ -40,6 +40,10 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-no-ckpt/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-no-ckpt/plot)
 
+## Log Btree Prealloc [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-log-prealloc)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-prealloc)
+
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-prealloc/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-log-prealloc/plot)
+
 ## Medium btree [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-med-btree)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-btree/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-btree/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-btree/plot)
