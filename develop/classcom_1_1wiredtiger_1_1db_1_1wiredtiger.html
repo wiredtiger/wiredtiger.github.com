@@ -325,6 +325,15 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:ab51d18ab2bdacd54daa77c471dc2b0dc inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab51d18ab2bdacd54daa77c471dc2b0dc"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_MAX_FILESIZE</b></td></tr>
 <tr class="separator:ab51d18ab2bdacd54daa77c471dc2b0dc inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6afa5ffc31d9bed1c9f43134d6883ede inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6afa5ffc31d9bed1c9f43134d6883ede"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_PREALLOC_FILES</b></td></tr>
+<tr class="separator:a6afa5ffc31d9bed1c9f43134d6883ede inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a755d9d2695b59608fa273d14f30da51a inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a755d9d2695b59608fa273d14f30da51a"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_PREALLOC_MAX</b></td></tr>
+<tr class="separator:a755d9d2695b59608fa273d14f30da51a inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687891401b6f17e703bfe274bbf18f14 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a687891401b6f17e703bfe274bbf18f14"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_PREALLOC_USED</b></td></tr>
+<tr class="separator:a687891401b6f17e703bfe274bbf18f14 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14928e6cdd771031bca6865581387c08 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14928e6cdd771031bca6865581387c08"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_READS</b></td></tr>
 <tr class="separator:a14928e6cdd771031bca6865581387c08 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -869,6 +878,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <td><code>&#160;&#160;&#160;&#160;file_max</code></td><td>the maximum size of log files.</td><td>an integer between 100KB and 2GB; default <code>100MB</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the path to a directory into which the log files are written. If the value is not an absolute path name, the files are created relative to the database home.</td><td>a string; default <code>""</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>

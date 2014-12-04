@@ -1,5 +1,8 @@
 var NAVTREEINDEX4 =
 {
+"struct_w_t___e_x_t_r_a_c_t_o_r.html#af850a463cdbee1e4ce9a50f0b9c3d034":[1,1,3,1],
+"struct_w_t___s_e_s_s_i_o_n.html":[1,0,4],
+"struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3":[1,0,4,16],
 "struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d":[1,0,4,13],
 "struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614":[1,0,4,10],
 "struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6":[1,0,4,17],
@@ -67,8 +70,8 @@ var NAVTREEINDEX4 =
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,5,10,2],
 "tune_transparent_huge_pages.html":[0,5,11],
 "tune_zone_reclaim.html":[0,5,14],
-"upgrade.html":[0,4,19],
 "upgrade.html":[0,3,20],
+"upgrade.html":[0,4,19],
 "upgrading.html":[0,9],
 "upgrading.html#version_13":[0,9,24],
 "upgrading.html#version_135":[0,9,23],

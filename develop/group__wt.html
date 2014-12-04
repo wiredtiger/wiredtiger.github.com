@@ -491,6 +491,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4ca1e771613773fb02c6d423415f6ffa">WT_STAT_CONN_LOG_MAX_FILESIZE</a></td></tr>
 <tr class="memdesc:ga4ca1e771613773fb02c6d423415f6ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: maximum log file size <br/></td></tr>
 <tr class="separator:ga4ca1e771613773fb02c6d423415f6ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab362909da24eb83d50c54ab66af0c5b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab362909da24eb83d50c54ab66af0c5b4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab362909da24eb83d50c54ab66af0c5b4">WT_STAT_CONN_LOG_PREALLOC_FILES</a></td></tr>
+<tr class="memdesc:gab362909da24eb83d50c54ab66af0c5b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: pre-allocated log files prepared <br/></td></tr>
+<tr class="separator:gab362909da24eb83d50c54ab66af0c5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e3baa45ea3d4ba1d6b44922fa3b3864"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6e3baa45ea3d4ba1d6b44922fa3b3864"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6e3baa45ea3d4ba1d6b44922fa3b3864">WT_STAT_CONN_LOG_PREALLOC_MAX</a></td></tr>
+<tr class="memdesc:ga6e3baa45ea3d4ba1d6b44922fa3b3864"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: number of pre-allocated log files to create <br/></td></tr>
+<tr class="separator:ga6e3baa45ea3d4ba1d6b44922fa3b3864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33ac35e64c48896c09905f7b5e7068d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga33ac35e64c48896c09905f7b5e7068d4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga33ac35e64c48896c09905f7b5e7068d4">WT_STAT_CONN_LOG_PREALLOC_USED</a></td></tr>
+<tr class="memdesc:ga33ac35e64c48896c09905f7b5e7068d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: pre-allocated log files used <br/></td></tr>
+<tr class="separator:ga33ac35e64c48896c09905f7b5e7068d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga54f5566b70ca744a7d2d5448b8e6e7bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga54f5566b70ca744a7d2d5448b8e6e7bd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga54f5566b70ca744a7d2d5448b8e6e7bd">WT_STAT_CONN_LOG_READS</a></td></tr>
 <tr class="memdesc:ga54f5566b70ca744a7d2d5448b8e6e7bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log read operations <br/></td></tr>
@@ -1521,6 +1533,8 @@ The value of a configuration boolean or integer. <p>If the configuration string'
 <td><code>&#160;&#160;&#160;&#160;file_max</code></td><td>the maximum size of log files.</td><td>an integer between 100KB and 2GB; default <code>100MB</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the path to a directory into which the log files are written. If the value is not an absolute path name, the files are created relative to the database home.</td><td>a string; default <code>""</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
