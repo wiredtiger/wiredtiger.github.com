@@ -73,7 +73,11 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 Upgrading to Version 2.4.2</h1>
 <dl>
 <dt>WT_STAT_CONN_LOG_BYTES_USER renamed WT_STAT_CONN_LOG_BYTES_PAYLOAD </dt>
-<dd>The statistic for the number of bytes written to the log minus the overhead of log record headers and padding was renamed to make the intent clearer. Any applications using the old name will need to be updated.  </dd>
+<dd><p class="startdd">The statistic for the number of bytes written to the log minus the overhead of log record headers and padding was renamed to make the intent clearer. Any applications using the old name will need to be updated. </p>
+<p class="enddd"></p>
+</dd>
+<dt>"none" configuration for collators, compressors and extractors </dt>
+<dd>Collators, compressors and extractors can now be disabled with an explicit <code>"none"</code> value as an alternative to using an empty string. Any applications using the name <code>"none"</code> for a collator, compressor or extractor will need to be updated.  </dd>
 </dl>
 <h1><a class="anchor" id="version_241"></a>
 Upgrading to Version 2.4.1</h1>
