@@ -487,6 +487,26 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7f2ca67519476ca8fbc3eb9f7a7b6ad5">WT_STAT_CONN_LOG_CLOSE_YIELDS</a></td></tr>
 <tr class="memdesc:ga7f2ca67519476ca8fbc3eb9f7a7b6ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: yields waiting for previous log file close <br/></td></tr>
 <tr class="separator:ga7f2ca67519476ca8fbc3eb9f7a7b6ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e02ca5d30b1fa3f8a7dba281ae2633f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8e02ca5d30b1fa3f8a7dba281ae2633f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8e02ca5d30b1fa3f8a7dba281ae2633f">WT_STAT_CONN_LOG_COMPRESS_LEN</a></td></tr>
+<tr class="memdesc:ga8e02ca5d30b1fa3f8a7dba281ae2633f"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: total size of compressed records <br/></td></tr>
+<tr class="separator:ga8e02ca5d30b1fa3f8a7dba281ae2633f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97423db84a9cf4119c0351c10d39b3b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga97423db84a9cf4119c0351c10d39b3b9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga97423db84a9cf4119c0351c10d39b3b9">WT_STAT_CONN_LOG_COMPRESS_MEM</a></td></tr>
+<tr class="memdesc:ga97423db84a9cf4119c0351c10d39b3b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: total in-memory size of compressed records <br/></td></tr>
+<tr class="separator:ga97423db84a9cf4119c0351c10d39b3b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa370a6cbfdfceccde8c4c5d29ce9345d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa370a6cbfdfceccde8c4c5d29ce9345d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa370a6cbfdfceccde8c4c5d29ce9345d">WT_STAT_CONN_LOG_COMPRESS_SMALL</a></td></tr>
+<tr class="memdesc:gaa370a6cbfdfceccde8c4c5d29ce9345d"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log records too small to compress <br/></td></tr>
+<tr class="separator:gaa370a6cbfdfceccde8c4c5d29ce9345d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad866c0aefbf1f6351d1ea5a37d7f65de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad866c0aefbf1f6351d1ea5a37d7f65de"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad866c0aefbf1f6351d1ea5a37d7f65de">WT_STAT_CONN_LOG_COMPRESS_WRITE_FAILS</a></td></tr>
+<tr class="memdesc:gad866c0aefbf1f6351d1ea5a37d7f65de"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log records not compressed <br/></td></tr>
+<tr class="separator:gad866c0aefbf1f6351d1ea5a37d7f65de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga309dafb64c7e9e3d214ee9b73ec81d61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga309dafb64c7e9e3d214ee9b73ec81d61"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga309dafb64c7e9e3d214ee9b73ec81d61">WT_STAT_CONN_LOG_COMPRESS_WRITES</a></td></tr>
+<tr class="memdesc:ga309dafb64c7e9e3d214ee9b73ec81d61"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log records compressed <br/></td></tr>
+<tr class="separator:ga309dafb64c7e9e3d214ee9b73ec81d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4ca1e771613773fb02c6d423415f6ffa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4ca1e771613773fb02c6d423415f6ffa"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4ca1e771613773fb02c6d423415f6ffa">WT_STAT_CONN_LOG_MAX_FILESIZE</a></td></tr>
 <tr class="memdesc:ga4ca1e771613773fb02c6d423415f6ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: maximum log file size <br/></td></tr>
@@ -1527,6 +1547,8 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <td><code>log = (</code></td><td>enable logging.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;archive</code></td><td>automatically archive unneeded log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;compressor</code></td><td>configure a compressor for log records. Permitted values are empty (off) or <code>"bzip2"</code>, <code>"snappy"</code> or custom compression engine <code>"name"</code> created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function. ">WT_CONNECTION::add_compressor</a>. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable logging subsystem.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>

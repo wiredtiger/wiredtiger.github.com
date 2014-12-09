@@ -322,6 +322,21 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:ab3e2708984bfff98c256f1aad1dbd885 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3e2708984bfff98c256f1aad1dbd885"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_CLOSE_YIELDS</b></td></tr>
 <tr class="separator:ab3e2708984bfff98c256f1aad1dbd885 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd07a32245a6cfb6a2d98bfd856165a6 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd07a32245a6cfb6a2d98bfd856165a6"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_COMPRESS_LEN</b></td></tr>
+<tr class="separator:abd07a32245a6cfb6a2d98bfd856165a6 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbf2228da34c4023b3d919e87a91ea5 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefbf2228da34c4023b3d919e87a91ea5"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_COMPRESS_MEM</b></td></tr>
+<tr class="separator:aefbf2228da34c4023b3d919e87a91ea5 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab71d3d41a31d021a3079db0b61f5f9f0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab71d3d41a31d021a3079db0b61f5f9f0"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_COMPRESS_SMALL</b></td></tr>
+<tr class="separator:ab71d3d41a31d021a3079db0b61f5f9f0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b4305e93bf22c295051b5fb35b5ff33 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b4305e93bf22c295051b5fb35b5ff33"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_COMPRESS_WRITE_FAILS</b></td></tr>
+<tr class="separator:a2b4305e93bf22c295051b5fb35b5ff33 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3872a6d9d3dd1fe097d699f7d5c18360 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3872a6d9d3dd1fe097d699f7d5c18360"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_COMPRESS_WRITES</b></td></tr>
+<tr class="separator:a3872a6d9d3dd1fe097d699f7d5c18360 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab51d18ab2bdacd54daa77c471dc2b0dc inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab51d18ab2bdacd54daa77c471dc2b0dc"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_MAX_FILESIZE</b></td></tr>
 <tr class="separator:ab51d18ab2bdacd54daa77c471dc2b0dc inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -872,6 +887,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <td><code>log = (</code></td><td>enable logging.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;archive</code></td><td>automatically archive unneeded log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;compressor</code></td><td>configure a compressor for log records. Permitted values are empty (off) or <code>"bzip2"</code>, <code>"snappy"</code> or custom compression engine <code>"name"</code> created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function. ">WT_CONNECTION::add_compressor</a>. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable logging subsystem.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>

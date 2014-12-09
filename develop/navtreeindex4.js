@@ -1,5 +1,10 @@
 var NAVTREEINDEX4 =
 {
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#acf28a9af56690753897a6393e852cabb":[1,1,5,7],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ad23ef32a93fd906df1502c61a80a0d3c":[1,1,5,0],
+"struct_w_t___e_x_t_r_a_c_t_o_r.html":[1,1,3],
+"struct_w_t___e_x_t_r_a_c_t_o_r.html#ab4d736feccd18b3f6b2cea0967c3e7ea":[1,1,3,0],
+"struct_w_t___e_x_t_r_a_c_t_o_r.html#ae0d82cb1e6841ada5d3e75f847411f79":[1,1,3,2],
 "struct_w_t___e_x_t_r_a_c_t_o_r.html#af850a463cdbee1e4ce9a50f0b9c3d034":[1,1,3,1],
 "struct_w_t___s_e_s_s_i_o_n.html":[1,0,4],
 "struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3":[1,0,4,16],
@@ -70,8 +75,8 @@ var NAVTREEINDEX4 =
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,5,10,2],
 "tune_transparent_huge_pages.html":[0,5,11],
 "tune_zone_reclaim.html":[0,5,14],
-"upgrade.html":[0,3,20],
 "upgrade.html":[0,4,19],
+"upgrade.html":[0,3,20],
 "upgrading.html":[0,9],
 "upgrading.html#version_13":[0,9,24],
 "upgrading.html#version_135":[0,9,23],
