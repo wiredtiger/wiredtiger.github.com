@@ -63,6 +63,7 @@ var group__wt =
       [ "truncate", "struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a", null ],
       [ "upgrade", "struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69", null ],
       [ "verify", "struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3", null ],
+      [ "app_private", "struct_w_t___s_e_s_s_i_o_n.html#a480525d3881dfcb90060af823a7f4a52", null ],
       [ "connection", "struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6", null ]
     ] ],
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", [
