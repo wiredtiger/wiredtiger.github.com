@@ -77,7 +77,11 @@ Upgrading to Version 2.4.2</h1>
 <p class="enddd"></p>
 </dd>
 <dt>"none" configuration for collators, compressors and extractors </dt>
-<dd>Collators, compressors and extractors can now be disabled with an explicit <code>"none"</code> value as an alternative to using an empty string. Any applications using the name <code>"none"</code> for a collator, compressor or extractor will need to be updated.  </dd>
+<dd><p class="startdd">Collators, compressors and extractors can now be disabled with an explicit <code>"none"</code> value as an alternative to using an empty string. Any applications using the name <code>"none"</code> for a collator, compressor or extractor will need to be updated. </p>
+<p class="enddd"></p>
+</dd>
+<dt>maximum keys and value sizes </dt>
+<dd>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> <code>internal_item_max</code> and <code>leaf_item_max</code> configuration strings are now deprecated in favor of the <code>internal_key_max</code>, <code>leaf_key_max</code>, and <code>leaf_value_max</code> configuration strings. See <a class="el" href="tune_page_sizes.html">Page and overflow key/value sizes</a> for more information.  </dd>
 </dl>
 <h1><a class="anchor" id="version_241"></a>
 Upgrading to Version 2.4.1</h1>

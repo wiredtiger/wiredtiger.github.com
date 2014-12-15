@@ -201,13 +201,12 @@ var NAVTREEINDEX1 =
 "ex_cursor_8c-example.html":[5,4],
 "ex_extending_8c-example.html":[5,5],
 "ex_extractor_8c-example.html":[5,6],
-"ex_file_8c-example.html":[5,7],
-"ex_hello_8c-example.html":[5,8],
-"ex_log_8c-example.html":[5,9],
-"ex_pack_8c-example.html":[5,10],
-"ex_schema_8c-example.html":[5,11],
-"ex_stat_8c-example.html":[5,12],
-"ex_thread_8c-example.html":[5,13],
+"ex_hello_8c-example.html":[5,7],
+"ex_log_8c-example.html":[5,8],
+"ex_pack_8c-example.html":[5,9],
+"ex_schema_8c-example.html":[5,10],
+"ex_stat_8c-example.html":[5,11],
+"ex_thread_8c-example.html":[5,12],
 "examples.html":[5],
 "extensions.html":[0,3,21],
 "extensions.html#extensions_loadable":[0,3,21,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "functions_func_v.html":[4,1,14],
 "functions_func_w.html":[4,1,15],
 "functions_g.html":[4,0,6],
-"functions_h.html":[4,0,7]
+"functions_h.html":[4,0,7],
+"functions_i.html":[4,0,8]
 };

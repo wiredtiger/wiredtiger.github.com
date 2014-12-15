@@ -1,7 +1,11 @@
 var performance =
 [
     [ "Memory allocator", "tune_memory_allocator.html", null ],
-    [ "Page and overflow item sizes", "tune_page_sizes.html", null ],
+    [ "Page and overflow key/value sizes", "tune_page_sizes.html", [
+      [ "Page, key and value sizes", "tune_page_sizes.html#tune_page_sizes_sizes", null ],
+      [ "Split percentage", "tune_page_sizes.html#tune_page_sizes_split_percentage", null ],
+      [ "Allocation size", "tune_page_sizes.html#tune_page_sizes_allocation_size", null ]
+    ] ],
     [ "Cache and eviction tuning", "tune_cache.html", [
       [ "Cache size", "tune_cache.html#tuning_cache_size", null ],
       [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
