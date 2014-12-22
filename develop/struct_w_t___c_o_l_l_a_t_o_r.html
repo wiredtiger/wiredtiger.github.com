@@ -92,7 +92,7 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:afc0d169175c9f407833c7b7c69a257f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, this callback is called to customize the collator for each data source.  <a href="#afc0d169175c9f407833c7b7c69a257f4">More...</a><br/></td></tr>
 <tr class="separator:afc0d169175c9f407833c7b7c69a257f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeed44d2caacca7bc93bc48e8da7ae3f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f">terminate</a> )(<a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
-<tr class="memdesc:aeeed44d2caacca7bc93bc48e8da7ae3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, a callback performed when the database is closed.  <a href="#aeeed44d2caacca7bc93bc48e8da7ae3f">More...</a><br/></td></tr>
+<tr class="memdesc:aeeed44d2caacca7bc93bc48e8da7ae3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL a callback performed when the data source is closed for customized extractors otherwise when the database is closed.  <a href="#aeeed44d2caacca7bc93bc48e8da7ae3f">More...</a><br/></td></tr>
 <tr class="separator:aeeed44d2caacca7bc93bc48e8da7ae3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -219,8 +219,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If non-NULL, a callback performed when the database is closed. </p>
-<p>The <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f" title="If non-NULL, a callback performed when the database is closed. ">WT_COLLATOR::terminate</a> callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger. </p>
+<p>If non-NULL a callback performed when the data source is closed for customized extractors otherwise when the database is closed. </p>
+<p>The <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f" title="If non-NULL a callback performed when the data source is closed for customized extractors otherwise w...">WT_COLLATOR::terminate</a> callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger. </p>
 
 </div>
 </div>

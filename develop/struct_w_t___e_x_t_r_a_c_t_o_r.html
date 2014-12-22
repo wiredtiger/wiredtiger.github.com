@@ -92,7 +92,7 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:ab4d736feccd18b3f6b2cea0967c3e7ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, this callback is called to customize the extractor for each index.  <a href="#ab4d736feccd18b3f6b2cea0967c3e7ea">More...</a><br/></td></tr>
 <tr class="separator:ab4d736feccd18b3f6b2cea0967c3e7ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0d82cb1e6841ada5d3e75f847411f79"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html#ae0d82cb1e6841ada5d3e75f847411f79">terminate</a> )(<a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> *extractor, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
-<tr class="memdesc:ae0d82cb1e6841ada5d3e75f847411f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, a callback performed when the database is closed.  <a href="#ae0d82cb1e6841ada5d3e75f847411f79">More...</a><br/></td></tr>
+<tr class="memdesc:ae0d82cb1e6841ada5d3e75f847411f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL a callback performed when the index or column group is closed for customized extractors otherwise when the database is closed.  <a href="#ae0d82cb1e6841ada5d3e75f847411f79">More...</a><br/></td></tr>
 <tr class="separator:ae0d82cb1e6841ada5d3e75f847411f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -166,8 +166,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If non-NULL, a callback performed when the database is closed. </p>
-<p>The <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html#ae0d82cb1e6841ada5d3e75f847411f79" title="If non-NULL, a callback performed when the database is closed. ">WT_EXTRACTOR::terminate</a> callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger. </p>
+<p>If non-NULL a callback performed when the index or column group is closed for customized extractors otherwise when the database is closed. </p>
+<p>The <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html#ae0d82cb1e6841ada5d3e75f847411f79" title="If non-NULL a callback performed when the index or column group is closed for customized extractors o...">WT_EXTRACTOR::terminate</a> callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger. </p>
 
 </div>
 </div>
