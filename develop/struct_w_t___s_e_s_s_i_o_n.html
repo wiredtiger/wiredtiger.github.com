@@ -540,7 +540,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>block_allocation</code></td><td>configure block allocation. Permitted values are <code>"first"</code> or <code>"best"</code>; the <code>"first"</code> configuration uses a first-available algorithm during block allocation, the <code>"best"</code> configuration uses a best-fit algorithm.</td><td>a string, chosen from the following options: <code>"first"</code>, <code>"best"</code>; default <code>best</code>. </td></tr>
 <tr>
-<td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are <code>"none"</code> or custom compression engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function. ">WT_CONNECTION::add_compressor</a>. If WiredTiger has builtin support for <code>"snappy"</code> or <code>"zlib"</code> compression, these names are also available. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default empty. </td></tr>
+<td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are <code>"none"</code> or custom compression engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function. ">WT_CONNECTION::add_compressor</a>. If WiredTiger has builtin support for <code>"snappy"</code> or <code>"zlib"</code> compression, these names are also available. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code>cache_resident</code></td><td>do not ever evict the object's pages; see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -548,7 +548,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>colgroups</code></td><td>comma-separated list of names of column groups. Each column group is stored separately, keyed by the primary key of the table. If no column groups are specified, all columns are stored together in a single file. All value columns in the table must appear in at least one column group. Each column group must be created with a separate call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>.</td><td>a list of strings; default empty. </td></tr>
 <tr>
-<td><code>collator</code></td><td>configure custom collation for keys. Permitted values are <code>"none"</code> or a custom collator name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8" title="Add a custom collation function. ">WT_CONNECTION::add_collator</a>.</td><td>a string; default empty. </td></tr>
+<td><code>collator</code></td><td>configure custom collation for keys. Permitted values are <code>"none"</code> or a custom collator name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8" title="Add a custom collation function. ">WT_CONNECTION::add_collator</a>.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code>columns</code></td><td>list of the column names. Comma-separated list of the form <code>(column[,...])</code>. For tables, the number of entries must match the total number of values in <code>key_format</code> and <code>value_format</code>. For colgroups and indices, all column names must appear in the list of columns for the table.</td><td>a list of strings; default empty. </td></tr>
 <tr>
@@ -556,13 +556,13 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>exclusive</code></td><td>fail if the object exists. When false (the default), if the object exists, check that its settings match the specified configuration.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>extractor</code></td><td>configure custom extractor for indices. Permitted values are <code>"none"</code> or an extractor name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups. ">WT_CONNECTION::add_extractor</a>.</td><td>a string; default empty. </td></tr>
+<td><code>extractor</code></td><td>configure custom extractor for indices. Permitted values are <code>"none"</code> or an extractor name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups. ">WT_CONNECTION::add_extractor</a>.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code>format</code></td><td>the file format.</td><td>a string, chosen from the following options: <code>"btree"</code>; default <code>btree</code>. </td></tr>
 <tr>
-<td><code>huffman_key</code></td><td>configure Huffman encoding for keys. Permitted values are <code>"none"</code>, <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
+<td><code>huffman_key</code></td><td>configure Huffman encoding for keys. Permitted values are <code>"none"</code>, <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
-<td><code>huffman_value</code></td><td>configure Huffman encoding for values. Permitted values are <code>"none"</code>, <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default empty. </td></tr>
+<td><code>huffman_value</code></td><td>configure Huffman encoding for values. Permitted values are <code>"none"</code>, <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code>immutable</code></td><td>configure the index to be immutable - that is an index is not changed by any update to a record in the table.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
