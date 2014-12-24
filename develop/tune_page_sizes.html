@@ -80,7 +80,7 @@ $(document).ready(function(){initNavTree('tune_page_sizes.html','');});
 <p>Applications commonly configure page sizes, based on their workload's typical key and value size. Once the correct page size has been chosen, appropriate defaults for the other configuration values are derived from the page sizes, and relatively few applications will need to modify the other page and key/value size configuration options.</p>
 <p>An example of configuring page and key/value sizes:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;create(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;internal_page_max=16KB,leaf_page_max=1MB,leaf_value_max=64KB&quot;</span>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="tune_page_sizes_sizes"></a>
 Page, key and value sizes</h1>
@@ -104,7 +104,7 @@ Page, key and value sizes</h1>
 <p>Most applications should not need to tune the maximum key and value sizes. Applications requiring a small page size, but also having latency concerns such that the additional work to retrieve an overflow item is an issue, may find them useful.</p>
 <p>An example of configuring a large leaf overflow value:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;create(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S,&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;leaf_page_max=16KB,leaf_value_max=256KB&quot;</span>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="tune_page_sizes_split_percentage"></a>
 Split percentage</h1>
