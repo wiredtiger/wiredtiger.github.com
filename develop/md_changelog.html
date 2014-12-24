@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.4.2</span>
+   &#160;<span id="projectnumber">Version 2.5.0</span>
    </div>
   </td>
  </tr>
@@ -69,7 +69,51 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <div class="title">WiredTiger Change Log </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>WiredTiger release 2.4.1, 2014-11-06 </h2>
+<div class="textblock"><h2>WiredTiger release 2.5.0, 2014-12-24 </h2>
+<p>The WiredTiger 2.5.0 release contains significant new features, API changes and many bug fixes.</p>
+<p>Now that WiredTiger is part of MongoDB, we are tracking issues related to MongoDB usage of WiredTiger in the MongoDB JIRA system. Some entries in the changelog now reference JIRA tickets that can be found at:</p>
+<p><a href="http://jira.mongodb.org">http://jira.mongodb.org</a></p>
+<p>New features and API changes:</p>
+<ul>
+<li>Add support for storing large values on-page in a btree rather than in an overflow item. This is useful for workloads that want to keep large items in cache - since WiredTiger overflow items are never cached. It is configured via new <code>leaf_value_max</code> configuration setting. This enhancement led to the deprecation of internal_item_max and leaf_item_max configuration settings, see upgrading documentation for further information. [#1282]</li>
+<li>Add support for compressing log files. When configured each compressable log record will be compressed. This is configure with the <code>log=(compressor=X)</code> configuration setting. See upgrading documentation for further information. [#1359]</li>
+<li>No longer return EBUSY when opening a bulk cursor, verifying or salvaging a database if a checkpoint is currently running. This allows applications to do these exclusive operations without shutting down the checkpoint server thread. [#1397] [#1404] SERVER-16236 SERVER-16457</li>
+<li>Add support for immutable indexes. [#1344]</li>
+<li>Added several new statistics, improved accuracy for some statistics tracking and simplified mechanism for querying a particular statistic. [#1505]</li>
+<li>Have the eviction server write out unnecessary pages prior to the cache reaching the configured eviction trigger size. This can reduce the amount of eviction application threads do when configured with a large cache.</li>
+<li>Several enhancements to managing how long we keep files open</li>
+<li>Revert a change in the 2.4.1 release that caused the WT_ROLLBACK (and deprecated WT_DEADLOCK) error return to map to different numeric values. Applications should ensure they are compiling against the same version of the wiredtiger.h header file as the library they link against, otherwise odd behavior will be experienced.</li>
+<li>Support setting configuration strings to "none" as being equivalent to an empty string in most cases. [#1417]</li>
+<li>Enhance the hot backup implementation to allow recovery to be run between incremental backups. [#1183]</li>
+</ul>
+<p>Other significant changes:</p>
+<ul>
+<li>Improve performance of cursor open when there are many tables in a database. [#1391] [#1443]</li>
+<li>Reduce the impact checkpoints have on concurrent operations. This was done by changing how we lock tables. [#1391] [#1392]</li>
+<li>Improve performance when scanning a table that has many deleted items. SERVER-16247</li>
+<li>Fix a bug in checkpoint, where the metadata (turtle) file wasn't being synced on checkpoint. [#1383]</li>
+<li>Fix a bug where WiredTiger could accumulate memory during page splits and never free it. SERVER-16546</li>
+<li>Many enhancements and bug fixes for Windows.</li>
+<li>Fix a bug where a custom extractor terminate was being called twice. [#1503]</li>
+<li>Fix a bug where a race between closing a handle and checkpointing could lead to errors. [#1495] [#1497]</li>
+<li>Validate the block header checksum before we clear it - if the checksum field had been corrupted, we didn't notice. SERVER-16457</li>
+<li>Fix a bug in write conflict detection. Cursors configured with no-overwrite could sometimes not see update conflicts for deleted records. SERVER-16351</li>
+<li>Several bug fixes and performance improvements in LSM including:<ul>
+<li>Add support for custom collators in LSM trees. [#1361]</li>
+<li>Fix a bug in LSM search_near, where it returned a deleted item. BF-694, BF-700</li>
+<li>Improve background maintenance operations so that the cache does not get full unnecessarily.</li>
+<li>Fix a bug that could lead to updates being written into old chunks. [#1432] [#1418]</li>
+<li>Fix a bug in background merge that could skip updates. SERVER-16123</li>
+</ul>
+</li>
+<li>Fix a bug when maintaining the cache, that could cause checkpoints to skip writing an update that should have been included. [#1419] SERVER-16336</li>
+<li>Fix a bug in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) an object. ">WT_SESSION::drop</a>, where failures generated error output even when force was specified. [#1436]</li>
+<li>Fix a bug in WiredTiger integer packing code when figuring out how much space is required for a value (it can shrink as numbers grow). SERVER-16118</li>
+<li>Several enhancements to the wtstats.py tool that generates graphs from standard WiredTiger statistics logs. [#1365]</li>
+<li>Fix a bug on OS X where fsync isn't sufficient to flush a file, use fcntl(F_FULLFSYNC) instead.</li>
+<li>Work around a bug in clang 3.5.0 compare and swap primitive. The __sync_bool_compare_and_swap version of the API in clang produces bad code for us with -O3 optimization enabled.</li>
+</ul>
+<h2>WiredTiger release 2.4.1, 2014-11-06 </h2>
 <p>The WiredTiger 2.4.1 release contains several new features, many bug fixes and performance enhancements.</p>
 <p>New features and API changes:</p>
 <ul>
