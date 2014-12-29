@@ -292,13 +292,13 @@ Display database or data source statistics\&.
 .PP
 The \fCstat\fP command outputs run-time statistics for the WiredTiger engine, or, if specified, for the URI on the command-line\&.
 .SS "Synopsis"
-\fCwt [-Vv] [-C config] [-h directory] stat [-a] [uri]\fP
+\fCwt [-Vv] [-C config] [-h directory] stat [-f] [uri]\fP
 .SS "Options"
 The following are command-specific options for the \fCstat\fP command:
 .PP
-\fB-a\fP
+\fB-f\fP
 .RS 4
-Include all statistics in the output (equivalent to passing \fCstatistics=(all)\fP) to \fBWT_SESSION::open_cursor\fP\&.
+Include only 'fast' statistics in the output (equivalent to passing \fCstatistics=(fast)\fP) to \fBWT_SESSION::open_cursor\fP\&.
 .RE
 .PP
 .PP
