@@ -77,7 +77,7 @@ Cache size</h1>
 <div class="fragment"><div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn)) != 0)</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 </div><!-- fragment --><p> The effectiveness of the chosen cache size can be measured by reviewing the page eviction statistics for the database.</p>
 <h1><a class="anchor" id="tuning_cache_resident"></a>
 Cache resident objects</h1>

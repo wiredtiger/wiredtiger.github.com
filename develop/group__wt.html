@@ -140,9 +140,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9e6adae3fc6964ef837a62795c7840ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a> (const char *home, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *errhandler, const char *config, <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> **connectionp)</td></tr>
 <tr class="memdesc:ga9e6adae3fc6964ef837a62795c7840ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection to a database.  <a href="#ga9e6adae3fc6964ef837a62795c7840ed">More...</a><br/></td></tr>
 <tr class="separator:ga9e6adae3fc6964ef837a62795c7840ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac95e70a24d09cf6928398512990e1474"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a> (int err)</td></tr>
-<tr class="memdesc:gac95e70a24d09cf6928398512990e1474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX 1003.1-2001 function strerror.  <a href="#gac95e70a24d09cf6928398512990e1474">More...</a><br/></td></tr>
-<tr class="separator:gac95e70a24d09cf6928398512990e1474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a> (int error)</td></tr>
+<tr class="memdesc:gae8bf720ddb4a7a7390b70424594c40fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string, not thread-safe.  <a href="#gae8bf720ddb4a7a7390b70424594c40fd">More...</a><br/></td></tr>
+<tr class="separator:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e10858bcfba889ca82a0f723fadac7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8e10858bcfba889ca82a0f723fadac7c">wiredtiger_strerror_r</a> (int error, char *buf, size_t buflen)</td></tr>
+<tr class="memdesc:ga8e10858bcfba889ca82a0f723fadac7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string, thread-safe version.  <a href="#ga8e10858bcfba889ca82a0f723fadac7c">More...</a><br/></td></tr>
+<tr class="separator:ga8e10858bcfba889ca82a0f723fadac7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a> (int *majorp, int *minorp, int *patchp)</td></tr>
 <tr class="memdesc:ga1b29826f4b418891d67e86850f7cbcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get version information.  <a href="#ga1b29826f4b418891d67e86850f7cbcf4">More...</a><br/></td></tr>
 <tr class="separator:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1902,7 +1905,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
 
 </div>
 </div>
-<a class="anchor" id="gac95e70a24d09cf6928398512990e1474"></a>
+<a class="anchor" id="gae8bf720ddb4a7a7390b70424594c40fd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1910,29 +1913,83 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
           <td class="memname">const char* wiredtiger_strerror </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>err</em></td><td>)</td>
+          <td class="paramname"><em>error</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return information about an error as a string; wiredtiger_strerror is a superset of the ISO C99/POSIX 1003.1-2001 function strerror. </p>
+<p>Return information about a WiredTiger error as a string, not thread-safe. </p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">err</td><td>a return value from a WiredTiger, C library or POSIX function </td></tr>
+    <tr><td class="paramname">error</td><td>a return value from a WiredTiger call </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a5">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a5">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a4">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a4">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a16">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a6">ex_extending.c</a>, <a class="el" href="ex_hello_8c-example.html#a3">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a3">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a3">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a4">ex_schema.c</a>, and <a class="el" href="ex_thread_8c-example.html#a9">ex_thread.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="ga8e10858bcfba889ca82a0f723fadac7c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_strerror_r </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>error</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>buflen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return information about a WiredTiger error as a string, thread-safe version. </p>
+<div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0) {</div>
+<div class="line">                <span class="keywordtype">char</span> buf[128];</div>
+<div class="line"></div>
+<div class="line">                <span class="keywordflow">if</span> (<a class="code" href="group__wt.html#ga8e10858bcfba889ca82a0f723fadac7c">wiredtiger_strerror_r</a>(ret, buf, <span class="keyword">sizeof</span>(buf)) != 0)</div>
+<div class="line">                        (void)snprintf(</div>
+<div class="line">                            buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;error value: %d\n&quot;</span>, ret);</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, buf);</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        }</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>a return value from a WiredTiger call </td></tr>
+    <tr><td class="paramname">buf</td><td>a buffer of at least <code>buflen</code> bytes </td></tr>
+    <tr><td class="paramname">buflen</td><td>the length of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero for success, non-zero to indicate an error. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ga58d055cb4d054715bebd58a2cb713b2d"></a>

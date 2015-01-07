@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a2"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home2, NULL,</div>
 <div class="line">            CONN_CONFIG, wt_connp)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home1, <a name="a3"></a><a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home1, <a name="a3"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 <div class="line"></div>
@@ -166,13 +166,13 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> (ret != <a name="a9"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.next: %s\n&quot;</span>, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.next: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">        ret = cursor-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
 <div class="line">        ret = curs_copy-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(curs_copy);</div>
 <div class="line">        <span class="keywordflow">if</span> (ret != <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;copy: WT_CURSOR.next: %s\n&quot;</span>, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;copy: WT_CURSOR.next: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">        ret = curs_copy-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(curs_copy);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
@@ -345,7 +345,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home1, NULL,</div>
 <div class="line">            CONN_CONFIG, &amp;wt_conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home1, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home1, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 <div class="line"></div>
@@ -387,7 +387,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home1, NULL,</div>
 <div class="line">            CONN_CONFIG, &amp;wt_conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home1, <a class="code" href="group__wt.html#gac95e70a24d09cf6928398512990e1474">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home1, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 <div class="line"></div>
