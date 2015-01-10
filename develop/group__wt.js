@@ -160,6 +160,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_EVICTION_FORCE_FAIL", "group__wt.html#ga4d23021026116c1055c263e1d256725d", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_HAZARD", "group__wt.html#ga58c45da5c5b26ed68f5e36410929eb21", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_INTERNAL", "group__wt.html#gabcaa9838c8d01a022d97580acb5c0b65", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_MAXIMUM_PAGE_SIZE", "group__wt.html#ga4f6602776c86fb0851c54768859bd108", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_QUEUE_EMPTY", "group__wt.html#gaa1a554d88a1feb7a76f647a5c2b0fcff", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_QUEUE_NOT_EMPTY", "group__wt.html#gae0c2363f67939c5b1db61d7989668b18", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_SERVER_EVICTING", "group__wt.html#ga5f6a66daeaa436a2301e469a2f434822", null ],
