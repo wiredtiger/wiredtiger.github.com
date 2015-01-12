@@ -97,10 +97,23 @@ $(document).ready(function(){initNavTree('packing_lang_java.html','');});
 <div class="line">        }</div>
 <div class="line">        ret = cursor.close();</div>
 <div class="line"></div>
+<div class="line">        <span class="comment">/* Update records in the table. */</span></div>
+<div class="line">        cursor = session.open_cursor(<span class="stringliteral">&quot;table:poptable&quot;</span>, null, null);</div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = cursor.next()) == 0) {</div>
+<div class="line">            recno = cursor.getKeyRecord();</div>
+<div class="line">            country = cursor.getValueString();</div>
+<div class="line">            year = cursor.getValueShort();</div>
+<div class="line">            population = cursor.getValueLong();</div>
+<div class="line">            cursor.putValueString(country);</div>
+<div class="line">            cursor.putValueShort(year);</div>
+<div class="line">            cursor.putValueLong(population + 1);</div>
+<div class="line">        }</div>
+<div class="line">        ret = cursor.close();</div>
+<div class="line"></div>
 <div class="line">        <span class="comment">/* List the records in the table. */</span></div>
 <div class="line">        cursor = session.open_cursor(<span class="stringliteral">&quot;table:poptable&quot;</span>, null, null);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor.next()) == 0) {</div>
-<div class="line">            recno = cursor.getKeyLong();</div>
+<div class="line">            recno = cursor.getKeyRecord();</div>
 <div class="line">            country = cursor.getValueString();</div>
 <div class="line">            year = cursor.getValueShort();</div>
 <div class="line">            population = cursor.getValueLong();</div>

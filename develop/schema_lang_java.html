@@ -333,7 +333,7 @@ Index cursor projections</h1>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor.next()) == 0) {</div>
 <div class="line">            country = cursor.getKeyString();</div>
 <div class="line">            year = cursor.getKeyShort();</div>
-<div class="line">            recno = cursor.getValueLong();</div>
+<div class="line">            recno = cursor.getValueRecord();</div>
 <div class="line">            System.out.println(<span class="stringliteral">&quot;row ID &quot;</span> + recno + <span class="stringliteral">&quot;: country &quot;</span> + country +</div>
 <div class="line">                <span class="stringliteral">&quot;, year &quot;</span> + year);</div>
 <div class="line">        }</div>
@@ -471,8 +471,8 @@ Code samples</h1>
 <div class="line">        cursor = session.open_cursor(<span class="stringliteral">&quot;table:calls&quot;</span>, null, <span class="stringliteral">&quot;append&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">for</span> (Call call : callSample) {</div>
 <div class="line">            cursor.putValueLong(call.call_date);</div>
-<div class="line">            cursor.putValueLong(call.cust_id);</div>
-<div class="line">            cursor.putValueLong(call.emp_id);</div>
+<div class="line">            cursor.putValueRecord(call.cust_id);</div>
+<div class="line">            cursor.putValueRecord(call.emp_id);</div>
 <div class="line">            cursor.putValueString(call.call_type);</div>
 <div class="line">            cursor.putValueString(call.notes);</div>
 <div class="line">            ret = cursor.insert();</div>
@@ -498,7 +498,7 @@ Code samples</h1>
 <div class="line">        ret = cursor.search();</div>
 <div class="line">        <span class="keywordflow">if</span> (ret == 0) {</div>
 <div class="line">            Customer cust = <span class="keyword">new</span> Customer();</div>
-<div class="line">            cust.id = cursor.getValueLong();</div>
+<div class="line">            cust.id = cursor.getValueRecord();</div>
 <div class="line">            cust.name = cursor.getValueString();</div>
 <div class="line">            System.out.println(<span class="stringliteral">&quot;Read customer record for &quot;</span> + cust.name +</div>
 <div class="line">                <span class="stringliteral">&quot; (ID &quot;</span> + cust.id + <span class="stringliteral">&quot;)&quot;</span>);</div>
@@ -528,7 +528,7 @@ Code samples</h1>
 <div class="line"><span class="comment">         * backwards.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordtype">long</span> custid = 1;</div>
-<div class="line">        cursor.putKeyLong(custid + 1);</div>
+<div class="line">        cursor.putKeyRecord(custid + 1);</div>
 <div class="line">        cursor.putKeyLong(0);</div>
 <div class="line">        nearstatus = cursor.search_near();</div>
 <div class="line"></div>
@@ -543,7 +543,7 @@ Code samples</h1>
 <div class="line">            ret = cursor.prev();</div>
 <div class="line">        <span class="keywordflow">for</span> (count = 0; ret == 0 &amp;&amp; count &lt; 3; ++count) {</div>
 <div class="line">            Call call = <span class="keyword">new</span> Call();</div>
-<div class="line">            call.cust_id = cursor.getValueLong();</div>
+<div class="line">            call.cust_id = cursor.getValueRecord();</div>
 <div class="line">            call.call_type = cursor.getValueString();</div>
 <div class="line">            call.notes = cursor.getValueString();</div>
 <div class="line">            <span class="keywordflow">if</span> (call.cust_id != custid)</div>

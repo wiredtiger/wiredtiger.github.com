@@ -101,13 +101,15 @@ Code samples</h1>
 <div class="line">            <span class="keywordflow">if</span> (ret != wiredtiger.WT_NOTFOUND)</div>
 <div class="line">                System.err.println(<span class="stringliteral">&quot;Cursor.next: &quot;</span> +</div>
 <div class="line">                                   wiredtiger.wiredtiger_strerror(ret));</div>
+<div class="line">            cursor.close();</div>
+<div class="line">            session.close(null);</div>
 <div class="line">        } <span class="keywordflow">catch</span> (WiredTigerException wte) {</div>
 <div class="line">            System.err.println(<span class="stringliteral">&quot;Exception &quot;</span> + wte);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> Here is the main function that starts the threads. It opens a single connection, shared between the threads, and closes the connection after waiting for all of the threads to exit.</p>
-<div class="fragment"><div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> main(String[] argv)</div>
+<div class="fragment"><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> main(String[] argv)</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordflow">try</span> {</div>
 <div class="line">            Thread[] threads = <span class="keyword">new</span> Thread[NUM_THREADS];</div>
@@ -127,17 +129,19 @@ Code samples</h1>
 <div class="line">                    <span class="keywordflow">while</span>(br.ready())</div>
 <div class="line">                        System.out.println(br.readLine());</div>
 <div class="line">                    br.close();</div>
-<div class="line">                    <span class="keyword">new</span> File(home).mkdir();</div>
-<div class="line">                } <span class="keywordflow">catch</span> (IOException ioe) {</div>
-<div class="line">                    System.err.println(<span class="stringliteral">&quot;IOException: &quot;</span> + home + <span class="stringliteral">&quot;: &quot;</span> + ioe);</div>
-<div class="line">                    <span class="keywordflow">return</span>(1);</div>
+<div class="line">                    proc.waitFor();</div>
+<div class="line">                    <span class="keywordflow">if</span> (!(<span class="keyword">new</span> File(home)).mkdir())</div>
+<div class="line">                        System.err.println(<span class="stringliteral">&quot;mkdir: failed&quot;</span>);</div>
+<div class="line">                } <span class="keywordflow">catch</span> (Exception ex) {</div>
+<div class="line">                    System.err.println(<span class="stringliteral">&quot;Exception: &quot;</span> + home + <span class="stringliteral">&quot;: &quot;</span> + ex);</div>
+<div class="line">                    System.exit(1);</div>
 <div class="line">                }</div>
 <div class="line">            } <span class="keywordflow">else</span></div>
 <div class="line">                home = null;</div>
 <div class="line"></div>
 <div class="line">            <span class="keywordflow">if</span> ((conn = wiredtiger.open(home, <span class="stringliteral">&quot;create&quot;</span>)) == null) {</div>
 <div class="line">                System.err.println(<span class="stringliteral">&quot;Error connecting to &quot;</span> + home);</div>
-<div class="line">                <span class="keywordflow">return</span>(1);</div>
+<div class="line">                System.exit(1);</div>
 <div class="line">            }</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">/* Note: further error checking omitted for clarity. */</span></div>
@@ -148,6 +152,7 @@ Code samples</h1>
 <div class="line">            cursor.putKeyString(<span class="stringliteral">&quot;key1&quot;</span>);</div>
 <div class="line">            cursor.putValueString(<span class="stringliteral">&quot;value1&quot;</span>);</div>
 <div class="line">            ret = cursor.insert();</div>
+<div class="line">            cursor.close();</div>
 <div class="line">            ret = session.close(null);</div>
 <div class="line"></div>
 <div class="line">            <span class="keywordflow">for</span> (i = 0; i &lt; NUM_THREADS; i++) {</div>
@@ -164,11 +169,12 @@ Code samples</h1>
 <div class="line">                }</div>
 <div class="line"></div>
 <div class="line">            ret = conn.close(null);</div>
-<div class="line">            <span class="keywordflow">return</span> (ret);</div>
+<div class="line">            System.exit(ret);</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">catch</span> (WiredTigerException wte) {</div>
 <div class="line">            System.err.println(<span class="stringliteral">&quot;Exception: &quot;</span> + wte);</div>
-<div class="line">            <span class="keywordflow">return</span> (-1);</div>
+<div class="line">            wte.printStackTrace();</div>
+<div class="line">            System.exit(1);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 </div><!-- fragment --></div></div><!-- contents -->

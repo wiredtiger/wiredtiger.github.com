@@ -120,6 +120,7 @@ Allocating an asynchronous operations handle</h1>
 <div class="line">            AsyncOpType optype = op.getType();</div>
 <div class="line">            <span class="comment">/* Retrieve the operation&#39;s 64-bit identifier. */</span></div>
 <div class="line">            <span class="keywordtype">long</span> <span class="keywordtype">id</span> = op.getId();</div>
+<div class="line">            <span class="comment">/* If doing a search, retrieve the key/value pair. */</span></div>
 <div class="line">            <span class="keywordflow">if</span> (optype == AsyncOpType.WT_AOP_SEARCH) {</div>
 <div class="line">                String key = op.getKeyString();</div>
 <div class="line">                String value = op.getValueString();</div>
@@ -128,10 +129,6 @@ Allocating an asynchronous operations handle</h1>
 <div class="line">                }</div>
 <div class="line">                System.out.println(<span class="stringliteral">&quot;Id &quot;</span> + <span class="keywordtype">id</span> + <span class="stringliteral">&quot; got record: &quot;</span> + key +</div>
 <div class="line">                                   <span class="stringliteral">&quot; : &quot;</span> + value);</div>
-<div class="line">            }</div>
-<div class="line">            <span class="keywordflow">else</span> {</div>
-<div class="line">                notifyError(<span class="stringliteral">&quot;unexpected optype&quot;</span>);</div>
-<div class="line">                ret = 1;</div>
 <div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">catch</span> (Exception e) {</div>
