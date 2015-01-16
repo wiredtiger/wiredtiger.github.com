@@ -37,5 +37,6 @@ var performance =
     [ "Simulating workloads with wtperf", "wtperf.html", [
       [ "Monitoring wtperf performance", "wtperf.html#monitor", null ],
       [ "Wtperf configuration options", "wtperf.html#config", null ]
-    ] ]
+    ] ],
+    [ "Visualizing performance with wtstats", "wtstats.html", null ]
 ];

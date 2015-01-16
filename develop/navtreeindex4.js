@@ -99,8 +99,8 @@ var NAVTREEINDEX4 =
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,5,10,2],
 "tune_transparent_huge_pages.html":[0,5,11],
 "tune_zone_reclaim.html":[0,5,14],
-"upgrade.html":[0,3,20],
 "upgrade.html":[0,4,19],
+"upgrade.html":[0,3,20],
 "upgrading.html":[0,9],
 "upgrading.html#version_13":[0,9,24],
 "upgrading.html#version_135":[0,9,23],
@@ -129,5 +129,6 @@ var NAVTREEINDEX4 =
 "upgrading.html#version_250":[0,9,0],
 "wtperf.html":[0,5,16],
 "wtperf.html#config":[0,5,16,1],
-"wtperf.html#monitor":[0,5,16,0]
+"wtperf.html#monitor":[0,5,16,0],
+"wtstats.html":[0,5,17]
 };

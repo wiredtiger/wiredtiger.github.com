@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Performance tuning WiredTiger applications</title>
+<title>WiredTiger: Visualizing performance with wtstats</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,48 +61,40 @@
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('performance.html','');});
+$(document).ready(function(){initNavTree('wtstats.html','');});
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Performance tuning WiredTiger applications </div>  </div>
+<div class="title">Visualizing performance with wtstats </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This section covers topics of interest for programmers wishing to investigate performance and tune their WiredTiger applications.</p>
-<h2>Performance tuning</h2>
+<div class="textblock"><p>The WiredTiger distribution includes the <b>wtstats</b> tool that can be used to examine information generated using statistics logging (see <a class="el" href="statistics.html#statistics_log">Statistics logging</a>).</p>
+<p>After running an application with statistics logging configured, the statistics output files will be in the database home directory. By default, these are named <code>WiredTigerStat</code>.* . In the database home directory, run this command, replacing <code>&lt;wiredtiger&gt;</code> with the path to the WiredTiger installation directory: </p>
+<div class="fragment"><div class="line">python &lt;wiredtiger&gt;/tools/wtstats.py WiredTigerStat.*</div>
+</div><!-- fragment --><p>Another way to process all the stats files in a directory is:</p>
+<div class="fragment"><div class="line">python &lt;wiredtiger&gt;/tools/wtstats.py &lt;directory&gt;</div>
+</div><!-- fragment --><p> In either case, a <code>wtstats.html</code> file will be generated in the <em>current</em> directory that you can open in your browser to examine statistics.</p>
+<p>Additional options are available, use <code>wtstats.py &ndash;help</code> to display them.</p>
+<p>Here is a sample of what is displayed using <code>wtstats.html:</code> </p>
+<div class="image">
+<img src="wtstats.png" alt="wtstats.png"/>
+<div class="caption">
+wtstats.html</div></div>
+<p> Some things to note about the interface:</p>
 <ul>
-<li><a class="el" href="tune_memory_allocator.html">Memory allocator</a></li>
-<li><a class="el" href="tune_page_sizes.html">Page and overflow key/value sizes</a></li>
-<li><a class="el" href="tune_cache.html">Cache and eviction tuning</a></li>
-<li><a class="el" href="tune_bulk_load.html">Bulk-load</a></li>
-<li><a class="el" href="tune_cursor_persist.html">Cursor persistence</a></li>
-<li><a class="el" href="tune_read_only.html">Read-only objects</a></li>
-<li><a class="el" href="tune_durability.html">Commit-level durability</a></li>
-<li><a class="el" href="tune_checksum.html">Checksums</a></li>
-<li><a class="el" href="tune_compression.html">Compression</a></li>
-<li><a class="el" href="tune_file_alloc.html">File allocation</a></li>
-<li><a class="el" href="tune_system_buffer_cache.html">System buffer cache</a></li>
-<li><a class="el" href="tune_transparent_huge_pages.html">Linux transparent huge pages</a></li>
-<li><a class="el" href="tune_close.html">Connection close</a></li>
-<li><a class="el" href="tune_mutex.html">Mutexes</a></li>
-<li><a class="el" href="tune_zone_reclaim.html">Linux zone reclamation memory management</a></li>
-<li><a class="el" href="tune_statistics.html">Performance monitoring with statistics</a></li>
-</ul>
-<h2>Simulating workloads</h2>
-<ul>
-<li><a class="el" href="wtperf.html">Simulating workloads with wtperf</a></li>
-</ul>
-<h2>Visualizing performance</h2>
-<ul>
-<li><a class="el" href="wtstats.html">Visualizing performance with wtstats</a> </li>
+<li>The left sidebar has statistics groups that can each be expanded to show individual statistics. Clicking on a circle toggles whether an individual statistic or statistics group is displayed or not.</li>
+<li>The search box at the upper left can be used to search for statistics matching a string.</li>
+<li>Hovering over values in the graph will show what the value is, and what statistic is being shown.</li>
+<li>The graph can be panned using two fingered scroll or mouse wheel.</li>
+<li>Scaling of the entire graph can be changed using the buttons at the right top. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li>
+    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="performance.html">Performance tuning WiredTiger applications</a></li>
     <li class="footer">Copyright (c) 2008-2015 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
