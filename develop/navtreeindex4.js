@@ -1,5 +1,9 @@
 var NAVTREEINDEX4 =
 {
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html":[1,0,7],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a14a2a760c981563efb02555c0d0b267d":[1,0,7,3],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a4b8a4d66d1e4ae5c1e4a87b2eda618d9":[1,0,7,2],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a97c41f95e363a2a7aa9a9739be4d9ac8":[1,0,7,0],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af26a6817fcc22499496c15b47c0ef788":[1,0,7,1],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html":[1,1,5],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1f23ff3b17d86decfe92ba232f988fd6":[1,1,5,2],
