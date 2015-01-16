@@ -54,6 +54,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_cursor =
     [ "putValueRecord", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a1fd651bc42b0ea9d085203be2feab10c", null ],
     [ "putValueShort", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a6a7c3b8e585e6260751490c91abda3cd", null ],
     [ "putValueString", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a1a1d42888bd574c6c8450ead3910886b", null ],
+    [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a2219b90a6028093404c907ff30db346c", null ],
     [ "remove", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a07781c4a66856b9e2aeb30e520335060", null ],
     [ "remove_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a8be6c66d2e7d05835b85686ea9f8abe8", null ],
     [ "reset", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a3e53838f94cdf00798c1a50c86bf1c50", null ],

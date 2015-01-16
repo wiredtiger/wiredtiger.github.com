@@ -701,19 +701,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div class="line">        <span class="comment">/* Duplicate the cursor. */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, NULL, cursor, NULL, &amp;duplicate);</div>
 </div><!-- fragment --><p> Cursors being duplicated must have a key set, and successfully duplicated cursors are positioned at the same place in the data source as the original.</p>
-<p>To reconfigure a cursor, duplicate it with a new configuration value:</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        cursor-&gt;set_key(cursor, key);</div>
-<div class="line"></div>
-<div class="line">        <span class="comment">/* Reconfigure the cursor to overwrite the record. */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, NULL, cursor, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;overwrite_cursor);</div>
-<div class="line">        ret = cursor-&gt;close(cursor);</div>
-<div class="line"></div>
-<div class="line">        overwrite_cursor-&gt;set_value(overwrite_cursor, value);</div>
-<div class="line">        ret = overwrite_cursor-&gt;insert(cursor);</div>
-</div><!-- fragment --><p> <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html" title="A WT_CURSOR handle is the interface to a cursor. ">Cursor</a> handles should be discarded by calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor. ">WT_CURSOR::close</a>.</p>
+<p><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html" title="A WT_CURSOR handle is the interface to a cursor. ">Cursor</a> handles should be discarded by calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor. ">WT_CURSOR::close</a>.</p>
 <p>Cursors capable of supporting transactional operations operate in the context of the current transaction, if any.</p>
 <p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction. ">WT_SESSION::rollback_transaction</a> implicitly resets all cursors.</p>
 <p>Cursors are relatively light-weight objects but may hold references to heavier-weight objects; applications should re-use cursors when possible, but instantiating new cursors is not so expensive that applications need to cache cursors at all cost.</p>

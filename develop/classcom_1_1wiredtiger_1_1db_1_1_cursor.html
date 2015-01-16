@@ -191,6 +191,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>getUri</b> ()</td><
 <tr class="memitem:adc0e5bd37f139ba544f9a95191767bde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#adc0e5bd37f139ba544f9a95191767bde">close</a> ()  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:adc0e5bd37f139ba544f9a95191767bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the cursor.  <a href="#adc0e5bd37f139ba544f9a95191767bde">More...</a><br/></td></tr>
 <tr class="separator:adc0e5bd37f139ba544f9a95191767bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2219b90a6028093404c907ff30db346c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a2219b90a6028093404c907ff30db346c">reconfigure</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:a2219b90a6028093404c907ff30db346c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure the cursor.  <a href="#a2219b90a6028093404c907ff30db346c">More...</a><br/></td></tr>
+<tr class="separator:a2219b90a6028093404c907ff30db346c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaf553d1dd2fb4a74b7afce430b05f31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeaf553d1dd2fb4a74b7afce430b05f31"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>compare_wrap</b> (<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a> other)</td></tr>
 <tr class="separator:aeaf553d1dd2fb4a74b7afce430b05f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1184,6 +1187,49 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>This cursor object, so put calls can be chained. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2219b90a6028093404c907ff30db346c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Cursor.reconfigure </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reconfigure the cursor. </p>
+<p>The cursor is reset.</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite=false&quot;</span>, &amp;cursor);</div>
+<div class="line">        cursor-&gt;set_key(cursor, key);</div>
+<div class="line">        cursor-&gt;set_value(cursor, value);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Reconfigure the cursor to overwrite the record. */</span></div>
+<div class="line">        ret = cursor-&gt;reconfigure(cursor, <span class="stringliteral">&quot;overwrite=true&quot;</span>);</div>
+<div class="line">        ret = cursor-&gt;insert(cursor);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>append</code></td><td>append the value as a new record, creating a new record number key; valid only for cursors with record number keys.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>overwrite</code></td><td>configures whether the cursor's insert, update and remove methods check the existing state of the record. If <code>overwrite</code> is <code>false</code>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record. ">WT_CURSOR::insert</a> fails with <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> if the record exists, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record and optionally insert an existing record. ">WT_CURSOR::update</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record. ">WT_CURSOR::remove</a> fail with <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> if the record does not exist.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>
