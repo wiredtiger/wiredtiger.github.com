@@ -5,7 +5,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_cursor =
     [ "compare", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a4c91a82815161b5283036bd7653ed577", null ],
     [ "compare_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#aeaf553d1dd2fb4a74b7afce430b05f31", null ],
     [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a21857a1c83da122c089d990d934c9fda", null ],
-    [ "equals", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a7df7a6a6aeb1369cc9ec9e7c3cb5f136", null ],
+    [ "equals", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#aef2595bddc129ea7f5974a87138ed069", null ],
     [ "equals_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a6e392e74167c9abcb5c2356aa297c533", null ],
     [ "get_key_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a41b3baca83ac20b04369a12e7d980caa", null ],
     [ "get_value_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a6e4a550640d0144fbb2d00166cd8c252", null ],
