@@ -171,6 +171,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_EVICTION_SLOW", "group__wt.html#ga0d85c851ad211915a351fd3b85672ad6", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_SPLIT", "group__wt.html#gab1719c0e925e97e10f9580483142178e", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_WALK", "group__wt.html#ga3e85a0cd390c4cf2ed3c578235c1f7d6", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_WORKER_EVICTING", "group__wt.html#gafac92de6de839e9e528529adc328e01a", null ],
     [ "WT_STAT_CONN_CACHE_INMEM_SPLIT", "group__wt.html#gac651643da398d7bcdabf205a12ca2c74", null ],
     [ "WT_STAT_CONN_CACHE_PAGES_DIRTY", "group__wt.html#ga6a1cf2f6e874f367461426aeeb68ae3a", null ],
     [ "WT_STAT_CONN_CACHE_PAGES_INUSE", "group__wt.html#gab5a819ba891f98903ee2be2df3c565f1", null ],
