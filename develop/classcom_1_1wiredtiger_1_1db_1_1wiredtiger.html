@@ -268,6 +268,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:acd5862b4f7da3ae9895360350684daf0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd5862b4f7da3ae9895360350684daf0"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_INMEM_SPLIT</b></td></tr>
 <tr class="separator:acd5862b4f7da3ae9895360350684daf0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee65837870b9aaefe02c081c9f1bb5a4 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee65837870b9aaefe02c081c9f1bb5a4"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_OVERHEAD</b></td></tr>
+<tr class="separator:aee65837870b9aaefe02c081c9f1bb5a4 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90290e35365ebd1f102cf4ad2f3c9e42 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90290e35365ebd1f102cf4ad2f3c9e42"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_PAGES_DIRTY</b></td></tr>
 <tr class="separator:a90290e35365ebd1f102cf4ad2f3c9e42 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -882,7 +885,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <tr>
 <td><code>buffer_alignment</code></td><td>in-memory alignment (in bytes) for buffers used for I/O. The default value of -1 indicates a platform-specific alignment value should be used (4KB on Linux systems, zero elsewhere).</td><td>an integer between -1 and 1MB; default <code>-1</code>. </td></tr>
 <tr>
-<td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either a cache_size or a shared_cache not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
+<td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache size by that amount (for example, if the cache size is 100GB, a percentage of 10 means WiredTiger limits itself to allocating 90GB of memory). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
+<tr>
+<td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
 <td><code>checkpoint = (</code></td><td>periodically checkpoint the database.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>

@@ -414,6 +414,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac651643da398d7bcdabf205a12ca2c74">WT_STAT_CONN_CACHE_INMEM_SPLIT</a></td></tr>
 <tr class="memdesc:gac651643da398d7bcdabf205a12ca2c74"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: in-memory page splits <br/></td></tr>
 <tr class="separator:gac651643da398d7bcdabf205a12ca2c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8f0e2e86dee76423a1a51f6aee74018"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf8f0e2e86dee76423a1a51f6aee74018"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf8f0e2e86dee76423a1a51f6aee74018">WT_STAT_CONN_CACHE_OVERHEAD</a></td></tr>
+<tr class="memdesc:gaf8f0e2e86dee76423a1a51f6aee74018"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: percentage overhead <br/></td></tr>
+<tr class="separator:gaf8f0e2e86dee76423a1a51f6aee74018"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6a1cf2f6e874f367461426aeeb68ae3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6a1cf2f6e874f367461426aeeb68ae3a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6a1cf2f6e874f367461426aeeb68ae3a">WT_STAT_CONN_CACHE_PAGES_DIRTY</a></td></tr>
 <tr class="memdesc:ga6a1cf2f6e874f367461426aeeb68ae3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: tracked dirty pages in the cache <br/></td></tr>
@@ -1555,7 +1559,9 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>buffer_alignment</code></td><td>in-memory alignment (in bytes) for buffers used for I/O. The default value of -1 indicates a platform-specific alignment value should be used (4KB on Linux systems, zero elsewhere).</td><td>an integer between -1 and 1MB; default <code>-1</code>. </td></tr>
 <tr>
-<td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either a cache_size or a shared_cache not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
+<td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache size by that amount (for example, if the cache size is 100GB, a percentage of 10 means WiredTiger limits itself to allocating 90GB of memory). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
+<tr>
+<td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
 <td><code>checkpoint = (</code></td><td>periodically checkpoint the database.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
