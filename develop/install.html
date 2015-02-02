@@ -74,12 +74,13 @@ $(document).ready(function(){initNavTree('install.html','');});
 Building using Git and GitHub</h1>
 <p>Skip this step if you are building from a WiredTiger release package, and proceed with <a class="el" href="install.html#building">Building WiredTiger</a>.</p>
 <p>To build from the WiredTiger GitHub repository requires <a href="http://git-scm.com/">git</a>, <a href="http://www.gnu.org/software/autoconf/autoconf.html">autoconf</a>, <a href="http://www.gnu.org/software/autoconf/automake.html">automake</a>, <a href="http://www.gnu.org/software/libtool/libtool.html">libtool</a> and related tools. The standard options for those tools can be specified when configuring and building WiredTiger.</p>
+<p>On Windows, <a href="http://www.scons.org">SCons</a> is used, and requires the Microsoft Visual C++ compiler in Microsoft Visual Studio to compile.</p>
 <p>First, clone the repository:</p>
 <div class="fragment"><div class="line">git clone git:<span class="comment">//github.com/wiredtiger/wiredtiger.git</span></div>
-</div><!-- fragment --><p>Second, run <code>autogen.sh</code> to create the <code>configure</code> script:</p>
+</div><!-- fragment --><p>Second, if not on Windows, run <code>autogen.sh</code> to create the <code>configure</code> script:</p>
 <div class="fragment"><div class="line">cd wiredtiger</div>
 <div class="line">sh autogen.sh</div>
-</div><!-- fragment --><p>Now proceed with <a class="el" href="install.html#building">Building WiredTiger</a>.</p>
+</div><!-- fragment --><p>Now proceed with <a class="el" href="install.html#building">Building WiredTiger</a> or <a class="el" href="install.html#building-win32">Building on Windows</a>.</p>
 <h1><a class="anchor" id="building"></a>
 Building WiredTiger</h1>
 <p>To build the WiredTiger software on a POSIX-like system, change directory to the top-level directory, then configure and build the software:</p>
@@ -107,21 +108,46 @@ Installing WiredTiger</h1>
 <div class="fragment"><div class="line">make uninstall</div>
 </div><!-- fragment --><p>To install WiredTiger's libraries or binaries into alternate locations, use the configuration or installation options described in the <a href="http://www.gnu.org/prep/standards/">GNU coding standards</a> documentation. For example, to install the libraries and binaries into a different location:</p>
 <div class="fragment"><div class="line">./configure --prefix=/c/wiredtiger</div>
+</div><!-- fragment --><h1><a class="anchor" id="building-win32"></a>
+Building on Windows</h1>
+<p>To build the WiredTiger software on a Windows system, change directory to the top-level directory, then build the software:</p>
+<div class="fragment"><div class="line">cd wiredtiger</div>
+<div class="line">scons</div>
+</div><!-- fragment --><p>To rebuild from scratch, discard any previous configuration by cleaning out the build area:</p>
+<div class="fragment"><div class="line">scons -c</div>
+</div><!-- fragment --><p>To see additional configuration options, run:</p>
+<div class="fragment"><div class="line">scons --help</div>
+</div><!-- fragment --><p>To build the python language support, a 64-bit version of Python is required. The required version is referred to as x86-64 on <a href="www.python.org">Python.org</a> or x64 on <a href="http://www.activestate.com/activepython/downloads">ActiveState Python</a>.</p>
+<h1><a class="anchor" id="installing-win32"></a>
+Installing WiredTiger on Windows</h1>
+<p>The WiredTiger software consists of a library and a single standalone utility.</p>
+<p>WiredTiger's distribution follows the GNU Coding Standards installation guidelines, and by default WiredTiger builds and installs a static library and dll version of the library.</p>
+<div class="fragment"><div class="line">file &lt;root directory&gt;/package/bin/</div>
+<div class="line">wt.exe:                 x64 standalone executable</div>
+<div class="line">wiredtiger.dll:         x64 dynamically linked library</div>
+<div class="line"></div>
+<div class="line">file &lt;root directory&gt;/package/lib/</div>
+<div class="line">libwiredtiger.lib:      x64 <span class="keyword">static</span> library</div>
+<div class="line">wiredtiger.lib:         x64 <span class="keyword">import</span> library <span class="keywordflow">for</span> dll</div>
+</div><!-- fragment --><p>To install WiredTiger:</p>
+<div class="fragment"><div class="line">scons install</div>
+</div><!-- fragment --><p>To install WiredTiger's libraries or binaries into alternate locations, you can use the &ndash;prefix switch.</p>
+<div class="fragment"><div class="line">scons --prefix=c:\wiredtiger install</div>
 </div><!-- fragment --><h1><a class="anchor" id="configure"></a>
 Configuring WiredTiger</h1>
 <p>The WiredTiger software supports some additional configuration options:</p>
 <dl class="section user"><dt><code>&ndash;enable-attach</code> </dt><dd>Configure WiredTiger to sleep and wait for a debugger to attach on failure. <b>DO NOT</b> configure this option in production environments.</dd></dl>
-<dl class="section user"><dt><code>&ndash;enable-bzip2</code> </dt><dd>Configure WiredTiger for <a href="http://www.bzip.org/">bzip2</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
+<dl class="section user"><dt><code>&ndash;enable-bzip2</code> </dt><dd>Configure WiredTiger for <a href="http://www.bzip.org/">bzip2</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information. Not available on Windows.</dd></dl>
 <dl class="section user"><dt><code>&ndash;enable-diagnostic</code> </dt><dd>Configure WiredTiger to perform various run-time diagnostic tests. <b>DO NOT</b> configure this option in production environments.</dd></dl>
-<dl class="section user"><dt><code>&ndash;enable-java</code> </dt><dd>Build the WiredTiger Java API.</dd></dl>
-<dl class="section user"><dt><code>&ndash;enable-leveldb</code>[=basho, hyper, rocksdb]</dt><dd>Include a Google, Inc. compatible LevelDB API. Optionally, specify <code>basho</code> to build a version of the LevelDB API compatible with Basho's Riak product, specify <code>hyper</code> to build a version of the LevelDB API compatible with the HyperDex product, and specify <code>rocksdb</code> to build a version of the LevelDB API compatible with applications using Facebook's RocksDB engine. See <a class="el" href="leveldb.html">LevelDB compatibility API</a> for more information.</dd></dl>
-<dl class="section user"><dt><code>&ndash;enable-python</code> </dt><dd>Build the WiredTiger <a href="http://www.python.org">Python</a> API.</dd></dl>
+<dl class="section user"><dt><code>&ndash;enable-java</code> </dt><dd>Build the WiredTiger Java API. Not available on Windows.</dd></dl>
+<dl class="section user"><dt><code>&ndash;enable-leveldb</code>[=basho, hyper, rocksdb]</dt><dd>Include a Google, Inc. compatible LevelDB API. Optionally, specify <code>basho</code> to build a version of the LevelDB API compatible with Basho's Riak product, specify <code>hyper</code> to build a version of the LevelDB API compatible with the HyperDex product, and specify <code>rocksdb</code> to build a version of the LevelDB API compatible with applications using Facebook's RocksDB engine. See <a class="el" href="leveldb.html">LevelDB compatibility API</a> for more information. Not available on Windows.</dd></dl>
+<dl class="section user"><dt><code>&ndash;enable-python</code> </dt><dd>Build the WiredTiger <a href="http://www.python.org">Python</a> API. Requires path to swig.exe on Windows.</dd></dl>
 <dl class="section user"><dt><code>&ndash;enable-snappy</code> </dt><dd>Configure WiredTiger for <a href="http://code.google.com/p/snappy/">snappy</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
 <dl class="section user"><dt><code>&ndash;enable-verbose</code> </dt><dd>Configure WiredTiger to support the <code>verbose</code> configuration string to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.</dd></dl>
 <dl class="section user"><dt><code>&ndash;enable-zlib</code> </dt><dd>Configure WiredTiger for <a href="http://www.zlib.net/">zlib</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
-<dl class="section user"><dt>&ndash;with-builtins</dt><dd>Configure WiredTiger to include support for extensions in the main library. This avoids requiring additional libraries for supported extensions. Currently supported options are <code>snappy</code> and <code>zlib</code>.</dd></dl>
-<dl class="section user"><dt>&ndash;with-python-prefix</dt><dd>Configure WiredTiger to install Python libraries to a non-standard Python install location.</dd></dl>
-<dl class="section user"><dt>&ndash;with-spinlock[=pthread, pthread_adaptive, gcc]</dt><dd>Configure WiredTiger to use a specific mutex type for serialization; options are <code>pthread</code> (the default, which configures WiredTiger to use POSIX 1003.1c pthread mutexes), <code>pthread_adaptive</code> (which configures WiredTiger to use POSIX 1003.1c pthread mutexes configured to be adaptive (where that functionality is available), or <code>gcc</code> (which configures WiredTiger to use gcc-based spinlocks).</dd></dl>
+<dl class="section user"><dt>&ndash;with-builtins</dt><dd>Configure WiredTiger to include support for extensions in the main library. This avoids requiring additional libraries for supported extensions. Currently supported options are <code>snappy</code> and <code>zlib</code>. Not available on Windows as it is the default.</dd></dl>
+<dl class="section user"><dt>&ndash;with-python-prefix</dt><dd>Configure WiredTiger to install Python libraries to a non-standard Python install location. Not available on Windows.</dd></dl>
+<dl class="section user"><dt>&ndash;with-spinlock[=pthread, pthread_adaptive, gcc]</dt><dd>Configure WiredTiger to use a specific mutex type for serialization; options are <code>pthread</code> (the default, which configures WiredTiger to use POSIX 1003.1c pthread mutexes), <code>pthread_adaptive</code> (which configures WiredTiger to use POSIX 1003.1c pthread mutexes configured to be adaptive (where that functionality is available), or <code>gcc</code> (which configures WiredTiger to use gcc-based spinlocks). Not available on Windows.</dd></dl>
 <h1><a class="anchor" id="compiler"></a>
 Changing compiler or loader options</h1>
 <p>To change the compiler or loader behavior during the build, use the <code>CC</code>, <code>CFLAGS</code>, <code>LDFLAGS</code>, or <code>LIBS</code> environment variables:</p>

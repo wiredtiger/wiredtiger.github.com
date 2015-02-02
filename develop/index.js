@@ -11,6 +11,8 @@ var index =
       [ "Building using Git and GitHub", "install.html#github", null ],
       [ "Building WiredTiger", "install.html#building", null ],
       [ "Installing WiredTiger", "install.html#installing", null ],
+      [ "Building on Windows", "install.html#building-win32", null ],
+      [ "Installing WiredTiger on Windows", "install.html#installing-win32", null ],
       [ "Configuring WiredTiger", "install.html#configure", null ],
       [ "Changing compiler or loader options", "install.html#compiler", null ]
     ] ],
