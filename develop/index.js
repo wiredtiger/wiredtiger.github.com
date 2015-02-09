@@ -20,13 +20,12 @@ var index =
       [ "Installing WiredTiger", "build-windows.html#windows_installing", null ],
       [ "Configuring WiredTiger", "build-windows.html#windows_configure", null ]
     ] ],
-    [ "Writing WiredTiger applications", "programming.html", "programming" ],
-    [ "Writing WiredTiger applications  in Java", "programming_lang_java.html", "programming_lang_java" ],
-    [ "LevelDB compatibility API", "leveldb.html", [
+    [ "Building and installing the LevelDB compatibility API", "leveldb.html", [
       [ "Building and using WiredTiger's LevelDB API", "leveldb.html#leveldb_build", null ],
       [ "Caveats", "leveldb.html#leveldb_caveats", null ]
     ] ],
-    [ "Performance tuning WiredTiger applications", "performance.html", "performance" ],
+    [ "Writing WiredTiger applications", "programming.html", "programming" ],
+    [ "Writing WiredTiger applications  in Java", "programming_lang_java.html", "programming_lang_java" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "WiredTiger Change Log", "md_changelog.html", null ],
