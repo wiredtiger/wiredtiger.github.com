@@ -96,19 +96,34 @@ $(document).ready(function(){initNavTree('wtperf.html','');});
 <dl class="section user"><dt>-o config</dt><dd>Specify configuration strings for the <code>wtperf</code> program. This argument will override settings in the configuration file. </dd></dl>
 <dl class="section user"><dt>-T config</dt><dd>Specify configuration strings for the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> function. This argument is additive to the <code>table_config</code> parameter in the configuration file.</dd></dl>
 <h1><a class="anchor" id="monitor"></a>
-Monitoring wtperf performance</h1>
-<p>In addition to testing a particular configuration, <code>wtperf</code> can monitor performance and operation latency times. Monitoring can be enabled using the <code>sample_interval</code> configuration setting. For example to record information every 10 seconds, add the following to the <code>wtperf</code> configuration file:</p>
+Monitoring wtperf</h1>
+<p>Like all WiredTiger applications, the <code>wtperf</code> command can be configured with statistics logging, and the resulting output displayed using the <code>wtstats</code> visualization tool. For more information, see <a class="el" href="wtstats.html">Visualizing performance with wtstats</a>.</p>
+<p>In addition to statistics logging, <code>wtperf</code> can monitor performance and operation latency times. Monitoring is enabled using the <code>sample_interval</code> configuration. For example to record information every 10 seconds, set the following on the command line or add it to the <code>wtperf</code> configuration file:</p>
 <div class="fragment"><div class="line">sample_interval=10</div>
-</div><!-- fragment --><p>Enabling monitoring causes <code>wtperf</code> to create a file <code>monitor</code> in the database home directory, or another directory as specified in the <code>-m</code> option to <code>wtperf</code>.</p>
-<p>A visualization tool to see the performance over the course of the <code>wtperf</code> run can be found in <code>tools/wtperf_stats.py</code>.</p>
-<p>The following example shows how to run the <code>large-lsm.wtperf</code> configuration to a subdirectory of <code>build_posix</code> called <code>WTPERF_RUN</code> with monitoring enabled, and then generate a graph. This example assumes you have all the necessary tools already installed to build WiredTiger, Python and python-nvd3.</p>
-<div class="fragment"><div class="line">cd $WIREDTIGER_SOURCE</div>
-<div class="line">./configure &amp;&amp; make</div>
-<div class="line">mkdir WTPERF_RUN &amp;&amp; ./bench/wtperf/wtperf -h WTPERF_RUN -O ./bench/wtperf/runners/large-lsm.wtperf</div>
-<div class="line">cd WTPERF_RUN; python ../tools/wtperf_stats.py monitor</div>
-</div><!-- fragment --><p>The python tool creates a file named <code>wtperf_stats.html</code> in the current working directory. You can open the generated HTML document in your browser and see the generated statistics. The keys in the graph are clickable, including the graph included on this page. Double clicking on one of the keys will show only that item. Single clicking will enable or disable a particular item.</p>
-<p>The script as a few optional arguments. For example, <code> -o file </code> or <code> &ndash;output file </code> to redirect the HTML output to another filename, and <code>&ndash;abstime</code> to display time on the X-axis in absolute time.</p>
-<p>For example, the file will have content like this:</p>
+</div><!-- fragment --><p>Enabling monitoring causes <code>wtperf</code> to create a file <code>monitor</code> in the database home directory (or another directory as specified using the <code>-m</code> option to <code>wtperf</code>).</p>
+<p>A visualization tool to see the performance over the course of the <code>wtperf</code> run can be found in <code>tools/wtperf_stats/wtperf_stats.py</code>.</p>
+<p>The following example shows how to run the <code>medium-btree.wtperf</code> configuration with monitoring enabled, and then generate a graph.</p>
+<div class="fragment"><div class="line"><span class="preprocessor"># Change into the WiredTiger directory.</span></div>
+<div class="line"><span class="preprocessor"></span>cd wiredtiger</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># Configure and build WiredTiger if not already built.</span></div>
+<div class="line"><span class="preprocessor"></span>./configure &amp;&amp; make</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># Remove and re-create the run directory.</span></div>
+<div class="line"><span class="preprocessor"></span>rm -rf WTPERF_RUN &amp;&amp; mkdir WTPERF_RUN</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># Run the medium-btree.wtperf workload, sampling performance every 5 seconds.</span></div>
+<div class="line"><span class="preprocessor"></span>bench/wtperf/wtperf \</div>
+<div class="line">    -h WTPERF_RUN \</div>
+<div class="line">    -o sample_interval=5 \</div>
+<div class="line">    -O bench/wtperf/runners/medium-btree.wtperf</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># Use the visualization tool to create HTML graph output; the output file is</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># named wtperf_stats.html.</span></div>
+<div class="line"><span class="preprocessor">python tools/wtperf_stats/wtperf_stats.py WTPERF_RUN/monitor</span></div>
+</div><!-- fragment --><p>The python command creates a file named <code>wtperf_stats.html</code> in the current working directory. You can open the generated HTML document in your browser and see the generated statistics. The keys in the graph are clickable, including the graph included on this page. Double clicking on one of the keys will show only that item. Single clicking will enable or disable a particular item.</p>
+<p>The script has a few optional arguments: <code>-o file</code> or <code>&ndash;output file</code> to redirect the HTML output to another filename, and <code>&ndash;abstime</code> to display time on the X-axis in absolute time.</p>
+<p>The following is example HTML output:</p>
 
 <!DOCTYPE html>
 <html lang="en">

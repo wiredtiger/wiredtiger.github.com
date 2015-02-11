@@ -126,10 +126,12 @@ var programming =
     ] ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Simulating workloads with wtperf", "wtperf.html", [
-      [ "Monitoring wtperf performance", "wtperf.html#monitor", null ],
+      [ "Monitoring wtperf", "wtperf.html#monitor", null ],
       [ "Wtperf configuration options", "wtperf.html#config", null ]
     ] ],
-    [ "Visualizing performance with wtstats", "wtstats.html", null ],
+    [ "Visualizing performance with wtstats", "wtstats.html", [
+      [ "Manipulating the wtstats display", "wtstats.html#wtstats_display", null ]
+    ] ],
     [ "Memory allocator", "tune_memory_allocator.html", null ],
     [ "Page and overflow key/value sizes", "tune_page_sizes.html", [
       [ "Page, key and value sizes", "tune_page_sizes.html#tune_page_sizes_sizes", null ],

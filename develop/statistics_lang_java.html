@@ -94,7 +94,9 @@ $(document).ready(function(){initNavTree('statistics_lang_java.html','');});
 <div class="fragment"><div class="line">    cursor = session.open_cursor(<span class="stringliteral">&quot;statistics:&quot;</span>, null, <span class="stringliteral">&quot;statistics=(fast,clear)&quot;</span>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="statistics_log_lang_java"></a>
 Statistics logging</h1>
-<p>WiredTiger will optionally log database statistics into a file when the the <code>wiredtiger.open</code> <code>statistics_log</code> configuration is set. The following example logs statistics every 30 seconds:</p>
+<p>WiredTiger will optionally log database statistics into a file when the the <code>wiredtiger.open</code> <code>statistics_log</code> configuration is set.</p>
+<p>The resulting statistics can be displayed using the <code>wtstats</code> visualization tool. For more information, see <a class="el" href="wtstats.html">Visualizing performance with wtstats</a>.</p>
+<p>The following example logs statistics every 30 seconds:</p>
 <div class="fragment"><div class="line">    conn = wiredtiger.open(</div>
 <div class="line">        home, <span class="stringliteral">&quot;create,statistics_log=(wait=30)&quot;</span>);</div>
 </div><!-- fragment --><p> Each record is formatted as a space-separated timestamp, unsigned 64-bit value and a variable length string which describes the statistic.</p>
