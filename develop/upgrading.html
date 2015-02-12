@@ -69,7 +69,15 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_250"></a>
+<div class="textblock"><h1><a class="anchor" id="version_251"></a>
+Upgrading to Version 2.5.1</h1>
+<dl>
+<dt>Statistics cursors on data sources </dt>
+<dd><p class="startdd">Opening a statistics cursor on a data source without a <code>checkpoint</code> name no longer aggregates statistics for all open checkpoints on that data source. The returned statistics will only be for the in-memory version of the data source.</p>
+<p class="enddd">For applications that read and write from ordinary tables (without specifying a <code>checkpoint</code>), there will be no change. Applications that opened cursors on checkpoints and relied on their statistics being aggregated into a single statistics cursor will need to open statistics cursors on each checkpoint.  </p>
+</dd>
+</dl>
+<h1><a class="anchor" id="version_250"></a>
 Upgrading to Version 2.5.0</h1>
 <dl>
 <dt>WT_STAT_CONN_LOG_BYTES_USER renamed WT_STAT_CONN_LOG_BYTES_PAYLOAD </dt>
