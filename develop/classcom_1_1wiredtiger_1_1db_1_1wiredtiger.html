@@ -127,6 +127,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_PANIC<
 <tr class="memitem:a57dd631c5bc1ba07b3d4f1f116fc6613 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57dd631c5bc1ba07b3d4f1f116fc6613"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_RESTART</b></td></tr>
 <tr class="separator:a57dd631c5bc1ba07b3d4f1f116fc6613 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab220837a4add1e75a2d23012dd8f969 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab220837a4add1e75a2d23012dd8f969"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_RUN_RECOVERY</b></td></tr>
+<tr class="separator:aab220837a4add1e75a2d23012dd8f969 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76f1262ff26deabc91211655140a6a55 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76f1262ff26deabc91211655140a6a55"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_DEADLOCK</b></td></tr>
 <tr class="separator:a76f1262ff26deabc91211655140a6a55 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -950,6 +953,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the path to a directory into which the log files are written. If the value is not an absolute path name, the files are created relative to the database home.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;recover</code></td><td>run recovery or error if recovery needs to run after an unclean shutdown.</td><td>a string, chosen from the following options: <code>"error"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>

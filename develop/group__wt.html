@@ -225,6 +225,9 @@ Error returns</h2></td></tr>
 <tr class="memitem:gaf4fc8744eb8fe4f1c6e125d0f2361992"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992">WT_PANIC</a></td></tr>
 <tr class="memdesc:gaf4fc8744eb8fe4f1c6e125d0f2361992"><td class="mdescLeft">&#160;</td><td class="mdescRight">WiredTiger library panic.  <a href="#gaf4fc8744eb8fe4f1c6e125d0f2361992">More...</a><br/></td></tr>
 <tr class="separator:gaf4fc8744eb8fe4f1c6e125d0f2361992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76bb44d946fbe56ddb93470ab95a1e78"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga76bb44d946fbe56ddb93470ab95a1e78">WT_RUN_RECOVERY</a></td></tr>
+<tr class="memdesc:ga76bb44d946fbe56ddb93470ab95a1e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recovery must be run to continue.  <a href="#ga76bb44d946fbe56ddb93470ab95a1e78">More...</a><br/></td></tr>
+<tr class="separator:ga76bb44d946fbe56ddb93470ab95a1e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Connection statistics</h2></td></tr>
@@ -1406,6 +1409,21 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 
 </div>
 </div>
+<a class="anchor" id="ga76bb44d946fbe56ddb93470ab95a1e78"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_RUN_RECOVERY</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recovery must be run to continue. </p>
+<p>This error is generated when wiredtiger_open is configured to return an error if recovery is required to use the database. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="gac4f8b4621bcafad9db744e87be24a798"></a>
 <div class="memitem">
@@ -1626,6 +1644,8 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the path to a directory into which the log files are written. If the value is not an absolute path name, the files are created relative to the database home.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;recover</code></td><td>run recovery or error if recovery needs to run after an unclean shutdown.</td><td>a string, chosen from the following options: <code>"error"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
