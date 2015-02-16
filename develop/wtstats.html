@@ -69,7 +69,7 @@ $(document).ready(function(){initNavTree('wtstats.html','');});
 <div class="title">Visualizing performance with wtstats </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The WiredTiger distribution includes the <b>wtstats</b> tool that can be used to examine information generated using statistics logging (see <a class="el" href="statistics.html#statistics_log">Statistics logging</a>).</p>
+<div class="textblock"><p>The WiredTiger distribution includes the <b>wtstats</b> tool that can be used to examine information generated using statistics logging (see <a class="el" href="statistics.html#statistics_log">Statistics logging</a>) and wtperf monitoring output (see <a class="el" href="wtperf.html">Simulating workloads with wtperf</a>).</p>
 <p>After running an application with statistics logging configured, the statistics output files will be in the database home directory. By default they are the files named with a <code>WiredTigerStat</code> prefix and a day and hour timestamp.</p>
 <p>To create an HTML file with a graphical representation of the statistics run the following command, replacing <code>wiredtiger</code> with the path to the WiredTiger build directory, and replacing <code>database-directory</code> with the application's database home directory:</p>
 <div class="fragment"><div class="line">python wiredtiger/tools/wtstats/wtstats.py database-directory</div>
