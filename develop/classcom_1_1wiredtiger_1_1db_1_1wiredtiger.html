@@ -87,9 +87,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a3c1f65ac4bea3fe64219a0bc61377d8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c1f65ac4bea3fe64219a0bc61377d8a"></a>
 static String&#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger_strerror</b> (int error)</td></tr>
 <tr class="separator:a3c1f65ac4bea3fe64219a0bc61377d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a42b68d081201ffc771b3d8d596f746"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a42b68d081201ffc771b3d8d596f746"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>wiredtiger_strerror_r</b> (int error, String buf, long buflen)  throws com.wiredtiger.db.WiredTigerException </td></tr>
-<tr class="separator:a9a42b68d081201ffc771b3d8d596f746"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41881fa91c0b8820ad8a9f5bb91950f8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html">Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1wiredtiger.html#a41881fa91c0b8820ad8a9f5bb91950f8">open</a> (String home, String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a41881fa91c0b8820ad8a9f5bb91950f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection to a database.  <a href="#a41881fa91c0b8820ad8a9f5bb91950f8">More...</a><br/></td></tr>
 <tr class="separator:a41881fa91c0b8820ad8a9f5bb91950f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -894,7 +891,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <tr>
 <td><code>buffer_alignment</code></td><td>in-memory alignment (in bytes) for buffers used for I/O. The default value of -1 indicates a platform-specific alignment value should be used (4KB on Linux systems, zero elsewhere).</td><td>an integer between -1 and 1MB; default <code>-1</code>. </td></tr>
 <tr>
-<td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache size by that amount (for example, if the cache size is 100GB, a percentage of 10 means WiredTiger limits itself to allocating 90GB of memory). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
+<td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>

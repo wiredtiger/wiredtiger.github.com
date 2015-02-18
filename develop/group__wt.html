@@ -143,9 +143,6 @@ Functions</h2></td></tr>
 <tr class="memitem:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a> (int error)</td></tr>
 <tr class="memdesc:gae8bf720ddb4a7a7390b70424594c40fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string, not thread-safe.  <a href="#gae8bf720ddb4a7a7390b70424594c40fd">More...</a><br/></td></tr>
 <tr class="separator:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8e10858bcfba889ca82a0f723fadac7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8e10858bcfba889ca82a0f723fadac7c">wiredtiger_strerror_r</a> (int error, char *buf, size_t buflen)</td></tr>
-<tr class="memdesc:ga8e10858bcfba889ca82a0f723fadac7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string, thread-safe version.  <a href="#ga8e10858bcfba889ca82a0f723fadac7c">More...</a><br/></td></tr>
-<tr class="separator:ga8e10858bcfba889ca82a0f723fadac7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a> (int *majorp, int *minorp, int *patchp)</td></tr>
 <tr class="memdesc:ga1b29826f4b418891d67e86850f7cbcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get version information.  <a href="#ga1b29826f4b418891d67e86850f7cbcf4">More...</a><br/></td></tr>
 <tr class="separator:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1585,7 +1582,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>buffer_alignment</code></td><td>in-memory alignment (in bytes) for buffers used for I/O. The default value of -1 indicates a platform-specific alignment value should be used (4KB on Linux systems, zero elsewhere).</td><td>an integer between -1 and 1MB; default <code>-1</code>. </td></tr>
 <tr>
-<td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache size by that amount (for example, if the cache size is 100GB, a percentage of 10 means WiredTiger limits itself to allocating 90GB of memory). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
+<td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
@@ -1982,60 +1979,6 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
 <dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a5">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a5">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a4">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a4">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a16">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a6">ex_extending.c</a>, <a class="el" href="ex_hello_8c-example.html#a3">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a3">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a3">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a4">ex_schema.c</a>, and <a class="el" href="ex_thread_8c-example.html#a9">ex_thread.c</a>.</dd>
 </dl>
-</div>
-</div>
-<a class="anchor" id="ga8e10858bcfba889ca82a0f723fadac7c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int wiredtiger_strerror_r </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>error</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>buflen</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return information about a WiredTiger error as a string, thread-safe version. </p>
-<div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0) {</div>
-<div class="line">                <span class="keywordtype">char</span> buf[128];</div>
-<div class="line"></div>
-<div class="line">                <span class="keywordflow">if</span> (<a class="code" href="group__wt.html#ga8e10858bcfba889ca82a0f723fadac7c">wiredtiger_strerror_r</a>(ret, buf, <span class="keyword">sizeof</span>(buf)) != 0)</div>
-<div class="line">                        (void)snprintf(</div>
-<div class="line">                            buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;error value: %d\n&quot;</span>, ret);</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, buf);</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
-</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">error</td><td>a return value from a WiredTiger call </td></tr>
-    <tr><td class="paramname">buf</td><td>a buffer of at least <code>buflen</code> bytes </td></tr>
-    <tr><td class="paramname">buflen</td><td>the length of the buffer </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero for success, non-zero to indicate an error. </dd></dl>
-
 </div>
 </div>
 <a class="anchor" id="ga58d055cb4d054715bebd58a2cb713b2d"></a>

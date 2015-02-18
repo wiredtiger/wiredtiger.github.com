@@ -92,6 +92,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a578f0fbd8a83339f1f9c00e135f006e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6">reconfigure</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a578f0fbd8a83339f1f9c00e135f006e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure a session handle.  <a href="#a578f0fbd8a83339f1f9c00e135f006e6">More...</a><br/></td></tr>
 <tr class="separator:a578f0fbd8a83339f1f9c00e135f006e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe03ccb716e097ed1bb4d42eb733c1f9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, int error)</td></tr>
+<tr class="memdesc:abe03ccb716e097ed1bb4d42eb733c1f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about an error as a string.  <a href="#abe03ccb716e097ed1bb4d42eb733c1f9">More...</a><br/></td></tr>
+<tr class="separator:abe03ccb716e097ed1bb4d42eb733c1f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Cursor handles</div></td></tr>
 <tr class="memitem:afb5b4a69c2c5cafe411b2b04fdc1c75d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *to_dup, const char *config, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **cursorp)</td></tr>
 <tr class="memdesc:afb5b4a69c2c5cafe411b2b04fdc1c75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a new cursor on a data source or duplicate an existing cursor.  <a href="#afb5b4a69c2c5cafe411b2b04fdc1c75d">More...</a><br/></td></tr>
@@ -1085,6 +1088,49 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="abe03ccb716e097ed1bb4d42eb733c1f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* WT_SESSION::strerror </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>error</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return information about an error as a string. </p>
+<div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
+<div class="line">        cursor-&gt;set_key(cursor, key);</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;remove(cursor)) != 0) {</div>
+<div class="line">                fprintf(stderr,</div>
+<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        }</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">error</td><td>a return value from a WiredTiger function </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
 
 </div>
 </div>
