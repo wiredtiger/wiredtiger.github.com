@@ -89,7 +89,10 @@ $(document).ready(function(){initNavTree('packing.html','');});
 <h1><a class="anchor" id="config_examples"></a>
 Code samples</h1>
 <p>The code below is taken from the complete example program <a class="el" href="ex_pack_8c-example.html">ex_pack.c</a>. It demonstrates how to pack three integer values into a buffer and then unpack them again.</p>
-<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a>(session, &amp;size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9);</div>
+<div class="fragment"><div class="line">        <span class="keywordtype">size_t</span> size;</div>
+<div class="line">        <span class="keywordtype">char</span> buf[50];</div>
+<div class="line"></div>
+<div class="line">        ret = <a class="code" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a>(session, &amp;size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9);</div>
 <div class="line">        <span class="keywordflow">if</span> (size &gt; <span class="keyword">sizeof</span>(buf)) {</div>
 <div class="line">                <span class="comment">/* Allocate a bigger buffer. */</span></div>
 <div class="line">        }</div>
