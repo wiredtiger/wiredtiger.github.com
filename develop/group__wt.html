@@ -1525,7 +1525,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <p>This API is outside the scope of a WiredTiger connection handle, since applications may need to generate configuration strings prior to calling <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle to be used for error reporting. If NULL error messages will be written to stdout. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle to be used for error reporting (if NULL, error messages will be written to stderr). </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>the configuration string being parsed. The string must remain valid for the lifetime of the parser handle. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">len</td><td>the number of valid bytes in <code>config</code> </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">config_parserp</td><td>A pointer to the newly opened handle </td></tr>
