@@ -26,7 +26,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.5.1</span>
+   &#160;<span id="projectnumber">Version 2.5.2</span>
    </div>
   </td>
  </tr>
@@ -69,7 +69,69 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <div class="title">WiredTiger Change Log </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>WiredTiger release 2.5.0, 2014-12-24 </h2>
+<div class="textblock"><h2>WiredTiger release 2.5.1, 2015-03-07 </h2>
+<p>The WiredTiger 2.5.1 release contains new features, minor API changes and many bug fixes.</p>
+<p>New features and API changes:</p>
+<ul>
+<li>Add a new "log=(recover=on)" option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. The default value is "on", if set to "error", recovery won't be run on startup. An error will be returned if recovery is needed but disabled. This option is mainly to support the WiredTiger command line utility. refs #1651</li>
+<li>Add a new <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b" title="Return the ordering relationship between two cursors, testing only for equality: both cursors must ha...">WT_CURSOR::equals</a> method that returns when the cursors are equal, intended as a fast-path for cursor comparison.</li>
+<li>Change how statistics work when there are checkpoints for an object. We used to aggregate statistics for all open checkpoints and the current handle. We now only return statistics for the object being queried. See upgrading documentation for further information.</li>
+<li>Add a mode to LSM that allows us to limit the size of a tree by dropping old chunks. Enabled via "lsm=(chunk_count_limit=0)", default to 0 which disables the functionality. Note that enabling this feature discards old data automatically. refs #1652</li>
+<li>Update the WiredTiger printlog command line utility to generate JSON that can be parsed by third party tools. Refs #1438</li>
+<li>Change how we track memory allocation overhead. We used to apply a fixed size for each allocation (which was difficult to track). The overhead can be specified via a new configuration option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> using "cache_overhead=8". The value is a percentage and the default is 8. refs #1564 #1565</li>
+<li>Major enhancements to the wtstats.py tool that translates WiredTiger statistics into an HTML graph. The tool now generates interactive graphs and no longer requires third party Python libraries to be installed.</li>
+<li>Add a new <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a" title="Reconfigure the cursor. ">WT_CURSOR::reconfigure</a> method for cursor configuration. See API documentation for more information. refs #1381</li>
+<li>Add a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string. ">WT_SESSION.strerror</a> method, a thread-safe alternative to <a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd" title="Return information about a WiredTiger error as a string, not thread-safe. ">wiredtiger_strerror</a>. refs #1516</li>
+</ul>
+<p>Bug fixes for bugs that could cause data inconsistency:</p>
+<ul>
+<li>Fix a bug in recovery where we could lose track of file identifiers and apply updates to the wrong file. Refs SERVER-17142 SERVER-17131</li>
+<li>Fix several bugs in data consistency that could cause corruption when restarting after a hard crash, including:<ul>
+<li>A bug in table create that could cause recovery to fail. refs SERVER-17204</li>
+</ul>
+</li>
+</ul>
+<p>Other significant changes:</p>
+<ul>
+<li>Significant tuning enhancements for the WiredTiger cache, including:<ul>
+<li>Avoiding stalls due to evicting large pages</li>
+<li>Better algorithms for getting application threads to help with cache management without interfering with operation latencies.</li>
+<li>Better algorithms for maintaining the cache when there are a few very hot pages (e.g: append workloads). SERVER-17344</li>
+<li>Freeing obsolete references more aggressively, which saves space and reduces traversal overhead when there are lots of updates or deletes. refs SERVER-17195, #1647</li>
+<li>Fix a bug that could cause a data loss if we split a large page into multiple smaller pages and attempted to evict the page at the same time. refs #1583 #1563 SERVER-16868</li>
+</ul>
+</li>
+<li>Significant improvements to the cursor truncate implementation, especially for workloads that periodically truncate from the start of the file. refs SERVER-17141</li>
+<li>Fix a bug in eviction where reconfiguring the number of eviction threads could result in a segfault. refs SERVER-17293</li>
+<li>Significant bug fixes and performance enhancements to the logging subsystem including:<ul>
+<li>Avoid yielding excessively to avoid CPU overhead when there are many active sessions. refs #1610</li>
+<li>The log close thread needs to wait for outstanding writes. #1571</li>
+<li>Create a new utility thread to close and fsync log files. #1560</li>
+<li>Ensure that log files are closed in sequence. #1555</li>
+<li>Ensure that log file create appears atomic. #1482</li>
+<li>Fix a race between connection close and switching log files that could lead to a new log file being in an undefined state. #1480</li>
+</ul>
+</li>
+<li>Added support for advanced options to the WiredTiger verify command line tool.</li>
+<li>Fix a bug in our conflict detection algorithm, where we were failing to detect some write-write conflicts in no-overwrite cursors. refs SERVER-16351</li>
+<li>Significant bug fixes when writing pages to disk, including:<ul>
+<li>Stop double count the on-disk header when choosing split points. Refs #1655</li>
+<li>Fill the first and second pages as much as possible when splitting. refs #1282</li>
+<li>Improve the algorithm for fitting large items onto pages when splitting. refs #1630 #1631</li>
+<li>Fix a bug when using raw compression where we could overflow allocated memory. refs SERVER-16664</li>
+</ul>
+</li>
+<li>Fix several cases where <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a file or table. ">WT_SESSION::verify</a> and <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e" title="Salvage a file or table. ">WT_SESSION::salvage</a> could return EBUSY unnecessarily. Refs #1404 SERVER-16457</li>
+<li>Fix a bug where racing between discarding and updating a tree returned an error to the application. refs #1618 SERVER-17048</li>
+<li>Fix a bug where opening a statistics cursor in parallel with a checkpoint could lead to a deadlock. refs #1575 SERVER-16738</li>
+<li>Change the shared cache implementation to use cache read pressure rather than write pressure to determine how best to share memory (as checkpoints skew write pressure as a metric). refs #1569</li>
+<li>Fix a bug where a deadlock could occur if a checkpoint starts in parallel to compact operations. refs #1589 SERVER-16967</li>
+<li>Fix a bug in how we parse Huffman-encoding configuration settings during <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>. refs #1417 #1536</li>
+<li>Fix a bug where the custom extractor terminate callback was being made twice. refs #1503</li>
+<li>Add a new mode to the eviction server where it writes out some pages even though the eviction triggers have not yet been reached.</li>
+<li>Fix several issues reported by COVERITY static analysis tool.</li>
+</ul>
+<h2>WiredTiger release 2.5.0, 2014-12-24 </h2>
 <p>The WiredTiger 2.5.0 release contains significant new features, API changes and many bug fixes.</p>
 <p>Now that WiredTiger is part of MongoDB, we are tracking issues related to MongoDB usage of WiredTiger in the MongoDB JIRA system. Some entries in the changelog now reference JIRA tickets that can be found at:</p>
 <p><a href="http://jira.mongodb.org">http://jira.mongodb.org</a></p>
