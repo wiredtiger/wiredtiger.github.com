@@ -69,7 +69,17 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_251"></a>
+<div class="textblock"><h1><a class="anchor" id="version_252"></a>
+Upgrading to Version 2.5.2</h1>
+<dl>
+<dt>Configuration string case-sensitivity </dt>
+<dd><p class="startdd">In previous WiredTiger releases, there were several cases where configuration strings were treated in a case-sensitive manner (for example, it was possible to specify "True", "true" or even "tRuE" as a boolean value). For consistency, in this release all WiredTiger configuration strings are case-sensitive, and only "true" will be accepted. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Statistics cursor refresh </dt>
+<dd>In previous releases of WiredTiger, a statistics cursor made a snapshot of the relevant statistics before the first statistics value was read, and those values remained unchanged from that point on, no matter how the cursor was used. In the WiredTiger 2.5.2 release, calling the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method to reset the cursor refreshes the statistics returned by the cursor.  </dd>
+</dl>
+<h1><a class="anchor" id="version_251"></a>
 Upgrading to Version 2.5.1</h1>
 <dl>
 <dt>Statistics cursors on data sources </dt>

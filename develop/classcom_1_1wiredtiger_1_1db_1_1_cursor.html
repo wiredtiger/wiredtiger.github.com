@@ -188,7 +188,7 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 String&#160;</td><td class="memItemRight" valign="bottom"><b>getUri</b> ()</td></tr>
 <tr class="separator:a9d84cad5f0da58963dae3217a3ea763a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e53838f94cdf00798c1a50c86bf1c50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a3e53838f94cdf00798c1a50c86bf1c50">reset</a> ()  throws com.wiredtiger.db.WiredTigerException </td></tr>
-<tr class="memdesc:a3e53838f94cdf00798c1a50c86bf1c50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the position of the cursor.  <a href="#a3e53838f94cdf00798c1a50c86bf1c50">More...</a><br/></td></tr>
+<tr class="memdesc:a3e53838f94cdf00798c1a50c86bf1c50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the cursor.  <a href="#a3e53838f94cdf00798c1a50c86bf1c50">More...</a><br/></td></tr>
 <tr class="separator:a3e53838f94cdf00798c1a50c86bf1c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc0e5bd37f139ba544f9a95191767bde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#adc0e5bd37f139ba544f9a95191767bde">close</a> ()  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:adc0e5bd37f139ba544f9a95191767bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the cursor.  <a href="#adc0e5bd37f139ba544f9a95191767bde">More...</a><br/></td></tr>
@@ -1286,8 +1286,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
       </table>
 </div><div class="memdoc">
 
-<p>Reset the position of the cursor. </p>
-<p>Any resources held by the cursor are released, and the cursor's key and position are no longer valid. A subsequent iteration with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> will move to the first record, or with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR::prev</a> will move to the last record.</p>
+<p>Reset the cursor. </p>
+<p>Any resources held by the cursor are released, and the cursor's key and position are no longer valid. Subsequent iterations with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> will move to the first record, or with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR::prev</a> will move to the last record.</p>
+<p>In the case of a statistics cursor, resetting the cursor refreshes the statistics information returned.</p>
 <div class="fragment"><div class="line">        ret = cursor-&gt;reset(cursor);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
