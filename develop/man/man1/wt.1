@@ -6,7 +6,7 @@ wt \- WiredTiger command line utility
 WiredTiger includes a command line utility, \fCwt\fP\&.
 .SH "Synopsis"
 .PP
-\fCwt [-rVv] [-C config] [-h directory] command [command-specific arguments]\fP
+\fCwt [-LRVv] [-C config] [-h directory] command [command-specific arguments]\fP
 .SH "Description"
 .PP
 The \fCwt\fP tool is a command-line utility that provides access to various pieces of the WiredTiger functionality\&.
@@ -24,7 +24,12 @@ Specify configuration strings for the \fBwiredtiger_open\fP function\&.
 Specify a database home directory\&. 
 .RE
 .PP
-\fB-r\fP
+\fB-L\fP
+.RS 4
+Forcibly turn off logging subsystem for debugging purposes\&. 
+.RE
+.PP
+\fB-R\fP
 .RS 4
 Run recovery if the underlying database is configured to do so\&. 
 .RE
