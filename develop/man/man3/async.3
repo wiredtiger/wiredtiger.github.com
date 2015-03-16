@@ -1,0 +1,189 @@
+.TH "async" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+async \- Asynchronous operations 
+WiredTiger supports asynchronous operations; as an example of where this can be useful, a server application handling requests from a network as fast as possible may want its worker threads to initiate a unit of work and then immediately respond to the next request, rather than waiting for the results of the first request\&.
+.PP
+WiredTiger supports asynchronous operations through the \fBWT_ASYNC_OP\fP handle\&. The work unit represented by the \fBWT_ASYNC_OP\fP handle is queued by the application and performed by an internal WiredTiger worker thread\&. When the work unit completes, the WiredTiger thread makes a callback to notify the application the operation is finished, along with providing any results and error values\&.
+.PP
+The asynchronous operation handle operates in a manner similar to a \fBWT_CURSOR\fP handle\&. An asynchronous operation includes:
+.PP
+.IP "\(bu" 2
+getter/setters for key and value fields
+.IP "\(bu" 2
+encoding of fields to store in the data source
+.IP "\(bu" 2
+methods to modify and retrieve specific data (for example, insert and update)
+.IP "\(bu" 2
+a method to compact a table
+.PP
+.PP
+The \fBWT_ASYNC_OP\fP handle does not survive after the callback function returns into the WiredTiger library\&. When the application callback returns the handle is returned to the system pool\&. The application callback must copy out any key, value or other information that it needs before the callback function returns\&.
+.SH "Configuring asynchronous operations"
+.PP
+To perform asynchronous operations, the application must first include the \fCasync\fP configuration option when \fBwiredtiger_open\fP is called\&. Additional configuration parameters include the number of WiredTiger worker threads created to handle the incoming queue of operations and the maximum number of simultaneous asynchronous operations that are expected\&.
+.PP
+For example, the following configures an application for asynchronous operations, with a maximum of 10 asynchronous operations and 2 supporting threads:
+.PP
+.PP
+.nf
+        ret = wiredtiger_open(home, NULL,
+            "create,cache_size=100MB,"
+            "async=(enabled=true,ops_max=20,threads=2)", &conn);
+.fi
+.PP
+ If the number of requests exceeds the configured maximum number, a \fBWT_ASYNC_OP\fP handle won't immediately be available and an error will be returned to the application when it attempts to allocate a handle\&. If the number of configured worker threads are unable to keep up with the requests, requests will be forced to wait for worker threads to become available\&.
+.SH "Allocating an asynchronous operations handle"
+.PP
+A \fBWT_ASYNC_OP\fP handle is allocated using the \fBWT_CONNECTION::async_new_op\fP method\&. This method takes an existing object URI and a callback\&. For example:
+.PP
+.PP
+.nf
+                while ((ret = conn->async_new_op(conn,
+                    "table:async", NULL, &ex_asynckeys\&.iface, &op)) != 0) {
+                        /*
+                         * If we used up all the handles, pause and retry to
+                         * give the workers a chance to catch up\&.
+                         */
+                        fprintf(stderr,
+                            "asynchronous operation handle not available\n");
+                        if (ret == EBUSY)
+                                sleep(1);
+                        else
+                                return (ret);
+                }
+.fi
+.PP
+ To aid the application in matching up an asynchronous operation with a subsequent call to the callback function, every handle contains a unique \fCuint64_t\fP identifier and \fBWT_ASYNC_OPTYPE\fP type\&. The \fCidentifier\fP is assigned when the handle is allocated and the \fCtype\fP is assigned when the asynchronous operation is queued\&.
+.PP
+To retrieve the id, use the \fBWT_ASYNC_OP::get_id\fP method:
+.PP
+.PP
+.nf
+        /* Retrieve the operation's 64-bit identifier\&. */
+        id = op->get_id(op);
+.fi
+.PP
+ To retrieve the \fBWT_ASYNC_OPTYPE\fP type, use the \fBWT_ASYNC_OP::get_type\fP method:
+.PP
+.PP
+.nf
+        /* Retrieve the operation's WT_ASYNC_OPTYPE type\&. */
+        type = op->get_type(op);
+.fi
+.PP
+ WiredTiger only allows a limited number of method calls back into the library using the \fBWT_ASYNC_OP\fP handle, while in the callback function\&. The application is allowed to retrieve than handle's key, value, identifier and the operation type from the \fBWT_ASYNC_OP\fP handle\&.
+.PP
+Here is a complete example callback function implementation, from the example program \fBex_async\&.c\fP:
+.PP
+.PP
+.nf
+typedef struct {
+        WT_ASYNC_CALLBACK iface;
+        uint32_t num_keys;
+} ASYNC_KEYS;
+
+static int
+async_callback(WT_ASYNC_CALLBACK *cb,
+    WT_ASYNC_OP *op, int wiredtiger_error, uint32_t flags)
+{
+        ASYNC_KEYS *asynckey = (ASYNC_KEYS *)cb;
+        WT_ASYNC_OPTYPE type;
+        WT_ITEM k, v;
+        const char *key, *value;
+        uint64_t id;
+        int ret;
+
+        (void)flags;                            /* Unused */
+
+        ret = 0;
+
+        /* Retrieve the operation's WT_ASYNC_OPTYPE type\&. */
+        type = op->get_type(op);
+        /* Retrieve the operation's 64-bit identifier\&. */
+        id = op->get_id(op);
+        /* Check for a WiredTiger error\&. */
+        if (wiredtiger_error != 0) {
+                fprintf(stderr,
+                    "ID %" PRIu64 " error %d: %s\n",
+                    id, wiredtiger_error,
+                    wiredtiger_strerror(wiredtiger_error));
+                global_error = wiredtiger_error;
+                return (1);
+        }
+
+        /* If doing a search, retrieve the key/value pair\&. */
+        if (type == WT_AOP_SEARCH) {
+                ret = op->get_key(op, &k);
+                key = k\&.data;
+                ret = op->get_value(op, &v);
+                value = v\&.data;
+                ATOMIC_ADD(asynckey->num_keys, 1);
+                printf("Id %" PRIu64 " got record: %s : %s\n", id, key, value);
+        }
+        return (ret);
+}
+.fi
+.PP
+.SH "Executing asynchronous operations"
+.PP
+The \fBWT_ASYNC_OP\fP handle behaves similarly to the \fBWT_CURSOR\fP handle, that is, the key and value are initialized and then an operation is performed\&.
+.PP
+For example, the following code does an asynchronous insert into the table:
+.PP
+.PP
+.nf
+                /*
+                 * Set the operation's string key and value, and then do
+                 * an asynchronous insert\&.
+                 */
+                snprintf(k[i], sizeof(k), "key%d", i);
+                op->set_key(op, k[i]);
+                snprintf(v[i], sizeof(v), "value%d", i);
+                op->set_value(op, v[i]);
+                ret = op->insert(op);
+.fi
+.PP
+ For example, the following code does an asynchronous search of the table:
+.PP
+.PP
+.nf
+                /*
+                 * Set the operation's string key and value, and then do
+                 * an asynchronous search\&.
+                 */
+                snprintf(k[i], sizeof(k), "key%d", i);
+                op->set_key(op, k[i]);
+                ret = op->search(op);
+.fi
+.PP
+ When a database contains multiple tables, it may be desired to compact several tables in parallel without having to manage separate threads to each call \fBWT_SESSION::compact\fP\&. Alternatively, compacting several tables serially may take much longer\&. The \fBWT_ASYNC_OP::compact\fP method allows the application to compact multiple objects asynchronously\&.
+.PP
+.PP
+.nf
+        /*
+         * Compact a table asynchronously, limiting the run-time to 5 minutes\&.
+         */
+        ret = conn->async_new_op(
+            conn, "table:async", "timeout=300", &ex_asynckeys\&.iface, &op);
+        ret = op->compact(op);
+.fi
+.PP
+ 
+.SH "Waiting for outstanding operations to complete"
+.PP
+The \fBWT_CONNECTION::async_flush\fP method can be used to wait for all previous operations to complete\&. When that call returns, all previously queued operations are guaranteed to have been completed and their callback functions have returned\&.
+.PP
+.PP
+.nf
+        /* Wait for all outstanding operations to complete\&. */
+        ret = conn->async_flush(conn);
+.fi
+.PP
+ Because \fBWT_CONNECTION::close\fP implicitly does a \fBWT_CONNECTION::async_flush\fP, the call is not required in all applications\&.
+.SH "Asynchronous operations and transactions"
+.PP
+Each asynchronous worker thread operates in its own session, executing a single asynchronous operation with the context of the session's transaction\&. Therefore, there is no way to combine multiple, related updates into a single transaction when using asynchronous operations\&.
+.PP
+The transaction is committed if the operation was successful and the application callback returns success, otherwise the transaction is rolled back\&. 

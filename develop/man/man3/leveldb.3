@@ -1,0 +1,45 @@
+.TH "leveldb" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb \- Building and installing the LevelDB compatibility API 
+WiredTiger includes an implementation of the LevelDB API to ease integration and performance testing with existing applications\&.
+.SH "Building and using WiredTiger's LevelDB API"
+.PP
+Here are the steps to build and run an existing application against WiredTiger's LevelDB API:
+.PP
+.PD 0
+.IP "1." 4
+choose an installation directory for WiredTiger\&. The default is:
+.PP
+\fC WT_INSTALL=/usr/local \fP
+.PP
+but anywhere is fine\&.
+.PP
+
+.IP "2." 4
+build WiredTiger with LevelDB support:
+.PP
+\fC \&./configure --enable-leveldb --with-builtins=snappy --prefix=$WT_INSTALL make install \fP
+.PP
+Change the above to \fC--enable-leveldb=basho\fP to build a version of the LevelDB API compatible with Basho's Riak product, or \fC--enable-leveldb=hyper\fP to build a version of the LevelDB API compatible with the HyperDex product, or \fC--enable-leveldb=rocksdb\fP to build a version of the LevelDB API compatible with applications using Facebook's RocksDB engine\&.
+.PP
+
+.IP "3." 4
+compile and link the application against WiredTiger's LevelDB API:
+.PP
+\fC \&./configure CPPFLAGS='-I$WT_INSTALL/include/wiredtiger' LDFLAGS='-L$WT_INSTALL/lib/wiredtiger' \&.\&.\&. && make \fP
+.PP
+
+.IP "4." 4
+start the application:
+.PP
+\fC LD_LIBRARY_PATH=$WT_INSTALL/lib/wiredtiger <normal start command> \fP 
+.PP
+.SH "Caveats"
+.PP
+The core LevelDB features are well supported, though some configuration options may be ignored\&. In the extended versions of the API, some rarely used features have not been implemented, and will cause either build or runtime errors\&.
+.PP
+The WiredTiger on-disk format is not compatible with LevelDB\&. Data will need to be dumped and reloaded by the application\&.
+.PP
+The WiredTiger LevelDB API is not guaranteed to be binary compatible with LevelDB\&. We do not support using \fCLD_PRELOAD\fP to switch an existing binary built with stock LevelDB to WiredTiger without compiling against the installed include files\&. 

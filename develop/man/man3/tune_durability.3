@@ -1,0 +1,26 @@
+.TH "tune_durability" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_durability \- Commit-level durability 
+There are some considerations when configuring commit-level durability that can affect performance\&.
+.SH "Group commit"
+.PP
+WiredTiger automatically groups the flush operations for threads that commit concurrently into single calls\&. This usually means multi-threaded workloads will achieve higher throughput than single-threaded workloads because the operating system can flush data more efficiently to the disk\&. No application-level configuration is required for this feature\&.
+.SH "Flush call configuration"
+.PP
+By default, log records are written to an in-memory buffer before \fBWT_SESSION::commit_transaction\fP returns, giving highest performance but not ensuring durability\&. The durability guarantees can be stricter but will impact performance\&.
+.PP
+If \fCtransaction_sync=\fP(enabled=false) is configured to \fBwiredtiger_open\fP, log records may be buffered in memory, and only flushed to disk by checkpoints, when log files switch or calls to \fBWT_SESSION::begin_transaction\fP with \fCsync=true\fP\&. (Note that any call to \fBWT_SESSION::begin_transaction\fP with \fCsync=true\fP will flush the log records for all committed transactions, not just the transaction where the configuration is set\&.) This provides the minimal guarantees, but will be significantly faster than other configurations\&.
+.PP
+If \fCtransaction_sync=\fP(enabled=true), \fCtransaction_sync=\fP(method) further configures the method used to flush log records to disk\&. By default, the configured value is \fCfsync\fP, which calls the operating system's \fCfsync\fP call (of \fCfdatasync\fP if available) as each commit completes\&.
+.PP
+If the value is set to \fCdsync\fP, the \fCO_DSYNC\fP or \fCO_SYNC\fP flag to the operating system's \fCopen\fP call will be specified when the file is opened\&. (The durability guarantee of the \fCfsync\fP and \fCdsync\fP configurations are the same, and in our experience the \fCopen\fP flags are slower, this configuration is only included for systems where that may not be the case\&.)
+.PP
+If the value is set to \fCnone\fP, the operating system's \fCwrite\fP call will be called as each commit completes but does not flush to disk\&. This setting gives durability at the application level but not at the system level\&.
+.PP
+When a log file fills and the system moves to the next log file, the previous log file will always be flushed to disk prior to close\&. So when running in a durability mode that does not flush to disk, the risk is bounded by the most recent log file change\&.
+.PP
+Here is the expected performance of durability modes, in order from the fastest to the slowest (and from the fewest durability guarantees to the most durability guarantees)\&.
+.PP
+Durability ModeNotes \fClog=(enabled=false)\fPcheckpoint-level durability \fClog=(enabled),transaction_sync=(enabled=false)\fPin-memory buffered logging configured; updates durable after checkpoint or after \fCsync\fP is set in \fBWT_SESSION::begin_transaction\fP \fClog=(enabled),transaction_sync=(enabled=true,method=none)\fPlogging configured; updates durable after application failure, but not after system failure \fClog=(enabled),transaction_sync=(enabled=true,method=fsync)\fPlogging configured; updates durable on application or system failure \fClog=(enabled),transaction_sync=(enabled=true,method=dsync)\fPlogging configured; updates durable on application or system failure 

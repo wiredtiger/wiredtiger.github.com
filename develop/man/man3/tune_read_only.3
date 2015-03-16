@@ -1,0 +1,25 @@
+.TH "tune_read_only" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_read_only \- Read-only objects 
+Cursors opened on checkpoints (either named, or using the special 'last
+checkpoint' name 'WiredTigerCheckpoint') are read-only objects\&. Unless memory mapping is configured off (using the 'mmap' configuration string to \fBwiredtiger_open\fP), read-only objects are mapped into process memory instead of being read through the WiredTiger cache\&. Using read-only objects where possible minimizes the amount of buffer cache memory required by WiredTiger applications and the work required for buffer cache management, as well as reducing the number of memory copies from the operating system buffer cache into application memory\&.
+.PP
+To open a named checkpoint, use the configuration string 'checkpoint' to the \fBWT_SESSION::open_cursor\fP method: 
+.PP
+.nf
+        ret = session->open_cursor(session,
+            "table:mytable", NULL, "checkpoint=midnight", &cursor);
+
+.fi
+.PP
+ To open the last checkpoint taken in the object, use the configuration string 'checkpoint' with the name 'WiredTigerCheckpoint' to the \fBWT_SESSION::open_cursor\fP method: 
+.PP
+.nf
+        ret = session->open_cursor(session,
+            "table:mytable", NULL, "checkpoint=WiredTigerCheckpoint", &cursor);
+
+.fi
+.PP
+ Reading from checkpoints is only supported on row- and column-store objects, LSM cursors cannot be opened with a non-empty \fC'checkpoint'\fP configuration\&. 

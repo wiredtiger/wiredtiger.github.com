@@ -1,0 +1,70 @@
+.TH "tune_statistics" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_statistics \- Performance monitoring with statistics 
+WiredTiger optionally maintains a variety of statistics, when the \fCstatistics\fP configuration string is specified to \fBwiredtiger_open\fP; see \fBStatistics\fP for general information about statistics, and \fBStatistics Data\fP for information about accessing the statistics\&.
+.PP
+The resulting statistics can be displayed using the \fCwtstats\fP visualization tool\&. For more information, see \fBVisualizing performance with wtstats\fP\&.
+.PP
+\fB Note that maintaining run-time statistics involves updating shared-memory data structures and may decrease application performance\&. \fP
+.PP
+The statistics gathered by WiredTiger can be combined to derive information about the system's behavior\&. For example, a cursor can be opened on the statistics for a table:
+.PP
+.PP
+.nf
+        if ((ret = session->open_cursor(session,
+            "statistics:table:access", NULL, NULL, &cursor)) != 0)
+                return (ret);
+.fi
+.PP
+ Then this code calculates the 'fragmentation' of a table, defined here as the percentage of the table that is not part of the current checkpoint:
+.PP
+.PP
+.nf
+        uint64_t ckpt_size, file_size, percent;
+        ret = get_stat(cursor, WT_STAT_DSRC_BLOCK_CHECKPOINT_SIZE, &ckpt_size);
+        ret = get_stat(cursor, WT_STAT_DSRC_BLOCK_SIZE, &file_size);
+
+        percent = 0;
+        if (file_size != 0)
+                percent = 100 * ((file_size - ckpt_size) / file_size);
+        printf("Table is %" PRIu64 "%% fragmented\n", percent);
+.fi
+.PP
+ The following example calculates the 'write amplification', defined here as the ratio of bytes written to the filesystem versus the total bytes inserted, updated and removed by the application\&.
+.PP
+.PP
+.nf
+        uint64_t app_insert, app_remove, app_update, fs_writes;
+
+        ret = get_stat(cursor, WT_STAT_DSRC_CURSOR_INSERT_BYTES, &app_insert);
+        ret = get_stat(cursor, WT_STAT_DSRC_CURSOR_REMOVE_BYTES, &app_remove);
+        ret = get_stat(cursor, WT_STAT_DSRC_CURSOR_UPDATE_BYTES, &app_update);
+
+        ret = get_stat(cursor, WT_STAT_DSRC_CACHE_BYTES_WRITE, &fs_writes);
+
+        if (app_insert + app_remove + app_update != 0)
+                printf("Write amplification is %\&.2lf\n",
+                    (double)fs_writes / (app_insert + app_remove + app_update));
+.fi
+.PP
+ Both examples use this helper function to retrieve statistics values from a cursor:
+.PP
+.PP
+.nf
+int
+get_stat(WT_CURSOR *cursor, int stat_field, uint64_t *valuep)
+{
+        const char *desc, *pvalue;
+        int ret;
+
+        cursor->set_key(cursor, stat_field);
+        if ((ret = cursor->search(cursor)) != 0)
+                return (ret);
+
+        return (cursor->get_value(cursor, &desc, &pvalue, valuep));
+}
+.fi
+.PP
+

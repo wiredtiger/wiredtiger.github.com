@@ -1,0 +1,269 @@
+.TH "WT_DATA_SOURCE" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_DATA_SOURCE \- 
+.PP
+Applications can extend WiredTiger by providing new implementations of the \fBWT_DATA_SOURCE\fP class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBcreate\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fICallback to create a new object\&. \fP"
+.ti -1c
+.RI "int(* \fBcompact\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fICallback to compact an object\&. \fP"
+.ti -1c
+.RI "int(* \fBdrop\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fICallback to drop an object\&. \fP"
+.ti -1c
+.RI "int(* \fBopen_cursor\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config, \fBWT_CURSOR\fP **new_cursor)"
+.br
+.RI "\fICallback to initialize a cursor\&. \fP"
+.ti -1c
+.RI "int(* \fBrename\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, const char *newuri, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fICallback to rename an object\&. \fP"
+.ti -1c
+.RI "int(* \fBsalvage\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fICallback to salvage an object\&. \fP"
+.ti -1c
+.RI "int(* \fBtruncate\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fICallback to truncate an object\&. \fP"
+.ti -1c
+.RI "int(* \fBrange_truncate\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, \fBWT_CURSOR\fP *start, \fBWT_CURSOR\fP *stop)"
+.br
+.RI "\fICallback to truncate a range of an object\&. \fP"
+.ti -1c
+.RI "int(* \fBverify\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fICallback to verify an object\&. \fP"
+.ti -1c
+.RI "int(* \fBcheckpoint\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fICallback to checkpoint the database\&. \fP"
+.ti -1c
+.RI "int(* \fBterminate\fP )(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIIf non-NULL, a callback performed when the database is closed\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Applications can extend WiredTiger by providing new implementations of the \fBWT_DATA_SOURCE\fP class\&. 
+
+Each data source supports a different URI scheme for data sources to \fBWT_SESSION::create\fP, \fBWT_SESSION::open_cursor\fP and related methods\&. See \fBCustom Data Sources\fP for more information\&.
+.PP
+\fBThread safety:\fP WiredTiger may invoke methods on the \fBWT_DATA_SOURCE\fP interface from multiple threads concurrently\&. It is the responsibility of the implementation to protect any shared data\&.
+.PP
+Applications register their implementation with WiredTiger by calling \fBWT_CONNECTION::add_data_source\fP\&.
+.PP
+.PP
+.nf
+        static WT_DATA_SOURCE my_dsrc = {
+                my_create,
+                my_compact,
+                my_drop,
+                my_open_cursor,
+                my_rename,
+                my_salvage,
+                my_truncate,
+                my_range_truncate,
+                my_verify,
+                my_checkpoint,
+                my_terminate
+        };
+        ret = conn->add_data_source(conn, "dsrc:", &my_dsrc, NULL);
+.fi
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_DATA_SOURCE::checkpoint)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Callback to checkpoint the database\&. 
+.PP
+.nf
+static int
+my_checkpoint(WT_DATA_SOURCE *dsrc, WT_SESSION *session, WT_CONFIG_ARG *config)
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::compact)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Callback to compact an object\&. 
+.PP
+.nf
+static int
+my_compact(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    const char *uri, WT_CONFIG_ARG *config)
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::create)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Callback to create a new object\&. 
+.PP
+.nf
+static int
+my_create(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    const char *uri, WT_CONFIG_ARG *config)
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::drop)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Callback to drop an object\&. 
+.PP
+.nf
+static int
+my_drop(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    const char *uri, WT_CONFIG_ARG *config)
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::open_cursor)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config, \fBWT_CURSOR\fP **new_cursor)"
+
+.PP
+Callback to initialize a cursor\&. 
+.PP
+.nf
+typedef struct __my_cursor {
+        WT_CURSOR wtcursor;             /* WiredTiger cursor, must come first */
+
+        /*
+         * Local cursor information: for example, we might want to have a
+         * reference to the extension functions\&.
+         */
+        WT_EXTENSION_API *wtext;        /* Extension functions */
+} MY_CURSOR;
+
+static int
+my_open_cursor(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    const char *uri, WT_CONFIG_ARG *config, WT_CURSOR **new_cursor)
+{
+        MY_CURSOR *cursor;
+
+        /* Allocate and initialize a WiredTiger cursor\&. */
+        if ((cursor = calloc(1, sizeof(*cursor))) == NULL)
+                return (errno);
+
+        cursor->wtcursor\&.next = my_cursor_next;
+        cursor->wtcursor\&.prev = my_cursor_prev;
+        cursor->wtcursor\&.reset = my_cursor_reset;
+        cursor->wtcursor\&.search = my_cursor_search;
+        cursor->wtcursor\&.search_near = my_cursor_search_near;
+        cursor->wtcursor\&.insert = my_cursor_insert;
+        cursor->wtcursor\&.update = my_cursor_update;
+        cursor->wtcursor\&.remove = my_cursor_remove;
+        cursor->wtcursor\&.close = my_cursor_close;
+
+        /*
+         * Configure local cursor information\&.
+         */
+
+        /* Return combined cursor to WiredTiger\&. */
+        *new_cursor = (WT_CURSOR *)cursor;
+
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::range_truncate)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, \fBWT_CURSOR\fP *start, \fBWT_CURSOR\fP *stop)"
+
+.PP
+Callback to truncate a range of an object\&. 
+.PP
+.nf
+static int
+my_range_truncate(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    WT_CURSOR *start, WT_CURSOR *stop)
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::rename)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, const char *newuri, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Callback to rename an object\&. 
+.PP
+.nf
+static int
+my_rename(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    const char *uri, const char *newname, WT_CONFIG_ARG *config)
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::salvage)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Callback to salvage an object\&. 
+.PP
+.nf
+static int
+my_salvage(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    const char *uri, WT_CONFIG_ARG *config)
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::terminate)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session)"
+
+.PP
+If non-NULL, a callback performed when the database is closed\&. The \fBWT_DATA_SOURCE::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&.
+.PP
+.PP
+.nf
+static int
+my_terminate(WT_DATA_SOURCE *dsrc, WT_SESSION *session)
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::truncate)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Callback to truncate an object\&. 
+.PP
+.nf
+static int
+my_truncate(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    const char *uri, WT_CONFIG_ARG *config)
+
+.fi
+.PP
+
+.SS "int(* WT_DATA_SOURCE::verify)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Callback to verify an object\&. 
+.PP
+.nf
+static int
+my_verify(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
+    const char *uri, WT_CONFIG_ARG *config)
+
+.fi
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

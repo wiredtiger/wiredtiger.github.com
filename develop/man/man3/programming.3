@@ -1,0 +1,123 @@
+.TH "programming" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+programming \- Writing WiredTiger applications 
+This section covers topics of interest for programmers writing WiredTiger applications\&.
+.PP
+We follow SQL terminology: a database is set of tables managed together\&. Tables consist of rows, where each row is a key and its associated value\&. Tables may optionally have an associated schema, splitting the value into a set of columns\&. Tables may also have associated indices, each of which is ordered by one or more columns\&.
+.PP
+.SS "Using the API"
+.PP
+.IP "\(bu" 2
+\fBGetting Started with the API\fP
+.IP "\(bu" 2
+\fBConfiguration Strings\fP
+.IP "\(bu" 2
+\fBCursors\fP
+.IP "\(bu" 2
+\fBTransactions\fP
+.IP "\(bu" 2
+\fBError handling\fP
+.PP
+.PP
+.SS "Storage options"
+.PP
+.IP "\(bu" 2
+\fBSchema, Columns, Column Groups, Indices and Projections\fP
+.IP "\(bu" 2
+\fBLog-Structured Merge Trees\fP
+.IP "\(bu" 2
+\fBFile formats and compression\fP
+.IP "\(bu" 2
+\fBCompressors\fP
+.PP
+.PP
+.SS "Programming notes"
+.PP
+.IP "\(bu" 2
+\fBMultithreading\fP
+.IP "\(bu" 2
+\fBName spaces\fP
+.IP "\(bu" 2
+\fBSignal handling\fP
+.PP
+.PP
+.SS "Advanced topics"
+.PP
+.IP "\(bu" 2
+\fBAsynchronous operations\fP
+.IP "\(bu" 2
+\fBBackups\fP
+.IP "\(bu" 2
+\fBCheckpoint durability\fP
+.IP "\(bu" 2
+\fBCompaction\fP
+.IP "\(bu" 2
+\fBLog cursors\fP
+.IP "\(bu" 2
+\fBCommit-level durability\fP
+.IP "\(bu" 2
+\fBPer-process shared caches\fP
+.IP "\(bu" 2
+\fBStatistics\fP
+.IP "\(bu" 2
+\fBUpgrading and downgrading databases\fP
+.PP
+.PP
+.SS "Extending WiredTiger"
+.PP
+.IP "\(bu" 2
+\fBExtending WiredTiger\fP
+.IP "\(bu" 2
+\fBCustom Collators\fP
+.IP "\(bu" 2
+\fBCustom Extractors\fP
+.IP "\(bu" 2
+\fBCustom Data Sources\fP
+.IP "\(bu" 2
+\fBWiredTiger Helium support\fP
+.PP
+.PP
+.SS "Performance monitoring and tuning"
+.PP
+.IP "\(bu" 2
+\fBPerformance monitoring with statistics\fP
+.IP "\(bu" 2
+\fBSimulating workloads with wtperf\fP
+.IP "\(bu" 2
+\fBVisualizing performance with wtstats\fP 
+.PP
+.PP
+.IP "\(bu" 2
+\fBMemory allocator\fP
+.IP "\(bu" 2
+\fBPage and overflow key/value sizes\fP
+.IP "\(bu" 2
+\fBCache and eviction tuning\fP
+.IP "\(bu" 2
+\fBBulk-load\fP
+.IP "\(bu" 2
+\fBCursor persistence\fP
+.IP "\(bu" 2
+\fBRead-only objects\fP
+.IP "\(bu" 2
+\fBCommit-level durability\fP
+.IP "\(bu" 2
+\fBChecksums\fP
+.IP "\(bu" 2
+\fBCompression\fP
+.IP "\(bu" 2
+\fBFile allocation\fP
+.IP "\(bu" 2
+\fBSystem buffer cache\fP
+.IP "\(bu" 2
+\fBLinux transparent huge pages\fP
+.IP "\(bu" 2
+\fBConnection close\fP
+.IP "\(bu" 2
+\fBMutexes\fP
+.IP "\(bu" 2
+\fBLinux zone reclamation memory management\fP 
+.PP
+

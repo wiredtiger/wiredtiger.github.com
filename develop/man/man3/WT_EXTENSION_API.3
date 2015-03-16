@@ -1,0 +1,868 @@
+.TH "WT_EXTENSION_API" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_EXTENSION_API \- 
+.PP
+Table of WiredTiger extension methods\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBerr_printf\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *fmt,\&.\&.\&.)"
+.br
+.RI "\fIInsert an error message into the WiredTiger error stream\&. \fP"
+.ti -1c
+.RI "int(* \fBmsg_printf\fP )(\fBWT_EXTENSION_API\fP *, \fBWT_SESSION\fP *session, const char *fmt,\&.\&.\&.)"
+.br
+.RI "\fIInsert a message into the WiredTiger message stream\&. \fP"
+.ti -1c
+.RI "const char *(* \fBstrerror\fP )(\fBWT_EXTENSION_API\fP *, \fBWT_SESSION\fP *session, int error)"
+.br
+.RI "\fIReturn information about an error as a string\&. \fP"
+.ti -1c
+.RI "void *(* \fBscr_alloc\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, size_t bytes)"
+.br
+.RI "\fIAllocate short-term use scratch memory\&. \fP"
+.ti -1c
+.RI "void(* \fBscr_free\fP )(\fBWT_EXTENSION_API\fP *, \fBWT_SESSION\fP *session, void *ref)"
+.br
+.RI "\fIFree short-term use scratch memory\&. \fP"
+.ti -1c
+.RI "int(* \fBcollator_config\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config, \fBWT_COLLATOR\fP **collatorp, int *ownp)"
+.br
+.RI "\fIConfigure the extension collator method\&. \fP"
+.ti -1c
+.RI "int(* \fBcollate\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, \fBWT_COLLATOR\fP *collator, \fBWT_ITEM\fP *first, \fBWT_ITEM\fP *second, int *cmp)"
+.br
+.RI "\fIThe extension collator method\&. \fP"
+.ti -1c
+.RI "int(* \fBconfig_parser_open\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *config, size_t len, \fBWT_CONFIG_PARSER\fP **config_parserp)"
+.br
+.RI "\fICreate a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs\&. \fP"
+.ti -1c
+.RI "int(* \fBconfig_get\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, \fBWT_CONFIG_ARG\fP *config, const char *key, \fBWT_CONFIG_ITEM\fP *value)"
+.br
+.RI "\fIReturn the value of a configuration string\&. \fP"
+.ti -1c
+.RI "int(* \fBmetadata_insert\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *key, const char *value)"
+.br
+.RI "\fIInsert a row into the metadata if it does not already exist\&. \fP"
+.ti -1c
+.RI "int(* \fBmetadata_remove\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *key)"
+.br
+.RI "\fIRemove a row from the metadata\&. \fP"
+.ti -1c
+.RI "int(* \fBmetadata_search\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *key, char **valuep)"
+.br
+.RI "\fIReturn a row from the metadata\&. \fP"
+.ti -1c
+.RI "int(* \fBmetadata_update\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *key, const char *value)"
+.br
+.RI "\fIUpdate a row in the metadata by either inserting a new record or updating an existing record\&. \fP"
+.ti -1c
+.RI "int(* \fBstruct_pack\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, void *buffer, size_t size, const char *format,\&.\&.\&.)"
+.br
+.RI "\fIPack a structure into a buffer\&. \fP"
+.ti -1c
+.RI "int(* \fBstruct_size\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, size_t *sizep, const char *format,\&.\&.\&.)"
+.br
+.RI "\fICalculate the size required to pack a structure\&. \fP"
+.ti -1c
+.RI "int(* \fBstruct_unpack\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const void *buffer, size_t size, const char *format,\&.\&.\&.)"
+.br
+.RI "\fIUnpack a structure from a buffer\&. \fP"
+.ti -1c
+.RI "uint64_t(* \fBtransaction_id\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIReturn the current transaction ID\&. \fP"
+.ti -1c
+.RI "int(* \fBtransaction_isolation_level\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIReturn the current transaction's isolation level; returns one of \fBWT_TXN_ISO_READ_COMMITTED\fP, \fBWT_TXN_ISO_READ_UNCOMMITTED\fP, or \fBWT_TXN_ISO_SNAPSHOT\fP\&. \fP"
+.ti -1c
+.RI "int(* \fBtransaction_notify\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, \fBWT_TXN_NOTIFY\fP *notify)"
+.br
+.RI "\fIRequest notification of transaction resolution by specifying a function to be called when the session's current transaction is either committed or rolled back\&. \fP"
+.ti -1c
+.RI "uint64_t(* \fBtransaction_oldest\fP )(\fBWT_EXTENSION_API\fP *wt_api)"
+.br
+.RI "\fIReturn the oldest transaction ID not yet visible to a running transaction\&. \fP"
+.ti -1c
+.RI "int(* \fBtransaction_visible\fP )(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, uint64_t \fBtransaction_id\fP)"
+.br
+.RI "\fIReturn if the current transaction can see the given transaction ID\&. \fP"
+.ti -1c
+.RI "const char *(* \fBversion\fP )(int *majorp, int *minorp, int *patchp)"
+.br
+.RI "\fIGet version information\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Table of WiredTiger extension methods\&. 
+
+This structure is used to provide a set of WiredTiger methods to extension modules without needing to link the modules with the WiredTiger library\&.
+.PP
+The extension methods may be used both by modules that are linked with the WiredTiger library (for example, a data source configured using the \fBWT_CONNECTION::add_data_source\fP method), and by modules not linked with the WiredTiger library (for example, a compression module configured using the \fBWT_CONNECTION::add_compressor\fP method)\&.
+.PP
+To use these functions:
+.IP "\(bu" 2
+include the wiredtiger_ext\&.h header file,
+.IP "\(bu" 2
+declare a variable which references a \fBWT_EXTENSION_API\fP structure, and
+.IP "\(bu" 2
+initialize the variable using \fBWT_CONNECTION::get_extension_api\fP method\&.
+.PP
+.PP
+.PP
+.nf
+#include <wiredtiger_ext\&.h>
+
+static WT_EXTENSION_API *wt_api;
+
+static void
+my_data_source_init(WT_CONNECTION *connection)
+{
+        wt_api = connection->get_extension_api(connection);
+}
+.fi
+.PP
+ The following code is from the sample compression module, where compression extension functions are configured in the extension's entry point:
+.PP
+.PP
+.nf
+/* Local compressor structure\&. */
+typedef struct {
+        WT_COMPRESSOR compressor;               /* Must come first */
+
+        WT_EXTENSION_API *wt_api;               /* Extension API */
+
+        unsigned long nop_calls;                /* Count of calls */
+
+} NOP_COMPRESSOR;
+.fi
+.PP
+.PP
+.nf
+/*
+ * wiredtiger_extension_init --
+ *      A simple shared library compression example\&.
+ */
+int
+wiredtiger_extension_init(WT_CONNECTION *connection, WT_CONFIG_ARG *config)
+{
+        NOP_COMPRESSOR *nop_compressor;
+
+        (void)config;                           /* Unused parameters */
+
+        if ((nop_compressor = calloc(1, sizeof(NOP_COMPRESSOR))) == NULL)
+                return (errno);
+
+        /*
+         * Allocate a local compressor structure, with a WT_COMPRESSOR structure
+         * as the first field, allowing us to treat references to either type of
+         * structure as a reference to the other type\&.
+         *
+         * This could be simplified if only a single database is opened in the
+         * application, we could use a static WT_COMPRESSOR structure, and a
+         * static reference to the WT_EXTENSION_API methods, then we don't need
+         * to allocate memory when the compressor is initialized or free it when
+         * the compressor is terminated\&.  However, this approach is more general
+         * purpose and supports multiple databases per application\&.
+         */
+        nop_compressor->compressor\&.compress = nop_compress;
+        nop_compressor->compressor\&.compress_raw = NULL;
+        nop_compressor->compressor\&.decompress = nop_decompress;
+        nop_compressor->compressor\&.pre_size = nop_pre_size;
+        nop_compressor->compressor\&.terminate = nop_terminate;
+
+        nop_compressor->wt_api = connection->get_extension_api(connection);
+
+                                                /* Load the compressor */
+        return (connection->add_compressor(
+            connection, "nop", (WT_COMPRESSOR *)nop_compressor, NULL));
+}
+.fi
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_EXTENSION_API::collate)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, \fBWT_COLLATOR\fP *collator, \fBWT_ITEM\fP *first, \fBWT_ITEM\fP *second, int *cmp)"
+
+.PP
+The extension collator method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIcollator\fP the collator (or NULL if none available) 
+.br
+\fIfirst\fP first item 
+.br
+\fIsecond\fP second item 
+.br
+\fIcmp\fP set less than 0 if \fCfirst\fP collates less than \fCsecond\fP, set equal to 0 if \fCfirst\fP collates equally to \fCsecond\fP, set greater than 0 if \fCfirst\fP collates greater than \fCsecond\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+       WT_ITEM first, second;
+        int cmp;
+
+        first\&.data = key1;
+        first\&.size = key1_len;
+        second\&.data = key2;
+        second\&.size = key2_len;
+
+        ret = wt_api->collate(wt_api, session, collator, &first, &second, &cmp);
+        if (cmp == 0)
+                printf("key1 collates identically to key2\n");
+        else if (cmp < 0)
+                printf("key1 collates less than key2\n");
+        else
+                printf("key1 collates greater than key2\n");
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::collator_config)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config, \fBWT_COLLATOR\fP **collatorp, int *ownp)"
+
+.PP
+Configure the extension collator method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIuri\fP the URI of the handle being configured 
+.br
+\fIconfig\fP the configuration information passed to an application 
+.br
+\fIcollatorp\fP the selector collator, if any 
+.br
+\fIownp\fP set if the collator terminate method should be called when no longer needed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+     WT_COLLATOR *collator;
+        int collator_owned;
+        /*
+         * Configure the appropriate collator\&.
+         */
+        if ((ret = wt_api->collator_config(wt_api, session,
+            "dsrc:", config, &collator, &collator_owned)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "collator configuration: %s", wiredtiger_strerror(ret));
+                return (ret);
+        }
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::config_get)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, \fBWT_CONFIG_ARG\fP *config, const char *key, \fBWT_CONFIG_ITEM\fP *value)"
+
+.PP
+Return the value of a configuration string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIkey\fP configuration key string 
+.br
+\fIconfig\fP the configuration information passed to an application 
+.br
+\fIvalue\fP the returned value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+       WT_CONFIG_ITEM v;
+        const char *my_data_source_key;
+
+        /*
+         * Retrieve the value of the string type configuration string
+         * "key_format"\&.
+         */
+        if ((ret = wt_api->config_get(
+            wt_api, session, config, "key_format", &v)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "key_format configuration: %s", wiredtiger_strerror(ret));
+                return (ret);
+        }
+
+        /*
+         * Values returned from WT_EXTENSION_API::config in the str field are
+         * not nul-terminated; the associated length must be used instead\&.
+         */
+        if (v\&.len == 1 && v\&.str[0] == 'r')
+                my_data_source_key = "recno";
+        else
+                my_data_source_key = "bytestring";
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::config_parser_open)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *config, size_t len, \fBWT_CONFIG_PARSER\fP **config_parserp)"
+
+.PP
+Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs\&. This API is outside the scope of a WiredTiger connection handle, since applications may need to generate configuration strings prior to calling \fBwiredtiger_open\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle to be used for error reporting (if NULL, error messages will be written to stderr)\&. 
+.br
+\fIconfig\fP the configuration string being parsed\&. The string must remain valid for the lifetime of the parser handle\&. 
+.br
+\fIlen\fP the number of valid bytes in \fCconfig\fP 
+.br
+\fIconfig_parserp\fP A pointer to the newly opened handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int(* WT_EXTENSION_API::err_printf)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *fmt,\&.\&.\&.)"
+
+.PP
+Insert an error message into the WiredTiger error stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIfmt\fP a printf-like format specification 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+       (void)wt_api->err_printf(
+            wt_api, session, "extension error message: %s", msg);
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::metadata_insert)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *key, const char *value)"
+
+.PP
+Insert a row into the metadata if it does not already exist\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIkey\fP row key 
+.br
+\fIvalue\fP row value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+     /*
+         * Insert a new WiredTiger metadata record\&.
+         */
+        const char *key = "datasource_uri";
+        const char *value = "data source uri's record";
+
+        if ((ret = wt_api->metadata_insert(wt_api, session, key, value)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "%s: metadata insert: %s", key, wiredtiger_strerror(ret));
+                return (ret);
+        }
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::metadata_remove)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *key)"
+
+.PP
+Remove a row from the metadata\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIkey\fP row key 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+        /*
+         * Remove a WiredTiger metadata record\&.
+         */
+        const char *key = "datasource_uri";
+
+        if ((ret = wt_api->metadata_remove(wt_api, session, key)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "%s: metadata remove: %s", key, wiredtiger_strerror(ret));
+                return (ret);
+        }
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::metadata_search)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *key, char **valuep)"
+
+.PP
+Return a row from the metadata\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIkey\fP row key 
+.br
+\fIvaluep\fP the row value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+ /*
+         * Insert a new WiredTiger metadata record\&.
+         */
+        const char *key = "datasource_uri";
+        char *value;
+
+        if ((ret =
+            wt_api->metadata_search(wt_api, session, key, &value)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "%s: metadata search: %s", key, wiredtiger_strerror(ret));
+                return (ret);
+        }
+        printf("metadata: %s has a value of %s\n", key, value);
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::metadata_update)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const char *key, const char *value)"
+
+.PP
+Update a row in the metadata by either inserting a new record or updating an existing record\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIkey\fP row key 
+.br
+\fIvalue\fP row value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+     /*
+         * Update a WiredTiger metadata record (insert it if it does not yet
+         * exist, update it if it does)\&.
+         */
+        const char *key = "datasource_uri";
+        const char *value = "data source uri's record";
+
+        if ((ret = wt_api->metadata_update(wt_api, session, key, value)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "%s: metadata update: %s", key, wiredtiger_strerror(ret));
+                return (ret);
+        }
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::msg_printf)(\fBWT_EXTENSION_API\fP *, \fBWT_SESSION\fP *session, const char *fmt,\&.\&.\&.)"
+
+.PP
+Insert a message into the WiredTiger message stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIfmt\fP a printf-like format specification 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+  (void)wt_api->msg_printf(wt_api, session, "extension message: %s", msg);
+.fi
+.PP
+
+.SS "void*(* WT_EXTENSION_API::scr_alloc)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, size_t bytes)"
+
+.PP
+Allocate short-term use scratch memory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIbytes\fP the number of bytes of memory needed 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A valid memory reference on success or NULL on error
+.RE
+.PP
+.PP
+.nf
+       void *buffer;
+        if ((buffer = wt_api->scr_alloc(wt_api, session, 512)) == NULL) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "buffer allocation: %s", wiredtiger_strerror(ENOMEM));
+                return (ENOMEM);
+        }
+.fi
+.PP
+
+.SS "void(* WT_EXTENSION_API::scr_free)(\fBWT_EXTENSION_API\fP *, \fBWT_SESSION\fP *session, void *ref)"
+
+.PP
+Free short-term use scratch memory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIref\fP a memory reference returned by \fBWT_EXTENSION_API::scr_alloc\fP
+.RE
+.PP
+.PP
+.nf
+  wt_api->scr_free(wt_api, session, buffer);
+.fi
+.PP
+
+.SS "const char*(* WT_EXTENSION_API::strerror)(\fBWT_EXTENSION_API\fP *, \fBWT_SESSION\fP *session, int error)"
+
+.PP
+Return information about an error as a string\&. 
+.PP
+.nf
+   (void)wt_api->err_printf(wt_api, session,
+            "WiredTiger error return: %s",
+            wt_api->strerror(wt_api, session, ret));
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle (or NULL if none available) 
+.br
+\fIerror\fP a return value from a WiredTiger function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a string representation of the error 
+.RE
+.PP
+
+.SS "int(* WT_EXTENSION_API::struct_pack)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, void *buffer, size_t size, const char *format,\&.\&.\&.)"
+
+.PP
+Pack a structure into a buffer\&. See \fBwiredtiger_struct_pack\fP for details\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle 
+.br
+\fIbuffer\fP a pointer to a packed byte array 
+.br
+\fIsize\fP the number of valid bytes in the buffer 
+.br
+\fIformat\fP the data format, see \fBPacking and Unpacking Data\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int(* WT_EXTENSION_API::struct_size)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, size_t *sizep, const char *format,\&.\&.\&.)"
+
+.PP
+Calculate the size required to pack a structure\&. See \fBwiredtiger_struct_size\fP for details\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle 
+.br
+\fIsizep\fP a location where the number of bytes needed for the matching call to \fBWT_EXTENSION_API::struct_pack\fP is returned 
+.br
+\fIformat\fP the data format, see \fBPacking and Unpacking Data\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int(* WT_EXTENSION_API::struct_unpack)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, const void *buffer, size_t size, const char *format,\&.\&.\&.)"
+
+.PP
+Unpack a structure from a buffer\&. See \fBwiredtiger_struct_unpack\fP for details\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle 
+.br
+\fIbuffer\fP a pointer to a packed byte array 
+.br
+\fIsize\fP the number of valid bytes in the buffer 
+.br
+\fIformat\fP the data format, see \fBPacking and Unpacking Data\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "uint64_t(* WT_EXTENSION_API::transaction_id)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session)"
+
+.PP
+Return the current transaction ID\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the current transaction ID\&.
+.RE
+.PP
+.PP
+.nf
+        uint64_t transaction_id;
+
+        transaction_id = wt_api->transaction_id(wt_api, session);
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::transaction_isolation_level)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session)"
+
+.PP
+Return the current transaction's isolation level; returns one of \fBWT_TXN_ISO_READ_COMMITTED\fP, \fBWT_TXN_ISO_READ_UNCOMMITTED\fP, or \fBWT_TXN_ISO_SNAPSHOT\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the current transaction's isolation level\&.
+.RE
+.PP
+.PP
+.nf
+     isolation_level = wt_api->transaction_isolation_level(wt_api, session);
+        if (isolation_level == WT_TXN_ISO_SNAPSHOT)
+                is_snapshot_isolation = 1;
+        else
+                is_snapshot_isolation = 0;
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::transaction_notify)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, \fBWT_TXN_NOTIFY\fP *notify)"
+
+.PP
+Request notification of transaction resolution by specifying a function to be called when the session's current transaction is either committed or rolled back\&. If the transaction is being committed, but the notification function returns an error, the transaction will be rolled back\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle 
+.br
+\fInotify\fP a handler for commit or rollback events 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+       WT_TXN_NOTIFY handler;
+        handler\&.notify = data_source_notify;
+        ret = wt_api->transaction_notify(wt_api, session, &handler);
+.fi
+.PP
+
+.SS "uint64_t(* WT_EXTENSION_API::transaction_oldest)(\fBWT_EXTENSION_API\fP *wt_api)"
+
+.PP
+Return the oldest transaction ID not yet visible to a running transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the oldest transaction ID not yet visible to a running transaction\&.
+.RE
+.PP
+.PP
+.nf
+      uint64_t transaction_oldest;
+
+        transaction_oldest = wt_api->transaction_oldest(wt_api);
+.fi
+.PP
+
+.SS "int(* WT_EXTENSION_API::transaction_visible)(\fBWT_EXTENSION_API\fP *wt_api, \fBWT_SESSION\fP *session, uint64_t \fBtransaction_id\fP)"
+
+.PP
+Return if the current transaction can see the given transaction ID\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwt_api\fP the extension handle 
+.br
+\fIsession\fP the session handle 
+.br
+\fItransaction_id\fP the transaction ID 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true (non-zero) if the transaction ID is visible to the current transaction\&.
+.RE
+.PP
+.PP
+.nf
+    is_visible =
+            wt_api->transaction_visible(wt_api, session, transaction_id);
+.fi
+.PP
+
+.SS "const char*(* WT_EXTENSION_API::version)(int *majorp, int *minorp, int *patchp)"
+
+.PP
+Get version information\&. 
+.PP
+.nf
+ printf("WiredTiger version %s\n", wiredtiger_version(NULL, NULL, NULL));
+
+.fi
+.PP
+.PP
+.nf
+        int major_v, minor_v, patch;
+        (void)wiredtiger_version(&major_v, &minor_v, &patch);
+        printf("WiredTiger version is %d, %d (patch %d)\n",
+            major_v, minor_v, patch);
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImajorp\fP a location where the major version number is returned 
+.br
+\fIminorp\fP a location where the minor version number is returned 
+.br
+\fIpatchp\fP a location where the patch version number is returned 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a string representation of the version 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

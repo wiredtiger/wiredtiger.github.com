@@ -1,0 +1,198 @@
+.TH "WT_CONFIG_PARSER" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_CONFIG_PARSER \- 
+.PP
+A handle that can be used to search and traverse configuration strings compatible with WiredTiger APIs\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBclose\fP (\fBWT_CONFIG_PARSER\fP *config_parser)"
+.br
+.RI "\fIClose the configuration scanner releasing any resources\&. \fP"
+.ti -1c
+.RI "int \fBnext\fP (\fBWT_CONFIG_PARSER\fP *config_parser, \fBWT_CONFIG_ITEM\fP *key, \fBWT_CONFIG_ITEM\fP *value)"
+.br
+.RI "\fIReturn the next key/value pair\&. \fP"
+.ti -1c
+.RI "int \fBget\fP (\fBWT_CONFIG_PARSER\fP *config_parser, const char *key, \fBWT_CONFIG_ITEM\fP *value)"
+.br
+.RI "\fIReturn the value of an item in the configuration string\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A handle that can be used to search and traverse configuration strings compatible with WiredTiger APIs\&. 
+
+To parse the contents of a list or nested configuration string use a new configuration parser handle based on the content of the \fBWT_CONFIG_ITEM\fP retrieved from the parent configuration string\&.
+.SH "Configuration String Parsing examples"
+.PP
+This could be used in C to create a configuration parser as follows:
+.PP
+.PP
+.nf
+        WT_CONFIG_ITEM k, v;
+        WT_CONFIG_PARSER *parser;
+        const char *config_string =
+            "path=/dev/loop,page_size=1024,log=(archive=true,file_max=20MB)";
+
+        if ((ret = wiredtiger_config_parser_open(
+            NULL, config_string, strlen(config_string), &parser)) != 0) {
+                fprintf(stderr, "Error creating configuration parser: %s\n",
+                    wiredtiger_strerror(ret));
+                return (ret);
+        }
+        if ((ret = parser->close(parser)) != 0) {
+                fprintf(stderr, "Error closing configuration parser: %s\n",
+                    wiredtiger_strerror(ret));
+                return (ret);
+        }
+.fi
+.PP
+ Once the parser has been created the content can be queried directly:
+.PP
+.PP
+.nf
+        int64_t my_page_size;
+        /*
+         * Retrieve the value of the integer configuration string "page_size"\&.
+         */
+        if ((ret = parser->get(parser, "page_size", &v)) != 0) {
+                fprintf(stderr,
+                    "page_size configuration: %s", wiredtiger_strerror(ret));
+                return (ret);
+        }
+        my_page_size = v\&.val;
+.fi
+.PP
+ Or the content can be traversed linearly:
+.PP
+.PP
+.nf
+        /*
+         * Retrieve and print the values of the configuration strings\&.
+         */
+        while ((ret = parser->next(parser, &k, &v)) == 0) {
+                printf("%\&.*s:", (int)k\&.len, k\&.str);
+                if (v\&.type == WT_CONFIG_ITEM_NUM)
+                        printf("%d\n", (int)v\&.val);
+                else
+                        printf("%\&.*s\n", (int)v\&.len, v\&.str);
+        }
+.fi
+.PP
+ Nested configuration values can be queried using a shorthand notation:
+.PP
+.PP
+.nf
+        /*
+         * Retrieve the value of the nested log file_max configuration string
+         * using dot shorthand\&. Utilize the configuration parsing automatic
+         * conversion of value strings into an integer\&.
+         */
+        v\&.type = WT_CONFIG_ITEM_NUM;
+        if ((ret = parser->get(parser, "log\&.file_max", &v)) != 0) {
+                fprintf(stderr,
+                    "log\&.file_max configuration: %s", wiredtiger_strerror(ret));
+                return (ret);
+        }
+        printf("log file max: %d\n", (int)v\&.val);
+.fi
+.PP
+ Nested configuration values can be traversed using multiple \fBWT_CONFIG_PARSER\fP handles:
+.PP
+.PP
+.nf
+        {
+        WT_CONFIG_PARSER *sub_parser;
+        while ((ret = parser->next(parser, &k, &v)) == 0) {
+                if (v\&.type == WT_CONFIG_ITEM_STRUCT) {
+                        printf("Found nested configuration: %\&.*s\n",
+                            (int)k\&.len, k\&.str);
+                        if ((ret = wiredtiger_config_parser_open(
+                            NULL, v\&.str, v\&.len, &sub_parser)) != 0) {
+                                fprintf(stderr,
+                                    "Error creating nested configuration "
+                                    "parser: %s\n",
+                                    wiredtiger_strerror(ret));
+                                ret = parser->close(parser);
+                                return (ret);
+                        }
+                        while ((ret = sub_parser->next(
+                            sub_parser, &k, &v)) == 0)
+                                printf("\t%\&.*s\n", (int)k\&.len, k\&.str);
+                        ret = sub_parser->close(sub_parser);
+                }
+        }
+.fi
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int WT_CONFIG_PARSER::close (\fBWT_CONFIG_PARSER\fP *config_parser)"
+
+.PP
+Close the configuration scanner releasing any resources\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconfig_parser\fP the configuration parser handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_CONFIG_PARSER::get (\fBWT_CONFIG_PARSER\fP *config_parser, const char *key, \fBWT_CONFIG_ITEM\fP *value)"
+
+.PP
+Return the value of an item in the configuration string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconfig_parser\fP the configuration parser handle 
+.br
+\fIkey\fP configuration key string 
+.br
+\fIvalue\fP the returned value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_CONFIG_PARSER::next (\fBWT_CONFIG_PARSER\fP *config_parser, \fBWT_CONFIG_ITEM\fP *key, \fBWT_CONFIG_ITEM\fP *value)"
+
+.PP
+Return the next key/value pair\&. When iteration would pass the end of the configuration string \fBWT_NOTFOUND\fP will be returned\&.
+.PP
+If an item has no explicitly assigned value, the item will be returned in \fCkey\fP and the \fCvalue\fP will be set to the boolean \fC'true'\fP value\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconfig_parser\fP the configuration parser handle 
+.br
+\fIkey\fP the returned key 
+.br
+\fIvalue\fP the returned value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

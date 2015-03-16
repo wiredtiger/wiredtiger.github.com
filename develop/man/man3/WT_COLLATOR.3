@@ -1,0 +1,167 @@
+.TH "WT_COLLATOR" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_COLLATOR \- 
+.PP
+The interface implemented by applications to provide custom ordering of records\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBcompare\fP )(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const \fBWT_ITEM\fP *key1, const \fBWT_ITEM\fP *key2, int *cmp)"
+.br
+.RI "\fICallback to compare keys\&. \fP"
+.ti -1c
+.RI "int(* \fBcustomize\fP )(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *appcfg, \fBWT_COLLATOR\fP **customp)"
+.br
+.RI "\fIIf non-NULL, this callback is called to customize the collator for each data source\&. \fP"
+.ti -1c
+.RI "int(* \fBterminate\fP )(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIIf non-NULL a callback performed when the data source is closed for customized extractors otherwise when the database is closed\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The interface implemented by applications to provide custom ordering of records\&. 
+
+Applications register their implementation with WiredTiger by calling \fBWT_CONNECTION::add_collator\fP\&. See \fBCustom Collators\fP for more information\&.
+.PP
+.PP
+.nf
+        ret = conn->add_collator(conn, "nocase", &nocasecoll, NULL);
+.fi
+.PP
+ 
+.PP
+.nf
+        ret = conn->add_collator(conn, "prefix10", &pcoll10\&.iface, NULL);
+
+        /* Open a session for the current thread's work\&. */
+        if ((ret = conn->open_session(conn, NULL, NULL, &session)) != 0)
+                fprintf(stderr, "Error opening a session on %s: %s\n",
+                    home, wiredtiger_strerror(ret));
+
+        /* XXX Do some work\&.\&.\&. */
+
+        /* Note: closing the connection implicitly closes open session(s)\&. */
+        if ((ret = conn->close(conn, NULL)) != 0)
+
+.fi
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_extending\&.c\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_COLLATOR::compare)(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const \fBWT_ITEM\fP *key1, const \fBWT_ITEM\fP *key2, int *cmp)"
+
+.PP
+Callback to compare keys\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmp\fP set to -1 if \fCkey1 < key2\fP, 0 if \fCkey1 == key2\fP, 1 if \fCkey1 > key2\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero for success, non-zero to indicate an error\&.
+.RE
+.PP
+.PP
+.nf
+/*
+ * A simple example of the collator API: compare the keys as strings\&.
+ */
+static int
+my_compare(WT_COLLATOR *collator, WT_SESSION *session,
+    const WT_ITEM *value1, const WT_ITEM *value2, int *cmp)
+{
+        const char *p1, *p2;
+
+        /* Unused parameters */
+        (void)collator;
+        (void)session;
+
+        p1 = (const char *)value1->data;
+        p2 = (const char *)value2->data;
+        while (*p1 != '\0' && *p1 == *p2)
+                p1++, p2++;
+
+        *cmp = (int)*p2 - (int)*p1;
+        return (0);
+}
+.fi
+.PP
+ 
+.PP
+.nf
+/* A simple case insensitive comparator\&. */
+static int
+__compare_nocase(WT_COLLATOR *collator, WT_SESSION *session,
+    const WT_ITEM *v1, const WT_ITEM *v2, int *cmp)
+{
+        const char *s1 = (const char *)v1->data;
+        const char *s2 = (const char *)v2->data;
+
+        (void)session; /* unused */
+        (void)collator; /* unused */
+
+        *cmp = strcasecmp(s1, s2);
+        return (0);
+}
+
+static WT_COLLATOR nocasecoll = { __compare_nocase, NULL, NULL };
+
+.fi
+.PP
+ 
+.PP
+.nf
+/*
+ * Comparator that only compares the first N prefix characters of the string\&.
+ * This has associated data, so we need to extend WT_COLLATOR\&.
+ */
+typedef struct {
+        WT_COLLATOR iface;
+        uint32_t maxlen;
+} PREFIX_COLLATOR;
+
+static int
+__compare_prefixes(WT_COLLATOR *collator, WT_SESSION *session,
+    const WT_ITEM *v1, const WT_ITEM *v2, int *cmp)
+{
+        PREFIX_COLLATOR *pcoll = (PREFIX_COLLATOR *)collator;
+        const char *s1 = (const char *)v1->data;
+        const char *s2 = (const char *)v2->data;
+
+        (void)session; /* unused */
+
+        *cmp = strncmp(s1, s2, pcoll->maxlen);
+        return (0);
+}
+
+static PREFIX_COLLATOR pcoll10 = { {__compare_prefixes, NULL, NULL}, 10 };
+
+.fi
+.PP
+
+.SS "int(* WT_COLLATOR::customize)(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *appcfg, \fBWT_COLLATOR\fP **customp)"
+
+.PP
+If non-NULL, this callback is called to customize the collator for each data source\&. If the callback returns a non-NULL collator, that instance is used instead of this one for all comparisons\&. 
+.SS "int(* WT_COLLATOR::terminate)(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session)"
+
+.PP
+If non-NULL a callback performed when the data source is closed for customized extractors otherwise when the database is closed\&. The \fBWT_COLLATOR::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

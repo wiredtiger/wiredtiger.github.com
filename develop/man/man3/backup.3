@@ -1,0 +1,105 @@
+.TH "backup" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+backup \- Backups 
+WiredTiger cursors provide access to data from a variety of sources\&. One of these sources is the list of files required to perform a backup of the database\&. The list may be the files required by all of the objects in the database, or a subset of the objects in the database\&.
+.PP
+WiredTiger backups are 'on-line' or 'hot' backups, and applications may continue to read and write the databases while a snapshot is taken\&.
+.SH "Backup from an application"
+.PP
+.IP "1." 4
+Open a cursor on the \fC'backup:'\fP data source, which begins the process of a backup\&.
+.IP "2." 4
+Copy each file returned by the \fBWT_CURSOR::next\fP method to the backup location, for example, a different directory\&. Do not reuse backup locations unless all files have first been removed from them, in other words, remove any previous backup information before using a backup location\&.
+.IP "3." 4
+Close the cursor; the cursor must not be closed until all of the files have been copied\&.
+.PP
+.PP
+The directory into which the files are copied may subsequently be specified as an directory to the \fBwiredtiger_open\fP function and accessed as a WiredTiger database home\&.
+.PP
+Copying the database files for a backup does not require any special alignment or block size (specifically, Linux or Windows filesystems that do not support read/write isolation can be safely read for backups)\&.
+.PP
+The cursor must not be closed until all of the files have been copied, however, there is no requirement the files be copied in any order or in any relationship to the \fBWT_CURSOR::next\fP calls, only that all files have been copied before the cursor is closed\&. For example, applications might aggregate the file names from the cursor and then list the file names as arguments to a file archiver such as the system tar utility\&.
+.PP
+During the period the backup cursor is open, database checkpoints can be created, but no checkpoints can be deleted\&. This may result in significant file growth\&.
+.PP
+The following is a programmatic example of creating a backup:
+.PP
+.PP
+.nf
+        WT_CURSOR *cursor;
+        const char *filename;
+        int ret;
+
+        /* Create the backup directory\&. */
+        ret = mkdir("/path/database\&.backup", 077);
+
+        /* Open the backup data source\&. */
+        ret = session->open_cursor(session, "backup:", NULL, NULL, &cursor);
+
+        /* Copy the list of files\&. */
+        while (
+            (ret = cursor->next(cursor)) == 0 &&
+            (ret = cursor->get_key(cursor, &filename)) == 0) {
+                (void)snprintf(buf, sizeof(buf),
+                    "cp /path/database/%s /path/database\&.backup/%s",
+                    filename, filename);
+                ret = system(buf);
+        }
+        if (ret == WT_NOTFOUND)
+                ret = 0;
+        if (ret != 0)
+                fprintf(stderr, "%s: cursor next(backup:) failed: %s\n",
+                    progname, wiredtiger_strerror(ret));
+
+        ret = cursor->close(cursor);
+.fi
+.PP
+ In cases where the backup is desired for a checkpoint other than the most recent, applications can discard all checkpoints subsequent to the checkpoint they want using the \fBWT_SESSION::checkpoint\fP method\&. For example:
+.PP
+.PP
+.nf
+        ret = session->checkpoint(session, "drop=(from=June01),name=June01");
+.fi
+.PP
+ 
+.SH "Backup from the command line"
+.PP
+The \fBwt backup\fP command may also be used to create backups:
+.PP
+.PP
+.nf
+rm -rf /path/database\&.backup &&
+    mkdir /path/database\&.backup &&
+    wt -h /path/database\&.source backup /path/database\&.backup
+.fi
+.PP
+.SH "Incremental backup"
+.PP
+Once a backup has been done, it can be rolled forward incrementally by adding log files to the backup copy\&. Adding log files to the copy decreases potential data loss from switching to the copy, but increases the recovery time necessary to switch to the copy\&. To reset the recovery time necessary to switch to the copy, perform a full backup of the database\&. For example, an application might do a full backup of the database once a week during a quiet period, and then incrementally copy new log files into the backup directory for the rest of the week\&. Incremental backups may also save time when the tables are very large\&.
+.PP
+Bulk-loads are not commit-level durable, that is, the creation and bulk-load of an object will not appear in the database log files\&. For this reason, applications doing incremental backups after a full backup should repeat the full backup step after doing a bulk-load to make the bulk-load durable\&. In addition, incremental backups after a bulk-load can cause recovery to report errors because there are log records that apply to data files which don't appear in the backup\&.
+.PP
+By default, WiredTiger automatically removes log files no longer required for recovery\&. Applications wanting to use log files for incremental backup must first disable automatic log file removal using the \fClog=\fP(archive=false) configuration to \fBwiredtiger_open\fP\&.
+.PP
+The following is the procedure for incrementally backing up a database and removing log files from the original database home:
+.PP
+.IP "1." 4
+Perform a full backup of the database (as described above)\&.
+.IP "2." 4
+Perform a full database checkpoint\&.
+.IP "3." 4
+Open a cursor on the \fC'backup:'\fP data source, with the \fC'target=(\\'log:\\')'\fP target specified, which begins the process of an incremental backup\&.
+.IP "4." 4
+Copy each log file returned by the \fBWT_CURSOR::next\fP method to the backup directory\&. It is not an error to copy a log file which has been copied before, but care should be taken to ensure each log file is completely copied as the most recent log file may change in size while being copied\&.
+.IP "5." 4
+If all log files have been successfully copied, archive the log files by calling the \fBWT_SESSION::truncate\fP method with the URI \fClog:\fP and specifying the backup cursor as the start cursor to that method\&.
+.IP "6." 4
+Close the backup cursor\&.
+.PP
+.PP
+Steps 2-6 can be repeated any number of times before step 1 is repeated\&. These steps can be repeated as long as the backup database directory has not been opened, recovery run and become live\&. Once the database becomes live, you must repeat all steps 1-6 to another, different backup database directory\&.
+.SH "Backup and O_DIRECT"
+.PP
+Many Linux systems do not support mixing \fCO_DIRECT\fP and memory mapping or normal I/O to the same file\&. If \fCO_DIRECT\fP is configured for data or log files on Linux systems (using the wiredtiger_open \fCdirect_io\fP configuration), any program used to copy files during backup should also specify \fCO_DIRECT\fP when configuring its file access\&. Likewise, when \fCO_DIRECT\fP is not configured by the database application, programs copying files should not configure \fCO_DIRECT\fP\&. 

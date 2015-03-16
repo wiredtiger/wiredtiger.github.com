@@ -1,0 +1,135 @@
+.TH "transactions_lang_java" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+transactions_lang_java \- Transactions in Java 
+
+.SH "ACID properties"
+.PP
+Transactions provide a powerful abstraction for multiple threads to operate on data concurrently because they have the following properties:
+.PP
+.IP "\(bu" 2
+Atomicity: all or none of a transaction is completed\&.
+.IP "\(bu" 2
+Consistency: if each transaction maintains some property when considered separately, then the combined effect of executing the transactions concurrently will maintain the same property\&.
+.IP "\(bu" 2
+Isolation: developers can reason about transactions as if they run single-threaded\&.
+.IP "\(bu" 2
+Durability: once a transaction commits, its updates cannot be lost\&.
+.PP
+.PP
+WiredTiger supports transactions with the following caveats to the ACID properties:
+.PP
+.IP "\(bu" 2
+the maximum level of isolation supported is snapshot isolation\&. See \fBIsolation levels\fP for more details\&.
+.IP "\(bu" 2
+transactional updates are made durable by a combination of checkpoints and logging\&. See \fBCheckpoint durability in Java\fP for information on checkpoint durability and \fBCommit-level durability in Java\fP for information on commit-level durability\&.
+.IP "\(bu" 2
+each transaction's uncommitted changes must fit in memory: for efficiency, WiredTiger does not write to the log until a transaction commits\&.
+.PP
+.SH "Transactional API"
+.PP
+In WiredTiger, transaction operations are methods off the Session class\&.
+.PP
+Applications call Session\&.begin_transaction to start a new transaction\&. Operations subsequently performed using that Session handle, including operations on any cursors open in that Session handle (whether opened before or after the Session\&.begin_transaction call), are part of the transaction and their effects committed by calling Session\&.commit_transaction, or discarded by calling Session\&.rollback_transaction\&.
+.PP
+If Session\&.commit_transaction returns an error for any reason, the transaction was rolled back, not committed\&.
+.PP
+When transactions are used, data operations can encounter a conflict and fail with the \fBWT_ROLLBACK\fP error\&. If this error occurs, transactions should be rolled back with Session\&.rollback_transaction and the operation retried\&.
+.PP
+The Session\&.rollback_transaction method implicitly resets all cursors in the session as if the Cursor\&.reset method was called, discarding any cursor position as well as any key and value\&.
+.PP
+.PP
+.nf
+    cursor = session\&.open_cursor("table:mytable", null, null);
+    ret = session\&.begin_transaction(null);
+    /*
+     * Cursors may be opened before or after the transaction begins, and in
+     * either case, subsequent operations are included in the transaction\&.
+     * The begin_transaction call resets all open cursors\&.
+     */
+
+    cursor\&.putKeyString("key");
+    cursor\&.putValueString("value");
+    switch (ret = cursor\&.update()) {
+    case 0:                    /* Update success */
+        ret = session\&.commit_transaction(null);
+        /*
+         * The commit_transaction call resets all open cursors\&.
+         * If commit_transaction fails, the transaction was rolled-back\&.
+         */
+        break;
+    case wiredtiger\&.WT_ROLLBACK:            /* Update conflict */
+    default:                /* Other error */
+        ret = session\&.rollback_transaction(null);
+        /* The rollback_transaction call resets all open cursors\&. */
+        break;
+    }
+
+    /* Cursors remain open and may be used for multiple transactions\&. */
+.fi
+.PP
+ 
+.SH "Implicit transactions"
+.PP
+If a cursor is used when no explicit transaction is active in a session, reads are performed at the isolation level of the session, set with the \fCisolation\fP key to Connection\&.open_session, and successful updates are automatically committed before the update operation returns\&.
+.PP
+Any operation consisting of multiple related updates should be enclosed in an explicit transaction to ensure the updates are applied atomically\&.
+.PP
+If an implicit transaction successfully commits, the cursors in the Session remain positioned\&. If an implicit transaction fails, all cursors in the Session are reset, as if Cursor\&.reset were called, discarding any position or key/value information they may have\&.
+.PP
+See \fBCursors and Transactions\fP for more information\&.
+.SH "Concurrency control"
+.PP
+WiredTiger uses optimistic concurrency control algorithms\&. This avoids the bottleneck of a centralized lock manager and ensures transactional operations do not block: reads do not block writes, and vice versa\&.
+.PP
+Further, writes do not block writes, although concurrent transactions updating the same value will fail with \fBWT_ROLLBACK\fP\&. Some applications may benefit from application-level synchronization to avoid repeated attempts to rollback and update the same value\&.
+.PP
+Operations in transactions may also fail with the \fBWT_ROLLBACK\fP error if some resource cannot be allocated after repeated attempts\&. For example, if the cache is not large enough to hold the updates required to satisfy transactional readers, an operation may fail and return \fBWT_ROLLBACK\fP\&.
+.SH "Isolation levels"
+.PP
+WiredTiger supports \fCread-uncommitted\fP, \fCread-committed\fP and \fCsnapshot\fP isolation levels; the default isolation level is \fCread-committed\fP\&.
+.PP
+.IP "\(bu" 2
+\fCread-uncommitted\fP: Transactions can see changes made by other transactions before those transactions are committed\&. Dirty reads, non-repeatable reads and phantoms are possible\&.
+.IP "\(bu" 2
+\fCread-committed\fP: Transactions cannot see changes made by other transactions before those transactions are committed\&. Dirty reads are not possible; non-repeatable reads and phantoms are possible\&. Committed changes from concurrent transactions become visible when no cursor is positioned in the read-committed transaction\&.
+.IP "\(bu" 2
+\fCsnapshot\fP: Transactions read the versions of records committed before the transaction started\&. Dirty reads and non-repeatable reads are not possible; phantoms are possible\&.
+.br
+
+.br
+ Snapshot isolation is a strong guarantee, but not equivalent to a single-threaded execution of the transactions, known as serializable isolation\&. Concurrent transactions T1 and T2 running under snapshot isolation may both commit and produce a state that neither (T1 followed by T2) nor (T2 followed by T1) could have produced, if there is overlap between T1's reads and T2's writes, and between T1's writes and T2's reads\&.
+.PP
+.PP
+The transaction isolation level can be configured on a per-transaction basis:
+.PP
+.PP
+.nf
+    /* A single transaction configured for snapshot isolation\&. */
+    cursor = session\&.open_cursor("table:mytable", null, null);
+    ret = session\&.begin_transaction("isolation=snapshot");
+    cursor\&.putKeyString("some-key");
+    cursor\&.putValueString("some-value");
+    ret = cursor\&.update();
+    ret = session\&.commit_transaction(null);
+.fi
+.PP
+ Additionally, the default transaction isolation can be configured and re-configured on a per-session basis:
+.PP
+.PP
+.nf
+    /* Open a session configured for read-uncommitted isolation\&. */
+    session = conn\&.open_session(
+        "isolation=read_uncommitted");
+.fi
+.PP
+ 
+.PP
+.nf
+    /* Re-configure a session for snapshot isolation\&. */
+    ret = session\&.reconfigure("isolation=snapshot");
+
+.fi
+.PP
+

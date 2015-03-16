@@ -1,0 +1,1555 @@
+.TH "md_changelog" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md_changelog \- WiredTiger Change Log 
+
+.SS "WiredTiger release 2\&.5\&.1, 2015-03-07 "
+.PP
+The WiredTiger 2\&.5\&.1 release contains new features, minor API changes and many bug fixes\&.
+.PP
+New features and API changes:
+.PP
+.IP "\(bu" 2
+Add a new 'log=(recover=on)' option to \fBwiredtiger_open\fP\&. The default value is 'on', if set to 'error', recovery won't be run on startup\&. An error will be returned if recovery is needed but disabled\&. This option is mainly to support the WiredTiger command line utility\&. refs #1651
+.IP "\(bu" 2
+Add a new \fBWT_CURSOR::equals\fP method that returns when the cursors are equal, intended as a fast-path for cursor comparison\&.
+.IP "\(bu" 2
+Change how statistics work when there are checkpoints for an object\&. We used to aggregate statistics for all open checkpoints and the current handle\&. We now only return statistics for the object being queried\&. See upgrading documentation for further information\&.
+.IP "\(bu" 2
+Add a mode to LSM that allows us to limit the size of a tree by dropping old chunks\&. Enabled via 'lsm=(chunk_count_limit=0)', default to 0 which disables the functionality\&. Note that enabling this feature discards old data automatically\&. refs #1652
+.IP "\(bu" 2
+Update the WiredTiger printlog command line utility to generate JSON that can be parsed by third party tools\&. Refs #1438
+.IP "\(bu" 2
+Change how we track memory allocation overhead\&. We used to apply a fixed size for each allocation (which was difficult to track)\&. The overhead can be specified via a new configuration option to \fBwiredtiger_open\fP using 'cache_overhead=8'\&. The value is a percentage and the default is 8\&. refs #1564 #1565
+.IP "\(bu" 2
+Major enhancements to the wtstats\&.py tool that translates WiredTiger statistics into an HTML graph\&. The tool now generates interactive graphs and no longer requires third party Python libraries to be installed\&.
+.IP "\(bu" 2
+Add a new \fBWT_CURSOR::reconfigure\fP method for cursor configuration\&. See API documentation for more information\&. refs #1381
+.IP "\(bu" 2
+Add a new \fBWT_SESSION\&.strerror\fP method, a thread-safe alternative to \fBwiredtiger_strerror\fP\&. refs #1516
+.PP
+.PP
+Bug fixes for bugs that could cause data inconsistency:
+.PP
+.IP "\(bu" 2
+Fix a bug in recovery where we could lose track of file identifiers and apply updates to the wrong file\&. Refs SERVER-17142 SERVER-17131
+.IP "\(bu" 2
+Fix several bugs in data consistency that could cause corruption when restarting after a hard crash, including:
+.IP "  \(bu" 4
+A bug in table create that could cause recovery to fail\&. refs SERVER-17204
+.PP
+
+.PP
+.PP
+Other significant changes:
+.PP
+.IP "\(bu" 2
+Significant tuning enhancements for the WiredTiger cache, including:
+.IP "  \(bu" 4
+Avoiding stalls due to evicting large pages
+.IP "  \(bu" 4
+Better algorithms for getting application threads to help with cache management without interfering with operation latencies\&.
+.IP "  \(bu" 4
+Better algorithms for maintaining the cache when there are a few very hot pages (e\&.g: append workloads)\&. SERVER-17344
+.IP "  \(bu" 4
+Freeing obsolete references more aggressively, which saves space and reduces traversal overhead when there are lots of updates or deletes\&. refs SERVER-17195, #1647
+.IP "  \(bu" 4
+Fix a bug that could cause a data loss if we split a large page into multiple smaller pages and attempted to evict the page at the same time\&. refs #1583 #1563 SERVER-16868
+.PP
+
+.IP "\(bu" 2
+Significant improvements to the cursor truncate implementation, especially for workloads that periodically truncate from the start of the file\&. refs SERVER-17141
+.IP "\(bu" 2
+Fix a bug in eviction where reconfiguring the number of eviction threads could result in a segfault\&. refs SERVER-17293
+.IP "\(bu" 2
+Significant bug fixes and performance enhancements to the logging subsystem including:
+.IP "  \(bu" 4
+Avoid yielding excessively to avoid CPU overhead when there are many active sessions\&. refs #1610
+.IP "  \(bu" 4
+The log close thread needs to wait for outstanding writes\&. #1571
+.IP "  \(bu" 4
+Create a new utility thread to close and fsync log files\&. #1560
+.IP "  \(bu" 4
+Ensure that log files are closed in sequence\&. #1555
+.IP "  \(bu" 4
+Ensure that log file create appears atomic\&. #1482
+.IP "  \(bu" 4
+Fix a race between connection close and switching log files that could lead to a new log file being in an undefined state\&. #1480
+.PP
+
+.IP "\(bu" 2
+Added support for advanced options to the WiredTiger verify command line tool\&.
+.IP "\(bu" 2
+Fix a bug in our conflict detection algorithm, where we were failing to detect some write-write conflicts in no-overwrite cursors\&. refs SERVER-16351
+.IP "\(bu" 2
+Significant bug fixes when writing pages to disk, including:
+.IP "  \(bu" 4
+Stop double count the on-disk header when choosing split points\&. Refs #1655
+.IP "  \(bu" 4
+Fill the first and second pages as much as possible when splitting\&. refs #1282
+.IP "  \(bu" 4
+Improve the algorithm for fitting large items onto pages when splitting\&. refs #1630 #1631
+.IP "  \(bu" 4
+Fix a bug when using raw compression where we could overflow allocated memory\&. refs SERVER-16664
+.PP
+
+.IP "\(bu" 2
+Fix several cases where \fBWT_SESSION::verify\fP and \fBWT_SESSION::salvage\fP could return EBUSY unnecessarily\&. Refs #1404 SERVER-16457
+.IP "\(bu" 2
+Fix a bug where racing between discarding and updating a tree returned an error to the application\&. refs #1618 SERVER-17048
+.IP "\(bu" 2
+Fix a bug where opening a statistics cursor in parallel with a checkpoint could lead to a deadlock\&. refs #1575 SERVER-16738
+.IP "\(bu" 2
+Change the shared cache implementation to use cache read pressure rather than write pressure to determine how best to share memory (as checkpoints skew write pressure as a metric)\&. refs #1569
+.IP "\(bu" 2
+Fix a bug where a deadlock could occur if a checkpoint starts in parallel to compact operations\&. refs #1589 SERVER-16967
+.IP "\(bu" 2
+Fix a bug in how we parse Huffman-encoding configuration settings during \fBWT_SESSION::create\fP\&. refs #1417 #1536
+.IP "\(bu" 2
+Fix a bug where the custom extractor terminate callback was being made twice\&. refs #1503
+.IP "\(bu" 2
+Add a new mode to the eviction server where it writes out some pages even though the eviction triggers have not yet been reached\&.
+.IP "\(bu" 2
+Fix several issues reported by COVERITY static analysis tool\&.
+.PP
+.PP
+.SS "WiredTiger release 2\&.5\&.0, 2014-12-24 "
+.PP
+The WiredTiger 2\&.5\&.0 release contains significant new features, API changes and many bug fixes\&.
+.PP
+Now that WiredTiger is part of MongoDB, we are tracking issues related to MongoDB usage of WiredTiger in the MongoDB JIRA system\&. Some entries in the changelog now reference JIRA tickets that can be found at:
+.PP
+http://jira.mongodb.org
+.PP
+New features and API changes:
+.PP
+.IP "\(bu" 2
+Add support for storing large values on-page in a btree rather than in an overflow item\&. This is useful for workloads that want to keep large items in cache - since WiredTiger overflow items are never cached\&. It is configured via new \fCleaf_value_max\fP configuration setting\&. This enhancement led to the deprecation of internal_item_max and leaf_item_max configuration settings, see upgrading documentation for further information\&. [#1282]
+.IP "\(bu" 2
+Add support for compressing log files\&. When configured each compressable log record will be compressed\&. This is configure with the \fClog=(compressor=X)\fP configuration setting\&. See upgrading documentation for further information\&. [#1359]
+.IP "\(bu" 2
+No longer return EBUSY when opening a bulk cursor, verifying or salvaging a database if a checkpoint is currently running\&. This allows applications to do these exclusive operations without shutting down the checkpoint server thread\&. [#1397] [#1404] SERVER-16236 SERVER-16457
+.IP "\(bu" 2
+Add support for immutable indexes\&. [#1344]
+.IP "\(bu" 2
+Added several new statistics, improved accuracy for some statistics tracking and simplified mechanism for querying a particular statistic\&. [#1505]
+.IP "\(bu" 2
+Have the eviction server write out unnecessary pages prior to the cache reaching the configured eviction trigger size\&. This can reduce the amount of eviction application threads do when configured with a large cache\&.
+.IP "\(bu" 2
+Several enhancements to managing how long we keep files open
+.IP "\(bu" 2
+Revert a change in the 2\&.4\&.1 release that caused the WT_ROLLBACK (and deprecated WT_DEADLOCK) error return to map to different numeric values\&. Applications should ensure they are compiling against the same version of the wiredtiger\&.h header file as the library they link against, otherwise odd behavior will be experienced\&.
+.IP "\(bu" 2
+Support setting configuration strings to 'none' as being equivalent to an empty string in most cases\&. [#1417]
+.IP "\(bu" 2
+Enhance the hot backup implementation to allow recovery to be run between incremental backups\&. [#1183]
+.PP
+.PP
+Other significant changes:
+.PP
+.IP "\(bu" 2
+Improve performance of cursor open when there are many tables in a database\&. [#1391] [#1443]
+.IP "\(bu" 2
+Reduce the impact checkpoints have on concurrent operations\&. This was done by changing how we lock tables\&. [#1391] [#1392]
+.IP "\(bu" 2
+Improve performance when scanning a table that has many deleted items\&. SERVER-16247
+.IP "\(bu" 2
+Fix a bug in checkpoint, where the metadata (turtle) file wasn't being synced on checkpoint\&. [#1383]
+.IP "\(bu" 2
+Fix a bug where WiredTiger could accumulate memory during page splits and never free it\&. SERVER-16546
+.IP "\(bu" 2
+Many enhancements and bug fixes for Windows\&.
+.IP "\(bu" 2
+Fix a bug where a custom extractor terminate was being called twice\&. [#1503]
+.IP "\(bu" 2
+Fix a bug where a race between closing a handle and checkpointing could lead to errors\&. [#1495] [#1497]
+.IP "\(bu" 2
+Validate the block header checksum before we clear it - if the checksum field had been corrupted, we didn't notice\&. SERVER-16457
+.IP "\(bu" 2
+Fix a bug in write conflict detection\&. Cursors configured with no-overwrite could sometimes not see update conflicts for deleted records\&. SERVER-16351
+.IP "\(bu" 2
+Several bug fixes and performance improvements in LSM including:
+.IP "  \(bu" 4
+Add support for custom collators in LSM trees\&. [#1361]
+.IP "  \(bu" 4
+Fix a bug in LSM search_near, where it returned a deleted item\&. BF-694, BF-700
+.IP "  \(bu" 4
+Improve background maintenance operations so that the cache does not get full unnecessarily\&.
+.IP "  \(bu" 4
+Fix a bug that could lead to updates being written into old chunks\&. [#1432] [#1418]
+.IP "  \(bu" 4
+Fix a bug in background merge that could skip updates\&. SERVER-16123
+.PP
+
+.IP "\(bu" 2
+Fix a bug when maintaining the cache, that could cause checkpoints to skip writing an update that should have been included\&. [#1419] SERVER-16336
+.IP "\(bu" 2
+Fix a bug in \fBWT_SESSION::drop\fP, where failures generated error output even when force was specified\&. [#1436]
+.IP "\(bu" 2
+Fix a bug in WiredTiger integer packing code when figuring out how much space is required for a value (it can shrink as numbers grow)\&. SERVER-16118
+.IP "\(bu" 2
+Several enhancements to the wtstats\&.py tool that generates graphs from standard WiredTiger statistics logs\&. [#1365]
+.IP "\(bu" 2
+Fix a bug on OS X where fsync isn't sufficient to flush a file, use fcntl(F_FULLFSYNC) instead\&.
+.IP "\(bu" 2
+Work around a bug in clang 3\&.5\&.0 compare and swap primitive\&. The __sync_bool_compare_and_swap version of the API in clang produces bad code for us with -O3 optimization enabled\&.
+.PP
+.PP
+.SS "WiredTiger release 2\&.4\&.1, 2014-11-06 "
+.PP
+The WiredTiger 2\&.4\&.1 release contains several new features, many bug fixes and performance enhancements\&.
+.PP
+New features and API changes:
+.PP
+.IP "\(bu" 2
+Add new custom extractor functionality to WiredTiger indexes\&. Allowing an application to define mutated and/or multiple keys for indexes\&. [#1199]
+.IP "\(bu" 2
+Add a new \fBWT_SESSION::transaction_pinned_range\fP method that allows users to identify when a session is keeping a transaction ID pinned for a long time\&. [#1314]
+.IP "\(bu" 2
+Enhance statistics output so that keys are more clearly categorized\&. [#1313]
+.IP "\(bu" 2
+Rename WT_DEADLOCK error return to WT_ROLLBACK\&. WiredTiger uses the return in cases other than traditional application deadlock\&. The old value is retained as an alias to maintain backward compatability\&. [#1204]
+.IP "\(bu" 2
+Increase the maximum configurable cache size to 100GB\&.
+.PP
+.PP
+Other significant changes:
+.PP
+.IP "\(bu" 2
+Improve support for building on Windows platforms\&. [#1342]
+.IP "\(bu" 2
+Fix a bug where WiredTiger could race closing handles\&. [#1336]
+.IP "\(bu" 2
+Enhance performance when hot pages in cache are growing rapidly\&. [#1317]
+.IP "\(bu" 2
+Fix a bug in recovery, where log files that are zero extended could result in some log records being skipped\&. [#1334]
+.IP "\(bu" 2
+Updates to the Java API to improve documentation and exception handling\&. [#1295]
+.IP "\(bu" 2
+Improve support for building on Oracle Solaris platform [#1329]
+.IP "\(bu" 2
+Fix a bug where closing a handle could leave the tree in an inconsistent state on failure\&. [#1316]
+.IP "\(bu" 2
+Several bug fixes and improvements to LSM including:
+.IP "  \(bu" 4
+Improving algorithm for switching the in-memory chunk\&.
+.IP "  \(bu" 4
+Fixing a bug related to dropping obsolete chunks\&. [#1304]
+.PP
+
+.IP "\(bu" 2
+Fix a bug in schema level operations (table create, drop, etc)\&. If there was an explicit transaction running when the operation was performed that was subsequently rolled back the object could be left in an inconsistent state\&.
+.IP "\(bu" 2
+Several enhancements to cache management when there are long running transactions present\&.
+.PP
+.PP
+.SS "WiredTiger release 2\&.4\&.0, 2014-10-15 "
+.PP
+The WiredTiger 2\&.4\&.0 release contains significant new features, API changes and many bug fixes\&.
+.PP
+New features and API changes:
+.PP
+.IP "\(bu" 2
+Cursors keep their position across transaction boundaries\&. That is \fBWT_SESSION::begin_transaction\fP and \fBWT_SESSION::commit_transaction\fP no longer reset cursors\&. [#1181]
+.IP "\(bu" 2
+Change cursor behavior so that when an operation returns WT_NOTFOUND, the cursor is now left pointing to the original key/value pair\&. [#1209]
+.IP "\(bu" 2
+Initial support for building WiredTiger on Windows\&.
+.IP "\(bu" 2
+Add ability to customize a collator for specific data sources or with application managed metadata\&. See upgrading documentation for more information\&. [#1165]
+.IP "\(bu" 2
+Enhance extension mechanism in WiredTiger to support loading extensions from the application binary - not just a separate library\&. [#1174]
+.IP "\(bu" 2
+Replace \fBWT_SESSION::create\fP 'lsm=(merge_threads)' configuration option with \fBwiredtiger_open\fP 'lsm_manager=(worker_thread_max)'\&. See upgrading documentation for more information\&.
+.IP "\(bu" 2
+Enhancements to the WiredTiger Python API build process\&. [#1188]
+.IP "\(bu" 2
+Add ability to dump and load WiredTiger databases in JSON format\&. [#1154]
+.IP "\(bu" 2
+Add ability to automatically checkpoint based on the volume of log records generated since the last checkpoint\&. This is enabled using the \fBwiredtiger_open\fP configuration option 'checkpoint=(log_size=size)' [#1170]
+.IP "\(bu" 2
+Enhance functionality allowing users to write content into the WiredTiger transaction log\&. [#1171][#1175]
+.IP "\(bu" 2
+Enhance the WiredTiger HyperLevelDB implementation to support log replay\&. [#1106][#1155]
+.PP
+.PP
+Other significant changes:
+.PP
+.IP "\(bu" 2
+Fix several bugs in the shared cache implementation\&. [#1180][#1176]
+.IP "\(bu" 2
+Fix a bug where the public URI field in a cursor did not match the string passed to \fBWT_SESSION::open_cursor\fP\&. [#1235]
+.IP "\(bu" 2
+Fix several bugs in salvage\&. [#1222][#1169]
+.IP "\(bu" 2
+Several bug fixes and enhancements for \fBWT_CONNECTION::reconfigure\fP\&. [#1214][#1172]
+.IP "\(bu" 2
+Fix several bugs in raw compression implementation, particularly for data that compresses extremely well\&. [#1191]
+.IP "\(bu" 2
+Several bug fixes and enhancements to WiredTiger LevelDB interface\&.
+.IP "\(bu" 2
+Switch default build from using adaptive pthread mutexes to default pthread mutexes\&.
+.PP
+.PP
+.SS "WiredTiger release 2\&.3\&.1, 2014-08-14 "
+.PP
+The WiredTiger 2\&.3\&.1 release contains mainly performance enhancements and bug fixes\&.
+.PP
+Changes to the WiredTiger API:
+.PP
+.IP "\(bu" 2
+Fix a bug in \fBWT_CURSOR::set_value\fP that could lead to undefined behavior with some value formats\&.
+.IP "\(bu" 2
+Make the asynchronous API generally available [#1139]
+.IP "\(bu" 2
+Add log cursors for replay and verification\&. Make generated log record and operation types public\&. [#1106]
+.IP "\(bu" 2
+Allow eviction worker threads to be started and stopped dynamically\&. Applications that use the \fCeviction_workers\fP configuration should see the upgrading documentation on how to use this feature\&. [#1116, #1143, #1158]
+.PP
+.PP
+Other significant changes:
+.PP
+.IP "\(bu" 2
+Improve performance and reduce latency during checkpoints and LSM merges\&. Remove uses of the checkpoint lock other than serializing checkpoints: compact holds the schema lock, so it doesn't need to hold the checkpoint lock, the new WT_BTREE handle close lock prevents checkpoints from colliding with handle close, so LSM doesn't need the checkpoint lock either\&.
+.IP "\(bu" 2
+Some minor cleanups, setting the internal session's name in a few places\&. [#1073]
+.IP "\(bu" 2
+Grab the live lock when loading a checkpoint in diagnostic mode: that could race with a read\&. [#1102]
+.IP "\(bu" 2
+Instead of keeping a list of file URIs for checkpoint to flush, open a handle and stash it\&. [#1114]
+.IP "\(bu" 2
+Add a new OS-layer function __wt_fsync_async to flush a file without waiting for the results, call it from the Btree flush-leaves code so pages start flushing while we're working the rest of the checkpoint\&. [#1136, #1152]
+.IP "\(bu" 2
+Wait for the handle flush lock when writing the leaf pages instead of returning EBUSY\&. [#1136]
+.IP "\(bu" 2
+Add a wtperf page to the documentation, describe how to simulate workloads and view statistics\&. [#1147]
+.IP "\(bu" 2
+Flag new structures not listed in PREDEFINE\&. [#1148]
+.IP "\(bu" 2
+Return EBUSY if no async handles available and fix ex_async to look for it\&. [#1153]
+.IP "\(bu" 2
+Fix some problems with navigation in the reference guide\&.
+.IP "\(bu" 2
+Bump the number of slots for internal sessions: we have a lot more than 2 now\&. Add a test for \fCsession_max\fP settings, make sure we add enough to account for at least the default internal sessions\&.
+.IP "\(bu" 2
+Remove tcbench: we're no longer maintaining it\&.
+.PP
+.PP
+.SS "WiredTiger release 2\&.3\&.0, 2014-07-29 "
+.PP
+The WiredTiger 2\&.3\&.0 release contains significant new features, performance enhancements and bug fixes\&. Significant changes are described below\&.
+.PP
+Changes to the WiredTiger API (see upgrading documentation for details):
+.PP
+.IP "\(bu" 2
+Add a LevelDB API implementation for WiredTiger\&. This includes support for stock LevelDB as well as Basho, HyperLevelDB and RocksDB versions of the API\&. To build the LevelDB API include --enable-leveldb in the configure command, to specify compatability with an alternative LevelDB API use --enable-leveldb=[basho,hyper,rocksdb]\&. [#1028]
+.IP "\(bu" 2
+Add ability to build some common extensions into the WiredTiger library\&. This means that the libraries for those extensions don't need to be dynamically loaded at runtime\&. Currently supported extensions are Snappy compression and zlib compression\&. The option can be enabled by passing --with-builtins=[snappy,zlib] to the configure command line\&.
+.IP "\(bu" 2
+Add a new configuration to wiredtiger_open: statistics_log=(on_close=true), that causes a set of statistics to be logged on \fBWT_CONNECTION::close\fP\&. [#1086]
+.IP "\(bu" 2
+Add a new configuration to wiredtiger_open: exclusive, that causes the open to fail if the database already exists\&.
+.PP
+.PP
+Other significant changes:
+.PP
+.IP "\(bu" 2
+Performance improvement for high throughput workloads using multiple eviction threads\&. Performance of some workloads improves by over 15% [#1087]
+.IP "\(bu" 2
+Significant performance optimizations for queries, giving up to 20% throughput improvement for in-memory query workloads\&. https://github.com/wiredtiger/wiredtiger/wiki/Query-throughput
+.IP "\(bu" 2
+Fix an off-by-one bug that could lead to ENOMEM during commit with logging\&. [#1104][#1121]
+.IP "\(bu" 2
+Allow bulk loads to multiple files to complete in parallel\&. [#1114][#1126]
+.PP
+.PP
+.SS "WiredTiger release 2\&.2\&.1, 2014-06-24 "
+.PP
+The WiredTiger 2\&.2\&.1 release contains mainly performance enhancements and bug fixes\&. Significant changes are described below\&.
+.PP
+Changes to the WiredTiger API (see upgrading documentation for details):
+.PP
+.IP "\(bu" 2
+Change the order in which configuration setting mechanisms are applied by wiredtiger_open\&. [#1010][#1034]
+.IP "\(bu" 2
+Split the global transaction_sync configuration into two parts: a sync method (dsync, fsync or none), and an enabled flag (false by default)\&. [#1074]
+.IP "\(bu" 2
+Add ability to sync with per transaction granularity\&. [#1074]
+.IP "\(bu" 2
+Update WiredTiger Java API to throw WiredTigerException consistently\&. [#1011]
+.IP "\(bu" 2
+Add ability to dump and load databases using JSON format\&. [#740][#1049]
+.PP
+.PP
+Other significant changes:
+.PP
+.IP "\(bu" 2
+Various performance improvements to the main cursor search routine including reductions in how often we need to copy data and profiling based optimizations for tight search loops\&. [#1050][#1070]
+.IP "\(bu" 2
+Fix a bug in recovery with missing files (e\&.g\&., after a hotbackup that raced with file creation)\&. [#1042][#1045]
+.IP "\(bu" 2
+Several bug fixes and performance enhancements related to LSM trees and snapshot isolation transactions\&. [#1057][#1060][#1075]
+.IP "\(bu" 2
+Several performance tuning enhancements to LSM trees around locking, throttling and switching chunks\&. [#1051]
+.IP "\(bu" 2
+Algorithmic improvements to LSM tree compact operation\&. It is now faster and more reliable\&. [#1063]
+.IP "\(bu" 2
+Create a separate thread to manage open file handles - which means that:
+.IP "  \(bu" 4
+Application threads are less likely to be responsible for closing handles
+.IP "  \(bu" 4
+Multi threaded workloads don't open/close handles more often than necessary [#1018]
+.PP
+
+.PP
+.PP
+.SS "WiredTiger release 2\&.2\&.0, 2014-05-21 "
+.PP
+The WiredTiger 2\&.2\&.0 release contains new features, performance enhancements and bug fixes\&. Significant changes include:
+.PP
+Changes relevant for upgrading applications:
+.PP
+Update the table create API to disable prefix compression by default\&. Applications generally see better performance without prefix compression, choosing space saving over performance is up to the application\&. [#981]
+.PP
+Change the default leaf_page_max setting from 1MB to 32KB\&. Choosing a large default leaf_page_max led to poor performance in out of cache workloads\&.
+.PP
+Remove the \fC--enable-debug\fP option to configure\&. It is more standard to set \fCCFLAGS='-g'\fP variable instead\&.
+.PP
+Save the wiredtiger_open configuration when a database is created, so that settings like cache size, extensions and logging are set consistently by all subsequent users of the database\&.
+.PP
+Add an \fC--enable-verbose\fP option to configure\&. In order to access the verbose message functionality available as part of the wiredtiger_open and \fBWT_CONNECTION::reconfigure\fP APIs, it is necessary to pass the \fC--enable-verbose\fP option to configure\&.
+.PP
+Enhance the metadata cursor implementation (i\&.e: cursors created with a 'metadata:' prefix) so that they can be used to inspect metadata for internal tables and now support altering the metadata\&. Add a new 'read_only' flag to cursor configuration that defaults to false for metadata cursors\&.
+.PP
+Fix several bugs in raw compression, including one that could cause data corruption and some that triggered poor performance\&. [#984][#991][#1007][#1008][#1013]
+.PP
+Improve the performance of recovery - we no longer need to scan all log files looking for the last checkpoint\&.
+.PP
+Improve performance of read-only transactions, by deferring the allocation of transaction IDs\&. [#978]
+.PP
+Several bug fixes in hot backup related to log files, including:
+.IP "\(bu" 2
+Always choose the right metadata version in the backup [#972]
+.IP "\(bu" 2
+Don't require that hot backup copies log files in order [#976]
+.IP "\(bu" 2
+Always copy log files before data files [#976]
+.IP "\(bu" 2
+Fix a bug where recovery returned an error if the last log record was incomplete [#994]
+.PP
+.PP
+Speed up checkpoints by doing a better job of skipping pages that can't contain changes that need to be included\&. [#954][#963][#1001]
+.PP
+Add ability to store zero length data items into LSM trees\&. [#540]
+.PP
+Add an asynchronous data access/manipulation API to WiredTiger\&. [#933]
+.PP
+Add the ability to configure multiple eviction server threads, to help with keeping space available in the cache\&. [#918]
+.PP
+Add the ability to reconfigure the checkpoint and statistics log servers\&. [#997][#1004]
+.PP
+Improve the performance of retrieving data for in cache workloads\&. [#970]
+.PP
+Improve the structure of the in-memory tree we are generating, by allowing internal pages to be split\&. This significantly improves query performance in some workloads\&. [#876]
+.PP
+Work around a bug in posix_fallocate on Linux, where it could corrupt already written data\&.
+.PP
+Add the ability to leak memory on connection close via new leak_memory option to \fBWT_CONNECTION::close\fP API\&. This allows for faster shutdown if a process is going to exit when the WiredTiger connection is closing\&.
+.PP
+Allow salvage to run on any table type\&.
+.PP
+.SS "WiredTiger release 2\&.1\&.2, 2014-03-27 "
+.PP
+The WiredTiger 2\&.1\&.2 release contains performance enhancements and bug fixes\&. Significant changes include:
+.PP
+Update the configuration settings for shared_cache to make the distinction between cache_size and shared_cache less confusing\&. See upgrading documentation for more information\&.
+.PP
+Various performance enhancements to improve the performance of checkpoints\&.
+.PP
+Fix a bug that could cause a hang with small caches under heavy load\&. [#894]
+.PP
+.SS "WiredTiger release 2\&.1\&.1, 2014-03-04 "
+.PP
+The WiredTiger 2\&.1\&.1 release contains new features, performance enhancements and bug fixes\&. Significant changes include:
+.PP
+Fix a bug where a page could be marked clean when it contained uncommitted changes\&. This bug could cause undefined behavior in transaction rollback under load\&.
+.PP
+Fix a bug with shared caches when rebalancing between connections\&.
+.PP
+Add a new public API to WiredTiger that provides the ability to parse WiredTiger compatible configuration strings\&. See the upgrading documentation for further information\&. [#873]
+.PP
+A number of performance enhancements to the LSM implementation, particularly for long running workloads\&.
+.PP
+A number of performance enhancements and bug fixes to cache eviction code\&.
+.PP
+Add an option to use direct I/O when reading from checkpoints\&. To enabled the functionality add 'direct_io=[checkpoint]' to your wiredtiger_open configuration string\&. [#847]
+.PP
+.SS "WiredTiger release 2\&.1\&.0, 2014-02-04 "
+.PP
+The WiredTiger 2\&.1\&.0 release contains new features, performance enhancements and bug fixes\&. Significant changes include:
+.PP
+The \fBWT_ITEM\fP structure was changed so that the size field is a size_t rather than a uint32_t\&. See upgrading documentation for details\&.
+.PP
+A change to the compress_raw interface around repeating the call with more records\&. See upgrading documentation for details\&.
+.PP
+In LSM trees, the memory_page_max setting is ignored\&. The effective setting is double the chunk size\&. [#861][#859]
+.PP
+Add support for zlib compression\&. [#855] [#865]
+.PP
+Various enhancements to how WiredTiger generates tree structures in memory to help maintain consistent performance as table size grows\&. [#851]
+.PP
+Add support for Levyx Inc Helium as an external data source in WiredTiger [#849][#850]
+.PP
+Improve insert performance when a table contains many identical overflow items\&.
+.PP
+Various performance enhancements to btree searches\&. [#838][#839][#840]
+.PP
+Add support for newer versions of autoconf up to 1\&.14\&. [#599][#841]
+.PP
+Improve multi-threaded throughput of durable log writes, including changing the default wiredtiger_open transaction_sync configuration from dsync to fsync, see the upgrading documentation for further information\&. [#831][#832]
+.PP
+In the Python and Java APIs, automatically close handles to prevent invalid accesses by applications\&. [#649][#800][#830]
+.PP
+Various enhancements to the LSM merge algorithm, including improvements to how files are selected for merging, and throttling based on whether merges are keeping up (to limit write amplification)\&. Made the minimum number of chunks chosen to merge configurable\&. [#817][#819][#822]
+.PP
+.SS "WiredTiger release 2\&.0\&.1, 2013-12-12 "
+.PP
+The WiredTiger 2\&.0\&.1 release contains major new features, numerous performance enhancements and bug fixes\&.
+.PP
+Significant changes include:
+.PP
+.IP "\(bu" 2
+WiredTiger now supports fine-grained durability via Write Ahead Logging (WAL)\&. Logging is enabled with the 'log=(enabled)' configuration string to wiredtiger_open\&. If the connection is not shut down cleanly and logging is enabled, WiredTiger will automatically run recovery the next time it is opened, rolling forward changes in the log until the last commit\&. [#605]
+.IP "\(bu" 2
+Many enhancements to the LSM implementation to improve the throughput and reduce maximum operation latency including:
+.IP "  \(bu" 4
+Algorithmic improvements when multiple merge threads are configured\&.
+.IP "  \(bu" 4
+Improvements to bloom filter lookup speed\&.
+.IP "  \(bu" 4
+Enhancements to internal cursor management, to reduce search overhead\&.
+.IP "  \(bu" 4
+Prioritize switching to a new level 0 chunk in utility threads, to avoid application thread pauses\&.
+.IP "  \(bu" 4
+More advanced logic in choosing when to create bloom filters\&.
+.PP
+
+.IP "\(bu" 2
+LSM specific \fBWT_SESSION::create\fP configuration option enhancements\&. Including:
+.IP "  \(bu" 4
+Move existing options into their own group, and strip leading lsm_ prefix\&.
+.IP "  \(bu" 4
+Add a new merge_max configuration option\&.
+.IP "  \(bu" 4
+Update the default chunk_size to be 10MB\&.
+.IP "  \(bu" 4
+Increase the default bloom filter bit and hash counts\&.
+.IP "  \(bu" 4
+Clean up files left after interrupted merges\&. See the upgrading documentation for details\&. [#784, #785, #786, #802]
+.PP
+
+.IP "\(bu" 2
+\fBWT_SESSION::compact\fP can now be used to merge LSM trees into a small number of chunks on disk\&. [#792]
+.IP "\(bu" 2
+Enhanced the Java API, so that when WiredTiger automatically closes a handle, the handle is automatically invalidated for the Java application\&. [#485]
+.IP "\(bu" 2
+Add a script that can create an interactive web page to view statistics from a WiredTiger statistics log\&. Based on D3: http://d3js.org/
+.IP "\(bu" 2
+Enhancements to the wtperf performance testing tool to add new features
+.PP
+.PP
+.SS "WiredTiger release 1\&.6\&.6, 2013-11-19 "
+.PP
+The WiredTiger 1\&.6\&.6 release is a bugfix and performance tuning release\&.
+.PP
+This release of WiredTiger contains a database format change\&. Database files from previous releases will need to be upgraded\&.
+.PP
+A special note: the WiredTiger code base is now being regularly reviewed using the Coverity Static Analysis Verification Engine\&. We'd like to thank Coverity for their on-going support of Open Source projects like WiredTiger!
+.PP
+Significant changes include:
+.PP
+.IP "\(bu" 2
+Performance changes include: limiting operations done inside update serialization primitives, removing unnecessary memory barriers, replacing spinlocks with atomic instructions, padding structures to avoid false cache sharing, switching from per-file mutexes to per-page mutexes, pre-allocating structures to avoid memory allocation while holding mutexes, and using adaptive mutexes where available\&. [#707, #718, #719]
+.IP "\(bu" 2
+A number of LSM stability and performance improvements: changes include better merge algorithms, reduced locking, and higher concurrency\&.
+.IP "\(bu" 2
+A number of table compaction performance improvements, including changes allowing compaction to no longer read unnecessary file blocks into the cache, requires fewer passes over the file and support concurrent checkpoints and eviction\&. This change required an underlying file format change, see the upgrading documentation for details\&. [#756, #761]
+.IP "\(bu" 2
+WiredTiger statistics have been significantly improved:
+.PP
+Statistics logging has been changed to aggregate information from all open handles\&. [#709, #717]
+.PP
+For performance reasons, statistics are now disabled by default, see the upgrading documentation for details\&. [#715]
+.PP
+Statistics configuration has been changed so the connection and cursor configuration are consistent, with matching changes to the 'wt stat' command-line utility; see the upgrading documentation for details\&.
+.IP "\(bu" 2
+Update \fBWT_EVENT_HANDLER\fP interface to contain a new 'handle close' interface and to pass a \fBWT_SESSION\fP handle into all callbacks, see the upgrading documentation for details\&. [#649]
+.PP
+Add timestamp, process ID and thread ID to messages generated via \fBWT_EVENT_HANDLER\fP interface\&. [#753]
+.IP "\(bu" 2
+WiredTiger eviction improvements, supporting larger data-to-cache size ratios\&. [#754]
+.IP "\(bu" 2
+Various fixes for handling overflow records\&. [#726, #743]
+.IP "\(bu" 2
+Overflow records are no longer tracked during bulk-loads, significantly increasing bulk-load performance for some data sets\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.6\&.5, 2013-10-09 "
+.PP
+This is primarily a bugfix and performance tuning release\&. The main changes are:
+.PP
+.IP "\(bu" 2
+Change the default statistics_fast configuration from false to true\&.
+.IP "\(bu" 2
+Change \fBWT_CURSOR::insert\fP to not hold a position\&. [#673]
+.IP "\(bu" 2
+Disallow \fBWT_SESSION::compact\fP operations on LSM trees\&.
+.IP "\(bu" 2
+The 'sync' setting to wiredtiger_open has been renamed 'checkpoint_sync'\&.
+.IP "\(bu" 2
+Add a 'metadata:' cursor type\&. [#660]
+.IP "\(bu" 2
+Fix race in the cache's dirty byte tracking\&. [#635, #699]
+.IP "\(bu" 2
+Fix a bug scanning through a memory-mapped file with overflow items\&. [#701]
+.IP "\(bu" 2
+Use hardware checksum instructions when available\&. [#582, #702]
+.IP "\(bu" 2
+Several bug fixes related to tracking active transaction IDs and detection of obsolete updates with high concurrency workloads\&. [#639, #643, #657, #683]
+.IP "\(bu" 2
+Fix several bugs in LSM including races on shutdown and Bloom filter creation\&. [#686, #687, #688]\&.
+.IP "\(bu" 2
+Fix a bug in LSM where we were not including Bloom filter files in backups\&. [#684]
+.IP "\(bu" 2
+Optimize the LSM throttle and merge algorithms\&. [#676]
+.IP "\(bu" 2
+Make hot backups work concurrently with files being bulk-loaded\&. [#570, #653]
+.IP "\(bu" 2
+Add full support for snapshot isolation to LSM: only switch LSM chunks if all changes are globally visible and detect conflicts between transactions across file switches\&. [#629]
+.PP
+.PP
+.SS "WiredTiger release 1\&.6\&.4, 2013-08-20 "
+.PP
+This is primarily a bugfix and performance tuning release\&. The main changes are:
+.PP
+.IP "\(bu" 2
+Make prefix compression of keys conditional on the amount of space saved\&. A database format change was required for this enhancement\&. See upgrading documentation for details\&. [#624]
+.IP "\(bu" 2
+The default behavior of the wt utility's load command has been changed to overwrite existing data\&.
+.IP "\(bu" 2
+Add a \fBWT_SESSION\&.create\fP prefix_compression_min configuration option with a default value of 4\&. [#624] and [#624]
+.IP "\(bu" 2
+Fix 'make install' of Python API\&. [#598]
+.IP "\(bu" 2
+Require platform support for atomic read/write of 64 bit values\&. [#553]
+.IP "\(bu" 2
+Support transaction semantics for custom data source implementations\&. Enhance Memrata data source to support transactions\&.
+.IP "\(bu" 2
+Changes to the wtperf testing tool related to how configuration options are specified\&.
+.IP "\(bu" 2
+Enhance cursor key/value memory management to be more efficient, consistent, and have stricter checking of inputs and outputs\&.
+.IP "\(bu" 2
+Increase the likelihood of being able to evict hot pages\&. [#604]
+.IP "\(bu" 2
+Reference on-page keys instead of copying them to allocated memory\&. This saves space in the cache and overhead when reading pages into cache\&. [#592] and [#600]
+.IP "\(bu" 2
+Add a btree search optimization that skips matching prefixes\&. [#595]
+.IP "\(bu" 2
+Turn off Huffman encoding for keys on row-store internal pages\&. [#592]
+.IP "\(bu" 2
+Add concurrent logging infrastructure that will be used to support write ahead logging in a future release\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.6\&.3, 2013-07-12 "
+.PP
+This is a bugfix and performance tuning release\&. The main changes are:
+.PP
+.IP "\(bu" 2
+Change the default cursor overwrite configuration so that it is consistent across all data sources\&. This change may alter the behavior of existing applications without triggering any compilation or runtime warnings\&. See the upgrade documentation for details\&. [#512]
+.IP "\(bu" 2
+Require platform support for 64 bit atomic operations\&. [#553]
+.PP
+.PP
+.SS "WiredTiger release 1\&.6\&.2, 2013-06-18 "
+.PP
+This is a bugfix and performance tuning release\&. The main changes are:
+.PP
+.IP "\(bu" 2
+Fix a race in the WiredTiger pseudo random number generator that was leading to poor distribution of numbers\&.
+.IP "\(bu" 2
+Change the default compression configuration to 'uncompressed'\&.
+.IP "\(bu" 2
+Fix a race between checkpoints and LSM that could result in a crash\&. [#543]
+.IP "\(bu" 2
+Add an option to output version information at runtime\&. Configure by including 'verbose=[version]' in the wiredtiger_open connection configuration string\&. [#564]
+.IP "\(bu" 2
+Add a configurable prefix to error messages\&. [#527]
+.IP "\(bu" 2
+Add two new extension APIs, one to return a transaction ID, one to return if a transaction ID is visible to the current transaction\&.
+.IP "\(bu" 2
+Add standard metadata functions to the extension API and make extension data sources responsible for their own metadata entries\&.
+.IP "\(bu" 2
+Add a new extension function __wt_ext_config_strget that returns the configuration value from a single string\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.6\&.1, 2013-05-31 "
+.PP
+This is a bugfix and performance tuning release\&. The main changes are:
+.PP
+.IP "\(bu" 2
+Fix the compress_raw API so that it uses platform independent types\&. See the upgrade guide for further information\&. [#561]
+.IP "\(bu" 2
+Add an explicit enable setting to shared_cache configuration\&. See the upgrade guide for further information\&.
+.IP "\(bu" 2
+Fix several bugs in hot backup, including race conditions between backup and table drop (and other schema level operations)\&. [#556] [#557]
+.IP "\(bu" 2
+Allow any data source type for indices as well as column groups\&. [#545]
+.IP "\(bu" 2
+Preload btree internal pages into file system cache when opening a table\&.
+.IP "\(bu" 2
+Change the default allocation size to 4KB so that DIRECT_IO with 4KB blocks works\&. [#547]
+.IP "\(bu" 2
+Fix some bugs related to tracking the oldest active transaction\&. [#552]
+.IP "\(bu" 2
+Fix a bug in the extension API when using multiple databases\&.
+.IP "\(bu" 2
+Disallow named checkpoints on LSM trees - they aren't supported\&. [#546]
+.IP "\(bu" 2
+Fix support for custom collators with LSM trees\&. [#544]
+.IP "\(bu" 2
+Build fixes for gcc 4\&.1\&.2\&.
+.PP
+.PP
+See the upgrade documentation for details of API changes that may require altering existing applications\&.
+.PP
+.SS "WiredTiger release 1\&.6\&.0, 2013-05-16 "
+.PP
+This release contains new features, bug fixes and performance improvements\&. The significant changes are highlighted below:
+.PP
+.IP "\(bu" 2
+Fix a bug where configuring direct I/O could cause checksum errors at runtime\&. NOTE: database file format change\&. [#526]
+.IP "\(bu" 2
+Fix a race that allowed checkpoints to be deleted while hot backups are running\&. [#515]
+.IP "\(bu" 2
+Scale to events per second in graphs generated from statistics log output\&. [#518]
+.IP "\(bu" 2
+Changes to reduce the latency of LSM operations\&.
+.IP "\(bu" 2
+Add a new terminate callback to extension interfaces that is called when the WiredTiger connection is closed\&. [#530]
+.IP "\(bu" 2
+Various optimizations and bug fixes to cache management and eviction code\&.
+.IP "\(bu" 2
+Update various statistics\&.
+.IP "\(bu" 2
+Fix a bug where using a combination of read-committed and snapshot transactions could result in inconsistent values being returned\&. [#539]
+.IP "\(bu" 2
+Fix a bug where using LSM trees with compression enabled could result in an invalid system call\&. [#535]
+.IP "\(bu" 2
+Enhance statistics logging so that it can dump 'lsm:' statistics\&.
+.PP
+.PP
+See the upgrade documentation for information about database format changes in this release\&.
+.PP
+.SS "WiredTiger release 1\&.5\&.3, 2013-04-26 "
+.PP
+This release contains some major new features along with numerous bug fixes and performance improvements\&. The significant changes are highlighted below:
+.PP
+.IP "\(bu" 2
+Enhance the extension data source API to facilitate implementation of new data stores in WiredTiger\&.
+.IP "\(bu" 2
+Add support for the STEC / Memrata KVS data source\&.
+.IP "\(bu" 2
+Add a Berkeley DB data source via the WiredTiger extension API\&.
+.IP "\(bu" 2
+Various enhancements to cache eviction management\&. Mostly to avoid stalls in application threads\&.
+.IP "\(bu" 2
+Fixes to shared cache pool implementation, so resources are more aggressively reallocated\&.
+.IP "\(bu" 2
+Add new statistics\&.
+.IP "\(bu" 2
+Implement automatic insert throttling in LSM - enabled by default\&.
+.IP "\(bu" 2
+Configuration strings are now case sensitive\&.
+.IP "\(bu" 2
+Enhance LSM merge algorithms to be more efficient as trees grow very large\&.
+.PP
+.PP
+See the upgrade documentation for details of API changes that may require altering existing applications\&.
+.PP
+.SS "WiredTiger release 1\&.5\&.2, 2013-03-28 "
+.PP
+This is a bugfix release\&. The main changes are:
+.PP
+[#493] Fix get_key/value in the Java API for complex cursors\&.
+.PP
+.IP "\(bu" 2
+Fix a leak in eviction detected by valgrind\&.
+.IP "\(bu" 2
+Stop trying to cache the oldest reader: we only use it for eviction and only update it when required\&.
+.IP "\(bu" 2
+Track cursor creation in the statistics (creating a cursor per operation isn't a good idea)\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.5\&.1, 2013-03-25 "
+.PP
+This is a bugfix and performance tuning release\&. The main changes are:
+.PP
+.IP "\(bu" 2
+Fix several bugs in LSM:
+.IP "  \(bu" 4
+the logic for setting the 'no eviction' flag on LSM chunks was reversed, causing unnecessary eviction once the cache became full;
+.IP "  \(bu" 4
+calling session\&.checkpoint while writing to an LSM tree could confuse the logic around switching to new chunks; and
+.IP "  \(bu" 4
+fix a possible NULL pointer indirection when switching chunks\&.
+.PP
+
+.IP "\(bu" 2
+Make WT_ASSERT a no-op when not in DIAGNOSTIC mode\&.
+.IP "\(bu" 2
+Panic if we find a block on the wrong list, that's not something we can recover from\&.
+.IP "\(bu" 2
+If a page is reconciled (causing it's on-disk blocks to be freed and potentially recycled), and then a subsequent collapse of a stack of split-merge pages replaces that page with a page that has not yet been reconciled, we can potentially free the same blocks twice\&. The fix is to clear the page's WT_REF\&.addr field at the time we free the blocks, so future reconciliations will ignore the original disk blocks\&.
+.IP "\(bu" 2
+Fix a bug in the dump utility that allowed index URIs\&.
+.IP "\(bu" 2
+Tweak merge to build better trees with random insert workloads\&.
+.IP "\(bu" 2
+Don't use a stale value for the oldest reader transaction ID\&.
+.IP "\(bu" 2
+Track the size of the WT_REF array in internal pages (including WT_ADDRs)\&. Also add an estimate of per-allocation overhead\&.
+.IP "\(bu" 2
+Fix a bug where URIs containing absolute paths were not being parsed correctly\&.
+.IP "\(bu" 2
+Add a RMW insert mode to wtbench\&.
+.PP
+.PP
+[#427] Improve cleanup after a failed wiredtiger_open call\&.
+.PP
+[#484] Don't allow true/false values in config strings where integers are expected\&.
+.PP
+[#486] Move the cache full check for autocommit transactions out of the rollback path (since we don't reset cursors there), to after we close a cursor\&.
+.PP
+[#488] Fix an assertion failure if we try to do eviction without ever having done an update\&.
+.PP
+.SS "WiredTiger release 1\&.5\&.0, 2013-03-14 "
+.PP
+This release contains some major new features along with numerous bug fixes and performance improvements\&. The significant changes are highlighted below:
+.PP
+.IP "\(bu" 2
+Add a Java API\&.
+.IP "\(bu" 2
+Create a thread to do automatic checkpoints, configured by passing 'checkpoint=(wait=X)' to wiredtiger_open\&.
+.IP "\(bu" 2
+Add support for periodically logging statistics to a file and a tool to generate graphs based on those logs\&. Configured by passing 'statistics_log=(wait=X)' to wiredtiger_open\&.
+.IP "\(bu" 2
+Several changes to minimize the impact of checkpoints on other threads\&.
+.IP "\(bu" 2
+When reading from checkpoints, use mmap by default\&.
+.IP "\(bu" 2
+Enhance eviction so that internal pages take up less space\&.
+.IP "\(bu" 2
+Add maximum filesystem buffer cache settings to wiredtiger_open called 'os_cache_max' and 'os_cache_dirty_max'\&. After doing the specified amount of reads or writes, WiredTiger will call fadvise and/or sync_file_range to drop pages from the filesystem cache\&. This is an alternative to direct I/O with less impact on performance\&.
+.IP "\(bu" 2
+Make run-time statistics optional, defaulted to 'off'\&.
+.IP "\(bu" 2
+Change how we detect if shared cache is used\&. It used to rely on a name, now it will be used if the shared_cache configuration option is included\&.
+.IP "\(bu" 2
+Add the ability to specify a per-connection reserved size for cache pools\&. Ensure cache pool reconfiguration is honoured quickly\&.
+.IP "\(bu" 2
+Rework hazard pointer coupling during cursor walks to be more efficient\&.
+.IP "\(bu" 2
+Add a cache_eviction_walk statistic to track the pages we walk and a cache_eviction_force statistic to track the count of pages queued for forced eviction\&.
+.IP "\(bu" 2
+Fixes to reduce the number of operations on shared data that were causing bottlenecks in read only workloads\&.
+.IP "\(bu" 2
+Add streaming pack / unpack to the API\&.
+.IP "\(bu" 2
+Add some basic reconciliation stats to the connection stats\&.
+.IP "\(bu" 2
+In LSM, keep trying to switch if there is an error: it may be transient\&.
+.IP "\(bu" 2
+Minor clean up and enhancement for the reconciliation statistics, add a set of compression statistics, both to the data-source statistics\&.
+.IP "\(bu" 2
+Compaction cannot run at the same time as a checkpoint: the problem is that checkpoints review page reconciliation information and checkpoints update page reconciliation information\&. Lock out checkpoints while compaction is running\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.4\&.2, 2013-01-14 "
+.PP
+[#387] Fast-path 'S' and 'u' formats in cursor\&.get_key and cursor\&.get_value\&.
+.PP
+[#407] Allow non-conflicting updates to complete concurrently\&.
+.PP
+[#418] Add code in to prioritize eviction of pages that are larger than a certain threshold\&. This avoids taking a performance hit when a huge page needs to be reconciled\&. Add a new memory_max_page configuration option\&.
+.PP
+[#419] If a page splits, it potentially creates a merge-split internal page and we potentially walk that page during fast-delete\&. The WT_REF\&.addr field doesn't point to a cell in that case and we'll drop core\&.
+.PP
+[#424] Add clarification wording for boolean configuration strings\&.
+.PP
+[#425] Perform checkpoints in the calling thread, don't block eviction: when evicting in a file that is being checkpointed, only evict clean pages\&. Also Do compaction in the calling thread instead of interrupting the eviction thread to do the work\&.
+.PP
+[#426] Fixes for automake 1\&.3\&.x\&. Allow examples to run in parallel: give each a unique home directory\&.
+.PP
+Make the tree build without HAVE_VERBOSE\&.
+.PP
+Fix some issues with LSM rename and add a Python test\&.
+.PP
+Track when cursors refer to memory returned by WiredTiger, copy it if required before dropping hazard pointers that might be protecting it\&.
+.PP
+Verify shouldn't ever modify the file -- don't bother checking for dirty pages, just discard everything\&.
+.PP
+When rolling forward to resolve key prefix compression, don't copy the key, we only need a reference to it, should speed up tables with lots of key prefix compression\&.
+.PP
+Requested changes for the \fBWT_COMPRESSOR::compress_raw\fP method API: pass in the configured object's page size as a convenience, and if \fBWT_COMPRESSOR::pre_size\fP is set, use it to determine the size of the destination buffer, rather than using the object's page size as the maximum needed\&.
+.PP
+.SS "WiredTiger release 1\&.4\&.1, 2012-12-12 "
+.PP
+This is a bugfix, cleanup and performance tuning release\&. The significant changes are highlighted below:
+.PP
+[215] Add a __wt_panic function that shuts down all of the WiredTiger APIs\&. Also add a new error return WT_PANIC which means there has been an error in the WiredTiger engine, and it should be restarted\&.
+.PP
+[409] Fix a bug populating column groups with complex schema\&. Also allow empty column lists in projection cursors\&.
+.PP
+[150] Add description of how to do index-only searches to the documentation\&.
+.PP
+[392] Move examples/c/ex_test_perf\&.c to bench/wtperf\&.
+.PP
+[322] Add support for statistics on schema-level objects i\&.e tables, column groups, indices\&.
+.PP
+.IP "\(bu" 2
+Enhance statistics, including changing the name of some statistics\&.
+.IP "\(bu" 2
+Fix a bug in the eviction server that could cause it to abort, leaving the system unusable\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.4\&.0, 2012-12-03 "
+.PP
+This release adds several major new features, a number of performance improvements and bug fixes\&. The significant changes are outlined below:
+.PP
+New features and API changes:
+.PP
+[242] Track the percentage of cache that is dirty, trigger eviction to bound it\&. This can be used to bound how much data checkpoints write\&.
+.PP
+[324] Add support for WT_COMPRESS::compress_raw, which lets the compression routine select how many rows are included in each disk block\&.
+.PP
+[381] Add statistics to track read and write amplification (application data size versus I/O size)
+.PP
+.IP "\(bu" 2
+Add a trigger configuration option to \fBWT_SESSION::compact\fP API\&.
+.IP "\(bu" 2
+Make \fBWT_SESSION::create\fP's checksum configuration 3-state: on, off, or uncompressed blocks only\&.
+.PP
+.PP
+Bug fixes:
+.PP
+.IP "\(bu" 2
+Fix build issues on Solaris\&.
+.IP "\(bu" 2
+Fix a bug calculating the generation of an LSM merge\&.
+.IP "\(bu" 2
+Fix WiredTiger dump and load for tables\&.
+.IP "\(bu" 2
+Fix a memory leak in checkpoints\&.
+.IP "\(bu" 2
+Improve accuracy of cache memory tracking with overflow items\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.3\&.8, 2012-11-22 "
+.PP
+This release improves the performance of LSM trees, changes how statistics are reported and adds a shared cache implementation:
+.PP
+New features and API changes:
+.PP
+[232] Add a 'size of checkpoint' statistic\&.
+.PP
+.IP "\(bu" 2
+Add a shared cache pool implemention\&. Manages a single cache among multiple databases within a process\&.
+.IP "\(bu" 2
+Merge statistics from file and LSM sources into a 'data source' statistic structure\&. Rename and regroup some shared stastistics\&. Add a helper to the Python API to lookup in a cursor in a simple expression\&.
+.IP "\(bu" 2
+Add support for sub groups of options in configuration strings\&.
+.PP
+.PP
+Performance tuning for LSM trees:
+.PP
+.IP "\(bu" 2
+Don't try to merge with a chunk that is much larger than a small chunk\&.
+.IP "\(bu" 2
+After an LSM merge, fault in some pages before the new tree goes live to avoid stalling application threads\&.
+.IP "\(bu" 2
+Don't automatically fail inserts if the write generation check fails: compare keys instead\&.
+.IP "\(bu" 2
+Switch the LSM tree lock to a read/write lock, so cursors can read the state of the tree in parallel\&.
+.PP
+.PP
+Bug fixes:
+.PP
+.IP "\(bu" 2
+Fix a bug where we could write past the end of a buffer after it was grown\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.3\&.7, 2012-11-09 "
+.PP
+This release fixes a bug and improves performance with Bloom filters:
+.PP
+.IP "\(bu" 2
+Drop any old Bloom filter before creating a new one -- we may have been interrupted in between creating it and updating the metadata\&. Write the metadata after creating missing Bloom filters\&.
+.IP "\(bu" 2
+Use a separate thread for creation of Bloom filters for the newest, unmerged LSM chunks\&.
+.IP "\(bu" 2
+Changes to the ex_test_perf example: change the default configuration to 4KB pages and disable prefix compression\&. Change the '-i' command line option to be a simple count of records to insert\&. Clean up error handling and add option to populate using multiple threads\&.
+.IP "\(bu" 2
+Clarify the docs for the default buffer_alignment setting\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.3\&.6, 2012-11-06 "
+.PP
+This is a bugfix and performance tuning release\&. The changes are as follows:
+.PP
+.IP "\(bu" 2
+Rename the WiredTiger installed modules to libwiredtiger_XXX\&. Don't install the nop and reverse collator modules\&.
+.IP "\(bu" 2
+Replace test/format's bzip configuration string with compression, which can take one of four arguments (none, bzip, ext, snappy), change format to run snappy compression if the library is available\&.
+.IP "\(bu" 2
+Rename the builtin block compressor names from 'bzip2_compress' to 'bzip2', and from 'snappy_compress' to 'snappy'\&.
+.IP "\(bu" 2
+Support multiple LSM merge threads with the 'lsm_merge_threads' config key\&. Use IDs rather than array index to mark the start chunk in a merge, in case we race with another thread\&.
+.IP "\(bu" 2
+Cache the hash values used for Bloom filter lookups, rather than hashing for each Bloom filter in an LSM tree\&.
+.IP "\(bu" 2
+Only switch trees in an LSM cursor if the primary chunk is on disk\&.
+.IP "\(bu" 2
+Add a per-btree cache priority, currently only used to make it more likely for Bloom filter pages to stay in cache\&.
+.IP "\(bu" 2
+Only evict pages with read generations in the bottom quarter of the range we see\&. Fix a 32-bit wrapping bug in assigning read generations\&.
+.IP "\(bu" 2
+For update-only LSM cursors, only open a cursor in the primary chunk\&.
+.IP "\(bu" 2
+LSM: Report errors from the checkpoint thread\&.
+.IP "\(bu" 2
+LSM: only save a Bloom URI in the metadata after it is successfully created\&.
+.IP "\(bu" 2
+LSM: Create missing Bloom filters when reading from an LSM tree if 'lsm_bloom_newest'is set\&.
+.IP "\(bu" 2
+LSM: Include all of the chosen chunks in a merge\&. Only pin the current chunk in an LSM cursor if it is writeable\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.3\&.5, 2012-10-26 "
+.PP
+This is a bugfix and performance tuning release\&. The changes are as follows:
+.PP
+[#370] Document that applications are responsible for figuring out their upgrade path if they might swap out compression engines\&.
+.PP
+[#371] When a single session was used to reconcile multiple btrees, one of which had dictionaries configured and one of which didn't, we failed to clear the dictionary when starting page reconciliation\&. Be consistent, never use anything other than the btree handle's configuration to decide if we're using a dictionary in a reconcilation run\&.
+.PP
+[#372] Fix several potential integer overflow bugs\&.
+.PP
+[#373] Fix a bug where calls that performed an operation on multiple objects (such as creating a table that implicitly creates a column group) could leave the metadata incomplete if a process exited without calling \fC\fBWT_CONNECTION::close\fP\fP\&. Hold the schema lock while opening tables\&. Fixes the error 'cannot be
+       opened until all column groups are created' message when create calls race with open_cursor\&.
+.PP
+[#374] Fix a race that caused crashes when using the Python API with multi-threaded code\&.
+.PP
+[#375] Fix a bug in __wt_cond_wait - so that it returns after timeout expires\&.
+.PP
+.IP "\(bu" 2
+Protect the list of LSM trees with the schema lock to avoid races during create\&.
+.IP "\(bu" 2
+Update ex_test_perf to output statistics during populate and improve timing accuracy\&.
+.IP "\(bu" 2
+Skew eviction in favor of leaf pages - which improves read-only performance for large LSM trees\&.
+.IP "\(bu" 2
+Hold the LSM tree lock while gathering statistics\&.
+.IP "\(bu" 2
+Fix a bug in bulk load of bitmap files\&.
+.IP "\(bu" 2
+Fix a related bug in the bloom code that uses bitmap stores\&.
+.IP "\(bu" 2
+Don't attempt to drop the first chunk of an LSM tree before creating it\&.
+.IP "\(bu" 2
+Instead of entering a fake key cell after the last cell on the page just in case the page ends with a key cell which has no value, use the end of the page to detect that case\&.
+.IP "\(bu" 2
+Cache cursor key/value formats in Python, to save a native call from every get_key/value\&.
+.IP "\(bu" 2
+Don't sync the directory after open if the global 'sync' flag is false\&.
+.IP "\(bu" 2
+Fix a race for LSM trees that could happen if two threads race to open a cursor and drop the LSM tree\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.3\&.4, 2012-10-19 "
+.PP
+This release includes several important new features, including:
+.PP
+.IP "\(bu" 2
+support for online compaction of files;
+.IP "\(bu" 2
+support for tables, column groups and indices that use LSM trees for storage; and
+.IP "\(bu" 2
+improved statistics and configuration for LSM trees and Bloom filters\&.
+.PP
+.PP
+In addition, there are some significant performance improvements and bug fixes\&. The full list of changes is:
+.PP
+[#248] Add support for online compaction\&.
+.PP
+[#310] Fixed a bug where overflow blocks could be accessed by a long-running reader after they had been freed in a checkpoint\&.
+.PP
+[#358] Allocate checkpoint blocks from the live system's list of available blocks rather than always extending the file\&.
+.PP
+[#361] Sync the directory after creating a file: this is apparently required for durability on Linux, according to the Linux fsync man page\&.
+.PP
+[#362] Don't check if a page is on the avail or discard lists if we're salvaging the file, that is okay\&.
+.PP
+[#363] Remove obsolete code dealing with forced eviction\&.
+.PP
+[#366] Fake checkpoints may have the delete flag set, ignore them when rolling checkpoints forward\&.
+.PP
+[#367] All metadata reads should ignore the application's transactional context\&.
+.PP
+[#369] Support LSM as a data source for tables, column groups and indices\&.
+.PP
+.IP "\(bu" 2
+Add tuning options for LSM bloom filters, including controlling whether the oldest level in the tree has a Bloom filter, whether newly-created (level 0) files have Bloom filters, and passing arbitrary file configuration for Bloom filters\&.
+.IP "\(bu" 2
+Add a merge generation to LSM chunks\&. Add a statistic that reports the highest merge generation in a tree\&.
+.IP "\(bu" 2
+Add a new LSM statistic tracking searches that could benefit from bloom filters\&.
+.IP "\(bu" 2
+Enable LSM statistics in the 'wt stat' utility\&.
+.IP "\(bu" 2
+Interrupt LSM merge operations, rather than waiting on close\&.
+.IP "\(bu" 2
+Wait for a while before looking for LSM major merges, in case merges catch up with inserts\&.
+.IP "\(bu" 2
+Fix LSM index searches\&. The main issue was LSM search_near was not always returning the closest key to the search key, which calling code expects\&. It now tries hard to find the smallest cursor larger than the search key, and only if no larger record exists does it return the largest record smaller than the search key\&.
+.IP "\(bu" 2
+Reset any old cursor position before an LSM search\&. This limits hazard references in an LSM search to a single chunk\&.
+.IP "\(bu" 2
+Fix a memory leak in an error path in Bloom filters\&.
+.IP "\(bu" 2
+Tweak the search loops in hazard_{set,clear} in favor of last-in-first-out ordering\&.
+.IP "\(bu" 2
+If there are many files open, some hotter than others, walk more files looking for pages to evict\&.
+.IP "\(bu" 2
+Don't stop evicting until we reach the target, have eviction wake up periodically regardless of whether the application signals it\&. This latter requires a 'timed condition wait' operation\&.
+.IP "\(bu" 2
+Tweaks to file handle flags for out-of-cache read performance on Linux (disable readahead and access time updates)\&.
+.IP "\(bu" 2
+Replace the WT_SESSION::dumpfile method with configuration strings to \fBWT_SESSION::verify\fP\&.
+.IP "\(bu" 2
+Fix a bug where we weren't skipping unnecessary default checkpoints because we weren't handling the generational number included in the internal checkpoint name\&.
+.IP "\(bu" 2
+Add a 'force' configuration flag to \fBWT_SESSION::checkpoint\fP, object compaction needs it because the work it wants done is done by the block manager\&.
+.IP "\(bu" 2
+Make compact and checkpoint operate on a table's indices\&.
+.IP "\(bu" 2
+When doing a page truncate, lock down the page before we unpack the on-page cell -- it's possible the page could be instantiated, modified and reconciled while we're sleeping, in which case the WT_REF\&.addr field would no longer point on-page\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.3\&.3, 2012-10-11 "
+.PP
+This is a bugfix and performance tuning release, primarily related to LSM trees\&. The changes are as follows:
+.PP
+[#350] Checkpoint the metadata after successful schema-level operations\&. Otherwise, if process exits without closing the connection or running a checkpoint, created objects exist but there is no record in the metadata\&.
+.PP
+[#351] Don't put checkpoint extent blocks on the available list, blocks on it are considered for truncation; they have to go on the 'checkpoint
+       available' list\&.
+.PP
+.IP "\(bu" 2
+Choose LSM merges based on a measure of efficiency (levels collapsed per record), rather than simply choosing a minor or a major merge\&. Tweak the merge heuristic so we don't end up with runs of smaller chunks in the middle of the tree\&.
+.IP "\(bu" 2
+Add a connection-wide flag to disable LSM merges\&.
+.IP "\(bu" 2
+Don't create Bloom filters for the oldest chunk in the system\&. Add the ability to disable Bloom filters entirely\&.
+.IP "\(bu" 2
+Fix fast-path for bit values in \fBWT_CURSOR::set_value\fP\&.
+.IP "\(bu" 2
+Clean up allocation of LSM chunk IDs\&.
+.IP "\(bu" 2
+Update bloom_get so that it doesn't hold a cursor position\&.
+.IP "\(bu" 2
+Respect the page size for fixed-length column stores, remembering there are 8 bits per byte\&.
+.IP "\(bu" 2
+Support bulk loading a bitmap into a fixed-length column store, update Bloom filter code to use this\&.
+.IP "\(bu" 2
+Add an example program, ex_test_perf, to demonstrate basic LSM usage\&.
+.IP "\(bu" 2
+Add a new statistics cursor type 'statistics:lsm'\&. Update ex_stat\&.c to demonstrate usage\&.
+.IP "\(bu" 2
+Add a statistics_fast flag to file statistics cursors\&. Update LSM statistics so that they aggregate some cache statistics\&. Add ability to open a statistics cursor on a checkpoint\&.
+.IP "\(bu" 2
+Walk a constant number of pages for LRU eviction\&.
+.IP "\(bu" 2
+Move the cache full check to after an update operation completes, when it is no longer holding hazard references\&. This improves behavior with small caches\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.3\&.2, 2012-10-03 "
+.PP
+This is a bugfix and performance tuning release, primarily related to LSM trees\&. The changes are as follows:
+.PP
+.IP "\(bu" 2
+Implement minor merges for LSM trees, prefer them to major merges\&.
+.IP "\(bu" 2
+Update hazard references, so the active array grows as needed\&. Change the default hazard_max to 1000\&.
+.IP "\(bu" 2
+Abort transactions if the cache is so full that they cannot make progress\&.
+.IP "\(bu" 2
+Fix a bug where verify could crash if an empty checkpoint exists\&.
+.IP "\(bu" 2
+Make the maximum number of chunks for merges configurable, rather than deriving a value from the number of hazard references available\&.
+.IP "\(bu" 2
+Switch to an atomic add to allocate transaction IDs\&. This fixes a subtle race before where two threads could temporarily have the same ID in the global state table\&. If one of the threads timed out and the other thread committed its transaction with that ID, the commit would not become visible immediately\&. This could lead to deadlock errors in workloads that are logically conflict-free\&.
+.IP "\(bu" 2
+Have auto-commit transactions retry deadlocks\&. This requires that we keep the user's key and value in the cursor\&.
+.IP "\(bu" 2
+Simplify the code handling updated records in variable-length column-store reconciliation\&.
+.IP "\(bu" 2
+Never wait for eviction when holding the schema lock\&. This avoids deadlocks between opening a column store file and taking a checkpoint\&.
+.IP "\(bu" 2
+Take care with the loop termination when walking files for eviction\&. We were making one extra call into __wt_tree_walk, which would leave a leaf page in the WT_REF_EVICT_WALK state, unable to be evicted\&. In some workloads, including LSM loads, we could end up with many files all consisting of a single leaf page, none of which could be evicted\&.
+.IP "\(bu" 2
+Pause updates when the cache is full\&.
+.IP "\(bu" 2
+In files marked as 'out of cache', don't wait for eviction when reading a page\&.
+.IP "\(bu" 2
+Fix the record count calculation for minor merges\&. This was leading to no Bloom filter being created for minor merges after running for some time, leading to merges taking increasingly long to complete\&.
+.IP "\(bu" 2
+Only sleep in the LSM checkpoint thread if no work is done\&.
+.IP "\(bu" 2
+Add sanity check of cache size to LSM open\&.
+.PP
+.PP
+[#338] Create fake checkpoints until an object is modified, so that a checkpoint between the cursor create and the bulk load doesn't make it impossible to do a bulk-load on the cursor\&.
+.PP
+.SS "WiredTiger release 1\&.3\&.1, 2012-09-25 "
+.PP
+This is a bugfix release, primarily related to LSM trees\&. The changes are as follows:
+.PP
+[#309] Implement auto-commit of transactions at the API\&. As well as ensuring the atomicity of complex operations, this change simplified code that simulated auto-commit internally and fixed a number of bugs\&.
+.PP
+[#321] Bulk-cursors no longer block checkpoints\&. We can't write files that are being bulk-loaded, so change checkpoint to create checkpoints in the metadata that, if accessed, look like empty files\&.
+.PP
+Tighten down the requirements for bulk-load, the only thing that can be bulk-loaded now is a newly created tree, not any empty file\&.
+.PP
+[#329] Add dictionary support to variable-length column store objects\&. Support large row-store reconciliation dictionaries: add a skiplist as the indexing mechanism\&.
+.PP
+[#333] Fix a leak of the in-memory transaction log structure and the LSM data source handle\&.
+.PP
+[#334] Fix a memory leak where a page's replacement address wasn't being freed\&.
+.PP
+.IP "\(bu" 2
+Check that LSM trees are not configured as column stores\&.
+.IP "\(bu" 2
+Fix a race when starting the LSM worker thread\&. It was possible for the thread to exit immediately if it started fast enough\&.
+.IP "\(bu" 2
+Two fixes for LSM, one to ensure that cursors read from a checkpoint if one is available\&. The other to reduce the number of empty chunks that can be created initially\&.
+.IP "\(bu" 2
+Fix a bug that disabled bloom filters\&.
+.IP "\(bu" 2
+The configure script checks for Python support in SWIG\&.
+.IP "\(bu" 2
+If a drop operation fails to acquire all of the handle locks it needs, make sure it releases the primary handle lock\&.
+.IP "\(bu" 2
+Fix a number of other minor bugs and memory leaks\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.3\&.0, 2012-09-17 "
+.PP
+This release contains a number of major new features, including:
+.PP
+.IP "\(bu" 2
+support for LSM trees with Bloom filters;
+.IP "\(bu" 2
+support for hot backups; and
+.IP "\(bu" 2
+support for fast truncation of files\&.
+.PP
+.PP
+In addition, there are some critical bug fixes\&. We recommend that all users upgrade\&. Here is the full list of changes:
+.PP
+[#143] Implement random record lookups\&.
+.PP
+[#168] Add support for LSM trees\&.
+.PP
+[#168] Add support for Bloom filters in LSM trees\&.
+.PP
+[#198] Handle page-generation wraparound\&.
+.PP
+[#236] Implement hot backups\&.
+.PP
+[#244] Index cursors for column-store objects may not be created using the record number as the index key\&.
+.PP
+[#247] Add a fast-path for \fBWT_SESSION::truncate\fP that avoids reading most data to be deleted\&.
+.PP
+[#259] Performance hack for cursor open: don't parse the configuration strings for a default value if the application didn't specify a configuration string\&.
+.PP
+[#262] Disable dump on child cursors: only the top-level cursor is wrapped in a dump cursor\&.
+.PP
+[#266] Deal with new / dropped indices in __wt_schema_open_index\&.
+.PP
+[#269] Checkpoint handles must not be open when they are overwritten\&.
+.PP
+[#271] Add support for a reserved checkpoint name 'WiredTigerCheckpoint' that opens the object's last checkpoint\&.
+.PP
+[#271] Add the ability to access unnamed checkpoints\&.
+.PP
+[#274] Change cursor\&.equals to return a standard error value and store the cursor equality result in a separate argument\&.
+.PP
+[#275] If exclusive handle is required for an operation and it is not available, fail immediately: don't block\&.
+.PP
+[#276] Fix methods that return integer parameters from Python\&. This includes cursor\&.equals and cursor\&.search_near\&.
+.PP
+[#277] Acquire the schema lock when creating the metadata file\&. We're single-threaded, so it isn't protecting against anything, but the handle management code expects to have the schema lock\&.
+.PP
+[#279] Some optimizations for __wt_config_gets_defno\&. Specifically, if we're dealing with a simple stack of config strings, just parse the application string rather than the full list of defaults\&.
+.PP
+[#279] Split the description string into a set of structures, to reduce the number of string comparisons and manipulation that's required\&.
+.PP
+[#282] Remove the cursor\&.reconfigure method, and replace it with documentation showing how to 'reconfigure' cursors using the session\&.open_cursor method to duplicate them with different configuration strings\&.
+.PP
+[#284] Fix for a hazard reference race, where page eviction races with the creation of the hazard reference, we have to check the pointer itself as well as the state of the pointer\&.
+.PP
+[#285] We can clear the tree's modified flag on checkpoint, as long as the checkpoint writes all modifications\&. Clear the tree's modified flag before we start the checkpoint, but reset it as necessary if reconciliation is unable to write all of the changes in a page\&.
+.PP
+[#287] Fix __wt_config_check to handle overlapping config values correctly\&.
+.PP
+[#289] Add support for read-committed isolation, make it the default\&. Add a session-level 'isolation' setting\&.
+.PP
+[#294] If txn_commit fails, document the transaction was rolled-back\&.
+.PP
+[#295] Expand the documentation on using cursors without explicit transactions\&.
+.PP
+[#300] Include all changes whenever closing a file, don't check for visibility\&. If updates are skipped while evicting a page, give up\&.
+.PP
+[#305] Have 'wt dump' fail more gracefully if the object doesn't exist\&.
+.PP
+[#310] When freeing a tracked address in reconcilation, clear it to avoid freeing the same address again on error\&.
+.PP
+[#314] Replace cursor\&.equals with cursor\&.compare
+.PP
+[#319] Clear the bulk_load_ok flag when closing handles\&.
+.PP
+.IP "\(bu" 2
+Add an 'ancient transaction' statistic so we can find out if they're actually occurring in the field\&.
+.IP "\(bu" 2
+Add an 'was object ever modified' flag to the btree handle, and use it to avoid writing read-only objects during internal checkpoints, issue
+.IP "\(bu" 2
+Add per-connection statistics counters for transaction checkpoint, begin, commit and rollback\&. Add per-btree statistics counters for update conflicts\&.
+.IP "\(bu" 2
+Another fixed-length column-store implicit record fix: if the earliest row in the object is row 10, and it's on an append list, we still must return rows 1-9, they've been implicitly created\&.
+.IP "\(bu" 2
+Bulk cursors: disallow cursor\&.{equals,next,prev,reset,search, search_near,update,remove}; only close and insert are supported\&.
+.IP "\(bu" 2
+Change session\&.truncate to support any cursor position for range truncation, not just keys that are known to exist\&.
+.IP "\(bu" 2
+Checkpoint has to flush the metadata file, but only after it's flushed all of the other files\&.
+.IP "\(bu" 2
+Discard obsolete WT_UPDATE structures during updates\&.
+.IP "\(bu" 2
+Document that duplicated cursors are positioned at the same point as the cursor that was duplicated\&.
+.IP "\(bu" 2
+Fix a (very unlikely) deadlock at startup, if an application issues a checkpoint before the eviction server has managed to open its sesssion\&.
+.IP "\(bu" 2
+Fix a core dump if we verify a file that's corrupted such that we are unable to load any checkpoints at all, and the per-checkpoint bit map is never set\&.
+.IP "\(bu" 2
+If a page selected for eviction cannot be freed because it has some recent updates, try instead to free memory by trimming old updates\&.
+.IP "\(bu" 2
+If a thread fails to evict a page, try to bump its snapshot\&. This avoids the common case of read-committed threads getting stuck because one thread falls behind (e\&.g\&., because we can't evict during a checkpoint)\&.
+.IP "\(bu" 2
+If an exclusive table create fails, return EEXIST\&.
+.IP "\(bu" 2
+If we try to remove a file that doesn't exist, don't complain, return success\&.
+.IP "\(bu" 2
+If we're repeatedly taking a checkpoint with the same name, skip the work for read-only objects\&.
+.IP "\(bu" 2
+Instead of flagging the empty tree's leaf page empty as part of creating an empty tree in memory, set the page as modified (to force reconciliation); if the leaf page is still empty at that time, then we'll figure it out during that reconciliation\&. This fixes a memory leak where the leaf page of a empty tree wasn't being freed\&.
+.IP "\(bu" 2
+It's not unreasonable to open a cursor on a non-existent table, don't complain, just return not-found\&.
+.IP "\(bu" 2
+Move dist/RELEASE to the top level of the tree\&.
+.IP "\(bu" 2
+Optimization: don't repeatedly look up btree handles for schema operations\&.
+.IP "\(bu" 2
+Return keys from all operations: don't keep pointing to the application's key\&.
+.IP "\(bu" 2
+Update btree usage of 64 bitstring implementation, so it's cleaner\&.
+.IP "\(bu" 2
+Update the bitstring implementation to use 64 bit length strings\&.
+.IP "\(bu" 2
+Updates performed without an active transaction should become visible with the current transaction ID\&.
+.IP "\(bu" 2
+Upgrade to doxygen 1\&.8\&.x
+.IP "\(bu" 2
+Use a real snapshot transaction for checkpoints\&. Otherwise, the snapshot can be updated in between checkpointing multiple files (when updating the metadata)\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.2\&.2, 2012-06-20 "
+.PP
+This is a bugfix release\&. The changes are as follows:
+.PP
+.IP "\(bu" 2
+Defer making free pages available until the end of a checkpoint, in case there is a failure after processing some files\&.
+.IP "\(bu" 2
+When checking the value of the 'isolation' key, don't assume it is NUL terminated\&. This bug could cause transactions to run with incorrect isolation\&.
+.IP "\(bu" 2
+Fix two bugs with snapshot isolation:
+.IP "  1." 6
+reset the isolation level when the transaction completes;
+.IP "  2." 6
+when checking visibility, check item's ID against the maximum snapshot ID (not the transaction's ID)\&.
+.PP
+
+.PP
+.PP
+.SS "WiredTiger release 1\&.2\&.1, 2012-06-15 "
+.PP
+This is a bugfix release\&. The changes are as follows:
+.PP
+.IP "\(bu" 2
+Avoid a deadlock between eviction and checkpoint on the connection spinlock\&.
+.IP "\(bu" 2
+Allocate 'desc' buffers in heap memory so that they are correctly aligned (fixes direct_io support on Linux)\&.
+.IP "\(bu" 2
+Initialize the snapshot-avail list after cleaning it out, else we'll try and print a NULL pointer in VERBOSE mode\&.
+.PP
+.PP
+.SS "WiredTiger release 1\&.2\&.0, 2012-06-04 "
+.PP
+This release contains many bugfixes and improvements\&. The major changes are:
+.PP
+[#138] Add support for transactions with coarse-grained durability\&. Transactions provide atomicity guarantees and rollback, and uncommitted changes are never written to disk\&. There is no on-disk log, so committed changes only become durable when the next checkpoint completes\&. Checkpoints are implemented by creating transactionally-consistent snapshots within data files\&.
+.PP
+[#156] Fully support operations that make schema changes with multiple sessions open concurrently\&.
+.PP
+[#159] Disable internal page key suffix compression if a custom collator is configured\&. This avoids issues with collators that require complete keys\&.
+.PP
+[#167] Add support for durable snapshots within files\&. While a snapshot is active, the pages used by the snapshot will not be overwritten\&. If a file is accessed after a crash or application exit without calling \fBWT_CONNECTION::close\fP, any changes made after the last snapshot will be silently ignored\&.
+.PP
+[#214, #216] Fixes for forcing eviction with small caches\&.
+.PP
+.SS "WiredTiger release 1\&.1\&.5, 2012-04-26 "
+.PP
+Don't update a WT_REF after it has been unlocked\&.
+.PP
+Add an operation to set a flag atomically, use it to avoid racing on page flags\&.
+.PP
+Fix a race between sync and reading that could cause a segfault\&.
+.PP
+.SS "WiredTiger release 1\&.1\&.4, 2012-04-16 "
+.PP
+Check the versions of autoconf, automake and libtool to avoid failures when trying to build from the github tree with versions that are too old\&.
+.PP
+[#191] Create the schema table as part of creating the environment so that application threads don't race trying to create it later\&.
+.PP
+[#193] Split-merge pages have to be reconciled to mark their parents dirty
+.PP
+[#194] The dump utility should only output configuration that can be passed to \fBWT_SESSION::create\fP\&.
+.PP
+Eviction fixes for out-of-cache update workloads:
+.PP
+.IP "\(bu" 2
+Fix an unlikely bug where the EVICT_LRU flag was cleared when a page in the LRU queue was overwritten with itself during a walk\&. This led to an assertion failure when the page was later evicted\&.
+.IP "\(bu" 2
+Clear all unused eviction queue entries while holding the lru_lock\&.
+.IP "\(bu" 2
+Split WT_PAGE->flags so that there is no possibility of racing: (1) Move WT_PAGE_REC_* flags into WT_PAGE_MODIFY; (2) Use atomic operations to set and clear the remaining (2) page flags\&.
+.PP
+.PP
+Move the test/format threads setting into the CONFIG file\&.
+.PP
+.SS "WiredTiger release 1\&.1\&.3, 2012-04-04 "
+.PP
+Fix the 'exclusive' config for \fBWT_SESSION::create\fP\&. [#181]
+.IP "1." 4
+Make it work for files within a single session\&.
+.IP "2." 4
+Make it work for files across sessions\&.
+.IP "3." 4
+Make other data sources consistent with files\&.
+.PP
+.PP
+Fix an eviction bug introduced into 1\&.1\&.2: when evicting a page with children, remove the children from the LRU eviction queue\&. Reduce the impact of clearing a page from the LRU queue by marking pages on the queue with a flag (WT_PAGE_EVICT_LRU)\&.
+.PP
+During an eviction walk, pin pages up to the root so there is no need to spin when attempting to lock a parent page\&. Use the EVICT_LRU page flag to avoid putting a page on the LRU queue multiple times\&.
+.PP
+Layer dump cursors on top of any cursor type\&.
+.PP
+Add a section on replacing the default system memory allocator to the tuning page\&.
+.PP
+Typo in usage method for 'wt write'\&.
+.PP
+Don't report range errors for config values that aren't well-formed integers\&.
+.PP
+.SS "WiredTiger release 1\&.1\&.2, 2012-03-20 "
+.PP
+Add public-domain copyright notices to the extension code\&.
+.PP
+test/format can now run multi-threaded, fixed two bugs it found: (1) When iterating backwards through a skiplist, we could race with an insert\&. (2) If eviction fails for a page, we have to assume that eviction has unlocked the reference\&.
+.PP
+Scan row-store leaf pages twice when reading to reduce the overhead of the index array\&.
+.PP
+Eviction race fixes: (1) Call __rec_review with WT_REFs: don't look at the page until we've checked the state\&. (2) Clear the eviction point if we hit it when discarding a child page, not just the parent\&.
+.PP
+Eviction tuning changes, particularly for read-only, out-of-cache workloads\&.
+.PP
+Only notify the eviction server if an application thread doesn't find any pages to evict, and then only once\&.
+.PP
+Only spin on the LRU lock if there might be pages in the LRU queue to evict\&.
+.PP
+Keep the current eviction point in memory and make the eviction walk run concurrent with LRU eviction\&.
+.PP
+Every test now has err/out captured, and it is checked to assure it is empty at the end of every test\&.
+.PP
+.SS "WiredTiger release 1\&.1\&.1, 2012-03-12 "
+.PP
+Default to a verbose build: that can be switched off by running \fCconfigure --enable-silent-rules\fP)\&.
+.PP
+Account for all memory allocated when reading a page into cache\&. Total memory usage is now much closer to the cache size when using many small keys and values\&.
+.PP
+Have application threads trigger a retry forced page eviction rather than blocking eviction\&. This allows rec_evict\&.c to simply set the WT_REF state to WT_REF_MEM after all failures, and fixes a bug where pages on the forced eviction queue would end up with state WT_REF_MEM, meaning they could be chosen for eviction multiple times\&.
+.PP
+Grow existing scratch buffers in preference to allocating new ones\&.
+.PP
+Fix a race between threads reading in and then modifying a page\&.
+.PP
+Get rid of the pinned flag: it is no longer used\&.
+.PP
+Fix a race where btree files weren't completely closed before they could be re-opened\&. This behavior can be triggered by using a new session on every operation (see the new -S flag to the test/thread program)\&. [#178]
+.PP
+When connections are closed, create a session and discard the btree handles\&. This fixes a long-standing bug in closing a connection: if for any reason there are btree handles still open, we need a real session handle to close them\&.
+.PP
+Really close btree handles: otherwise we can't safely remove or rename them\&. Fixes test failures in test_base02 (among others)\&.
+.PP
+Wait for application threads in LRU eviction to drain before walking a file\&.
+.PP
+Fix a buffer size calculation when updating the root address of a file\&.
+.PP
+Documentation fix: 10% of 1MB is 100KB\&.
+.PP
+.SS "WiredTiger release 1\&.1\&.0, 2012-02-28 "
+.PP
+Add checks to the session\&.truncate method to ensure the start/stop cursors reference the same object and have been initialized\&.
+.PP
+Implement cursor duplication via \fBWT_SESSION::open_cursor\fP\&. [#161]
+.PP
+Switch to quiet builds by default\&.
+.PP
+Fix with automake version < 1\&.11, use foreign mode so that fewer top-level files are required\&.
+.PP
+If a session or connection method is about to return WT_NOTFOUND (some underlying object was not found), map it to ENOENT, only cursor methods return WT_NOTFOUND\&. [#163]
+.PP
+Save and restore session->btree in schema ops to simplify calling code\&. [#164]
+.PP
+Note the wiredtiger_open config string 'multiprocess' is not yet supported\&.
+.PP
+Move 'root:F' and 'version:F' entries for files into the value for 'file:F', so there is only a single record per file\&. [NOTE: SCHEMA CHANGE]
+.PP
+When parsing config strings, continue to the end of the string in case of repeated keys\&. [#124]
+.PP
+Don't require shared libraries unless Python is configured\&.
+.PP
+Add support for direct I/O, with the config 'direct_io=(data,log)'\&. Build with _GNU_SOURCE on Linux to enable O_DIRECT\&.
+.PP
+Don't keep the last page of column stores pinned: it prevented eviction of large trees created from scratch\&.
+.PP
+Allow application threads to evict pages from any tree: maintain a count of threads doing LRU in each tree and wait for activity to drain when closing\&. 

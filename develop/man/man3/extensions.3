@@ -1,0 +1,39 @@
+.TH "extensions" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+extensions \- Extending WiredTiger 
+WiredTiger can be extended in various ways, including:
+.PP
+.IP "\(bu" 2
+adding \fBCustom compression engines\fP,
+.IP "\(bu" 2
+\fBCustom Data Sources\fP, and
+.IP "\(bu" 2
+\fBby implementing the WT_COLLATOR interface\fP\&.
+.IP "\(bu" 2
+\fBby implementing the WT_EXTRACTOR interface\fP\&.
+.PP
+.PP
+Code that implements these interfaces can use the \fBWiredTiger Extension API\fP\&.
+.SH "Loadable extensions"
+.PP
+Loadable extensions, also known as modules, are libraries of code that can be loaded at runtime to add functionality to WiredTiger\&. To build a loadable extension, use \fCgcc -shared \&.\&.\&.\fP or \fClibtool -module \&.\&.\&.\fP, or the equivalent for your system\&.
+.PP
+Extensions can be loaded on an open connection by calling \fBWT_CONNECTION::load_extension\fP\&.
+.PP
+Extensions can be loaded during \fBwiredtiger_open\fP by passing the \fCextensions\fP configuration when the database is created\&. When used this way, the extensions will be loaded each time the database is opened, whether by your application or the \fBWiredTiger command line utility\fP\&.
+.PP
+The extension entry point, which defaults to \fBwiredtiger_extension_init\fP, is called for each loadable module\&. Applications must supply this entry point, which in turn usually calls \fBWT_CONNECTION::add_data_source\fP, \fBWT_CONNECTION::add_collator\fP and/or \fBWT_CONNECTION::add_compressor\fP to add functionality to WiredTiger\&.
+.SH "Extensions and recovery"
+.PP
+Some extensions, in particular \fBWT_COLLATOR\fP and \fBWT_COMPRESSOR\fP, are required in order to run recovery if \fClogging\fP is enabled\&. This means that they must be loaded using the \fCextensions\fP keyword to \fBwiredtiger_open\fP, because recovery runs before \fBwiredtiger_open\fP returns the \fBWT_CONNECTION\fP handle to the application\&.
+.SH "Local extensions"
+.PP
+If it is not feasible to separate application logic into a loadable extension separate from the executable, applications can use the reserved name \fClocal\fP as a path in the \fCextensions\fP list\&. This will search for the entry point in the running application, and should usually override the \fCentry\fP symbol\&.
+.PP
+Here is an example of a local entry point:
+.PP
+\fC wiredtiger_open(path, NULL, 'create,extensions=[local=(entry=my_extension_init)]') \fP
+.PP
+Note that databases created in this way can only be opened by applications that include the specified entry point\&. In particular, \fBthey cannot be accessed using the \fBWiredTiger command line utility\fP\fP\&. 

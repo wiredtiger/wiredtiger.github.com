@@ -1,0 +1,82 @@
+.TH "tune_cache" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_cache \- Cache and eviction tuning 
+
+.SH "Cache size"
+.PP
+The size of the cache is the single most important tuning knob for a WiredTiger application\&. Ideally the cache should be configured to be large enough to hold an application's working set\&.
+.PP
+The cache size for the database is normally configured by setting the \fCcache_size\fP configuration string when calling the \fBwiredtiger_open\fP function\&. The cache size can be adjusted after the open call with \fBWT_CONNECTION::reconfigure\fP\&.
+.PP
+An example of setting a cache size to 500MB:
+.PP
+.PP
+.nf
+        if ((ret = wiredtiger_open(home, NULL,
+            "create,cache_size=500M", &conn)) != 0)
+                fprintf(stderr, "Error connecting to %s: %s\n",
+                    home, wiredtiger_strerror(ret));
+.fi
+.PP
+ The effectiveness of the chosen cache size can be measured by reviewing the page eviction statistics for the database\&.
+.SH "Cache resident objects"
+.PP
+Objects can be created as cache resident - that is their contents will remain in cache and never be considered for the purposes of cache eviction\&. Cache residence can be configured with the \fBWT_SESSION::create\fP 'cache_resident' configuration string\&.
+.PP
+Configuring a cache resident object has several effects:
+.PP
+.IP "\(bu" 2
+Once the object's pages have been created or instantiated in memory no further I/O cost is ever paid for object access, minimizing potential latency\&.
+.IP "\(bu" 2
+Cache resident objects can be accessed faster than objects tracked for potential eviction\&.
+.IP "\(bu" 2
+If cache resident objects require a significant proportion of the configured cache size then non cache-resident objects can incur significantly higher I/O churn\&.
+.IP "\(bu" 2
+If cache resident objects require more space than the configured cache size, then further operations will either return error or stall until space is made available by closing objects\&.
+.PP
+.PP
+An example of configuring a cache-resident object:
+.PP
+.PP
+.nf
+        ret = session->create(session,
+            "table:mytable", "key_format=r,value_format=S,cache_resident=true");
+.fi
+.PP
+ 
+.SH "Eviction tuning"
+.PP
+When an application approaches the maximum cache size, WiredTiger begins eviction to stop memory use from growing too large, approximating a least-recently-used algorithm\&.
+.PP
+WiredTiger provides several configuration options for tuning how pages are evicted from the cache\&. Different settings will improve performance depending on an application's particular workload\&. Customizing the eviction configuration settings can reduce latency spikes in application threads and can improve throughput in some applications\&.
+.PP
+WiredTiger eviction tuning options can be configured when first opening a database via \fBwiredtiger_open\fP, or changed after open with \fBWT_CONNECTION::reconfigure\fP\&.
+.PP
+The \fCeviction_trigger\fP configuration value is the occupied percentage of the total cache size that causes eviction to start\&. By default, WiredTiger begins evicting pages when the cache is 95% full\&. An application concerned about a latency spike as the cache becomes full might want to begin eviction earlier\&.
+.PP
+The \fCeviction_target\fP configuration value is the overall target for eviction, expressed as a percentage of total cache size; that is, once eviction begins, it will proceed until the target percentage of bytes in the cache is reached\&. Note the \fCeviction_target\fP configuration value is ignored until eviction is triggered\&.
+.PP
+The \fCeviction_dirty_target\fP configuration value is the overall dirty byte target for eviction, expressed as a percentage of total cache size; that is, once eviction begins, it will proceed until the target percentage of dirty bytes in the cache is reached\&. Note the \fCeviction_dirty_target\fP configuration value is ignored until eviction is triggered\&.
+.PP
+.PP
+.nf
+        /*
+         * Configure eviction to begin at 90% full, and run until the cache
+         * is only 75% dirty\&.
+         */
+        ret = wiredtiger_open(home, NULL,
+            "create,eviction_trigger=90,eviction_dirty_target=75", &conn);
+.fi
+.PP
+ By default, WiredTiger cache eviction is handled by a single, separate thread\&. In a large, busy cache, a single thread will be insufficient (especially when the eviction thread must wait for I/O)\&. The \fCeviction=\fP(threads_min) and \fCeviction=\fP(threads_max) configuration values can be used to configure the minimum and maximum number of additional threads WiredTiger will create to keep up with the application eviction load\&. Finally, if the Wiredtiger eviction threads are unable to keep up with application demand for cache space, application threads will be tasked with eviction as well, potentially resulting in latency spikes\&.
+.PP
+.PP
+.nf
+        /* Configure up to four eviction threads */
+        ret = wiredtiger_open(home, NULL,
+            "create,eviction_trigger=90,eviction=(threads_max=4)", &conn);
+.fi
+.PP
+

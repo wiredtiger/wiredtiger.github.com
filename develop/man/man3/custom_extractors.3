@@ -1,0 +1,33 @@
+.TH "custom_extractors" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+custom_extractors \- Custom Extractors 
+
+.SH "Introduction to Custom Extractors"
+.PP
+A WiredTiger table can have zero or more associated indices\&. An index uses a different key to locate records than the table, and usually only stores a short key for each record, with the (larger) value in the table\&.
+.PP
+WiredTiger tables must be created with column names in order to create an index\&. This is required so that index cursors can support projections, and because WiredTiger optimizes some cases of 'simple' tables without column names\&.
+.PP
+When the full schema of your records can be described in WiredTiger's packing format, you can create an index by specifying which columns from the record should appear in the index\&. However, for more complex records, or to associate multiple index keys to each record, applications can instead specify a custom extractor by implementing the \fBWT_EXTRACTOR\fP interface\&.
+.PP
+The main method in the interface is \fBWT_EXTRACTOR::extract\fP\&. This is called by WiredTiger each time a record is updated in a table\&. The \fCextract\fP method should determine the index key(s) and call \fBWT_CURSOR::set_key\fP followed by \fBWT_CURSOR::insert\fP on the supplied \fCresult_cursor\fP for each index key\&.
+.PP
+If any operation fails, \fBWT_EXTRACTOR::extract\fP must return the failure to WiredTiger, or the index could become out of sync with the table\&.
+.PP
+Note that the extract callback is called for all operations that update the table, not just inserts\&. The callback sets the key and uses the \fBWT_CURSOR::insert\fP method to return the index key(s)\&. WiredTiger will perform the required operation to keep the index in sync with the table\&.
+.PP
+Applications must register their \fBWT_EXTRACTOR\fP implementations using \fBWT_CONNECTION::add_extractor\fP\&. This is often done by creating a \fBWiredTiger extension\fP\&. They are then configured by passing \fC'extractor=\&.\&.\&.'\fP to \fBWT_SESSION::create\fP when creating an index\&.
+.PP
+See \fBex_extractor\&.c\fP for an example of how to implement custom extractors\&.
+.SH "Implementation notes"
+.PP
+A WiredTiger index is a row store where the key columns contain all of the secondary and primary key columns, but only the secondary key columns are visible to applications\&. The value is empty, and WiredTiger's on-disk format optimizes for this case (empty values take up no space on disk)\&.
+.PP
+Custom extractors only need to calculate the public index key columns\&. The \fCresult_cursor\fP will be configured with a \fCkey_format\fP corresponding to what was supplied to \fBWT_SESSION::create\fP when the index was created\&. WiredTiger will append the (hidden) primary key when populating the index\&.
+.PP
+If column names are specified for an index with a custom extractor, it is not permitted to use any column names from the table key\&. Custom index keys can include columns from the table value, but the extracted value must be equal to the value from that column of the record or the results of using a projection cursor on the index will be undefined\&.
+.SH "Custom Collators in raw mode"
+.PP
+If a custom extractor needs to operate in raw mode on the \fCresult_cursor\fP, it must take into account an implementation detail\&. To avoid rewriting the extracted key, WiredTiger appends a padding byte to the raw key using a \fC'x'\fP format\&. See \fBFormat types\fP for more information\&. If the callback operates in raw mode, it must also append this padding byte\&. 

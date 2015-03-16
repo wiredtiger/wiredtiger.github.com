@@ -1,0 +1,10 @@
+.TH "tune_mutex" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_mutex \- Mutexes 
+The performance of WiredTiger applications can be sensitive to type of mutex used for serialization\&. WiredTiger can be configured, using the \fC--with-spinlock\fP argument during configuration to use one of three different mutex types: \fCgcc\fP, \fCpthread\fP and \fCpthread_adaptive\fP mutexes\&.
+.PP
+The \fCgcc\fP option configures GCC compiler (or compatible compilers such as clang), mutexes; the \fCpthread\fP option configures POSIX 1003\&.1c pthread mutexes; the \fCpthread_adaptive\fP option configures POSIX 1003\&.1c pthread mutexes with adaptive behavior (where that behavior is supported, for example, most Linux platforms)\&.
+.PP
+By default, WiredTiger is configured to use \fCpthread\fP, that is, non-adaptive POSIX 1003\&.1c pthread mutexes\&. 

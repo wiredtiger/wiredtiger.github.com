@@ -1,0 +1,10 @@
+.TH "compact_lang_java" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+compact_lang_java \- Compaction in Java 
+The Session\&.compact method can be used to compact data sources\&.
+.PP
+The data source does not have to be quiescent, compaction may be performed on an active data source\&.
+.PP
+Because checkpoints named by the application are not discarded until explicitly removed or replaced, they may prevent Session\&.compact from accomplishing anything\&. 

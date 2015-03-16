@@ -1,0 +1,143 @@
+.TH "statistics_lang_java" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+statistics_lang_java \- Statistics in Java 
+WiredTiger can be configured to maintain a variety of run-time and data-source statistics\&. As maintaining statistics may involve updating shared-memory data structures and traversing disk-based data structures, configuring statistics may decrease application performance\&.
+.PP
+The \fCwiredtiger\&.open\fP \fCstatistics\fP configuration must be set in order for statistics to be maintained\&. When configured to \fCnone\fP (the default), no statistics are maintained and attempting to read the statistics will result in an error\&. Alternatively, the \fCfast\fP configuration maintains a subset of the statistics which are relatively inexpensive, and the \fCall\fP configuration maintains all statistics regardless of cost\&.
+.PP
+The following example configures WiredTiger to maintain all statistics, regardless of cost:
+.PP
+.PP
+.nf
+    conn = wiredtiger\&.open(home, "create,statistics=(all)");
+.fi
+.PP
+ Statistics are gathered and returned to the application using a statistics cursor, which returns key/value pairs to the application\&. See \fBStatistics Data\fP for information about accessing the gathered statistics\&.
+.PP
+When the Session\&.open_cursor method is called to open a statistics cursor, the statistics configuration specifies the statistics to be gathered, similarly to the \fCwiredtiger\&.open\fP function\&. The \fCfast\fP configuration gathers the subset of the statistics that are relatively inexpensive, and the \fCall\fP configuration gathers all statistics, regardless of cost\&. If no configuration is specified, the current database statistics configuration is assumed\&.
+.PP
+The configuration of the Session\&.open_cursor method must agree with the database configuration: if the database is configured to maintain \fCfast\fP statistics, attempts to open a statistics cursor in \fCall\fP mode will fail\&. If the database has been configured to maintain \fCall\fP statistics, the statistics cursor can be configured in either \fCfast\fP or \fCall\fP modes\&. For example, an application might configure the database to maintain all available statistics, but the application might gather expensive statistics less frequently than inexpensive ones\&.
+.PP
+The following example opens a statistics cursor on the database:
+.PP
+.PP
+.nf
+    cursor = session\&.open_cursor(
+        "statistics:", null, null);
+.fi
+.PP
+ The following example opens a statistics cursor on a table:
+.PP
+.PP
+.nf
+    cursor = session\&.open_cursor(
+        "statistics:table:mytable", null, null);
+.fi
+.PP
+ The following example opens a statistics cursor on a table, but gathering only the relatively inexpensive statistics:
+.PP
+.PP
+.nf
+    cursor = session\&.open_cursor("statistics:table:mytable", null, "statistics=(fast)");
+.fi
+.PP
+ The Session\&.open_cursor method and the \fCwiredtiger\&.open\fP function also support the statistics configuration value \fCclear\fP\&.
+.PP
+When \fCclear\fP is specified to the Session\&.open_cursor method, gathered statistics will be reset, where appropriate, after they are gathered\&. For example, a cache size statistic is not cleared because it's not expected to change rapidly over time, while the count of cursor insert operations will be cleared\&. This allows applications to easily monitor changes in the system over time\&.
+.PP
+The following example gathers all statistics for a table, regardless of cost, and then clears them:
+.PP
+.PP
+.nf
+    cursor = session\&.open_cursor("statistics:table:mytable",
+        null, "statistics=(all,clear)");
+.fi
+.PP
+ When \fCclear\fP is specified to the \fCwiredtiger\&.open\fP function, gathered statistics will be reset, where appropriate, after they are gathered\&. This applies to all statistics cursors (as if \fCclear\fP was configured when the cursor was opened), as well as statistics logging, when it is configured\&.
+.PP
+The following example configures WiredTiger to maintain only relatively inexpensive statistics, and to clears statistics after they are gathered or logged:
+.PP
+.PP
+.nf
+    cursor = session\&.open_cursor("statistics:", null, "statistics=(fast,clear)");
+.fi
+.PP
+ 
+.SH "Statistics logging"
+.PP
+WiredTiger will optionally log database statistics into a file when the the \fCwiredtiger\&.open\fP \fCstatistics_log\fP configuration is set\&.
+.PP
+The resulting statistics can be displayed using the \fCwtstats\fP visualization tool\&. For more information, see \fBVisualizing performance with wtstats\fP\&.
+.PP
+The following example logs statistics every 30 seconds:
+.PP
+.PP
+.nf
+    conn = wiredtiger\&.open(
+        home, "create,statistics_log=(wait=30)");
+.fi
+.PP
+ Each record is formatted as a space-separated timestamp, unsigned 64-bit value and a variable length string which describes the statistic\&.
+.PP
+The timestamp format may be changed with the \fCstatistics_log\&.timestamp\fP configuration string\&. The \fCtimestamp\fP value may contain ISO C90 standard strftime conversion specifications\&.
+.PP
+The statistics the database is configured to maintain are logged, that is, configuring the database to maintain \fCfast\fP or \fCall\fP statistics will modify the statistics that will be logged\&.
+.PP
+Statistics for specific underlying data sources may be included by adding a list of data source URIs to the \fCstatistics_log\fP configuration string:
+.PP
+.PP
+.nf
+    conn = wiredtiger\&.open(home,
+        "create," +
+        "statistics_log=(sources=(\"table:table1\",\"table:table2\"))");
+.fi
+.PP
+ Statistics for all underlying data sources of a particular type may be included by adding a partial data source URI to the \fCstatistics_log\fP configuration string:
+.PP
+.PP
+.nf
+    conn = wiredtiger\&.open(home,
+        "create,statistics_log=(sources=(\"table:\"))");
+.fi
+.PP
+ When database statistics are logged, the database home will be the first space-separated entry for each record in the log file\&. For example:
+.PP
+.PP
+.nf
+Mar 08 11:38:23 463 /database/home pthread mutex condition wait calls
+Mar 08 11:38:23 0 /database/home files currently open
+Mar 08 11:38:23 1855437 /database/home total heap memory allocations
+Mar 08 11:38:23 1856622 /database/home total heap memory frees
+Mar 08 11:38:23 1 /database/home total heap memory re-allocations
+Mar 08 11:38:23 472 /database/home total read I/Os
+.fi
+.PP
+.PP
+When data source statistics are logged, the data source's URI will be the first space-separated entry for each record in the log file\&. For example:
+.PP
+.PP
+.nf
+Mar 20 10:42:36 21 table:mytable compressed pages written
+Mar 20 10:42:36 0 table:mytable page written failed to compress
+Mar 20 10:42:36 5 table:mytable page written was too small to compress
+Mar 20 10:42:36 586 table:mytable cursor insert calls
+Mar 20 10:42:36 0 table:mytable bulk-loaded cursor-insert calls
+.fi
+.PP
+.PP
+No statistics are logged for any data source for which a handle is not currently open in the database, nor will any statistics requiring the traversal of a tree (as if the \fCstatistics_fast\fP configuration string were set)\&.
+.PP
+The location of the log files may be changed with the \fCstatistics_log\&.path\fP configuration string\&. The \fCpath\fP value value may contain ISO C90 standard strftime conversion specifications\&. WiredTiger will not create non-existent directories in the path, they must exist before \fCwiredtiger\&.open\fP is called\&.
+.PP
+The following example logs statistics into files named with the month, day and year:
+.PP
+.PP
+.nf
+    conn = wiredtiger\&.open(home,
+        "create," +
+        "statistics_log=(wait=120,path=/log/log\&.%m\&.%d\&.%y)");
+.fi
+.PP
+ A Python script that parses the default logging output and uses the \fCgnuplot\fP, utility to generate Portable Network Graphics (PNG) format graphs is included in the WiredTiger distribution in the file \fCtools/statlog\&.py\fP\&. 

@@ -1,0 +1,12 @@
+.TH "signals" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+signals \- Signal handling 
+WiredTiger has no signal handlers and does not modify process signal handler behavior in any way\&.
+.PP
+WiredTiger restarts any system calls interrupted by a signal\&.
+.PP
+WiredTiger applications exiting as a result of a signal should exit WiredTiger gracefully, closing any open WiredTiger handles, before terminating the process\&.
+.PP
+WiredTiger is not re-entrant, and applications using WiredTiger should not make WiredTiger API calls from signal handlers\&. 

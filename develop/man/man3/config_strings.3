@@ -1,0 +1,129 @@
+.TH "config_strings" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+config_strings \- Configuration Strings 
+
+.SH "Introduction"
+.PP
+Methods in WiredTiger take a configuration string to provide optional arguments and configure non-standard behaviors\&. These strings are simple comma-separated lists of \fC'<key>=<value>'\fP pairs, and all have the same format:
+.PP
+.PP
+.nf
+
+    [key['='value]][','[key['='value]]]*
+.fi
+.PP
+.PP
+Keys and values and values that consist of alphanumeric characters can be specified directly\&. More precisely, keys or values that match this regular expression do not require quotes:
+.PP
+.PP
+.nf
+
+    [-_0-9A-Za-z\&./][^\\t\\r\\n :=,\\])}]*
+.fi
+.PP
+.PP
+Configuration strings are case-sensitive (for example, 'true' is a valid boolean value, but 'True' is not)\&.
+.PP
+More complex keys and values can be specified by quoting them with double quotes\&.
+.PP
+For example, a configuration string is used when opening a connection to a database to specify if the database should be created and to set the cache size:
+.PP
+.PP
+.nf
+        ret = wiredtiger_open(home, NULL, "create,cache_size=500M", &conn);
+.fi
+.PP
+ Configuration strings are also used to configure the table schema\&. For example, to create a table that uses C language strings for keys and values:
+.PP
+.PP
+.nf
+        ret = session->create(session,
+            "table:mytable", "key_format=S,value_format=S");
+.fi
+.PP
+ To handle more complex schema configuration, such as specifying multiple columns in a table, values are nested using parentheses\&. For example:
+.PP
+.PP
+.nf
+        /*
+         * Create a table with columns: keys are record numbers, values are
+         * (string, signed 32-bit integer, unsigned 16-bit integer)\&.
+         */
+        ret = session->create(session, "table:mytable",
+            "key_format=r,value_format=SiH,"
+            "columns=(id,department,salary,year-started)");
+.fi
+.PP
+ All types of parentheses are treated equivalently by the parser\&.
+.PP
+When an integer values is expected, the value may have multiplier characters appended, as follows:
+.PP
+CharacterMeaningChange to value \fCB\fP or \fCb\fP byteno change \fCK\fP or \fCk\fP kilobytemultiply by 2^10 \fCM\fP or \fCm\fP megabytemultiply by 2^20 \fCG\fP or \fCg\fP gigabytemultiply by 2^30 \fCT\fP or \fCt\fP terabytemultiply by 2^40 \fCP\fP or \fCp\fP petabytemultiply by 2^50 
+.PP
+For example, the value \fC500B\fP is the same as entering the number \fC500\fP, the value \fC500K\fP is the same as \fC512000\fP and the string \fC500GB\fP is the same as \fC536870912000\fP\&.
+.PP
+Values of type of 'boolean' can be set to any of \fCfalse\fP, \fCtrue\fP, \fC0\fP or \fC1\fP\&. If no value is specified for a key, the value \fC1\fP is implied\&. For example, all of the following forms of the \fCoverwrite\fP configuration string are identical:
+.PP
+.PP
+.nf
+        ret = session->open_cursor(session, "table:mytable", NULL,
+            "overwrite", &cursor);
+        ret = session->open_cursor(session, "table:mytable", NULL,
+            "overwrite=true", &cursor);
+        ret = session->open_cursor(session, "table:mytable", NULL,
+            "overwrite=1", &cursor);
+.fi
+.PP
+ Configuration strings are processed in order from left to right, with later settings overriding earlier ones (unless multiple settings for a key are supported by the method)\&.
+.PP
+Superfluous commas and whitespace in the configuration string are ignored (including at the beginning and end of the string), so it is always safe to combine two configuration strings by concatenating them with a comma in between\&.
+.PP
+Empty configuration strings may be represented in C or C++ by passing \fCNULL\fP\&.
+.SH "JavaScript Object Notation (JSON) compatibility"
+.PP
+WiredTiger configuration strings are compatible with \fCJavaScript Object Notation (JSON)\fP, and will accept additional formatting as follows:
+.PP
+.IP "\(bu" 2
+parentheses may be round or square brackets or curly braces: \fC'()'\fP, \fC'[]'\fP or \fC'{}'\fP
+.IP "\(bu" 2
+the whole configuration string may optionally be wrapped in parentheses
+.IP "\(bu" 2
+the key/value separator can be a colon: \fC':'\fP
+.IP "\(bu" 2
+keys and values may be in double quotes: \fC'key' = 'value'\fP
+.IP "\(bu" 2
+quoted strings are interpreted as UTF-8 values
+.PP
+.PP
+The result of this relaxed parsing is that applications may pass strings representing valid \fCJSON objects\fP wherever configuration strings are required\&.
+.PP
+For example, in Python, code might look as follows:
+.PP
+.PP
+.nf
+import json
+config = json\&.dumps({
+    "key_format" : "r",
+    "value_format" : "5sHQ",
+    "columns" : ("id", "country", "year", "population"),
+    "colgroup\&.population" : ["population"],
+    "index\&.country_year" : ["country", "year"]
+})
+.fi
+.PP
+.PP
+Because JSON compatibility allows colons to be used as key/value separators, WiredTiger URIs may require quoting\&. For example, the following \fBWT_SESSION::checkpoint\fP call specifies a set of URIs as checkpoint targets, using double-quote characters to keep the parser from treating the colon characters as JSON name/value separators:
+.PP
+.PP
+.nf
+        /*
+         * Checkpoint a list of objects\&.
+         * JSON parsing requires quoting the list of target URIs\&.
+         */
+        ret = session->
+            checkpoint(session, "target=(\"table:table1\",\"table:table2\")");
+.fi
+.PP
+

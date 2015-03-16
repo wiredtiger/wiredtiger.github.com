@@ -1,0 +1,59 @@
+.TH "database_config" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+database_config \- Database Configuration 
+WiredTiger databases are configured using the \fBwiredtiger_open\fP call, which takes a configuration string argument\&. In addition to this, the database configuration can be specified using the \fCWiredTiger\&.config\fP file or the WIREDTIGER_CONFIG environment variable\&.
+.PP
+When a WiredTiger database is created, the configuration string passed to \fBwiredtiger_open\fP is saved to a WiredTiger home directory file named \fCWiredTiger\&.basecfg\fP, and that configuration file is read whenever the database is subsequently opened\&.
+.PP
+The configuration string to the \fBwiredtiger_open\fP call allows applications to do per run settings (such as with or without statistics) or override original creation settings\&. The user config file and the environment variable allow system administrators to override application settings without recompilation\&.
+.SH "Configuration ordering"
+.PP
+When a database is created or opened, the order of configuration is:
+.PP
+.IP "\(bu" 2
+Any \fCWiredTiger\&.basecfg\fP file,
+.IP "\(bu" 2
+which is overridden by the \fBwiredtiger_open\fP configuration string argument\&.
+.IP "\(bu" 2
+which is overridden by the \fCWiredTiger\&.config\fP file,
+.IP "\(bu" 2
+which is overridden by the \fCWIREDTIGER_CONFIG\fP environment variable,
+.PP
+.SH "WIREDTIGER_CONFIG environment variable"
+.PP
+If the \fCWIREDTIGER_CONFIG\fP environment variable is set, it is read as a configuration string\&.
+.PP
+If the process is running with special privileges and \fCWIREDTIGER_CONFIG\fP is set, the \fBwiredtiger_open\fP function must be configured with the \fCuse_environment_priv\fP flag, or the call to \fBwiredtiger_open\fP will fail\&. See \fBDatabase Home Directory\fP for more details\&.
+.SH "WiredTiger\&.config file"
+.PP
+If a file named \fCWiredTiger\&.config\fP appears in the WiredTiger home directory, it is read as a configuration string\&.
+.PP
+The file is minimally parsed in order to build configuration strings for the WiredTiger configuration parser:
+.PP
+.PD 0
+.IP "\(bu" 2
+A backslash (\fB\fC\\\fP\fP) followed by any character other than a newline character leaves both characters untouched; otherwise, if a backslash is followed by a newline character, both the backslash and the newline character are discarded\&.
+.PP
+
+.IP "\(bu" 2
+Any text between double-quote pairs (\fB\fC"\fP\fP) is left untouched, including newline and white-space characters\&. Backslash characters escape double-quote characters: a backslash escaped double-quote character can neither start nor end a quoted string\&.
+.PP
+
+.IP "\(bu" 2
+Comments are discarded\&. If the first non-white-space character following an unquoted and unescaped newline character is a hash mark (\fB\fC#\fP\fP), all characters up to the next newline character are discarded\&. The ending newline character cannot be escaped or quoted, once a comment line is identified, all characters to the next newline are simply discarded\&.
+.PP
+
+.IP "\(bu" 2
+Otherwise, all lines are concatenated and the newline characters replaced with commas\&. 
+.PP
+.SH "WiredTiger\&.basecfg file"
+.PP
+When a WiredTiger database is created, non-default configuration information specified to \fBwiredtiger_open\fP is saved to a WiredTiger home directory file named \fCWiredTiger\&.basecfg\fP, and that configuration file is read whenever the database is subsequently opened\&.
+.PP
+For example, if a shared library extensions are required, those settings will be saved to the base configuration file so it's easier to write general-purpose applications that might not be aware of how a particular database was created and configured\&.
+.PP
+Users should not not edit this file, set the \fCWIREDTIGER_CONFIG\fP environment variable or create a \fCWiredTiger\&.config\fP file instead, as those settings override the settings in the base configuration file\&.
+.PP
+This file is a potential problem for applications that want to retain the ability to downgrade to previous releases\&. If a new database is created after an upgrade, the base configuration file might have configuration strings that would cause a previous version of the application to fail\&. For this reason, applications that may want to downgrade should configure the \fBwiredtiger_open\fP value \fCconfig_base\fP to \fCfalse\fP so the base configuration file is not written as part of database create\&. 

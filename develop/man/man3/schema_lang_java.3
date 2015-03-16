@@ -1,0 +1,604 @@
+.TH "schema_lang_java" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+schema_lang_java \- Schema, Columns, Column Groups, Indices and Projections in Java 
+While many tables have simple key/value pairs for records, WiredTiger also supports more complex data patterns\&.
+.SH "Tables, rows and columns"
+.PP
+A table is a logical representation of data consisting of cells in rows and columns\&. For example, a database might have a simple table including an employee identifier, last name and first name, and a salary:
+.PP
+Employee IDLast NameFirst NameSalary 1SmithJoe40000 2JonesMary50000 3JohnsonCathy44000 
+.PP
+A row-oriented database would store all of the values for the first employee in the first row, then the next employee's values in the next row, and so on:
+.PP
+.PP
+.nf
+
+      1,Smith,Joe,40000
+      2,Jones,Mary,50000
+      3,Johnson,Cathy,44000
+.fi
+.PP
+.PP
+A column-oriented database would store all of the values of a column together, then the values of the next column, and so on:
+.PP
+.PP
+.nf
+
+      1,2,3
+      Smith,Jones,Johnson
+      Joe,Mary,Cathy
+      40000,50000,44000
+.fi
+.PP
+.PP
+WiredTiger supports both storage formats, and can mix and match the storage of columns within a logical table\&.
+.PP
+A \fItable\fP in WiredTiger consist of one or more \fI'column groups'\fP that together hold all of the columns in primary key order; and zero or more \fIindices\fP that enable fast lookup of records by columns in orders other than the primary key\&.
+.PP
+Applications describe the format of their data by supplying a schema to Session\&.create\&. This specifies how the application's data can be split into fields and mapped onto rows and columns\&.
+.SH "Column types"
+.PP
+By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a \fBWT_ITEM\fP structure\&. Key and value types may also be chosen from a list, or composed of multiple columns with any combination of types\&. Keys and values may be up to (\fC4GB - 512B\fP) bytes in size\&.
+.PP
+See \fBKey/Value pairs\fP for more details on raw key / value items\&.
+.SH "Format types"
+.PP
+WiredTiger's uses format strings similar to those specified in the Python struct module to describe the types of columns in a table: http://docs.python.org/library/struct
+.PP
+FormatC TypeJava typePython typeNotes \fCx\fP N/AN/AN/Apad byte, no associated value \fCb\fP \fCint8_t\fP \fCbyte\fP \fCint\fP signed byte \fCB\fP \fCuint8_t\fP \fCbyte\fP \fCint\fP unsigned byte \fCh\fP \fCint16_t\fP \fCshort\fP \fCint\fP signed 16-bit \fCH\fP \fCuint16_t\fP \fCshort\fP \fCint\fP unsigned 16-bit \fCi\fP \fCint32_t\fP \fCint\fP \fCint\fP signed 32-bit \fCI\fP \fCuint32_t\fP \fCint\fP \fCint\fP unsigned 32-bit \fCl\fP \fCint32_t\fP \fCint\fP \fCint\fP signed 32-bit \fCL\fP \fCuint32_t\fP \fCint\fP \fCint\fP unsigned 32-bit \fCq\fP \fCint64_t\fP \fClong\fP \fCint\fP signed 64-bit \fCQ\fP \fCuint64_t\fP \fClong\fP \fCint\fP unsigned 64-bit \fCr\fP \fCuint64_t\fP \fClong\fP \fCint\fP record number \fCs\fP \fCchar\fP[]\fCString\fP \fCstr\fP fixed-length string \fCS\fP \fCchar\fP[]\fCString\fP \fCstr\fP NUL-terminated string \fCt\fP \fCuint8_t\fP \fCbyte\fP \fCint\fP fixed-length bit field \fCu\fP \fC\fBWT_ITEM\fP *\fP\fCbyte[]\fP\fCstr\fP raw byte array 
+.PP
+The \fC'r'\fP type is used for record number keys in column stores\&. It is otherwise identical to the \fC'Q'\fP type\&.
+.PP
+The \fC'S'\fP type is encoded as a C language string terminated by a NUL character\&. Because of this, the associated Java String may not contain the NUL character\&.
+.PP
+The \fC't'\fP type is used for fixed-length bit field values\&. If it is preceded by a size, that indicates the number of bits to store, between 1 and 8\&. That number of low-order bits will be stored in the table\&. The default is a size of 1 bit: that is, a boolean\&. If a bit field value is combined with other types in a packing format, it is equivalent to \fC'B'\fP, and a full byte is used to store it\&.
+.PP
+When referenced by a record number (that is, a key format of \fC'r'\fP), the \fC't'\fP type will be stored in a fixed-length column-store, and will not have an out-of-band value to indicate the record does not exist\&. In this case, a 0 byte value is used to indicate the record does not exist\&. This means removing a record with Cursor\&.remove is equivalent to storing a value of 0 in the record with Cursor\&.update (and storing a value of 0 in the record will cause cursor scans to skip the record)\&. Additionally, creating a record past the end of an object implies the creation of any missing intermediate records, with byte values of 0\&.
+.PP
+The \fC'u'\fP type is for raw byte arrays: if it appears at the end of a format string (including in the default \fC'u'\fP format for untyped tables), the size is not stored explicitly\&. When \fC'u'\fP appears within a format string, the size is stored as a 32-bit integer in the same byte order as the rest of the format string, followed by the data\&.
+.PP
+There is a default collator that gives lexicographic (byte-wise) comparisons, and the default encoding is designed so that lexicographic ordering of encoded keys is usually the expected ordering\&. For example, the variable-length encoding of integers is designed so that they have the natural integer ordering under the default collator\&.
+.PP
+See \fBPacking and Unpacking Data in Java\fP for details of WiredTiger's packing format\&.
+.PP
+WiredTiger can also be extended with custom collators by implementing the \fBWT_COLLATOR\fP interface (C only)\&.
+.SH "Key and value formats"
+.PP
+Every table has a key format and a value format as describe in \fBColumn types\fP\&. These types are configured when the table is created by passing \fCkey_format\fP and \fCvalue_format\fP keys to Session\&.create\&.
+.PP
+For example, a simple row-store table with strings as both keys and values would be created as follows:
+.PP
+.PP
+.nf
+    ret = session\&.create("table:mytable", "key_format=S,value_format=S");
+.fi
+.PP
+ A simple column-store table with strings for values would be created as follows:
+.PP
+.PP
+.nf
+    ret = session\&.create("table:mytable", "key_format=r,value_format=S");
+.fi
+.PP
+ 
+.SH "Cursor formats"
+.PP
+Cursors for a table have the same key format as the table itself\&. The key columns of a cursor are set with the \fCCursor\&.putKey*\fP methods and accessed with the \fCCursor\&.getKey*\fP methods\&. \fCCursor\&.putKey*\fP methods must be called in the order the key columns are configured in \fCkey_format\fP\&.
+.PP
+For example, setting the key for a row-store table with strings as keys would be done as follows:
+.PP
+.PP
+.nf
+    /* Set the cursor's string key\&. */
+    String key = "another key";
+    cursor\&.putKeyString(key);
+.fi
+.PP
+ For example, setting the key for a column-store table would be done as follows:
+.PP
+.PP
+.nf
+    long recno = 37;    /* Set the cursor's record number key\&. */
+    cursor\&.putKeyLong(recno);
+.fi
+.PP
+ A more complex example, setting a composite key for a row-store table where the key_format was \fC'SiH'\fP, would be done as follows:
+.PP
+.PP
+.nf
+    /* Set the cursor's "SiH" format composite key\&. */
+    cursor\&.putKeyString("first");
+    cursor\&.putKeyInt(5);
+    cursor\&.putKeyShort((short)7);
+.fi
+.PP
+ The key's values are accessed with successive calls to \fCCursor\&.getKey*\fP methods:
+.PP
+.PP
+.nf
+    String key; /* Get the cursor's string key\&. */
+    key = cursor\&.getKeyString();
+.fi
+.PP
+.PP
+.nf
+    long recno;         /* Get the cursor's record number key\&. */
+    recno = cursor\&.getKeyLong();
+.fi
+.PP
+.PP
+.nf
+    /* Get the cursor's "SiH" format composite key\&. */
+    String first;
+    int second;
+    short third;
+
+    first = cursor\&.getKeyString();
+    second = cursor\&.getKeyInt();
+    third = cursor\&.getKeyShort();
+.fi
+.PP
+ Cursors for a table have the same value format as the table, unless a projection is configured with Session\&.open_cursor\&. See \fBProjections\fP for more information\&.
+.PP
+\fCThe\fP Cursor\&.putValue* methods are used to set value columns, and \fCCursor\&.getValue*\fP are used to get value columns, in the same way as described for \fCCursor\&.putKey*\fP and \fCCursor\&.getKey*\fP\&.
+.SH "Columns"
+.PP
+The columns in a table can be assigned names by passing a \fCcolumns\fP key to Session\&.create\&. The column names are assigned first to the columns in the \fCkey_format\fP, and then to the columns in \fCvalue_format\fP\&. There must be a name for every column, and no column names may be repeated\&.
+.PP
+For example, a column-store table with an employee ID as the key and three columns (department, salary and first year of employment), might be created as follows:
+.PP
+.PP
+.nf
+    /*
+     * Create a table with columns: keys are record numbers, values are
+     * (string, signed 32-bit integer, unsigned 16-bit integer)\&.
+     */
+    ret = session\&.create("table:mytable",
+        "key_format=r,value_format=SiH," +
+        "columns=(id,department,salary,year-started)");
+.fi
+.PP
+ In this example, the key's column name is \fCid\fP, and the value's column names are \fCdepartment\fP, \fCsalary\fP, and \fCyear-started\fP (where \fCid\fP maps to the column format \fCr\fP, \fCdepartment\fP maps to the column value format \fCS\fP, \fCsalary\fP maps to the value format \fCi\fP and \fCyear-started\fP maps to the value format \fCH\fP)\&.
+.PP
+Once the table is created, there is no need to call Session\&.create during subsequent runs of the application\&. However, it's worthwhile making the call anyway as it both verifies the table exists and the table schema matches the schema expected by the application\&.
+.SH "Column groups"
+.PP
+Once column names are assigned, they can be used to configure column groups\&. Column groups are primarily used to define storage in order to tune cache behavior, as each column group is stored in a separate file\&.
+.PP
+There are two steps involved in setting up column groups: first, pass a list of names for the column groups in the \fCcolgroups\fP configuration key to Session\&.create\&. Then make a call to Session\&.create for each column group, using the URI \fCcolgroup:<table>:<colgroup name>\fP and a \fCcolumns\fP key in the configuration\&. Every column must appear in at least one column group; columns can be listed in multiple column groups, causing the column to be stored in multiple files\&.
+.PP
+For example, consider the following data being stored in a WiredTiger table:
+.PP
+.PP
+.nf
+    /* The class for the data we are storing in a WiredTiger table\&. */
+    static class PopRecord {
+        public String country;  // Stored in database as fixed size char[5];
+        public short year;
+        public long population;
+        public PopRecord(String country, short year, long population) {
+            this\&.country = country;
+            this\&.year = year;
+            this\&.population = population;
+        }
+    }
+
+    static List<PopRecord> popData;
+
+    static {
+        popData = new ArrayList<PopRecord>();
+
+        popData\&.add(new PopRecord("AU",  (short)1900,      4000000 ));
+        popData\&.add(new PopRecord("AU",  (short)2000,     19053186 ));
+        popData\&.add(new PopRecord("CAN", (short)1900,      5500000 ));
+        popData\&.add(new PopRecord("CAN", (short)2000,     31099561 ));
+        popData\&.add(new PopRecord("UK",  (short)1900,    369000000 ));
+        popData\&.add(new PopRecord("UK",  (short)2000,     59522468 ));
+        popData\&.add(new PopRecord("USA", (short)1900,     76212168 ));
+        popData\&.add(new PopRecord("USA", (short)2000,    301279593 ));
+    };
+.fi
+.PP
+ If we primarily wanted to access the population information by itself, but still wanted population information included when accessing other information, we might store all of the columns in one file, and store an additional copy of the population column in another file:
+.PP
+.PP
+.nf
+        /*
+         * Create the population table\&.
+         * Keys are record numbers, the format for values is (5-byte string,
+         * long, long)\&.
+         * See ::wiredtiger_struct_pack for details of the format strings\&.
+         */
+        ret = session\&.create("table:poptable",
+            "key_format=r,value_format=5sHQ," +
+            "columns=(id,country,year,population),colgroups=(main,population)");
+
+        /*
+         * Create two column groups: a primary column group with the country
+         * code, year and population (named "main"), and a population column
+         * group with the population by itself (named "population")\&.
+         */
+        ret = session\&.create("colgroup:poptable:main",
+            "columns=(country,year,population)");
+        ret = session\&.create("colgroup:poptable:population",
+            "columns=(population)");
+.fi
+.PP
+ Column groups always have the same key as the table\&. This is particularly useful for column stores, because record numbers are not stored explicitly on disk, so there is no repetition of keys across multiple files\&. Keys will be replicated in multiple files in the case of row-store column groups\&.
+.PP
+A cursor can be opened on a column group by passing the column group's URI to the Session\&.open_cursor method\&. For example, the population can be retrieved from both of the column groups we created:
+.PP
+.PP
+.nf
+        /*
+         * Open a cursor on the main column group, and return the information
+         * for a particular country\&.
+         */
+        cursor = session\&.open_cursor("colgroup:poptable:main", null, null);
+        cursor\&.putKeyLong(2);
+        if ((ret = cursor\&.search()) == 0) {
+            country = cursor\&.getValueString();
+            year = cursor\&.getValueShort();
+            population = cursor\&.getValueLong();
+            System\&.out\&.println("ID 2: country " + country +
+                ", year " + year + ", population " + population);
+        }
+.fi
+.PP
+.PP
+.nf
+        /*
+         * Open a cursor on the population column group, and return the
+         * population of a particular country\&.
+         */
+        cursor = session\&.open_cursor("colgroup:poptable:population", null, null);
+        cursor\&.putKeyLong(2);
+        if ((ret = cursor\&.search()) == 0) {
+            population = cursor\&.getValueLong();
+            System\&.out\&.println("ID 2: population " + population);
+        }
+.fi
+.PP
+ Key columns may not be included in the list of columns for a column group\&. Because column groups always have the same key as the table, key columns for column groups are retrieved using Cursor\&.get_key, not Cursor\&.get_value\&.
+.SH "Indices"
+.PP
+Columns are also used to create and configure indices on tables\&.
+.PP
+Table indices are automatically updated whenever the table is modified\&.
+.PP
+Table index cursors are read-only and cannot be used for update operations\&.
+.PP
+To create a table index, call Session\&.create using the URI \fCindex:<table>:<index name>\fP, listing a column in the configuration\&.
+.PP
+Continuing the example, we might open an index on the \fCcountry\fP column:
+.PP
+.PP
+.nf
+        /* Create an index with a simple key\&. */
+        ret = session\&.create("index:poptable:country",
+            "columns=(country)");
+.fi
+.PP
+ Cursors are opened on indices by passing the index's URI to the Session\&.open_cursor method\&.
+.PP
+Index cursors use the specified index key columns for \fCCursor\&.getKey*\fP and \fCCursor\&.putKey*\fP calls\&. For example, we can retrieve information from the \fCcountry\fP index as follows:
+.PP
+.PP
+.nf
+        /* Search in a simple index\&. */
+        cursor = session\&.open_cursor("index:poptable:country", null, null);
+        cursor\&.putKeyString("AU");
+        ret = cursor\&.search();
+        country = cursor\&.getValueString();
+        year = cursor\&.getValueShort();
+        population = cursor\&.getValueLong();
+        System\&.out\&.println("AU: country " + country + ", year " + year +
+                           ", population " + population);
+.fi
+.PP
+ To create an index with a composite key, specify more than one column to the Session\&.create call:
+.PP
+.PP
+.nf
+        /* Create an index with a composite key (country,year)\&. */
+        ret = session\&.create("index:poptable:country_plus_year",
+            "columns=(country,year)");
+.fi
+.PP
+ To retrieve information from a composite index requires a more complicated set of \fCCursor\&.putKey*\fP calls, but is otherwise the same:
+.PP
+.PP
+.nf
+        /* Search in a composite index\&. */
+        cursor = session\&.open_cursor(
+            "index:poptable:country_plus_year", null, null);
+        cursor\&.putKeyString("USA");
+        cursor\&.putKeyShort((short)1900);
+        ret = cursor\&.search();
+        country = cursor\&.getValueString();
+        year = cursor\&.getValueShort();
+        population = cursor\&.getValueLong();
+        System\&.out\&.println("US 1900: country " + country +
+           ", year " + year + ", population " + population);
+.fi
+.PP
+ 
+.SH "Immutable indices"
+.PP
+It is possible to create an index with the \fCimmutable\fP configuration setting enabled\&. This setting tells WiredTiger that the index keys for a record do not change when records are updated\&. This is an optimization that it saves a remove and insert into the index whenever a value in the primary table is updated\&.
+.PP
+If immutable is configured when updates should alter the content of the index it is possible to corrupt data\&.
+.PP
+An example of using an immutable index is:
+.PP
+.PP
+.nf
+        /* Create an index with a simple key\&. */
+        ret = session\&.create("index:poptable:immutable_year",
+            "columns=(year),immutable");
+.fi
+.PP
+ 
+.SH "Index cursor projections"
+.PP
+By default, index cursors return all of the table's value columns from \fCCursor\&.getValue*\fP calls\&. The application can specify that a subset of the usual columns should be returned in calls to \fCCursor\&.getValue\fP by appending a list of columns to the \fCuri\fP parameter of the Session\&.open_cursor call\&. This is called a \fIprojection\fP, see \fBProjections\fP for more details\&.
+.PP
+In the case of index cursors, a projection can be used to avoid lookups in column groups that do not hold columns relevant to the operation\&.
+.PP
+The following example will return just the table's primary key (a record number, in this case) from the index:
+.PP
+.PP
+.nf
+        /*
+         * Use a projection to return just the table's record number key
+         * from an index\&.
+         */
+        cursor = session\&.open_cursor("index:poptable:country_plus_year(id)", null, null);
+        while ((ret = cursor\&.next()) == 0) {
+            country = cursor\&.getKeyString();
+            year = cursor\&.getKeyShort();
+            recno = cursor\&.getValueRecord();
+            System\&.out\&.println("row ID " + recno + ": country " + country +
+                ", year " + year);
+        }
+.fi
+.PP
+ Here is an example of a projection that returns a subset of columns from the index:
+.PP
+.PP
+.nf
+        /*
+         * Use a projection to return just the population column from an
+         * index\&.
+         */
+        cursor = session\&.open_cursor(
+            "index:poptable:country_plus_year(population)", null, null);
+        while ((ret = cursor\&.next()) == 0) {
+            country = cursor\&.getKeyString();
+            year = cursor\&.getKeyShort();
+            population = cursor\&.getValueLong();
+            System\&.out\&.println("population " + population +
+               ": country " + country + ", year " + year);
+        }
+.fi
+.PP
+ For performance reasons, it may be desirable to include all columns for a performance-critical operation in an index, so that it is possible to perform index-only lookups where no column group from the table is accessed\&. In this case, all of the 'hot' columns should be included in the index (always list the 'real' index key columns first, so they will determine the sort order)\&. Then, open a cursor on the index that doesn't return any value columns, and no column group will be accessed\&.
+.PP
+.PP
+.nf
+        /*
+         * Use a projection to avoid accessing any other column groups when
+         * using an index: supply an empty list of value columns\&.
+         */
+        cursor = session\&.open_cursor(
+            "index:poptable:country_plus_year()", null, null);
+        while ((ret = cursor\&.next()) == 0) {
+            country = cursor\&.getKeyString();
+            year = cursor\&.getKeyShort();
+            System\&.out\&.println("country " + country + ", year " + year);
+        }
+.fi
+.PP
+ Index cursors for column-store objects may not be created using the record number as the index key (there is no use for a secondary index on a column-store where the index key is the record number)\&.
+.SH "Code samples"
+.PP
+The code included above was taken from the complete example program ex_schema\&.java\&.
+.PP
+Here is another example program, ex_call_center\&.java\&.
+.PP
+.PP
+.nf
+/*
+ * In SQL, the tables are described as follows:
+ *
+ * CREATE TABLE Customers(id INTEGER PRIMARY KEY,
+ *     name VARCHAR(30), address VARCHAR(50), phone VARCHAR(15))
+ * CREATE INDEX CustomersPhone ON Customers(phone)
+ *
+ * CREATE TABLE Calls(id INTEGER PRIMARY KEY, call_date DATE,
+ *     cust_id INTEGER, emp_id INTEGER, call_type VARCHAR(12),
+ *     notes VARCHAR(25))
+ * CREATE INDEX CallsCustDate ON Calls(cust_id, call_date)
+ *
+ * In this example, both tables will use record numbers for their IDs, which
+ * will be the key\&.  The C structs for the records are as follows\&.
+ */
+
+/* Customer records\&. */
+class Customer {
+    public long id;
+    public String name;
+    public String address;
+    public String phone;
+    public Customer(long id, String name, String address, String phone) {
+        this\&.id = id;
+        this\&.name = name;
+        this\&.address = address;
+        this\&.phone = phone;
+    }
+    public Customer() {}
+}
+
+/* Call records\&. */
+class Call {
+    public long id;
+    public long call_date;
+    public long cust_id;
+    public long emp_id;
+    public String call_type;
+    public String notes;
+    public Call(long id, long call_date, long cust_id, long emp_id,
+                String call_type, String notes) {
+        this\&.id = id;
+        this\&.call_date = call_date;
+        this\&.cust_id = cust_id;
+        this\&.emp_id = emp_id;
+        this\&.call_type = call_type;
+        this\&.notes = notes;
+    }
+    public Call() {}
+}
+.fi
+.PP
+.PP
+.nf
+        /*
+         * Create the customers table, give names and types to the columns\&.
+         * The columns will be stored in two groups: "main" and "address",
+         * created below\&.
+         */
+        ret = session\&.create("table:customers",
+            "key_format=r," +
+            "value_format=SSS," +
+            "columns=(id,name,address,phone)," +
+            "colgroups=(main,address)");
+
+        /* Create the main column group with value columns except address\&. */
+        ret = session\&.create(
+            "colgroup:customers:main", "columns=(name,phone)");
+
+        /* Create the address column group with just the address\&. */
+        ret = session\&.create(
+            "colgroup:customers:address", "columns=(address)");
+
+        /* Create an index on the customer table by phone number\&. */
+        ret = session\&.create(
+            "index:customers:phone", "columns=(phone)");
+
+        /* Populate the customers table with some data\&. */
+        cursor = session\&.open_cursor("table:customers", null, "append");
+        for (Customer cust : custSample) {
+            cursor\&.putValueString(cust\&.name);
+            cursor\&.putValueString(cust\&.address);
+            cursor\&.putValueString(cust\&.phone);
+            ret = cursor\&.insert();
+        }
+        ret = cursor\&.close();
+
+        /*
+         * Create the calls table, give names and types to the columns\&.  All the
+         * columns will be stored together, so no column groups are declared\&.
+         */
+        ret = session\&.create("table:calls",
+            "key_format=r," +
+            "value_format=qrrSS," +
+            "columns=(id,call_date,cust_id,emp_id,call_type,notes)");
+
+        /*
+         * Create an index on the calls table with a composite key of cust_id
+         * and call_date\&.
+         */
+        ret = session\&.create("index:calls:cust_date",
+            "columns=(cust_id,call_date)");
+
+        /* Populate the calls table with some data\&. */
+        cursor = session\&.open_cursor("table:calls", null, "append");
+        for (Call call : callSample) {
+            cursor\&.putValueLong(call\&.call_date);
+            cursor\&.putValueRecord(call\&.cust_id);
+            cursor\&.putValueRecord(call\&.emp_id);
+            cursor\&.putValueString(call\&.call_type);
+            cursor\&.putValueString(call\&.notes);
+            ret = cursor\&.insert();
+        }
+        ret = cursor\&.close();
+
+        /*
+         * First query: a call arrives\&.  In SQL:
+         *
+         * SELECT id, name FROM Customers WHERE phone=?
+         *
+         * Use the cust_phone index, lookup by phone number to fill the
+         * customer record\&.  The cursor will have a key format of "S" for a
+         * string because the cust_phone index has a single column ("phone"),
+         * which is of type "S"\&.
+         *
+         * Specify the columns we want: the customer ID and the name\&.  This
+         * means the cursor's value format will be "rS"\&.
+         */
+        cursor = session\&.open_cursor(
+            "index:customers:phone(id,name)", null, null);
+        cursor\&.putKeyString("123-456-7890");
+        ret = cursor\&.search();
+        if (ret == 0) {
+            Customer cust = new Customer();
+            cust\&.id = cursor\&.getValueRecord();
+            cust\&.name = cursor\&.getValueString();
+            System\&.out\&.println("Read customer record for " + cust\&.name +
+                " (ID " + cust\&.id + ")");
+        }
+        ret = cursor\&.close();
+
+        /*
+         * Next query: get the recent order history\&.  In SQL:
+         *
+         * SELECT * FROM Calls WHERE cust_id=? ORDER BY call_date DESC LIMIT 3
+         *
+         * Use the call_cust_date index to find the matching calls\&.  Since it is
+         * is in increasing order by date for a given customer, we want to start
+         * with the last record for the customer and work backwards\&.
+         *
+         * Specify a subset of columns to be returned\&.  (Note that if these were
+         * all covered by the index, the primary would not have to be accessed\&.)
+         * Stop after getting 3 records\&.
+         */
+        cursor = session\&.open_cursor(
+            "index:calls:cust_date(cust_id,call_type,notes)",
+            null, null);
+
+        /*
+         * The keys in the index are (cust_id,call_date) -- we want the largest
+         * call date for a given cust_id\&.  Search for (cust_id+1,0), then work
+         * backwards\&.
+         */
+        long custid = 1;
+        cursor\&.putKeyRecord(custid + 1);
+        cursor\&.putKeyLong(0);
+        nearstatus = cursor\&.search_near();
+
+        /*
+         * If the table is empty, search_near will return WT_NOTFOUND, else the
+         * cursor will be positioned on a matching key if one exists, or an
+         * adjacent key if one does not\&.  If the positioned key is equal to or
+         * larger than the search key, go back one\&.
+         */
+        if (ret == 0 && (nearstatus == SearchStatus\&.LARGER ||
+            nearstatus == SearchStatus\&.FOUND))
+            ret = cursor\&.prev();
+        for (count = 0; ret == 0 && count < 3; ++count) {
+            Call call = new Call();
+            call\&.cust_id = cursor\&.getValueRecord();
+            call\&.call_type = cursor\&.getValueString();
+            call\&.notes = cursor\&.getValueString();
+            if (call\&.cust_id != custid)
+                break;
+            System\&.out\&.println("Call record: customer " + call\&.cust_id +
+                               " (" + call\&.call_type +
+                               ": " + call\&.notes + ")");
+            ret = cursor\&.prev();
+        }
+.fi
+.PP
+

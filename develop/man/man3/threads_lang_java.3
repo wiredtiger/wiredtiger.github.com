@@ -1,0 +1,128 @@
+.TH "threads_lang_java" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+threads_lang_java \- Multithreading in Java 
+All Connection methods are thread safe, and Connection handles can be shared between threads\&. Applications typically open a single connection to each database, per process\&. Multi-threaded programs must wait for all other threads to exit before closing the Connection handle because that will implicitly close all other handles\&. Alternatively, a thread can set an event handler using Connection\&.open_session to be notified when a Connection close is in progress\&.
+.PP
+Session and Cursor methods are not thread safe and Session and Cursor handles cannot be accessed concurrently by multiple threads\&. Applications typically open one Session handle for each thread accessing a database, and then one or more Cursor handles within the session\&.
+.PP
+Session and Cursor methods may be accessed by different threads serially (for example, a pool of threads managed by the application with a set of shared session or cursor handles)\&. There is no thread-local state in WiredTiger, and no built-in synchronization of session or cursor handles, either, so if multiple threads access a session or cursor handle, access must be serialized by the application\&.
+.PP
+AsyncOp methods are not thread-safe, and must be accessed by only a single thread at a time\&. AsyncOp methods may be accessed by different threads serially (and that is expected to happen when the asynchronous callback function runs)\&.
+.SH "Code samples"
+.PP
+The code below is taken from the complete example program ex_thread\&.java\&.
+.PP
+This is an example of a thread entry point\&. A new session is opened for the thread and used for all operations within that thread\&.
+.PP
+.PP
+.nf
+class ScanThread extends Thread {
+    private Connection conn;
+
+    public ScanThread(Connection conn) {
+        this\&.conn = conn;
+    }
+
+    public void run()
+    {
+        try {
+            int ret;
+
+            Session session = conn\&.open_session(null);
+            Cursor cursor = session\&.open_cursor("table:access", null, null);
+
+            /* Show all records\&. */
+            while ((ret = cursor\&.next()) == 0) {
+                String key = cursor\&.getKeyString();
+                String value = cursor\&.getValueString();
+                System\&.out\&.println("Got record: " + key + " : " + value);
+            }
+            if (ret != wiredtiger\&.WT_NOTFOUND)
+                System\&.err\&.println("Cursor\&.next: " +
+                                   wiredtiger\&.wiredtiger_strerror(ret));
+            cursor\&.close();
+            session\&.close(null);
+        } catch (WiredTigerException wte) {
+            System\&.err\&.println("Exception " + wte);
+        }
+    }
+}
+.fi
+.PP
+ Here is the main function that starts the threads\&. It opens a single connection, shared between the threads, and closes the connection after waiting for all of the threads to exit\&.
+.PP
+.PP
+.nf
+    public static void main(String[] argv)
+    {
+        try {
+            Thread[] threads = new Thread[NUM_THREADS];
+            int i, ret;
+            Connection conn;
+
+            /*
+             * Create a clean test directory for this run of the test program if the
+             * environment variable isn't already set (as is done by make check)\&.
+             */
+            if (System\&.getenv("WIREDTIGER_HOME") == null) {
+                home = "WT_HOME";
+                try {
+                    Process proc = Runtime\&.getRuntime()\&.exec("/bin/rm -rf " + home);
+                    BufferedReader br = new BufferedReader(
+                        new InputStreamReader(proc\&.getInputStream()));
+                    while(br\&.ready())
+                        System\&.out\&.println(br\&.readLine());
+                    br\&.close();
+                    proc\&.waitFor();
+                    if (!(new File(home))\&.mkdir())
+                        System\&.err\&.println("mkdir: failed");
+                } catch (Exception ex) {
+                    System\&.err\&.println("Exception: " + home + ": " + ex);
+                    System\&.exit(1);
+                }
+            } else
+                home = null;
+
+            if ((conn = wiredtiger\&.open(home, "create")) == null) {
+                System\&.err\&.println("Error connecting to " + home);
+                System\&.exit(1);
+            }
+
+            /* Note: further error checking omitted for clarity\&. */
+
+            Session session = conn\&.open_session(null);
+            ret = session\&.create("table:access", "key_format=S,value_format=S");
+            Cursor cursor = session\&.open_cursor("table:access", null, "overwrite");
+            cursor\&.putKeyString("key1");
+            cursor\&.putValueString("value1");
+            ret = cursor\&.insert();
+            cursor\&.close();
+            ret = session\&.close(null);
+
+            for (i = 0; i < NUM_THREADS; i++) {
+                threads[i] = new ScanThread(conn);
+                threads[i]\&.start();
+            }
+
+            for (i = 0; i < NUM_THREADS; i++)
+                try {
+                    threads[i]\&.join();
+                    ret = -1;
+                }
+                catch (InterruptedException ie) {
+                }
+
+            ret = conn\&.close(null);
+            System\&.exit(ret);
+        }
+        catch (WiredTigerException wte) {
+            System\&.err\&.println("Exception: " + wte);
+            wte\&.printStackTrace();
+            System\&.exit(1);
+        }
+    }
+.fi
+.PP
+

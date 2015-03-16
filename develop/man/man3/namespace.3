@@ -1,0 +1,22 @@
+.TH "namespace" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+namespace \- Name spaces 
+
+.SH "Process' environment name space"
+.PP
+WiredTiger's environment variables begin with the string 'WIREDTIGER'\&.
+.SH "C language name space"
+.PP
+WiredTiger's public function names begin with the string 'wiredtiger'\&.
+.PP
+WiredTiger's public \fC#define\fP and structure \fCtypedef\fP declarations begin with the string 'WT_'\&.
+.PP
+WiredTiger's private function names begin with the string '__wt_'\&.
+.SH "File system name space"
+.PP
+WiredTiger's files begin with the string 'WiredTiger'; applications should not create files in the WiredTiger file system name space\&.
+.SH "Error return name space"
+.PP
+WiredTiger reserves all values from -31,800 to -31,999 as possible error return values\&. 

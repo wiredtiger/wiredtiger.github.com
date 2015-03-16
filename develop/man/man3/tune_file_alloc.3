@@ -1,0 +1,28 @@
+.TH "tune_file_alloc" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_file_alloc \- File allocation 
+
+.SH "File growth"
+.PP
+It's faster on some filesystems to grow a file in chunks rather than to extend it a block at a time as new blocks are written\&. By configuring the wiredtiger_open functions \fCfile_extend\fP value, applications can grow files ahead of the blocks being written\&.
+.PP
+.PP
+.nf
+        ret = wiredtiger_open(
+            home, NULL, "create,file_extend=(data=16MB)", &conn);
+.fi
+.PP
+ The system calls used to extend files in chunks on some systems require locking across the system call, which may decrease performance\&. Before configuring a \fCfile_extend\fP value, before and after throughput should be carefully evaluated\&.
+.SH "File block allocation"
+.PP
+By default, when file blocks are being reused, WiredTiger attempts to avoid file fragmentation by selecting the smallest available block rather than splitting a larger available block into two\&. The \fCblock_allocation\fP configuration string to \fBWT_SESSION::create\fP can be set to \fCfirst\fP to change the algorithm to first-fit, that is, take the first available block in the file\&. Applications where file size is more of an issue than file fragmentation (for example, applications with fixed-size blocks) might want to configure this way\&.
+.PP
+.PP
+.nf
+        ret = session->create(session, "table:mytable",
+            "key_format=S,value_format=S,block_allocation=first");
+.fi
+.PP
+

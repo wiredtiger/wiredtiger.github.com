@@ -1,0 +1,26 @@
+.TH "tune_compression" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_compression \- Compression 
+WiredTiger includes a number of optional compression techniques\&. Configuring compression generally decreases on-disk and in-memory resource requirements and the amount of I/O, and increases CPU cost when rows are read and written\&.
+.PP
+Configuring compression may change application throughput\&. For example, in applications using solid-state drives (where I/O is less expensive), turning off compression may increase application performance by reducing CPU costs; in applications where I/O costs are more expensive, turning on compression may increase application performance by reducing the overall number of I/O operations\&.
+.PP
+An example of turning on row-store key prefix compression:
+.PP
+.PP
+.nf
+        ret = session->create(session, "table:mytable",
+            "key_format=S,value_format=S,prefix_compression=true");
+.fi
+.PP
+ An example of turning on row-store or column-store dictionary compression:
+.PP
+.PP
+.nf
+        ret = session->create(session, "table:mytable",
+            "key_format=S,value_format=S,dictionary=1000");
+.fi
+.PP
+ See \fBFile formats and compression\fP for more information on available compression techniques\&. 

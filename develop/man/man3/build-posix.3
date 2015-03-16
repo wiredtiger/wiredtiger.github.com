@@ -1,0 +1,221 @@
+.TH "build-posix" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+build-posix \- Building and installing WiredTiger on POSIX 
+
+.SH "Building using Git and GitHub"
+.PP
+Skip this step if you are building from a WiredTiger release package, and proceed with \fBBuilding WiredTiger\fP\&.
+.PP
+To build from the WiredTiger GitHub repository requires \fCgit\fP, \fCautoconf\fP, \fCautomake\fP, \fClibtool\fP and related tools\&. The standard options for those tools can be specified when configuring and building WiredTiger\&.
+.PP
+First, clone the repository:
+.PP
+.PP
+.nf
+git clone git://github\&.com/wiredtiger/wiredtiger\&.git
+.fi
+.PP
+.PP
+Second, run \fCautogen\&.sh\fP to create the \fCconfigure\fP script:
+.PP
+.PP
+.nf
+cd wiredtiger
+sh autogen\&.sh
+.fi
+.PP
+.PP
+Now proceed with \fBBuilding WiredTiger\fP\&.
+.SH "Building WiredTiger"
+.PP
+To build the WiredTiger software on a POSIX system, change directory to the top-level directory, then configure and build the software:
+.PP
+.PP
+.nf
+cd wiredtiger
+\&./configure && make
+.fi
+.PP
+.PP
+To rebuild from scratch, discard any previous configuration by cleaning out the build area:
+.PP
+.PP
+.nf
+make distclean
+.fi
+.PP
+.PP
+To see additional configuration options, run:
+.PP
+.PP
+.nf
+\&./configure --help
+.fi
+.PP
+.PP
+WiredTiger uses \fCautoconf\fP \fCautomake\fP, and \fClibtool\fP to create the configure script and Makefiles\&. The standard options for those tools can be specified when configuring and building WiredTiger\&.
+.SH "Installing WiredTiger"
+.PP
+The WiredTiger software consists of a library and a single standalone utility\&.
+.PP
+WiredTiger's distribution follows the GNU Coding Standards installation guidelines, and by default WiredTiger builds and installs four versions of the library in \fC/usr/local/lib\fP\&. For example:
+.PP
+.PP
+.nf
+file /usr/local/lib/libwiredtiger*
+/usr/local/lib/libwiredtiger-1\&.0\&.0\&.so: ELF 64-bit LSB shared object, x86-64, version 1 (FreeBSD), dynamically linked, not stripped
+/usr/local/lib/libwiredtiger\&.a:        current ar archive
+/usr/local/lib/libwiredtiger\&.la:       libtool library file
+/usr/local/lib/libwiredtiger\&.so:       symbolic link to `libwiredtiger-1\&.0\&.0\&.so'
+.fi
+.PP
+.PP
+WiredTiger uses \fClibtool\fP to build the libraries\&. By default, both shared and static libraries are built\&. To build only static libraries, configure WiredTiger using the \fC--disable-shared\fP argument\&. To build only shared libraries, configure using WiredTiger using the \fC--disable-static\fP argument\&.
+.PP
+In addition, WiredTiger installs a standalone utility program named \fCwt\fP\&. By default, this utility is installed in \fC/usr/local/bin/wt\fP\&.
+.PP
+To install WiredTiger:
+.PP
+.PP
+.nf
+make install
+.fi
+.PP
+.PP
+To uninstall WiredTiger:
+.PP
+.PP
+.nf
+make uninstall
+.fi
+.PP
+.PP
+To install WiredTiger's libraries or binaries into alternate locations, use the configuration or installation options described in the \fCGNU coding standards\fP documentation\&. For example, to install the libraries and binaries into a different location:
+.PP
+.PP
+.nf
+\&./configure --prefix=/c/wiredtiger
+.fi
+.PP
+.SH "Configuring WiredTiger"
+.PP
+The WiredTiger software supports some additional configuration options:
+.PP
+\fB\fC--enable-attach\fP \fP
+.RS 4
+Configure WiredTiger to sleep and wait for a debugger to attach on failure\&. \fBDO NOT\fP configure this option in production environments\&.
+.RE
+.PP
+\fB\fC--enable-bzip2\fP \fP
+.RS 4
+Configure WiredTiger for \fCbzip2\fP compression; see \fBCompressors\fP for more information\&.
+.RE
+.PP
+\fB\fC--enable-diagnostic\fP \fP
+.RS 4
+Configure WiredTiger to perform various run-time diagnostic tests\&. \fBDO NOT\fP configure this option in production environments\&.
+.RE
+.PP
+\fB\fC--enable-java\fP \fP
+.RS 4
+Build the WiredTiger Java API\&.
+.RE
+.PP
+\fB\fC--enable-leveldb\fP[=basho, hyper, rocksdb]\fP
+.RS 4
+Include a Google, Inc\&. compatible LevelDB API\&. Optionally, specify \fCbasho\fP to build a version of the LevelDB API compatible with Basho's Riak product, specify \fChyper\fP to build a version of the LevelDB API compatible with the HyperDex product, and specify \fCrocksdb\fP to build a version of the LevelDB API compatible with applications using Facebook's RocksDB engine\&. See \fBBuilding and installing the LevelDB compatibility API\fP for more information\&.
+.RE
+.PP
+\fB\fC--enable-python\fP \fP
+.RS 4
+Build the WiredTiger \fCPython\fP API\&.
+.RE
+.PP
+\fB\fC--enable-snappy\fP \fP
+.RS 4
+Configure WiredTiger for \fCsnappy\fP compression; see \fBCompressors\fP for more information\&.
+.RE
+.PP
+\fB\fC--enable-verbose\fP \fP
+.RS 4
+Configure WiredTiger to support the \fCverbose\fP configuration string to \fBwiredtiger_open\fP\&.
+.RE
+.PP
+\fB\fC--enable-zlib\fP \fP
+.RS 4
+Configure WiredTiger for \fCzlib\fP compression; see \fBCompressors\fP for more information\&.
+.RE
+.PP
+\fB--with-builtins\fP
+.RS 4
+Configure WiredTiger to include support for extensions in the main library\&. This avoids requiring additional libraries for supported extensions\&. Currently supported options are \fCsnappy\fP and \fCzlib\fP\&.
+.RE
+.PP
+\fB--with-python-prefix\fP
+.RS 4
+Configure WiredTiger to install Python libraries to a non-standard Python install location\&.
+.RE
+.PP
+\fB--with-spinlock[=pthread, pthread_adaptive, gcc]\fP
+.RS 4
+Configure WiredTiger to use a specific mutex type for serialization; options are \fCpthread\fP (the default, which configures WiredTiger to use POSIX 1003\&.1c pthread mutexes), \fCpthread_adaptive\fP (which configures WiredTiger to use POSIX 1003\&.1c pthread mutexes configured to be adaptive (where that functionality is available), or \fCgcc\fP (which configures WiredTiger to use gcc-based spinlocks)\&.
+.RE
+.PP
+.SH "Changing compiler or loader options"
+.PP
+To change the compiler or loader behavior during the build, use the \fCCC\fP, \fCCFLAGS\fP, \fCLDFLAGS\fP, or \fCLIBS\fP environment variables:
+.PP
+\fB\fCCC\fP \fP
+.RS 4
+The compiler\&. 
+.RE
+.PP
+\fB\fCCFLAGS\fP \fP
+.RS 4
+Compiler flags\&. 
+.RE
+.PP
+\fB\fCLDFLAGS\fP \fP
+.RS 4
+Loader flags\&. 
+.RE
+.PP
+\fB\fCLIBS\fP \fP
+.RS 4
+Additional libraries\&.
+.RE
+.PP
+For example, to specify a different compiler:
+.PP
+.PP
+.nf
+env CC=mygcc \&./configure
+.fi
+.PP
+.PP
+By default, WiredTiger builds with the \fC-O3\fP compiler optimization flag unless the \fC--enable-debug\fP configuration option is specified, in which case the \fC-g\fP compiler flag is used instead\&. For example, to specify a different level of optimization:
+.PP
+.PP
+.nf
+env CFLAGS=-Os \&./configure
+.fi
+.PP
+.PP
+To specify a different set of include files:
+.PP
+.PP
+.nf
+env CFLAGS=-I/usr/local/include \&./configure
+.fi
+.PP
+.PP
+To specify an additional library:
+.PP
+.PP
+.nf
+env LIBS="-lrtf -lmin" LDFLAGS=-L/usr/local/lib \&./configure
+.fi
+.PP
+ 

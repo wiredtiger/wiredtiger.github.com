@@ -1,0 +1,280 @@
+.TH "cursor_ops" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cursor_ops \- Cursor operations 
+Common operations in WiredTiger are performed using \fBWT_CURSOR\fP handles\&. A cursor includes:
+.PP
+.IP "\(bu" 2
+a position within a data source
+.IP "\(bu" 2
+getter/setters for key and value fields
+.IP "\(bu" 2
+encoding of fields to store in the data source
+.IP "\(bu" 2
+methods to navigate within and iterate through the data
+.PP
+.SH "Opening a cursor"
+.PP
+Cursors are created using the \fBWT_SESSION::open_cursor\fP method\&. For example, from the program \fBex_cursor\&.c\fP:
+.PP
+.PP
+.nf
+        ret = session->open_cursor(session, "table:world", NULL, NULL, &cursor);
+.fi
+.PP
+ Another example from the same program:
+.PP
+.PP
+.nf
+        ret = session->open_cursor(session,
+            "table:world(country,population)", NULL, NULL, &cursor);
+.fi
+.PP
+ In addition to traditional data sources, cursors in WiredTiger are used to access projections and even created data sources such as the run-time statistics:
+.PP
+.PP
+.nf
+        ret = session->open_cursor(session, "statistics:", NULL, NULL, &cursor);
+.fi
+.PP
+ See \fBCursors\fP for more information on available cursor types\&.
+.SH "Closing a cursor"
+.PP
+Cursors remain open until either \fBWT_CURSOR::close\fP is called or the cursor's session is closed, which may either be in \fBWT_SESSION::close\fP or \fBWT_CONNECTION::close\fP\&.
+.SH "Positioning a cursor"
+.PP
+Cursors may be positioned at the beginning of the data source, the end of the data source, at an exact key within the data source, and near a key within the data source\&.
+.PP
+To invalidate the position of a cursor so that subsequent iterations start from the beginning or end of the data source, use the \fBWT_CURSOR::reset\fP method:
+.PP
+.PP
+.nf
+int
+cursor_reset(WT_CURSOR *cursor)
+{
+        return (cursor->reset(cursor));
+}
+.fi
+.PP
+ To move a cursor forward in the data source, use the cursor \fBWT_CURSOR::next\fP method:
+.PP
+.PP
+.nf
+int
+cursor_forward_scan(WT_CURSOR *cursor)
+{
+        const char *key, *value;
+        int ret;
+
+        while ((ret = cursor->next(cursor)) == 0) {
+                ret = cursor->get_key(cursor, &key);
+                ret = cursor->get_value(cursor, &value);
+        }
+        return (ret);
+}
+.fi
+.PP
+ If the \fBWT_CURSOR::next\fP method is called on a cursor without a position in the data source, it is positioned at the beginning of the data source\&.
+.PP
+To move a cursor backward in the data source, use the cursor \fBWT_CURSOR::prev\fP method:
+.PP
+.PP
+.nf
+int
+cursor_reverse_scan(WT_CURSOR *cursor)
+{
+        const char *key, *value;
+        int ret;
+
+        while ((ret = cursor->prev(cursor)) == 0) {
+                ret = cursor->get_key(cursor, &key);
+                ret = cursor->get_value(cursor, &value);
+        }
+        return (ret);
+}
+.fi
+.PP
+ If the \fBWT_CURSOR::prev\fP method is called on a cursor without a position in the data source, it is positioned at the end of the data source\&.
+.PP
+To position a cursor at a specific location in the data source, use the \fBWT_CURSOR::search\fP method:
+.PP
+.PP
+.nf
+int
+cursor_search(WT_CURSOR *cursor)
+{
+        const char *value;
+        int ret;
+
+        cursor->set_key(cursor, "foo");
+
+        if ((ret = cursor->search(cursor)) != 0)
+                ret = cursor->get_value(cursor, &value);
+
+        return (ret);
+}
+.fi
+.PP
+ To position a cursor at or near a location in the data source, use the \fBWT_CURSOR::search_near\fP method:
+.PP
+.PP
+.nf
+int
+cursor_search_near(WT_CURSOR *cursor)
+{
+        const char *key, *value;
+        int exact, ret;
+
+        cursor->set_key(cursor, "foo");
+
+        if ((ret = cursor->search_near(cursor, &exact)) == 0) {
+                switch (exact) {
+                case -1:        /* Returned key smaller than search key */
+                        ret = cursor->get_key(cursor, &key);
+                        break;
+                case 0:         /* Exact match found */
+                        break;
+                case 1:         /* Returned key larger than search key */
+                        ret = cursor->get_key(cursor, &key);
+                        break;
+                }
+
+                ret = cursor->get_value(cursor, &value);
+        }
+
+        return (ret);
+}
+.fi
+.PP
+ Cursor positions do not survive transactions: cursors that are open during \fBWT_SESSION::begin_transaction\fP, \fBWT_SESSION::commit_transaction\fP or \fBWT_SESSION::rollback_transaction\fP will lose their position as if \fBWT_CURSOR::reset\fP was called\&.
+.PP
+Cursors can be configured to move to a random position with \fBWT_CURSOR::next\fP is called, see \fBCursor random\fP for details\&.
+.SH "Inserting and updating"
+.PP
+To insert new data, and optionally update existing data, using a cursor, use the \fBWT_CURSOR::insert\fP method:
+.PP
+.PP
+.nf
+int
+cursor_insert(WT_CURSOR *cursor)
+{
+        cursor->set_key(cursor, "foo");
+        cursor->set_value(cursor, "bar");
+
+        return (cursor->insert(cursor));
+}
+.fi
+.PP
+ To update existing data using a cursor, use the \fBWT_CURSOR::update\fP method:
+.PP
+.PP
+.nf
+int
+cursor_update(WT_CURSOR *cursor)
+{
+        cursor->set_key(cursor, "foo");
+        cursor->set_value(cursor, "newbar");
+
+        return (cursor->update(cursor));
+}
+.fi
+.PP
+ To remove existing data using a cursor, use the \fBWT_CURSOR::remove\fP method:
+.PP
+.PP
+.nf
+int
+cursor_remove(WT_CURSOR *cursor)
+{
+        cursor->set_key(cursor, "foo");
+        return (cursor->remove(cursor));
+}
+.fi
+.PP
+ The \fBWT_SESSION::open_cursor\fP \fCoverwrite\fP configuration is \fCtrue\fP by default, causing \fBWT_CURSOR::insert\fP, \fBWT_CURSOR::remove\fP and \fBWT_CURSOR::update\fP to ignore the current state of the record, and these methods will succeed regardless of whether or not the record previously exists\&.
+.PP
+When an application configures \fCoverwrite\fP to \fCfalse\fP, \fBWT_CURSOR::insert\fP will fail with \fBWT_DUPLICATE_KEY\fP if the record previously exists, and \fBWT_CURSOR::update\fP and \fBWT_CURSOR::remove\fP will fail with \fBWT_NOTFOUND\fP if the record does not previously exist\&.
+.SH "Cursor position after error"
+.PP
+After any cursor handle method failure, the cursor's position is undetermined\&. For cursor operations that expect a key to be set before the operation begins (including \fBWT_CURSOR::search\fP, \fBWT_CURSOR::insert\fP, \fBWT_CURSOR::update\fP and \fBWT_CURSOR::remove\fP), the application's key and value will not be cleared by an error\&.
+.PP
+Applications that cannot re-position the cursor after failure must duplicate the cursor by calling \fBWT_SESSION::open_cursor\fP and passing the cursor as the \fCto_dup\fP parameter before calling a cursor method that will attempt to re-position the cursor\&. Cursor duplication is not supported for the backup, config and statistics cursor types\&.
+.SH "Cursor key/value memory scoping"
+.PP
+When applications pass pointers to \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP, which can be a \fBWT_ITEM\fP or a string, the application is required to keep the memory valid until the next operation that successfully positions the cursor\&. These operations are \fBWT_CURSOR::remove\fP, \fBWT_CURSOR::search\fP, \fBWT_CURSOR::search_near\fP and \fBWT_CURSOR::update\fP, but \fBdo not include\fP \fBWT_CURSOR::insert\fP, as it does not position the cursor\&.
+.PP
+If such an operation fails (for example, due to a \fBWT_ROLLBACK\fP error), it may be retried without calling \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP again\&. That is, the cursor may still reference the application-supplied memory until it is successfully positioned\&.
+.PP
+Any pointers returned by \fBWT_CURSOR::get_key\fP or \fBWT_CURSOR::get_value\fP are only valid until the cursor is positioned\&. These pointers may reference private WiredTiger data structures that must not be modified or freed by the application\&. If a longer scope is required, the application must make a copy of the memory before the cursor is positioned\&.
+.PP
+The comments in this example code explain when the application can safely modify memory passed to \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP:
+.PP
+.PP
+.nf
+                (void)snprintf(keybuf, sizeof(keybuf), "%s", op->key);
+                cursor->set_key(cursor, keybuf);
+                (void)snprintf(valuebuf, sizeof(valuebuf), "%s", op->value);
+                cursor->set_value(cursor, valuebuf);
+
+                /*
+                 * The application must keep the key and value memory valid
+                 * until the next operation that positions the cursor\&.
+                 * Modifying either the key or value buffers is not permitted\&.
+                 */
+
+                /* Apply the operation (insert, update, search or remove)\&. */
+                if ((ret = op->apply(cursor)) != 0) {
+                        fprintf(stderr, "Error performing the operation: %s\n",
+                            wiredtiger_strerror(ret));
+                        return (ret);
+                }
+
+                /*
+                 * Except for WT_CURSOR::insert, the cursor has been positioned
+                 * and no longer references application memory, so application
+                 * buffers can be safely overwritten\&.
+                 */
+                if (op->apply != cursor->insert) {
+                        strcpy(keybuf, "no key");
+                        strcpy(valuebuf, "no value");
+                }
+
+                /*
+                 * Check that get_key/value behave as expected after the
+                 * operation\&.
+                 */
+                if ((ret = cursor->get_key(cursor, &key)) != 0 ||
+                    (op->apply != cursor->remove &&
+                    (ret = cursor->get_value(cursor, &value)) != 0)) {
+                        fprintf(stderr, "Error in get_key/value: %s\n",
+                            wiredtiger_strerror(ret));
+                        return (ret);
+                }
+
+                /*
+                 * Except for WT_CURSOR::insert (which does not position the
+                 * cursor), the application now has pointers to memory owned
+                 * by the cursor\&.  Modifying the memory referenced by either
+                 * key or value is not permitted\&.
+                 */
+
+                /* Check that the cursor's key and value are what we expect\&. */
+                if (op->apply != cursor->insert)
+                        if (key == keybuf ||
+                            (op->apply != cursor->remove &&
+                            value == valuebuf)) {
+                                fprintf(stderr,
+                                    "Cursor points at application memory!\n");
+                                return (EINVAL);
+                        }
+
+                if (strcmp(key, op->key) != 0 ||
+                    (op->apply != cursor->remove &&
+                    strcmp(value, op->value) != 0)) {
+                        fprintf(stderr, "Unexpected key / value!\n");
+                        return (EINVAL);
+                }
+.fi
+.PP
+

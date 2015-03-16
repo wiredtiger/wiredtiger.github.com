@@ -1,0 +1,49 @@
+.TH "testing" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+testing \- WiredTiger testing 
+WiredTiger uses a combination of several different tools and test programs for testing WiredTiger\&.
+.PP
+WiredTiger testing is done automatically using the \fCJenkins\fP continuous integration testing framework\&. This allows us to be confident we don't introduce problems in a non-standard configuration, or performance regressions\&.
+.SH "Unit Test Suite"
+.PP
+WiredTiger's primary functionality and regression testing is done in a Python unit test suite (found in the source tree under \fCtest/suite\fP)\&.
+.PP
+The WiredTiger Python test suite includes approximately 10,000 separate tests which are run on all platforms supported by WiredTiger\&. Each test is intended to test a single operation in a reproducible way, making it easy to diagnose errors\&. The test suite runs multiple test cases in parallel, allowing it to be run in a relatively short period of time\&.
+.PP
+The WiredTiger unit test suite includes tests that cover:
+.IP "\(bu" 2
+WiredTiger functionality (for example, cursors, transactions and recovery),
+.IP "\(bu" 2
+Combinations of WiredTiger's configuration settings and APIs,
+.IP "\(bu" 2
+Bug regression tests\&.
+.PP
+.PP
+The WiredTiger Python test suite is built using the WiredTiger Python API and the Python unittest functionality (the test suite requires at least Python version 2\&.6)\&.
+.PP
+The WiredTiger test suite automatically runs as part of every commit into the WiredTiger GitHub source tree\&.
+.SH "Performance Testing"
+.PP
+Performance testing is primarily done using the \fCbench/wtperf\fP utility\&. A variety of database configurations are run based on the scripts in \fCbench/wtperf/runners\fP\&.
+.PP
+WiredTiger performance tests are automatically run as part of each commit into the \fCdevelop\fP branch of the WiredTiger GitHub source tree and compared against previous runs to detect performance regressions\&.
+.SH "Stress Testing"
+.PP
+Stress testing is primarily done using the \fCtest/format\fP utility\&. This test program randomly configures a database and then runs some number of randomly selected operations, using some number of randomly selected threads, on that database\&. WiredTiger stress testing is run continuously on the WiredTiger GitHub \fCdevelop\fP branch\&.
+.SH "Concurrency testing"
+.PP
+Concurrency testing is primarily done using the \fCtest/format\fP utility\&. Additionally, the \fCtest/thread\fP and \fCtest/fops\fP test utilities test specific heavily threaded operations\&. WiredTiger concurrency testing is run continuously on the WiredTiger GitHub \fCdevelop\fP branch\&.
+.SH "Static analysis"
+.PP
+WiredTiger static analysis is done using three tools:
+.PP
+.IP "\(bu" 2
+The \fCCoverity, Inc\&.\fPsoftware analysis tool; current results and historic defect reports are available at \fCCoverity's WiredTiger page\fP\&.
+.IP "\(bu" 2
+The Gimpel Software \fCFlexeLint\fP implementation of the UNIX lint tool\&.
+.IP "\(bu" 2
+The University of Illinois LLVM project's \fCClang Static Analyzer\fP\&. 
+.PP
+

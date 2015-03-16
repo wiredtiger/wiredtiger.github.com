@@ -1,0 +1,122 @@
+.TH "WT_ASYNC_CALLBACK" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_ASYNC_CALLBACK \- 
+.PP
+The interface implemented by applications to accept notifications of the completion of asynchronous operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBnotify\fP )(\fBWT_ASYNC_CALLBACK\fP *cb, \fBWT_ASYNC_OP\fP *op, int op_ret, uint32_t flags)"
+.br
+.RI "\fICallback to receive completion notification\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The interface implemented by applications to accept notifications of the completion of asynchronous operations\&. 
+
+Applications register their implementation with WiredTiger by calling \fBWT_CONNECTION::async_new_op\fP\&.
+.PP
+.PP
+.nf
+                while ((ret = conn->async_new_op(conn,
+                    "table:async", NULL, &ex_asynckeys\&.iface, &op)) != 0) {
+                        /*
+                         * If we used up all the handles, pause and retry to
+                         * give the workers a chance to catch up\&.
+                         */
+                        fprintf(stderr,
+                            "asynchronous operation handle not available\n");
+                        if (ret == EBUSY)
+                                sleep(1);
+                        else
+                                return (ret);
+                }
+.fi
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_ASYNC_CALLBACK::notify)(\fBWT_ASYNC_CALLBACK\fP *cb, \fBWT_ASYNC_OP\fP *op, int op_ret, uint32_t flags)"
+
+.PP
+Callback to receive completion notification\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.br
+\fIop_ret\fP the result of the async operation 
+.br
+\fIflags\fP currently unused 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero for success, non-zero to indicate an error\&.
+.RE
+.PP
+.PP
+.nf
+typedef struct {
+        WT_ASYNC_CALLBACK iface;
+        uint32_t num_keys;
+} ASYNC_KEYS;
+
+static int
+async_callback(WT_ASYNC_CALLBACK *cb,
+    WT_ASYNC_OP *op, int wiredtiger_error, uint32_t flags)
+{
+        ASYNC_KEYS *asynckey = (ASYNC_KEYS *)cb;
+        WT_ASYNC_OPTYPE type;
+        WT_ITEM k, v;
+        const char *key, *value;
+        uint64_t id;
+        int ret;
+
+        (void)flags;                            /* Unused */
+
+        ret = 0;
+
+        /* Retrieve the operation's WT_ASYNC_OPTYPE type\&. */
+        type = op->get_type(op);
+        /* Retrieve the operation's 64-bit identifier\&. */
+        id = op->get_id(op);
+        /* Check for a WiredTiger error\&. */
+        if (wiredtiger_error != 0) {
+                fprintf(stderr,
+                    "ID %" PRIu64 " error %d: %s\n",
+                    id, wiredtiger_error,
+                    wiredtiger_strerror(wiredtiger_error));
+                global_error = wiredtiger_error;
+                return (1);
+        }
+
+        /* If doing a search, retrieve the key/value pair\&. */
+        if (type == WT_AOP_SEARCH) {
+                ret = op->get_key(op, &k);
+                key = k\&.data;
+                ret = op->get_value(op, &v);
+                value = v\&.data;
+                ATOMIC_ADD(asynckey->num_keys, 1);
+                printf("Id %" PRIu64 " got record: %s : %s\n", id, key, value);
+        }
+        return (ret);
+}
+.fi
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

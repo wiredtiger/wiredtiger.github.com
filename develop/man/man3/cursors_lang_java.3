@@ -1,0 +1,132 @@
+.TH "cursors_lang_java" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cursors_lang_java \- Cursors in Java 
+Common operations in WiredTiger are performed using Cursor handles\&. A cursor includes:
+.PP
+.IP "\(bu" 2
+a position within a data source
+.IP "\(bu" 2
+getter/setters for key and value fields
+.IP "\(bu" 2
+encoding of fields to store in the data source
+.IP "\(bu" 2
+methods to navigate within and iterate through the data
+.PP
+.PP
+See \fBCursor operations in Java\fP for a description of how to use cursors\&.
+.SH "Cursor types"
+.PP
+The following are the builtin basic cursor types: URITypeNotes \fCtable:<table name>[<projection>]\fPtable cursortable key, table value(s) with optional projection of columns \fCcolgroup:<table name>:<column group name>\fPcolumn group cursortable key, column group value(s) \fCindex:<table name>:<index name>[<projection>]\fPindex cursorkey=index key, value=table value(s) with optional projection of columns Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: URITypeNotes \fCbackup:\fPbackup cursorkey=\fCstring\fP, see \fBBackups\fP for details \fClog:\fPlog cursorkey=\fC(long fileID, long offset, int seqno)\fP,
+.br
+ value=\fC(uint64_t txnid, uint32_t rectype,
+.br
+ uint32_t optype, uint32_t fileid,
+.br
+ \fBWT_ITEM\fP key, \fBWT_ITEM\fP value)\fP,
+.br
+ see \fBLog cursors\fP for details \fCmetadata:\fPmetadata cursorkey=\fCstring\fP, value=\fCstring\fP,
+.br
+ see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabase or data source statistics cursorkey=\fCint id\fP,
+.br
+ value=\fC(string description, string value, uint64_t value)\fP,
+.br
+ see \fBStatistics Data\fP for details Advanced applications may also open the following low-level cursor types: URITypeNotes \fCfile:<file name>\fPfile cursorfile key, file value(s) \fClsm:<name>\fPLSM cursor (key=LSM key, value=LSM value)LSM key, LSM value,
+.br
+ see \fBLog-Structured Merge Trees\fP 
+.PP
+See the following for more details:
+.PP
+.IP "\(bu" 2
+\fBData Sources in Java\fP
+.IP "\(bu" 2
+\fBReading WiredTiger Metadata\fP
+.IP "\(bu" 2
+\fBLog cursors in Java\fP
+.PP
+.SH "Projections"
+.PP
+Cursors on tables and indices can return a subset of columns\&. This is done by listing the column names in parenthesis in the \fCuri\fP parameter to Session\&.open_cursor\&. Only the fields from the listed columns are returned by Cursor\&.get_value\&.
+.PP
+The ex_schema\&.java example creates a table where the value format is \fC'5sHq'\fP, where the initial string is the country, the short is a year, and the long is a population\&. The following example lists just the country and year columns from the table record values:
+.PP
+.PP
+.nf
+        /*
+         * Use a projection to return just the table's country and year
+         * columns\&.
+         */
+        cursor = session\&.open_cursor("table:poptable(country,year)", null, null);
+        while ((ret = cursor\&.next()) == 0) {
+            country = cursor\&.getValueString();
+            year = cursor\&.getValueShort();
+            System\&.out\&.println("country " + country + ", year " + year);
+        }
+.fi
+.PP
+ This is particularly useful with index cursors, because if all columns in the projection are available in the index (including primary key columns, which are the values of the index), the data can be read from the index without accessing any column groups\&. See \fBIndex cursor projections\fP for more information\&.
+.SH "Cursors and Transactions"
+.PP
+If there is a transaction active in a session, cursors operate in the context of that transaction\&. Reads performed while a transaction is active inherit the isolation level of the transaction, and updates performed within a transaction are made durable by calling Session\&.commit_transaction, or discarded by calling Session\&.rollback_transaction\&.
+.PP
+If no transaction is active, cursor reads are performed at the isolation level of the session, set with the \fCisolation\fP configuration key to Connection\&.open_session and successful updates are automatically committed before the update operation completes\&.
+.PP
+Any operation that consists of multiple related updates should be enclosed in an explicit transaction to ensure that the updates are applied atomically\&.
+.PP
+At \fCread-committed\fP (the default) or \fCsnapshot\fP isolation levels, committed changes from concurrent transactions become visible when no cursor is positioned\&. In other words, at these isolation levels, all cursors in a session read from a stable snapshot while any cursor in the session remains positioned\&.
+.PP
+Cursor positions survive transaction boundaries, unless a transaction is rolled back\&. When a transaction is rolled-back either implicitly or explicitly, all cursors in the session are reset as if the Cursor\&.reset method was called, discarding any cursor position as well as any key and value\&.
+.PP
+See \fBTransactions in Java\fP for more information\&.
+.SH "Raw mode"
+.PP
+Cursors can be configured for raw mode by specifying the \fC'raw'\fP config keyword to Session\&.open_cursor\&. In this mode, the methods Cursor\&.get_key, Cursor\&.get_value, Cursor\&.set_key and Cursor\&.set_value all take a single byte array in the variable-length argument list instead of a separate argument for each column\&.
+.PP
+The following example lists the table record values, using raw mode:
+.PP
+.PP
+.nf
+        cursor = session\&.open_cursor("table:poptable", null, "raw");
+        while ((ret = cursor\&.next()) == 0) {
+            byte[] key, value;
+
+            key = cursor\&.getKeyByteArray();
+            System\&.out\&.println(Arrays\&.toString(key));
+            value = cursor\&.getValueByteArray();
+            System\&.out\&.println("raw key: " + Arrays\&.toString(key) +
+                               ", raw value: " + Arrays\&.toString(value));
+        }
+.fi
+.PP
+ Raw mode can be used in combination with projections\&. The following example lists just the country and year columns from the table record values, using raw mode:
+.PP
+.PP
+.nf
+        /*
+         * Use a projection to return just the table's country and year
+         * columns\&.
+         */
+        cursor = session\&.open_cursor("table:poptable(country,year)", null, null);
+        while ((ret = cursor\&.next()) == 0) {
+            country = cursor\&.getValueString();
+            year = cursor\&.getValueShort();
+            System\&.out\&.println("country " + country + ", year " + year);
+        }
+.fi
+.PP
+ 
+.SH "Reading WiredTiger Metadata"
+.PP
+WiredTiger cursors provide access to data from a variety of sources\&. One of these sources is the list of objects in the database\&.
+.PP
+To retrieve the list of database objects, open a cursor on the uri \fCmetadata:\fP\&. Each returned key will be a database object and each returned value will be the information stored in the metadata for object named by the key\&.
+.PP
+For example:
+.PP
+.PP
+.nf
+    cursor = session\&.open_cursor("metadata:", null, null);
+.fi
+.PP
+ The metadata cursor is read-only, and the metadata cannot be modified\&. 

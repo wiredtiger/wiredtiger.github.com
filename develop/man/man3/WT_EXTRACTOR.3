@@ -1,0 +1,102 @@
+.TH "WT_EXTRACTOR" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_EXTRACTOR \- 
+.PP
+The interface implemented by applications to provide custom extraction of index keys or column group values\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBextract\fP )(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session, const \fBWT_ITEM\fP *key, const \fBWT_ITEM\fP *value, \fBWT_CURSOR\fP *result_cursor)"
+.br
+.RI "\fICallback to extract a value for an index or column group\&. \fP"
+.ti -1c
+.RI "int(* \fBcustomize\fP )(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *appcfg, \fBWT_EXTRACTOR\fP **customp)"
+.br
+.RI "\fIIf non-NULL, this callback is called to customize the extractor for each index\&. \fP"
+.ti -1c
+.RI "int(* \fBterminate\fP )(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIIf non-NULL a callback performed when the index or column group is closed for customized extractors otherwise when the database is closed\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The interface implemented by applications to provide custom extraction of index keys or column group values\&. 
+
+Applications register implementations with WiredTiger by calling \fBWT_CONNECTION::add_extractor\fP\&. See \fBCustom Extractors\fP for more information\&.
+.PP
+.PP
+.nf
+        static WT_EXTRACTOR my_extractor = {my_extract, NULL, NULL};
+
+        ret = conn->add_extractor(conn, "my_extractor", &my_extractor, NULL);
+.fi
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_extractor\&.c\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_EXTRACTOR::customize)(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *appcfg, \fBWT_EXTRACTOR\fP **customp)"
+
+.PP
+If non-NULL, this callback is called to customize the extractor for each index\&. If the callback returns a non-NULL extractor, that instance is used instead of this one for all comparisons\&. 
+.SS "int(* WT_EXTRACTOR::extract)(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session, const \fBWT_ITEM\fP *key, const \fBWT_ITEM\fP *value, \fBWT_CURSOR\fP *result_cursor)"
+
+.PP
+Callback to extract a value for an index or column group\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+.PP
+.nf
+static int
+my_extract(WT_EXTRACTOR *extractor, WT_SESSION *session,
+    const WT_ITEM *key, const WT_ITEM *value,
+    WT_CURSOR *result_cursor)
+{
+        /* Unused parameters */
+        (void)extractor;
+        (void)session;
+        (void)key;
+
+        result_cursor->set_key(result_cursor, value);
+        return (result_cursor->insert(result_cursor));
+}
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIextractor\fP the \fBWT_EXTRACTOR\fP implementation 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIkey\fP the table key in raw format, see \fBRaw mode\fP for details 
+.br
+\fIvalue\fP the table value in raw format, see \fBRaw mode\fP for details 
+.br
+\fIresult_cursor\fP the method should call \fBWT_CURSOR::set_key\fP and \fBWT_CURSOR::insert\fP on this cursor to return a key\&. The \fCkey_format\fP of the cursor will match that passed to \fBWT_SESSION::create\fP for the index\&. Multiple index keys can be created for each record by calling \fBWT_CURSOR::insert\fP multiple times\&. 
+.RE
+.PP
+
+.SS "int(* WT_EXTRACTOR::terminate)(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session)"
+
+.PP
+If non-NULL a callback performed when the index or column group is closed for customized extractors otherwise when the database is closed\&. The \fBWT_EXTRACTOR::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

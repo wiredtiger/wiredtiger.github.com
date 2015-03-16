@@ -1,0 +1,117 @@
+.TH "build-windows" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+build-windows \- Building and installing WiredTiger on Windows 
+
+.SH "Building using Git and GitHub"
+.PP
+Skip this step if you are building from a WiredTiger release package, and proceed with \fBBuilding on Windows\fP
+.PP
+First, clone the repository:
+.PP
+.PP
+.nf
+git clone git://github\&.com/wiredtiger/wiredtiger\&.git
+.fi
+.PP
+.PP
+Now proceed with \fBBuilding on Windows\fP
+.SH "Building on Windows"
+.PP
+Building WiredTiger on Windows requires \fCSCons\fP as well as the Microsoft Visual C++ compiler in Microsoft Visual Studio\&.
+.PP
+Change directory to the top-level directory, then build the software:
+.PP
+.PP
+.nf
+cd wiredtiger
+scons
+.fi
+.PP
+.PP
+To rebuild from scratch, discard any previous configuration by cleaning out the build area:
+.PP
+.PP
+.nf
+scons -c
+.fi
+.PP
+.PP
+To see additional configuration options, run:
+.PP
+.PP
+.nf
+scons --help
+.fi
+.PP
+.PP
+To build the python language support, a 64-bit version of Python is required\&. The required version is referred to as x86-64 on \fCPython\&.org\fP or x64 on \fCActiveState Python\fP\&.
+.SH "Installing WiredTiger"
+.PP
+The WiredTiger software consists of a library and a single standalone utility\&.
+.PP
+WiredTiger's distribution follows the GNU Coding Standards installation guidelines, and by default WiredTiger builds and installs a static library and dll version of the library\&.
+.PP
+.PP
+.nf
+file <root directory>/package/bin/
+wt\&.exe:                 x64 standalone executable
+wiredtiger\&.dll:         x64 dynamically linked library
+
+file <root directory>/package/lib/
+libwiredtiger\&.lib:      x64 static library
+wiredtiger\&.lib:         x64 import library for dll
+.fi
+.PP
+.PP
+To install WiredTiger:
+.PP
+.PP
+.nf
+scons install
+.fi
+.PP
+.PP
+To install WiredTiger's libraries or binaries into alternate locations, you can use the --prefix configuration option\&.
+.PP
+.PP
+.nf
+scons --prefix=c:\wiredtiger install
+.fi
+.PP
+.SH "Configuring WiredTiger"
+.PP
+The WiredTiger software supports some additional configuration options:
+.PP
+\fB\fC--enable-attach\fP \fP
+.RS 4
+Configure WiredTiger to sleep and wait for a debugger to attach on failure\&. \fBDO NOT\fP configure this option in production environments\&.
+.RE
+.PP
+\fB\fC--enable-diagnostic\fP \fP
+.RS 4
+Configure WiredTiger to perform various run-time diagnostic tests\&. \fBDO NOT\fP configure this option in production environments\&.
+.RE
+.PP
+\fB\fC--enable-python\fP \fP
+.RS 4
+Build the WiredTiger \fCPython\fP API, requires path to swig\&.exe on Windows\&.
+.RE
+.PP
+\fB\fC--enable-snappy\fP \fP
+.RS 4
+Configure WiredTiger for \fCsnappy\fP compression; see \fBCompressors\fP for more information\&.
+.RE
+.PP
+\fB\fC--enable-verbose\fP \fP
+.RS 4
+Configure WiredTiger to support the \fCverbose\fP configuration string to \fBwiredtiger_open\fP\&.
+.RE
+.PP
+\fB\fC--enable-zlib\fP \fP
+.RS 4
+Configure WiredTiger for \fCzlib\fP compression; see \fBCompressors\fP for more information\&. 
+.RE
+.PP
+

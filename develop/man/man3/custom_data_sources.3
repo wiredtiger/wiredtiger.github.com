@@ -1,0 +1,285 @@
+.TH "custom_data_sources" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+custom_data_sources \- Custom Data Sources 
+Applications can implement their own custom data sources underneath WiredTiger using the \fBWT_DATA_SOURCE\fP interface\&. Each data source should support a set of methods for a different URI type (for example, in the same way WiredTiger supports the built-in type 'file:', an application data source might support the type 'dsrc:')\&.
+.PP
+The WiredTiger distribution includes an example of a complete custom data source implementation (based on Oracle's Berkeley DB database engine), in the file test/format/kvs_bdb\&.c\&. This example implementation is public domain software, please feel free to use this code as a prototype implementation of other custom data sources\&.
+.PP
+Applications register their \fBWT_DATA_SOURCE\fP interface implementations with WiredTiger using the \fBWT_CONNECTION::add_data_source\fP method:
+.PP
+.PP
+.nf
+        static WT_DATA_SOURCE my_dsrc = {
+                my_create,
+                my_compact,
+                my_drop,
+                my_open_cursor,
+                my_rename,
+                my_salvage,
+                my_truncate,
+                my_range_truncate,
+                my_verify,
+                my_checkpoint,
+                my_terminate
+        };
+        ret = conn->add_data_source(conn, "dsrc:", &my_dsrc, NULL);
+.fi
+.PP
+ 
+.SH "WT_DATA_SOURCE methods"
+.PP
+Any of the \fBWT_DATA_SOURCE\fP methods may be initialized to NULL\&. Calling uninitialized \fBWT_DATA_SOURCE\fP methods through a WiredTiger API will result in an 'operation not supported' error\&. For example, an underlying data source that does not support a compaction operation should set the \fCcompact\fP field of their \fBWT_DATA_SOURCE\fP structure to NULL\&.
+.SS "WT_DATA_SOURCE::create method"
+When implementing a custom data source, you may want to consider the 'r' key and 't' value formats, and whether or not they should be implemented\&.
+.PP
+The 'r' key format indicates keys are \fCuint64_t\fP typed record numbers\&. In this case, cursor methods will be passed and/or return a record number in the \fCrecno\fP field of the \fBWT_CURSOR\fP structure\&.
+.PP
+Cursor methods for data sources supporting fixed-length bit field column-stores (that is, a store with an 'r' type key and 't' type value) should accept and/or return a single byte in the value field of the \fBWT_CURSOR\fP structure, where between 1 and 8 of the low-order bits of that byte contain the bit-field's value\&. For example, if the value format is '3t', the key's value is the bottom 3 bits\&.
+.SH "WT_CURSOR methods"
+.PP
+The \fBWT_DATA_SOURCE::open_cursor\fP method is responsible for allocating and returning a \fBWT_CURSOR\fP structure\&. The only fields of the \fBWT_CURSOR\fP structure that should be initialized by \fBWT_DATA_SOURCE::open_cursor\fP are a subset of the underlying methods it supports\&.
+.PP
+The following methods of the \fBWT_CURSOR\fP structure must be initialized: 
+.PD 0
+
+.IP "\(bu" 2
+\fBWT_CURSOR::close\fP 
+.IP "\(bu" 2
+\fBWT_CURSOR::next\fP 
+.IP "\(bu" 2
+\fBWT_CURSOR::prev\fP 
+.IP "\(bu" 2
+\fBWT_CURSOR::reset\fP 
+.IP "\(bu" 2
+\fBWT_CURSOR::search\fP 
+.IP "\(bu" 2
+\fBWT_CURSOR::search_near\fP 
+.IP "\(bu" 2
+\fBWT_CURSOR::insert\fP 
+.IP "\(bu" 2
+\fBWT_CURSOR::update\fP 
+.IP "\(bu" 2
+\fBWT_CURSOR::remove\fP 
+.PP
+.PP
+No other methods of the \fBWT_CURSOR\fP structure should be initialized, for example initializing \fBWT_CURSOR::get_key\fP or \fBWT_CURSOR::set_key\fP will have no effect\&.
+.PP
+Incorrectly configuring the \fBWT_CURSOR\fP methods will likely result in a core dump\&.
+.PP
+The data source's \fBWT_CURSOR::close\fP method is responsible for discarding the allocated \fBWT_CURSOR\fP structure returned by \fBWT_DATA_SOURCE::open_cursor\fP\&.
+.SS "WT_CURSOR::insert method"
+Custom data sources supporting column-stores (that is, a store with an 'r' type key) should consider the \fCappend\fP configuration string optionally specified for the \fBWT_DATA_SOURCE::open_cursor\fP method\&. The \fCappend\fP string configures \fBWT_CURSOR::insert\fP to allocate and return an new record number key\&.
+.PP
+Custom data sources should consider the \fCoverwrite\fP configuration string optionally specified for the \fBWT_DATA_SOURCE::open_cursor\fP method\&. If the \fCoverwrite\fP configuration is \fCtrue\fP, \fBWT_CURSOR::insert\fP, \fBWT_CURSOR::remove\fP and \fBWT_CURSOR::update\fP should ignore the current state of the record, and these methods will succeed regardless of whether or not the record previously exists\&.
+.PP
+When an application configures \fCoverwrite\fP to \fCfalse\fP, \fBWT_CURSOR::insert\fP should fail with \fBWT_DUPLICATE_KEY\fP if the record previously exists, and \fBWT_CURSOR::update\fP and \fBWT_CURSOR::remove\fP will fail with \fBWT_NOTFOUND\fP if the record does not previously exist\&.
+.PP
+Custom data sources supporting fixed-length bit field column-stores (that is, a store with an 'r' type key and 't' type value) may, but are not required to, support the semantic that inserting a new record after the current maximum record in a store implicitly creates the missing records as records with a value of 0\&.
+.SH "WT_CURSOR key/value fields"
+.PP
+Custom data source cursor methods are expected to use the \fCrecno\fP, \fCkey\fP and \fCvalue\fP fields of the \fBWT_CURSOR\fP handle\&.
+.PP
+The \fCrecno\fP field is a uint64_t type and is the record number set or retrieved using the cursor when the data source was configured for record number keys\&.
+.PP
+The \fCkey\fP and \fCvalue\fP fields are \fBWT_ITEM\fP structures\&. The \fCkey\&.data\fP, \fCkey\&.size\fP, \fCvalue\&.data\fP and \fCvalue\&.size\fP fields are read by the cursor methods storing items in the underlying data source and set by the cursor methods retrieving items from the underlying data source\&.
+.SH "Error handling"
+.PP
+Some specific errors should be mapped to WiredTiger errors: 
+.PD 0
+
+.IP "\(bu" 2
+attempts to insert an existing key should return WT_DUPLICATE_KEY 
+.IP "\(bu" 2
+failure to find a key/value pair should return WT_NOTFOUND 
+.IP "\(bu" 2
+fatal errors requiring the database restart should return WT_PANIC 
+.PP
+.PP
+Otherwise, successful return from custom data source methods should be indicated by a return value of zero; error returns may be any value other than zero or an error in WiredTiger's \fBError handling\fP\&. A simple approach is to always return either a system error value (that is, \fCerrno\fP), or \fCWT_ERROR\fP\&. Error messages can be displayed using the WT_SESSION::msg_printf method\&. For example:
+.PP
+.PP
+.nf
+        /*
+         * If an underlying function fails, log the error and then return an
+         * error within WiredTiger's name space\&.
+         */
+        if ((ret = data_source_cursor()) != 0) {
+                (void)wt_api->err_printf(wt_api,
+                    session, "my_open_cursor: %s", data_source_error(ret));
+                return (WT_ERROR);
+        }
+.fi
+.PP
+ 
+.SH "Configuration strings"
+.PP
+.SS "Parsing configuration strings"
+Configuration information is provided to each \fBWT_DATA_SOURCE\fP method as an argument\&. This configuration information can be parsed using the WT_EXTENSION_API::config method, and is returned in a \fBWT_CONFIG_ITEM\fP structure\&.
+.PP
+For example, the \fCappend\fP, \fCoverwrite\fP \fCkey_format\fP and \fCvalue_format\fP configuration strings may be required for the \fBWT_DATA_SOURCE::open_cursor\fP method to correctly configure itself\&.
+.PP
+A \fCkey_format\fP value of 'r' indicates the data source is being configured to use record numbers as keys\&. In this case initialized \fBWT_CURSOR\fP methods must take their key value from the cursor's \fCrecno\fP field, and not the cursor's \fCkey\fP field\&. (It is not required that record numbers be supported by a custom data source, the \fBWT_DATA_SOURCE::open_cursor\fP method can return an error if an application attempts to configure a data source with a \fCkey_format\fP of 'r'\&.)
+.PP
+The \fBWT_DATA_SOURCE::open_cursor\fP method might retrieve the boolean or integer value of a configuration string as follows:
+.PP
+.PP
+.nf
+        WT_CONFIG_ITEM v;
+        int my_data_source_overwrite;
+
+        /*
+         * Retrieve the value of the boolean type configuration string
+         * "overwrite"\&.
+         */
+        if ((ret = wt_api->config_get(
+            wt_api, session, config, "overwrite", &v)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "overwrite configuration: %s", wiredtiger_strerror(ret));
+                return (ret);
+        }
+        my_data_source_overwrite = v\&.val != 0;
+.fi
+.PP
+.PP
+.nf
+        WT_CONFIG_ITEM v;
+        int64_t my_data_source_page_size;
+
+        /*
+         * Retrieve the value of the integer type configuration string
+         * "page_size"\&.
+         */
+        if ((ret = wt_api->config_get(
+            wt_api, session, config, "page_size", &v)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "page_size configuration: %s", wiredtiger_strerror(ret));
+                return (ret);
+        }
+        my_data_source_page_size = v\&.val;
+.fi
+.PP
+ The \fBWT_DATA_SOURCE::open_cursor\fP method might retrieve the string value of a configuration string as follows:
+.PP
+.PP
+.nf
+        WT_CONFIG_ITEM v;
+        const char *my_data_source_key;
+
+        /*
+         * Retrieve the value of the string type configuration string
+         * "key_format"\&.
+         */
+        if ((ret = wt_api->config_get(
+            wt_api, session, config, "key_format", &v)) != 0) {
+                (void)wt_api->err_printf(wt_api, session,
+                    "key_format configuration: %s", wiredtiger_strerror(ret));
+                return (ret);
+        }
+
+        /*
+         * Values returned from WT_EXTENSION_API::config in the str field are
+         * not nul-terminated; the associated length must be used instead\&.
+         */
+        if (v\&.len == 1 && v\&.str[0] == 'r')
+                my_data_source_key = "recno";
+        else
+                my_data_source_key = "bytestring";
+.fi
+.PP
+ 
+.SS "Creating data-specific configuration strings"
+Applications can add their own configuration strings to WiredTiger methods using \fBWT_CONNECTION::configure_method\fP\&.
+.PP
+\fBWT_CONNECTION::configure_method\fP takes the following arguments:
+.PP
+.IP "\(bu" 2
+the name of the method being extended\&. For example, \fC'session\&.create'\fP would add new configuration strings to the \fBWT_SESSION::create\fP method, and \fC'session\&.open_cursor'\fP would add the configuration string to the \fBWT_SESSION::open_cursor\fP method\&.
+.IP "\(bu" 2
+the object type of the data source being extended\&. For example, \fC'table:'\fP would extend the configuration arguments for table objects, and \fC'my_data:'\fP could be used to extend the configuration arguments for a data source with URIs beginning with the 'my_data' prefix\&. A NULL value for the object type implies all object types\&.
+.IP "\(bu" 2
+the additional configuration string, which consists of the name of the configuration string and an optional default value\&. The default value is specified by appending an equals sign and a value\&. For example, for a new configuration string with the name \fC'device'\fP, specifying either \fC'device=/path'\fP or \fC'device=35'\fP would configure the default values\&.
+.IP "\(bu" 2
+the type of the additional configuration, which must one of \fC'boolean'\fP, \fC'int'\fP, \fC'list'\fP or \fC'string'\fP\&.
+.IP "\(bu" 2
+value checking information for the additional configuration, or NULL if no checking information is provided\&.
+.PP
+.PP
+For example, an application might add new boolean, integer, list or string type configuration strings as follows:
+.PP
+.PP
+.nf
+        /* my_boolean defaults to true\&. */
+        ret = conn->configure_method(conn,
+            "session\&.open_cursor", NULL, "my_boolean=true", "boolean", NULL);
+.fi
+.PP
+.PP
+.nf
+        /* my_integer defaults to 5\&. */
+        ret = conn->configure_method(conn,
+            "session\&.open_cursor", NULL, "my_integer=5", "int", NULL);
+.fi
+.PP
+.PP
+.nf
+        /* my_list defaults to "first" and "second"\&. */
+        ret = conn->configure_method(conn,
+            "session\&.open_cursor",
+            NULL, "my_list=[first, second]", "list", NULL);
+.fi
+.PP
+.PP
+.nf
+        /* my_string defaults to "name"\&. */
+        ret = conn->configure_method(conn,
+            "session\&.open_cursor", NULL, "my_string=name", "string", NULL);
+.fi
+.PP
+ Once these additional configuration calls have returned, application calls to the \fBWT_SESSION::open_cursor\fP method could then include configuration strings such as \fCmy_boolean=false\fP, or \fCmy_integer=37\fP, or \fCmy_source=/home\fP\&.
+.PP
+Additional checking information can be provided for \fCint\fP, \fClist\fP or \fCstring\fP type configuration strings\&.
+.PP
+For integers, either or both of a maximum or minimum value can be provided, so an error will result if the application attempts to set the value outside of the acceptable range:
+.PP
+.PP
+.nf
+        /*
+         * Limit the number of devices to between 1 and 30; the default is 5\&.
+         */
+        ret = conn->configure_method(conn,
+            "session\&.open_cursor", NULL, "devices=5", "int", "min=1, max=30");
+.fi
+.PP
+ For lists and strings, a set of valid choices can also be provided, so an error will result if the application attempts to set the value to a string not listed as a valid choice:
+.PP
+.PP
+.nf
+        /*
+         * Limit the target string to one of /device, /home or /target; default
+         * to /home\&.
+         */
+        ret = conn->configure_method(conn,
+            "session\&.open_cursor", NULL, "target=/home", "string",
+            "choices=[/device, /home, /target]");
+.fi
+.PP
+.PP
+.nf
+        /*
+         * Limit the paths list to one or more of /device, /home, /mnt or
+         * /target; default to /mnt\&.
+         */
+        ret = conn->configure_method(conn,
+            "session\&.open_cursor", NULL, "paths=[/mnt]", "list",
+            "choices=[/device, /home, /mnt, /target]");
+.fi
+.PP
+ 
+.SH "WT_COLLATOR"
+.PP
+Custom data sources do not support custom ordering of records, and attempting to create a custom data source with a collator configured will fail\&.
+.SH "Serialization"
+.PP
+WiredTiger does not serialize calls to the \fBWT_DATA_SOURCE\fP methods or to cursor methods configured by \fBWT_DATA_SOURCE::open_cursor\fP, and the methods may be called from multiple threads concurrently\&. It is the responsibility of the implementation to protect any shared data\&. For example, object operations such as \fBWT_DATA_SOURCE::drop\fP might not be permitted while there are open cursors for the \fBWT_DATA_SOURCE\fP object\&. 

@@ -1,0 +1,107 @@
+.TH "data_sources_lang_java" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+data_sources_lang_java \- Data Sources in Java 
+WiredTiger provides access to data from a variety of sources\&. At the lowest level, data may be stored in a file using a tree structure\&. A relational schema supporting tables, indices and column groups is layered on top of file\&. Additional sources include LSM trees and statistics, and applications can further extend the supported types by implementing the \fBWT_DATA_SOURCE\fP interface\&.
+.PP
+Common operations on all data sources are performed using Cursor handles\&. See \fBCursor operations in Java\fP for a description of how to use cursors\&.
+.SH "Builtin data sources"
+.PP
+The following are the builtin basic cursor types: URITypeNotes \fCtable:<table name>[<projection>]\fPtable cursortable key, table value(s) with optional projection of columns \fCcolgroup:<table name>:<column group name>\fPcolumn group cursortable key, column group value(s) \fCindex:<table name>:<index name>[<projection>]\fPindex cursorkey=index key, value=table value(s) with optional projection of columns Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: URITypeNotes \fCbackup:\fPbackup cursorkey=\fCstring\fP, see \fBBackups\fP for details \fClog:\fPlog cursorkey=\fC(long fileID, long offset, int seqno)\fP,
+.br
+ value=\fC(uint64_t txnid, uint32_t rectype,
+.br
+ uint32_t optype, uint32_t fileid,
+.br
+ \fBWT_ITEM\fP key, \fBWT_ITEM\fP value)\fP,
+.br
+ see \fBLog cursors\fP for details \fCmetadata:\fPmetadata cursorkey=\fCstring\fP, value=\fCstring\fP,
+.br
+ see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabase or data source statistics cursorkey=\fCint id\fP,
+.br
+ value=\fC(string description, string value, uint64_t value)\fP,
+.br
+ see \fBStatistics Data\fP for details Advanced applications may also open the following low-level cursor types: URITypeNotes \fCfile:<file name>\fPfile cursorfile key, file value(s) \fClsm:<name>\fPLSM cursor (key=LSM key, value=LSM value)LSM key, LSM value,
+.br
+ see \fBLog-Structured Merge Trees\fP 
+.SS "Raw Files"
+WiredTiger's schema layer can be bypassed by opening cursors with a \fC'file:'\fP URI, using the name of the underlying file\&. This can be useful for seeing the contents of a column group or index without reading all of the columns from the table\&.
+.PP
+For example, if an index becomes inconsistent with its primary, a file cursor can read from the index without errors (even though some of the keys that are returned may not exist in the primary)\&.
+.SS "Table Index data"
+When an index is created for a table, records are inserted into the index whenever the table is updated\&. These records use a different key to the primary table, as specified when the index is created with the Session\&.create method\&.
+.PP
+A cursor opened on an index has the specified index columns as its key, accessed by Cursor\&.set_key and Cursor\&.get_key\&. The value columns default to returning the value columns from the table, but this can be overridden by configuring a projection cursor (see \fBProjections\fP), which can access the table key columns or a subset of the value columns\&.
+.SS "Statistics Data"
+Statistics cursors can be used to retrieve run-time statistics about a WiredTiger database as well as statistics for individual data sources\&. The statistics are at two levels: per-database and per-individual data source\&. Database-wide statistics are retrieved with the \fC'statistics:'\fP URI; individual data source statistics are available by specifying \fC'statistics:<data source URI>'\fP\&.
+.PP
+The statistic key is an integer from the list of keys in \fBStatistics Keys\fP\&. Statistics cursors return three values from the Cursor\&.get_value call: a printable description of the statistic, a printable version of the entry's value, and the entry's unsigned 64-bit integral value, respectively\&.
+.PP
+The cursor's statistics values are loaded when the cursor is opened and remain unchanged for the life of the cursor, unless the cursor is reset by calling the Cursor\&.reset method, which reloads the values\&.
+.PP
+The following is an example of printing run-time statistics about the WiredTiger engine:
+.PP
+.PP
+.nf
+        cursor = session\&.open_cursor("statistics:", null, null);
+
+        ret = print_cursor(cursor);
+        ret = cursor\&.close();
+.fi
+.PP
+ The following is an example of printing statistics about a table:
+.PP
+.PP
+.nf
+        cursor = session\&.open_cursor("statistics:table:access", null, null);
+        ret = print_cursor(cursor);
+        ret = cursor\&.close();
+.fi
+.PP
+ Both examples can use a common display routine that iterates through the statistics until the cursor returns the end of the list\&.
+.PP
+.PP
+.nf
+    int
+    print_cursor(Cursor cursor)
+        throws WiredTigerException
+    {
+        String desc, pvalue;
+        long value;
+        int ret;
+
+        while ((ret = cursor\&.next()) == 0) {
+            desc = cursor\&.getValueString();
+            pvalue = cursor\&.getValueString();
+            value = cursor\&.getValueLong();
+            if (value != 0)
+                System\&.out\&.println(desc + "=" + pvalue);
+        }
+
+        return (ret == wiredtiger\&.WT_NOTFOUND ? 0 : ret);
+    }
+.fi
+.PP
+ Individual statistics values can be retrieved by searching for the corresponding key, as shown in the following example:
+.PP
+.PP
+.nf
+        Cursor cursor;
+        String desc, pvalue;
+        long value;
+        int ret;
+
+        cursor = session\&.open_cursor("statistics:table:access", null, null);
+
+        cursor\&.putKeyInt(wiredtiger\&.WT_STAT_DSRC_BTREE_OVERFLOW);
+        ret = cursor\&.search();
+        desc = cursor\&.getValueString();
+        pvalue = cursor\&.getValueString();
+        value = cursor\&.getValueLong();
+        System\&.out\&.println(desc + "=" + pvalue);
+
+        ret = cursor\&.close();
+.fi
+.PP
+ See \fBPerformance monitoring with statistics\fP for more examples of how statistics can be used\&. 

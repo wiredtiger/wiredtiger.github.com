@@ -1,0 +1,38 @@
+.TH "huffman" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+huffman \- Huffman Encoding 
+Keys in row-stores and variable-length values in either row- or column-stores can be compressed with Huffman encoding\&.
+.PP
+Huffman compression is maintained in memory as well as on disk, and can increase the amount of usable data the cache can hold as well as decrease the size of the data on disk\&. The additional CPU cost of Huffman coding can be high, and should be considered\&.
+.PP
+To configure Huffman encoding for the key in a row-store, specify \fChuffman_key=english\fP, \fChuffman_key=utf8<file>\fP or \fChuffman_key=utf16<file>\fP in the configuration passed to \fC\fBWT_SESSION::create\fP\fP\&.
+.PP
+To configure Huffman encoding for a variable-length value in either a row-store or a column-store, specify \fChuffman_value=english\fP, \fChuffman_value=utf8<file>\fP or \fChuffman_value=utf16<file>\fP in the configuration passed to \fC\fBWT_SESSION::create\fP\fP\&.
+.PP
+Setting Huffman encoding to \fCenglish\fP configures WiredTiger to use a built-in English language frequency table\&. The English language frequency table is based on \fC'Case-sensitive letter and bigram
+frequency counts from large-scale English corpora'\fP, by Michael N\&. Jones and D\&.J\&.K\&. Mewhort, modified to support space and tab characters\&.
+.PP
+Setting Huffman encoding to \fCutf8<file>\fP or \fCutf16<file>\fP configures WiredTiger to use a frequency table read from a file\&. (Note: the \fC<\fP and \fC>\fP characters are not literal, and should not appear in the string\&.)
+.PP
+The frequency table file format is lines containing pairs of unsigned integers separated by whitespace\&. The first integer is the symbol value, the second integer is the frequency value\&. Symbol values may be specified as hexadecimal numbers (with a leading \fC0x\fP prefix), or as integers\&. For example, an English-language frequency table for the characters \fC0\fP through \fC9\fP might look like this:
+.PP
+.PP
+.nf
+0x30 546233
+0x31 460946
+0x32 333499
+0x33 187606
+0x34 192528
+0x35 374413
+0x36 153865
+0x37 120094
+0x38 182627
+0x39 282364
+.fi
+.PP
+.PP
+Frequency table symbol values must be unique\&. In the case of \fCutf8\fP files, symbol values must be in the range of 0 to 255\&. In the case of \fCutf16\fP files, symbol values must be in the range of 0 to 65,535\&. Frequency values do not need to be unique, but must be in the range of 0 to the maximum 32-bit unsigned integer value (4,294,967,295), where the lower a frequency value, the less likely the byte value is to occur\&.
+.PP
+Any symbol values not listed in the frequency table are assumed to have frequencies of 0\&. Input containing symbol values that did not appear in the frequency table (or appeared in the frequency table, but with frequency values of 0), are accepted, but will not compress as well as if they are listed in the frequency table, with frequency values other than 0\&. 

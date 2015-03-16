@@ -1,0 +1,72 @@
+.TH "tune_system_buffer_cache" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_system_buffer_cache \- System buffer cache 
+
+.SH "Direct I/O"
+.PP
+WiredTiger optionally supports direct I/O\&. Configuring direct I/O may be useful for applications wanting to:
+.IP "\(bu" 2
+minimize the operating system cache effects of I/O to and from WiredTiger's buffer cache,
+.IP "\(bu" 2
+avoid double-buffering of blocks in WiredTiger's cache and the operating system buffer cache, and
+.IP "\(bu" 2
+avoid stalling underlying solid-state drives by writing a large number of dirty blocks\&.
+.PP
+.PP
+Direct I/O is configured using the 'direct_io' configuration string to the \fBwiredtiger_open\fP function\&. An example of configuring direct I/O for WiredTiger's data files:
+.PP
+.PP
+.nf
+        ret = wiredtiger_open(home, NULL, "create,direct_io=[data]", &conn);
+.fi
+.PP
+ Direct I/O implies a writing thread waits for the write to complete (which is a slower operation than writing into the system buffer cache), and configuring direct I/O is likely to decrease overall application performance\&.
+.PP
+Many Linux systems do not support mixing \fCO_DIRECT\fP and memory mapping or normal I/O to the same file, and attempting to do so can result in data loss or corruption\&. For this reason:
+.PP
+.IP "\(bu" 2
+WiredTiger silently ignores the setting of the \fCmmap\fP configuration to the wiredtiger_open function in those cases, and will never memory map a file which is configured for direct I/O\&.
+.IP "\(bu" 2
+If \fCO_DIRECT\fP is configured for data files on Linux systems, any system utilities used to copy data files for the purposes of backup should also specify \fCO_DIRECT\fP when configuring their file access\&. A standard Linux system utility that supports \fCO_DIRECT\fP is the \fCdd\fP utility, when using the \fCiflag=direct\fP command-line option\&.
+.PP
+.PP
+Additionally, many Linux systems require specific alignment for buffers used for I/O when direct I/O is configured, and using the wrong alignment can cause data loss or corruption\&. When direct I/O is configured on Linux systems, WiredTiger aligns I/O buffers to 4KB; if different alignment is required by your system, the \fCbuffer_alignment\fP configuration to the wiredtiger_open call should be configured to the correct value\&.
+.PP
+Finally, if direct I/O is configured on any system, WiredTiger will silently change the file unit allocation size and the maximum leaf and internal page sizes to be at least as large as the \fCbuffer_alignment\fP value as well as a multiple of that value\&.
+.PP
+Direct I/O is based on the non-standard \fCO_DIRECT\fP flag to the POSIX 1003\&.1 open system call and may not be available on all platforms\&.
+.SH "os_cache_dirty_max"
+.PP
+As well as direct I/O, WiredTiger supports two additional configuration options related to the system buffer cache:
+.PP
+The first is \fCos_cache_dirty_max\fP, the maximum dirty bytes an object is allowed to have in the system buffer cache\&. Once this many bytes from an object are written into the system buffer cache, WiredTiger will attempt to schedule writes for all of the dirty blocks the object has in the system buffer cache\&. This configuration option allows applications to flush dirty blocks from the object, avoiding stalling any underlying drives when the object is subsequently flushed to disk as part of a durability operation\&.
+.PP
+An example of configuring \fCos_cache_dirty_max:\fP 
+.PP
+.PP
+.nf
+        ret = session->create(
+            session, "table:mytable", "os_cache_dirty_max=500MB");
+.fi
+.PP
+ The \fCos_cache_dirty_max\fP configuration may not be used in combination with direct I/O\&.
+.PP
+The \fCos_cache_dirty_max\fP configuration is based on the non-standard Linux \fCsync_file_range\fP system call and will be ignored if set and that call is not available\&.
+.SH "os_cache_max"
+.PP
+The second configuration option related to the system buffer cache is \fCos_cache_max\fP, the maximum bytes an object is allowed to have in the system buffer cache\&. Once this many bytes from an object are either read into or written from the system buffer cache, WiredTiger will attempt to evict all of the object's blocks from the buffer cache\&. This configuration option allows applications to evict blocks from the system buffer cache to limit double-buffering and system buffer cache overhead\&.
+.PP
+An example of configuring \fCos_cache_max:\fP 
+.PP
+.PP
+.nf
+        ret = session->create(session, "table:mytable", "os_cache_max=1GB");
+.fi
+.PP
+ The \fCos_cache_max\fP configuration may not be used in combination with direct I/O\&.
+.PP
+The \fCos_cache_max\fP configuration is based on the POSIX 1003\&.1 standard \fCposix_fadvise\fP system call and may not available on all platforms\&.
+.PP
+Configuring direct I/O, \fCos_cache_dirty_max\fP or \fCos_cache_max\fP all have the side effect of turning off memory-mapping of objects in WiredTiger\&. 

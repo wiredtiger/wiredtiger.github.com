@@ -1,0 +1,55 @@
+.TH "error_handling" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+error_handling \- Error handling 
+WiredTiger operations return a value of 0 on success and a non-zero value on error\&. Error codes may be either positive or negative: positive error codes are standard error codes as described for POSIX-like systems (for example, EINVAL or EBUSY), negative error codes are WiredTiger-specific (for example, WT_ROLLBACK)\&.
+.PP
+WiredTiger-specific error codes always appear in the -31,800 to -31,999 range\&.
+.PP
+The following is a list of possible WiredTiger-specific errors:
+.PP
+\fBWT_ROLLBACK\fP
+.RS 4
+This error is generated when an operation cannot be completed due to a conflict with concurrent operations\&. The operation may be retried; if a transaction is in progress, it should be rolled back and the operation retried in a new transaction\&.
+.RE
+.PP
+\fBWT_DUPLICATE_KEY\fP
+.RS 4
+This error is generated when the application attempts to insert a record with the same key as an existing record without the 'overwrite' configuration to \fBWT_SESSION::open_cursor\fP\&.
+.RE
+.PP
+\fBWT_ERROR\fP
+.RS 4
+This error is returned when an error is not covered by a specific error return\&.
+.RE
+.PP
+\fBWT_NOTFOUND\fP
+.RS 4
+This error indicates an operation did not find a value to return\&. This includes cursor search and other operations where no record matched the cursor's search key such as \fBWT_CURSOR::update\fP or \fBWT_CURSOR::remove\fP\&.
+.RE
+.PP
+\fBWT_PANIC\fP
+.RS 4
+This error indicates an underlying problem that requires the application exit and restart\&. The application can exit immediately when \fCWT_PANIC\fP is returned from a WiredTiger interface, no further WiredTiger calls are required\&.
+.RE
+.PP
+\fBWT_RUN_RECOVERY\fP
+.RS 4
+This error is generated when wiredtiger_open is configured to return an error if recovery is required to use the database\&.
+.RE
+.PP
+The \fBwiredtiger_strerror\fP function returns the standard message associated with any WiredTiger, ISO C99, or POSIX 1003\&.1-2001 function:
+.PP
+.PP
+.nf
+        const char *key = "non-existent key";
+        cursor->set_key(cursor, key);
+        if ((ret = cursor->remove(cursor)) != 0) {
+                fprintf(stderr,
+                    "cursor\&.remove: %s\n", wiredtiger_strerror(ret));
+                return (ret);
+        }
+.fi
+.PP
+ More complex error handling can be configured by passing an implementation of \fBWT_EVENT_HANDLER\fP to \fBwiredtiger_open\fP or \fBWT_CONNECTION::open_session\fP\&. 

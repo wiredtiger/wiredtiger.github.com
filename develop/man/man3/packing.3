@@ -1,0 +1,36 @@
+.TH "packing" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+packing \- Packing and Unpacking Data 
+WiredTiger's data packing uses format strings similar to those specified in the Python struct module: http://docs.python.org/library/struct
+.PP
+The first character of the format string can be used to indicate the byte order, size and alignment of the packed data, according to the following table:
+.PP
+CharacterByte orderSizeAlignment \fC\&.\fPbig-endianpackednone \fC>\fPbig-endianstandardnone \fC<\fPlittle-endianstandardnone \fC@\fPnativenativenative 
+.PP
+If the first character is not one of these, '\&.' (big-endian, packed) is assumed: it naturally sorts in lexicographic order, and the packed format uses variable-sized encoding of values to reduce the data size\&.
+.PP
+Note: \fB little-endian format\fP not yet supported in WiredTiger\&.  Only the default big-endian, packed format is currently supported\&.
+.PP
+The remaining characters in the format string specify the type of each field to be packed into or unpacked from a byte array\&. See \fBColumn types\fP for the list of supported types\&.
+.SH "Code samples"
+.PP
+The code below is taken from the complete example program \fBex_pack\&.c\fP\&. It demonstrates how to pack three integer values into a buffer and then unpack them again\&.
+.PP
+.PP
+.nf
+        size_t size;
+        char buf[50];
+
+        ret = wiredtiger_struct_size(session, &size, "iii", 42, 1000, -9);
+        if (size > sizeof(buf)) {
+                /* Allocate a bigger buffer\&. */
+        }
+
+        ret = wiredtiger_struct_pack(session, buf, size, "iii", 42, 1000, -9);
+
+        ret = wiredtiger_struct_unpack(session, buf, size, "iii", &i, &j, &k);
+.fi
+.PP
+

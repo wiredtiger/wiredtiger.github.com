@@ -1,0 +1,100 @@
+.TH "threads" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+threads \- Multithreading 
+All \fBWT_CONNECTION\fP methods are thread safe, and \fBWT_CONNECTION\fP handles can be shared between threads\&. Applications typically open a single connection to each database, per process\&. Multi-threaded programs must wait for all other threads to exit before closing the \fBWT_CONNECTION\fP handle because that will implicitly close all other handles\&. Alternatively, a thread can set an event handler using \fBWT_CONNECTION::open_session\fP to be notified when a \fBWT_CONNECTION\fP close is in progress\&.
+.PP
+\fBWT_SESSION\fP and \fBWT_CURSOR\fP methods are not thread safe and \fBWT_SESSION\fP and \fBWT_CURSOR\fP handles cannot be accessed concurrently by multiple threads\&. Applications typically open one \fBWT_SESSION\fP handle for each thread accessing a database, and then one or more \fBWT_CURSOR\fP handles within the session\&.
+.PP
+\fBWT_SESSION\fP and \fBWT_CURSOR\fP methods may be accessed by different threads serially (for example, a pool of threads managed by the application with a set of shared session or cursor handles)\&. There is no thread-local state in WiredTiger, and no built-in synchronization of session or cursor handles, either, so if multiple threads access a session or cursor handle, access must be serialized by the application\&.
+.PP
+\fBWT_ASYNC_OP\fP methods are not thread-safe, and must be accessed by only a single thread at a time\&. \fBWT_ASYNC_OP\fP methods may be accessed by different threads serially (and that is expected to happen when the asynchronous callback function runs)\&.
+.SH "Code samples"
+.PP
+The code below is taken from the complete example program \fBex_thread\&.c\fP\&.
+.PP
+This is an example of a thread entry point\&. A new session is opened for the thread and used for all operations within that thread\&.
+.PP
+.PP
+.nf
+void *
+scan_thread(void *conn_arg)
+{
+        WT_CONNECTION *conn;
+        WT_SESSION *session;
+        WT_CURSOR *cursor;
+        const char *key, *value;
+        int ret;
+
+        conn = conn_arg;
+        ret = conn->open_session(conn, NULL, NULL, &session);
+        ret = session->open_cursor(
+            session, "table:access", NULL, NULL, &cursor);
+
+        /* Show all records\&. */
+        while ((ret = cursor->next(cursor)) == 0) {
+                ret = cursor->get_key(cursor, &key);
+                ret = cursor->get_value(cursor, &value);
+
+                printf("Got record: %s : %s\n", key, value);
+        }
+        if (ret != WT_NOTFOUND)
+                fprintf(stderr,
+                    "WT_CURSOR\&.next: %s\n", wiredtiger_strerror(ret));
+
+        return (NULL);
+}
+.fi
+.PP
+ Here is the main function that starts the threads\&. It opens a single connection, shared between the threads, and closes the connection after waiting for all of the threads to exit\&.
+.PP
+.PP
+.nf
+int
+main(void)
+{
+        WT_CONNECTION *conn;
+        WT_SESSION *session;
+        WT_CURSOR *cursor;
+        pthread_t threads[NUM_THREADS];
+        int i, ret;
+
+        /*
+         * Create a clean test directory for this run of the test program if the
+         * environment variable isn't already set (as is done by make check)\&.
+         */
+        if (getenv("WIREDTIGER_HOME") == NULL) {
+                home = "WT_HOME";
+                ret = system("rm -rf WT_HOME && mkdir WT_HOME");
+        } else
+                home = NULL;
+
+        if ((ret = wiredtiger_open(home, NULL, "create", &conn)) != 0)
+                fprintf(stderr, "Error connecting to %s: %s\n",
+                    home, wiredtiger_strerror(ret));
+        /* Note: further error checking omitted for clarity\&. */
+
+        ret = conn->open_session(conn, NULL, NULL, &session);
+        ret = session->create(session, "table:access",
+            "key_format=S,value_format=S");
+        ret = session->open_cursor(session, "table:access", NULL,
+            "overwrite", &cursor);
+        cursor->set_key(cursor, "key1");
+        cursor->set_value(cursor, "value1");
+        ret = cursor->insert(cursor);
+        ret = session->close(session, NULL);
+
+        for (i = 0; i < NUM_THREADS; i++)
+                ret = pthread_create(&threads[i], NULL, scan_thread, conn);
+
+        for (i = 0; i < NUM_THREADS; i++)
+                ret = pthread_join(threads[i], NULL);
+
+        ret = conn->close(conn, NULL);
+
+        return (ret);
+}
+.fi
+.PP
+

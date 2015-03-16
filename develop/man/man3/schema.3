@@ -1,0 +1,566 @@
+.TH "schema" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+schema \- Schema, Columns, Column Groups, Indices and Projections 
+While many tables have simple key/value pairs for records, WiredTiger also supports more complex data patterns\&.
+.SH "Tables, rows and columns"
+.PP
+A table is a logical representation of data consisting of cells in rows and columns\&. For example, a database might have a simple table including an employee identifier, last name and first name, and a salary:
+.PP
+Employee IDLast NameFirst NameSalary 1SmithJoe40000 2JonesMary50000 3JohnsonCathy44000 
+.PP
+A row-oriented database would store all of the values for the first employee in the first row, then the next employee's values in the next row, and so on:
+.PP
+.PP
+.nf
+
+      1,Smith,Joe,40000
+      2,Jones,Mary,50000
+      3,Johnson,Cathy,44000
+.fi
+.PP
+.PP
+A column-oriented database would store all of the values of a column together, then the values of the next column, and so on:
+.PP
+.PP
+.nf
+
+      1,2,3
+      Smith,Jones,Johnson
+      Joe,Mary,Cathy
+      40000,50000,44000
+.fi
+.PP
+.PP
+WiredTiger supports both storage formats, and can mix and match the storage of columns within a logical table\&.
+.PP
+A \fItable\fP in WiredTiger consist of one or more \fI'column groups'\fP that together hold all of the columns in primary key order; and zero or more \fIindices\fP that enable fast lookup of records by columns in orders other than the primary key\&.
+.PP
+Applications describe the format of their data by supplying a schema to \fBWT_SESSION::create\fP\&. This specifies how the application's data can be split into fields and mapped onto rows and columns\&.
+.SH "Column types"
+.PP
+By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a \fBWT_ITEM\fP structure\&. Key and value types may also be chosen from a list, or composed of multiple columns with any combination of types\&. Keys and values may be up to (\fC4GB - 512B\fP) bytes in size\&.
+.PP
+See \fBKey/Value pairs\fP for more details on raw key / value items\&.
+.SH "Format types"
+.PP
+WiredTiger's uses format strings similar to those specified in the Python struct module to describe the types of columns in a table: http://docs.python.org/library/struct
+.PP
+FormatC TypeJava typePython typeNotes \fCx\fP N/AN/AN/Apad byte, no associated value \fCb\fP \fCint8_t\fP \fCbyte\fP \fCint\fP signed byte \fCB\fP \fCuint8_t\fP \fCbyte\fP \fCint\fP unsigned byte \fCh\fP \fCint16_t\fP \fCshort\fP \fCint\fP signed 16-bit \fCH\fP \fCuint16_t\fP \fCshort\fP \fCint\fP unsigned 16-bit \fCi\fP \fCint32_t\fP \fCint\fP \fCint\fP signed 32-bit \fCI\fP \fCuint32_t\fP \fCint\fP \fCint\fP unsigned 32-bit \fCl\fP \fCint32_t\fP \fCint\fP \fCint\fP signed 32-bit \fCL\fP \fCuint32_t\fP \fCint\fP \fCint\fP unsigned 32-bit \fCq\fP \fCint64_t\fP \fClong\fP \fCint\fP signed 64-bit \fCQ\fP \fCuint64_t\fP \fClong\fP \fCint\fP unsigned 64-bit \fCr\fP \fCuint64_t\fP \fClong\fP \fCint\fP record number \fCs\fP \fCchar\fP[]\fCString\fP \fCstr\fP fixed-length string \fCS\fP \fCchar\fP[]\fCString\fP \fCstr\fP NUL-terminated string \fCt\fP \fCuint8_t\fP \fCbyte\fP \fCint\fP fixed-length bit field \fCu\fP \fC\fBWT_ITEM\fP *\fP\fCbyte[]\fP\fCstr\fP raw byte array 
+.PP
+The \fC'r'\fP type is used for record number keys in column stores\&. It is otherwise identical to the \fC'Q'\fP type\&.
+.PP
+The \fC'S'\fP type is encoded as a C language string terminated by a NUL character\&.
+.PP
+The \fC't'\fP type is used for fixed-length bit field values\&. If it is preceded by a size, that indicates the number of bits to store, between 1 and 8\&. That number of low-order bits will be stored in the table\&. The default is a size of 1 bit: that is, a boolean\&. C applications must always use a \fCuint8_t\fP type (or equivalently, \fCunsigned char\fP) for calls to \fBWT_CURSOR::set_value\fP, and a pointer to the same for calls to \fBWT_CURSOR::get_value\fP\&. If a bit field value is combined with other types in a packing format, it is equivalent to \fC'B'\fP, and a full byte is used to store it\&.
+.PP
+When referenced by a record number (that is, a key format of \fC'r'\fP), the \fC't'\fP type will be stored in a fixed-length column-store, and will not have an out-of-band value to indicate the record does not exist\&. In this case, a 0 byte value is used to indicate the record does not exist\&. This means removing a record with \fBWT_CURSOR::remove\fP is equivalent to storing a value of 0 in the record with \fBWT_CURSOR::update\fP (and storing a value of 0 in the record will cause cursor scans to skip the record)\&. Additionally, creating a record past the end of an object implies the creation of any missing intermediate records, with byte values of 0\&.
+.PP
+The \fC'u'\fP type is for raw byte arrays: if it appears at the end of a format string (including in the default \fC'u'\fP format for untyped tables), the size is not stored explicitly\&. When \fC'u'\fP appears within a format string, the size is stored as a 32-bit integer in the same byte order as the rest of the format string, followed by the data\&.
+.PP
+There is a default collator that gives lexicographic (byte-wise) comparisons, and the default encoding is designed so that lexicographic ordering of encoded keys is usually the expected ordering\&. For example, the variable-length encoding of integers is designed so that they have the natural integer ordering under the default collator\&.
+.PP
+See \fBPacking and Unpacking Data\fP for details of WiredTiger's packing format\&.
+.PP
+WiredTiger can also be extended with custom collators by implementing the \fBWT_COLLATOR\fP interface\&.
+.SH "Key and value formats"
+.PP
+Every table has a key format and a value format as describe in \fBColumn types\fP\&. These types are configured when the table is created by passing \fCkey_format\fP and \fCvalue_format\fP keys to \fBWT_SESSION::create\fP\&.
+.PP
+For example, a simple row-store table with strings as both keys and values would be created as follows:
+.PP
+.PP
+.nf
+        ret = session->create(session,
+            "table:mytable", "key_format=S,value_format=S");
+.fi
+.PP
+ A simple column-store table with strings for values would be created as follows:
+.PP
+.PP
+.nf
+        ret = session->create(session,
+            "table:mytable", "key_format=r,value_format=S");
+.fi
+.PP
+ 
+.SH "Cursor formats"
+.PP
+Cursors for a table have the same key format as the table itself\&. The key columns of a cursor are set with \fBWT_CURSOR::set_key\fP and accessed with \fBWT_CURSOR::get_key\fP\&. \fBWT_CURSOR::set_key\fP is analogous to \fCprintf\fP, and takes a list of value in the order the key columns are configured in \fCkey_format\fP\&.
+.PP
+For example, setting the key for a row-store table with strings as keys would be done as follows:
+.PP
+.PP
+.nf
+                                /* Set the cursor's string key\&. */
+        const char *key = "another key";
+        cursor->set_key(cursor, key);
+.fi
+.PP
+ For example, setting the key for a column-store table would be done as follows:
+.PP
+.PP
+.nf
+        uint64_t recno = 37;    /* Set the cursor's record number key\&. */
+        cursor->set_key(cursor, recno);
+.fi
+.PP
+ A more complex example, setting a composite key for a row-store table where the key_format was \fC'SiH'\fP, would be done as follows:
+.PP
+.PP
+.nf
+                        /* Set the cursor's "SiH" format composite key\&. */
+        cursor->set_key(cursor, "first", (int32_t)5, (uint16_t)7);
+.fi
+.PP
+ The key's values are accessed with \fBWT_CURSOR::get_key\fP, which is analogous to \fCscanf\fP, and takes a list of pointers to values in the same order:
+.PP
+.PP
+.nf
+        const char *key;        /* Get the cursor's string key\&. */
+        ret = cursor->get_key(cursor, &key);
+.fi
+.PP
+.PP
+.nf
+        uint64_t recno;         /* Get the cursor's record number key\&. */
+        ret = cursor->get_key(cursor, &recno);
+.fi
+.PP
+.PP
+.nf
+                        /* Get the cursor's "SiH" format composite key\&. */
+        const char *first;
+        int32_t second;
+        uint16_t third;
+        ret = cursor->get_key(cursor, &first, &second, &third);
+.fi
+.PP
+ Cursors for a table have the same value format as the table, unless a projection is configured with \fBWT_SESSION::open_cursor\fP\&. See \fBProjections\fP for more information\&.
+.PP
+\fBWT_CURSOR::set_value\fP is used to set value columns, and \fBWT_CURSOR::get_value\fP is used to get value columns, in the same way as described for \fBWT_CURSOR::set_key\fP and \fBWT_CURSOR::get_key\fP\&.
+.SH "Columns"
+.PP
+The columns in a table can be assigned names by passing a \fCcolumns\fP key to \fBWT_SESSION::create\fP\&. The column names are assigned first to the columns in the \fCkey_format\fP, and then to the columns in \fCvalue_format\fP\&. There must be a name for every column, and no column names may be repeated\&.
+.PP
+For example, a column-store table with an employee ID as the key and three columns (department, salary and first year of employment), might be created as follows:
+.PP
+.PP
+.nf
+        /*
+         * Create a table with columns: keys are record numbers, values are
+         * (string, signed 32-bit integer, unsigned 16-bit integer)\&.
+         */
+        ret = session->create(session, "table:mytable",
+            "key_format=r,value_format=SiH,"
+            "columns=(id,department,salary,year-started)");
+.fi
+.PP
+ In this example, the key's column name is \fCid\fP, and the value's column names are \fCdepartment\fP, \fCsalary\fP, and \fCyear-started\fP (where \fCid\fP maps to the column format \fCr\fP, \fCdepartment\fP maps to the column value format \fCS\fP, \fCsalary\fP maps to the value format \fCi\fP and \fCyear-started\fP maps to the value format \fCH\fP)\&.
+.PP
+Once the table is created, there is no need to call \fBWT_SESSION::create\fP during subsequent runs of the application\&. However, it's worthwhile making the call anyway as it both verifies the table exists and the table schema matches the schema expected by the application\&.
+.SH "Column groups"
+.PP
+Once column names are assigned, they can be used to configure column groups\&. Column groups are primarily used to define storage in order to tune cache behavior, as each column group is stored in a separate file\&.
+.PP
+There are two steps involved in setting up column groups: first, pass a list of names for the column groups in the \fCcolgroups\fP configuration key to \fBWT_SESSION::create\fP\&. Then make a call to \fBWT_SESSION::create\fP for each column group, using the URI \fCcolgroup:<table>:<colgroup name>\fP and a \fCcolumns\fP key in the configuration\&. Every column must appear in at least one column group; columns can be listed in multiple column groups, causing the column to be stored in multiple files\&.
+.PP
+For example, consider the following data being stored in a WiredTiger table:
+.PP
+.PP
+.nf
+/* The C struct for the data we are storing in a WiredTiger table\&. */
+typedef struct {
+        char country[5];
+        uint16_t year;
+        uint64_t population;
+} POP_RECORD;
+
+static POP_RECORD pop_data[] = {
+        { "AU",  1900,    4000000 },
+        { "AU",  2000,   19053186 },
+        { "CAN", 1900,    5500000 },
+        { "CAN", 2000,   31099561 },
+        { "UK",  1900,  369000000 },
+        { "UK",  2000,   59522468 },
+        { "USA", 1900,   76212168 },
+        { "USA", 2000,  301279593 },
+        { "", 0, 0 }
+};
+.fi
+.PP
+ If we primarily wanted to access the population information by itself, but still wanted population information included when accessing other information, we might store all of the columns in one file, and store an additional copy of the population column in another file:
+.PP
+.PP
+.nf
+        /*
+         * Create the population table\&.
+         * Keys are record numbers, the format for values is (5-byte string,
+         * uint16_t, uint64_t)\&.
+         * See ::wiredtiger_struct_pack for details of the format strings\&.
+         */
+        ret = session->create(session, "table:poptable",
+            "key_format=r,"
+            "value_format=5sHQ,"
+            "columns=(id,country,year,population),"
+            "colgroups=(main,population)");
+
+        /*
+         * Create two column groups: a primary column group with the country
+         * code, year and population (named "main"), and a population column
+         * group with the population by itself (named "population")\&.
+         */
+        ret = session->create(session,
+            "colgroup:poptable:main", "columns=(country,year,population)");
+        ret = session->create(session,
+            "colgroup:poptable:population", "columns=(population)");
+.fi
+.PP
+ Column groups always have the same key as the table\&. This is particularly useful for column stores, because record numbers are not stored explicitly on disk, so there is no repetition of keys across multiple files\&. Keys will be replicated in multiple files in the case of row-store column groups\&.
+.PP
+A cursor can be opened on a column group by passing the column group's URI to the \fBWT_SESSION::open_cursor\fP method\&. For example, the population can be retrieved from both of the column groups we created:
+.PP
+.PP
+.nf
+        /*
+         * Open a cursor on the main column group, and return the information
+         * for a particular country\&.
+         */
+        ret = session->open_cursor(
+            session, "colgroup:poptable:main", NULL, NULL, &cursor);
+        cursor->set_key(cursor, 2);
+        if ((ret = cursor->search(cursor)) == 0) {
+                ret = cursor->get_value(cursor, &country, &year, &population);
+                printf("ID 2: country %s, year %u, population %" PRIu64 "\n",
+                    country, year, population);
+        }
+.fi
+.PP
+.PP
+.nf
+        /*
+         * Open a cursor on the population column group, and return the
+         * population of a particular country\&.
+         */
+        ret = session->open_cursor(session,
+            "colgroup:poptable:population", NULL, NULL, &cursor);
+        cursor->set_key(cursor, 2);
+        if ((ret = cursor->search(cursor)) == 0) {
+                ret = cursor->get_value(cursor, &population);
+                printf("ID 2: population %" PRIu64 "\n", population);
+        }
+.fi
+.PP
+ Key columns may not be included in the list of columns for a column group\&. Because column groups always have the same key as the table, key columns for column groups are retrieved using \fBWT_CURSOR::get_key\fP, not \fBWT_CURSOR::get_value\fP\&.
+.SH "Indices"
+.PP
+Columns are also used to create and configure indices on tables\&.
+.PP
+Table indices are automatically updated whenever the table is modified\&.
+.PP
+Table index cursors are read-only and cannot be used for update operations\&.
+.PP
+To create a table index, call \fBWT_SESSION::create\fP using the URI \fCindex:<table>:<index name>\fP, listing a column in the configuration\&.
+.PP
+Continuing the example, we might open an index on the \fCcountry\fP column:
+.PP
+.PP
+.nf
+        /* Create an index with a simple key\&. */
+        ret = session->create(session,
+            "index:poptable:country", "columns=(country)");
+.fi
+.PP
+ Cursors are opened on indices by passing the index's URI to the \fBWT_SESSION::open_cursor\fP method\&.
+.PP
+Index cursors use the specified index key columns for \fBWT_CURSOR::get_key\fP and \fBWT_CURSOR::set_key\fP\&. For example, we can retrieve information from the \fCcountry\fP index as follows:
+.PP
+.PP
+.nf
+        /* Search in a simple index\&. */
+        ret = session->open_cursor(session,
+            "index:poptable:country", NULL, NULL, &cursor);
+        cursor->set_key(cursor, "AU\0\0\0");
+        ret = cursor->search(cursor);
+        ret = cursor->get_value(cursor, &country, &year, &population);
+        printf("AU: country %s, year %u, population %" PRIu64 "\n",
+            country, (unsigned int)year, population);
+.fi
+.PP
+ To create an index with a composite key, specify more than one column to the \fBWT_SESSION::create\fP call:
+.PP
+.PP
+.nf
+        /* Create an index with a composite key (country,year)\&. */
+        ret = session->create(session,
+            "index:poptable:country_plus_year", "columns=(country,year)");
+.fi
+.PP
+ To retrieve information from a composite index requires a more complicated \fBWT_CURSOR::set_key\fP call, but is otherwise the same:
+.PP
+.PP
+.nf
+        /* Search in a composite index\&. */
+        ret = session->open_cursor(session,
+            "index:poptable:country_plus_year", NULL, NULL, &cursor);
+        cursor->set_key(cursor, "USA\0\0", (uint16_t)1900);
+        ret = cursor->search(cursor);
+        ret = cursor->get_value(cursor, &country, &year, &population);
+        printf("US 1900: country %s, year %u, population %" PRIu64 "\n",
+            country, (unsigned int)year, population);
+.fi
+.PP
+ 
+.SH "Immutable indices"
+.PP
+It is possible to create an index with the \fCimmutable\fP configuration setting enabled\&. This setting tells WiredTiger that the index keys for a record do not change when records are updated\&. This is an optimization that it saves a remove and insert into the index whenever a value in the primary table is updated\&.
+.PP
+If immutable is configured when updates should alter the content of the index it is possible to corrupt data\&.
+.PP
+An example of using an immutable index is:
+.PP
+.PP
+.nf
+        /* Create an immutable index\&. */
+        ret = session->create(session,
+            "index:poptable:immutable_year", "columns=(year),immutable");
+.fi
+.PP
+ 
+.SH "Index cursor projections"
+.PP
+By default, index cursors return all of the table's value columns from \fBWT_CURSOR::get_value\fP\&. The application can specify that a subset of the usual columns should be returned in calls to \fBWT_CURSOR::get_value\fP by appending a list of columns to the \fCuri\fP parameter of the \fBWT_SESSION::open_cursor\fP call\&. This is called a \fIprojection\fP, see \fBProjections\fP for more details\&.
+.PP
+In the case of index cursors, a projection can be used to avoid lookups in column groups that do not hold columns relevant to the operation\&.
+.PP
+The following example will return just the table's primary key (a record number, in this case) from the index:
+.PP
+.PP
+.nf
+        /*
+         * Use a projection to return just the table's record number key
+         * from an index\&.
+         */
+        ret = session->open_cursor(session,
+            "index:poptable:country_plus_year(id)", NULL, NULL, &cursor);
+        while ((ret = cursor->next(cursor)) == 0) {
+                ret = cursor->get_key(cursor, &country, &year);
+                ret = cursor->get_value(cursor, &recno);
+                printf("row ID %" PRIu64 ": country %s, year %u\n",
+                    recno, country, year);
+        }
+.fi
+.PP
+ Here is an example of a projection that returns a subset of columns from the index:
+.PP
+.PP
+.nf
+        /*
+         * Use a projection to return just the population column from an
+         * index\&.
+         */
+        ret = session->open_cursor(session,
+            "index:poptable:country_plus_year(population)",
+            NULL, NULL, &cursor);
+        while ((ret = cursor->next(cursor)) == 0) {
+                ret = cursor->get_key(cursor, &country, &year);
+                ret = cursor->get_value(cursor, &population);
+                printf("population %" PRIu64 ": country %s, year %u\n",
+                    population, country, year);
+        }
+.fi
+.PP
+ For performance reasons, it may be desirable to include all columns for a performance-critical operation in an index, so that it is possible to perform index-only lookups where no column group from the table is accessed\&. In this case, all of the 'hot' columns should be included in the index (always list the 'real' index key columns first, so they will determine the sort order)\&. Then, open a cursor on the index that doesn't return any value columns, and no column group will be accessed\&.
+.PP
+.PP
+.nf
+        /*
+         * Use a projection to avoid accessing any other column groups when
+         * using an index: supply an empty list of value columns\&.
+         */
+        ret = session->open_cursor(session,
+            "index:poptable:country_plus_year()", NULL, NULL, &cursor);
+        while ((ret = cursor->next(cursor)) == 0) {
+                ret = cursor->get_key(cursor, &country, &year);
+                printf("country %s, year %u\n", country, year);
+        }
+.fi
+.PP
+ Index cursors for column-store objects may not be created using the record number as the index key (there is no use for a secondary index on a column-store where the index key is the record number)\&.
+.SH "Code samples"
+.PP
+The code included above was taken from the complete example program \fBex_schema\&.c\fP\&.
+.PP
+Here is another example program, \fBex_call_center\&.c\fP\&.
+.PP
+.PP
+.nf
+/*
+ * In SQL, the tables are described as follows:
+ *
+ * CREATE TABLE Customers(id INTEGER PRIMARY KEY,
+ *     name VARCHAR(30), address VARCHAR(50), phone VARCHAR(15))
+ * CREATE INDEX CustomersPhone ON Customers(phone)
+ *
+ * CREATE TABLE Calls(id INTEGER PRIMARY KEY, call_date DATE,
+ *     cust_id INTEGER, emp_id INTEGER, call_type VARCHAR(12),
+ *     notes VARCHAR(25))
+ * CREATE INDEX CallsCustDate ON Calls(cust_id, call_date)
+ *
+ * In this example, both tables will use record numbers for their IDs, which
+ * will be the key\&.  The C structs for the records are as follows\&.
+ */
+
+/* Customer records\&. */
+typedef struct {
+        uint64_t id;
+        const char *name;
+        const char *address;
+        const char *phone;
+} CUSTOMER;
+
+/* Call records\&. */
+typedef struct {
+        uint64_t id;
+        uint64_t call_date;
+        uint64_t cust_id;
+        uint64_t emp_id;
+        const char *call_type;
+        const char *notes;
+} CALL;
+.fi
+.PP
+.PP
+.nf
+        ret = conn->open_session(conn, NULL, NULL, &session);
+
+        /*
+         * Create the customers table, give names and types to the columns\&.
+         * The columns will be stored in two groups: "main" and "address",
+         * created below\&.
+         */
+        ret = session->create(session, "table:customers",
+            "key_format=r,"
+            "value_format=SSS,"
+            "columns=(id,name,address,phone),"
+            "colgroups=(main,address)");
+
+        /* Create the main column group with value columns except address\&. */
+        ret = session->create(session,
+            "colgroup:customers:main", "columns=(name,phone)");
+
+        /* Create the address column group with just the address\&. */
+        ret = session->create(session,
+            "colgroup:customers:address", "columns=(address)");
+
+        /* Create an index on the customer table by phone number\&. */
+        ret = session->create(session,
+            "index:customers:phone", "columns=(phone)");
+
+        /* Populate the customers table with some data\&. */
+        ret = session->open_cursor(
+            session, "table:customers", NULL, "append", &cursor);
+        for (custp = cust_sample; custp->name != NULL; custp++) {
+                cursor->set_value(cursor,
+                    custp->name, custp->address, custp->phone);
+                ret = cursor->insert(cursor);
+        }
+        ret = cursor->close(cursor);
+
+        /*
+         * Create the calls table, give names and types to the columns\&.  All the
+         * columns will be stored together, so no column groups are declared\&.
+         */
+        ret = session->create(session, "table:calls",
+            "key_format=r,"
+            "value_format=qrrSS,"
+            "columns=(id,call_date,cust_id,emp_id,call_type,notes)");
+
+        /*
+         * Create an index on the calls table with a composite key of cust_id
+         * and call_date\&.
+         */
+        ret = session->create(session, "index:calls:cust_date",
+            "columns=(cust_id,call_date)");
+
+        /* Populate the calls table with some data\&. */
+        ret = session->open_cursor(
+            session, "table:calls", NULL, "append", &cursor);
+        for (callp = call_sample; callp->call_type != NULL; callp++) {
+                cursor->set_value(cursor, callp->call_date, callp->cust_id,
+                    callp->emp_id, callp->call_type, callp->notes);
+                ret = cursor->insert(cursor);
+        }
+        ret = cursor->close(cursor);
+
+        /*
+         * First query: a call arrives\&.  In SQL:
+         *
+         * SELECT id, name FROM Customers WHERE phone=?
+         *
+         * Use the cust_phone index, lookup by phone number to fill the
+         * customer record\&.  The cursor will have a key format of "S" for a
+         * string because the cust_phone index has a single column ("phone"),
+         * which is of type "S"\&.
+         *
+         * Specify the columns we want: the customer ID and the name\&.  This
+         * means the cursor's value format will be "rS"\&.
+         */
+        ret = session->open_cursor(session,
+            "index:customers:phone(id,name)", NULL, NULL, &cursor);
+        cursor->set_key(cursor, "123-456-7890");
+        ret = cursor->search(cursor);
+        if (ret == 0) {
+                ret = cursor->get_value(cursor, &cust\&.id, &cust\&.name);
+                printf("Read customer record for %s (ID %" PRIu64 ")\n",
+                    cust\&.name, cust\&.id);
+        }
+        ret = cursor->close(cursor);
+
+        /*
+         * Next query: get the recent order history\&.  In SQL:
+         *
+         * SELECT * FROM Calls WHERE cust_id=? ORDER BY call_date DESC LIMIT 3
+         *
+         * Use the call_cust_date index to find the matching calls\&.  Since it is
+         * is in increasing order by date for a given customer, we want to start
+         * with the last record for the customer and work backwards\&.
+         *
+         * Specify a subset of columns to be returned\&.  (Note that if these were
+         * all covered by the index, the primary would not have to be accessed\&.)
+         * Stop after getting 3 records\&.
+         */
+        ret = session->open_cursor(session,
+            "index:calls:cust_date(cust_id,call_type,notes)",
+            NULL, NULL, &cursor);
+
+        /*
+         * The keys in the index are (cust_id,call_date) -- we want the largest
+         * call date for a given cust_id\&.  Search for (cust_id+1,0), then work
+         * backwards\&.
+         */
+        cust\&.id = 1;
+        cursor->set_key(cursor, cust\&.id + 1, 0);
+        ret = cursor->search_near(cursor, &exact);
+
+        /*
+         * If the table is empty, search_near will return WT_NOTFOUND, else the
+         * cursor will be positioned on a matching key if one exists, or an
+         * adjacent key if one does not\&.  If the positioned key is equal to or
+         * larger than the search key, go back one\&.
+         */
+        if (ret == 0 && exact >= 0)
+                ret = cursor->prev(cursor);
+        for (count = 0; ret == 0 && count < 3; ++count) {
+                ret = cursor->get_value(cursor,
+                    &call\&.cust_id, &call\&.call_type, &call\&.notes);
+                if (call\&.cust_id != cust\&.id)
+                        break;
+                printf("Call record: customer %" PRIu64 " (%s: %s)\n",
+                    call\&.cust_id, call\&.call_type, call\&.notes);
+                ret = cursor->prev(cursor);
+        }
+.fi
+.PP
+

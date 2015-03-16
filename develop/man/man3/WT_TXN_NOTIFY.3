@@ -1,0 +1,45 @@
+.TH "WT_TXN_NOTIFY" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_TXN_NOTIFY \- 
+.PP
+Snapshot isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBnotify\fP )(\fBWT_TXN_NOTIFY\fP *notify, \fBWT_SESSION\fP *session, uint64_t txnid, int committed)"
+.br
+.RI "\fIA method called when the session's current transaction is committed or rolled back\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Snapshot isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_TXN_NOTIFY::notify)(\fBWT_TXN_NOTIFY\fP *notify, \fBWT_SESSION\fP *session, uint64_t txnid, int committed)"
+
+.PP
+A method called when the session's current transaction is committed or rolled back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP a pointer to the event handler 
+.br
+\fIsession\fP the current session handle 
+.br
+\fItxnid\fP the transaction ID 
+.br
+\fIcommitted\fP an integer value which is non-zero if the transaction is being committed\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

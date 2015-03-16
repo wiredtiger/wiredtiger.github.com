@@ -1,0 +1,364 @@
+.TH "WT_COMPRESSOR" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_COMPRESSOR \- 
+.PP
+The interface implemented by applications to provide custom compression\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBcompress\fP )(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, uint8_t *dst, size_t dst_len, size_t *result_lenp, int *compression_failed)"
+.br
+.RI "\fICallback to compress a chunk of data\&. \fP"
+.ti -1c
+.RI "int(* \fBcompress_raw\fP )(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, size_t page_max, int split_pct, size_t extra, uint8_t *src, uint32_t *offsets, uint32_t slots, uint8_t *dst, size_t dst_len, int final, size_t *result_lenp, uint32_t *result_slotsp)"
+.br
+.RI "\fICallback to compress a list of byte strings\&. \fP"
+.ti -1c
+.RI "int(* \fBdecompress\fP )(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, uint8_t *dst, size_t dst_len, size_t *result_lenp)"
+.br
+.RI "\fICallback to decompress a chunk of data\&. \fP"
+.ti -1c
+.RI "int(* \fBpre_size\fP )(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, size_t *result_lenp)"
+.br
+.RI "\fICallback to size a destination buffer for compression\&. \fP"
+.ti -1c
+.RI "int(* \fBterminate\fP )(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIIf non-NULL, a callback performed when the database is closed\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The interface implemented by applications to provide custom compression\&. 
+
+Compressors must implement the \fBWT_COMPRESSOR\fP interface: the \fBWT_COMPRESSOR::compress\fP and \fBWT_COMPRESSOR::decompress\fP callbacks must be specified, and \fBWT_COMPRESSOR::pre_size\fP is optional\&. To build your own compressor, use one of the compressors in \fCext/compressors\fP as a template: \fCext/nop_compress\fP is a simple compressor that passes through data unchanged, and is a reasonable starting point\&.
+.PP
+Applications register their implementation with WiredTiger by calling \fBWT_CONNECTION::add_compressor\fP\&.
+.PP
+.PP
+.nf
+/* Local compressor structure\&. */
+typedef struct {
+        WT_COMPRESSOR compressor;               /* Must come first */
+
+        WT_EXTENSION_API *wt_api;               /* Extension API */
+
+        unsigned long nop_calls;                /* Count of calls */
+
+} NOP_COMPRESSOR;
+.fi
+.PP
+.PP
+.nf
+/*
+ * wiredtiger_extension_init --
+ *      A simple shared library compression example\&.
+ */
+int
+wiredtiger_extension_init(WT_CONNECTION *connection, WT_CONFIG_ARG *config)
+{
+        NOP_COMPRESSOR *nop_compressor;
+
+        (void)config;                           /* Unused parameters */
+
+        if ((nop_compressor = calloc(1, sizeof(NOP_COMPRESSOR))) == NULL)
+                return (errno);
+
+        /*
+         * Allocate a local compressor structure, with a WT_COMPRESSOR structure
+         * as the first field, allowing us to treat references to either type of
+         * structure as a reference to the other type\&.
+         *
+         * This could be simplified if only a single database is opened in the
+         * application, we could use a static WT_COMPRESSOR structure, and a
+         * static reference to the WT_EXTENSION_API methods, then we don't need
+         * to allocate memory when the compressor is initialized or free it when
+         * the compressor is terminated\&.  However, this approach is more general
+         * purpose and supports multiple databases per application\&.
+         */
+        nop_compressor->compressor\&.compress = nop_compress;
+        nop_compressor->compressor\&.compress_raw = NULL;
+        nop_compressor->compressor\&.decompress = nop_decompress;
+        nop_compressor->compressor\&.pre_size = nop_pre_size;
+        nop_compressor->compressor\&.terminate = nop_terminate;
+
+        nop_compressor->wt_api = connection->get_extension_api(connection);
+
+                                                /* Load the compressor */
+        return (connection->add_compressor(
+            connection, "nop", (WT_COMPRESSOR *)nop_compressor, NULL));
+}
+.fi
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_COMPRESSOR::compress)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, uint8_t *dst, size_t dst_len, size_t *result_lenp, int *compression_failed)"
+
+.PP
+Callback to compress a chunk of data\&. \fBWT_COMPRESSOR::compress\fP takes a source buffer and a destination buffer, by default of the same size\&. If the callback can compress the buffer to a smaller size in the destination, it does so, sets the \fCcompression_failed\fP return to 0 and returns 0\&. If compression does not produce a smaller result, the callback sets the \fCcompression_failed\fP return to 1 and returns 0\&. If another error occurs, it returns an errno or WiredTiger error code\&.
+.PP
+On entry, \fCsrc\fP will point to memory, with the length of the memory in \fCsrc_len\fP\&. After successful completion, the callback should return \fC0\fP and set \fCresult_lenp\fP to the number of bytes required for the compressed representation\&.
+.PP
+On entry, \fCdst\fP points to the destination buffer with a length of \fCdst_len\fP\&. If the \fBWT_COMPRESSOR::pre_size\fP method is specified, the destination buffer will be at least the size returned by that method; otherwise, the destination buffer will be at least as large as the length of the data to compress\&.
+.PP
+If compression would not shrink the data or the \fCdst\fP buffer is not large enough to hold the compressed data, the callback should set \fCcompression_failed\fP to a non-zero value and return 0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrc\fP the data to compress 
+.br
+\fIsrc_len\fP the length of the data to compress 
+.br
+\fIdst\fP the destination buffer 
+.br
+\fIdst_len\fP the length of the destination buffer 
+.br
+\fIresult_lenp\fP the length of the compressed data 
+.br
+\fIcompression_failed\fP non-zero if compression did not decrease the length of the data (compression may not have completed) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero for success, non-zero to indicate an error\&.
+.RE
+.PP
+.PP
+.nf
+/*
+ * nop_compress --
+ *      A simple compression example that passes data through unchanged\&.
+ */
+static int
+nop_compress(WT_COMPRESSOR *compressor, WT_SESSION *session,
+    uint8_t *src, size_t src_len,
+    uint8_t *dst, size_t dst_len,
+    size_t *result_lenp, int *compression_failed)
+{
+        NOP_COMPRESSOR *nop_compressor = (NOP_COMPRESSOR *)compressor;
+
+        (void)session;                          /* Unused parameters */
+
+        ++nop_compressor->nop_calls;            /* Call count */
+
+        *compression_failed = 0;
+        if (dst_len < src_len) {
+                *compression_failed = 1;
+                return (0);
+        }
+
+        memcpy(dst, src, src_len);
+        *result_lenp = src_len;
+
+        return (0);
+}
+.fi
+.PP
+
+.SS "int(* WT_COMPRESSOR::compress_raw)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, size_t page_max, int split_pct, size_t extra, uint8_t *src, uint32_t *offsets, uint32_t slots, uint8_t *dst, size_t dst_len, int final, size_t *result_lenp, uint32_t *result_slotsp)"
+
+.PP
+Callback to compress a list of byte strings\&. \fBWT_COMPRESSOR::compress_raw\fP gives applications fine-grained control over disk block size when writing row-store or variable-length column-store pages\&. Where this level of control is not required by the underlying storage device, set the \fBWT_COMPRESSOR::compress_raw\fP callback to \fCNULL\fP and WiredTiger will internally split each page into blocks, each block then compressed by \fBWT_COMPRESSOR::compress\fP\&.
+.PP
+\fBWT_COMPRESSOR::compress_raw\fP takes a source buffer and an array of 0-based offsets of byte strings in that buffer\&. The callback then encodes none, some or all of the byte strings and copies the encoded representation into a destination buffer\&. The callback returns the number of byte strings encoded and the bytes needed for the encoded representation\&. The encoded representation has header information prepended and is written as a block to the underlying file object\&.
+.PP
+On entry, \fCpage_max\fP is the configured maximum size for objects of this type\&. (This value is provided for convenience, and will be either the \fCinternal_page_max\fP or \fCleaf_page_max\fP value specified to \fBWT_SESSION::create\fP when the object was created\&.)
+.PP
+On entry, \fCsplit_pct\fP is the configured Btree page split size for this object\&. (This value is provided for convenience, and will be the \fCsplit_pct\fP value specified to \fBWT_SESSION::create\fP when the object was created\&.)
+.PP
+On entry, \fCextra\fP is a count of additional bytes that will be added to the encoded representation before it is written\&. In other words, if the target write size is 8KB, the returned encoded representation should be less than or equal to (8KB - \fCextra\fP)\&. The method does not need to skip bytes in the destination buffer based on \fCextra\fP, the method should only use \fCextra\fP to decide how many bytes to store into the destination buffer for its ideal block size\&.
+.PP
+On entry, \fCsrc\fP points to the source buffer; \fCoffsets\fP is an array of \fCslots\fP 0-based offsets into \fCsrc\fP, where each offset is the start of a byte string, except for the last offset, which is the offset of the first byte past the end of the last byte string\&. (In other words, \fCoffsets[0]\fP will be 0, the offset of the first byte of the first byte string in \fCsrc\fP, and \fCoffsets[slots]\fP is the total length of all of the byte strings in the \fCsrc\fP buffer\&.)
+.PP
+On entry, \fCdst\fP points to the destination buffer with a length of \fCdst_len\fP\&. If the \fBWT_COMPRESSOR::pre_size\fP method is specified, the destination buffer will be at least the size returned by that method; otherwise, the destination buffer will be at least as large as the length of the data to compress\&.
+.PP
+After successful completion, the callback should return \fC0\fP, and set \fCresult_slotsp\fP to the number of byte strings encoded and \fCresult_lenp\fP to the bytes needed for the encoded representation\&.
+.PP
+There is no requirement the callback encode any or all of the byte strings passed by WiredTiger\&. If the callback does not encode any of the byte strings and compression should not be retried, the callback should set \fCresult_slotsp\fP to 0\&.
+.PP
+If the callback does not encode any of the byte strings and compression should be retried with additional byte strings, the callback must return \fCEAGAIN\fP\&. In that case, WiredTiger will accumulate more rows and repeat the call\&.
+.PP
+If there are no more rows to accumulate or the callback indicates that it cannot be retried, WiredTiger writes the remaining rows using \fC\fBWT_COMPRESSOR::compress\fP\fP\&.
+.PP
+On entry, \fCfinal\fP is zero if there are more rows to be written as part of this page (if there will be additional data provided to the callback), and non-zero if there are no more rows to be written as part of this page\&. If \fCfinal\fP is set and the callback fails to encode any rows, WiredTiger writes the remaining rows without further calls to the callback\&. If \fCfinal\fP is set and the callback encodes any number of rows, WiredTiger continues to call the callback until all of the rows are encoded or the callback fails to encode any rows\&.
+.PP
+The \fBWT_COMPRESSOR::compress_raw\fP callback is intended for applications wanting to create disk blocks in specific sizes\&. \fBWT_COMPRESSOR::compress_raw\fP is not a replacement for \fBWT_COMPRESSOR::compress\fP: objects which \fBWT_COMPRESSOR::compress_raw\fP cannot handle (for example, overflow key or value items), or which \fBWT_COMPRESSOR::compress_raw\fP chooses not to compress for any reason (for example, if \fBWT_COMPRESSOR::compress_raw\fP callback chooses not to compress a small number of rows, but the page being written has no more rows to accumulate), will be passed to \fBWT_COMPRESSOR::compress\fP\&.
+.PP
+The \fBWT_COMPRESSOR::compress_raw\fP callback is only called for objects where it is applicable, that is, for row-store and variable-length column-store objects, where both row-store key prefix compression and row-store and variable-length column-store dictionary compression are \fBnot\fP configured\&. When \fBWT_COMPRESSOR::compress_raw\fP is not applicable, the \fBWT_COMPRESSOR::compress\fP callback is used instead\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpage_max\fP the configured maximum page size for this object 
+.br
+\fIsplit_pct\fP the configured page split size for this object 
+.br
+\fIextra\fP the count of the additional bytes 
+.br
+\fIsrc\fP the data to compress 
+.br
+\fIoffsets\fP the byte offsets of the byte strings in src 
+.br
+\fIslots\fP the number of entries in offsets 
+.br
+\fIdst\fP the destination buffer 
+.br
+\fIdst_len\fP the length of the destination buffer 
+.br
+\fIfinal\fP non-zero if there are no more rows to accumulate 
+.br
+\fIresult_lenp\fP the length of the compressed data 
+.br
+\fIresult_slotsp\fP the number of byte offsets taken 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero for success, non-zero to indicate an error\&. 
+.RE
+.PP
+
+.SS "int(* WT_COMPRESSOR::decompress)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, uint8_t *dst, size_t dst_len, size_t *result_lenp)"
+
+.PP
+Callback to decompress a chunk of data\&. \fBWT_COMPRESSOR::decompress\fP takes a source buffer and a destination buffer\&. The contents are switched from \fCcompress:\fP the source buffer is the compressed value, and the destination buffer is sized to be the original size\&. If the callback successfully decompresses the source buffer to the destination buffer, it returns 0\&. If an error occurs, it returns an errno or WiredTiger error code\&. The source buffer that \fBWT_COMPRESSOR::decompress\fP takes may have a size that is rounded up from the size originally produced by \fBWT_COMPRESSOR::compress\fP, with the remainder of the buffer set to zeroes\&. Most compressors do not care about this difference if the size to be decompressed can be implicitly discovered from the compressed data\&. If your compressor cares, you may need to allocate space for, and store, the actual size in the compressed buffer\&. See the source code for the included snappy compressor for an example\&.
+.PP
+On entry, \fCsrc\fP will point to memory, with the length of the memory in \fCsrc_len\fP\&. After successful completion, the callback should return \fC0\fP and set \fCresult_lenp\fP to the number of bytes required for the decompressed representation\&.
+.PP
+If the \fCdst\fP buffer is not big enough to hold the decompressed data, the callback should return an error\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrc\fP the data to decompress 
+.br
+\fIsrc_len\fP the length of the data to decompress 
+.br
+\fIdst\fP the destination buffer 
+.br
+\fIdst_len\fP the length of the destination buffer 
+.br
+\fIresult_lenp\fP the length of the decompressed data 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero for success, non-zero to indicate an error\&.
+.RE
+.PP
+.PP
+.nf
+/*
+ * nop_decompress --
+ *      A simple decompression example that passes data through unchanged\&.
+ */
+static int
+nop_decompress(WT_COMPRESSOR *compressor, WT_SESSION *session,
+    uint8_t *src, size_t src_len,
+    uint8_t *dst, size_t dst_len,
+    size_t *result_lenp)
+{
+        NOP_COMPRESSOR *nop_compressor = (NOP_COMPRESSOR *)compressor;
+
+        (void)session;                          /* Unused parameters */
+        (void)src_len;
+
+        ++nop_compressor->nop_calls;            /* Call count */
+
+        /*
+         * The destination length is the number of uncompressed bytes we're
+         * expected to return\&.
+         */
+        memcpy(dst, src, dst_len);
+        *result_lenp = dst_len;
+        return (0);
+}
+.fi
+.PP
+
+.SS "int(* WT_COMPRESSOR::pre_size)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, size_t *result_lenp)"
+
+.PP
+Callback to size a destination buffer for compression\&. \fBWT_COMPRESSOR::pre_size\fP is an optional callback that, given the source buffer and size, produces the size of the destination buffer to be given to \fBWT_COMPRESSOR::compress\fP\&. This is useful for compressors that assume that the output buffer is sized for the worst case and thus no overrun checks are made\&. If your compressor works like this, \fBWT_COMPRESSOR::pre_size\fP will need to be defined\&. See the source code for the snappy compressor for an example\&. However, if your compressor detects and avoids overruns against its target buffer, you will not need to define \fBWT_COMPRESSOR::pre_size\fP\&. When \fBWT_COMPRESSOR::pre_size\fP is set to NULL, the destination buffer is sized the same as the source buffer\&. This is always sufficient, since a compression result that is larger than the source buffer is discarded by WiredTiger\&.
+.PP
+If not NULL, this callback is called before each call to WT_COMPRESS::compress to determine the size of the destination buffer to provide\&. If the callback is NULL, the destination buffer will be the same size as the source buffer\&.
+.PP
+The callback should set \fCresult_lenp\fP to a suitable buffer size for compression, typically the maximum length required by \fBWT_COMPRESSOR::compress\fP\&.
+.PP
+This callback function is for compressors that require an output buffer larger than the source buffer (for example, that do not check for buffer overflow during compression)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrc\fP the data to compress 
+.br
+\fIsrc_len\fP the length of the data to compress 
+.br
+\fIresult_lenp\fP the required destination buffer size 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero for success, non-zero to indicate an error\&.
+.RE
+.PP
+.PP
+.nf
+/*
+ * nop_pre_size --
+ *      A simple pre-size example that returns the source length\&.
+ */
+static int
+nop_pre_size(WT_COMPRESSOR *compressor, WT_SESSION *session,
+    uint8_t *src, size_t src_len,
+    size_t *result_lenp)
+{
+        NOP_COMPRESSOR *nop_compressor = (NOP_COMPRESSOR *)compressor;
+
+        (void)session;                          /* Unused parameters */
+        (void)src;
+
+        ++nop_compressor->nop_calls;            /* Call count */
+
+        *result_lenp = src_len;
+        return (0);
+}
+.fi
+.PP
+
+.SS "int(* WT_COMPRESSOR::terminate)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session)"
+
+.PP
+If non-NULL, a callback performed when the database is closed\&. The \fBWT_COMPRESSOR::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&.
+.PP
+.PP
+.nf
+/*
+ * nop_terminate --
+ *      WiredTiger no-op compression termination\&.
+ */
+static int
+nop_terminate(WT_COMPRESSOR *compressor, WT_SESSION *session)
+{
+        NOP_COMPRESSOR *nop_compressor = (NOP_COMPRESSOR *)compressor;
+
+        (void)session;                          /* Unused parameters */
+
+        ++nop_compressor->nop_calls;            /* Call count */
+
+        /* Free the allocated memory\&. */
+        free(compressor);
+
+        return (0);
+}
+.fi
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

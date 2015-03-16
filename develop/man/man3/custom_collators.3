@@ -1,0 +1,29 @@
+.TH "custom_collators" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+custom_collators \- Custom Collators 
+
+.SH "Introduction to Custom Collators"
+.PP
+WiredTiger tables order records based on their keys\&. Cursors traverse records in key order using \fBWT_CURSOR::next\fP, or in reverse order using \fBWT_CURSOR::prev\fP\&. By default, WiredTiger uses lexicographic ordering, by comparing the raw bytes of each key to determine their order\&.
+.PP
+The built-in encoding of types (including integers and strings) is designed to make lexicographic ordering match the natural ordering, including when the key consists of multiple columns, each of which can be a different type\&.
+.PP
+Applications that need custom ordering of keys can either change the serialized representation so that the lexicographic order matches the required order, or implement the \fBWT_COLLATOR\fP interface to change the comparison routine that WiredTiger uses\&.
+.PP
+Applications must register their \fBWT_COLLATOR\fP implementations using \fBWT_CONNECTION::add_collator\fP\&. They are then configured by passing \fC'collator=\&.\&.\&.'\fP to \fBWT_SESSION::create\fP when creating a table or index\&.
+.PP
+See \fBex_extending\&.c\fP for more details about how to implement custom collators\&.
+.SH "Custom Collators and Recovery"
+.PP
+If logging is enabled, WiredTiger will run recovery as required in \fBwiredtiger_open\fP\&. Any custom collators in use must be registered before recovery runs\&. This is described in more detail in \fBExtensions and recovery\fP\&.
+.SH "Custom Collators for Indices"
+.PP
+Custom collators can be used with indices, but they must take into account how WiredTiger indices are implemented\&. The primary key columns are implicitly appended to the logical index key columns in order to create the key that is stored in the index\&. This is done so that the key stored in the index is unique even when multiple records have the same values for the index key columns\&.
+.PP
+A collator must give an unambiguous ordering to records in the index, so it must use the primary key columns as well as the index columns when comparing two index records\&.
+.PP
+What this means in practice is that if the table has \fCkey_format=r\fP and the index is on a string column, then the index cursor will have \fCkey_format=S\fP, but the actual keys stored in the index will have \fCkey_format=Sr\fP (with the primary key appended)\&.
+.PP
+Collators usually call \fBwiredtiger_struct_unpack\fP with the appropriate format to split the index key into fields that are used for the comparison\&. 

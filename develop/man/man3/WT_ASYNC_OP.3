@@ -1,0 +1,364 @@
+.TH "WT_ASYNC_OP" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_ASYNC_OP \- 
+.PP
+A \fBWT_ASYNC_OP\fP handle is the interface to an asynchronous operation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "uint64_t \fBget_id\fP (\fBWT_ASYNC_OP\fP *op)"
+.br
+.RI "\fIGet the unique identifier for this operation\&. \fP"
+.ti -1c
+.RI "\fBWT_ASYNC_OPTYPE\fP \fBget_type\fP (\fBWT_ASYNC_OP\fP *op)"
+.br
+.RI "\fIGet the type for this operation\&. \fP"
+.in -1c
+.PP
+.RI "\fBData access\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "int \fBget_key\fP (\fBWT_ASYNC_OP\fP *op,\&.\&.\&.)"
+.br
+.RI "\fIInvoke the underlying \fBWT_CURSOR::get_key\fP method; see that method for configuration, return and error values\&. \fP"
+.ti -1c
+.RI "int \fBget_value\fP (\fBWT_ASYNC_OP\fP *op,\&.\&.\&.)"
+.br
+.RI "\fIInvoke the underlying \fBWT_CURSOR::get_value\fP method; see that method for configuration, return and error values\&. \fP"
+.ti -1c
+.RI "void \fBset_key\fP (\fBWT_ASYNC_OP\fP *op,\&.\&.\&.)"
+.br
+.RI "\fIInvoke the underlying \fBWT_CURSOR::set_key\fP method; see that method for configuration, return and error values\&. \fP"
+.ti -1c
+.RI "void \fBset_value\fP (\fBWT_ASYNC_OP\fP *op,\&.\&.\&.)"
+.br
+.RI "\fIInvoke the underlying \fBWT_CURSOR::set_value\fP method; see that method for configuration, return and error values\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBPositioning\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "int \fBsearch\fP (\fBWT_ASYNC_OP\fP *op)"
+.br
+.RI "\fIInvoke the underlying \fBWT_CURSOR::search\fP method; see that method for configuration, return and error values\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBData modification\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "int \fBinsert\fP (\fBWT_ASYNC_OP\fP *op)"
+.br
+.RI "\fIInvoke the underlying \fBWT_CURSOR::insert\fP method; see that method for configuration, return and error values\&. \fP"
+.ti -1c
+.RI "int \fBupdate\fP (\fBWT_ASYNC_OP\fP *op)"
+.br
+.RI "\fIInvoke the underlying \fBWT_CURSOR::update\fP method; see that method for configuration, return and error values\&. \fP"
+.ti -1c
+.RI "int \fBremove\fP (\fBWT_ASYNC_OP\fP *op)"
+.br
+.RI "\fIInvoke the underlying \fBWT_CURSOR::remove\fP method; see that method for configuration, return and error values\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBTable operations\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "int \fBcompact\fP (\fBWT_ASYNC_OP\fP *op)"
+.br
+.RI "\fIInvoke the underlying \fBWT_SESSION::compact\fP method; see that method for configuration, return and error values\&. \fP"
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBWT_CONNECTION\fP * \fBconnection\fP"
+.br
+.RI "\fIThe connection for this operation\&. \fP"
+.ti -1c
+.RI "const char * \fBkey_format\fP"
+.br
+.RI "\fIThe format of the data packed into key items\&. \fP"
+.ti -1c
+.RI "const char * \fBvalue_format\fP"
+.br
+.RI "\fIThe format of the data packed into value items\&. \fP"
+.ti -1c
+.RI "void * \fBapp_private\fP"
+.br
+.RI "\fIA location for applications to store information that will be available in the callback from an async operation\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBWT_ASYNC_OP\fP handle is the interface to an asynchronous operation\&. 
+
+An asynchronous operation describes a data manipulation to be performed asynchronously by a WiredTiger worker thread\&. These operations implement the CRUD (create, read, update and delete) operations\&. Each operation is a self-contained work unit\&. The operation will be performed in the context of the worker thread's session\&. Each operation is performed within the context of a transaction\&. The application is notified of its completion with a callback\&. The transaction is resolved once the callback returns\&.
+.PP
+The table referenced in an operation must already exist\&.
+.PP
+Raw data is represented by key/value pairs of \fBWT_ITEM\fP structures, but operations can also provide access to fields within the key and value if the formats are described in the \fBWT_SESSION::create\fP method\&.
+.PP
+\fBThread safety:\fP A \fBWT_ASYNC_OP\fP handle may not be shared between threads, see \fBMultithreading\fP for more information\&. 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int WT_ASYNC_OP::compact (\fBWT_ASYNC_OP\fP *op)"
+
+.PP
+Invoke the underlying \fBWT_SESSION::compact\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+via the callback as described for \fBWT_SESSION::compact\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "uint64_t WT_ASYNC_OP::get_id (\fBWT_ASYNC_OP\fP *op)"
+
+.PP
+Get the unique identifier for this operation\&. 
+.PP
+.nf
+ /* Retrieve the operation's 64-bit identifier\&. */
+        id = op->get_id(op);
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the id of the operation 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "int WT_ASYNC_OP::get_key (\fBWT_ASYNC_OP\fP *op, \&.\&.\&.)"
+
+.PP
+Invoke the underlying \fBWT_CURSOR::get_key\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+as described for \fBWT_CURSOR::get_key\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "\fBWT_ASYNC_OPTYPE\fP WT_ASYNC_OP::get_type (\fBWT_ASYNC_OP\fP *op)"
+
+.PP
+Get the type for this operation\&. 
+.PP
+.nf
+        /* Retrieve the operation's WT_ASYNC_OPTYPE type\&. */
+        type = op->get_type(op);
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBWT_ASYNC_OPTYPE\fP of the operation 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "int WT_ASYNC_OP::get_value (\fBWT_ASYNC_OP\fP *op, \&.\&.\&.)"
+
+.PP
+Invoke the underlying \fBWT_CURSOR::get_value\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+as described for \fBWT_CURSOR::get_value\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "int WT_ASYNC_OP::insert (\fBWT_ASYNC_OP\fP *op)"
+
+.PP
+Invoke the underlying \fBWT_CURSOR::insert\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+via the callback as described for \fBWT_CURSOR::insert\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "int WT_ASYNC_OP::remove (\fBWT_ASYNC_OP\fP *op)"
+
+.PP
+Invoke the underlying \fBWT_CURSOR::remove\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+via the callback as described for \fBWT_CURSOR::remove\fP 
+.RE
+.PP
+
+.SS "int WT_ASYNC_OP::search (\fBWT_ASYNC_OP\fP *op)"
+
+.PP
+Invoke the underlying \fBWT_CURSOR::search\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+via the callback as described for \fBWT_CURSOR::search\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "void WT_ASYNC_OP::set_key (\fBWT_ASYNC_OP\fP *op, \&.\&.\&.)"
+
+.PP
+Invoke the underlying \fBWT_CURSOR::set_key\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "void WT_ASYNC_OP::set_value (\fBWT_ASYNC_OP\fP *op, \&.\&.\&.)"
+
+.PP
+Invoke the underlying \fBWT_CURSOR::set_value\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_async\&.c\fP\&.
+.SS "int WT_ASYNC_OP::update (\fBWT_ASYNC_OP\fP *op)"
+
+.PP
+Invoke the underlying \fBWT_CURSOR::update\fP method; see that method for configuration, return and error values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP the operation handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+via the callback as described for \fBWT_CURSOR::update\fP 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBWT_CONNECTION\fP* WT_ASYNC_OP::connection"
+
+.PP
+The connection for this operation\&. 
+.SS "const char* WT_ASYNC_OP::key_format"
+
+.PP
+The format of the data packed into key items\&. See \fBPacking and Unpacking Data\fP for details\&. If not set, a default value of 'u' is assumed, and applications must use \fBWT_ITEM\fP structures to manipulate untyped byte arrays\&. 
+.SS "const char* WT_ASYNC_OP::value_format"
+
+.PP
+The format of the data packed into value items\&. See \fBPacking and Unpacking Data\fP for details\&. If not set, a default value of 'u' is assumed, and applications must use \fBWT_ITEM\fP structures to manipulate untyped byte arrays\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

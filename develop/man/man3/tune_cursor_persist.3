@@ -1,0 +1,8 @@
+.TH "tune_cursor_persist" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tune_cursor_persist \- Cursor persistence 
+Opening a new cursor is a relatively expensive operation in WiredTiger (especially in table objects and Log-Structured Merge Trees (LSM) trees, where a logical cursor may require multiple, underlying object cursors), and caching cursors can improve performance\&. On the other hand, cursors hold positions in objects, and therefore long-lived cursor positions can decrease performance by blocking page eviction or looking like a long-lived transaction\&.
+.PP
+Best practices are to cache cursors, but use the \fBWT_CURSOR::reset\fP method to discard the cursor's position in the object when the position is no longer needed\&. Additionally, use the \fBWT_CURSOR::insert\fP method instead of the \fBWT_CURSOR::update\fP method when there's no need to hold a position in the object, because the \fBWT_CURSOR::insert\fP method never holds a cursor position and there's no need to call \fBWT_CURSOR::reset\fP\&. 

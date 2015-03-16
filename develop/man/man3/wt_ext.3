@@ -1,0 +1,122 @@
+.TH "WiredTiger Extension API" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WiredTiger Extension API \- 
+.PP
+The functions and interfaces applications use to customize and extend the behavior of WiredTiger\&.  
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBWT_COLLATOR\fP"
+.br
+.RI "\fIThe interface implemented by applications to provide custom ordering of records\&. \fP"
+.ti -1c
+.RI "struct \fBWT_COMPRESSOR\fP"
+.br
+.RI "\fIThe interface implemented by applications to provide custom compression\&. \fP"
+.ti -1c
+.RI "struct \fBWT_DATA_SOURCE\fP"
+.br
+.RI "\fIApplications can extend WiredTiger by providing new implementations of the \fBWT_DATA_SOURCE\fP class\&. \fP"
+.ti -1c
+.RI "struct \fBWT_EXTRACTOR\fP"
+.br
+.RI "\fIThe interface implemented by applications to provide custom extraction of index keys or column group values\&. \fP"
+.ti -1c
+.RI "struct \fBWT_TXN_NOTIFY\fP"
+.br
+.RI "\fISnapshot isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&. \fP"
+.ti -1c
+.RI "struct \fBWT_EXTENSION_API\fP"
+.br
+.RI "\fITable of WiredTiger extension methods\&. \fP"
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBWT_TXN_ISO_READ_COMMITTED\fP"
+.br
+.RI "\fIRead-committed isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&. \fP"
+.ti -1c
+.RI "#define \fBWT_TXN_ISO_READ_UNCOMMITTED\fP"
+.br
+.RI "\fIRead-uncommitted isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&. \fP"
+.ti -1c
+.RI "#define \fBWT_TXN_ISO_SNAPSHOT\fP"
+.br
+.RI "\fISnapshot isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBWT_CONFIG_ARG\fP \fBWT_CONFIG_ARG\fP"
+.br
+.RI "\fIA configuration object passed to some extension interfaces\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBwiredtiger_extension_init\fP (\fBWT_CONNECTION\fP *connection, \fBWT_CONFIG_ARG\fP *config)"
+.br
+.RI "\fIEntry point to an extension, called when the extension is loaded\&. \fP"
+.ti -1c
+.RI "int \fBwiredtiger_extension_terminate\fP (\fBWT_CONNECTION\fP *connection)"
+.br
+.RI "\fIOptional cleanup function for an extension, called during \fBWT_CONNECTION::close\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The functions and interfaces applications use to customize and extend the behavior of WiredTiger\&. 
+
+
+.SH "Typedef Documentation"
+.PP 
+.SS "\fBWT_CONFIG_ARG\fP"
+
+.PP
+A configuration object passed to some extension interfaces\&. This is an opaque type: configuration values can be queried using \fBWT_EXTENSION_API::config_get\fP 
+.SH "Function Documentation"
+.PP 
+.SS "int wiredtiger_extension_init (\fBWT_CONNECTION\fP *connection, \fBWT_CONFIG_ARG\fP *config)"
+
+.PP
+Entry point to an extension, called when the extension is loaded\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP the connection handle 
+.br
+\fIconfig\fP the config information passed to \fBWT_CONNECTION::load_extension\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int wiredtiger_extension_terminate (\fBWT_CONNECTION\fP *connection)"
+
+.PP
+Optional cleanup function for an extension, called during \fBWT_CONNECTION::close\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP the connection handle 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.
