@@ -529,6 +529,14 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>eviction_trigger</code></td><td>trigger eviction when the cache is using this much memory, as a percentage of the total cache size.</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
 <tr>
+<td><code>file_manager = (</code></td><td>control how file handles are managed.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it.</td><td>an integer between 1 and 1000; default <code>30</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;close_scan_interval</code></td><td>interval in seconds at which to check for files that are inactive and close them.</td><td>an integer between 1 and 1000; default <code>10</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>lsm_manager = (</code></td><td>configure database wide options for LSM tree management.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;merge</code></td><td>merge LSM chunks where possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
