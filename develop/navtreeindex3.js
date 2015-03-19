@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"group__wt.html#gabc97d6575ac2ceae69af88c4031e0541":[1,0,88],
+"group__wt.html#gabcaa9838c8d01a022d97580acb5c0b65":[1,0,64],
 "group__wt.html#gac02dd31c8b605eb220e1f369dc75555c":[1,0,253],
 "group__wt.html#gac1570e1f4bb067d56aedd07e38b33fc6":[1,0,250],
 "group__wt.html#gac20c90e23dff3765a28628e67baccb99":[1,0,69],
@@ -97,8 +99,8 @@ var NAVTREEINDEX3 =
 "home.html":[0,7,0],
 "huffman.html":[0,5,7,3],
 "huffman.html":[0,4,7,3],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html":[2,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html#a4be4e275a37fc04a6789c4cf5e8a5fd9":[2,0,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html":[1,2,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455":[1,0,2,9],
 "struct_w_t___c_u_r_s_o_r.html#abe668c6625fa16b5595a1c393f71862d":[1,0,2,19],
 "struct_w_t___c_u_r_s_o_r.html#acd3f345e375e26d223ad5c6f35dc15e8":[1,0,2,1],
-"struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc":[1,0,2,13],
-"struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a":[1,0,2,8],
-"struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b":[1,0,2,0]
+"struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc":[1,0,2,13]
 };

@@ -34,9 +34,10 @@ var programming =
     ] ],
     [ "File formats and compression", "file_formats.html", "file_formats" ],
     [ "Compressors", "compression.html", [
-      [ "Using zlib compression", "compression.html#compression_zlib", null ],
-      [ "Using snappy compression", "compression.html#compression_snappy", null ],
       [ "Using bzip2 compression", "compression.html#compression_bzip2", null ],
+      [ "Using LZ4 compression", "compression.html#compression_lz4", null ],
+      [ "Using snappy compression", "compression.html#compression_snappy", null ],
+      [ "Using zlib compression", "compression.html#compression_zlib", null ],
       [ "Upgrading compression engines", "compression.html#compression_upgrading", null ],
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
