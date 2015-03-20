@@ -77,7 +77,11 @@ Upgrading to Version 2.5.2</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Statistics cursor refresh </dt>
-<dd>In previous releases of WiredTiger, a statistics cursor made a snapshot of the relevant statistics before the first statistics value was read, and those values remained unchanged from that point on, no matter how the cursor was used. In the WiredTiger 2.5.2 release, calling the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method to reset the cursor refreshes the statistics returned by the cursor.  </dd>
+<dd><p class="startdd">In previous releases of WiredTiger, a statistics cursor made a snapshot of the relevant statistics before the first statistics value was read, and those values remained unchanged from that point on, no matter how the cursor was used. In the WiredTiger 2.5.2 release, calling the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method to reset the cursor refreshes the statistics returned by the cursor. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Buffer alignment on Linux </dt>
+<dd>In previous releases of WiredTiger, all buffers used for I/O were aligned to 4KB boundaries by default. In the WiredTiger 2.5.2 release, alignment is only enforced when direct I/O is configured.  </dd>
 </dl>
 <h1><a class="anchor" id="version_251"></a>
 Upgrading to Version 2.5.1</h1>
