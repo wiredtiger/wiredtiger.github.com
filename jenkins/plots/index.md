@@ -10,13 +10,11 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-btree/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-btree/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-btree/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-btree/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-btree/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-btree/plot)
 
 ## Checkpoint LSM [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-ckpt-lsm)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-lsm/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-lsm/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-lsm/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-lsm/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-lsm/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-lsm/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-ckpt-lsm/plot)
 
 ## Evict btree [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-evict-btree)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-evict-btree/)
 
@@ -62,24 +60,25 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 ## Medium LSM compact [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-med-lsm-compact)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-lsm-compact/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-lsm-compact/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-lsm-compact/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-lsm-compact/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-lsm-compact/plot)
 
 ## Medium LSM multi [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-med-multi-lsm)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-multi-lsm/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-multi-lsm/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-multi-lsm/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-multi-lsm/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-multi-lsm/plot)
 
 ## Overflow 10k [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-overflow-10k)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-10k/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-10k/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-10k/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-10k/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-10k/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-10k/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-10k/plot)
 
 ## Overflow 130k [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-overflow-130k)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-130k/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-130k/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-130k/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-130k/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-130k/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-130k/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-overflow-130k/plot)
+
+## Parallel populate stress [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-parallel-populate-stress)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-parallel-populate-stress/)
+
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-parallel-populate-stress/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-parallel-populate-stress/plot)
 
 ## Populate btree [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-populate-btree)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-med-populate-btree/)
 
@@ -92,21 +91,17 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 ## Small btree [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-small-btree)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-btree/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-btree/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-btree/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-btree/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-btree/plot)
 
 ## Small LSM [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-small-lsm)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-lsm/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-lsm/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-lsm/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-lsm/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-small-lsm/plot)
 
 ## Update btree [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-update-btree)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-btree/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-btree/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-btree/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-btree/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-btree/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-btree/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-btree/plot)
 
 ## Update LSM [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-update-lsm)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-lsm/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-lsm/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-lsm/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-lsm/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-lsm/plot)
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-lsm/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-update-lsm/plot)
