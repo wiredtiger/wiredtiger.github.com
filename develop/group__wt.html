@@ -1219,7 +1219,7 @@ Log record and operation types</h2></td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>A raw item of data to be managed, including a pointer to the data and a length. </p>
 <p><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structures do not need to be cleared before use. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_async_8c-example.html#_a2">ex_async.c</a>, <a class="el" href="ex_extending_8c-example.html#_a2">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a3">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#_a12">ex_log.c</a>, and <a class="el" href="ex_schema_8c-example.html#_a15">ex_schema.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_async_8c-example.html#_a2">ex_async.c</a>, <a class="el" href="ex_extending_8c-example.html#_a2">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a3">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#_a13">ex_log.c</a>, and <a class="el" href="ex_schema_8c-example.html#_a15">ex_schema.c</a>.</dd>
 </dl></div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1250,7 +1250,7 @@ The number of bytes in the data item. <p>The maximum length of a single column s
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>A log sequence number, representing a position in the transaction log. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#_a11">ex_log.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#_a12">ex_log.c</a>.</dd>
 </dl></div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1999,7 +1999,8 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>,</div>
+<div class="line">                    cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">session</a>-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">session</a>, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
@@ -2009,7 +2010,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a5">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a5">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a4">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a4">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a16">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a6">ex_extending.c</a>, <a class="el" href="ex_hello_8c-example.html#a3">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a3">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a3">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a4">ex_schema.c</a>, and <a class="el" href="ex_thread_8c-example.html#a9">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a5">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a5">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a4">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a4">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a16">ex_cursor.c</a>, <a class="el" href="ex_extending_8c-example.html#a6">ex_extending.c</a>, <a class="el" href="ex_hello_8c-example.html#a3">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a3">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a3">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a4">ex_schema.c</a>, and <a class="el" href="ex_thread_8c-example.html#a11">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>

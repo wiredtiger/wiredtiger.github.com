@@ -171,7 +171,8 @@ Parsing configuration strings</h2>
 <div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;config_get(</div>
 <div class="line">            wt_api, session, config, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;v)) != 0) {</div>
 <div class="line">                (void)wt_api-&gt;err_printf(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;overwrite configuration: %s&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;overwrite configuration: %s&quot;</span>,</div>
+<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 <div class="line">        my_data_source_overwrite = v.<a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a> != 0;</div>
@@ -185,7 +186,8 @@ Parsing configuration strings</h2>
 <div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;config_get(</div>
 <div class="line">            wt_api, session, config, <span class="stringliteral">&quot;page_size&quot;</span>, &amp;v)) != 0) {</div>
 <div class="line">                (void)wt_api-&gt;err_printf(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;page_size configuration: %s&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;page_size configuration: %s&quot;</span>,</div>
+<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 <div class="line">        my_data_source_page_size = v.<a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a>;</div>
@@ -200,7 +202,8 @@ Parsing configuration strings</h2>
 <div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;config_get(</div>
 <div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v)) != 0) {</div>
 <div class="line">                (void)wt_api-&gt;err_printf(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;key_format configuration: %s&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;key_format configuration: %s&quot;</span>,</div>
+<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 <div class="line"></div>

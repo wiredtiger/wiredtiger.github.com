@@ -83,7 +83,8 @@ $(document).ready(function(){initNavTree('error_handling.html','');});
 <div class="line">        cursor-&gt;set_key(cursor, key);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;remove(cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>,</div>
+<div class="line">                    cursor-&gt;session-&gt;strerror(cursor-&gt;session, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><p> More complex error handling can be configured by passing an implementation of <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html" title="The interface implemented by applications to handle error, informational and progress messages...">WT_EVENT_HANDLER</a> to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8" title="Open a session. ">WT_CONNECTION::open_session</a>. </p>

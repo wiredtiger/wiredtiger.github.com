@@ -221,7 +221,7 @@ Cursor key/value memory scoping</h1>
 <div class="line">                <span class="comment">/* Apply the operation (insert, update, search or remove). */</span></div>
 <div class="line">                <span class="keywordflow">if</span> ((ret = op-&gt;apply(cursor)) != 0) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;Error performing the operation: %s\n&quot;</span>,</div>
-<div class="line">                            <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">                        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">                }</div>
 <div class="line"></div>
@@ -243,7 +243,7 @@ Cursor key/value memory scoping</h1>
 <div class="line">                    (op-&gt;apply != cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a> &amp;&amp;</div>
 <div class="line">                    (ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value)) != 0)) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;Error in get_key/value: %s\n&quot;</span>,</div>
-<div class="line">                            <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                             session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">                        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">                }</div>
 <div class="line"></div>

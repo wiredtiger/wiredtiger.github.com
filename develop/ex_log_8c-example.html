@@ -126,8 +126,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">{</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a2"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home2, NULL,</div>
-<div class="line">            CONN_CONFIG, wt_connp)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a2"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home2, NULL, CONN_CONFIG, wt_connp)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home1, <a name="a3"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
@@ -166,32 +165,33 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> (ret != <a name="a9"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.next: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">        ret = cursor-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.next: %s\n&quot;</span>, session-&gt;<a name="a10"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
+<div class="line">        ret = cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
 <div class="line">        ret = curs_copy-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(curs_copy);</div>
 <div class="line">        <span class="keywordflow">if</span> (ret != <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;copy: WT_CURSOR.next: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;copy: WT_CURSOR.next: %s\n&quot;</span>,</div>
+<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">        ret = curs_copy-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(curs_copy);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">print_record(<a name="_a11"></a><a class="code" href="group__wt.html#struct_w_t___l_s_n">WT_LSN</a> *lsn, uint32_t opcount,</div>
+<div class="line">print_record(<a name="_a12"></a><a class="code" href="group__wt.html#struct_w_t___l_s_n">WT_LSN</a> *lsn, uint32_t opcount,</div>
 <div class="line">   uint32_t rectype, uint32_t optype, uint64_t txnid, uint32_t fileid,</div>
-<div class="line">   <a name="_a12"></a><a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key, <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *value)</div>
+<div class="line">   <a name="_a13"></a><a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key, <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *value)</div>
 <div class="line">{</div>
 <div class="line">        printf(</div>
 <div class="line">            <span class="stringliteral">&quot;LSN [%&quot;</span> PRIu32 <span class="stringliteral">&quot;][%&quot;</span> PRIu64 <span class="stringliteral">&quot;].%&quot;</span> PRIu32</div>
 <div class="line">            <span class="stringliteral">&quot;: record type %&quot;</span> PRIu32 <span class="stringliteral">&quot; optype %&quot;</span> PRIu32</div>
 <div class="line">            <span class="stringliteral">&quot; txnid %&quot;</span> PRIu64 <span class="stringliteral">&quot; fileid %&quot;</span> PRIu32,</div>
-<div class="line">            lsn-&gt;<a name="a13"></a><a class="code" href="group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf">file</a>, (uint64_t)lsn-&gt;<a name="a14"></a><a class="code" href="group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c">offset</a>, opcount,</div>
+<div class="line">            lsn-&gt;<a name="a14"></a><a class="code" href="group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf">file</a>, (uint64_t)lsn-&gt;<a name="a15"></a><a class="code" href="group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c">offset</a>, opcount,</div>
 <div class="line">            rectype, optype, txnid, fileid);</div>
-<div class="line">        printf(<span class="stringliteral">&quot; key size %zu value size %zu\n&quot;</span>, key-&gt;<a name="a15"></a><a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, value-&gt;<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>);</div>
-<div class="line">        <span class="keywordflow">if</span> (rectype == <a name="a16"></a><a class="code" href="group__wt.html#ga8cf04a003979e7852209079d4093d783">WT_LOGREC_MESSAGE</a>)</div>
-<div class="line">                printf(<span class="stringliteral">&quot;Application Record: %s\n&quot;</span>, (<span class="keywordtype">char</span> *)value-&gt;<a name="a17"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>);</div>
+<div class="line">        printf(<span class="stringliteral">&quot; key size %zu value size %zu\n&quot;</span>, key-&gt;<a name="a16"></a><a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, value-&gt;<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>);</div>
+<div class="line">        <span class="keywordflow">if</span> (rectype == <a name="a17"></a><a class="code" href="group__wt.html#ga8cf04a003979e7852209079d4093d783">WT_LOGREC_MESSAGE</a>)</div>
+<div class="line">                printf(<span class="stringliteral">&quot;Application Record: %s\n&quot;</span>, (<span class="keywordtype">char</span> *)value-&gt;<a name="a18"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
@@ -261,7 +261,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"><span class="comment">                 * the previous one.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                <span class="keywordflow">if</span> (in_txn &amp;&amp; opcount == 0) {</div>
-<div class="line">                        ret = session2-&gt;<a name="a18"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session2, NULL);</div>
+<div class="line">                        ret = session2-&gt;<a name="a19"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session2, NULL);</div>
 <div class="line">                        in_txn = 0;</div>
 <div class="line">                }</div>
 <div class="line"></div>
@@ -270,16 +270,16 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"><span class="comment">                 * connection.  Note, we cheat by looking only for fileid 1</span></div>
 <div class="line"><span class="comment">                 * in this example.  The metadata is fileid 0.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
-<div class="line">                <span class="keywordflow">if</span> (fileid == 1 &amp;&amp; rectype == <a name="a19"></a><a class="code" href="group__wt.html#gafa49e810f6f760c2bcd2721ec2934991">WT_LOGREC_COMMIT</a> &amp;&amp;</div>
-<div class="line">                    optype == <a name="a20"></a><a class="code" href="group__wt.html#ga696e6723bc1e3d4c3e5b5dde84fed73e">WT_LOGOP_ROW_PUT</a>) {</div>
+<div class="line">                <span class="keywordflow">if</span> (fileid == 1 &amp;&amp; rectype == <a name="a20"></a><a class="code" href="group__wt.html#gafa49e810f6f760c2bcd2721ec2934991">WT_LOGREC_COMMIT</a> &amp;&amp;</div>
+<div class="line">                    optype == <a name="a21"></a><a class="code" href="group__wt.html#ga696e6723bc1e3d4c3e5b5dde84fed73e">WT_LOGOP_ROW_PUT</a>) {</div>
 <div class="line">                        <span class="keywordflow">if</span> (!in_txn) {</div>
-<div class="line">                                ret = session2-&gt;<a name="a21"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session2,</div>
+<div class="line">                                ret = session2-&gt;<a name="a22"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session2,</div>
 <div class="line">                                    NULL);</div>
 <div class="line">                                in_txn = 1;</div>
 <div class="line">                        }</div>
-<div class="line">                        cursor2-&gt;<a name="a22"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor2, &amp;logrec_key);</div>
-<div class="line">                        cursor2-&gt;<a name="a23"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor2, &amp;logrec_value);</div>
-<div class="line">                        ret = cursor2-&gt;<a name="a24"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor2);</div>
+<div class="line">                        cursor2-&gt;<a name="a23"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor2, &amp;logrec_key);</div>
+<div class="line">                        cursor2-&gt;<a name="a24"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor2, &amp;logrec_value);</div>
+<div class="line">                        ret = cursor2-&gt;<a name="a25"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor2);</div>
 <div class="line">                }</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> (in_txn)</div>
@@ -291,12 +291,12 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">if</span> (compare_tables(session, session2))</div>
 <div class="line">                printf(<span class="stringliteral">&quot;compare failed\n&quot;</span>);</div>
-<div class="line">        ret = session2-&gt;<a name="a25"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session2, NULL);</div>
-<div class="line">        ret = wt_conn2-&gt;<a name="a26"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(wt_conn2, NULL);</div>
+<div class="line">        ret = session2-&gt;<a name="a26"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session2, NULL);</div>
+<div class="line">        ret = wt_conn2-&gt;<a name="a27"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(wt_conn2, NULL);</div>
 <div class="line"></div>
-<div class="line">        ret = cursor-&gt;<a name="a27"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565">reset</a>(cursor);</div>
+<div class="line">        ret = cursor-&gt;<a name="a28"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565">reset</a>(cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, lsnsave.<a class="code" href="group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf">file</a>, lsnsave.<a class="code" href="group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c">offset</a>, 0);</div>
-<div class="line">        ret = cursor-&gt;<a name="a28"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
+<div class="line">        ret = cursor-&gt;<a name="a29"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Reset to saved...\n&quot;</span>);</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Walk all records starting with this key.</span></div>
@@ -342,15 +342,14 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;%s: failed ret %d\n&quot;</span>, cmd_buf, ret);</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home1, NULL,</div>
-<div class="line">            CONN_CONFIG, &amp;wt_conn)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home1, NULL, CONN_CONFIG, &amp;wt_conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home1, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 <div class="line"></div>
-<div class="line">        ret = wt_conn-&gt;<a name="a29"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(wt_conn, NULL, NULL, &amp;session);</div>
-<div class="line">        ret = session-&gt;<a name="a30"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, uri, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
+<div class="line">        ret = wt_conn-&gt;<a name="a30"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(wt_conn, NULL, NULL, &amp;session);</div>
+<div class="line">        ret = session-&gt;<a name="a31"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, uri, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, uri, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -377,15 +376,14 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a name="a31"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a>(session, <span class="stringliteral">&quot;Wrote %d records&quot;</span>, record_count);</div>
+<div class="line">        ret = session-&gt;<a name="a32"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a>(session, <span class="stringliteral">&quot;Wrote %d records&quot;</span>, record_count);</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Close and reopen the connection so that the log ends up with</span></div>
 <div class="line"><span class="comment">         * a variety of records such as file sync and checkpoint.  We</span></div>
 <div class="line"><span class="comment">         * have archiving turned off.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = wt_conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(wt_conn, NULL);</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home1, NULL,</div>
-<div class="line">            CONN_CONFIG, &amp;wt_conn)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home1, NULL, CONN_CONFIG, &amp;wt_conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home1, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>

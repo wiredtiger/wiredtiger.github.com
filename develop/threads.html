@@ -81,8 +81,8 @@ Code samples</h1>
 <div class="line">scan_thread(<span class="keywordtype">void</span> *conn_arg)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
-<div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
+<div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *value;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
@@ -100,7 +100,7 @@ Code samples</h1>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> (ret != <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.next: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.next: %s\n&quot;</span>, session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (NULL);</div>
 <div class="line">}</div>
