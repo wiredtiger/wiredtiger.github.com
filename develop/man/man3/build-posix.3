@@ -1,4 +1,4 @@
-.TH "build-posix" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.TH "build-posix" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -128,6 +128,11 @@ Build the WiredTiger Java API\&.
 Include a Google, Inc\&. compatible LevelDB API\&. Optionally, specify \fCbasho\fP to build a version of the LevelDB API compatible with Basho's Riak product, specify \fChyper\fP to build a version of the LevelDB API compatible with the HyperDex product, and specify \fCrocksdb\fP to build a version of the LevelDB API compatible with applications using Facebook's RocksDB engine\&. See \fBBuilding and installing the LevelDB compatibility API\fP for more information\&.
 .RE
 .PP
+\fB\fC--enable-lz4\fP \fP
+.RS 4
+Configure WiredTiger for \fCLZ4\fP compression; see \fBCompressors\fP for more information\&.
+.RE
+.PP
 \fB\fC--enable-python\fP \fP
 .RS 4
 Build the WiredTiger \fCPython\fP API\&.
@@ -150,7 +155,7 @@ Configure WiredTiger for \fCzlib\fP compression; see \fBCompressors\fP for more 
 .PP
 \fB--with-builtins\fP
 .RS 4
-Configure WiredTiger to include support for extensions in the main library\&. This avoids requiring additional libraries for supported extensions\&. Currently supported options are \fCsnappy\fP and \fCzlib\fP\&.
+Configure WiredTiger to include support for extensions in the main library\&. This avoids requiring additional libraries for supported extensions\&. Currently supported options are \fClz4\fP, \fCsnappy\fP and \fCzlib\fP\&.
 .RE
 .PP
 \fB--with-python-prefix\fP

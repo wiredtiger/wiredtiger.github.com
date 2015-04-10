@@ -1,4 +1,4 @@
-.TH "WT_EXTENSION_API" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.TH "WT_EXTENSION_API" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -271,7 +271,8 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
         if ((ret = wt_api->collator_config(wt_api, session,
             "dsrc:", config, &collator, &collator_owned)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "collator configuration: %s", wiredtiger_strerror(ret));
+                    "collator configuration: %s",
+                    session->strerror(session, ret));
                 return (ret);
         }
 .fi
@@ -312,7 +313,8 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
         if ((ret = wt_api->config_get(
             wt_api, session, config, "key_format", &v)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "key_format configuration: %s", wiredtiger_strerror(ret));
+                    "key_format configuration: %s",
+                    session->strerror(session, ret));
                 return (ret);
         }
 
@@ -406,7 +408,8 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 
         if ((ret = wt_api->metadata_insert(wt_api, session, key, value)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "%s: metadata insert: %s", key, wiredtiger_strerror(ret));
+                    "%s: metadata insert: %s", key,
+                    session->strerror(session, ret));
                 return (ret);
         }
 .fi
@@ -440,7 +443,8 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 
         if ((ret = wt_api->metadata_remove(wt_api, session, key)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "%s: metadata remove: %s", key, wiredtiger_strerror(ret));
+                    "%s: metadata remove: %s", key,
+                    session->strerror(session, ret));
                 return (ret);
         }
 .fi
@@ -478,7 +482,8 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
         if ((ret =
             wt_api->metadata_search(wt_api, session, key, &value)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "%s: metadata search: %s", key, wiredtiger_strerror(ret));
+                    "%s: metadata search: %s", key,
+                     session->strerror(session, ret));
                 return (ret);
         }
         printf("metadata: %s has a value of %s\n", key, value);
@@ -517,7 +522,8 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 
         if ((ret = wt_api->metadata_update(wt_api, session, key, value)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "%s: metadata update: %s", key, wiredtiger_strerror(ret));
+                    "%s: metadata update: %s", key,
+                    session->strerror(session, ret));
                 return (ret);
         }
 .fi
@@ -572,7 +578,8 @@ A valid memory reference on success or NULL on error
        void *buffer;
         if ((buffer = wt_api->scr_alloc(wt_api, session, 512)) == NULL) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "buffer allocation: %s", wiredtiger_strerror(ENOMEM));
+                    "buffer allocation: %s",
+                    session->strerror(session, ENOMEM));
                 return (ENOMEM);
         }
 .fi

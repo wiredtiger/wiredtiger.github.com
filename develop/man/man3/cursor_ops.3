@@ -1,4 +1,4 @@
-.TH "cursor_ops" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.TH "cursor_ops" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -226,7 +226,7 @@ The comments in this example code explain when the application can safely modify
                 /* Apply the operation (insert, update, search or remove)\&. */
                 if ((ret = op->apply(cursor)) != 0) {
                         fprintf(stderr, "Error performing the operation: %s\n",
-                            wiredtiger_strerror(ret));
+                            session->strerror(session, ret));
                         return (ret);
                 }
 
@@ -248,7 +248,7 @@ The comments in this example code explain when the application can safely modify
                     (op->apply != cursor->remove &&
                     (ret = cursor->get_value(cursor, &value)) != 0)) {
                         fprintf(stderr, "Error in get_key/value: %s\n",
-                            wiredtiger_strerror(ret));
+                             session->strerror(session, ret));
                         return (ret);
                 }
 

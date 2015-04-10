@@ -1,24 +1,44 @@
-.TH "upgrading" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.TH "upgrading" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 upgrading \- Upgrading WiredTiger applications 
 
-.SH "Upgrading to Version 2\&.5\&.2"
+.SH "Upgrading to Version 2\&.5\&.4"
+.PP
+.IP "\fBFile handle closing \fP" 1c
+In WiredTiger, a separate thread of control periodically reviews open objects, closing ones which have been idle for some period of time and discarding them from the cache\&. In previous WiredTiger releases, this review was independent of the number of open file handles\&. In this release, WiredTiger only reviews the file handles if at least 250 file handles are open\&. How often file handles are reviewed (the default is 30 seconds), and how many file handles must be opened before review is triggered, can be configured using the \fCfile_manager\fP configuration values to the \fBwiredtiger_open\fP call\&. 
+.PP
+.PP
+.PP
+ 
+.SH "Upgrading to Version 2\&.5\&.3"
 .PP
 .IP "\fBConfiguration string case-sensitivity \fP" 1c
 In previous WiredTiger releases, there were several cases where configuration strings were treated in a case-sensitive manner (for example, it was possible to specify 'True', 'true' or even 'tRuE' as a boolean value)\&. For consistency, in this release all WiredTiger configuration strings are case-sensitive, and only 'true' will be accepted\&. 
 .PP
 .IP "\fBStatistics cursor refresh \fP" 1c
-In previous releases of WiredTiger, a statistics cursor made a snapshot of the relevant statistics before the first statistics value was read, and those values remained unchanged from that point on, no matter how the cursor was used\&. In the WiredTiger 2\&.5\&.2 release, calling the \fBWT_CURSOR::reset\fP method to reset the cursor refreshes the statistics returned by the cursor\&.  
+In previous releases of WiredTiger, a statistics cursor made a snapshot of the relevant statistics before the first statistics value was read, and those values remained unchanged from that point on, no matter how the cursor was used\&. In the WiredTiger 2\&.5\&.2 release, calling the \fBWT_CURSOR::reset\fP method to reset the cursor refreshes the statistics returned by the cursor\&. 
 .PP
+.IP "\fBBuffer alignment on Linux \fP" 1c
+In previous releases of WiredTiger, all buffers used for I/O were aligned to 4KB boundaries by default\&. In the WiredTiger 2\&.5\&.2 release, alignment is only enforced when direct I/O is configured\&. 
+.PP
+.PP
+.PP
+ 
+.SH "Upgrading to Version 2\&.5\&.2"
+.PP
+There are no special upgrade steps required\&.
 .SH "Upgrading to Version 2\&.5\&.1"
 .PP
 .IP "\fBStatistics cursors on data sources \fP" 1c
 Opening a statistics cursor on a data source without a \fCcheckpoint\fP name no longer aggregates statistics for all open checkpoints on that data source\&. The returned statistics will only be for the in-memory version of the data source\&.
 .PP
-For applications that read and write from ordinary tables (without specifying a \fCcheckpoint\fP), there will be no change\&. Applications that opened cursors on checkpoints and relied on their statistics being aggregated into a single statistics cursor will need to open statistics cursors on each checkpoint\&.  
+For applications that read and write from ordinary tables (without specifying a \fCcheckpoint\fP), there will be no change\&. Applications that opened cursors on checkpoints and relied on their statistics being aggregated into a single statistics cursor will need to open statistics cursors on each checkpoint\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.5\&.0"
 .PP
 .IP "\fBWT_STAT_CONN_LOG_BYTES_USER renamed WT_STAT_CONN_LOG_BYTES_PAYLOAD \fP" 1c
@@ -28,15 +48,21 @@ The statistic for the number of bytes written to the log minus the overhead of l
 Collators, compressors and extractors can now be disabled with an explicit \fC'none'\fP value as an alternative to using an empty string\&. Any applications using the name \fC'none'\fP for a collator, compressor or extractor will need to be updated\&. 
 .PP
 .IP "\fBmaximum keys and value sizes \fP" 1c
-The \fBWT_SESSION::create\fP \fCinternal_item_max\fP and \fCleaf_item_max\fP configuration strings are now deprecated in favor of the \fCinternal_key_max\fP, \fCleaf_key_max\fP, and \fCleaf_value_max\fP configuration strings\&. See \fBPage and overflow key/value sizes\fP for more information\&.  
+The \fBWT_SESSION::create\fP \fCinternal_item_max\fP and \fCleaf_item_max\fP configuration strings are now deprecated in favor of the \fCinternal_key_max\fP, \fCleaf_key_max\fP, and \fCleaf_value_max\fP configuration strings\&. See \fBPage and overflow key/value sizes\fP for more information\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.4\&.1"
 .PP
 .IP "\fBWT_DEADLOCK renamed \fP" 1c
 The \fCWT_DEADLOCK\fP error return has been deprecated in favor of \fBWT_ROLLBACK\fP to clarify that \fBWT_SESSION::rollback_transaction\fP should be called; no program changes are required\&.  
 .IP "\fBStatistics keys changed \fP" 1c
-The names of WiredTiger statistics have been updated to be more consistently named, and simpler to categorize\&. Any application that was parsing the strings output by statistics will need to be updated\&.  
+The names of WiredTiger statistics have been updated to be more consistently named, and simpler to categorize\&. Any application that was parsing the strings output by statistics will need to be updated\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.4\&.0"
 .PP
 .IP "\fBDefault configuration file changes \fP" 1c
@@ -57,15 +83,21 @@ We have updated the configure logic used to search for Java Native Interface fil
 .IP "\fBDefault mutex implementation changed \fP" 1c
 The default mutex implementation has been changed from adaptive pthread mutexes to non-adaptive pthread mutexes\&. Installations can explicitly select adaptive pthread mutexes by specifying \fC--with-spinlock=pthread_adaptive\fP at configuration time\&.  
 .IP "\fBLSM merge threads option change \fP" 1c
-The \fBWT_SESSION::create\fP \fClsm=\fP(merge_threads) configuration option has been replaced by the W::wiredtiger_open \fClsm_manager=\fP(worker_thread_max) option\&. The new version specifies a set of LSM threads that are shared across all LSM trees in a database, the older configuration was per LSM table\&.  
+The \fBWT_SESSION::create\fP \fClsm=\fP(merge_threads) configuration option has been replaced by the W::wiredtiger_open \fClsm_manager=\fP(worker_thread_max) option\&. The new version specifies a set of LSM threads that are shared across all LSM trees in a database, the older configuration was per LSM table\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.3\&.1"
 .PP
 .IP "\fB\fBwiredtiger_open\fP eviction_workers configuration changed \fP" 1c
 The \fCeviction_workers\fP configuration setting has been replaced by \fCeviction=\fP(threads_min) and \fCeviction=\fP(threads_max) settings\&.
 .PP
-There is also a semantic change because \fCeviction_workers\fP used to configure additional threads whereas the new settings configure the total number of threads involved with eviction\&.  
+There is also a semantic change because \fCeviction_workers\fP used to configure additional threads whereas the new settings configure the total number of threads involved with eviction\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.3\&.0"
 .PP
 There are no special upgrade steps required\&.
@@ -106,26 +138,38 @@ user environment variable \fCWIREDTIGER_CONFIG\fP
 In some earlier versions of WiredTiger, creating an LSM table automatically configured \fCos_cache_dirty_max\fP, causing additional system calls that slowed some workloads\&. Applications that benefit from this setting should set it explicitly in \fBWT_SESSION::create\fP\&. 
 .PP
 .IP "\fB\fCtransaction_sync\fP setting change \fP" 1c
-In the 2\&.2\&.1 release of WiredTiger the \fBwiredtiger_open\fP \fCtransaction_sync\fP configuration setting has changed from a string value to a structure with two fields: \fCmethod\fP, which corresponds to the previous value (\fCdsync\fP, \fCfsync\fP or \fCnone\fP), and \fCenabled\fP, which determines whether there is a sync on every transaction commit by default\&. Applications can enable or disable sync for a specific transaction with the \fCsync\fP setting to \fBWT_SESSION::begin_transaction\fP\&.  
+In the 2\&.2\&.1 release of WiredTiger the \fBwiredtiger_open\fP \fCtransaction_sync\fP configuration setting has changed from a string value to a structure with two fields: \fCmethod\fP, which corresponds to the previous value (\fCdsync\fP, \fCfsync\fP or \fCnone\fP), and \fCenabled\fP, which determines whether there is a sync on every transaction commit by default\&. Applications can enable or disable sync for a specific transaction with the \fCsync\fP setting to \fBWT_SESSION::begin_transaction\fP\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.2\&.0"
 .PP
 .IP "\fB\fBWT_SESSION::create\fP prefix_compression disabled by default \fP" 1c
 In the 2\&.2\&.0 release, prefix compression default to \fCfalse\fP\&. Applications that benefit from prefix compression will need to explicitly set \fCprefix_compression=true\fP when creating tables\&. 
 .PP
 .IP "\fBwiredtiger_open verbose message changes \fP" 1c
-In the 2\&.2\&.0 release it is now necessary to include \fC--enable-verbose\fP in the configure command to be able to use verbose messages\&.  
+In the 2\&.2\&.0 release it is now necessary to include \fC--enable-verbose\fP in the configure command to be able to use verbose messages\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.1\&.2"
 .PP
 .IP "\fB\fBwiredtiger_open\fP shared_cache configuration changes \fP" 1c
-In the 2\&.1\&.2 release of WiredTiger the \fBwiredtiger_open\fP \fCshared_cache\fP configuration option group have changed\&. The option that was named \fCenable\fP is no longer available\&. To enable a \fCshared_cache\fP it is compulsory to name the pool being shared\&. We are now also enforcing that only one of \fCcache_size\fP and \fCshared_cache\fP are specified in the \fBwiredtiger_open\fP configuration string\&.  
+In the 2\&.1\&.2 release of WiredTiger the \fBwiredtiger_open\fP \fCshared_cache\fP configuration option group have changed\&. The option that was named \fCenable\fP is no longer available\&. To enable a \fCshared_cache\fP it is compulsory to name the pool being shared\&. We are now also enforcing that only one of \fCcache_size\fP and \fCshared_cache\fP are specified in the \fBwiredtiger_open\fP configuration string\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.1\&.1"
 .PP
 .IP "\fBWT_EXTENSION_API::config methods \fP" 1c
-In the 2\&.1\&.1 release of WiredTiger the configuration string parsing API has been changed and added to a new public handle\&. The WT_EXTENSION_API::config_strget, WT_EXTENSION_API::config_scan_begin, WT_EXTENSION_API::config_scan_next and WT_EXTENSION_API::config_scan_end have been removed\&. They have been replaced by a \fBWT_EXTENSION_API::config_parser_open\fP method, which can be used to parse configuration strings\&. See the \fBWT_CONFIG_PARSER\fP documentation for examples on how to use the updated API\&.  
+In the 2\&.1\&.1 release of WiredTiger the configuration string parsing API has been changed and added to a new public handle\&. The WT_EXTENSION_API::config_strget, WT_EXTENSION_API::config_scan_begin, WT_EXTENSION_API::config_scan_next and WT_EXTENSION_API::config_scan_end have been removed\&. They have been replaced by a \fBWT_EXTENSION_API::config_parser_open\fP method, which can be used to parse configuration strings\&. See the \fBWT_CONFIG_PARSER\fP documentation for examples on how to use the updated API\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.1"
 .PP
 .IP "\fB\fBWT_ITEM::size\fP type \fP" 1c
@@ -135,16 +179,22 @@ In the 2\&.1 release of WiredTiger \fBWT_ITEM::size\fP type has changed from \fC
 In the 2\&.1 release of WiredTiger, the behavior of the compress_raw callback has changed so that it will only be retried if it returns \fCEAGAIN\fP\&. If it returns zero and sets \fCresult_slots\fP to zero, WiredTiger will assume that raw compression has failed and will fall back to calling \fBWT_COMPRESSOR::compress\fP\&. 
 .PP
 .IP "\fBTransaction sync default setting \fP" 1c
-In the 2\&.1 release of WiredTiger the \fBwiredtiger_open\fP \fCtransaction_sync\fP configuration setting default value has changed from 'dsync' to 'fsync'\&. This is due to enhancements to the group commit implementation in WiredTiger - which mean that greater throughput can be achieved with explicit 'fsync' calls than by enabling 'dsync' on a file handle\&. Applications that don't execute concurrent transactions may see better throughput with transaction_sync set to 'dsync'\&.  
+In the 2\&.1 release of WiredTiger the \fBwiredtiger_open\fP \fCtransaction_sync\fP configuration setting default value has changed from 'dsync' to 'fsync'\&. This is due to enhancements to the group commit implementation in WiredTiger - which mean that greater throughput can be achieved with explicit 'fsync' calls than by enabling 'dsync' on a file handle\&. Applications that don't execute concurrent transactions may see better throughput with transaction_sync set to 'dsync'\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.0"
 .PP
 .IP "\fBFile format changes \fP" 1c
 The underlying file format is unchanged in 2\&.0 
 .PP
 .IP "\fB\fBWT_SESSION::create\fP LSM configuration options \fP" 1c
-In the 2\&.0 release of WiredTiger the LSM configuration options have been collected into a configuration option subgroup\&. All configuration options to \fBWT_SESSION::create\fP that previously had a prefix of \fClsm_\fP now belong to the \fClsm\fP configuration group\&. If you are explicitly configuring any of the following options, you should review the \fBWT_SESSION::create\fP documentation for details of the updated syntax: lsm_auto_throttle, lsm_bloom, lsm_bloom_config, lsm_bloom_bit_count, lsm_bloom_hash_count, lsm_bloom_oldest, lsm_chunk_max, lsm_chunk_size, lsm_merge_max and lsm_merge_threads\&.  
+In the 2\&.0 release of WiredTiger the LSM configuration options have been collected into a configuration option subgroup\&. All configuration options to \fBWT_SESSION::create\fP that previously had a prefix of \fClsm_\fP now belong to the \fClsm\fP configuration group\&. If you are explicitly configuring any of the following options, you should review the \fBWT_SESSION::create\fP documentation for details of the updated syntax: lsm_auto_throttle, lsm_bloom, lsm_bloom_config, lsm_bloom_bit_count, lsm_bloom_hash_count, lsm_bloom_oldest, lsm_chunk_max, lsm_chunk_size, lsm_merge_max and lsm_merge_threads\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.6\&.6"
 .PP
 .IP "\fBFile format changes \fP" 1c
@@ -169,8 +219,11 @@ Applications may require modifications to resolve run-time errors; application s
 .IP "\fB\fBWT_EVENT_HANDLER\fP interface changes \fP" 1c
 Add a new \fBWT_EVENT_HANDLER::handle_close\fP callback that WiredTiger will call any time it automatically closes an application session or cursor handle\&.
 .PP
-Additionally add a \fBWT_SESSION\fP parameter into the existing \fBWT_EVENT_HANDLER::handle_error\fP, \fBWT_EVENT_HANDLER::handle_message\fP and \fBWT_EVENT_HANDLER::handle_progress\fP callback functions\&.  
+Additionally add a \fBWT_SESSION\fP parameter into the existing \fBWT_EVENT_HANDLER::handle_error\fP, \fBWT_EVENT_HANDLER::handle_message\fP and \fBWT_EVENT_HANDLER::handle_progress\fP callback functions\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.6\&.5"
 .PP
 .IP "\fB\fBWT_CURSOR::insert\fP behavior \fP" 1c
@@ -180,16 +233,22 @@ In previous releases, the \fBWT_CURSOR::insert\fP ended positioned at the insert
 In previous releases, the default \fCstatistics_fast\fP configuration to the \fBWT_SESSION::open_cursor\fP method was \fCfalse\fP; in the 1\&.6\&.5 release, the default statistics_fast configuration is \fCtrue\fP\&. Applications opening statistics cursors should be reviewed to confirm they have the correct behavior\&. 
 .PP
 .IP "\fBSynchronous checkpoint configuration \fP" 1c
-The \fCsync\fP configuration key to \fBwiredtiger_open\fP has been renamed \fCcheckpoint_sync\fP\&.  
+The \fCsync\fP configuration key to \fBwiredtiger_open\fP has been renamed \fCcheckpoint_sync\fP\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.6\&.4"
 .PP
 .IP "\fBFile format changes \fP" 1c
 The underlying file formats changed in the 1\&.6\&.4 release; tables and files should be dumped and re-loaded into a new database\&. 
 .PP
 .IP "\fBwt utility load command \fP" 1c
-The default behavior of the \fCwt\fP utility's \fCload\fP command has been changed to overwrite existing data, by default, and the \fC-o\fP flag to the \fCload\fP command (overwrite existing data) has been replaced with the \fC-n\fP flag (do not overwrite existing data)\&. Applications requiring the previous default behavior of not overwriting existing data should add the \fC-n\fP option to their command line configuration; applications previously using the \fC-o\fP option on their command line configurations should remove it\&.  
+The default behavior of the \fCwt\fP utility's \fCload\fP command has been changed to overwrite existing data, by default, and the \fC-o\fP flag to the \fCload\fP command (overwrite existing data) has been replaced with the \fC-n\fP flag (do not overwrite existing data)\&. Applications requiring the previous default behavior of not overwriting existing data should add the \fC-n\fP option to their command line configuration; applications previously using the \fC-o\fP option on their command line configurations should remove it\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.6\&.3"
 .PP
 .IP "\fBCursor overwrite configuration \fP" 1c
@@ -200,8 +259,11 @@ In the 1\&.6\&.3 release, the \fCoverwrite\fP configuration is consistent across
 \fBThis is a potentially serious API change that will not be detected by compilation\&.\fP Application cursors should be reviewed to confirm they are configured for the desired behavior\&. 
 .PP
 .IP "\fB\fBwiredtiger_open\fP no longer accepts a \fCtransactional\fP configuration \fP" 1c
-The \fCtransactional\fP configuration key has been removed from \fBwiredtiger_open\fP\&. Any application setting it should simply remove it, no change in application behavior is needed\&.  
+The \fCtransactional\fP configuration key has been removed from \fBwiredtiger_open\fP\&. Any application setting it should simply remove it, no change in application behavior is needed\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.6\&.2"
 .PP
 .IP "\fBTable of WiredTiger extension methods \fP" 1c
@@ -211,8 +273,11 @@ New functionality was added to the list of WiredTiger extension methods; applica
 The \fC'source'\fP configuration key has been removed from \fBWT_SESSION::create\fP\&. Normal applications should not have been using it, and there were a number of bugs associated with it\&. 
 .PP
 .IP "\fBDefault checksum configuration \fP" 1c
-The default file checksum configuration was changed to \fCuncompressed\fP, which means blocks that are compressed will no longer also include a checksum, by default\&. Applications using compression insufficient for the purposes of corrupted block identification should change their file checksum configuration to \fCon\fP\&.  
+The default file checksum configuration was changed to \fCuncompressed\fP, which means blocks that are compressed will no longer also include a checksum, by default\&. Applications using compression insufficient for the purposes of corrupted block identification should change their file checksum configuration to \fCon\fP\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.6\&.1"
 .PP
 .IP "\fBDefault page sizes \fP" 1c
@@ -222,13 +287,19 @@ In the 1\&.6\&.1 release, the default for the \fBWT_SESSION::create\fP configura
 In the 1\&.6\&.1 release, an explicit shared_cache=(enable=boolean) option was added to the wiredtiger_open configuration options\&. Existing applications that use shared cache functionality will need to add the enable option to the configuration string\&. The default value for the option is false\&. 
 .PP
 .IP "\fB\fBWT_COMPRESSOR::compress_raw\fP signature \fP" 1c
-In the 1\&.6\&.1 release, the \fCsplit_pct\fP argument to the \fBWT_COMPRESSOR::compress_raw\fP function changed type from \fCu_int\fP to \fCint\fP, applications may require modification to avoid compiler warnings\&.  
+In the 1\&.6\&.1 release, the \fCsplit_pct\fP argument to the \fBWT_COMPRESSOR::compress_raw\fP function changed type from \fCu_int\fP to \fCint\fP, applications may require modification to avoid compiler warnings\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.6\&.0"
 .PP
 .IP "\fBFile format changes \fP" 1c
-The underlying file formats changed in the 1\&.6\&.0 release; tables and files should be dumped and re-loaded into a new database\&.  
+The underlying file formats changed in the 1\&.6\&.0 release; tables and files should be dumped and re-loaded into a new database\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.5\&.3"
 .PP
 .IP "\fBConfiguration strings \fP" 1c
@@ -274,11 +345,17 @@ The \fCowner\fP argument to the \fBWT_DATA_SOURCE::open_cursor\fP method has bee
 The \fCexclusive\fP argument to the \fBWT_DATA_SOURCE::create\fP method has been removed; applications may require modifications to resolve compile errors\&. 
 .PP
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.4\&.3"
 .PP
 .IP "\fBStatistics \fP" 1c
-WiredTiger statistics are no longer maintained by default; to configure statistics, use the \fCstatistics\fP configuration string to the \fBwiredtiger_open\fP function\&.  
+WiredTiger statistics are no longer maintained by default; to configure statistics, use the \fCstatistics\fP configuration string to the \fBwiredtiger_open\fP function\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.3\&.9"
 .PP
 .IP "\fBCompression \fP" 1c
@@ -288,13 +365,19 @@ A new member, \fBWT_COMPRESSOR::compress_raw\fP, was added to the \fBWT_COMPRESS
 The \fBWT_SESSION::create\fP method's \fCchecksum\fP configuration string has been changed from a boolean type to a string type\&. Applications using the checksum configuration string should change a value of \fCtrue\fP to the string \fCon\fP, and a value of \fCfalse\fP to the string \fCoff\fP or the string \fCuncompressed\fP\&. 
 .PP
 .IP "\fBFile format changes \fP" 1c
-The underlying file formats changed in the 1\&.3\&.9 release; tables and files should be dumped and re-loaded into a new database\&.  
+The underlying file formats changed in the 1\&.3\&.9 release; tables and files should be dumped and re-loaded into a new database\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.3\&.8"
 .PP
 .IP "\fBStatistics keys \fP" 1c
-The \fBstatistics key constants\fP have been renamed to use all capitals, and use consistent prefixes to distinguish between connection statistics and statistics for data sources\&.  
+The \fBstatistics key constants\fP have been renamed to use all capitals, and use consistent prefixes to distinguish between connection statistics and statistics for data sources\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.3\&.6"
 .PP
 .IP "\fBInstalled library names \fP" 1c
@@ -307,11 +390,17 @@ The built-in compression name arguments to the \fBWT_SESSION\fP:create \fCblock_
 .PP
 ExtensionPrevious NameNew Name Bzip2 compression'bzip2_compress''bzip2' Snappy compression'snappy_compress''snappy' 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.3\&.5"
 .PP
 .IP "\fBFile format changes \fP" 1c
-The underlying file formats changed in the 1\&.3\&.5 release; tables and files should be dumped and re-loaded into a new database\&.  
+The underlying file formats changed in the 1\&.3\&.5 release; tables and files should be dumped and re-loaded into a new database\&. 
 .PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 1\&.3"
 .PP
 .IP "\fBCheckpoint and Snapshot \fP" 1c
@@ -366,6 +455,7 @@ In releases before 1\&.3, the \fBWT_SESSION::truncate\fP method required cursors
 In releases before 1\&.3, the \fBWT_CURSOR::equals\fP method returned zero/non-zero to indicate cursor equality; in 1\&.3, the \fBWT_CURSOR::equals\fP method has been replaced with \fBWT_CURSOR::compare\fP, which compares two cursors and returns a cursor comparison status (less than 0, equal to 0, or greater than 0) depending on the cursors' key order\&. 
 .PP
 .IP "\fBFile format changes \fP" 1c
-The underlying file formats changed in the 1\&.3 release; tables and files should be dumped and re-loaded into a new database\&.  
+The underlying file formats changed in the 1\&.3 release; tables and files should be dumped and re-loaded into a new database\&. 
+.PP
 .PP
 

@@ -1,37 +1,68 @@
-.TH "compression" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.TH "compression" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 compression \- Compressors 
-This section explains how to configure WiredTiger's builtin support for the snappy and bzip2 compression engines\&.
-.SH "Using zlib compression"
+This section explains how to configure WiredTiger's builtin support for the bzip2, lz4, snappy and zlib compression engines\&.
+.SH "Using bzip2 compression"
 .PP
-To use the builtin support for Greg Roelofs' and Mark Adler's \fCzlib\fP compression, first check that zlib is installed in include and library directories searched by the compiler\&. Once zlib is installed, you can enable zlib using the \fC--enable-zlib\fP option to configure\&.
+To use the builtin support for \fCJulian Seward's bzip2\fP compression, first check that bzip2 is installed in include and library directories searched by the compiler\&. Once bzip2 is installed, you can enable bzip2 using the \fC--enable-bzip2\fP option to configure\&.
 .PP
-If zlib is installed in a location not normally searched by the compiler toolchain, you'll need to modify the \fCCPPFLAGS\fP and \fCLDFLAGS\fP to indicate these locations\&. For example, with the zlib includes and libraries installed in \fC/usr/local/include\fP and \fC/usr/local/lib\fP, you would run configure with the following additional arguments:
+If bzip2 is installed in a location not normally searched by the compiler toolchain, you'll need to modify the \fCCPPFLAGS\fP and \fCLDFLAGS\fP to indicate these locations\&. For example, with the bzip2 includes and libraries installed in \fC/usr/local/include\fP and \fC/usr/local/lib\fP, you would run configure with the following additional arguments:
 .PP
 .PP
 .nf
---enable-zlib CPPFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/include"
+--enable-bzip2 CPPFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/include"
 .fi
 .PP
 .PP
-When opening the WiredTiger database, load the zlib shared library as an extension\&. For example, with the WiredTiger library installed in \fC/usr/local/lib\fP, you would use the following extension:
+When opening the WiredTiger database, load the bzip2 shared library as an extension\&. For example, with the WiredTiger library installed in \fC/usr/local/lib\fP, you would use the following extension:
 .PP
 .PP
 .nf
         ret = wiredtiger_open(home, NULL,
             "create,"
-            "extensions=[/usr/local/lib/libwiredtiger_zlib\&.so]", &conn);
+            "extensions=[/usr/local/lib/libwiredtiger_bzip2\&.so]", &conn);
 .fi
 .PP
- Finally, when creating the WiredTiger object, set \fCblock_compressor\fP to \fCzlib:\fP 
+ Finally, when creating the WiredTiger object, set \fCblock_compressor\fP to \fCbzip2:\fP 
 .PP
 .PP
 .nf
         ret = session->create(session,
             "table:mytable",
-            "block_compressor=zlib,key_format=S,value_format=S");
+            "block_compressor=bzip2,key_format=S,value_format=S");
+.fi
+.PP
+ 
+.SH "Using LZ4 compression"
+.PP
+To use the builtin support for Yann Collet's \fCLZ4\fP compression, first check that LZ4 is installed in include and library directories searched by the compiler\&. Once LZ4 is installed, you can enable LZ4 using the \fC--enable-lz4\fP option to configure\&.
+.PP
+If LZ4 is installed in a location not normally searched by the compiler toolchain, you'll need to modify the \fCCPPFLAGS\fP and \fCLDFLAGS\fP to indicate these locations\&. For example, with the LZ4 includes and libraries installed in \fC/usr/local/include\fP and \fC/usr/local/lib\fP, you would run configure with the following additional arguments:
+.PP
+.PP
+.nf
+--enable-lz4 CPPFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/include"
+.fi
+.PP
+.PP
+When opening the WiredTiger database, load the LZ4 shared library as an extension\&. For example, with the WiredTiger library installed in \fC/usr/local/lib\fP, you would use the following extension:
+.PP
+.PP
+.nf
+        ret = wiredtiger_open(home, NULL,
+            "create,"
+            "extensions=[/usr/local/lib/libwiredtiger_lz4\&.so]", &conn);
+.fi
+.PP
+ Finally, when creating the WiredTiger object, set \fCblock_compressor\fP to \fClz4:\fP 
+.PP
+.PP
+.nf
+        ret = session->create(session,
+            "table:mytable",
+            "block_compressor=lz4,key_format=S,value_format=S");
 .fi
 .PP
  
@@ -66,34 +97,34 @@ When opening the WiredTiger database, load the snappy shared library as an exten
 .fi
 .PP
  
-.SH "Using bzip2 compression"
+.SH "Using zlib compression"
 .PP
-To use the builtin support for \fCJulian Seward's bzip2\fP compression, first check that bzip2 is installed in include and library directories searched by the compiler\&. Once bzip2 is installed, you can enable bzip2 using the \fC--enable-bzip2\fP option to configure\&.
+To use the builtin support for Greg Roelofs' and Mark Adler's \fCzlib\fP compression, first check that zlib is installed in include and library directories searched by the compiler\&. Once zlib is installed, you can enable zlib using the \fC--enable-zlib\fP option to configure\&.
 .PP
-If bzip2 is installed in a location not normally searched by the compiler toolchain, you'll need to modify the \fCCPPFLAGS\fP and \fCLDFLAGS\fP to indicate these locations\&. For example, with the bzip2 includes and libraries installed in \fC/usr/local/include\fP and \fC/usr/local/lib\fP, you would run configure with the following additional arguments:
+If zlib is installed in a location not normally searched by the compiler toolchain, you'll need to modify the \fCCPPFLAGS\fP and \fCLDFLAGS\fP to indicate these locations\&. For example, with the zlib includes and libraries installed in \fC/usr/local/include\fP and \fC/usr/local/lib\fP, you would run configure with the following additional arguments:
 .PP
 .PP
 .nf
---enable-bzip2 CPPFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/include"
+--enable-zlib CPPFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/include"
 .fi
 .PP
 .PP
-When opening the WiredTiger database, load the bzip2 shared library as an extension\&. For example, with the WiredTiger library installed in \fC/usr/local/lib\fP, you would use the following extension:
+When opening the WiredTiger database, load the zlib shared library as an extension\&. For example, with the WiredTiger library installed in \fC/usr/local/lib\fP, you would use the following extension:
 .PP
 .PP
 .nf
         ret = wiredtiger_open(home, NULL,
             "create,"
-            "extensions=[/usr/local/lib/libwiredtiger_bzip2\&.so]", &conn);
+            "extensions=[/usr/local/lib/libwiredtiger_zlib\&.so]", &conn);
 .fi
 .PP
- Finally, when creating the WiredTiger object, set \fCblock_compressor\fP to \fCbzip2:\fP 
+ Finally, when creating the WiredTiger object, set \fCblock_compressor\fP to \fCzlib:\fP 
 .PP
 .PP
 .nf
         ret = session->create(session,
             "table:mytable",
-            "block_compressor=bzip2,key_format=S,value_format=S");
+            "block_compressor=zlib,key_format=S,value_format=S");
 .fi
 .PP
  

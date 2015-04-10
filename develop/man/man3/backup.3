@@ -1,4 +1,4 @@
-.TH "backup" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.TH "backup" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -51,7 +51,7 @@ The following is a programmatic example of creating a backup:
                 ret = 0;
         if (ret != 0)
                 fprintf(stderr, "%s: cursor next(backup:) failed: %s\n",
-                    progname, wiredtiger_strerror(ret));
+                    progname, session->strerror(session, ret));
 
         ret = cursor->close(cursor);
 .fi

@@ -1,4 +1,4 @@
-.TH "custom_data_sources" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.TH "custom_data_sources" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -136,7 +136,8 @@ The \fBWT_DATA_SOURCE::open_cursor\fP method might retrieve the boolean or integ
         if ((ret = wt_api->config_get(
             wt_api, session, config, "overwrite", &v)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "overwrite configuration: %s", wiredtiger_strerror(ret));
+                    "overwrite configuration: %s",
+                    session->strerror(session, ret));
                 return (ret);
         }
         my_data_source_overwrite = v\&.val != 0;
@@ -154,7 +155,8 @@ The \fBWT_DATA_SOURCE::open_cursor\fP method might retrieve the boolean or integ
         if ((ret = wt_api->config_get(
             wt_api, session, config, "page_size", &v)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "page_size configuration: %s", wiredtiger_strerror(ret));
+                    "page_size configuration: %s",
+                    session->strerror(session, ret));
                 return (ret);
         }
         my_data_source_page_size = v\&.val;
@@ -174,7 +176,8 @@ The \fBWT_DATA_SOURCE::open_cursor\fP method might retrieve the boolean or integ
         if ((ret = wt_api->config_get(
             wt_api, session, config, "key_format", &v)) != 0) {
                 (void)wt_api->err_printf(wt_api, session,
-                    "key_format configuration: %s", wiredtiger_strerror(ret));
+                    "key_format configuration: %s",
+                    session->strerror(session, ret));
                 return (ret);
         }
 

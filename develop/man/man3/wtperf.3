@@ -1,4 +1,4 @@
-.TH "wtperf" 3 "Tue Mar 17 2015" "Version Version 2.5.2" "WiredTiger" \" -*- nroff -*-
+.TH "wtperf" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -165,7 +165,7 @@ post-populate compact for LSM merging activity
 .PP
 \fBcompression (string, default=none)\fP
 .RS 4
-compression extension\&. Allowed configuration values are: 'none', 'bzip', 'snappy', 'zlib' 
+compression extension\&. Allowed configuration values are: 'none', 'bzip', 'lz4', 'snappy', 'zlib' 
 .RE
 .PP
 \fBcreate (boolean, default=true)\fP
@@ -265,7 +265,12 @@ table configuration string
 .PP
 \fBtable_count (unsigned int, default=1)\fP
 .RS 4
-number of tables to run operations over\&. Keys are divided evenly over the tables\&. Default 1, maximum 99\&. 
+number of tables to run operations over\&. Keys are divided evenly over the tables\&. Cursors are held open on all tables\&. Default 1, maximum 99999\&. 
+.RE
+.PP
+\fBtable_count_idle (unsigned int, default=0)\fP
+.RS 4
+number of tables to create, that won't be populated\&. Default 0\&. 
 .RE
 .PP
 \fBthreads (string, default=)\fP
