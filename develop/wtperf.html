@@ -138,6 +138,7 @@ Wtperf configuration options</h1>
 <dl class="section user"><dt>compression (string, default=none)</dt><dd>compression extension. Allowed configuration values are: 'none', 'bzip', 'lz4', 'snappy', 'zlib' </dd></dl>
 <dl class="section user"><dt>create (boolean, default=true)</dt><dd>do population phase; false to use existing database </dd></dl>
 <dl class="section user"><dt>database_count (unsigned int, default=1)</dt><dd>number of WiredTiger databases to use. Each database will execute the workload using a separate home directory and complete set of worker threads </dd></dl>
+<dl class="section user"><dt>drop_tables (unsigned int, default=0)</dt><dd>Whether to drop all tables at the end of the run, and report time taken to do the drop. </dd></dl>
 <dl class="section user"><dt>icount (unsigned int, default=5000)</dt><dd>number of records to initially populate. If multiple tables are configured the count is spread evenly across all tables. </dd></dl>
 <dl class="section user"><dt>insert_rmw (boolean, default=false)</dt><dd>execute a read prior to each insert in workload phase </dd></dl>
 <dl class="section user"><dt>key_sz (unsigned int, default=20)</dt><dd>key size </dd></dl>
