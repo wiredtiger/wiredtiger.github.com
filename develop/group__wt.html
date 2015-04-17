@@ -1612,7 +1612,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>&#160;&#160;&#160;&#160;ops_max</code></td><td>maximum number of expected simultaneous asynchronous operations.</td><td>an integer between 1 and 4096; default <code>1024</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads</code></td><td>the number of worker threads to service asynchronous requests.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads</code></td><td>the number of worker threads to service asynchronous requests. Each worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -1622,7 +1622,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
 <tr>
-<td><code>checkpoint = (</code></td><td>periodically checkpoint the database.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>checkpoint = (</code></td><td>periodically checkpoint the database. Enabling the checkpoint server uses a session from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;log_size</code></td><td>wait for this amount of log record bytes to be written to the log between each checkpoint. A database can configure both log_size and wait to set an upper bound for checkpoints; setting this value above 0 configures periodic checkpoints.</td><td>an integer between 0 and 2GB; default <code>0</code>. </td></tr>
 <tr>
@@ -1644,7 +1644,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>eviction = (</code></td><td>eviction configuration options.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
@@ -1674,7 +1674,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>hazard_max</code></td><td>maximum number of simultaneous hazard pointers per session handle.</td><td>an integer greater than or equal to 15; default <code>1000</code>. </td></tr>
 <tr>
-<td><code>log = (</code></td><td>enable logging.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>log = (</code></td><td>enable logging. Enabling logging uses three sessions from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;archive</code></td><td>automatically archive unneeded log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
@@ -1692,11 +1692,11 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>lsm_manager = (</code></td><td>configure database wide options for LSM tree management.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>lsm_manager = (</code></td><td>configure database wide options for LSM tree management. The LSM manager is started automatically the first time an LSM tree is opened. The LSM manager uses a session from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;merge</code></td><td>merge LSM chunks where possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database.</td><td>an integer between 3 and 20; default <code>4</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between 3 and 20; default <code>4</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -1706,7 +1706,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>session_max</code></td><td>maximum expected number of sessions (including server threads).</td><td>an integer greater than or equal to 1; default <code>100</code>. </td></tr>
 <tr>
-<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both. Enabling a shared cache uses a session from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;chunk</code></td><td>the granularity that a shared cache is redistributed.</td><td>an integer between 1MB and 10TB; default <code>10MB</code>. </td></tr>
 <tr>
@@ -1720,7 +1720,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>statistics</code></td><td>Maintain database statistics, which may impact performance. Choosing "all" maintains all statistics regardless of cost, "fast" maintains a subset of statistics that are relatively inexpensive, "none" turns off all statistics. The "clear" configuration resets statistics after they are gathered, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared). When "clear" is configured for the database, gathered statistics are reset each time a statistics cursor is used to gather statistics, as well as each time statistics are logged using the <code>statistics_log</code> configuration. See <a class="el" href="statistics.html">Statistics</a> for more information.</td><td>a list, with values chosen from the following options: <code>"all"</code>, <code>"fast"</code>, <code>"none"</code>, <code>"clear"</code>; default <code>none</code>. </td></tr>
 <tr>
-<td><code>statistics_log = (</code></td><td>log any statistics the database is configured to maintain, to a file. See <a class="el" href="statistics.html">Statistics</a> for more information.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>statistics_log = (</code></td><td>log any statistics the database is configured to maintain, to a file. See <a class="el" href="statistics.html">Statistics</a> for more information. Enabling the statistics log server uses a session from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;on_close</code></td><td>log statistics on database close.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
