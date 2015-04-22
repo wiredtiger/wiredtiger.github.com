@@ -1,4 +1,4 @@
-.TH "WT_SESSION" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_SESSION" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -314,4 +314,555 @@ If \fBWT_SESSION::commit_transaction\fP returns an error, the transaction was ro
          */
         ret =
             session->open_cursor(session, "table:mytable", NULL, NULL, &cursor);
-        ret = session->begin_transaction(session
+        ret = session->begin_transaction(session, NULL);
+
+        cursor->set_key(cursor, "key");
+        cursor->set_value(cursor, "value");
+        switch (ret = cursor->update(cursor)) {
+        case 0:                                 /* Update success */
+                ret = session->commit_transaction(session, NULL);
+                /*
+                 * If commit_transaction succeeds, cursors remain positioned; if
+                 * commit_transaction fails, the transaction was rolled-back and
+                 * and all cursors are reset\&.
+                 */
+                break;
+        case WT_ROLLBACK:                       /* Update conflict */
+        default:                                /* Other error */
+                ret = session->rollback_transaction(session, NULL);
+                /* The rollback_transaction call resets all cursors\&. */
+                break;
+        }
+
+        /*
+         * Cursors remain open and may be used for multiple transactions\&.
+         */
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. No values currently permitted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_config\&.c\fP, and \fBex_log\&.c\fP\&.
+.SS "int WT_SESSION::compact (\fBWT_SESSION\fP *session, const char *name, const char *config)"
+
+.PP
+Compact a live row- or column-store btree or LSM tree\&. 
+.PP
+.nf
+    ret = session->compact(session, "table:mytable", NULL);
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIname\fP the URI of the object to compact, such as \fC'table:stock'\fP 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCtimeout\fPmaximum amount of time to allow for compact in seconds\&. The actual amount of time spent in compact may exceed the configured value\&. A value of zero disables the timeout\&.an integer; default \fC1200\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_SESSION::create (\fBWT_SESSION\fP *session, const char *name, const char *config)"
+
+.PP
+Create a table, column group, index or file\&. 
+.PP
+.nf
+      ret = session->create(session,
+            "table:mytable", "key_format=S,value_format=S");
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIname\fP the URI of the object to create, such as \fC'table:stock'\fP\&. For a description of URI formats see \fBData Sources\fP\&. 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCallocation_size\fPthe file unit allocation size, in bytes, must a power-of-two; smaller values decrease the file space required by overflow items, and the default value of 4KB is a good choice absent requirements from the operating system or storage device\&.an integer between 512B and 128MB; default \fC4KB\fP\&. \fCapp_metadata\fPapplication-owned metadata for this object\&.a string; default empty\&. \fCblock_allocation\fPconfigure block allocation\&. Permitted values are \fC'first'\fP or \fC'best'\fP; the \fC'first'\fP configuration uses a first-available algorithm during block allocation, the \fC'best'\fP configuration uses a best-fit algorithm\&.a string, chosen from the following options: \fC'first'\fP, \fC'best'\fP; default \fCbest\fP\&. \fCblock_compressor\fPconfigure a compressor for file blocks\&. Permitted values are \fC'none'\fP or custom compression engine name created with \fBWT_CONNECTION::add_compressor\fP\&. If WiredTiger has builtin support for \fC'bzip2'\fP, \fC'snappy'\fP, \fC'lz4'\fP or \fC'zlib'\fP compression, these names are also available\&. See \fBCompressors\fP for more information\&.a string; default \fCnone\fP\&. \fCcache_resident\fPdo not ever evict the object's pages; see \fBCache resident objects\fP for more information\&.a boolean flag; default \fCfalse\fP\&. \fCchecksum\fPconfigure block checksums; permitted values are \fCon\fP (checksum all blocks), \fCoff\fP (checksum no blocks) and \fCuncompresssed\fP (checksum only blocks which are not compressed for any reason)\&. The \fCuncompressed\fP setting is for applications which can rely on decompression to fail if a block has been corrupted\&.a string, chosen from the following options: \fC'on'\fP, \fC'off'\fP, \fC'uncompressed'\fP; default \fCuncompressed\fP\&. \fCcolgroups\fPcomma-separated list of names of column groups\&. Each column group is stored separately, keyed by the primary key of the table\&. If no column groups are specified, all columns are stored together in a single file\&. All value columns in the table must appear in at least one column group\&. Each column group must be created with a separate call to \fBWT_SESSION::create\fP\&.a list of strings; default empty\&. \fCcollator\fPconfigure custom collation for keys\&. Permitted values are \fC'none'\fP or a custom collator name created with \fBWT_CONNECTION::add_collator\fP\&.a string; default \fCnone\fP\&. \fCcolumns\fPlist of the column names\&. Comma-separated list of the form \fC(column[,\&.\&.\&.])\fP\&. For tables, the number of entries must match the total number of values in \fCkey_format\fP and \fCvalue_format\fP\&. For colgroups and indices, all column names must appear in the list of columns for the table\&.a list of strings; default empty\&. \fCdictionary\fPthe maximum number of unique values remembered in the Btree row-store leaf page value dictionary; see \fBFile formats and compression\fP for more information\&.an integer greater than or equal to 0; default \fC0\fP\&. \fCexclusive\fPfail if the object exists\&. When false (the default), if the object exists, check that its settings match the specified configuration\&.a boolean flag; default \fCfalse\fP\&. \fCextractor\fPconfigure custom extractor for indices\&. Permitted values are \fC'none'\fP or an extractor name created with \fBWT_CONNECTION::add_extractor\fP\&.a string; default \fCnone\fP\&. \fCformat\fPthe file format\&.a string, chosen from the following options: \fC'btree'\fP; default \fCbtree\fP\&. \fChuffman_key\fPconfigure Huffman encoding for keys\&. Permitted values are \fC'none'\fP, \fC'english'\fP, \fC'utf8<file>'\fP or \fC'utf16<file>'\fP\&. See \fBHuffman Encoding\fP for more information\&.a string; default \fCnone\fP\&. \fChuffman_value\fPconfigure Huffman encoding for values\&. Permitted values are \fC'none'\fP, \fC'english'\fP, \fC'utf8<file>'\fP or \fC'utf16<file>'\fP\&. See \fBHuffman Encoding\fP for more information\&.a string; default \fCnone\fP\&. \fCimmutable\fPconfigure the index to be immutable - that is an index is not changed by any update to a record in the table\&.a boolean flag; default \fCfalse\fP\&. \fCinternal_key_max\fPthe largest key stored in an internal node, in bytes\&. If set, keys larger than the specified size are stored as overflow items (which may require additional I/O to access)\&. The default and the maximum allowed value are both one-tenth the size of a newly split internal page\&.an integer greater than or equal to 0; default \fC0\fP\&. \fCinternal_key_truncate\fPconfigure internal key truncation, discarding unnecessary trailing bytes on internal keys (ignored for custom collators)\&.a boolean flag; default \fCtrue\fP\&. \fCinternal_page_max\fPthe maximum page size for internal nodes, in bytes; the size must be a multiple of the allocation size and is significant for applications wanting to avoid excessive L2 cache misses while searching the tree\&. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done\&.an integer between 512B and 512MB; default \fC4KB\fP\&. \fCkey_format\fPthe format of the data packed into key items\&. See \fBFormat types\fP for details\&. By default, the key_format is \fC'u'\fP and applications use \fBWT_ITEM\fP structures to manipulate raw byte arrays\&. By default, records are stored in row-store files: keys of type \fC'r'\fP are record numbers and records referenced by record number are stored in column-store files\&.a format string; default \fCu\fP\&. \fCleaf_key_max\fPthe largest key stored in a leaf node, in bytes\&. If set, keys larger than the specified size are stored as overflow items (which may require additional I/O to access)\&. The default value is one-tenth the size of a newly split leaf page\&.an integer greater than or equal to 0; default \fC0\fP\&. \fCleaf_page_max\fPthe maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device\&. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done\&.an integer between 512B and 512MB; default \fC32KB\fP\&. \fCleaf_value_max\fPthe largest value stored in a leaf node, in bytes\&. If set, values larger than the specified size are stored as overflow items (which may require additional I/O to access)\&. If the size is larger than the maximum leaf page size, the page size is temporarily ignored when large values are written\&. The default is one-half the size of a newly split leaf page\&.an integer greater than or equal to 0; default \fC0\fP\&. \fClsm = (\fPoptions only relevant for LSM data sources\&.a set of related configuration options defined below\&. \fC    auto_throttle\fPThrottle inserts into LSM trees if flushing to disk isn't keeping up\&.a boolean flag; default \fCtrue\fP\&. \fC    bloom\fPcreate bloom filters on LSM tree chunks as they are merged\&.a boolean flag; default \fCtrue\fP\&. \fC    bloom_bit_count\fPthe number of bits used per item for LSM bloom filters\&.an integer between 2 and 1000; default \fC16\fP\&. \fC    bloom_config\fPconfig string used when creating Bloom filter files, passed to \fBWT_SESSION::create\fP\&.a string; default empty\&. \fC    bloom_hash_count\fPthe number of hash values per item used for LSM bloom filters\&.an integer between 2 and 100; default \fC8\fP\&. \fC    bloom_oldest\fPcreate a bloom filter on the oldest LSM tree chunk\&. Only supported if bloom filters are enabled\&.a boolean flag; default \fCfalse\fP\&. \fC    chunk_count_limit\fPthe maximum number of chunks to allow in an LSM tree\&. This option automatically times out old data\&. As new chunks are added old chunks will be removed\&. Enabling this option disables LSM background merges\&.an integer; default \fC0\fP\&. \fC    chunk_max\fPthe maximum size a single chunk can be\&. Chunks larger than this size are not considered for further merges\&. This is a soft limit, and chunks larger than this value can be created\&. Must be larger than chunk_size\&.an integer between 100MB and 10TB; default \fC5GB\fP\&. \fC    chunk_size\fPthe maximum size of the in-memory chunk of an LSM tree\&. This limit is soft - it is possible for chunks to be temporarily larger than this value\&. This overrides the \fCmemory_page_max\fP setting\&.an integer between 512K and 500MB; default \fC10MB\fP\&. \fC    merge_max\fPthe maximum number of chunks to include in a merge operation\&.an integer between 2 and 100; default \fC15\fP\&. \fC    merge_min\fPthe minimum number of chunks to include in a merge operation\&. If set to 0 or 1 half the value of merge_max is used\&.an integer no more than 100; default \fC0\fP\&. \fC )\fP\fCmemory_page_max\fPthe maximum size a page can grow to in memory before being reconciled to disk\&. The specified size will be adjusted to a lower bound of \fC50 * leaf_page_max\fP, and an upper bound of \fCcache_size / 2\fP\&. This limit is soft - it is possible for pages to be temporarily larger than this value\&. This setting is ignored for LSM trees, see \fCchunk_size\fP\&.an integer between 512B and 10TB; default \fC5MB\fP\&. \fCos_cache_dirty_max\fPmaximum dirty system buffer cache usage, in bytes\&. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache\&.an integer greater than or equal to 0; default \fC0\fP\&. \fCos_cache_max\fPmaximum system buffer cache usage, in bytes\&. If non-zero, evict object blocks from the system buffer cache after that many bytes from this object are read or written into the buffer cache\&.an integer greater than or equal to 0; default \fC0\fP\&. \fCprefix_compression\fPconfigure prefix compression on row-store leaf pages\&.a boolean flag; default \fCfalse\fP\&. \fCprefix_compression_min\fPminimum gain before prefix compression will be used on row-store leaf pages\&.an integer greater than or equal to 0; default \fC4\fP\&. \fCsplit_pct\fPthe Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size\&.an integer between 25 and 100; default \fC75\fP\&. \fCtype\fPset the type of data source used to store a column group, index or simple table\&. By default, a \fC'file:'\fP URI is derived from the object name\&. The \fCtype\fP configuration can be used to switch to a different data source, such as LSM or an extension configured by the application\&.a string; default \fCfile\fP\&. \fCvalue_format\fPthe format of the data packed into value items\&. See \fBFormat types\fP for details\&. By default, the value_format is \fC'u'\fP and applications use a \fBWT_ITEM\fP structure to manipulate raw byte arrays\&. Value items of type 't' are bitfields, and when configured with record number type keys, will be stored using a fixed-length store\&.a format string; default \fCu\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_SESSION::drop (\fBWT_SESSION\fP *session, const char *name, const char *config)"
+
+.PP
+Drop (delete) an object\&. 
+.PP
+.nf
+  ret = session->drop(session, "table:mytable", NULL);
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIname\fP the URI of the object to drop, such as \fC'table:stock'\fP 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCforce\fPreturn success if the object does not exist\&.a boolean flag; default \fCfalse\fP\&. \fCremove_files\fPshould the underlying files be removed?\&.a boolean flag; default \fCtrue\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_SESSION::log_printf (\fBWT_SESSION\fP *session, const char *fmt, \&.\&.\&.)"
+
+.PP
+Insert a \fBWT_LOGREC_MESSAGE\fP type record in the database log files (the database must be configured for logging when this method is called)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIfmt\fP a printf format specifier 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_log\&.c\fP\&.
+.SS "int WT_SESSION::open_cursor (\fBWT_SESSION\fP *session, const char *uri, \fBWT_CURSOR\fP *to_dup, const char *config, \fBWT_CURSOR\fP **cursorp)"
+
+.PP
+Open a new cursor on a data source or duplicate an existing cursor\&. 
+.PP
+.nf
+   ret = session->open_cursor(
+            session, "table:mytable", NULL, NULL, &cursor);
+
+.fi
+.PP
+ An existing cursor can be duplicated by passing it as the \fCto_dup\fP parameter and setting the \fCuri\fP parameter to \fCNULL:\fP 
+.PP
+.PP
+.nf
+        ret = session->open_cursor(
+            session, "table:mytable", NULL, NULL, &cursor);
+        cursor->set_key(cursor, key);
+        ret = cursor->search(cursor);
+
+        /* Duplicate the cursor\&. */
+        ret = session->open_cursor(session, NULL, cursor, NULL, &duplicate);
+.fi
+.PP
+ Cursors being duplicated must have a key set, and successfully duplicated cursors are positioned at the same place in the data source as the original\&.
+.PP
+Cursor handles should be discarded by calling \fBWT_CURSOR::close\fP\&.
+.PP
+Cursors capable of supporting transactional operations operate in the context of the current transaction, if any\&.
+.PP
+\fBWT_SESSION::rollback_transaction\fP implicitly resets all cursors\&.
+.PP
+Cursors are relatively light-weight objects but may hold references to heavier-weight objects; applications should re-use cursors when possible, but instantiating new cursors is not so expensive that applications need to cache cursors at all cost\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIuri\fP the data source on which the cursor operates; cursors are usually opened on tables, however, cursors can be opened on any data source, regardless of whether it is ultimately stored in a table\&. Some cursor types may have limited functionality (for example, they may be read-only or not support transactional updates)\&. See \fBData Sources\fP for more information\&. 
+.br
+.RE
+.PP
+The following are the builtin basic cursor types: URITypeNotes \fCtable:<table name>[<projection>]\fPtable cursortable key, table value(s) with optional projection of columns \fCcolgroup:<table name>:<column group name>\fPcolumn group cursortable key, column group value(s) \fCindex:<table name>:<index name>[<projection>]\fPindex cursorkey=index key, value=table value(s) with optional projection of columns Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: URITypeNotes \fCbackup:\fPbackup cursorkey=\fCstring\fP, see \fBBackups\fP for details \fClog:\fPlog cursorkey=\fC(long fileID, long offset, int seqno)\fP,
+.br
+ value=\fC(uint64_t txnid, uint32_t rectype,
+.br
+ uint32_t optype, uint32_t fileid,
+.br
+ \fBWT_ITEM\fP key, \fBWT_ITEM\fP value)\fP,
+.br
+ see \fBLog cursors\fP for details \fCmetadata:\fPmetadata cursorkey=\fCstring\fP, value=\fCstring\fP,
+.br
+ see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabase or data source statistics cursorkey=\fCint id\fP,
+.br
+ value=\fC(string description, string value, uint64_t value)\fP,
+.br
+ see \fBStatistics Data\fP for details Advanced applications may also open the following low-level cursor types: URITypeNotes \fCfile:<file name>\fPfile cursorfile key, file value(s) \fClsm:<name>\fPLSM cursor (key=LSM key, value=LSM value)LSM key, LSM value,
+.br
+ see \fBLog-Structured Merge Trees\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIto_dup\fP a cursor to duplicate 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCappend\fPappend the value as a new record, creating a new record number key; valid only for cursors with record number keys\&.a boolean flag; default \fCfalse\fP\&. \fCbulk\fPconfigure the cursor for bulk-loading, a fast, initial load path (see \fBBulk-load\fP for more information)\&. Bulk-load may only be used for newly created objects and cursors configured for bulk-load only support the \fBWT_CURSOR::insert\fP and \fBWT_CURSOR::close\fP methods\&. When bulk-loading row-store objects, keys must be loaded in sorted order\&. The value is usually a true/false flag; when bulk-loading fixed-length column store objects, the special value \fCbitmap\fP allows chunks of a memory resident bitmap to be loaded directly into a file by passing a \fC\fBWT_ITEM\fP\fP to \fBWT_CURSOR::set_value\fP where the \fCsize\fP field indicates the number of records in the bitmap (as specified by the object's \fCvalue_format\fP configuration)\&. Bulk-loaded bitmap values must end on a byte boundary relative to the bit count (except for the last set of values loaded)\&.a string; default \fCfalse\fP\&. \fCcheckpoint\fPthe name of a checkpoint to open (the reserved name 'WiredTigerCheckpoint' opens the most recent internal checkpoint taken for the object)\&. The cursor does not support data modification\&.a string; default empty\&. \fCdump\fPconfigure the cursor for dump format inputs and outputs: 'hex' selects a simple hexadecimal format, 'json' selects a JSON format with each record formatted as fields named by column names if available, and 'print' selects a format where only non-printing characters are hexadecimal encoded\&. These formats are compatible with the \fBwt dump\fP and \fBwt load\fP commands\&.a string, chosen from the following options: \fC'hex'\fP, \fC'json'\fP, \fC'print'\fP; default empty\&. \fCnext_random\fPconfigure the cursor to return a pseudo-random record from the object; valid only for row-store cursors\&. Cursors configured with \fCnext_random=true\fP only support the \fBWT_CURSOR::next\fP and \fBWT_CURSOR::close\fP methods\&. See \fBCursor random\fP for details\&.a boolean flag; default \fCfalse\fP\&. \fCoverwrite\fPconfigures whether the cursor's insert, update and remove methods check the existing state of the record\&. If \fCoverwrite\fP is \fCfalse\fP, \fBWT_CURSOR::insert\fP fails with \fBWT_DUPLICATE_KEY\fP if the record exists, \fBWT_CURSOR::update\fP and \fBWT_CURSOR::remove\fP fail with \fBWT_NOTFOUND\fP if the record does not exist\&.a boolean flag; default \fCtrue\fP\&. \fCraw\fPignore the encodings for the key and value, manage data as if the formats were \fC'u'\fP\&. See \fBRaw mode\fP for details\&.a boolean flag; default \fCfalse\fP\&. \fCreadonly\fPonly query operations are supported by this cursor\&. An error is returned if a modification is attempted using the cursor\&. The default is false for all cursor types except for log and metadata cursors\&.a boolean flag; default \fCfalse\fP\&. \fCstatistics\fPSpecify the statistics to be gathered\&. Choosing 'all' gathers statistics regardless of cost and may include traversing on-disk files; 'fast' gathers a subset of relatively inexpensive statistics\&. The selection must agree with the database \fCstatistics\fP configuration specified to \fBwiredtiger_open\fP or \fBWT_CONNECTION::reconfigure\fP\&. For example, 'all' or 'fast' can be configured when the database is configured with 'all', but the cursor open will fail if 'all' is specified when the database is configured with 'fast', and the cursor open will fail in all cases when the database is configured with 'none'\&. If \fCstatistics\fP is not configured, the default configuration is the database configuration\&. The 'clear' configuration resets statistics after gathering them, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared)\&. See \fBStatistics\fP for more information\&.a list, with values chosen from the following options: \fC'all'\fP, \fC'fast'\fP, \fC'clear'\fP; default empty\&. \fCtarget\fPif non-empty, backup the list of objects; valid only for a backup data source\&.a list of strings; default empty\&. 
+.br
+\fIcursorp\fP a pointer to the newly opened cursor 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_SESSION::reconfigure (\fBWT_SESSION\fP *session, const char *config)"
+
+.PP
+Reconfigure a session handle\&. 
+.PP
+.nf
+      ret = session->reconfigure(session, "isolation=snapshot");
+
+.fi
+.PP
+ \fBWT_SESSION::reconfigure\fP will fail if a transaction is in progress in the session\&.
+.PP
+All cursors are reset\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCisolation\fPthe default isolation level for operations in this session\&.a string, chosen from the following options: \fC'read-uncommitted'\fP, \fC'read-committed'\fP, \fC'snapshot'\fP; default \fCread-committed\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_SESSION::rename (\fBWT_SESSION\fP *session, const char *uri, const char *newuri, const char *config)"
+
+.PP
+Rename an object\&. 
+.PP
+.nf
+   ret = session->rename(session, "table:old", "table:new", NULL);
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIuri\fP the current URI of the object, such as \fC'table:old'\fP 
+.br
+\fInewuri\fP the new URI of the object, such as \fC'table:new'\fP 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. No values currently permitted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_SESSION::rollback_transaction (\fBWT_SESSION\fP *session, const char *config)"
+
+.PP
+Roll back the current transaction\&. A transaction must be in progress when this method is called\&.
+.PP
+All cursors are reset\&.
+.PP
+.PP
+.nf
+  /*
+         * Cursors may be opened before or after the transaction begins, and in
+         * either case, subsequent operations are included in the transaction\&.
+         * Opening cursors before the transaction begins allows applications to
+         * cache cursors and use them for multiple operations\&.
+         */
+        ret =
+            session->open_cursor(session, "table:mytable", NULL, NULL, &cursor);
+        ret = session->begin_transaction(session, NULL);
+
+        cursor->set_key(cursor, "key");
+        cursor->set_value(cursor, "value");
+        switch (ret = cursor->update(cursor)) {
+        case 0:                                 /* Update success */
+                ret = session->commit_transaction(session, NULL);
+                /*
+                 * If commit_transaction succeeds, cursors remain positioned; if
+                 * commit_transaction fails, the transaction was rolled-back and
+                 * and all cursors are reset\&.
+                 */
+                break;
+        case WT_ROLLBACK:                       /* Update conflict */
+        default:                                /* Other error */
+                ret = session->rollback_transaction(session, NULL);
+                /* The rollback_transaction call resets all cursors\&. */
+                break;
+        }
+
+        /*
+         * Cursors remain open and may be used for multiple transactions\&.
+         */
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. No values currently permitted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_SESSION::salvage (\fBWT_SESSION\fP *session, const char *name, const char *config)"
+
+.PP
+Salvage a file or table\&. Salvage rebuilds the file, or files of which a table is comprised, discarding any corrupted file blocks\&.
+.PP
+Previously deleted records may re-appear, and inserted records may disappear, when salvage is done, so salvage should not be run unless it is known to be necessary\&. Normally, salvage should be called after a file or table has been corrupted, as reported by the \fBWT_SESSION::verify\fP method\&.
+.PP
+Files are rebuilt in place, the salvage method overwrites the existing files\&.
+.PP
+.PP
+.nf
+     ret = session->salvage(session, "table:mytable", NULL);
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIname\fP the URI of the file or table to salvage 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCforce\fPforce salvage even of files that do not appear to be WiredTiger files\&.a boolean flag; default \fCfalse\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "const char* WT_SESSION::strerror (\fBWT_SESSION\fP *session, interror)"
+
+.PP
+Return information about an error as a string\&. 
+.PP
+.nf
+        const char *key = "non-existent key";
+        cursor->set_key(cursor, key);
+        if ((ret = cursor->remove(cursor)) != 0) {
+                fprintf(stderr,
+                    "cursor\&.remove: %s\n", session->strerror(session, ret));
+                return (ret);
+        }
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIerror\fP a return value from a WiredTiger function 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a string representation of the error 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_log\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_SESSION::transaction_pinned_range (\fBWT_SESSION\fP *session, uint64_t *range)"
+
+.PP
+Return the transaction ID range pinned by the session handle\&. The ID range is approximate and is calculated based on the oldest ID needed for the active transaction in this session, compared to the newest transaction in the system\&.
+.PP
+.PP
+.nf
+        /* Check the transaction ID range pinned by the session handle\&. */
+        uint64_t range;
+
+        ret = session->transaction_pinned_range(session, &range);
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIrange\fP the range of IDs pinned by this session\&. Zero if there is no active transaction\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_SESSION::truncate (\fBWT_SESSION\fP *session, const char *name, \fBWT_CURSOR\fP *start, \fBWT_CURSOR\fP *stop, const char *config)"
+
+.PP
+Truncate a file, table or cursor range\&. Truncate a file or table\&. 
+.PP
+.nf
+ ret = session->truncate(session, "table:mytable", NULL, NULL, NULL);
+
+.fi
+.PP
+ Truncate a cursor range\&. When truncating based on a cursor position, it is not required the cursor reference a record in the object, only that the key be set\&. This allows applications to discard portions of the object name space without knowing exactly what records the object contains\&. 
+.PP
+.nf
+        WT_CURSOR *start, *stop;
+
+        ret = session->open_cursor(
+            session, "table:mytable", NULL, NULL, &start);
+        start->set_key(start, "June01");
+        ret = start->search(start);
+
+        ret = session->open_cursor(
+            session, "table:mytable", NULL, NULL, &stop);
+        stop->set_key(stop, "June30");
+        ret = stop->search(stop);
+
+        ret = session->truncate(session, NULL, start, stop, NULL);
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIname\fP the URI of the file or table to truncate 
+.br
+\fIstart\fP optional cursor marking the first record discarded; if \fCNULL\fP, the truncate starts from the beginning of the object 
+.br
+\fIstop\fP optional cursor marking the last record discarded; if \fCNULL\fP, the truncate continues to the end of the object 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. No values currently permitted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_SESSION::upgrade (\fBWT_SESSION\fP *session, const char *name, const char *config)"
+
+.PP
+Upgrade a file or table\&. Upgrade upgrades a file or table, if upgrade is required\&.
+.PP
+.PP
+.nf
+     ret = session->upgrade(session, "table:mytable", NULL);
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIname\fP the URI of the file or table to upgrade 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. No values currently permitted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SS "int WT_SESSION::verify (\fBWT_SESSION\fP *session, const char *name, const char *config)"
+
+.PP
+Verify a file or table\&. Verify reports if a file, or the files of which a table is comprised, have been corrupted\&. The \fBWT_SESSION::salvage\fP method can be used to repair a corrupted file,
+.PP
+.PP
+.nf
+      ret = session->verify(session, "table:mytable", NULL);
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP the session handle 
+.br
+\fIname\fP the URI of the file or table to verify 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCdump_address\fPDisplay addresses and page types as pages are verified, using the application's message handler, intended for debugging\&.a boolean flag; default \fCfalse\fP\&. \fCdump_blocks\fPDisplay the contents of on-disk blocks as they are verified, using the application's message handler, intended for debugging\&.a boolean flag; default \fCfalse\fP\&. \fCdump_offsets\fPDisplay the contents of specific on-disk blocks, using the application's message handler, intended for debugging\&.a list of strings; default empty\&. \fCdump_pages\fPDisplay the contents of in-memory pages as they are verified, using the application's message handler, intended for debugging\&.a boolean flag; default \fCfalse\fP\&. \fCdump_shape\fPDisplay the shape of the tree after verification, using the application's message handler, intended for debugging\&.a boolean flag; default \fCfalse\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBWT_CONNECTION\fP* WT_SESSION::connection"
+
+.PP
+The connection for this session\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

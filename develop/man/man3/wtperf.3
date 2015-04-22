@@ -1,4 +1,4 @@
-.TH "wtperf" 3 "Sat Apr 11 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "wtperf" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -176,6 +176,11 @@ do population phase; false to use existing database
 \fBdatabase_count (unsigned int, default=1)\fP
 .RS 4
 number of WiredTiger databases to use\&. Each database will execute the workload using a separate home directory and complete set of worker threads 
+.RE
+.PP
+\fBdrop_tables (unsigned int, default=0)\fP
+.RS 4
+Whether to drop all tables at the end of the run, and report time taken to do the drop\&. 
 .RE
 .PP
 \fBicount (unsigned int, default=5000)\fP
