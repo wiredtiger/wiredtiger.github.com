@@ -206,7 +206,27 @@ By default, input data will overwrite existing data where the key/value pair alr
 By default, the \fCload\fP command uses the table or file name taken from the input; the \fC-r\fP option renames the data source\&.
 .RE
 .PP
-Additionally, \fCuri\fP and \fCconfiguration\fP pairs may be specified to the \fCload\fP command\&. Each of these pairs will be appended to the configuration string from the dump header passed to the \fBWT_SESSION::create\fP call\&.
+Additionally, \fCuri\fP and \fCconfiguration\fP pairs may be specified to the \fCload\fP command\&. These configuration pairs can be used to modify the configuration values from the dump header passed to the \fBWT_SESSION::create\fP call\&.
+.PP
+The \fCuri\fP part of the configuration pair should match only one of the objects being loaded, but may be a prefix of the object being matched\&. For example, the following two sets of configuration pairs are equivalent in the case of loading a single table named \fCxxx\fP\&.
+.PP
+.PP
+.nf
+table block_allocation=first
+table:xxx block_allocation=first
+.fi
+.PP
+.PP
+It's an error, however, to specify a matching prefix that matches more than a single object being loaded\&.
+.PP
+Multiple \fCconfiguration\fP arguments may be specified\&. For example, the following two sets of configuration pairs are equivalent:
+.PP
+.PP
+.nf
+table:xxx block_allocation=first,prefix_compress=false
+table:xxx block_allocation=first table:xxx prefix_compress=false
+.fi
+.PP
 .PP
 .PP
  

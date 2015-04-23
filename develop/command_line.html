@@ -180,8 +180,15 @@ Options</h2>
 <dl class="section user"><dt>-j</dt><dd>Load input in the JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format that was created by the <code>dump -j</code> command.</dd></dl>
 <dl class="section user"><dt>-n</dt><dd>By default, input data will overwrite existing data where the key/value pair already exists in the data source; the <code>-n</code> option causes the <code>load</code> command to fail if there's an attempt to overwrite already existing data.</dd></dl>
 <dl class="section user"><dt>-r</dt><dd>By default, the <code>load</code> command uses the table or file name taken from the input; the <code>-r</code> option renames the data source.</dd></dl>
-<p>Additionally, <code>uri</code> and <code>configuration</code> pairs may be specified to the <code>load</code> command. Each of these pairs will be appended to the configuration string from the dump header passed to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> call.</p>
-<hr/>
+<p>Additionally, <code>uri</code> and <code>configuration</code> pairs may be specified to the <code>load</code> command. These configuration pairs can be used to modify the configuration values from the dump header passed to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> call.</p>
+<p>The <code>uri</code> part of the configuration pair should match only one of the objects being loaded, but may be a prefix of the object being matched. For example, the following two sets of configuration pairs are equivalent in the case of loading a single table named <code>xxx</code>.</p>
+<div class="fragment"><div class="line">table block_allocation=first</div>
+<div class="line">table:xxx block_allocation=first</div>
+</div><!-- fragment --><p>It's an error, however, to specify a matching prefix that matches more than a single object being loaded.</p>
+<p>Multiple <code>configuration</code> arguments may be specified. For example, the following two sets of configuration pairs are equivalent:</p>
+<div class="fragment"><div class="line">table:xxx block_allocation=first,prefix_compress=<span class="keyword">false</span></div>
+<div class="line">table:xxx block_allocation=first table:xxx prefix_compress=<span class="keyword">false</span></div>
+</div><!-- fragment --><hr/>
  <h1><a class="anchor" id="util_loadtext"></a>
 wt loadtext</h1>
 <p>Load text into a table or file.</p>
