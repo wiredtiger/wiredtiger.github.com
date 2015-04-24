@@ -621,9 +621,12 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="comment">         * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div>
 <div class="line"><span class="comment">         * have an additional configuration option &quot;entries&quot;, which is an</span></div>
 <div class="line"><span class="comment">         * integer type, defaults to 5, and must be an integer between 1 and 10.</span></div>
+<div class="line"><span class="comment">         *</span></div>
+<div class="line"><span class="comment">         * The method being configured is specified using a concatenation of the</span></div>
+<div class="line"><span class="comment">         * handle name, a period and the method name.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;entries=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1,max=10&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -632,11 +635,11 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="comment">         * of strings.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;devices&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL);</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;devices&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
-    <tr><td class="paramname">method</td><td>the name of the method </td></tr>
+    <tr><td class="paramname">method</td><td>the method being configured </td></tr>
     <tr><td class="paramname">uri</td><td>the object type or NULL for all object types </td></tr>
     <tr><td class="paramname">config</td><td>the additional configuration's name and default value </td></tr>
     <tr><td class="paramname">type</td><td>the additional configuration's type (must be one of <code>"boolean"\</code>, <code>"int"</code>, <code>"list"</code> or <code>"string"</code>) </td></tr>

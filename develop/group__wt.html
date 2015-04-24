@@ -196,7 +196,7 @@ Data packing and unpacking</h2></td></tr>
 <tr class="separator:gad8d121ab997028a85598e73771609bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
-Configuration string parsing</h2></td></tr>
+Configuration strings</h2></td></tr>
 <tr class="memitem:ga512297da65ccc30ac91bf6adf95f043f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config, size_t len, <a class="el" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> **config_parserp)</td></tr>
 <tr class="memdesc:ga512297da65ccc30ac91bf6adf95f043f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs.  <a href="#ga512297da65ccc30ac91bf6adf95f043f">More...</a><br/></td></tr>
 <tr class="separator:ga512297da65ccc30ac91bf6adf95f043f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1556,8 +1556,24 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> k, v;</div>
+<div class="line">        <a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> *parser;</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *config_string =</div>
+<div class="line">            <span class="stringliteral">&quot;path=/dev/loop,page_size=1024,log=(archive=true,file_max=20MB)&quot;</span>;</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a>(</div>
+<div class="line">            NULL, config_string, strlen(config_string), &amp;parser)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error creating configuration parser: %s\n&quot;</span>,</div>
+<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing configuration parser: %s\n&quot;</span>,</div>
+<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="ga9e6adae3fc6964ef837a62795c7840ed"></a>

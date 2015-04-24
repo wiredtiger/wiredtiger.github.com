@@ -220,7 +220,7 @@ Creating data-specific configuration strings</h2>
 <p>Applications can add their own configuration strings to WiredTiger methods using <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137" title="Add configuration options for a method. ">WT_CONNECTION::configure_method</a>.</p>
 <p><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137" title="Add configuration options for a method. ">WT_CONNECTION::configure_method</a> takes the following arguments:</p>
 <ul>
-<li>the name of the method being extended. For example, <code>"session.create"</code> would add new configuration strings to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> method, and <code>"session.open_cursor"</code> would add the configuration string to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> method.</li>
+<li>the method being extended, where the name is the concatenation of the handle name, a period and the method name. For example, <code>"WT_SESSION.create"</code> would add new configuration strings to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> method, and <code>"WT_SESSION.open_cursor"</code> would add the configuration string to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> method.</li>
 <li>the object type of the data source being extended. For example, <code>"table:"</code> would extend the configuration arguments for table objects, and <code>"my_data:"</code> could be used to extend the configuration arguments for a data source with URIs beginning with the "my_data" prefix. A NULL value for the object type implies all object types.</li>
 <li>the additional configuration string, which consists of the name of the configuration string and an optional default value. The default value is specified by appending an equals sign and a value. For example, for a new configuration string with the name <code>"device"</code>, specifying either <code>"device=/path"</code> or <code>"device=35"</code> would configure the default values.</li>
 <li>the type of the additional configuration, which must one of <code>"boolean"</code>, <code>"int"</code>, <code>"list"</code> or <code>"string"</code>.</li>
@@ -229,17 +229,17 @@ Creating data-specific configuration strings</h2>
 <p>For example, an application might add new boolean, integer, list or string type configuration strings as follows:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* my_boolean defaults to true. */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_boolean=true&quot;</span>, <span class="stringliteral">&quot;boolean&quot;</span>, NULL);</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_boolean=true&quot;</span>, <span class="stringliteral">&quot;boolean&quot;</span>, NULL);</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/* my_integer defaults to 5. */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_integer=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, NULL);</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_integer=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, NULL);</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/* my_list defaults to &quot;first&quot; and &quot;second&quot;. */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div>
 <div class="line">            NULL, <span class="stringliteral">&quot;my_list=[first, second]&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL);</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/* my_string defaults to &quot;name&quot;. */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_string=name&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, NULL);</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_string=name&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, NULL);</div>
 </div><!-- fragment --><p> Once these additional configuration calls have returned, application calls to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> method could then include configuration strings such as <code>my_boolean=false</code>, or <code>my_integer=37</code>, or <code>my_source=/home</code>.</p>
 <p>Additional checking information can be provided for <code>int</code>, <code>list</code> or <code>string</code> type configuration strings.</p>
 <p>For integers, either or both of a maximum or minimum value can be provided, so an error will result if the application attempts to set the value outside of the acceptable range:</p>
@@ -247,21 +247,22 @@ Creating data-specific configuration strings</h2>
 <div class="line"><span class="comment">         * Limit the number of devices to between 1 and 30; the default is 5.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;devices=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1, max=30&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div>
+<div class="line">            NULL, <span class="stringliteral">&quot;devices=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1, max=30&quot;</span>);</div>
 </div><!-- fragment --><p> For lists and strings, a set of valid choices can also be provided, so an error will result if the application attempts to set the value to a string not listed as a valid choice:</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Limit the target string to one of /device, /home or /target; default</span></div>
 <div class="line"><span class="comment">         * to /home.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;target=/home&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;target=/home&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;choices=[/device, /home, /target]&quot;</span>);</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Limit the paths list to one or more of /device, /home, /mnt or</span></div>
 <div class="line"><span class="comment">         * /target; default to /mnt.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;session.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;paths=[/mnt]&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;paths=[/mnt]&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;choices=[/device, /home, /mnt, /target]&quot;</span>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="custom_ds_cursor_collator"></a>
 WT_COLLATOR</h1>
