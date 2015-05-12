@@ -90,7 +90,7 @@ Configuring asynchronous operations</h1>
 <h1><a class="anchor" id="async_alloc"></a>
 Allocating an asynchronous operations handle</h1>
 <p>A <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation. ">WT_ASYNC_OP</a> handle is allocated using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle. ">WT_CONNECTION::async_new_op</a> method. This method takes an existing object URI and a callback. For example:</p>
-<div class="fragment"><div class="line">                <span class="keywordflow">while</span> ((ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672">async_new_op</a>(conn,</div>
+<div class="fragment"><div class="line">                <span class="keywordflow">while</span> ((ret = conn-&gt;async_new_op(conn,</div>
 <div class="line">                    <span class="stringliteral">&quot;table:async&quot;</span>, NULL, &amp;ex_asynckeys.iface, &amp;op)) != 0) {</div>
 <div class="line">                        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                         * If we used up all the handles, pause and retry to</span></div>
@@ -182,14 +182,14 @@ Executing asynchronous operations</h1>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Compact a table asynchronously, limiting the run-time to 5 minutes.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672">async_new_op</a>(</div>
+<div class="line">        ret = conn-&gt;async_new_op(</div>
 <div class="line">            conn, <span class="stringliteral">&quot;table:async&quot;</span>, <span class="stringliteral">&quot;timeout=300&quot;</span>, &amp;ex_asynckeys.iface, &amp;op);</div>
 <div class="line">        ret = op-&gt;<a class="code" href="struct_w_t___a_s_y_n_c___o_p.html#ae6421d4c43369146502e8c7b54c06ac0">compact</a>(op);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="async_flush"></a>
 Waiting for outstanding operations to complete</h1>
 <p>The <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a43d649d7eca3c9c281a833ec4e73473b" title="Wait for all outstanding operations to complete. ">WT_CONNECTION::async_flush</a> method can be used to wait for all previous operations to complete. When that call returns, all previously queued operations are guaranteed to have been completed and their callback functions have returned.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Wait for all outstanding operations to complete. */</span></div>
-<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a43d649d7eca3c9c281a833ec4e73473b">async_flush</a>(conn);</div>
+<div class="line">        ret = conn-&gt;async_flush(conn);</div>
 </div><!-- fragment --><p> Because <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection. ">WT_CONNECTION::close</a> implicitly does a <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a43d649d7eca3c9c281a833ec4e73473b" title="Wait for all outstanding operations to complete. ">WT_CONNECTION::async_flush</a>, the call is not required in all applications.</p>
 <h1><a class="anchor" id="async_transactions"></a>
 Asynchronous operations and transactions</h1>

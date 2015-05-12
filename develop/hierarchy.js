@@ -30,6 +30,7 @@ var hierarchy =
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", null ],
     [ "WT_CURSOR", "struct_w_t___c_u_r_s_o_r.html", null ],
     [ "WT_DATA_SOURCE", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html", null ],
+    [ "WT_ENCRYPTOR", "struct_w_t___e_n_c_r_y_p_t_o_r.html", null ],
     [ "WT_EVENT_HANDLER", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html", null ],
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", null ],
     [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", null ],

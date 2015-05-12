@@ -88,9 +88,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a9a6de866802dcd1a587cb1dbd69887df"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#a9a6de866802dcd1a587cb1dbd69887df">compare</a> )(<a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key1, const <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key2, int *cmp)</td></tr>
 <tr class="memdesc:a9a6de866802dcd1a587cb1dbd69887df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to compare keys.  <a href="#a9a6de866802dcd1a587cb1dbd69887df">More...</a><br/></td></tr>
 <tr class="separator:a9a6de866802dcd1a587cb1dbd69887df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc0d169175c9f407833c7b7c69a257f4"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#afc0d169175c9f407833c7b7c69a257f4">customize</a> )(<a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> *appcfg, <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> **customp)</td></tr>
-<tr class="memdesc:afc0d169175c9f407833c7b7c69a257f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, this callback is called to customize the collator for each data source.  <a href="#afc0d169175c9f407833c7b7c69a257f4">More...</a><br/></td></tr>
-<tr class="separator:afc0d169175c9f407833c7b7c69a257f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9345d19dc3df3e886da037181f9fac81"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#a9345d19dc3df3e886da037181f9fac81">customize</a> )(<a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> *passcfg, <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> **customp)</td></tr>
+<tr class="memdesc:a9345d19dc3df3e886da037181f9fac81"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, this callback is called to customize the collator for each data source.  <a href="#a9345d19dc3df3e886da037181f9fac81">More...</a><br/></td></tr>
+<tr class="separator:a9345d19dc3df3e886da037181f9fac81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeed44d2caacca7bc93bc48e8da7ae3f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f">terminate</a> )(<a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
 <tr class="memdesc:aeeed44d2caacca7bc93bc48e8da7ae3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL a callback performed when the data source is closed for customized extractors otherwise when the database is closed.  <a href="#aeeed44d2caacca7bc93bc48e8da7ae3f">More...</a><br/></td></tr>
 <tr class="separator:aeeed44d2caacca7bc93bc48e8da7ae3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,12 +194,12 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="afc0d169175c9f407833c7b7c69a257f4"></a>
+<a class="anchor" id="a9345d19dc3df3e886da037181f9fac81"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_COLLATOR::customize)(<a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> *appcfg, <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> **customp)</td>
+          <td class="memname">int(* WT_COLLATOR::customize)(<a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> *passcfg, <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> **customp)</td>
         </tr>
       </table>
 </div><div class="memdoc">

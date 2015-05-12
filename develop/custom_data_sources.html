@@ -149,7 +149,7 @@ fatal errors requiring the database restart should return WT_PANIC </li>
 <div class="line"><span class="comment">         * error within WiredTiger&#39;s name space.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = data_source_cursor()) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;err_printf(wt_api,</div>
+<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039">err_printf</a>(wt_api,</div>
 <div class="line">                    session, <span class="stringliteral">&quot;my_open_cursor: %s&quot;</span>, data_source_error(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (<a class="code" href="group__wt.html#gafdfe4d6ca06cb7337272f883f60c991e">WT_ERROR</a>);</div>
 <div class="line">        }</div>
@@ -168,9 +168,9 @@ Parsing configuration strings</h2>
 <div class="line"><span class="comment">         * Retrieve the value of the boolean type configuration string</span></div>
 <div class="line"><span class="comment">         * &quot;overwrite&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;config_get(</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1f23ff3b17d86decfe92ba232f988fd6">config_get</a>(</div>
 <div class="line">            wt_api, session, config, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;v)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;err_printf(wt_api, session,</div>
+<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039">err_printf</a>(wt_api, session,</div>
 <div class="line">                    <span class="stringliteral">&quot;overwrite configuration: %s&quot;</span>,</div>
 <div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
@@ -183,9 +183,9 @@ Parsing configuration strings</h2>
 <div class="line"><span class="comment">         * Retrieve the value of the integer type configuration string</span></div>
 <div class="line"><span class="comment">         * &quot;page_size&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;config_get(</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1f23ff3b17d86decfe92ba232f988fd6">config_get</a>(</div>
 <div class="line">            wt_api, session, config, <span class="stringliteral">&quot;page_size&quot;</span>, &amp;v)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;err_printf(wt_api, session,</div>
+<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039">err_printf</a>(wt_api, session,</div>
 <div class="line">                    <span class="stringliteral">&quot;page_size configuration: %s&quot;</span>,</div>
 <div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
@@ -199,9 +199,9 @@ Parsing configuration strings</h2>
 <div class="line"><span class="comment">         * Retrieve the value of the string type configuration string</span></div>
 <div class="line"><span class="comment">         * &quot;key_format&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;config_get(</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1f23ff3b17d86decfe92ba232f988fd6">config_get</a>(</div>
 <div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;err_printf(wt_api, session,</div>
+<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039">err_printf</a>(wt_api, session,</div>
 <div class="line">                    <span class="stringliteral">&quot;key_format configuration: %s&quot;</span>,</div>
 <div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>

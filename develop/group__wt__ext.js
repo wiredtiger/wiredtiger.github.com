@@ -2,7 +2,7 @@ var group__wt__ext =
 [
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", [
       [ "compare", "struct_w_t___c_o_l_l_a_t_o_r.html#a9a6de866802dcd1a587cb1dbd69887df", null ],
-      [ "customize", "struct_w_t___c_o_l_l_a_t_o_r.html#afc0d169175c9f407833c7b7c69a257f4", null ],
+      [ "customize", "struct_w_t___c_o_l_l_a_t_o_r.html#a9345d19dc3df3e886da037181f9fac81", null ],
       [ "terminate", "struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f", null ]
     ] ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", [
@@ -24,6 +24,13 @@ var group__wt__ext =
       [ "terminate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ab92be74825433258ff5e3631873ce57f", null ],
       [ "truncate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a97ab1fed33fffb8ead55ec854370e41a", null ],
       [ "verify", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad6487a12a6248371e43884cfef7715da", null ]
+    ] ],
+    [ "WT_ENCRYPTOR", "struct_w_t___e_n_c_r_y_p_t_o_r.html", [
+      [ "customize", "struct_w_t___e_n_c_r_y_p_t_o_r.html#a493e4bf978e7da8b092421362a36ad92", null ],
+      [ "decrypt", "struct_w_t___e_n_c_r_y_p_t_o_r.html#af6972d321c055ffb64c9eac13dc54343", null ],
+      [ "encrypt", "struct_w_t___e_n_c_r_y_p_t_o_r.html#a20d4a77c81166fcb81e61e1e892e85d4", null ],
+      [ "sizing", "struct_w_t___e_n_c_r_y_p_t_o_r.html#a98bcb9a17a24477e764bfaeb1149273e", null ],
+      [ "terminate", "struct_w_t___e_n_c_r_y_p_t_o_r.html#afbbb5b735c395e918e7a3727f7a6d6bb", null ]
     ] ],
     [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", [
       [ "customize", "struct_w_t___e_x_t_r_a_c_t_o_r.html#ab4d736feccd18b3f6b2cea0967c3e7ea", null ],

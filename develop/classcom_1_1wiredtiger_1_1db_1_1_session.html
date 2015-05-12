@@ -516,6 +516,14 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>dictionary</code></td><td>the maximum number of unique values remembered in the Btree row-store leaf page value dictionary; see <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
+<td><code>encryption = (</code></td><td>configure an encryptor for file blocks. When a table is created, its encryptor is not implicitly used for any related indices or column groups.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;keyid</code></td><td>An identifier that identifies a unique instance of the encryptor. It is stored in clear text, and thus is available when the wiredtiger database is reopened. On the first use of a (name, keyid) combination, the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a493e4bf978e7da8b092421362a36ad92" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function is called with the keyid as an argument.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or custom encryption engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949" title="Add an encryption function. ">WT_CONNECTION::add_encryptor</a>. See <a class="el" href="encryption.html">Encryptors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>exclusive</code></td><td>fail if the object exists. When false (the default), if the object exists, check that its settings match the specified configuration.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>extractor</code></td><td>configure custom extractor for indices. Permitted values are <code>"none"</code> or an extractor name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups. ">WT_CONNECTION::add_extractor</a>.</td><td>a string; default <code>none</code>. </td></tr>

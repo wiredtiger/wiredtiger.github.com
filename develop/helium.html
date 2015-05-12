@@ -85,7 +85,7 @@ Loading the WiredTiger Helium Support</h1>
 <p>Next, add code to your application to load the Helium shared library.</p>
 <p>The following example loads the Helium shared library, configuring and naming two separate Helium volumes. The first volume is named <code>dev1</code>, the second volume is named <code>dev2</code>. Volume <code>dev1</code> has two underlying physical Helium devices, <code>/dev/disk3s1</code> and <code>/dev/disk4s1</code>. Volume <code>dev2</code> has a single underlying physical Helium device, <code>/dev/disk5s1</code>.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#define HELIUM_LIBRARY_PATH     &quot;test/helium/.libs/libwiredtiger_helium.so&quot;&quot;</span></div>
-<div class="line"><span class="preprocessor"></span>ret = connection-&gt;load_extension(connection, HELIUM_LIBRARY_PATH,</div>
+<div class="line"><span class="preprocessor"></span>ret = connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68">load_extension</a>(connection, HELIUM_LIBRARY_PATH,</div>
 <div class="line">    <span class="stringliteral">&quot;config=[&quot;</span></div>
 <div class="line">    <span class="stringliteral">&quot;dev1=[helium_devices=[\&quot;he://.//dev/disk3s1,/dev/disk4s1\&quot;],&quot;</span></div>
 <div class="line">    <span class="stringliteral">&quot;helium_o_volume_truncate=1],&quot;</span></div>

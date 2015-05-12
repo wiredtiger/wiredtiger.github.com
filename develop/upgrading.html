@@ -69,7 +69,16 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_254"></a>
+<div class="textblock"><h1><a class="anchor" id="version_260"></a>
+Upgrading to Version 2.6.0</h1>
+<dl>
+<dt>Statistic change </dt>
+<dd><p class="startdd">The statistic "log read operations" was removed. The function that used that statistic was never called inside WiredTiger and was also removed. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ <h1><a class="anchor" id="version_254"></a>
 Upgrading to Version 2.5.4</h1>
 <dl>
 <dt>File handle closing </dt>
@@ -152,7 +161,7 @@ Upgrading to Version 2.4.0</h1>
 <p class="enddd"></p>
 </dd>
 <dt><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface changes </dt>
-<dd>Add a new <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#afc0d169175c9f407833c7b7c69a257f4" title="If non-NULL, this callback is called to customize the collator for each data source. ">WT_COLLATOR::customize</a> callback that WiredTiger will call (if set) for each data source configured to use the collator. Applications using the existing <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface that do not require the new functionality should set this callback to <code>NULL</code>.  </dd>
+<dd>Add a new <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#a9345d19dc3df3e886da037181f9fac81" title="If non-NULL, this callback is called to customize the collator for each data source. ">WT_COLLATOR::customize</a> callback that WiredTiger will call (if set) for each data source configured to use the collator. Applications using the existing <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface that do not require the new functionality should set this callback to <code>NULL</code>.  </dd>
 <dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> lsm_merge option changed </dt>
 <dd>The global lsm_merge configuration setting has been moved into the <code>lsm_manager</code> option group. To disable merges in all LSM trees pass <code>lsm_manger=</code>(merge=false) to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.  </dd>
 <dt>Java include path search changes </dt>

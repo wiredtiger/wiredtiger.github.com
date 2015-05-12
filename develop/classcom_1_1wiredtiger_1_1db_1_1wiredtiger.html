@@ -385,9 +385,6 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a687891401b6f17e703bfe274bbf18f14 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a687891401b6f17e703bfe274bbf18f14"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_PREALLOC_USED</b></td></tr>
 <tr class="separator:a687891401b6f17e703bfe274bbf18f14 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14928e6cdd771031bca6865581387c08 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14928e6cdd771031bca6865581387c08"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_READS</b></td></tr>
-<tr class="separator:a14928e6cdd771031bca6865581387c08 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a0abf48f9c190b7f9b15a6357250f6 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84a0abf48f9c190b7f9b15a6357250f6"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_RELEASE_WRITE_LSN</b></td></tr>
 <tr class="separator:a84a0abf48f9c190b7f9b15a6357250f6 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -939,6 +936,16 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to use <code>O_DIRECT</code>, including <code>"log"</code> will cause WiredTiger log files to use <code>O_DIRECT</code>, and including <code>"checkpoint"</code> will cause WiredTiger data files opened at a checkpoint (i.e: read only) to use <code>O_DIRECT</code>.</td><td>a list, with values chosen from the following options: <code>"checkpoint"</code>, <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
+<tr>
+<td><code>encryption = (</code></td><td>configure an encryptor for system wide metadata and logs. If a system wide encryptor is set, it is also used for encrypting data files and tables, unless encryption configuration is explicitly set for them when they are created with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;keyid</code></td><td>An identifier that identifies a unique instance of the encryptor. It is stored in clear text, and thus is available when the wiredtiger database is reopened. On the first use of a (name, keyid) combination, the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a493e4bf978e7da8b092421362a36ad92" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function is called with the keyid as an argument.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or custom encryption engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949" title="Add an encryption function. ">WT_CONNECTION::add_encryptor</a>. See <a class="el" href="encryption.html">Encryptors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;secretkey</code></td><td>A string that is passed to the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a493e4bf978e7da8b092421362a36ad92" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function. It is never stored in clear text, so must be given to any subsequent wiredtiger_open calls to reopen the database. It must also be provided to any "wt" commands used with this database.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>

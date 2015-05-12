@@ -133,12 +133,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * as the first field, allowing us to treat references to either type of</span></div>
 <div class="line"><span class="comment">         * structure as a reference to the other type.</span></div>
 <div class="line"><span class="comment">         *</span></div>
-<div class="line"><span class="comment">         * This could be simplified if only a single database is opened in the</span></div>
-<div class="line"><span class="comment">         * application, we could use a static WT_COMPRESSOR structure, and a</span></div>
-<div class="line"><span class="comment">         * static reference to the WT_EXTENSION_API methods, then we don&#39;t need</span></div>
-<div class="line"><span class="comment">         * to allocate memory when the compressor is initialized or free it when</span></div>
-<div class="line"><span class="comment">         * the compressor is terminated.  However, this approach is more general</span></div>
-<div class="line"><span class="comment">         * purpose and supports multiple databases per application.</span></div>
+<div class="line"><span class="comment">         * Heap memory (not static), because it can support multiple databases.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        nop_compressor-&gt;compressor.compress = nop_compress;</div>
 <div class="line">        nop_compressor-&gt;compressor.compress_raw = NULL;</div>
@@ -320,7 +315,7 @@ Public Attributes</h2></td></tr>
 
 <p>Callback to size a destination buffer for compression. </p>
 <p><a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02" title="Callback to size a destination buffer for compression. ">WT_COMPRESSOR::pre_size</a> is an optional callback that, given the source buffer and size, produces the size of the destination buffer to be given to <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a87c339a3442b719896fa5cbe2c530843" title="Callback to compress a chunk of data. ">WT_COMPRESSOR::compress</a>. This is useful for compressors that assume that the output buffer is sized for the worst case and thus no overrun checks are made. If your compressor works like this, <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02" title="Callback to size a destination buffer for compression. ">WT_COMPRESSOR::pre_size</a> will need to be defined. See the source code for the snappy compressor for an example. However, if your compressor detects and avoids overruns against its target buffer, you will not need to define <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02" title="Callback to size a destination buffer for compression. ">WT_COMPRESSOR::pre_size</a>. When <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02" title="Callback to size a destination buffer for compression. ">WT_COMPRESSOR::pre_size</a> is set to NULL, the destination buffer is sized the same as the source buffer. This is always sufficient, since a compression result that is larger than the source buffer is discarded by WiredTiger.</p>
-<p>If not NULL, this callback is called before each call to WT_COMPRESS::compress to determine the size of the destination buffer to provide. If the callback is NULL, the destination buffer will be the same size as the source buffer.</p>
+<p>If not NULL, this callback is called before each call to <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a87c339a3442b719896fa5cbe2c530843" title="Callback to compress a chunk of data. ">WT_COMPRESSOR::compress</a> to determine the size of the destination buffer to provide. If the callback is NULL, the destination buffer will be the same size as the source buffer.</p>
 <p>The callback should set <code>result_lenp</code> to a suitable buffer size for compression, typically the maximum length required by <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a87c339a3442b719896fa5cbe2c530843" title="Callback to compress a chunk of data. ">WT_COMPRESSOR::compress</a>.</p>
 <p>This callback function is for compressors that require an output buffer larger than the source buffer (for example, that do not check for buffer overflow during compression).</p>
 <dl class="params"><dt>Parameters</dt><dd>

@@ -200,12 +200,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * as the first field, allowing us to treat references to either type of</span></div>
 <div class="line"><span class="comment">         * structure as a reference to the other type.</span></div>
 <div class="line"><span class="comment">         *</span></div>
-<div class="line"><span class="comment">         * This could be simplified if only a single database is opened in the</span></div>
-<div class="line"><span class="comment">         * application, we could use a static WT_COMPRESSOR structure, and a</span></div>
-<div class="line"><span class="comment">         * static reference to the WT_EXTENSION_API methods, then we don&#39;t need</span></div>
-<div class="line"><span class="comment">         * to allocate memory when the compressor is initialized or free it when</span></div>
-<div class="line"><span class="comment">         * the compressor is terminated.  However, this approach is more general</span></div>
-<div class="line"><span class="comment">         * purpose and supports multiple databases per application.</span></div>
+<div class="line"><span class="comment">         * Heap memory (not static), because it can support multiple databases.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        nop_compressor-&gt;compressor.compress = nop_compress;</div>
 <div class="line">        nop_compressor-&gt;compressor.compress_raw = NULL;</div>
@@ -219,7 +214,8 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="keywordflow">return</span> (connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783">add_compressor</a>(</div>
 <div class="line">            connection, <span class="stringliteral">&quot;nop&quot;</span>, (<a class="code" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html">WT_COMPRESSOR</a> *)nop_compressor, NULL));</div>
 <div class="line">}</div>
-</div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
+</div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#_a4">ex_encrypt.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a1">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a1">rotn_encrypt.c</a>.</dd>
+</dl></div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="ad23ef32a93fd906df1502c61a80a0d3c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -344,7 +340,8 @@ Public Attributes</h2></td></tr>
 <div class="line">                my_data_source_key = <span class="stringliteral">&quot;recno&quot;</span>;</div>
 <div class="line">        <span class="keywordflow">else</span></div>
 <div class="line">                my_data_source_key = <span class="stringliteral">&quot;bytestring&quot;</span>;</div>
-</div><!-- fragment -->
+</div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a7">ex_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a4">rotn_encrypt.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a class="anchor" id="a31922e792668c912bfe45d9745e74d4e"></a>

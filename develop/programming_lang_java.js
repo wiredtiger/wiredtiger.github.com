@@ -41,6 +41,7 @@ var programming_lang_java =
       [ "Upgrading compression engines", "compression_lang_java.html#compression_upgrading_lang_java", null ],
       [ "Custom compression engines", "compression_lang_java.html#compression_custom_lang_java", null ]
     ] ],
+    [ "Encryptors  in Java", "encryption_lang_java.html", "encryption_lang_java" ],
     [ "Multithreading  in Java", "threads_lang_java.html", [
       [ "Code samples", "threads_lang_java.html#threads_example_lang_java", null ]
     ] ],
