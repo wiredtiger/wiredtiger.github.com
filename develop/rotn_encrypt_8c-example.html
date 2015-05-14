@@ -98,7 +98,6 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line"><span class="comment"> * OTHER DEALINGS IN THE SOFTWARE.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
@@ -197,11 +196,14 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        uint32_t i;</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Now rotate.</span></div>
+<div class="line"><span class="comment">         *</span></div>
+<div class="line"><span class="comment">         * Avoid ctype functions because they behave in unexpected ways,</span></div>
+<div class="line"><span class="comment">         * particularly when the locale is not &quot;C&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; len; i++) {</div>
-<div class="line">                <span class="keywordflow">if</span> (islower(buf[i]))</div>
+<div class="line">                <span class="keywordflow">if</span> (<span class="charliteral">&#39;a&#39;</span> &lt;= buf[i] &amp;&amp; buf[i] &lt;= <span class="charliteral">&#39;z&#39;</span>)</div>
 <div class="line">                        buf[i] = ((buf[i] - <span class="charliteral">&#39;a&#39;</span>) + rotn) % 26 + <span class="charliteral">&#39;a&#39;</span>;</div>
-<div class="line">                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (isalpha(buf[i]))</div>
+<div class="line">                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="charliteral">&#39;A&#39;</span> &lt;= buf[i] &amp;&amp; buf[i] &lt;= <span class="charliteral">&#39;Z&#39;</span>)</div>
 <div class="line">                        buf[i] = ((buf[i] - <span class="charliteral">&#39;A&#39;</span>) + rotn) % 26 + <span class="charliteral">&#39;A&#39;</span>;</div>
 <div class="line">        }</div>
 <div class="line">}</div>
@@ -393,9 +395,9 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">                        <span class="keywordflow">goto</span> err;</div>
 <div class="line">                }</div>
 <div class="line">                <span class="keywordflow">for</span> (i = 0; i &lt; len; i++) {</div>
-<div class="line">                        <span class="keywordflow">if</span> (islower(secret.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[i]))</div>
+<div class="line">                        <span class="keywordflow">if</span> (<span class="charliteral">&#39;a&#39;</span> &lt;= secret.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[i] &amp;&amp; secret.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[i] &lt;= <span class="charliteral">&#39;z&#39;</span>)</div>
 <div class="line">                                base = <span class="charliteral">&#39;a&#39;</span>;</div>
-<div class="line">                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (isupper(secret.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[i]))</div>
+<div class="line">                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="charliteral">&#39;A&#39;</span> &lt;= secret.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[i] &amp;&amp; secret.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[i] &lt;= <span class="charliteral">&#39;Z&#39;</span>)</div>
 <div class="line">                                base = <span class="charliteral">&#39;A&#39;</span>;</div>
 <div class="line">                        <span class="keywordflow">else</span> {</div>
 <div class="line">                                ret = EINVAL;</div>
