@@ -218,14 +218,14 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line">        <span class="keywordtype">char</span> *first_name, *last_name;</div>
 <div class="line">        uint16_t term_end, term_start, year;</div>
 <div class="line"></div>
-<div class="line">        srandom((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)getpid());</div>
+<div class="line">        srand((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)getpid());</div>
 <div class="line">        ret = session-&gt;<a name="a11"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;index:presidents:term&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Pick 10 random years and read the data.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 10; i++) {</div>
-<div class="line">                year = (uint16_t)((random() % YEAR_SPAN) + YEAR_BASE);</div>
+<div class="line">                year = (uint16_t)((rand() % YEAR_SPAN) + YEAR_BASE);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, year);</div>
 <div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor)) == 0) {</div>
 <div class="line">                        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;last_name,</div>
