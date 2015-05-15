@@ -72,21 +72,24 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="textblock"><h1><a class="anchor" id="version_260"></a>
 Upgrading to Version 2.6.0</h1>
 <dl>
+<dt>LZ4 compression </dt>
+<dd><p class="startdd">The LZ4 compression support has been updated in this release in non-backward compatible ways; <b>tables and files compressed using LZ4 compression with WiredTiger 2.5.3 must be dumped then re-loaded using WiredTiger 2.6.0.</b> </p>
+<p class="enddd"></p>
+</dd>
+<dt>wiredtiger_open file manager configuration changes </dt>
+<dd><p class="startdd">The configuration settings related to file handle management have changed significantly in this release. If your application uses the file_manager configuration setting, please refer to the API documentation for the latest settings. </p>
+<p class="enddd"></p>
+</dd>
 <dt>Statistic change </dt>
 <dd><p class="startdd">The statistic "log read operations" was removed. The function that used that statistic was never called inside WiredTiger and was also removed. </p>
 <p class="enddd"></p>
 </dd>
-</dl>
-<hr/>
- <h1><a class="anchor" id="version_254"></a>
-Upgrading to Version 2.5.4</h1>
-<dl>
 <dt>File handle closing </dt>
 <dd><p class="startdd">In WiredTiger, a separate thread of control periodically reviews open objects, closing ones which have been idle for some period of time and discarding them from the cache. In previous WiredTiger releases, this review was independent of the number of open file handles. In this release, WiredTiger only reviews the file handles if at least 250 file handles are open. How often file handles are reviewed (the default is 30 seconds), and how many file handles must be opened before review is triggered, can be configured using the <code>file_manager</code> configuration values to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> call. </p>
 <p class="enddd"></p>
 </dd>
-<dt>LZ4 compression </dt>
-<dd><p class="startdd">The LZ4 compression support has been updated in this release in non-backward compatible ways; tables and files compressed using LZ4 compression should be dumped and re-loaded into a new database. </p>
+<dt>Table drop changes </dt>
+<dd><p class="startdd">There has been a functionality change to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) an object. ">WT_SESSION::drop</a> API when the <code>force</code> configuration option is included. The table is now dropped in the background and does not flush data from cache. </p>
 <p class="enddd"></p>
 </dd>
 </dl>

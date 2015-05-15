@@ -31,7 +31,6 @@ var index =
     [ "WiredTiger Change Log", "md_changelog.html", null ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
       [ "Upgrading to Version 2.6.0", "upgrading.html#version_260", null ],
-      [ "Upgrading to Version 2.5.4", "upgrading.html#version_254", null ],
       [ "Upgrading to Version 2.5.3", "upgrading.html#version_253", null ],
       [ "Upgrading to Version 2.5.2", "upgrading.html#version_252", null ],
       [ "Upgrading to Version 2.5.1", "upgrading.html#version_251", null ],
