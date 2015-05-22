@@ -140,6 +140,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6550c9079198955c5071583941c85bbf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a6550c9079198955c5071583941c85bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#a6550c9079198955c5071583941c85bbf">More...</a><br/></td></tr>
 <tr class="separator:a6550c9079198955c5071583941c85bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab15f6b5f81e6e98c9b6b41c451732873"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873">snapshot</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
+<tr class="memdesc:ab15f6b5f81e6e98c9b6b41c451732873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manage named snapshot transactions.  <a href="#ab15f6b5f81e6e98c9b6b41c451732873">More...</a><br/></td></tr>
+<tr class="separator:ab15f6b5f81e6e98c9b6b41c451732873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d108fab498cfddbb09ee23e3321a88d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">transaction_pinned_range</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, uint64_t *range)</td></tr>
 <tr class="memdesc:a1d108fab498cfddbb09ee23e3321a88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transaction ID range pinned by the session handle.  <a href="#a1d108fab498cfddbb09ee23e3321a88d">More...</a><br/></td></tr>
 <tr class="separator:a1d108fab498cfddbb09ee23e3321a88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -230,6 +233,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <td><code>name</code></td><td>name of the transaction for tracing and debugging.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>priority</code></td><td>priority of the transaction for resolving conflicts. Transactions with higher values are less likely to abort.</td><td>an integer between -100 and 100; default <code>0</code>. </td></tr>
+<tr>
+<td><code>snapshot</code></td><td>use a named, in-memory snapshot, see <a class="el" href="transactions.html#transaction_named_snapshots">Named Snapshots</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>sync</code></td><td>whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>.</td><td>a boolean flag; default empty. </td></tr>
 </table>
@@ -1096,6 +1101,70 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab15f6b5f81e6e98c9b6b41c451732873"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::snapshot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Manage named snapshot transactions. </p>
+<p>Use this API to create and drop named snapshots. Named snapshot transactions can be accessed via WT_CURSOR::open. See <a class="el" href="transactions.html#transaction_named_snapshots">Named Snapshots</a>.</p>
+<div class="fragment"><div class="line"></div>
+<div class="line">        <span class="comment">/* Create a named snapshot */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873">snapshot</a>(session, <span class="stringliteral">&quot;name=June01&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Open a transaction at a given snapshot */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, <span class="stringliteral">&quot;snapshot=June01&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Drop all named snapshots */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873">snapshot</a>(session, <span class="stringliteral">&quot;drop=(all)&quot;</span>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>drop = (</code></td><td>if non-empty, specifies which snapshots to drop. Where a group of snapshots are being dropped, the order is based on snapshot creation order not alphanumeric name order.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;all</code></td><td>drop all named snapshots.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;before</code></td><td>drop all snapshots up to but not including the specified name.</td><td>a string; default <code>true</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;names</code></td><td>drop specific named snapshots.</td><td>a list of strings; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;to</code></td><td>drop all snapshots up to and including the specified name.</td><td>a string; default <code>true</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
+<td><code>name</code></td><td>specify a name for the snapshot.</td><td>a string; default empty. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>

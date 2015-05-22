@@ -16,7 +16,8 @@ var programming =
       [ "Transactional API", "transactions.html#transactions_api", null ],
       [ "Implicit transactions", "transactions.html#transactions_implicit", null ],
       [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
-      [ "Isolation levels", "transactions.html#transaction_isolation", null ]
+      [ "Isolation levels", "transactions.html#transaction_isolation", null ],
+      [ "Named Snapshots", "transactions.html#transaction_named_snapshots", null ]
     ] ],
     [ "Error handling", "error_handling.html", null ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],

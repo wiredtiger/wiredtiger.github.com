@@ -16,7 +16,8 @@ var programming_lang_java =
       [ "Transactional API", "transactions_lang_java.html#transactions_api_lang_java", null ],
       [ "Implicit transactions", "transactions_lang_java.html#transactions_implicit_lang_java", null ],
       [ "Concurrency control", "transactions_lang_java.html#transactions_concurrency_lang_java", null ],
-      [ "Isolation levels", "transactions_lang_java.html#transaction_isolation_lang_java", null ]
+      [ "Isolation levels", "transactions_lang_java.html#transaction_isolation_lang_java", null ],
+      [ "Named Snapshots", "transactions_lang_java.html#transaction_named_snapshots_lang_java", null ]
     ] ],
     [ "Error handling  in Java", "error_handling_lang_java.html", null ],
     [ "Schema, Columns, Column Groups, Indices and Projections  in Java", "schema_lang_java.html", "schema_lang_java" ],

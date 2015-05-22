@@ -1,19 +1,20 @@
 var NAVTREEINDEX2 =
 {
+"extensions.html#extensions_loadable":[0,5,9,4,0],
 "extensions.html#extensions_loadable":[0,5,9,5,0],
 "extensions.html#extensions_loadable":[0,4,22,0],
 "extensions.html#extensions_loadable":[0,4,9,4,0],
 "extensions.html#extensions_loadable":[0,4,9,5,0],
+"extensions.html#extensions_local":[0,5,9,4,2],
 "extensions.html#extensions_local":[0,5,9,5,2],
 "extensions.html#extensions_local":[0,4,22,2],
 "extensions.html#extensions_local":[0,4,9,4,2],
 "extensions.html#extensions_local":[0,4,9,5,2],
-"extensions.html#extensions_local":[0,5,9,4,2],
-"extensions.html#extensions_recovery":[0,5,9,4,1],
 "extensions.html#extensions_recovery":[0,5,9,5,1],
 "extensions.html#extensions_recovery":[0,4,22,1],
 "extensions.html#extensions_recovery":[0,4,9,4,1],
 "extensions.html#extensions_recovery":[0,4,9,5,1],
+"extensions.html#extensions_recovery":[0,5,9,4,1],
 "file_formats.html":[0,4,7],
 "file_formats.html#file_formats_choice":[0,4,7,1],
 "file_formats.html#file_formats_compression":[0,4,7,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga94e4c63cd5cc0a714ede12431a8e228c":[1,0,267],
 "group__wt.html#ga94f3c473b10646f7ed3d047e275786db":[1,0,82],
 "group__wt.html#ga97423db84a9cf4119c0351c10d39b3b9":[1,0,106],
-"group__wt.html#ga976d439a0d290b96cc454ab2b7b02af8":[1,0,131],
-"group__wt.html#ga97c4acda5623ec001833a75ed12f8d1d":[1,0,130]
+"group__wt.html#ga976d439a0d290b96cc454ab2b7b02af8":[1,0,131]
 };

@@ -158,7 +158,13 @@ Isolation levels</h1>
 <div class="line">            conn, NULL, <span class="stringliteral">&quot;isolation=read_uncommitted&quot;</span>, &amp;session);</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">        <span class="comment">/* Re-configure a session for snapshot isolation. */</span></div>
 <div class="line">        ret = session-&gt;reconfigure(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);</div>
-</div><!-- fragment --></div></div><!-- contents -->
+</div><!-- fragment --> <h1><a class="anchor" id="transaction_named_snapshots"></a>
+Named Snapshots</h1>
+<p>Applications can create named snapshots by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> with a configuration that includes <code>"name=foo"</code>. This configuration creates a new named snapshot, as if a snapshot isolation transaction were started at the time of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> call.</p>
+<p>Subsequent transactions can be started "as of" that snapshot by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a> with a configuration that includes <code>snapshot=foo</code>. That transaction will run at snapshot isolation as if the transaction started at the time of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> call that created the snapshot.</p>
+<p>Named snapshots keep data pinned in cache as if a real transaction were running for the time that the named transaction is active. The resources associated with named snapshots should be released by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> with a configuration that includes <code>"drop="</code>. See <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> documentation for details of the semantics supported by the drop configuration.</p>
+<p>Named snapshots are not durable: they do not survive <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection. ">WT_CONNECTION::close</a>. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
