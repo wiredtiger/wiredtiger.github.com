@@ -88,20 +88,20 @@ var group__wt =
       [ "reconfigure", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4", null ]
     ] ],
     [ "WT_ASYNC_CALLBACK", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html", [
-      [ "notify", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html#a76fba7d69e5d387eee9efe9667afca54", null ]
+      [ "notify", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html#a8859d51cae96e48f79bbd8322ee347ea", null ]
     ] ],
     [ "WT_EVENT_HANDLER", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html", [
-      [ "handle_close", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a97c41f95e363a2a7aa9a9739be4d9ac8", null ],
-      [ "handle_error", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af26a6817fcc22499496c15b47c0ef788", null ],
-      [ "handle_message", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a4b8a4d66d1e4ae5c1e4a87b2eda618d9", null ],
-      [ "handle_progress", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a14a2a760c981563efb02555c0d0b267d", null ]
+      [ "handle_close", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e", null ],
+      [ "handle_error", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f", null ],
+      [ "handle_message", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1", null ],
+      [ "handle_progress", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b", null ]
     ] ],
     [ "WT_CONFIG_ITEM", "group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m", [
-      [ "WT_CONFIG_ITEM_STRING", "group__wt.html#a215d5ce41e53aa467dd940bace3f25f0aaf3e84e05814a538b630d161edba9c2d", null ],
-      [ "WT_CONFIG_ITEM_BOOL", "group__wt.html#a215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d", null ],
-      [ "WT_CONFIG_ITEM_ID", "group__wt.html#a215d5ce41e53aa467dd940bace3f25f0ad4cc6c35b608ec98a207cfd1d3a13922", null ],
-      [ "WT_CONFIG_ITEM_NUM", "group__wt.html#a215d5ce41e53aa467dd940bace3f25f0a0d98189cee0438cd6c91bec663233085", null ],
-      [ "WT_CONFIG_ITEM_STRUCT", "group__wt.html#a215d5ce41e53aa467dd940bace3f25f0aa60d34a8a1fb1c7468cbd747a117fa8b", null ],
+      [ "WT_CONFIG_ITEM_STRING", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0aaf3e84e05814a538b630d161edba9c2d", null ],
+      [ "WT_CONFIG_ITEM_BOOL", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d", null ],
+      [ "WT_CONFIG_ITEM_ID", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0ad4cc6c35b608ec98a207cfd1d3a13922", null ],
+      [ "WT_CONFIG_ITEM_NUM", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0a0d98189cee0438cd6c91bec663233085", null ],
+      [ "WT_CONFIG_ITEM_STRUCT", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0aa60d34a8a1fb1c7468cbd747a117fa8b", null ],
       [ "len", "group__wt.html#adff0f6e5a3f781f0228015e8336f1a14", null ],
       [ "str", "group__wt.html#aa0ce7d30a32600e16824966c638ee45f", null ],
       [ "type", "group__wt.html#a02883d8649c8f9cf4047ada5f7db9245", null ],
@@ -363,7 +363,13 @@ var group__wt =
     [ "WT_STAT_DSRC_SESSION_COMPACT", "group__wt.html#gae3a08df82d5b3571c61bed609980f845", null ],
     [ "WT_STAT_DSRC_SESSION_CURSOR_OPEN", "group__wt.html#ga2aaf905ea64ae1f27393b5a84582b3fc", null ],
     [ "WT_STAT_DSRC_TXN_UPDATE_CONFLICT", "group__wt.html#gab3edfe41012927e52357fc5a723b4e85", null ],
-    [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", null ],
+    [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", [
+      [ "WT_CONFIG_ITEM_STRING", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0aaf3e84e05814a538b630d161edba9c2d", null ],
+      [ "WT_CONFIG_ITEM_BOOL", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d", null ],
+      [ "WT_CONFIG_ITEM_ID", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0ad4cc6c35b608ec98a207cfd1d3a13922", null ],
+      [ "WT_CONFIG_ITEM_NUM", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0a0d98189cee0438cd6c91bec663233085", null ],
+      [ "WT_CONFIG_ITEM_STRUCT", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0aa60d34a8a1fb1c7468cbd747a117fa8b", null ]
+    ] ],
     [ "WT_ASYNC_OPTYPE", "group__wt.html#ga24152c6e1509c488192df653d511a82c", [
       [ "WT_AOP_NONE", "group__wt.html#gga24152c6e1509c488192df653d511a82ca84d609caa741779c25004dd4484b9660", null ],
       [ "WT_AOP_COMPACT", "group__wt.html#gga24152c6e1509c488192df653d511a82ca9847c3459bc2b0eaa527f91afdf84722", null ],

@@ -1,68 +1,68 @@
 var group__wt__ext =
 [
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", [
-      [ "compare", "struct_w_t___c_o_l_l_a_t_o_r.html#a9a6de866802dcd1a587cb1dbd69887df", null ],
-      [ "customize", "struct_w_t___c_o_l_l_a_t_o_r.html#a9345d19dc3df3e886da037181f9fac81", null ],
-      [ "terminate", "struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f", null ]
+      [ "compare", "struct_w_t___c_o_l_l_a_t_o_r.html#a8b187a50a9830bfb63390ee5bf9b6cd0", null ],
+      [ "customize", "struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0", null ],
+      [ "terminate", "struct_w_t___c_o_l_l_a_t_o_r.html#af85a41db9b4d5919303cdb8c80039717", null ]
     ] ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", [
-      [ "compress", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a87c339a3442b719896fa5cbe2c530843", null ],
-      [ "compress_raw", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a44483644eddbedd07f34e31c5beaf6b5", null ],
-      [ "decompress", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#acf978486348484d467bd4f4032cf3795", null ],
-      [ "pre_size", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a0ae8cd41e9f3d65187a5e0209a075f02", null ],
-      [ "terminate", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#aa7c0741f5e8b8c8f661911210b530fb9", null ]
+      [ "compress", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a075294c61c5d29abd55fc4603afe431f", null ],
+      [ "compress_raw", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ab19c8959b2fe1ee6abf1a51aac0c258f", null ],
+      [ "decompress", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a12e35ffbbe63b041c0571fb622b7f9da", null ],
+      [ "pre_size", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a8b72f263db4faea37d8362ebc4725990", null ],
+      [ "terminate", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ad23cc1486dc4c0cc51835cfaecb01a33", null ]
     ] ],
     [ "WT_DATA_SOURCE", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html", [
-      [ "checkpoint", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ada2d177d8eeb2ea334b9285d86b3a476", null ],
-      [ "compact", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a85e984645fb506a3d28881a26e7f79a0", null ],
-      [ "create", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf5e6a2d9c55c997af107bd4a5fb3a0c", null ],
-      [ "drop", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aeec4be1404f44dbe1f252bdaf1dc4557", null ],
-      [ "open_cursor", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a919c6b21ecaaffdbde671daab0440f71", null ],
-      [ "range_truncate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#afb903c629a7ae97494c670d90f40b71e", null ],
-      [ "rename", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a31c11e23e67bc774060a0619c1fb4b57", null ],
-      [ "salvage", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a14537b1218f8c98462ddcd6df83fd1d1", null ],
-      [ "terminate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ab92be74825433258ff5e3631873ce57f", null ],
-      [ "truncate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a97ab1fed33fffb8ead55ec854370e41a", null ],
-      [ "verify", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ad6487a12a6248371e43884cfef7715da", null ]
+      [ "checkpoint", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0ab6e469464fa132901f3292934ad26c", null ],
+      [ "compact", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a8eae397273ef872bc8da6743aa9824cb", null ],
+      [ "create", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a68491dde82170031c6526fe140ea39eb", null ],
+      [ "drop", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4569fa21343c2681357dedb4dd5facc1", null ],
+      [ "open_cursor", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e", null ],
+      [ "range_truncate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf57e661895f06a479dc359d51819d7c", null ],
+      [ "rename", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0522ef61652b275fa4aadab7fd1ac884", null ],
+      [ "salvage", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4f8baf9dba6309b6051f79c9cbbb10e2", null ],
+      [ "terminate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#af5cd0560bbb44e348178bd9823f1d714", null ],
+      [ "truncate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#af7747944c269ade792fda0bb381624c4", null ],
+      [ "verify", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ab398845845f8e36fe5a212e1c25f3426", null ]
     ] ],
     [ "WT_ENCRYPTOR", "struct_w_t___e_n_c_r_y_p_t_o_r.html", [
-      [ "customize", "struct_w_t___e_n_c_r_y_p_t_o_r.html#a493e4bf978e7da8b092421362a36ad92", null ],
-      [ "decrypt", "struct_w_t___e_n_c_r_y_p_t_o_r.html#af6972d321c055ffb64c9eac13dc54343", null ],
-      [ "encrypt", "struct_w_t___e_n_c_r_y_p_t_o_r.html#a20d4a77c81166fcb81e61e1e892e85d4", null ],
-      [ "sizing", "struct_w_t___e_n_c_r_y_p_t_o_r.html#a98bcb9a17a24477e764bfaeb1149273e", null ],
-      [ "terminate", "struct_w_t___e_n_c_r_y_p_t_o_r.html#afbbb5b735c395e918e7a3727f7a6d6bb", null ]
+      [ "customize", "struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a", null ],
+      [ "decrypt", "struct_w_t___e_n_c_r_y_p_t_o_r.html#abad5447ebeb99d06b9024df435cffc26", null ],
+      [ "encrypt", "struct_w_t___e_n_c_r_y_p_t_o_r.html#a0f0f363b689363d36ffce7fdf8a337ac", null ],
+      [ "sizing", "struct_w_t___e_n_c_r_y_p_t_o_r.html#ac965990f0d81b99fc10ec0b13b9df162", null ],
+      [ "terminate", "struct_w_t___e_n_c_r_y_p_t_o_r.html#ad9337c89e540be05d207995c33bbe993", null ]
     ] ],
     [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", [
-      [ "customize", "struct_w_t___e_x_t_r_a_c_t_o_r.html#ab4d736feccd18b3f6b2cea0967c3e7ea", null ],
-      [ "extract", "struct_w_t___e_x_t_r_a_c_t_o_r.html#af850a463cdbee1e4ce9a50f0b9c3d034", null ],
-      [ "terminate", "struct_w_t___e_x_t_r_a_c_t_o_r.html#ae0d82cb1e6841ada5d3e75f847411f79", null ]
+      [ "customize", "struct_w_t___e_x_t_r_a_c_t_o_r.html#aead7ade6a5c1ea31917ed8cd0ef841aa", null ],
+      [ "extract", "struct_w_t___e_x_t_r_a_c_t_o_r.html#a4db101f00fce80af9ebd4f29f56f7b6a", null ],
+      [ "terminate", "struct_w_t___e_x_t_r_a_c_t_o_r.html#ad73a6c0903ad726e029ec25201ef12ae", null ]
     ] ],
     [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", [
-      [ "notify", "struct_w_t___t_x_n___n_o_t_i_f_y.html#a37f71719969554d56292473eec533e80", null ]
+      [ "notify", "struct_w_t___t_x_n___n_o_t_i_f_y.html#a43ca2a5dc16287c8315279403fe371b1", null ]
     ] ],
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", [
-      [ "collate", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ad23ef32a93fd906df1502c61a80a0d3c", null ],
-      [ "collator_config", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a8c3d03e54c91796677cd99a02f7809f8", null ],
-      [ "config_get", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1f23ff3b17d86decfe92ba232f988fd6", null ],
-      [ "config_parser_open", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a31922e792668c912bfe45d9745e74d4e", null ],
-      [ "err_printf", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a83a12d3bf85f508b2f85c76ca2e9a039", null ],
-      [ "metadata_insert", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a4b0afec13a44fe1de5433c655a421ba0", null ],
-      [ "metadata_remove", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6081f75edd9a8014e7c23a237d926c37", null ],
-      [ "metadata_search", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#acf28a9af56690753897a6393e852cabb", null ],
-      [ "metadata_update", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a91af056b94f2401cc6a4c37c7103eff1", null ],
-      [ "msg_printf", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a460e65aa13990254a2cd83fe96d4865a", null ],
-      [ "scr_alloc", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a72da81054ac80fc95226a98ef094df2f", null ],
-      [ "scr_free", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aba236f198ae9227793fff13cff1ba159", null ],
-      [ "strerror", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6ce47b09058c9011a9a0daba8c2a1b8e", null ],
-      [ "struct_pack", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab76f3d59a5d23f88eab880a0c4f9ba81", null ],
-      [ "struct_size", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a9d6f902821f1cb4f2d887f9a7f0f50e0", null ],
-      [ "struct_unpack", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a66984eb018b0ed2eb2482750d8622515", null ],
-      [ "transaction_id", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7e50575fa13ffedfade19f67c59ea136", null ],
-      [ "transaction_isolation_level", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a52c99b55eb7e4459ebdc69d224f33b30", null ],
-      [ "transaction_notify", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7eef675c9cdf030f2f1d0110c4d79e71", null ],
-      [ "transaction_oldest", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ac7d3b24f8b9acb6716220931fd6f8bee", null ],
-      [ "transaction_visible", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6894b928a1c41f7d194a6dff9bc36a85", null ],
-      [ "version", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a85faecbadeb9c3ea2aac1eac7f6aa984", null ]
+      [ "collate", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab34ce4a2511c0fb370f3ee46d8ffd880", null ],
+      [ "collator_config", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7ed2b2297783ea88c0f513721ff54b7c", null ],
+      [ "config_get", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45", null ],
+      [ "config_parser_open", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a925298c80d5c887172e184ff67027ed6", null ],
+      [ "err_printf", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678", null ],
+      [ "metadata_insert", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f", null ],
+      [ "metadata_remove", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420", null ],
+      [ "metadata_search", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554", null ],
+      [ "metadata_update", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7c47cf55646794f9e5cc3d185128ef3b", null ],
+      [ "msg_printf", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a29c953af95d4c4c374bcc0310c3e62b1", null ],
+      [ "scr_alloc", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d85b1ce4631b7b4e09b735527b39b1e", null ],
+      [ "scr_free", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a13b8f3c923c8b0f8bb683ed3b192ee73", null ],
+      [ "strerror", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565", null ],
+      [ "struct_pack", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a353dd240d0f7b32910d1bb97c0762ee8", null ],
+      [ "struct_size", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af0256206a330cf5b8ec738c1ec60c6a9", null ],
+      [ "struct_unpack", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a4bff77f867b83e76a65426eabd9e6da3", null ],
+      [ "transaction_id", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a353f98d58bc7a2a1d9c64ff45f0d1cff", null ],
+      [ "transaction_isolation_level", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5a3766f959083f362e3668c40ac995c5", null ],
+      [ "transaction_notify", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a49ee72480a65f9494215047f2b04006b", null ],
+      [ "transaction_oldest", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a618a7f943c768d687f1cab74f234b41f", null ],
+      [ "transaction_visible", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a213698d35a1cdd67e5d83ec998056707", null ],
+      [ "version", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f", null ]
     ] ],
     [ "WT_TXN_ISO_READ_COMMITTED", "group__wt__ext.html#ga84ae45d6803da8dab05bb72c2e69aa0f", null ],
     [ "WT_TXN_ISO_READ_UNCOMMITTED", "group__wt__ext.html#ga604e4478bcef2026786b0826e34f5262", null ],

@@ -1,6 +1,6 @@
 var struct_w_t___c_o_l_l_a_t_o_r =
 [
-    [ "compare", "struct_w_t___c_o_l_l_a_t_o_r.html#a9a6de866802dcd1a587cb1dbd69887df", null ],
-    [ "customize", "struct_w_t___c_o_l_l_a_t_o_r.html#a9345d19dc3df3e886da037181f9fac81", null ],
-    [ "terminate", "struct_w_t___c_o_l_l_a_t_o_r.html#aeeed44d2caacca7bc93bc48e8da7ae3f", null ]
+    [ "compare", "struct_w_t___c_o_l_l_a_t_o_r.html#a8b187a50a9830bfb63390ee5bf9b6cd0", null ],
+    [ "customize", "struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0", null ],
+    [ "terminate", "struct_w_t___c_o_l_l_a_t_o_r.html#af85a41db9b4d5919303cdb8c80039717", null ]
 ];
