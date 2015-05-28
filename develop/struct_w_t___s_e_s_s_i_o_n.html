@@ -147,6 +147,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d108fab498cfddbb09ee23e3321a88d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">transaction_pinned_range</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, uint64_t *range)</td></tr>
 <tr class="memdesc:a1d108fab498cfddbb09ee23e3321a88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transaction ID range pinned by the session handle.  <a href="#a1d108fab498cfddbb09ee23e3321a88d">More...</a><br /></td></tr>
 <tr class="separator:a1d108fab498cfddbb09ee23e3321a88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61c8c3ad80d8228172db66ca70bd90fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">transaction_sync</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
+<tr class="memdesc:a61c8c3ad80d8228172db66ca70bd90fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a transaction to become synchronized.  <a href="#a61c8c3ad80d8228172db66ca70bd90fd">More...</a><br /></td></tr>
+<tr class="separator:a61c8c3ad80d8228172db66ca70bd90fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -443,7 +446,13 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -1244,6 +1253,50 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">range</td><td>the range of IDs pinned by this session. Zero if there is no active transaction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a61c8c3ad80d8228172db66ca70bd90fd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::transaction_sync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wait for a transaction to become synchronized. </p>
+<p>This method is only useful when <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is configured with the <code>transaction_sync</code> setting disabled. This method must be called when no transactions are active in the session.</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">transaction_sync</a>(session, NULL);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>timeout_ms</code></td><td>maximum amount of time to wait for background sync to complete in milliseconds. A value of zero disables the timeout and returns immediately. The default waits forever.</td><td>an integer; default <code></code>. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>

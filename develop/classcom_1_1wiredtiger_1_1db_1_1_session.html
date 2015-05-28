@@ -146,6 +146,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>strerror</b> (int e
 <tr class="memitem:aa9c59ebe27793654d9a6206f28344809"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#aa9c59ebe27793654d9a6206f28344809">snapshot</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:aa9c59ebe27793654d9a6206f28344809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manage named snapshot transactions.  <a href="#aa9c59ebe27793654d9a6206f28344809">More...</a><br /></td></tr>
 <tr class="separator:aa9c59ebe27793654d9a6206f28344809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ecc08c6b9d27bb108dd5bdac93b8a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a65ecc08c6b9d27bb108dd5bdac93b8a3">transaction_sync</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:a65ecc08c6b9d27bb108dd5bdac93b8a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a transaction to become synchronized.  <a href="#a65ecc08c6b9d27bb108dd5bdac93b8a3">More...</a><br /></td></tr>
+<tr class="separator:a65ecc08c6b9d27bb108dd5bdac93b8a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc61edbe05447e070a2d0729bd36a084"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#adc61edbe05447e070a2d0729bd36a084">open_cursor</a> (String uri, <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a> to_dup, String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:adc61edbe05447e070a2d0729bd36a084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a new cursor on a data source or duplicate an existing cursor.  <a href="#adc61edbe05447e070a2d0729bd36a084">More...</a><br /></td></tr>
 <tr class="separator:adc61edbe05447e070a2d0729bd36a084"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -415,7 +418,13 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -1069,6 +1078,40 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">range</td><td>the range of IDs pinned by this session. Zero if there is no active transaction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a65ecc08c6b9d27bb108dd5bdac93b8a3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Session.transaction_sync </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wait for a transaction to become synchronized. </p>
+<p>This method is only useful when <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is configured with the <code>transaction_sync</code> setting disabled. This method must be called when no transactions are active in the session.</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">transaction_sync</a>(session, NULL);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>timeout_ms</code></td><td>maximum amount of time to wait for background sync to complete in milliseconds. A value of zero disables the timeout and returns immediately. The default waits forever.</td><td>an integer; default <code></code>. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>
