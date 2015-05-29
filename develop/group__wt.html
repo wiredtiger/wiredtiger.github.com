@@ -1705,7 +1705,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or custom encryption engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949" title="Add an encryption function. ">WT_CONNECTION::add_encryptor</a>. See <a class="el" href="encryption.html">Encryptors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;secretkey</code></td><td>A string that is passed to the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function. It is never stored in clear text, so must be given to any subsequent wiredtiger_open calls to reopen the database. It must also be provided to any "wt" commands used with this database.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;secretkey</code></td><td>A string that is passed to the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function. It is never stored in clear text, so must be given to any subsequent <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> calls to reopen the database. It must also be provided to any "wt" commands used with this database.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>

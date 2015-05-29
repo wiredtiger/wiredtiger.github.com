@@ -565,6 +565,12 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>leaf_value_max</code></td><td>the largest value stored in a leaf node, in bytes. If set, values larger than the specified size are stored as overflow items (which may require additional I/O to access). If the size is larger than the maximum leaf page size, the page size is temporarily ignored when large values are written. The default is one-half the size of a newly split leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
+<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if log is enabled in <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>if false, this object has checkpoint-level durability.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>lsm = (</code></td><td>options only relevant for LSM data sources.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;auto_throttle</code></td><td>Throttle inserts into LSM trees if flushing to disk isn't keeping up.</td><td>a boolean flag; default <code>true</code>. </td></tr>
