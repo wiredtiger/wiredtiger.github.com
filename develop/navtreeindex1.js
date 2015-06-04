@@ -248,6 +248,6 @@ var NAVTREEINDEX1 =
 "examples.html":[5],
 "extensions.html":[0,5,9,4],
 "extensions.html":[0,4,22],
-"extensions.html":[0,5,9,5],
-"extensions.html":[0,4,9,4]
+"extensions.html":[0,4,9,4],
+"extensions.html":[0,4,9,5]
 };

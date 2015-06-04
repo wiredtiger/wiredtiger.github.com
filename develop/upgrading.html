@@ -27,7 +27,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.6.1</span>
+   &#160;<span id="projectnumber">Version 2.6.2</span>
    </div>
   </td>
  </tr>
@@ -70,7 +70,16 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_260"></a>
+<div class="textblock"><h1><a class="anchor" id="version_261"></a>
+Upgrading to Version 2.6.1</h1>
+<dl>
+<dt>Move the per transaction sync configuration </dt>
+<dd><p class="startdd">Move the sync configuration setting from <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a> to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a>. Change the configuration from a boolean to a string with options of on, off, background. Deprecated support for specifying the configuration to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a> is maintained for now. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ <h1><a class="anchor" id="version_260"></a>
 Upgrading to Version 2.6.0</h1>
 <dl>
 <dt>LZ4 compression </dt>
