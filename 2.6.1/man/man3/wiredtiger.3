@@ -1,0 +1,122 @@
+.TH "WiredTiger" 3 "Thu Jun 4 2015" "Version 2.6.1" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WiredTiger \- Getting Started with the API 
+WiredTiger applications will generally use the following classes to access and manage data:
+.PP
+.IP "\(bu" 2
+a \fBWT_CONNECTION\fP represents a connection to a database\&. Most applications will only open one connection to a database for each process\&. All methods in \fBWT_CONNECTION\fP are thread safe\&.
+.IP "\(bu" 2
+a \fBWT_SESSION\fP represents a context in which database operations are performed\&. Sessions are opened on a specified connection, and applications must open a single session for each thread accessing the database\&.
+.IP "\(bu" 2
+a \fBWT_CURSOR\fP represents a cursor over a collection of data\&. Cursors are opened in the context of a session (which may have an associated transaction), and can query and update records\&. In the common case, a cursor is used to access records in a table\&. However, cursors can be used on subsets of tables (such as a single column or a projection of multiple columns), as an interface to statistics, configuration data or application-specific data sources\&.
+.PP
+.PP
+Handles and operations are \fBconfigured using strings\fP, which keeps the set of methods in the API relatively small and makes the interface very similar regardless of the programming language used in the application\&. WiredTiger supports the C, C++, Java and Python programming languages (among others)\&.
+.PP
+By default, WiredTiger works as a traditional key/value store, where the keys and values are raw byte arrays accessed using a \fBWT_ITEM\fP structure\&. Keys and values may be up to (4GB - 512B) bytes in size, but depending on how \fBWT_SESSION::create\fP 'maximum item sizes' are configured, large key and value items will be stored on overflow pages\&.
+.PP
+WiredTiger also supports a \fBschema layer\fP so that keys and values types can be chosen from a list, or composite keys or values made up of columns with any combination of types\&. The size (4GB - 512B) byte limit on keys and values still applies\&.
+.PP
+All applications that use WiredTiger will be structured roughly as follows\&. The code below is taken from the complete example program \fBex_access\&.c\fP\&.
+.SH "Connecting to a database"
+.PP
+To access a database, first open a connection and create a session handle for the single thread accessing the database:
+.PP
+.PP
+.nf
+        WT_CONNECTION *conn;
+        WT_CURSOR *cursor;
+        WT_SESSION *session;
+        const char *key, *value;
+        int ret;
+
+        /*
+         * Create a clean test directory for this run of the test program if the
+         * environment variable isn't already set (as is done by make check)\&.
+         */
+        if (getenv("WIREDTIGER_HOME") == NULL) {
+                home = "WT_HOME";
+                ret = system("rm -rf WT_HOME && mkdir WT_HOME");
+        } else
+                home = NULL;
+
+        /* Open a connection to the database, creating it if necessary\&. */
+        if ((ret = wiredtiger_open(home, NULL, "create", &conn)) != 0 ||
+            (ret = conn->open_session(conn, NULL, NULL, &session)) != 0) {
+                fprintf(stderr, "Error connecting to %s: %s\n",
+                    home, wiredtiger_strerror(ret));
+                return (ret);
+        }
+.fi
+.PP
+ The configuration string \fC'create'\fP is passed to \fBwiredtiger_open\fP to indicate the database should be created if it does not already exist\&.
+.PP
+The code block above also shows simple error handling with \fBwiredtiger_strerror\fP (a function that returns a string describing an error code passed as its argument)\&. More complex error handling can be configured by passing an implementation of \fBWT_EVENT_HANDLER\fP to \fBwiredtiger_open\fP or \fBWT_CONNECTION::open_session\fP\&.
+.SH "Creating a table"
+.PP
+Create a table we can use to store data:
+.PP
+.PP
+.nf
+        ret = session->create(session,
+            "table:access", "key_format=S,value_format=S");
+.fi
+.PP
+ This call creates a table called \fC'access'\fP, configured to use strings for its key and value columns\&. (See \fBSchema, Columns, Column Groups, Indices and Projections\fP for more information on tables with other types of key and value columns\&.)
+.SH "Accessing data with cursors"
+.PP
+Now that we have a table, we open a cursor to perform some operations on it:
+.PP
+.PP
+.nf
+        ret = session->open_cursor(session,
+            "table:access", NULL, NULL, &cursor);
+.fi
+.PP
+ Here, the string \fC'table:access'\fP specifies that we are opening the cursor on the table named \fC'access'\fP\&.
+.PP
+Then we insert a new row into the table\&. The \fBWT_CURSOR::set_key\fP and \fBWT_CURSOR::set_value\fP calls put the application's key and value into the cursor, respectively\&. The \fBWT_CURSOR::insert\fP call creates a record containing that value and inserts it into the table\&.
+.PP
+.PP
+.nf
+        cursor->set_key(cursor, "key1");        /* Insert a record\&. */
+        cursor->set_value(cursor, "value1");
+        ret = cursor->insert(cursor);
+.fi
+.PP
+ Now we iterate through all of the records in the table, printing them out as we go:
+.PP
+.PP
+.nf
+        ret = cursor->reset(cursor);            /* Restart the scan\&. */
+        while ((ret = cursor->next(cursor)) == 0) {
+                ret = cursor->get_key(cursor, &key);
+                ret = cursor->get_value(cursor, &value);
+
+                printf("Got record: %s : %s\n", key, value);
+        }
+.fi
+.PP
+ Note that the key and value parts of the records are returned as C strings because the table was created that way (even if it was created by a previous run of the example)\&. No data extraction or conversion is required in the application\&.
+.PP
+Because the cursor was positioned in the table after the \fBWT_CURSOR::insert\fP call, we had to re-position it using the WT_CURSOR::first call; if we weren't using the cursor for the call to \fBWT_CURSOR::insert\fP above, this loop would simplify to:
+.PP
+.PP
+.nf
+while ((ret = cursor->next(cursor)) == 0) {
+        \&.\&.\&.
+}
+.fi
+.PP
+.SH "Closing handles"
+.PP
+Lastly, we close the connection, which implicitly closes the cursor and session handles:
+.PP
+.PP
+.nf
+        ret = conn->close(conn, NULL);
+.fi
+.PP
+
