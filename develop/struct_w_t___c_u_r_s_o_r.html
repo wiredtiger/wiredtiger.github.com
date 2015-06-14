@@ -133,7 +133,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aac90d9fbcc031570f924db55f8a1cee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a record and optionally update an existing record.  <a href="#aac90d9fbcc031570f924db55f8a1cee3">More...</a><br /></td></tr>
 <tr class="separator:aac90d9fbcc031570f924db55f8a1cee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444cdc0952e7f8d55d23173516c7037f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f">update</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
-<tr class="memdesc:a444cdc0952e7f8d55d23173516c7037f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update a record and optionally insert an existing record.  <a href="#a444cdc0952e7f8d55d23173516c7037f">More...</a><br /></td></tr>
+<tr class="memdesc:a444cdc0952e7f8d55d23173516c7037f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update an existing record and optionally insert a record.  <a href="#a444cdc0952e7f8d55d23173516c7037f">More...</a><br /></td></tr>
 <tr class="separator:a444cdc0952e7f8d55d23173516c7037f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbba24fe607fee519c4c9c4669cd4455"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
 <tr class="memdesc:abbba24fe607fee519c4c9c4669cd4455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a record.  <a href="#abbba24fe607fee519c4c9c4669cd4455">More...</a><br /></td></tr>
@@ -529,7 +529,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr>
 <td><code>append</code></td><td>append the value as a new record, creating a new record number key; valid only for cursors with record number keys.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>overwrite</code></td><td>configures whether the cursor's insert, update and remove methods check the existing state of the record. If <code>overwrite</code> is <code>false</code>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record. ">WT_CURSOR::insert</a> fails with <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> if the record exists, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update a record and optionally insert an existing record. ">WT_CURSOR::update</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record. ">WT_CURSOR::remove</a> fail with <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> if the record does not exist.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>overwrite</code></td><td>configures whether the cursor's insert, update and remove methods check the existing state of the record. If <code>overwrite</code> is <code>false</code>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record. ">WT_CURSOR::insert</a> fails with <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> if the record exists, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update an existing record and optionally insert a record. ">WT_CURSOR::update</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record. ">WT_CURSOR::remove</a> fail with <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> if the record does not exist.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -811,7 +811,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
       </table>
 </div><div class="memdoc">
 
-<p>Update a record and optionally insert an existing record. </p>
+<p>Update an existing record and optionally insert a record. </p>
 <p>If the cursor was configured with "overwrite=true" (the default), both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
