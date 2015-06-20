@@ -64,14 +64,13 @@ var programming_lang_java =
       [ "Incremental backup", "backup_lang_java.html#backup_incremental_lang_java", null ],
       [ "Backup and O_DIRECT", "backup_lang_java.html#backup_o_direct_lang_java", null ]
     ] ],
+    [ "Compaction  in Java", "compact_lang_java.html", null ],
     [ "Checkpoint durability  in Java", "checkpoint_lang_java.html", [
       [ "Automatic checkpoints", "checkpoint_lang_java.html#checkpoint_server_lang_java", null ],
       [ "Checkpoint cursors", "checkpoint_lang_java.html#checkpoint_cursors_lang_java", null ],
       [ "Checkpoint naming", "checkpoint_lang_java.html#checkpoint_naming_lang_java", null ],
       [ "Checkpoints and file compaction", "checkpoint_lang_java.html#checkpoint_compaction_lang_java", null ]
     ] ],
-    [ "Compaction  in Java", "compact_lang_java.html", null ],
-    [ "Log cursors  in Java", "cursor_log_lang_java.html", null ],
     [ "Commit-level durability  in Java", "durability_lang_java.html", [
       [ "Checkpoints", "durability_lang_java.html#durability_checkpoint_lang_java", null ],
       [ "Backups", "durability_lang_java.html#durability_backup_lang_java", null ],
@@ -86,6 +85,7 @@ var programming_lang_java =
     [ "Statistics  in Java", "statistics_lang_java.html", [
       [ "Statistics logging", "statistics_lang_java.html#statistics_log_lang_java", null ]
     ] ],
+    [ "Log cursors  in Java", "cursor_log_lang_java.html", null ],
     [ "Upgrading and downgrading databases", "upgrade.html", null ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Simulating workloads with wtperf", "wtperf.html", [

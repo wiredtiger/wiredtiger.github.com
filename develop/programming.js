@@ -66,14 +66,13 @@ var programming =
       [ "Incremental backup", "backup.html#backup_incremental", null ],
       [ "Backup and O_DIRECT", "backup.html#backup_o_direct", null ]
     ] ],
+    [ "Compaction", "compact.html", null ],
     [ "Checkpoint durability", "checkpoint.html", [
       [ "Automatic checkpoints", "checkpoint.html#checkpoint_server", null ],
       [ "Checkpoint cursors", "checkpoint.html#checkpoint_cursors", null ],
       [ "Checkpoint naming", "checkpoint.html#checkpoint_naming", null ],
       [ "Checkpoints and file compaction", "checkpoint.html#checkpoint_compaction", null ]
     ] ],
-    [ "Compaction", "compact.html", null ],
-    [ "Log cursors", "cursor_log.html", null ],
     [ "Commit-level durability", "durability.html", [
       [ "Checkpoints", "durability.html#durability_checkpoint", null ],
       [ "Backups", "durability.html#durability_backup", null ],
@@ -88,6 +87,7 @@ var programming =
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
     ] ],
+    [ "Log cursors", "cursor_log.html", null ],
     [ "Upgrading and downgrading databases", "upgrade.html", null ],
     [ "Extending WiredTiger", "extensions.html", [
       [ "Loadable extensions", "extensions.html#extensions_loadable", null ],
