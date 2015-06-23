@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed":[1,0,265],
 "group__wt.html#ga9efff35e3dd928596ac41c4200f7bb5c":[1,0,182],
 "group__wt.html#ga9f0f3fec551559d4bfef4175b4e2f629":[1,0,178],
 "group__wt.html#gaa0a189dbe2755d92eb90645bed73c7e7":[1,0,163],
@@ -136,8 +137,8 @@ var NAVTREEINDEX3 =
 "home.html":[0,7,0],
 "huffman.html":[0,4,7,3],
 "huffman.html":[0,5,7,3],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html":[2,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html#a4be4e275a37fc04a6789c4cf5e8a5fd9":[2,0,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html":[1,2,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "struct_w_t___c_o_l_l_a_t_o_r.html#a8b187a50a9830bfb63390ee5bf9b6cd0":[1,1,0,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0":[1,1,0,1],
 "struct_w_t___c_o_l_l_a_t_o_r.html#af85a41db9b4d5919303cdb8c80039717":[1,1,0,2],
-"struct_w_t___c_o_m_p_r_e_s_s_o_r.html":[1,1,1],
-"struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a075294c61c5d29abd55fc4603afe431f":[1,1,1,0]
+"struct_w_t___c_o_m_p_r_e_s_s_o_r.html":[1,1,1]
 };

@@ -116,6 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d24b02549009f78b7c6463da0247614"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *newuri, const char *config)</td></tr>
 <tr class="memdesc:a1d24b02549009f78b7c6463da0247614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#a1d24b02549009f78b7c6463da0247614">More...</a><br /></td></tr>
 <tr class="separator:a1d24b02549009f78b7c6463da0247614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a307800663ed211447a18c46863c28787"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787">reset</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
+<tr class="memdesc:a307800663ed211447a18c46863c28787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the session handle.  <a href="#a307800663ed211447a18c46863c28787">More...</a><br /></td></tr>
+<tr class="separator:a307800663ed211447a18c46863c28787"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3399430e474f7005bd5ea20e6ec7a8e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e">salvage</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:ab3399430e474f7005bd5ea20e6ec7a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salvage a file or table.  <a href="#ab3399430e474f7005bd5ea20e6ec7a8e">More...</a><br /></td></tr>
 <tr class="separator:ab3399430e474f7005bd5ea20e6ec7a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -988,6 +991,33 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
     <tr><td class="paramname">uri</td><td>the current URI of the object, such as <code>"table:old"</code> </td></tr>
     <tr><td class="paramname">newuri</td><td>the new URI of the object, such as <code>"table:new"</code> </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a307800663ed211447a18c46863c28787"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::reset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset the session handle. </p>
+<p>This will reset all cursors associated with this session and clear any buffers that each cursor held. After this the buffers associated with the session will be discarded. The session can be re-used immediately after this call returns. If a transaction is running on this session, then this call will take no action and return a busy error.</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787">reset</a>(session);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
   </table>
   </dd>
 </dl>

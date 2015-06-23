@@ -15,6 +15,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_session =
     [ "open_cursor", "classcom_1_1wiredtiger_1_1db_1_1_session.html#adc61edbe05447e070a2d0729bd36a084", null ],
     [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ab26e9fa8589c722544049adae0e70ad9", null ],
     [ "rename", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2acb7e037b0d4bf9c8d812d264376465", null ],
+    [ "reset", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2ce840af5f1ffff040dd097a2a3065e4", null ],
     [ "rollback_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a46ce42cc35d30590975054b12f8e2013", null ],
     [ "salvage", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a4687837f13f03699d9c295fdd4380398", null ],
     [ "snapshot", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aa9c59ebe27793654d9a6206f28344809", null ],
