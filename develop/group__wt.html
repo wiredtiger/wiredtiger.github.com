@@ -1807,7 +1807,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>transaction_sync = (</code></td><td>how to sync log records when the transaction commits.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>whether to sync the log on every commit by default, can be overridden by the <code>sync</code> setting to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>whether to sync the log on every commit by default, can be overridden by the <code>sync</code> setting to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;method</code></td><td>the method used to ensure log records are stable on disk, see <a class="el" href="tune_durability.html">Commit-level durability</a> for more information.</td><td>a string, chosen from the following options: <code>"dsync"</code>, <code>"fsync"</code>, <code>"none"</code>; default <code>fsync</code>. </td></tr>
 <tr>
