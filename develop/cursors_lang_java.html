@@ -147,6 +147,9 @@ Cursors and Transactions</h1>
 <p>At <code>read-committed</code> (the default) or <code>snapshot</code> isolation levels, committed changes from concurrent transactions become visible when no cursor is positioned. In other words, at these isolation levels, all cursors in a session read from a stable snapshot while any cursor in the session remains positioned.</p>
 <p>Cursor positions survive transaction boundaries, unless a transaction is rolled back. When a transaction is rolled-back either implicitly or explicitly, all cursors in the session are reset as if the Cursor.reset method was called, discarding any cursor position as well as any key and value.</p>
 <p>See <a class="el" href="transactions_lang_java.html">Transactions in Java</a> for more information.</p>
+<h1><a class="anchor" id="cursors_eviction_lang_java"></a>
+Cursors and Eviction</h1>
+<p>Cursor positions hold resources that can inhibit the eviction of memory pages. If a cursor is active on a page being considered for eviction, the eviction will defer until the cursor is moved or reset. To avoid this and to keep resources freed in general, an application should call Cursor.reset during times it does not need to keep the cursor positioned. A cursor that has been reset is not active and will not inhibit eviction.</p>
 <h1><a class="anchor" id="cursor_raw_lang_java"></a>
 Raw mode</h1>
 <p>Cursors can be configured for raw mode by specifying the <code>"raw"</code> config keyword to Session.open_cursor. In this mode, the methods Cursor.get_key, Cursor.get_value, Cursor.set_key and Cursor.set_value all take a single byte array in the variable-length argument list instead of a separate argument for each column.</p>

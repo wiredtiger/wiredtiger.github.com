@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"group__wt.html#ga9a456d42abcad60cd6e4b4dd2aa613c1":[1,0,223],
+"group__wt.html#ga9b00c2d4370db6216a7aaa7b7a6101d3":[1,0,81],
 "group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed":[1,0,265],
 "group__wt.html#ga9efff35e3dd928596ac41c4200f7bb5c":[1,0,182],
 "group__wt.html#ga9f0f3fec551559d4bfef4175b4e2f629":[1,0,178],
@@ -108,8 +110,8 @@ var NAVTREEINDEX3 =
 "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0aaf3e84e05814a538b630d161edba9c2d":[1,0,8,0],
 "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0ad4cc6c35b608ec98a207cfd1d3a13922":[1,0,262,2],
 "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0ad4cc6c35b608ec98a207cfd1d3a13922":[1,0,8,2],
-"group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d":[1,0,262,1],
 "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d":[1,0,8,1],
+"group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d":[1,0,262,1],
 "group__wt.html#gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44":[1,0,263,4],
 "group__wt.html#gga24152c6e1509c488192df653d511a82ca0b2111b2347684c8f0409673a898359c":[1,0,263,3],
 "group__wt.html#gga24152c6e1509c488192df653d511a82ca6b24879fd4e50bb05a4c53e443c5f390":[1,0,263,5],
@@ -147,8 +149,8 @@ var NAVTREEINDEX3 =
 "leveldb.html":[0,3],
 "leveldb.html#leveldb_build":[0,3,0],
 "leveldb.html#leveldb_caveats":[0,3,1],
-"license.html":[0,10],
 "license.html":[7],
+"license.html":[0,10],
 "license.html#license_distribution":[0,10,2],
 "license.html#license_leveldb":[0,10,1],
 "license.html#license_library":[0,10,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "struct_w_t___a_s_y_n_c___o_p.html#afff4b702e6a6364a7f36de4a1fa6b038":[1,0,3,10],
 "struct_w_t___c_o_l_l_a_t_o_r.html":[1,1,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html#a8b187a50a9830bfb63390ee5bf9b6cd0":[1,1,0,0],
-"struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0":[1,1,0,1],
-"struct_w_t___c_o_l_l_a_t_o_r.html#af85a41db9b4d5919303cdb8c80039717":[1,1,0,2],
-"struct_w_t___c_o_m_p_r_e_s_s_o_r.html":[1,1,1]
+"struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0":[1,1,0,1]
 };
