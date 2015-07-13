@@ -102,7 +102,7 @@ Cursor types</h1>
  <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> key, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> value)</code>,<br />
  see <a class="el" href="cursor_log.html">Log cursors</a> for details </td></tr>
 <tr>
-<td><code>metadata:</code></td><td>metadata cursor</td><td>key=<code>string</code>, value=<code>string</code>,<br />
+<td><code>metadata:[create]</code></td><td>metadata cursor (optionally only returning configuration strings for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> if <code>create</code> is appended</td><td>key=<code>string</code>, value=<code>string</code>,<br />
  see <a class="el" href="cursors.html#metadata">Reading WiredTiger Metadata</a> for details </td></tr>
 <tr>
 <td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database or data source statistics cursor</td><td>key=<code>int id</code>,<br />
@@ -181,7 +181,8 @@ Reading WiredTiger Metadata</h1>
 <p>To retrieve the list of database objects, open a cursor on the uri <code>metadata:</code>. Each returned key will be a database object and each returned value will be the information stored in the metadata for object named by the key.</p>
 <p>For example:</p>
 <div class="fragment"><div class="line">    cursor = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(<span class="stringliteral">&quot;metadata:&quot;</span>, null, null);</div>
-</div><!-- fragment --><p> The metadata cursor is read-only, and the metadata cannot be modified. </p>
+</div><!-- fragment --><p> To retrieve value strings that are valid arguments for calls to Session.create, open a cursor on <code>metadata:create</code>.</p>
+<p>The metadata cursor is read-only, and the metadata cannot be modified. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

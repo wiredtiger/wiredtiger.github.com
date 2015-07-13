@@ -96,7 +96,7 @@ Builtin data sources</h1>
  <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> key, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> value)</code>,<br />
  see <a class="el" href="cursor_log.html">Log cursors</a> for details </td></tr>
 <tr>
-<td><code>metadata:</code></td><td>metadata cursor</td><td>key=<code>string</code>, value=<code>string</code>,<br />
+<td><code>metadata:[create]</code></td><td>metadata cursor (optionally only returning configuration strings for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> if <code>create</code> is appended</td><td>key=<code>string</code>, value=<code>string</code>,<br />
  see <a class="el" href="cursors.html#metadata">Reading WiredTiger Metadata</a> for details </td></tr>
 <tr>
 <td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database or data source statistics cursor</td><td>key=<code>int id</code>,<br />
