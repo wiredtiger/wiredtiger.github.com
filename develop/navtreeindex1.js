@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a2bda605ed3c4c4b85a52e145ea809f61":[2,0,0,0,7,11],
+"classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a40c079dfd18dc12cbee5aa2702963062":[2,0,0,0,7,5],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a482d665107b933dbff88bf31666eb4ff":[2,0,0,0,7,9],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a4e0708d215876c955d03b62dece207aa":[2,0,0,0,7,13],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a5309de4da4db70fdd144d98c99f0a67b":[2,0,0,0,7,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "ex_pack_8c-example.html":[5,10],
 "ex_schema_8c-example.html":[5,11],
 "ex_stat_8c-example.html":[5,12],
-"ex_thread_8c-example.html":[5,13],
-"examples.html":[5],
-"extensions.html":[0,5,9,5]
+"ex_thread_8c-example.html":[5,13]
 };

@@ -60,6 +60,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_cursor =
     [ "remove", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a07781c4a66856b9e2aeb30e520335060", null ],
     [ "remove_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a8be6c66d2e7d05835b85686ea9f8abe8", null ],
     [ "reset", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a3e53838f94cdf00798c1a50c86bf1c50", null ],
+    [ "reset_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a1d05d97e259395b9efd8b9289b8336e9", null ],
     [ "search", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#ada3437e64263221f33a8f713eba72148", null ],
     [ "search_near", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#ae6951db2c5d9a2881df7c6e3d7043b0f", null ],
     [ "search_near_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a9111246400c8d3688315e02c02be7f4d", null ],
