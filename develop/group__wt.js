@@ -204,7 +204,6 @@ var group__wt =
     [ "WT_STAT_CONN_DH_SESSION_HANDLES", "group__wt.html#ga711a805006e520943f77365f4f45cff5", null ],
     [ "WT_STAT_CONN_DH_SESSION_SWEEPS", "group__wt.html#ga506b01e54296946c10cfb35aebb530ca", null ],
     [ "WT_STAT_CONN_FILE_OPEN", "group__wt.html#gacb44b88acd3b00bee3236f9196f1b22e", null ],
-    [ "WT_STAT_CONN_LOG_BUFFER_GROW", "group__wt.html#ga77081e15e5d3e09581a4a43d54ecffae", null ],
     [ "WT_STAT_CONN_LOG_BUFFER_SIZE", "group__wt.html#ga7111b3912e9e1162ef965d0637e27b34", null ],
     [ "WT_STAT_CONN_LOG_BYTES_PAYLOAD", "group__wt.html#gae4c40f5b7376197e313972dd4e337758", null ],
     [ "WT_STAT_CONN_LOG_BYTES_WRITTEN", "group__wt.html#ga58af084ac45e0367be4492c50ffaadce", null ],
