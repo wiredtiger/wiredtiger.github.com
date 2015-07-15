@@ -1028,7 +1028,7 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;close_handle_minimum</code></td><td>number of handles open before the file manager will look for handles to close.</td><td>an integer greater than or equal to 0; default <code>250</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it.</td><td>an integer between 1 and 100000; default <code>30</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it. A setting of 0 means that idle handles are not closed.</td><td>an integer between 0 and 100000; default <code>30</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;close_scan_interval</code></td><td>interval in seconds at which to check for files that are inactive and close them.</td><td>an integer between 1 and 100000; default <code>10</code>. </td></tr>
 <tr>
