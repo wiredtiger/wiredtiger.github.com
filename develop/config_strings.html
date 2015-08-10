@@ -81,7 +81,8 @@ Introduction</h1>
 </pre><p>Configuration strings are case-sensitive (for example, "true" is a valid boolean value, but "True" is not).</p>
 <p>More complex keys and values can be specified by quoting them with double quotes.</p>
 <p>For example, a configuration string is used when opening a connection to a database to specify if the database should be created and to set the cache size:</p>
-<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn);</div>
+<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
+<div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on)&quot;</span>, &amp;conn);</div>
 </div><!-- fragment --><p> Configuration strings are also used to configure the table schema. For example, to create a table that uses C language strings for keys and values:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
