@@ -23,7 +23,7 @@ var NAVTREEINDEX =
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a2bda605ed3c4c4b85a52e145ea809f61",
 "examples.html",
 "group__wt.html#ga97c4acda5623ec001833a75ed12f8d1d",
-"struct_w_t___c_o_l_l_a_t_o_r.html",
+"struct_w_t___a_s_y_n_c___o_p.html#afff4b702e6a6364a7f36de4a1fa6b038",
 "wtstats.html"
 ];
 

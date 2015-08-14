@@ -197,6 +197,7 @@ var group__wt =
     [ "WT_STAT_CONN_CURSOR_SEARCH", "group__wt.html#gade710ac8febe12adefabcfaa119a54f5", null ],
     [ "WT_STAT_CONN_CURSOR_SEARCH_NEAR", "group__wt.html#gabc97d6575ac2ceae69af88c4031e0541", null ],
     [ "WT_STAT_CONN_CURSOR_UPDATE", "group__wt.html#ga342eae1a0c6bbf8b7788f7e9fd5fc199", null ],
+    [ "WT_STAT_CONN_DH_CONN_HANDLE_COUNT", "group__wt.html#gafd921e3c75db6fd7d8660bf6207e95be", null ],
     [ "WT_STAT_CONN_DH_SESSION_HANDLES", "group__wt.html#ga711a805006e520943f77365f4f45cff5", null ],
     [ "WT_STAT_CONN_DH_SESSION_SWEEPS", "group__wt.html#ga506b01e54296946c10cfb35aebb530ca", null ],
     [ "WT_STAT_CONN_DH_SWEEP_CLOSE", "group__wt.html#gad2ab31f06e851a8a733a28698b0ac60c", null ],
