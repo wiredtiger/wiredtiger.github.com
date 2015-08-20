@@ -73,13 +73,18 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="textblock"><h1><a class="anchor" id="version_262"></a>
 Upgrading to Version 2.6.2</h1>
 <dl>
+<dt>Change to config_base=false </dt>
+<dd><p class="startdd">If <code>config_base=false</code> in the config passed directly to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>, any existing base configuration file will now be ignored. If an application was relying on this behavior, a connection will be opened with different settings after upgrading, which could lead to errors or unexpected behavior. </p>
+<dl>
 <dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a file or table. ">WT_SESSION.verify</a> </dt>
 <dd><p class="startdd">The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a file or table. ">WT_SESSION.verify</a> method in this release has a new configuration option, <code>strict</code>. By default, with <code>strict</code> set to <code>false</code>, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a file or table. ">WT_SESSION.verify</a> will no longer return an error for problems that do not impact the future use of the object (for example, if a leaked block were detected, the application can continue to run). <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a file or table. ">WT_SESSION.verify</a> will continue to output an error message whenever an error is detected, only the final return value is affected. This change allows applications to verify objects and continue if at all possible. Applications in development should configure <code>strict</code> to <code>true</code> in order to terminate the application whenever an error is detected. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
 <hr/>
- <h1><a class="anchor" id="version_261"></a>
+ </dd>
+</dl>
+<h1><a class="anchor" id="version_261"></a>
 Upgrading to Version 2.6.1</h1>
 <dl>
 <dt>Move the per transaction sync configuration </dt>

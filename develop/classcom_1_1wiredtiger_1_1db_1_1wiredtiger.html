@@ -314,6 +314,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:af85bd31a197e613f13b5c9fbcae69064 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af85bd31a197e613f13b5c9fbcae69064"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CURSOR_RESET</b></td></tr>
 <tr class="separator:af85bd31a197e613f13b5c9fbcae69064 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad75a32a8b59d1883682745dbb7802d77 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad75a32a8b59d1883682745dbb7802d77"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CURSOR_RESTART</b></td></tr>
+<tr class="separator:ad75a32a8b59d1883682745dbb7802d77 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37437b0f52819b138e59ea765558770a inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37437b0f52819b138e59ea765558770a"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CURSOR_SEARCH</b></td></tr>
 <tr class="separator:a37437b0f52819b138e59ea765558770a inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -758,6 +761,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_D
 <tr class="memitem:aa8d9d79a229cd3cc730f1c6cc1604d83 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8d9d79a229cd3cc730f1c6cc1604d83"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_DSRC_CURSOR_RESET</b></td></tr>
 <tr class="separator:aa8d9d79a229cd3cc730f1c6cc1604d83 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630abd506fea94d82e10369eaf694aa1 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a630abd506fea94d82e10369eaf694aa1"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_DSRC_CURSOR_RESTART</b></td></tr>
+<tr class="separator:a630abd506fea94d82e10369eaf694aa1 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab63f3c0584809e2f8117bfae19579970 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab63f3c0584809e2f8117bfae19579970"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_DSRC_CURSOR_SEARCH</b></td></tr>
 <tr class="separator:ab63f3c0584809e2f8117bfae19579970 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -939,7 +945,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <tr>
 <td><code>checkpoint_sync</code></td><td>flush files to stable storage when closing or writing checkpoints.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>config_base</code></td><td>write the base configuration file if creating the database, see <a class="el" href="database_config.html#config_base">WiredTiger.basecfg file</a> for more information.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>config_base</code></td><td>write the base configuration file if creating the database. If <code>false</code> in the config passed directly to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>, will ignore any existing base configuration file in addition to not creating one. See <a class="el" href="database_config.html#config_base">WiredTiger.basecfg file</a> for more information.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
