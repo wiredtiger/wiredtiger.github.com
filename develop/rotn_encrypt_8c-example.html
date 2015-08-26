@@ -164,8 +164,8 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
 <div class="line"></div>
 <div class="line">        wtext = encryptor-&gt;wtext;</div>
-<div class="line">        wtext-&gt;<a name="a3"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, session, <span class="stringliteral">&quot;rotn encryption: %s: %s&quot;</span>,</div>
-<div class="line">            msg, wtext-&gt;<a name="a4"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, err));</div>
+<div class="line">        (void)wtext-&gt;<a name="a3"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, session,</div>
+<div class="line">            <span class="stringliteral">&quot;rotn encryption: %s: %s&quot;</span>, msg, wtext-&gt;<a name="a4"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, err));</div>
 <div class="line">        <span class="keywordflow">return</span> (err);</div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -472,6 +472,10 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        free(encryptor);</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * rotn_configure --</span></div>
+<div class="line"><span class="comment"> *      WiredTiger no-op encryption configuration.</span></div>
+<div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">rotn_configure(ROTN_ENCRYPTOR *rotn_encryptor, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div>
 <div class="line">{</div>
