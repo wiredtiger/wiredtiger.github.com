@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line">        <a name="_a0"></a><a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> encryptor;         <span class="comment">/* Must come first */</span></div>
 <div class="line"></div>
-<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api;       <span class="comment">/* Extension API */</span></div>
+<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;        <span class="comment">/* Extension API */</span></div>
 <div class="line"></div>
 <div class="line">        <span class="keywordtype">int</span> rot_N;                      <span class="comment">/* rotN value */</span></div>
 <div class="line">        <span class="keywordtype">char</span> *keyid;                    <span class="comment">/* Saved keyid */</span></div>
@@ -147,10 +147,27 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        u_char *shift_forw;             <span class="comment">/* Encrypt shift data from secretkey */</span></div>
 <div class="line">        u_char *shift_back;             <span class="comment">/* Decrypt shift data from secretkey */</span></div>
 <div class="line">        <span class="keywordtype">size_t</span> shift_len;               <span class="comment">/* Length of shift* byte arrays */</span></div>
+<div class="line">        <span class="keywordtype">int</span> force_error;                <span class="comment">/* Force a decrypt error for testing */</span></div>
 <div class="line"></div>
 <div class="line">} ROTN_ENCRYPTOR;</div>
 <div class="line"><span class="preprocessor">#define CHKSUM_LEN      4</span></div>
 <div class="line"><span class="preprocessor">#define IV_LEN          16</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * rotn_error --</span></div>
+<div class="line"><span class="comment"> *      Display an error from this module in a standard way.</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">rotn_error(ROTN_ENCRYPTOR *encryptor, <a name="_a2"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keywordtype">int</span> err,</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *msg)</div>
+<div class="line">{</div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
+<div class="line"></div>
+<div class="line">        wtext = encryptor-&gt;wtext;</div>
+<div class="line">        wtext-&gt;<a name="a3"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, session, <span class="stringliteral">&quot;rotn encryption: %s: %s&quot;</span>,</div>
+<div class="line">            msg, wtext-&gt;<a name="a4"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, err));</div>
+<div class="line">        <span class="keywordflow">return</span> (err);</div>
+<div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * make_cksum --</span></div>
@@ -229,7 +246,7 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line"><span class="comment"> *      A simple encryption example that passes data through unchanged.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">rotn_encrypt(<a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> *encryptor, <a name="_a2"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div>
+<div class="line">rotn_encrypt(<a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> *encryptor, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div>
 <div class="line">    uint8_t *src, <span class="keywordtype">size_t</span> src_len,</div>
 <div class="line">    uint8_t *dst, <span class="keywordtype">size_t</span> dst_len,</div>
 <div class="line">    <span class="keywordtype">size_t</span> *result_lenp)</div>
@@ -286,13 +303,18 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        (void)session;          <span class="comment">/* Unused */</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * For certain tests, force an error we can recognize.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (rotn_encryptor-&gt;force_error)</div>
+<div class="line">                <span class="keywordflow">return</span> (-1000);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Make sure it is big enough.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        mylen = src_len - (CHKSUM_LEN + IV_LEN);</div>
-<div class="line">        <span class="keywordflow">if</span> (dst_len &lt; mylen) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Rotate: ENOMEM ERROR\n&quot;</span>);</div>
-<div class="line">                <span class="keywordflow">return</span> (ENOMEM);</div>
-<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> (dst_len &lt; mylen)</div>
+<div class="line">                <span class="keywordflow">return</span> (rotn_error(rotn_encryptor, session,</div>
+<div class="line">                    ENOMEM, <span class="stringliteral">&quot;decrypt buffer not big enough&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * !!! Most implementations would verify the checksum here.</span></div>
@@ -344,8 +366,8 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">{</div>
 <div class="line">        <span class="keyword">const</span> ROTN_ENCRYPTOR *orig;</div>
 <div class="line">        ROTN_ENCRYPTOR *rotn_encryptor;</div>
-<div class="line">        <a name="_a3"></a><a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> keyid, secret;</div>
-<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api;</div>
+<div class="line">        <a name="_a5"></a><a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> keyid, secret;</div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
 <div class="line">        <span class="keywordtype">size_t</span> i, len;</div>
 <div class="line">        <span class="keywordtype">int</span> ret, keyid_val;</div>
 <div class="line">        u_char base;</div>
@@ -354,7 +376,7 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        keyid_val = 0;</div>
 <div class="line"></div>
 <div class="line">        orig = (<span class="keyword">const</span> ROTN_ENCRYPTOR *)encryptor;</div>
-<div class="line">        wt_api = orig-&gt;wt_api;</div>
+<div class="line">        wtext = orig-&gt;wtext;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> ((rotn_encryptor = calloc(1, <span class="keyword">sizeof</span>(ROTN_ENCRYPTOR))) == NULL)</div>
 <div class="line">                <span class="keywordflow">return</span> (errno);</div>
@@ -364,12 +386,12 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Stash the keyid from the configuration string.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a name="a4"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(wt_api, session, encrypt_config,</div>
-<div class="line">            <span class="stringliteral">&quot;keyid&quot;</span>, &amp;keyid)) == 0 &amp;&amp; keyid.<a name="a5"></a><a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wtext-&gt;<a name="a6"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(wtext, session, encrypt_config,</div>
+<div class="line">            <span class="stringliteral">&quot;keyid&quot;</span>, &amp;keyid)) == 0 &amp;&amp; keyid.<a name="a7"></a><a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> != 0) {</div>
 <div class="line">                <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                 * In this demonstration, we expect keyid to be a number.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
-<div class="line">                <span class="keywordflow">if</span> ((keyid_val = atoi(keyid.<a name="a6"></a><a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>)) &lt; 0) {</div>
+<div class="line">                <span class="keywordflow">if</span> ((keyid_val = atoi(keyid.<a name="a8"></a><a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>)) &lt; 0) {</div>
 <div class="line">                        ret = EINVAL;</div>
 <div class="line">                        <span class="keywordflow">goto</span> err;</div>
 <div class="line">                }</div>
@@ -386,7 +408,7 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line"><span class="comment">         * We stash the secret key from the configuration string</span></div>
 <div class="line"><span class="comment">         * and build some shift bytes to make encryption/decryption easy.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(wt_api, session, encrypt_config,</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(wtext, session, encrypt_config,</div>
 <div class="line">            <span class="stringliteral">&quot;secretkey&quot;</span>, &amp;secret)) == 0 &amp;&amp; secret.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> != 0) {</div>
 <div class="line">                len = secret.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>;</div>
 <div class="line">                <span class="keywordflow">if</span> ((rotn_encryptor-&gt;secretkey = malloc(len + 1)) == NULL ||</div>
@@ -450,16 +472,58 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        free(encryptor);</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">rotn_configure(ROTN_ENCRYPTOR *rotn_encryptor, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div>
+<div class="line">{</div>
+<div class="line">        <a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> k, v;</div>
+<div class="line">        <a name="_a9"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> *config_parser;</div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;        <span class="comment">/* Extension API */</span></div>
+<div class="line">        <span class="keywordtype">int</span> ret, t_ret;</div>
+<div class="line"></div>
+<div class="line">        wtext = rotn_encryptor-&gt;wtext;</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Get the configuration string. */</span></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(wtext, NULL, config, <span class="stringliteral">&quot;config&quot;</span>, &amp;v)) != 0)</div>
+<div class="line">                <span class="keywordflow">return</span> (rotn_error(rotn_encryptor, NULL, ret,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_EXTENSION_API.config_get&quot;</span>));</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Step through the list of configuration options. */</span></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wtext-&gt;<a name="a10"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a925298c80d5c887172e184ff67027ed6">config_parser_open</a>(</div>
+<div class="line">            wtext, NULL, v.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>, v.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, &amp;config_parser)) != 0)</div>
+<div class="line">                <span class="keywordflow">return</span> (rotn_error(rotn_encryptor, NULL, ret,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_EXTENSION_API.config_parser_open&quot;</span>));</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = config_parser-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f">next</a>(config_parser, &amp;k, &amp;v)) == 0) {</div>
+<div class="line">                <span class="keywordflow">if</span> (strncmp(<span class="stringliteral">&quot;rotn_force_error&quot;</span>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>, k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>) == 0 &amp;&amp;</div>
+<div class="line">                    strlen(<span class="stringliteral">&quot;rotn_force_error&quot;</span>) == k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>) {</div>
+<div class="line">                        rotn_encryptor-&gt;force_error = v.<a name="a12"></a><a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a> == 0 ? 0 : 1;</div>
+<div class="line">                        <span class="keywordflow">continue</span>;</div>
+<div class="line">                }</div>
+<div class="line">                <span class="keywordflow">else</span> {</div>
+<div class="line">                        (void)config_parser-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(config_parser);</div>
+<div class="line">                        <span class="keywordflow">return</span> (rotn_error(rotn_encryptor, NULL, EINVAL,</div>
+<div class="line">                            <span class="stringliteral">&quot;unknown config key&quot;</span>));</div>
+<div class="line">                }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ((t_ret = config_parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(config_parser)) != 0)</div>
+<div class="line">                <span class="keywordflow">return</span> (rotn_error(rotn_encryptor, NULL, t_ret,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CONFIG_PARSER.close&quot;</span>));</div>
+<div class="line">        <span class="keywordflow">if</span> (ret != <a name="a14"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
+<div class="line">                <span class="keywordflow">return</span> (rotn_error(rotn_encryptor, NULL, ret,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CONFIG_PARSER.next&quot;</span>));</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">return</span> (0);</div>
+<div class="line">}</div>
+<div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * wiredtiger_extension_init --</span></div>
 <div class="line"><span class="comment"> *      A simple shared library encryption example.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keywordtype">int</span></div>
-<div class="line"><a name="a7"></a><a class="code" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3">wiredtiger_extension_init</a>(<a name="_a8"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div>
+<div class="line"><a name="a15"></a><a class="code" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3">wiredtiger_extension_init</a>(<a name="_a16"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div>
 <div class="line">{</div>
 <div class="line">        ROTN_ENCRYPTOR *rotn_encryptor;</div>
-<div class="line"></div>
-<div class="line">        (void)config;                           <span class="comment">/* Unused parameters */</span></div>
+<div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> ((rotn_encryptor = calloc(1, <span class="keyword">sizeof</span>(ROTN_ENCRYPTOR))) == NULL)</div>
 <div class="line">                <span class="keywordflow">return</span> (errno);</div>
@@ -476,11 +540,13 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        rotn_encryptor-&gt;encryptor.sizing = rotn_sizing;</div>
 <div class="line">        rotn_encryptor-&gt;encryptor.customize = rotn_customize;</div>
 <div class="line">        rotn_encryptor-&gt;encryptor.terminate = rotn_terminate;</div>
+<div class="line">        rotn_encryptor-&gt;wtext = connection-&gt;<a name="a17"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
 <div class="line"></div>
-<div class="line">        rotn_encryptor-&gt;wt_api = connection-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = rotn_configure(rotn_encryptor, config)) != 0)</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line"></div>
 <div class="line">                                                <span class="comment">/* Load the encryptor */</span></div>
-<div class="line">        <span class="keywordflow">return</span> (connection-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949">add_encryptor</a>(</div>
+<div class="line">        <span class="keywordflow">return</span> (connection-&gt;<a name="a18"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949">add_encryptor</a>(</div>
 <div class="line">            connection, <span class="stringliteral">&quot;rotn&quot;</span>, (<a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> *)rotn_encryptor, NULL));</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
