@@ -1796,6 +1796,8 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>&#160;&#160;&#160;&#160;name</code></td><td>the name of a cache that is shared between databases or <code>"none"</code> when no shared cache is configured.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
+<td><code>&#160;&#160;&#160;&#160;quota</code></td><td>maximum size of cache this database can be allocated from the shared cache. Defaults to the entire shared cache size.</td><td>an integer; default <code>0</code>. </td></tr>
+<tr>
 <td><code>&#160;&#160;&#160;&#160;reserve</code></td><td>amount of cache this database is guaranteed to have available from the shared cache. This setting is per database. Defaults to the chunk size.</td><td>an integer; default <code>0</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;size</code></td><td>maximum memory to allocate for the shared cache. Setting this will update the value if one is already set.</td><td>an integer between 1MB and 10TB; default <code>500MB</code>. </td></tr>
