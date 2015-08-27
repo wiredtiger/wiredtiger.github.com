@@ -200,17 +200,19 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"><span class="comment"> *      A simple walk of the log.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">simple_walk_log(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
+<div class="line">simple_walk_log(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keywordtype">int</span> count_min)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a class="code" href="group__wt.html#struct_w_t___l_s_n">WT_LSN</a> lsn;</div>
 <div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> logrec_key, logrec_value;</div>
 <div class="line">        uint64_t txnid;</div>
 <div class="line">        uint32_t fileid, opcount, optype, rectype;</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line">        <span class="keywordtype">int</span> count, ret;</div>
 <div class="line"></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;log:&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        count = 0;</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">                count++;</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;lsn.<a class="code" href="group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf">file</a>, &amp;lsn.<a class="code" href="group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c">offset</a>, &amp;opcount);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;txnid,</div>
 <div class="line">                    &amp;rectype, &amp;optype, &amp;fileid, &amp;logrec_key, &amp;logrec_value);</div>
@@ -220,6 +222,12 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        <span class="keywordflow">if</span> (ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                ret = 0;</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
+<div class="line">        <span class="keywordflow">if</span> (count &lt; count_min) {</div>
+<div class="line">                fprintf(stderr,</div>
+<div class="line">                    <span class="stringliteral">&quot;Expected minimum %d records, found %d\n&quot;</span>,</div>
+<div class="line">                    count_min, count);</div>
+<div class="line">                abort();</div>
+<div class="line">        }</div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
@@ -334,9 +342,10 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *wt_conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
-<div class="line">        <span class="keywordtype">int</span> i, record_count, ret;</div>
+<div class="line">        <span class="keywordtype">int</span> count_min, i, record_count, ret;</div>
 <div class="line">        <span class="keywordtype">char</span> cmd_buf[256], k[16], v[16];</div>
 <div class="line"></div>
+<div class="line">        count_min = 0;</div>
 <div class="line">        snprintf(cmd_buf, <span class="keyword">sizeof</span>(cmd_buf), <span class="stringliteral">&quot;rm -rf %s %s &amp;&amp; mkdir %s %s&quot;</span>,</div>
 <div class="line">            home1, home2, home1, home2);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = system(cmd_buf)) != 0) {</div>
@@ -351,6 +360,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"></div>
 <div class="line">        ret = wt_conn-&gt;<a name="a30"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(wt_conn, NULL, NULL, &amp;session);</div>
 <div class="line">        ret = session-&gt;<a name="a31"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, uri, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
+<div class="line">        count_min++;</div>
 <div class="line"></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, uri, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -362,6 +372,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, k);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, v);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
+<div class="line">                count_min++;</div>
 <div class="line">        }</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -375,9 +386,11 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
 <div class="line">        }</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
+<div class="line">        count_min++;</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
 <div class="line">        ret = session-&gt;<a name="a32"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a>(session, <span class="stringliteral">&quot;Wrote %d records&quot;</span>, record_count);</div>
+<div class="line">        count_min++;</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Close and reopen the connection so that the log ends up with</span></div>
 <div class="line"><span class="comment">         * a variety of records such as file sync and checkpoint.  We</span></div>
@@ -391,7 +404,7 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        ret = wt_conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(wt_conn, NULL, NULL, &amp;session);</div>
-<div class="line">        ret = simple_walk_log(session);</div>
+<div class="line">        ret = simple_walk_log(session, count_min);</div>
 <div class="line">        ret = walk_log(session);</div>
 <div class="line">        ret = wt_conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(wt_conn, NULL);</div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>

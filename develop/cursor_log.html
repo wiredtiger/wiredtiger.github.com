@@ -123,17 +123,19 @@ $(document).ready(function(){initNavTree('cursor_log.html','');});
 <div class="line"><span class="comment"> *      A simple walk of the log.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">simple_walk_log(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
+<div class="line">simple_walk_log(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keywordtype">int</span> count_min)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a class="code" href="group__wt.html#struct_w_t___l_s_n">WT_LSN</a> lsn;</div>
 <div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> logrec_key, logrec_value;</div>
 <div class="line">        uint64_t txnid;</div>
 <div class="line">        uint32_t fileid, opcount, optype, rectype;</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line">        <span class="keywordtype">int</span> count, ret;</div>
 <div class="line"></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;log:&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        count = 0;</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">                count++;</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;lsn.<a class="code" href="group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf">file</a>, &amp;lsn.<a class="code" href="group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c">offset</a>, &amp;opcount);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;txnid,</div>
 <div class="line">                    &amp;rectype, &amp;optype, &amp;fileid, &amp;logrec_key, &amp;logrec_value);</div>
@@ -143,6 +145,12 @@ $(document).ready(function(){initNavTree('cursor_log.html','');});
 <div class="line">        <span class="keywordflow">if</span> (ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                ret = 0;</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
+<div class="line">        <span class="keywordflow">if</span> (count &lt; count_min) {</div>
+<div class="line">                fprintf(stderr,</div>
+<div class="line">                    <span class="stringliteral">&quot;Expected minimum %d records, found %d\n&quot;</span>,</div>
+<div class="line">                    count_min, count);</div>
+<div class="line">                abort();</div>
+<div class="line">        }</div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> The log cursor's key can be used to search for specific records in the log (assuming the record still exists and has not been archived), by setting the key and calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Return the record matching the key. ">WT_CURSOR::search</a>. However, it is not possible to search for a specific operation within a log record, and the key's operation counter is ignored when the key is set. The result of a search for a log record with more than one operation is always the first operation in the log record.</p>
@@ -150,6 +158,7 @@ $(document).ready(function(){initNavTree('cursor_log.html','');});
 <div class="fragment"><div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, lsnsave.file, lsnsave.offset, 0);</div>
 </div><!-- fragment --><p> Log cursors are read-only, however applications can insert their own log records using <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9" title="Insert a WT_LOGREC_MESSAGE type record in the database log files (the database must be configured for...">WT_SESSION::log_printf</a>. Here is an example of adding an application record into the database log:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a>(session, <span class="stringliteral">&quot;Wrote %d records&quot;</span>, record_count);</div>
+<div class="line">        count_min++;</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
