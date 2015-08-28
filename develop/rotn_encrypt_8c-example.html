@@ -546,9 +546,10 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        rotn_encryptor-&gt;encryptor.terminate = rotn_terminate;</div>
 <div class="line">        rotn_encryptor-&gt;wtext = connection-&gt;<a name="a17"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = rotn_configure(rotn_encryptor, config)) != 0)</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = rotn_configure(rotn_encryptor, config)) != 0) {</div>
+<div class="line">                free(rotn_encryptor);</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line"></div>
+<div class="line">        }</div>
 <div class="line">                                                <span class="comment">/* Load the encryptor */</span></div>
 <div class="line">        <span class="keywordflow">return</span> (connection-&gt;<a name="a18"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949">add_encryptor</a>(</div>
 <div class="line">            connection, <span class="stringliteral">&quot;rotn&quot;</span>, (<a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> *)rotn_encryptor, NULL));</div>
