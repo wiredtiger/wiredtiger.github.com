@@ -276,11 +276,13 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"></div>
 <div class="line">                <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                 * If the operation is a put, replay it here on the backup</span></div>
-<div class="line"><span class="comment">                 * connection.  Note, we cheat by looking only for fileid 1</span></div>
-<div class="line"><span class="comment">                 * in this example.  The metadata is fileid 0.</span></div>
+<div class="line"><span class="comment">                 * connection.</span></div>
+<div class="line"><span class="comment">                 *</span></div>
+<div class="line"><span class="comment">                 * !!!</span></div>
+<div class="line"><span class="comment">                 * Minor cheat: the metadata is fileid 0, skip its records.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
-<div class="line">                <span class="keywordflow">if</span> (fileid == 1 &amp;&amp; rectype == <a name="a20"></a><a class="code" href="group__wt.html#gafa49e810f6f760c2bcd2721ec2934991">WT_LOGREC_COMMIT</a> &amp;&amp;</div>
-<div class="line">                    optype == <a name="a21"></a><a class="code" href="group__wt.html#ga696e6723bc1e3d4c3e5b5dde84fed73e">WT_LOGOP_ROW_PUT</a>) {</div>
+<div class="line">                <span class="keywordflow">if</span> (fileid != 0 &amp;&amp;</div>
+<div class="line">                    rectype == <a name="a20"></a><a class="code" href="group__wt.html#gafa49e810f6f760c2bcd2721ec2934991">WT_LOGREC_COMMIT</a> &amp;&amp; optype == <a name="a21"></a><a class="code" href="group__wt.html#ga696e6723bc1e3d4c3e5b5dde84fed73e">WT_LOGOP_ROW_PUT</a>) {</div>
 <div class="line">                        <span class="keywordflow">if</span> (!in_txn) {</div>
 <div class="line">                                ret = session2-&gt;<a name="a22"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session2,</div>
 <div class="line">                                    NULL);</div>
