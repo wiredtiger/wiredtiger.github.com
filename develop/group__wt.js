@@ -235,6 +235,7 @@ var group__wt =
     [ "WT_STAT_CONN_LOG_SLOT_CONSOLIDATED", "group__wt.html#ga2096ddaa58bcadc49e447752e8bf7b34", null ],
     [ "WT_STAT_CONN_LOG_SLOT_JOINS", "group__wt.html#ga406a7995cf1505cc5132b1f2398d665c", null ],
     [ "WT_STAT_CONN_LOG_SLOT_RACES", "group__wt.html#gad72653bf305cdda2de8d4480d8cf0a86", null ],
+    [ "WT_STAT_CONN_LOG_SLOT_SWITCH_BUSY", "group__wt.html#gac591ceed458e9590aad96c4ff117dd38", null ],
     [ "WT_STAT_CONN_LOG_SLOT_TRANSITIONS", "group__wt.html#ga7f6c11b6f52f0ec9be3975b1bfab053a", null ],
     [ "WT_STAT_CONN_LOG_SLOT_UNBUFFERED", "group__wt.html#ga20af41bced1df77fc7b3422d0fb0d7bc", null ],
     [ "WT_STAT_CONN_LOG_SYNC", "group__wt.html#ga147f0904f1d3406799c2895e5ca1d024", null ],
