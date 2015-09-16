@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:adf785ef53c16d9dcc77e22cc04c87b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#adf785ef53c16d9dcc77e22cc04c87b70">More...</a><br /></td></tr>
 <tr class="separator:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1843292630960309129dcfe00e1a3817"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817">log_flush</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
+<tr class="memdesc:a1843292630960309129dcfe00e1a3817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the log.  <a href="#a1843292630960309129dcfe00e1a3817">More...</a><br /></td></tr>
+<tr class="separator:a1843292630960309129dcfe00e1a3817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a504625d0b35da78f738d08530a409be9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *fmt,...)</td></tr>
 <tr class="memdesc:a504625d0b35da78f738d08530a409be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="message ">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called).  <a href="#a504625d0b35da78f738d08530a409be9">More...</a><br /></td></tr>
 <tr class="separator:a504625d0b35da78f738d08530a409be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -715,6 +718,48 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1843292630960309129dcfe00e1a3817"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::log_flush </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flush the log. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>sync</code></td><td>forcibly flush the log and wait for it to achieve the synchronization level specified. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting forces any buffered log records to be written to the file system. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>

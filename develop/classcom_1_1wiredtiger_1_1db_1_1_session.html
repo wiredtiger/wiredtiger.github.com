@@ -113,6 +113,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>strerror</b> (int e
 <tr class="memitem:a08aa0622c56a5839b7c38f420b1f2a85"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a08aa0622c56a5839b7c38f420b1f2a85">drop</a> (String name, String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a08aa0622c56a5839b7c38f420b1f2a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#a08aa0622c56a5839b7c38f420b1f2a85">More...</a><br /></td></tr>
 <tr class="separator:a08aa0622c56a5839b7c38f420b1f2a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8790893082bc6ca34ca288008971944"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#ac8790893082bc6ca34ca288008971944">log_flush</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:ac8790893082bc6ca34ca288008971944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the log.  <a href="#ac8790893082bc6ca34ca288008971944">More...</a><br /></td></tr>
+<tr class="separator:ac8790893082bc6ca34ca288008971944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a094ae49ac5f0533817961284c89b8327"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a094ae49ac5f0533817961284c89b8327">log_printf</a> (String fmt)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a094ae49ac5f0533817961284c89b8327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="message ">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called).  <a href="#a094ae49ac5f0533817961284c89b8327">More...</a><br /></td></tr>
 <tr class="separator:a094ae49ac5f0533817961284c89b8327"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -667,6 +670,38 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac8790893082bc6ca34ca288008971944"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Session.log_flush </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flush the log. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>sync</code></td><td>forcibly flush the log and wait for it to achieve the synchronization level specified. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting forces any buffered log records to be written to the file system. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
 </div>
 </div>
