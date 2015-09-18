@@ -456,7 +456,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
+<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1375,7 +1375,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>timeout_ms</code></td><td>maximum amount of time to wait for background sync to complete in milliseconds. A value of zero disables the timeout and returns immediately. The default waits forever.</td><td>an integer; default <code></code>. </td></tr>
+<td><code>timeout_ms</code></td><td>maximum amount of time to wait for background sync to complete in milliseconds. A value of zero disables the timeout and returns immediately.</td><td>an integer; default <code>1200000</code>. </td></tr>
 </table>
 </td></tr>
   </table>
