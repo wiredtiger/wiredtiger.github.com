@@ -227,6 +227,7 @@ var group__wt =
     [ "WT_STAT_CONN_LOG_MAX_FILESIZE", "group__wt.html#ga4ca1e771613773fb02c6d423415f6ffa", null ],
     [ "WT_STAT_CONN_LOG_PREALLOC_FILES", "group__wt.html#gab362909da24eb83d50c54ab66af0c5b4", null ],
     [ "WT_STAT_CONN_LOG_PREALLOC_MAX", "group__wt.html#ga6e3baa45ea3d4ba1d6b44922fa3b3864", null ],
+    [ "WT_STAT_CONN_LOG_PREALLOC_MISSED", "group__wt.html#ga3ba4d15248d39d9de345c8f808e1242f", null ],
     [ "WT_STAT_CONN_LOG_PREALLOC_USED", "group__wt.html#ga33ac35e64c48896c09905f7b5e7068d4", null ],
     [ "WT_STAT_CONN_LOG_RELEASE_WRITE_LSN", "group__wt.html#gae77508e252c61e05c5980615c9c5a642", null ],
     [ "WT_STAT_CONN_LOG_SCAN_RECORDS", "group__wt.html#ga01f2c3cc7b75a0c6548e25ecbc21864d", null ],
