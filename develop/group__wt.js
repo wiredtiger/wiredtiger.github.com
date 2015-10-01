@@ -245,6 +245,7 @@ var group__wt =
     [ "WT_STAT_CONN_LOG_SYNC_DIR", "group__wt.html#ga59e574bc77b6e3deff782718f8ba08f3", null ],
     [ "WT_STAT_CONN_LOG_WRITE_LSN", "group__wt.html#ga2592ffd12c2b47e2e41ff249a2cb648a", null ],
     [ "WT_STAT_CONN_LOG_WRITES", "group__wt.html#ga9157770ca2e9d3c9c201c190927f4ad3", null ],
+    [ "WT_STAT_CONN_LOG_ZERO_FILLS", "group__wt.html#gae97f1ace91fd5339337cb2f9300f8b97", null ],
     [ "WT_STAT_CONN_LSM_CHECKPOINT_THROTTLE", "group__wt.html#ga97c4acda5623ec001833a75ed12f8d1d", null ],
     [ "WT_STAT_CONN_LSM_MERGE_THROTTLE", "group__wt.html#ga976d439a0d290b96cc454ab2b7b02af8", null ],
     [ "WT_STAT_CONN_LSM_ROWS_MERGED", "group__wt.html#ga865e5dbf22bd284f5697222b8374b99e", null ],

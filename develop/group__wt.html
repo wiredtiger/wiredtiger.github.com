@@ -686,6 +686,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9157770ca2e9d3c9c201c190927f4ad3">WT_STAT_CONN_LOG_WRITES</a></td></tr>
 <tr class="memdesc:ga9157770ca2e9d3c9c201c190927f4ad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log write operations <br /></td></tr>
 <tr class="separator:ga9157770ca2e9d3c9c201c190927f4ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae97f1ace91fd5339337cb2f9300f8b97"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae97f1ace91fd5339337cb2f9300f8b97"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae97f1ace91fd5339337cb2f9300f8b97">WT_STAT_CONN_LOG_ZERO_FILLS</a></td></tr>
+<tr class="memdesc:gae97f1ace91fd5339337cb2f9300f8b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: log files manually zero-filled <br /></td></tr>
+<tr class="separator:gae97f1ace91fd5339337cb2f9300f8b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga97c4acda5623ec001833a75ed12f8d1d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga97c4acda5623ec001833a75ed12f8d1d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga97c4acda5623ec001833a75ed12f8d1d">WT_STAT_CONN_LSM_CHECKPOINT_THROTTLE</a></td></tr>
 <tr class="memdesc:ga97c4acda5623ec001833a75ed12f8d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: sleep for LSM checkpoint throttle. <br /></td></tr>
@@ -1825,6 +1829,8 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;recover</code></td><td>run recovery or error if recovery needs to run after an unclean shutdown.</td><td>a string, chosen from the following options: <code>"error"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;zero_fill</code></td><td>manually write zeroes into log files.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
