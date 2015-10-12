@@ -20,7 +20,7 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 
 ## LSM Perf [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-perf-lsm)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/)
 
-[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/jobwiredtiger-perf-lsm/plot)
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot/getPlot?index=3&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-lsm/plot)
