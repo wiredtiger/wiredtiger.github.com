@@ -22,9 +22,9 @@ var NAVTREEINDEX =
 ".html",
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a2bda605ed3c4c4b85a52e145ea809f61",
 "ex_pack_8c-example.html",
-"group__wt.html#ga80cf5aa57bacf9b09a0af3e06141f889",
-"schema_lang_java.html#schema_index_projections_lang_java",
-"upgrading.html#version_138"
+"group__wt.html#ga7fa6ef6ad4ec854de76565ebce34cede",
+"schema_lang_java.html#schema_examples_lang_java",
+"upgrading.html#version_13"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
