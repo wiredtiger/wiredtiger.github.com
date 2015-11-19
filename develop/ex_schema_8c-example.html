@@ -121,12 +121,16 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> POP_RECORD pop_data[] = {</div>
 <div class="line">        { <span class="stringliteral">&quot;AU&quot;</span>,  1900,    4000000 },</div>
+<div class="line">        { <span class="stringliteral">&quot;AU&quot;</span>,  1950,    8267337 },</div>
 <div class="line">        { <span class="stringliteral">&quot;AU&quot;</span>,  2000,   19053186 },</div>
 <div class="line">        { <span class="stringliteral">&quot;CAN&quot;</span>, 1900,    5500000 },</div>
+<div class="line">        { <span class="stringliteral">&quot;CAN&quot;</span>, 1950,   14011422 },</div>
 <div class="line">        { <span class="stringliteral">&quot;CAN&quot;</span>, 2000,   31099561 },</div>
 <div class="line">        { <span class="stringliteral">&quot;UK&quot;</span>,  1900,  369000000 },</div>
+<div class="line">        { <span class="stringliteral">&quot;UK&quot;</span>,  1950,   50127000 },</div>
 <div class="line">        { <span class="stringliteral">&quot;UK&quot;</span>,  2000,   59522468 },</div>
 <div class="line">        { <span class="stringliteral">&quot;USA&quot;</span>, 1900,   76212168 },</div>
+<div class="line">        { <span class="stringliteral">&quot;USA&quot;</span>, 1950,  150697361 },</div>
 <div class="line">        { <span class="stringliteral">&quot;USA&quot;</span>, 2000,  301279593 },</div>
 <div class="line">        { <span class="stringliteral">&quot;&quot;</span>, 0, 0 }</div>
 <div class="line">};</div>
@@ -135,7 +139,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">{</div>
 <div class="line">        POP_RECORD *p;</div>
 <div class="line">        <a name="_a0"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
-<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
+<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, *cursor2, *join_cursor;</div>
 <div class="line">        <a name="_a2"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *country;</div>
 <div class="line">        uint64_t recno, population;</div>
@@ -359,7 +363,38 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
+<div class="line">        <span class="comment">/* Open cursors needed by the join. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;join_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;cursor2);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* select values WHERE country == &quot;AU&quot; AND year &gt; 1900 */</span></div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
+<div class="line">        ret = session-&gt;<a name="a21"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, cursor,</div>
+<div class="line">            <span class="stringliteral">&quot;compare=eq,count=10&quot;</span>);</div>
+<div class="line">        cursor2-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor2, (uint16_t)1900);</div>
+<div class="line">        ret = cursor2-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor2);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, cursor2,</div>
+<div class="line">            <span class="stringliteral">&quot;compare=gt,count=10,strategy=bloom&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* List the values that are joined */</span></div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = join_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(join_cursor)) == 0) {</div>
+<div class="line">                ret = join_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(join_cursor, &amp;recno);</div>
+<div class="line">                ret = join_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(join_cursor, &amp;country, &amp;year,</div>
+<div class="line">                    &amp;population);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64, recno);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                    country, year, population);</div>
+<div class="line">        }</div>
+<div class="line">        ret = join_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(join_cursor);</div>
+<div class="line">        ret = cursor2-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor2);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        ret = conn-&gt;<a name="a22"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>

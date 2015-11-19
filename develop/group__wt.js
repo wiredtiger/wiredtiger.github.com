@@ -55,6 +55,7 @@ var group__wt =
       [ "compact", "struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69", null ],
       [ "create", "struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb", null ],
       [ "drop", "struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70", null ],
+      [ "join", "struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84", null ],
       [ "log_flush", "struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817", null ],
       [ "log_printf", "struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9", null ],
       [ "open_cursor", "struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d", null ],
@@ -391,6 +392,9 @@ var group__wt =
     [ "WT_STAT_DSRC_SESSION_COMPACT", "group__wt.html#gae3a08df82d5b3571c61bed609980f845", null ],
     [ "WT_STAT_DSRC_SESSION_CURSOR_OPEN", "group__wt.html#ga2aaf905ea64ae1f27393b5a84582b3fc", null ],
     [ "WT_STAT_DSRC_TXN_UPDATE_CONFLICT", "group__wt.html#gab3edfe41012927e52357fc5a723b4e85", null ],
+    [ "WT_STAT_JOIN_ACCESSES", "group__wt.html#gad81002a28039c3a3abd0791363bd92e9", null ],
+    [ "WT_STAT_JOIN_ACTUAL_COUNT", "group__wt.html#ga54b5c4f41bcee9937c4619b136efe3d9", null ],
+    [ "WT_STAT_JOIN_BLOOM_FALSE_POSITIVE", "group__wt.html#ga328dbfa667ae495091818314972a667c", null ],
     [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", [
       [ "WT_CONFIG_ITEM_STRING", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0aaf3e84e05814a538b630d161edba9c2d", null ],
       [ "WT_CONFIG_ITEM_BOOL", "group__wt.html#gga215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d", null ],

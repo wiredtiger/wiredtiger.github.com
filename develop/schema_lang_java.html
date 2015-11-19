@@ -222,12 +222,16 @@ Column groups</h1>
 <div class="line">        popData = <span class="keyword">new</span> ArrayList&lt;PopRecord&gt;();</div>
 <div class="line"></div>
 <div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;AU&quot;</span>,  (<span class="keywordtype">short</span>)1900,     4000000 ));</div>
+<div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;AU&quot;</span>,  (<span class="keywordtype">short</span>)1950,     8267337 ));</div>
 <div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;AU&quot;</span>,  (<span class="keywordtype">short</span>)2000,    19053186 ));</div>
 <div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;CAN&quot;</span>, (<span class="keywordtype">short</span>)1900,     5500000 ));</div>
+<div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;CAN&quot;</span>, (<span class="keywordtype">short</span>)1950,    14011422 ));</div>
 <div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;CAN&quot;</span>, (<span class="keywordtype">short</span>)2000,    31099561 ));</div>
 <div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;UK&quot;</span>,  (<span class="keywordtype">short</span>)1900,   369000000 ));</div>
+<div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;UK&quot;</span>,  (<span class="keywordtype">short</span>)1950,    50127000 ));</div>
 <div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;UK&quot;</span>,  (<span class="keywordtype">short</span>)2000,    59522468 ));</div>
 <div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;USA&quot;</span>, (<span class="keywordtype">short</span>)1900,    76212168 ));</div>
+<div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;USA&quot;</span>, (<span class="keywordtype">short</span>)1950,   150697361 ));</div>
 <div class="line">        popData.add(<span class="keyword">new</span> PopRecord(<span class="stringliteral">&quot;USA&quot;</span>, (<span class="keywordtype">short</span>)2000,   301279593 ));</div>
 <div class="line">    };</div>
 </div><!-- fragment --><p> If we primarily wanted to access the population information by itself, but still wanted population information included when accessing other information, we might store all of the columns in one file, and store an additional copy of the population column in another file:</p>
@@ -257,7 +261,7 @@ Column groups</h1>
 <div class="line"><span class="comment">         * for a particular country.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        cursor = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(<span class="stringliteral">&quot;colgroup:poptable:main&quot;</span>, null, null);</div>
-<div class="line">        cursor.putKeyLong(2);</div>
+<div class="line">        cursor.putKeyRecord(2);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor.<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>()) == 0) {</div>
 <div class="line">            country = cursor.getValueString();</div>
 <div class="line">            year = cursor.getValueShort();</div>
@@ -270,7 +274,7 @@ Column groups</h1>
 <div class="line"><span class="comment">         * population of a particular country.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        cursor = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(<span class="stringliteral">&quot;colgroup:poptable:population&quot;</span>, null, null);</div>
-<div class="line">        cursor.putKeyLong(2);</div>
+<div class="line">        cursor.putKeyRecord(2);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor.<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>()) == 0) {</div>
 <div class="line">            population = cursor.getValueLong();</div>
 <div class="line">            System.out.println(<span class="stringliteral">&quot;ID 2: population &quot;</span> + population);</div>

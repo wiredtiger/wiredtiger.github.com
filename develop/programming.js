@@ -87,6 +87,7 @@ var programming =
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
     ] ],
+    [ "Join cursors", "cursor_join.html", null ],
     [ "Log cursors", "cursor_log.html", null ],
     [ "Upgrading and downgrading databases", "upgrade.html", null ],
     [ "Extending WiredTiger", "extensions.html", [

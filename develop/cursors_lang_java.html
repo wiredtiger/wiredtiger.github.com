@@ -89,6 +89,8 @@ Cursor types</h1>
 <td><code>colgroup:&lt;table name&gt;:&lt;column group name&gt;</code></td><td>column group cursor</td><td>table key, column group value(s) </td></tr>
 <tr>
 <td><code>index:&lt;table name&gt;:&lt;index name&gt;[&lt;projection&gt;]</code></td><td>index cursor</td><td>key=index key, value=table value(s) with optional projection of columns </td></tr>
+<tr>
+<td><code>join:table:&lt;table name&gt;[&lt;projection&gt;]</code></td><td>join cursor</td><td>key=table key, value=table value(s) with optional projection of columns </td></tr>
 </table>
 <p>Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: </p><table class="doxtable">
 <tr>
@@ -123,6 +125,7 @@ Cursor types</h1>
 <li><a class="el" href="data_sources_lang_java.html">Data Sources in Java</a></li>
 <li><a class="el" href="cursors_lang_java.html#metadata_lang_java">Reading WiredTiger Metadata</a></li>
 <li><a class="el" href="cursor_log_lang_java.html">Log cursors in Java</a></li>
+<li><a class="el" href="cursor_join_lang_java.html">Join cursors in Java</a></li>
 </ul>
 <h1><a class="anchor" id="cursor_projections_lang_java"></a>
 Projections</h1>

@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:adf785ef53c16d9dcc77e22cc04c87b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) an object.  <a href="#adf785ef53c16d9dcc77e22cc04c87b70">More...</a><br /></td></tr>
 <tr class="separator:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0ab118df83d173c6a20eb1ea3f3fd84"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *join_cursor, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *ref_cursor, const char *config)</td></tr>
+<tr class="memdesc:ae0ab118df83d173c6a20eb1ea3f3fd84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Join a join cursor with a reference cursor.  <a href="#ae0ab118df83d173c6a20eb1ea3f3fd84">More...</a><br /></td></tr>
+<tr class="separator:ae0ab118df83d173c6a20eb1ea3f3fd84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1843292630960309129dcfe00e1a3817"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817">log_flush</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a1843292630960309129dcfe00e1a3817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the log.  <a href="#a1843292630960309129dcfe00e1a3817">More...</a><br /></td></tr>
 <tr class="separator:a1843292630960309129dcfe00e1a3817"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -721,6 +724,106 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 </div>
 </div>
+<a class="anchor" id="ae0ab118df83d173c6a20eb1ea3f3fd84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::join </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
+          <td class="paramname"><em>join_cursor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
+          <td class="paramname"><em>ref_cursor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Join a join cursor with a reference cursor. </p>
+<div class="fragment"><div class="line">        <span class="comment">/* Open cursors needed by the join. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;join_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;cursor2);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* select values WHERE country == &quot;AU&quot; AND year &gt; 1900 */</span></div>
+<div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
+<div class="line">        ret = cursor-&gt;search(cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, cursor,</div>
+<div class="line">            <span class="stringliteral">&quot;compare=eq,count=10&quot;</span>);</div>
+<div class="line">        cursor2-&gt;set_key(cursor2, (uint16_t)1900);</div>
+<div class="line">        ret = cursor2-&gt;search(cursor2);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, cursor2,</div>
+<div class="line">            <span class="stringliteral">&quot;compare=gt,count=10,strategy=bloom&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* List the values that are joined */</span></div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = join_cursor-&gt;next(join_cursor)) == 0) {</div>
+<div class="line">                ret = join_cursor-&gt;get_key(join_cursor, &amp;recno);</div>
+<div class="line">                ret = join_cursor-&gt;get_value(join_cursor, &amp;country, &amp;year,</div>
+<div class="line">                    &amp;population);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64, recno);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                    country, year, population);</div>
+<div class="line">        }</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">join_cursor</td><td>a cursor that was opened using a <code>"join:"</code> URI. It may not have been used for any operations other than other join calls. </td></tr>
+    <tr><td class="paramname">ref_cursor</td><td>either an index cursor having the same base table as the join_cursor, or a table cursor open on the same base table. The ref_cursor must be positioned.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The ref_cursor limits the results seen by iterating the join_cursor to table items referred to by the key in this index. The set of keys referred to is modified by the compare config option.</p>
+<p>Multiple join calls builds up a set of ref_cursors, and the results seen by iteration are the intersection of the cursor ranges participating in the join.</p>
+<p>After the join call completes, the ref_cursor cursor may not be used for any purpose other than get_key and get_value. Any other cursor method (e.g. next, prev,close) will fail. When the join_cursor is closed, the ref_cursor is made available for general use again. The application should close ref_cursor when finished with it, although not before the join_cursor is closed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>bloom_bit_count</code></td><td>the number of bits used per item for the bloom filter.</td><td>an integer between 2 and 1000; default <code>16</code>. </td></tr>
+<tr>
+<td><code>bloom_hash_count</code></td><td>the number of hash values per item for the bloom filter.</td><td>an integer between 2 and 100; default <code>8</code>. </td></tr>
+<tr>
+<td><code>compare</code></td><td>modifies the set of items to be returned so that the index key satisfies the given comparison relative to the key set in this cursor.</td><td>a string, chosen from the following options: <code>"eq"</code>, <code>"ge"</code>, <code>"gt"</code>, <code>"le"</code>, <code>"lt"</code>; default <code>"eq"</code>. </td></tr>
+<tr>
+<td><code>count</code></td><td>set an approximate count of the elements that would be included in the join. This is used in sizing the bloom filter, and also influences evaluation order for cursors in the join. When the count is equal for multiple bloom filters in a composition of joins, the bloom filter may be shared.</td><td>an integer; default <code></code>. </td></tr>
+<tr>
+<td><code>strategy</code></td><td>when set to bloom, a bloom filter is created and populated for this index. This has an up front cost but may reduce the number of accesses to the main table when iterating the joined cursor. The bloom setting requires that count be set.</td><td>a string, chosen from the following options: <code>"bloom"</code>, <code>"default"</code>; default empty. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_schema_8c-example.html#a21">ex_schema.c</a>.</dd>
+</dl>
+</div>
+</div>
 <a class="anchor" id="a1843292630960309129dcfe00e1a3817"></a>
 <div class="memitem">
 <div class="memproto">
@@ -881,6 +984,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <td><code>colgroup:&lt;table name&gt;:&lt;column group name&gt;</code></td><td>column group cursor</td><td>table key, column group value(s) </td></tr>
 <tr>
 <td><code>index:&lt;table name&gt;:&lt;index name&gt;[&lt;projection&gt;]</code></td><td>index cursor</td><td>key=index key, value=table value(s) with optional projection of columns </td></tr>
+<tr>
+<td><code>join:table:&lt;table name&gt;[&lt;projection&gt;]</code></td><td>join cursor</td><td>key=table key, value=table value(s) with optional projection of columns </td></tr>
 </table>
 <p>Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: </p><table class="doxtable">
 <tr>

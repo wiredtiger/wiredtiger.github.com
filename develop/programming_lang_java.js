@@ -85,6 +85,7 @@ var programming_lang_java =
     [ "Statistics  in Java", "statistics_lang_java.html", [
       [ "Statistics logging", "statistics_lang_java.html#statistics_log_lang_java", null ]
     ] ],
+    [ "Join cursors  in Java", "cursor_join_lang_java.html", null ],
     [ "Log cursors  in Java", "cursor_log_lang_java.html", null ],
     [ "Upgrading and downgrading databases", "upgrade.html", null ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
