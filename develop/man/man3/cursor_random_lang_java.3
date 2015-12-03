@@ -1,8 +1,6 @@
-.TH "cursor_random_lang_java" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "cursor_random_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 cursor_random_lang_java \- Cursor random in Java 
-The \fCnext_random\fP configuration to the Session\&.open_cursor method configures the cursor to return a pseudo-random record from a row-store object\&.
-.PP
-The ability to return a random record was added to support a particular application, and as a result has somewhat unusual semantics\&. First, the returned record may not be random at all in the case of objects with only a few rows (especially when the object has never been written to the backing store)\&. In such objects, the Cursor\&.next method for cursors configured with \fCnext_random\fP may return the same row on each call\&. Additionally, even in larger objects, the Cursor\&.next method usually returns the first record from a random page in the underlying file, not a random record from a random page\&. 
+The \fCnext_random\fP configuration to the Session\&.open_cursor method configures the cursor to return a pseudo-random record from a row-store object (the configuration is not supported on other types of objects)\&. 

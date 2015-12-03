@@ -1,4 +1,4 @@
-.TH "cursors_lang_java" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "cursors_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,7 +18,7 @@ methods to navigate within and iterate through the data
 See \fBCursor operations in Java\fP for a description of how to use cursors\&.
 .SH "Cursor types"
 .PP
-The following are the builtin basic cursor types: URITypeNotes \fCtable:<table name>[<projection>]\fPtable cursortable key, table value(s) with optional projection of columns \fCcolgroup:<table name>:<column group name>\fPcolumn group cursortable key, column group value(s) \fCindex:<table name>:<index name>[<projection>]\fPindex cursorkey=index key, value=table value(s) with optional projection of columns Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: URITypeNotes \fCbackup:\fPbackup cursorkey=\fCstring\fP, see \fBBackups\fP for details \fClog:\fPlog cursorkey=\fC(long fileID, long offset, int seqno)\fP,
+The following are the builtin basic cursor types: URITypeNotes \fCtable:<table name>[<projection>]\fPtable cursortable key, table value(s) with optional projection of columns \fCcolgroup:<table name>:<column group name>\fPcolumn group cursortable key, column group value(s) \fCindex:<table name>:<index name>[<projection>]\fPindex cursorkey=index key, value=table value(s) with optional projection of columns \fCjoin:table:<table name>[<projection>]\fPjoin cursorkey=table key, value=table value(s) with optional projection of columns Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: URITypeNotes \fCbackup:\fPbackup cursorkey=\fCstring\fP, see \fBBackups\fP for details \fClog:\fPlog cursorkey=\fC(long fileID, long offset, int seqno)\fP,
 .br
  value=\fC(uint64_t txnid, uint32_t rectype,
 .br
@@ -26,7 +26,7 @@ The following are the builtin basic cursor types: URITypeNotes \fCtable:<table n
 .br
  \fBWT_ITEM\fP key, \fBWT_ITEM\fP value)\fP,
 .br
- see \fBLog cursors\fP for details \fCmetadata:\fPmetadata cursorkey=\fCstring\fP, value=\fCstring\fP,
+ see \fBLog cursors\fP for details \fCmetadata:[create]\fPmetadata cursor (optionally only returning configuration strings for \fBWT_SESSION::create\fP if \fCcreate\fP is appendedkey=\fCstring\fP, value=\fCstring\fP,
 .br
  see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabase or data source statistics cursorkey=\fCint id\fP,
 .br
@@ -44,6 +44,8 @@ See the following for more details:
 \fBReading WiredTiger Metadata\fP
 .IP "\(bu" 2
 \fBLog cursors in Java\fP
+.IP "\(bu" 2
+\fBJoin cursors in Java\fP
 .PP
 .SH "Projections"
 .PP
@@ -79,6 +81,9 @@ At \fCread-committed\fP (the default) or \fCsnapshot\fP isolation levels, commit
 Cursor positions survive transaction boundaries, unless a transaction is rolled back\&. When a transaction is rolled-back either implicitly or explicitly, all cursors in the session are reset as if the Cursor\&.reset method was called, discarding any cursor position as well as any key and value\&.
 .PP
 See \fBTransactions in Java\fP for more information\&.
+.SH "Cursors and Eviction"
+.PP
+Cursor positions hold resources that can inhibit the eviction of memory pages\&. If a cursor is active on a page being considered for eviction, the eviction will defer until the cursor is moved or reset\&. To avoid this and to keep resources freed in general, an application should call Cursor\&.reset during times it does not need to keep the cursor positioned\&. A cursor that has been reset is not active and will not inhibit eviction\&.
 .SH "Raw mode"
 .PP
 Cursors can be configured for raw mode by specifying the \fC'raw'\fP config keyword to Session\&.open_cursor\&. In this mode, the methods Cursor\&.get_key, Cursor\&.get_value, Cursor\&.set_key and Cursor\&.set_value all take a single byte array in the variable-length argument list instead of a separate argument for each column\&.
@@ -129,4 +134,6 @@ For example:
     cursor = session\&.open_cursor("metadata:", null, null);
 .fi
 .PP
- The metadata cursor is read-only, and the metadata cannot be modified\&. 
+ To retrieve value strings that are valid arguments for calls to Session\&.create, open a cursor on \fCmetadata:create\fP\&.
+.PP
+The metadata cursor is read-only, and the metadata cannot be modified\&. 

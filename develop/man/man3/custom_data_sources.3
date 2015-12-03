@@ -1,4 +1,4 @@
-.TH "custom_data_sources" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "custom_data_sources" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -198,7 +198,7 @@ Applications can add their own configuration strings to WiredTiger methods using
 \fBWT_CONNECTION::configure_method\fP takes the following arguments:
 .PP
 .IP "\(bu" 2
-the name of the method being extended\&. For example, \fC'session\&.create'\fP would add new configuration strings to the \fBWT_SESSION::create\fP method, and \fC'session\&.open_cursor'\fP would add the configuration string to the \fBWT_SESSION::open_cursor\fP method\&.
+the method being extended, where the name is the concatenation of the handle name, a period and the method name\&. For example, \fC'WT_SESSION\&.create'\fP would add new configuration strings to the \fBWT_SESSION::create\fP method, and \fC'WT_SESSION\&.open_cursor'\fP would add the configuration string to the \fBWT_SESSION::open_cursor\fP method\&.
 .IP "\(bu" 2
 the object type of the data source being extended\&. For example, \fC'table:'\fP would extend the configuration arguments for table objects, and \fC'my_data:'\fP could be used to extend the configuration arguments for a data source with URIs beginning with the 'my_data' prefix\&. A NULL value for the object type implies all object types\&.
 .IP "\(bu" 2
@@ -215,21 +215,21 @@ For example, an application might add new boolean, integer, list or string type 
 .nf
         /* my_boolean defaults to true\&. */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor", NULL, "my_boolean=true", "boolean", NULL);
+            "WT_SESSION\&.open_cursor", NULL, "my_boolean=true", "boolean", NULL);
 .fi
 .PP
 .PP
 .nf
         /* my_integer defaults to 5\&. */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor", NULL, "my_integer=5", "int", NULL);
+            "WT_SESSION\&.open_cursor", NULL, "my_integer=5", "int", NULL);
 .fi
 .PP
 .PP
 .nf
         /* my_list defaults to "first" and "second"\&. */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor",
+            "WT_SESSION\&.open_cursor",
             NULL, "my_list=[first, second]", "list", NULL);
 .fi
 .PP
@@ -237,7 +237,7 @@ For example, an application might add new boolean, integer, list or string type 
 .nf
         /* my_string defaults to "name"\&. */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor", NULL, "my_string=name", "string", NULL);
+            "WT_SESSION\&.open_cursor", NULL, "my_string=name", "string", NULL);
 .fi
 .PP
  Once these additional configuration calls have returned, application calls to the \fBWT_SESSION::open_cursor\fP method could then include configuration strings such as \fCmy_boolean=false\fP, or \fCmy_integer=37\fP, or \fCmy_source=/home\fP\&.
@@ -252,7 +252,8 @@ For integers, either or both of a maximum or minimum value can be provided, so a
          * Limit the number of devices to between 1 and 30; the default is 5\&.
          */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor", NULL, "devices=5", "int", "min=1, max=30");
+            "WT_SESSION\&.open_cursor",
+            NULL, "devices=5", "int", "min=1, max=30");
 .fi
 .PP
  For lists and strings, a set of valid choices can also be provided, so an error will result if the application attempts to set the value to a string not listed as a valid choice:
@@ -264,7 +265,7 @@ For integers, either or both of a maximum or minimum value can be provided, so a
          * to /home\&.
          */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor", NULL, "target=/home", "string",
+            "WT_SESSION\&.open_cursor", NULL, "target=/home", "string",
             "choices=[/device, /home, /target]");
 .fi
 .PP
@@ -275,7 +276,7 @@ For integers, either or both of a maximum or minimum value can be provided, so a
          * /target; default to /mnt\&.
          */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor", NULL, "paths=[/mnt]", "list",
+            "WT_SESSION\&.open_cursor", NULL, "paths=[/mnt]", "list",
             "choices=[/device, /home, /mnt, /target]");
 .fi
 .PP

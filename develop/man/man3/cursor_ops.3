@@ -1,4 +1,4 @@
-.TH "cursor_ops" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "cursor_ops" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -109,7 +109,7 @@ cursor_search(WT_CURSOR *cursor)
 
         cursor->set_key(cursor, "foo");
 
-        if ((ret = cursor->search(cursor)) != 0)
+        if ((ret = cursor->search(cursor)) == 0)
                 ret = cursor->get_value(cursor, &value);
 
         return (ret);
@@ -202,11 +202,11 @@ After any cursor handle method failure, the cursor's position is undetermined\&.
 Applications that cannot re-position the cursor after failure must duplicate the cursor by calling \fBWT_SESSION::open_cursor\fP and passing the cursor as the \fCto_dup\fP parameter before calling a cursor method that will attempt to re-position the cursor\&. Cursor duplication is not supported for the backup, config and statistics cursor types\&.
 .SH "Cursor key/value memory scoping"
 .PP
-When applications pass pointers to \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP, which can be a \fBWT_ITEM\fP or a string, the application is required to keep the memory valid until the next operation that successfully positions the cursor\&. These operations are \fBWT_CURSOR::remove\fP, \fBWT_CURSOR::search\fP, \fBWT_CURSOR::search_near\fP and \fBWT_CURSOR::update\fP, but \fBdo not include\fP \fBWT_CURSOR::insert\fP, as it does not position the cursor\&.
+When applications pass a pointer (either to a \fBWT_ITEM\fP or a string), to \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP, WiredTiger does not copy the memory referenced by the pointer\&. For this reason, the application must keep the referenced memory unchanged and valid until the next operation that successfully positions the cursor, modifies the underlying data, or the cursor is reset or closed (discarding its resources)\&. The operations that position the cursor are \fBWT_CURSOR::next\fP, \fBWT_CURSOR::prev\fP, \fBWT_CURSOR::search\fP and \fBWT_CURSOR::search_near\fP; the operations that modify the underlying data are \fBWT_CURSOR::insert\fP, \fBWT_CURSOR::update\fP and \fBWT_CURSOR::remove\fP\&.
 .PP
-If such an operation fails (for example, due to a \fBWT_ROLLBACK\fP error), it may be retried without calling \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP again\&. That is, the cursor may still reference the application-supplied memory until it is successfully positioned\&.
+If a cursor operation fails (for example, due to a \fBWT_ROLLBACK\fP error), it may be retried without calling \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP again\&. That is, the cursor may still reference the application-supplied memory until the cursor is successfully positioned, underlying data is modified, or the cursor is closed or reset\&.
 .PP
-Any pointers returned by \fBWT_CURSOR::get_key\fP or \fBWT_CURSOR::get_value\fP are only valid until the cursor is positioned\&. These pointers may reference private WiredTiger data structures that must not be modified or freed by the application\&. If a longer scope is required, the application must make a copy of the memory before the cursor is positioned\&.
+Any pointers returned by \fBWT_CURSOR::get_key\fP or \fBWT_CURSOR::get_value\fP are only valid until a subsequent cursor call that successfully positions the cursor, modifies the underlying data, or the cursor is reset or closed\&. These pointers may reference private WiredTiger data structures that may not be modified or freed by the application\&. If a longer scope is required, the application must make a copy of the memory before the cursor is re-used, closed or reset\&.
 .PP
 The comments in this example code explain when the application can safely modify memory passed to \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP:
 .PP
@@ -218,61 +218,96 @@ The comments in this example code explain when the application can safely modify
                 cursor->set_value(cursor, valuebuf);
 
                 /*
-                 * The application must keep the key and value memory valid
-                 * until the next operation that positions the cursor\&.
+                 * The application must keep key and value memory valid until
+                 * the next operation that positions the cursor, modifies the
+                 * data, or resets or closes the cursor\&.
+                 *
                  * Modifying either the key or value buffers is not permitted\&.
                  */
 
                 /* Apply the operation (insert, update, search or remove)\&. */
                 if ((ret = op->apply(cursor)) != 0) {
-                        fprintf(stderr, "Error performing the operation: %s\n",
-                            session->strerror(session, ret));
+                        fprintf(stderr,
+                            "%s: error performing the operation: %s\n",
+                            op->op, session->strerror(session, ret));
                         return (ret);
                 }
 
                 /*
-                 * Except for WT_CURSOR::insert, the cursor has been positioned
-                 * and no longer references application memory, so application
-                 * buffers can be safely overwritten\&.
+                 * The cursor no longer references application memory, so
+                 * application buffers can be safely overwritten\&.
                  */
-                if (op->apply != cursor->insert) {
-                        strcpy(keybuf, "no key");
-                        strcpy(valuebuf, "no value");
-                }
+                strcpy(keybuf, "no key");
+                strcpy(valuebuf, "no value");
 
                 /*
                  * Check that get_key/value behave as expected after the
                  * operation\&.
                  */
-                if ((ret = cursor->get_key(cursor, &key)) != 0 ||
-                    (op->apply != cursor->remove &&
-                    (ret = cursor->get_value(cursor, &value)) != 0)) {
-                        fprintf(stderr, "Error in get_key/value: %s\n",
-                             session->strerror(session, ret));
-                        return (ret);
+                if (op->apply == cursor->insert) {
+                        /*
+                         * WT_CURSOR::insert no longer references application
+                         * memory, but as it does not position the cursor, it
+                         * doesn't reference memory owned by the cursor, either\&.
+                         */
+                        if ((ret = cursor->get_key(cursor, &key)) == 0 ||
+                            (ret = cursor->get_value(cursor, &value)) == 0) {
+                                fprintf(stderr,
+                                    "%s: error in s get_key/value: %s\n",
+                                     op->op, session->strerror(session, ret));
+                                return (ret);
+                        }
+                        continue;
+                }
+                if (op->apply == cursor->remove) {
+                        /*
+                         * WT_CURSOR::remove no longer references application
+                         * memory; as it does not position the cursor, it will
+                         * reference key memory owned by the cursor, but has no
+                         * value\&.
+                         */
+                        if ((ret = cursor->get_key(cursor, &key)) != 0 ||
+                            (ret = cursor->get_value(cursor, &value)) == 0) {
+                                fprintf(stderr,
+                                    "%s: error in get_key/value: %s\n",
+                                     op->op, session->strerror(session, ret));
+                                return (ret);
+                        }
+                } else /* search, update */{
+                        /*
+                         * WT_CURSOR::search and WT_CURSOR::update no longer
+                         * reference application memory; as they position the
+                         * cursor, they will reference key/value memory owned
+                         * by the cursor\&.
+                         */
+                        if ((ret = cursor->get_key(cursor, &key)) != 0 ||
+                            (ret = cursor->get_value(cursor, &value)) != 0) {
+                                fprintf(stderr,
+                                    "%s: error in get_key/value: %s\n",
+                                     op->op, session->strerror(session, ret));
+                                return (ret);
+                        }
                 }
 
                 /*
-                 * Except for WT_CURSOR::insert (which does not position the
-                 * cursor), the application now has pointers to memory owned
-                 * by the cursor\&.  Modifying the memory referenced by either
-                 * key or value is not permitted\&.
+                 * Modifying the memory referenced by either key or value is
+                 * not permitted\&.
+                 *
+                 * Check that the cursor's key and value are what we expect\&.
                  */
-
-                /* Check that the cursor's key and value are what we expect\&. */
-                if (op->apply != cursor->insert)
-                        if (key == keybuf ||
-                            (op->apply != cursor->remove &&
-                            value == valuebuf)) {
-                                fprintf(stderr,
-                                    "Cursor points at application memory!\n");
-                                return (EINVAL);
-                        }
+                if (key == keybuf ||
+                    (op->apply != cursor->remove && value == valuebuf)) {
+                        fprintf(stderr,
+                            "%s: cursor points at application memory!\n",
+                            op->op);
+                        return (EINVAL);
+                }
 
                 if (strcmp(key, op->key) != 0 ||
                     (op->apply != cursor->remove &&
                     strcmp(value, op->value) != 0)) {
-                        fprintf(stderr, "Unexpected key / value!\n");
+                        fprintf(stderr,
+                            "%s: unexpected key / value!\n", op->op);
                         return (EINVAL);
                 }
 .fi

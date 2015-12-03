@@ -1,4 +1,4 @@
-.TH "cursor_log" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "cursor_log" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -94,17 +94,19 @@ print_record(WT_LSN *lsn, uint32_t opcount,
  *      A simple walk of the log\&.
  */
 static int
-simple_walk_log(WT_SESSION *session)
+simple_walk_log(WT_SESSION *session, int count_min)
 {
         WT_CURSOR *cursor;
         WT_LSN lsn;
         WT_ITEM logrec_key, logrec_value;
         uint64_t txnid;
         uint32_t fileid, opcount, optype, rectype;
-        int ret;
+        int count, ret;
 
         ret = session->open_cursor(session, "log:", NULL, NULL, &cursor);
+        count = 0;
         while ((ret = cursor->next(cursor)) == 0) {
+                count++;
                 ret = cursor->get_key(cursor, &lsn\&.file, &lsn\&.offset, &opcount);
                 ret = cursor->get_value(cursor, &txnid,
                     &rectype, &optype, &fileid, &logrec_key, &logrec_value);
@@ -114,6 +116,12 @@ simple_walk_log(WT_SESSION *session)
         if (ret == WT_NOTFOUND)
                 ret = 0;
         ret = cursor->close(cursor);
+        if (count < count_min) {
+                fprintf(stderr,
+                    "Expected minimum %d records, found %d\n",
+                    count_min, count);
+                abort();
+        }
         return (ret);
 }
 .fi
@@ -132,6 +140,7 @@ Here is an example of setting the log cursor's key:
 .PP
 .nf
         ret = session->log_printf(session, "Wrote %d records", record_count);
+        count_min++;
 .fi
 .PP
 

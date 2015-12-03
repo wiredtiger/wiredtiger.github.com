@@ -1,4 +1,4 @@
-.TH "config_strings" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "config_strings" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -32,7 +32,8 @@ For example, a configuration string is used when opening a connection to a datab
 .PP
 .PP
 .nf
-        ret = wiredtiger_open(home, NULL, "create,cache_size=500M", &conn);
+        ret = wiredtiger_open(home, NULL,
+            "create,cache_size=5GB,log=(enabled,recover=on)", &conn);
 .fi
 .PP
  Configuration strings are also used to configure the table schema\&. For example, to create a table that uses C language strings for keys and values:

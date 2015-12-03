@@ -1,0 +1,49 @@
+.TH "encryption_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+encryption_lang_java \- Encryptors in Java 
+
+.SH "Overview of Encryption in WiredTiger"
+.PP
+\fBCustom encryption engines\fP may be used to extend WiredTiger\&. WiredTiger does not currently offer builtin support for any particular encryption algorithm\&. \fBExample encryption code\fP is provided to demonstrate how encryption extensions are created\&.
+.PP
+\fBWarning:\fP
+.RS 4
+The encryption infrastructure included in WiredTiger, when used with a strong encryption algorithm, is intended to protect data stored in files (that is, \fIencryption at rest\fP)\&. The table content (keys, values), the metadata pertaining to data (table, index, column names, and other configuration information) as well as the database log files are encrypted on disk\&. Decryption occurs when the data is read into memory; thus an attacker having the ability to directly read system memory will have access to unencrypted data\&. Many systems may also page memory to a backing disk under load\&. Access to any such \fIpaging\fP or \fIswap\fP devices must be considered when planning the security of a system\&.
+.RE
+.PP
+The encryption extension must be loaded in the \fCwiredtiger\&.open\fP call\&. See \fBExtending WiredTiger\fP for details on how extensions are loaded\&. Also, encryption is specified using \fCencryption=\fP in the configuration for the \fCwiredtiger\&.open\fP call\&. This configuration establishes the encryption algorithm and keys to be used for database log files and a subset of the WiredTiger metadata files\&. By default, this same encryption is also used for all data files\&. We call this the \fIsystem\fP encryption\&.
+.PP
+It is also possible to use different encryption options when individual data files are first created, using the \fCencryption=\fP configuration in the Session\&.create call\&. Such options override the default (\fIsystem\fP) encryption that was indicated in the \fCwiredtiger\&.open\fP call for the individual data file\&. It is possible to turn encryption off for individual files, to use a different encryptor, or to specify a different \fCkeyid\fP\&.
+.PP
+Overriding the system encryption for a table does not override the system encryption for indices on that table, nor does it override the system encryption for column groups specified on that table\&. Encryption for column groups and indices must specified when they are created, if they are to be different than the system encryption\&.
+.PP
+It is an error to specify encryption in a Session\&.create call when it was not specified in the \fCwiredtiger\&.open\fP call\&. This prevents accidental exposure of the file's data in log files, which would be written in the clear in such a scenario\&.
+.PP
+\fBWarning:\fP
+.RS 4
+When using separate keys for individual data files or tables, the key used for the \fIsystem\fP encryption continues to have fundamental importance\&. The database log, protected by the \fIsystem\fP encryption, contains a shared stream of changes to all data files\&. Thus, if the \fIsystem\fP key is exposed, even when per-file keys are not exposed, an attacker can read database log files, and hence has access to data in individual files\&.
+.RE
+.PP
+.SH "Encryption keyid and secretkey"
+.PP
+Two parameters, \fCkeyid\fP and \fCsecretkey\fP, may be specified when configuring encryption for \fCwiredtiger\&.open\fP to allow the possibility of varying the algorithm according to different keys\&.
+.PP
+The configuration parameter \fCencryption=(keyid=\fIidentifier\fP)\fP may be used in \fCwiredtiger\&.open\fP or Session\&.create calls\&. This is intended to reference a key stored using a Key Management Solution (KMS)\&. The \fCkeyid\fP given to \fCwiredtiger\&.open\fP is stored in the clear in WiredTiger configuration files; it should never contain sensitive information\&. As an example, with a \fCkeyid\fP of \fC'customerABC'\fP, the encryptor would consult the KMS to return a key previously stored for \fC'customerABC'\fP\&. The encryptor will use the returned key when applying the encryption\&. To effectively use the \fCkeyid\fP, a custom encryptor must implement the \fBWT_ENCRYPTOR::customize\fP callback\&. It is during \fCcustomize\fP that the encryptor has an opportunity to use the \fCkeyid\fP to fetch the actual key\&. The \fCcustomize\fP function is called on the first use of a \fCkeyid\fP, and the same \fIcustomized\fP encryptor will be used with each use of the same \fCkeyid\fP\&.
+.PP
+The configuration parameter \fCencryption=(secretkey)\fP is used only in the \fCwiredtiger\&.open\fP call\&. The value of the secretkey is never stored on disk in any form, so it must always be provided when WiredTiger is reopened (again, with the \fCwiredtiger\&.open\fP call)\&. The secretkey is available to the encryptor during the \fBWT_ENCRYPTOR::customize\fP callback, during which the encryptor may be \fIcustomized\fP to keep the secretkey or a transformation of it for use during the \fBWT_ENCRYPTOR::encrypt\fP and \fBWT_ENCRYPTOR::decrypt\fP callbacks\&.
+.PP
+If a \fCsecretkey\fP is used, it must be provided using the \fC-E\fP option when using the \fCwt\fP utility\&. Specifying \fCkeyid\fP is not needed with the \fCwt\fP utility, as the \fCkeyid\fP is stored in the clear on disk by WiredTiger\&. Any additional \fCkeyid\fP values needed to decrypt data files are stored in WiredTiger metadata using the system encryptor\&.
+.SH "Custom encryption engines"
+.PP
+WiredTiger may be extended by adding custom encryption engines that we call \fIencryptors\fP\&. Custom encryptors must be coded in the C language\&. Once packaged, they can be used in any language\&.
+.PP
+See \fBExtending WiredTiger\fP for general details on extending WiredTiger, and see \fBWT_ENCRYPTOR\fP for the encryptor interface\&.
+.PP
+Custom encryptors are registered by calling Connection\&.add_encryptor, this creates an encryptor name that may be referenced using the \fCencryption=(name=\&.\&.\&.\fP configuration string in the \fCwiredtiger\&.open\fP or Session\&.create call\&.
+.SH "Encryption examples"
+.PP
+There are two kinds of example code with overlapping functionality\&. A simple, self contained encryption example is in ex_encrypt\&.java\&. This example includes a small encryptor that rotates letters in the alphabet by a fixed amount, based on the value of \fCkeyid\fP\&. This example also shows how encryption is configured within an application\&. The second set of examples are in \fCext/encryptors\fP\&. These are encryptors only (no application level code), showing how encryptors might be packaged in a loadable shared library\&. \fBnop_encrypt\&.c\fP merely copies its input to its output\&. \fBrotn_encrypt\&.c\fP is an extended version of the example that rotates the alphabet\&. It adds a twist in that a \fCsecretkey\fP can be specified, changing the rotation per letter\&. The Python test suite uses the rotn encryptor to help test the encryption framework\&.
+.PP
+Please note that these samples are for demonstration use only\&. They do not provide any security\&. 

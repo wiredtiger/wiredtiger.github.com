@@ -1,4 +1,4 @@
-.TH "programming" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "programming" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,6 +31,8 @@ We follow SQL terminology: a database is set of tables managed together\&. Table
 \fBFile formats and compression\fP
 .IP "\(bu" 2
 \fBCompressors\fP
+.IP "\(bu" 2
+\fBEncryptors\fP
 .PP
 .PP
 .SS "Programming notes"
@@ -50,17 +52,21 @@ We follow SQL terminology: a database is set of tables managed together\&. Table
 .IP "\(bu" 2
 \fBBackups\fP
 .IP "\(bu" 2
-\fBCheckpoint durability\fP
-.IP "\(bu" 2
 \fBCompaction\fP
 .IP "\(bu" 2
-\fBLog cursors\fP
+\fBCheckpoint durability\fP
 .IP "\(bu" 2
 \fBCommit-level durability\fP
+.IP "\(bu" 2
+\fBNamed Snapshots\fP
 .IP "\(bu" 2
 \fBPer-process shared caches\fP
 .IP "\(bu" 2
 \fBStatistics\fP
+.IP "\(bu" 2
+\fBJoin cursors\fP
+.IP "\(bu" 2
+\fBLog cursors\fP
 .IP "\(bu" 2
 \fBUpgrading and downgrading databases\fP
 .PP

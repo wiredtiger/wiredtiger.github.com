@@ -1,0 +1,45 @@
+.TH "cursor_join_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cursor_join_lang_java \- Join cursors in Java 
+Join cursors provide a way to iterate over a subset of a table, where the subset is specified by relationships with reference cursors\&.
+.PP
+A join cursor is created with Session\&.open_cursor using a \fC'join:table:<name>'\fP URI prefix\&. Then reference cursors are positioned to keys on indices and joined to the join cursor using Session\&.join calls\&. The result is a join cursor that can be iterated to satisfy the join equation\&.
+.PP
+Here is an example using join cursors:
+.PP
+.PP
+.nf
+        /* Open cursors needed by the join\&. */
+        join_cursor = session\&.open_cursor(
+            "join:table:poptable", null, null);
+        cursor = session\&.open_cursor(
+            "index:poptable:country", null, null);
+        cursor2 = session\&.open_cursor(
+            "index:poptable:immutable_year", null, null);
+
+        /* select values WHERE country == "AU" AND year > 1900 */
+        cursor\&.putKeyString("AU");
+        ret = cursor\&.search();
+        session\&.join(join_cursor, cursor, "compare=eq,count=10");
+        cursor2\&.putKeyShort((short)1900);
+        ret = cursor2\&.search();
+        session\&.join(join_cursor, cursor2,
+            "compare=gt,count=10,strategy=bloom");
+
+        /* List the values that are joined */
+        while ((ret = join_cursor\&.next()) == 0) {
+            recno = join_cursor\&.getKeyRecord();
+            country = join_cursor\&.getValueString();
+            year = join_cursor\&.getValueShort();
+            population = join_cursor\&.getValueLong();
+            System\&.out\&.print("ID " + recno);
+            System\&.out\&.println( ": country " + country + ", year " + year +
+                ", population " + population);
+        }
+.fi
+.PP
+ Joins support various comparison operators: \fC'eq'\fP, \fC'gt'\fP, \fC'ge'\fP, \fC'lt'\fP, \fC'le'\fP\&. Ranges with lower and upper bounds can also be specified, by joining two cursors on the same index, for example, one with \fC'compare=ge'\fP and another \fC'compare=lt'\fP\&. In addition to joining indices, the main table can be joined so that a range of primary keys can be specified\&.
+.PP
+All the joins should be done on the join cursor before Cursor\&.next is called\&. Calling Cursor\&.next on a join cursor for the first time populates any bloom filters and performs other initialization\&. The join cursor's key is the primary key (the key for the main table), and its value is the entire set of values of the main table\&. A join cursor can be created with a projection by appending \fC'(col1,col2,\&.\&.\&.)'\fP to the URI if a different set of values is needed\&. 

@@ -1,4 +1,4 @@
-.TH "data_sources" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "data_sources" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,7 +8,7 @@ WiredTiger provides access to data from a variety of sources\&. At the lowest le
 Common operations on all data sources are performed using \fBWT_CURSOR\fP handles\&. See \fBCursor operations\fP for a description of how to use cursors\&.
 .SH "Builtin data sources"
 .PP
-The following are the builtin basic cursor types: URITypeNotes \fCtable:<table name>[<projection>]\fPtable cursortable key, table value(s) with optional projection of columns \fCcolgroup:<table name>:<column group name>\fPcolumn group cursortable key, column group value(s) \fCindex:<table name>:<index name>[<projection>]\fPindex cursorkey=index key, value=table value(s) with optional projection of columns Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: URITypeNotes \fCbackup:\fPbackup cursorkey=\fCstring\fP, see \fBBackups\fP for details \fClog:\fPlog cursorkey=\fC(long fileID, long offset, int seqno)\fP,
+The following are the builtin basic cursor types: URITypeNotes \fCtable:<table name>[<projection>]\fPtable cursortable key, table value(s) with optional projection of columns \fCcolgroup:<table name>:<column group name>\fPcolumn group cursortable key, column group value(s) \fCindex:<table name>:<index name>[<projection>]\fPindex cursorkey=index key, value=table value(s) with optional projection of columns \fCjoin:table:<table name>[<projection>]\fPjoin cursorkey=table key, value=table value(s) with optional projection of columns Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: URITypeNotes \fCbackup:\fPbackup cursorkey=\fCstring\fP, see \fBBackups\fP for details \fClog:\fPlog cursorkey=\fC(long fileID, long offset, int seqno)\fP,
 .br
  value=\fC(uint64_t txnid, uint32_t rectype,
 .br
@@ -16,7 +16,7 @@ The following are the builtin basic cursor types: URITypeNotes \fCtable:<table n
 .br
  \fBWT_ITEM\fP key, \fBWT_ITEM\fP value)\fP,
 .br
- see \fBLog cursors\fP for details \fCmetadata:\fPmetadata cursorkey=\fCstring\fP, value=\fCstring\fP,
+ see \fBLog cursors\fP for details \fCmetadata:[create]\fPmetadata cursor (optionally only returning configuration strings for \fBWT_SESSION::create\fP if \fCcreate\fP is appendedkey=\fCstring\fP, value=\fCstring\fP,
 .br
  see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabase or data source statistics cursorkey=\fCint id\fP,
 .br

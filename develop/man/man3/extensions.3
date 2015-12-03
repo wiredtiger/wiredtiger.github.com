@@ -1,4 +1,4 @@
-.TH "extensions" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "extensions" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,7 +6,7 @@ extensions \- Extending WiredTiger
 WiredTiger can be extended in various ways, including:
 .PP
 .IP "\(bu" 2
-adding \fBCustom compression engines\fP,
+adding \fBCustom compression engines\fP, \fBCustom encryption engines\fP,
 .IP "\(bu" 2
 \fBCustom Data Sources\fP, and
 .IP "\(bu" 2
@@ -24,7 +24,7 @@ Extensions can be loaded on an open connection by calling \fBWT_CONNECTION::load
 .PP
 Extensions can be loaded during \fBwiredtiger_open\fP by passing the \fCextensions\fP configuration when the database is created\&. When used this way, the extensions will be loaded each time the database is opened, whether by your application or the \fBWiredTiger command line utility\fP\&.
 .PP
-The extension entry point, which defaults to \fBwiredtiger_extension_init\fP, is called for each loadable module\&. Applications must supply this entry point, which in turn usually calls \fBWT_CONNECTION::add_data_source\fP, \fBWT_CONNECTION::add_collator\fP and/or \fBWT_CONNECTION::add_compressor\fP to add functionality to WiredTiger\&.
+The extension entry point, which defaults to \fBwiredtiger_extension_init\fP, is called for each loadable module\&. Applications must supply this entry point, which in turn usually calls \fBWT_CONNECTION::add_data_source\fP, \fBWT_CONNECTION::add_encryptor\fP, \fBWT_CONNECTION::add_collator\fP and/or \fBWT_CONNECTION::add_compressor\fP to add functionality to WiredTiger\&.
 .SH "Extensions and recovery"
 .PP
 Some extensions, in particular \fBWT_COLLATOR\fP and \fBWT_COMPRESSOR\fP, are required in order to run recovery if \fClogging\fP is enabled\&. This means that they must be loaded using the \fCextensions\fP keyword to \fBwiredtiger_open\fP, because recovery runs before \fBwiredtiger_open\fP returns the \fBWT_CONNECTION\fP handle to the application\&.
