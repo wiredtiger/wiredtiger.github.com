@@ -1,4 +1,4 @@
-.TH "wt" 3 "Wed Dec 9 2015" "Version 2.7.1" "WiredTiger" \" -*- nroff -*-
+.TH "wt" 3 "Thu Dec 10 2015" "Version 2.7.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -51,7 +51,7 @@ Set verbose output\&.
 .PP
 Unless otherwise described by a \fCwt\fP command, the \fCwt\fP tool exits zero on success and non-zero on error\&.
 .PP
-The \fCwt\fP tool supports several commands\&. If configured in the underlying database, some commands will run recovery when opening the database\&. If the user wants to force recovery on any command, use the \fC-r\fP option\&. In general, commands that modify the database or tables will run recovery by default and commands that only read data will not run recovery\&.
+The \fCwt\fP tool supports several commands\&. If configured in the underlying database, some commands will run recovery when opening the database\&. If the user wants to force recovery on any command, use the \fC-R\fP option\&. In general, commands that modify the database or tables will run recovery by default and commands that only read data will not run recovery\&.
 .PP
 .PP
  
@@ -61,7 +61,7 @@ Perform a backup of a database or set of data sources\&.
 .PP
 The \fCbackup\fP command performs a backup of the database, copying the database files to a \fCspecified\fP directory, which can be subsequently opened as a WiredTiger database\&. See \fBBackups\fP for more information, and \fBFile permissions\fP for specifics on the copied file permissions\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] backup [-t uri] directory\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] backup [-t uri] directory\fP
 .SS "Options"
 The following are command-specific options for the \fCbackup\fP command:
 .PP
@@ -78,7 +78,7 @@ Compact a table or file\&.
 .PP
 The \fCcompact\fP command attempts to rewrite the specified table or file to consume less disk space\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] compact uri\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] compact uri\fP
 .SS "Options"
 The \fCcompact\fP command has no command-specific options\&.
 .PP
@@ -90,7 +90,7 @@ Create a table or file\&.
 .PP
 The \fCcreate\fP command creates the specified \fCuri\fP with the specified configuration\&. It is equivalent to a call to \fBWT_SESSION::create\fP with the specified string arguments\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] create [-c config] uri\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] create [-c config] uri\fP
 .SS "Options"
 The following are command-specific options for the \fCcreate\fP command:
 .PP
@@ -107,7 +107,7 @@ Drop a table or file\&.
 .PP
 The \fCdrop\fP command drops the specified \fCuri\fP\&. It is equivalent to a call to \fBWT_SESSION::drop\fP with the 'force' configuration argument\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] drop uri\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] drop uri\fP
 .SS "Options"
 The \fCdrop\fP command has no command-specific options\&.
 .PP
@@ -121,7 +121,7 @@ The \fCdump\fP command outputs the specified table in a portable format which ca
 .PP
 See \fBDump Formats\fP for details of the dump file formats\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] uri\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] uri\fP
 .SS "Options"
 The following are command-specific options for the \fCdump\fP command:
 .PP
@@ -158,7 +158,7 @@ List the tables and files in the database\&.
 .PP
 By default, the \fClist\fP command prints out the tables and files stored in the database\&. If a URI is specified as an argument, only information about that data source is printed\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]\fP
 .SS "Options"
 The following are command-specific options for the \fClist\fP command:
 .PP
@@ -182,7 +182,7 @@ The \fCload\fP command reads the standard input for data and loads it into a tab
 .PP
 By default, if the table or file already exists, data in the file or table will be overwritten by the new data (use the \fC-n\fP option to make an attempt to overwrite existing data return an error)\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] load [-ajn] [-f input] [-r name] [uri configuration \&.\&.\&.]\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] load [-ajn] [-f input] [-r name] [uri configuration \&.\&.\&.]\fP
 .SS "Options"
 The following are command-specific options for the \fCload\fP command:
 .PP
@@ -245,7 +245,7 @@ The \fCloadtext\fP command does not create the file if it does not yet exist\&.
 .PP
 In the case of inserting values into a column-store table or file, each value is appended to the table or file; in the case of inserting values into a row-store table or file, lines are handled in pairs, where the first line is the key and the second line is the value\&. If the row-store table or file already exists, data in the table or file will be overwritten by the new data\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input]\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input]\fP
 .SS "Options"
 The following are command-specific options for the \fCloadtext\fP command:
 .PP
@@ -262,7 +262,7 @@ Display the database log\&.
 .PP
 The \fCprintlog\fP command outputs the database log\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] printlog [-p] [-f output]\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] printlog [-x] [-f output]\fP
 .SS "Options"
 The following are command-specific options for the \fCprintlog\fP command:
 .PP
@@ -271,9 +271,9 @@ The following are command-specific options for the \fCprintlog\fP command:
 By default, the \fCprintlog\fP command output is written to the standard output; the \fC-f\fP option re-directs the output to the specified file\&.
 .RE
 .PP
-\fB-p\fP
+\fB-x\fP
 .RS 4
-Display the log in a printable format\&.
+Keys and value items in the log are printed in hex format in addition to the default string format\&.
 .RE
 .PP
 .PP
@@ -286,7 +286,7 @@ The \fCread\fP command prints out the records associated with the specified keys
 .PP
 The \fCread\fP command exits non-zero if a specified record is not found\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] read uri key \&.\&.\&.\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] read uri key \&.\&.\&.\fP
 .SS "Options"
 The \fCread\fP command has no command-specific options\&.
 .PP
@@ -298,7 +298,7 @@ Rename a table or file\&.
 .PP
 The \fCrename\fP command renames the specified table or file\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] rename uri name\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] rename uri name\fP
 .SS "Options"
 The \fCrename\fP command has no command-specific options\&.
 .PP
@@ -310,7 +310,7 @@ Recover data from a corrupted file\&.
 .PP
 The \fCsalvage\fP command salvages the specified data source, discarding any data that cannot be recovered\&. Underlying files are re-written in place, overwriting the original file contents\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] salvage [-F force] uri\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] salvage [-F force] uri\fP
 .SS "Options"
 The following are command-specific options for the \fCsalvage\fP command:
 .PP
@@ -327,7 +327,7 @@ Display database or data source statistics\&.
 .PP
 The \fCstat\fP command outputs run-time statistics for the WiredTiger engine, or, if specified, for the URI on the command-line\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] stat [-f] [uri]\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] stat [-f] [uri]\fP
 .SS "Options"
 The following are command-specific options for the \fCstat\fP command:
 .PP
@@ -344,7 +344,7 @@ Upgrade a table or file\&.
 .PP
 The \fCupgrade\fP command upgrades the specified table or file, exiting success if the data source is up-to-date, and failure if the data source cannot be upgraded\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] upgrade uri\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] upgrade uri\fP
 .SS "Options"
 The \fCupgrade\fP command has no command-specific options\&.
 .PP
@@ -356,7 +356,7 @@ Check the structural integrity of a table or file\&.
 .PP
 The \fCverify\fP command verifies the specified table or file, exiting success if the data source is correct, and failure if the data source is corrupted\&.
 .SS "Synopsis"
-\fCwt [-rVv] [-C config] [-E secretkey ] [-h directory] verify uri\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] verify uri\fP
 .SS "Options"
 The \fCverify\fP command has no command-specific options\&.
 .PP
@@ -372,9 +372,9 @@ If the \fCwrite\fP command is called with the \fC-a\fP option, each command-line
 .PP
 Attempting to overwrite an already existing record will fail\&.
 .SS "Synopsis"
-\fC wt [-rVv] [-C config] [-E secretkey ] [-h directory] write -a uri value \&.\&.\&. 
+\fC wt [-RVv] [-C config] [-E secretkey ] [-h directory] write -a uri value \&.\&.\&. 
 .br
- wt [-rVv] [-C config] [-E secretkey ] [-h directory] write [-o] uri key value \&.\&.\&. \fP
+ wt [-RVv] [-C config] [-E secretkey ] [-h directory] write [-o] uri key value \&.\&.\&. \fP
 .SS "Options"
 The following are command-specific options for the \fCwrite\fP command:
 .PP
