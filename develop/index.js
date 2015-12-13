@@ -66,8 +66,7 @@ var index =
     [ "WiredTiger licensing", "license.html", [
       [ "3rd party software included in the WiredTiger library", "license.html#license_library", null ],
       [ "3rd party software optionally included in the WiredTiger library: LevelDB", "license.html#license_leveldb", null ],
-      [ "3rd party software included in the WiredTiger distribution", "license.html#license_distribution", null ],
-      [ "Public domain software", "license.html#license_public_domain", null ]
+      [ "3rd party software included in the WiredTiger distribution", "license.html#license_distribution", null ]
     ] ],
     [ "WiredTiger testing", "testing.html", [
       [ "Unit Test Suite", "testing.html#test_suite", null ],

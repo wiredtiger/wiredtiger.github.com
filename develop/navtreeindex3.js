@@ -183,8 +183,8 @@ var NAVTREEINDEX3 =
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html":[2,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html#a4be4e275a37fc04a6789c4cf5e8a5fd9":[2,0,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html":[1,2,5],
-"keyvalue.html":[0,4,5,11],
 "keyvalue.html":[0,5,5,11],
+"keyvalue.html":[0,4,5,11],
 "leveldb.html":[0,3],
 "leveldb.html#leveldb_build":[0,3,0],
 "leveldb.html#leveldb_caveats":[0,3,1],
@@ -193,7 +193,6 @@ var NAVTREEINDEX3 =
 "license.html#license_distribution":[0,10,2],
 "license.html#license_leveldb":[0,10,1],
 "license.html#license_library":[0,10,0],
-"license.html#license_public_domain":[0,10,3],
 "lsm.html":[0,4,6],
 "lsm.html#lsm_api":[0,4,6,2],
 "lsm.html#lsm_background":[0,4,6,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "schema_lang_java.html#schema_column_groups_lang_java":[0,5,5,6],
 "schema_lang_java.html#schema_column_types_lang_java":[0,5,5,1],
 "schema_lang_java.html#schema_columns_lang_java":[0,5,5,5],
-"schema_lang_java.html#schema_cursor_formats_lang_java":[0,5,5,4]
+"schema_lang_java.html#schema_cursor_formats_lang_java":[0,5,5,4],
+"schema_lang_java.html#schema_examples_lang_java":[0,5,5,10]
 };
