@@ -11,6 +11,7 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "log_flush", "struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817", null ],
     [ "log_printf", "struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9", null ],
     [ "open_cursor", "struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d", null ],
+    [ "rebalance", "struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984", null ],
     [ "reconfigure", "struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6", null ],
     [ "rename", "struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614", null ],
     [ "reset", "struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787", null ],

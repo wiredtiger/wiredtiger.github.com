@@ -83,12 +83,13 @@ var programming =
         [ "Flush call configuration", "durability.html#durability_flush_config", null ]
       ] ]
     ] ],
+    [ "Join cursors", "cursor_join.html", null ],
+    [ "Log cursors", "cursor_log.html", null ],
+    [ "Rebalance", "rebalance.html", null ],
     [ "Per-process shared caches", "shared_cache.html", null ],
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]
     ] ],
-    [ "Join cursors", "cursor_join.html", null ],
-    [ "Log cursors", "cursor_log.html", null ],
     [ "Upgrading and downgrading databases", "upgrade.html", null ],
     [ "Extending WiredTiger", "extensions.html", [
       [ "Loadable extensions", "extensions.html#extensions_loadable", null ],

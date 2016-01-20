@@ -81,12 +81,13 @@ var programming_lang_java =
         [ "Flush call configuration", "durability_lang_java.html#durability_flush_config_lang_java", null ]
       ] ]
     ] ],
+    [ "Join cursors  in Java", "cursor_join_lang_java.html", null ],
+    [ "Log cursors  in Java", "cursor_log_lang_java.html", null ],
+    [ "Rebalance  in Java", "rebalance_lang_java.html", null ],
     [ "Per-process shared caches  in Java", "shared_cache_lang_java.html", null ],
     [ "Statistics  in Java", "statistics_lang_java.html", [
       [ "Statistics logging", "statistics_lang_java.html#statistics_log_lang_java", null ]
     ] ],
-    [ "Join cursors  in Java", "cursor_join_lang_java.html", null ],
-    [ "Log cursors  in Java", "cursor_log_lang_java.html", null ],
     [ "Upgrading and downgrading databases", "upgrade.html", null ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Simulating workloads with wtperf", "wtperf.html", [

@@ -119,6 +119,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a504625d0b35da78f738d08530a409be9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *fmt,...)</td></tr>
 <tr class="memdesc:a504625d0b35da78f738d08530a409be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="message ">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called).  <a href="#a504625d0b35da78f738d08530a409be9">More...</a><br /></td></tr>
 <tr class="separator:a504625d0b35da78f738d08530a409be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab21ec3055cade4d2682f162783314984"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984">rebalance</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *config)</td></tr>
+<tr class="memdesc:ab21ec3055cade4d2682f162783314984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rebalance a table, see <a class="el" href="rebalance.html">Rebalance</a>.  <a href="#ab21ec3055cade4d2682f162783314984">More...</a><br /></td></tr>
+<tr class="separator:ab21ec3055cade4d2682f162783314984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d24b02549009f78b7c6463da0247614"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *newuri, const char *config)</td></tr>
 <tr class="memdesc:a1d24b02549009f78b7c6463da0247614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#a1d24b02549009f78b7c6463da0247614">More...</a><br /></td></tr>
 <tr class="separator:a1d24b02549009f78b7c6463da0247614"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1052,6 +1055,50 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a7">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a7">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a8">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a19">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a19">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a11">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#a5">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a7">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a5">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a4">ex_thread.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="ab21ec3055cade4d2682f162783314984"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::rebalance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>uri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rebalance a table, see <a class="el" href="rebalance.html">Rebalance</a>. </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984">rebalance</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">uri</td><td>the current URI of the object, such as <code>"table:mytable"</code> </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if there are open cursors on the object and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a578f0fbd8a83339f1f9c00e135f006e6"></a>
