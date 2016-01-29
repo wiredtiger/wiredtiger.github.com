@@ -81,6 +81,10 @@ Upgrading to Version 2.7.1</h1>
 <dd><p class="startdd">If using the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range. ">WT_SESSION::truncate</a> API with a file: URI for a full table truncate, underlying algorithmic changes result in some visible differences. This call can now return WT_ROLLBACK. Applications should be prepared to handle this error. This method no longer requires exclusive access to the table. Also the underlying disk space may not be immediately reclaimed when the call returns. The performance of this API may differ from earlier releases. </p>
 <p class="enddd"></p>
 </dd>
+<dt>Bzip2 compression support </dt>
+<dd><p class="startdd">Support for the bzip2 compression/decompression engine has been removed from the WiredTiger release; remaining compression engines include LZ4, snappy and zlib. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_270"></a>

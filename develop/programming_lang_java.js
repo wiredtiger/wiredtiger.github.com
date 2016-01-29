@@ -35,7 +35,6 @@ var programming_lang_java =
     ] ],
     [ "File formats and compression  in Java", "file_formats_lang_java.html", "file_formats_lang_java" ],
     [ "Compressors  in Java", "compression_lang_java.html", [
-      [ "Using bzip2 compression", "compression_lang_java.html#compression_bzip2_lang_java", null ],
       [ "Using LZ4 compression", "compression_lang_java.html#compression_lz4_lang_java", null ],
       [ "Using snappy compression", "compression_lang_java.html#compression_snappy_lang_java", null ],
       [ "Using zlib compression", "compression_lang_java.html#compression_zlib_lang_java", null ],

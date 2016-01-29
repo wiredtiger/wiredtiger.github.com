@@ -1,7 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"group__wt.html#ga7c1d0d9b801bff8c643ad99ae303fb57":[1,0,191],
-"group__wt.html#ga7d0e581b55bbad522805efa6208c4e37":[1,0,267],
 "group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253":[1,0,299],
 "group__wt.html#ga7f2ca67519476ca8fbc3eb9f7a7b6ad5":[1,0,114],
 "group__wt.html#ga7f3490d1b9432515759ded999fe0576c":[1,0,128],
@@ -179,13 +177,13 @@ var NAVTREEINDEX3 =
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html":[2,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html#a4be4e275a37fc04a6789c4cf5e8a5fd9":[2,0,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html":[1,2,5],
-"keyvalue.html":[0,5,5,11],
 "keyvalue.html":[0,4,5,11],
+"keyvalue.html":[0,5,5,11],
 "leveldb.html":[0,3],
 "leveldb.html#leveldb_build":[0,3,0],
 "leveldb.html#leveldb_caveats":[0,3,1],
-"license.html":[7],
 "license.html":[0,10],
+"license.html":[7],
 "license.html#license_distribution":[0,10,2],
 "license.html#license_leveldb":[0,10,1],
 "license.html#license_library":[0,10,0],
@@ -249,5 +247,7 @@ var NAVTREEINDEX3 =
 "schema_lang_java.html#schema_cursor_formats_lang_java":[0,5,5,4],
 "schema_lang_java.html#schema_examples_lang_java":[0,5,5,10],
 "schema_lang_java.html#schema_format_types_lang_java":[0,5,5,2],
-"schema_lang_java.html#schema_index_immutable_lang_java":[0,5,5,8]
+"schema_lang_java.html#schema_index_immutable_lang_java":[0,5,5,8],
+"schema_lang_java.html#schema_index_projections_lang_java":[0,5,5,9],
+"schema_lang_java.html#schema_indices_lang_java":[0,5,5,7]
 };
