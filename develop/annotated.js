@@ -37,7 +37,6 @@ var annotated =
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i" ],
     [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", "struct_w_t___e_x_t_r_a_c_t_o_r" ],
     [ "WT_ITEM", "group__wt.html#struct_w_t___i_t_e_m", "group__wt_struct_w_t___i_t_e_m" ],
-    [ "WT_LSN", "group__wt.html#struct_w_t___l_s_n", "group__wt_struct_w_t___l_s_n" ],
     [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", "struct_w_t___s_e_s_s_i_o_n" ],
     [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", "struct_w_t___t_x_n___n_o_t_i_f_y" ]
 ];

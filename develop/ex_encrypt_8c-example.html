@@ -461,28 +461,27 @@ $(document).ready(function(){initNavTree('ex_encrypt_8c-example.html','');});
 <div class="line">{</div>
 <div class="line">        <a name="_a16"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a name="_a17"></a><a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> logrec_key, logrec_value;</div>
-<div class="line">        <a name="_a18"></a><a class="code" href="group__wt.html#struct_w_t___l_s_n">WT_LSN</a> lsn;</div>
 <div class="line">        uint64_t txnid;</div>
-<div class="line">        uint32_t fileid, opcount, optype, rectype;</div>
+<div class="line">        uint32_t fileid, log_file, log_offset, opcount, optype, rectype;</div>
 <div class="line">        <span class="keywordtype">int</span> found, ret;</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a name="a19"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;log:&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        ret = session-&gt;<a name="a18"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;log:&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line"></div>
 <div class="line">        found = 0;</div>
-<div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a name="a20"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
-<div class="line">                ret = cursor-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;lsn.<a name="a22"></a><a class="code" href="group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf">file</a>, &amp;lsn.<a name="a23"></a><a class="code" href="group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c">offset</a>, &amp;opcount);</div>
-<div class="line">                ret = cursor-&gt;<a name="a24"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;txnid,</div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a name="a19"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">                ret = cursor-&gt;<a name="a20"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;log_file, &amp;log_offset, &amp;opcount);</div>
+<div class="line">                ret = cursor-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;txnid,</div>
 <div class="line">                    &amp;rectype, &amp;optype, &amp;fileid, &amp;logrec_key, &amp;logrec_value);</div>
 <div class="line"></div>
-<div class="line">                <span class="keywordflow">if</span> (rectype == <a name="a25"></a><a class="code" href="group__wt.html#ga8cf04a003979e7852209079d4093d783">WT_LOGREC_MESSAGE</a>) {</div>
+<div class="line">                <span class="keywordflow">if</span> (rectype == <a name="a22"></a><a class="code" href="group__wt.html#ga8cf04a003979e7852209079d4093d783">WT_LOGREC_MESSAGE</a>) {</div>
 <div class="line">                        found = 1;</div>
 <div class="line">                        printf(<span class="stringliteral">&quot;Application Log Record: %s\n&quot;</span>,</div>
-<div class="line">                            (<span class="keywordtype">char</span> *)logrec_value.<a name="a26"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>);</div>
+<div class="line">                            (<span class="keywordtype">char</span> *)logrec_value.<a name="a23"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>);</div>
 <div class="line">                }</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> (ret == <a name="a27"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
+<div class="line">        <span class="keywordflow">if</span> (ret == <a name="a24"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>)</div>
 <div class="line">                ret = 0;</div>
-<div class="line">        ret = cursor-&gt;<a name="a28"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
+<div class="line">        ret = cursor-&gt;<a name="a25"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line">        <span class="keywordflow">if</span> (found == 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Did not find log messages.\n&quot;</span>);</div>
 <div class="line">                exit(EXIT_FAILURE);</div>
@@ -526,15 +525,15 @@ $(document).ready(function(){initNavTree('ex_encrypt_8c-example.html','');});
 <div class="line">        } <span class="keywordflow">else</span></div>
 <div class="line">                home = NULL;</div>
 <div class="line"></div>
-<div class="line">        ret = <a name="a29"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, WT_OPEN_CONFIG_GOOD, &amp;conn);</div>
+<div class="line">        ret = <a name="a26"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, WT_OPEN_CONFIG_GOOD, &amp;conn);</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a name="a30"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
+<div class="line">        ret = conn-&gt;<a name="a27"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Write a log record that is larger than the base 128 bytes and</span></div>
 <div class="line"><span class="comment">         * also should compress well.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a name="a31"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a>(session,</div>
+<div class="line">        ret = session-&gt;<a name="a28"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a>(session,</div>
 <div class="line">            COMP_A COMP_B COMP_C COMP_A COMP_B COMP_C</div>
 <div class="line">            COMP_A COMP_B COMP_C COMP_A COMP_B COMP_C</div>
 <div class="line">            <span class="stringliteral">&quot;The quick brown fox jumps over the lazy dog &quot;</span>);</div>
@@ -544,7 +543,7 @@ $(document).ready(function(){initNavTree('ex_encrypt_8c-example.html','');});
 <div class="line"><span class="comment">         * Create and open some encrypted and not encrypted tables.</span></div>
 <div class="line"><span class="comment">         * Also use column store and compression for some tables.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a name="a32"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:crypto1&quot;</span>,</div>
+<div class="line">        ret = session-&gt;<a name="a29"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:crypto1&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;encryption=(name=rotn,keyid=&quot;</span> USER1_KEYID<span class="stringliteral">&quot;),&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;columns=(key0,value0),&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
@@ -581,16 +580,16 @@ $(document).ready(function(){initNavTree('ex_encrypt_8c-example.html','');});
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; MAX_KEYS; i++) {</div>
 <div class="line">                snprintf(keybuf, <span class="keyword">sizeof</span>(keybuf), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
-<div class="line">                c1-&gt;<a name="a33"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(c1, keybuf);</div>
+<div class="line">                c1-&gt;<a name="a30"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(c1, keybuf);</div>
 <div class="line">                c2-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(c2, keybuf);</div>
 <div class="line">                nc-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(nc, keybuf);</div>
 <div class="line"></div>
 <div class="line">                snprintf(valbuf, <span class="keyword">sizeof</span>(valbuf), <span class="stringliteral">&quot;value%d&quot;</span>, i);</div>
-<div class="line">                c1-&gt;<a name="a34"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(c1, valbuf);</div>
+<div class="line">                c1-&gt;<a name="a31"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(c1, valbuf);</div>
 <div class="line">                c2-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(c2, valbuf);</div>
 <div class="line">                nc-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(nc, valbuf);</div>
 <div class="line"></div>
-<div class="line">                ret = c1-&gt;<a name="a35"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(c1);</div>
+<div class="line">                ret = c1-&gt;<a name="a32"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(c1);</div>
 <div class="line">                ret = c2-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(c2);</div>
 <div class="line">                ret = nc-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(nc);</div>
 <div class="line">                <span class="keywordflow">if</span> (i % 5 == 0)</div>
@@ -607,7 +606,7 @@ $(document).ready(function(){initNavTree('ex_encrypt_8c-example.html','');});
 <div class="line">        }</div>
 <div class="line">        ret = simple_walk_log(session);</div>
 <div class="line">        printf(<span class="stringliteral">&quot;CLOSE\n&quot;</span>);</div>
-<div class="line">        ret = conn-&gt;<a name="a36"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
+<div class="line">        ret = conn-&gt;<a name="a33"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * We want to close and reopen so that we recreate the cache</span></div>

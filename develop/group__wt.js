@@ -4,10 +4,6 @@ var group__wt =
       [ "data", "group__wt.html#a57f5e62aa968275d7e398cfa70e49450", null ],
       [ "size", "group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55", null ]
     ] ],
-    [ "WT_LSN", "group__wt.html#struct_w_t___l_s_n", [
-      [ "file", "group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf", null ],
-      [ "offset", "group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c", null ]
-    ] ],
     [ "WT_CURSOR", "struct_w_t___c_u_r_s_o_r.html", [
       [ "close", "struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b", null ],
       [ "compare", "struct_w_t___c_u_r_s_o_r.html#acd3f345e375e26d223ad5c6f35dc15e8", null ],

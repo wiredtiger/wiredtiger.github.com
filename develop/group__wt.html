@@ -84,9 +84,6 @@ Classes</h2></td></tr>
 <tr class="memitem:struct_w_t___i_t_e_m"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></td></tr>
 <tr class="memdesc:struct_w_t___i_t_e_m"><td class="mdescLeft">&#160;</td><td class="mdescRight">A raw item of data to be managed, including a pointer to the data and a length.  <a href="group__wt.html#struct_w_t___i_t_e_m">More...</a><br /></td></tr>
 <tr class="separator:struct_w_t___i_t_e_m"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:struct_w_t___l_s_n"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#struct_w_t___l_s_n">WT_LSN</a></td></tr>
-<tr class="memdesc:struct_w_t___l_s_n"><td class="mdescLeft">&#160;</td><td class="mdescRight">A log sequence number, representing a position in the transaction log.  <a href="group__wt.html#struct_w_t___l_s_n">More...</a><br /></td></tr>
-<tr class="separator:struct_w_t___l_s_n"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor. ">WT_CURSOR</a> handle is the interface to a cursor.  <a href="struct_w_t___c_u_r_s_o_r.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1357,7 +1354,7 @@ Log record and operation types</h2></td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>A raw item of data to be managed, including a pointer to the data and a length. </p>
 <p><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structures do not need to be cleared before use. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_async_8c-example.html#_a2">ex_async.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a17">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a2">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a3">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#_a13">ex_log.c</a>, and <a class="el" href="ex_schema_8c-example.html#_a15">ex_schema.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_async_8c-example.html#_a2">ex_async.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a17">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a2">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a3">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#_a12">ex_log.c</a>, and <a class="el" href="ex_schema_8c-example.html#_a15">ex_schema.c</a>.</dd>
 </dl></div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1374,35 +1371,6 @@ size</td>
 <td class="fielddoc">
 The number of bytes in the data item. <p>The maximum length of a single column stored in a table is not fixed (as it partially depends on the underlying file configuration), but is always a small number of bytes less than 4GB. </p>
 </td></tr>
-</table>
-
-</div>
-</div>
-<a name="struct_w_t___l_s_n" id="struct_w_t___l_s_n"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct WT_LSN</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="textblock"><p>A log sequence number, representing a position in the transaction log. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#_a18">ex_encrypt.c</a>, and <a class="el" href="ex_log_8c-example.html#_a12">ex_log.c</a>.</dd>
-</dl></div><table class="fieldtable">
-<tr><th colspan="3">Class Members</th></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a12e97dc339e0daa3a099d65dd616b5cf"></a>uint32_t</td>
-<td class="fieldname">
-file</td>
-<td class="fielddoc">
-Log file number. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a021e5a7003ebfcd2b643d8bbee2b961c"></a>wt_off_t</td>
-<td class="fieldname">
-offset</td>
-<td class="fielddoc">
-Log file offset. </td></tr>
 </table>
 
 </div>
@@ -1535,7 +1503,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 
 <p>Item not found. </p>
 <p>This error indicates an operation did not find a value to return. This includes cursor search and other operations where no record matched the cursor's search key such as <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update an existing record and optionally insert a record. ">WT_CURSOR::update</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record. ">WT_CURSOR::remove</a>. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a27">ex_encrypt.c</a>, <a class="el" href="ex_log_8c-example.html#a9">ex_log.c</a>, <a class="el" href="ex_stat_8c-example.html#a4">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#a8">ex_thread.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a14">rotn_encrypt.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a24">ex_encrypt.c</a>, <a class="el" href="ex_log_8c-example.html#a9">ex_log.c</a>, <a class="el" href="ex_stat_8c-example.html#a4">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#a8">ex_thread.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a14">rotn_encrypt.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1915,7 +1883,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a3">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a12">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a3">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a3">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a15">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a29">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#a5">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#a20">ex_extractor.c</a>, <a class="el" href="ex_hello_8c-example.html#a2">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a2">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a2">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a3">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a17">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a10">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a3">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a12">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a3">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a3">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a15">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a26">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#a5">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#a20">ex_extractor.c</a>, <a class="el" href="ex_hello_8c-example.html#a2">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a2">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a2">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a3">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a17">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a10">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>

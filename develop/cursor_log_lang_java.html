@@ -76,10 +76,10 @@ $(document).ready(function(){initNavTree('cursor_log_lang_java.html','');});
 <p>To open a log cursor on the database:</p>
 <div class="fragment"><div class="line">        cursor = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(<span class="stringliteral">&quot;log:&quot;</span>, null, null);</div>
 </div><!-- fragment --><p> A log cursor's key is a unique log record identifier, plus a int operation counter within that log record. When a log record maps one-to-one to a transaction (in other words, the returned log record has the only database operation the transaction made), the operation counter returned for the key will be zero.</p>
-<p>The unique log record identifier maps to a <a class="el" href="group__wt.html#struct_w_t___l_s_n" title="A log sequence number, representing a position in the transaction log. ">WT_LSN</a> data structure, which has two fields: WT_LSN::id, the log file identifier, and <a class="el" href="group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c" title="Log file offset. ">WT_LSN::offset</a>, the offset of the log record in the log file.</p>
+<p>The unique log record identifier maps to a WT_LSN data structure, which has two fields: WT_LSN::id, the log file identifier, and WT_LSN::offset, the offset of the log record in the log file.</p>
 <p>Here is an example of getting the log cursor's key:</p>
-<div class="fragment"><div class="line">            lsn.<a class="code" href="group__wt.html#a12e97dc339e0daa3a099d65dd616b5cf">file</a> = cursor.getKeyInt();</div>
-<div class="line">            lsn.<a class="code" href="group__wt.html#a021e5a7003ebfcd2b643d8bbee2b961c">offset</a> = cursor.getKeyLong();</div>
+<div class="fragment"><div class="line">            lsn.file = cursor.getKeyInt();</div>
+<div class="line">            lsn.offset = cursor.getKeyLong();</div>
 <div class="line">            opcount = cursor.getKeyInt();</div>
 </div><!-- fragment --><p> The log cursor's value is comprised of six fields:</p>
 <ul>
