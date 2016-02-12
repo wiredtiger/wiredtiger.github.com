@@ -180,8 +180,9 @@ var NAVTREEINDEX3 =
 "leveldb.html#leveldb_caveats":[0,3,1],
 "license.html":[7],
 "license.html":[0,10],
-"license.html#license_distribution":[0,10,2],
-"license.html#license_leveldb":[0,10,1],
+"license.html#license_crc32-vpmsum":[0,10,1],
+"license.html#license_distribution":[0,10,3],
+"license.html#license_leveldb":[0,10,2],
 "license.html#license_library":[0,10,0],
 "lsm.html":[0,4,6],
 "lsm.html#lsm_api":[0,4,6,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "schema_lang_java.html#schema_indices_lang_java":[0,5,5,7],
 "schema_lang_java.html#schema_intro_lang_java":[0,5,5,0],
 "schema_lang_java.html#schema_key_and_value_formats_lang_java":[0,5,5,3],
-"security.html":[0,7,3],
-"security.html#directory_permissions":[0,7,3,0]
+"security.html":[0,7,3]
 };

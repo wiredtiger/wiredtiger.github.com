@@ -64,7 +64,8 @@ var index =
       [ "Upgrading to Version 1.3", "upgrading.html#version_13", null ]
     ] ],
     [ "WiredTiger licensing", "license.html", [
-      [ "3rd party software included in the WiredTiger library", "license.html#license_library", null ],
+      [ "3rd party software always included in the WiredTiger library", "license.html#license_library", null ],
+      [ "3rd party software optionally included in the WiredTiger library: PPC64", "license.html#license_crc32-vpmsum", null ],
       [ "3rd party software optionally included in the WiredTiger library: LevelDB", "license.html#license_leveldb", null ],
       [ "3rd party software included in the WiredTiger distribution", "license.html#license_distribution", null ]
     ] ],
