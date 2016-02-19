@@ -50,6 +50,13 @@ var programming_lang_java =
       [ "Java language name space", "namespace_lang_java.html#namespace_c_lang_java", null ],
       [ "File system name space", "namespace_lang_java.html#namespace_filesystem_lang_java", null ]
     ] ],
+    [ "Database read-only mode  in Java", "readonly_lang_java.html", [
+      [ "Database read-only configuration considerations", "readonly_lang_java.html#readonly_config_lang_java", null ],
+      [ "Readonly configuration and recovery", "readonly_lang_java.html#readonly_recovery_lang_java", null ],
+      [ "Readonly configuration and logging", "readonly_lang_java.html#readonly_logging_lang_java", null ],
+      [ "Readonly configuration and LSM trees", "readonly_lang_java.html#readonly_lsm_lang_java", null ],
+      [ "Readonly configuration and multiple database handles", "readonly_lang_java.html#readonly_handles_lang_java", null ]
+    ] ],
     [ "Asynchronous operations  in Java", "async_lang_java.html", [
       [ "Configuring asynchronous operations", "async_lang_java.html#async_config_lang_java", null ],
       [ "Allocating an asynchronous operations handle", "async_lang_java.html#async_alloc_lang_java", null ],

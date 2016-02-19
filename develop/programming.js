@@ -51,6 +51,13 @@ var programming =
       [ "File system name space", "namespace.html#namespace_filesystem", null ],
       [ "Error return name space", "namespace.html#namespace_error", null ]
     ] ],
+    [ "Database read-only mode", "readonly.html", [
+      [ "Database read-only configuration considerations", "readonly.html#readonly_config", null ],
+      [ "Readonly configuration and recovery", "readonly.html#readonly_recovery", null ],
+      [ "Readonly configuration and logging", "readonly.html#readonly_logging", null ],
+      [ "Readonly configuration and LSM trees", "readonly.html#readonly_lsm", null ],
+      [ "Readonly configuration and multiple database handles", "readonly.html#readonly_handles", null ]
+    ] ],
     [ "Signal handling", "signals.html", null ],
     [ "Asynchronous operations", "async.html", [
       [ "Configuring asynchronous operations", "async.html#async_config", null ],

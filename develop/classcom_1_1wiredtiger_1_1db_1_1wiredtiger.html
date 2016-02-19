@@ -131,6 +131,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_RUN_RE
 <tr class="memitem:a9e4a48f2d217b4bdafd5c37b209499ba inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e4a48f2d217b4bdafd5c37b209499ba"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_CACHE_FULL</b></td></tr>
 <tr class="separator:a9e4a48f2d217b4bdafd5c37b209499ba inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4c4976849dd285b9680ba5a7c0a3e96 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4c4976849dd285b9680ba5a7c0a3e96"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_PERM_DENIED</b></td></tr>
+<tr class="separator:ac4c4976849dd285b9680ba5a7c0a3e96 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76f1262ff26deabc91211655140a6a55 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76f1262ff26deabc91211655140a6a55"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_DEADLOCK</b></td></tr>
 <tr class="separator:a76f1262ff26deabc91211655140a6a55 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1112,6 +1115,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <td><code>mmap</code></td><td>Use memory mapping to access files when possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>multiprocess</code></td><td>permit sharing between processes (will automatically start an RPC server for primary processes and use RPC for secondary processes). <b>Not yet supported in WiredTiger</b>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>readonly</code></td><td>open connection in read-only mode. The database must exist. All methods that may modify a database are disabled. See <a class="el" href="readonly.html">Database read-only mode</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>session_max</code></td><td>maximum expected number of sessions (including server threads).</td><td>an integer greater than or equal to 1; default <code>100</code>. </td></tr>
 <tr>
