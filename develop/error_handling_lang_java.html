@@ -90,7 +90,7 @@ Translating errors</h1>
 <div class="line">        cursor.putKeyString(key);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor.remove()) != 0) {</div>
 <div class="line">            System.err.println(</div>
-<div class="line">                <span class="stringliteral">&quot;cursor.remove: &quot;</span> + cursor.session.strerror(ret));</div>
+<div class="line">                <span class="stringliteral">&quot;cursor.remove: &quot;</span> + wiredtiger.wiredtiger_strerror(ret));</div>
 <div class="line">            <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 <div class="line">    } <span class="keywordflow">catch</span> (WiredTigerException wte) {  <span class="comment">/* Catch severe errors. */</span></div>
