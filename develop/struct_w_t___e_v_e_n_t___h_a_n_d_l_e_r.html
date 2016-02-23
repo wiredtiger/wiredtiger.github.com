@@ -136,12 +136,13 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle error messages; by default, error messages are written to the stderr stream. </p>
+<p>See <a class="el" href="error_handling.html">Error handling</a>.</p>
 <p>Errors that require the application to exit and restart will have their <code>error</code> value set to <code>WT_PANIC</code>. The application can exit immediately when <code>WT_PANIC</code> is passed to an error handler, there is no reason to return into WiredTiger.</p>
 <p>Error handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the WiredTiger session handle in use when the error was generated. The handle may have been created by the application or automatically by WiredTiger. </td></tr>
-    <tr><td class="paramname">error</td><td>a WiredTiger, C99 or POSIX error code, which can be converted to a string using <a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd" title="Return information about a WiredTiger error as a string, not thread-safe. ">wiredtiger_strerror</a> </td></tr>
+    <tr><td class="paramname">error</td><td>a return value from a WiredTiger, ISO C, or POSIX standard API, which can be converted to a string using <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string. ">WT_SESSION::strerror</a> </td></tr>
     <tr><td class="paramname">message</td><td>an error string </td></tr>
   </table>
   </dd>
@@ -160,6 +161,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle informational messages; by default, informational messages are written to the stdout stream. </p>
+<p>See <a class="el" href="error_handling.html">Error handling</a>.</p>
 <p>Message handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -182,6 +184,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle progress messages; by default, no progress messages are written. </p>
+<p>See <a class="el" href="error_handling.html">Error handling</a>.</p>
 <p>Progress handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

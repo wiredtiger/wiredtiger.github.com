@@ -19,7 +19,10 @@ var programming =
       [ "Isolation levels", "transactions.html#transaction_isolation", null ],
       [ "Named Snapshots", "transactions.html#transaction_named_snapshots", null ]
     ] ],
-    [ "Error handling", "error_handling.html", null ],
+    [ "Error handling", "error_handling.html", [
+      [ "Translating errors", "error_handling.html#error_translation", null ],
+      [ "Error handling using the WT_EVENT_HANDLER", "error_handling.html#error_handling_event", null ]
+    ] ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],

@@ -139,7 +139,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga9e6adae3fc6964ef837a62795c7840ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection to a database.  <a href="#ga9e6adae3fc6964ef837a62795c7840ed">More...</a><br /></td></tr>
 <tr class="separator:ga9e6adae3fc6964ef837a62795c7840ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a> (int error)</td></tr>
-<tr class="memdesc:gae8bf720ddb4a7a7390b70424594c40fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string, not thread-safe.  <a href="#gae8bf720ddb4a7a7390b70424594c40fd">More...</a><br /></td></tr>
+<tr class="memdesc:gae8bf720ddb4a7a7390b70424594c40fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string (see <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string. ">WT_SESSION::strerror</a> for a thread-safe API).  <a href="#gae8bf720ddb4a7a7390b70424594c40fd">More...</a><br /></td></tr>
 <tr class="separator:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a> (int *majorp, int *minorp, int *patchp)</td></tr>
 <tr class="memdesc:ga1b29826f4b418891d67e86850f7cbcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get version information.  <a href="#ga1b29826f4b418891d67e86850f7cbcf4">More...</a><br /></td></tr>
@@ -1712,7 +1712,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, a builtin error handler is installed that writes error messages to stderr </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, a builtin error handler is installed that writes error messages to stderr. See <a class="el" href="error_handling.html#error_handling_event">Error handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
@@ -2141,18 +2141,17 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
       </table>
 </div><div class="memdoc">
 
-<p>Return information about a WiredTiger error as a string, not thread-safe. </p>
+<p>Return information about a WiredTiger error as a string (see <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string. ">WT_SESSION::strerror</a> for a thread-safe API). </p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>,</div>
-<div class="line">                    cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">session</a>-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">session</a>, ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">error</td><td>a return value from a WiredTiger call </td></tr>
+    <tr><td class="paramname">error</td><td>a return value from a WiredTiger, ISO C, or POSIX standard API </td></tr>
   </table>
   </dd>
 </dl>

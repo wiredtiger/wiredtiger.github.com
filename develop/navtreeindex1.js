@@ -238,7 +238,10 @@ var NAVTREEINDEX1 =
 "enumcom_1_1wiredtiger_1_1db_1_1_search_status.html#a8a5bd6d4c97ae4f2bc580b0c75a29d8f":[2,0,0,0,8,0],
 "enumcom_1_1wiredtiger_1_1db_1_1_search_status.html#aa6979e5adfd45aaedf3a893652a527e7":[2,0,0,0,8,1],
 "error_handling.html":[0,4,4],
+"error_handling.html#error_handling_event":[0,4,4,1],
+"error_handling.html#error_translation":[0,4,4,0],
 "error_handling_lang_java.html":[0,5,4],
+"error_handling_lang_java.html#error_translation_lang_java":[0,5,4,0],
 "ex_access_8c-example.html":[5,0],
 "ex_async_8c-example.html":[5,1],
 "ex_call_center_8c-example.html":[5,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "ex_cursor_8c-example.html":[5,4],
 "ex_encrypt_8c-example.html":[5,5],
 "ex_extending_8c-example.html":[5,6],
-"ex_extractor_8c-example.html":[5,7],
-"ex_hello_8c-example.html":[5,8],
-"ex_log_8c-example.html":[5,9],
-"ex_pack_8c-example.html":[5,10]
+"ex_extractor_8c-example.html":[5,7]
 };

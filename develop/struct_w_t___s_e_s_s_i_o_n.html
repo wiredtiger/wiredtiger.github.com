@@ -1441,13 +1441,14 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="line">        cursor-&gt;set_key(cursor, key);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;remove(cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
+<div class="line">                    <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>,</div>
+<div class="line">                    cursor-&gt;session-&gt;strerror(cursor-&gt;session, ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">error</td><td>a return value from a WiredTiger function </td></tr>
+    <tr><td class="paramname">error</td><td>a return value from a WiredTiger, ISO C, or POSIX standard API </td></tr>
   </table>
   </dd>
 </dl>

@@ -1,5 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253":[1,0,298],
+"group__wt.html#ga7f2ca67519476ca8fbc3eb9f7a7b6ad5":[1,0,113],
+"group__wt.html#ga7f3490d1b9432515759ded999fe0576c":[1,0,127],
 "group__wt.html#ga7f6c11b6f52f0ec9be3975b1bfab053a":[1,0,135],
 "group__wt.html#ga7fa6ef6ad4ec854de76565ebce34cede":[1,0,91],
 "group__wt.html#ga805d4bd189cdd57d212c4b5c138ad98e":[1,0,230],
@@ -168,8 +171,8 @@ var NAVTREEINDEX3 =
 "home.html":[0,7,0],
 "huffman.html":[0,5,7,3],
 "huffman.html":[0,4,7,3],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html":[2,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html#a4be4e275a37fc04a6789c4cf5e8a5fd9":[2,0,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html":[1,2,5],
@@ -246,8 +249,5 @@ var NAVTREEINDEX3 =
 "schema.html#schema_format_types":[0,4,5,2],
 "schema.html#schema_index_immutable":[0,4,5,8],
 "schema.html#schema_index_projections":[0,4,5,9],
-"schema.html#schema_indices":[0,4,5,7],
-"schema.html#schema_intro":[0,4,5,0],
-"schema.html#schema_key_and_value_formats":[0,4,5,3],
-"schema_lang_java.html":[0,5,5]
+"schema.html#schema_indices":[0,4,5,7]
 };

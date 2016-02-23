@@ -19,7 +19,9 @@ var programming_lang_java =
       [ "Isolation levels", "transactions_lang_java.html#transaction_isolation_lang_java", null ],
       [ "Named Snapshots", "transactions_lang_java.html#transaction_named_snapshots_lang_java", null ]
     ] ],
-    [ "Error handling  in Java", "error_handling_lang_java.html", null ],
+    [ "Error handling  in Java", "error_handling_lang_java.html", [
+      [ "Translating errors", "error_handling_lang_java.html#error_translation_lang_java", null ]
+    ] ],
     [ "Schema, Columns, Column Groups, Indices and Projections  in Java", "schema_lang_java.html", "schema_lang_java" ],
     [ "Log-Structured Merge Trees  in Java", "lsm_lang_java.html", [
       [ "Background", "lsm_lang_java.html#lsm_background_lang_java", null ],

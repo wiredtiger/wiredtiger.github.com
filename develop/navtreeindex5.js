@@ -1,9 +1,12 @@
 var NAVTREEINDEX5 =
 {
-"tune_zone_reclaim.html":[0,5,41],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,4,43,2],
+"tune_transparent_huge_pages.html":[0,5,38],
+"tune_transparent_huge_pages.html":[0,4,44],
 "tune_zone_reclaim.html":[0,4,47],
-"upgrade.html":[0,5,23],
+"tune_zone_reclaim.html":[0,5,41],
 "upgrade.html":[0,4,24],
+"upgrade.html":[0,5,23],
 "upgrading.html":[0,9],
 "upgrading.html#version_13":[0,9,31],
 "upgrading.html#version_135":[0,9,30],
