@@ -22,8 +22,8 @@ var NAVTREEINDEX =
 ".html",
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a2bda605ed3c4c4b85a52e145ea809f61",
 "ex_hello_8c-example.html",
-"group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253",
-"schema.html#schema_intro",
+"group__wt.html#ga7d0e581b55bbad522805efa6208c4e37",
+"schema.html#schema_indices",
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max"
 ];
 
