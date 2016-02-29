@@ -75,7 +75,7 @@ $(document).ready(function(){initNavTree('readonly.html','');});
 <h1><a class="anchor" id="readonly_config"></a>
 Database read-only configuration considerations</h1>
 <p>The <code>readonly</code> configuration affects other configuration settings. Where a default setting contradicts read-only operation, WiredTiger defaults are overridden to perform in a read-only mode. For example, LSM tree merges are turned off when LSM trees are configured, and log file archiving is disabled when logging is configured.</p>
-<p>Where a user configured setting contradicts read-only operation, WiredTiger will return an error. For example, statistics logging or zero-filling log files is not allowed in read-only mode, and attempting to configure them will return an error.</p>
+<p>Where a user configured setting contradicts read-only operation, WiredTiger will return an error. For example, zero-filling log files is not allowed in read-only mode, and attempting to configure them will return an error.</p>
 <h1><a class="anchor" id="readonly_recovery"></a>
 Readonly configuration and recovery</h1>
 <p>Because recovery modifies the database, recovery cannot be done in read-only mode. A <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> call to open a database in read-only mode will fail if the database was not cleanly shutdown and recovery is required.</p>
