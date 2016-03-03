@@ -101,7 +101,7 @@ Builtin data sources</h1>
 <td><code>metadata:[create]</code></td><td>metadata cursor (optionally only returning configuration strings for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> if <code>create</code> is appended</td><td>key=<code>string</code>, value=<code>string</code>,<br />
  see <a class="el" href="cursors.html#metadata">Reading WiredTiger Metadata</a> for details </td></tr>
 <tr>
-<td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database or data source statistics cursor</td><td>key=<code>int id</code>,<br />
+<td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database</td><td>data source or join statistics cursor</td><td>key=<code>int id</code>,<br />
  value=<code>(string description, string value, uint64_t value)</code>,<br />
  see <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for details </td></tr>
 </table>
@@ -124,7 +124,7 @@ Table Index data</h2>
 <p>A cursor opened on an index has the specified index columns as its key, accessed by Cursor.set_key and Cursor.get_key. The value columns default to returning the value columns from the table, but this can be overridden by configuring a projection cursor (see <a class="el" href="cursors_lang_java.html#cursor_projections_lang_java">Projections</a>), which can access the table key columns or a subset of the value columns.</p>
 <h2><a class="anchor" id="data_statistics_lang_java"></a>
 Statistics Data</h2>
-<p>Statistics cursors can be used to retrieve run-time statistics about a WiredTiger database as well as statistics for individual data sources. The statistics are at two levels: per-database and per-individual data source. Database-wide statistics are retrieved with the <code>"statistics:"</code> URI; individual data source statistics are available by specifying <code>"statistics:&lt;data source URI&gt;"</code>.</p>
+<p>Statistics cursors can be used to retrieve run-time statistics about a WiredTiger database as well as statistics for individual data sources. The statistics are at two levels: per-database and per-individual data source. Database-wide statistics are retrieved with the <code>"statistics:"</code> URI; individual data source statistics are available by specifying <code>"statistics:&lt;data source URI&gt;"</code>. Additionally, statistics about a join cursor can be retrieved by specifying <code>"statistics:join"</code> and supplying the join cursor as an argument in the SESSION::open_cursor call.</p>
 <p>The statistic key is an integer from the list of keys in <a class="el" href="group__wt.html#statistics_keys">Statistics Keys</a>. Statistics cursors return three values from the Cursor.get_value call: a printable description of the statistic, a printable version of the entry's value, and the entry's unsigned 64-bit integral value, respectively.</p>
 <p>The cursor's statistics values are loaded when the cursor is opened and remain unchanged for the life of the cursor, unless the cursor is reset by calling the Cursor.reset method, which reloads the values.</p>
 <p>The following is an example of printing run-time statistics about the WiredTiger engine:</p>
@@ -136,7 +136,12 @@ Statistics Data</h2>
 <div class="fragment"><div class="line">        cursor = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(<span class="stringliteral">&quot;statistics:table:access&quot;</span>, null, null);</div>
 <div class="line">        ret = print_cursor(cursor);</div>
 <div class="line">        ret = cursor.<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>();</div>
-</div><!-- fragment --><p> Both examples can use a common display routine that iterates through the statistics until the cursor returns the end of the list.</p>
+</div><!-- fragment --><p> The following is an example of printing statistics about a join cursor:</p>
+<div class="fragment"><div class="line">        stat_cursor = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(<span class="stringliteral">&quot;statistics:join&quot;</span>, join_cursor, null);</div>
+<div class="line"></div>
+<div class="line">        ret = print_cursor(stat_cursor);</div>
+<div class="line">        ret = stat_cursor.close();</div>
+</div><!-- fragment --><p> These three examples can use a common display routine that iterates through the statistics until the cursor returns the end of the list.</p>
 <div class="fragment"><div class="line">    <span class="keywordtype">int</span></div>
 <div class="line">    print_cursor(Cursor cursor)</div>
 <div class="line">        <span class="keywordflow">throws</span> WiredTigerException</div>

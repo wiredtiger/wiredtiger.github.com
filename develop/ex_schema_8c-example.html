@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">{</div>
 <div class="line">        POP_RECORD *p;</div>
 <div class="line">        <a name="_a0"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
-<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, *cursor2, *join_cursor;</div>
+<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, *cursor2, *join_cursor, *stat_cursor;</div>
 <div class="line">        <a name="_a2"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *country;</div>
 <div class="line">        uint64_t recno, population;</div>
@@ -156,7 +156,8 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        } <span class="keywordflow">else</span></div>
 <div class="line">                home = NULL;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a3"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a3"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(</div>
+<div class="line">            home, NULL, <span class="stringliteral">&quot;create,statistics=(fast)&quot;</span>, &amp;conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home, <a name="a4"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
@@ -390,6 +391,10 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">                printf(<span class="stringliteral">&quot;: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;statistics:join&quot;</span>,</div>
+<div class="line">            join_cursor, NULL, &amp;stat_cursor);</div>
+<div class="line">        ret = stat_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(stat_cursor);</div>
 <div class="line">        ret = join_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(join_cursor);</div>
 <div class="line">        ret = cursor2-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor2);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>

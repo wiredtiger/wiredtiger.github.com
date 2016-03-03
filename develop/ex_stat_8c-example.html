@@ -112,6 +112,7 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line"><span class="keywordtype">int</span> print_cursor(<a name="_a0"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *);</div>
 <div class="line"><span class="keywordtype">int</span> print_database_stats(<a name="_a1"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *);</div>
 <div class="line"><span class="keywordtype">int</span> print_file_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *);</div>
+<div class="line"><span class="keywordtype">int</span> print_join_cursor_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *);</div>
 <div class="line"><span class="keywordtype">int</span> print_overflow_pages(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *);</div>
 <div class="line"><span class="keywordtype">int</span> get_stat(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, <span class="keywordtype">int</span> stat_field, uint64_t *valuep);</div>
 <div class="line"><span class="keywordtype">int</span> print_derived_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *);</div>
@@ -163,6 +164,34 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> </div>
+<div class="line">print_join_cursor_stats(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
+<div class="line">{</div>
+<div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *idx_cursor, *join_cursor, *stat_cursor;</div>
+<div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line"></div>
+<div class="line">        ret = session-&gt;<a name="a7"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;index:access:idx&quot;</span>, <span class="stringliteral">&quot;columns=(v)&quot;</span>);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;index:access:idx&quot;</span>, NULL, NULL, &amp;idx_cursor);</div>
+<div class="line">        ret = idx_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(idx_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;join:table:access&quot;</span>, NULL, NULL, &amp;join_cursor);</div>
+<div class="line">        ret = session-&gt;<a name="a8"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, idx_cursor, <span class="stringliteral">&quot;compare=gt&quot;</span>);</div>
+<div class="line">        ret = join_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(join_cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;statistics:join&quot;</span>, join_cursor, NULL, &amp;stat_cursor)) != 0)</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line"></div>
+<div class="line">        ret = print_cursor(stat_cursor);</div>
+<div class="line">        ret = stat_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(stat_cursor);</div>
+<div class="line">        ret = join_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(join_cursor);</div>
+<div class="line">        ret = idx_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(idx_cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span></div>
 <div class="line">print_overflow_pages(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
@@ -174,8 +203,8 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">            <span class="stringliteral">&quot;statistics:table:access&quot;</span>, NULL, NULL, &amp;cursor)) != 0)</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line"></div>
-<div class="line">        cursor-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <a name="a8"></a><a class="code" href="group__wt.html#ga079f2d70ac0826f54e36b8535d7194e5">WT_STAT_DSRC_BTREE_OVERFLOW</a>);</div>
-<div class="line">        ret = cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
+<div class="line">        cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <a name="a10"></a><a class="code" href="group__wt.html#ga079f2d70ac0826f54e36b8535d7194e5">WT_STAT_DSRC_BTREE_OVERFLOW</a>);</div>
+<div class="line">        ret = cursor-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;desc, &amp;pvalue, &amp;value);</div>
 <div class="line">        printf(<span class="stringliteral">&quot;%s=%s\n&quot;</span>, desc, pvalue);</div>
 <div class="line"></div>
@@ -206,8 +235,8 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        {</div>
 <div class="line">        uint64_t ckpt_size, file_size, percent;</div>
-<div class="line">        ret = get_stat(cursor, <a name="a10"></a><a class="code" href="group__wt.html#ga3ba4d6c12abe10285dc3b599f082a4e4">WT_STAT_DSRC_BLOCK_CHECKPOINT_SIZE</a>, &amp;ckpt_size);</div>
-<div class="line">        ret = get_stat(cursor, <a name="a11"></a><a class="code" href="group__wt.html#ga2af5c768712ce6c6b840badd17dd13b9">WT_STAT_DSRC_BLOCK_SIZE</a>, &amp;file_size);</div>
+<div class="line">        ret = get_stat(cursor, <a name="a12"></a><a class="code" href="group__wt.html#ga3ba4d6c12abe10285dc3b599f082a4e4">WT_STAT_DSRC_BLOCK_CHECKPOINT_SIZE</a>, &amp;ckpt_size);</div>
+<div class="line">        ret = get_stat(cursor, <a name="a13"></a><a class="code" href="group__wt.html#ga2af5c768712ce6c6b840badd17dd13b9">WT_STAT_DSRC_BLOCK_SIZE</a>, &amp;file_size);</div>
 <div class="line"></div>
 <div class="line">        percent = 0;</div>
 <div class="line">        <span class="keywordflow">if</span> (file_size != 0)</div>
@@ -218,11 +247,11 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">        {</div>
 <div class="line">        uint64_t app_insert, app_remove, app_update, fs_writes;</div>
 <div class="line"></div>
-<div class="line">        ret = get_stat(cursor, <a name="a12"></a><a class="code" href="group__wt.html#gaec7145b45392656825b8404ae1fb4f46">WT_STAT_DSRC_CURSOR_INSERT_BYTES</a>, &amp;app_insert);</div>
-<div class="line">        ret = get_stat(cursor, <a name="a13"></a><a class="code" href="group__wt.html#gaf9cc721c75f42a110e0f6af104087b4d">WT_STAT_DSRC_CURSOR_REMOVE_BYTES</a>, &amp;app_remove);</div>
-<div class="line">        ret = get_stat(cursor, <a name="a14"></a><a class="code" href="group__wt.html#ga21596e9d2f3d0c992bcade65b85cb5eb">WT_STAT_DSRC_CURSOR_UPDATE_BYTES</a>, &amp;app_update);</div>
+<div class="line">        ret = get_stat(cursor, <a name="a14"></a><a class="code" href="group__wt.html#gaec7145b45392656825b8404ae1fb4f46">WT_STAT_DSRC_CURSOR_INSERT_BYTES</a>, &amp;app_insert);</div>
+<div class="line">        ret = get_stat(cursor, <a name="a15"></a><a class="code" href="group__wt.html#gaf9cc721c75f42a110e0f6af104087b4d">WT_STAT_DSRC_CURSOR_REMOVE_BYTES</a>, &amp;app_remove);</div>
+<div class="line">        ret = get_stat(cursor, <a name="a16"></a><a class="code" href="group__wt.html#ga21596e9d2f3d0c992bcade65b85cb5eb">WT_STAT_DSRC_CURSOR_UPDATE_BYTES</a>, &amp;app_update);</div>
 <div class="line"></div>
-<div class="line">        ret = get_stat(cursor, <a name="a15"></a><a class="code" href="group__wt.html#ga212a7e9d219e279da8b10adfaaab2afc">WT_STAT_DSRC_CACHE_BYTES_WRITE</a>, &amp;fs_writes);</div>
+<div class="line">        ret = get_stat(cursor, <a name="a17"></a><a class="code" href="group__wt.html#ga212a7e9d219e279da8b10adfaaab2afc">WT_STAT_DSRC_CACHE_BYTES_WRITE</a>, &amp;fs_writes);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> (app_insert + app_remove + app_update != 0)</div>
 <div class="line">                printf(<span class="stringliteral">&quot;Write amplification is %.2lf\n&quot;</span>,</div>
@@ -237,7 +266,7 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
-<div class="line">        <a name="_a16"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
+<div class="line">        <a name="_a18"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
@@ -252,29 +281,32 @@ $(document).ready(function(){initNavTree('ex_stat_8c-example.html','');});
 <div class="line">        } <span class="keywordflow">else</span></div>
 <div class="line">                home = NULL;</div>
 <div class="line"></div>
-<div class="line">        ret = <a name="a17"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,statistics=(all)&quot;</span>, &amp;conn);</div>
-<div class="line">        ret = conn-&gt;<a name="a18"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
-<div class="line">        ret = session-&gt;<a name="a19"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:access&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
+<div class="line">        ret = <a name="a19"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,statistics=(all)&quot;</span>, &amp;conn);</div>
+<div class="line">        ret = conn-&gt;<a name="a20"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:access&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S,columns=(k,v)&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
-<div class="line">        cursor-&gt;<a name="a20"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
-<div class="line">        ret = cursor-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
+<div class="line">        cursor-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line">        ret = cursor-&gt;<a name="a22"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a name="a22"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, NULL);</div>
+<div class="line">        ret = session-&gt;<a name="a23"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, NULL);</div>
 <div class="line"></div>
 <div class="line">        ret = print_database_stats(session);</div>
 <div class="line"></div>
 <div class="line">        ret = print_file_stats(session);</div>
 <div class="line"></div>
+<div class="line">        ret = print_join_cursor_stats(session);</div>
+<div class="line"></div>
 <div class="line">        ret = print_overflow_pages(session);</div>
 <div class="line"></div>
 <div class="line">        ret = print_derived_stats(session);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (conn-&gt;<a name="a23"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL) == 0 ? ret : EXIT_FAILURE);</div>
+<div class="line">        <span class="keywordflow">return</span> (conn-&gt;<a name="a24"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL) == 0 ? ret : EXIT_FAILURE);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

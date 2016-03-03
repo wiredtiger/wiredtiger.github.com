@@ -96,7 +96,12 @@ $(document).ready(function(){initNavTree('statistics.html','');});
 <p>The following example configures WiredTiger to maintain only relatively inexpensive statistics, and to clears statistics after they are gathered or logged:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, <span class="stringliteral">&quot;statistics=(fast,clear)&quot;</span>, &amp;cursor);</div>
-</div><!-- fragment --> <h1><a class="anchor" id="statistics_log"></a>
+</div><!-- fragment --><p> The following example opens a statistics cursor on an open join cursor:</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;statistics:join&quot;</span>,</div>
+<div class="line">            join_cursor, NULL, &amp;stat_cursor);</div>
+</div><!-- fragment --><p> The statistics gathered will be organized by reference cursors participating in the join (see <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84" title="Join a join cursor with a reference cursor. ">WT_SESSION::join</a>); the uri of each reference cursor appears as a prefix in the description field returned as a value by the statistics cursor.</p>
+<h1><a class="anchor" id="statistics_log"></a>
 Statistics logging</h1>
 <p>WiredTiger will optionally log database statistics into a file when the the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>statistics_log</code> configuration is set.</p>
 <p>The resulting statistics can be displayed using the <code>wtstats</code> visualization tool. For more information, see <a class="el" href="wtstats.html">Visualizing performance with wtstats</a>.</p>
