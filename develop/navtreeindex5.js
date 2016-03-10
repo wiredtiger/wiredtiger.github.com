@@ -1,11 +1,16 @@
 var NAVTREEINDEX5 =
 {
+"tune_system_buffer_cache.html":[0,5,37],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io":[0,5,37,0],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io":[0,4,43,0],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max":[0,4,43,1],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max":[0,5,37,1],
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,4,43,2],
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,5,37,2],
 "tune_transparent_huge_pages.html":[0,4,44],
 "tune_transparent_huge_pages.html":[0,5,38],
-"tune_zone_reclaim.html":[0,5,41],
 "tune_zone_reclaim.html":[0,4,47],
+"tune_zone_reclaim.html":[0,5,41],
 "upgrade.html":[0,4,24],
 "upgrade.html":[0,5,23],
 "upgrading.html":[0,9],
@@ -43,12 +48,12 @@ var NAVTREEINDEX5 =
 "upgrading.html#version_271":[0,9,0],
 "wtperf.html":[0,4,31],
 "wtperf.html":[0,5,25],
-"wtperf.html#config":[0,5,25,1],
 "wtperf.html#config":[0,4,31,1],
-"wtperf.html#monitor":[0,4,31,0],
+"wtperf.html#config":[0,5,25,1],
 "wtperf.html#monitor":[0,5,25,0],
+"wtperf.html#monitor":[0,4,31,0],
 "wtstats.html":[0,5,26],
 "wtstats.html":[0,4,32],
-"wtstats.html#wtstats_display":[0,4,32,0],
-"wtstats.html#wtstats_display":[0,5,26,0]
+"wtstats.html#wtstats_display":[0,5,26,0],
+"wtstats.html#wtstats_display":[0,4,32,0]
 };
