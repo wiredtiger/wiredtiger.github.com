@@ -257,7 +257,9 @@ Column groups</h1>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, 2);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;ID 2: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                printf(</div>
+<div class="line">                    <span class="stringliteral">&quot;ID 2: &quot;</span></div>
+<div class="line">                    <span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/*</span></div>
@@ -290,8 +292,8 @@ Indices</h1>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;AU: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
-<div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;AU: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">            country, year, population);</div>
 </div><!-- fragment --><p> To create an index with a composite key, specify more than one column to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> call:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Create an index with a composite key (country,year). */</span></div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session,</div>
@@ -303,8 +305,9 @@ Indices</h1>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;USA\0\0&quot;</span>, (uint16_t)1900);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;US 1900: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
-<div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+<div class="line">        printf(</div>
+<div class="line">            <span class="stringliteral">&quot;US 1900: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">            country, year, population);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="schema_index_immutable"></a>
 Immutable indices</h1>
 <p>It is possible to create an index with the <code>immutable</code> configuration setting enabled. This setting tells WiredTiger that the index keys for a record do not change when records are updated. This is an optimization that it saves a remove and insert into the index whenever a value in the primary table is updated.</p>
@@ -327,7 +330,7 @@ Index cursor projections</h1>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;recno);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;row ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u\n&quot;</span>,</div>
+<div class="line">                printf(<span class="stringliteral">&quot;row ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    recno, country, year);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><p> Here is an example of a projection that returns a subset of columns from the index:</p>
@@ -341,7 +344,7 @@ Index cursor projections</h1>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;population);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;population %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u\n&quot;</span>,</div>
+<div class="line">                printf(<span class="stringliteral">&quot;population %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    population, country, year);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><p> For performance reasons, it may be desirable to include all columns for a performance-critical operation in an index, so that it is possible to perform index-only lookups where no column group from the table is accessed. In this case, all of the "hot" columns should be included in the index (always list the "real" index key columns first, so they will determine the sort order). Then, open a cursor on the index that doesn't return any value columns, and no column group will be accessed.</p>
@@ -353,7 +356,7 @@ Index cursor projections</h1>
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year()&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %u\n&quot;</span>, country, year);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><p> Index cursors for column-store objects may not be created using the record number as the index key (there is no use for a secondary index on a column-store where the index key is the record number).</p>
 <h1><a class="anchor" id="schema_examples"></a>

@@ -97,7 +97,8 @@ $(document).ready(function(){initNavTree('cursor_join.html','');});
 <div class="line">                ret = join_cursor-&gt;get_value(join_cursor, &amp;country, &amp;year,</div>
 <div class="line">                    &amp;population);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64, recno);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                printf(</div>
+<div class="line">                    <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><p> Joins support various comparison operators: <code>"eq"</code>, <code>"gt"</code>, <code>"ge"</code>, <code>"lt"</code>, <code>"le"</code>. Ranges with lower and upper bounds can also be specified, by joining two cursors on the same index, for example, one with <code>"compare=ge"</code> and another <code>"compare=lt"</code>. In addition to joining indices, the main table can be joined so that a range of primary keys can be specified.</p>

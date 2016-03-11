@@ -172,11 +172,13 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line"><span class="comment">                 * key(s).  WiredTiger will perform the required operation</span></div>
 <div class="line"><span class="comment">                 * (such as a remove()).</span></div>
 <div class="line"><span class="comment">                 */</span></div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;EXTRACTOR: index op for year %d: %s %s\n&quot;</span>,</div>
+<div class="line">                fprintf(stderr,</div>
+<div class="line">                    <span class="stringliteral">&quot;EXTRACTOR: index op for year %&quot;</span> PRIu16 <span class="stringliteral">&quot;: %s %s\n&quot;</span>,</div>
 <div class="line">                    year, first_name, last_name);</div>
 <div class="line">                result_cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(result_cursor, year);</div>
 <div class="line">                <span class="keywordflow">if</span> ((ret = result_cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(result_cursor)) != 0) {</div>
-<div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;EXTRACTOR: op year %d: error %d\n&quot;</span>,</div>
+<div class="line">                        fprintf(stderr,</div>
+<div class="line">                            <span class="stringliteral">&quot;EXTRACTOR: op year %&quot;</span> PRIu16 <span class="stringliteral">&quot;: error %d\n&quot;</span>,</div>
 <div class="line">                            year, ret);</div>
 <div class="line">                        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">                }</div>
@@ -230,7 +232,7 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 10 &amp;&amp; RET_OK(ret); i++) {</div>
 <div class="line">                year = (uint16_t)((rand() % YEAR_SPAN) + YEAR_BASE);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;Year %d:\n&quot;</span>, year);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;Year %&quot;</span> PRIu16 <span class="stringliteral">&quot;:\n&quot;</span>, year);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, year);</div>
 <div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor)) != 0)</div>
 <div class="line">                        <span class="keywordflow">break</span>;</div>
@@ -254,7 +256,7 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line">                }</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> (!RET_OK(ret))</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error %d for year %d\n&quot;</span>, ret, year);</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error %d for year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, ret, year);</div>
 <div class="line"></div>
 <div class="line">        ret = cursor-&gt;<a name="a16"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
@@ -318,7 +320,8 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, p.id);</div>
 <div class="line">                cursor-&gt;<a name="a19"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor,</div>
 <div class="line">                    p.last_name, p.first_name, p.term_start, p.term_end);</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;SETUP: table insert %d-%d: %s %s\n&quot;</span>,</div>
+<div class="line">                fprintf(stderr,</div>
+<div class="line">                    <span class="stringliteral">&quot;SETUP: table insert %&quot;</span> PRIu16 <span class="stringliteral">&quot;-%&quot;</span> PRIu16 <span class="stringliteral">&quot;: %s %s\n&quot;</span>,</div>
 <div class="line">                    p.term_start, p.term_end,</div>
 <div class="line">                    p.first_name, p.last_name);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>

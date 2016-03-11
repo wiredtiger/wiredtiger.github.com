@@ -223,7 +223,8 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;recno);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64, recno);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                printf(</div>
+<div class="line">                    <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
@@ -243,7 +244,8 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">                ret = <a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(session,</div>
 <div class="line">                    value.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>, value.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>,</div>
 <div class="line">                    <span class="stringliteral">&quot;5sHQ&quot;</span>, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                printf(</div>
+<div class="line">                    <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
@@ -257,7 +259,9 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        cursor-&gt;<a name="a19"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, 2);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a20"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;ID 2: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                printf(</div>
+<div class="line">                    <span class="stringliteral">&quot;ID 2: &quot;</span></div>
+<div class="line">                    <span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
@@ -281,8 +285,8 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;AU: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
-<div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;AU: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">            country, year, population);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Search in a composite index. */</span></div>
@@ -291,8 +295,9 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;USA\0\0&quot;</span>, (uint16_t)1900);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year, &amp;population);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;US 1900: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
-<div class="line">            country, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)year, population);</div>
+<div class="line">        printf(</div>
+<div class="line">            <span class="stringliteral">&quot;US 1900: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">            country, year, population);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -303,7 +308,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">            <span class="stringliteral">&quot;table:poptable(country,year)&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %u\n&quot;</span>, country, year);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
@@ -319,7 +324,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value);</div>
 <div class="line">                ret = <a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(</div>
 <div class="line">                    session, value.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>, value.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, <span class="stringliteral">&quot;5sH&quot;</span>, &amp;country, &amp;year);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %u\n&quot;</span>, country, year);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
@@ -332,7 +337,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;recno);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;row ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u\n&quot;</span>,</div>
+<div class="line">                printf(<span class="stringliteral">&quot;row ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    recno, country, year);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
@@ -347,7 +352,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;population);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;population %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %u\n&quot;</span>,</div>
+<div class="line">                printf(<span class="stringliteral">&quot;population %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    population, country, year);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
@@ -360,7 +365,7 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">            <span class="stringliteral">&quot;index:poptable:country_plus_year()&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %u\n&quot;</span>, country, year);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
 <div class="line">        }</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
 <div class="line"></div>
@@ -388,7 +393,8 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html','');});
 <div class="line">                ret = join_cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(join_cursor, &amp;country, &amp;year,</div>
 <div class="line">                    &amp;population);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64, recno);</div>
-<div class="line">                printf(<span class="stringliteral">&quot;: country %s, year %u, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                printf(</div>
+<div class="line">                    <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
