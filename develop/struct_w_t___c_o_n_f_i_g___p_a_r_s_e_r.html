@@ -136,7 +136,7 @@ Configuration String Parsing examples</h1>
 <div class="line">        <span class="keywordflow">while</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f">next</a>(parser, &amp;k, &amp;v)) == 0) {</div>
 <div class="line">                printf(<span class="stringliteral">&quot;%.*s:&quot;</span>, (<span class="keywordtype">int</span>)k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>);</div>
 <div class="line">                <span class="keywordflow">if</span> (v.<a class="code" href="group__wt.html#a02883d8649c8f9cf4047ada5f7db9245">type</a> == WT_CONFIG_ITEM_NUM)</div>
-<div class="line">                        printf(<span class="stringliteral">&quot;%lld\n&quot;</span>, (<span class="keywordtype">long</span> <span class="keywordtype">long</span>)v.<a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a>);</div>
+<div class="line">                        printf(<span class="stringliteral">&quot;%&quot;</span> PRId64 <span class="stringliteral">&quot;\n&quot;</span>, v.<a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a>);</div>
 <div class="line">                <span class="keywordflow">else</span></div>
 <div class="line">                        printf(<span class="stringliteral">&quot;%.*s\n&quot;</span>, (<span class="keywordtype">int</span>)v.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, v.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>);</div>
 <div class="line">        }</div>
