@@ -59,7 +59,7 @@ The \fCwt\fP tool supports several commands\&. If configured in the underlying d
 .PP
 Perform a backup of a database or set of data sources\&.
 .PP
-The \fCbackup\fP command performs a backup of the database, copying the database files to a \fCspecified\fP directory, which can be subsequently opened as a WiredTiger database\&. See \fBBackups\fP for more information, and \fBFile permissions\fP for specifics on the copied file permissions\&.
+The \fCbackup\fP command performs a backup of the database, copying the underlying files to a \fCspecified\fP directory, which can be subsequently opened as a WiredTiger database\&. See \fBBackups\fP for more information, and \fBFile permissions\fP for specifics on the copied file permissions\&.
 .SS "Synopsis"
 \fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] backup [-t uri] directory\fP
 .SS "Options"
@@ -74,9 +74,9 @@ By default, the \fCbackup\fP command does a backup of the entire database; the \
  
 .SH "wt compact"
 .PP
-Compact a table or file\&.
+Compact a table\&.
 .PP
-The \fCcompact\fP command attempts to rewrite the specified table or file to consume less disk space\&.
+The \fCcompact\fP command attempts to rewrite the specified table to consume less disk space\&.
 .SS "Synopsis"
 \fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] compact uri\fP
 .SS "Options"
@@ -86,7 +86,7 @@ The \fCcompact\fP command has no command-specific options\&.
  
 .SH "wt create"
 .PP
-Create a table or file\&.
+Create a table\&.
 .PP
 The \fCcreate\fP command creates the specified \fCuri\fP with the specified configuration\&. It is equivalent to a call to \fBWT_SESSION::create\fP with the specified string arguments\&.
 .SS "Synopsis"
@@ -103,7 +103,7 @@ Include a configuration string to be passed to \fBWT_SESSION::create\fP\&.
  
 .SH "wt drop"
 .PP
-Drop a table or file\&.
+Drop a table\&.
 .PP
 The \fCdrop\fP command drops the specified \fCuri\fP\&. It is equivalent to a call to \fBWT_SESSION::drop\fP with the 'force' configuration argument\&.
 .SS "Synopsis"
@@ -154,9 +154,9 @@ Dump all characters in a hexadecimal encoding (the default is to leave printable
  
 .SH "wt list"
 .PP
-List the tables and files in the database\&.
+List the tables in the database\&.
 .PP
-By default, the \fClist\fP command prints out the tables and files stored in the database\&. If a URI is specified as an argument, only information about that data source is printed\&.
+By default, the \fClist\fP command prints out the tables stored in the database\&. If a URI is specified as an argument, only information about that data source is printed\&.
 .SS "Synopsis"
 \fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]\fP
 .SS "Options"
@@ -176,11 +176,11 @@ If the \fC-v\fP option is specified, the data source's complete schema table val
  
 .SH "wt load"
 .PP
-Load a table or file from dump output\&.
+Load a table from dump output\&.
 .PP
-The \fCload\fP command reads the standard input for data and loads it into a table or file, creating the table or file if it does not yet exist\&. The data should be the format produced by the \fCdump\fP command; see \fBDump Formats\fP for details\&.
+The \fCload\fP command reads the standard input for data and loads it into a table, creating the table if it does not yet exist\&. The data should be the format produced by the \fCdump\fP command; see \fBDump Formats\fP for details\&.
 .PP
-By default, if the table or file already exists, data in the file or table will be overwritten by the new data (use the \fC-n\fP option to make an attempt to overwrite existing data return an error)\&.
+By default, if the table already exists, data in the table will be overwritten by the new data (use the \fC-n\fP option to make an attempt to overwrite existing data return an error)\&.
 .SS "Synopsis"
 \fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] load [-ajn] [-f input] [-r name] [uri configuration \&.\&.\&.]\fP
 .SS "Options"
@@ -208,7 +208,7 @@ By default, input data will overwrite existing data where the key/value pair alr
 .PP
 \fB-r\fP
 .RS 4
-By default, the \fCload\fP command uses the table or file name taken from the input; the \fC-r\fP option renames the data source\&.
+By default, the \fCload\fP command uses the table name taken from the input; the \fC-r\fP option renames the data source\&.
 .RE
 .PP
 Additionally, \fCuri\fP and \fCconfiguration\fP pairs may be specified to the \fCload\fP command\&. These configuration pairs can be used to modify the configuration values from the dump header passed to the \fBWT_SESSION::create\fP call\&.
@@ -237,15 +237,15 @@ table:xxx block_allocation=first table:xxx prefix_compress=false
  
 .SH "wt loadtext"
 .PP
-Load text into a table or file\&.
+Load text into a table\&.
 .PP
-The \fCloadtext\fP command reads the standard input for text and loads it into a table or file\&. The input data should be printable characters, with newline delimiters for each key or value\&.
+The \fCloadtext\fP command reads the standard input for text and loads it into a table\&. The input data should be printable characters, with newline delimiters for each key or value\&.
 .PP
-The \fCloadtext\fP command does not create the file if it does not yet exist\&.
+The \fCloadtext\fP command does not create the object if it does not yet exist\&.
 .PP
-In the case of inserting values into a column-store table or file, each value is appended to the table or file; in the case of inserting values into a row-store table or file, lines are handled in pairs, where the first line is the key and the second line is the value\&. If the row-store table or file already exists, data in the table or file will be overwritten by the new data\&.
+In the case of inserting values into a column-store table, each value is appended to the table; in the case of inserting values into a row-store table, lines are handled in pairs, where the first line is the key and the second line is the value\&. If the row-store table already exists, data in the table will be overwritten by the new data\&.
 .SS "Synopsis"
-\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input]\fP
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input] uri\fP
 .SS "Options"
 The following are command-specific options for the \fCloadtext\fP command:
 .PP
@@ -280,7 +280,7 @@ Keys and value items in the log are printed in hex format in addition to the def
  
 .SH "wt read"
 .PP
-Read records from a table or file\&.
+Read records from a table\&.
 .PP
 The \fCread\fP command prints out the records associated with the specified keys from the specified data source\&. The data source must be configured with string or record number keys and string values\&.
 .PP
@@ -294,9 +294,9 @@ The \fCread\fP command has no command-specific options\&.
  
 .SH "wt rename"
 .PP
-Rename a table or file\&.
+Rename a table\&.
 .PP
-The \fCrename\fP command renames the specified table or file\&.
+The \fCrename\fP command renames the specified table\&.
 .SS "Synopsis"
 \fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] rename uri name\fP
 .SS "Options"
@@ -306,7 +306,7 @@ The \fCrename\fP command has no command-specific options\&.
  
 .SH "wt salvage"
 .PP
-Recover data from a corrupted file\&.
+Recover data from a corrupted table\&.
 .PP
 The \fCsalvage\fP command salvages the specified data source, discarding any data that cannot be recovered\&. Underlying files are re-written in place, overwriting the original file contents\&.
 .SS "Synopsis"
@@ -316,7 +316,7 @@ The following are command-specific options for the \fCsalvage\fP command:
 .PP
 \fB-F\fP
 .RS 4
-By default, salvage will refuse to salvage files that fail basic tests (for example, files that don't appear to be in a WiredTiger format)\&. The \fC-F\fP option forces the salvage of the file, regardless\&.
+By default, salvage will refuse to salvage tables that fail basic tests (for example, tables that don't appear to be in a WiredTiger format)\&. The \fC-F\fP option forces the salvage of the table, regardless\&.
 .RE
 .PP
 .PP
@@ -340,9 +340,9 @@ Include only 'fast' statistics in the output (equivalent to passing \fCstatistic
  
 .SH "wt upgrade"
 .PP
-Upgrade a table or file\&.
+Upgrade a table\&.
 .PP
-The \fCupgrade\fP command upgrades the specified table or file, exiting success if the data source is up-to-date, and failure if the data source cannot be upgraded\&.
+The \fCupgrade\fP command upgrades the specified table, exiting success if the data source is up-to-date, and failure if the data source cannot be upgraded\&.
 .SS "Synopsis"
 \fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] upgrade uri\fP
 .SS "Options"
@@ -352,9 +352,9 @@ The \fCupgrade\fP command has no command-specific options\&.
  
 .SH "wt verify"
 .PP
-Check the structural integrity of a table or file\&.
+Check the structural integrity of a table\&.
 .PP
-The \fCverify\fP command verifies the specified table or file, exiting success if the data source is correct, and failure if the data source is corrupted\&.
+The \fCverify\fP command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted\&.
 .SS "Synopsis"
 \fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] verify uri\fP
 .SS "Options"
@@ -364,7 +364,7 @@ The \fCverify\fP command has no command-specific options\&.
  
 .SH "wt write"
 .PP
-Write records to a table or file\&.
+Write records to a table\&.
 .PP
 The \fCwrite\fP command stores records into the specified data source\&. The data source must be configured with string or record number keys and string values\&.
 .PP

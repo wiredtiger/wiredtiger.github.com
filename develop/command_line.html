@@ -93,7 +93,7 @@ OPTIONS</h1>
  <h1><a class="anchor" id="util_backup"></a>
 wt backup</h1>
 <p>Perform a backup of a database or set of data sources.</p>
-<p>The <code>backup</code> command performs a backup of the database, copying the database files to a <code>specified</code> directory, which can be subsequently opened as a WiredTiger database. See <a class="el" href="backup.html">Backups</a> for more information, and <a class="el" href="security.html#file_permissions">File permissions</a> for specifics on the copied file permissions.</p>
+<p>The <code>backup</code> command performs a backup of the database, copying the underlying files to a <code>specified</code> directory, which can be subsequently opened as a WiredTiger database. See <a class="el" href="backup.html">Backups</a> for more information, and <a class="el" href="security.html#file_permissions">File permissions</a> for specifics on the copied file permissions.</p>
 <h2><a class="anchor" id="util_backup_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] backup [-t uri] directory</code></p>
@@ -104,8 +104,8 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_compact"></a>
 wt compact</h1>
-<p>Compact a table or file.</p>
-<p>The <code>compact</code> command attempts to rewrite the specified table or file to consume less disk space.</p>
+<p>Compact a table.</p>
+<p>The <code>compact</code> command attempts to rewrite the specified table to consume less disk space.</p>
 <h2><a class="anchor" id="util_compact_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] compact uri</code></p>
@@ -115,7 +115,7 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_create"></a>
 wt create</h1>
-<p>Create a table or file.</p>
+<p>Create a table.</p>
 <p>The <code>create</code> command creates the specified <code>uri</code> with the specified configuration. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> with the specified string arguments.</p>
 <h2><a class="anchor" id="util_create_synopsis"></a>
 Synopsis</h2>
@@ -127,7 +127,7 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_drop"></a>
 wt drop</h1>
-<p>Drop a table or file.</p>
+<p>Drop a table.</p>
 <p>The <code>drop</code> command drops the specified <code>uri</code>. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) an object. ">WT_SESSION::drop</a> with the "force" configuration argument.</p>
 <h2><a class="anchor" id="util_drop_synopsis"></a>
 Synopsis</h2>
@@ -155,8 +155,8 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_list"></a>
 wt list</h1>
-<p>List the tables and files in the database.</p>
-<p>By default, the <code>list</code> command prints out the tables and files stored in the database. If a URI is specified as an argument, only information about that data source is printed.</p>
+<p>List the tables in the database.</p>
+<p>By default, the <code>list</code> command prints out the tables stored in the database. If a URI is specified as an argument, only information about that data source is printed.</p>
 <h2><a class="anchor" id="util_list_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]</code></p>
@@ -168,9 +168,9 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_load"></a>
 wt load</h1>
-<p>Load a table or file from dump output.</p>
-<p>The <code>load</code> command reads the standard input for data and loads it into a table or file, creating the table or file if it does not yet exist. The data should be the format produced by the <code>dump</code> command; see <a class="el" href="dump_formats.html">Dump Formats</a> for details.</p>
-<p>By default, if the table or file already exists, data in the file or table will be overwritten by the new data (use the <code>-n</code> option to make an attempt to overwrite existing data return an error).</p>
+<p>Load a table from dump output.</p>
+<p>The <code>load</code> command reads the standard input for data and loads it into a table, creating the table if it does not yet exist. The data should be the format produced by the <code>dump</code> command; see <a class="el" href="dump_formats.html">Dump Formats</a> for details.</p>
+<p>By default, if the table already exists, data in the table will be overwritten by the new data (use the <code>-n</code> option to make an attempt to overwrite existing data return an error).</p>
 <h2><a class="anchor" id="util_load_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] load [-ajn] [-f input] [-r name] [uri configuration ...]</code></p>
@@ -181,7 +181,7 @@ Options</h2>
 <dl class="section user"><dt>-f</dt><dd>By default, the <code>load</code> command reads from the standard input; the <code>-f</code> option reads the input from the specified file.</dd></dl>
 <dl class="section user"><dt>-j</dt><dd>Load input in the JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format that was created by the <code>dump -j</code> command.</dd></dl>
 <dl class="section user"><dt>-n</dt><dd>By default, input data will overwrite existing data where the key/value pair already exists in the data source; the <code>-n</code> option causes the <code>load</code> command to fail if there's an attempt to overwrite already existing data.</dd></dl>
-<dl class="section user"><dt>-r</dt><dd>By default, the <code>load</code> command uses the table or file name taken from the input; the <code>-r</code> option renames the data source.</dd></dl>
+<dl class="section user"><dt>-r</dt><dd>By default, the <code>load</code> command uses the table name taken from the input; the <code>-r</code> option renames the data source.</dd></dl>
 <p>Additionally, <code>uri</code> and <code>configuration</code> pairs may be specified to the <code>load</code> command. These configuration pairs can be used to modify the configuration values from the dump header passed to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> call.</p>
 <p>The <code>uri</code> part of the configuration pair should match only one of the objects being loaded, but may be a prefix of the object being matched. For example, the following two sets of configuration pairs are equivalent in the case of loading a single table named <code>xxx</code>.</p>
 <div class="fragment"><div class="line">table block_allocation=first</div>
@@ -193,13 +193,13 @@ Options</h2>
 </div><!-- fragment --><hr/>
  <h1><a class="anchor" id="util_loadtext"></a>
 wt loadtext</h1>
-<p>Load text into a table or file.</p>
-<p>The <code>loadtext</code> command reads the standard input for text and loads it into a table or file. The input data should be printable characters, with newline delimiters for each key or value.</p>
-<p>The <code>loadtext</code> command does not create the file if it does not yet exist.</p>
-<p>In the case of inserting values into a column-store table or file, each value is appended to the table or file; in the case of inserting values into a row-store table or file, lines are handled in pairs, where the first line is the key and the second line is the value. If the row-store table or file already exists, data in the table or file will be overwritten by the new data.</p>
+<p>Load text into a table.</p>
+<p>The <code>loadtext</code> command reads the standard input for text and loads it into a table. The input data should be printable characters, with newline delimiters for each key or value.</p>
+<p>The <code>loadtext</code> command does not create the object if it does not yet exist.</p>
+<p>In the case of inserting values into a column-store table, each value is appended to the table; in the case of inserting values into a row-store table, lines are handled in pairs, where the first line is the key and the second line is the value. If the row-store table already exists, data in the table will be overwritten by the new data.</p>
 <h2><a class="anchor" id="util_loadtext_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input]</code></p>
+<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input] uri</code></p>
 <h2><a class="anchor" id="util_loadtext_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>loadtext</code> command:</p>
@@ -220,7 +220,7 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_read"></a>
 wt read</h1>
-<p>Read records from a table or file.</p>
+<p>Read records from a table.</p>
 <p>The <code>read</code> command prints out the records associated with the specified keys from the specified data source. The data source must be configured with string or record number keys and string values.</p>
 <p>The <code>read</code> command exits non-zero if a specified record is not found.</p>
 <h2><a class="anchor" id="util_read_synopsis"></a>
@@ -232,8 +232,8 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_rename"></a>
 wt rename</h1>
-<p>Rename a table or file.</p>
-<p>The <code>rename</code> command renames the specified table or file.</p>
+<p>Rename a table.</p>
+<p>The <code>rename</code> command renames the specified table.</p>
 <h2><a class="anchor" id="util_rename_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] rename uri name</code></p>
@@ -243,7 +243,7 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_salvage"></a>
 wt salvage</h1>
-<p>Recover data from a corrupted file.</p>
+<p>Recover data from a corrupted table.</p>
 <p>The <code>salvage</code> command salvages the specified data source, discarding any data that cannot be recovered. Underlying files are re-written in place, overwriting the original file contents.</p>
 <h2><a class="anchor" id="util_salvage_synopsis"></a>
 Synopsis</h2>
@@ -251,7 +251,7 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_salvage_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>salvage</code> command:</p>
-<dl class="section user"><dt>-F</dt><dd>By default, salvage will refuse to salvage files that fail basic tests (for example, files that don't appear to be in a WiredTiger format). The <code>-F</code> option forces the salvage of the file, regardless.</dd></dl>
+<dl class="section user"><dt>-F</dt><dd>By default, salvage will refuse to salvage tables that fail basic tests (for example, tables that don't appear to be in a WiredTiger format). The <code>-F</code> option forces the salvage of the table, regardless.</dd></dl>
 <hr/>
  <h1><a class="anchor" id="util_stat"></a>
 wt stat</h1>
@@ -267,8 +267,8 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_upgrade"></a>
 wt upgrade</h1>
-<p>Upgrade a table or file.</p>
-<p>The <code>upgrade</code> command upgrades the specified table or file, exiting success if the data source is up-to-date, and failure if the data source cannot be upgraded.</p>
+<p>Upgrade a table.</p>
+<p>The <code>upgrade</code> command upgrades the specified table, exiting success if the data source is up-to-date, and failure if the data source cannot be upgraded.</p>
 <h2><a class="anchor" id="util_upgrade_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] upgrade uri</code></p>
@@ -278,8 +278,8 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_verify"></a>
 wt verify</h1>
-<p>Check the structural integrity of a table or file.</p>
-<p>The <code>verify</code> command verifies the specified table or file, exiting success if the data source is correct, and failure if the data source is corrupted.</p>
+<p>Check the structural integrity of a table.</p>
+<p>The <code>verify</code> command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted.</p>
 <h2><a class="anchor" id="util_verify_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] verify uri</code></p>
@@ -289,7 +289,7 @@ Options</h2>
 <hr/>
  <h1><a class="anchor" id="util_write"></a>
 wt write</h1>
-<p>Write records to a table or file.</p>
+<p>Write records to a table.</p>
 <p>The <code>write</code> command stores records into the specified data source. The data source must be configured with string or record number keys and string values.</p>
 <p>If the <code>write</code> command is called with the <code>-a</code> option, each command-line argument is a single value to be appended to the specified column-store data source. If the <code>write</code> command is not called with the <code>-a</code> option, the command-line arguments are key/value pairs.</p>
 <p>Attempting to overwrite an already existing record will fail.</p>

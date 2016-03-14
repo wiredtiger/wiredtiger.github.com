@@ -134,6 +134,39 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a4bff77f867b83e76a65426eabd9e6da3"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a4bff77f867b83e76a65426eabd9e6da3">struct_unpack</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const void *buffer, size_t size, const char *format,...)</td></tr>
 <tr class="memdesc:a4bff77f867b83e76a65426eabd9e6da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a structure from a buffer.  <a href="#a4bff77f867b83e76a65426eabd9e6da3">More...</a><br /></td></tr>
 <tr class="separator:a4bff77f867b83e76a65426eabd9e6da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa465dc00b4fdcb127963da236f322652"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aa465dc00b4fdcb127963da236f322652">pack_start</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format, void *buffer, size_t size, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **psp)</td></tr>
+<tr class="memdesc:aa465dc00b4fdcb127963da236f322652"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a packing operation into a buffer.  <a href="#aa465dc00b4fdcb127963da236f322652">More...</a><br /></td></tr>
+<tr class="separator:aa465dc00b4fdcb127963da236f322652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae87ae081fa676db65a7e06fe03a20fc6"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae87ae081fa676db65a7e06fe03a20fc6">unpack_start</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format, const void *buffer, size_t size, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **psp)</td></tr>
+<tr class="memdesc:ae87ae081fa676db65a7e06fe03a20fc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start an unpacking operation from a buffer.  <a href="#ae87ae081fa676db65a7e06fe03a20fc6">More...</a><br /></td></tr>
+<tr class="separator:ae87ae081fa676db65a7e06fe03a20fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6793729220ccd2bec82a52e949cd63ca"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6793729220ccd2bec82a52e949cd63ca">pack_close</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, size_t *usedp)</td></tr>
+<tr class="memdesc:a6793729220ccd2bec82a52e949cd63ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a packing stream.  <a href="#a6793729220ccd2bec82a52e949cd63ca">More...</a><br /></td></tr>
+<tr class="separator:a6793729220ccd2bec82a52e949cd63ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac55b0c42dc2eda2774cc2cf8668961fe"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ac55b0c42dc2eda2774cc2cf8668961fe">pack_item</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *item)</td></tr>
+<tr class="memdesc:ac55b0c42dc2eda2774cc2cf8668961fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack an item into a packing stream.  <a href="#ac55b0c42dc2eda2774cc2cf8668961fe">More...</a><br /></td></tr>
+<tr class="separator:ac55b0c42dc2eda2774cc2cf8668961fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ec2af7659fe872ba1a65f4f05b961ca"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5ec2af7659fe872ba1a65f4f05b961ca">pack_int</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, int64_t i)</td></tr>
+<tr class="memdesc:a5ec2af7659fe872ba1a65f4f05b961ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a signed integer into a packing stream.  <a href="#a5ec2af7659fe872ba1a65f4f05b961ca">More...</a><br /></td></tr>
+<tr class="separator:a5ec2af7659fe872ba1a65f4f05b961ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a46e4d4a21195c00fb20cf5b3b2768c"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1a46e4d4a21195c00fb20cf5b3b2768c">pack_str</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, const char *s)</td></tr>
+<tr class="memdesc:a1a46e4d4a21195c00fb20cf5b3b2768c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a string into a packing stream.  <a href="#a1a46e4d4a21195c00fb20cf5b3b2768c">More...</a><br /></td></tr>
+<tr class="separator:a1a46e4d4a21195c00fb20cf5b3b2768c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf38b597d369fd073a4501aba3b14954"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aaf38b597d369fd073a4501aba3b14954">pack_uint</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, uint64_t u)</td></tr>
+<tr class="memdesc:aaf38b597d369fd073a4501aba3b14954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack an unsigned integer into a packing stream.  <a href="#aaf38b597d369fd073a4501aba3b14954">More...</a><br /></td></tr>
+<tr class="separator:aaf38b597d369fd073a4501aba3b14954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cab4053dd45354e393401d45eea8888"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a2cab4053dd45354e393401d45eea8888">unpack_item</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *item)</td></tr>
+<tr class="memdesc:a2cab4053dd45354e393401d45eea8888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack an item from a packing stream.  <a href="#a2cab4053dd45354e393401d45eea8888">More...</a><br /></td></tr>
+<tr class="separator:a2cab4053dd45354e393401d45eea8888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea4c874fa755ef49fc9645088dcad84"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1ea4c874fa755ef49fc9645088dcad84">unpack_int</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, int64_t *ip)</td></tr>
+<tr class="memdesc:a1ea4c874fa755ef49fc9645088dcad84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a signed integer from a packing stream.  <a href="#a1ea4c874fa755ef49fc9645088dcad84">More...</a><br /></td></tr>
+<tr class="separator:a1ea4c874fa755ef49fc9645088dcad84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba527dfba833b01bb7c70ede18b45990"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aba527dfba833b01bb7c70ede18b45990">unpack_str</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, const char **sp)</td></tr>
+<tr class="memdesc:aba527dfba833b01bb7c70ede18b45990"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a string from a packing stream.  <a href="#aba527dfba833b01bb7c70ede18b45990">More...</a><br /></td></tr>
+<tr class="separator:aba527dfba833b01bb7c70ede18b45990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65aa50ee5d12ed2eb70e157277c7603f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a65aa50ee5d12ed2eb70e157277c7603f">unpack_uint</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, uint64_t *up)</td></tr>
+<tr class="memdesc:a65aa50ee5d12ed2eb70e157277c7603f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack an unsigned integer from a packing stream.  <a href="#a65aa50ee5d12ed2eb70e157277c7603f">More...</a><br /></td></tr>
+<tr class="separator:a65aa50ee5d12ed2eb70e157277c7603f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a353f98d58bc7a2a1d9c64ff45f0d1cff"><td class="memItemLeft" align="right" valign="top">uint64_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a353f98d58bc7a2a1d9c64ff45f0d1cff">transaction_id</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
 <tr class="memdesc:a353f98d58bc7a2a1d9c64ff45f0d1cff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current transaction ID.  <a href="#a353f98d58bc7a2a1d9c64ff45f0d1cff">More...</a><br /></td></tr>
 <tr class="separator:a353f98d58bc7a2a1d9c64ff45f0d1cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -580,6 +613,142 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="a6793729220ccd2bec82a52e949cd63ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::pack_close) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, size_t *usedp)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Close a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">usedp</td><td>the number of bytes in the buffer used by the stream </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5ec2af7659fe872ba1a65f4f05b961ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::pack_int) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, int64_t i)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pack a signed integer into a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">i</td><td>a signed integer to pack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac55b0c42dc2eda2774cc2cf8668961fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::pack_item) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *item)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pack an item into a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">item</td><td>an item to pack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa465dc00b4fdcb127963da236f322652"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::pack_start) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format, void *buffer, size_t size, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **psp)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start a packing operation into a buffer. </p>
+<p>See <a class="el" href="group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253" title="Start a packing operation into a buffer with the given format string. ">wiredtiger_pack_start</a> for details.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">buffer</td><td>a pointer to memory to hold the packed data </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>the size of the buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">psp</td><td>the new packing stream handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1a46e4d4a21195c00fb20cf5b3b2768c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::pack_str) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, const char *s)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pack a string into a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">s</td><td>a string to pack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aaf38b597d369fd073a4501aba3b14954"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::pack_uint) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, uint64_t u)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pack an unsigned integer into a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">u</td><td>an unsigned integer to pack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a6d85b1ce4631b7b4e09b735527b39b1e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -671,7 +840,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pack a structure into a buffer. </p>
-<p>See <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> for details.</p>
+<p>Deprecated in favor of stream based pack and unpack API. See <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aa465dc00b4fdcb127963da236f322652" title="Start a packing operation into a buffer. ">WT_EXTENSION_API::pack_start</a> for details.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wt_api</td><td>the extension handle </td></tr>
@@ -697,7 +866,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculate the size required to pack a structure. </p>
-<p>See <a class="el" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6" title="Calculate the size required to pack a structure. ">wiredtiger_struct_size</a> for details.</p>
+<p>Deprecated in favor of stream based pack and unpack API.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wt_api</td><td>the extension handle </td></tr>
@@ -722,7 +891,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Unpack a structure from a buffer. </p>
-<p>See <a class="el" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8" title="Unpack a structure from a buffer. ">wiredtiger_struct_unpack</a> for details.</p>
+<p>Deprecated in favor of stream based pack and unpack API. See <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae87ae081fa676db65a7e06fe03a20fc6" title="Start an unpacking operation from a buffer. ">WT_EXTENSION_API::unpack_start</a> for details.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wt_api</td><td>the extension handle </td></tr>
@@ -864,6 +1033,120 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><div class="line">        is_visible =</div>
 <div class="line">            wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a213698d35a1cdd67e5d83ec998056707">transaction_visible</a>(wt_api, session, transaction_id);</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1ea4c874fa755ef49fc9645088dcad84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::unpack_int) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, int64_t *ip)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unpack a signed integer from a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">ip</td><td>the unpacked signed integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2cab4053dd45354e393401d45eea8888"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::unpack_item) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *item)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unpack an item from a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramname">item</td><td>an item to unpack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae87ae081fa676db65a7e06fe03a20fc6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::unpack_start) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format, const void *buffer, size_t size, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **psp)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start an unpacking operation from a buffer. </p>
+<p>See <a class="el" href="group__wt.html#gad93973bfd0e21ba845878ba3c4b97d96" title="Start an unpacking operation from a buffer with the given format string. ">wiredtiger_unpack_start</a> for details.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">buffer</td><td>a pointer to memory holding the packed data </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>the size of the buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">psp</td><td>the new packing stream handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aba527dfba833b01bb7c70ede18b45990"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::unpack_str) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, const char **sp)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unpack a string from a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">sp</td><td>the unpacked string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a65aa50ee5d12ed2eb70e157277c7603f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::unpack_uint) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> *ps, uint64_t *up)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unpack an unsigned integer from a packing stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">ps</td><td>the packing stream handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">up</td><td>the unpacked unsigned integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a0aecfc732fe1a43d6b2ff3792a654c0f"></a>

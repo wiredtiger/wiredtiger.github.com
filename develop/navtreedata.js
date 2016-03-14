@@ -24,7 +24,7 @@ var NAVTREEINDEX =
 "ex_hello_8c-example.html",
 "group__wt.html#ga7d0e581b55bbad522805efa6208c4e37",
 "schema.html#schema_cursor_formats",
-"tune_system_buffer_cache.html"
+"tune_page_sizes.html#tune_page_sizes_allocation_size"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
