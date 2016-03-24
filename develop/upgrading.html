@@ -27,7 +27,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.7.1</span>
+   &#160;<span id="projectnumber">Version 2.8.0</span>
    </div>
   </td>
  </tr>
@@ -70,15 +70,15 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_271"></a>
-Upgrading to Version 2.7.1</h1>
+<div class="textblock"><h1><a class="anchor" id="version_280"></a>
+Upgrading to Version 2.8.0</h1>
 <dl>
 <dt>LSM metadata </dt>
 <dd><p class="startdd">There is a change to the format of LSM metadata in this release to fix bugs in dump / load of tables of type LSM. Tables created with the old LSM metadata format will be upgraded automatically, but once updated to the new version <b>are no longer compatible with older releases of WiredTiger</b>. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Column-store bulk-load cursors </dt>
-<dd><p class="startdd">Historically, bulk-load of a column-store object ignored any key set in the cursor and automatically assigned each inserted row the next sequential record number for its key. In the 2.7.1 release, column-store objects match row-store behavior and require the cursor key be set before an insert. (This allows sparse tables to be created in column-store objects, any skipped records are created as already-deleted rows.) To match the previous behavior, specify the <code>append</code> configuration string when opening the column-store bulk-load cursor; this causes the cursor's key to be ignored and each inserted row will be assigned the next record number. </p>
+<dd><p class="startdd">Historically, bulk-load of a column-store object ignored any key set in the cursor and automatically assigned each inserted row the next sequential record number for its key. In the 2.8.0 release, column-store objects match row-store behavior and require the cursor key be set before an insert. (This allows sparse tables to be created in column-store objects, any skipped records are created as already-deleted rows.) To match the previous behavior, specify the <code>append</code> configuration string when opening the column-store bulk-load cursor; this causes the cursor's key to be ignored and each inserted row will be assigned the next record number. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Change to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range. ">WT_SESSION::truncate</a> with URI </dt>
@@ -93,6 +93,12 @@ Upgrading to Version 2.7.1</h1>
 <dd><p class="startdd">Previous versions of WiredTiger created empty named checkpoints in files being bulk-loaded. In this release, checkpoint skips files being bulk-loaded, so they do not get named checkpoints that complete during the bulk load. </p>
 <p class="enddd"></p>
 </dd>
+<dt>Remove WT_LSN structure from public API </dt>
+<dd><p class="startdd">The WiredTiger public API used to define a structure that could encapsulate log sequence numbers. That structure is no longer exposed publicly. </p>
+<p class="enddd"></p>
+</dd>
+<dt></dt>
+<dd></dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_270"></a>

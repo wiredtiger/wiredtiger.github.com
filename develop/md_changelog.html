@@ -27,7 +27,7 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.7.1</span>
+   &#160;<span id="projectnumber">Version 2.8.0</span>
    </div>
   </td>
  </tr>
@@ -70,206 +70,358 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <div class="title">WiredTiger Change Log </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>WiredTiger release 2.7.0, 2015-12-08 </h2>
-<p>The WiredTiger 2.7.0 release contains new features, minor API changes and bug fixes.</p>
+<div class="textblock"><h2>WiredTiger release 2.8.0, 2015-03-24 </h2>
+<p>The WiredTiger 2.8.0 release contains new features, new supported platforms, minor API changes and bug fixes.</p>
 <p>New features and API changes; refer to the API documentation for full details:</p>
 <ul>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/959376c">959376c</a> <a href="https://jira.mongodb.org/browse/WT-147">WT-147</a>: Create indexes on non-empty tables.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4368d39">4368d39</a> <a href="https://jira.mongodb.org/browse/WT-1315">WT-1315</a>: Add an implementation of cursor joins via a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84" title="Join a join cursor with a reference cursor. ">WT_SESSION::join</a> API.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/944ccd1">944ccd1</a> <a href="https://jira.mongodb.org/browse/WT-1350">WT-1350</a>: Add a new configuration option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> and <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a> called "eviction_dirty_trigger" that causes eviction to start evicting dirty pages from cache once the given threshold has been reached.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ab5a8fb">ab5a8fb</a> <a href="https://jira.mongodb.org/browse/WT-1728">WT-1728</a>: Add a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787" title="Reset the session handle. ">WT_SESSION::reset</a> method to release resources held by a session.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/263c5b7">263c5b7</a> <a href="https://jira.mongodb.org/browse/WT-1930">WT-1930</a>: Allow setting "file_manager=(close_idle_time=0)" to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> and <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a> to disable closing idle handles.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6310c3f">6310c3f</a> <a href="https://jira.mongodb.org/browse/WT-1959">WT-1959</a>: Change verify to distinguish between warnings and errors. Add a new strict mode to verify that causes warnings to be reported as errors. Use strict mode to match earlier behavior. See the upgrading documentation for more information.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e0d6229">e0d6229</a> <a href="https://jira.mongodb.org/browse/WT-1980">WT-1980</a>: Add a new "metadata:create" URI to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> for metadata cursors that return strings useful for passing to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/292712e">292712e</a> <a href="https://jira.mongodb.org/browse/WT-2065">WT-2065</a>: Add a new configuration option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> and <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a> called "shared_cache=(quota)" that limits the amount of shared cache a participant can be assigned.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4d0ebf4">4d0ebf4</a> <a href="https://jira.mongodb.org/browse/WT-2104">WT-2104</a>: Add a method to flush log files via a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817" title="Flush the log. ">WT_SESSION::log_flush</a> API. Made <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> configuration options match <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817" title="Flush the log. ">WT_SESSION::log_flush</a>. Change the default <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a> timeout to 20 minutes rather than infinity.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/21b8330">21b8330</a> <a href="https://jira.mongodb.org/browse/WT-2151">WT-2151</a>: Enhance logging configuration to allow reconfiguration and add a new "log=(zero_fill)" configuration option that causes WiredTiger to zero-fill log files on creation.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/368b307">368b307</a> <a href="https://jira.mongodb.org/browse/WT-2200">WT-2200</a>: Add a new configuration option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> called "write_through" that causes WiredTiger to specify the FILE_FLAG_WRITE_THROUGH on Windows when writing files (default false, including when "direct_io" is configured).</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/08c0fcd">08c0fcd</a> <a href="https://jira.mongodb.org/browse/WT-2217">WT-2217</a>: After a successful call to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record. ">WT_CURSOR::insert</a>, the key and value will be cleared from the cursor. See the upgrading documentation for more information.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/d4fc69a">d4fc69a</a> <a href="https://jira.mongodb.org/browse/SERVER-17078">SERVER-17078</a>: Add a "statistics=(size)" mode to statistics cursors, which allows for retrieving file size only.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/b83b901">b83b901</a> <a href="https://jira.mongodb.org/browse/SERVER-18356">SERVER-18356</a>: Changed the handling of the "config_base" option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. See upgrading documentation for more information.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-60">WT-60</a> Port WiredTiger to run on big endian platforms</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2287">WT-2287</a> Add a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984" title="Rebalance a table, see Rebalance. ">WT_SESSION.rebalance</a> API</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2333">WT-2333</a> Add a lock_wait configuration setting to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) an object. ">WT_SESSION.drop</a> to avoid blocking</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2349">WT-2349</a> Add a readonly configuration setting to wiredtiger_open</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2363">WT-2363</a> Remove built in support for bzip2 compression</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2404">WT-2404</a> Add streaming pack/unpack methods to the extension API</li>
 </ul>
-<p>The following statistics were removed:</p>
+<p>Significant changes and bug fixes:</p>
 <ul>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/f1ed3b9">f1ed3b9</a> <a href="https://jira.mongodb.org/browse/WT-1481">WT-1481</a>: connection dhandles swept.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/f1ed3b9">f1ed3b9</a> <a href="https://jira.mongodb.org/browse/WT-1481">WT-1481</a>: connection candidate referenced.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4ba4518">4ba4518</a> <a href="https://jira.mongodb.org/browse/WT-1481">WT-1481</a>: failed to find a slot large enough for record.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/28563af">28563af</a> <a href="https://jira.mongodb.org/browse/WT-1989">WT-1989</a>: log buffer size increases.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/f81c70d">f81c70d</a> <a href="https://jira.mongodb.org/browse/WT-1989">WT-1989</a>: slots selected for switching that were unavailable.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/df4f69c">df4f69c</a> <a href="https://jira.mongodb.org/browse/WT-2094">WT-2094</a>: log records written directly.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/df4f69c">df4f69c</a> <a href="https://jira.mongodb.org/browse/WT-2094">WT-2094</a>: record size exceeded maximum.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/d68e078">d68e078</a> <a href="https://jira.mongodb.org/browse/WT-2182">WT-2182</a>: pages split during eviction.</li>
-</ul>
-<p>Lookaside table:</p>
-<ul>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6a5a461">6a5a461</a> <a href="https://jira.mongodb.org/browse/WT-1967">WT-1967</a>: Allow eviction of updates required by old readers.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/87592ec">87592ec</a> <a href="https://jira.mongodb.org/browse/WT-2074">WT-2074</a>: Fix a race between lookaside table reconciliation and checkpoints.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/0390b29">0390b29</a> <a href="https://jira.mongodb.org/browse/WT-2149">WT-2149</a>: Fix the order of creation of the lookaside table.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/7518a69">7518a69</a> <a href="https://jira.mongodb.org/browse/WT-2190">WT-2190</a>: Fix transaction visibility test that is applied to the lookaside table.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/2cf57a6">2cf57a6</a> <a href="https://jira.mongodb.org/browse/SERVER-21585">SERVER-21585</a>: Don't use the lookaside file until the cache is stuck full.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1801">WT-1801</a> Add a directory sync after rollback of a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614" title="Rename an object. ">WT_SESSION::rename</a> operation</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2130">WT-2130</a> Improve on-disk page utilization with random workloads</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2275">WT-2275</a> Fix a database corruption after truncate and crash</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2264">WT-2264</a> High update workloads can cause checkpoints to never complete</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2290">WT-2290</a> Improve effectiveness of <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree. ">WT_SESSION.compact</a></li>
+<li><a href="https://jira.mongodb.org/browse/WT-2361">WT-2361</a> Fix a bug in column-store where verify identifies out of order data</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2367">WT-2367</a> Fix a bug in <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR.next</a> that could cause out-of-order key returns</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2374">WT-2374</a> Fix a bug where a database was corrupted when restoring a backup</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2381">WT-2381</a> Fix the dump utility to include the table configuration</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2451">WT-2451</a> Allow the WiredTiger metadata to be evicted</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2490">WT-2490</a> Fix a bug in column-store where search_near() returns the wrong key</li>
 </ul>
 <p>Issues fixed in MongoDB:</p>
 <ul>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/d57dc26">d57dc26</a> <a href="https://jira.mongodb.org/browse/SERVER-18829">SERVER-18829</a>: Have pages start in the middle of the LRU queue for eviction.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/b847ccc">b847ccc</a> <a href="https://jira.mongodb.org/browse/SERVER-18838">SERVER-18838</a>: During drops, don't remove files until the metadata is durable.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/8f7da9a">8f7da9a</a> <a href="https://jira.mongodb.org/browse/SERVER-18875">SERVER-18875</a>: Clean up deleted pages.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/d04083d">d04083d</a> <a href="https://jira.mongodb.org/browse/SERVER-18899">SERVER-18899</a>: Add unit test to simulate fsyncLock.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/3ec45a7">3ec45a7</a> <a href="https://jira.mongodb.org/browse/SERVER-19340">SERVER-19340</a>: Avoid type aliasing in the random number generator.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/907c0ca">907c0ca</a> <a href="https://jira.mongodb.org/browse/SERVER-19445">SERVER-19445</a>: Have the oldest transaction update the oldest tracked ID.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/fb8739f">fb8739f</a> <a href="https://jira.mongodb.org/browse/SERVER-19522">SERVER-19522</a>: Try to evict internal pages with no useful child pages.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4545a8b">4545a8b</a> <a href="https://jira.mongodb.org/browse/SERVER-19573">SERVER-19573</a>: Change row-store inserts to avoid page locking.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/b52d2d3">b52d2d3</a> <a href="https://jira.mongodb.org/browse/SERVER-19751">SERVER-19751</a>: Retry pthread_create on EAGAIN or EINTR.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/46b4ad5">46b4ad5</a> <a href="https://jira.mongodb.org/browse/SERVER-19954">SERVER-19954</a>: Don't scan tracked handles during checkpoints.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/65abd20">65abd20</a> <a href="https://jira.mongodb.org/browse/SERVER-19989">SERVER-19989</a>: Add a write barrier before data handles are added to shared lists.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/3e46e79">3e46e79</a> <a href="https://jira.mongodb.org/browse/SERVER-19990">SERVER-19990</a>: Don't assert on eviction of live updates from dead trees.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/38dad39">38dad39</a> <a href="https://jira.mongodb.org/browse/SERVER-20008">SERVER-20008</a>: Don't reset eviction walks when hitting a busy page.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/3b72361">3b72361</a> <a href="https://jira.mongodb.org/browse/SERVER-20159">SERVER-20159</a>: Make all readers wait while the cache is full.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/8be547b">8be547b</a> <a href="https://jira.mongodb.org/browse/SERVER-20193">SERVER-20193</a>: Fix obsolete transaction check.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ad56c6a">ad56c6a</a> <a href="https://jira.mongodb.org/browse/SERVER-20303">SERVER-20303</a>: Tune in-memory splits when inserting large objects.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/7505a02">7505a02</a> <a href="https://jira.mongodb.org/browse/SERVER-20385">SERVER-20385</a>: Make WT_CURSOR::next(random) more random.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/35d46c3">35d46c3</a> <a href="https://jira.mongodb.org/browse/SERVER-21027">SERVER-21027</a>: Reverse split if there are many deleted pages.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/a6da10e">a6da10e</a> <a href="https://jira.mongodb.org/browse/SERVER-21553">SERVER-21553</a>: Enable fast-path truncate after splits.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/890ee34">890ee34</a> <a href="https://jira.mongodb.org/browse/SERVER-21619">SERVER-21619</a>: Don't do internal page splits after a tree is marked DEAD.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/0e93d60">0e93d60</a> <a href="https://jira.mongodb.org/browse/SERVER-21691">SERVER-21691</a>: Avoid insert stalls.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-21619">SERVER-21619</a> sys-perf: WT crash during core_workloads_WT execution</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-21833">SERVER-21833</a> Enhance <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree. ">WT_SESSION::compact</a> to more reliably release space</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-21887">SERVER-21887</a> Enhance $sample to be faster on newly created collection</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-22676">SERVER-22676</a> Allow WiredTiger to open databases created by 3.0.0 or 3.0.1</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-22773">SERVER-22773</a> New CRC32 implementation on PowerPC</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-22831">SERVER-22831</a> Low query rate with heavy cache pressure and an idle collection</li>
+</ul>
+<p>Other noteworthy changes since the previous release:</p>
+<ul>
+<li><a href="https://jira.mongodb.org/browse/WT-1517">WT-1517</a> Fix error handling around schema format edge cases</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2060">WT-2060</a> Simplify aggregation of statistics</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2073">WT-2073</a> Metadata cleanups</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2099">WT-2099</a> Seeing memory underflow messages</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2107">WT-2107</a> Add example code including an event handler</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2113">WT-2113</a> Truncate test occasionally fails with unexpected EBUSY</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2123">WT-2123</a> Don't clear allocated memory if not required</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2173">WT-2173</a> Fix some cases where tiny caches could get stuck full</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2177">WT-2177</a> Add an optional per-thread seed to random number generator</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2198">WT-2198</a> Bulk load and column store appends</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2215">WT-2215</a> WT_LSN needs to support atomic reads and updates</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2216">WT-2216</a> Simplify row-store search loop slightly</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2231">WT-2231</a> Pinned page cursor searches could check parent keys</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2235">WT-2235</a> Add a unicode option to WiredTiger printlog utility</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2242">WT-2242</a> WiredTiger treats dead trees the same as other trees in eviction</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2246">WT-2246</a> Improve performance for column-store append searches</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2247">WT-2247</a> Variable-length column-store in-memory page splits</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2258">WT-2258</a> Stop WiredTiger pre-loading pages when direct-IO is configured</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2259">WT-2259</a> Fix error handling when getting exclusive access to a btree</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2262">WT-2262</a> Fix random cursor next so it is not skewed by tree shape</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2265">WT-2265</a> WiredTiger related change in PowerPC specific code block in gcc.h</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2272">WT-2272</a> Fix a bug in the sweep server that triggered an assertion</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2276">WT-2276</a> Add a tool to decode checkpoint addr</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2277">WT-2277</a> Remove WT check against big-endian systems</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2279">WT-2279</a> Define WT_PAUSE(), WT_FULL_BARRIER(), etc when s390x is defined</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2280">WT-2280</a> Add CRC32 Optimized code for PowerPC</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2282">WT-2282</a> Error in wt_txn_update_oldest verbose message test</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2283">WT-2283</a> Retry in txn_update_oldest results in a hang</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2285">WT-2285</a> Enhance configure to set BUFFER_ALIGNMENT_DEFAULT to 4kb on Linux</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2289">WT-2289</a> Fix a bug in btree search when doing a fast key check</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2291">WT-2291</a> Random cursor walk inefficient in skip list only trees</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2295">WT-2295</a> <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION.create</a> does a full-scan of the main table</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2296">WT-2296</a> Improve log algorithm for sync/flush settings</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2297">WT-2297</a> Fix off-by-one error in Huffman config file parsing</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2299">WT-2299</a> Clean up layering violation between btree and block manager code</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2307">WT-2307</a> Fix a bug where internal page splits can corrupt cursor iteration</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2308">WT-2308</a> Add support for custom extractor for ref_cursors in join cursor</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2311">WT-2311</a> Add support for UltraSparc platform</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2312">WT-2312</a> Fix a bug where re-creating a deleted column-store page can corrupt the in-memory tree</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2313">WT-2313</a> Fix a bug in the sweep server</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2314">WT-2314</a> Update page-swap error handling so that it is consistent</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2316">WT-2316</a> Fix a bug in <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR.prev</a> where it could return keys out-of-order</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2318">WT-2318</a> Enhance condition wait implementation to use less CPU on idle databases</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2321">WT-2321</a> Fix a race between eviction and worker threads on the eviction queue</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2322">WT-2322</a> Fix a bug in read-uncommitted join cursors where using Bloom filters is unsafe</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2328">WT-2328</a> Update schema drop does to use the block manager interface for file removal</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2331">WT-2331</a> Checking of search result for reference cursors before join</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2332">WT-2332</a> Fix a bug in logging write-no-sync mode</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2335">WT-2335</a> Fix a bug where parsing an invalid configuration string could segfault</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2338">WT-2338</a> Disable using pre-allocated log files when a backup cursor is open</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2339">WT-2339</a> Fix a bug in rebalance that caused database verification failure</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2340">WT-2340</a> Add logging guarantee assertions</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2345">WT-2345</a> Avoid creating tiny pages on disk when evicting small pages from cache</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2346">WT-2346</a> Enhance checkpoint implementation so the schema lock is not held during I/O</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2347">WT-2347</a> Fix some schema format edge cases in Java API</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2352">WT-2352</a> Allow build and test without requiring lz4</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2355">WT-2355</a> Fix minor scratch buffer usage in logging</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2356">WT-2356</a> log scan advances to next log file on partially written record</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2368">WT-2368</a> Fix a bug where row-store can pass invalid keys to collator functions</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2369">WT-2369</a> Use C compiler to detect headers instead of C++ compiler</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2371">WT-2371</a> Fix a bug where parent split cannot access the page after page-index swap</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2372">WT-2372</a> WiredTiger windows builder fails with C4005 against the "inline" macro</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2375">WT-2375</a> Add tests for custom collators</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2378">WT-2378</a> Fix a hang in LSM when doing forced drop with the no wait option</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2382">WT-2382</a> Fix a bug in join cursors with custom collator for 'u' format</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2384">WT-2384</a> Fix a bug in join cursors where lt, le conditions for ordering could be wrong</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2387">WT-2387</a> Fix cursor random unit test on Windows</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2390">WT-2390</a> Fix the OS X build</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2391">WT-2391</a> Enhance eviction so that it is less likely to evict pages from indexes</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2394">WT-2394</a> Fix a bug in compact that meant we didn't always reclaim available space</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2395">WT-2395</a> Fix a recovery failure with an LSM tree</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2396">WT-2396</a> Fix a deadlock between table drop and checkpoint</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2397">WT-2397</a> Fix a bug in cursor traversal where doing a reverse walk could skip records.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2399">WT-2399</a> Add test case that verifies cursor traversal</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2409">WT-2409</a> Fix a minor performance regression in LSM</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2410">WT-2410</a> Stop casting function pointers to different types</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2411">WT-2411</a> Fix a hang in LSM related to dropping tables</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2414">WT-2414</a> Avoid extractor calls for ordering cursor in join cursor</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2417">WT-2417</a> Windows Jenkins task is failing</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2418">WT-2418</a> Fix a bug in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984" title="Rebalance a table, see Rebalance. ">WT_SESSION.rebalance</a> where it could return EBUSY</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2420">WT-2420</a> Fix a bug in LSM where recovery from a backup could fail</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2423">WT-2423</a> Fix a bug in session reference counting on error handling</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2425">WT-2425</a> Fix a performance regression in wtperf evict-btree read workload</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2426">WT-2426</a> Fix a deadlock caused by recent changes to checkpoint handle locking</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2428">WT-2428</a> Make statistics logging compatible with MongoDB</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2429">WT-2429</a> Add a statistic that tracks aggressive mode in eviction</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2430">WT-2430</a> Add statistics for join cursor</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2432">WT-2432</a> Fix a performance regression on LSM and read only workloads</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2433">WT-2433</a> Allow read-only databases to log statistics</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2434">WT-2434</a> Fix a race between force-drop and sweep</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2436">WT-2436</a> Fix a bug in join cursors with lt, le conditions and "strategy=bloom"</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2438">WT-2438</a> Extend WiredTiger stat declarations to help external tools</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2440">WT-2440</a> Fix a bug in the PowerPC checksum implementation</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2443">WT-2443</a> Add statistics for all indexes used in join cursor</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2447">WT-2447</a> Enhance join cursor implementation to avoid reading main table where possible</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2448">WT-2448</a> Add no_scale flag to relevant statistics</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2449">WT-2449</a> Enhance configure to check for a 64-bit build</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2454">WT-2454</a> Fix checkpoint_sync=false behavior to prevent flushes/sync to disk</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2456">WT-2456</a> Fix PowerPC CRC32 Code</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2457">WT-2457</a> Fix a bug where dropping an LSM table can return EBUSY when no user ops are active</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2459">WT-2459</a> Allow configure to use the &ndash;tag option for libtool when compiling on PowerPC</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2460">WT-2460</a> Fix a bug where checkpoint could fail with WT_ROLLBACK</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2471">WT-2471</a> Update WiredTiger printf formats to be platform aware</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2476">WT-2476</a> Fix a race where btree-&gt;evict_lock is being accessed after being destroyed</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2481">WT-2481</a> Fix a recently introduced performance regression in LSM</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2483">WT-2483</a> Make read only testing more robust</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2485">WT-2485</a> Fix a test/format failure with floating point exception</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2492">WT-2492</a> Fix a bug in Windows where we used the different memory allocators accidentally</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2495">WT-2495</a> Missing memory initialization leads to crash on Windows</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2496">WT-2496</a> Fix a bug revealed by test/format unable to read root page</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2497">WT-2497</a> Enhance test/format to save a copy of backup</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2498">WT-2498</a> Fix a bug in LSM tree drop where it could hang when a user cursor is open</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2499">WT-2499</a> Fix a bug in LSM shutdown where a race condition causes a segfault</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2501">WT-2501</a> Fix a bug where dropping a just opened LSM tree isn't thread safe</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2502">WT-2502</a> Fix a memory leak in locking handles for checkpoint</li>
+</ul>
+<h2>WiredTiger release 2.7.0, 2015-12-08 </h2>
+<p>The WiredTiger 2.7.0 release contains new features, minor API changes and bug fixes.</p>
+<p>New features and API changes; refer to the API documentation for full details:</p>
+<ul>
+<li><a href="https://jira.mongodb.org/browse/WT-147">WT-147</a> Create indexes on non-empty tables.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1315">WT-1315</a> Add an implementation of cursor joins via a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84" title="Join a join cursor with a reference cursor. ">WT_SESSION::join</a> API.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1350">WT-1350</a> Add a new configuration option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> and <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a> called "eviction_dirty_trigger" that causes eviction to start evicting dirty pages from cache once the given threshold has been reached.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1728">WT-1728</a> Add a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787" title="Reset the session handle. ">WT_SESSION::reset</a> method to release resources held by a session.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1930">WT-1930</a> Allow setting "file_manager=(close_idle_time=0)" to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> and <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a> to disable closing idle handles.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1959">WT-1959</a> Change verify to distinguish between warnings and errors. Add a new strict mode to verify that causes warnings to be reported as errors. Use strict mode to match earlier behavior. See the upgrading documentation for more information.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1980">WT-1980</a> Add a new "metadata:create" URI to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> for metadata cursors that return strings useful for passing to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2065">WT-2065</a> Add a new configuration option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> and <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a> called "shared_cache=(quota)" that limits the amount of shared cache a participant can be assigned.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2104">WT-2104</a> Add a method to flush log files via a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817" title="Flush the log. ">WT_SESSION::log_flush</a> API. Made <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> configuration options match <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817" title="Flush the log. ">WT_SESSION::log_flush</a>. Change the default <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a> timeout to 20 minutes rather than infinity.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2151">WT-2151</a> Enhance logging configuration to allow reconfiguration and add a new "log=(zero_fill)" configuration option that causes WiredTiger to zero-fill log files on creation.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2200">WT-2200</a> Add a new configuration option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> called "write_through" that causes WiredTiger to specify the FILE_FLAG_WRITE_THROUGH on Windows when writing files (default false, including when "direct_io" is configured).</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2217">WT-2217</a> After a successful call to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record. ">WT_CURSOR::insert</a>, the key and value will be cleared from the cursor. See the upgrading documentation for more information.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-17078">SERVER-17078</a> Add a "statistics=(size)" mode to statistics cursors, which allows for retrieving file size only.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-18356">SERVER-18356</a> Changed the handling of the "config_base" option to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. See upgrading documentation for more information.</li>
+</ul>
+<p>The following statistics were removed:</p>
+<ul>
+<li><a href="https://jira.mongodb.org/browse/WT-1481">WT-1481</a> connection dhandles swept.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1481">WT-1481</a> connection candidate referenced.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1481">WT-1481</a> failed to find a slot large enough for record.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1989">WT-1989</a> log buffer size increases.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1989">WT-1989</a> slots selected for switching that were unavailable.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2094">WT-2094</a> log records written directly.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2094">WT-2094</a> record size exceeded maximum.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2182">WT-2182</a> pages split during eviction.</li>
+</ul>
+<p>Lookaside table:</p>
+<ul>
+<li><a href="https://jira.mongodb.org/browse/WT-1967">WT-1967</a> Allow eviction of updates required by old readers.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2074">WT-2074</a> Fix a race between lookaside table reconciliation and checkpoints.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2149">WT-2149</a> Fix the order of creation of the lookaside table.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2190">WT-2190</a> Fix transaction visibility test that is applied to the lookaside table.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-21585">SERVER-21585</a> Don't use the lookaside file until the cache is stuck full.</li>
+</ul>
+<p>Issues fixed in MongoDB:</p>
+<ul>
+<li><a href="https://jira.mongodb.org/browse/SERVER-18829">SERVER-18829</a> Have pages start in the middle of the LRU queue for eviction.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-18838">SERVER-18838</a> During drops, don't remove files until the metadata is durable.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-18875">SERVER-18875</a> Clean up deleted pages.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-18899">SERVER-18899</a> Add unit test to simulate fsyncLock.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-19340">SERVER-19340</a> Avoid type aliasing in the random number generator.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-19445">SERVER-19445</a> Have the oldest transaction update the oldest tracked ID.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-19522">SERVER-19522</a> Try to evict internal pages with no useful child pages.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-19573">SERVER-19573</a> Change row-store inserts to avoid page locking.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-19751">SERVER-19751</a> Retry pthread_create on EAGAIN or EINTR.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-19954">SERVER-19954</a> Don't scan tracked handles during checkpoints.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-19989">SERVER-19989</a> Add a write barrier before data handles are added to shared lists.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-19990">SERVER-19990</a> Don't assert on eviction of live updates from dead trees.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-20008">SERVER-20008</a> Don't reset eviction walks when hitting a busy page.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-20159">SERVER-20159</a> Make all readers wait while the cache is full.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-20193">SERVER-20193</a> Fix obsolete transaction check.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-20303">SERVER-20303</a> Tune in-memory splits when inserting large objects.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-20385">SERVER-20385</a> Make WT_CURSOR::next(random) more random.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-21027">SERVER-21027</a> Reverse split if there are many deleted pages.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-21553">SERVER-21553</a> Enable fast-path truncate after splits.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-21619">SERVER-21619</a> Don't do internal page splits after a tree is marked DEAD.</li>
+<li><a href="https://jira.mongodb.org/browse/SERVER-21691">SERVER-21691</a> Avoid insert stalls.</li>
 </ul>
 <p>Other note worthy changes since the previous release:</p>
 <ul>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/bc2aa57">bc2aa57</a> <a href="https://jira.mongodb.org/browse/WT-1744">WT-1744</a>: Throttle worker threads based on eviction targets.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/55a989e">55a989e</a> <a href="https://jira.mongodb.org/browse/WT-1845">WT-1845</a>: Allow read only transactions to commit after failure.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/df625dc">df625dc</a> <a href="https://jira.mongodb.org/browse/WT-1869">WT-1869</a>: Avoid doing in memory splits while checkpointing a tree.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ddac54f">ddac54f</a> <a href="https://jira.mongodb.org/browse/WT-1942">WT-1942</a>: Add atomic implementations for PPC64 architecture.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/3866fa6">3866fa6</a> <a href="https://jira.mongodb.org/browse/WT-1962">WT-1962</a>: Make the hot_backup_lock a read/write lock.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/58f9e99">58f9e99</a> <a href="https://jira.mongodb.org/browse/WT-1963">WT-1963</a>: Fix backup cursor Java API.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4e0fe59">4e0fe59</a> <a href="https://jira.mongodb.org/browse/WT-1964">WT-1964</a>: Fix a bug in the Java API when closing handles from a different thread.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/60e2150">60e2150</a> <a href="https://jira.mongodb.org/browse/WT-1966">WT-1966</a>: Change how the shared cache assigns priority to participants.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/76d2e73">76d2e73</a> <a href="https://jira.mongodb.org/browse/WT-1975">WT-1975</a>: Ensure previous log files are complete for forced sync.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e43b22a">e43b22a</a> <a href="https://jira.mongodb.org/browse/WT-1977">WT-1977</a>: Improve performance of getting snapshots with many sessions.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/5eaf63e">5eaf63e</a> <a href="https://jira.mongodb.org/browse/WT-1978">WT-1978</a>: Better checking and tests for index cursor comparison.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/1602a4b">1602a4b</a> <a href="https://jira.mongodb.org/browse/WT-1981">WT-1981</a>: Fix a signed 32-bit integer unpacking bug.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/cd1704d">cd1704d</a> <a href="https://jira.mongodb.org/browse/WT-1982">WT-1982</a>: Fix a bug where cached overflow items were freed too early.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/57a9f38">57a9f38</a> <a href="https://jira.mongodb.org/browse/WT-1985">WT-1985</a>: Integer packing and other fixes for Python and Java.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/9897eb2">9897eb2</a> <a href="https://jira.mongodb.org/browse/WT-1986">WT-1986</a>: Fix a race renaming temporary log files.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/b10bff9">b10bff9</a> <a href="https://jira.mongodb.org/browse/WT-1989">WT-1989</a>: Improve scalability of log writes.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/f8dc12b">f8dc12b</a> <a href="https://jira.mongodb.org/browse/WT-1996">WT-1996</a>: Fix a bug where we would free the fist update during a page rewrite on error.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/144a383">144a383</a> <a href="https://jira.mongodb.org/browse/WT-1998">WT-1998</a>: Fixes for indexes with some rarely used key/value formats.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/8af8b8a">8af8b8a</a> <a href="https://jira.mongodb.org/browse/WT-2002">WT-2002</a>: Fix a bug in verify where it would panic when encountering a corrupted file.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e1d8bc7">e1d8bc7</a> <a href="https://jira.mongodb.org/browse/WT-2007">WT-2007</a>: Statically allocate log slot buffers to a maximum size.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/911158c">911158c</a> <a href="https://jira.mongodb.org/browse/WT-2008">WT-2008</a>: Fix a bug in recovery where a file create went missing.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/3e2e7e6">3e2e7e6</a> <a href="https://jira.mongodb.org/browse/WT-2009">WT-2009</a>: Apply tracked metadata operations post-commit.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/1255cb2">1255cb2</a> <a href="https://jira.mongodb.org/browse/WT-2012">WT-2012</a>: Fix a bug updating the oldest ID.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ef9d56f">ef9d56f</a> <a href="https://jira.mongodb.org/browse/WT-2013">WT-2013</a>: Add gcc asm definitions for ARM64.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/c8633e6">c8633e6</a> <a href="https://jira.mongodb.org/browse/WT-2014">WT-2014</a>: Fix a bug in checkpoints where files could be flushed in the wrong order.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/9b09e69">9b09e69</a> <a href="https://jira.mongodb.org/browse/WT-2015">WT-2015</a>: Fix a bug in error handling during block open.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4938b8d">4938b8d</a> <a href="https://jira.mongodb.org/browse/WT-2017">WT-2017</a>: Once an eviction server thread is started keep it running.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/298f86c">298f86c</a> <a href="https://jira.mongodb.org/browse/WT-2019">WT-2019</a>: Fix a logic bug tracking the maximum transaction ID in clean trees.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/7d6075c">7d6075c</a> <a href="https://jira.mongodb.org/browse/WT-2020">WT-2020</a>: Clarify checksum error failure messages.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/7b302d3">7b302d3</a> <a href="https://jira.mongodb.org/browse/WT-2021">WT-2021</a>: Fix a bug moving the oldest ID forward (introduced by <a href="https://jira.mongodb.org/browse/WT-1967">WT-1967</a>).</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/9df72d7">9df72d7</a> <a href="https://jira.mongodb.org/browse/WT-2022">WT-2022</a>: Fix a bug not releasing a handle when opening a non-existent index cursor.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/81ffc2d">81ffc2d</a> <a href="https://jira.mongodb.org/browse/WT-2023">WT-2023</a>: Improve locking primitives: simplify read-write lock operations.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6b84722">6b84722</a> <a href="https://jira.mongodb.org/browse/WT-2029">WT-2029</a>: Improve scalability of statistics.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/f97cfe9">f97cfe9</a> <a href="https://jira.mongodb.org/browse/WT-2031">WT-2031</a>: Log slot revamp.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/bee11c3">bee11c3</a> <a href="https://jira.mongodb.org/browse/WT-2032">WT-2032</a>: Improve next_random cursors to work with small trees.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/cf53696">cf53696</a> <a href="https://jira.mongodb.org/browse/WT-2034">WT-2034</a>: Improve shared cache balancing algorithm.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/aee1c94">aee1c94</a> <a href="https://jira.mongodb.org/browse/WT-2035">WT-2035</a>: For index cursors, keep track of which column groups need to be positioned.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/36310d4">36310d4</a> <a href="https://jira.mongodb.org/browse/WT-2036">WT-2036</a>: Make handle sweeps more robust.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/c948fbb">c948fbb</a> <a href="https://jira.mongodb.org/browse/WT-2037">WT-2037</a>: Only write a checkpoint to the log on close if it wasn't.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e25e615">e25e615</a> <a href="https://jira.mongodb.org/browse/WT-2038">WT-2038</a>: Avoid long scans holding the handle list lock.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/75a4655">75a4655</a> <a href="https://jira.mongodb.org/browse/WT-2039">WT-2039</a>: Add error check and unit test for log records over 4 GB.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/5ab26af">5ab26af</a> <a href="https://jira.mongodb.org/browse/WT-2042">WT-2042</a>: Only try to evict tombstones that are visible to all readers.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ce223ac">ce223ac</a> <a href="https://jira.mongodb.org/browse/WT-2045">WT-2045</a>: Don't let the eviction server do slow reconciliation, it can stall eviction.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6665618">6665618</a> <a href="https://jira.mongodb.org/browse/WT-2046">WT-2046</a>: Add a statistic for search restarts.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/98b4a28">98b4a28</a> <a href="https://jira.mongodb.org/browse/WT-2047">WT-2047</a>: Fix a bug in the random generator code to handle an uninitialized state.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/258e2e1">258e2e1</a> <a href="https://jira.mongodb.org/browse/WT-2050">WT-2050</a>: Show size with memory allocation errors.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/2e1471c">2e1471c</a> <a href="https://jira.mongodb.org/browse/WT-2053">WT-2053</a>: Fix a bug in disk verify messages.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e316e61">e316e61</a> <a href="https://jira.mongodb.org/browse/WT-2056">WT-2056</a>: Reorder btree cursor close so stats are maintained correctly.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/70f9100">70f9100</a> <a href="https://jira.mongodb.org/browse/WT-2057">WT-2057</a>: Remove the verbose configuration when writing the base configuration file.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/41b6fb8">41b6fb8</a> <a href="https://jira.mongodb.org/browse/WT-2058">WT-2058</a>: Fix an alignment bug in the mutex and log-slot code.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/d72012b">d72012b</a> <a href="https://jira.mongodb.org/browse/WT-2059">WT-2059</a>: Include non-aggregated stats in cursor results.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/3e0c7bf">3e0c7bf</a> <a href="https://jira.mongodb.org/browse/WT-2062">WT-2062</a>: Try harder to make progress on in-memory splits.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/66757f7">66757f7</a> <a href="https://jira.mongodb.org/browse/WT-2064">WT-2064</a>: Don't spin indefinitely waiting for the handle list lock in eviction.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/8f42f02">8f42f02</a> <a href="https://jira.mongodb.org/browse/WT-2066">WT-2066</a>: Update the oldest transaction ID from eviction.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e167592">e167592</a> <a href="https://jira.mongodb.org/browse/WT-2068">WT-2068</a>: Protect discarding handles with the handle list lock.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/fd72a09">fd72a09</a> <a href="https://jira.mongodb.org/browse/WT-2075">WT-2075</a>: Fix a hang in logging with parallel workload.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/11c0fa0">11c0fa0</a> <a href="https://jira.mongodb.org/browse/WT-2078">WT-2078</a>: Fix a bug in error handling with statistics cursors.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/9734d85">9734d85</a> <a href="https://jira.mongodb.org/browse/WT-2081">WT-2081</a>: Make verify progress reporting less verbose.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6008b41">6008b41</a> <a href="https://jira.mongodb.org/browse/WT-2085">WT-2085</a>: Run some of the log_server threads operations more frequently.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/39a69ec">39a69ec</a> <a href="https://jira.mongodb.org/browse/WT-2086">WT-2086</a>: Add a statistic to track when eviction finds a page that can be split.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/334e103">334e103</a> <a href="https://jira.mongodb.org/browse/WT-2089">WT-2089</a>: Relax restrictions on multiblock eviction and in-memory splits.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/f13b788">f13b788</a> <a href="https://jira.mongodb.org/browse/WT-2090">WT-2090</a>: Fix a bug in the Windows OS layer that swallowed error returns.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/83b8db7">83b8db7</a> <a href="https://jira.mongodb.org/browse/WT-2092">WT-2092</a>: Free log condition variables after all threads are joined.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/d9391c0">d9391c0</a> <a href="https://jira.mongodb.org/browse/WT-2093">WT-2093</a>: Use the C99 bool type to clarify when functions return true/false.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/f883d27">f883d27</a> <a href="https://jira.mongodb.org/browse/WT-2094">WT-2094</a>: Eliminate direct write and record unbuffered log records.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/9008260">9008260</a> <a href="https://jira.mongodb.org/browse/WT-2097">WT-2097</a>: Reintroduce immediate waits when forced eviction is necessary.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ff1da28">ff1da28</a> <a href="https://jira.mongodb.org/browse/WT-2100">WT-2100</a>: Rename evict to evict_queue so it's easier to search for.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/41db2ee">41db2ee</a> <a href="https://jira.mongodb.org/browse/WT-2101">WT-2101</a>: Don't update the logging ckpt_lsn on clean shutdown.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e1d6886">e1d6886</a> <a href="https://jira.mongodb.org/browse/WT-2102">WT-2102</a>: Fix a hang in log slot join when forcing log writes.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/0e96683">0e96683</a> <a href="https://jira.mongodb.org/browse/WT-2105">WT-2105</a>: Fix a bug where we could reference an invalid memory address if a file is corrupted on disk.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6a565bc">6a565bc</a> <a href="https://jira.mongodb.org/browse/WT-2108">WT-2108</a>: Rework in-memory page rewrite support (WT_PM_REC_REWRITE).</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/dcb0ddb">dcb0ddb</a> <a href="https://jira.mongodb.org/browse/WT-2114">WT-2114</a>: Make application eviction fairer.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/10c2f15">10c2f15</a> <a href="https://jira.mongodb.org/browse/WT-2115">WT-2115</a>: Don't skip truncated pages that are part of a checkpoint.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/cd6ce97">cd6ce97</a> <a href="https://jira.mongodb.org/browse/WT-2116">WT-2116</a>: Add diagnostic checks for stuck cache and dump the state.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/51cf672">51cf672</a> <a href="https://jira.mongodb.org/browse/WT-2119">WT-2119</a>: Don't evict clean multiblock pages with overflow items during checkpoints.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/346ad40">346ad40</a> <a href="https://jira.mongodb.org/browse/WT-2126">WT-2126</a>: Clean up if there is an error during splits.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6831485">6831485</a> <a href="https://jira.mongodb.org/browse/WT-2127">WT-2127</a>: Deepen the tree more regularly to avoid wide internal pages.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/a0b5d2b">a0b5d2b</a> <a href="https://jira.mongodb.org/browse/WT-2128">WT-2128</a>: When decoding huffman encoding during salvage it's possible to have fewer bits than the symbol length during decoding, if the value has been corrupted.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/79f74e5">79f74e5</a> <a href="https://jira.mongodb.org/browse/WT-2131">WT-2131</a>: Switch to using a lock to control page splits to avoid starvation.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/02a3d9f">02a3d9f</a> <a href="https://jira.mongodb.org/browse/WT-2132">WT-2132</a>: Make debug dump function more robust to errors.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/8c223e4">8c223e4</a> <a href="https://jira.mongodb.org/browse/WT-2134">WT-2134</a>: Flush all buffered log records in log_flush.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/d1b5e7f">d1b5e7f</a> <a href="https://jira.mongodb.org/browse/WT-2135">WT-2135</a>: Fix log_only setting for backup cursor. Fix initialization.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/aab8101">aab8101</a> <a href="https://jira.mongodb.org/browse/WT-2137">WT-2137</a>: Check the sync_lsn is in the correct file before moving it forward.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/323af84">323af84</a> <a href="https://jira.mongodb.org/browse/WT-2139">WT-2139</a>: Fix a transaction visibility bug in read-uncommitted transactions.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/751c628">751c628</a> <a href="https://jira.mongodb.org/browse/WT-2146">WT-2146</a>: Improve performance when searching for short keys.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/62998ce">62998ce</a> <a href="https://jira.mongodb.org/browse/WT-2148">WT-2148</a>: Fix a compiler warning in encoding functions.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6c16fdd">6c16fdd</a> <a href="https://jira.mongodb.org/browse/WT-2153">WT-2153</a>: Fix bug. Now we always need to start the log_server thread.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6a5fca3">6a5fca3</a> <a href="https://jira.mongodb.org/browse/WT-2154">WT-2154</a>: Make btree dump safer.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/0d74bc6">0d74bc6</a> <a href="https://jira.mongodb.org/browse/WT-2155">WT-2155</a>: Remove last use of F_CAS_ATOMIC and the associated macro.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/cc42bda">cc42bda</a> <a href="https://jira.mongodb.org/browse/WT-2156">WT-2156</a>: Allow eviction workers to restart.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/bf1d359">bf1d359</a> <a href="https://jira.mongodb.org/browse/WT-2157">WT-2157</a>: Fix a bug where a failed page split could lead to incomplete checkpoints.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ce9d265">ce9d265</a> <a href="https://jira.mongodb.org/browse/WT-2159">WT-2159</a>: Don't check the config twice in one path.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/544f27d">544f27d</a> <a href="https://jira.mongodb.org/browse/WT-2162">WT-2162</a>: Add null pointer check, needed after an index is dropped.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/0d85ebe">0d85ebe</a> <a href="https://jira.mongodb.org/browse/WT-2164">WT-2164</a>: Prevent another LSM chunk checkpoint while the first is still in progress.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/a81aae8">a81aae8</a> <a href="https://jira.mongodb.org/browse/WT-2165">WT-2165</a>: Stop using FALLOC_FL_KEEP_SIZE flag when pre-allocating files.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/2865a76">2865a76</a> <a href="https://jira.mongodb.org/browse/WT-2167">WT-2167</a>: Switch recovery to using an internal session.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/5d4c952">5d4c952</a> <a href="https://jira.mongodb.org/browse/WT-2170">WT-2170</a>: Protect the turtle file with a lock.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/497b744">497b744</a> <a href="https://jira.mongodb.org/browse/WT-2174">WT-2174</a>: Avoid the table list lock when creating a size only statistics cursor.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/fdfa804">fdfa804</a> <a href="https://jira.mongodb.org/browse/WT-2178">WT-2178</a>: In-memory storage engine support.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/b9bd01f">b9bd01f</a> <a href="https://jira.mongodb.org/browse/WT-2179">WT-2179</a>: Added decorator to mark txn13 as part of the &ndash;long test suite.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/be544dd">be544dd</a> <a href="https://jira.mongodb.org/browse/WT-2180">WT-2180</a>: Remove cursor.{search,search-near,remove} key size validation.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/be412b5">be412b5</a> <a href="https://jira.mongodb.org/browse/WT-2182">WT-2182</a>: When internal pages grow large enough, split them into their parents.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/c27e78e">c27e78e</a> <a href="https://jira.mongodb.org/browse/WT-2184">WT-2184</a>: Fix log scan bug when final record has many trailing zeros.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/9584be3">9584be3</a> <a href="https://jira.mongodb.org/browse/WT-2185">WT-2185</a>: Don't do reverse splits when closing a file.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/f6b12d3">f6b12d3</a> <a href="https://jira.mongodb.org/browse/WT-2187">WT-2187</a>: Add flag for flushing a slot.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/a4545bf">a4545bf</a> <a href="https://jira.mongodb.org/browse/WT-2189">WT-2189</a>: Update flag set and clear macros to be less error prone.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/30ab327">30ab327</a> <a href="https://jira.mongodb.org/browse/WT-2191">WT-2191</a>: In-memory disk image no longer the same as saved updates.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4ba5698">4ba5698</a> <a href="https://jira.mongodb.org/browse/WT-2192">WT-2192</a>: Fix the logic around checking whether internal page is evictable.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/2f0b3e2">2f0b3e2</a> <a href="https://jira.mongodb.org/browse/WT-2193">WT-2193</a>: Handle read-committed metadata checkpoints during snapshot transactions.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/9b1febc">9b1febc</a> <a href="https://jira.mongodb.org/browse/WT-2194">WT-2194</a>: Java close callbacks should handle cursors that Java code did not open.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/438f455">438f455</a> <a href="https://jira.mongodb.org/browse/WT-2195">WT-2195</a>: Fix a hang after giving up on a reverse split.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ff27fe9">ff27fe9</a> <a href="https://jira.mongodb.org/browse/WT-2196">WT-2196</a>: Fix error handling in size only statistics.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/0a1ee34">0a1ee34</a> <a href="https://jira.mongodb.org/browse/WT-2199">WT-2199</a>: Fix transaction sync inconsistency.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/2ff1fd6">2ff1fd6</a> <a href="https://jira.mongodb.org/browse/WT-2203">WT-2203</a>: Release an allocated page on error.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/3b3cf2a">3b3cf2a</a> <a href="https://jira.mongodb.org/browse/WT-2204">WT-2204</a>: Don't take a local copy of page-&gt;modify until we know the page is dirty.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/179d4d0">179d4d0</a> <a href="https://jira.mongodb.org/browse/WT-2206">WT-2206</a>: Change cache operations from flags to an enumeration.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/82514ca">82514ca</a> <a href="https://jira.mongodb.org/browse/WT-2207">WT-2207</a>: Track whenever a session has a handle exclusive.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/78bd4ac">78bd4ac</a> <a href="https://jira.mongodb.org/browse/WT-2210">WT-2210</a>: Raw compression fails if row-store recovery precedes column-store recovery.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/c360d53">c360d53</a> <a href="https://jira.mongodb.org/browse/WT-2212">WT-2212</a>: Add a "use_environment" config to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/a72ddb7">a72ddb7</a> <a href="https://jira.mongodb.org/browse/WT-2218">WT-2218</a>: Add truncate stats.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/ce8c091">ce8c091</a> <a href="https://jira.mongodb.org/browse/WT-2219">WT-2219</a>: Enhancements to in-memory testing.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e2f1130">e2f1130</a> <a href="https://jira.mongodb.org/browse/WT-2220">WT-2220</a>: Update time comparison macros.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/59857f9">59857f9</a> <a href="https://jira.mongodb.org/browse/WT-2222">WT-2222</a>: Add statistics for named snapshots.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/fb9cebe">fb9cebe</a> <a href="https://jira.mongodb.org/browse/WT-2224">WT-2224</a>: Track which deleted refs are discarded by a split.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/cace179">cace179</a> <a href="https://jira.mongodb.org/browse/WT-2228">WT-2228</a>: Avoid unnecessary raw-compression calls.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/0a52a80">0a52a80</a> <a href="https://jira.mongodb.org/browse/WT-2237">WT-2237</a>: Have threads publish unique transaction IDs so that updates always become visible immediately on commit.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/6c7338f">6c7338f</a> <a href="https://jira.mongodb.org/browse/WT-2241">WT-2241</a>: Use a lock to protect transaction ID allocation.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/39dfd21">39dfd21</a> <a href="https://jira.mongodb.org/browse/WT-2243">WT-2243</a>: Don't keep transaction IDs pinned for reading from checkpoints.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4c49948">4c49948</a> <a href="https://jira.mongodb.org/browse/WT-2244">WT-2244</a>: Trigger in-memory splits sooner.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/9f2e4f3">9f2e4f3</a> <a href="https://jira.mongodb.org/browse/WT-2248">WT-2248</a>: <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698" title="Close the session handle. ">WT_SESSION::close</a> is updating WT_CONNECTION_IMPL.default_session.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/264ec21">264ec21</a> <a href="https://jira.mongodb.org/browse/WT-2249">WT-2249</a>: Keep eviction stuck until cache usage is under 100%.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/dca1411">dca1411</a> <a href="https://jira.mongodb.org/browse/WT-2250">WT-2250</a>: Minor fix. Use SET instead of increment for stat.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/e731ef8">e731ef8</a> <a href="https://jira.mongodb.org/browse/WT-2251">WT-2251</a>: Free addresses when we discard deleted page references.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4fc3e39">4fc3e39</a> <a href="https://jira.mongodb.org/browse/WT-2253">WT-2253</a>: Evict pages left behind by in-memory splits.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/2df5658">2df5658</a> <a href="https://jira.mongodb.org/browse/WT-2257">WT-2257</a>: Fixes when given multiple thread workload configurations.</li>
-<li><a href="https://github.com/wiredtiger/wiredtiger/commit/4c49043">4c49043</a> <a href="https://jira.mongodb.org/browse/WT-2260">WT-2260</a>: Avoid adding internal pages to the eviction queue</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1744">WT-1744</a> Throttle worker threads based on eviction targets.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1845">WT-1845</a> Allow read only transactions to commit after failure.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1869">WT-1869</a> Avoid doing in memory splits while checkpointing a tree.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1942">WT-1942</a> Add atomic implementations for PowerPC architecture.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1962">WT-1962</a> Make the hot_backup_lock a read/write lock.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1963">WT-1963</a> Fix backup cursor Java API.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1964">WT-1964</a> Fix a bug in the Java API when closing handles from a different thread.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1966">WT-1966</a> Change how the shared cache assigns priority to participants.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1975">WT-1975</a> Ensure previous log files are complete for forced sync.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1977">WT-1977</a> Improve performance of getting snapshots with many sessions.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1978">WT-1978</a> Better checking and tests for index cursor comparison.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1981">WT-1981</a> Fix a signed 32-bit integer unpacking bug.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1982">WT-1982</a> Fix a bug where cached overflow items were freed too early.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1985">WT-1985</a> Integer packing and other fixes for Python and Java.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1986">WT-1986</a> Fix a race renaming temporary log files.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1989">WT-1989</a> Improve scalability of log writes.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1996">WT-1996</a> Fix a bug where we would free the fist update during a page rewrite on error.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-1998">WT-1998</a> Fixes for indexes with some rarely used key/value formats.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2002">WT-2002</a> Fix a bug in verify where it would panic when encountering a corrupted file.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2007">WT-2007</a> Statically allocate log slot buffers to a maximum size.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2008">WT-2008</a> Fix a bug in recovery where a file create went missing.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2009">WT-2009</a> Apply tracked metadata operations post-commit.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2012">WT-2012</a> Fix a bug updating the oldest ID.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2013">WT-2013</a> Add gcc asm definitions for ARM64.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2014">WT-2014</a> Fix a bug in checkpoints where files could be flushed in the wrong order.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2015">WT-2015</a> Fix a bug in error handling during block open.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2017">WT-2017</a> Once an eviction server thread is started keep it running.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2019">WT-2019</a> Fix a logic bug tracking the maximum transaction ID in clean trees.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2020">WT-2020</a> Clarify checksum error failure messages.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2021">WT-2021</a> Fix a bug moving the oldest ID forward (introduced by <a href="https://jira.mongodb.org/browse/WT-1967">WT-1967</a>).</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2022">WT-2022</a> Fix a bug not releasing a handle when opening a non-existent index cursor.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2023">WT-2023</a> Improve locking primitives: simplify read-write lock operations.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2029">WT-2029</a> Improve scalability of statistics.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2031">WT-2031</a> Log slot revamp.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2032">WT-2032</a> Improve next_random cursors to work with small trees.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2034">WT-2034</a> Improve shared cache balancing algorithm.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2035">WT-2035</a> For index cursors, keep track of which column groups need to be positioned.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2036">WT-2036</a> Make handle sweeps more robust.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2037">WT-2037</a> Only write a checkpoint to the log on close if it wasn't.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2038">WT-2038</a> Avoid long scans holding the handle list lock.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2039">WT-2039</a> Add error check and unit test for log records over 4 GB.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2042">WT-2042</a> Only try to evict tombstones that are visible to all readers.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2045">WT-2045</a> Don't let the eviction server do slow reconciliation, it can stall eviction.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2046">WT-2046</a> Add a statistic for search restarts.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2047">WT-2047</a> Fix a bug in the random generator code to handle an uninitialized state.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2050">WT-2050</a> Show size with memory allocation errors.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2053">WT-2053</a> Fix a bug in disk verify messages.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2056">WT-2056</a> Reorder btree cursor close so stats are maintained correctly.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2057">WT-2057</a> Remove the verbose configuration when writing the base configuration file.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2058">WT-2058</a> Fix an alignment bug in the mutex and log-slot code.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2059">WT-2059</a> Include non-aggregated stats in cursor results.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2062">WT-2062</a> Try harder to make progress on in-memory splits.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2064">WT-2064</a> Don't spin indefinitely waiting for the handle list lock in eviction.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2066">WT-2066</a> Update the oldest transaction ID from eviction.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2068">WT-2068</a> Protect discarding handles with the handle list lock.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2075">WT-2075</a> Fix a hang in logging with parallel workload.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2078">WT-2078</a> Fix a bug in error handling with statistics cursors.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2081">WT-2081</a> Make verify progress reporting less verbose.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2085">WT-2085</a> Run some of the log_server threads operations more frequently.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2086">WT-2086</a> Add a statistic to track when eviction finds a page that can be split.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2089">WT-2089</a> Relax restrictions on multiblock eviction and in-memory splits.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2090">WT-2090</a> Fix a bug in the Windows OS layer that swallowed error returns.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2092">WT-2092</a> Free log condition variables after all threads are joined.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2093">WT-2093</a> Use the C99 bool type to clarify when functions return true/false.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2094">WT-2094</a> Eliminate direct write and record unbuffered log records.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2097">WT-2097</a> Reintroduce immediate waits when forced eviction is necessary.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2100">WT-2100</a> Rename evict to evict_queue so it's easier to search for.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2101">WT-2101</a> Don't update the logging ckpt_lsn on clean shutdown.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2102">WT-2102</a> Fix a hang in log slot join when forcing log writes.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2105">WT-2105</a> Fix a bug where we could reference an invalid memory address if a file is corrupted on disk.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2108">WT-2108</a> Rework in-memory page rewrite support (WT_PM_REC_REWRITE).</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2114">WT-2114</a> Make application eviction fairer.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2115">WT-2115</a> Don't skip truncated pages that are part of a checkpoint.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2116">WT-2116</a> Add diagnostic checks for stuck cache and dump the state.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2119">WT-2119</a> Don't evict clean multiblock pages with overflow items during checkpoints.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2126">WT-2126</a> Clean up if there is an error during splits.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2127">WT-2127</a> Deepen the tree more regularly to avoid wide internal pages.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2128">WT-2128</a> When decoding huffman encoding during salvage it's possible to have fewer bits than the symbol length during decoding, if the value has been corrupted.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2131">WT-2131</a> Switch to using a lock to control page splits to avoid starvation.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2132">WT-2132</a> Make debug dump function more robust to errors.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2134">WT-2134</a> Flush all buffered log records in log_flush.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2135">WT-2135</a> Fix log_only setting for backup cursor. Fix initialization.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2137">WT-2137</a> Check the sync_lsn is in the correct file before moving it forward.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2139">WT-2139</a> Fix a transaction visibility bug in read-uncommitted transactions.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2146">WT-2146</a> Improve performance when searching for short keys.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2148">WT-2148</a> Fix a compiler warning in encoding functions.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2153">WT-2153</a> Fix bug. Now we always need to start the log_server thread.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2154">WT-2154</a> Make btree dump safer.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2155">WT-2155</a> Remove last use of F_CAS_ATOMIC and the associated macro.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2156">WT-2156</a> Allow eviction workers to restart.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2157">WT-2157</a> Fix a bug where a failed page split could lead to incomplete checkpoints.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2159">WT-2159</a> Don't check the config twice in one path.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2162">WT-2162</a> Add null pointer check, needed after an index is dropped.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2164">WT-2164</a> Prevent another LSM chunk checkpoint while the first is still in progress.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2165">WT-2165</a> Stop using FALLOC_FL_KEEP_SIZE flag when pre-allocating files.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2167">WT-2167</a> Switch recovery to using an internal session.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2170">WT-2170</a> Protect the turtle file with a lock.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2174">WT-2174</a> Avoid the table list lock when creating a size only statistics cursor.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2178">WT-2178</a> In-memory storage engine support.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2179">WT-2179</a> Added decorator to mark txn13 as part of the &ndash;long test suite.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2180">WT-2180</a> Remove cursor.{search,search-near,remove} key size validation.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2182">WT-2182</a> When internal pages grow large enough, split them into their parents.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2184">WT-2184</a> Fix log scan bug when final record has many trailing zeros.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2185">WT-2185</a> Don't do reverse splits when closing a file.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2187">WT-2187</a> Add flag for flushing a slot.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2189">WT-2189</a> Update flag set and clear macros to be less error prone.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2191">WT-2191</a> In-memory disk image no longer the same as saved updates.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2192">WT-2192</a> Fix the logic around checking whether internal page is evictable.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2193">WT-2193</a> Handle read-committed metadata checkpoints during snapshot transactions.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2194">WT-2194</a> Java close callbacks should handle cursors that Java code did not open.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2195">WT-2195</a> Fix a hang after giving up on a reverse split.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2196">WT-2196</a> Fix error handling in size only statistics.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2199">WT-2199</a> Fix transaction sync inconsistency.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2203">WT-2203</a> Release an allocated page on error.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2204">WT-2204</a> Don't take a local copy of page-&gt;modify until we know the page is dirty.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2206">WT-2206</a> Change cache operations from flags to an enumeration.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2207">WT-2207</a> Track whenever a session has a handle exclusive.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2210">WT-2210</a> Raw compression fails if row-store recovery precedes column-store recovery.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2212">WT-2212</a> Add a "use_environment" config to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2218">WT-2218</a> Add truncate stats.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2219">WT-2219</a> Enhancements to in-memory testing.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2220">WT-2220</a> Update time comparison macros.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2222">WT-2222</a> Add statistics for named snapshots.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2224">WT-2224</a> Track which deleted refs are discarded by a split.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2228">WT-2228</a> Avoid unnecessary raw-compression calls.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2237">WT-2237</a> Have threads publish unique transaction IDs so that updates always become visible immediately on commit.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2241">WT-2241</a> Use a lock to protect transaction ID allocation.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2243">WT-2243</a> Don't keep transaction IDs pinned for reading from checkpoints.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2244">WT-2244</a> Trigger in-memory splits sooner.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2248">WT-2248</a> <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698" title="Close the session handle. ">WT_SESSION::close</a> is updating WT_CONNECTION_IMPL.default_session.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2249">WT-2249</a> Keep eviction stuck until cache usage is under 100%.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2250">WT-2250</a> Minor fix. Use SET instead of increment for stat.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2251">WT-2251</a> Free addresses when we discard deleted page references.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2253">WT-2253</a> Evict pages left behind by in-memory splits.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2257">WT-2257</a> Fixes when given multiple thread workload configurations.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2260">WT-2260</a> Avoid adding internal pages to the eviction queue</li>
 </ul>
 <h2>WiredTiger release 2.6.1, 2015-05-13 </h2>
 <p>The WiredTiger 2.6.1 release contains new features, minor API changes and bug fixes.</p>

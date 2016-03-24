@@ -56,7 +56,7 @@ var NAVTREEINDEX5 =
 "upgrading.html#version_260":[0,9,3],
 "upgrading.html#version_261":[0,9,2],
 "upgrading.html#version_270":[0,9,1],
-"upgrading.html#version_271":[0,9,0],
+"upgrading.html#version_280":[0,9,0],
 "wtperf.html":[0,5,25],
 "wtperf.html":[0,4,31],
 "wtperf.html#config":[0,4,31,1],
