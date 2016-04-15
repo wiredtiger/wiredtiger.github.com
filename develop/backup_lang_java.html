@@ -81,6 +81,7 @@ Backup from an application</h1>
 </ol>
 <p>The directory into which the files are copied may subsequently be specified as an directory to the <code>wiredtiger.open</code> function and accessed as a WiredTiger database home.</p>
 <p>Copying the database files for a backup does not require any special alignment or block size (specifically, Linux or Windows filesystems that do not support read/write isolation can be safely read for backups).</p>
+<p>The database file may grow in size during the copy, and the file copy should not consider that an error. Blocks appended to the file after the copy starts can be safely ignored, that is, it is correct for the copy to determine an initial size of the file and then copy that many bytes, ignoring any bytes appended after the backup cursor was opened.</p>
 <p>The cursor must not be closed until all of the files have been copied, however, there is no requirement the files be copied in any order or in any relationship to the Cursor.next calls, only that all files have been copied before the cursor is closed. For example, applications might aggregate the file names from the cursor and then list the file names as arguments to a file archiver such as the system tar utility.</p>
 <p>During the period the backup cursor is open, database checkpoints can be created, but no checkpoints can be deleted. This may result in significant file growth.</p>
 <p>The following is a programmatic example of creating a backup:</p>
@@ -142,14 +143,16 @@ Incremental backup</h1>
 <p>The following is the procedure for incrementally backing up a database and removing log files from the original database home:</p>
 <ol type="1">
 <li>Perform a full backup of the database (as described above).</li>
-<li>Perform a full database checkpoint.</li>
-<li>Open a cursor on the <code>"backup:"</code> data source, with the <code>"target=(\"log:\")"</code> target specified, which begins the process of an incremental backup.</li>
-<li>Copy each log file returned by the Cursor.next method to the backup directory. It is not an error to copy a log file which has been copied before, but care should be taken to ensure each log file is completely copied as the most recent log file may change in size while being copied.</li>
-<li>If all log files have been successfully copied, archive the log files by calling the Session.truncate method with the URI <code>log:</code> and specifying the backup cursor as the start cursor to that method.</li>
+<li>Open a cursor on the <code>"backup:"</code> data source, configured with the <code>"target=(\"log:\")"</code> target specified, which begins the process of an incremental backup.</li>
+<li>Copy each log file returned by the Cursor.next method to the backup directory. It is not an error to copy a log file which has been copied before, but care should be taken to ensure each log file is completely copied as the most recent log file may grow in size while being copied.</li>
+<li>If all log files have been successfully copied, archive the log files by calling the Session.truncate method with the URI <code>log:</code> and specifying the backup cursor as the start cursor to that method. (Note there is no requirement backups be coordinated with database checkpoints, however, an incremental backup will repeatedly copy the same files, and will not make additional log files available for archival, unless there was a checkpoint after the previous incremental backup.)</li>
 <li>Close the backup cursor.</li>
 </ol>
-<p>Steps 2-6 can be repeated any number of times before step 1 is repeated. These steps can be repeated as long as the backup database directory has not been opened, recovery run and become live. Once the database becomes live, you must repeat all steps 1-6 to another, different backup database directory.</p>
-<h1><a class="anchor" id="backup_o_direct_lang_java"></a>
+<p>Steps 2-5 can be repeated any number of times before step 1 is repeated. Full and incremental backups may be repeated as long as the backup database directory has not been opened and recovery run. Once recovery has run in a backup directory, you can no longer back up to that database directory.</p>
+<p>An example of opening the backup data source for an incremental backup:</p>
+<div class="fragment"><div class="line">            <span class="comment">/* Open the backup data source for incremental backup. */</span></div>
+<div class="line">            cursor = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(<span class="stringliteral">&quot;backup:&quot;</span>, null, target=(\<span class="stringliteral">&quot;log:\&quot;)&quot;</span>);</div>
+</div><!-- fragment --> <h1><a class="anchor" id="backup_o_direct_lang_java"></a>
 Backup and O_DIRECT</h1>
 <p>Many Linux systems do not support mixing <code>O_DIRECT</code> and memory mapping or normal I/O to the same file. If <code>O_DIRECT</code> is configured for data or log files on Linux systems (using the wiredtiger_open <code>direct_io</code> configuration), any program used to copy files during backup should also specify <code>O_DIRECT</code> when configuring its file access. Likewise, when <code>O_DIRECT</code> is not configured by the database application, programs copying files should not configure <code>O_DIRECT</code>. </p>
 </div></div><!-- contents -->
