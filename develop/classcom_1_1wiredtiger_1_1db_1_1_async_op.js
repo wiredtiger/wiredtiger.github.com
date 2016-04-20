@@ -32,6 +32,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_async_op =
     [ "getValueString", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a4f90e2de9e9d7f7ed202a7b6c771d3e4", null ],
     [ "insert", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a26a055ea016382d8d6c3343bde12465b", null ],
     [ "insert_wrap", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a48a7bc4bac3b6db7ef1dad071c0c9c50", null ],
+    [ "is_raw", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a9a0b45afe1bf9d7c7c77c3a525bfb41a", null ],
     [ "java_init", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ac471b645c23b2cd0442cdbc06a473040", null ],
     [ "putKeyByte", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a779a66ea992bcc9e0aa203d316b85450", null ],
     [ "putKeyByteArray", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#afc6ce2a8b7039f11bc11f84ea2885242", null ],

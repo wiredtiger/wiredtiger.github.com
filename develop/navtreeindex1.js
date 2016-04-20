@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#afb1f98f5054e5326b96be974cbe74533":[2,0,0,0,6,9],
+"classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html":[2,0,0,0,7],
+"classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a1c10e8a459e0e604368155f090282ab8":[2,0,0,0,7,4],
+"classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a2925e6e78d21b5169e45af1a78ddbea1":[2,0,0,0,7,3],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a2bda605ed3c4c4b85a52e145ea809f61":[2,0,0,0,7,11],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a40c079dfd18dc12cbee5aa2702963062":[2,0,0,0,7,5],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a482d665107b933dbff88bf31666eb4ff":[2,0,0,0,7,9],
@@ -245,9 +249,5 @@ var NAVTREEINDEX1 =
 "ex_access_8c-example.html":[5,0],
 "ex_async_8c-example.html":[5,1],
 "ex_call_center_8c-example.html":[5,2],
-"ex_config_8c-example.html":[5,3],
-"ex_cursor_8c-example.html":[5,4],
-"ex_encrypt_8c-example.html":[5,5],
-"ex_extending_8c-example.html":[5,6],
-"ex_extractor_8c-example.html":[5,7]
+"ex_config_8c-example.html":[5,3]
 };

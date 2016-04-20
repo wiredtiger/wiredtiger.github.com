@@ -94,8 +94,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a30f15b7515c05b2d4ef064ed59f2a61d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#a30f15b7515c05b2d4ef064ed59f2a61d">PackFormatInputStream</a> (String format)</td></tr>
-<tr class="separator:a30f15b7515c05b2d4ef064ed59f2a61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab532b425168b6a111b10303a25d9080a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#ab532b425168b6a111b10303a25d9080a">PackFormatInputStream</a> (String format, boolean isRaw)</td></tr>
+<tr class="separator:ab532b425168b6a111b10303a25d9080a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5b9c609c6cf7c97436166ce0be47fa2"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#aa5b9c609c6cf7c97436166ce0be47fa2">getType</a> ()  throws WiredTigerPackingException </td></tr>
 <tr class="separator:aa5b9c609c6cf7c97436166ce0be47fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45548e617a2a5f875a20fafc8bbef892"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#a45548e617a2a5f875a20fafc8bbef892">checkType</a> (char asking, boolean <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#a0f3fdfa308098ab9292f3ce21b9597b5">consume</a>)  throws WiredTigerPackingException </td></tr>
@@ -112,6 +112,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:af05a74562f8afd152e2845008c7d78c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af05a74562f8afd152e2845008c7d78c3"></a>
 String&#160;</td><td class="memItemRight" valign="bottom"><b>format</b></td></tr>
 <tr class="separator:af05a74562f8afd152e2845008c7d78c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af69277daec69ccf4ee7fe25b806d2514"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af69277daec69ccf4ee7fe25b806d2514"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isRaw</b></td></tr>
+<tr class="separator:af69277daec69ccf4ee7fe25b806d2514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33b3ae04d36e6da5e48613bd4bf26d61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33b3ae04d36e6da5e48613bd4bf26d61"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>formatOff</b></td></tr>
 <tr class="separator:a33b3ae04d36e6da5e48613bd4bf26d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,7 +126,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>formatRepeatCount</b><
 <div class="textblock"><p>An internal helper class for consuming pack format strings.</p>
 <p>Applications should not need to use this class. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a30f15b7515c05b2d4ef064ed59f2a61d"></a>
+<a class="anchor" id="ab532b425168b6a111b10303a25d9080a"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -134,8 +137,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>formatRepeatCount</b><
           <td class="memname">com.wiredtiger.db.PackFormatInputStream.PackFormatInputStream </td>
           <td>(</td>
           <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>format</em></td><td>)</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>isRaw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>

@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"group__wt.html#ga797b44171cc04051876599882ba4f017":[1,0,270],
+"group__wt.html#ga79b1f83d582f8af473b0a2394f474a39":[1,0,271],
+"group__wt.html#ga7a93dc65decc30c45536aefa1d622fcc":[1,0,164],
+"group__wt.html#ga7b90b6193b0e42867704d629c6c81bc3":[1,0,15],
 "group__wt.html#ga7bcd2dd3505b1b93a9c484cd3391e313":[1,0,159],
 "group__wt.html#ga7c1d0d9b801bff8c643ad99ae303fb57":[1,0,201],
 "group__wt.html#ga7d0e581b55bbad522805efa6208c4e37":[1,0,277],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "readonly_lang_java.html":[0,5,12],
 "readonly_lang_java.html#readonly_config_lang_java":[0,5,12,0],
 "readonly_lang_java.html#readonly_handles_lang_java":[0,5,12,4],
-"readonly_lang_java.html#readonly_logging_lang_java":[0,5,12,2],
-"readonly_lang_java.html#readonly_lsm_lang_java":[0,5,12,3],
-"readonly_lang_java.html#readonly_recovery_lang_java":[0,5,12,1],
-"rebalance.html":[0,4,21],
-"rebalance_lang_java.html":[0,5,20]
+"readonly_lang_java.html#readonly_logging_lang_java":[0,5,12,2]
 };
