@@ -92,6 +92,7 @@ var programming =
         [ "Flush call configuration", "durability.html#durability_flush_config", null ]
       ] ]
     ] ],
+    [ "In-memory databases", "in_memory.html", null ],
     [ "Join cursors", "cursor_join.html", null ],
     [ "Log cursors", "cursor_log.html", null ],
     [ "Rebalance", "rebalance.html", null ],

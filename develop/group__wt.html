@@ -223,6 +223,9 @@ Error returns</h2></td></tr>
 <tr class="memitem:ga76bb44d946fbe56ddb93470ab95a1e78"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga76bb44d946fbe56ddb93470ab95a1e78">WT_RUN_RECOVERY</a></td></tr>
 <tr class="memdesc:ga76bb44d946fbe56ddb93470ab95a1e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recovery must be run to continue.  <a href="#ga76bb44d946fbe56ddb93470ab95a1e78">More...</a><br /></td></tr>
 <tr class="separator:ga76bb44d946fbe56ddb93470ab95a1e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga528be8ed3402d370b51aa5f6d70e15f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4">WT_CACHE_FULL</a></td></tr>
+<tr class="memdesc:ga528be8ed3402d370b51aa5f6d70e15f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operation would overflow cache.  <a href="#ga528be8ed3402d370b51aa5f6d70e15f4">More...</a><br /></td></tr>
+<tr class="separator:ga528be8ed3402d370b51aa5f6d70e15f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Connection statistics</h2></td></tr>
@@ -1475,6 +1478,21 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 </div>
 </div>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ga528be8ed3402d370b51aa5f6d70e15f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_CACHE_FULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operation would overflow cache. </p>
+<p>This error is only generated when wiredtiger_open is configured to run in- memory, and an insert or update operation requires more than the configured cache size to complete. The operation may be retried; if a transaction is in progress, it should be rolled back and the operation retried in a new transaction. </p>
+
+</div>
+</div>
 <a class="anchor" id="gaeca1f3c4a70b8b71b56d2c2fc99a469c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1840,6 +1858,8 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>hazard_max</code></td><td>maximum number of simultaneous hazard pointers per session handle.</td><td>an integer greater than or equal to 15; default <code>1000</code>. </td></tr>
+<tr>
+<td><code>in_memory</code></td><td>keep data in-memory only. See <a class="el" href="in_memory.html">In-memory databases</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>log = (</code></td><td>enable logging. Enabling logging uses three sessions from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>

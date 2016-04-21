@@ -89,6 +89,7 @@ var programming_lang_java =
         [ "Flush call configuration", "durability_lang_java.html#durability_flush_config_lang_java", null ]
       ] ]
     ] ],
+    [ "In-memory databases  in Java", "in_memory_lang_java.html", null ],
     [ "Join cursors  in Java", "cursor_join_lang_java.html", null ],
     [ "Log cursors  in Java", "cursor_log_lang_java.html", null ],
     [ "Rebalance  in Java", "rebalance_lang_java.html", null ],
