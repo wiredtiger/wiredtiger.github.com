@@ -716,18 +716,18 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;join_cursor);</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;country_cursor);</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;cursor2);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;year_cursor);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* select values WHERE country == &quot;AU&quot; AND year &gt; 1900 */</span></div>
-<div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
-<div class="line">        ret = cursor-&gt;search(cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, cursor,</div>
+<div class="line">        country_cursor-&gt;set_key(country_cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
+<div class="line">        ret = country_cursor-&gt;search(country_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, country_cursor,</div>
 <div class="line">            <span class="stringliteral">&quot;compare=eq,count=10&quot;</span>);</div>
-<div class="line">        cursor2-&gt;set_key(cursor2, (uint16_t)1900);</div>
-<div class="line">        ret = cursor2-&gt;search(cursor2);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, cursor2,</div>
+<div class="line">        year_cursor-&gt;set_key(year_cursor, (uint16_t)1900);</div>
+<div class="line">        ret = year_cursor-&gt;search(year_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, year_cursor,</div>
 <div class="line">            <span class="stringliteral">&quot;compare=gt,count=10,strategy=bloom&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* List the values that are joined */</span></div>
@@ -744,12 +744,12 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">join_cursor</td><td>a cursor that was opened using a <code>"join:"</code> URI. It may not have been used for any operations other than other join calls. </td></tr>
-    <tr><td class="paramname">ref_cursor</td><td>either an index cursor having the same base table as the join_cursor, or a table cursor open on the same base table. The ref_cursor must be positioned.</td></tr>
+    <tr><td class="paramname">ref_cursor</td><td>an index cursor having the same base table as the join_cursor, or a table cursor open on the same base table, or another join cursor. Unless the ref_cursor is another join cursor, it must be positioned.</td></tr>
   </table>
   </dd>
 </dl>
 <p>The ref_cursor limits the results seen by iterating the join_cursor to table items referred to by the key in this index. The set of keys referred to is modified by the compare config option.</p>
-<p>Multiple join calls builds up a set of ref_cursors, and the results seen by iteration are the intersection of the cursor ranges participating in the join.</p>
+<p>Multiple join calls builds up a set of ref_cursors, and by default, the results seen by iteration are the intersection of the cursor ranges participating in the join. When configured with <code>"operation=or"</code>, the results seen are the union of the participating cursor ranges.</p>
 <p>After the join call completes, the ref_cursor cursor may not be used for any purpose other than get_key and get_value. Any other cursor method (e.g. next, prev,close) will fail. When the join_cursor is closed, the ref_cursor is made available for general use again. The application should close ref_cursor when finished with it, although not before the join_cursor is closed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -764,6 +764,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <td><code>compare</code></td><td>modifies the set of items to be returned so that the index key satisfies the given comparison relative to the key set in this cursor.</td><td>a string, chosen from the following options: <code>"eq"</code>, <code>"ge"</code>, <code>"gt"</code>, <code>"le"</code>, <code>"lt"</code>; default <code>"eq"</code>. </td></tr>
 <tr>
 <td><code>count</code></td><td>set an approximate count of the elements that would be included in the join. This is used in sizing the bloom filter, and also influences evaluation order for cursors in the join. When the count is equal for multiple bloom filters in a composition of joins, the bloom filter may be shared.</td><td>an integer; default <code></code>. </td></tr>
+<tr>
+<td><code>operation</code></td><td>the operation applied between this and other joined cursors. When "operation=and" is specified, all the conditions implied by joins must be satisfied for an entry to be returned by the join cursor; when "operation=or" is specified, only one must be satisfied. All cursors joined to a join cursor must have matching operations.</td><td>a string, chosen from the following options: <code>"and"</code>, <code>"or"</code>; default <code>"and"</code>. </td></tr>
 <tr>
 <td><code>strategy</code></td><td>when set to bloom, a bloom filter is created and populated for this index. This has an up front cost but may reduce the number of accesses to the main table when iterating the joined cursor. The bloom setting requires that count be set.</td><td>a string, chosen from the following options: <code>"bloom"</code>, <code>"default"</code>; default empty. </td></tr>
 </table>

@@ -77,18 +77,18 @@ $(document).ready(function(){initNavTree('cursor_join.html','');});
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;join_cursor);</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;country_cursor);</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;cursor2);</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;year_cursor);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* select values WHERE country == &quot;AU&quot; AND year &gt; 1900 */</span></div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
-<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, cursor,</div>
+<div class="line">        country_cursor-&gt;set_key(country_cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
+<div class="line">        ret = country_cursor-&gt;search(country_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, country_cursor,</div>
 <div class="line">            <span class="stringliteral">&quot;compare=eq,count=10&quot;</span>);</div>
-<div class="line">        cursor2-&gt;set_key(cursor2, (uint16_t)1900);</div>
-<div class="line">        ret = cursor2-&gt;search(cursor2);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, cursor2,</div>
+<div class="line">        year_cursor-&gt;set_key(year_cursor, (uint16_t)1900);</div>
+<div class="line">        ret = year_cursor-&gt;search(year_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, year_cursor,</div>
 <div class="line">            <span class="stringliteral">&quot;compare=gt,count=10,strategy=bloom&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* List the values that are joined */</span></div>
@@ -102,7 +102,55 @@ $(document).ready(function(){initNavTree('cursor_join.html','');});
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><p> Joins support various comparison operators: <code>"eq"</code>, <code>"gt"</code>, <code>"ge"</code>, <code>"lt"</code>, <code>"le"</code>. Ranges with lower and upper bounds can also be specified, by joining two cursors on the same index, for example, one with <code>"compare=ge"</code> and another <code>"compare=lt"</code>. In addition to joining indices, the main table can be joined so that a range of primary keys can be specified.</p>
-<p>All the joins should be done on the join cursor before <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> is called. Calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> on a join cursor for the first time populates any bloom filters and performs other initialization. The join cursor's key is the primary key (the key for the main table), and its value is the entire set of values of the main table. A join cursor can be created with a projection by appending <code>"(col1,col2,...)"</code> to the URI if a different set of values is needed. </p>
+<p>By default, a join cursor returns a conjunction, that is, all keys that satisfy all the joined comparisons. By specifying a configuration with <code>"operation=or"</code>, a join cursor will return a disjunction, or all keys that satisfy at least one of the joined comparisons. More complex joins can be composed by specifying another join cursor as the reference cursor in a join call.</p>
+<p>Here is an example using these concepts to show a conjunction of a disjunction:</p>
+<div class="fragment"><div class="line">        <span class="comment">/* Open cursors needed by the join. */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;join_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;subjoin_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;country_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;country_cursor2);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;year_cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * select values WHERE (country == &quot;AU&quot; OR country == &quot;UK&quot;)</span></div>
+<div class="line"><span class="comment">         *                     AND year &gt; 1900</span></div>
+<div class="line"><span class="comment">         *</span></div>
+<div class="line"><span class="comment">         * First, set up the join representing the country clause.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        country_cursor-&gt;set_key(country_cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
+<div class="line">        ret = country_cursor-&gt;search(country_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, subjoin_cursor, country_cursor,</div>
+<div class="line">            <span class="stringliteral">&quot;operation=or,compare=eq,count=10&quot;</span>);</div>
+<div class="line">        country_cursor2-&gt;set_key(country_cursor2, <span class="stringliteral">&quot;UK\0\0\0&quot;</span>);</div>
+<div class="line">        ret = country_cursor2-&gt;search(country_cursor2);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, subjoin_cursor, country_cursor2,</div>
+<div class="line">            <span class="stringliteral">&quot;operation=or,compare=eq,count=10&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Join that to the top join, and add the year clause */</span></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, subjoin_cursor, NULL);</div>
+<div class="line">        year_cursor-&gt;set_key(year_cursor, (uint16_t)1900);</div>
+<div class="line">        ret = year_cursor-&gt;search(year_cursor);</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, year_cursor,</div>
+<div class="line">            <span class="stringliteral">&quot;compare=gt,count=10,strategy=bloom&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* List the values that are joined */</span></div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = join_cursor-&gt;next(join_cursor)) == 0) {</div>
+<div class="line">                ret = join_cursor-&gt;get_key(join_cursor, &amp;recno);</div>
+<div class="line">                ret = join_cursor-&gt;get_value(join_cursor, &amp;country, &amp;year,</div>
+<div class="line">                    &amp;population);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64, recno);</div>
+<div class="line">                printf(</div>
+<div class="line">                    <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                    country, year, population);</div>
+<div class="line">        }</div>
+</div><!-- fragment --><p> All the joins should be done on the join cursor before <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> is called. Calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> on a join cursor for the first time populates any bloom filters and performs other initialization. The join cursor's key is the primary key (the key for the main table), and its value is the entire set of values of the main table. A join cursor can be created with a projection by appending <code>"(col1,col2,...)"</code> to the URI if a different set of values is needed.</p>
+<p>Keys returned from the join cursor are ordered according to the first reference cursor joined. For example, if an index cursor was joined first, that index determines the order of results. If the join cursor uses disjunctions, then the ordering of all joins determines the order. The first join in a conjunctive join, or all joins in a disjunctive join, are distinctive in that they are iterated internally as the cursor join returns values in order. Any bloom filters specified on the joins that are used for iteration are not useful, and are silently ignored.</p>
+<p>When disjunctions are used where the sets of keys overlap on these 'iteration joins', a join cursor will return duplicates. A join cursor never returns duplicates unless <code>"operation=or"</code> is used in a join configuration, or unless the first joined cursor is itself a join cursor that would return duplicates. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
