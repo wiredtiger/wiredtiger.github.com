@@ -1,6 +1,8 @@
 var classcom_1_1wiredtiger_1_1db_1_1_cursor =
 [
     [ "Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a5ea9b69aa679f51e6e01753d1f23d483", null ],
+    [ "_java_init", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a22e023eac397937cb9b3c07d7bfa4427", null ],
+    [ "_java_raw", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#ab243b9fe9af7f3b50614182f11fde35e", null ],
     [ "close", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#adc0e5bd37f139ba544f9a95191767bde", null ],
     [ "compare", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a4c91a82815161b5283036bd7653ed577", null ],
     [ "compare_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#aeaf553d1dd2fb4a74b7afce430b05f31", null ],
@@ -35,8 +37,6 @@ var classcom_1_1wiredtiger_1_1db_1_1_cursor =
     [ "getValueString", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#aec7c9271b8f4cdb04f006cedbc2e2a76", null ],
     [ "insert", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a3ab2c9b3c69a6653af8ce51147f1b3b2", null ],
     [ "insert_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#aa499ea066ca8d887654d65f4db59b3f9", null ],
-    [ "is_raw", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a31bba9e6d544270ef23531c29bda70d3", null ],
-    [ "java_init", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#aa97e663267549dc5d3a146d43dc1cfda", null ],
     [ "next", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a948b125f9a495a5970c54518293fa519", null ],
     [ "next_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#ad3dc0989618c3cde0566f96ce8250802", null ],
     [ "prev", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#ac1cad29955c05140e672149d0db7f81a", null ],

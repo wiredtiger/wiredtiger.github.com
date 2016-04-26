@@ -1,6 +1,7 @@
 var classcom_1_1wiredtiger_1_1db_1_1_session =
 [
     [ "Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a76afc8fe00e0b542b8424fd8b8fb5b84", null ],
+    [ "_java_init", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a849ad022f16375699c7dd625b80cc7e8", null ],
     [ "begin_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#abda8ddc193622bedbe6fba26e061405a", null ],
     [ "checkpoint", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ae8a3a848702a49b9c3cb8e1ed1c1afd3", null ],
     [ "close", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a575d56d4413369b3db49bfeac3ff4caa", null ],
@@ -10,7 +11,6 @@ var classcom_1_1wiredtiger_1_1db_1_1_session =
     [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_session.html#abd928363a1ed03e95e27c287efaa6363", null ],
     [ "drop", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a08aa0622c56a5839b7c38f420b1f2a85", null ],
     [ "getConnection", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2f267cf49f92a76b4bad57015a05ba88", null ],
-    [ "java_init", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a06bf69bf9e0ec46cbe72ec014b32360d", null ],
     [ "join", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a75ec87d13d61c38312f6097e86470b22", null ],
     [ "log_flush", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ac8790893082bc6ca34ca288008971944", null ],
     [ "log_printf", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a094ae49ac5f0533817961284c89b8327", null ],
