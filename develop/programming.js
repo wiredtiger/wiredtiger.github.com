@@ -132,6 +132,7 @@ var programming =
       [ "WT_COLLATOR", "custom_data_sources.html#custom_ds_cursor_collator", null ],
       [ "Serialization", "custom_data_sources.html#custom_data_source_cursor_serialize", null ]
     ] ],
+    [ "Custom File Systems", "custom_file_systems.html", null ],
     [ "WiredTiger Helium support", "helium.html", [
       [ "Building the WiredTiger Helium Support", "helium.html#helium_build", null ],
       [ "Loading the WiredTiger Helium Support", "helium.html#helium_load", null ],

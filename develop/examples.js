@@ -8,6 +8,7 @@ var examples =
     [ "ex_encrypt.c", "ex_encrypt_8c-example.html", null ],
     [ "ex_extending.c", "ex_extending_8c-example.html", null ],
     [ "ex_extractor.c", "ex_extractor_8c-example.html", null ],
+    [ "ex_file_system.c", "ex_file_system_8c-example.html", null ],
     [ "ex_hello.c", "ex_hello_8c-example.html", null ],
     [ "ex_log.c", "ex_log_8c-example.html", null ],
     [ "ex_pack.c", "ex_pack_8c-example.html", null ],

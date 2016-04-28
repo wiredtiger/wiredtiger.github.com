@@ -37,6 +37,36 @@ var group__wt__ext =
       [ "extract", "struct_w_t___e_x_t_r_a_c_t_o_r.html#a4db101f00fce80af9ebd4f29f56f7b6a", null ],
       [ "terminate", "struct_w_t___e_x_t_r_a_c_t_o_r.html#ad73a6c0903ad726e029ec25201ef12ae", null ]
     ] ],
+    [ "WT_FILE_SYSTEM", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html", [
+      [ "directory_list", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#ae493850ec06dfa1cf457117fd1886df5", null ],
+      [ "directory_list_free", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a78dd0da9a8ef4f99afaeea484c2a94f1", null ],
+      [ "directory_sync", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a3111b967d3238a37f7ccedb2a2963547", null ],
+      [ "exist", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#abbb984ddbbd5bb11bd35dc7d31cc1255", null ],
+      [ "open_file", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a", null ],
+      [ "remove", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a3fa307cd8a245e0db5dde05f7223f239", null ],
+      [ "rename", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aa32415adf481d4d091b8d138355776f8", null ],
+      [ "size", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a2f9bbc128d8ac063e9d7911142c96b79", null ],
+      [ "terminate", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3", null ]
+    ] ],
+    [ "WT_FILE_HANDLE", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html", [
+      [ "close", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed", null ],
+      [ "fadvise", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a05b92d84903c8ec8d22ce6c446af3cde", null ],
+      [ "fallocate", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a6ca7947558bd46b45398aaf317ba3f04", null ],
+      [ "fallocate_nolock", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a304c33c2d5f8b49ad4e7ac57c892a07f", null ],
+      [ "file_system", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a8a8cadc351799d3f5c1b55d266cff780", null ],
+      [ "lock", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a7f9d0059dfc5ee8f3f4380e22aeadeb0", null ],
+      [ "map", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a0124633a240281ecbd8f2b4300a0578e", null ],
+      [ "map_discard", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a197a8bb1f61f3820cbacb24e736df455", null ],
+      [ "map_preload", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aeacdb1d45687af194f29d0e11a2c884b", null ],
+      [ "name", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad2a2c8838d62efa219404eeb006bddd5", null ],
+      [ "read", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a90d833ac8f03279ea5c7262d3b771f85", null ],
+      [ "size", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9c2369208f12d5619342f0562c247023", null ],
+      [ "sync", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5d3553c723c1c6d50091fa49c3954469", null ],
+      [ "sync_nowait", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a986c7259f1dfa32e6d7715221a32fb53", null ],
+      [ "truncate", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2c7023f2ee5db367408ee0d366d01d33", null ],
+      [ "unmap", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab69b647647f4ed3d6e3ae5243924b627", null ],
+      [ "write", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1ba191173abc1716f745408de6ff459b", null ]
+    ] ],
     [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", [
       [ "notify", "struct_w_t___t_x_n___n_o_t_i_f_y.html#a43ca2a5dc16287c8315279403fe371b1", null ]
     ] ],
@@ -75,10 +105,23 @@ var group__wt__ext =
       [ "unpack_uint", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a65aa50ee5d12ed2eb70e157277c7603f", null ],
       [ "version", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f", null ]
     ] ],
+    [ "WT_FILE_HANDLE_DONTNEED", "group__wt__ext.html#ga6d6c6913fd2d03910419f8e20f0026a4", null ],
+    [ "WT_FILE_HANDLE_WILLNEED", "group__wt__ext.html#gaa4979ed3f2610368e392be059390b62f", null ],
+    [ "WT_OPEN_CREATE", "group__wt__ext.html#ga751906fcbecc4f7497868cc2778dd890", null ],
+    [ "WT_OPEN_DIRECTIO", "group__wt__ext.html#ga862c08e86d2531ad53153cf32b195418", null ],
+    [ "WT_OPEN_EXCLUSIVE", "group__wt__ext.html#ga39c47393aa347f1e29ea33ede65ea6d1", null ],
+    [ "WT_OPEN_READONLY", "group__wt__ext.html#ga0e4934ffd0a4ecd9b9161578dbf10811", null ],
     [ "WT_TXN_ISO_READ_COMMITTED", "group__wt__ext.html#ga84ae45d6803da8dab05bb72c2e69aa0f", null ],
     [ "WT_TXN_ISO_READ_UNCOMMITTED", "group__wt__ext.html#ga604e4478bcef2026786b0826e34f5262", null ],
     [ "WT_TXN_ISO_SNAPSHOT", "group__wt__ext.html#ga36207e3a80d960f7e0c822e8ab483014", null ],
     [ "WT_CONFIG_ARG", "group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4", null ],
+    [ "WT_OPEN_FILE_TYPE", "group__wt__ext.html#ga7c095b277e029dbfad41e1dcbc33e197", [
+      [ "WT_OPEN_FILE_TYPE_CHECKPOINT", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a805e092ee6602decb69ed7efb0dd6985", null ],
+      [ "WT_OPEN_FILE_TYPE_DATA", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a46ce34023ff4ea82b3568be7933d0fe0", null ],
+      [ "WT_OPEN_FILE_TYPE_DIRECTORY", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a832046bb4ece57233fb35c83fc5ef1ca", null ],
+      [ "WT_OPEN_FILE_TYPE_LOG", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a7004391f0479327d418ebd795ae31131", null ],
+      [ "WT_OPEN_FILE_TYPE_REGULAR", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a80453b84a81a2fd731694bd3b034ea1c", null ]
+    ] ],
     [ "wiredtiger_extension_init", "group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3", null ],
     [ "wiredtiger_extension_terminate", "group__wt__ext.html#ga3b904ac0bedaa0d1d59d04baaf915f7f", null ]
 ];

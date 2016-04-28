@@ -131,6 +131,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2d65a70a305838e2a2a728fe5cb54903"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903">add_extractor</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *name, <a class="el" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> *extractor, const char *config)</td></tr>
 <tr class="memdesc:a2d65a70a305838e2a2a728fe5cb54903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a custom extractor for index keys or column groups.  <a href="#a2d65a70a305838e2a2a728fe5cb54903">More...</a><br /></td></tr>
 <tr class="separator:a2d65a70a305838e2a2a728fe5cb54903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c9d5b40133a6ba1cbc4a6b1d8e1e86b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b">set_file_system</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *fs, const char *config)</td></tr>
+<tr class="memdesc:a7c9d5b40133a6ba1cbc4a6b1d8e1e86b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure a custom file system.  <a href="#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b">More...</a><br /></td></tr>
+<tr class="separator:a7c9d5b40133a6ba1cbc4a6b1d8e1e86b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99df5b3a17564eb5b3e4ec076590133d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *wt_conn)</td></tr>
 <tr class="memdesc:a99df5b3a17564eb5b3e4ec076590133d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the WiredTiger extension functions.  <a href="#a99df5b3a17564eb5b3e4ec076590133d">More...</a><br /></td></tr>
 <tr class="separator:a99df5b3a17564eb5b3e4ec076590133d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,7 +143,7 @@ Public Member Functions</h2></td></tr>
 <p>The connection may be opened within the same address space as the caller or accessed over a socket connection.</p>
 <p>Most applications will open a single connection to a database for each process. The first process to open a connection to a database will access the database in its own address space. Subsequent connections (if allowed) will communicate with the first process over a socket connection to perform their operations.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database. ">WT_CONNECTION</a> handle may be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a0">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a10">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a0">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a0">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a13">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a0">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a4">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a0">ex_extractor.c</a>, <a class="el" href="ex_hello_8c-example.html#_a0">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a0">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a0">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a0">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a18">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a0">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a4">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a16">rotn_encrypt.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a0">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a10">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a0">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#_a0">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a13">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a0">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a4">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a0">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a2">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#_a0">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a0">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a0">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a0">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a18">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a0">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a4">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a16">rotn_encrypt.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a89290382c55f20e5a4e1bc9216c7a8c8"></a>
 <div class="memitem">
@@ -655,7 +658,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a15">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a22">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a16">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a13">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a21">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a33">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#a9">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#a22">ex_extractor.c</a>, <a class="el" href="ex_hello_8c-example.html#a5">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a24">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a8">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a22">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a24">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a17">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a15">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a22">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a16">ex_call_center.c</a>, <a class="el" href="ex_config_8c-example.html#a13">ex_config.c</a>, <a class="el" href="ex_cursor_8c-example.html#a21">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a33">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#a9">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#a22">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a32">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#a5">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a24">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a8">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a22">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a24">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a17">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -877,6 +880,8 @@ Public Member Functions</h2></td></tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
 <td><code>config</code></td><td>configuration string passed to the entry point of the extension as its WT_CONFIG_ARG argument.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>early_load</code></td><td>whether this extension should be loaded at the beginning of <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. Only applicable to extensions loaded via the wiredtiger_open configurations string.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>entry</code></td><td>the entry point of the extension, called to initialize the extension when it is loaded. The signature of the function must match <a class="el" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded. ">wiredtiger_extension_init</a>.</td><td>a string; default <code>wiredtiger_extension_init</code>. </td></tr>
 <tr>
@@ -1102,6 +1107,66 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 
+</div>
+</div>
+<a class="anchor" id="a7c9d5b40133a6ba1cbc4a6b1d8e1e86b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CONNECTION::set_file_system </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *&#160;</td>
+          <td class="paramname"><em>fs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure a custom file system. </p>
+<p>This method can only be called from an early loaded extension module. The application must first implement the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation. ">WT_FILE_SYSTEM</a> interface and then register the implementation with WiredTiger:</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Setup a configuration string that will load our custom file system.</span></div>
+<div class="line"><span class="comment">         * Use the special local extension to indicate that the entry point is</span></div>
+<div class="line"><span class="comment">         * in the same executable. Also enable early load for this extension,</span></div>
+<div class="line"><span class="comment">         * since WiredTiger needs to be able to find it before doing any file</span></div>
+<div class="line"><span class="comment">         * operations.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        open_config = <span class="stringliteral">&quot;create,log=(enabled=true),extensions=(local=&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;{entry=demo_file_system_create,early_load=true})&quot;</span>;</div>
+<div class="line">        <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, open_config, &amp;conn)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
+<div class="line">                    home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        }</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramname">fs</td><td>the populated file system structure </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a13">ex_file_system.c</a>.</dd>
+</dl>
 </div>
 </div>
 </div><!-- contents -->

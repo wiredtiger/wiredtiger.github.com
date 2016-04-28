@@ -34,6 +34,8 @@ var hierarchy =
     [ "WT_EVENT_HANDLER", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html", null ],
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", null ],
     [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", null ],
+    [ "WT_FILE_HANDLE", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html", null ],
+    [ "WT_FILE_SYSTEM", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html", null ],
     [ "WT_ITEM", "group__wt.html#struct_w_t___i_t_e_m", null ],
     [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", null ],
     [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", null ]

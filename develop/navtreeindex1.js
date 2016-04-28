@@ -186,6 +186,7 @@ var NAVTREEINDEX1 =
 "custom_extractors.html#custom_extractors_intro":[0,4,28,0],
 "custom_extractors.html#custom_extractors_notes":[0,4,28,1],
 "custom_extractors.html#custom_extractors_raw":[0,4,28,2],
+"custom_file_systems.html":[0,4,30],
 "data_sources.html":[0,4,2,7],
 "data_sources.html#data_builtin":[0,4,2,7,0],
 "data_sources.html#data_files":[0,4,2,7,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "error_handling_lang_java.html":[0,5,4],
 "error_handling_lang_java.html#error_translation_lang_java":[0,5,4,0],
 "ex_access_8c-example.html":[5,0],
-"ex_async_8c-example.html":[5,1],
-"ex_call_center_8c-example.html":[5,2]
+"ex_async_8c-example.html":[5,1]
 };

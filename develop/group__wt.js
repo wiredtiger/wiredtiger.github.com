@@ -86,7 +86,8 @@ var group__wt =
       [ "is_new", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39", null ],
       [ "load_extension", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68", null ],
       [ "open_session", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8", null ],
-      [ "reconfigure", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4", null ]
+      [ "reconfigure", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4", null ],
+      [ "set_file_system", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b", null ]
     ] ],
     [ "WT_ASYNC_CALLBACK", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html", [
       [ "notify", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html#a8859d51cae96e48f79bbd8322ee347ea", null ]
