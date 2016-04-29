@@ -1,18 +1,17 @@
 var NAVTREEINDEX2 =
 {
 "ex_call_center_8c-example.html":[5,2],
-"ex_config_8c-example.html":[5,3],
-"ex_cursor_8c-example.html":[5,4],
-"ex_encrypt_8c-example.html":[5,5],
-"ex_extending_8c-example.html":[5,6],
-"ex_extractor_8c-example.html":[5,7],
-"ex_file_system_8c-example.html":[5,8],
-"ex_hello_8c-example.html":[5,9],
-"ex_log_8c-example.html":[5,10],
-"ex_pack_8c-example.html":[5,11],
-"ex_schema_8c-example.html":[5,12],
-"ex_stat_8c-example.html":[5,13],
-"ex_thread_8c-example.html":[5,14],
+"ex_cursor_8c-example.html":[5,3],
+"ex_encrypt_8c-example.html":[5,4],
+"ex_extending_8c-example.html":[5,5],
+"ex_extractor_8c-example.html":[5,6],
+"ex_file_system_8c-example.html":[5,7],
+"ex_hello_8c-example.html":[5,8],
+"ex_log_8c-example.html":[5,9],
+"ex_pack_8c-example.html":[5,10],
+"ex_schema_8c-example.html":[5,11],
+"ex_stat_8c-example.html":[5,12],
+"ex_thread_8c-example.html":[5,13],
 "examples.html":[5],
 "extensions.html":[0,4,26],
 "extensions.html":[0,5,9,5],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga7111b3912e9e1162ef965d0637e27b34":[1,0,120],
 "group__wt.html#ga711a805006e520943f77365f4f45cff5":[1,0,112],
 "group__wt.html#ga7430f63be721622674b32f35e50ec8a9":[1,0,257],
-"group__wt.html#ga74576de052c86fb6bc8d465e3b2fb4fe":[1,0,205]
+"group__wt.html#ga74576de052c86fb6bc8d465e3b2fb4fe":[1,0,205],
+"group__wt.html#ga754a35883bd35aff144c73002fa6b030":[1,0,181]
 };

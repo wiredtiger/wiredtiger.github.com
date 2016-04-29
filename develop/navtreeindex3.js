@@ -1,6 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"group__wt.html#ga754a35883bd35aff144c73002fa6b030":[1,0,181],
 "group__wt.html#ga75d5dbdafbfcdb998e72e11c93e352e2":[1,0,210],
 "group__wt.html#ga75e67aeb18efafb45ecee561e65e1486":[1,0,176],
 "group__wt.html#ga76bb44d946fbe56ddb93470ab95a1e78":[1,0,28],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "namespace.html#namespace_c":[0,4,11,1],
 "namespace.html#namespace_env":[0,4,11,0],
 "namespace.html#namespace_error":[0,4,11,3],
-"namespace.html#namespace_filesystem":[0,4,11,2]
+"namespace.html#namespace_filesystem":[0,4,11,2],
+"namespace_lang_java.html":[0,5,11]
 };
