@@ -765,7 +765,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        <a name="_a31"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *open_config, *uri;</div>
-<div class="line">        u_int i;</div>
+<div class="line">        <span class="keywordtype">int</span> i;</div>
 <div class="line">        <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line">        <span class="keywordtype">char</span> kbuf[64];</div>
 <div class="line"></div>
@@ -813,7 +813,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 1000; ++i) {</div>
-<div class="line">                (void)snprintf(kbuf, <span class="keyword">sizeof</span>(kbuf), <span class="stringliteral">&quot;%010u KEY -----&quot;</span>, i);</div>
+<div class="line">                (void)snprintf(kbuf, <span class="keyword">sizeof</span>(kbuf), <span class="stringliteral">&quot;%010d KEY -----&quot;</span>, i);</div>
 <div class="line">                cursor-&gt;<a name="a36"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, kbuf);</div>
 <div class="line">                cursor-&gt;<a name="a37"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;--- VALUE ---&quot;</span>);</div>
 <div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a38"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor)) != 0) {</div>
@@ -839,7 +839,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">                            kbuf, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">                }</div>
-<div class="line">                (void)snprintf(kbuf, <span class="keyword">sizeof</span>(kbuf), <span class="stringliteral">&quot;%010u KEY -----&quot;</span>, i);</div>
+<div class="line">                (void)snprintf(kbuf, <span class="keyword">sizeof</span>(kbuf), <span class="stringliteral">&quot;%010d KEY -----&quot;</span>, i);</div>
 <div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a41"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key)) != 0) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.get_key: %s\n&quot;</span>,</div>
 <div class="line">                            <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
