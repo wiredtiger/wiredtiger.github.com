@@ -105,12 +105,11 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="comment">/* Open a session for the current thread&#39;s work. */</span></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;open_session(conn, NULL, NULL, &amp;session)) != 0)</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error opening a session on %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* XXX Do some work... */</span></div>
+<div class="line">        <span class="comment">/* Do some work... */</span></div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Note: closing the connection implicitly closes open session(s). */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;close(conn, NULL)) != 0)</div>
+<div class="line">        ret = conn-&gt;close(conn, NULL);</div>
 </div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_extending_8c-example.html#_a0">ex_extending.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a8b187a50a9830bfb63390ee5bf9b6cd0"></a>

@@ -130,8 +130,8 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, open_config, &amp;conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#_a0">ex_file_system.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Data Documentation</h2>

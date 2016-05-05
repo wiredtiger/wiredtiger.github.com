@@ -46,8 +46,8 @@ To access a database, first open a connection and create a session handle for th
         if ((ret = wiredtiger_open(home, NULL, "create", &conn)) != 0 ||
             (ret = conn->open_session(conn, NULL, NULL, &session)) != 0) {
                 fprintf(stderr, "Error connecting to %s: %s\n",
-                    home, wiredtiger_strerror(ret));
-                return (ret);
+                    home == NULL ? "\&." : home, wiredtiger_strerror(ret));
+                return (EXIT_FAILURE);
         }
 .fi
 .PP

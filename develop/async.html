@@ -102,7 +102,7 @@ Allocating an asynchronous operations handle</h1>
 <div class="line">                        <span class="keywordflow">if</span> (ret == EBUSY)</div>
 <div class="line">                                sleep(1);</div>
 <div class="line">                        <span class="keywordflow">else</span></div>
-<div class="line">                                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">                }</div>
 </div><!-- fragment --><p> To aid the application in matching up an asynchronous operation with a subsequent call to the callback function, every handle contains a unique <code>uint64_t</code> identifier and <a class="el" href="group__wt.html#ga24152c6e1509c488192df653d511a82c" title="Asynchronous operation types. ">WT_ASYNC_OPTYPE</a> type. The <code>identifier</code> is assigned when the handle is allocated and the <code>type</code> is assigned when the asynchronous operation is queued.</p>
 <p>To retrieve the id, use the <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#aa10a973cc683c48944f4909e2f18b3b9" title="Get the unique identifier for this operation. ">WT_ASYNC_OP::get_id</a> method:</p>

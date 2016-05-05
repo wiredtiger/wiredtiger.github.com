@@ -129,23 +129,29 @@ $(document).ready(function(){initNavTree('ex_hello_8c-example.html','');});
 <div class="line">                home = NULL;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a2"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0)</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a2"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a name="a3"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a name="a3"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Open a session for the current thread&#39;s work. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a4"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session)) != 0)</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a4"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error opening a session on %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Do some work... */</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Note: closing the connection implicitly closes open session(s). */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a5"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL)) != 0)</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a5"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        <span class="keywordflow">return</span> (EXIT_SUCCESS);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

@@ -104,7 +104,9 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"></div>
 <div class="line"><span class="preprocessor">#ifndef _WIN32</span></div>
 <div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#else</span></div>
@@ -121,7 +123,6 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"><span class="preprocessor">#define ATOMIC_ADD(v, val)      __sync_add_and_fetch(&amp;(v), val)</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> home = NULL;</div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> global_error = 0;</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
@@ -180,7 +181,18 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line">        <a name="_a10"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a name="_a11"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keywordtype">int</span> i, ret;</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line">        <span class="keywordtype">char</span> k[MAX_KEYS][16], v[MAX_KEYS][16];</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
+<div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
+<div class="line">                home = <span class="stringliteral">&quot;WT_HOME&quot;</span>;</div>
+<div class="line">                ret = system(<span class="stringliteral">&quot;rm -rf WT_HOME &amp;&amp; mkdir WT_HOME&quot;</span>);</div>
+<div class="line">        } <span class="keywordflow">else</span></div>
+<div class="line">                home = NULL;</div>
 <div class="line"></div>
 <div class="line">        ret = <a name="a12"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create,cache_size=100MB,&quot;</span></div>
@@ -201,7 +213,7 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line">                        <span class="keywordflow">if</span> (ret == EBUSY)</div>
 <div class="line">                                sleep(1);</div>
 <div class="line">                        <span class="keywordflow">else</span></div>
-<div class="line">                                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">                }</div>
 <div class="line">                <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                 * Set the operation&#39;s string key and value, and then do</span></div>
@@ -235,7 +247,7 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line">                        <span class="keywordflow">if</span> (ret == EBUSY)</div>
 <div class="line">                                sleep(1);</div>
 <div class="line">                        <span class="keywordflow">else</span></div>
-<div class="line">                                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">                }</div>
 <div class="line"></div>
 <div class="line">                <span class="comment">/*</span></div>
@@ -255,7 +267,7 @@ $(document).ready(function(){initNavTree('ex_async_8c-example.html','');});
 <div class="line"></div>
 <div class="line">        printf(<span class="stringliteral">&quot;Searched for %&quot;</span> PRIu32 <span class="stringliteral">&quot; keys\n&quot;</span>, ex_asynckeys.num_keys);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        <span class="keywordflow">return</span> (ret == 0 ? EXIT_SUCCESS : EXIT_FAILURE);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

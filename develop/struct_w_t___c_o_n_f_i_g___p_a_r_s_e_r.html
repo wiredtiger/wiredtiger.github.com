@@ -111,12 +111,12 @@ Configuration String Parsing examples</h1>
 <div class="line">            NULL, config_string, strlen(config_string), &amp;parser)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error creating configuration parser: %s\n&quot;</span>,</div>
 <div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing configuration parser: %s\n&quot;</span>,</div>
 <div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><p> Once the parser has been created the content can be queried directly:</p>
 <div class="fragment"><div class="line">        int64_t my_page_size;</div>
@@ -126,7 +126,7 @@ Configuration String Parsing examples</h1>
 <div class="line">        <span class="keywordflow">if</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#ad0b4eef618f34b00edfbac44b24c5c16">get</a>(parser, <span class="stringliteral">&quot;page_size&quot;</span>, &amp;v)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>
 <div class="line">                    <span class="stringliteral">&quot;page_size configuration: %s&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        my_page_size = v.<a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a>;</div>
 </div><!-- fragment --><p> Or the content can be traversed linearly:</p>
@@ -150,7 +150,7 @@ Configuration String Parsing examples</h1>
 <div class="line">        <span class="keywordflow">if</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#ad0b4eef618f34b00edfbac44b24c5c16">get</a>(parser, <span class="stringliteral">&quot;log.file_max&quot;</span>, &amp;v)) != 0) {</div>
 <div class="line">                fprintf(stderr,</div>
 <div class="line">                    <span class="stringliteral">&quot;log.file_max configuration: %s&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        printf(<span class="stringliteral">&quot;log file max: %&quot;</span> PRId64 <span class="stringliteral">&quot;\n&quot;</span>, v.<a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a>);</div>
 </div><!-- fragment --><p> Nested configuration values can be traversed using multiple <a class="el" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html" title="A handle that can be used to search and traverse configuration strings compatible with WiredTiger API...">WT_CONFIG_PARSER</a> handles:</p>
@@ -166,11 +166,10 @@ Configuration String Parsing examples</h1>
 <div class="line">                                    <span class="stringliteral">&quot;Error creating nested configuration &quot;</span></div>
 <div class="line">                                    <span class="stringliteral">&quot;parser: %s\n&quot;</span>,</div>
 <div class="line">                                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                                ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser);</div>
-<div class="line">                                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                                <span class="keywordflow">break</span>;</div>
 <div class="line">                        }</div>
-<div class="line">                        <span class="keywordflow">while</span> ((ret = sub_parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f">next</a>(</div>
-<div class="line">                            sub_parser, &amp;k, &amp;v)) == 0)</div>
+<div class="line">                        <span class="keywordflow">while</span> ((ret =</div>
+<div class="line">                            sub_parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f">next</a>(sub_parser, &amp;k, &amp;v)) == 0)</div>
 <div class="line">                                printf(<span class="stringliteral">&quot;\t%.*s\n&quot;</span>, (<span class="keywordtype">int</span>)k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>);</div>
 <div class="line">                        ret = sub_parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(sub_parser);</div>
 <div class="line">                }</div>

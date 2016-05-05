@@ -407,12 +407,12 @@ Public Attributes</h2></td></tr>
 <div class="line">            NULL, config_string, strlen(config_string), &amp;parser)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error creating configuration parser: %s\n&quot;</span>,</div>
 <div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing configuration parser: %s\n&quot;</span>,</div>
 <div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 </div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="rotn_encrypt_8c-example.html#a10">rotn_encrypt.c</a>.</dd>
 </dl>

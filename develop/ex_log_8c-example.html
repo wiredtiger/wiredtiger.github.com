@@ -353,12 +353,12 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">            home1, home2, home1, home2);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = system(cmd_buf)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;%s: failed ret %d\n&quot;</span>, cmd_buf, ret);</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home1, NULL, CONN_CONFIG, &amp;wt_conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home1, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        ret = wt_conn-&gt;<a name="a27"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(wt_conn, NULL, NULL, &amp;session);</div>
@@ -403,14 +403,15 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home1, NULL, CONN_CONFIG, &amp;wt_conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home1, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        ret = wt_conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(wt_conn, NULL, NULL, &amp;session);</div>
 <div class="line">        ret = simple_walk_log(session, count_min);</div>
 <div class="line">        ret = walk_log(session);</div>
 <div class="line">        ret = wt_conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(wt_conn, NULL);</div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">return</span> (ret == 0 ? EXIT_SUCCESS : EXIT_FAILURE);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

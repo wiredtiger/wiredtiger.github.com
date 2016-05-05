@@ -177,8 +177,8 @@ $(document).ready(function(){initNavTree('ex_call_center_8c-example.html','');})
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a3"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a name="a4"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (1);</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a name="a4"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        <span class="comment">/* Note: further error checking omitted for clarity. */</span></div>
 <div class="line"></div>
@@ -312,7 +312,7 @@ $(document).ready(function(){initNavTree('ex_call_center_8c-example.html','');})
 <div class="line">        }</div>
 <div class="line">        ret = conn-&gt;<a name="a16"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        <span class="keywordflow">return</span> (ret == 0 ? EXIT_SUCCESS : EXIT_FAILURE);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

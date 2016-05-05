@@ -101,9 +101,8 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment"> * ex_file_system.c</span></div>
 <div class="line"><span class="comment"> *      demonstrates how to use the custom file system interface</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
@@ -142,8 +141,10 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        uint32_t ref;                           <span class="comment">/* Reference count */</span></div>
 <div class="line"></div>
 <div class="line">        <span class="keywordtype">char</span>    *buf;                           <span class="comment">/* In-memory contents */</span></div>
-<div class="line">        <span class="keywordtype">size_t</span>   size;</div>
+<div class="line">        <span class="keywordtype">size_t</span>   bufsize;                       <span class="comment">/* In-memory buffer size */</span></div>
+<div class="line"></div>
 <div class="line">        <span class="keywordtype">size_t</span>   off;                           <span class="comment">/* Read/write offset */</span></div>
+<div class="line">        <span class="keywordtype">size_t</span>   size;                          <span class="comment">/* Read/write data size */</span></div>
 <div class="line">} DEMO_FILE_HANDLE;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
@@ -287,11 +288,11 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Initialize private information. */</span></div>
 <div class="line">        demo_fh-&gt;ref = 1;</div>
-<div class="line">        demo_fh-&gt;off = 0;</div>
+<div class="line">        demo_fh-&gt;off = demo_fh-&gt;<a name="a15"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9c2369208f12d5619342f0562c247023">size</a> = 0;</div>
 <div class="line">        demo_fh-&gt;demo_fs = demo_fs;</div>
 <div class="line">        <span class="keywordflow">if</span> ((demo_fh-&gt;buf = calloc(1, DEMO_FILE_SIZE_INCREMENT)) == NULL)</div>
 <div class="line">                <span class="keywordflow">goto</span> enomem;</div>
-<div class="line">        demo_fh-&gt;<a name="a15"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9c2369208f12d5619342f0562c247023">size</a> = DEMO_FILE_SIZE_INCREMENT;</div>
+<div class="line">        demo_fh-&gt;bufsize = DEMO_FILE_SIZE_INCREMENT;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Initialize public information. */</span></div>
 <div class="line">        file_handle = (<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *)demo_fh;</div>
@@ -569,8 +570,8 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">    <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset, <span class="keywordtype">size_t</span> len, <span class="keywordtype">void</span> *buf)</div>
 <div class="line">{</div>
 <div class="line">        DEMO_FILE_HANDLE *demo_fh;</div>
-<div class="line">        <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line">        <span class="keywordtype">size_t</span> off;</div>
+<div class="line">        <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line"></div>
 <div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
 <div class="line">        demo_fh = (DEMO_FILE_HANDLE *)file_handle;</div>
@@ -582,7 +583,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">                memcpy(buf, (uint8_t *)demo_fh-&gt;buf + off, len);</div>
 <div class="line">                demo_fh-&gt;off = off + len;</div>
 <div class="line">        } <span class="keywordflow">else</span></div>
-<div class="line">                ret = EINVAL;</div>
+<div class="line">                ret = EINVAL;           <span class="comment">/* EOF */</span></div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> (ret == 0)</div>
 <div class="line">                <span class="keywordflow">return</span> (0);</div>
@@ -609,8 +610,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
 <div class="line">        demo_fh = (DEMO_FILE_HANDLE *)file_handle;</div>
 <div class="line"></div>
-<div class="line">        assert(demo_fh-&gt;size != 0);</div>
-<div class="line">        *sizep = (wt_off_t)demo_fh-&gt;size;</div>
+<div class="line">        *sizep = (wt_off_t)demo_fh-&gt;<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9c2369208f12d5619342f0562c247023">size</a>;</div>
 <div class="line">        return (0);</div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -661,10 +661,13 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment">         * and reset the file&#39;s data length.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        off = (size_t)offset;</div>
-<div class="line">        demo_fh-&gt;buf = realloc(demo_fh-&gt;buf, off);</div>
-<div class="line">        <span class="keywordflow">if</span> (demo_fh-&gt;buf == NULL) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Failed to resize buffer in truncate\n&quot;</span>);</div>
-<div class="line">                <span class="keywordflow">return</span> (ENOSPC);</div>
+<div class="line">        <span class="keywordflow">if</span> (demo_fh-&gt;bufsize &lt; off ) {</div>
+<div class="line">                <span class="keywordflow">if</span> ((demo_fh-&gt;buf = realloc(demo_fh-&gt;buf, off)) == NULL) {</div>
+<div class="line">                        fprintf(stderr,</div>
+<div class="line">                            <span class="stringliteral">&quot;Failed to resize buffer in truncate\n&quot;</span>);</div>
+<div class="line">                        <span class="keywordflow">return</span> (ENOSPC);</div>
+<div class="line">                }</div>
+<div class="line">                demo_fh-&gt;bufsize = off;</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> (demo_fh-&gt;size &lt; off)</div>
 <div class="line">                memset((uint8_t *)demo_fh-&gt;buf + demo_fh-&gt;size,</div>
@@ -683,6 +686,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">    wt_off_t offset, <span class="keywordtype">size_t</span> len, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf)</div>
 <div class="line">{</div>
 <div class="line">        DEMO_FILE_HANDLE *demo_fh;</div>
+<div class="line">        <span class="keywordtype">size_t</span> off;</div>
 <div class="line">        <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line"></div>
 <div class="line">        demo_fh = (DEMO_FILE_HANDLE *)file_handle;</div>
@@ -692,8 +696,11 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">            offset + (wt_off_t)(len + DEMO_FILE_SIZE_INCREMENT))) != 0)</div>
 <div class="line">                <span class="keywordflow">return</span> (ret);</div>
 <div class="line"></div>
-<div class="line">        memcpy((uint8_t *)demo_fh-&gt;buf + offset, buf, len);</div>
-<div class="line">        demo_fh-&gt;off = (size_t)offset + len;</div>
+<div class="line">        off = (size_t)offset;</div>
+<div class="line">        memcpy((uint8_t *)demo_fh-&gt;buf + off, buf, len);</div>
+<div class="line">        <span class="keywordflow">if</span> (off + len &gt; demo_fh-&gt;size)</div>
+<div class="line">                demo_fh-&gt;size = off + len;</div>
+<div class="line">        demo_fh-&gt;off = off + len;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
@@ -755,8 +762,12 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *open_config;</div>
+<div class="line">        <a name="_a31"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
+<div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *open_config, *uri;</div>
+<div class="line">        u_int i;</div>
 <div class="line">        <span class="keywordtype">int</span> ret = 0;</div>
+<div class="line">        <span class="keywordtype">char</span> kbuf[64];</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
@@ -778,16 +789,81 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        open_config = <span class="stringliteral">&quot;create,log=(enabled=true),extensions=(local=&quot;</span></div>
 <div class="line">            <span class="stringliteral">&quot;{entry=demo_file_system_create,early_load=true})&quot;</span>;</div>
 <div class="line">        <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a31"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, open_config, &amp;conn)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a32"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, open_config, &amp;conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a32"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL)) != 0)</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing connection to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a33"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_CONNECTION.open_session: %s\n&quot;</span>,</div>
+<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
+<div class="line">        uri = <span class="stringliteral">&quot;table:fs&quot;</span>;</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a name="a34"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(</div>
+<div class="line">            session, uri, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_SESSION.create: %s: %s\n&quot;</span>,</div>
+<div class="line">                    uri, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a name="a35"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, uri, NULL, NULL, &amp;cursor)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_SESSION.open_cursor: %s: %s\n&quot;</span>,</div>
+<div class="line">                    uri, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 1000; ++i) {</div>
+<div class="line">                (void)snprintf(kbuf, <span class="keyword">sizeof</span>(kbuf), <span class="stringliteral">&quot;%010u KEY -----&quot;</span>, i);</div>
+<div class="line">                cursor-&gt;<a name="a36"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, kbuf);</div>
+<div class="line">                cursor-&gt;<a name="a37"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;--- VALUE ---&quot;</span>);</div>
+<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a38"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor)) != 0) {</div>
+<div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.insert: %s: %s\n&quot;</span>,</div>
+<div class="line">                            kbuf, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">                }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a39"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.close: %s\n&quot;</span>,</div>
+<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, uri, NULL, NULL, &amp;cursor)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_SESSION.open_cursor: %s: %s\n&quot;</span>,</div>
+<div class="line">                    uri, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 1000; ++i) {</div>
+<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a40"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) != 0) {</div>
+<div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.insert: %s: %s\n&quot;</span>,</div>
+<div class="line">                            kbuf, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">                }</div>
+<div class="line">                (void)snprintf(kbuf, <span class="keyword">sizeof</span>(kbuf), <span class="stringliteral">&quot;%010u KEY -----&quot;</span>, i);</div>
+<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a41"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key)) != 0) {</div>
+<div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.get_key: %s\n&quot;</span>,</div>
+<div class="line">                            <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">                }</div>
+<div class="line">                <span class="keywordflow">if</span> (strcmp(kbuf, key) != 0) {</div>
+<div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;Key mismatch: %s, %s\n&quot;</span>, kbuf, key);</div>
+<div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">                }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) != <a name="a42"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>) {</div>
+<div class="line">                fprintf(stderr,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.insert: expected WT_NOTFOUND, got %s\n&quot;</span>,</div>
+<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a43"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing connection to %s: %s\n&quot;</span>,</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">return</span> (EXIT_SUCCESS);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
