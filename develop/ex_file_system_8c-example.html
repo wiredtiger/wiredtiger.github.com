@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><span class="preprocessor">#if (defined(_WIN32) &amp;&amp; _MSC_VER &lt; 1900)</span></div>
 <div class="line"><span class="comment">/* snprintf is not supported on &lt;= VS2013 */</span></div>
 <div class="line"><span class="preprocessor">#define snprintf _snprintf</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
