@@ -163,6 +163,7 @@ Wtperf configuration options</h1>
 <dl class="section user"><dt>sample_interval (unsigned int, default=0)</dt><dd>performance logging every interval seconds, 0 to disable </dd></dl>
 <dl class="section user"><dt>sample_rate (unsigned int, default=50)</dt><dd>how often the latency of operations is measured. One for every operation,two for every second operation, three for every third operation etc. </dd></dl>
 <dl class="section user"><dt>sess_config (string, default=)</dt><dd>session configuration string </dd></dl>
+<dl class="section user"><dt>session_count_idle (unsigned int, default=0)</dt><dd>number of idle sessions to create. Default 0. </dd></dl>
 <dl class="section user"><dt>table_config (string, default=key_format=S,value_format=S,type=lsm,exclusive=true,allocation_size=4kb,internal_page_max=64kb,leaf_page_max=4kb,split_pct=100)</dt><dd>table configuration string </dd></dl>
 <dl class="section user"><dt>table_count (unsigned int, default=1)</dt><dd>number of tables to run operations over. Keys are divided evenly over the tables. Cursors are held open on all tables. Default 1, maximum 99999. </dd></dl>
 <dl class="section user"><dt>table_count_idle (unsigned int, default=0)</dt><dd>number of tables to create, that won't be populated. Default 0. </dd></dl>
