@@ -221,14 +221,14 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        file_system = (<a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *)demo_fs;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Initialize the in-memory jump table. */</span></div>
-<div class="line">        file_system-&gt;<a name="a4"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#ae493850ec06dfa1cf457117fd1886df5">directory_list</a> = demo_fs_directory_list;</div>
-<div class="line">        file_system-&gt;<a name="a5"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a78dd0da9a8ef4f99afaeea484c2a94f1">directory_list_free</a> = demo_fs_directory_list_free;</div>
-<div class="line">        file_system-&gt;<a name="a6"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a3111b967d3238a37f7ccedb2a2963547">directory_sync</a> = demo_fs_directory_sync;</div>
-<div class="line">        file_system-&gt;<a name="a7"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#abbb984ddbbd5bb11bd35dc7d31cc1255">exist</a> = demo_fs_exist;</div>
-<div class="line">        file_system-&gt;<a name="a8"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a">open_file</a> = demo_fs_open;</div>
-<div class="line">        file_system-&gt;<a name="a9"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a3fa307cd8a245e0db5dde05f7223f239">remove</a> = demo_fs_remove;</div>
-<div class="line">        file_system-&gt;<a name="a10"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aa32415adf481d4d091b8d138355776f8">rename</a> = demo_fs_rename;</div>
-<div class="line">        file_system-&gt;<a name="a11"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a2f9bbc128d8ac063e9d7911142c96b79">size</a> = demo_fs_size;</div>
+<div class="line">        file_system-&gt;<a name="a4"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a461137686ca8dc659b314b29f7c98299">fs_directory_list</a> = demo_fs_directory_list;</div>
+<div class="line">        file_system-&gt;<a name="a5"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a96913fda6ff35e7543fabb02b76d71eb">fs_directory_list_free</a> = demo_fs_directory_list_free;</div>
+<div class="line">        file_system-&gt;<a name="a6"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a584a3eeae5e72a1d7b5c58c5d9c3c93f">fs_directory_sync</a> = demo_fs_directory_sync;</div>
+<div class="line">        file_system-&gt;<a name="a7"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a04768a78e64d45bb61b170e6c2dcb3a2">fs_exist</a> = demo_fs_exist;</div>
+<div class="line">        file_system-&gt;<a name="a8"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a136b95f3aab60edae212215f1b0b450c">fs_open_file</a> = demo_fs_open;</div>
+<div class="line">        file_system-&gt;<a name="a9"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a7b50c9554818dfc06dac36f2dbb949cf">fs_remove</a> = demo_fs_remove;</div>
+<div class="line">        file_system-&gt;<a name="a10"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#ad7958680c64737d768d5ce2d794cbf3e">fs_rename</a> = demo_fs_rename;</div>
+<div class="line">        file_system-&gt;<a name="a11"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a2e97ea38029d156f3ead1cea90652c47">fs_size</a> = demo_fs_size;</div>
 <div class="line">        file_system-&gt;<a name="a12"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3">terminate</a> = demo_fs_terminate;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b">set_file_system</a>(conn, file_system, NULL)) != 0) {</div>
@@ -292,7 +292,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Initialize private information. */</span></div>
 <div class="line">        demo_fh-&gt;ref = 1;</div>
-<div class="line">        demo_fh-&gt;off = demo_fh-&gt;<a name="a15"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9c2369208f12d5619342f0562c247023">size</a> = 0;</div>
+<div class="line">        demo_fh-&gt;off = demo_fh-&gt;size = 0;</div>
 <div class="line">        demo_fh-&gt;demo_fs = demo_fs;</div>
 <div class="line">        <span class="keywordflow">if</span> ((demo_fh-&gt;buf = calloc(1, DEMO_FILE_SIZE_INCREMENT)) == NULL)</div>
 <div class="line">                <span class="keywordflow">goto</span> enomem;</div>
@@ -300,7 +300,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Initialize public information. */</span></div>
 <div class="line">        file_handle = (<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *)demo_fh;</div>
-<div class="line">        <span class="keywordflow">if</span> ((file_handle-&gt;<a name="a16"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad2a2c8838d62efa219404eeb006bddd5">name</a> = strdup(name)) == NULL)</div>
+<div class="line">        <span class="keywordflow">if</span> ((file_handle-&gt;<a name="a15"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad2a2c8838d62efa219404eeb006bddd5">name</a> = strdup(name)) == NULL)</div>
 <div class="line">                <span class="keywordflow">goto</span> enomem;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -308,21 +308,21 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment">         * function pointer to NULL where our implementation doesn&#39;t support</span></div>
 <div class="line"><span class="comment">         * the functionality.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        file_handle-&gt;<a name="a17"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed">close</a> = demo_file_close;</div>
-<div class="line">        file_handle-&gt;<a name="a18"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a05b92d84903c8ec8d22ce6c446af3cde">fadvise</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a19"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a6ca7947558bd46b45398aaf317ba3f04">fallocate</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a20"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a304c33c2d5f8b49ad4e7ac57c892a07f">fallocate_nolock</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a21"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a7f9d0059dfc5ee8f3f4380e22aeadeb0">lock</a> = demo_file_lock;</div>
-<div class="line">        file_handle-&gt;<a name="a22"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a0124633a240281ecbd8f2b4300a0578e">map</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a23"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a197a8bb1f61f3820cbacb24e736df455">map_discard</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a24"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aeacdb1d45687af194f29d0e11a2c884b">map_preload</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a25"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab69b647647f4ed3d6e3ae5243924b627">unmap</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a26"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a90d833ac8f03279ea5c7262d3b771f85">read</a> = demo_file_read;</div>
-<div class="line">        file_handle-&gt;<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9c2369208f12d5619342f0562c247023">size</a> = demo_file_size;</div>
-<div class="line">        file_handle-&gt;<a name="a27"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5d3553c723c1c6d50091fa49c3954469">sync</a> = demo_file_sync;</div>
-<div class="line">        file_handle-&gt;<a name="a28"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a986c7259f1dfa32e6d7715221a32fb53">sync_nowait</a> = demo_file_sync_nowait;</div>
-<div class="line">        file_handle-&gt;<a name="a29"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2c7023f2ee5db367408ee0d366d01d33">truncate</a> = demo_file_truncate;</div>
-<div class="line">        file_handle-&gt;<a name="a30"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1ba191173abc1716f745408de6ff459b">write</a> = demo_file_write;</div>
+<div class="line">        file_handle-&gt;<a name="a16"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed">close</a> = demo_file_close;</div>
+<div class="line">        file_handle-&gt;<a name="a17"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5b68b388279c64add7b0ef893b1d2e00">fh_advise</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a18"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e4325fe36cf454b5a8a30ed2bb396ad">fh_allocate</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a19"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a8f568c4cfa33a57e14bf2f30ae61ea35">fh_allocate_nolock</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a20"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5db2aa421c5297d9119b9517e1117afb">fh_lock</a> = demo_file_lock;</div>
+<div class="line">        file_handle-&gt;<a name="a21"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f">fh_map</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a22"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e">fh_map_discard</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a23"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a350e1db2cd51c8c2479b03beae9af90f">fh_map_preload</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a24"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9e8786a0eedb67d92a9e8e5239faef6b">fh_unmap</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a25"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad41718cb1f7a59cfb21a68785aa09897">fh_read</a> = demo_file_read;</div>
+<div class="line">        file_handle-&gt;<a name="a26"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e0b90f0a4fcf943e81b22b94069738b">fh_size</a> = demo_file_size;</div>
+<div class="line">        file_handle-&gt;<a name="a27"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4f3371981540000e182ed0cb75eefad">fh_sync</a> = demo_file_sync;</div>
+<div class="line">        file_handle-&gt;<a name="a28"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4203cea23fd8f62765564ba9a24fe6c">fh_sync_nowait</a> = demo_file_sync_nowait;</div>
+<div class="line">        file_handle-&gt;<a name="a29"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aaefc111f6b04158790ddf4452b87705f">fh_truncate</a> = demo_file_truncate;</div>
+<div class="line">        file_handle-&gt;<a name="a30"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab69c295b076627307a6528793d7a9b43">fh_write</a> = demo_file_write;</div>
 <div class="line"></div>
 <div class="line">        TAILQ_INSERT_HEAD(&amp;demo_fs-&gt;fileq, demo_fh, q);</div>
 <div class="line">        ++demo_fs-&gt;opened_unique_file_count;</div>
@@ -583,7 +583,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        off = (size_t)offset;</div>
 <div class="line">        <span class="keywordflow">if</span> (off &lt; demo_fh-&gt;size) {</div>
 <div class="line">                <span class="keywordflow">if</span> (len &gt; demo_fh-&gt;size - off)</div>
-<div class="line">                        len = demo_fh-&gt;<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9c2369208f12d5619342f0562c247023">size</a> - off;</div>
+<div class="line">                        len = demo_fh-&gt;size - off;</div>
 <div class="line">                memcpy(buf, (uint8_t *)demo_fh-&gt;buf + off, len);</div>
 <div class="line">                demo_fh-&gt;off = off + len;</div>
 <div class="line">        } <span class="keywordflow">else</span></div>
@@ -614,7 +614,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
 <div class="line">        demo_fh = (DEMO_FILE_HANDLE *)file_handle;</div>
 <div class="line"></div>
-<div class="line">        *sizep = (wt_off_t)demo_fh-&gt;<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9c2369208f12d5619342f0562c247023">size</a>;</div>
+<div class="line">        *sizep = (wt_off_t)demo_fh-&gt;size;</div>
 <div class="line">        return (0);</div>
 <div class="line">}</div>
 <div class="line"></div>

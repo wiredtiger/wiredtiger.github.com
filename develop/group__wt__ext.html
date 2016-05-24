@@ -101,7 +101,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The interface implemented by applications to provide a custom file system implementation.  <a href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A file handle implementation returned by <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a" title="Open a handle for a named file system object. ">WT_FILE_SYSTEM::open_file</a>.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A file handle implementation returned by WT_FILE_SYSTEM::open_file.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___t_x_n___n_o_t_i_f_y.html">WT_TXN_NOTIFY</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Snapshot isolation level, returned by <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5a3766f959083f362e3668c40ac995c5" title="Return the current transaction&#39;s isolation level; returns one of WT_TXN_ISO_READ_COMMITTED, WT_TXN_ISO_READ_UNCOMMITTED, or WT_TXN_ISO_SNAPSHOT. ">WT_EXTENSION_API::transaction_isolation_level</a>.  <a href="struct_w_t___t_x_n___n_o_t_i_f_y.html#details">More...</a><br /></td></tr>
@@ -114,27 +114,27 @@ Classes</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:ga751906fcbecc4f7497868cc2778dd890"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga751906fcbecc4f7497868cc2778dd890"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga751906fcbecc4f7497868cc2778dd890">WT_OPEN_CREATE</a></td></tr>
-<tr class="memdesc:ga751906fcbecc4f7497868cc2778dd890"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a" title="Open a handle for a named file system object. ">WT_FILE_SYSTEM::open_file</a> flags: create if does not exist. <br /></td></tr>
+<tr class="memdesc:ga751906fcbecc4f7497868cc2778dd890"><td class="mdescLeft">&#160;</td><td class="mdescRight">WT_FILE_SYSTEM::open_file flags: create if does not exist. <br /></td></tr>
 <tr class="separator:ga751906fcbecc4f7497868cc2778dd890"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga862c08e86d2531ad53153cf32b195418"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga862c08e86d2531ad53153cf32b195418"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga862c08e86d2531ad53153cf32b195418">WT_OPEN_DIRECTIO</a></td></tr>
-<tr class="memdesc:ga862c08e86d2531ad53153cf32b195418"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a" title="Open a handle for a named file system object. ">WT_FILE_SYSTEM::open_file</a> flags: direct I/O requested. <br /></td></tr>
+<tr class="memdesc:ga862c08e86d2531ad53153cf32b195418"><td class="mdescLeft">&#160;</td><td class="mdescRight">WT_FILE_SYSTEM::open_file flags: direct I/O requested. <br /></td></tr>
 <tr class="separator:ga862c08e86d2531ad53153cf32b195418"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga39c47393aa347f1e29ea33ede65ea6d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga39c47393aa347f1e29ea33ede65ea6d1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga39c47393aa347f1e29ea33ede65ea6d1">WT_OPEN_EXCLUSIVE</a></td></tr>
-<tr class="memdesc:ga39c47393aa347f1e29ea33ede65ea6d1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a" title="Open a handle for a named file system object. ">WT_FILE_SYSTEM::open_file</a> flags: error if exclusive use not available. <br /></td></tr>
+<tr class="memdesc:ga39c47393aa347f1e29ea33ede65ea6d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">WT_FILE_SYSTEM::open_file flags: error if exclusive use not available. <br /></td></tr>
 <tr class="separator:ga39c47393aa347f1e29ea33ede65ea6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0e4934ffd0a4ecd9b9161578dbf10811"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0e4934ffd0a4ecd9b9161578dbf10811"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga0e4934ffd0a4ecd9b9161578dbf10811">WT_OPEN_READONLY</a></td></tr>
-<tr class="memdesc:ga0e4934ffd0a4ecd9b9161578dbf10811"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a" title="Open a handle for a named file system object. ">WT_FILE_SYSTEM::open_file</a> flags: open is read-only. <br /></td></tr>
+<tr class="memdesc:ga0e4934ffd0a4ecd9b9161578dbf10811"><td class="mdescLeft">&#160;</td><td class="mdescRight">WT_FILE_SYSTEM::open_file flags: open is read-only. <br /></td></tr>
 <tr class="separator:ga0e4934ffd0a4ecd9b9161578dbf10811"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6d6c6913fd2d03910419f8e20f0026a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6d6c6913fd2d03910419f8e20f0026a4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga6d6c6913fd2d03910419f8e20f0026a4">WT_FILE_HANDLE_DONTNEED</a></td></tr>
-<tr class="memdesc:ga6d6c6913fd2d03910419f8e20f0026a4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a05b92d84903c8ec8d22ce6c446af3cde" title="Indicate expected future use of file ranges, based on the POSIX 1003.1 standard fadvise. ">WT_FILE_HANDLE::fadvise</a> flags: no longer need. <br /></td></tr>
+<tr class="memdesc:ga6d6c6913fd2d03910419f8e20f0026a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">WT_FILE_HANDLE::fadvise flags: no longer need. <br /></td></tr>
 <tr class="separator:ga6d6c6913fd2d03910419f8e20f0026a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa4979ed3f2610368e392be059390b62f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa4979ed3f2610368e392be059390b62f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#gaa4979ed3f2610368e392be059390b62f">WT_FILE_HANDLE_WILLNEED</a></td></tr>
-<tr class="memdesc:gaa4979ed3f2610368e392be059390b62f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a05b92d84903c8ec8d22ce6c446af3cde" title="Indicate expected future use of file ranges, based on the POSIX 1003.1 standard fadvise. ">WT_FILE_HANDLE::fadvise</a> flags: will need. <br /></td></tr>
+<tr class="memdesc:gaa4979ed3f2610368e392be059390b62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">WT_FILE_HANDLE::fadvise flags: will need. <br /></td></tr>
 <tr class="separator:gaa4979ed3f2610368e392be059390b62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga84ae45d6803da8dab05bb72c2e69aa0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga84ae45d6803da8dab05bb72c2e69aa0f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga84ae45d6803da8dab05bb72c2e69aa0f">WT_TXN_ISO_READ_COMMITTED</a></td></tr>
@@ -165,7 +165,7 @@ Enumerations</h2></td></tr>
 <br />
 &#160;&#160;<a class="el" href="group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a80453b84a81a2fd731694bd3b034ea1c">WT_OPEN_FILE_TYPE_REGULAR</a>
 <br />
- }<tr class="memdesc:ga7c095b277e029dbfad41e1dcbc33e197"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a" title="Open a handle for a named file system object. ">WT_FILE_SYSTEM::open_file</a> file types.  <a href="group__wt__ext.html#ga7c095b277e029dbfad41e1dcbc33e197">More...</a><br /></td></tr>
+ }<tr class="memdesc:ga7c095b277e029dbfad41e1dcbc33e197"><td class="mdescLeft">&#160;</td><td class="mdescRight">WT_FILE_SYSTEM::open_file file types.  <a href="group__wt__ext.html#ga7c095b277e029dbfad41e1dcbc33e197">More...</a><br /></td></tr>
 <tr class="separator:ga7c095b277e029dbfad41e1dcbc33e197"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </td></tr>
 </table><table class="memberdecls">
@@ -207,7 +207,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a42daf847eb7c69768a7031624dff369a" title="Open a handle for a named file system object. ">WT_FILE_SYSTEM::open_file</a> file types. </p>
+<p>WT_FILE_SYSTEM::open_file file types. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga7c095b277e029dbfad41e1dcbc33e197a805e092ee6602decb69ed7efb0dd6985"></a>WT_OPEN_FILE_TYPE_CHECKPOINT&#160;</td><td class="fielddoc">
 <p>open a data file checkpoint </p>
