@@ -102,6 +102,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment"> *      demonstrates how to use the custom file system interface</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#if (defined(_WIN32) &amp;&amp; _MSC_VER &lt; 1900)</span></div>
@@ -110,6 +111,8 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;wiredtiger_ext.h&gt;</span></div>
+<div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;queue_example.h&quot;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
@@ -131,10 +134,12 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        <span class="comment">/* Queue of file handles */</span></div>
 <div class="line">        TAILQ_HEAD(demo_file_handle_qh, demo_file_handle) fileq;</div>
 <div class="line"></div>
+<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;                <span class="comment">/* Extension functions */</span></div>
+<div class="line"></div>
 <div class="line">} DEMO_FILE_SYSTEM;</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>demo_file_handle {</div>
-<div class="line">        <a name="_a1"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> iface;</div>
+<div class="line">        <a name="_a2"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> iface;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Add custom file handle fields after the interface.</span></div>
@@ -160,13 +165,13 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment"> */</span></div>
 <div class="line">__declspec(dllexport)</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="keywordtype">int</span> demo_file_system_create(<a name="_a2"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *);</div>
+<div class="line"><span class="keywordtype">int</span> demo_file_system_create(<a name="_a3"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *);</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * Forward function declarations for file system API implementation</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> demo_fs_open(<a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *,</div>
-<div class="line">    <a name="_a3"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *, <a class="code" href="group__wt__ext.html#ga7c095b277e029dbfad41e1dcbc33e197">WT_OPEN_FILE_TYPE</a>, uint32_t, <a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> **);</div>
+<div class="line">    <a name="_a4"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *, <a class="code" href="group__wt__ext.html#ga7c095b277e029dbfad41e1dcbc33e197">WT_OPEN_FILE_TYPE</a>, uint32_t, <a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> **);</div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> demo_fs_directory_list(<a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *,</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *, <span class="keywordtype">char</span> ***, uint32_t *);</div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> demo_fs_directory_list_free(</div>
@@ -204,39 +209,110 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="preprocessor">#define DEMO_FILE_SIZE_INCREMENT        32768</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * string_match --</span></div>
+<div class="line"><span class="comment"> *      Return if a string matches a byte string of len bytes.</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
+<div class="line">byte_string_match(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keyword">const</span> <span class="keywordtype">char</span> *bytes, <span class="keywordtype">size_t</span> len)</div>
+<div class="line">{</div>
+<div class="line">        <span class="keywordflow">return</span> (strncmp(str, bytes, len) == 0 &amp;&amp; (str)[(len)] == <span class="charliteral">&#39;\0&#39;</span>);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * demo_file_system_create --</span></div>
 <div class="line"><span class="comment"> *      Initialization point for demo file system</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">demo_file_system_create(<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div>
 <div class="line">{</div>
-<div class="line">        <a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *file_system;</div>
 <div class="line">        DEMO_FILE_SYSTEM *demo_fs;</div>
+<div class="line">        <a name="_a5"></a><a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> k, v;</div>
+<div class="line">        <a name="_a6"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> *config_parser;</div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
+<div class="line">        <a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *file_system;</div>
 <div class="line">        <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line"></div>
-<div class="line">        (void)config;                                           <span class="comment">/* Unused */</span></div>
+<div class="line">        wtext = conn-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(conn);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((demo_fs = calloc(1, <span class="keyword">sizeof</span>(DEMO_FILE_SYSTEM))) == NULL)</div>
+<div class="line">        <span class="keywordflow">if</span> ((demo_fs = calloc(1, <span class="keyword">sizeof</span>(DEMO_FILE_SYSTEM))) == NULL) {</div>
+<div class="line">                (void)wtext-&gt;<a name="a8"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, NULL,</div>
+<div class="line">                    <span class="stringliteral">&quot;demo_file_system_create: %s&quot;</span>,</div>
+<div class="line">                    wtext-&gt;<a name="a9"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ENOMEM));</div>
 <div class="line">                <span class="keywordflow">return</span> (ENOMEM);</div>
+<div class="line">        }</div>
+<div class="line">        demo_fs-&gt;wtext = wtext;</div>
 <div class="line">        file_system = (<a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *)demo_fs;</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/* Initialize the in-memory jump table. */</span></div>
-<div class="line">        file_system-&gt;<a name="a4"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a461137686ca8dc659b314b29f7c98299">fs_directory_list</a> = demo_fs_directory_list;</div>
-<div class="line">        file_system-&gt;<a name="a5"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a96913fda6ff35e7543fabb02b76d71eb">fs_directory_list_free</a> = demo_fs_directory_list_free;</div>
-<div class="line">        file_system-&gt;<a name="a6"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a584a3eeae5e72a1d7b5c58c5d9c3c93f">fs_directory_sync</a> = demo_fs_directory_sync;</div>
-<div class="line">        file_system-&gt;<a name="a7"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a04768a78e64d45bb61b170e6c2dcb3a2">fs_exist</a> = demo_fs_exist;</div>
-<div class="line">        file_system-&gt;<a name="a8"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a136b95f3aab60edae212215f1b0b450c">fs_open_file</a> = demo_fs_open;</div>
-<div class="line">        file_system-&gt;<a name="a9"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a7b50c9554818dfc06dac36f2dbb949cf">fs_remove</a> = demo_fs_remove;</div>
-<div class="line">        file_system-&gt;<a name="a10"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#ad7958680c64737d768d5ce2d794cbf3e">fs_rename</a> = demo_fs_rename;</div>
-<div class="line">        file_system-&gt;<a name="a11"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a2e97ea38029d156f3ead1cea90652c47">fs_size</a> = demo_fs_size;</div>
-<div class="line">        file_system-&gt;<a name="a12"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3">terminate</a> = demo_fs_terminate;</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b">set_file_system</a>(conn, file_system, NULL)) != 0) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error setting custom file system: %s\n&quot;</span>,</div>
-<div class="line">                    <a name="a14"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">        <span class="comment">/* Retrieve our configuration information, the &quot;config&quot; value. */</span></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wtext-&gt;<a name="a10"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(wtext, NULL, config, <span class="stringliteral">&quot;config&quot;</span>, &amp;v)) != 0) {</div>
+<div class="line">                (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, NULL,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_EXTENSION_API.config_get: config: %s&quot;</span>,</div>
+<div class="line">                    wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ret));</div>
 <div class="line">                <span class="keywordflow">goto</span> err;</div>
 <div class="line">        }</div>
 <div class="line"></div>
+<div class="line">        <span class="comment">/* Open a WiredTiger parser on the &quot;config&quot; value. */</span></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wtext-&gt;<a name="a11"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a925298c80d5c887172e184ff67027ed6">config_parser_open</a>(</div>
+<div class="line">            wtext, NULL, v.<a name="a12"></a><a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>, v.<a name="a13"></a><a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, &amp;config_parser)) != 0) {</div>
+<div class="line">                (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, NULL,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_EXTENSION_API.config_parser_open: config: %s&quot;</span>,</div>
+<div class="line">                    wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ret));</div>
+<div class="line">                <span class="keywordflow">goto</span> err;</div>
+<div class="line">        }</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Step through our configuration values. */</span></div>
+<div class="line">        printf(<span class="stringliteral">&quot;Custom file system configuration\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">while</span> ((ret = config_parser-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f">next</a>(config_parser, &amp;k, &amp;v)) == 0) {</div>
+<div class="line">                <span class="keywordflow">if</span> (byte_string_match(<span class="stringliteral">&quot;config_string&quot;</span>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>, k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>)) {</div>
+<div class="line">                        printf(<span class="stringliteral">&quot;\t&quot;</span> <span class="stringliteral">&quot;key %.*s=\&quot;%.*s\&quot;\n&quot;</span>,</div>
+<div class="line">                            (<span class="keywordtype">int</span>)k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>, (<span class="keywordtype">int</span>)v.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, v.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>);</div>
+<div class="line">                        <span class="keywordflow">continue</span>;</div>
+<div class="line">                }</div>
+<div class="line">                <span class="keywordflow">if</span> (byte_string_match(<span class="stringliteral">&quot;config_value&quot;</span>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>, k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>)) {</div>
+<div class="line">                        printf(<span class="stringliteral">&quot;\t&quot;</span> <span class="stringliteral">&quot;key %.*s=%&quot;</span> PRId64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line">                            (<span class="keywordtype">int</span>)k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>, v.<a name="a15"></a><a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a>);</div>
+<div class="line">                        <span class="keywordflow">continue</span>;</div>
+<div class="line">                }</div>
+<div class="line">                ret = EINVAL;</div>
+<div class="line">                (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, NULL,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CONFIG_PARSER.next: unexpected configuration &quot;</span></div>
+<div class="line">                    <span class="stringliteral">&quot;information: %.*s=%.*s: %s&quot;</span>,</div>
+<div class="line">                    (<span class="keywordtype">int</span>)k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, k.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>, (<span class="keywordtype">int</span>)v.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>, v.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>,</div>
+<div class="line">                    wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ret));</div>
+<div class="line">                <span class="keywordflow">goto</span> err;</div>
+<div class="line">        }</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Check for expected parser termination and close the parser. */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (ret != <a name="a16"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>) {</div>
+<div class="line">                (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, NULL,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CONFIG_PARSER.next: config: %s&quot;</span>,</div>
+<div class="line">                    wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ret));</div>
+<div class="line">                <span class="keywordflow">goto</span> err;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = config_parser-&gt;<a name="a17"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(config_parser)) != 0) {</div>
+<div class="line">                (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, NULL,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CONFIG_PARSER.close: config: %s&quot;</span>,</div>
+<div class="line">                    wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ret));</div>
+<div class="line">                <span class="keywordflow">goto</span> err;</div>
+<div class="line">        }</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Initialize the in-memory jump table. */</span></div>
+<div class="line">        file_system-&gt;<a name="a18"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a461137686ca8dc659b314b29f7c98299">fs_directory_list</a> = demo_fs_directory_list;</div>
+<div class="line">        file_system-&gt;<a name="a19"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a96913fda6ff35e7543fabb02b76d71eb">fs_directory_list_free</a> = demo_fs_directory_list_free;</div>
+<div class="line">        file_system-&gt;<a name="a20"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a584a3eeae5e72a1d7b5c58c5d9c3c93f">fs_directory_sync</a> = demo_fs_directory_sync;</div>
+<div class="line">        file_system-&gt;<a name="a21"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a04768a78e64d45bb61b170e6c2dcb3a2">fs_exist</a> = demo_fs_exist;</div>
+<div class="line">        file_system-&gt;<a name="a22"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a136b95f3aab60edae212215f1b0b450c">fs_open_file</a> = demo_fs_open;</div>
+<div class="line">        file_system-&gt;<a name="a23"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a7b50c9554818dfc06dac36f2dbb949cf">fs_remove</a> = demo_fs_remove;</div>
+<div class="line">        file_system-&gt;<a name="a24"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#ad7958680c64737d768d5ce2d794cbf3e">fs_rename</a> = demo_fs_rename;</div>
+<div class="line">        file_system-&gt;<a name="a25"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a2e97ea38029d156f3ead1cea90652c47">fs_size</a> = demo_fs_size;</div>
+<div class="line">        file_system-&gt;<a name="a26"></a><a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3">terminate</a> = demo_fs_terminate;</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a27"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b">set_file_system</a>(conn, file_system, NULL)) != 0) {</div>
+<div class="line">                (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, NULL,</div>
+<div class="line">                    <span class="stringliteral">&quot;WT_CONNECTION.set_file_system: %s&quot;</span>,</div>
+<div class="line">                    wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ret));</div>
+<div class="line">                <span class="keywordflow">goto</span> err;</div>
+<div class="line">        }</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line"></div>
 <div class="line">err:    free(demo_fs);</div>
@@ -253,16 +329,17 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <a class="code" href="group__wt__ext.html#ga7c095b277e029dbfad41e1dcbc33e197">WT_OPEN_FILE_TYPE</a> file_type, uint32_t flags,</div>
 <div class="line">    <a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> **file_handlep)</div>
 <div class="line">{</div>
-<div class="line">        <a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle;</div>
 <div class="line">        DEMO_FILE_HANDLE *demo_fh;</div>
 <div class="line">        DEMO_FILE_SYSTEM *demo_fs;</div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
+<div class="line">        <a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle;</div>
 <div class="line"></div>
 <div class="line">        (void)file_type;                                        <span class="comment">/* Unused */</span></div>
-<div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
 <div class="line">        (void)flags;                                            <span class="comment">/* Unused */</span></div>
 <div class="line"></div>
 <div class="line">        demo_fs = (DEMO_FILE_SYSTEM *)file_system;</div>
 <div class="line">        demo_fh = NULL;</div>
+<div class="line">        wtext = demo_fs-&gt;wtext;</div>
 <div class="line"></div>
 <div class="line">        ++demo_fs-&gt;opened_file_count;</div>
 <div class="line"></div>
@@ -273,9 +350,8 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        demo_fh = demo_handle_search(file_system, name);</div>
 <div class="line">        <span class="keywordflow">if</span> (demo_fh != NULL) {</div>
 <div class="line">                <span class="keywordflow">if</span> (demo_fh-&gt;ref != 0) {</div>
-<div class="line">                        fprintf(stderr,</div>
-<div class="line">                            <span class="stringliteral">&quot;demo_file_open of already open file %s\n&quot;</span>,</div>
-<div class="line">                            name);</div>
+<div class="line">                        (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, session,</div>
+<div class="line">                            <span class="stringliteral">&quot;demo_fs_open: %s: file already open&quot;</span>, name);</div>
 <div class="line">                        <span class="keywordflow">return</span> (EBUSY);</div>
 <div class="line">                }</div>
 <div class="line"></div>
@@ -300,7 +376,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Initialize public information. */</span></div>
 <div class="line">        file_handle = (<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *)demo_fh;</div>
-<div class="line">        <span class="keywordflow">if</span> ((file_handle-&gt;<a name="a15"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad2a2c8838d62efa219404eeb006bddd5">name</a> = strdup(name)) == NULL)</div>
+<div class="line">        <span class="keywordflow">if</span> ((file_handle-&gt;<a name="a28"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad2a2c8838d62efa219404eeb006bddd5">name</a> = strdup(name)) == NULL)</div>
 <div class="line">                <span class="keywordflow">goto</span> enomem;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -308,21 +384,21 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment">         * function pointer to NULL where our implementation doesn&#39;t support</span></div>
 <div class="line"><span class="comment">         * the functionality.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        file_handle-&gt;<a name="a16"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed">close</a> = demo_file_close;</div>
-<div class="line">        file_handle-&gt;<a name="a17"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5b68b388279c64add7b0ef893b1d2e00">fh_advise</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a18"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e4325fe36cf454b5a8a30ed2bb396ad">fh_allocate</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a19"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a8f568c4cfa33a57e14bf2f30ae61ea35">fh_allocate_nolock</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a20"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5db2aa421c5297d9119b9517e1117afb">fh_lock</a> = demo_file_lock;</div>
-<div class="line">        file_handle-&gt;<a name="a21"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f">fh_map</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a22"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e">fh_map_discard</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a23"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a350e1db2cd51c8c2479b03beae9af90f">fh_map_preload</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a24"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9e8786a0eedb67d92a9e8e5239faef6b">fh_unmap</a> = NULL;</div>
-<div class="line">        file_handle-&gt;<a name="a25"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad41718cb1f7a59cfb21a68785aa09897">fh_read</a> = demo_file_read;</div>
-<div class="line">        file_handle-&gt;<a name="a26"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e0b90f0a4fcf943e81b22b94069738b">fh_size</a> = demo_file_size;</div>
-<div class="line">        file_handle-&gt;<a name="a27"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4f3371981540000e182ed0cb75eefad">fh_sync</a> = demo_file_sync;</div>
-<div class="line">        file_handle-&gt;<a name="a28"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4203cea23fd8f62765564ba9a24fe6c">fh_sync_nowait</a> = demo_file_sync_nowait;</div>
-<div class="line">        file_handle-&gt;<a name="a29"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aaefc111f6b04158790ddf4452b87705f">fh_truncate</a> = demo_file_truncate;</div>
-<div class="line">        file_handle-&gt;<a name="a30"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab69c295b076627307a6528793d7a9b43">fh_write</a> = demo_file_write;</div>
+<div class="line">        file_handle-&gt;<a name="a29"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed">close</a> = demo_file_close;</div>
+<div class="line">        file_handle-&gt;<a name="a30"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5b68b388279c64add7b0ef893b1d2e00">fh_advise</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a31"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e4325fe36cf454b5a8a30ed2bb396ad">fh_allocate</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a32"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a8f568c4cfa33a57e14bf2f30ae61ea35">fh_allocate_nolock</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a33"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5db2aa421c5297d9119b9517e1117afb">fh_lock</a> = demo_file_lock;</div>
+<div class="line">        file_handle-&gt;<a name="a34"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f">fh_map</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a35"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e">fh_map_discard</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a36"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a350e1db2cd51c8c2479b03beae9af90f">fh_map_preload</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a37"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a9e8786a0eedb67d92a9e8e5239faef6b">fh_unmap</a> = NULL;</div>
+<div class="line">        file_handle-&gt;<a name="a38"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad41718cb1f7a59cfb21a68785aa09897">fh_read</a> = demo_file_read;</div>
+<div class="line">        file_handle-&gt;<a name="a39"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e0b90f0a4fcf943e81b22b94069738b">fh_size</a> = demo_file_size;</div>
+<div class="line">        file_handle-&gt;<a name="a40"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4f3371981540000e182ed0cb75eefad">fh_sync</a> = demo_file_sync;</div>
+<div class="line">        file_handle-&gt;<a name="a41"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4203cea23fd8f62765564ba9a24fe6c">fh_sync_nowait</a> = demo_file_sync_nowait;</div>
+<div class="line">        file_handle-&gt;<a name="a42"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aaefc111f6b04158790ddf4452b87705f">fh_truncate</a> = demo_file_truncate;</div>
+<div class="line">        file_handle-&gt;<a name="a43"></a><a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab69c295b076627307a6528793d7a9b43">fh_write</a> = demo_file_write;</div>
 <div class="line"></div>
 <div class="line">        TAILQ_INSERT_HEAD(&amp;demo_fs-&gt;fileq, demo_fh, q);</div>
 <div class="line">        ++demo_fs-&gt;opened_unique_file_count;</div>
@@ -534,12 +610,14 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">demo_file_close(<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
 <div class="line">        DEMO_FILE_HANDLE *demo_fh;</div>
-<div class="line"></div>
-<div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
 <div class="line"></div>
 <div class="line">        demo_fh = (DEMO_FILE_HANDLE *)file_handle;</div>
+<div class="line">        wtext = demo_fh-&gt;demo_fs-&gt;wtext;</div>
+<div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> (demo_fh-&gt;ref &lt; 1) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Closing already closed handle: %s\n&quot;</span>,</div>
+<div class="line">                (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, session,</div>
+<div class="line">                    <span class="stringliteral">&quot;demo_file_close: %s: handle already closed&quot;</span>,</div>
 <div class="line">                    demo_fh-&gt;iface.name);</div>
 <div class="line">                <span class="keywordflow">return</span> (EINVAL);</div>
 <div class="line">        }</div>
@@ -574,11 +652,12 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">    <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset, <span class="keywordtype">size_t</span> len, <span class="keywordtype">void</span> *buf)</div>
 <div class="line">{</div>
 <div class="line">        DEMO_FILE_HANDLE *demo_fh;</div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
 <div class="line">        <span class="keywordtype">size_t</span> off;</div>
 <div class="line">        <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line"></div>
-<div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
 <div class="line">        demo_fh = (DEMO_FILE_HANDLE *)file_handle;</div>
+<div class="line">        wtext = demo_fh-&gt;demo_fs-&gt;wtext;</div>
 <div class="line"></div>
 <div class="line">        off = (size_t)offset;</div>
 <div class="line">        <span class="keywordflow">if</span> (off &lt; demo_fh-&gt;size) {</div>
@@ -591,14 +670,15 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> (ret == 0)</div>
 <div class="line">                <span class="keywordflow">return</span> (0);</div>
+<div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * WiredTiger should never request data past the end of a file, so</span></div>
 <div class="line"><span class="comment">         * flag an error if it does.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        fprintf(stderr,</div>
-<div class="line">            <span class="stringliteral">&quot;%s: handle-read: failed to read %zu bytes at offset %zu\n&quot;</span>,</div>
-<div class="line">            demo_fh-&gt;iface.name, len, off);</div>
-<div class="line">        <span class="keywordflow">return</span> (EINVAL);</div>
+<div class="line">        (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, session,</div>
+<div class="line">            <span class="stringliteral">&quot;%s: handle-read: failed to read %zu bytes at offset %zu: %s&quot;</span>,</div>
+<div class="line">            demo_fh-&gt;iface.name, len, off, wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ret));</div>
+<div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
@@ -655,10 +735,11 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">    <a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset)</div>
 <div class="line">{</div>
 <div class="line">        DEMO_FILE_HANDLE *demo_fh;</div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
 <div class="line">        <span class="keywordtype">size_t</span> off;</div>
 <div class="line"></div>
-<div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
 <div class="line">        demo_fh = (DEMO_FILE_HANDLE *)file_handle;</div>
+<div class="line">        wtext = demo_fh-&gt;demo_fs-&gt;wtext;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Grow the buffer as necessary, clear any new space in the file,</span></div>
@@ -667,9 +748,11 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        off = (size_t)offset;</div>
 <div class="line">        <span class="keywordflow">if</span> (demo_fh-&gt;bufsize &lt; off ) {</div>
 <div class="line">                <span class="keywordflow">if</span> ((demo_fh-&gt;buf = realloc(demo_fh-&gt;buf, off)) == NULL) {</div>
-<div class="line">                        fprintf(stderr,</div>
-<div class="line">                            <span class="stringliteral">&quot;Failed to resize buffer in truncate\n&quot;</span>);</div>
-<div class="line">                        <span class="keywordflow">return</span> (ENOSPC);</div>
+<div class="line">                        (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, session,</div>
+<div class="line">                            <span class="stringliteral">&quot;demo_file_truncate: %s: failed to resize buffer&quot;</span>,</div>
+<div class="line">                            demo_fh-&gt;iface.name,</div>
+<div class="line">                            wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, ENOMEM));</div>
+<div class="line">                        <span class="keywordflow">return</span> (ENOMEM);</div>
 <div class="line">                }</div>
 <div class="line">                demo_fh-&gt;bufsize = off;</div>
 <div class="line">        }</div>
@@ -718,16 +801,16 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">demo_handle_remove(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, DEMO_FILE_HANDLE *demo_fh)</div>
 <div class="line">{</div>
 <div class="line">        DEMO_FILE_SYSTEM *demo_fs;</div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
 <div class="line"></div>
-<div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
 <div class="line">        demo_fs = demo_fh-&gt;demo_fs;</div>
+<div class="line">        wtext = demo_fh-&gt;demo_fs-&gt;wtext;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> (demo_fh-&gt;ref != 0) {</div>
-<div class="line">                fprintf(stderr,</div>
-<div class="line">                    <span class="stringliteral">&quot;demo_handle_remove on file %s with non-zero reference &quot;</span></div>
-<div class="line">                    <span class="stringliteral">&quot;count of %u\n&quot;</span>,</div>
-<div class="line">                    demo_fh-&gt;iface.name, demo_fh-&gt;ref);</div>
-<div class="line">                <span class="keywordflow">return</span> (EINVAL);</div>
+<div class="line">                (void)wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wtext, session,</div>
+<div class="line">                    <span class="stringliteral">&quot;demo_handle_remove: %s: file is currently open&quot;</span>,</div>
+<div class="line">                    demo_fh-&gt;iface.name, wtext-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a>(wtext, NULL, EBUSY));</div>
+<div class="line">                <span class="keywordflow">return</span> (EBUSY);</div>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        TAILQ_REMOVE(&amp;demo_fs-&gt;fileq, demo_fh, q);</div>
@@ -766,7 +849,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">main(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
-<div class="line">        <a name="_a31"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
+<div class="line">        <a name="_a44"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *open_config, *uri;</div>
 <div class="line">        <span class="keywordtype">int</span> i;</div>
@@ -788,29 +871,32 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment">         * Use the special local extension to indicate that the entry point is</span></div>
 <div class="line"><span class="comment">         * in the same executable. Also enable early load for this extension,</span></div>
 <div class="line"><span class="comment">         * since WiredTiger needs to be able to find it before doing any file</span></div>
-<div class="line"><span class="comment">         * operations.</span></div>
+<div class="line"><span class="comment">         * operations. Finally, pass in two pieces of configuration information</span></div>
+<div class="line"><span class="comment">         * to our initialization function as the &quot;config&quot; value.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        open_config = <span class="stringliteral">&quot;create,log=(enabled=true),extensions=(local=&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;{entry=demo_file_system_create,early_load=true})&quot;</span>;</div>
+<div class="line">        open_config = <span class="stringliteral">&quot;create,log=(enabled=true),extensions=(local={&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;entry=demo_file_system_create,early_load=true,&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;config={config_string=\&quot;demo-file-system\&quot;,config_value=37}&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;})&quot;</span>;</div>
 <div class="line">        <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a32"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, open_config, &amp;conn)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a45"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, open_config, &amp;conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a name="a46"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a33"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a47"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_CONNECTION.open_session: %s\n&quot;</span>,</div>
 <div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        uri = <span class="stringliteral">&quot;table:fs&quot;</span>;</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a name="a34"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a name="a48"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(</div>
 <div class="line">            session, uri, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_SESSION.create: %s: %s\n&quot;</span>,</div>
 <div class="line">                    uri, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a name="a35"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = session-&gt;<a name="a49"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
 <div class="line">            session, uri, NULL, NULL, &amp;cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_SESSION.open_cursor: %s: %s\n&quot;</span>,</div>
 <div class="line">                    uri, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
@@ -818,15 +904,15 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 1000; ++i) {</div>
 <div class="line">                (void)snprintf(kbuf, <span class="keyword">sizeof</span>(kbuf), <span class="stringliteral">&quot;%010d KEY -----&quot;</span>, i);</div>
-<div class="line">                cursor-&gt;<a name="a36"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, kbuf);</div>
-<div class="line">                cursor-&gt;<a name="a37"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;--- VALUE ---&quot;</span>);</div>
-<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a38"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor)) != 0) {</div>
+<div class="line">                cursor-&gt;<a name="a50"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, kbuf);</div>
+<div class="line">                cursor-&gt;<a name="a51"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;--- VALUE ---&quot;</span>);</div>
+<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a52"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor)) != 0) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.insert: %s: %s\n&quot;</span>,</div>
 <div class="line">                            kbuf, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">                }</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a39"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a53"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.close: %s\n&quot;</span>,</div>
 <div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
@@ -838,13 +924,13 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 1000; ++i) {</div>
-<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a40"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) != 0) {</div>
+<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a54"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) != 0) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.insert: %s: %s\n&quot;</span>,</div>
 <div class="line">                            kbuf, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">                }</div>
 <div class="line">                (void)snprintf(kbuf, <span class="keyword">sizeof</span>(kbuf), <span class="stringliteral">&quot;%010d KEY -----&quot;</span>, i);</div>
-<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a41"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key)) != 0) {</div>
+<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a55"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key)) != 0) {</div>
 <div class="line">                        fprintf(stderr, <span class="stringliteral">&quot;WT_CURSOR.get_key: %s\n&quot;</span>,</div>
 <div class="line">                            <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
@@ -854,14 +940,14 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">                        <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">                }</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) != <a name="a42"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) != <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>) {</div>
 <div class="line">                fprintf(stderr,</div>
 <div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.insert: expected WT_NOTFOUND, got %s\n&quot;</span>,</div>
 <div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a43"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a56"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing connection to %s: %s\n&quot;</span>,</div>
 <div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>

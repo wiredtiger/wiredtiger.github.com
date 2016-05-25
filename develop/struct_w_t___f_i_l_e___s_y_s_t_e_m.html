@@ -123,10 +123,13 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * Use the special local extension to indicate that the entry point is</span></div>
 <div class="line"><span class="comment">         * in the same executable. Also enable early load for this extension,</span></div>
 <div class="line"><span class="comment">         * since WiredTiger needs to be able to find it before doing any file</span></div>
-<div class="line"><span class="comment">         * operations.</span></div>
+<div class="line"><span class="comment">         * operations. Finally, pass in two pieces of configuration information</span></div>
+<div class="line"><span class="comment">         * to our initialization function as the &quot;config&quot; value.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        open_config = <span class="stringliteral">&quot;create,log=(enabled=true),extensions=(local=&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;{entry=demo_file_system_create,early_load=true})&quot;</span>;</div>
+<div class="line">        open_config = <span class="stringliteral">&quot;create,log=(enabled=true),extensions=(local={&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;entry=demo_file_system_create,early_load=true,&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;config={config_string=\&quot;demo-file-system\&quot;,config_value=37}&quot;</span></div>
+<div class="line">            <span class="stringliteral">&quot;})&quot;</span>;</div>
 <div class="line">        <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, open_config, &amp;conn)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
@@ -158,7 +161,7 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a4">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a18">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -183,7 +186,7 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a5">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a19">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -208,7 +211,7 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a6">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a20">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -233,7 +236,7 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a7">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a21">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -260,7 +263,7 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a8">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a22">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -285,7 +288,7 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a9">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a23">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -311,7 +314,7 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a10">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a24">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -336,7 +339,7 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a11">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a25">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -353,7 +356,7 @@ Public Attributes</h2></td></tr>
 <p>A callback performed when the file system is closed and will no longer be accessed by the WiredTiger database. </p>
 <p>This method is not required and should be set to NULL when not required by the file system.</p>
 <p>The <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3" title="A callback performed when the file system is closed and will no longer be accessed by the WiredTiger ...">WT_FILE_SYSTEM::terminate</a> callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a12">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a26">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
