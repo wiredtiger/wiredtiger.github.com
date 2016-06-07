@@ -410,9 +410,11 @@ var group__wt =
     [ "WT_STAT_DSRC_SESSION_COMPACT", "group__wt.html#gae3a08df82d5b3571c61bed609980f845", null ],
     [ "WT_STAT_DSRC_SESSION_CURSOR_OPEN", "group__wt.html#ga2aaf905ea64ae1f27393b5a84582b3fc", null ],
     [ "WT_STAT_DSRC_TXN_UPDATE_CONFLICT", "group__wt.html#gab3edfe41012927e52357fc5a723b4e85", null ],
-    [ "WT_STAT_JOIN_ACCESSES", "group__wt.html#gad81002a28039c3a3abd0791363bd92e9", null ],
-    [ "WT_STAT_JOIN_ACTUAL_COUNT", "group__wt.html#ga54b5c4f41bcee9937c4619b136efe3d9", null ],
     [ "WT_STAT_JOIN_BLOOM_FALSE_POSITIVE", "group__wt.html#ga328dbfa667ae495091818314972a667c", null ],
+    [ "WT_STAT_JOIN_BLOOM_INSERT", "group__wt.html#gaa3c74fdbd5adb798b74c76933200c2d9", null ],
+    [ "WT_STAT_JOIN_ITERATED", "group__wt.html#gac32cdf598037a5b70e70cf46d8bfc68c", null ],
+    [ "WT_STAT_JOIN_MAIN_ACCESS", "group__wt.html#ga83978010e05a4caa537afc0892252083", null ],
+    [ "WT_STAT_JOIN_MEMBERSHIP_CHECK", "group__wt.html#gaa8acf71f67e30719d130c3d06e8f31b0", null ],
     [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", null ],
     [ "WT_ASYNC_OPTYPE", "group__wt.html#ga24152c6e1509c488192df653d511a82c", [
       [ "WT_AOP_NONE", "group__wt.html#gga24152c6e1509c488192df653d511a82ca84d609caa741779c25004dd4484b9660", null ],

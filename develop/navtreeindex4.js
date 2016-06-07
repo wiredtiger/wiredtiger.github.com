@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"namespace.html#namespace_c":[0,4,11,1],
+"namespace.html#namespace_env":[0,4,11,0],
 "namespace.html#namespace_error":[0,4,11,3],
 "namespace.html#namespace_filesystem":[0,4,11,2],
 "namespace_lang_java.html":[0,5,11],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9":[1,0,3,18],
 "struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a":[1,0,3,21],
 "struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70":[1,0,3,6],
-"struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84":[1,0,3,7],
-"struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d":[1,0,3,10],
-"struct_w_t___t_x_n___n_o_t_i_f_y.html":[1,1,7]
+"struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84":[1,0,3,7]
 };
