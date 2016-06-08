@@ -1,5 +1,11 @@
 var NAVTREEINDEX4 =
 {
+"lsm_lang_java.html#lsm_hazard_lang_java":[0,5,6,6,0],
+"lsm_lang_java.html#lsm_merge_lang_java":[0,5,6,3],
+"lsm_lang_java.html#lsm_schema_lang_java":[0,5,6,5],
+"md_changelog.html":[0,8],
+"modules.html":[1],
+"namespace.html":[0,4,11],
 "namespace.html#namespace_c":[0,4,11,1],
 "namespace.html#namespace_env":[0,4,11,0],
 "namespace.html#namespace_error":[0,4,11,3],
@@ -243,11 +249,5 @@ var NAVTREEINDEX4 =
 "struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698":[1,0,3,2],
 "struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69":[1,0,3,4],
 "struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873":[1,0,3,17],
-"struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984":[1,0,3,11],
-"struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e":[1,0,3,16],
-"struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1":[1,0,3,15],
-"struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9":[1,0,3,18],
-"struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a":[1,0,3,21],
-"struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70":[1,0,3,6],
-"struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84":[1,0,3,7]
+"struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984":[1,0,3,11]
 };
