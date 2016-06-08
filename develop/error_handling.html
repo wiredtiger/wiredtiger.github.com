@@ -129,7 +129,7 @@ Error handling using the WT_EVENT_HANDLER</h1>
 <div class="line">        <span class="comment">/* Report the error on the console. */</span></div>
 <div class="line">        fprintf(stderr,</div>
 <div class="line">            <span class="stringliteral">&quot;app_id %s, thread context %p, error %d, message %s\n&quot;</span>,</div>
-<div class="line">            custom_handler-&gt;app_id, session, error, message);</div>
+<div class="line">            custom_handler-&gt;app_id, (<span class="keywordtype">void</span> *)session, error, message);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
@@ -144,7 +144,8 @@ Error handling using the WT_EVENT_HANDLER</h1>
 <div class="line">{</div>
 <div class="line">        <span class="comment">/* Cast the handler back to our custom handler. */</span></div>
 <div class="line">        printf(<span class="stringliteral">&quot;app id %s, thread context %p, message %s\n&quot;</span>,</div>
-<div class="line">            ((CUSTOM_EVENT_HANDLER *)handler)-&gt;app_id, session, message);</div>
+<div class="line">            ((CUSTOM_EVENT_HANDLER *)handler)-&gt;app_id,</div>
+<div class="line">            (<span class="keywordtype">void</span> *)session, message);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
