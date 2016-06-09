@@ -1704,11 +1704,11 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>dump_blocks</code></td><td>Display the contents of on-disk blocks as they are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>dump_layout</code></td><td>Display the layout of the files as they are verified, using the application's message handler, intended for debugging; requires optional support from the block manager.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
 <td><code>dump_offsets</code></td><td>Display the contents of specific on-disk blocks, using the application's message handler, intended for debugging.</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>dump_pages</code></td><td>Display the contents of in-memory pages as they are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
-<td><code>dump_shape</code></td><td>Display the shape of the tree after verification, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>strict</code></td><td>Treat any verification problem as an error; by default, verify will warn, but not fail, in the case of errors that won't affect future behavior (for example, a leaked block).</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>
