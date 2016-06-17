@@ -152,7 +152,6 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        <span class="keywordtype">char</span>    *buf;                           <span class="comment">/* In-memory contents */</span></div>
 <div class="line">        <span class="keywordtype">size_t</span>   bufsize;                       <span class="comment">/* In-memory buffer size */</span></div>
 <div class="line"></div>
-<div class="line">        <span class="keywordtype">size_t</span>   off;                           <span class="comment">/* Read/write offset */</span></div>
 <div class="line">        <span class="keywordtype">size_t</span>   size;                          <span class="comment">/* Read/write data size */</span></div>
 <div class="line">} DEMO_FILE_HANDLE;</div>
 <div class="line"></div>
@@ -356,7 +355,6 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">                }</div>
 <div class="line"></div>
 <div class="line">                demo_fh-&gt;ref = 1;</div>
-<div class="line">                demo_fh-&gt;off = 0;</div>
 <div class="line"></div>
 <div class="line">                *file_handlep = (<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *)demo_fh;</div>
 <div class="line">                <span class="keywordflow">return</span> (0);</div>
@@ -368,7 +366,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Initialize private information. */</span></div>
 <div class="line">        demo_fh-&gt;ref = 1;</div>
-<div class="line">        demo_fh-&gt;off = demo_fh-&gt;size = 0;</div>
+<div class="line">        demo_fh-&gt;size = 0;</div>
 <div class="line">        demo_fh-&gt;demo_fs = demo_fs;</div>
 <div class="line">        <span class="keywordflow">if</span> ((demo_fh-&gt;buf = calloc(1, DEMO_FILE_SIZE_INCREMENT)) == NULL)</div>
 <div class="line">                <span class="keywordflow">goto</span> enomem;</div>
@@ -664,7 +662,6 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">                <span class="keywordflow">if</span> (len &gt; demo_fh-&gt;size - off)</div>
 <div class="line">                        len = demo_fh-&gt;size - off;</div>
 <div class="line">                memcpy(buf, (uint8_t *)demo_fh-&gt;buf + off, len);</div>
-<div class="line">                demo_fh-&gt;off = off + len;</div>
 <div class="line">        } <span class="keywordflow">else</span></div>
 <div class="line">                ret = EINVAL;           <span class="comment">/* EOF */</span></div>
 <div class="line"></div>
@@ -787,7 +784,6 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        memcpy((uint8_t *)demo_fh-&gt;buf + off, buf, len);</div>
 <div class="line">        <span class="keywordflow">if</span> (off + len &gt; demo_fh-&gt;size)</div>
 <div class="line">                demo_fh-&gt;size = off + len;</div>
-<div class="line">        demo_fh-&gt;off = off + len;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
