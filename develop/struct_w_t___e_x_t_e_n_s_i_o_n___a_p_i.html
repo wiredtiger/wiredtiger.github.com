@@ -95,6 +95,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a3fd4b5255e2f82139a846d66d67be565"><td class="memItemLeft" align="right" valign="top">const char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">strerror</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, int error)</td></tr>
 <tr class="memdesc:a3fd4b5255e2f82139a846d66d67be565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about an error as a string.  <a href="#a3fd4b5255e2f82139a846d66d67be565">More...</a><br /></td></tr>
 <tr class="separator:a3fd4b5255e2f82139a846d66d67be565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a638754053ec9ed74ded16e97b78849ca"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a638754053ec9ed74ded16e97b78849ca">map_windows_error</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, uint32_t windows_error)</td></tr>
+<tr class="memdesc:a638754053ec9ed74ded16e97b78849ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map a Windows system error code to a POSIX 1003.1/ANSI C error.  <a href="#a638754053ec9ed74ded16e97b78849ca">More...</a><br /></td></tr>
+<tr class="separator:a638754053ec9ed74ded16e97b78849ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d85b1ce4631b7b4e09b735527b39b1e"><td class="memItemLeft" align="right" valign="top">void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d85b1ce4631b7b4e09b735527b39b1e">scr_alloc</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, size_t bytes)</td></tr>
 <tr class="memdesc:a6d85b1ce4631b7b4e09b735527b39b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate short-term use scratch memory.  <a href="#a6d85b1ce4631b7b4e09b735527b39b1e">More...</a><br /></td></tr>
 <tr class="separator:a6d85b1ce4631b7b4e09b735527b39b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -442,6 +445,31 @@ Public Attributes</h2></td></tr>
 <div class="line">            wt_api, session, <span class="stringliteral">&quot;extension error message: %s&quot;</span>, msg);</div>
 </div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a8">ex_file_system.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a3">rotn_encrypt.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="a638754053ec9ed74ded16e97b78849ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::map_windows_error) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, uint32_t windows_error)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Map a Windows system error code to a POSIX 1003.1/ANSI C error. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wt_api</td><td>the extension handle </td></tr>
+    <tr><td class="paramname">session</td><td>the session handle (or NULL if none available) </td></tr>
+    <tr><td class="paramname">windows_error</td><td>a Windows system error code </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a string representation of the error</dd></dl>
+<div class="fragment"><div class="line">        <span class="keywordtype">int</span> posix_error =</div>
+<div class="line">            wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a638754053ec9ed74ded16e97b78849ca">map_windows_error</a>(wt_api, session, ERROR_BAD_COMMAND);</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="afeaf9e7dd804c528633a5570a4409c7f"></a>

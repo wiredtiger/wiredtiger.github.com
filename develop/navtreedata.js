@@ -24,7 +24,7 @@ var NAVTREEINDEX =
 "ex_call_center_8c-example.html",
 "group__wt.html#ga7111b3912e9e1162ef965d0637e27b34",
 "lsm_lang_java.html#lsm_bloom_lang_java",
-"struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698"
+"struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

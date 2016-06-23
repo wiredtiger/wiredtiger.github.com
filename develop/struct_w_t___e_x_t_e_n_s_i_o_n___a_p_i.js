@@ -5,6 +5,7 @@ var struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i =
     [ "config_get", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45", null ],
     [ "config_parser_open", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a925298c80d5c887172e184ff67027ed6", null ],
     [ "err_printf", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678", null ],
+    [ "map_windows_error", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a638754053ec9ed74ded16e97b78849ca", null ],
     [ "metadata_insert", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f", null ],
     [ "metadata_remove", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420", null ],
     [ "metadata_search", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554", null ],
