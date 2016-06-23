@@ -1,5 +1,11 @@
 var NAVTREEINDEX4 =
 {
+"lsm.html#lsm_hazard":[0,4,6,6,0],
+"lsm.html#lsm_merge":[0,4,6,3],
+"lsm.html#lsm_schema":[0,4,6,5],
+"lsm_lang_java.html":[0,5,6],
+"lsm_lang_java.html#lsm_api_lang_java":[0,5,6,2],
+"lsm_lang_java.html#lsm_background_lang_java":[0,5,6,0],
 "lsm_lang_java.html#lsm_bloom_lang_java":[0,5,6,4],
 "lsm_lang_java.html#lsm_caveats_lang_java":[0,5,6,6],
 "lsm_lang_java.html#lsm_checkpoints_lang_java":[0,5,6,6,1],
@@ -243,11 +249,5 @@ var NAVTREEINDEX4 =
 "struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6":[1,0,3,25],
 "struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787":[1,0,3,14],
 "struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb":[1,0,3,5],
-"struct_w_t___s_e_s_s_i_o_n.html#a480525d3881dfcb90060af823a7f4a52":[1,0,3,24],
-"struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9":[1,0,3,9],
-"struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69":[1,0,3,22],
-"struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6":[1,0,3,12],
-"struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd":[1,0,3,20],
-"struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf":[1,0,3,1],
-"struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2":[1,0,3,3]
+"struct_w_t___s_e_s_s_i_o_n.html#a480525d3881dfcb90060af823a7f4a52":[1,0,3,24]
 };
