@@ -361,6 +361,7 @@ var group__wt =
     [ "WT_STAT_DSRC_BTREE_OVERFLOW", "group__wt.html#ga079f2d70ac0826f54e36b8535d7194e5", null ],
     [ "WT_STAT_DSRC_BTREE_ROW_INTERNAL", "group__wt.html#ga5c4c829c445e2c09325464356132e950", null ],
     [ "WT_STAT_DSRC_BTREE_ROW_LEAF", "group__wt.html#gad68b0d8aebe130afacb0f8702389991d", null ],
+    [ "WT_STAT_DSRC_CACHE_BYTES_INUSE", "group__wt.html#ga7721a9136f75f6ddda7818421a4c2ea4", null ],
     [ "WT_STAT_DSRC_CACHE_BYTES_READ", "group__wt.html#ga09c3b8363ccb28b9752f2eb2fd90c2e5", null ],
     [ "WT_STAT_DSRC_CACHE_BYTES_WRITE", "group__wt.html#ga212a7e9d219e279da8b10adfaaab2afc", null ],
     [ "WT_STAT_DSRC_CACHE_EVICTION_CHECKPOINT", "group__wt.html#ga02878b5a32a66036a37ef072b9c6ffbc", null ],
