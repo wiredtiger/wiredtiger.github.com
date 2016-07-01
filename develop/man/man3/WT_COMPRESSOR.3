@@ -1,10 +1,8 @@
-.TH "WT_COMPRESSOR" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_COMPRESSOR" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_COMPRESSOR \- 
-.PP
-The interface implemented by applications to provide custom compression\&.  
+WT_COMPRESSOR \- The interface implemented by applications to provide custom compression\&.  
 
 .SH SYNOPSIS
 .br
@@ -75,12 +73,7 @@ wiredtiger_extension_init(WT_CONNECTION *connection, WT_CONFIG_ARG *config)
          * as the first field, allowing us to treat references to either type of
          * structure as a reference to the other type\&.
          *
-         * This could be simplified if only a single database is opened in the
-         * application, we could use a static WT_COMPRESSOR structure, and a
-         * static reference to the WT_EXTENSION_API methods, then we don't need
-         * to allocate memory when the compressor is initialized or free it when
-         * the compressor is terminated\&.  However, this approach is more general
-         * purpose and supports multiple databases per application\&.
+         * Heap memory (not static), because it can support multiple databases\&.
          */
         nop_compressor->compressor\&.compress = nop_compress;
         nop_compressor->compressor\&.compress_raw = NULL;
@@ -99,7 +92,7 @@ wiredtiger_extension_init(WT_CONNECTION *connection, WT_CONFIG_ARG *config)
 
 .SH "Member Data Documentation"
 .PP 
-.SS "int(* WT_COMPRESSOR::compress)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, uint8_t *dst, size_t dst_len, size_t *result_lenp, int *compression_failed)"
+.SS "int(* WT_COMPRESSOR::compress) (\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, uint8_t *dst, size_t dst_len, size_t *result_lenp, int *compression_failed)"
 
 .PP
 Callback to compress a chunk of data\&. \fBWT_COMPRESSOR::compress\fP takes a source buffer and a destination buffer, by default of the same size\&. If the callback can compress the buffer to a smaller size in the destination, it does so, sets the \fCcompression_failed\fP return to 0 and returns 0\&. If compression does not produce a smaller result, the callback sets the \fCcompression_failed\fP return to 1 and returns 0\&. If another error occurs, it returns an errno or WiredTiger error code\&.
@@ -162,7 +155,7 @@ nop_compress(WT_COMPRESSOR *compressor, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_COMPRESSOR::compress_raw)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, size_t page_max, int split_pct, size_t extra, uint8_t *src, uint32_t *offsets, uint32_t slots, uint8_t *dst, size_t dst_len, int final, size_t *result_lenp, uint32_t *result_slotsp)"
+.SS "int(* WT_COMPRESSOR::compress_raw) (\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, size_t page_max, int split_pct, size_t extra, uint8_t *src, uint32_t *offsets, uint32_t slots, uint8_t *dst, size_t dst_len, int final, size_t *result_lenp, uint32_t *result_slotsp)"
 
 .PP
 Callback to compress a list of byte strings\&. \fBWT_COMPRESSOR::compress_raw\fP gives applications fine-grained control over disk block size when writing row-store or variable-length column-store pages\&. Where this level of control is not required by the underlying storage device, set the \fBWT_COMPRESSOR::compress_raw\fP callback to \fCNULL\fP and WiredTiger will internally split each page into blocks, each block then compressed by \fBWT_COMPRESSOR::compress\fP\&.
@@ -224,7 +217,7 @@ zero for success, non-zero to indicate an error\&.
 .RE
 .PP
 
-.SS "int(* WT_COMPRESSOR::decompress)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, uint8_t *dst, size_t dst_len, size_t *result_lenp)"
+.SS "int(* WT_COMPRESSOR::decompress) (\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, uint8_t *dst, size_t dst_len, size_t *result_lenp)"
 
 .PP
 Callback to decompress a chunk of data\&. \fBWT_COMPRESSOR::decompress\fP takes a source buffer and a destination buffer\&. The contents are switched from \fCcompress:\fP the source buffer is the compressed value, and the destination buffer is sized to be the original size\&. If the callback successfully decompresses the source buffer to the destination buffer, it returns 0\&. If an error occurs, it returns an errno or WiredTiger error code\&. The source buffer that \fBWT_COMPRESSOR::decompress\fP takes may have a size that is rounded up from the size originally produced by \fBWT_COMPRESSOR::compress\fP, with the remainder of the buffer set to zeroes\&. Most compressors do not care about this difference if the size to be decompressed can be implicitly discovered from the compressed data\&. If your compressor cares, you may need to allocate space for, and store, the actual size in the compressed buffer\&. See the source code for the included snappy compressor for an example\&.
@@ -281,12 +274,12 @@ nop_decompress(WT_COMPRESSOR *compressor, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_COMPRESSOR::pre_size)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, size_t *result_lenp)"
+.SS "int(* WT_COMPRESSOR::pre_size) (\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session, uint8_t *src, size_t src_len, size_t *result_lenp)"
 
 .PP
 Callback to size a destination buffer for compression\&. \fBWT_COMPRESSOR::pre_size\fP is an optional callback that, given the source buffer and size, produces the size of the destination buffer to be given to \fBWT_COMPRESSOR::compress\fP\&. This is useful for compressors that assume that the output buffer is sized for the worst case and thus no overrun checks are made\&. If your compressor works like this, \fBWT_COMPRESSOR::pre_size\fP will need to be defined\&. See the source code for the snappy compressor for an example\&. However, if your compressor detects and avoids overruns against its target buffer, you will not need to define \fBWT_COMPRESSOR::pre_size\fP\&. When \fBWT_COMPRESSOR::pre_size\fP is set to NULL, the destination buffer is sized the same as the source buffer\&. This is always sufficient, since a compression result that is larger than the source buffer is discarded by WiredTiger\&.
 .PP
-If not NULL, this callback is called before each call to WT_COMPRESS::compress to determine the size of the destination buffer to provide\&. If the callback is NULL, the destination buffer will be the same size as the source buffer\&.
+If not NULL, this callback is called before each call to \fBWT_COMPRESSOR::compress\fP to determine the size of the destination buffer to provide\&. If the callback is NULL, the destination buffer will be the same size as the source buffer\&.
 .PP
 The callback should set \fCresult_lenp\fP to a suitable buffer size for compression, typically the maximum length required by \fBWT_COMPRESSOR::compress\fP\&.
 .PP
@@ -330,7 +323,7 @@ nop_pre_size(WT_COMPRESSOR *compressor, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_COMPRESSOR::terminate)(\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session)"
+.SS "int(* WT_COMPRESSOR::terminate) (\fBWT_COMPRESSOR\fP *compressor, \fBWT_SESSION\fP *session)"
 
 .PP
 If non-NULL, a callback performed when the database is closed\&. The \fBWT_COMPRESSOR::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&.

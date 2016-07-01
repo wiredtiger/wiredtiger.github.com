@@ -1,4 +1,4 @@
-.TH "programming" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "programming" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -42,6 +42,8 @@ We follow SQL terminology: a database is set of tables managed together\&. Table
 .IP "\(bu" 2
 \fBName spaces\fP
 .IP "\(bu" 2
+\fBDatabase read-only mode\fP
+.IP "\(bu" 2
 \fBSignal handling\fP
 .PP
 .PP
@@ -58,15 +60,19 @@ We follow SQL terminology: a database is set of tables managed together\&. Table
 .IP "\(bu" 2
 \fBCommit-level durability\fP
 .IP "\(bu" 2
-\fBNamed Snapshots\fP
-.IP "\(bu" 2
-\fBPer-process shared caches\fP
-.IP "\(bu" 2
-\fBStatistics\fP
+\fBIn-memory databases\fP
 .IP "\(bu" 2
 \fBJoin cursors\fP
 .IP "\(bu" 2
 \fBLog cursors\fP
+.IP "\(bu" 2
+\fBNamed Snapshots\fP
+.IP "\(bu" 2
+\fBRebalance\fP
+.IP "\(bu" 2
+\fBPer-process shared caches\fP
+.IP "\(bu" 2
+\fBStatistics\fP
 .IP "\(bu" 2
 \fBUpgrading and downgrading databases\fP
 .PP
@@ -81,6 +87,8 @@ We follow SQL terminology: a database is set of tables managed together\&. Table
 \fBCustom Extractors\fP
 .IP "\(bu" 2
 \fBCustom Data Sources\fP
+.IP "\(bu" 2
+\fBCustom File Systems\fP
 .IP "\(bu" 2
 \fBWiredTiger Helium support\fP
 .PP

@@ -1,0 +1,488 @@
+.TH "WT_FILE_HANDLE" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_FILE_HANDLE \- A file handle implementation returned by WT_FILE_SYSTEM::open_file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBWT_FILE_SYSTEM\fP * \fBfile_system\fP"
+.br
+.RI "\fIThe enclosing file system, set by WT_FILE_SYSTEM::open_file\&. \fP"
+.ti -1c
+.RI "char * \fBname\fP"
+.br
+.RI "\fIThe name of the file, set by WT_FILE_SYSTEM::open_file\&. \fP"
+.ti -1c
+.RI "int(* \fBclose\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIClose a file handle, the handle will not be further accessed by WiredTiger\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_advise\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset, wt_off_t len, int advice)"
+.br
+.RI "\fIIndicate expected future use of file ranges, based on the POSIX 1003\&.1 standard fadvise\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_allocate\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t, wt_off_t)"
+.br
+.RI "\fIEnsure disk space is allocated for the file, based on the POSIX 1003\&.1 standard fallocate\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_allocate_nolock\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t, wt_off_t)"
+.br
+.RI "\fIEnsure disk space is allocated for the file, based on the POSIX 1003\&.1 standard fallocate\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_lock\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, bool lock)"
+.br
+.RI "\fILock/unlock a file from the perspective of other processes running in the system\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_map\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, void *mapped_regionp, size_t *lengthp, void *mapped_cookiep)"
+.br
+.RI "\fIMap a file into memory, based on the POSIX 1003\&.1 standard mmap\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_map_discard\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, void *map, size_t length, void *mapped_cookie)"
+.br
+.RI "\fIUnmap part of a memory mapped file, based on the POSIX 1003\&.1 standard madvise\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_map_preload\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, const void *map, size_t length, void *mapped_cookie)"
+.br
+.RI "\fIPreload part of a memory mapped file, based on the POSIX 1003\&.1 standard madvise\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_unmap\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, void *mapped_region, size_t length, void *mapped_cookie)"
+.br
+.RI "\fIUnmap a memory mapped file, based on the POSIX 1003\&.1 standard munmap\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_read\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset, size_t len, void *buf)"
+.br
+.RI "\fIRead from a file, based on the POSIX 1003\&.1 standard pread\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_size\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t *sizep)"
+.br
+.RI "\fIReturn the size of a file\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_sync\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIMake outstanding file writes durable and do not return until writes are complete\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_sync_nowait\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fISchedule the outstanding file writes required for durability and return immediately\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_truncate\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t length)"
+.br
+.RI "\fILengthen or shorten a file to the specified length, based on the POSIX 1003\&.1 standard ftruncate\&. \fP"
+.ti -1c
+.RI "int(* \fBfh_write\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset, size_t length, const void *buf)"
+.br
+.RI "\fIWrite to a file, based on the POSIX 1003\&.1 standard pwrite\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A file handle implementation returned by WT_FILE_SYSTEM::open_file\&. 
+
+\fBThread safety:\fP Unless explicitly stated otherwise, WiredTiger may invoke methods on the \fBWT_FILE_HANDLE\fP interface from multiple threads concurrently\&. It is the responsibility of the implementation to protect any shared data\&.
+.PP
+See \fBCustom File Systems\fP for more information\&. 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_FILE_HANDLE::close) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session)"
+
+.PP
+Close a file handle, the handle will not be further accessed by WiredTiger\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_advise) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset, wt_off_t len, int advice)"
+
+.PP
+Indicate expected future use of file ranges, based on the POSIX 1003\&.1 standard fadvise\&. This method is not required, and should be set to NULL when not supported by the file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIoffset\fP the file offset 
+.br
+\fIlen\fP the size of the advisory 
+.br
+\fIadvice\fP one of \fBWT_FILE_HANDLE_WILLNEED\fP or \fBWT_FILE_HANDLE_DONTNEED\fP\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_allocate) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t, wt_off_t)"
+
+.PP
+Ensure disk space is allocated for the file, based on the POSIX 1003\&.1 standard fallocate\&. This method is not required, and should be set to NULL when not supported by the file\&.
+.PP
+This method is not called by multiple threads concurrently (on the same file handle)\&. If the file handle's fallocate method supports concurrent calls, set the WT_FILE_HANDLE::fallocate_nolock method instead\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIoffset\fP the file offset 
+.br
+\fIlen\fP the size of the advisory 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_allocate_nolock) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t, wt_off_t)"
+
+.PP
+Ensure disk space is allocated for the file, based on the POSIX 1003\&.1 standard fallocate\&. This method is not required, and should be set to NULL when not supported by the file\&.
+.PP
+This method may be called by multiple threads concurrently (on the same file handle)\&. If the file handle's fallocate method does not support concurrent calls, set the WT_FILE_HANDLE::fallocate method instead\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIoffset\fP the file offset 
+.br
+\fIlen\fP the size of the advisory 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_lock) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, bool lock)"
+
+.PP
+Lock/unlock a file from the perspective of other processes running in the system\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIlock\fP whether to lock or unlock 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_map) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, void *mapped_regionp, size_t *lengthp, void *mapped_cookiep)"
+
+.PP
+Map a file into memory, based on the POSIX 1003\&.1 standard mmap\&. This method is not required, and should be set to NULL when not supported by the file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fImapped_regionp\fP a reference to a memory location into which should be stored a pointer to the start of the mapped region 
+.br
+\fIlengthp\fP a reference to a memory location into which should be stored the length of the region 
+.br
+\fImapped_cookiep\fP a reference to a memory location into which can be optionally stored a pointer to an opaque cookie which is subsequently passed to WT_FILE_HANDLE::unmap\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_map_discard) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, void *map, size_t length, void *mapped_cookie)"
+
+.PP
+Unmap part of a memory mapped file, based on the POSIX 1003\&.1 standard madvise\&. This method is not required, and should be set to NULL when not supported by the file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fImap\fP a location in the mapped region unlikely to be used in the near future 
+.br
+\fIlength\fP the length of the mapped region to discard 
+.br
+\fImapped_cookie\fP any cookie set by the WT_FILE_HANDLE::map method 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_map_preload) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, const void *map, size_t length, void *mapped_cookie)"
+
+.PP
+Preload part of a memory mapped file, based on the POSIX 1003\&.1 standard madvise\&. This method is not required, and should be set to NULL when not supported by the file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fImap\fP a location in the mapped region likely to be used in the near future 
+.br
+\fIlength\fP the size of the mapped region to preload 
+.br
+\fImapped_cookie\fP any cookie set by the WT_FILE_HANDLE::map method 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_read) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset, size_t len, void *buf)"
+
+.PP
+Read from a file, based on the POSIX 1003\&.1 standard pread\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIoffset\fP the offset in the file to start reading from 
+.br
+\fIlen\fP the amount to read 
+.br
+\fIbuf\fP buffer to hold the content read from file 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_size) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t *sizep)"
+
+.PP
+Return the size of a file\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIsizep\fP the size of the file 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_sync) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session)"
+
+.PP
+Make outstanding file writes durable and do not return until writes are complete\&. This method is not required for read-only files, and should be set to NULL when not supported by the file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_sync_nowait) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session)"
+
+.PP
+Schedule the outstanding file writes required for durability and return immediately\&. This method is not required, and should be set to NULL when not supported by the file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_truncate) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t length)"
+
+.PP
+Lengthen or shorten a file to the specified length, based on the POSIX 1003\&.1 standard ftruncate\&. This method is not required for read-only files, and should be set to NULL when not supported by the file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIlength\fP desired file size after truncate 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_unmap) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, void *mapped_region, size_t length, void *mapped_cookie)"
+
+.PP
+Unmap a memory mapped file, based on the POSIX 1003\&.1 standard munmap\&. This method is only required if a valid implementation of map is provided by the file, and should be set to NULL otherwise\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fImapped_region\fP a pointer to the start of the mapped region 
+.br
+\fIlength\fP the length of the mapped region 
+.br
+\fImapped_cookie\fP any cookie set by the WT_FILE_HANDLE::map method 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_HANDLE::fh_write) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset, size_t length, const void *buf)"
+
+.PP
+Write to a file, based on the POSIX 1003\&.1 standard pwrite\&. This method is not required for read-only files, and should be set to NULL when not supported by the file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_handle\fP the \fBWT_FILE_HANDLE\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIoffset\fP offset at which to start writing 
+.br
+\fIlength\fP amount of data to write 
+.br
+\fIbuf\fP content to be written to the file 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

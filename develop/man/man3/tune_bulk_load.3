@@ -1,4 +1,4 @@
-.TH "tune_bulk_load" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "tune_bulk_load" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,7 +10,7 @@ path' for quickly loading a large number of rows\&. Bulk-load may only be used o
 .PP
 Cursors configured for bulk-load only support the \fBWT_CURSOR::insert\fP and \fBWT_CURSOR::close\fP methods\&. Bulk load inserts are non-transactional: they cannot be rolled back and ignore the transactional state of the \fBWT_SESSION\fP in which they are opened\&.
 .PP
-When bulk-loading row-store objects, keys must be loaded in sorted order\&.
+When doing a bulk-load insert, keys must be inserted in sorted order\&. When doing a bulk-load insert into a column-store object, any skipped records will be created as already-deleted rows\&. If a column-store bulk-load cursor is configured with \fCappend\fP, the cursor key will be ignored and each inserted row will be assigned the next sequential record number\&.
 .PP
 When using the \fCsort\fP utility on a Linux or other POSIX-like system to pre-sort keys, the locale specified by the environment affects the sort order and may not match the default sort order used by WiredTiger\&. Set \fCLC_ALL=C\fP in the process' environment to configure the traditional sort order that uses native byte values\&.
 .PP

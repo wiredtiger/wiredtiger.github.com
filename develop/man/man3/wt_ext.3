@@ -1,8 +1,8 @@
-.TH "WiredTiger Extension API" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "wt_ext" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WiredTiger Extension API \- 
+wt_ext \- WiredTiger Extension API
 .PP
 The functions and interfaces applications use to customize and extend the behavior of WiredTiger\&.  
 
@@ -22,9 +22,21 @@ The functions and interfaces applications use to customize and extend the behavi
 .br
 .RI "\fIApplications can extend WiredTiger by providing new implementations of the \fBWT_DATA_SOURCE\fP class\&. \fP"
 .ti -1c
+.RI "struct \fBWT_ENCRYPTOR\fP"
+.br
+.RI "\fIThe interface implemented by applications to provide custom encryption\&. \fP"
+.ti -1c
 .RI "struct \fBWT_EXTRACTOR\fP"
 .br
 .RI "\fIThe interface implemented by applications to provide custom extraction of index keys or column group values\&. \fP"
+.ti -1c
+.RI "struct \fBWT_FILE_SYSTEM\fP"
+.br
+.RI "\fIThe interface implemented by applications to provide a custom file system implementation\&. \fP"
+.ti -1c
+.RI "struct \fBWT_FILE_HANDLE\fP"
+.br
+.RI "\fIA file handle implementation returned by WT_FILE_SYSTEM::open_file\&. \fP"
 .ti -1c
 .RI "struct \fBWT_TXN_NOTIFY\fP"
 .br
@@ -37,6 +49,30 @@ The functions and interfaces applications use to customize and extend the behavi
 .SS "Macros"
 
 .in +1c
+.ti -1c
+.RI "#define \fBWT_OPEN_CREATE\fP"
+.br
+.RI "\fIWT_FILE_SYSTEM::open_file flags: create if does not exist\&. \fP"
+.ti -1c
+.RI "#define \fBWT_OPEN_DIRECTIO\fP"
+.br
+.RI "\fIWT_FILE_SYSTEM::open_file flags: direct I/O requested\&. \fP"
+.ti -1c
+.RI "#define \fBWT_OPEN_EXCLUSIVE\fP"
+.br
+.RI "\fIWT_FILE_SYSTEM::open_file flags: error if exclusive use not available\&. \fP"
+.ti -1c
+.RI "#define \fBWT_OPEN_READONLY\fP"
+.br
+.RI "\fIWT_FILE_SYSTEM::open_file flags: open is read-only\&. \fP"
+.ti -1c
+.RI "#define \fBWT_FILE_HANDLE_DONTNEED\fP"
+.br
+.RI "\fIWT_FILE_HANDLE::fadvise flags: no longer need\&. \fP"
+.ti -1c
+.RI "#define \fBWT_FILE_HANDLE_WILLNEED\fP"
+.br
+.RI "\fIWT_FILE_HANDLE::fadvise flags: will need\&. \fP"
 .ti -1c
 .RI "#define \fBWT_TXN_ISO_READ_COMMITTED\fP"
 .br
@@ -57,6 +93,14 @@ The functions and interfaces applications use to customize and extend the behavi
 .RI "typedef struct \fBWT_CONFIG_ARG\fP \fBWT_CONFIG_ARG\fP"
 .br
 .RI "\fIA configuration object passed to some extension interfaces\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBWT_OPEN_FILE_TYPE\fP { \fBWT_OPEN_FILE_TYPE_CHECKPOINT\fP, \fBWT_OPEN_FILE_TYPE_DATA\fP, \fBWT_OPEN_FILE_TYPE_DIRECTORY\fP, \fBWT_OPEN_FILE_TYPE_LOG\fP, \fBWT_OPEN_FILE_TYPE_REGULAR\fP }
+.RI "\fIWT_FILE_SYSTEM::open_file file types\&. \fP""
+.br
 .in -1c
 .SS "Functions"
 
@@ -81,9 +125,33 @@ The functions and interfaces applications use to customize and extend the behavi
 
 .PP
 A configuration object passed to some extension interfaces\&. This is an opaque type: configuration values can be queried using \fBWT_EXTENSION_API::config_get\fP 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBWT_OPEN_FILE_TYPE\fP"
+
+.PP
+WT_FILE_SYSTEM::open_file file types\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIWT_OPEN_FILE_TYPE_CHECKPOINT \fP\fP
+open a data file checkpoint 
+.TP
+\fB\fIWT_OPEN_FILE_TYPE_DATA \fP\fP
+open a data file 
+.TP
+\fB\fIWT_OPEN_FILE_TYPE_DIRECTORY \fP\fP
+open a directory 
+.TP
+\fB\fIWT_OPEN_FILE_TYPE_LOG \fP\fP
+open a log file 
+.TP
+\fB\fIWT_OPEN_FILE_TYPE_REGULAR \fP\fP
+open a regular file 
 .SH "Function Documentation"
 .PP 
-.SS "int wiredtiger_extension_init (\fBWT_CONNECTION\fP *connection, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int wiredtiger_extension_init (\fBWT_CONNECTION\fP * connection, \fBWT_CONFIG_ARG\fP * config)"
 
 .PP
 Entry point to an extension, called when the extension is loaded\&. 
@@ -101,7 +169,11 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_extension_terminate (\fBWT_CONNECTION\fP *connection)"
+.PP
+\fBExamples: \fP
+.in +1c
+\fBnop_encrypt\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
+.SS "int wiredtiger_extension_terminate (\fBWT_CONNECTION\fP * connection)"
 
 .PP
 Optional cleanup function for an extension, called during \fBWT_CONNECTION::close\fP\&. 

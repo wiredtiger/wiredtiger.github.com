@@ -1,10 +1,8 @@
-.TH "WT_COLLATOR" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_COLLATOR" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_COLLATOR \- 
-.PP
-The interface implemented by applications to provide custom ordering of records\&.  
+WT_COLLATOR \- The interface implemented by applications to provide custom ordering of records\&.  
 
 .SH SYNOPSIS
 .br
@@ -17,7 +15,7 @@ The interface implemented by applications to provide custom ordering of records\
 .br
 .RI "\fICallback to compare keys\&. \fP"
 .ti -1c
-.RI "int(* \fBcustomize\fP )(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *appcfg, \fBWT_COLLATOR\fP **customp)"
+.RI "int(* \fBcustomize\fP )(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *passcfg, \fBWT_COLLATOR\fP **customp)"
 .br
 .RI "\fIIf non-NULL, this callback is called to customize the collator for each data source\&. \fP"
 .ti -1c
@@ -44,12 +42,11 @@ Applications register their implementation with WiredTiger by calling \fBWT_CONN
         /* Open a session for the current thread's work\&. */
         if ((ret = conn->open_session(conn, NULL, NULL, &session)) != 0)
                 fprintf(stderr, "Error opening a session on %s: %s\n",
-                    home, wiredtiger_strerror(ret));
+                    home == NULL ? "\&." : home, wiredtiger_strerror(ret));
 
-        /* XXX Do some work\&.\&.\&. */
+        /* Do some work\&.\&.\&. */
 
-        /* Note: closing the connection implicitly closes open session(s)\&. */
-        if ((ret = conn->close(conn, NULL)) != 0)
+        ret = conn->close(conn, NULL);
 
 .fi
 .PP
@@ -60,7 +57,7 @@ Applications register their implementation with WiredTiger by calling \fBWT_CONN
 \fBex_extending\&.c\fP\&.
 .SH "Member Data Documentation"
 .PP 
-.SS "int(* WT_COLLATOR::compare)(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const \fBWT_ITEM\fP *key1, const \fBWT_ITEM\fP *key2, int *cmp)"
+.SS "int(* WT_COLLATOR::compare) (\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const \fBWT_ITEM\fP *key1, const \fBWT_ITEM\fP *key2, int *cmp)"
 
 .PP
 Callback to compare keys\&. 
@@ -153,11 +150,11 @@ static PREFIX_COLLATOR pcoll10 = { {__compare_prefixes, NULL, NULL}, 10 };
 .fi
 .PP
 
-.SS "int(* WT_COLLATOR::customize)(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *appcfg, \fBWT_COLLATOR\fP **customp)"
+.SS "int(* WT_COLLATOR::customize) (\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *passcfg, \fBWT_COLLATOR\fP **customp)"
 
 .PP
 If non-NULL, this callback is called to customize the collator for each data source\&. If the callback returns a non-NULL collator, that instance is used instead of this one for all comparisons\&. 
-.SS "int(* WT_COLLATOR::terminate)(\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session)"
+.SS "int(* WT_COLLATOR::terminate) (\fBWT_COLLATOR\fP *collator, \fBWT_SESSION\fP *session)"
 
 .PP
 If non-NULL a callback performed when the data source is closed for customized extractors otherwise when the database is closed\&. The \fBWT_COLLATOR::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&. 

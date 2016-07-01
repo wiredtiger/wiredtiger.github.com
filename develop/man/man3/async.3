@@ -1,4 +1,4 @@
-.TH "async" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "async" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -51,7 +51,7 @@ A \fBWT_ASYNC_OP\fP handle is allocated using the \fBWT_CONNECTION::async_new_op
                         if (ret == EBUSY)
                                 sleep(1);
                         else
-                                return (ret);
+                                return (EXIT_FAILURE);
                 }
 .fi
 .PP

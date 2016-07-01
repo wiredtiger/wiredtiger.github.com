@@ -1,10 +1,8 @@
-.TH "WT_CONFIG_PARSER" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_CONFIG_PARSER" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_CONFIG_PARSER \- 
-.PP
-A handle that can be used to search and traverse configuration strings compatible with WiredTiger APIs\&.  
+WT_CONFIG_PARSER \- A handle that can be used to search and traverse configuration strings compatible with WiredTiger APIs\&.  
 
 .SH SYNOPSIS
 .br
@@ -45,12 +43,12 @@ This could be used in C to create a configuration parser as follows:
             NULL, config_string, strlen(config_string), &parser)) != 0) {
                 fprintf(stderr, "Error creating configuration parser: %s\n",
                     wiredtiger_strerror(ret));
-                return (ret);
+                return (EXIT_FAILURE);
         }
         if ((ret = parser->close(parser)) != 0) {
                 fprintf(stderr, "Error closing configuration parser: %s\n",
                     wiredtiger_strerror(ret));
-                return (ret);
+                return (EXIT_FAILURE);
         }
 .fi
 .PP
@@ -65,7 +63,7 @@ This could be used in C to create a configuration parser as follows:
         if ((ret = parser->get(parser, "page_size", &v)) != 0) {
                 fprintf(stderr,
                     "page_size configuration: %s", wiredtiger_strerror(ret));
-                return (ret);
+                return (EXIT_FAILURE);
         }
         my_page_size = v\&.val;
 .fi
@@ -80,7 +78,7 @@ This could be used in C to create a configuration parser as follows:
         while ((ret = parser->next(parser, &k, &v)) == 0) {
                 printf("%\&.*s:", (int)k\&.len, k\&.str);
                 if (v\&.type == WT_CONFIG_ITEM_NUM)
-                        printf("%d\n", (int)v\&.val);
+                        printf("%" PRId64 "\n", v\&.val);
                 else
                         printf("%\&.*s\n", (int)v\&.len, v\&.str);
         }
@@ -99,9 +97,9 @@ This could be used in C to create a configuration parser as follows:
         if ((ret = parser->get(parser, "log\&.file_max", &v)) != 0) {
                 fprintf(stderr,
                     "log\&.file_max configuration: %s", wiredtiger_strerror(ret));
-                return (ret);
+                return (EXIT_FAILURE);
         }
-        printf("log file max: %d\n", (int)v\&.val);
+        printf("log file max: %" PRId64 "\n", v\&.val);
 .fi
 .PP
  Nested configuration values can be traversed using multiple \fBWT_CONFIG_PARSER\fP handles:
@@ -120,11 +118,10 @@ This could be used in C to create a configuration parser as follows:
                                     "Error creating nested configuration "
                                     "parser: %s\n",
                                     wiredtiger_strerror(ret));
-                                ret = parser->close(parser);
-                                return (ret);
+                                break;
                         }
-                        while ((ret = sub_parser->next(
-                            sub_parser, &k, &v)) == 0)
+                        while ((ret =
+                            sub_parser->next(sub_parser, &k, &v)) == 0)
                                 printf("\t%\&.*s\n", (int)k\&.len, k\&.str);
                         ret = sub_parser->close(sub_parser);
                 }
@@ -132,9 +129,13 @@ This could be used in C to create a configuration parser as follows:
 .fi
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "int WT_CONFIG_PARSER::close (\fBWT_CONFIG_PARSER\fP *config_parser)"
+.SS "int WT_CONFIG_PARSER::close (\fBWT_CONFIG_PARSER\fP * config_parser)"
 
 .PP
 Close the configuration scanner releasing any resources\&. 
@@ -150,7 +151,11 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int WT_CONFIG_PARSER::get (\fBWT_CONFIG_PARSER\fP *config_parser, const char *key, \fBWT_CONFIG_ITEM\fP *value)"
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
+.SS "int WT_CONFIG_PARSER::get (\fBWT_CONFIG_PARSER\fP * config_parser, const char * key, \fBWT_CONFIG_ITEM\fP * value)"
 
 .PP
 Return the value of an item in the configuration string\&. 
@@ -170,7 +175,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int WT_CONFIG_PARSER::next (\fBWT_CONFIG_PARSER\fP *config_parser, \fBWT_CONFIG_ITEM\fP *key, \fBWT_CONFIG_ITEM\fP *value)"
+.SS "int WT_CONFIG_PARSER::next (\fBWT_CONFIG_PARSER\fP * config_parser, \fBWT_CONFIG_ITEM\fP * key, \fBWT_CONFIG_ITEM\fP * value)"
 
 .PP
 Return the next key/value pair\&. When iteration would pass the end of the configuration string \fBWT_NOTFOUND\fP will be returned\&.
@@ -192,6 +197,10 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
 
 .SH "Author"
 .PP 

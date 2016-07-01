@@ -1,10 +1,8 @@
-.TH "WT_EVENT_HANDLER" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_EVENT_HANDLER" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_EVENT_HANDLER \- 
-.PP
-The interface implemented by applications to handle error, informational and progress messages\&.  
+WT_EVENT_HANDLER \- The interface implemented by applications to handle error, informational and progress messages\&.  
 
 .SH SYNOPSIS
 .br
@@ -36,7 +34,7 @@ The interface implemented by applications to handle error, informational and pro
 Entries set to NULL are ignored and the default handlers will continue to be used\&. 
 .SH "Member Data Documentation"
 .PP 
-.SS "int(* WT_EVENT_HANDLER::handle_close)(\fBWT_EVENT_HANDLER\fP *handler, \fBWT_SESSION\fP *session, \fBWT_CURSOR\fP *cursor)"
+.SS "int(* WT_EVENT_HANDLER::handle_close) (\fBWT_EVENT_HANDLER\fP *handler, \fBWT_SESSION\fP *session, \fBWT_CURSOR\fP *cursor)"
 
 .PP
 Callback to handle automatic close of a WiredTiger handle\&. Close handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure\&.
@@ -49,10 +47,12 @@ Callback to handle automatic close of a WiredTiger handle\&. Close handler retur
 .RE
 .PP
 
-.SS "int(* WT_EVENT_HANDLER::handle_error)(\fBWT_EVENT_HANDLER\fP *handler, \fBWT_SESSION\fP *session, int error, const char *message)"
+.SS "int(* WT_EVENT_HANDLER::handle_error) (\fBWT_EVENT_HANDLER\fP *handler, \fBWT_SESSION\fP *session, int error, const char *message)"
 
 .PP
-Callback to handle error messages; by default, error messages are written to the stderr stream\&. Errors that require the application to exit and restart will have their \fCerror\fP value set to \fCWT_PANIC\fP\&. The application can exit immediately when \fCWT_PANIC\fP is passed to an error handler, there is no reason to return into WiredTiger\&.
+Callback to handle error messages; by default, error messages are written to the stderr stream\&. See \fBError handling\fP\&.
+.PP
+Errors that require the application to exit and restart will have their \fCerror\fP value set to \fCWT_PANIC\fP\&. The application can exit immediately when \fCWT_PANIC\fP is passed to an error handler, there is no reason to return into WiredTiger\&.
 .PP
 Error handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure\&.
 .PP
@@ -60,16 +60,18 @@ Error handler returns are not ignored: if the handler returns non-zero, the erro
 .RS 4
 \fIsession\fP the WiredTiger session handle in use when the error was generated\&. The handle may have been created by the application or automatically by WiredTiger\&. 
 .br
-\fIerror\fP a WiredTiger, C99 or POSIX error code, which can be converted to a string using \fBwiredtiger_strerror\fP 
+\fIerror\fP a return value from a WiredTiger, ISO C, or POSIX standard API, which can be converted to a string using \fBWT_SESSION::strerror\fP 
 .br
 \fImessage\fP an error string 
 .RE
 .PP
 
-.SS "int(* WT_EVENT_HANDLER::handle_message)(\fBWT_EVENT_HANDLER\fP *handler, \fBWT_SESSION\fP *session, const char *message)"
+.SS "int(* WT_EVENT_HANDLER::handle_message) (\fBWT_EVENT_HANDLER\fP *handler, \fBWT_SESSION\fP *session, const char *message)"
 
 .PP
-Callback to handle informational messages; by default, informational messages are written to the stdout stream\&. Message handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure\&.
+Callback to handle informational messages; by default, informational messages are written to the stdout stream\&. See \fBError handling\fP\&.
+.PP
+Message handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure\&.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -79,10 +81,12 @@ Callback to handle informational messages; by default, informational messages ar
 .RE
 .PP
 
-.SS "int(* WT_EVENT_HANDLER::handle_progress)(\fBWT_EVENT_HANDLER\fP *handler, \fBWT_SESSION\fP *session, const char *operation, uint64_t progress)"
+.SS "int(* WT_EVENT_HANDLER::handle_progress) (\fBWT_EVENT_HANDLER\fP *handler, \fBWT_SESSION\fP *session, const char *operation, uint64_t progress)"
 
 .PP
-Callback to handle progress messages; by default, no progress messages are written\&. Progress handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure\&.
+Callback to handle progress messages; by default, no progress messages are written\&. See \fBError handling\fP\&.
+.PP
+Progress handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure\&.
 .PP
 \fBParameters:\fP
 .RS 4

@@ -1,4 +1,4 @@
-.TH "tune_cache" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "tune_cache" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,20 +10,18 @@ The size of the cache is the single most important tuning knob for a WiredTiger 
 .PP
 The cache size for the database is normally configured by setting the \fCcache_size\fP configuration string when calling the \fBwiredtiger_open\fP function\&. The cache size can be adjusted after the open call with \fBWT_CONNECTION::reconfigure\fP\&.
 .PP
-An example of setting a cache size to 500MB:
+An example of setting a cache size to 5GB:
 .PP
 .PP
 .nf
-        if ((ret = wiredtiger_open(home, NULL,
-            "create,cache_size=500M", &conn)) != 0)
-                fprintf(stderr, "Error connecting to %s: %s\n",
-                    home, wiredtiger_strerror(ret));
+        ret = wiredtiger_open(home, NULL,
+            "create,cache_size=5GB,log=(enabled,recover=on)", &conn);
 .fi
 .PP
  The effectiveness of the chosen cache size can be measured by reviewing the page eviction statistics for the database\&.
 .SH "Cache resident objects"
 .PP
-Objects can be created as cache resident - that is their contents will remain in cache and never be considered for the purposes of cache eviction\&. Cache residence can be configured with the \fBWT_SESSION::create\fP 'cache_resident' configuration string\&.
+Objects can be created as cache resident - that is their contents will remain in cache and never be considered for the purposes of cache eviction\&. Cache residence can be configured with the \fBWT_SESSION::create\fP 'cache_resident' configuration string\&. LSM tree objects do not support the 'cache_resident' setting\&.
 .PP
 Configuring a cache resident object has several effects:
 .PP

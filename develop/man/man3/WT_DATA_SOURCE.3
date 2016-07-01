@@ -1,10 +1,8 @@
-.TH "WT_DATA_SOURCE" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_DATA_SOURCE" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_DATA_SOURCE \- 
-.PP
-Applications can extend WiredTiger by providing new implementations of the \fBWT_DATA_SOURCE\fP class\&.  
+WT_DATA_SOURCE \- Applications can extend WiredTiger by providing new implementations of the \fBWT_DATA_SOURCE\fP class\&.  
 
 .SH SYNOPSIS
 .br
@@ -88,7 +86,7 @@ Applications register their implementation with WiredTiger by calling \fBWT_CONN
 
 .SH "Member Data Documentation"
 .PP 
-.SS "int(* WT_DATA_SOURCE::checkpoint)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int(* WT_DATA_SOURCE::checkpoint) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, \fBWT_CONFIG_ARG\fP *config)"
 
 .PP
 Callback to checkpoint the database\&. 
@@ -100,7 +98,7 @@ my_checkpoint(WT_DATA_SOURCE *dsrc, WT_SESSION *session, WT_CONFIG_ARG *config)
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::compact)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int(* WT_DATA_SOURCE::compact) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
 
 .PP
 Callback to compact an object\&. 
@@ -113,7 +111,7 @@ my_compact(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::create)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int(* WT_DATA_SOURCE::create) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
 
 .PP
 Callback to create a new object\&. 
@@ -126,7 +124,7 @@ my_create(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::drop)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int(* WT_DATA_SOURCE::drop) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
 
 .PP
 Callback to drop an object\&. 
@@ -139,7 +137,7 @@ my_drop(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::open_cursor)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config, \fBWT_CURSOR\fP **new_cursor)"
+.SS "int(* WT_DATA_SOURCE::open_cursor) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config, \fBWT_CURSOR\fP **new_cursor)"
 
 .PP
 Callback to initialize a cursor\&. 
@@ -186,7 +184,7 @@ my_open_cursor(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::range_truncate)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, \fBWT_CURSOR\fP *start, \fBWT_CURSOR\fP *stop)"
+.SS "int(* WT_DATA_SOURCE::range_truncate) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, \fBWT_CURSOR\fP *start, \fBWT_CURSOR\fP *stop)"
 
 .PP
 Callback to truncate a range of an object\&. 
@@ -199,7 +197,7 @@ my_range_truncate(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::rename)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, const char *newuri, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int(* WT_DATA_SOURCE::rename) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, const char *newuri, \fBWT_CONFIG_ARG\fP *config)"
 
 .PP
 Callback to rename an object\&. 
@@ -212,7 +210,7 @@ my_rename(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::salvage)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int(* WT_DATA_SOURCE::salvage) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
 
 .PP
 Callback to salvage an object\&. 
@@ -225,7 +223,7 @@ my_salvage(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::terminate)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session)"
+.SS "int(* WT_DATA_SOURCE::terminate) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session)"
 
 .PP
 If non-NULL, a callback performed when the database is closed\&. The \fBWT_DATA_SOURCE::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&.
@@ -237,7 +235,7 @@ my_terminate(WT_DATA_SOURCE *dsrc, WT_SESSION *session)
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::truncate)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int(* WT_DATA_SOURCE::truncate) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
 
 .PP
 Callback to truncate an object\&. 
@@ -250,7 +248,7 @@ my_truncate(WT_DATA_SOURCE *dsrc, WT_SESSION *session,
 .fi
 .PP
 
-.SS "int(* WT_DATA_SOURCE::verify)(\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
+.SS "int(* WT_DATA_SOURCE::verify) (\fBWT_DATA_SOURCE\fP *dsrc, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ARG\fP *config)"
 
 .PP
 Callback to verify an object\&. 

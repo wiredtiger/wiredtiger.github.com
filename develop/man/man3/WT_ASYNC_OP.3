@@ -1,10 +1,8 @@
-.TH "WT_ASYNC_OP" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_ASYNC_OP" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_ASYNC_OP \- 
-.PP
-A \fBWT_ASYNC_OP\fP handle is the interface to an asynchronous operation\&.  
+WT_ASYNC_OP \- A \fBWT_ASYNC_OP\fP handle is the interface to an asynchronous operation\&.  
 
 .SH SYNOPSIS
 .br
@@ -126,7 +124,7 @@ Raw data is represented by key/value pairs of \fBWT_ITEM\fP structures, but oper
 \fBex_async\&.c\fP\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "int WT_ASYNC_OP::compact (\fBWT_ASYNC_OP\fP *op)"
+.SS "int WT_ASYNC_OP::compact (\fBWT_ASYNC_OP\fP * op)"
 
 .PP
 Invoke the underlying \fBWT_SESSION::compact\fP method; see that method for configuration, return and error values\&. 
@@ -146,13 +144,13 @@ via the callback as described for \fBWT_SESSION::compact\fP
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "uint64_t WT_ASYNC_OP::get_id (\fBWT_ASYNC_OP\fP *op)"
+.SS "uint64_t WT_ASYNC_OP::get_id (\fBWT_ASYNC_OP\fP * op)"
 
 .PP
 Get the unique identifier for this operation\&. 
 .PP
 .nf
- /* Retrieve the operation's 64-bit identifier\&. */
+        /* Retrieve the operation's 64-bit identifier\&. */
         id = op->get_id(op);
 
 .fi
@@ -174,7 +172,7 @@ the id of the operation
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "int WT_ASYNC_OP::get_key (\fBWT_ASYNC_OP\fP *op, \&.\&.\&.)"
+.SS "int WT_ASYNC_OP::get_key (\fBWT_ASYNC_OP\fP * op,  \&.\&.\&.)"
 
 .PP
 Invoke the underlying \fBWT_CURSOR::get_key\fP method; see that method for configuration, return and error values\&. 
@@ -194,13 +192,13 @@ as described for \fBWT_CURSOR::get_key\fP
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "\fBWT_ASYNC_OPTYPE\fP WT_ASYNC_OP::get_type (\fBWT_ASYNC_OP\fP *op)"
+.SS "\fBWT_ASYNC_OPTYPE\fP WT_ASYNC_OP::get_type (\fBWT_ASYNC_OP\fP * op)"
 
 .PP
 Get the type for this operation\&. 
 .PP
 .nf
-        /* Retrieve the operation's WT_ASYNC_OPTYPE type\&. */
+       /* Retrieve the operation's WT_ASYNC_OPTYPE type\&. */
         type = op->get_type(op);
 
 .fi
@@ -222,7 +220,7 @@ the \fBWT_ASYNC_OPTYPE\fP of the operation
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "int WT_ASYNC_OP::get_value (\fBWT_ASYNC_OP\fP *op, \&.\&.\&.)"
+.SS "int WT_ASYNC_OP::get_value (\fBWT_ASYNC_OP\fP * op,  \&.\&.\&.)"
 
 .PP
 Invoke the underlying \fBWT_CURSOR::get_value\fP method; see that method for configuration, return and error values\&. 
@@ -242,7 +240,7 @@ as described for \fBWT_CURSOR::get_value\fP
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "int WT_ASYNC_OP::insert (\fBWT_ASYNC_OP\fP *op)"
+.SS "int WT_ASYNC_OP::insert (\fBWT_ASYNC_OP\fP * op)"
 
 .PP
 Invoke the underlying \fBWT_CURSOR::insert\fP method; see that method for configuration, return and error values\&. 
@@ -262,7 +260,7 @@ via the callback as described for \fBWT_CURSOR::insert\fP
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "int WT_ASYNC_OP::remove (\fBWT_ASYNC_OP\fP *op)"
+.SS "int WT_ASYNC_OP::remove (\fBWT_ASYNC_OP\fP * op)"
 
 .PP
 Invoke the underlying \fBWT_CURSOR::remove\fP method; see that method for configuration, return and error values\&. 
@@ -278,7 +276,7 @@ via the callback as described for \fBWT_CURSOR::remove\fP
 .RE
 .PP
 
-.SS "int WT_ASYNC_OP::search (\fBWT_ASYNC_OP\fP *op)"
+.SS "int WT_ASYNC_OP::search (\fBWT_ASYNC_OP\fP * op)"
 
 .PP
 Invoke the underlying \fBWT_CURSOR::search\fP method; see that method for configuration, return and error values\&. 
@@ -298,7 +296,7 @@ via the callback as described for \fBWT_CURSOR::search\fP
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "void WT_ASYNC_OP::set_key (\fBWT_ASYNC_OP\fP *op, \&.\&.\&.)"
+.SS "void WT_ASYNC_OP::set_key (\fBWT_ASYNC_OP\fP * op,  \&.\&.\&.)"
 
 .PP
 Invoke the underlying \fBWT_CURSOR::set_key\fP method; see that method for configuration, return and error values\&. 
@@ -313,7 +311,7 @@ Invoke the underlying \fBWT_CURSOR::set_key\fP method; see that method for confi
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "void WT_ASYNC_OP::set_value (\fBWT_ASYNC_OP\fP *op, \&.\&.\&.)"
+.SS "void WT_ASYNC_OP::set_value (\fBWT_ASYNC_OP\fP * op,  \&.\&.\&.)"
 
 .PP
 Invoke the underlying \fBWT_CURSOR::set_value\fP method; see that method for configuration, return and error values\&. 
@@ -328,7 +326,7 @@ Invoke the underlying \fBWT_CURSOR::set_value\fP method; see that method for con
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "int WT_ASYNC_OP::update (\fBWT_ASYNC_OP\fP *op)"
+.SS "int WT_ASYNC_OP::update (\fBWT_ASYNC_OP\fP * op)"
 
 .PP
 Invoke the underlying \fBWT_CURSOR::update\fP method; see that method for configuration, return and error values\&. 

@@ -1,4 +1,4 @@
-.TH "statistics" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "statistics" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -67,7 +67,16 @@ The following example configures WiredTiger to maintain only relatively inexpens
             "statistics:", NULL, "statistics=(fast,clear)", &cursor);
 .fi
 .PP
- 
+ The following example opens a statistics cursor on an open join cursor:
+.PP
+.PP
+.nf
+        ret = session->open_cursor(session,
+            "statistics:join",
+            join_cursor, NULL, &stat_cursor);
+.fi
+.PP
+ The statistics gathered will be organized by reference cursors participating in the join (see \fBWT_SESSION::join\fP); the uri of each reference cursor appears as a prefix in the description field returned as a value by the statistics cursor\&.
 .SH "Statistics logging"
 .PP
 WiredTiger will optionally log database statistics into a file when the the \fBwiredtiger_open\fP \fCstatistics_log\fP configuration is set\&.

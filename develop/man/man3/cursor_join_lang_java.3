@@ -1,4 +1,4 @@
-.TH "cursor_join_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "cursor_join_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,18 +14,18 @@ Here is an example using join cursors:
         /* Open cursors needed by the join\&. */
         join_cursor = session\&.open_cursor(
             "join:table:poptable", null, null);
-        cursor = session\&.open_cursor(
+        country_cursor = session\&.open_cursor(
             "index:poptable:country", null, null);
-        cursor2 = session\&.open_cursor(
+        year_cursor = session\&.open_cursor(
             "index:poptable:immutable_year", null, null);
 
         /* select values WHERE country == "AU" AND year > 1900 */
-        cursor\&.putKeyString("AU");
-        ret = cursor\&.search();
-        session\&.join(join_cursor, cursor, "compare=eq,count=10");
-        cursor2\&.putKeyShort((short)1900);
-        ret = cursor2\&.search();
-        session\&.join(join_cursor, cursor2,
+        country_cursor\&.putKeyString("AU");
+        ret = country_cursor\&.search();
+        session\&.join(join_cursor, country_cursor, "compare=eq,count=10");
+        year_cursor\&.putKeyShort((short)1900);
+        ret = year_cursor\&.search();
+        session\&.join(join_cursor, year_cursor,
             "compare=gt,count=10,strategy=bloom");
 
         /* List the values that are joined */
@@ -42,4 +42,60 @@ Here is an example using join cursors:
 .PP
  Joins support various comparison operators: \fC'eq'\fP, \fC'gt'\fP, \fC'ge'\fP, \fC'lt'\fP, \fC'le'\fP\&. Ranges with lower and upper bounds can also be specified, by joining two cursors on the same index, for example, one with \fC'compare=ge'\fP and another \fC'compare=lt'\fP\&. In addition to joining indices, the main table can be joined so that a range of primary keys can be specified\&.
 .PP
-All the joins should be done on the join cursor before Cursor\&.next is called\&. Calling Cursor\&.next on a join cursor for the first time populates any bloom filters and performs other initialization\&. The join cursor's key is the primary key (the key for the main table), and its value is the entire set of values of the main table\&. A join cursor can be created with a projection by appending \fC'(col1,col2,\&.\&.\&.)'\fP to the URI if a different set of values is needed\&. 
+By default, a join cursor returns a conjunction, that is, all keys that satisfy all the joined comparisons\&. By specifying a configuration with \fC'operation=or'\fP, a join cursor will return a disjunction, or all keys that satisfy at least one of the joined comparisons\&. More complex joins can be composed by specifying another join cursor as the reference cursor in a join call\&.
+.PP
+Here is an example using these concepts to show a conjunction of a disjunction:
+.PP
+.PP
+.nf
+        /* Open cursors needed by the join\&. */
+        join_cursor = session\&.open_cursor(
+            "join:table:poptable", null, null);
+        subjoin_cursor = session\&.open_cursor(
+            "join:table:poptable", null, null);
+        country_cursor = session\&.open_cursor(
+            "index:poptable:country", null, null);
+        country_cursor2 = session\&.open_cursor(
+            "index:poptable:country", null, null);
+        year_cursor = session\&.open_cursor(
+            "index:poptable:immutable_year", null, null);
+
+        /*
+         * select values WHERE (country == "AU" OR country == "UK")
+         *                     AND year > 1900
+         *
+         * First, set up the join representing the country clause\&.
+         */
+        country_cursor\&.putKeyString("AU");
+        ret = country_cursor\&.search();
+        ret = session\&.join(subjoin_cursor, country_cursor,
+            "operation=or,compare=eq,count=10");
+        country_cursor2\&.putKeyString("UK");
+        ret = country_cursor2\&.search();
+        ret = session\&.join(subjoin_cursor, country_cursor2,
+            "operation=or,compare=eq,count=10");
+
+        /* Join that to the top join, and add the year clause */
+        ret = session\&.join(join_cursor, subjoin_cursor, null);
+        year_cursor\&.putKeyShort((short)1900);
+        ret = year_cursor\&.search();
+        ret = session\&.join(join_cursor, year_cursor,
+            "compare=gt,count=10,strategy=bloom");
+
+        /* List the values that are joined */
+        while ((ret = join_cursor\&.next()) == 0) {
+            recno = join_cursor\&.getKeyRecord();
+            country = join_cursor\&.getValueString();
+            year = join_cursor\&.getValueShort();
+            population = join_cursor\&.getValueLong();
+            System\&.out\&.print("ID " + recno);
+            System\&.out\&.println( ": country " + country + ", year " + year +
+                ", population " + population);
+        }
+.fi
+.PP
+ All the joins should be done on the join cursor before Cursor\&.next is called\&. Calling Cursor\&.next on a join cursor for the first time populates any bloom filters and performs other initialization\&. The join cursor's key is the primary key (the key for the main table), and its value is the entire set of values of the main table\&. A join cursor can be created with a projection by appending \fC'(col1,col2,\&.\&.\&.)'\fP to the URI if a different set of values is needed\&.
+.PP
+Keys returned from the join cursor are ordered according to the first reference cursor joined\&. For example, if an index cursor was joined first, that index determines the order of results\&. If the join cursor uses disjunctions, then the ordering of all joins determines the order\&. The first join in a conjunctive join, or all joins in a disjunctive join, are distinctive in that they are iterated internally as the cursor join returns values in order\&. Any bloom filters specified on the joins that are used for iteration are not useful, and are silently ignored\&.
+.PP
+When disjunctions are used where the sets of keys overlap on these 'iteration joins', a join cursor will return duplicates\&. A join cursor never returns duplicates unless \fC'operation=or'\fP is used in a join configuration, or unless the first joined cursor is itself a join cursor that would return duplicates\&. 

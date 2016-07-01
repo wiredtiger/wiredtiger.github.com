@@ -1,10 +1,8 @@
-.TH "WT_EXTRACTOR" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_EXTRACTOR" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_EXTRACTOR \- 
-.PP
-The interface implemented by applications to provide custom extraction of index keys or column group values\&.  
+WT_EXTRACTOR \- The interface implemented by applications to provide custom extraction of index keys or column group values\&.  
 
 .SH SYNOPSIS
 .br
@@ -45,11 +43,11 @@ Applications register implementations with WiredTiger by calling \fBWT_CONNECTIO
 \fBex_extractor\&.c\fP\&.
 .SH "Member Data Documentation"
 .PP 
-.SS "int(* WT_EXTRACTOR::customize)(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *appcfg, \fBWT_EXTRACTOR\fP **customp)"
+.SS "int(* WT_EXTRACTOR::customize) (\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session, const char *uri, \fBWT_CONFIG_ITEM\fP *appcfg, \fBWT_EXTRACTOR\fP **customp)"
 
 .PP
 If non-NULL, this callback is called to customize the extractor for each index\&. If the callback returns a non-NULL extractor, that instance is used instead of this one for all comparisons\&. 
-.SS "int(* WT_EXTRACTOR::extract)(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session, const \fBWT_ITEM\fP *key, const \fBWT_ITEM\fP *value, \fBWT_CURSOR\fP *result_cursor)"
+.SS "int(* WT_EXTRACTOR::extract) (\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session, const \fBWT_ITEM\fP *key, const \fBWT_ITEM\fP *value, \fBWT_CURSOR\fP *result_cursor)"
 
 .PP
 Callback to extract a value for an index or column group\&. 
@@ -92,7 +90,7 @@ my_extract(WT_EXTRACTOR *extractor, WT_SESSION *session,
 .RE
 .PP
 
-.SS "int(* WT_EXTRACTOR::terminate)(\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session)"
+.SS "int(* WT_EXTRACTOR::terminate) (\fBWT_EXTRACTOR\fP *extractor, \fBWT_SESSION\fP *session)"
 
 .PP
 If non-NULL a callback performed when the index or column group is closed for customized extractors otherwise when the database is closed\&. The \fBWT_EXTRACTOR::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&. 

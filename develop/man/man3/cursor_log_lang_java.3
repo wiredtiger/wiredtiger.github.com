@@ -1,4 +1,4 @@
-.TH "cursor_log_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "cursor_log_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,7 +18,7 @@ To open a log cursor on the database:
 .PP
  A log cursor's key is a unique log record identifier, plus a int operation counter within that log record\&. When a log record maps one-to-one to a transaction (in other words, the returned log record has the only database operation the transaction made), the operation counter returned for the key will be zero\&.
 .PP
-The unique log record identifier maps to a \fBWT_LSN\fP data structure, which has two fields: WT_LSN::id, the log file identifier, and \fBWT_LSN::offset\fP, the offset of the log record in the log file\&.
+The unique log record identifier maps to a WT_LSN data structure, which has two fields: WT_LSN::id, the log file identifier, and WT_LSN::offset, the offset of the log record in the log file\&.
 .PP
 Here is an example of getting the log cursor's key:
 .PP

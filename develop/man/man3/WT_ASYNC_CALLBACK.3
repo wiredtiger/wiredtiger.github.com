@@ -1,10 +1,8 @@
-.TH "WT_ASYNC_CALLBACK" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_ASYNC_CALLBACK" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_ASYNC_CALLBACK \- 
-.PP
-The interface implemented by applications to accept notifications of the completion of asynchronous operations\&.  
+WT_ASYNC_CALLBACK \- The interface implemented by applications to accept notifications of the completion of asynchronous operations\&.  
 
 .SH SYNOPSIS
 .br
@@ -36,7 +34,7 @@ Applications register their implementation with WiredTiger by calling \fBWT_CONN
                         if (ret == EBUSY)
                                 sleep(1);
                         else
-                                return (ret);
+                                return (EXIT_FAILURE);
                 }
 .fi
 .PP
@@ -47,7 +45,7 @@ Applications register their implementation with WiredTiger by calling \fBWT_CONN
 \fBex_async\&.c\fP\&.
 .SH "Member Data Documentation"
 .PP 
-.SS "int(* WT_ASYNC_CALLBACK::notify)(\fBWT_ASYNC_CALLBACK\fP *cb, \fBWT_ASYNC_OP\fP *op, int op_ret, uint32_t flags)"
+.SS "int(* WT_ASYNC_CALLBACK::notify) (\fBWT_ASYNC_CALLBACK\fP *cb, \fBWT_ASYNC_OP\fP *op, int op_ret, uint32_t flags)"
 
 .PP
 Callback to receive completion notification\&. 

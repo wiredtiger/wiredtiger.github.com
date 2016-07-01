@@ -1,4 +1,4 @@
-.TH "cursor_ops" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "cursor_ops" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -250,10 +250,12 @@ The comments in this example code explain when the application can safely modify
                          * memory, but as it does not position the cursor, it
                          * doesn't reference memory owned by the cursor, either\&.
                          */
+                        printf("ex_scope: "
+                            "expect two WiredTiger error messages:\n");
                         if ((ret = cursor->get_key(cursor, &key)) == 0 ||
                             (ret = cursor->get_value(cursor, &value)) == 0) {
                                 fprintf(stderr,
-                                    "%s: error in s get_key/value: %s\n",
+                                    "%s: error in get_key/value: %s\n",
                                      op->op, session->strerror(session, ret));
                                 return (ret);
                         }
@@ -266,6 +268,8 @@ The comments in this example code explain when the application can safely modify
                          * reference key memory owned by the cursor, but has no
                          * value\&.
                          */
+                        printf("ex_scope: "
+                            "expect one WiredTiger error message:\n");
                         if ((ret = cursor->get_key(cursor, &key)) != 0 ||
                             (ret = cursor->get_value(cursor, &value)) == 0) {
                                 fprintf(stderr,

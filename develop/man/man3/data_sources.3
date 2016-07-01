@@ -1,4 +1,4 @@
-.TH "data_sources" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "data_sources" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,7 +18,7 @@ The following are the builtin basic cursor types: URITypeNotes \fCtable:<table n
 .br
  see \fBLog cursors\fP for details \fCmetadata:[create]\fPmetadata cursor (optionally only returning configuration strings for \fBWT_SESSION::create\fP if \fCcreate\fP is appendedkey=\fCstring\fP, value=\fCstring\fP,
 .br
- see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabase or data source statistics cursorkey=\fCint id\fP,
+ see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabasedata source or join statistics cursorkey=\fCint id\fP,
 .br
  value=\fC(string description, string value, uint64_t value)\fP,
 .br
@@ -34,7 +34,7 @@ When an index is created for a table, records are inserted into the index whenev
 .PP
 A cursor opened on an index has the specified index columns as its key, accessed by \fBWT_CURSOR::set_key\fP and \fBWT_CURSOR::get_key\fP\&. The value columns default to returning the value columns from the table, but this can be overridden by configuring a projection cursor (see \fBProjections\fP), which can access the table key columns or a subset of the value columns\&.
 .SS "Statistics Data"
-Statistics cursors can be used to retrieve run-time statistics about a WiredTiger database as well as statistics for individual data sources\&. The statistics are at two levels: per-database and per-individual data source\&. Database-wide statistics are retrieved with the \fC'statistics:'\fP URI; individual data source statistics are available by specifying \fC'statistics:<data source URI>'\fP\&.
+Statistics cursors can be used to retrieve run-time statistics about a WiredTiger database as well as statistics for individual data sources\&. The statistics are at two levels: per-database and per-individual data source\&. Database-wide statistics are retrieved with the \fC'statistics:'\fP URI; individual data source statistics are available by specifying \fC'statistics:<data source URI>'\fP\&. Additionally, statistics about a join cursor can be retrieved by specifying \fC'statistics:join'\fP and supplying the join cursor as an argument in the SESSION::open_cursor call\&.
 .PP
 The statistic key is an integer from the list of keys in \fBStatistics Keys\fP\&. Statistics cursors return three values from the \fBWT_CURSOR::get_value\fP call: a printable description of the statistic, a printable version of the entry's value, and the entry's unsigned 64-bit integral value, respectively\&.
 .PP
@@ -64,7 +64,19 @@ The following is an example of printing run-time statistics about the WiredTiger
         ret = cursor->close(cursor);
 .fi
 .PP
- Both examples can use a common display routine that iterates through the statistics until the cursor returns the end of the list\&.
+ The following is an example of printing statistics about a join cursor:
+.PP
+.PP
+.nf
+        if ((ret = session->open_cursor(session,
+            "statistics:join", join_cursor, NULL, &stat_cursor)) != 0)
+                return (ret);
+
+        ret = print_cursor(stat_cursor);
+        ret = stat_cursor->close(stat_cursor);
+.fi
+.PP
+ These three examples can use a common display routine that iterates through the statistics until the cursor returns the end of the list\&.
 .PP
 .PP
 .nf

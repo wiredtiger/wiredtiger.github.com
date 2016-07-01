@@ -1,39 +1,9 @@
-.TH "compression_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "compression_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 compression_lang_java \- Compressors in Java 
-This section explains how to configure WiredTiger's builtin support for the bzip2, lz4, snappy and zlib compression engines\&.
-.SH "Using bzip2 compression"
-.PP
-To use the builtin support for \fCJulian Seward's bzip2\fP compression, first check that bzip2 is installed in include and library directories searched by the compiler\&. Once bzip2 is installed, you can enable bzip2 using the \fC--enable-bzip2\fP option to configure\&.
-.PP
-If bzip2 is installed in a location not normally searched by the compiler toolchain, you'll need to modify the \fCCPPFLAGS\fP and \fCLDFLAGS\fP to indicate these locations\&. For example, with the bzip2 includes and libraries installed in \fC/usr/local/include\fP and \fC/usr/local/lib\fP, you would run configure with the following additional arguments:
-.PP
-.PP
-.nf
---enable-bzip2 CPPFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/include"
-.fi
-.PP
-.PP
-When opening the WiredTiger database, load the bzip2 shared library as an extension\&. For example, with the WiredTiger library installed in \fC/usr/local/lib\fP, you would use the following extension:
-.PP
-.PP
-.nf
-    conn = wiredtiger\&.open(home,
-        "create," +
-        "extensions=[/usr/local/lib/libwiredtiger_bzip2\&.so]");
-.fi
-.PP
- Finally, when creating the WiredTiger object, set \fCblock_compressor\fP to \fCbzip2:\fP 
-.PP
-.PP
-.nf
-    ret = session\&.create("table:mytable",
-        "block_compressor=bzip2,key_format=S,value_format=S");
-.fi
-.PP
- 
+This section explains how to configure WiredTiger's builtin support for the lz4, snappy and zlib compression engines\&.
 .SH "Using LZ4 compression"
 .PP
 To use the builtin support for Yann Collet's \fCLZ4\fP compression, first check that LZ4 is installed in include and library directories searched by the compiler\&. Once LZ4 is installed, you can enable LZ4 using the \fC--enable-lz4\fP option to configure\&.

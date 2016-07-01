@@ -1,4 +1,4 @@
-.TH "tune_durability" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "tune_durability" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -11,7 +11,7 @@ WiredTiger automatically groups the flush operations for threads that commit con
 .PP
 By default, log records are written to an in-memory buffer before \fBWT_SESSION::commit_transaction\fP returns, giving highest performance but not ensuring durability\&. The durability guarantees can be stricter but will impact performance\&.
 .PP
-If \fCtransaction_sync=\fP(enabled=false) is configured to \fBwiredtiger_open\fP, log records may be buffered in memory, and only flushed to disk by checkpoints, when log files switch or calls to \fBWT_SESSION::begin_transaction\fP with \fCsync=true\fP\&. (Note that any call to \fBWT_SESSION::begin_transaction\fP with \fCsync=true\fP will flush the log records for all committed transactions, not just the transaction where the configuration is set\&.) This provides the minimal guarantees, but will be significantly faster than other configurations\&.
+If \fCtransaction_sync=\fP(enabled=false) is configured to \fBwiredtiger_open\fP, log records may be buffered in memory, and only flushed to disk by checkpoints, when log files switch or calls to \fBWT_SESSION::commit_transaction\fP with \fCsync=on\fP\&. (Note that any call to \fBWT_SESSION::commit_transaction\fP with \fCsync=on\fP will flush the log records for all committed transactions, not just the transaction where the configuration is set\&.) This provides the minimal guarantees, but will be significantly faster than other configurations\&.
 .PP
 If \fCtransaction_sync=\fP(enabled=true), \fCtransaction_sync=\fP(method) further configures the method used to flush log records to disk\&. By default, the configured value is \fCfsync\fP, which calls the operating system's \fCfsync\fP call (of \fCfdatasync\fP if available) as each commit completes\&.
 .PP
@@ -24,3 +24,19 @@ When a log file fills and the system moves to the next log file, the previous lo
 Here is the expected performance of durability modes, in order from the fastest to the slowest (and from the fewest durability guarantees to the most durability guarantees)\&.
 .PP
 Durability ModeNotes \fClog=(enabled=false)\fPcheckpoint-level durability \fClog=(enabled),transaction_sync=(enabled=false)\fPin-memory buffered logging configured; updates durable after checkpoint or after \fCsync\fP is set in \fBWT_SESSION::begin_transaction\fP \fClog=(enabled),transaction_sync=(enabled=true,method=none)\fPlogging configured; updates durable after application failure, but not after system failure \fClog=(enabled),transaction_sync=(enabled=true,method=fsync)\fPlogging configured; updates durable on application or system failure \fClog=(enabled),transaction_sync=(enabled=true,method=dsync)\fPlogging configured; updates durable on application or system failure 
+.PP
+The durability setting can also be controlled directly on a per-transaction basis via the \fBWT_SESSION::commit_transaction\fP method\&. The \fBWT_SESSION::commit_transaction\fP supports several durability modes with the \fCsync\fP configuration that override the connection level settings\&.
+.PP
+If \fCsync=on\fP is configured then this commit operation will wait for its log records, and all earlier ones, to be durable to the extent specified by the \fCtransaction_sync=\fP(method) setting before returning\&.
+.PP
+If \fCsync=off\fP is configured then this commit operation will write its records into the in-memory buffer and return immediately\&.
+.PP
+If \fCsync=background\fP is configured then this commit operation will write its record to an in-memory buffer, and will return\&. Prior to returning it will signal an internal WiredTiger worker thread to synchronize this log record\&. The caller may then check the status of that background synchronization with the \fBWT_SESSION::transaction_sync\fP method\&.
+.PP
+The durability of the write-ahead log can be controlled independently as well via the \fBWT_SESSION::log_flush\fP method\&. The \fBWT_SESSION::log_flush\fP supports several durability modes with the \fCsync\fP configuration that immediately act upon the log\&.
+.PP
+If \fCsync=on\fP is configured then this flush will force the current log and all earlier records to be durable on disk before returning\&. This method call overrides the \fCtransaction_sync\fP setting and forces the data out via \fCfsync\fP\&.
+.PP
+If \fCsync=off\fP is configured then this flush operation will force the logging subsystem to write any outstanding in-memory buffers to the file system before returning\&.
+.PP
+If \fCsync=background\fP is configured then this flush operation will force the signalling of a background synchronization operation\&. The caller may then check the status of that background synchronization with the \fBWT_SESSION::transaction_sync\fP method\&. 

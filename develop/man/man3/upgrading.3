@@ -1,13 +1,74 @@
-.TH "upgrading" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "upgrading" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 upgrading \- Upgrading WiredTiger applications 
 
-.SH "Upgrading to Version 2\&.5\&.4"
+.SH "Upgrading to Version 2\&.8\&.0"
+.PP
+.IP "\fBLSM metadata \fP" 1c
+There is a change to the format of LSM metadata in this release to fix bugs in dump / load of tables of type LSM\&. Tables created with the old LSM metadata format will be upgraded automatically, but once updated to the new version \fBare no longer compatible with older releases of WiredTiger\fP\&. 
+.PP
+.IP "\fBColumn-store bulk-load cursors \fP" 1c
+Historically, bulk-load of a column-store object ignored any key set in the cursor and automatically assigned each inserted row the next sequential record number for its key\&. In the 2\&.8\&.0 release, column-store objects match row-store behavior and require the cursor key be set before an insert\&. (This allows sparse tables to be created in column-store objects, any skipped records are created as already-deleted rows\&.) To match the previous behavior, specify the \fCappend\fP configuration string when opening the column-store bulk-load cursor; this causes the cursor's key to be ignored and each inserted row will be assigned the next record number\&. 
+.PP
+.IP "\fBChange to \fBWT_SESSION::truncate\fP with URI \fP" 1c
+If using the \fBWT_SESSION::truncate\fP API with a file: URI for a full table truncate, underlying algorithmic changes result in some visible differences\&. This call can now return WT_ROLLBACK\&. Applications should be prepared to handle this error\&. This method no longer requires exclusive access to the table\&. Also the underlying disk space may not be immediately reclaimed when the call returns\&. The performance of this API may differ from earlier releases\&. 
+.PP
+.IP "\fBBzip2 compression support \fP" 1c
+Support for the bzip2 compression/decompression engine has been removed from the WiredTiger release; remaining compression engines include LZ4, snappy and zlib\&. 
+.PP
+.IP "\fBChange to named checkpoints with bulk loads \fP" 1c
+Previous versions of WiredTiger created empty named checkpoints in files being bulk-loaded\&. In this release, checkpoint skips files being bulk-loaded, so they do not get named checkpoints that complete during the bulk load\&. 
+.PP
+.IP "\fBRemove WT_LSN structure from public API \fP" 1c
+The WiredTiger public API used to define a structure that could encapsulate log sequence numbers\&. That structure is no longer exposed publicly\&. 
+.PP
+.IP "\fB\fP" 1c
+.PP
+.PP
+ 
+.SH "Upgrading to Version 2\&.7\&.0"
+.PP
+.IP "\fBChange to config_base=false \fP" 1c
+If \fCconfig_base=false\fP in the config passed directly to \fBwiredtiger_open\fP, any existing base configuration file will now be ignored\&. If an application was relying on this behavior, a connection will be opened with different settings after upgrading, which could lead to errors or unexpected behavior\&. 
+.PP
+.IP "\fBStatistic change \fP" 1c
+The statistic 'pages split during eviction' was replaced\&. It has been replaced by a pair of statistics 'internal pages split during eviction' and 'leaf pages split during eviction'\&. 
+.PP
+.IP "\fBChange to \fBWT_CURSOR::insert\fP \fP" 1c
+The \fBWT_CURSOR::insert\fP method in this release has slightly different semantics with respect to referencing application memory\&. In previous releases, \fBWT_CURSOR::insert\fP continued to reference application-memory specified to either \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP after a successful return, which could potentially lead to a core dump if the application freed that memory before a subsequent call to a \fBWT_CURSOR\fP:: method without an intermediate \fBWT_CURSOR::set_key\fP or \fBWT_CURSOR::set_value\fP call\&. In the 2\&.7\&.0 release, \fBWT_CURSOR::insert\fP behaves like the other cursor methods and does not reference application memory after a successful return\&. Applications depending on the previous semantic will require modifications to set the cursor's key and/or value after a successful \fBWT_CURSOR::insert\fP call\&. 
+.PP
+.IP "\fB\fBWT_SESSION\&.verify\fP \fP" 1c
+The \fBWT_SESSION\&.verify\fP method in this release has a new configuration option, \fCstrict\fP\&. By default, with \fCstrict\fP set to \fCfalse\fP, \fBWT_SESSION\&.verify\fP will no longer return an error for problems that do not impact the future use of the object (for example, if a leaked block were detected, the application can continue to run)\&. \fBWT_SESSION\&.verify\fP will continue to output an error message whenever an error is detected, only the final return value is affected\&. This change allows applications to verify objects and continue if at all possible\&. Applications in development should configure \fCstrict\fP to \fCtrue\fP in order to terminate the application whenever an error is detected\&. 
+.PP
+.PP
+.PP
+ 
+.SH "Upgrading to Version 2\&.6\&.1"
+.PP
+.IP "\fBMove the per transaction sync configuration \fP" 1c
+Move the sync configuration setting from \fBWT_SESSION::begin_transaction\fP to \fBWT_SESSION::commit_transaction\fP\&. Change the configuration from a boolean to a string with options of on, off, background\&. Deprecated support for specifying the configuration to \fBWT_SESSION::begin_transaction\fP is maintained for now\&. 
+.PP
+.PP
+.PP
+ 
+.SH "Upgrading to Version 2\&.6\&.0"
+.PP
+.IP "\fBLZ4 compression \fP" 1c
+The LZ4 compression support has been updated in this release in non-backward compatible ways; \fBtables and files compressed using LZ4 compression with WiredTiger 2\&.5\&.3 must be dumped then re-loaded using WiredTiger 2\&.6\&.0\&.\fP 
+.PP
+.IP "\fBwiredtiger_open file manager configuration changes \fP" 1c
+The configuration settings related to file handle management have changed significantly in this release\&. If your application uses the file_manager configuration setting, please refer to the API documentation for the latest settings\&. 
+.PP
+.IP "\fBStatistic change \fP" 1c
+The statistic 'log read operations' was removed\&. The function that used that statistic was never called inside WiredTiger and was also removed\&. 
 .PP
 .IP "\fBFile handle closing \fP" 1c
 In WiredTiger, a separate thread of control periodically reviews open objects, closing ones which have been idle for some period of time and discarding them from the cache\&. In previous WiredTiger releases, this review was independent of the number of open file handles\&. In this release, WiredTiger only reviews the file handles if at least 250 file handles are open\&. How often file handles are reviewed (the default is 30 seconds), and how many file handles must be opened before review is triggered, can be configured using the \fCfile_manager\fP configuration values to the \fBwiredtiger_open\fP call\&. 
+.PP
+.IP "\fBTable drop changes \fP" 1c
+There has been a functionality change to the \fBWT_SESSION::drop\fP API when the \fCforce\fP configuration option is included\&. The table is now dropped in the background and does not flush data from cache\&. 
 .PP
 .PP
 .PP

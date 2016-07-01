@@ -1,0 +1,8 @@
+.TH "in_memory_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+in_memory_lang_java \- In-memory databases in Java 
+The \fCwiredtiger\&.open\fP \fCin_memory\fP configuration changes WiredTiger to run in cache without writing to a backing disk\&. Data is limited to the configured cache size\&.
+.PP
+If \fCin_memory\fP is configured, Cursor\&.insert and Cursor\&.update methods may return an additional error, \fBWT_CACHE_FULL\fP, indicating the insert or update operation requires more than the configured cache size to complete\&. If a transaction is in progress, it should be rolled back\&. 

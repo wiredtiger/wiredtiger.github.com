@@ -1,4 +1,4 @@
-.TH "checkpoint_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "checkpoint_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -11,7 +11,9 @@ A checkpoint is automatically created whenever a modified data source is closed\
 .PP
 All transactional updates committed before a checkpoint are made durable by the checkpoint, therefore the frequency of checkpoints limits the volume of data that may be lost due to application or system failure\&.
 .PP
-When WiredTiger data sources are first opened, they are opened in the state of the most recent checkpoint taken on the file, in other words, updates after the most recent checkpoint will not appear in the data source\&. If no checkpoint is found when the data source is opened, the data source will appear empty\&.
+Data sources that are involved in an exclusive operation when the checkpoint starts, including bulk load, verify or salvage, will be skipped by the checkpoint\&. Operations requiring exclusive access may fail with an \fCEBUSY\fP error if attempted during a checkpoint\&.
+.PP
+When data sources are first opened, they are opened in the state of the most recent checkpoint taken on the file, in other words, updates after the most recent checkpoint will not appear in the data source\&. If no checkpoint is found when the data source is opened, the data source will appear empty\&.
 .SH "Automatic checkpoints"
 .PP
 WiredTiger will automatically checkpoint the entire database when the \fCcheckpoint\fP configuration parameter to \fCwiredtiger\&.open\fP is set\&. When this configuration is used, an internal server thread is created\&.
@@ -22,7 +24,9 @@ The period between checkpoints can be defined either in seconds via \fCwait\fP, 
 Cursors are normally opened in the most recent version of a data source\&. However, a checkpoint configuration string may be provided to Session\&.open_cursor, opening a read-only, static view of the data source\&. This provides a limited form of time-travel, as the static view is not changed by subsequent checkpoints, and will persist until the checkpoint cursor is closed\&.
 .SH "Checkpoint naming"
 .PP
-Additionally, checkpoints that do not include LSM trees may optionally be given names by the application\&. Checkpoints named by the application persist until explicitly discarded or the application creates a new checkpoint with the same name (which replaces the previous checkpoint of that name)\&. If the previous checkpoint cannot be replaced, either because a cursor is reading from the previous checkpoint, or backups are in progress, the checkpoint will fail\&. Because named checkpoints persist until discarded or replaced, they can be used to periodically snapshot data for later use\&.
+Additionally, checkpoints that do not include LSM trees may optionally be given names by the application\&. Because named checkpoints persist until discarded or replaced, they can be used to periodically snapshot data for later use\&.
+.PP
+Checkpoints named by the application persist until explicitly discarded or the application creates a new checkpoint with the same name (which replaces the previous checkpoint of that name)\&. If the previous checkpoint cannot be replaced, either because a cursor is reading from the previous checkpoint, or backups are in progress, the checkpoint will fail\&.
 .PP
 Internal checkpoints (that is, checkpoints not named by the application) use the reserved name 'WiredTigerCheckpoint'\&. Applications can open the most recent of these checkpoints by specifying 'WiredTigerCheckpoint' as the checkpoint name to Session\&.open_cursor\&. Creating a new internal checkpoint drops all previous internal checkpoints, if possible; if a previous internal checkpoint cannot be dropped for any reason, the checkpoint will ignore the previous checkpoint and continue\&. Subsequent checkpoints will drop those ignored checkpoints when it becomes possible\&.
 .PP

@@ -1,0 +1,312 @@
+.TH "WT_FILE_SYSTEM" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WT_FILE_SYSTEM \- The interface implemented by applications to provide a custom file system implementation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBfs_directory_list\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *directory, const char *prefix, char ***dirlist, uint32_t *countp)"
+.br
+.RI "\fIReturn a list of file names for the named directory\&. \fP"
+.ti -1c
+.RI "int(* \fBfs_directory_list_free\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, char **dirlist, uint32_t count)"
+.br
+.RI "\fIFree memory allocated by WT_FILE_SYSTEM::directory_list\&. \fP"
+.ti -1c
+.RI "int(* \fBfs_directory_sync\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *directory)"
+.br
+.RI "\fIFlush the named directory\&. \fP"
+.ti -1c
+.RI "int(* \fBfs_exist\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, bool *existp)"
+.br
+.RI "\fIReturn if the named file system object exists\&. \fP"
+.ti -1c
+.RI "int(* \fBfs_open_file\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, \fBWT_OPEN_FILE_TYPE\fP file_type, uint32_t flags, \fBWT_FILE_HANDLE\fP **file_handlep)"
+.br
+.RI "\fIOpen a handle for a named file system object\&. \fP"
+.ti -1c
+.RI "int(* \fBfs_remove\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name)"
+.br
+.RI "\fIRemove a named file system object\&. \fP"
+.ti -1c
+.RI "int(* \fBfs_rename\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *from, const char *to)"
+.br
+.RI "\fIRename a named file system object\&. \fP"
+.ti -1c
+.RI "int(* \fBfs_size\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, wt_off_t *sizep)"
+.br
+.RI "\fIReturn the size of a named file system object\&. \fP"
+.ti -1c
+.RI "int(* \fBterminate\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session)"
+.br
+.RI "\fIA callback performed when the file system is closed and will no longer be accessed by the WiredTiger database\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The interface implemented by applications to provide a custom file system implementation\&. 
+
+\fBThread safety:\fP WiredTiger may invoke methods on the \fBWT_FILE_SYSTEM\fP interface from multiple threads concurrently\&. It is the responsibility of the implementation to protect any shared data\&.
+.PP
+Applications register implementations with WiredTiger by calling WT_CONNECTION::add_file_system\&. See \fBCustom File Systems\fP for more information\&.
+.PP
+.PP
+.nf
+        /*
+         * Setup a configuration string that will load our custom file system\&.
+         * Use the special local extension to indicate that the entry point is
+         * in the same executable\&. Also enable early load for this extension,
+         * since WiredTiger needs to be able to find it before doing any file
+         * operations\&. Finally, pass in two pieces of configuration information
+         * to our initialization function as the "config" value\&.
+         */
+        open_config = "create,log=(enabled=true),extensions=(local={"
+            "entry=demo_file_system_create,early_load=true,"
+            "config={config_string=\"demo-file-system\",config_value=37}"
+            "})";
+        /* Open a connection to the database, creating it if necessary\&. */
+        if ((ret = wiredtiger_open(home, NULL, open_config, &conn)) != 0) {
+                fprintf(stderr, "Error connecting to %s: %s\n",
+                    home == NULL ? "\&." : home, wiredtiger_strerror(ret));
+                return (EXIT_FAILURE);
+        }
+.fi
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* WT_FILE_SYSTEM::fs_directory_list) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *directory, const char *prefix, char ***dirlist, uint32_t *countp)"
+
+.PP
+Return a list of file names for the named directory\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIdirectory\fP the name of the directory 
+.br
+\fIprefix\fP if not NULL, only files with names matching the prefix are returned 
+.br
+\fIdirlist\fP the method returns an allocated array of individually allocated strings, one for each entry in the directory\&. 
+.br
+\fIcountp\fP the method the number of entries returned 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_SYSTEM::fs_directory_list_free) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, char **dirlist, uint32_t count)"
+
+.PP
+Free memory allocated by WT_FILE_SYSTEM::directory_list\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIdirlist\fP array returned by WT_FILE_SYSTEM::directory_list 
+.br
+\fIcount\fP count returned by WT_FILE_SYSTEM::directory_list 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_SYSTEM::fs_directory_sync) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *directory)"
+
+.PP
+Flush the named directory\&. This method is not required for readonly file systems or file systems where it is not necessary to flush a file's directory to ensure the durability of file system operations, and should be set to NULL when not required by the file system\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIdirectory\fP the name of the directory 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_SYSTEM::fs_exist) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, bool *existp)"
+
+.PP
+Return if the named file system object exists\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIname\fP the name of the file 
+.br
+\fIexistp\fP If the named file system object exists 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_SYSTEM::fs_open_file) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, \fBWT_OPEN_FILE_TYPE\fP file_type, uint32_t flags, \fBWT_FILE_HANDLE\fP **file_handlep)"
+
+.PP
+Open a handle for a named file system object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIname\fP the name of the file system object 
+.br
+\fIfile_type\fP the type of the file The file type is provided to allow optimization for different file access patterns\&. 
+.br
+\fIflags\fP flags indicating how to open the file, one or more of \fBWT_OPEN_CREATE\fP, \fBWT_OPEN_DIRECTIO\fP, \fBWT_OPEN_EXCLUSIVE\fP or \fBWT_OPEN_READONLY\fP\&. 
+.br
+\fIfile_handlep\fP the handle to the newly opened file\&. File system implementations must allocate memory for the handle and the \fBWT_FILE_HANDLE::name\fP field, and fill in the \fBWT_FILE_HANDLE\fP:: fields\&. Applications wanting to associate private information with the \fBWT_FILE_HANDLE\fP:: structure should declare and allocate their own structure as a superset of a \fBWT_FILE_HANDLE\fP:: structure\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_SYSTEM::fs_remove) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name)"
+
+.PP
+Remove a named file system object\&. This method is not required for readonly file systems and should be set to NULL when not required by the file system\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIname\fP the name of the file system object 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_SYSTEM::fs_rename) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *from, const char *to)"
+
+.PP
+Rename a named file system object\&. This method is not required for readonly file systems and should be set to NULL when not required by the file system\&.
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIfrom\fP the original name of the object 
+.br
+\fIto\fP the new name for the object 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_SYSTEM::fs_size) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, wt_off_t *sizep)"
+
+.PP
+Return the size of a named file system object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
+.br
+\fIsession\fP the current WiredTiger session 
+.br
+\fIname\fP the name of the file system object 
+.br
+\fIsizep\fP the size of the file system entry 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+.SS "int(* WT_FILE_SYSTEM::terminate) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session)"
+
+.PP
+A callback performed when the file system is closed and will no longer be accessed by the WiredTiger database\&. This method is not required and should be set to NULL when not required by the file system\&.
+.PP
+The \fBWT_FILE_SYSTEM::terminate\fP callback is intended to allow cleanup, the handle will not be subsequently accessed by WiredTiger\&. 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WiredTiger from the source code\&.

@@ -1,4 +1,4 @@
-.TH "transactions_lang_java" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "transactions_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -132,4 +132,13 @@ The transaction isolation level can be configured on a per-transaction basis:
 
 .fi
 .PP
-
+ 
+.SH "Named Snapshots"
+.PP
+Applications can create named snapshots by calling Session\&.snapshot with a configuration that includes \fC'name=foo'\fP\&. This configuration creates a new named snapshot, as if a snapshot isolation transaction were started at the time of the Session\&.snapshot call\&.
+.PP
+Subsequent transactions can be started 'as of' that snapshot by calling Session\&.begin_transaction with a configuration that includes \fCsnapshot=foo\fP\&. That transaction will run at snapshot isolation as if the transaction started at the time of the Session\&.snapshot call that created the snapshot\&.
+.PP
+Named snapshots keep data pinned in cache as if a real transaction were running for the time that the named transaction is active\&. The resources associated with named snapshots should be released by calling Session\&.snapshot with a configuration that includes \fC'drop='\fP\&. See Session\&.snapshot documentation for details of the semantics supported by the drop configuration\&.
+.PP
+Named snapshots are not durable: they do not survive Connection\&.close\&. 

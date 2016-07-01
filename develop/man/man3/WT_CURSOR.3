@@ -1,10 +1,8 @@
-.TH "WT_CURSOR" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_CURSOR" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_CURSOR \- 
-.PP
-A \fBWT_CURSOR\fP handle is the interface to a cursor\&.  
+WT_CURSOR \- A \fBWT_CURSOR\fP handle is the interface to a cursor\&.  
 
 .SH SYNOPSIS
 .br
@@ -94,7 +92,7 @@ A \fBWT_CURSOR\fP handle is the interface to a cursor\&.
 .ti -1c
 .RI "int \fBupdate\fP (\fBWT_CURSOR\fP *cursor)"
 .br
-.RI "\fIUpdate a record and optionally insert an existing record\&. \fP"
+.RI "\fIUpdate an existing record and optionally insert a record\&. \fP"
 .ti -1c
 .RI "int \fBremove\fP (\fBWT_CURSOR\fP *cursor)"
 .br
@@ -135,17 +133,17 @@ In the common case, a cursor is used to access records in a table\&. However, cu
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "int WT_CURSOR::close (\fBWT_CURSOR\fP *cursor)"
+.SS "int WT_CURSOR::close (\fBWT_CURSOR\fP * cursor)"
 
 .PP
 Close the cursor\&. This releases the resources associated with the cursor handle\&. Cursors are closed implicitly by ending the enclosing connection or closing the session in which they were opened\&.
 .PP
 .PP
 .nf
-   ret = cursor->close(cursor);
+  ret = cursor->close(cursor);
 .fi
 .PP
  
@@ -164,15 +162,15 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, and \fBex_stat\&.c\fP\&.
-.SS "int WT_CURSOR::compare (\fBWT_CURSOR\fP *cursor, \fBWT_CURSOR\fP *other, int *comparep)"
+\fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, and \fBex_stat\&.c\fP\&.
+.SS "int WT_CURSOR::compare (\fBWT_CURSOR\fP * cursor, \fBWT_CURSOR\fP * other, int * comparep)"
 
 .PP
 Return the ordering relationship between two cursors: both cursors must have the same data source and have valid keys\&. (When testing only for equality, \fBWT_CURSOR::equals\fP may be faster\&.)
 .PP
 .PP
 .nf
-      int compare;
+ int compare;
         ret = cursor->compare(cursor, other, &compare);
         if (compare == 0) {
                 /* Cursors reference the same key */
@@ -200,13 +198,13 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int WT_CURSOR::equals (\fBWT_CURSOR\fP *cursor, \fBWT_CURSOR\fP *other, int *equalp)"
+.SS "int WT_CURSOR::equals (\fBWT_CURSOR\fP * cursor, \fBWT_CURSOR\fP * other, int * equalp)"
 
 .PP
 Return the ordering relationship between two cursors, testing only for equality: both cursors must have the same data source and have valid keys\&. 
 .PP
 .nf
-        int equal;
+     int equal;
         ret = cursor->equals(cursor, other, &equal);
         if (equal) {
                 /* Cursors reference the same key */
@@ -233,13 +231,13 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int WT_CURSOR::get_key (\fBWT_CURSOR\fP *cursor, \&.\&.\&.)"
+.SS "int WT_CURSOR::get_key (\fBWT_CURSOR\fP * cursor,  \&.\&.\&.)"
 
 .PP
 Get the key for the current record\&. 
 .PP
 .nf
-    const char *key;        /* Get the cursor's string key\&. */
+  const char *key;        /* Get the cursor's string key\&. */
         ret = cursor->get_key(cursor, &key);
 
 .fi
@@ -270,14 +268,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int WT_CURSOR::get_value (\fBWT_CURSOR\fP *cursor, \&.\&.\&.)"
+\fBex_access\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_CURSOR::get_value (\fBWT_CURSOR\fP * cursor,  \&.\&.\&.)"
 
 .PP
 Get the value for the current record\&. 
 .PP
 .nf
- const char *value;      /* Get the cursor's string value\&. */
+  const char *value;      /* Get the cursor's string value\&. */
         ret = cursor->get_value(cursor, &value);
 
 .fi
@@ -308,15 +306,15 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int WT_CURSOR::insert (\fBWT_CURSOR\fP *cursor)"
+\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_CURSOR::insert (\fBWT_CURSOR\fP * cursor)"
 
 .PP
 Insert a record and optionally update an existing record\&. If the cursor was configured with 'overwrite=true' (the default), both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted\&.
 .PP
 .PP
 .nf
-  /* Insert a new record or overwrite an existing record\&. */
+        /* Insert a new record or overwrite an existing record\&. */
         const char *key = "some key", *value = "some value";
         ret = session->open_cursor(
             session, "table:mytable", NULL, NULL, &cursor);
@@ -368,21 +366,21 @@ The maximum length of a single column stored in a table is not fixed (as it part
 .PP
 \fBReturns:\fP
 .RS 4
-zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. In particular, if \fCoverwrite\fP is not configured and a record with the specified key already exists, \fBWT_DUPLICATE_KEY\fP is returned\&. 
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. In particular, if \fCoverwrite\fP is not configured and a record with the specified key already exists, \fBWT_DUPLICATE_KEY\fP is returned\&. Also, if \fCin_memory\fP is configured for the database and the insert requires more than the configured cache size to complete, \fBWT_CACHE_FULL\fP is returned\&. 
 .RE
 .PP
 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int WT_CURSOR::next (\fBWT_CURSOR\fP *cursor)"
+\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_CURSOR::next (\fBWT_CURSOR\fP * cursor)"
 
 .PP
 Return the next record\&. 
 .PP
 .nf
-      ret = cursor->next(cursor);
+   ret = cursor->next(cursor);
 
 .fi
 .PP
@@ -402,14 +400,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int WT_CURSOR::prev (\fBWT_CURSOR\fP *cursor)"
+\fBex_access\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_CURSOR::prev (\fBWT_CURSOR\fP * cursor)"
 
 .PP
 Return the previous record\&. 
 .PP
 .nf
-        ret = cursor->prev(cursor);
+  ret = cursor->prev(cursor);
 
 .fi
 .PP
@@ -430,14 +428,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_call_center\&.c\fP, and \fBex_cursor\&.c\fP\&.
-.SS "int WT_CURSOR::reconfigure (\fBWT_CURSOR\fP *cursor, const char *config)"
+.SS "int WT_CURSOR::reconfigure (\fBWT_CURSOR\fP * cursor, const char * config)"
 
 .PP
 Reconfigure the cursor\&. The cursor is reset\&.
 .PP
 .PP
 .nf
-     ret = session->open_cursor(
+   ret = session->open_cursor(
             session, "table:mytable", NULL, "overwrite=false", &cursor);
         cursor->set_key(cursor, key);
         cursor->set_value(cursor, value);
@@ -462,14 +460,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int WT_CURSOR::remove (\fBWT_CURSOR\fP *cursor)"
+.SS "int WT_CURSOR::remove (\fBWT_CURSOR\fP * cursor)"
 
 .PP
 Remove a record\&. If the cursor was configured with 'overwrite=true' (the default), the key must be set; the key's record will be removed if it exists, no error will be returned if the record does not exist\&.
 .PP
 .PP
 .nf
-       const char *key = "some key";
+      const char *key = "some key";
         ret = session->open_cursor(
             session, "table:mytable", NULL, NULL, &cursor);
         cursor->set_key(cursor, key);
@@ -506,7 +504,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_cursor\&.c\fP, and \fBex_extractor\&.c\fP\&.
-.SS "int WT_CURSOR::reset (\fBWT_CURSOR\fP *cursor)"
+.SS "int WT_CURSOR::reset (\fBWT_CURSOR\fP * cursor)"
 
 .PP
 Reset the cursor\&. Any resources held by the cursor are released, and the cursor's key and position are no longer valid\&. Subsequent iterations with \fBWT_CURSOR::next\fP will move to the first record, or with \fBWT_CURSOR::prev\fP will move to the last record\&.
@@ -515,7 +513,7 @@ In the case of a statistics cursor, resetting the cursor refreshes the statistic
 .PP
 .PP
 .nf
- ret = cursor->reset(cursor);
+        ret = cursor->reset(cursor);
 .fi
 .PP
  
@@ -535,14 +533,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_access\&.c\fP, \fBex_cursor\&.c\fP, and \fBex_log\&.c\fP\&.
-.SS "int WT_CURSOR::search (\fBWT_CURSOR\fP *cursor)"
+.SS "int WT_CURSOR::search (\fBWT_CURSOR\fP * cursor)"
 
 .PP
 Return the record matching the key\&. The key must first be set\&.
 .PP
 .PP
 .nf
-    const char *key = "some key";
+   const char *key = "some key";
         cursor->set_key(cursor, key);
         ret = cursor->search(cursor);
 .fi
@@ -564,7 +562,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, and \fBex_stat\&.c\fP\&.
-.SS "int WT_CURSOR::search_near (\fBWT_CURSOR\fP *cursor, int *exactp)"
+.SS "int WT_CURSOR::search_near (\fBWT_CURSOR\fP * cursor, int * exactp)"
 
 .PP
 Return the record matching the key if it exists, or an adjacent record\&. An adjacent record is either the smallest record larger than the key or the largest record smaller than the key (in other words, a logically adjacent key)\&.
@@ -575,7 +573,7 @@ An example of a search for an exact or adjacent match:
 .PP
 .PP
 .nf
-      cursor->set_key(cursor, key);
+    cursor->set_key(cursor, key);
         ret = cursor->search_near(cursor, &exact);
         if (ret == 0) {
                 if (exact == 0) {
@@ -637,13 +635,13 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_call_center\&.c\fP, and \fBex_cursor\&.c\fP\&.
-.SS "void WT_CURSOR::set_key (\fBWT_CURSOR\fP *cursor, \&.\&.\&.)"
+.SS "void WT_CURSOR::set_key (\fBWT_CURSOR\fP * cursor,  \&.\&.\&.)"
 
 .PP
 Set the key for the next operation\&. 
 .PP
 .nf
-                          /* Set the cursor's string key\&. */
+                                /* Set the cursor's string key\&. */
         const char *key = "another key";
         cursor->set_key(cursor, key);
 
@@ -670,14 +668,14 @@ If an error occurs during this operation, a flag will be set in the cursor, and 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "void WT_CURSOR::set_value (\fBWT_CURSOR\fP *cursor, \&.\&.\&.)"
+\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "void WT_CURSOR::set_value (\fBWT_CURSOR\fP * cursor,  \&.\&.\&.)"
 
 .PP
 Set the value for the next operation\&. 
 .PP
 .nf
-                              /* Set the cursor's string value\&. */
+                          /* Set the cursor's string value\&. */
         const char *value = "another value";
         cursor->set_value(cursor, value);
 
@@ -706,15 +704,15 @@ If an error occurs during this operation, a flag will be set in the cursor, and 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int WT_CURSOR::update (\fBWT_CURSOR\fP *cursor)"
+\fBex_access\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_log\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_CURSOR::update (\fBWT_CURSOR\fP * cursor)"
 
 .PP
-Update a record and optionally insert an existing record\&. If the cursor was configured with 'overwrite=true' (the default), both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted\&.
+Update an existing record and optionally insert a record\&. If the cursor was configured with 'overwrite=true' (the default), both the key and value must be set; if the record already exists, the key's value will be updated, otherwise, the record will be inserted\&.
 .PP
 .PP
 .nf
-    const char *key = "some key", *value = "some value";
+ const char *key = "some key", *value = "some value";
         ret = session->open_cursor(
             session, "table:mytable", NULL, NULL, &cursor);
         cursor->set_key(cursor, key);
@@ -745,7 +743,7 @@ The maximum length of a single column stored in a table is not fixed (as it part
 .PP
 \fBReturns:\fP
 .RS 4
-zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. In particular, if \fCoverwrite\fP is not configured and no record with the specified key exists, \fBWT_NOTFOUND\fP is returned\&. 
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. In particular, if \fCoverwrite\fP is not configured and no record with the specified key exists, \fBWT_NOTFOUND\fP is returned\&. Also, if \fCin_memory\fP is configured for the database and the insert requires more than the configured cache size to complete, \fBWT_CACHE_FULL\fP is returned\&. 
 .RE
 .PP
 

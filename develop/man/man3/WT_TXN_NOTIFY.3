@@ -1,10 +1,8 @@
-.TH "WT_TXN_NOTIFY" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_TXN_NOTIFY" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_TXN_NOTIFY \- 
-.PP
-Snapshot isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&.  
+WT_TXN_NOTIFY \- Snapshot isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&.  
 
 .SH SYNOPSIS
 .br
@@ -22,7 +20,7 @@ Snapshot isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation
 Snapshot isolation level, returned by \fBWT_EXTENSION_API::transaction_isolation_level\fP\&. 
 .SH "Member Data Documentation"
 .PP 
-.SS "int(* WT_TXN_NOTIFY::notify)(\fBWT_TXN_NOTIFY\fP *notify, \fBWT_SESSION\fP *session, uint64_t txnid, int committed)"
+.SS "int(* WT_TXN_NOTIFY::notify) (\fBWT_TXN_NOTIFY\fP *notify, \fBWT_SESSION\fP *session, uint64_t txnid, int committed)"
 
 .PP
 A method called when the session's current transaction is committed or rolled back\&. 

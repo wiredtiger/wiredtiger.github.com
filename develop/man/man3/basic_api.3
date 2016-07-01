@@ -1,4 +1,4 @@
-.TH "basic_api" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "basic_api" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -46,8 +46,8 @@ To access a database, first open a connection and create a session handle for th
         if ((ret = wiredtiger_open(home, NULL, "create", &conn)) != 0 ||
             (ret = conn->open_session(conn, NULL, NULL, &session)) != 0) {
                 fprintf(stderr, "Error connecting to %s: %s\n",
-                    home, wiredtiger_strerror(ret));
-                return (ret);
+                    home == NULL ? "\&." : home, wiredtiger_strerror(ret));
+                return (EXIT_FAILURE);
         }
 .fi
 .PP

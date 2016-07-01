@@ -1,8 +1,8 @@
-.TH "WiredTiger API" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "wt" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WiredTiger API \- 
+wt \- WiredTiger API
 .PP
 The functions, handles and methods applications use to access and manage data with WiredTiger\&.  
 
@@ -13,10 +13,6 @@ The functions, handles and methods applications use to access and manage data wi
 .RI "struct \fBWT_ITEM\fP"
 .br
 .RI "\fIA raw item of data to be managed, including a pointer to the data and a length\&. \fP"
-.ti -1c
-.RI "struct \fBWT_LSN\fP"
-.br
-.RI "\fIA log sequence number, representing a position in the transaction log\&. \fP"
 .ti -1c
 .RI "struct \fBWT_CURSOR\fP"
 .br
@@ -66,9 +62,9 @@ The functions, handles and methods applications use to access and manage data wi
 
 .in +1c
 .ti -1c
-.RI "enum \fBWT_ASYNC_OPTYPE\fP { \fBWT_AOP_NONE\fP, \fBWT_AOP_COMPACT\fP, \fBWT_AOP_INSERT\fP, \fBWT_AOP_REMOVE\fP, \fBWT_AOP_SEARCH\fP, \fBWT_AOP_UPDATE\fP }"
+.RI "enum \fBWT_ASYNC_OPTYPE\fP { \fBWT_AOP_NONE\fP, \fBWT_AOP_COMPACT\fP, \fBWT_AOP_INSERT\fP, \fBWT_AOP_REMOVE\fP, \fBWT_AOP_SEARCH\fP, \fBWT_AOP_UPDATE\fP }
+.RI "\fIAsynchronous operation types\&. \fP""
 .br
-.RI "\fIAsynchronous operation types\&. \fP"
 .in -1c
 .SS "Functions"
 
@@ -80,7 +76,7 @@ The functions, handles and methods applications use to access and manage data wi
 .ti -1c
 .RI "const char * \fBwiredtiger_strerror\fP (int error)"
 .br
-.RI "\fIReturn information about a WiredTiger error as a string, not thread-safe\&. \fP"
+.RI "\fIReturn information about a WiredTiger error as a string (see \fBWT_SESSION::strerror\fP for a thread-safe API)\&. \fP"
 .ti -1c
 .RI "const char * \fBwiredtiger_version\fP (int *majorp, int *minorp, int *patchp)"
 .br
@@ -150,7 +146,7 @@ The functions, handles and methods applications use to access and manage data wi
 .br
 .RI "\fIUnpack an unsigned integer from a packing stream\&. \fP"
 .in -1c
-.SS "Configuration string parsing"
+.SS "Configuration strings"
 
 .in +1c
 .ti -1c
@@ -189,34 +185,78 @@ The following are all of the WiredTiger-specific error returns:
 .RI "#define \fBWT_RUN_RECOVERY\fP"
 .br
 .RI "\fIRecovery must be run to continue\&. \fP"
+.ti -1c
+.RI "#define \fBWT_CACHE_FULL\fP"
+.br
+.RI "\fIOperation would overflow cache\&. \fP"
 .in -1c
 .SS "Connection statistics"
 Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individual statistics can be queried through the cursor using the following keys\&. See \fBStatistics Data\fP for more information\&. 
 .in +1c
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_ASYNC_ALLOC_RACE\fP"
+.RI "#define \fBWT_STAT_CONN_LSM_WORK_QUEUE_APP\fP"
 .br
-.RI "\fIasync: number of allocation state races \fP"
+.RI "\fILSM: application work units currently queued\&. \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_ASYNC_ALLOC_VIEW\fP"
+.RI "#define \fBWT_STAT_CONN_LSM_WORK_QUEUE_MANAGER\fP"
 .br
-.RI "\fIasync: number of operation slots viewed for allocation \fP"
+.RI "\fILSM: merge work units currently queued\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LSM_ROWS_MERGED\fP"
+.br
+.RI "\fILSM: rows merged in an LSM tree\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LSM_CHECKPOINT_THROTTLE\fP"
+.br
+.RI "\fILSM: sleep for LSM checkpoint throttle\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LSM_MERGE_THROTTLE\fP"
+.br
+.RI "\fILSM: sleep for LSM merge throttle\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LSM_WORK_QUEUE_SWITCH\fP"
+.br
+.RI "\fILSM: switch work units currently queued\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LSM_WORK_UNITS_DISCARDED\fP"
+.br
+.RI "\fILSM: tree maintenance operations discarded\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LSM_WORK_UNITS_DONE\fP"
+.br
+.RI "\fILSM: tree maintenance operations executed\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LSM_WORK_UNITS_CREATED\fP"
+.br
+.RI "\fILSM: tree maintenance operations scheduled\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LSM_WORK_QUEUE_MAX\fP"
+.br
+.RI "\fILSM: tree queue hit maximum\&. \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_ASYNC_CUR_QUEUE\fP"
 .br
 .RI "\fIasync: current work queue length \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_ASYNC_MAX_QUEUE\fP"
+.br
+.RI "\fIasync: maximum work queue length \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_ASYNC_ALLOC_RACE\fP"
+.br
+.RI "\fIasync: number of allocation state races \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_ASYNC_FLUSH\fP"
 .br
 .RI "\fIasync: number of flush calls \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_ASYNC_ALLOC_VIEW\fP"
+.br
+.RI "\fIasync: number of operation slots viewed for allocation \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_ASYNC_FULL\fP"
 .br
 .RI "\fIasync: number of times operation allocation failed \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_ASYNC_MAX_QUEUE\fP"
-.br
-.RI "\fIasync: maximum work queue length \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_ASYNC_NOWORK\fP"
 .br
@@ -246,9 +286,17 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIasync: total update calls \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_BLOCK_BYTE_MAP_READ\fP"
+.RI "#define \fBWT_STAT_CONN_BLOCK_PRELOAD\fP"
 .br
-.RI "\fIblock-manager: mapped bytes read \fP"
+.RI "\fIblock-manager: blocks pre-loaded \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_BLOCK_READ\fP"
+.br
+.RI "\fIblock-manager: blocks read \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_BLOCK_WRITE\fP"
+.br
+.RI "\fIblock-manager: blocks written \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_BLOCK_BYTE_READ\fP"
 .br
@@ -262,41 +310,21 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIblock-manager: mapped blocks read \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_BLOCK_PRELOAD\fP"
+.RI "#define \fBWT_STAT_CONN_BLOCK_BYTE_MAP_READ\fP"
 .br
-.RI "\fIblock-manager: blocks pre-loaded \fP"
+.RI "\fIblock-manager: mapped bytes read \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_BLOCK_READ\fP"
+.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_IMAGE\fP"
 .br
-.RI "\fIblock-manager: blocks read \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_BLOCK_WRITE\fP"
-.br
-.RI "\fIblock-manager: blocks written \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_DIRTY\fP"
-.br
-.RI "\fIcache: tracked dirty bytes in the cache \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_INTERNAL\fP"
-.br
-.RI "\fIcache: tracked bytes belonging to internal pages in the cache \fP"
+.RI "\fIcache: bytes belonging to page images in the cache \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_BYTES_INUSE\fP"
 .br
 .RI "\fIcache: bytes currently in the cache \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_LEAF\fP"
+.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_OTHER\fP"
 .br
-.RI "\fIcache: tracked bytes belonging to leaf pages in the cache \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_MAX\fP"
-.br
-.RI "\fIcache: maximum bytes configured \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_OVERFLOW\fP"
-.br
-.RI "\fIcache: tracked bytes belonging to overflow pages in the cache \fP"
+.RI "\fIcache: bytes not belonging to page images in the cache \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_BYTES_READ\fP"
 .br
@@ -306,53 +334,25 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcache: bytes written from cache \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_APP\fP"
-.br
-.RI "\fIcache: pages evicted by application threads \fP"
-.ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_CHECKPOINT\fP"
 .br
 .RI "\fIcache: checkpoint blocked page eviction \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_CLEAN\fP"
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_GET_REF\fP"
 .br
-.RI "\fIcache: unmodified pages evicted \fP"
+.RI "\fIcache: eviction calls to get a page \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_DEEPEN\fP"
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_GET_REF_EMPTY\fP"
 .br
-.RI "\fIcache: page split during eviction deepened the tree \fP"
+.RI "\fIcache: eviction calls to get a page found queue empty \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_DIRTY\fP"
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_GET_REF_EMPTY2\fP"
 .br
-.RI "\fIcache: modified pages evicted \fP"
+.RI "\fIcache: eviction calls to get a page found queue empty after locking \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_FAIL\fP"
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_AGGRESSIVE_SET\fP"
 .br
-.RI "\fIcache: pages selected for eviction unable to be evicted \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_FORCE\fP"
-.br
-.RI "\fIcache: pages evicted because they exceeded the in-memory maximum \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_FORCE_DELETE\fP"
-.br
-.RI "\fIcache: pages evicted because they had chains of deleted items \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_FORCE_FAIL\fP"
-.br
-.RI "\fIcache: failed eviction of pages that exceeded the in-memory maximum \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_HAZARD\fP"
-.br
-.RI "\fIcache: hazard pointer blocked page eviction \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_INTERNAL\fP"
-.br
-.RI "\fIcache: internal pages evicted \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_MAXIMUM_PAGE_SIZE\fP"
-.br
-.RI "\fIcache: maximum page size at eviction \fP"
+.RI "\fIcache: eviction currently operating in aggressive mode \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_QUEUE_EMPTY\fP"
 .br
@@ -370,49 +370,233 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcache: eviction server populating queue, but not evicting pages \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_SERVER_TOOBIG\fP"
+.br
+.RI "\fIcache: eviction server skipped very large page \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_SERVER_SLEPT\fP"
+.br
+.RI "\fIcache: eviction server slept, because we did not make progress with eviction \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_SLOW\fP"
 .br
 .RI "\fIcache: eviction server unable to reach eviction goal \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_SPLIT\fP"
-.br
-.RI "\fIcache: pages split during eviction \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_WALK\fP"
-.br
-.RI "\fIcache: pages walked for eviction \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_WORKER_EVICTING\fP"
 .br
 .RI "\fIcache: eviction worker thread evicting pages \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_FORCE_FAIL\fP"
+.br
+.RI "\fIcache: failed eviction of pages that exceeded the in-memory maximum \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_WALKS_ACTIVE\fP"
+.br
+.RI "\fIcache: files with active eviction walks \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_WALKS_STARTED\fP"
+.br
+.RI "\fIcache: files with new eviction walks started \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_HAZARD\fP"
+.br
+.RI "\fIcache: hazard pointer blocked page eviction \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_HAZARD_CHECKS\fP"
+.br
+.RI "\fIcache: hazard pointer check calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_HAZARD_WALKS\fP"
+.br
+.RI "\fIcache: hazard pointer check entries walked \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_HAZARD_MAX\fP"
+.br
+.RI "\fIcache: hazard pointer maximum array length \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_INMEM_SPLITTABLE\fP"
+.br
+.RI "\fIcache: in-memory page passed criteria to be split \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_INMEM_SPLIT\fP"
 .br
 .RI "\fIcache: in-memory page splits \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_OVERHEAD\fP"
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_INTERNAL\fP"
 .br
-.RI "\fIcache: percentage overhead \fP"
+.RI "\fIcache: internal pages evicted \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_CACHE_PAGES_DIRTY\fP"
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_SPLIT_INTERNAL\fP"
 .br
-.RI "\fIcache: tracked dirty pages in the cache \fP"
+.RI "\fIcache: internal pages split during eviction \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_SPLIT_LEAF\fP"
+.br
+.RI "\fIcache: leaf pages split during eviction \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_LOOKASIDE_INSERT\fP"
+.br
+.RI "\fIcache: lookaside table insert calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_LOOKASIDE_REMOVE\fP"
+.br
+.RI "\fIcache: lookaside table remove calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_MAX\fP"
+.br
+.RI "\fIcache: maximum bytes configured \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_MAXIMUM_PAGE_SIZE\fP"
+.br
+.RI "\fIcache: maximum page size at eviction \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_DIRTY\fP"
+.br
+.RI "\fIcache: modified pages evicted \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_APP_DIRTY\fP"
+.br
+.RI "\fIcache: modified pages evicted by application threads \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_DEEPEN\fP"
+.br
+.RI "\fIcache: page split during eviction deepened the tree \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_WRITE_LOOKASIDE\fP"
+.br
+.RI "\fIcache: page written requiring lookaside records \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_PAGES_INUSE\fP"
 .br
 .RI "\fIcache: pages currently held in the cache \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_FORCE\fP"
+.br
+.RI "\fIcache: pages evicted because they exceeded the in-memory maximum \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_FORCE_DELETE\fP"
+.br
+.RI "\fIcache: pages evicted because they had chains of deleted items \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_APP\fP"
+.br
+.RI "\fIcache: pages evicted by application threads \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_PAGES_QUEUED\fP"
+.br
+.RI "\fIcache: pages queued for eviction \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_PAGES_QUEUED_OLDEST\fP"
+.br
+.RI "\fIcache: pages queued for urgent eviction \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_READ\fP"
 .br
 .RI "\fIcache: pages read into cache \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_READ_LOOKASIDE\fP"
+.br
+.RI "\fIcache: pages read into cache requiring lookaside entries \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_PAGES_REQUESTED\fP"
+.br
+.RI "\fIcache: pages requested from the cache \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_PAGES_SEEN\fP"
+.br
+.RI "\fIcache: pages seen by eviction walk \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_FAIL\fP"
+.br
+.RI "\fIcache: pages selected for eviction unable to be evicted \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_WALK\fP"
+.br
+.RI "\fIcache: pages walked for eviction \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_CACHE_WRITE\fP"
 .br
 .RI "\fIcache: pages written from cache \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_WRITE_RESTORE\fP"
+.br
+.RI "\fIcache: pages written requiring in-memory restoration \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_OVERHEAD\fP"
+.br
+.RI "\fIcache: percentage overhead \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_INTERNAL\fP"
+.br
+.RI "\fIcache: tracked bytes belonging to internal pages in the cache \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_LEAF\fP"
+.br
+.RI "\fIcache: tracked bytes belonging to leaf pages in the cache \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_OVERFLOW\fP"
+.br
+.RI "\fIcache: tracked bytes belonging to overflow pages in the cache \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_BYTES_DIRTY\fP"
+.br
+.RI "\fIcache: tracked dirty bytes in the cache \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_PAGES_DIRTY\fP"
+.br
+.RI "\fIcache: tracked dirty pages in the cache \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_CACHE_EVICTION_CLEAN\fP"
+.br
+.RI "\fIcache: unmodified pages evicted \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_COND_AUTO_WAIT_RESET\fP"
+.br
+.RI "\fIconnection: auto adjusting condition resets \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_COND_AUTO_WAIT\fP"
+.br
+.RI "\fIconnection: auto adjusting condition wait calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_FILE_OPEN\fP"
+.br
+.RI "\fIconnection: files currently open \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_MEMORY_ALLOCATION\fP"
+.br
+.RI "\fIconnection: memory allocations \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_MEMORY_FREE\fP"
+.br
+.RI "\fIconnection: memory frees \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_MEMORY_GROW\fP"
+.br
+.RI "\fIconnection: memory re-allocations \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_COND_WAIT\fP"
 .br
 .RI "\fIconnection: pthread mutex condition wait calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_RWLOCK_READ\fP"
+.br
+.RI "\fIconnection: pthread mutex shared lock read-lock calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_RWLOCK_WRITE\fP"
+.br
+.RI "\fIconnection: pthread mutex shared lock write-lock calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_FSYNC_IO\fP"
+.br
+.RI "\fIconnection: total fsync I/Os \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_READ_IO\fP"
+.br
+.RI "\fIconnection: total read I/Os \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_WRITE_IO\fP"
+.br
+.RI "\fIconnection: total write I/Os \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_CURSOR_CREATE\fP"
 .br
@@ -438,6 +622,10 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcursor: cursor reset calls \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_CURSOR_RESTART\fP"
+.br
+.RI "\fIcursor: cursor restarted searches \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_CURSOR_SEARCH\fP"
 .br
 .RI "\fIcursor: cursor search calls \fP"
@@ -450,21 +638,33 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcursor: cursor update calls \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_DH_CONN_HANDLES\fP"
+.RI "#define \fBWT_STAT_CONN_CURSOR_TRUNCATE\fP"
 .br
-.RI "\fIdata-handle: connection dhandles swept \fP"
+.RI "\fIcursor: truncate calls \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_DH_CONN_REF\fP"
+.RI "#define \fBWT_STAT_CONN_DH_CONN_HANDLE_COUNT\fP"
 .br
-.RI "\fIdata-handle: connection candidate referenced \fP"
+.RI "\fIdata-handle: connection data handles currently active \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_DH_CONN_SWEEPS\fP"
+.RI "#define \fBWT_STAT_CONN_DH_SWEEP_REF\fP"
+.br
+.RI "\fIdata-handle: connection sweep candidate became referenced \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_DH_SWEEP_CLOSE\fP"
+.br
+.RI "\fIdata-handle: connection sweep dhandles closed \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_DH_SWEEP_REMOVE\fP"
+.br
+.RI "\fIdata-handle: connection sweep dhandles removed from hash list \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_DH_SWEEP_TOD\fP"
+.br
+.RI "\fIdata-handle: connection sweep time-of-death sets \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_DH_SWEEPS\fP"
 .br
 .RI "\fIdata-handle: connection sweeps \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_DH_CONN_TOD\fP"
-.br
-.RI "\fIdata-handle: connection time-of-death sets \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_DH_SESSION_HANDLES\fP"
 .br
@@ -474,17 +674,29 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIdata-handle: session sweep attempts \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_FILE_OPEN\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_SLOT_SWITCH_BUSY\fP"
 .br
-.RI "\fIconnection: files currently open \fP"
+.RI "\fIlog: busy returns attempting to switch slots \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_BUFFER_GROW\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_SLOT_CLOSES\fP"
 .br
-.RI "\fIlog: log buffer size increases \fP"
+.RI "\fIlog: consolidated slot closures \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_BUFFER_SIZE\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_SLOT_RACES\fP"
 .br
-.RI "\fIlog: total log buffer size \fP"
+.RI "\fIlog: consolidated slot join races \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LOG_SLOT_TRANSITIONS\fP"
+.br
+.RI "\fIlog: consolidated slot join transitions \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LOG_SLOT_JOINS\fP"
+.br
+.RI "\fIlog: consolidated slot joins \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_LOG_SLOT_UNBUFFERED\fP"
+.br
+.RI "\fIlog: consolidated slot unbuffered writes \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_LOG_BYTES_PAYLOAD\fP"
 .br
@@ -494,165 +706,165 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIlog: log bytes written \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_CLOSE_YIELDS\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_ZERO_FILLS\fP"
 .br
-.RI "\fIlog: yields waiting for previous log file close \fP"
+.RI "\fIlog: log files manually zero-filled \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_LEN\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_FLUSH\fP"
 .br
-.RI "\fIlog: total size of compressed records \fP"
+.RI "\fIlog: log flush operations \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_MEM\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_FORCE_WRITE\fP"
 .br
-.RI "\fIlog: total in-memory size of compressed records \fP"
+.RI "\fIlog: log force write operations \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_SMALL\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_FORCE_WRITE_SKIP\fP"
 .br
-.RI "\fIlog: log records too small to compress \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_WRITE_FAILS\fP"
-.br
-.RI "\fIlog: log records not compressed \fP"
+.RI "\fIlog: log force write operations skipped \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_WRITES\fP"
 .br
 .RI "\fIlog: log records compressed \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_MAX_FILESIZE\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_WRITE_FAILS\fP"
 .br
-.RI "\fIlog: maximum log file size \fP"
+.RI "\fIlog: log records not compressed \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_PREALLOC_FILES\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_SMALL\fP"
 .br
-.RI "\fIlog: pre-allocated log files prepared \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_PREALLOC_MAX\fP"
-.br
-.RI "\fIlog: number of pre-allocated log files to create \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_PREALLOC_USED\fP"
-.br
-.RI "\fIlog: pre-allocated log files used \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_READS\fP"
-.br
-.RI "\fIlog: log read operations \fP"
+.RI "\fIlog: log records too small to compress \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_LOG_RELEASE_WRITE_LSN\fP"
 .br
 .RI "\fIlog: log release advances write LSN \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SCAN_RECORDS\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_SCANS\fP"
 .br
-.RI "\fIlog: records processed by log scan \fP"
+.RI "\fIlog: log scan operations \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_LOG_SCAN_REREADS\fP"
 .br
 .RI "\fIlog: log scan records requiring two reads \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SCANS\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_WRITE_LSN\fP"
 .br
-.RI "\fIlog: log scan operations \fP"
+.RI "\fIlog: log server thread advances write LSN \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SLOT_CLOSES\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_WRITE_LSN_SKIP\fP"
 .br
-.RI "\fIlog: consolidated slot closures \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SLOT_CONSOLIDATED\fP"
-.br
-.RI "\fIlog: logging bytes consolidated \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SLOT_JOINS\fP"
-.br
-.RI "\fIlog: consolidated slot joins \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SLOT_RACES\fP"
-.br
-.RI "\fIlog: consolidated slot join races \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SLOT_SWITCH_FAILS\fP"
-.br
-.RI "\fIlog: slots selected for switching that were unavailable \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SLOT_TOOBIG\fP"
-.br
-.RI "\fIlog: record size exceeded maximum \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SLOT_TOOSMALL\fP"
-.br
-.RI "\fIlog: failed to find a slot large enough for record \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_SLOT_TRANSITIONS\fP"
-.br
-.RI "\fIlog: consolidated slot join transitions \fP"
+.RI "\fIlog: log server thread write LSN walk skipped \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_LOG_SYNC\fP"
 .br
 .RI "\fIlog: log sync operations \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_LOG_SYNC_DURATION\fP"
+.br
+.RI "\fIlog: log sync time duration (usecs) \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_LOG_SYNC_DIR\fP"
 .br
 .RI "\fIlog: log sync_dir operations \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LOG_WRITE_LSN\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_SYNC_DIR_DURATION\fP"
 .br
-.RI "\fIlog: log server thread advances write LSN \fP"
+.RI "\fIlog: log sync_dir time duration (usecs) \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_LOG_WRITES\fP"
 .br
 .RI "\fIlog: log write operations \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_CHECKPOINT_THROTTLE\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_SLOT_CONSOLIDATED\fP"
 .br
-.RI "\fILSM: sleep for LSM checkpoint throttle\&. \fP"
+.RI "\fIlog: logging bytes consolidated \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_MERGE_THROTTLE\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_MAX_FILESIZE\fP"
 .br
-.RI "\fILSM: sleep for LSM merge throttle\&. \fP"
+.RI "\fIlog: maximum log file size \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_ROWS_MERGED\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_PREALLOC_MAX\fP"
 .br
-.RI "\fILSM: rows merged in an LSM tree\&. \fP"
+.RI "\fIlog: number of pre-allocated log files to create \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_WORK_QUEUE_APP\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_PREALLOC_MISSED\fP"
 .br
-.RI "\fILSM: application work units currently queued\&. \fP"
+.RI "\fIlog: pre-allocated log files not ready and missed \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_WORK_QUEUE_MANAGER\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_PREALLOC_FILES\fP"
 .br
-.RI "\fILSM: merge work units currently queued\&. \fP"
+.RI "\fIlog: pre-allocated log files prepared \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_WORK_QUEUE_MAX\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_PREALLOC_USED\fP"
 .br
-.RI "\fILSM: tree queue hit maximum\&. \fP"
+.RI "\fIlog: pre-allocated log files used \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_WORK_QUEUE_SWITCH\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_SCAN_RECORDS\fP"
 .br
-.RI "\fILSM: switch work units currently queued\&. \fP"
+.RI "\fIlog: records processed by log scan \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_WORK_UNITS_CREATED\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_MEM\fP"
 .br
-.RI "\fILSM: tree maintenance operations scheduled\&. \fP"
+.RI "\fIlog: total in-memory size of compressed records \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_WORK_UNITS_DISCARDED\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_BUFFER_SIZE\fP"
 .br
-.RI "\fILSM: tree maintenance operations discarded\&. \fP"
+.RI "\fIlog: total log buffer size \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_LSM_WORK_UNITS_DONE\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_COMPRESS_LEN\fP"
 .br
-.RI "\fILSM: tree maintenance operations executed\&. \fP"
+.RI "\fIlog: total size of compressed records \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_MEMORY_ALLOCATION\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_SLOT_COALESCED\fP"
 .br
-.RI "\fIconnection: memory allocations \fP"
+.RI "\fIlog: written slots coalesced \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_MEMORY_FREE\fP"
+.RI "#define \fBWT_STAT_CONN_LOG_CLOSE_YIELDS\fP"
 .br
-.RI "\fIconnection: memory frees \fP"
+.RI "\fIlog: yields waiting for previous log file close \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_MEMORY_GROW\fP"
+.RI "#define \fBWT_STAT_CONN_REC_PAGE_DELETE_FAST\fP"
 .br
-.RI "\fIconnection: memory re-allocations \fP"
+.RI "\fIreconciliation: fast-path pages deleted \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_REC_PAGES\fP"
+.br
+.RI "\fIreconciliation: page reconciliation calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_REC_PAGES_EVICTION\fP"
+.br
+.RI "\fIreconciliation: page reconciliation calls for eviction \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_REC_PAGE_DELETE\fP"
+.br
+.RI "\fIreconciliation: pages deleted \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_REC_SPLIT_STASHED_BYTES\fP"
+.br
+.RI "\fIreconciliation: split bytes currently awaiting free \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_REC_SPLIT_STASHED_OBJECTS\fP"
+.br
+.RI "\fIreconciliation: split objects currently awaiting free \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_SESSION_CURSOR_OPEN\fP"
+.br
+.RI "\fIsession: open cursor count \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_SESSION_OPEN\fP"
+.br
+.RI "\fIsession: open session count \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_FSYNC_ACTIVE\fP"
+.br
+.RI "\fIthread-state: active filesystem fsync calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_READ_ACTIVE\fP"
+.br
+.RI "\fIthread-state: active filesystem read calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_WRITE_ACTIVE\fP"
+.br
+.RI "\fIthread-state: active filesystem write calls \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_PAGE_BUSY_BLOCKED\fP"
 .br
@@ -674,57 +886,25 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIthread-yield: page acquire time sleeping (usecs) \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_READ_IO\fP"
+.RI "#define \fBWT_STAT_CONN_TXN_SNAPSHOTS_CREATED\fP"
 .br
-.RI "\fIconnection: total read I/Os \fP"
+.RI "\fItransaction: number of named snapshots created \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_REC_PAGES\fP"
+.RI "#define \fBWT_STAT_CONN_TXN_SNAPSHOTS_DROPPED\fP"
 .br
-.RI "\fIreconciliation: page reconciliation calls \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_REC_PAGES_EVICTION\fP"
-.br
-.RI "\fIreconciliation: page reconciliation calls for eviction \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_REC_SPLIT_STASHED_BYTES\fP"
-.br
-.RI "\fIreconciliation: split bytes currently awaiting free \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_REC_SPLIT_STASHED_OBJECTS\fP"
-.br
-.RI "\fIreconciliation: split objects currently awaiting free \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_RWLOCK_READ\fP"
-.br
-.RI "\fIconnection: pthread mutex shared lock read-lock calls \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_RWLOCK_WRITE\fP"
-.br
-.RI "\fIconnection: pthread mutex shared lock write-lock calls \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_SESSION_CURSOR_OPEN\fP"
-.br
-.RI "\fIsession: open cursor count \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_SESSION_OPEN\fP"
-.br
-.RI "\fIsession: open session count \fP"
+.RI "\fItransaction: number of named snapshots dropped \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_TXN_BEGIN\fP"
 .br
 .RI "\fItransaction: transaction begins \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT\fP"
+.RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT_RUNNING\fP"
 .br
-.RI "\fItransaction: transaction checkpoints \fP"
+.RI "\fItransaction: transaction checkpoint currently running \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT_GENERATION\fP"
 .br
 .RI "\fItransaction: transaction checkpoint generation \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT_RUNNING\fP"
-.br
-.RI "\fItransaction: transaction checkpoint currently running \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT_TIME_MAX\fP"
 .br
@@ -742,77 +922,57 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fItransaction: transaction checkpoint total time (msecs) \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_TXN_COMMIT\fP"
+.RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT\fP"
 .br
-.RI "\fItransaction: transactions committed \fP"
+.RI "\fItransaction: transaction checkpoints \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_TXN_FAIL_CACHE\fP"
 .br
 .RI "\fItransaction: transaction failures due to cache overflow \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_CONN_TXN_PINNED_CHECKPOINT_RANGE\fP"
+.RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT_FSYNC_POST\fP"
 .br
-.RI "\fItransaction: transaction range of IDs currently pinned by a checkpoint \fP"
+.RI "\fItransaction: transaction fsync calls for checkpoint after allocating the transaction ID \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT_FSYNC_PRE\fP"
+.br
+.RI "\fItransaction: transaction fsync calls for checkpoint before allocating the transaction ID \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT_FSYNC_POST_DURATION\fP"
+.br
+.RI "\fItransaction: transaction fsync duration for checkpoint after allocating the transaction ID (usecs) \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_TXN_CHECKPOINT_FSYNC_PRE_DURATION\fP"
+.br
+.RI "\fItransaction: transaction fsync duration for checkpoint before allocating the transaction ID (usecs) \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_CONN_TXN_PINNED_RANGE\fP"
 .br
 .RI "\fItransaction: transaction range of IDs currently pinned \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_CONN_TXN_PINNED_CHECKPOINT_RANGE\fP"
+.br
+.RI "\fItransaction: transaction range of IDs currently pinned by a checkpoint \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_TXN_PINNED_SNAPSHOT_RANGE\fP"
+.br
+.RI "\fItransaction: transaction range of IDs currently pinned by named snapshots \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_TXN_SYNC\fP"
+.br
+.RI "\fItransaction: transaction sync calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_CONN_TXN_COMMIT\fP"
+.br
+.RI "\fItransaction: transactions committed \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_CONN_TXN_ROLLBACK\fP"
 .br
 .RI "\fItransaction: transactions rolled back \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_CONN_WRITE_IO\fP"
-.br
-.RI "\fIconnection: total write I/Os \fP"
 .in -1c
 .SS "Statistics for data sources"
 
 .in +1c
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_ALLOCATION_SIZE\fP"
-.br
-.RI "\fIblock-manager: file allocation unit size \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_ALLOC\fP"
-.br
-.RI "\fIblock-manager: blocks allocated \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_CHECKPOINT_SIZE\fP"
-.br
-.RI "\fIblock-manager: checkpoint size \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_EXTENSION\fP"
-.br
-.RI "\fIblock-manager: allocations requiring file extension \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_FREE\fP"
-.br
-.RI "\fIblock-manager: blocks freed \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_MAGIC\fP"
-.br
-.RI "\fIblock-manager: file magic number \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_MAJOR\fP"
-.br
-.RI "\fIblock-manager: file major version number \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_MINOR\fP"
-.br
-.RI "\fIblock-manager: minor version number \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_REUSE_BYTES\fP"
-.br
-.RI "\fIblock-manager: file bytes available for reuse \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOCK_SIZE\fP"
-.br
-.RI "\fIblock-manager: file size in bytes \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BLOOM_COUNT\fP"
-.br
-.RI "\fILSM: bloom filters in the LSM tree\&. \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_BLOOM_FALSE_POSITIVE\fP"
 .br
@@ -834,17 +994,77 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fILSM: bloom filter pages read into cache\&. \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOOM_COUNT\fP"
+.br
+.RI "\fILSM: bloom filters in the LSM tree\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_LSM_CHUNK_COUNT\fP"
+.br
+.RI "\fILSM: chunks in the LSM tree\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_LSM_GENERATION_MAX\fP"
+.br
+.RI "\fILSM: highest merge generation in the LSM tree\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_LSM_LOOKUP_NO_BLOOM\fP"
+.br
+.RI "\fILSM: queries that could have benefited from a Bloom filter that did not exist\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_LSM_CHECKPOINT_THROTTLE\fP"
+.br
+.RI "\fILSM: sleep for LSM checkpoint throttle\&. \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_LSM_MERGE_THROTTLE\fP"
+.br
+.RI "\fILSM: sleep for LSM merge throttle\&. \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_BLOOM_SIZE\fP"
 .br
 .RI "\fILSM: total size of bloom filters\&. \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_EXTENSION\fP"
+.br
+.RI "\fIblock-manager: allocations requiring file extension \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_ALLOC\fP"
+.br
+.RI "\fIblock-manager: blocks allocated \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_FREE\fP"
+.br
+.RI "\fIblock-manager: blocks freed \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_CHECKPOINT_SIZE\fP"
+.br
+.RI "\fIblock-manager: checkpoint size \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_ALLOCATION_SIZE\fP"
+.br
+.RI "\fIblock-manager: file allocation unit size \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_REUSE_BYTES\fP"
+.br
+.RI "\fIblock-manager: file bytes available for reuse \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_MAGIC\fP"
+.br
+.RI "\fIblock-manager: file magic number \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_MAJOR\fP"
+.br
+.RI "\fIblock-manager: file major version number \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_SIZE\fP"
+.br
+.RI "\fIblock-manager: file size in bytes \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BLOCK_MINOR\fP"
+.br
+.RI "\fIblock-manager: minor version number \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_BTREE_CHECKPOINT_GENERATION\fP"
 .br
 .RI "\fIbtree: btree checkpoint generation \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BTREE_COLUMN_DELETED\fP"
-.br
-.RI "\fIbtree: column-store variable-size deleted values \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_BTREE_COLUMN_FIX\fP"
 .br
@@ -854,25 +1074,21 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIbtree: column-store internal pages \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_BTREE_COLUMN_RLE\fP"
+.br
+.RI "\fIbtree: column-store variable-size RLE encoded values \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BTREE_COLUMN_DELETED\fP"
+.br
+.RI "\fIbtree: column-store variable-size deleted values \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_BTREE_COLUMN_VARIABLE\fP"
 .br
 .RI "\fIbtree: column-store variable-size leaf pages \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_BTREE_COMPACT_REWRITE\fP"
-.br
-.RI "\fIbtree: pages rewritten by compaction \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BTREE_ENTRIES\fP"
-.br
-.RI "\fIbtree: number of key/value pairs \fP"
-.ti -1c
 .RI "#define \fBWT_STAT_DSRC_BTREE_FIXED_LEN\fP"
 .br
 .RI "\fIbtree: fixed-record size \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_BTREE_MAXIMUM_DEPTH\fP"
-.br
-.RI "\fIbtree: maximum tree depth \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_BTREE_MAXINTLKEY\fP"
 .br
@@ -894,9 +1110,21 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIbtree: maximum leaf page value size \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_BTREE_MAXIMUM_DEPTH\fP"
+.br
+.RI "\fIbtree: maximum tree depth \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BTREE_ENTRIES\fP"
+.br
+.RI "\fIbtree: number of key/value pairs \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_BTREE_OVERFLOW\fP"
 .br
 .RI "\fIbtree: overflow pages \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_BTREE_COMPACT_REWRITE\fP"
+.br
+.RI "\fIbtree: pages rewritten by compaction \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_BTREE_ROW_INTERNAL\fP"
 .br
@@ -905,6 +1133,10 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .RI "#define \fBWT_STAT_DSRC_BTREE_ROW_LEAF\fP"
 .br
 .RI "\fIbtree: row-store leaf pages \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_BYTES_INUSE\fP"
+.br
+.RI "\fIcache: bytes currently in the cache \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_CACHE_BYTES_READ\fP"
 .br
@@ -918,18 +1150,6 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcache: checkpoint blocked page eviction \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_CLEAN\fP"
-.br
-.RI "\fIcache: unmodified pages evicted \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_DEEPEN\fP"
-.br
-.RI "\fIcache: page split during eviction deepened the tree \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_DIRTY\fP"
-.br
-.RI "\fIcache: modified pages evicted \fP"
-.ti -1c
 .RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_FAIL\fP"
 .br
 .RI "\fIcache: data source pages selected for eviction unable to be evicted \fP"
@@ -938,45 +1158,69 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcache: hazard pointer blocked page eviction \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_INTERNAL\fP"
+.RI "#define \fBWT_STAT_DSRC_CACHE_INMEM_SPLITTABLE\fP"
 .br
-.RI "\fIcache: internal pages evicted \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_SPLIT\fP"
-.br
-.RI "\fIcache: pages split during eviction \fP"
+.RI "\fIcache: in-memory page passed criteria to be split \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_CACHE_INMEM_SPLIT\fP"
 .br
 .RI "\fIcache: in-memory page splits \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_CACHE_OVERFLOW_VALUE\fP"
+.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_INTERNAL\fP"
 .br
-.RI "\fIcache: overflow values cached in memory \fP"
+.RI "\fIcache: internal pages evicted \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_CACHE_READ\fP"
+.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_SPLIT_INTERNAL\fP"
 .br
-.RI "\fIcache: pages read into cache \fP"
+.RI "\fIcache: internal pages split during eviction \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_SPLIT_LEAF\fP"
+.br
+.RI "\fIcache: leaf pages split during eviction \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_DIRTY\fP"
+.br
+.RI "\fIcache: modified pages evicted \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_CACHE_READ_OVERFLOW\fP"
 .br
 .RI "\fIcache: overflow pages read into cache \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_OVERFLOW_VALUE\fP"
+.br
+.RI "\fIcache: overflow values cached in memory \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_DEEPEN\fP"
+.br
+.RI "\fIcache: page split during eviction deepened the tree \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_WRITE_LOOKASIDE\fP"
+.br
+.RI "\fIcache: page written requiring lookaside records \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_READ\fP"
+.br
+.RI "\fIcache: pages read into cache \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_READ_LOOKASIDE\fP"
+.br
+.RI "\fIcache: pages read into cache requiring lookaside entries \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CACHE_PAGES_REQUESTED\fP"
+.br
+.RI "\fIcache: pages requested from the cache \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_CACHE_WRITE\fP"
 .br
 .RI "\fIcache: pages written from cache \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_COMPRESS_RAW_FAIL\fP"
+.RI "#define \fBWT_STAT_DSRC_CACHE_WRITE_RESTORE\fP"
 .br
-.RI "\fIcompression: raw compression call failed, no additional data available \fP"
+.RI "\fIcache: pages written requiring in-memory restoration \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_COMPRESS_RAW_FAIL_TEMPORARY\fP"
+.RI "#define \fBWT_STAT_DSRC_CACHE_EVICTION_CLEAN\fP"
 .br
-.RI "\fIcompression: raw compression call failed, additional data available \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_COMPRESS_RAW_OK\fP"
-.br
-.RI "\fIcompression: raw compression call succeeded \fP"
+.RI "\fIcache: unmodified pages evicted \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_COMPRESS_READ\fP"
 .br
@@ -994,21 +1238,41 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcompression: page written was too small to compress \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_CURSOR_CREATE\fP"
+.RI "#define \fBWT_STAT_DSRC_COMPRESS_RAW_FAIL_TEMPORARY\fP"
 .br
-.RI "\fIcursor: create calls \fP"
+.RI "\fIcompression: raw compression call failed, additional data available \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_CURSOR_INSERT\fP"
+.RI "#define \fBWT_STAT_DSRC_COMPRESS_RAW_FAIL\fP"
 .br
-.RI "\fIcursor: insert calls \fP"
+.RI "\fIcompression: raw compression call failed, no additional data available \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_COMPRESS_RAW_OK\fP"
+.br
+.RI "\fIcompression: raw compression call succeeded \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_CURSOR_INSERT_BULK\fP"
 .br
 .RI "\fIcursor: bulk-loaded cursor-insert calls \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_CURSOR_CREATE\fP"
+.br
+.RI "\fIcursor: create calls \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_CURSOR_INSERT_BYTES\fP"
 .br
 .RI "\fIcursor: cursor-insert key and value bytes inserted \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CURSOR_REMOVE_BYTES\fP"
+.br
+.RI "\fIcursor: cursor-remove key bytes removed \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CURSOR_UPDATE_BYTES\fP"
+.br
+.RI "\fIcursor: cursor-update value bytes updated \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CURSOR_INSERT\fP"
+.br
+.RI "\fIcursor: insert calls \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_CURSOR_NEXT\fP"
 .br
@@ -1022,13 +1286,13 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcursor: remove calls \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_CURSOR_REMOVE_BYTES\fP"
-.br
-.RI "\fIcursor: cursor-remove key bytes removed \fP"
-.ti -1c
 .RI "#define \fBWT_STAT_DSRC_CURSOR_RESET\fP"
 .br
 .RI "\fIcursor: reset calls \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_CURSOR_RESTART\fP"
+.br
+.RI "\fIcursor: restarted searches \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_CURSOR_SEARCH\fP"
 .br
@@ -1038,65 +1302,53 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIcursor: search near calls \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_CURSOR_TRUNCATE\fP"
+.br
+.RI "\fIcursor: truncate calls \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_CURSOR_UPDATE\fP"
 .br
 .RI "\fIcursor: update calls \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_CURSOR_UPDATE_BYTES\fP"
-.br
-.RI "\fIcursor: cursor-update value bytes updated \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_LSM_CHECKPOINT_THROTTLE\fP"
-.br
-.RI "\fILSM: sleep for LSM checkpoint throttle\&. \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_LSM_CHUNK_COUNT\fP"
-.br
-.RI "\fILSM: chunks in the LSM tree\&. \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_LSM_GENERATION_MAX\fP"
-.br
-.RI "\fILSM: highest merge generation in the LSM tree\&. \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_LSM_LOOKUP_NO_BLOOM\fP"
-.br
-.RI "\fILSM: queries that could have benefited from a Bloom filter that did not exist\&. \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_LSM_MERGE_THROTTLE\fP"
-.br
-.RI "\fILSM: sleep for LSM merge throttle\&. \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_REC_DICTIONARY\fP"
 .br
 .RI "\fIreconciliation: dictionary matches \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_REC_PAGE_DELETE_FAST\fP"
+.br
+.RI "\fIreconciliation: fast-path pages deleted \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_REC_SUFFIX_COMPRESSION\fP"
+.br
+.RI "\fIreconciliation: internal page key bytes discarded using suffix compression \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_REC_MULTIBLOCK_INTERNAL\fP"
 .br
 .RI "\fIreconciliation: internal page multi-block writes \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_REC_MULTIBLOCK_LEAF\fP"
-.br
-.RI "\fIreconciliation: leaf page multi-block writes \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_REC_MULTIBLOCK_MAX\fP"
-.br
-.RI "\fIreconciliation: maximum blocks required for a page \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_REC_OVERFLOW_KEY_INTERNAL\fP"
 .br
 .RI "\fIreconciliation: internal-page overflow keys \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_REC_PREFIX_COMPRESSION\fP"
+.br
+.RI "\fIreconciliation: leaf page key bytes discarded using prefix compression \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_DSRC_REC_MULTIBLOCK_LEAF\fP"
+.br
+.RI "\fIreconciliation: leaf page multi-block writes \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_REC_OVERFLOW_KEY_LEAF\fP"
 .br
 .RI "\fIreconciliation: leaf-page overflow keys \fP"
 .ti -1c
+.RI "#define \fBWT_STAT_DSRC_REC_MULTIBLOCK_MAX\fP"
+.br
+.RI "\fIreconciliation: maximum blocks required for a page \fP"
+.ti -1c
 .RI "#define \fBWT_STAT_DSRC_REC_OVERFLOW_VALUE\fP"
 .br
 .RI "\fIreconciliation: overflow values written \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_REC_PAGE_DELETE\fP"
-.br
-.RI "\fIreconciliation: pages deleted \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_REC_PAGE_MATCH\fP"
 .br
@@ -1110,13 +1362,9 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .br
 .RI "\fIreconciliation: page reconciliation calls for eviction \fP"
 .ti -1c
-.RI "#define \fBWT_STAT_DSRC_REC_PREFIX_COMPRESSION\fP"
+.RI "#define \fBWT_STAT_DSRC_REC_PAGE_DELETE\fP"
 .br
-.RI "\fIreconciliation: leaf page key bytes discarded using prefix compression \fP"
-.ti -1c
-.RI "#define \fBWT_STAT_DSRC_REC_SUFFIX_COMPRESSION\fP"
-.br
-.RI "\fIreconciliation: internal page key bytes discarded using suffix compression \fP"
+.RI "\fIreconciliation: pages deleted \fP"
 .ti -1c
 .RI "#define \fBWT_STAT_DSRC_SESSION_COMPACT\fP"
 .br
@@ -1129,6 +1377,30 @@ Statistics are accessed through cursors with \fC'statistics:'\fP URIs\&. Individ
 .RI "#define \fBWT_STAT_DSRC_TXN_UPDATE_CONFLICT\fP"
 .br
 .RI "\fItransaction: update conflicts \fP"
+.in -1c
+.SS "Statistics for join cursors"
+
+.in +1c
+.ti -1c
+.RI "#define \fBWT_STAT_JOIN_MAIN_ACCESS\fP"
+.br
+.RI "\fI: accesses to the main table \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_JOIN_BLOOM_FALSE_POSITIVE\fP"
+.br
+.RI "\fI: bloom filter false positives \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_JOIN_MEMBERSHIP_CHECK\fP"
+.br
+.RI "\fI: checks that conditions of membership are satisfied \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_JOIN_BLOOM_INSERT\fP"
+.br
+.RI "\fI: items inserted into a bloom filter \fP"
+.ti -1c
+.RI "#define \fBWT_STAT_JOIN_ITERATED\fP"
+.br
+.RI "\fI: items iterated \fP"
 .in -1c
 .SS "Log record and operation types"
 
@@ -1193,7 +1465,7 @@ A raw item of data to be managed, including a pointer to the data and a length\&
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_async\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, and \fBex_schema\&.c\fP\&.
+\fBex_async\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_log\&.c\fP, and \fBex_schema\&.c\fP\&.
 .PP
 \fBClass Members:\fP
 .RS 4
@@ -1205,27 +1477,13 @@ size_t \fIsize\fP The number of bytes in the data item\&. The maximum length of 
 .PP
 .RE
 .PP
-.SH "struct WT_LSN"
-.PP 
-A log sequence number, representing a position in the transaction log\&. 
-.PP
-\fBExamples: \fP
-.in +1c
-\fBex_log\&.c\fP\&.
-.PP
-\fBClass Members:\fP
-.RS 4
-uint32_t \fIfile\fP Log file number\&. 
-.br
-.PP
-wt_off_t \fIoffset\fP Log file offset\&. 
-.br
-.PP
-.RE
-.PP
 .SH "struct WT_CONFIG_ITEM"
 .PP 
 The configuration information returned by the WiredTiger configuration parsing functions in the \fBWT_EXTENSION_API\fP and the public API\&. 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_encrypt\&.c\fP, \fBex_file_system\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
 .PP
 \fBClass Members:\fP
 .RS 4
@@ -1256,6 +1514,10 @@ If the configuration string can be legally interpreted as an integer, using the 
 .PP
 .SH "Macro Definition Documentation"
 .PP 
+.SS "#define WT_CACHE_FULL"
+
+.PP
+Operation would overflow cache\&. This error is only generated when wiredtiger_open is configured to run in- memory, and an insert or update operation requires more than the configured cache size to complete\&. The operation may be retried; if a transaction is in progress, it should be rolled back and the operation retried in a new transaction\&. 
 .SS "#define WT_DUPLICATE_KEY"
 
 .PP
@@ -1279,7 +1541,7 @@ Item not found\&. This error indicates an operation did not find a value to retu
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_log\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+\fBex_encrypt\&.c\fP, \fBex_file_system\&.c\fP, \fBex_log\&.c\fP, \fBex_stat\&.c\fP, \fBex_thread\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
 .SS "#define WT_PANIC"
 
 .PP
@@ -1327,7 +1589,7 @@ No operation type set\&.
 \fBWT_ASYNC_OP::update\fP\&. 
 .SH "Function Documentation"
 .PP 
-.SS "int wiredtiger_config_parser_open (\fBWT_SESSION\fP *session, const char *config, size_tlen, \fBWT_CONFIG_PARSER\fP **config_parserp)"
+.SS "int wiredtiger_config_parser_open (\fBWT_SESSION\fP * session, const char * config, size_t len, \fBWT_CONFIG_PARSER\fP ** config_parserp)"
 
 .PP
 Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs\&. This API is outside the scope of a WiredTiger connection handle, since applications may need to generate configuration strings prior to calling \fBwiredtiger_open\fP\&. 
@@ -1345,17 +1607,38 @@ Create a handle that can be used to parse or create configuration strings compat
 .PP
 \fBReturns:\fP
 .RS 4
-zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
 .RE
 .PP
+.PP
+.nf
+     WT_CONFIG_ITEM k, v;
+        WT_CONFIG_PARSER *parser;
+        const char *config_string =
+            "path=/dev/loop,page_size=1024,log=(archive=true,file_max=20MB)";
 
-.SS "int wiredtiger_open (const char *home, \fBWT_EVENT_HANDLER\fP *errhandler, const char *config, \fBWT_CONNECTION\fP **connectionp)"
+        if ((ret = wiredtiger_config_parser_open(
+            NULL, config_string, strlen(config_string), &parser)) != 0) {
+                fprintf(stderr, "Error creating configuration parser: %s\n",
+                    wiredtiger_strerror(ret));
+                return (EXIT_FAILURE);
+        }
+        if ((ret = parser->close(parser)) != 0) {
+                fprintf(stderr, "Error closing configuration parser: %s\n",
+                    wiredtiger_strerror(ret));
+                return (EXIT_FAILURE);
+        }
+.fi
+.PP
+
+.SS "int wiredtiger_open (const char * home, \fBWT_EVENT_HANDLER\fP * errhandler, const char * config, \fBWT_CONNECTION\fP ** connectionp)"
 
 .PP
 Open a connection to a database\&. 
 .PP
 .nf
-    ret = wiredtiger_open(home, NULL, "create,cache_size=500M", &conn);
+       ret = wiredtiger_open(home, NULL,
+            "create,cache_size=5GB,log=(enabled,recover=on)", &conn);
 
 .fi
 .PP
@@ -1365,9 +1648,10 @@ Open a connection to a database\&.
 .RS 4
 \fIhome\fP The path to the database home directory\&. See \fBDatabase Home Directory\fP for more information\&. 
 .br
-\fIerrhandler\fP An error handler\&. If \fCNULL\fP, a builtin error handler is installed that writes error messages to stderr 
+\fIerrhandler\fP An error handler\&. If \fCNULL\fP, a builtin error handler is installed that writes error messages to stderr\&. See \fBError handling using the WT_EVENT_HANDLER\fP for more information\&. 
 .br
-\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCasync = (\fPasynchronous operations configuration options\&.a set of related configuration options defined below\&. \fC    enabled\fPenable asynchronous operation\&.a boolean flag; default \fCfalse\fP\&. \fC    ops_max\fPmaximum number of expected simultaneous asynchronous operations\&.an integer between 1 and 4096; default \fC1024\fP\&. \fC    threads\fPthe number of worker threads to service asynchronous requests\&. Each worker thread uses a session from the configured session_max\&.an integer between 1 and 20; default \fC2\fP\&. \fC )\fP\fCbuffer_alignment\fPin-memory alignment (in bytes) for buffers used for I/O\&. The default value of -1 indicates a platform-specific alignment value should be used (4KB on Linux systems when direct I/O is configured, zero elsewhere)\&.an integer between -1 and 1MB; default \fC-1\fP\&. \fCcache_overhead\fPassume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB)\&. This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads\&.an integer between 0 and 30; default \fC8\fP\&. \fCcache_size\fPmaximum heap memory to allocate for the cache\&. A database should configure either \fCcache_size\fP or \fCshared_cache\fP but not both\&.an integer between 1MB and 10TB; default \fC100MB\fP\&. \fCcheckpoint = (\fPperiodically checkpoint the database\&. Enabling the checkpoint server uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    log_size\fPwait for this amount of log record bytes to be written to the log between each checkpoint\&. A database can configure both log_size and wait to set an upper bound for checkpoints; setting this value above 0 configures periodic checkpoints\&.an integer between 0 and 2GB; default \fC0\fP\&. \fC    name\fPthe checkpoint name\&.a string; default \fC'WiredTigerCheckpoint'\fP\&. \fC    wait\fPseconds to wait between each checkpoint; setting this value above 0 configures periodic checkpoints\&.an integer between 0 and 100000; default \fC0\fP\&. \fC )\fP\fCcheckpoint_sync\fPflush files to stable storage when closing or writing checkpoints\&.a boolean flag; default \fCtrue\fP\&. \fCconfig_base\fPwrite the base configuration file if creating the database, see \fBWiredTiger\&.basecfg file\fP for more information\&.a boolean flag; default \fCtrue\fP\&. \fCcreate\fPcreate the database if it does not exist\&.a boolean flag; default \fCfalse\fP\&. \fCdirect_io\fPUse \fCO_DIRECT\fP to access files\&. Options are given as a list, such as \fC'direct_io=[data]'\fP\&. Configuring \fCdirect_io\fP requires care, see \fBDirect I/O\fP for important warnings\&. Including \fC'data'\fP will cause WiredTiger data files to use \fCO_DIRECT\fP, including \fC'log'\fP will cause WiredTiger log files to use \fCO_DIRECT\fP, and including \fC'checkpoint'\fP will cause WiredTiger data files opened at a checkpoint (i\&.e: read only) to use \fCO_DIRECT\fP\&.a list, with values chosen from the following options: \fC'checkpoint'\fP, \fC'data'\fP, \fC'log'\fP; default empty\&. \fCerror_prefix\fPprefix string for error messages\&.a string; default empty\&. \fCeviction = (\fPeviction configuration options\&.a set of related configuration options defined below\&. \fC    threads_max\fPmaximum number of threads WiredTiger will start to help evict pages from cache\&. The number of threads started will vary depending on the current eviction load\&. Each eviction worker thread uses a session from the configured session_max\&.an integer between 1 and 20; default \fC1\fP\&. \fC    threads_min\fPminimum number of threads WiredTiger will start to help evict pages from cache\&. The number of threads currently running will vary depending on the current eviction load\&.an integer between 1 and 20; default \fC1\fP\&. \fC )\fP\fCeviction_dirty_target\fPcontinue evicting until the cache has less dirty memory than the value, as a percentage of the total cache size\&. Dirty pages will only be evicted if the cache is full enough to trigger eviction\&.an integer between 10 and 99; default \fC80\fP\&. \fCeviction_target\fPcontinue evicting until the cache has less total memory than the value, as a percentage of the total cache size\&. Must be less than \fCeviction_trigger\fP\&.an integer between 10 and 99; default \fC80\fP\&. \fCeviction_trigger\fPtrigger eviction when the cache is using this much memory, as a percentage of the total cache size\&.an integer between 10 and 99; default \fC95\fP\&. \fCexclusive\fPfail if the database already exists, generally used with the \fCcreate\fP option\&.a boolean flag; default \fCfalse\fP\&. \fCextensions\fPlist of shared library extensions to load (using dlopen)\&. Any values specified to an library extension are passed to \fBWT_CONNECTION::load_extension\fP as the \fCconfig\fP parameter (for example, \fCextensions=(/path/ext\&.so={entry=my_entry})\fP)\&.a list of strings; default empty\&. \fCfile_extend\fPfile extension configuration\&. If set, extend files of the set type in allocations of the set size, instead of a block at a time as each new block is written\&. For example, \fCfile_extend=(data=16MB)\fP\&.a list, with values chosen from the following options: \fC'data'\fP, \fC'log'\fP; default empty\&. \fCfile_manager = (\fPcontrol how file handles are managed\&.a set of related configuration options defined below\&. \fC    close_handle_minimum\fPnumber of handles open before the file manager will look for handles to close\&.an integer greater than or equal to 0; default \fC250\fP\&. \fC    close_idle_time\fPamount of time in seconds a file handle needs to be idle before attempting to close it\&.an integer between 1 and 100000; default \fC30\fP\&. \fC    close_scan_interval\fPinterval in seconds at which to check for files that are inactive and close them\&.an integer between 1 and 100000; default \fC10\fP\&. \fC )\fP\fChazard_max\fPmaximum number of simultaneous hazard pointers per session handle\&.an integer greater than or equal to 15; default \fC1000\fP\&. \fClog = (\fPenable logging\&. Enabling logging uses three sessions from the configured session_max\&.a set of related configuration options defined below\&. \fC    archive\fPautomatically archive unneeded log files\&.a boolean flag; default \fCtrue\fP\&. \fC    compressor\fPconfigure a compressor for log records\&. Permitted values are \fC'none'\fP or custom compression engine name created with \fBWT_CONNECTION::add_compressor\fP\&. If WiredTiger has builtin support for \fC'bzip2'\fP, \fC'snappy'\fP, \fC'lz4'\fP or \fC'zlib'\fP compression, these names are also available\&. See \fBCompressors\fP for more information\&.a string; default \fCnone\fP\&. \fC    enabled\fPenable logging subsystem\&.a boolean flag; default \fCfalse\fP\&. \fC    file_max\fPthe maximum size of log files\&.an integer between 100KB and 2GB; default \fC100MB\fP\&. \fC    path\fPthe path to a directory into which the log files are written\&. If the value is not an absolute path name, the files are created relative to the database home\&.a string; default empty\&. \fC    prealloc\fPpre-allocate log files\&.a boolean flag; default \fCtrue\fP\&. \fC    recover\fPrun recovery or error if recovery needs to run after an unclean shutdown\&.a string, chosen from the following options: \fC'error'\fP, \fC'on'\fP; default \fCon\fP\&. \fC )\fP\fClsm_manager = (\fPconfigure database wide options for LSM tree management\&. The LSM manager is started automatically the first time an LSM tree is opened\&. The LSM manager uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    merge\fPmerge LSM chunks where possible\&.a boolean flag; default \fCtrue\fP\&. \fC    worker_thread_max\fPConfigure a set of threads to manage merging LSM trees in the database\&. Each worker thread uses a session handle from the configured session_max\&.an integer between 3 and 20; default \fC4\fP\&. \fC )\fP\fCmmap\fPUse memory mapping to access files when possible\&.a boolean flag; default \fCtrue\fP\&. \fCmultiprocess\fPpermit sharing between processes (will automatically start an RPC server for primary processes and use RPC for secondary processes)\&. \fBNot yet supported in WiredTiger\fP\&.a boolean flag; default \fCfalse\fP\&. \fCsession_max\fPmaximum expected number of sessions (including server threads)\&.an integer greater than or equal to 1; default \fC100\fP\&. \fCshared_cache = (\fPshared cache configuration options\&. A database should configure either a cache_size or a shared_cache not both\&. Enabling a shared cache uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    chunk\fPthe granularity that a shared cache is redistributed\&.an integer between 1MB and 10TB; default \fC10MB\fP\&. \fC    name\fPthe name of a cache that is shared between databases or \fC'none'\fP when no shared cache is configured\&.a string; default \fCnone\fP\&. \fC    reserve\fPamount of cache this database is guaranteed to have available from the shared cache\&. This setting is per database\&. Defaults to the chunk size\&.an integer; default \fC0\fP\&. \fC    size\fPmaximum memory to allocate for the shared cache\&. Setting this will update the value if one is already set\&.an integer between 1MB and 10TB; default \fC500MB\fP\&. \fC )\fP\fCstatistics\fPMaintain database statistics, which may impact performance\&. Choosing 'all' maintains all statistics regardless of cost, 'fast' maintains a subset of statistics that are relatively inexpensive, 'none' turns off all statistics\&. The 'clear' configuration resets statistics after they are gathered, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared)\&. When 'clear' is configured for the database, gathered statistics are reset each time a statistics cursor is used to gather statistics, as well as each time statistics are logged using the \fCstatistics_log\fP configuration\&. See \fBStatistics\fP for more information\&.a list, with values chosen from the following options: \fC'all'\fP, \fC'fast'\fP, \fC'none'\fP, \fC'clear'\fP; default \fCnone\fP\&. \fCstatistics_log = (\fPlog any statistics the database is configured to maintain, to a file\&. See \fBStatistics\fP for more information\&. Enabling the statistics log server uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    on_close\fPlog statistics on database close\&.a boolean flag; default \fCfalse\fP\&. \fC    path\fPthe pathname to a file into which the log records are written, may contain ISO C standard strftime conversion specifications\&. If the value is not an absolute path name, the file is created relative to the database home\&.a string; default \fC'WiredTigerStat\&.%d\&.%H'\fP\&. \fC    sources\fPif non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging\&. The list may include URIs matching a single data source ('table:mytable'), or a URI matching all data sources of a particular type ('table:')\&.a list of strings; default empty\&. \fC    timestamp\fPa timestamp prepended to each log record, may contain strftime conversion specifications\&.a string; default \fC'%b %d %H:%M:%S'\fP\&. \fC    wait\fPseconds to wait between each write of the log records; setting this value above 0 configures statistics logging\&.an integer between 0 and 100000; default \fC0\fP\&. \fC )\fP\fCtransaction_sync = (\fPhow to sync log records when the transaction commits\&.a set of related configuration options defined below\&. \fC    enabled\fPwhether to sync the log on every commit by default, can be overridden by the \fCsync\fP setting to \fBWT_SESSION::begin_transaction\fP\&.a boolean flag; default \fCfalse\fP\&. \fC    method\fPthe method used to ensure log records are stable on disk, see \fBCommit-level durability\fP for more information\&.a string, chosen from the following options: \fC'dsync'\fP, \fC'fsync'\fP, \fC'none'\fP; default \fCfsync\fP\&. \fC )\fP\fCuse_environment_priv\fPuse the \fCWIREDTIGER_CONFIG\fP and \fCWIREDTIGER_HOME\fP environment variables regardless of whether or not the process is running with special privileges\&. See \fBDatabase Home Directory\fP for more information\&.a boolean flag; default \fCfalse\fP\&. \fCverbose\fPenable messages for various events\&. Only available if WiredTiger is configured with --enable-verbose\&. Options are given as a list, such as \fC'verbose=[evictserver,read]'\fP\&.a list, with values chosen from the following options: \fC'api'\fP, \fC'block'\fP, \fC'checkpoint'\fP, \fC'compact'\fP, \fC'evict'\fP, \fC'evictserver'\fP, \fC'fileops'\fP, \fC'log'\fP, \fC'lsm'\fP, \fC'metadata'\fP, \fC'mutex'\fP, \fC'overflow'\fP, \fC'read'\fP, \fC'reconcile'\fP, \fC'recovery'\fP, \fC'salvage'\fP, \fC'shared_cache'\fP, \fC'split'\fP, \fC'temporary'\fP, \fC'transaction'\fP, \fC'verify'\fP, \fC'version'\fP, \fC'write'\fP; default empty\&. Additionally, if files named \fCWiredTiger\&.config\fP or \fCWiredTiger\&.basecfg\fP appear in the WiredTiger home directory, they are read for configuration values (see \fBWiredTiger\&.config file\fP and \fBWiredTiger\&.basecfg file\fP for details)\&. See \fBConfiguration ordering\fP for ordering of the configuration mechanisms\&. 
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCasync = (\fPasynchronous operations configuration options\&.a set of related configuration options defined below\&. \fC    enabled\fPenable asynchronous operation\&.a boolean flag; default \fCfalse\fP\&. \fC    ops_max\fPmaximum number of expected simultaneous asynchronous operations\&.an integer between 1 and 4096; default \fC1024\fP\&. \fC    threads\fPthe number of worker threads to service asynchronous requests\&. Each worker thread uses a session from the configured session_max\&.an integer between 1 and 20; default \fC2\fP\&. \fC )\fP\fCbuffer_alignment\fPin-memory alignment (in bytes) for buffers used for I/O\&. The default value of -1 indicates a platform-specific alignment value should be used (4KB on Linux systems when direct I/O is configured, zero elsewhere)\&.an integer between -1 and 1MB; default \fC-1\fP\&. \fCcache_overhead\fPassume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB)\&. This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads\&.an integer between 0 and 30; default \fC8\fP\&. \fCcache_size\fPmaximum heap memory to allocate for the cache\&. A database should configure either \fCcache_size\fP or \fCshared_cache\fP but not both\&.an integer between 1MB and 10TB; default \fC100MB\fP\&. \fCcheckpoint = (\fPperiodically checkpoint the database\&. Enabling the checkpoint server uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    log_size\fPwait for this amount of log record bytes to be written to the log between each checkpoint\&. A database can configure both log_size and wait to set an upper bound for checkpoints; setting this value above 0 configures periodic checkpoints\&.an integer between 0 and 2GB; default \fC0\fP\&. \fC    name\fPthe checkpoint name\&.a string; default \fC'WiredTigerCheckpoint'\fP\&. \fC    wait\fPseconds to wait between each checkpoint; setting this value above 0 configures periodic checkpoints\&.an integer between 0 and 100000; default \fC0\fP\&. \fC )\fP\fCcheckpoint_sync\fPflush files to stable storage when closing or writing checkpoints\&.a boolean flag; default \fCtrue\fP\&. \fCconfig_base\fPwrite the base configuration file if creating the database\&. If \fCfalse\fP in the config passed directly to \fBwiredtiger_open\fP, will ignore any existing base configuration file in addition to not creating one\&. See \fBWiredTiger\&.basecfg file\fP for more information\&.a boolean flag; default \fCtrue\fP\&. \fCcreate\fPcreate the database if it does not exist\&.a boolean flag; default \fCfalse\fP\&. \fCdirect_io\fPUse \fCO_DIRECT\fP on POSIX systems, and \fCFILE_FLAG_NO_BUFFERING\fP on Windows to access files\&. Options are given as a list, such as \fC'direct_io=[data]'\fP\&. Configuring \fCdirect_io\fP requires care, see \fBDirect I/O\fP for important warnings\&. Including \fC'data'\fP will cause WiredTiger data files to use direct I/O, including \fC'log'\fP will cause WiredTiger log files to use direct I/O, and including \fC'checkpoint'\fP will cause WiredTiger data files opened at a checkpoint (i\&.e: read only) to use direct I/O\&. \fCdirect_io\fP should be combined with \fCwrite_through\fP to get the equivalent of \fCO_DIRECT\fP on Windows\&.a list, with values chosen from the following options: \fC'checkpoint'\fP, \fC'data'\fP, \fC'log'\fP; default empty\&. \fCencryption = (\fPconfigure an encryptor for system wide metadata and logs\&. If a system wide encryptor is set, it is also used for encrypting data files and tables, unless encryption configuration is explicitly set for them when they are created with \fBWT_SESSION::create\fP\&.a set of related configuration options defined below\&. \fC    keyid\fPAn identifier that identifies a unique instance of the encryptor\&. It is stored in clear text, and thus is available when the wiredtiger database is reopened\&. On the first use of a (name, keyid) combination, the \fBWT_ENCRYPTOR::customize\fP function is called with the keyid as an argument\&.a string; default empty\&. \fC    name\fPPermitted values are \fC'none'\fP or custom encryption engine name created with \fBWT_CONNECTION::add_encryptor\fP\&. See \fBEncryptors\fP for more information\&.a string; default \fCnone\fP\&. \fC    secretkey\fPA string that is passed to the \fBWT_ENCRYPTOR::customize\fP function\&. It is never stored in clear text, so must be given to any subsequent \fBwiredtiger_open\fP calls to reopen the database\&. It must also be provided to any 'wt' commands used with this database\&.a string; default empty\&. \fC )\fP\fCerror_prefix\fPprefix string for error messages\&.a string; default empty\&. \fCeviction = (\fPeviction configuration options\&.a set of related configuration options defined below\&. \fC    threads_max\fPmaximum number of threads WiredTiger will start to help evict pages from cache\&. The number of threads started will vary depending on the current eviction load\&. Each eviction worker thread uses a session from the configured session_max\&.an integer between 1 and 20; default \fC1\fP\&. \fC    threads_min\fPminimum number of threads WiredTiger will start to help evict pages from cache\&. The number of threads currently running will vary depending on the current eviction load\&.an integer between 1 and 20; default \fC1\fP\&. \fC )\fP\fCeviction_dirty_target\fPcontinue evicting until the cache has less dirty memory than the value, as a percentage of the total cache size\&. Dirty pages will only be evicted if the cache is full enough to trigger eviction\&.an integer between 5 and 99; default \fC80\fP\&. \fCeviction_dirty_trigger\fPtrigger eviction when the cache is using this much memory for dirty content, as a percentage of the total cache size\&. This setting only alters behavior if it is lower than eviction_trigger\&.an integer between 5 and 99; default \fC95\fP\&. \fCeviction_target\fPcontinue evicting until the cache has less total memory than the value, as a percentage of the total cache size\&. Must be less than \fCeviction_trigger\fP\&.an integer between 10 and 99; default \fC80\fP\&. \fCeviction_trigger\fPtrigger eviction when the cache is using this much memory, as a percentage of the total cache size\&.an integer between 10 and 99; default \fC95\fP\&. \fCexclusive\fPfail if the database already exists, generally used with the \fCcreate\fP option\&.a boolean flag; default \fCfalse\fP\&. \fCextensions\fPlist of shared library extensions to load (using dlopen)\&. Any values specified to an library extension are passed to \fBWT_CONNECTION::load_extension\fP as the \fCconfig\fP parameter (for example, \fCextensions=(/path/ext\&.so={entry=my_entry})\fP)\&.a list of strings; default empty\&. \fCfile_extend\fPfile extension configuration\&. If set, extend files of the set type in allocations of the set size, instead of a block at a time as each new block is written\&. For example, \fCfile_extend=(data=16MB)\fP\&.a list, with values chosen from the following options: \fC'data'\fP, \fC'log'\fP; default empty\&. \fCfile_manager = (\fPcontrol how file handles are managed\&.a set of related configuration options defined below\&. \fC    close_handle_minimum\fPnumber of handles open before the file manager will look for handles to close\&.an integer greater than or equal to 0; default \fC250\fP\&. \fC    close_idle_time\fPamount of time in seconds a file handle needs to be idle before attempting to close it\&. A setting of 0 means that idle handles are not closed\&.an integer between 0 and 100000; default \fC30\fP\&. \fC    close_scan_interval\fPinterval in seconds at which to check for files that are inactive and close them\&.an integer between 1 and 100000; default \fC10\fP\&. \fC )\fP\fChazard_max\fPmaximum number of simultaneous hazard pointers per session handle\&.an integer greater than or equal to 15; default \fC1000\fP\&. \fCin_memory\fPkeep data in-memory only\&. See \fBIn-memory databases\fP for more information\&.a boolean flag; default \fCfalse\fP\&. \fClog = (\fPenable logging\&. Enabling logging uses three sessions from the configured session_max\&.a set of related configuration options defined below\&. \fC    archive\fPautomatically archive unneeded log files\&.a boolean flag; default \fCtrue\fP\&. \fC    compressor\fPconfigure a compressor for log records\&. Permitted values are \fC'none'\fP or custom compression engine name created with \fBWT_CONNECTION::add_compressor\fP\&. If WiredTiger has builtin support for \fC'snappy'\fP, \fC'lz4'\fP or \fC'zlib'\fP compression, these names are also available\&. See \fBCompressors\fP for more information\&.a string; default \fCnone\fP\&. \fC    enabled\fPenable logging subsystem\&.a boolean flag; default \fCfalse\fP\&. \fC    file_max\fPthe maximum size of log files\&.an integer between 100KB and 2GB; default \fC100MB\fP\&. \fC    path\fPthe path to a directory into which the log files are written\&. If the value is not an absolute path name, the files are created relative to the database home\&.a string; default \fC'\&.'\fP\&. \fC    prealloc\fPpre-allocate log files\&.a boolean flag; default \fCtrue\fP\&. \fC    recover\fPrun recovery or error if recovery needs to run after an unclean shutdown\&.a string, chosen from the following options: \fC'error'\fP, \fC'on'\fP; default \fCon\fP\&. \fC    zero_fill\fPmanually write zeroes into log files\&.a boolean flag; default \fCfalse\fP\&. \fC )\fP\fClsm_manager = (\fPconfigure database wide options for LSM tree management\&. The LSM manager is started automatically the first time an LSM tree is opened\&. The LSM manager uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    merge\fPmerge LSM chunks where possible\&.a boolean flag; default \fCtrue\fP\&. \fC    worker_thread_max\fPConfigure a set of threads to manage merging LSM trees in the database\&. Each worker thread uses a session handle from the configured session_max\&.an integer between 3 and 20; default \fC4\fP\&. \fC )\fP\fCmmap\fPUse memory mapping to access files when possible\&.a boolean flag; default \fCtrue\fP\&. \fCmultiprocess\fPpermit sharing between processes (will automatically start an RPC server for primary processes and use RPC for secondary processes)\&. \fBNot yet supported in WiredTiger\fP\&.a boolean flag; default \fCfalse\fP\&. \fCreadonly\fPopen connection in read-only mode\&. The database must exist\&. All methods that may modify a database are disabled\&. See \fBDatabase read-only mode\fP for more information\&.a boolean flag; default \fCfalse\fP\&. \fCsession_max\fPmaximum expected number of sessions (including server threads)\&.an integer greater than or equal to 1; default \fC100\fP\&. \fCshared_cache = (\fPshared cache configuration options\&. A database should configure either a cache_size or a shared_cache not both\&. Enabling a shared cache uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    chunk\fPthe granularity that a shared cache is redistributed\&.an integer between 1MB and 10TB; default \fC10MB\fP\&. \fC    name\fPthe name of a cache that is shared between databases or \fC'none'\fP when no shared cache is configured\&.a string; default \fCnone\fP\&. \fC    quota\fPmaximum size of cache this database can be allocated from the shared cache\&. Defaults to the entire shared cache size\&.an integer; default \fC0\fP\&. \fC    reserve\fPamount of cache this database is guaranteed to have available from the shared cache\&. This setting is per database\&. Defaults to the chunk size\&.an integer; default \fC0\fP\&. \fC    size\fPmaximum memory to allocate for the shared cache\&. Setting this will update the value if one is already set\&.an integer between 1MB and 10TB; default \fC500MB\fP\&. \fC )\fP\fCstatistics\fPMaintain database statistics, which may impact performance\&. Choosing 'all' maintains all statistics regardless of cost, 'fast' maintains a subset of statistics that are relatively inexpensive, 'none' turns off all statistics\&. The 'clear' configuration resets statistics after they are gathered, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared)\&. When 'clear' is configured for the database, gathered statistics are reset each time a statistics cursor is used to gather statistics, as well as each time statistics are logged using the \fCstatistics_log\fP configuration\&. See \fBStatistics\fP for more information\&.a list, with values chosen from the following options: \fC'all'\fP, \fC'fast'\fP, \fC'none'\fP, \fC'clear'\fP; default \fCnone\fP\&. \fCstatistics_log = (\fPlog any statistics the database is configured to maintain, to a file\&. See \fBStatistics\fP for more information\&. Enabling the statistics log server uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    json\fPencode statistics in JSON format\&.a boolean flag; default \fCfalse\fP\&. \fC    on_close\fPlog statistics on database close\&.a boolean flag; default \fCfalse\fP\&. \fC    path\fPthe pathname to a file into which the log records are written, may contain ISO C standard strftime conversion specifications\&. If the value is not an absolute path name, the file is created relative to the database home\&.a string; default \fC'WiredTigerStat\&.%d\&.%H'\fP\&. \fC    sources\fPif non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging\&. The list may include URIs matching a single data source ('table:mytable'), or a URI matching all data sources of a particular type ('table:')\&.a list of strings; default empty\&. \fC    timestamp\fPa timestamp prepended to each log record, may contain strftime conversion specifications, when \fCjson\fP is configured, defaults to \fC'%FT%Y\&.000Z'\fP\&.a string; default \fC'%b %d
+%H:%M:%S'\fP\&. \fC    wait\fPseconds to wait between each write of the log records; setting this value above 0 configures statistics logging\&.an integer between 0 and 100000; default \fC0\fP\&. \fC )\fP\fCtransaction_sync = (\fPhow to sync log records when the transaction commits\&.a set of related configuration options defined below\&. \fC    enabled\fPwhether to sync the log on every commit by default, can be overridden by the \fCsync\fP setting to \fBWT_SESSION::commit_transaction\fP\&.a boolean flag; default \fCfalse\fP\&. \fC    method\fPthe method used to ensure log records are stable on disk, see \fBCommit-level durability\fP for more information\&.a string, chosen from the following options: \fC'dsync'\fP, \fC'fsync'\fP, \fC'none'\fP; default \fCfsync\fP\&. \fC )\fP\fCuse_environment\fPuse the \fCWIREDTIGER_CONFIG\fP and \fCWIREDTIGER_HOME\fP environment variables if the process is not running with special privileges\&. See \fBDatabase Home Directory\fP for more information\&.a boolean flag; default \fCtrue\fP\&. \fCuse_environment_priv\fPuse the \fCWIREDTIGER_CONFIG\fP and \fCWIREDTIGER_HOME\fP environment variables even if the process is running with special privileges\&. See \fBDatabase Home Directory\fP for more information\&.a boolean flag; default \fCfalse\fP\&. \fCverbose\fPenable messages for various events\&. Only available if WiredTiger is configured with --enable-verbose\&. Options are given as a list, such as \fC'verbose=[evictserver,read]'\fP\&.a list, with values chosen from the following options: \fC'api'\fP, \fC'block'\fP, \fC'checkpoint'\fP, \fC'compact'\fP, \fC'evict'\fP, \fC'evictserver'\fP, \fC'fileops'\fP, \fC'handleops'\fP, \fC'log'\fP, \fC'lsm'\fP, \fC'lsm_manager'\fP, \fC'metadata'\fP, \fC'mutex'\fP, \fC'overflow'\fP, \fC'read'\fP, \fC'rebalance'\fP, \fC'reconcile'\fP, \fC'recovery'\fP, \fC'salvage'\fP, \fC'shared_cache'\fP, \fC'split'\fP, \fC'temporary'\fP, \fC'transaction'\fP, \fC'verify'\fP, \fC'version'\fP, \fC'write'\fP; default empty\&. \fCwrite_through\fPUse \fCFILE_FLAG_WRITE_THROUGH\fP on Windows to write to files\&. Ignored on non-Windows systems\&. Options are given as a list, such as \fC'write_through=[data]'\fP\&. Configuring \fCwrite_through\fP requires care, see \fBDirect I/O\fP for important warnings\&. Including \fC'data'\fP will cause WiredTiger data files to write through cache, including \fC'log'\fP will cause WiredTiger log files to write through cache\&. \fCwrite_through\fP should be combined with \fCdirect_io\fP to get the equivalent of POSIX \fCO_DIRECT\fP on Windows\&.a list, with values chosen from the following options: \fC'data'\fP, \fC'log'\fP; default empty\&. Additionally, if files named \fCWiredTiger\&.config\fP or \fCWiredTiger\&.basecfg\fP appear in the WiredTiger home directory, they are read for configuration values (see \fBWiredTiger\&.config file\fP and \fBWiredTiger\&.basecfg file\fP for details)\&. See \fBConfiguration ordering\fP for ordering of the configuration mechanisms\&. 
 .br
 \fIconnectionp\fP A pointer to the newly opened connection handle 
 .RE
@@ -1381,8 +1665,8 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int wiredtiger_pack_close (\fBWT_PACK_STREAM\fP *ps, size_t *usedp)"
+\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int wiredtiger_pack_close (\fBWT_PACK_STREAM\fP * ps, size_t * usedp)"
 
 .PP
 Close a packing stream\&. 
@@ -1400,7 +1684,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_pack_int (\fBWT_PACK_STREAM\fP *ps, int64_ti)"
+.SS "int wiredtiger_pack_int (\fBWT_PACK_STREAM\fP * ps, int64_t i)"
 
 .PP
 Pack a signed integer into a packing stream\&. 
@@ -1418,7 +1702,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_pack_item (\fBWT_PACK_STREAM\fP *ps, \fBWT_ITEM\fP *item)"
+.SS "int wiredtiger_pack_item (\fBWT_PACK_STREAM\fP * ps, \fBWT_ITEM\fP * item)"
 
 .PP
 Pack an item into a packing stream\&. 
@@ -1436,7 +1720,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_pack_start (\fBWT_SESSION\fP *session, const char *format, void *buffer, size_tsize, \fBWT_PACK_STREAM\fP **psp)"
+.SS "int wiredtiger_pack_start (\fBWT_SESSION\fP * session, const char * format, void * buffer, size_t size, \fBWT_PACK_STREAM\fP ** psp)"
 
 .PP
 Start a packing operation into a buffer with the given format string\&. This should be followed by a series of calls to \fBwiredtiger_pack_item\fP, \fBwiredtiger_pack_int\fP, \fBwiredtiger_pack_str\fP or \fBwiredtiger_pack_uint\fP to fill in the values\&.
@@ -1460,7 +1744,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_pack_str (\fBWT_PACK_STREAM\fP *ps, const char *s)"
+.SS "int wiredtiger_pack_str (\fBWT_PACK_STREAM\fP * ps, const char * s)"
 
 .PP
 Pack a string into a packing stream\&. 
@@ -1478,7 +1762,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_pack_uint (\fBWT_PACK_STREAM\fP *ps, uint64_tu)"
+.SS "int wiredtiger_pack_uint (\fBWT_PACK_STREAM\fP * ps, uint64_t u)"
 
 .PP
 Pack an unsigned integer into a packing stream\&. 
@@ -1496,18 +1780,17 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "const char* wiredtiger_strerror (interror)"
+.SS "const char* wiredtiger_strerror (int error)"
 
 .PP
-Return information about a WiredTiger error as a string, not thread-safe\&. 
+Return information about a WiredTiger error as a string (see \fBWT_SESSION::strerror\fP for a thread-safe API)\&. 
 .PP
 .nf
      const char *key = "non-existent key";
         cursor->set_key(cursor, key);
         if ((ret = cursor->remove(cursor)) != 0) {
                 fprintf(stderr,
-                    "cursor\&.remove: %s\n",
-                    cursor->session->strerror(cursor->session, ret));
+                    "cursor\&.remove: %s\n", wiredtiger_strerror(ret));
                 return (ret);
         }
 
@@ -1517,7 +1800,7 @@ Return information about a WiredTiger error as a string, not thread-safe\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIerror\fP a return value from a WiredTiger call 
+\fIerror\fP a return value from a WiredTiger, ISO C, or POSIX standard API 
 .RE
 .PP
 \fBReturns:\fP
@@ -1529,8 +1812,8 @@ a string representation of the error
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extending\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int wiredtiger_struct_pack (\fBWT_SESSION\fP *session, void *buffer, size_tsize, const char *format, \&.\&.\&.)"
+\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extending\&.c\fP, \fBex_file_system\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int wiredtiger_struct_pack (\fBWT_SESSION\fP * session, void * buffer, size_t size, const char * format,  \&.\&.\&.)"
 
 .PP
 Pack a structure into a buffer\&. See \fBPacking and Unpacking Data\fP for a description of the permitted format strings\&.
@@ -1540,7 +1823,7 @@ For example, the string \fC'iSh'\fP will pack a 32-bit integer followed by a NUL
 .PP
 .PP
 .nf
- char buf[100];
+       char buf[100];
         ret = wiredtiger_struct_pack(
             session, buf, sizeof(buf), "iSh", 42, "hello", -3);
 .fi
@@ -1579,14 +1862,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_pack\&.c\fP\&.
-.SS "int wiredtiger_struct_size (\fBWT_SESSION\fP *session, size_t *sizep, const char *format, \&.\&.\&.)"
+.SS "int wiredtiger_struct_size (\fBWT_SESSION\fP * session, size_t * sizep, const char * format,  \&.\&.\&.)"
 
 .PP
 Calculate the size required to pack a structure\&. Note that for variable-sized fields including variable-sized strings and integers, the calculated sized merely reflects the expected sizes specified in the format string itself\&.
 .PP
 .PP
 .nf
-   size_t size;
+       size_t size;
         ret = wiredtiger_struct_size(session, &size, "iSh", 42, "hello", -3);
 .fi
 .PP
@@ -1611,14 +1894,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_pack\&.c\fP\&.
-.SS "int wiredtiger_struct_unpack (\fBWT_SESSION\fP *session, const void *buffer, size_tsize, const char *format, \&.\&.\&.)"
+.SS "int wiredtiger_struct_unpack (\fBWT_SESSION\fP * session, const void * buffer, size_t size, const char * format,  \&.\&.\&.)"
 
 .PP
 Unpack a structure from a buffer\&. Reverse of \fBwiredtiger_struct_pack\fP: gets values out of a packed byte string\&.
 .PP
 .PP
 .nf
-        int i;
+   int i;
         char *s;
         short h;
         ret = wiredtiger_struct_unpack(
@@ -1648,7 +1931,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_extractor\&.c\fP, \fBex_pack\&.c\fP, and \fBex_schema\&.c\fP\&.
-.SS "int wiredtiger_unpack_int (\fBWT_PACK_STREAM\fP *ps, int64_t *ip)"
+.SS "int wiredtiger_unpack_int (\fBWT_PACK_STREAM\fP * ps, int64_t * ip)"
 
 .PP
 Unpack a signed integer from a packing stream\&. 
@@ -1666,7 +1949,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_unpack_item (\fBWT_PACK_STREAM\fP *ps, \fBWT_ITEM\fP *item)"
+.SS "int wiredtiger_unpack_item (\fBWT_PACK_STREAM\fP * ps, \fBWT_ITEM\fP * item)"
 
 .PP
 Unpack an item from a packing stream\&. 
@@ -1684,7 +1967,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_unpack_start (\fBWT_SESSION\fP *session, const char *format, const void *buffer, size_tsize, \fBWT_PACK_STREAM\fP **psp)"
+.SS "int wiredtiger_unpack_start (\fBWT_SESSION\fP * session, const char * format, const void * buffer, size_t size, \fBWT_PACK_STREAM\fP ** psp)"
 
 .PP
 Start an unpacking operation from a buffer with the given format string\&. This should be followed by a series of calls to \fBwiredtiger_unpack_item\fP, \fBwiredtiger_unpack_int\fP, \fBwiredtiger_unpack_str\fP or \fBwiredtiger_unpack_uint\fP to retrieve the packed values\&.
@@ -1708,7 +1991,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_unpack_str (\fBWT_PACK_STREAM\fP *ps, const char **sp)"
+.SS "int wiredtiger_unpack_str (\fBWT_PACK_STREAM\fP * ps, const char ** sp)"
 
 .PP
 Unpack a string from a packing stream\&. 
@@ -1726,7 +2009,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int wiredtiger_unpack_uint (\fBWT_PACK_STREAM\fP *ps, uint64_t *up)"
+.SS "int wiredtiger_unpack_uint (\fBWT_PACK_STREAM\fP * ps, uint64_t * up)"
 
 .PP
 Unpack an unsigned integer from a packing stream\&. 
@@ -1744,7 +2027,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "const char* wiredtiger_version (int *majorp, int *minorp, int *patchp)"
+.SS "const char* wiredtiger_version (int * majorp, int * minorp, int * patchp)"
 
 .PP
 Get version information\&. 

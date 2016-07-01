@@ -1,4 +1,4 @@
-.TH "backup_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "backup_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,6 +19,8 @@ Close the cursor; the cursor must not be closed until all of the files have been
 The directory into which the files are copied may subsequently be specified as an directory to the \fCwiredtiger\&.open\fP function and accessed as a WiredTiger database home\&.
 .PP
 Copying the database files for a backup does not require any special alignment or block size (specifically, Linux or Windows filesystems that do not support read/write isolation can be safely read for backups)\&.
+.PP
+The database file may grow in size during the copy, and the file copy should not consider that an error\&. Blocks appended to the file after the copy starts can be safely ignored, that is, it is correct for the copy to determine an initial size of the file and then copy that many bytes, ignoring any bytes appended after the backup cursor was opened\&.
 .PP
 The cursor must not be closed until all of the files have been copied, however, there is no requirement the files be copied in any order or in any relationship to the Cursor\&.next calls, only that all files have been copied before the cursor is closed\&. For example, applications might aggregate the file names from the cursor and then list the file names as arguments to a file archiver such as the system tar utility\&.
 .PP
@@ -104,18 +106,26 @@ The following is the procedure for incrementally backing up a database and remov
 .IP "1." 4
 Perform a full backup of the database (as described above)\&.
 .IP "2." 4
-Perform a full database checkpoint\&.
+Open a cursor on the \fC'backup:'\fP data source, configured with the \fC'target=(\\'log:\\')'\fP target specified, which begins the process of an incremental backup\&.
 .IP "3." 4
-Open a cursor on the \fC'backup:'\fP data source, with the \fC'target=(\\'log:\\')'\fP target specified, which begins the process of an incremental backup\&.
+Copy each log file returned by the Cursor\&.next method to the backup directory\&. It is not an error to copy a log file which has been copied before, but care should be taken to ensure each log file is completely copied as the most recent log file may grow in size while being copied\&.
 .IP "4." 4
-Copy each log file returned by the Cursor\&.next method to the backup directory\&. It is not an error to copy a log file which has been copied before, but care should be taken to ensure each log file is completely copied as the most recent log file may change in size while being copied\&.
+If all log files have been successfully copied, archive the log files by calling the Session\&.truncate method with the URI \fClog:\fP and specifying the backup cursor as the start cursor to that method\&. (Note there is no requirement backups be coordinated with database checkpoints, however, an incremental backup will repeatedly copy the same files, and will not make additional log files available for archival, unless there was a checkpoint after the previous incremental backup\&.)
 .IP "5." 4
-If all log files have been successfully copied, archive the log files by calling the Session\&.truncate method with the URI \fClog:\fP and specifying the backup cursor as the start cursor to that method\&.
-.IP "6." 4
 Close the backup cursor\&.
 .PP
 .PP
-Steps 2-6 can be repeated any number of times before step 1 is repeated\&. These steps can be repeated as long as the backup database directory has not been opened, recovery run and become live\&. Once the database becomes live, you must repeat all steps 1-6 to another, different backup database directory\&.
+Steps 2-5 can be repeated any number of times before step 1 is repeated\&. Full and incremental backups may be repeated as long as the backup database directory has not been opened and recovery run\&. Once recovery has run in a backup directory, you can no longer back up to that database directory\&.
+.PP
+An example of opening the backup data source for an incremental backup:
+.PP
+.PP
+.nf
+            /* Open the backup data source for incremental backup\&. */
+            cursor = session\&.open_cursor("backup:", null, "target=(\"log:\")");
+.fi
+.PP
+ 
 .SH "Backup and O_DIRECT"
 .PP
 Many Linux systems do not support mixing \fCO_DIRECT\fP and memory mapping or normal I/O to the same file\&. If \fCO_DIRECT\fP is configured for data or log files on Linux systems (using the wiredtiger_open \fCdirect_io\fP configuration), any program used to copy files during backup should also specify \fCO_DIRECT\fP when configuring its file access\&. Likewise, when \fCO_DIRECT\fP is not configured by the database application, programs copying files should not configure \fCO_DIRECT\fP\&. 

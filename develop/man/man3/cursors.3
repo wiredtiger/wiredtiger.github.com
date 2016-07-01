@@ -1,4 +1,4 @@
-.TH "cursors" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "cursors" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -28,7 +28,7 @@ The following are the builtin basic cursor types: URITypeNotes \fCtable:<table n
 .br
  see \fBLog cursors\fP for details \fCmetadata:[create]\fPmetadata cursor (optionally only returning configuration strings for \fBWT_SESSION::create\fP if \fCcreate\fP is appendedkey=\fCstring\fP, value=\fCstring\fP,
 .br
- see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabase or data source statistics cursorkey=\fCint id\fP,
+ see \fBReading WiredTiger Metadata\fP for details \fCstatistics:[<data source URI>]\fPdatabasedata source or join statistics cursorkey=\fCint id\fP,
 .br
  value=\fC(string description, string value, uint64_t value)\fP,
 .br
@@ -63,7 +63,7 @@ The \fBex_schema\&.c\fP example creates a table where the value format is \fC'5s
             "table:poptable(country,year)", NULL, NULL, &cursor);
         while ((ret = cursor->next(cursor)) == 0) {
                 ret = cursor->get_value(cursor, &country, &year);
-                printf("country %s, year %u\n", country, year);
+                printf("country %s, year %" PRIu16 "\n", country, year);
         }
 .fi
 .PP
@@ -111,7 +111,8 @@ The \fBex_schema\&.c\fP example creates a table where the value format is \fC'5s
                 ret = wiredtiger_struct_unpack(session,
                     value\&.data, value\&.size,
                     "5sHQ", &country, &year, &population);
-                printf(": country %s, year %u, population %" PRIu64 "\n",
+                printf(
+                    ": country %s, year %" PRIu16 ", population %" PRIu64 "\n",
                     country, year, population);
         }
 .fi
@@ -132,7 +133,7 @@ The \fBex_schema\&.c\fP example creates a table where the value format is \fC'5s
                 ret = cursor->get_value(cursor, &value);
                 ret = wiredtiger_struct_unpack(
                     session, value\&.data, value\&.size, "5sH", &country, &year);
-                printf("country %s, year %u\n", country, year);
+                printf("country %s, year %" PRIu16 "\n", country, year);
         }
 .fi
 .PP

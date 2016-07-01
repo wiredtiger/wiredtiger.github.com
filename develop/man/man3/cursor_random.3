@@ -1,6 +1,12 @@
-.TH "cursor_random" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "cursor_random" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 cursor_random \- Cursor random 
-The \fCnext_random\fP configuration to the \fBWT_SESSION::open_cursor\fP method configures the cursor to return a pseudo-random record from a row-store object (the configuration is not supported on other types of objects)\&. 
+The \fCnext_random\fP configuration to the \fBWT_SESSION::open_cursor\fP method configures the cursor to return a pseudo-random record from a row-store object (the \fCnext_random\fP configuration is not supported on other types of objects)\&.
+.PP
+Applications should use the \fBWT_CURSOR::next\fP method to retrieve records from the object, most other cursor methods are not supported\&. For example, it's not possible to update using a cursor configured for random retrieval\&.
+.PP
+By default, each returned record is pseudo-randomly selected from the underlying object as a whole\&. That can lead to skewed results when the underlying tree structure is unbalanced or records are not uniformly distributed\&. In such cases, the \fCnext_random_sample_size\fP configuration can also be specified\&. Setting \fCnext_random_sample_size\fP configures the number of samples the application expects to take using the cursor\&. A cursor configured using \fCnext_random_sample_size\fP divides the object into \fCnext_random_sample_size\fP pieces, and each subsequent retrieval returns a record from the next one of those pieces\&.
+.PP
+For example, setting \fCnext_random_sample_percent\fP to \fC10\fP would cause the cursor to sequentially return records from each tenth part of the object\&. Setting \fCnext_random_sample_percent\fP to \fC1000\fP would cause the cursor to sequentially return records from each \&.1% of the object\&. 

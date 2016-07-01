@@ -1,4 +1,4 @@
-.TH "error_handling_lang_java" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "error_handling_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -45,7 +45,14 @@ This error indicates an underlying problem that requires the application exit an
 This error is generated when wiredtiger_open is configured to return an error if recovery is required to use the database\&.
 .RE
 .PP
-The \fBwiredtiger_strerror\fP function returns the standard message associated with any WiredTiger, ISO C99, or POSIX 1003\&.1-2001 function:
+\fBWT_CACHE_FULL\fP
+.RS 4
+This error is only generated when wiredtiger_open is configured to run in-memory, and an insert or update operation requires more than the configured cache size to complete\&. The operation may be retried; if a transaction is in progress, it should be rolled back and the operation retried in a new transaction\&.
+.RE
+.PP
+.SH "Translating errors"
+.PP
+The Session\&.strerror and \fBwiredtiger_strerror\fP functions return the standard text message associated with any WiredTiger, ISO C, or POSIX standard API\&.
 .PP
 .PP
 .nf
@@ -62,4 +69,21 @@ The \fBwiredtiger_strerror\fP function returns the standard message associated w
     }
 .fi
 .PP
+ 
+.PP
+.nf
+    try {
+        String key = "non-existent key";
+        cursor\&.putKeyString(key);
+        if ((ret = cursor\&.remove()) != 0) {
+            System\&.err\&.println(
+                "cursor\&.remove: " + wiredtiger\&.wiredtiger_strerror(ret));
+            return (ret);
+        }
+    } catch (WiredTigerException wte) {  /* Catch severe errors\&. */
+        System\&.err\&.println("cursor\&.remove exception: " + wte);
+    }
 
+.fi
+.PP
+ Note that \fBwiredtiger_strerror\fP is not thread-safe\&. 

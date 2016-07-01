@@ -1,4 +1,4 @@
-.TH "statistics_lang_java" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "statistics_lang_java" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -64,7 +64,15 @@ The following example configures WiredTiger to maintain only relatively inexpens
     cursor = session\&.open_cursor("statistics:", null, "statistics=(fast,clear)");
 .fi
 .PP
- 
+ The following example opens a statistics cursor on an open join cursor:
+.PP
+.PP
+.nf
+        stat_cursor = session\&.open_cursor(
+            "statistics:join", join_cursor, null);
+.fi
+.PP
+ The statistics gathered will be organized by reference cursors participating in the join (see Session\&.join); the uri of each reference cursor appears as a prefix in the description field returned as a value by the statistics cursor\&.
 .SH "Statistics logging"
 .PP
 WiredTiger will optionally log database statistics into a file when the the \fCwiredtiger\&.open\fP \fCstatistics_log\fP configuration is set\&.

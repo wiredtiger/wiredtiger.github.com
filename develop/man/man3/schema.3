@@ -1,4 +1,4 @@
-.TH "schema" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "schema" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -50,6 +50,8 @@ WiredTiger's uses format strings similar to those specified in the Python struct
 FormatC TypeJava typePython typeNotes \fCx\fP N/AN/AN/Apad byte, no associated value \fCb\fP \fCint8_t\fP \fCbyte\fP \fCint\fP signed byte \fCB\fP \fCuint8_t\fP \fCbyte\fP \fCint\fP unsigned byte \fCh\fP \fCint16_t\fP \fCshort\fP \fCint\fP signed 16-bit \fCH\fP \fCuint16_t\fP \fCshort\fP \fCint\fP unsigned 16-bit \fCi\fP \fCint32_t\fP \fCint\fP \fCint\fP signed 32-bit \fCI\fP \fCuint32_t\fP \fCint\fP \fCint\fP unsigned 32-bit \fCl\fP \fCint32_t\fP \fCint\fP \fCint\fP signed 32-bit \fCL\fP \fCuint32_t\fP \fCint\fP \fCint\fP unsigned 32-bit \fCq\fP \fCint64_t\fP \fClong\fP \fCint\fP signed 64-bit \fCQ\fP \fCuint64_t\fP \fClong\fP \fCint\fP unsigned 64-bit \fCr\fP \fCuint64_t\fP \fClong\fP \fCint\fP record number \fCs\fP \fCchar\fP[]\fCString\fP \fCstr\fP fixed-length string \fCS\fP \fCchar\fP[]\fCString\fP \fCstr\fP NUL-terminated string \fCt\fP \fCuint8_t\fP \fCbyte\fP \fCint\fP fixed-length bit field \fCu\fP \fC\fBWT_ITEM\fP *\fP\fCbyte[]\fP\fCstr\fP raw byte array 
 .PP
 The \fC'r'\fP type is used for record number keys in column stores\&. It is otherwise identical to the \fC'Q'\fP type\&.
+.PP
+The \fC's'\fP type is used for fixed-length strings\&. If it is preceded by a size, that indicates the number of bytes to store; the default is a length of 1 byte\&.
 .PP
 The \fC'S'\fP type is encoded as a C language string terminated by a NUL character\&.
 .PP
@@ -236,7 +238,9 @@ A cursor can be opened on a column group by passing the column group's URI to th
         cursor->set_key(cursor, 2);
         if ((ret = cursor->search(cursor)) == 0) {
                 ret = cursor->get_value(cursor, &country, &year, &population);
-                printf("ID 2: country %s, year %u, population %" PRIu64 "\n",
+                printf(
+                    "ID 2: "
+                    "country %s, year %" PRIu16 ", population %" PRIu64 "\n",
                     country, year, population);
         }
 .fi
@@ -288,8 +292,8 @@ Index cursors use the specified index key columns for \fBWT_CURSOR::get_key\fP a
         cursor->set_key(cursor, "AU\0\0\0");
         ret = cursor->search(cursor);
         ret = cursor->get_value(cursor, &country, &year, &population);
-        printf("AU: country %s, year %u, population %" PRIu64 "\n",
-            country, (unsigned int)year, population);
+        printf("AU: country %s, year %" PRIu16 ", population %" PRIu64 "\n",
+            country, year, population);
 .fi
 .PP
  To create an index with a composite key, specify more than one column to the \fBWT_SESSION::create\fP call:
@@ -311,8 +315,9 @@ Index cursors use the specified index key columns for \fBWT_CURSOR::get_key\fP a
         cursor->set_key(cursor, "USA\0\0", (uint16_t)1900);
         ret = cursor->search(cursor);
         ret = cursor->get_value(cursor, &country, &year, &population);
-        printf("US 1900: country %s, year %u, population %" PRIu64 "\n",
-            country, (unsigned int)year, population);
+        printf(
+            "US 1900: country %s, year %" PRIu16 ", population %" PRIu64 "\n",
+            country, year, population);
 .fi
 .PP
  
@@ -351,7 +356,7 @@ The following example will return just the table's primary key (a record number,
         while ((ret = cursor->next(cursor)) == 0) {
                 ret = cursor->get_key(cursor, &country, &year);
                 ret = cursor->get_value(cursor, &recno);
-                printf("row ID %" PRIu64 ": country %s, year %u\n",
+                printf("row ID %" PRIu64 ": country %s, year %" PRIu16 "\n",
                     recno, country, year);
         }
 .fi
@@ -370,7 +375,7 @@ The following example will return just the table's primary key (a record number,
         while ((ret = cursor->next(cursor)) == 0) {
                 ret = cursor->get_key(cursor, &country, &year);
                 ret = cursor->get_value(cursor, &population);
-                printf("population %" PRIu64 ": country %s, year %u\n",
+                printf("population %" PRIu64 ": country %s, year %" PRIu16 "\n",
                     population, country, year);
         }
 .fi
@@ -387,7 +392,7 @@ The following example will return just the table's primary key (a record number,
             "index:poptable:country_plus_year()", NULL, NULL, &cursor);
         while ((ret = cursor->next(cursor)) == 0) {
                 ret = cursor->get_key(cursor, &country, &year);
-                printf("country %s, year %u\n", country, year);
+                printf("country %s, year %" PRIu16 "\n", country, year);
         }
 .fi
 .PP

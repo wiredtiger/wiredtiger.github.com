@@ -1,9 +1,697 @@
-.TH "md_changelog" 3 "Fri Dec 4 2015" "Version Version 2.7.0" "WiredTiger" \" -*- nroff -*-
+.TH "md_changelog" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 md_changelog \- WiredTiger Change Log 
 
+.SS "WiredTiger release 2\&.8\&.0, 2015-03-24 "
+.PP
+The WiredTiger 2\&.8\&.0 release contains new features, new supported platforms, minor API changes and bug fixes\&.
+.PP
+New features and API changes; refer to the API documentation for full details:
+.PP
+.IP "\(bu" 2
+\fCWT-60\fP Port WiredTiger to run on big endian platforms
+.IP "\(bu" 2
+\fCWT-2287\fP Add a new \fBWT_SESSION\&.rebalance\fP API
+.IP "\(bu" 2
+\fCWT-2333\fP Add a lock_wait configuration setting to \fBWT_SESSION\&.drop\fP to avoid blocking
+.IP "\(bu" 2
+\fCWT-2349\fP Add a readonly configuration setting to wiredtiger_open
+.IP "\(bu" 2
+\fCWT-2363\fP Remove built in support for bzip2 compression
+.IP "\(bu" 2
+\fCWT-2404\fP Add streaming pack/unpack methods to the extension API
+.PP
+.PP
+Significant changes and bug fixes:
+.PP
+.IP "\(bu" 2
+\fCWT-1801\fP Add a directory sync after rollback of a \fBWT_SESSION::rename\fP operation
+.IP "\(bu" 2
+\fCWT-2130\fP Improve on-disk page utilization with random workloads
+.IP "\(bu" 2
+\fCWT-2275\fP Fix a database corruption after truncate and crash
+.IP "\(bu" 2
+\fCWT-2264\fP High update workloads can cause checkpoints to never complete
+.IP "\(bu" 2
+\fCWT-2290\fP Improve effectiveness of \fBWT_SESSION\&.compact\fP
+.IP "\(bu" 2
+\fCWT-2361\fP Fix a bug in column-store where verify identifies out of order data
+.IP "\(bu" 2
+\fCWT-2367\fP Fix a bug in \fBWT_CURSOR\&.next\fP that could cause out-of-order key returns
+.IP "\(bu" 2
+\fCWT-2374\fP Fix a bug where a database was corrupted when restoring a backup
+.IP "\(bu" 2
+\fCWT-2381\fP Fix the dump utility to include the table configuration
+.IP "\(bu" 2
+\fCWT-2451\fP Allow the WiredTiger metadata to be evicted
+.IP "\(bu" 2
+\fCWT-2490\fP Fix a bug in column-store where search_near() returns the wrong key
+.PP
+.PP
+Issues fixed in MongoDB:
+.PP
+.IP "\(bu" 2
+\fCSERVER-21619\fP sys-perf: WT crash during core_workloads_WT execution
+.IP "\(bu" 2
+\fCSERVER-21833\fP Enhance \fBWT_SESSION::compact\fP to more reliably release space
+.IP "\(bu" 2
+\fCSERVER-21887\fP Enhance $sample to be faster on newly created collection
+.IP "\(bu" 2
+\fCSERVER-22676\fP Allow WiredTiger to open databases created by 3\&.0\&.0 or 3\&.0\&.1
+.IP "\(bu" 2
+\fCSERVER-22773\fP New CRC32 implementation on PowerPC
+.IP "\(bu" 2
+\fCSERVER-22831\fP Low query rate with heavy cache pressure and an idle collection
+.PP
+.PP
+Other noteworthy changes since the previous release:
+.PP
+.IP "\(bu" 2
+\fCWT-1517\fP Fix error handling around schema format edge cases
+.IP "\(bu" 2
+\fCWT-2060\fP Simplify aggregation of statistics
+.IP "\(bu" 2
+\fCWT-2073\fP Metadata cleanups
+.IP "\(bu" 2
+\fCWT-2099\fP Seeing memory underflow messages
+.IP "\(bu" 2
+\fCWT-2107\fP Add example code including an event handler
+.IP "\(bu" 2
+\fCWT-2113\fP Truncate test occasionally fails with unexpected EBUSY
+.IP "\(bu" 2
+\fCWT-2123\fP Don't clear allocated memory if not required
+.IP "\(bu" 2
+\fCWT-2173\fP Fix some cases where tiny caches could get stuck full
+.IP "\(bu" 2
+\fCWT-2177\fP Add an optional per-thread seed to random number generator
+.IP "\(bu" 2
+\fCWT-2198\fP Bulk load and column store appends
+.IP "\(bu" 2
+\fCWT-2215\fP WT_LSN needs to support atomic reads and updates
+.IP "\(bu" 2
+\fCWT-2216\fP Simplify row-store search loop slightly
+.IP "\(bu" 2
+\fCWT-2231\fP Pinned page cursor searches could check parent keys
+.IP "\(bu" 2
+\fCWT-2235\fP Add a unicode option to WiredTiger printlog utility
+.IP "\(bu" 2
+\fCWT-2242\fP WiredTiger treats dead trees the same as other trees in eviction
+.IP "\(bu" 2
+\fCWT-2246\fP Improve performance for column-store append searches
+.IP "\(bu" 2
+\fCWT-2247\fP Variable-length column-store in-memory page splits
+.IP "\(bu" 2
+\fCWT-2258\fP Stop WiredTiger pre-loading pages when direct-IO is configured
+.IP "\(bu" 2
+\fCWT-2259\fP Fix error handling when getting exclusive access to a btree
+.IP "\(bu" 2
+\fCWT-2262\fP Fix random cursor next so it is not skewed by tree shape
+.IP "\(bu" 2
+\fCWT-2265\fP WiredTiger related change in PowerPC specific code block in gcc\&.h
+.IP "\(bu" 2
+\fCWT-2272\fP Fix a bug in the sweep server that triggered an assertion
+.IP "\(bu" 2
+\fCWT-2276\fP Add a tool to decode checkpoint addr
+.IP "\(bu" 2
+\fCWT-2277\fP Remove WT check against big-endian systems
+.IP "\(bu" 2
+\fCWT-2279\fP Define WT_PAUSE(), WT_FULL_BARRIER(), etc when s390x is defined
+.IP "\(bu" 2
+\fCWT-2280\fP Add CRC32 Optimized code for PowerPC
+.IP "\(bu" 2
+\fCWT-2282\fP Error in wt_txn_update_oldest verbose message test
+.IP "\(bu" 2
+\fCWT-2283\fP Retry in txn_update_oldest results in a hang
+.IP "\(bu" 2
+\fCWT-2285\fP Enhance configure to set BUFFER_ALIGNMENT_DEFAULT to 4kb on Linux
+.IP "\(bu" 2
+\fCWT-2289\fP Fix a bug in btree search when doing a fast key check
+.IP "\(bu" 2
+\fCWT-2291\fP Random cursor walk inefficient in skip list only trees
+.IP "\(bu" 2
+\fCWT-2295\fP \fBWT_SESSION\&.create\fP does a full-scan of the main table
+.IP "\(bu" 2
+\fCWT-2296\fP Improve log algorithm for sync/flush settings
+.IP "\(bu" 2
+\fCWT-2297\fP Fix off-by-one error in Huffman config file parsing
+.IP "\(bu" 2
+\fCWT-2299\fP Clean up layering violation between btree and block manager code
+.IP "\(bu" 2
+\fCWT-2307\fP Fix a bug where internal page splits can corrupt cursor iteration
+.IP "\(bu" 2
+\fCWT-2308\fP Add support for custom extractor for ref_cursors in join cursor
+.IP "\(bu" 2
+\fCWT-2311\fP Add support for UltraSparc platform
+.IP "\(bu" 2
+\fCWT-2312\fP Fix a bug where re-creating a deleted column-store page can corrupt the in-memory tree
+.IP "\(bu" 2
+\fCWT-2313\fP Fix a bug in the sweep server
+.IP "\(bu" 2
+\fCWT-2314\fP Update page-swap error handling so that it is consistent
+.IP "\(bu" 2
+\fCWT-2316\fP Fix a bug in \fBWT_CURSOR\&.prev\fP where it could return keys out-of-order
+.IP "\(bu" 2
+\fCWT-2318\fP Enhance condition wait implementation to use less CPU on idle databases
+.IP "\(bu" 2
+\fCWT-2321\fP Fix a race between eviction and worker threads on the eviction queue
+.IP "\(bu" 2
+\fCWT-2322\fP Fix a bug in read-uncommitted join cursors where using Bloom filters is unsafe
+.IP "\(bu" 2
+\fCWT-2328\fP Update schema drop does to use the block manager interface for file removal
+.IP "\(bu" 2
+\fCWT-2331\fP Checking of search result for reference cursors before join
+.IP "\(bu" 2
+\fCWT-2332\fP Fix a bug in logging write-no-sync mode
+.IP "\(bu" 2
+\fCWT-2335\fP Fix a bug where parsing an invalid configuration string could segfault
+.IP "\(bu" 2
+\fCWT-2338\fP Disable using pre-allocated log files when a backup cursor is open
+.IP "\(bu" 2
+\fCWT-2339\fP Fix a bug in rebalance that caused database verification failure
+.IP "\(bu" 2
+\fCWT-2340\fP Add logging guarantee assertions
+.IP "\(bu" 2
+\fCWT-2345\fP Avoid creating tiny pages on disk when evicting small pages from cache
+.IP "\(bu" 2
+\fCWT-2346\fP Enhance checkpoint implementation so the schema lock is not held during I/O
+.IP "\(bu" 2
+\fCWT-2347\fP Fix some schema format edge cases in Java API
+.IP "\(bu" 2
+\fCWT-2352\fP Allow build and test without requiring lz4
+.IP "\(bu" 2
+\fCWT-2355\fP Fix minor scratch buffer usage in logging
+.IP "\(bu" 2
+\fCWT-2356\fP log scan advances to next log file on partially written record
+.IP "\(bu" 2
+\fCWT-2368\fP Fix a bug where row-store can pass invalid keys to collator functions
+.IP "\(bu" 2
+\fCWT-2369\fP Use C compiler to detect headers instead of C++ compiler
+.IP "\(bu" 2
+\fCWT-2371\fP Fix a bug where parent split cannot access the page after page-index swap
+.IP "\(bu" 2
+\fCWT-2372\fP WiredTiger windows builder fails with C4005 against the 'inline' macro
+.IP "\(bu" 2
+\fCWT-2375\fP Add tests for custom collators
+.IP "\(bu" 2
+\fCWT-2378\fP Fix a hang in LSM when doing forced drop with the no wait option
+.IP "\(bu" 2
+\fCWT-2382\fP Fix a bug in join cursors with custom collator for 'u' format
+.IP "\(bu" 2
+\fCWT-2384\fP Fix a bug in join cursors where lt, le conditions for ordering could be wrong
+.IP "\(bu" 2
+\fCWT-2387\fP Fix cursor random unit test on Windows
+.IP "\(bu" 2
+\fCWT-2390\fP Fix the OS X build
+.IP "\(bu" 2
+\fCWT-2391\fP Enhance eviction so that it is less likely to evict pages from indexes
+.IP "\(bu" 2
+\fCWT-2394\fP Fix a bug in compact that meant we didn't always reclaim available space
+.IP "\(bu" 2
+\fCWT-2395\fP Fix a recovery failure with an LSM tree
+.IP "\(bu" 2
+\fCWT-2396\fP Fix a deadlock between table drop and checkpoint
+.IP "\(bu" 2
+\fCWT-2397\fP Fix a bug in cursor traversal where doing a reverse walk could skip records\&.
+.IP "\(bu" 2
+\fCWT-2399\fP Add test case that verifies cursor traversal
+.IP "\(bu" 2
+\fCWT-2409\fP Fix a minor performance regression in LSM
+.IP "\(bu" 2
+\fCWT-2410\fP Stop casting function pointers to different types
+.IP "\(bu" 2
+\fCWT-2411\fP Fix a hang in LSM related to dropping tables
+.IP "\(bu" 2
+\fCWT-2414\fP Avoid extractor calls for ordering cursor in join cursor
+.IP "\(bu" 2
+\fCWT-2417\fP Windows Jenkins task is failing
+.IP "\(bu" 2
+\fCWT-2418\fP Fix a bug in \fBWT_SESSION\&.rebalance\fP where it could return EBUSY
+.IP "\(bu" 2
+\fCWT-2420\fP Fix a bug in LSM where recovery from a backup could fail
+.IP "\(bu" 2
+\fCWT-2423\fP Fix a bug in session reference counting on error handling
+.IP "\(bu" 2
+\fCWT-2425\fP Fix a performance regression in wtperf evict-btree read workload
+.IP "\(bu" 2
+\fCWT-2426\fP Fix a deadlock caused by recent changes to checkpoint handle locking
+.IP "\(bu" 2
+\fCWT-2428\fP Make statistics logging compatible with MongoDB
+.IP "\(bu" 2
+\fCWT-2429\fP Add a statistic that tracks aggressive mode in eviction
+.IP "\(bu" 2
+\fCWT-2430\fP Add statistics for join cursor
+.IP "\(bu" 2
+\fCWT-2432\fP Fix a performance regression on LSM and read only workloads
+.IP "\(bu" 2
+\fCWT-2433\fP Allow read-only databases to log statistics
+.IP "\(bu" 2
+\fCWT-2434\fP Fix a race between force-drop and sweep
+.IP "\(bu" 2
+\fCWT-2436\fP Fix a bug in join cursors with lt, le conditions and 'strategy=bloom'
+.IP "\(bu" 2
+\fCWT-2438\fP Extend WiredTiger stat declarations to help external tools
+.IP "\(bu" 2
+\fCWT-2440\fP Fix a bug in the PowerPC checksum implementation
+.IP "\(bu" 2
+\fCWT-2443\fP Add statistics for all indexes used in join cursor
+.IP "\(bu" 2
+\fCWT-2447\fP Enhance join cursor implementation to avoid reading main table where possible
+.IP "\(bu" 2
+\fCWT-2448\fP Add no_scale flag to relevant statistics
+.IP "\(bu" 2
+\fCWT-2449\fP Enhance configure to check for a 64-bit build
+.IP "\(bu" 2
+\fCWT-2454\fP Fix checkpoint_sync=false behavior to prevent flushes/sync to disk
+.IP "\(bu" 2
+\fCWT-2456\fP Fix PowerPC CRC32 Code
+.IP "\(bu" 2
+\fCWT-2457\fP Fix a bug where dropping an LSM table can return EBUSY when no user ops are active
+.IP "\(bu" 2
+\fCWT-2459\fP Allow configure to use the --tag option for libtool when compiling on PowerPC
+.IP "\(bu" 2
+\fCWT-2460\fP Fix a bug where checkpoint could fail with WT_ROLLBACK
+.IP "\(bu" 2
+\fCWT-2471\fP Update WiredTiger printf formats to be platform aware
+.IP "\(bu" 2
+\fCWT-2476\fP Fix a race where btree->evict_lock is being accessed after being destroyed
+.IP "\(bu" 2
+\fCWT-2481\fP Fix a recently introduced performance regression in LSM
+.IP "\(bu" 2
+\fCWT-2483\fP Make read only testing more robust
+.IP "\(bu" 2
+\fCWT-2485\fP Fix a test/format failure with floating point exception
+.IP "\(bu" 2
+\fCWT-2492\fP Fix a bug in Windows where we used the different memory allocators accidentally
+.IP "\(bu" 2
+\fCWT-2495\fP Missing memory initialization leads to crash on Windows
+.IP "\(bu" 2
+\fCWT-2496\fP Fix a bug revealed by test/format unable to read root page
+.IP "\(bu" 2
+\fCWT-2497\fP Enhance test/format to save a copy of backup
+.IP "\(bu" 2
+\fCWT-2498\fP Fix a bug in LSM tree drop where it could hang when a user cursor is open
+.IP "\(bu" 2
+\fCWT-2499\fP Fix a bug in LSM shutdown where a race condition causes a segfault
+.IP "\(bu" 2
+\fCWT-2501\fP Fix a bug where dropping a just opened LSM tree isn't thread safe
+.IP "\(bu" 2
+\fCWT-2502\fP Fix a memory leak in locking handles for checkpoint
+.PP
+.PP
+.SS "WiredTiger release 2\&.7\&.0, 2015-12-08 "
+.PP
+The WiredTiger 2\&.7\&.0 release contains new features, minor API changes and bug fixes\&.
+.PP
+New features and API changes; refer to the API documentation for full details:
+.PP
+.IP "\(bu" 2
+\fCWT-147\fP Create indexes on non-empty tables\&.
+.IP "\(bu" 2
+\fCWT-1315\fP Add an implementation of cursor joins via a new \fBWT_SESSION::join\fP API\&.
+.IP "\(bu" 2
+\fCWT-1350\fP Add a new configuration option to \fBwiredtiger_open\fP and \fBWT_CONNECTION::reconfigure\fP called 'eviction_dirty_trigger' that causes eviction to start evicting dirty pages from cache once the given threshold has been reached\&.
+.IP "\(bu" 2
+\fCWT-1728\fP Add a \fBWT_SESSION::reset\fP method to release resources held by a session\&.
+.IP "\(bu" 2
+\fCWT-1930\fP Allow setting 'file_manager=(close_idle_time=0)' to \fBwiredtiger_open\fP and \fBWT_CONNECTION::reconfigure\fP to disable closing idle handles\&.
+.IP "\(bu" 2
+\fCWT-1959\fP Change verify to distinguish between warnings and errors\&. Add a new strict mode to verify that causes warnings to be reported as errors\&. Use strict mode to match earlier behavior\&. See the upgrading documentation for more information\&.
+.IP "\(bu" 2
+\fCWT-1980\fP Add a new 'metadata:create' URI to \fBWT_SESSION::open_cursor\fP for metadata cursors that return strings useful for passing to \fBWT_SESSION::create\fP\&.
+.IP "\(bu" 2
+\fCWT-2065\fP Add a new configuration option to \fBwiredtiger_open\fP and \fBWT_CONNECTION::reconfigure\fP called 'shared_cache=(quota)' that limits the amount of shared cache a participant can be assigned\&.
+.IP "\(bu" 2
+\fCWT-2104\fP Add a method to flush log files via a new \fBWT_SESSION::log_flush\fP API\&. Made \fBWT_SESSION::commit_transaction\fP configuration options match \fBWT_SESSION::log_flush\fP\&. Change the default \fBWT_SESSION::transaction_sync\fP timeout to 20 minutes rather than infinity\&.
+.IP "\(bu" 2
+\fCWT-2151\fP Enhance logging configuration to allow reconfiguration and add a new 'log=(zero_fill)' configuration option that causes WiredTiger to zero-fill log files on creation\&.
+.IP "\(bu" 2
+\fCWT-2200\fP Add a new configuration option to \fBwiredtiger_open\fP called 'write_through' that causes WiredTiger to specify the FILE_FLAG_WRITE_THROUGH on Windows when writing files (default false, including when 'direct_io' is configured)\&.
+.IP "\(bu" 2
+\fCWT-2217\fP After a successful call to \fBWT_CURSOR::insert\fP, the key and value will be cleared from the cursor\&. See the upgrading documentation for more information\&.
+.IP "\(bu" 2
+\fCSERVER-17078\fP Add a 'statistics=(size)' mode to statistics cursors, which allows for retrieving file size only\&.
+.IP "\(bu" 2
+\fCSERVER-18356\fP Changed the handling of the 'config_base' option to \fBwiredtiger_open\fP\&. See upgrading documentation for more information\&.
+.PP
+.PP
+The following statistics were removed:
+.PP
+.IP "\(bu" 2
+\fCWT-1481\fP connection dhandles swept\&.
+.IP "\(bu" 2
+\fCWT-1481\fP connection candidate referenced\&.
+.IP "\(bu" 2
+\fCWT-1481\fP failed to find a slot large enough for record\&.
+.IP "\(bu" 2
+\fCWT-1989\fP log buffer size increases\&.
+.IP "\(bu" 2
+\fCWT-1989\fP slots selected for switching that were unavailable\&.
+.IP "\(bu" 2
+\fCWT-2094\fP log records written directly\&.
+.IP "\(bu" 2
+\fCWT-2094\fP record size exceeded maximum\&.
+.IP "\(bu" 2
+\fCWT-2182\fP pages split during eviction\&.
+.PP
+.PP
+Lookaside table:
+.PP
+.IP "\(bu" 2
+\fCWT-1967\fP Allow eviction of updates required by old readers\&.
+.IP "\(bu" 2
+\fCWT-2074\fP Fix a race between lookaside table reconciliation and checkpoints\&.
+.IP "\(bu" 2
+\fCWT-2149\fP Fix the order of creation of the lookaside table\&.
+.IP "\(bu" 2
+\fCWT-2190\fP Fix transaction visibility test that is applied to the lookaside table\&.
+.IP "\(bu" 2
+\fCSERVER-21585\fP Don't use the lookaside file until the cache is stuck full\&.
+.PP
+.PP
+Issues fixed in MongoDB:
+.PP
+.IP "\(bu" 2
+\fCSERVER-18829\fP Have pages start in the middle of the LRU queue for eviction\&.
+.IP "\(bu" 2
+\fCSERVER-18838\fP During drops, don't remove files until the metadata is durable\&.
+.IP "\(bu" 2
+\fCSERVER-18875\fP Clean up deleted pages\&.
+.IP "\(bu" 2
+\fCSERVER-18899\fP Add unit test to simulate fsyncLock\&.
+.IP "\(bu" 2
+\fCSERVER-19340\fP Avoid type aliasing in the random number generator\&.
+.IP "\(bu" 2
+\fCSERVER-19445\fP Have the oldest transaction update the oldest tracked ID\&.
+.IP "\(bu" 2
+\fCSERVER-19522\fP Try to evict internal pages with no useful child pages\&.
+.IP "\(bu" 2
+\fCSERVER-19573\fP Change row-store inserts to avoid page locking\&.
+.IP "\(bu" 2
+\fCSERVER-19751\fP Retry pthread_create on EAGAIN or EINTR\&.
+.IP "\(bu" 2
+\fCSERVER-19954\fP Don't scan tracked handles during checkpoints\&.
+.IP "\(bu" 2
+\fCSERVER-19989\fP Add a write barrier before data handles are added to shared lists\&.
+.IP "\(bu" 2
+\fCSERVER-19990\fP Don't assert on eviction of live updates from dead trees\&.
+.IP "\(bu" 2
+\fCSERVER-20008\fP Don't reset eviction walks when hitting a busy page\&.
+.IP "\(bu" 2
+\fCSERVER-20159\fP Make all readers wait while the cache is full\&.
+.IP "\(bu" 2
+\fCSERVER-20193\fP Fix obsolete transaction check\&.
+.IP "\(bu" 2
+\fCSERVER-20303\fP Tune in-memory splits when inserting large objects\&.
+.IP "\(bu" 2
+\fCSERVER-20385\fP Make WT_CURSOR::next(random) more random\&.
+.IP "\(bu" 2
+\fCSERVER-21027\fP Reverse split if there are many deleted pages\&.
+.IP "\(bu" 2
+\fCSERVER-21553\fP Enable fast-path truncate after splits\&.
+.IP "\(bu" 2
+\fCSERVER-21619\fP Don't do internal page splits after a tree is marked DEAD\&.
+.IP "\(bu" 2
+\fCSERVER-21691\fP Avoid insert stalls\&.
+.PP
+.PP
+Other note worthy changes since the previous release:
+.PP
+.IP "\(bu" 2
+\fCWT-1744\fP Throttle worker threads based on eviction targets\&.
+.IP "\(bu" 2
+\fCWT-1845\fP Allow read only transactions to commit after failure\&.
+.IP "\(bu" 2
+\fCWT-1869\fP Avoid doing in memory splits while checkpointing a tree\&.
+.IP "\(bu" 2
+\fCWT-1942\fP Add atomic implementations for PowerPC architecture\&.
+.IP "\(bu" 2
+\fCWT-1962\fP Make the hot_backup_lock a read/write lock\&.
+.IP "\(bu" 2
+\fCWT-1963\fP Fix backup cursor Java API\&.
+.IP "\(bu" 2
+\fCWT-1964\fP Fix a bug in the Java API when closing handles from a different thread\&.
+.IP "\(bu" 2
+\fCWT-1966\fP Change how the shared cache assigns priority to participants\&.
+.IP "\(bu" 2
+\fCWT-1975\fP Ensure previous log files are complete for forced sync\&.
+.IP "\(bu" 2
+\fCWT-1977\fP Improve performance of getting snapshots with many sessions\&.
+.IP "\(bu" 2
+\fCWT-1978\fP Better checking and tests for index cursor comparison\&.
+.IP "\(bu" 2
+\fCWT-1981\fP Fix a signed 32-bit integer unpacking bug\&.
+.IP "\(bu" 2
+\fCWT-1982\fP Fix a bug where cached overflow items were freed too early\&.
+.IP "\(bu" 2
+\fCWT-1985\fP Integer packing and other fixes for Python and Java\&.
+.IP "\(bu" 2
+\fCWT-1986\fP Fix a race renaming temporary log files\&.
+.IP "\(bu" 2
+\fCWT-1989\fP Improve scalability of log writes\&.
+.IP "\(bu" 2
+\fCWT-1996\fP Fix a bug where we would free the fist update during a page rewrite on error\&.
+.IP "\(bu" 2
+\fCWT-1998\fP Fixes for indexes with some rarely used key/value formats\&.
+.IP "\(bu" 2
+\fCWT-2002\fP Fix a bug in verify where it would panic when encountering a corrupted file\&.
+.IP "\(bu" 2
+\fCWT-2007\fP Statically allocate log slot buffers to a maximum size\&.
+.IP "\(bu" 2
+\fCWT-2008\fP Fix a bug in recovery where a file create went missing\&.
+.IP "\(bu" 2
+\fCWT-2009\fP Apply tracked metadata operations post-commit\&.
+.IP "\(bu" 2
+\fCWT-2012\fP Fix a bug updating the oldest ID\&.
+.IP "\(bu" 2
+\fCWT-2013\fP Add gcc asm definitions for ARM64\&.
+.IP "\(bu" 2
+\fCWT-2014\fP Fix a bug in checkpoints where files could be flushed in the wrong order\&.
+.IP "\(bu" 2
+\fCWT-2015\fP Fix a bug in error handling during block open\&.
+.IP "\(bu" 2
+\fCWT-2017\fP Once an eviction server thread is started keep it running\&.
+.IP "\(bu" 2
+\fCWT-2019\fP Fix a logic bug tracking the maximum transaction ID in clean trees\&.
+.IP "\(bu" 2
+\fCWT-2020\fP Clarify checksum error failure messages\&.
+.IP "\(bu" 2
+\fCWT-2021\fP Fix a bug moving the oldest ID forward (introduced by \fCWT-1967\fP)\&.
+.IP "\(bu" 2
+\fCWT-2022\fP Fix a bug not releasing a handle when opening a non-existent index cursor\&.
+.IP "\(bu" 2
+\fCWT-2023\fP Improve locking primitives: simplify read-write lock operations\&.
+.IP "\(bu" 2
+\fCWT-2029\fP Improve scalability of statistics\&.
+.IP "\(bu" 2
+\fCWT-2031\fP Log slot revamp\&.
+.IP "\(bu" 2
+\fCWT-2032\fP Improve next_random cursors to work with small trees\&.
+.IP "\(bu" 2
+\fCWT-2034\fP Improve shared cache balancing algorithm\&.
+.IP "\(bu" 2
+\fCWT-2035\fP For index cursors, keep track of which column groups need to be positioned\&.
+.IP "\(bu" 2
+\fCWT-2036\fP Make handle sweeps more robust\&.
+.IP "\(bu" 2
+\fCWT-2037\fP Only write a checkpoint to the log on close if it wasn't\&.
+.IP "\(bu" 2
+\fCWT-2038\fP Avoid long scans holding the handle list lock\&.
+.IP "\(bu" 2
+\fCWT-2039\fP Add error check and unit test for log records over 4 GB\&.
+.IP "\(bu" 2
+\fCWT-2042\fP Only try to evict tombstones that are visible to all readers\&.
+.IP "\(bu" 2
+\fCWT-2045\fP Don't let the eviction server do slow reconciliation, it can stall eviction\&.
+.IP "\(bu" 2
+\fCWT-2046\fP Add a statistic for search restarts\&.
+.IP "\(bu" 2
+\fCWT-2047\fP Fix a bug in the random generator code to handle an uninitialized state\&.
+.IP "\(bu" 2
+\fCWT-2050\fP Show size with memory allocation errors\&.
+.IP "\(bu" 2
+\fCWT-2053\fP Fix a bug in disk verify messages\&.
+.IP "\(bu" 2
+\fCWT-2056\fP Reorder btree cursor close so stats are maintained correctly\&.
+.IP "\(bu" 2
+\fCWT-2057\fP Remove the verbose configuration when writing the base configuration file\&.
+.IP "\(bu" 2
+\fCWT-2058\fP Fix an alignment bug in the mutex and log-slot code\&.
+.IP "\(bu" 2
+\fCWT-2059\fP Include non-aggregated stats in cursor results\&.
+.IP "\(bu" 2
+\fCWT-2062\fP Try harder to make progress on in-memory splits\&.
+.IP "\(bu" 2
+\fCWT-2064\fP Don't spin indefinitely waiting for the handle list lock in eviction\&.
+.IP "\(bu" 2
+\fCWT-2066\fP Update the oldest transaction ID from eviction\&.
+.IP "\(bu" 2
+\fCWT-2068\fP Protect discarding handles with the handle list lock\&.
+.IP "\(bu" 2
+\fCWT-2075\fP Fix a hang in logging with parallel workload\&.
+.IP "\(bu" 2
+\fCWT-2078\fP Fix a bug in error handling with statistics cursors\&.
+.IP "\(bu" 2
+\fCWT-2081\fP Make verify progress reporting less verbose\&.
+.IP "\(bu" 2
+\fCWT-2085\fP Run some of the log_server threads operations more frequently\&.
+.IP "\(bu" 2
+\fCWT-2086\fP Add a statistic to track when eviction finds a page that can be split\&.
+.IP "\(bu" 2
+\fCWT-2089\fP Relax restrictions on multiblock eviction and in-memory splits\&.
+.IP "\(bu" 2
+\fCWT-2090\fP Fix a bug in the Windows OS layer that swallowed error returns\&.
+.IP "\(bu" 2
+\fCWT-2092\fP Free log condition variables after all threads are joined\&.
+.IP "\(bu" 2
+\fCWT-2093\fP Use the C99 bool type to clarify when functions return true/false\&.
+.IP "\(bu" 2
+\fCWT-2094\fP Eliminate direct write and record unbuffered log records\&.
+.IP "\(bu" 2
+\fCWT-2097\fP Reintroduce immediate waits when forced eviction is necessary\&.
+.IP "\(bu" 2
+\fCWT-2100\fP Rename evict to evict_queue so it's easier to search for\&.
+.IP "\(bu" 2
+\fCWT-2101\fP Don't update the logging ckpt_lsn on clean shutdown\&.
+.IP "\(bu" 2
+\fCWT-2102\fP Fix a hang in log slot join when forcing log writes\&.
+.IP "\(bu" 2
+\fCWT-2105\fP Fix a bug where we could reference an invalid memory address if a file is corrupted on disk\&.
+.IP "\(bu" 2
+\fCWT-2108\fP Rework in-memory page rewrite support (WT_PM_REC_REWRITE)\&.
+.IP "\(bu" 2
+\fCWT-2114\fP Make application eviction fairer\&.
+.IP "\(bu" 2
+\fCWT-2115\fP Don't skip truncated pages that are part of a checkpoint\&.
+.IP "\(bu" 2
+\fCWT-2116\fP Add diagnostic checks for stuck cache and dump the state\&.
+.IP "\(bu" 2
+\fCWT-2119\fP Don't evict clean multiblock pages with overflow items during checkpoints\&.
+.IP "\(bu" 2
+\fCWT-2126\fP Clean up if there is an error during splits\&.
+.IP "\(bu" 2
+\fCWT-2127\fP Deepen the tree more regularly to avoid wide internal pages\&.
+.IP "\(bu" 2
+\fCWT-2128\fP When decoding huffman encoding during salvage it's possible to have fewer bits than the symbol length during decoding, if the value has been corrupted\&.
+.IP "\(bu" 2
+\fCWT-2131\fP Switch to using a lock to control page splits to avoid starvation\&.
+.IP "\(bu" 2
+\fCWT-2132\fP Make debug dump function more robust to errors\&.
+.IP "\(bu" 2
+\fCWT-2134\fP Flush all buffered log records in log_flush\&.
+.IP "\(bu" 2
+\fCWT-2135\fP Fix log_only setting for backup cursor\&. Fix initialization\&.
+.IP "\(bu" 2
+\fCWT-2137\fP Check the sync_lsn is in the correct file before moving it forward\&.
+.IP "\(bu" 2
+\fCWT-2139\fP Fix a transaction visibility bug in read-uncommitted transactions\&.
+.IP "\(bu" 2
+\fCWT-2146\fP Improve performance when searching for short keys\&.
+.IP "\(bu" 2
+\fCWT-2148\fP Fix a compiler warning in encoding functions\&.
+.IP "\(bu" 2
+\fCWT-2153\fP Fix bug\&. Now we always need to start the log_server thread\&.
+.IP "\(bu" 2
+\fCWT-2154\fP Make btree dump safer\&.
+.IP "\(bu" 2
+\fCWT-2155\fP Remove last use of F_CAS_ATOMIC and the associated macro\&.
+.IP "\(bu" 2
+\fCWT-2156\fP Allow eviction workers to restart\&.
+.IP "\(bu" 2
+\fCWT-2157\fP Fix a bug where a failed page split could lead to incomplete checkpoints\&.
+.IP "\(bu" 2
+\fCWT-2159\fP Don't check the config twice in one path\&.
+.IP "\(bu" 2
+\fCWT-2162\fP Add null pointer check, needed after an index is dropped\&.
+.IP "\(bu" 2
+\fCWT-2164\fP Prevent another LSM chunk checkpoint while the first is still in progress\&.
+.IP "\(bu" 2
+\fCWT-2165\fP Stop using FALLOC_FL_KEEP_SIZE flag when pre-allocating files\&.
+.IP "\(bu" 2
+\fCWT-2167\fP Switch recovery to using an internal session\&.
+.IP "\(bu" 2
+\fCWT-2170\fP Protect the turtle file with a lock\&.
+.IP "\(bu" 2
+\fCWT-2174\fP Avoid the table list lock when creating a size only statistics cursor\&.
+.IP "\(bu" 2
+\fCWT-2178\fP In-memory storage engine support\&.
+.IP "\(bu" 2
+\fCWT-2179\fP Added decorator to mark txn13 as part of the --long test suite\&.
+.IP "\(bu" 2
+\fCWT-2180\fP Remove cursor\&.{search,search-near,remove} key size validation\&.
+.IP "\(bu" 2
+\fCWT-2182\fP When internal pages grow large enough, split them into their parents\&.
+.IP "\(bu" 2
+\fCWT-2184\fP Fix log scan bug when final record has many trailing zeros\&.
+.IP "\(bu" 2
+\fCWT-2185\fP Don't do reverse splits when closing a file\&.
+.IP "\(bu" 2
+\fCWT-2187\fP Add flag for flushing a slot\&.
+.IP "\(bu" 2
+\fCWT-2189\fP Update flag set and clear macros to be less error prone\&.
+.IP "\(bu" 2
+\fCWT-2191\fP In-memory disk image no longer the same as saved updates\&.
+.IP "\(bu" 2
+\fCWT-2192\fP Fix the logic around checking whether internal page is evictable\&.
+.IP "\(bu" 2
+\fCWT-2193\fP Handle read-committed metadata checkpoints during snapshot transactions\&.
+.IP "\(bu" 2
+\fCWT-2194\fP Java close callbacks should handle cursors that Java code did not open\&.
+.IP "\(bu" 2
+\fCWT-2195\fP Fix a hang after giving up on a reverse split\&.
+.IP "\(bu" 2
+\fCWT-2196\fP Fix error handling in size only statistics\&.
+.IP "\(bu" 2
+\fCWT-2199\fP Fix transaction sync inconsistency\&.
+.IP "\(bu" 2
+\fCWT-2203\fP Release an allocated page on error\&.
+.IP "\(bu" 2
+\fCWT-2204\fP Don't take a local copy of page->modify until we know the page is dirty\&.
+.IP "\(bu" 2
+\fCWT-2206\fP Change cache operations from flags to an enumeration\&.
+.IP "\(bu" 2
+\fCWT-2207\fP Track whenever a session has a handle exclusive\&.
+.IP "\(bu" 2
+\fCWT-2210\fP Raw compression fails if row-store recovery precedes column-store recovery\&.
+.IP "\(bu" 2
+\fCWT-2212\fP Add a 'use_environment' config to \fBwiredtiger_open\fP\&.
+.IP "\(bu" 2
+\fCWT-2218\fP Add truncate stats\&.
+.IP "\(bu" 2
+\fCWT-2219\fP Enhancements to in-memory testing\&.
+.IP "\(bu" 2
+\fCWT-2220\fP Update time comparison macros\&.
+.IP "\(bu" 2
+\fCWT-2222\fP Add statistics for named snapshots\&.
+.IP "\(bu" 2
+\fCWT-2224\fP Track which deleted refs are discarded by a split\&.
+.IP "\(bu" 2
+\fCWT-2228\fP Avoid unnecessary raw-compression calls\&.
+.IP "\(bu" 2
+\fCWT-2237\fP Have threads publish unique transaction IDs so that updates always become visible immediately on commit\&.
+.IP "\(bu" 2
+\fCWT-2241\fP Use a lock to protect transaction ID allocation\&.
+.IP "\(bu" 2
+\fCWT-2243\fP Don't keep transaction IDs pinned for reading from checkpoints\&.
+.IP "\(bu" 2
+\fCWT-2244\fP Trigger in-memory splits sooner\&.
+.IP "\(bu" 2
+\fCWT-2248\fP \fBWT_SESSION::close\fP is updating WT_CONNECTION_IMPL\&.default_session\&.
+.IP "\(bu" 2
+\fCWT-2249\fP Keep eviction stuck until cache usage is under 100%\&.
+.IP "\(bu" 2
+\fCWT-2250\fP Minor fix\&. Use SET instead of increment for stat\&.
+.IP "\(bu" 2
+\fCWT-2251\fP Free addresses when we discard deleted page references\&.
+.IP "\(bu" 2
+\fCWT-2253\fP Evict pages left behind by in-memory splits\&.
+.IP "\(bu" 2
+\fCWT-2257\fP Fixes when given multiple thread workload configurations\&.
+.IP "\(bu" 2
+\fCWT-2260\fP Avoid adding internal pages to the eviction queue
+.PP
+.PP
 .SS "WiredTiger release 2\&.6\&.1, 2015-05-13 "
 .PP
 The WiredTiger 2\&.6\&.1 release contains new features, minor API changes and bug fixes\&.
@@ -11,11 +699,11 @@ The WiredTiger 2\&.6\&.1 release contains new features, minor API changes and bu
 New features:
 .PP
 .IP "\(bu" 2
-Move the sync configuration setting from \fBWT_SESSION::begin_transaction\fP to \fBWT_SESSION::commit_transaction\fP\&. Change the setting from a boolean to a string\&. See upgrading documentation for more information\&. refs WT-1908
+Move the sync configuration setting from \fBWT_SESSION::begin_transaction\fP to \fBWT_SESSION::commit_transaction\fP\&. Change the setting from a boolean to a string\&. See upgrading documentation for more information\&. refs \fCWT-1908\fP
 .IP "\(bu" 2
-Add the ability to flag a transaction to be flushed asynchronously on commit via a new sync=[background] configuration option\&. Add a new \fBWT_SESSION::transaction_sync\fP API to wait for asynchronous flushes to complete\&. refs WT-1908, #1943
+Add the ability to flag a transaction to be flushed asynchronously on commit via a new sync=[background] configuration option\&. Add a new \fBWT_SESSION::transaction_sync\fP API to wait for asynchronous flushes to complete\&. refs \fCWT-1908\fP, #1943
 .IP "\(bu" 2
-Add the ability to create a named in-memory snapshot via a new \fBWT_SESSION::snapshot\fP API\&. refs WT-1839
+Add the ability to create a named in-memory snapshot via a new \fBWT_SESSION::snapshot\fP API\&. refs \fCWT-1839\fP
 .IP "\(bu" 2
 Add the ability to disable write ahead logging at a per-table granularity\&. Accessed via log=(enabled) configuration for \fBWT_SESSION::create\fP API\&. Partial logging has serious implications for recovery, it should be used with caution\&. refs #1989
 .PP
@@ -23,37 +711,37 @@ Add the ability to disable write ahead logging at a per-table granularity\&. Acc
 Other noteworthy changes:
 .PP
 .IP "\(bu" 2
-Fix several bugs related to syncing files for checkpoint durability\&. refs WT-1944
+Fix several bugs related to syncing files for checkpoint durability\&. refs \fCWT-1944\fP
 .IP "\(bu" 2
-Fix a segfault during checkpoint where we could attempt to access a file that was in the process of being dropped in the background\&. refs SERVER-18014
+Fix a segfault during checkpoint where we could attempt to access a file that was in the process of being dropped in the background\&. refs \fCSERVER-18014\fP
 .IP "\(bu" 2
-Fix a segfault during eviction where we could attempt to evict a page from a tree that was in the process of being dropped in the background\&. refs SERVER-18460
+Fix a segfault during eviction where we could attempt to evict a page from a tree that was in the process of being dropped in the background\&. refs \fCSERVER-18460\fP
 .IP "\(bu" 2
-Fix a bug where WiredTiger could segfault in a workload with lots of cache pressure\&. refs WT-1937
+Fix a bug where WiredTiger could segfault in a workload with lots of cache pressure\&. refs \fCWT-1937\fP
 .IP "\(bu" 2
-Fix a performance issue with \fBWT_SESSION::compact\fP, where it would spend a long time compacting tables that had no space to reclaim\&. refs WT-1953
+Fix a performance issue with \fBWT_SESSION::compact\fP, where it would spend a long time compacting tables that had no space to reclaim\&. refs \fCWT-1953\fP
 .IP "\(bu" 2
-Fix a bug where accessing an overflow item could return WT_NOTFOUND incorrectly\&. The issue was related to an invalid transaction visibility check\&. refs WT-1745
+Fix a bug where accessing an overflow item could return WT_NOTFOUND incorrectly\&. The issue was related to an invalid transaction visibility check\&. refs \fCWT-1745\fP
 .IP "\(bu" 2
-Improve performance and avoid changing files on startup if no recovery is required by avoiding the creation of unnecessary checkpoints and log records for files that haven't changed\&. refs WT-1936
+Improve performance and avoid changing files on startup if no recovery is required by avoiding the creation of unnecessary checkpoints and log records for files that haven't changed\&. refs \fCWT-1936\fP
 .IP "\(bu" 2
 Improve how we handle create of a table, if a file with the same name already exists (possibly from an earlier failed create)\&. refs #1974
 .IP "\(bu" 2
 Fix compiler warnings for LZ4 implementation on Windows\&. refs #2006
 .IP "\(bu" 2
-Fix a bug in the WiredTiger command line utility where it could create a base configuration file for an existing database, if there had been a crash while creating the database\&. refs WT-1943
+Fix a bug in the WiredTiger command line utility where it could create a base configuration file for an existing database, if there had been a crash while creating the database\&. refs \fCWT-1943\fP
 .IP "\(bu" 2
-Fix a build problem where recent versions of RedHat would fail to detect posix_memalign presence correctly\&. refs WT-1951
+Fix a build problem where recent versions of RedHat would fail to detect posix_memalign presence correctly\&. refs \fCWT-1951\fP
 .IP "\(bu" 2
 Fix several problems with how we create, recover and backup databases\&. Related to order of creation and differences between Windows and POSIX file system semantics\&. refs #1993
 .IP "\(bu" 2
-Fix a bug where we could flush the log file more often than required if using auto-commit transactions\&. refs WT-1949
+Fix a bug where we could flush the log file more often than required if using auto-commit transactions\&. refs \fCWT-1949\fP
 .IP "\(bu" 2
-Fix a performance problem in LSM, where trees created with an initial bulk load could choose poor merges\&. refs WT-1947
+Fix a performance problem in LSM, where trees created with an initial bulk load could choose poor merges\&. refs \fCWT-1947\fP
 .IP "\(bu" 2
 Improve how we decide whether to deepen a tree during an internal split operation\&. Append workloads could create trees that were excessively deep\&.
 .IP "\(bu" 2
-Fix a bug in LSM which could lead to a hang on connection close\&. refs WT-1935
+Fix a bug in LSM which could lead to a hang on connection close\&. refs \fCWT-1935\fP
 .IP "\(bu" 2
 Fix a bug in the internal random number generator, where concurrent calls could lead to invalid sequences\&. Never seen in the wild\&.
 .PP
@@ -65,9 +753,9 @@ The WiredTiger 2\&.6\&.0 release contains new features, minor API changes and ma
 New features:
 .PP
 .IP "\(bu" 2
-Add support for 'at rest' encryption of WiredTiger databases via a new encryption API\&. refs WT-1822
+Add support for 'at rest' encryption of WiredTiger databases via a new encryption API\&. refs \fCWT-1822\fP
 .IP "\(bu" 2
-Add support for bulk load in LSM trees (previously the bulk configuration for cursor create was ignored by LSM trees)\&. refs SERVER-18321, WT-1922
+Add support for bulk load in LSM trees (previously the bulk configuration for cursor create was ignored by LSM trees)\&. refs \fCSERVER-18321\fP, \fCWT-1922\fP
 .IP "\(bu" 2
 Add enhanced compression support for LZ4\&. Change is not compatible with tables created with LZ4 compression using earlier versions of WiredTiger\&. See the upgrading documentation for more information\&.
 .PP
@@ -75,65 +763,65 @@ Add enhanced compression support for LZ4\&. Change is not compatible with tables
 API and behavior changes:
 .PP
 .IP "\(bu" 2
-Enhance performance of \fBWT_SESSION::drop\fP with force enabled (mark the table as dead and discard it in the background without writing any content to disk, rather than flushing content from the cache)\&. refs WT-1894
+Enhance performance of \fBWT_SESSION::drop\fP with force enabled (mark the table as dead and discard it in the background without writing any content to disk, rather than flushing content from the cache)\&. refs \fCWT-1894\fP
 .IP "\(bu" 2
-Add an API to validate configuration strings\&. refs WT-1739
+Add an API to validate configuration strings\&. refs \fCWT-1739\fP
 .IP "\(bu" 2
-Disallow the cache_resident flag on LSM trees\&. refs WT-1905
+Disallow the cache_resident flag on LSM trees\&. refs \fCWT-1905\fP
 .IP "\(bu" 2
-Enhance the controls for how aggressively idle handles are closed, update the wiredtiger_open file_manager configuration options to expose that control\&. refs SERVER-17907, WT-1856
+Enhance the controls for how aggressively idle handles are closed, update the wiredtiger_open file_manager configuration options to expose that control\&. refs \fCSERVER-17907\fP, \fCWT-1856\fP
 .PP
 .PP
 Significant bug fixes and performance enhancements:
 .PP
 .IP "\(bu" 2
-Fix bugs in checkpoint: committing the checkpoint transaction before it was safe, failure to sync the metadata file before updating the turtle file\&. refs SERVER-18316
+Fix bugs in checkpoint: committing the checkpoint transaction before it was safe, failure to sync the metadata file before updating the turtle file\&. refs \fCSERVER-18316\fP
 .IP "\(bu" 2
 Don't attempt to validate configuration settings for extensions (collators, compressors, encryptors, extractors)\&. The extension may be valid but not yet loaded so it is not possible to validate\&.
 .IP "\(bu" 2
 Check the magic and version numbers in log files when first opening them\&.
 .IP "\(bu" 2
-Fix a bug with cache leaf size accounting for statistics\&. refs WT-1885, WT-1919
+Fix a bug with cache leaf size accounting for statistics\&. refs \fCWT-1885\fP, \fCWT-1919\fP
 .IP "\(bu" 2
-Fix a bug where checkpoint could skip a page that was rewritten in memory\&. refs WT-1946
+Fix a bug where checkpoint could skip a page that was rewritten in memory\&. refs \fCWT-1946\fP
 .IP "\(bu" 2
-Fix a bug in \fBWT_CURSOR::search_near\fP with a random cursor where deleted records could be returned\&. refs WT-1921, WT-1944
+Fix a bug in \fBWT_CURSOR::search_near\fP with a random cursor where deleted records could be returned\&. refs \fCWT-1921\fP, \fCWT-1944\fP
 .IP "\(bu" 2
-Fix a bug in handle close where we could fail to clear the open handle flag\&. refs WT-1915
+Fix a bug in handle close where we could fail to clear the open handle flag\&. refs \fCWT-1915\fP
 .IP "\(bu" 2
-Fix a bug in in-memory splits, don't allow any other eviction of a page if the page is being split\&. refs WT-1916, WT-1917
+Fix a bug in in-memory splits, don't allow any other eviction of a page if the page is being split\&. refs \fCWT-1916\fP, \fCWT-1917\fP
 .IP "\(bu" 2
-Fix a bug in btree open where failure while opening a checkpoint may not clean up completely\&. refs WT-1598
+Fix a bug in btree open where failure while opening a checkpoint may not clean up completely\&. refs \fCWT-1598\fP
 .IP "\(bu" 2
-Fix a performance problem where long running transactions could continually scan long update chains looking for obsolete entries, when there is no chance of finding any\&. refs WT-1913
+Fix a performance problem where long running transactions could continually scan long update chains looking for obsolete entries, when there is no chance of finding any\&. refs \fCWT-1913\fP
 .IP "\(bu" 2
-Fix a performance problem where many threads accessing a single page could prevent WiredTiger from evicting or splitting the page\&. refs WT-1912
+Fix a performance problem where many threads accessing a single page could prevent WiredTiger from evicting or splitting the page\&. refs \fCWT-1912\fP
 .IP "\(bu" 2
-Fix a source of deadlock bugs by restructuring how we lock handles\&. Clean up the definition of when it is safe to acquire different locks\&. refs WT-1598
+Fix a source of deadlock bugs by restructuring how we lock handles\&. Clean up the definition of when it is safe to acquire different locks\&. refs \fCWT-1598\fP
 .IP "\(bu" 2
-Fix a bug where we could evict pages from a file marked as cache resident, add optimizations for cache resident files\&. refs SERVER-18192
+Fix a bug where we could evict pages from a file marked as cache resident, add optimizations for cache resident files\&. refs \fCSERVER-18192\fP
 .IP "\(bu" 2
-Fix a deadlock related to LSM (cases where closing a file with an existing checkpoint could self deadlock)\&. refs WT-716
+Fix a deadlock related to LSM (cases where closing a file with an existing checkpoint could self deadlock)\&. refs \fCWT-716\fP
 .IP "\(bu" 2
-Only split large in-memory pages if there is a need to keep them in cache (otherwise, it is better to reconcile and evict them immediately)\&. refs WT-1890, WT-1896
+Only split large in-memory pages if there is a need to keep them in cache (otherwise, it is better to reconcile and evict them immediately)\&. refs \fCWT-1890\fP, \fCWT-1896\fP
 .IP "\(bu" 2
-Fix a race on shutdown where the eviction server could still have been accessing files while they were being closed\&. refs WT-1893
+Fix a race on shutdown where the eviction server could still have been accessing files while they were being closed\&. refs \fCWT-1893\fP
 .IP "\(bu" 2
-Fix a case where we could run recovery unnecessarily if there were only non-data changing log records since the last checkpoint\&. refs WT-1892
+Fix a case where we could run recovery unnecessarily if there were only non-data changing log records since the last checkpoint\&. refs \fCWT-1892\fP
 .IP "\(bu" 2
 Update API documentation to explain internal session handle usage\&. This allows users to do specific calculations based on the session_max setting\&.
 .IP "\(bu" 2
 Fix a bug in LSM where updates with overwrite could be skipped incorrectly\&. refs BF-829
 .IP "\(bu" 2
-Fix a cursor bug where searching and traversing in different combinations could lead to data buffers being freed before they should be\&. refs WT-1887
+Fix a cursor bug where searching and traversing in different combinations could lead to data buffers being freed before they should be\&. refs \fCWT-1887\fP
 .IP "\(bu" 2
 Fix a bug when closing bulk cursors, where a file could be left open\&.
 .IP "\(bu" 2
 Fix a bug on Windows related to truncating files (SetEndofFile does not ignore truncation requests like POSIX fallocate)\&.
 .IP "\(bu" 2
-Fix a bug in file truncate, where we could truncate to the wrong place if there was a race extending the file at the same time\&. refs WT-1871
+Fix a bug in file truncate, where we could truncate to the wrong place if there was a race extending the file at the same time\&. refs \fCWT-1871\fP
 .IP "\(bu" 2
-Fix a bug in reconciliation where page boundary structures could reference freed memory\&. refs WT-1852
+Fix a bug in reconciliation where page boundary structures could reference freed memory\&. refs \fCWT-1852\fP
 .IP "\(bu" 2
 Change the \fBWT_CURSOR::search\fP and \fBWT_CURSOR::search_near\fP API to first check any currently pinned page before starting a regular descending search\&.
 .IP "\(bu" 2
@@ -143,7 +831,7 @@ Fix a bug where recovery could be unnecessarily run during startup\&.
 .IP "\(bu" 2
 Enhance the Python cursor API to allow setting keys and values using array notation\&.
 .IP "\(bu" 2
-Fix a bug where creating a column store with large gaps in the key range would lead to poor performance\&. refs WT-1807\&.
+Fix a bug where creating a column store with large gaps in the key range would lead to poor performance\&. refs \fCWT-1807\fP\&.
 .IP "\(bu" 2
 Improve the performance of the core btree search routine by using low-level x86 vectorized search instructions\&.
 .PP
@@ -157,17 +845,17 @@ API and behavior changes:
 .IP "\(bu" 2
 Update configuration string parsing to always be case sensitive\&. See upgrading documentation for more information\&.
 .IP "\(bu" 2
-Change the statistics cursor \fBWT_CURSOR\&.reset\fP method to re-load statistics values\&. See upgrading documentation for more information\&. refs WT-1533
+Change the statistics cursor \fBWT_CURSOR::reset\fP method to re-load statistics values\&. See upgrading documentation for more information\&. refs \fCWT-1533\fP
 .IP "\(bu" 2
 Only align buffers on Linux if direct I/O is configured\&. See upgrading documentation for more information\&.
 .IP "\(bu" 2
-Fixes to how and when idle handles are closed\&. refs WT-1808, WT-1811, WT-1814
+Fixes to how and when idle handles are closed\&. refs \fCWT-1808\fP, \fCWT-1811\fP, \fCWT-1814\fP
 .IP "\(bu" 2
 Add some new statistics related to cache usage\&.
 .IP "\(bu" 2
 Add new configuration strings to provide control of how often handles are are reviewed for closure, and how long a handle needs to be idle before it is closed\&. The option is via the wiredtiger_open API, file_manager=(close_idle_time=30,close_scan_interval=10)
 .IP "\(bu" 2
-Add support for running WiredTiger command line utilities without logging\&. refs WT-1732
+Add support for running WiredTiger command line utilities without logging\&. refs \fCWT-1732\fP
 .IP "\(bu" 2
 Update the async configuration API to allow a minimum of 1\&. That is change: async=(ops_max=X) so that the minimum value is now 1 the old minimum was 10\&.
 .PP
@@ -177,33 +865,33 @@ Bug fixes and other significant changes:
 .IP "\(bu" 2
 Fixes and improvements to Windows support\&.
 .IP "\(bu" 2
-Fix several bugs that prevent page eviction\&. refs SERVER-16662, SERVER-17382, WT-1777
+Fix several bugs that prevent page eviction\&. refs \fCSERVER-16662\fP, \fCSERVER-17382\fP, \fCWT-1777\fP
 .IP "\(bu" 2
-Fix a race when stopping eviction workers on shutdown\&. refs WT-1698
+Fix a race when stopping eviction workers on shutdown\&. refs \fCWT-1698\fP
 .IP "\(bu" 2
-Fix a bug where if the system crashes during create the base configuration file could be left in an invalid state\&. refs WT-1775, WT-1776, SERVER-17571
+Fix a bug where if the system crashes during create the base configuration file could be left in an invalid state\&. refs \fCWT-1775\fP, \fCWT-1776\fP, \fCSERVER-17571\fP
 .IP "\(bu" 2
-Fix cases where \fBWT_SESSION::truncate\fP could return EBUSY when a schema level operation is running - for example a checkpoint\&. refs WT-1404, WT-1643
+Fix cases where \fBWT_SESSION::truncate\fP could return EBUSY when a schema level operation is running - for example a checkpoint\&. refs \fCWT-1404\fP, \fCWT-1643\fP
 .IP "\(bu" 2
-Fix a bug in logging - where we could fail to update the end of the log when there is a gap in the log records\&. refs WT-1766, SERVER-17569, SERVER-17613
+Fix a bug in logging - where we could fail to update the end of the log when there is a gap in the log records\&. refs \fCWT-1766\fP, \fCSERVER-17569\fP, \fCSERVER-17613\fP
 .IP "\(bu" 2
-Fix how we account for space used in the cache to be more accurate\&. refs SERVER-17424
+Fix how we account for space used in the cache to be more accurate\&. refs \fCSERVER-17424\fP
 .IP "\(bu" 2
-Fix a bug where we could leak memory if opening a statistics cursor failed\&. refs WT-1760
+Fix a bug where we could leak memory if opening a statistics cursor failed\&. refs \fCWT-1760\fP
 .IP "\(bu" 2
-Fix a bug where a single page could consume a large portion of the cache\&. Leading to cases where a small cache size could result in a hang\&. refs WT-1759
+Fix a bug where a single page could consume a large portion of the cache\&. Leading to cases where a small cache size could result in a hang\&. refs \fCWT-1759\fP
 .IP "\(bu" 2
-Fix a bug in the eviction server that could cause a WT_PANIC\&. The issue was encountered when the number of open handles exceeded the configured number of hazard pointers\&. refs SERVER-17551
+Fix a bug in the eviction server that could cause a WT_PANIC\&. The issue was encountered when the number of open handles exceeded the configured number of hazard pointers\&. refs \fCSERVER-17551\fP
 .IP "\(bu" 2
 Fix a bug parsing huffman configuration options that could lead to a segfault\&.
 .IP "\(bu" 2
-Fix accounting in btree statistics gathering, so page tracking is accurate\&. refs WT-1733
+Fix accounting in btree statistics gathering, so page tracking is accurate\&. refs \fCWT-1733\fP
 .IP "\(bu" 2
-Fix a memory leak in cache management, where a race during page split could leave a key structure allocated\&. refs WT-1582, WT-1747
+Fix a memory leak in cache management, where a race during page split could leave a key structure allocated\&. refs \fCWT-1582\fP, \fCWT-1747\fP
 .IP "\(bu" 2
-Enhance checkpoint tracking code to allow eviction in files once the checkpoint has finished processing them\&. This helps reduce the impact of checkpoints on workloads with cache pressure\&. refs WT-1745
+Enhance checkpoint tracking code to allow eviction in files once the checkpoint has finished processing them\&. This helps reduce the impact of checkpoints on workloads with cache pressure\&. refs \fCWT-1745\fP
 .IP "\(bu" 2
-Fix when aggregation is set on statistics fields\&. Fixes problems with visualizing statistics via wtstats graphs\&. refs WT-1742
+Fix when aggregation is set on statistics fields\&. Fixes problems with visualizing statistics via wtstats graphs\&. refs \fCWT-1742\fP
 .IP "\(bu" 2
 Change how checkpoints use empty blocks in on-disk files\&. Use a first-fit algorithm\&.
 .PP
@@ -221,15 +909,15 @@ Allow memory_page_max to be at most a quarter of the cache size not half\&. This
 Bug fixes and other important changes:
 .PP
 .IP "\(bu" 2
-When skipping a dirty page during a checkpoint, make sure the tree is marked dirty\&. refs SUPPORT-1248, SERVER-17319, SERVER-17506, #1404, #1643, #1721, #1735
+When skipping a dirty page during a checkpoint, make sure the tree is marked dirty\&. refs SUPPORT-1248, \fCSERVER-17319\fP, \fCSERVER-17506\fP, #1404, #1643, #1721, #1735
 .IP "\(bu" 2
-Fix a bug in range truncate where we could remove the wrong records\&. refs SERVER-17345
+Fix a bug in range truncate where we could remove the wrong records\&. refs \fCSERVER-17345\fP
 .IP "\(bu" 2
 Fix a bug in LSM management where we could let the cache get full - leading to a operations being blocked\&. refs #1720
 .IP "\(bu" 2
 Fix several bugs in the checkpoint implementation that could lead to a tree being marked clean when it had updates in memory\&. If shutdown occurred at a specific time those updates would be discarded without being written\&. refs SUPPORT-1248
 .IP "\(bu" 2
-Fix some bugs in logging - where system crashes could leave empty files that would stop recovery working on re-start\&. refs #1717, #1719, SERVER-17451
+Fix some bugs in logging - where system crashes could leave empty files that would stop recovery working on re-start\&. refs #1717, #1719, \fCSERVER-17451\fP
 .IP "\(bu" 2
 Fix a bug in recovery\&. Force recovery instead of returning an error if the LSN given doesn't exist\&. refs #1700, #1704
 .IP "\(bu" 2
@@ -257,7 +945,7 @@ If evicting dirty pages use the worker threads not the server\&. refs #1706
 .IP "\(bu" 2
 Use raw mode when dumping indices\&. refs #1709
 .IP "\(bu" 2
-Fix a bug where we could race opening files while a \fBWT_CONNECTION::close\fP is in progress\&. refs SERVER-17319
+Fix a bug where we could race opening files while a \fBWT_CONNECTION::close\fP is in progress\&. refs \fCSERVER-17319\fP
 .IP "\(bu" 2
 Fix a bug in LSM where snapshot transaction updates could have the wrong visibility check applied\&. Leading to invalid updates\&. refs #1641, #1701, #1702
 .IP "\(bu" 2
@@ -293,17 +981,17 @@ Major enhancements to the wtstats\&.py tool that translates WiredTiger statistic
 .IP "\(bu" 2
 Add a new \fBWT_CURSOR::reconfigure\fP method for cursor configuration\&. See API documentation for more information\&. refs #1381
 .IP "\(bu" 2
-Add a new \fBWT_SESSION\&.strerror\fP method, a thread-safe alternative to \fBwiredtiger_strerror\fP\&. refs #1516
+Add a new \fBWT_SESSION::strerror\fP method, a thread-safe alternative to \fBwiredtiger_strerror\fP\&. refs #1516
 .PP
 .PP
 Bug fixes for bugs that could cause data inconsistency:
 .PP
 .IP "\(bu" 2
-Fix a bug in recovery where we could lose track of file identifiers and apply updates to the wrong file\&. refs SERVER-17142 SERVER-17131
+Fix a bug in recovery where we could lose track of file identifiers and apply updates to the wrong file\&. refs \fCSERVER-17142\fP \fCSERVER-17131\fP
 .IP "\(bu" 2
 Fix several bugs in data consistency that could cause corruption when restarting after a hard crash, including:
 .IP "  \(bu" 4
-A bug in table create that could cause recovery to fail\&. refs SERVER-17204
+A bug in table create that could cause recovery to fail\&. refs \fCSERVER-17204\fP
 .PP
 
 .PP
@@ -317,17 +1005,17 @@ Avoiding stalls due to evicting large pages
 .IP "  \(bu" 4
 Better algorithms for getting application threads to help with cache management without interfering with operation latencies\&.
 .IP "  \(bu" 4
-Better algorithms for maintaining the cache when there are a few very hot pages (e\&.g: append workloads)\&. SERVER-17344
+Better algorithms for maintaining the cache when there are a few very hot pages (e\&.g: append workloads)\&. \fCSERVER-17344\fP
 .IP "  \(bu" 4
-Freeing obsolete references more aggressively, which saves space and reduces traversal overhead when there are lots of updates or deletes\&. refs SERVER-17195, #1647
+Freeing obsolete references more aggressively, which saves space and reduces traversal overhead when there are lots of updates or deletes\&. refs \fCSERVER-17195\fP, #1647
 .IP "  \(bu" 4
-Fix a bug that could cause a data loss if we split a large page into multiple smaller pages and attempted to evict the page at the same time\&. refs #1583 #1563 SERVER-16868
+Fix a bug that could cause a data loss if we split a large page into multiple smaller pages and attempted to evict the page at the same time\&. refs #1583 #1563 \fCSERVER-16868\fP
 .PP
 
 .IP "\(bu" 2
-Significant improvements to the cursor truncate implementation, especially for workloads that periodically truncate from the start of the file\&. refs SERVER-17141
+Significant improvements to the cursor truncate implementation, especially for workloads that periodically truncate from the start of the file\&. refs \fCSERVER-17141\fP
 .IP "\(bu" 2
-Fix a bug in eviction where reconfiguring the number of eviction threads could result in a segfault\&. refs SERVER-17293
+Fix a bug in eviction where reconfiguring the number of eviction threads could result in a segfault\&. refs \fCSERVER-17293\fP
 .IP "\(bu" 2
 Significant bug fixes and performance enhancements to the logging subsystem including:
 .IP "  \(bu" 4
@@ -347,7 +1035,7 @@ Fix a race between connection close and switching log files that could lead to a
 .IP "\(bu" 2
 Added support for advanced options to the WiredTiger verify command line tool\&.
 .IP "\(bu" 2
-Fix a bug in our conflict detection algorithm, where we were failing to detect some write-write conflicts in no-overwrite cursors\&. refs SERVER-16351
+Fix a bug in our conflict detection algorithm, where we were failing to detect some write-write conflicts in no-overwrite cursors\&. refs \fCSERVER-16351\fP
 .IP "\(bu" 2
 Significant bug fixes when writing pages to disk, including:
 .IP "  \(bu" 4
@@ -357,19 +1045,19 @@ Fill the first and second pages as much as possible when splitting\&. refs #1282
 .IP "  \(bu" 4
 Improve the algorithm for fitting large items onto pages when splitting\&. refs #1630 #1631
 .IP "  \(bu" 4
-Fix a bug when using raw compression where we could overflow allocated memory\&. refs SERVER-16664
+Fix a bug when using raw compression where we could overflow allocated memory\&. refs \fCSERVER-16664\fP
 .PP
 
 .IP "\(bu" 2
-Fix several cases where \fBWT_SESSION::verify\fP and \fBWT_SESSION::salvage\fP could return EBUSY unnecessarily\&. refs #1404 SERVER-16457
+Fix several cases where \fBWT_SESSION::verify\fP and \fBWT_SESSION::salvage\fP could return EBUSY unnecessarily\&. refs #1404 \fCSERVER-16457\fP
 .IP "\(bu" 2
-Fix a bug where racing between discarding and updating a tree returned an error to the application\&. refs #1618 SERVER-17048
+Fix a bug where racing between discarding and updating a tree returned an error to the application\&. refs #1618 \fCSERVER-17048\fP
 .IP "\(bu" 2
-Fix a bug where opening a statistics cursor in parallel with a checkpoint could lead to a deadlock\&. refs #1575 SERVER-16738
+Fix a bug where opening a statistics cursor in parallel with a checkpoint could lead to a deadlock\&. refs #1575 \fCSERVER-16738\fP
 .IP "\(bu" 2
 Change the shared cache implementation to use cache read pressure rather than write pressure to determine how best to share memory (as checkpoints skew write pressure as a metric)\&. refs #1569
 .IP "\(bu" 2
-Fix a bug where a deadlock could occur if a checkpoint starts in parallel to compact operations\&. refs #1589 SERVER-16967
+Fix a bug where a deadlock could occur if a checkpoint starts in parallel to compact operations\&. refs #1589 \fCSERVER-16967\fP
 .IP "\(bu" 2
 Fix a bug in how we parse Huffman-encoding configuration settings during \fBWT_SESSION::create\fP\&. refs #1417 #1536
 .IP "\(bu" 2
@@ -395,7 +1083,7 @@ Add support for storing large values on-page in a btree rather than in an overfl
 .IP "\(bu" 2
 Add support for compressing log files\&. When configured each compressible log record will be compressed\&. This is configure with the \fClog=(compressor=X)\fP configuration setting\&. See upgrading documentation for further information\&. [#1359]
 .IP "\(bu" 2
-No longer return EBUSY when opening a bulk cursor, verifying or salvaging a database if a checkpoint is currently running\&. This allows applications to do these exclusive operations without shutting down the checkpoint server thread\&. [#1397] [#1404] SERVER-16236 SERVER-16457
+No longer return EBUSY when opening a bulk cursor, verifying or salvaging a database if a checkpoint is currently running\&. This allows applications to do these exclusive operations without shutting down the checkpoint server thread\&. [#1397] [#1404] \fCSERVER-16236\fP \fCSERVER-16457\fP
 .IP "\(bu" 2
 Add support for immutable indexes\&. [#1344]
 .IP "\(bu" 2
@@ -419,11 +1107,11 @@ Improve performance of cursor open when there are many tables in a database\&. [
 .IP "\(bu" 2
 Reduce the impact checkpoints have on concurrent operations\&. This was done by changing how we lock tables\&. [#1391] [#1392]
 .IP "\(bu" 2
-Improve performance when scanning a table that has many deleted items\&. SERVER-16247
+Improve performance when scanning a table that has many deleted items\&. \fCSERVER-16247\fP
 .IP "\(bu" 2
 Fix a bug in checkpoint, where the metadata (turtle) file wasn't being synced on checkpoint\&. [#1383]
 .IP "\(bu" 2
-Fix a bug where WiredTiger could accumulate memory during page splits and never free it\&. SERVER-16546
+Fix a bug where WiredTiger could accumulate memory during page splits and never free it\&. \fCSERVER-16546\fP
 .IP "\(bu" 2
 Many enhancements and bug fixes for Windows\&.
 .IP "\(bu" 2
@@ -431,9 +1119,9 @@ Fix a bug where a custom extractor terminate was being called twice\&. [#1503]
 .IP "\(bu" 2
 Fix a bug where a race between closing a handle and checkpointing could lead to errors\&. [#1495] [#1497]
 .IP "\(bu" 2
-Validate the block header checksum before we clear it - if the checksum field had been corrupted, we didn't notice\&. SERVER-16457
+Validate the block header checksum before we clear it - if the checksum field had been corrupted, we didn't notice\&. \fCSERVER-16457\fP
 .IP "\(bu" 2
-Fix a bug in write conflict detection\&. Cursors configured with no-overwrite could sometimes not see update conflicts for deleted records\&. SERVER-16351
+Fix a bug in write conflict detection\&. Cursors configured with no-overwrite could sometimes not see update conflicts for deleted records\&. \fCSERVER-16351\fP
 .IP "\(bu" 2
 Several bug fixes and performance improvements in LSM including:
 .IP "  \(bu" 4
@@ -445,15 +1133,15 @@ Improve background maintenance operations so that the cache does not get full un
 .IP "  \(bu" 4
 Fix a bug that could lead to updates being written into old chunks\&. [#1432] [#1418]
 .IP "  \(bu" 4
-Fix a bug in background merge that could skip updates\&. SERVER-16123
+Fix a bug in background merge that could skip updates\&. \fCSERVER-16123\fP
 .PP
 
 .IP "\(bu" 2
-Fix a bug when maintaining the cache, that could cause checkpoints to skip writing an update that should have been included\&. [#1419] SERVER-16336
+Fix a bug when maintaining the cache, that could cause checkpoints to skip writing an update that should have been included\&. [#1419] \fCSERVER-16336\fP
 .IP "\(bu" 2
 Fix a bug in \fBWT_SESSION::drop\fP, where failures generated error output even when force was specified\&. [#1436]
 .IP "\(bu" 2
-Fix a bug in WiredTiger integer packing code when figuring out how much space is required for a value (it can shrink as numbers grow)\&. SERVER-16118
+Fix a bug in WiredTiger integer packing code when figuring out how much space is required for a value (it can shrink as numbers grow)\&. \fCSERVER-16118\fP
 .IP "\(bu" 2
 Several enhancements to the wtstats\&.py tool that generates graphs from standard WiredTiger statistics logs\&. [#1365]
 .IP "\(bu" 2
@@ -904,7 +1592,7 @@ Make prefix compression of keys conditional on the amount of space saved\&. A da
 .IP "\(bu" 2
 The default behavior of the wt utility's load command has been changed to overwrite existing data\&.
 .IP "\(bu" 2
-Add a \fBWT_SESSION\&.create\fP prefix_compression_min configuration option with a default value of 4\&. [#624] and [#624]
+Add a \fBWT_SESSION::create\fP prefix_compression_min configuration option with a default value of 4\&. [#624] and [#624]
 .IP "\(bu" 2
 Fix 'make install' of Python API\&. [#598]
 .IP "\(bu" 2

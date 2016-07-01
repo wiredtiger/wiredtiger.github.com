@@ -1,10 +1,8 @@
-.TH "WT_CONNECTION" 3 "Wed Apr 22 2015" "Version Version 2.5.3" "WiredTiger" \" -*- nroff -*-
+.TH "WT_CONNECTION" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WT_CONNECTION \- 
-.PP
-A connection to a WiredTiger database\&.  
+WT_CONNECTION \- A connection to a WiredTiger database\&.  
 
 .SH SYNOPSIS
 .br
@@ -84,9 +82,17 @@ A connection to a WiredTiger database\&.
 .br
 .RI "\fIAdd a compression function\&. \fP"
 .ti -1c
+.RI "int \fBadd_encryptor\fP (\fBWT_CONNECTION\fP *connection, const char *name, \fBWT_ENCRYPTOR\fP *encryptor, const char *config)"
+.br
+.RI "\fIAdd an encryption function\&. \fP"
+.ti -1c
 .RI "int \fBadd_extractor\fP (\fBWT_CONNECTION\fP *connection, const char *name, \fBWT_EXTRACTOR\fP *extractor, const char *config)"
 .br
 .RI "\fIAdd a custom extractor for index keys or column groups\&. \fP"
+.ti -1c
+.RI "int \fBset_file_system\fP (\fBWT_CONNECTION\fP *connection, \fBWT_FILE_SYSTEM\fP *fs, const char *config)"
+.br
+.RI "\fIConfigure a custom file system\&. \fP"
 .ti -1c
 .RI "\fBWT_EXTENSION_API\fP * \fBget_extension_api\fP (\fBWT_CONNECTION\fP *wt_conn)"
 .br
@@ -105,17 +111,17 @@ Most applications will open a single connection to a database for each process\&
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, \fBex_thread\&.c\fP, \fBnop_encrypt\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "int WT_CONNECTION::add_collator (\fBWT_CONNECTION\fP *connection, const char *name, \fBWT_COLLATOR\fP *collator, const char *config)"
+.SS "int WT_CONNECTION::add_collator (\fBWT_CONNECTION\fP * connection, const char * name, \fBWT_COLLATOR\fP * collator, const char * config)"
 
 .PP
 Add a custom collation function\&. The application must first implement the \fBWT_COLLATOR\fP interface and then register the implementation with WiredTiger:
 .PP
 .PP
 .nf
-    static WT_COLLATOR my_collator = { my_compare, NULL, NULL };
+       static WT_COLLATOR my_collator = { my_compare, NULL, NULL };
         ret = conn->add_collator(conn, "my_collator", &my_collator, NULL);
 .fi
 .PP
@@ -142,7 +148,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_extending\&.c\fP\&.
-.SS "int WT_CONNECTION::add_compressor (\fBWT_CONNECTION\fP *connection, const char *name, \fBWT_COMPRESSOR\fP *compressor, const char *config)"
+.SS "int WT_CONNECTION::add_compressor (\fBWT_CONNECTION\fP * connection, const char * name, \fBWT_COMPRESSOR\fP * compressor, const char * config)"
 
 .PP
 Add a compression function\&. The application must first implement the \fBWT_COMPRESSOR\fP interface and then register the implementation with WiredTiger:
@@ -182,12 +188,7 @@ wiredtiger_extension_init(WT_CONNECTION *connection, WT_CONFIG_ARG *config)
          * as the first field, allowing us to treat references to either type of
          * structure as a reference to the other type\&.
          *
-         * This could be simplified if only a single database is opened in the
-         * application, we could use a static WT_COMPRESSOR structure, and a
-         * static reference to the WT_EXTENSION_API methods, then we don't need
-         * to allocate memory when the compressor is initialized or free it when
-         * the compressor is terminated\&.  However, this approach is more general
-         * purpose and supports multiple databases per application\&.
+         * Heap memory (not static), because it can support multiple databases\&.
          */
         nop_compressor->compressor\&.compress = nop_compress;
         nop_compressor->compressor\&.compress_raw = NULL;
@@ -223,7 +224,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int WT_CONNECTION::add_data_source (\fBWT_CONNECTION\fP *connection, const char *prefix, \fBWT_DATA_SOURCE\fP *data_source, const char *config)"
+.SS "int WT_CONNECTION::add_data_source (\fBWT_CONNECTION\fP * connection, const char * prefix, \fBWT_DATA_SOURCE\fP * data_source, const char * config)"
 
 .PP
 Add a custom data source\&. See \fBCustom Data Sources\fP for more information\&.
@@ -232,7 +233,7 @@ The application must first implement the \fBWT_DATA_SOURCE\fP interface and then
 .PP
 .PP
 .nf
-     static WT_DATA_SOURCE my_dsrc = {
+ static WT_DATA_SOURCE my_dsrc = {
                 my_create,
                 my_compact,
                 my_drop,
@@ -267,7 +268,86 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int WT_CONNECTION::add_extractor (\fBWT_CONNECTION\fP *connection, const char *name, \fBWT_EXTRACTOR\fP *extractor, const char *config)"
+.SS "int WT_CONNECTION::add_encryptor (\fBWT_CONNECTION\fP * connection, const char * name, \fBWT_ENCRYPTOR\fP * encryptor, const char * config)"
+
+.PP
+Add an encryption function\&. The application must first implement the \fBWT_ENCRYPTOR\fP interface and then register the implementation with WiredTiger:
+.PP
+.PP
+.nf
+/* Local encryptor structure\&. */
+typedef struct {
+        WT_ENCRYPTOR encryptor;         /* Must come first */
+
+        WT_EXTENSION_API *wt_api;               /* Extension API */
+
+        unsigned long nop_calls;                /* Count of calls */
+
+} NOP_ENCRYPTOR;
+.fi
+.PP
+ 
+.PP
+.nf
+/*
+ * wiredtiger_extension_init --
+ *      A simple shared library encryption example\&.
+ */
+int
+wiredtiger_extension_init(WT_CONNECTION *connection, WT_CONFIG_ARG *config)
+{
+        NOP_ENCRYPTOR *nop_encryptor;
+
+        (void)config;                           /* Unused parameters */
+
+        if ((nop_encryptor = calloc(1, sizeof(NOP_ENCRYPTOR))) == NULL)
+                return (errno);
+
+        /*
+         * Allocate a local encryptor structure, with a WT_ENCRYPTOR structure
+         * as the first field, allowing us to treat references to either type of
+         * structure as a reference to the other type\&.
+         *
+         * Heap memory (not static), because it can support multiple databases\&.
+         */
+        nop_encryptor->encryptor\&.encrypt = nop_encrypt;
+        nop_encryptor->encryptor\&.decrypt = nop_decrypt;
+        nop_encryptor->encryptor\&.sizing = nop_sizing;
+        nop_encryptor->encryptor\&.terminate = nop_terminate;
+
+        nop_encryptor->wt_api = connection->get_extension_api(connection);
+
+                                                /* Load the encryptor */
+        return (connection->add_encryptor(
+            connection, "nop", (WT_ENCRYPTOR *)nop_encryptor, NULL));
+}
+
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP the connection handle 
+.br
+\fIname\fP the name of the encryption function to be used in calls to \fBWT_SESSION::create\fP, may not be \fC'none'\fP 
+.br
+\fIencryptor\fP the application-supplied encryption handler 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. No values currently permitted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_encrypt\&.c\fP, \fBnop_encrypt\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
+.SS "int WT_CONNECTION::add_extractor (\fBWT_CONNECTION\fP * connection, const char * name, \fBWT_EXTRACTOR\fP * extractor, const char * config)"
 
 .PP
 Add a custom extractor for index keys or column groups\&. The application must first implement the \fBWT_EXTRACTOR\fP interface and then register the implementation with WiredTiger:
@@ -302,13 +382,13 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_extractor\&.c\fP\&.
-.SS "int WT_CONNECTION::async_flush (\fBWT_CONNECTION\fP *connection)"
+.SS "int WT_CONNECTION::async_flush (\fBWT_CONNECTION\fP * connection)"
 
 .PP
 Wait for all outstanding operations to complete\&. 
 .PP
 .nf
- /* Wait for all outstanding operations to complete\&. */
+        /* Wait for all outstanding operations to complete\&. */
         ret = conn->async_flush(conn);
 
 .fi
@@ -330,13 +410,13 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "int WT_CONNECTION::async_new_op (\fBWT_CONNECTION\fP *connection, const char *uri, const char *config, \fBWT_ASYNC_CALLBACK\fP *callback, \fBWT_ASYNC_OP\fP **asyncopp)"
+.SS "int WT_CONNECTION::async_new_op (\fBWT_CONNECTION\fP * connection, const char * uri, const char * config, \fBWT_ASYNC_CALLBACK\fP * callback, \fBWT_ASYNC_OP\fP ** asyncopp)"
 
 .PP
 Return an async operation handle\&. 
 .PP
 .nf
-          while ((ret = conn->async_new_op(conn,
+             while ((ret = conn->async_new_op(conn,
                     "table:async", NULL, &ex_asynckeys\&.iface, &op)) != 0) {
                         /*
                          * If we used up all the handles, pause and retry to
@@ -347,7 +427,7 @@ Return an async operation handle\&.
                         if (ret == EBUSY)
                                 sleep(1);
                         else
-                                return (ret);
+                                return (EXIT_FAILURE);
                 }
 
 .fi
@@ -377,14 +457,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_async\&.c\fP\&.
-.SS "int WT_CONNECTION::close (\fBWT_CONNECTION\fP *connection, const char *config)"
+.SS "int WT_CONNECTION::close (\fBWT_CONNECTION\fP * connection, const char * config)"
 
 .PP
 Close a connection\&. Any open sessions will be closed\&.
 .PP
 .PP
 .nf
-       ret = conn->close(conn, NULL);
+     ret = conn->close(conn, NULL);
 .fi
 .PP
  
@@ -405,21 +485,24 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int WT_CONNECTION::configure_method (\fBWT_CONNECTION\fP *connection, const char *method, const char *uri, const char *config, const char *type, const char *check)"
+\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_CONNECTION::configure_method (\fBWT_CONNECTION\fP * connection, const char * method, const char * uri, const char * config, const char * type, const char * check)"
 
 .PP
 Add configuration options for a method\&. See \fBCreating data-specific configuration strings\fP for more information\&.
 .PP
 .PP
 .nf
-       /*
+ /*
          * Applications opening a cursor for the data-source object "my_data"
          * have an additional configuration option "entries", which is an
          * integer type, defaults to 5, and must be an integer between 1 and 10\&.
+         *
+         * The method being configured is specified using a concatenation of the
+         * handle name, a period and the method name\&.
          */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor",
+            "WT_SESSION\&.open_cursor",
             "my_data:", "entries=5", "int", "min=1,max=10");
 
         /*
@@ -428,7 +511,7 @@ Add configuration options for a method\&. See \fBCreating data-specific configur
          * of strings\&.
          */
         ret = conn->configure_method(conn,
-            "session\&.open_cursor", "my_data:", "devices", "list", NULL);
+            "WT_SESSION\&.open_cursor", "my_data:", "devices", "list", NULL);
 .fi
 .PP
  
@@ -437,7 +520,7 @@ Add configuration options for a method\&. See \fBCreating data-specific configur
 .RS 4
 \fIconnection\fP the connection handle 
 .br
-\fImethod\fP the name of the method 
+\fImethod\fP the method being configured 
 .br
 \fIuri\fP the object type or NULL for all object types 
 .br
@@ -454,7 +537,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "\fBWT_EXTENSION_API\fP* WT_CONNECTION::get_extension_api (\fBWT_CONNECTION\fP *wt_conn)"
+.SS "\fBWT_EXTENSION_API\fP* WT_CONNECTION::get_extension_api (\fBWT_CONNECTION\fP * wt_conn)"
 
 .PP
 Return a reference to the WiredTiger extension functions\&. 
@@ -485,13 +568,17 @@ a reference to a \fBWT_EXTENSION_API\fP structure\&.
 .RE
 .PP
 
-.SS "const char* WT_CONNECTION::get_home (\fBWT_CONNECTION\fP *connection)"
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_encrypt\&.c\fP, \fBex_file_system\&.c\fP, \fBnop_encrypt\&.c\fP, and \fBrotn_encrypt\&.c\fP\&.
+.SS "const char* WT_CONNECTION::get_home (\fBWT_CONNECTION\fP * connection)"
 
 .PP
 The home directory of the connection\&. 
 .PP
 .nf
- printf("The database home is %s\n", conn->get_home(conn));
+     printf("The database home is %s\n", conn->get_home(conn));
 
 .fi
 .PP
@@ -508,13 +595,13 @@ a pointer to a string naming the home directory
 .RE
 .PP
 
-.SS "int WT_CONNECTION::is_new (\fBWT_CONNECTION\fP *connection)"
+.SS "int WT_CONNECTION::is_new (\fBWT_CONNECTION\fP * connection)"
 
 .PP
 Return if opening this handle created the database\&. 
 .PP
 .nf
-   if (conn->is_new(conn)) {
+  if (conn->is_new(conn)) {
                 /* First time initialization\&. */
         }
 
@@ -533,13 +620,13 @@ false (zero) if the connection existed before the call to \fBwiredtiger_open\fP,
 .RE
 .PP
 
-.SS "int WT_CONNECTION::load_extension (\fBWT_CONNECTION\fP *connection, const char *path, const char *config)"
+.SS "int WT_CONNECTION::load_extension (\fBWT_CONNECTION\fP * connection, const char * path, const char * config)"
 
 .PP
 Load an extension\&. 
 .PP
 .nf
-     ret = conn->load_extension(conn, "my_extension\&.dll", NULL);
+  ret = conn->load_extension(conn, "my_extension\&.dll", NULL);
 
         ret = conn->load_extension(conn,
             "datasource/libdatasource\&.so",
@@ -555,7 +642,7 @@ Load an extension\&.
 .br
 \fIpath\fP the filename of the extension module, or \fC'local'\fP to search the current application binary for the initialization function, see \fBExtending WiredTiger\fP for more details\&. 
 .br
-\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCconfig\fPconfiguration string passed to the entry point of the extension as its WT_CONFIG_ARG argument\&.a string; default empty\&. \fCentry\fPthe entry point of the extension, called to initialize the extension when it is loaded\&. The signature of the function must match \fBwiredtiger_extension_init\fP\&.a string; default \fCwiredtiger_extension_init\fP\&. \fCterminate\fPan optional function in the extension that is called before the extension is unloaded during \fBWT_CONNECTION::close\fP\&. The signature of the function must match \fBwiredtiger_extension_terminate\fP\&.a string; default \fCwiredtiger_extension_terminate\fP\&. 
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCconfig\fPconfiguration string passed to the entry point of the extension as its WT_CONFIG_ARG argument\&.a string; default empty\&. \fCearly_load\fPwhether this extension should be loaded at the beginning of \fBwiredtiger_open\fP\&. Only applicable to extensions loaded via the wiredtiger_open configurations string\&.a boolean flag; default \fCfalse\fP\&. \fCentry\fPthe entry point of the extension, called to initialize the extension when it is loaded\&. The signature of the function must match \fBwiredtiger_extension_init\fP\&.a string; default \fCwiredtiger_extension_init\fP\&. \fCterminate\fPan optional function in the extension that is called before the extension is unloaded during \fBWT_CONNECTION::close\fP\&. The signature of the function must match \fBwiredtiger_extension_terminate\fP\&.a string; default \fCwiredtiger_extension_terminate\fP\&. 
 .RE
 .PP
 \fBReturns:\fP
@@ -564,13 +651,13 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
-.SS "int WT_CONNECTION::open_session (\fBWT_CONNECTION\fP *connection, \fBWT_EVENT_HANDLER\fP *errhandler, const char *config, \fBWT_SESSION\fP **sessionp)"
+.SS "int WT_CONNECTION::open_session (\fBWT_CONNECTION\fP * connection, \fBWT_EVENT_HANDLER\fP * errhandler, const char * config, \fBWT_SESSION\fP ** sessionp)"
 
 .PP
 Open a session\&. 
 .PP
 .nf
-    WT_SESSION *session;
+        WT_SESSION *session;
         ret = conn->open_session(conn, NULL, NULL, &session);
 
 .fi
@@ -581,7 +668,7 @@ Open a session\&.
 .RS 4
 \fIconnection\fP the connection handle 
 .br
-\fIerrhandler\fP An error handler\&. If \fCNULL\fP, the connection's error handler is used 
+\fIerrhandler\fP An error handler\&. If \fCNULL\fP, the connection's error handler is used\&. See \fBError handling using the WT_EVENT_HANDLER\fP for more information\&. 
 .br
 \fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCisolation\fPthe default isolation level for operations in this session\&.a string, chosen from the following options: \fC'read-uncommitted'\fP, \fC'read-committed'\fP, \fC'snapshot'\fP; default \fCread-committed\fP\&. 
 .br
@@ -597,14 +684,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .PP
 \fBExamples: \fP
 .in +1c
-\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_config\&.c\fP, \fBex_cursor\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
-.SS "int WT_CONNECTION::reconfigure (\fBWT_CONNECTION\fP *connection, const char *config)"
+\fBex_access\&.c\fP, \fBex_async\&.c\fP, \fBex_call_center\&.c\fP, \fBex_cursor\&.c\fP, \fBex_encrypt\&.c\fP, \fBex_extending\&.c\fP, \fBex_extractor\&.c\fP, \fBex_file_system\&.c\fP, \fBex_hello\&.c\fP, \fBex_log\&.c\fP, \fBex_pack\&.c\fP, \fBex_schema\&.c\fP, \fBex_stat\&.c\fP, and \fBex_thread\&.c\fP\&.
+.SS "int WT_CONNECTION::reconfigure (\fBWT_CONNECTION\fP * connection, const char * config)"
 
 .PP
 Reconfigure a connection handle\&. 
 .PP
 .nf
-      ret = conn->reconfigure(conn, "eviction_target=75");
+    ret = conn->reconfigure(conn, "eviction_target=75");
 
 .fi
 .PP
@@ -614,7 +701,7 @@ Reconfigure a connection handle\&.
 .RS 4
 \fIconnection\fP the connection handle 
 .br
-\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCasync = (\fPasynchronous operations configuration options\&.a set of related configuration options defined below\&. \fC    enabled\fPenable asynchronous operation\&.a boolean flag; default \fCfalse\fP\&. \fC    ops_max\fPmaximum number of expected simultaneous asynchronous operations\&.an integer between 1 and 4096; default \fC1024\fP\&. \fC    threads\fPthe number of worker threads to service asynchronous requests\&. Each worker thread uses a session from the configured session_max\&.an integer between 1 and 20; default \fC2\fP\&. \fC )\fP\fCcache_overhead\fPassume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB)\&. This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads\&.an integer between 0 and 30; default \fC8\fP\&. \fCcache_size\fPmaximum heap memory to allocate for the cache\&. A database should configure either \fCcache_size\fP or \fCshared_cache\fP but not both\&.an integer between 1MB and 10TB; default \fC100MB\fP\&. \fCcheckpoint = (\fPperiodically checkpoint the database\&. Enabling the checkpoint server uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    log_size\fPwait for this amount of log record bytes to be written to the log between each checkpoint\&. A database can configure both log_size and wait to set an upper bound for checkpoints; setting this value above 0 configures periodic checkpoints\&.an integer between 0 and 2GB; default \fC0\fP\&. \fC    name\fPthe checkpoint name\&.a string; default \fC'WiredTigerCheckpoint'\fP\&. \fC    wait\fPseconds to wait between each checkpoint; setting this value above 0 configures periodic checkpoints\&.an integer between 0 and 100000; default \fC0\fP\&. \fC )\fP\fCerror_prefix\fPprefix string for error messages\&.a string; default empty\&. \fCeviction = (\fPeviction configuration options\&.a set of related configuration options defined below\&. \fC    threads_max\fPmaximum number of threads WiredTiger will start to help evict pages from cache\&. The number of threads started will vary depending on the current eviction load\&. Each eviction worker thread uses a session from the configured session_max\&.an integer between 1 and 20; default \fC1\fP\&. \fC    threads_min\fPminimum number of threads WiredTiger will start to help evict pages from cache\&. The number of threads currently running will vary depending on the current eviction load\&.an integer between 1 and 20; default \fC1\fP\&. \fC )\fP\fCeviction_dirty_target\fPcontinue evicting until the cache has less dirty memory than the value, as a percentage of the total cache size\&. Dirty pages will only be evicted if the cache is full enough to trigger eviction\&.an integer between 10 and 99; default \fC80\fP\&. \fCeviction_target\fPcontinue evicting until the cache has less total memory than the value, as a percentage of the total cache size\&. Must be less than \fCeviction_trigger\fP\&.an integer between 10 and 99; default \fC80\fP\&. \fCeviction_trigger\fPtrigger eviction when the cache is using this much memory, as a percentage of the total cache size\&.an integer between 10 and 99; default \fC95\fP\&. \fCfile_manager = (\fPcontrol how file handles are managed\&.a set of related configuration options defined below\&. \fC    close_handle_minimum\fPnumber of handles open before the file manager will look for handles to close\&.an integer greater than or equal to 0; default \fC250\fP\&. \fC    close_idle_time\fPamount of time in seconds a file handle needs to be idle before attempting to close it\&.an integer between 1 and 100000; default \fC30\fP\&. \fC    close_scan_interval\fPinterval in seconds at which to check for files that are inactive and close them\&.an integer between 1 and 100000; default \fC10\fP\&. \fC )\fP\fClsm_manager = (\fPconfigure database wide options for LSM tree management\&. The LSM manager is started automatically the first time an LSM tree is opened\&. The LSM manager uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    merge\fPmerge LSM chunks where possible\&.a boolean flag; default \fCtrue\fP\&. \fC    worker_thread_max\fPConfigure a set of threads to manage merging LSM trees in the database\&. Each worker thread uses a session handle from the configured session_max\&.an integer between 3 and 20; default \fC4\fP\&. \fC )\fP\fCshared_cache = (\fPshared cache configuration options\&. A database should configure either a cache_size or a shared_cache not both\&. Enabling a shared cache uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    chunk\fPthe granularity that a shared cache is redistributed\&.an integer between 1MB and 10TB; default \fC10MB\fP\&. \fC    name\fPthe name of a cache that is shared between databases or \fC'none'\fP when no shared cache is configured\&.a string; default \fCnone\fP\&. \fC    reserve\fPamount of cache this database is guaranteed to have available from the shared cache\&. This setting is per database\&. Defaults to the chunk size\&.an integer; default \fC0\fP\&. \fC    size\fPmaximum memory to allocate for the shared cache\&. Setting this will update the value if one is already set\&.an integer between 1MB and 10TB; default \fC500MB\fP\&. \fC )\fP\fCstatistics\fPMaintain database statistics, which may impact performance\&. Choosing 'all' maintains all statistics regardless of cost, 'fast' maintains a subset of statistics that are relatively inexpensive, 'none' turns off all statistics\&. The 'clear' configuration resets statistics after they are gathered, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared)\&. When 'clear' is configured for the database, gathered statistics are reset each time a statistics cursor is used to gather statistics, as well as each time statistics are logged using the \fCstatistics_log\fP configuration\&. See \fBStatistics\fP for more information\&.a list, with values chosen from the following options: \fC'all'\fP, \fC'fast'\fP, \fC'none'\fP, \fC'clear'\fP; default \fCnone\fP\&. \fCstatistics_log = (\fPlog any statistics the database is configured to maintain, to a file\&. See \fBStatistics\fP for more information\&. Enabling the statistics log server uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    on_close\fPlog statistics on database close\&.a boolean flag; default \fCfalse\fP\&. \fC    path\fPthe pathname to a file into which the log records are written, may contain ISO C standard strftime conversion specifications\&. If the value is not an absolute path name, the file is created relative to the database home\&.a string; default \fC'WiredTigerStat\&.%d\&.%H'\fP\&. \fC    sources\fPif non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging\&. The list may include URIs matching a single data source ('table:mytable'), or a URI matching all data sources of a particular type ('table:')\&.a list of strings; default empty\&. \fC    timestamp\fPa timestamp prepended to each log record, may contain strftime conversion specifications\&.a string; default \fC'%b %d %H:%M:%S'\fP\&. \fC    wait\fPseconds to wait between each write of the log records; setting this value above 0 configures statistics logging\&.an integer between 0 and 100000; default \fC0\fP\&. \fC )\fP\fCverbose\fPenable messages for various events\&. Only available if WiredTiger is configured with --enable-verbose\&. Options are given as a list, such as \fC'verbose=[evictserver,read]'\fP\&.a list, with values chosen from the following options: \fC'api'\fP, \fC'block'\fP, \fC'checkpoint'\fP, \fC'compact'\fP, \fC'evict'\fP, \fC'evictserver'\fP, \fC'fileops'\fP, \fC'log'\fP, \fC'lsm'\fP, \fC'metadata'\fP, \fC'mutex'\fP, \fC'overflow'\fP, \fC'read'\fP, \fC'reconcile'\fP, \fC'recovery'\fP, \fC'salvage'\fP, \fC'shared_cache'\fP, \fC'split'\fP, \fC'temporary'\fP, \fC'transaction'\fP, \fC'verify'\fP, \fC'version'\fP, \fC'write'\fP; default empty\&. 
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. Permitted values: NameEffectValues \fCasync = (\fPasynchronous operations configuration options\&.a set of related configuration options defined below\&. \fC    enabled\fPenable asynchronous operation\&.a boolean flag; default \fCfalse\fP\&. \fC    ops_max\fPmaximum number of expected simultaneous asynchronous operations\&.an integer between 1 and 4096; default \fC1024\fP\&. \fC    threads\fPthe number of worker threads to service asynchronous requests\&. Each worker thread uses a session from the configured session_max\&.an integer between 1 and 20; default \fC2\fP\&. \fC )\fP\fCcache_overhead\fPassume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB)\&. This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads\&.an integer between 0 and 30; default \fC8\fP\&. \fCcache_size\fPmaximum heap memory to allocate for the cache\&. A database should configure either \fCcache_size\fP or \fCshared_cache\fP but not both\&.an integer between 1MB and 10TB; default \fC100MB\fP\&. \fCcheckpoint = (\fPperiodically checkpoint the database\&. Enabling the checkpoint server uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    log_size\fPwait for this amount of log record bytes to be written to the log between each checkpoint\&. A database can configure both log_size and wait to set an upper bound for checkpoints; setting this value above 0 configures periodic checkpoints\&.an integer between 0 and 2GB; default \fC0\fP\&. \fC    name\fPthe checkpoint name\&.a string; default \fC'WiredTigerCheckpoint'\fP\&. \fC    wait\fPseconds to wait between each checkpoint; setting this value above 0 configures periodic checkpoints\&.an integer between 0 and 100000; default \fC0\fP\&. \fC )\fP\fCerror_prefix\fPprefix string for error messages\&.a string; default empty\&. \fCeviction = (\fPeviction configuration options\&.a set of related configuration options defined below\&. \fC    threads_max\fPmaximum number of threads WiredTiger will start to help evict pages from cache\&. The number of threads started will vary depending on the current eviction load\&. Each eviction worker thread uses a session from the configured session_max\&.an integer between 1 and 20; default \fC1\fP\&. \fC    threads_min\fPminimum number of threads WiredTiger will start to help evict pages from cache\&. The number of threads currently running will vary depending on the current eviction load\&.an integer between 1 and 20; default \fC1\fP\&. \fC )\fP\fCeviction_dirty_target\fPcontinue evicting until the cache has less dirty memory than the value, as a percentage of the total cache size\&. Dirty pages will only be evicted if the cache is full enough to trigger eviction\&.an integer between 5 and 99; default \fC80\fP\&. \fCeviction_dirty_trigger\fPtrigger eviction when the cache is using this much memory for dirty content, as a percentage of the total cache size\&. This setting only alters behavior if it is lower than eviction_trigger\&.an integer between 5 and 99; default \fC95\fP\&. \fCeviction_target\fPcontinue evicting until the cache has less total memory than the value, as a percentage of the total cache size\&. Must be less than \fCeviction_trigger\fP\&.an integer between 10 and 99; default \fC80\fP\&. \fCeviction_trigger\fPtrigger eviction when the cache is using this much memory, as a percentage of the total cache size\&.an integer between 10 and 99; default \fC95\fP\&. \fCfile_manager = (\fPcontrol how file handles are managed\&.a set of related configuration options defined below\&. \fC    close_handle_minimum\fPnumber of handles open before the file manager will look for handles to close\&.an integer greater than or equal to 0; default \fC250\fP\&. \fC    close_idle_time\fPamount of time in seconds a file handle needs to be idle before attempting to close it\&. A setting of 0 means that idle handles are not closed\&.an integer between 0 and 100000; default \fC30\fP\&. \fC    close_scan_interval\fPinterval in seconds at which to check for files that are inactive and close them\&.an integer between 1 and 100000; default \fC10\fP\&. \fC )\fP\fClog = (\fPenable logging\&. Enabling logging uses three sessions from the configured session_max\&.a set of related configuration options defined below\&. \fC    archive\fPautomatically archive unneeded log files\&.a boolean flag; default \fCtrue\fP\&. \fC    compressor\fPconfigure a compressor for log records\&. Permitted values are \fC'none'\fP or custom compression engine name created with \fBWT_CONNECTION::add_compressor\fP\&. If WiredTiger has builtin support for \fC'snappy'\fP, \fC'lz4'\fP or \fC'zlib'\fP compression, these names are also available\&. See \fBCompressors\fP for more information\&.a string; default \fCnone\fP\&. \fC    enabled\fPenable logging subsystem\&.a boolean flag; default \fCfalse\fP\&. \fC    file_max\fPthe maximum size of log files\&.an integer between 100KB and 2GB; default \fC100MB\fP\&. \fC    path\fPthe path to a directory into which the log files are written\&. If the value is not an absolute path name, the files are created relative to the database home\&.a string; default \fC'\&.'\fP\&. \fC    prealloc\fPpre-allocate log files\&.a boolean flag; default \fCtrue\fP\&. \fC    recover\fPrun recovery or error if recovery needs to run after an unclean shutdown\&.a string, chosen from the following options: \fC'error'\fP, \fC'on'\fP; default \fCon\fP\&. \fC    zero_fill\fPmanually write zeroes into log files\&.a boolean flag; default \fCfalse\fP\&. \fC )\fP\fClsm_manager = (\fPconfigure database wide options for LSM tree management\&. The LSM manager is started automatically the first time an LSM tree is opened\&. The LSM manager uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    merge\fPmerge LSM chunks where possible\&.a boolean flag; default \fCtrue\fP\&. \fC    worker_thread_max\fPConfigure a set of threads to manage merging LSM trees in the database\&. Each worker thread uses a session handle from the configured session_max\&.an integer between 3 and 20; default \fC4\fP\&. \fC )\fP\fCshared_cache = (\fPshared cache configuration options\&. A database should configure either a cache_size or a shared_cache not both\&. Enabling a shared cache uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    chunk\fPthe granularity that a shared cache is redistributed\&.an integer between 1MB and 10TB; default \fC10MB\fP\&. \fC    name\fPthe name of a cache that is shared between databases or \fC'none'\fP when no shared cache is configured\&.a string; default \fCnone\fP\&. \fC    quota\fPmaximum size of cache this database can be allocated from the shared cache\&. Defaults to the entire shared cache size\&.an integer; default \fC0\fP\&. \fC    reserve\fPamount of cache this database is guaranteed to have available from the shared cache\&. This setting is per database\&. Defaults to the chunk size\&.an integer; default \fC0\fP\&. \fC    size\fPmaximum memory to allocate for the shared cache\&. Setting this will update the value if one is already set\&.an integer between 1MB and 10TB; default \fC500MB\fP\&. \fC )\fP\fCstatistics\fPMaintain database statistics, which may impact performance\&. Choosing 'all' maintains all statistics regardless of cost, 'fast' maintains a subset of statistics that are relatively inexpensive, 'none' turns off all statistics\&. The 'clear' configuration resets statistics after they are gathered, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared)\&. When 'clear' is configured for the database, gathered statistics are reset each time a statistics cursor is used to gather statistics, as well as each time statistics are logged using the \fCstatistics_log\fP configuration\&. See \fBStatistics\fP for more information\&.a list, with values chosen from the following options: \fC'all'\fP, \fC'fast'\fP, \fC'none'\fP, \fC'clear'\fP; default \fCnone\fP\&. \fCstatistics_log = (\fPlog any statistics the database is configured to maintain, to a file\&. See \fBStatistics\fP for more information\&. Enabling the statistics log server uses a session from the configured session_max\&.a set of related configuration options defined below\&. \fC    json\fPencode statistics in JSON format\&.a boolean flag; default \fCfalse\fP\&. \fC    on_close\fPlog statistics on database close\&.a boolean flag; default \fCfalse\fP\&. \fC    path\fPthe pathname to a file into which the log records are written, may contain ISO C standard strftime conversion specifications\&. If the value is not an absolute path name, the file is created relative to the database home\&.a string; default \fC'WiredTigerStat\&.%d\&.%H'\fP\&. \fC    sources\fPif non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging\&. The list may include URIs matching a single data source ('table:mytable'), or a URI matching all data sources of a particular type ('table:')\&.a list of strings; default empty\&. \fC    timestamp\fPa timestamp prepended to each log record, may contain strftime conversion specifications, when \fCjson\fP is configured, defaults to \fC'%FT%Y\&.000Z'\fP\&.a string; default \fC'%b %d %H:%M:%S'\fP\&. \fC    wait\fPseconds to wait between each write of the log records; setting this value above 0 configures statistics logging\&.an integer between 0 and 100000; default \fC0\fP\&. \fC )\fP\fCverbose\fPenable messages for various events\&. Only available if WiredTiger is configured with --enable-verbose\&. Options are given as a list, such as \fC'verbose=[evictserver,read]'\fP\&.a list, with values chosen from the following options: \fC'api'\fP, \fC'block'\fP, \fC'checkpoint'\fP, \fC'compact'\fP, \fC'evict'\fP, \fC'evictserver'\fP, \fC'fileops'\fP, \fC'handleops'\fP, \fC'log'\fP, \fC'lsm'\fP, \fC'lsm_manager'\fP, \fC'metadata'\fP, \fC'mutex'\fP, \fC'overflow'\fP, \fC'read'\fP, \fC'rebalance'\fP, \fC'reconcile'\fP, \fC'recovery'\fP, \fC'salvage'\fP, \fC'shared_cache'\fP, \fC'split'\fP, \fC'temporary'\fP, \fC'transaction'\fP, \fC'verify'\fP, \fC'version'\fP, \fC'write'\fP; default empty\&. 
 .RE
 .PP
 \fBReturns:\fP
@@ -623,6 +710,54 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .RE
 .PP
 
+.SS "int WT_CONNECTION::set_file_system (\fBWT_CONNECTION\fP * connection, \fBWT_FILE_SYSTEM\fP * fs, const char * config)"
+
+.PP
+Configure a custom file system\&. This method can only be called from an early loaded extension module\&. The application must first implement the \fBWT_FILE_SYSTEM\fP interface and then register the implementation with WiredTiger:
+.PP
+.PP
+.nf
+       /*
+         * Setup a configuration string that will load our custom file system\&.
+         * Use the special local extension to indicate that the entry point is
+         * in the same executable\&. Also enable early load for this extension,
+         * since WiredTiger needs to be able to find it before doing any file
+         * operations\&. Finally, pass in two pieces of configuration information
+         * to our initialization function as the "config" value\&.
+         */
+        open_config = "create,log=(enabled=true),extensions=(local={"
+            "entry=demo_file_system_create,early_load=true,"
+            "config={config_string=\"demo-file-system\",config_value=37}"
+            "})";
+        /* Open a connection to the database, creating it if necessary\&. */
+        if ((ret = wiredtiger_open(home, NULL, open_config, &conn)) != 0) {
+                fprintf(stderr, "Error connecting to %s: %s\n",
+                    home == NULL ? "\&." : home, wiredtiger_strerror(ret));
+                return (EXIT_FAILURE);
+        }
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP the connection handle 
+.br
+\fIfs\fP the populated file system structure 
+.br
+\fIconfig\fP Configuration string, see \fBConfiguration Strings\fP\&. No values currently permitted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBex_file_system\&.c\fP\&.
 
 .SH "Author"
 .PP 
