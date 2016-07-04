@@ -251,6 +251,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Open a handle for a named file system object. </p>
+<p>The method should return ENOENT if the file does not exist. The method should return EACCES if the file cannot be opened in the requested mode (for example, a file opened for writing in a readonly file system).</p>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

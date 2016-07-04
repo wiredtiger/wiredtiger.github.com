@@ -107,7 +107,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr class="memdesc:a8f568c4cfa33a57e14bf2f30ae61ea35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure disk space is allocated for the file, based on the POSIX 1003.1 standard fallocate.  <a href="#a8f568c4cfa33a57e14bf2f30ae61ea35">More...</a><br /></td></tr>
 <tr class="separator:a8f568c4cfa33a57e14bf2f30ae61ea35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5db2aa421c5297d9119b9517e1117afb"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5db2aa421c5297d9119b9517e1117afb">fh_lock</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, bool lock)</td></tr>
-<tr class="memdesc:a5db2aa421c5297d9119b9517e1117afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock/unlock a file from the perspective of other processes running in the system.  <a href="#a5db2aa421c5297d9119b9517e1117afb">More...</a><br /></td></tr>
+<tr class="memdesc:a5db2aa421c5297d9119b9517e1117afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock/unlock a file from the perspective of other processes running in the system, where necessary.  <a href="#a5db2aa421c5297d9119b9517e1117afb">More...</a><br /></td></tr>
 <tr class="separator:a5db2aa421c5297d9119b9517e1117afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaf6ca726275db6772700eaca399c89f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f">fh_map</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *mapped_regionp, size_t *lengthp, void *mapped_cookiep)</td></tr>
 <tr class="memdesc:afaf6ca726275db6772700eaca399c89f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map a file into memory, based on the POSIX 1003.1 standard mmap.  <a href="#afaf6ca726275db6772700eaca399c89f">More...</a><br /></td></tr>
@@ -260,7 +260,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
       </table>
 </div><div class="memdoc">
 
-<p>Lock/unlock a file from the perspective of other processes running in the system. </p>
+<p>Lock/unlock a file from the perspective of other processes running in the system, where necessary. </p>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
