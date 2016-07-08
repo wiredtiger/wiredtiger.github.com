@@ -75,9 +75,10 @@ var NAVTREEINDEX4 =
 "schema_lang_java.html#schema_intro_lang_java":[0,5,5,0],
 "schema_lang_java.html#schema_key_and_value_formats_lang_java":[0,5,5,3],
 "security.html":[0,7,3],
+"security.html#absolute_path":[0,7,3,1],
 "security.html#directory_permissions":[0,7,3,0],
-"security.html#environment_variables":[0,7,3,2],
-"security.html#file_permissions":[0,7,3,1],
+"security.html#environment_variables":[0,7,3,3],
+"security.html#file_permissions":[0,7,3,2],
 "shared_cache.html":[0,4,23],
 "shared_cache_lang_java.html":[0,5,22],
 "signals.html":[0,4,13],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "struct_w_t___s_e_s_s_i_o_n.html":[1,0,3],
 "struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3":[1,0,3,23],
 "struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817":[1,0,3,8],
-"struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d":[1,0,3,19],
-"struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614":[1,0,3,13]
+"struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d":[1,0,3,19]
 };

@@ -72,7 +72,11 @@ $(document).ready(function(){initNavTree('security.html','');});
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="directory_permissions"></a>
 Database directory permissions</h1>
-<p>All WiredTiger files are stored in the database home directory, and the WiredTiger database directory should have its permissions set to ensure database objects are not accessible to users without appropriate permissions. See <a class="el" href="home.html">Database Home Directory</a> for more information.</p>
+<p>By default, WiredTiger files are stored beneath the database home directory. The WiredTiger database directory should have its permissions set to ensure database objects are not accessible to users without appropriate permissions. See <a class="el" href="home.html">Database Home Directory</a> for more information.</p>
+<h1><a class="anchor" id="absolute_path"></a>
+Absolute paths</h1>
+<p>WiredTiger prepends the name of the database home to file names which do not appear to be absolute paths. (The absolute path test is simplistic, matching a leading slash character on POSIX systems or a leading alphabetic character and colon on Windows.) No file path sanitization or validation is done by WiredTiger, for example, file paths may match universal naming conventions (UNC), or include <code>"../"</code> (dot dot slash) components.</p>
+<p>Applications are responsible for validating user-supplied file paths as necessary to prevent directory traversal attacks.</p>
 <h1><a class="anchor" id="file_permissions"></a>
 File permissions</h1>
 <p>WiredTiger creates file system objects readable and writable by the process owner, group and user, as modified by the process' umask value. The group ownership of created file system objects may vary depending on the system, and is not controlled by WiredTiger.</p>

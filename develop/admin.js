@@ -12,6 +12,7 @@ var admin =
     ] ],
     [ "Security", "security.html", [
       [ "Database directory permissions", "security.html#directory_permissions", null ],
+      [ "Absolute paths", "security.html#absolute_path", null ],
       [ "File permissions", "security.html#file_permissions", null ],
       [ "Environment variables", "security.html#environment_variables", null ]
     ] ]

@@ -1979,7 +1979,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>&#160;&#160;&#160;&#160;file_max</code></td><td>the maximum size of log files.</td><td>an integer between 100KB and 2GB; default <code>100MB</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the path to a directory into which the log files are written. If the value is not an absolute path name, the files are created relative to the database home.</td><td>a string; default <code>"."</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the name of a directory into which log files are written. The directory must already exist. If the value is not an absolute path, the path is relative to the database home (see <a class="el" href="security.html#absolute_path">Absolute paths</a> for more information).</td><td>a string; default <code>"."</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
@@ -2027,7 +2027,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>&#160;&#160;&#160;&#160;on_close</code></td><td>log statistics on database close.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the pathname to a file into which the log records are written, may contain ISO C standard strftime conversion specifications. If the value is not an absolute path name, the file is created relative to the database home.</td><td>a string; default <code>"WiredTigerStat.%d.%H"</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the name of a directory into which statistics files are written. The directory must already exist. If the value is not an absolute path, the path is relative to the database home (see <a class="el" href="security.html#absolute_path">Absolute paths</a> for more information).</td><td>a string; default <code>"."</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;sources</code></td><td>if non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging. The list may include URIs matching a single data source ("table:mytable"), or a URI matching all data sources of a particular type ("table:").</td><td>a list of strings; default empty. </td></tr>
 <tr>

@@ -103,8 +103,10 @@ $(document).ready(function(){initNavTree('statistics.html','');});
 </div><!-- fragment --><p> The statistics gathered will be organized by reference cursors participating in the join (see <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84" title="Join a join cursor with a reference cursor. ">WT_SESSION::join</a>); the uri of each reference cursor appears as a prefix in the description field returned as a value by the statistics cursor.</p>
 <h1><a class="anchor" id="statistics_log"></a>
 Statistics logging</h1>
-<p>WiredTiger will optionally log database statistics into a file when the the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>statistics_log</code> configuration is set.</p>
-<p>The resulting statistics can be displayed using the <code>wtstats</code> visualization tool. For more information, see <a class="el" href="wtstats.html">Visualizing performance with wtstats</a>.</p>
+<p>WiredTiger will optionally log database statistics into files when the the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>statistics_log</code> configuration is set.</p>
+<p>The log files are named <code>WiredTiger</code>.%d.%H, where <code>%d</code> is replaced with the day of the month as a decimal number (01-31), and <code>%H</code> is replaced by the hour (24-hour clock) as a decimal number (00-23). Each log file contains the statistics for the hour specified in its name.</p>
+<p>The location of the log files may be changed with the <code>statistics_log.path</code> configuration string.</p>
+<p>The resulting statistics can be displayed and interactively examined using the <code>wtstats</code> visualization tool. For more information, see <a class="el" href="wtstats.html">Visualizing performance with wtstats</a>.</p>
 <p>The following example logs statistics every 30 seconds:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(</div>
 <div class="line">            home, NULL, <span class="stringliteral">&quot;create,statistics_log=(wait=30)&quot;</span>, &amp;conn);</div>
@@ -114,11 +116,11 @@ Statistics logging</h1>
 <p>Statistics for specific underlying data sources may be included by adding a list of data source URIs to the <code>statistics_log</code> configuration string:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
 <div class="line">            <span class="stringliteral">&quot;create, statistics_log=(&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;sources=(\&quot;lsm:table1\&quot;,\&quot;lsm:table2\&quot;), wait=5)&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;sources=(\&quot;table:table1\&quot;,\&quot;table:table2\&quot;), wait=5)&quot;</span>,</div>
 <div class="line">            &amp;conn);</div>
 </div><!-- fragment --><p> Statistics for all underlying data sources of a particular type may be included by adding a partial data source URI to the <code>statistics_log</code> configuration string:</p>
 <div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create, statistics_log=(sources=(\&quot;lsm:\&quot;), wait=5)&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;create, statistics_log=(sources=(\&quot;index:\&quot;), wait=5)&quot;</span>,</div>
 <div class="line">            &amp;conn);</div>
 </div><!-- fragment --><p> When database statistics are logged, the database home will be the first space-separated entry for each record in the log file. For example:</p>
 <div class="fragment"><div class="line">Mar 08 11:38:23 463 /database/home pthread mutex condition wait calls</div>
@@ -134,13 +136,7 @@ Statistics logging</h1>
 <div class="line">Mar 20 10:42:36 586 table:mytable cursor insert calls</div>
 <div class="line">Mar 20 10:42:36 0 table:mytable bulk-loaded cursor-insert calls</div>
 </div><!-- fragment --><p>No statistics are logged for any data source for which a handle is not currently open in the database, nor will any statistics requiring the traversal of a tree (as if the <code>statistics_fast</code> configuration string were set).</p>
-<p>The location of the log files may be changed with the <code>statistics_log.path</code> configuration string. The <code>path</code> value value may contain ISO C90 standard strftime conversion specifications. WiredTiger will not create non-existent directories in the path, they must exist before <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is called.</p>
-<p>The following example logs statistics into files named with the month, day and year:</p>
-<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create,&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;statistics_log=(wait=120,path=/log/log.%m.%d.%y)&quot;</span>, &amp;conn);</div>
-</div><!-- fragment --><p> A Python script that parses the default logging output and uses the <a href="http://www.gnuplot.info/">gnuplot</a>, utility to generate Portable Network Graphics (PNG) format graphs is included in the WiredTiger distribution in the file <code>tools/statlog.py</code>.</p>
-<p>To interactively examine statistics results, see <a class="el" href="wtstats.html">Visualizing performance with wtstats</a>. </p>
+<p>A Python script that parses the default logging output and uses the <a href="http://www.gnuplot.info/">gnuplot</a>, utility to generate Portable Network Graphics (PNG) format graphs is included in the WiredTiger distribution in the file <code>tools/statlog.py</code>. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
