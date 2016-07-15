@@ -40,11 +40,10 @@ var group__wt__ext =
     [ "WT_FILE_SYSTEM", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html", [
       [ "fs_directory_list", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a461137686ca8dc659b314b29f7c98299", null ],
       [ "fs_directory_list_free", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a96913fda6ff35e7543fabb02b76d71eb", null ],
-      [ "fs_directory_sync", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a584a3eeae5e72a1d7b5c58c5d9c3c93f", null ],
       [ "fs_exist", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a04768a78e64d45bb61b170e6c2dcb3a2", null ],
-      [ "fs_open_file", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a136b95f3aab60edae212215f1b0b450c", null ],
-      [ "fs_remove", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a7b50c9554818dfc06dac36f2dbb949cf", null ],
-      [ "fs_rename", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#ad7958680c64737d768d5ce2d794cbf3e", null ],
+      [ "fs_open_file", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99", null ],
+      [ "fs_remove", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a1c57a707ff18f2766c3132ddcb405b26", null ],
+      [ "fs_rename", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a39b082e5c6649954d3ebc2b158fe9ab8", null ],
       [ "fs_size", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a2e97ea38029d156f3ead1cea90652c47", null ],
       [ "terminate", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3", null ]
     ] ],
@@ -108,20 +107,22 @@ var group__wt__ext =
     ] ],
     [ "WT_FILE_HANDLE_DONTNEED", "group__wt__ext.html#ga6d6c6913fd2d03910419f8e20f0026a4", null ],
     [ "WT_FILE_HANDLE_WILLNEED", "group__wt__ext.html#gaa4979ed3f2610368e392be059390b62f", null ],
-    [ "WT_OPEN_CREATE", "group__wt__ext.html#ga751906fcbecc4f7497868cc2778dd890", null ],
-    [ "WT_OPEN_DIRECTIO", "group__wt__ext.html#ga862c08e86d2531ad53153cf32b195418", null ],
-    [ "WT_OPEN_EXCLUSIVE", "group__wt__ext.html#ga39c47393aa347f1e29ea33ede65ea6d1", null ],
-    [ "WT_OPEN_READONLY", "group__wt__ext.html#ga0e4934ffd0a4ecd9b9161578dbf10811", null ],
+    [ "WT_FS_DURABLE", "group__wt__ext.html#ga93dc8e06b256a13bc46cd04b71b92d45", null ],
+    [ "WT_FS_OPEN_CREATE", "group__wt__ext.html#gaf336409aa954d371159b0e9d78785179", null ],
+    [ "WT_FS_OPEN_DIRECTIO", "group__wt__ext.html#ga33e13fa2f6113176ff3ea355c96749a3", null ],
+    [ "WT_FS_OPEN_DURABLE", "group__wt__ext.html#ga6ff865a494747bc27525b6b9e1a61ae6", null ],
+    [ "WT_FS_OPEN_EXCLUSIVE", "group__wt__ext.html#gab29effbad63261153d59ad01fcaf7d25", null ],
+    [ "WT_FS_OPEN_READONLY", "group__wt__ext.html#ga91e49502eb5f12a2e4c12a78d93bf4bd", null ],
     [ "WT_TXN_ISO_READ_COMMITTED", "group__wt__ext.html#ga84ae45d6803da8dab05bb72c2e69aa0f", null ],
     [ "WT_TXN_ISO_READ_UNCOMMITTED", "group__wt__ext.html#ga604e4478bcef2026786b0826e34f5262", null ],
     [ "WT_TXN_ISO_SNAPSHOT", "group__wt__ext.html#ga36207e3a80d960f7e0c822e8ab483014", null ],
     [ "WT_CONFIG_ARG", "group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4", null ],
-    [ "WT_OPEN_FILE_TYPE", "group__wt__ext.html#ga7c095b277e029dbfad41e1dcbc33e197", [
-      [ "WT_OPEN_FILE_TYPE_CHECKPOINT", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a805e092ee6602decb69ed7efb0dd6985", null ],
-      [ "WT_OPEN_FILE_TYPE_DATA", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a46ce34023ff4ea82b3568be7933d0fe0", null ],
-      [ "WT_OPEN_FILE_TYPE_DIRECTORY", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a832046bb4ece57233fb35c83fc5ef1ca", null ],
-      [ "WT_OPEN_FILE_TYPE_LOG", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a7004391f0479327d418ebd795ae31131", null ],
-      [ "WT_OPEN_FILE_TYPE_REGULAR", "group__wt__ext.html#gga7c095b277e029dbfad41e1dcbc33e197a80453b84a81a2fd731694bd3b034ea1c", null ]
+    [ "WT_FS_OPEN_FILE_TYPE", "group__wt__ext.html#gae93ff9285c3e44f34ffd98ed54ff69c8", [
+      [ "WT_FS_OPEN_FILE_TYPE_CHECKPOINT", "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8a3f41d49a49653119001275d7c947842c", null ],
+      [ "WT_FS_OPEN_FILE_TYPE_DATA", "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8a4fe90c9b0fcbad204786b8ca088da035", null ],
+      [ "WT_FS_OPEN_FILE_TYPE_DIRECTORY", "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8aefe46c7fefa38ef06a32a8357791f852", null ],
+      [ "WT_FS_OPEN_FILE_TYPE_LOG", "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8ab27f1980d26869872899d889d8753def", null ],
+      [ "WT_FS_OPEN_FILE_TYPE_REGULAR", "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8ad96f702fb4cff2391a0b5601a5c2bb08", null ]
     ] ],
     [ "wiredtiger_extension_init", "group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3", null ],
     [ "wiredtiger_extension_terminate", "group__wt__ext.html#ga3b904ac0bedaa0d1d59d04baaf915f7f", null ]
