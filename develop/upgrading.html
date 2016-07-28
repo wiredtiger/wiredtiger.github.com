@@ -81,6 +81,10 @@ Upgrading to Version 2.8.1</h1>
 <dd><p class="startdd">The <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> statistics logging path configuration has been simplified to be only a path to a directory, and the file name component of the path may no longer be specified. Applications depending on the ability to set statistics log file names will require modification. </p>
 <p class="enddd"></p>
 </dd>
+<dt>Deprecated statistics field </dt>
+<dd><p class="startdd">The connection statistic <code>WT_STAT_CONN_CACHE_BYTES_OVERFLOW</code> has been removed. Overflow information is now available in the <code>WT_STAT_CONN_CACHE_BYTES_OVERFLOW</code> and <code>WT_STAT_CONN_CACHE_OVERFLOW_VALUE</code>. Applications specifically looking for that statistic will require modification. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_280"></a>

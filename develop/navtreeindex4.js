@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"lsm.html":[0,4,6],
 "lsm.html#lsm_api":[0,4,6,2],
 "lsm.html#lsm_background":[0,4,6,0],
 "lsm.html#lsm_bloom":[0,4,6,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a96913fda6ff35e7543fabb02b76d71eb":[1,1,5,1],
 "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3":[1,1,5,7],
 "struct_w_t___s_e_s_s_i_o_n.html":[1,0,3],
-"struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3":[1,0,3,23],
-"struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817":[1,0,3,8]
+"struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3":[1,0,3,23]
 };
