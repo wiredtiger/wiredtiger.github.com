@@ -73,6 +73,11 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="textblock"><h1><a class="anchor" id="version_281"></a>
 Upgrading to Version 2.8.1</h1>
 <dl>
+<dt>Cache management defaults </dt>
+<dd><p class="startdd">The default values for the <code>eviction_dirty_target</code> and <code>eviction_dirty_trigger</code> settings to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> have changed to 5 and 20, respectively. This means that by default, WiredTiger will start writing dirty pages from cache when it becomes 5% dirty and will throttle activity to keep the volume of dirty data in cache under 20%. For write-heavy workloads, the new defaults may result in lower throughput and more threads writing to data files concurrently.</p>
+<p>These settings also now determine how much work is done at the beginning of a checkpoint to make the critical section of checkpoints complete more quickly. </p>
+<p class="enddd"></p>
+</dd>
 <dt>Checkpoint server created checkpoint names </dt>
 <dd><p class="startdd">The <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> checkpoint configuration no longer supports the <code>name</code> configuration, and checkpoint server created checkpoints will always be named the default WiredTiger checkpoint name, "WiredTigerCheckpoint". Applications depending on the ability to set the checkpoint name for the checkpoint server will require modification. </p>
 <p class="enddd"></p>
