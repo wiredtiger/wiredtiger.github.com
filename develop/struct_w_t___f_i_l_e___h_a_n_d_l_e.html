@@ -100,12 +100,12 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr class="memitem:a5b68b388279c64add7b0ef893b1d2e00"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5b68b388279c64add7b0ef893b1d2e00">fh_advise</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset, wt_off_t len, int advice)</td></tr>
 <tr class="memdesc:a5b68b388279c64add7b0ef893b1d2e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate expected future use of file ranges, based on the POSIX 1003.1 standard fadvise.  <a href="#a5b68b388279c64add7b0ef893b1d2e00">More...</a><br /></td></tr>
 <tr class="separator:a5b68b388279c64add7b0ef893b1d2e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e4325fe36cf454b5a8a30ed2bb396ad"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e4325fe36cf454b5a8a30ed2bb396ad">fh_allocate</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t, wt_off_t)</td></tr>
-<tr class="memdesc:a1e4325fe36cf454b5a8a30ed2bb396ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure disk space is allocated for the file, based on the POSIX 1003.1 standard fallocate.  <a href="#a1e4325fe36cf454b5a8a30ed2bb396ad">More...</a><br /></td></tr>
-<tr class="separator:a1e4325fe36cf454b5a8a30ed2bb396ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f568c4cfa33a57e14bf2f30ae61ea35"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a8f568c4cfa33a57e14bf2f30ae61ea35">fh_allocate_nolock</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t, wt_off_t)</td></tr>
-<tr class="memdesc:a8f568c4cfa33a57e14bf2f30ae61ea35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure disk space is allocated for the file, based on the POSIX 1003.1 standard fallocate.  <a href="#a8f568c4cfa33a57e14bf2f30ae61ea35">More...</a><br /></td></tr>
-<tr class="separator:a8f568c4cfa33a57e14bf2f30ae61ea35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4b685446f0ce09b7270dd32bb771ce7"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab4b685446f0ce09b7270dd32bb771ce7">fh_extend</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset)</td></tr>
+<tr class="memdesc:ab4b685446f0ce09b7270dd32bb771ce7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extend the file.  <a href="#ab4b685446f0ce09b7270dd32bb771ce7">More...</a><br /></td></tr>
+<tr class="separator:ab4b685446f0ce09b7270dd32bb771ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2479acb713a211b2d7cc84aaada4b29b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2479acb713a211b2d7cc84aaada4b29b">fh_extend_nolock</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset)</td></tr>
+<tr class="memdesc:a2479acb713a211b2d7cc84aaada4b29b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extend the file.  <a href="#a2479acb713a211b2d7cc84aaada4b29b">More...</a><br /></td></tr>
+<tr class="separator:a2479acb713a211b2d7cc84aaada4b29b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5db2aa421c5297d9119b9517e1117afb"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5db2aa421c5297d9119b9517e1117afb">fh_lock</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, bool lock)</td></tr>
 <tr class="memdesc:a5db2aa421c5297d9119b9517e1117afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock/unlock a file from the perspective of other processes running in the system, where necessary.  <a href="#a5db2aa421c5297d9119b9517e1117afb">More...</a><br /></td></tr>
 <tr class="separator:a5db2aa421c5297d9119b9517e1117afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,9 +133,9 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr class="memitem:ad4203cea23fd8f62765564ba9a24fe6c"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4203cea23fd8f62765564ba9a24fe6c">fh_sync_nowait</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
 <tr class="memdesc:ad4203cea23fd8f62765564ba9a24fe6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Schedule the outstanding file writes required for durability and return immediately.  <a href="#ad4203cea23fd8f62765564ba9a24fe6c">More...</a><br /></td></tr>
 <tr class="separator:ad4203cea23fd8f62765564ba9a24fe6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaefc111f6b04158790ddf4452b87705f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aaefc111f6b04158790ddf4452b87705f">fh_truncate</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t length)</td></tr>
-<tr class="memdesc:aaefc111f6b04158790ddf4452b87705f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lengthen or shorten a file to the specified length, based on the POSIX 1003.1 standard ftruncate.  <a href="#aaefc111f6b04158790ddf4452b87705f">More...</a><br /></td></tr>
-<tr class="separator:aaefc111f6b04158790ddf4452b87705f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcd969865c263c9e9b00d39308e296c"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aadcd969865c263c9e9b00d39308e296c">fh_truncate</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset)</td></tr>
+<tr class="memdesc:aadcd969865c263c9e9b00d39308e296c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Truncate the file.  <a href="#aadcd969865c263c9e9b00d39308e296c">More...</a><br /></td></tr>
+<tr class="separator:aadcd969865c263c9e9b00d39308e296c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab69c295b076627307a6528793d7a9b43"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab69c295b076627307a6528793d7a9b43">fh_write</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset, size_t length, const void *buf)</td></tr>
 <tr class="memdesc:ab69c295b076627307a6528793d7a9b43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write to a file, based on the POSIX 1003.1 standard pwrite.  <a href="#ab69c295b076627307a6528793d7a9b43">More...</a><br /></td></tr>
 <tr class="separator:ab69c295b076627307a6528793d7a9b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,26 +196,26 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </dl>
 </div>
 </div>
-<a class="anchor" id="a1e4325fe36cf454b5a8a30ed2bb396ad"></a>
+<a class="anchor" id="ab4b685446f0ce09b7270dd32bb771ce7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_FILE_HANDLE::fh_allocate) (<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t, wt_off_t)</td>
+          <td class="memname">int(* WT_FILE_HANDLE::fh_extend) (<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Ensure disk space is allocated for the file, based on the POSIX 1003.1 standard fallocate. </p>
+<p>Extend the file. </p>
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
-<p>This method is not called by multiple threads concurrently (on the same file handle). If the file handle's fallocate method supports concurrent calls, set the WT_FILE_HANDLE::fallocate_nolock method instead.</p>
+<p>Any allocated disk space must read as 0 bytes, and no existing file data may change. Allocating all necessary underlying storage (not changing just the file's metadata), is likely to result in increased performance.</p>
+<p>This method is not called by multiple threads concurrently (on the same file handle). If the file handle's extension method supports concurrent calls, set the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2479acb713a211b2d7cc84aaada4b29b" title="Extend the file. ">WT_FILE_HANDLE::fh_extend_nolock</a> method instead. See <a class="el" href="custom_file_systems.html">Custom File Systems</a> for more information.</p>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
-    <tr><td class="paramname">offset</td><td>the file offset </td></tr>
-    <tr><td class="paramname">len</td><td>the size of the advisory </td></tr>
+    <tr><td class="paramname">offset</td><td>desired file size after extension </td></tr>
   </table>
   </dd>
 </dl>
@@ -223,26 +223,26 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </dl>
 </div>
 </div>
-<a class="anchor" id="a8f568c4cfa33a57e14bf2f30ae61ea35"></a>
+<a class="anchor" id="a2479acb713a211b2d7cc84aaada4b29b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_FILE_HANDLE::fh_allocate_nolock) (<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t, wt_off_t)</td>
+          <td class="memname">int(* WT_FILE_HANDLE::fh_extend_nolock) (<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Ensure disk space is allocated for the file, based on the POSIX 1003.1 standard fallocate. </p>
+<p>Extend the file. </p>
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
-<p>This method may be called by multiple threads concurrently (on the same file handle). If the file handle's fallocate method does not support concurrent calls, set the WT_FILE_HANDLE::fallocate method instead.</p>
+<p>Any allocated disk space must read as 0 bytes, and no existing file data may change. Allocating all necessary underlying storage (not only changing the file's metadata), is likely to result in increased performance.</p>
+<p>This method may be called by multiple threads concurrently (on the same file handle). If the file handle's extension method does not support concurrent calls, set the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab4b685446f0ce09b7270dd32bb771ce7" title="Extend the file. ">WT_FILE_HANDLE::fh_extend</a> method instead. See <a class="el" href="custom_file_systems.html">Custom File Systems</a> for more information.</p>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
-    <tr><td class="paramname">offset</td><td>the file offset </td></tr>
-    <tr><td class="paramname">len</td><td>the size of the advisory </td></tr>
+    <tr><td class="paramname">offset</td><td>desired file size after extension </td></tr>
   </table>
   </dd>
 </dl>
@@ -453,24 +453,25 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </dl>
 </div>
 </div>
-<a class="anchor" id="aaefc111f6b04158790ddf4452b87705f"></a>
+<a class="anchor" id="aadcd969865c263c9e9b00d39308e296c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_FILE_HANDLE::fh_truncate) (<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t length)</td>
+          <td class="memname">int(* WT_FILE_HANDLE::fh_truncate) (<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Lengthen or shorten a file to the specified length, based on the POSIX 1003.1 standard ftruncate. </p>
-<p>This method is not required for read-only files, and should be set to NULL when not supported by the file.</p>
+<p>Truncate the file. </p>
+<p>This method is not required, and should be set to NULL when not supported by the file.</p>
+<p>This method is not called by multiple threads concurrently (on the same file handle).</p>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
-    <tr><td class="paramname">length</td><td>desired file size after truncate </td></tr>
+    <tr><td class="paramname">offset</td><td>desired file size after truncate </td></tr>
   </table>
   </dd>
 </dl>
