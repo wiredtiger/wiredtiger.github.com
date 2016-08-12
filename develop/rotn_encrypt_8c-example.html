@@ -502,9 +502,10 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">                    strlen(<span class="stringliteral">&quot;rotn_force_error&quot;</span>) == k.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a>) {</div>
 <div class="line">                        rotn_encryptor-&gt;force_error = v.<a name="a12"></a><a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a> == 0 ? 0 : 1;</div>
 <div class="line">                        <span class="keywordflow">continue</span>;</div>
-<div class="line">                }</div>
-<div class="line">                <span class="keywordflow">else</span> {</div>
-<div class="line">                        (void)config_parser-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(config_parser);</div>
+<div class="line">                } <span class="keywordflow">else</span> {</div>
+<div class="line">                        <span class="keywordflow">if</span> ((ret = config_parser-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(config_parser)) != 0)</div>
+<div class="line">                                <span class="keywordflow">return</span> (rotn_error(rotn_encryptor,</div>
+<div class="line">                                    NULL, ret, <span class="stringliteral">&quot;WT_CONFIG_PARSER.close&quot;</span>));</div>
 <div class="line">                        <span class="keywordflow">return</span> (rotn_error(rotn_encryptor, NULL, EINVAL,</div>
 <div class="line">                            <span class="stringliteral">&quot;unknown config key&quot;</span>));</div>
 <div class="line">                }</div>
