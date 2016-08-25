@@ -66,7 +66,8 @@ var index =
     ] ],
     [ "WiredTiger licensing", "license.html", [
       [ "3rd party software always included in the WiredTiger library", "license.html#license_library", null ],
-      [ "3rd party software optionally included in the WiredTiger library: PPC64", "license.html#license_crc32-vpmsum", null ],
+      [ "3rd party software optionally included in the WiredTiger library: PPC64", "license.html#license_crc32-power8", null ],
+      [ "3rd party software optionally included in the WiredTiger library: s390x", "license.html#license_crc32-zseries", null ],
       [ "3rd party software optionally included in the WiredTiger library: LevelDB", "license.html#license_leveldb", null ],
       [ "3rd party software included in the WiredTiger distribution", "license.html#license_distribution", null ]
     ] ],

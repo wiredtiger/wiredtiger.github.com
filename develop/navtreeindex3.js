@@ -247,7 +247,7 @@ var NAVTREEINDEX3 =
 "helium.html#helium_objects":[0,4,31,2],
 "hierarchy.html":[3],
 "home.html":[0,7,0],
-"huffman.html":[0,5,7,3],
 "huffman.html":[0,4,7,3],
+"huffman.html":[0,5,7,3],
 "in_memory.html":[0,4,19]
 };
