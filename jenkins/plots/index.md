@@ -76,6 +76,9 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot/getPlot?index=8&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot/getPlot?index=9&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot/getPlot?index=10&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot)
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot/getPlot?index=11&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot)
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot/getPlot?index=12&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot)
+[![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot/getPlot?index=13&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot)
 
 ---------------
 
