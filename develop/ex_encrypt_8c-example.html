@@ -148,12 +148,12 @@ $(document).ready(function(){initNavTree('ex_encrypt_8c-example.html','');});
 <div class="line"><span class="preprocessor">#define IV_LEN          16</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * make_cksum --</span></div>
+<div class="line"><span class="comment"> * make_checksum --</span></div>
 <div class="line"><span class="comment"> *      This is where one would call a checksum function on the encrypted</span></div>
 <div class="line"><span class="comment"> *      buffer.  Here we just put a constant value in it.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">make_cksum(uint8_t *dst)</div>
+<div class="line">make_checksum(uint8_t *dst)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keywordtype">int</span> i;</div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -292,7 +292,7 @@ $(document).ready(function(){initNavTree('ex_encrypt_8c-example.html','');});
 <div class="line"><span class="comment">         * Checksum the encrypted buffer and add the IV.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        i = 0;</div>
-<div class="line">        make_cksum(&amp;dst[i]);</div>
+<div class="line">        make_checksum(&amp;dst[i]);</div>
 <div class="line">        i += CHKSUM_LEN;</div>
 <div class="line">        make_iv(&amp;dst[i]);</div>
 <div class="line">        *result_lenp = dst_len;</div>
