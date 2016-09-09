@@ -407,10 +407,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5f6a66daeaa436a2301e469a2f434822">WT_STAT_CONN_CACHE_EVICTION_SERVER_EVICTING</a></td></tr>
 <tr class="memdesc:ga5f6a66daeaa436a2301e469a2f434822"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server evicting pages <br /></td></tr>
 <tr class="separator:ga5f6a66daeaa436a2301e469a2f434822"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4833b567271407300e34750d7e3f3b15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4833b567271407300e34750d7e3f3b15"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4833b567271407300e34750d7e3f3b15">WT_STAT_CONN_CACHE_EVICTION_SERVER_TOOBIG</a></td></tr>
-<tr class="memdesc:ga4833b567271407300e34750d7e3f3b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server skipped very large page <br /></td></tr>
-<tr class="separator:ga4833b567271407300e34750d7e3f3b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafddb1885f74ab7abf0de9c9ae0630cb9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafddb1885f74ab7abf0de9c9ae0630cb9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafddb1885f74ab7abf0de9c9ae0630cb9">WT_STAT_CONN_CACHE_EVICTION_SERVER_SLEPT</a></td></tr>
 <tr class="memdesc:gafddb1885f74ab7abf0de9c9ae0630cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server slept, because we did not make progress with eviction <br /></td></tr>
@@ -2010,6 +2006,8 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
+<tr>
+<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level, expressed as a percentage of the total cache size. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 99; default <code>5</code>. </td></tr>
 <tr>
 <td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content, expressed as a percentage of the total cache size. Ignored if <code>in_memory</code> is <code>true</code>.</td><td>an integer between 1 and 99; default <code>5</code>. </td></tr>
 <tr>

@@ -266,9 +266,6 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a806a8eefe89cc701ecef0eda2e9bbffe inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a806a8eefe89cc701ecef0eda2e9bbffe"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_SERVER_EVICTING</b></td></tr>
 <tr class="separator:a806a8eefe89cc701ecef0eda2e9bbffe inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab638d4cea3fc7ce6a017d8f30ccc032b inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab638d4cea3fc7ce6a017d8f30ccc032b"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_SERVER_TOOBIG</b></td></tr>
-<tr class="separator:ab638d4cea3fc7ce6a017d8f30ccc032b inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bda77b1a669c2f3eb5abe1361a1ee71 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3bda77b1a669c2f3eb5abe1361a1ee71"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_SERVER_SLEPT</b></td></tr>
 <tr class="separator:a3bda77b1a669c2f3eb5abe1361a1ee71 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1220,6 +1217,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_LOGOP_
 <td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
+<tr>
+<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level, expressed as a percentage of the total cache size. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 99; default <code>5</code>. </td></tr>
 <tr>
 <td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content, expressed as a percentage of the total cache size. Ignored if <code>in_memory</code> is <code>true</code>.</td><td>an integer between 1 and 99; default <code>5</code>. </td></tr>
 <tr>
