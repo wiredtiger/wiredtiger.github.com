@@ -395,6 +395,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga607438801c03285110881e55fdcf5811">WT_STAT_CONN_CACHE_EVICTION_AGGRESSIVE_SET</a></td></tr>
 <tr class="memdesc:ga607438801c03285110881e55fdcf5811"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction currently operating in aggressive mode <br /></td></tr>
 <tr class="separator:ga607438801c03285110881e55fdcf5811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac102bdcb189a5e5444e7f3d9b6dcd6ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac102bdcb189a5e5444e7f3d9b6dcd6ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac102bdcb189a5e5444e7f3d9b6dcd6ad">WT_STAT_CONN_CACHE_EVICTION_EMPTY_SCORE</a></td></tr>
+<tr class="memdesc:gac102bdcb189a5e5444e7f3d9b6dcd6ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction empty score <br /></td></tr>
+<tr class="separator:gac102bdcb189a5e5444e7f3d9b6dcd6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa1a554d88a1feb7a76f647a5c2b0fcff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa1a554d88a1feb7a76f647a5c2b0fcff"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa1a554d88a1feb7a76f647a5c2b0fcff">WT_STAT_CONN_CACHE_EVICTION_QUEUE_EMPTY</a></td></tr>
 <tr class="memdesc:gaa1a554d88a1feb7a76f647a5c2b0fcff"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server candidate queue empty when topping up <br /></td></tr>
@@ -419,6 +423,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7399319fd6971d1feabfce2a9fe60623">WT_STAT_CONN_CACHE_EVICTION_STATE</a></td></tr>
 <tr class="memdesc:ga7399319fd6971d1feabfce2a9fe60623"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction state <br /></td></tr>
 <tr class="separator:ga7399319fd6971d1feabfce2a9fe60623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadffd2bd9c5562dceb845af287e1e034e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadffd2bd9c5562dceb845af287e1e034e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadffd2bd9c5562dceb845af287e1e034e">WT_STAT_CONN_CACHE_EVICTION_WALKS_ABANDONED</a></td></tr>
+<tr class="memdesc:gadffd2bd9c5562dceb845af287e1e034e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction walks abandoned <br /></td></tr>
+<tr class="separator:gadffd2bd9c5562dceb845af287e1e034e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafac92de6de839e9e528529adc328e01a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafac92de6de839e9e528529adc328e01a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafac92de6de839e9e528529adc328e01a">WT_STAT_CONN_CACHE_EVICTION_WORKER_EVICTING</a></td></tr>
 <tr class="memdesc:gafac92de6de839e9e528529adc328e01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread evicting pages <br /></td></tr>
@@ -2007,7 +2015,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level, expressed as a percentage of the total cache size. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 99; default <code>15</code>. </td></tr>
+<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level, expressed as a percentage of the total cache size. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 99; default <code>5</code>. </td></tr>
 <tr>
 <td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content, expressed as a percentage of the total cache size. Ignored if <code>in_memory</code> is <code>true</code>.</td><td>an integer between 1 and 99; default <code>5</code>. </td></tr>
 <tr>
