@@ -134,6 +134,8 @@ var group__wt =
     [ "WT_PANIC", "group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992", null ],
     [ "WT_ROLLBACK", "group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8", null ],
     [ "WT_RUN_RECOVERY", "group__wt.html#ga76bb44d946fbe56ddb93470ab95a1e78", null ],
+    [ "WT_STAT_CONN_APPLICATION_CACHE_TIME", "group__wt.html#ga82db17f977dfe8bb1b1caf2b594a33b8", null ],
+    [ "WT_STAT_CONN_APPLICATION_EVICT_TIME", "group__wt.html#gabfab50036b67c8e5040831954b8d7dd6", null ],
     [ "WT_STAT_CONN_ASYNC_ALLOC_RACE", "group__wt.html#gaf2709f55d4ee4797b8a1f1c568d23f0e", null ],
     [ "WT_STAT_CONN_ASYNC_ALLOC_VIEW", "group__wt.html#ga01a389247d44f494eaff44ac9304bde6", null ],
     [ "WT_STAT_CONN_ASYNC_CUR_QUEUE", "group__wt.html#gae0788093d8b82038e000c8a4c96550f1", null ],
