@@ -1,4 +1,4 @@
-.TH "wt_ext" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.TH "wt_ext" 3 "Fri Oct 7 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -50,21 +50,29 @@ The functions and interfaces applications use to customize and extend the behavi
 
 .in +1c
 .ti -1c
-.RI "#define \fBWT_OPEN_CREATE\fP"
+.RI "#define \fBWT_FS_OPEN_CREATE\fP"
 .br
 .RI "\fIWT_FILE_SYSTEM::open_file flags: create if does not exist\&. \fP"
 .ti -1c
-.RI "#define \fBWT_OPEN_DIRECTIO\fP"
+.RI "#define \fBWT_FS_OPEN_DIRECTIO\fP"
 .br
 .RI "\fIWT_FILE_SYSTEM::open_file flags: direct I/O requested\&. \fP"
 .ti -1c
-.RI "#define \fBWT_OPEN_EXCLUSIVE\fP"
+.RI "#define \fBWT_FS_OPEN_DURABLE\fP"
 .br
-.RI "\fIWT_FILE_SYSTEM::open_file flags: error if exclusive use not available\&. \fP"
+.RI "\fIWT_FILE_SYSTEM::open_file flags: file creation must be durable\&. \fP"
 .ti -1c
-.RI "#define \fBWT_OPEN_READONLY\fP"
+.RI "#define \fBWT_FS_OPEN_EXCLUSIVE\fP"
+.br
+.RI "\fIWT_FILE_SYSTEM::open_file flags: return EBUSY if exclusive use not available\&. \fP"
+.ti -1c
+.RI "#define \fBWT_FS_OPEN_READONLY\fP"
 .br
 .RI "\fIWT_FILE_SYSTEM::open_file flags: open is read-only\&. \fP"
+.ti -1c
+.RI "#define \fBWT_FS_DURABLE\fP"
+.br
+.RI "\fIWT_FILE_SYSTEM::remove or WT_FILE_SYSTEM::rename flags: the remove or rename operation must be durable\&. \fP"
 .ti -1c
 .RI "#define \fBWT_FILE_HANDLE_DONTNEED\fP"
 .br
@@ -98,7 +106,7 @@ The functions and interfaces applications use to customize and extend the behavi
 
 .in +1c
 .ti -1c
-.RI "enum \fBWT_OPEN_FILE_TYPE\fP { \fBWT_OPEN_FILE_TYPE_CHECKPOINT\fP, \fBWT_OPEN_FILE_TYPE_DATA\fP, \fBWT_OPEN_FILE_TYPE_DIRECTORY\fP, \fBWT_OPEN_FILE_TYPE_LOG\fP, \fBWT_OPEN_FILE_TYPE_REGULAR\fP }
+.RI "enum \fBWT_FS_OPEN_FILE_TYPE\fP { \fBWT_FS_OPEN_FILE_TYPE_CHECKPOINT\fP, \fBWT_FS_OPEN_FILE_TYPE_DATA\fP, \fBWT_FS_OPEN_FILE_TYPE_DIRECTORY\fP, \fBWT_FS_OPEN_FILE_TYPE_LOG\fP, \fBWT_FS_OPEN_FILE_TYPE_REGULAR\fP }
 .RI "\fIWT_FILE_SYSTEM::open_file file types\&. \fP""
 .br
 .in -1c
@@ -127,7 +135,7 @@ The functions and interfaces applications use to customize and extend the behavi
 A configuration object passed to some extension interfaces\&. This is an opaque type: configuration values can be queried using \fBWT_EXTENSION_API::config_get\fP 
 .SH "Enumeration Type Documentation"
 .PP 
-.SS "enum \fBWT_OPEN_FILE_TYPE\fP"
+.SS "enum \fBWT_FS_OPEN_FILE_TYPE\fP"
 
 .PP
 WT_FILE_SYSTEM::open_file file types\&. 
@@ -135,19 +143,19 @@ WT_FILE_SYSTEM::open_file file types\&.
 \fBEnumerator\fP
 .in +1c
 .TP
-\fB\fIWT_OPEN_FILE_TYPE_CHECKPOINT \fP\fP
+\fB\fIWT_FS_OPEN_FILE_TYPE_CHECKPOINT \fP\fP
 open a data file checkpoint 
 .TP
-\fB\fIWT_OPEN_FILE_TYPE_DATA \fP\fP
+\fB\fIWT_FS_OPEN_FILE_TYPE_DATA \fP\fP
 open a data file 
 .TP
-\fB\fIWT_OPEN_FILE_TYPE_DIRECTORY \fP\fP
+\fB\fIWT_FS_OPEN_FILE_TYPE_DIRECTORY \fP\fP
 open a directory 
 .TP
-\fB\fIWT_OPEN_FILE_TYPE_LOG \fP\fP
+\fB\fIWT_FS_OPEN_FILE_TYPE_LOG \fP\fP
 open a log file 
 .TP
-\fB\fIWT_OPEN_FILE_TYPE_REGULAR \fP\fP
+\fB\fIWT_FS_OPEN_FILE_TYPE_REGULAR \fP\fP
 open a regular file 
 .SH "Function Documentation"
 .PP 

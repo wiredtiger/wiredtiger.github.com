@@ -1,9 +1,28 @@
-.TH "upgrading" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.TH "upgrading" 3 "Fri Oct 7 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 upgrading \- Upgrading WiredTiger applications 
 
+.SH "Upgrading to Version 2\&.8\&.1"
+.PP
+.IP "\fBCache management defaults \fP" 1c
+The default values for the \fCeviction_dirty_target\fP and \fCeviction_dirty_trigger\fP settings to \fBwiredtiger_open\fP have changed to 5 and 20, respectively\&. This means that by default, WiredTiger will start writing dirty pages from cache when it becomes 5% dirty and will throttle activity to keep the volume of dirty data in cache under 20%\&. For write-heavy workloads, the new defaults may result in lower throughput and more threads writing to data files concurrently\&.
+.PP
+There is also a new \fCeviction_checkpoint_target\fP setting that determines how much work is done at the beginning of a checkpoint to make the critical section of checkpoints complete more quickly\&. 
+.PP
+.IP "\fBCheckpoint server created checkpoint names \fP" 1c
+The \fBwiredtiger_open\fP checkpoint configuration no longer supports the \fCname\fP configuration, and checkpoint server created checkpoints will always be named the default WiredTiger checkpoint name, 'WiredTigerCheckpoint'\&. Applications depending on the ability to set the checkpoint name for the checkpoint server will require modification\&. 
+.PP
+.IP "\fBStatistics logging path \fP" 1c
+The \fBwiredtiger_open\fP statistics logging path configuration has been simplified to be only a path to a directory, and the file name component of the path may no longer be specified\&. Applications depending on the ability to set statistics log file names will require modification\&. 
+.PP
+.IP "\fBDeprecated statistics field \fP" 1c
+The connection statistic \fCWT_STAT_CONN_CACHE_BYTES_OVERFLOW\fP has been removed\&. Overflow information is now available in the \fCWT_STAT_CONN_CACHE_BYTES_OVERFLOW\fP and \fCWT_STAT_CONN_CACHE_OVERFLOW_VALUE\fP\&. Applications specifically looking for that statistic will require modification\&. 
+.PP
+.PP
+.PP
+ 
 .SH "Upgrading to Version 2\&.8\&.0"
 .PP
 .IP "\fBLSM metadata \fP" 1c
@@ -24,7 +43,6 @@ Previous versions of WiredTiger created empty named checkpoints in files being b
 .IP "\fBRemove WT_LSN structure from public API \fP" 1c
 The WiredTiger public API used to define a structure that could encapsulate log sequence numbers\&. That structure is no longer exposed publicly\&. 
 .PP
-.IP "\fB\fP" 1c
 .PP
 .PP
  

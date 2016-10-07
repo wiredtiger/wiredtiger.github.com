@@ -1,4 +1,4 @@
-.TH "WT_FILE_SYSTEM" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.TH "WT_FILE_SYSTEM" 3 "Fri Oct 7 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,23 +19,19 @@ WT_FILE_SYSTEM \- The interface implemented by applications to provide a custom 
 .br
 .RI "\fIFree memory allocated by WT_FILE_SYSTEM::directory_list\&. \fP"
 .ti -1c
-.RI "int(* \fBfs_directory_sync\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *directory)"
-.br
-.RI "\fIFlush the named directory\&. \fP"
-.ti -1c
 .RI "int(* \fBfs_exist\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, bool *existp)"
 .br
 .RI "\fIReturn if the named file system object exists\&. \fP"
 .ti -1c
-.RI "int(* \fBfs_open_file\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, \fBWT_OPEN_FILE_TYPE\fP file_type, uint32_t flags, \fBWT_FILE_HANDLE\fP **file_handlep)"
+.RI "int(* \fBfs_open_file\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, \fBWT_FS_OPEN_FILE_TYPE\fP file_type, uint32_t flags, \fBWT_FILE_HANDLE\fP **file_handlep)"
 .br
 .RI "\fIOpen a handle for a named file system object\&. \fP"
 .ti -1c
-.RI "int(* \fBfs_remove\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name)"
+.RI "int(* \fBfs_remove\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, uint32_t flags)"
 .br
 .RI "\fIRemove a named file system object\&. \fP"
 .ti -1c
-.RI "int(* \fBfs_rename\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *from, const char *to)"
+.RI "int(* \fBfs_rename\fP )(\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *from, const char *to, uint32_t flags)"
 .br
 .RI "\fIRename a named file system object\&. \fP"
 .ti -1c
@@ -106,7 +102,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .br
 \fIdirlist\fP the method returns an allocated array of individually allocated strings, one for each entry in the directory\&. 
 .br
-\fIcountp\fP the method the number of entries returned 
+\fIcountp\fP the number of entries returned 
 .RE
 .PP
 
@@ -140,30 +136,6 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_file_system\&.c\fP\&.
-.SS "int(* WT_FILE_SYSTEM::fs_directory_sync) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *directory)"
-
-.PP
-Flush the named directory\&. This method is not required for readonly file systems or file systems where it is not necessary to flush a file's directory to ensure the durability of file system operations, and should be set to NULL when not required by the file system\&.
-.PP
-\fBReturns:\fP
-.RS 4
-zero on success and a non-zero error code on failure\&. See \fBError Returns\fP for details\&.
-.RE
-.PP
-\fBParameters:\fP
-.RS 4
-\fIfile_system\fP the \fBWT_FILE_SYSTEM\fP 
-.br
-\fIsession\fP the current WiredTiger session 
-.br
-\fIdirectory\fP the name of the directory 
-.RE
-.PP
-
-.PP
-\fBExamples: \fP
-.in +1c
-\fBex_file_system\&.c\fP\&.
 .SS "int(* WT_FILE_SYSTEM::fs_exist) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, bool *existp)"
 
 .PP
@@ -190,10 +162,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_file_system\&.c\fP\&.
-.SS "int(* WT_FILE_SYSTEM::fs_open_file) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, \fBWT_OPEN_FILE_TYPE\fP file_type, uint32_t flags, \fBWT_FILE_HANDLE\fP **file_handlep)"
+.SS "int(* WT_FILE_SYSTEM::fs_open_file) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, \fBWT_FS_OPEN_FILE_TYPE\fP file_type, uint32_t flags, \fBWT_FILE_HANDLE\fP **file_handlep)"
 
 .PP
-Open a handle for a named file system object\&. 
+Open a handle for a named file system object\&. The method should return ENOENT if the file is not being created and does not exist\&.
+.PP
+The method should return EACCES if the file cannot be opened in the requested mode (for example, a file opened for writing in a readonly file system)\&.
+.PP
+The method should return EBUSY if \fBWT_FS_OPEN_EXCLUSIVE\fP is set and the file is in use\&.
 .PP
 \fBReturns:\fP
 .RS 4
@@ -210,7 +186,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .br
 \fIfile_type\fP the type of the file The file type is provided to allow optimization for different file access patterns\&. 
 .br
-\fIflags\fP flags indicating how to open the file, one or more of \fBWT_OPEN_CREATE\fP, \fBWT_OPEN_DIRECTIO\fP, \fBWT_OPEN_EXCLUSIVE\fP or \fBWT_OPEN_READONLY\fP\&. 
+\fIflags\fP flags indicating how to open the file, one or more of \fBWT_FS_OPEN_CREATE\fP, \fBWT_FS_OPEN_DIRECTIO\fP, \fBWT_FS_OPEN_DURABLE\fP, \fBWT_FS_OPEN_EXCLUSIVE\fP or \fBWT_FS_OPEN_READONLY\fP\&. 
 .br
 \fIfile_handlep\fP the handle to the newly opened file\&. File system implementations must allocate memory for the handle and the \fBWT_FILE_HANDLE::name\fP field, and fill in the \fBWT_FILE_HANDLE\fP:: fields\&. Applications wanting to associate private information with the \fBWT_FILE_HANDLE\fP:: structure should declare and allocate their own structure as a superset of a \fBWT_FILE_HANDLE\fP:: structure\&. 
 .RE
@@ -220,7 +196,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_file_system\&.c\fP\&.
-.SS "int(* WT_FILE_SYSTEM::fs_remove) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name)"
+.SS "int(* WT_FILE_SYSTEM::fs_remove) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *name, uint32_t flags)"
 
 .PP
 Remove a named file system object\&. This method is not required for readonly file systems and should be set to NULL when not required by the file system\&.
@@ -237,6 +213,10 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fIsession\fP the current WiredTiger session 
 .br
 \fIname\fP the name of the file system object 
+.br
+\fIdurable\fP if the operation requires durability 
+.br
+\fIflags\fP 0 or \fBWT_FS_DURABLE\fP 
 .RE
 .PP
 
@@ -244,7 +224,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_file_system\&.c\fP\&.
-.SS "int(* WT_FILE_SYSTEM::fs_rename) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *from, const char *to)"
+.SS "int(* WT_FILE_SYSTEM::fs_rename) (\fBWT_FILE_SYSTEM\fP *file_system, \fBWT_SESSION\fP *session, const char *from, const char *to, uint32_t flags)"
 
 .PP
 Rename a named file system object\&. This method is not required for readonly file systems and should be set to NULL when not required by the file system\&.
@@ -263,6 +243,8 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fIfrom\fP the original name of the object 
 .br
 \fIto\fP the new name for the object 
+.br
+\fIflags\fP 0 or \fBWT_FS_DURABLE\fP 
 .RE
 .PP
 

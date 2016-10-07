@@ -1,4 +1,4 @@
-.TH "statistics" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.TH "statistics" 3 "Fri Oct 7 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -79,9 +79,13 @@ The following example configures WiredTiger to maintain only relatively inexpens
  The statistics gathered will be organized by reference cursors participating in the join (see \fBWT_SESSION::join\fP); the uri of each reference cursor appears as a prefix in the description field returned as a value by the statistics cursor\&.
 .SH "Statistics logging"
 .PP
-WiredTiger will optionally log database statistics into a file when the the \fBwiredtiger_open\fP \fCstatistics_log\fP configuration is set\&.
+WiredTiger will optionally log database statistics into files when the the \fBwiredtiger_open\fP \fCstatistics_log\fP configuration is set\&.
 .PP
-The resulting statistics can be displayed using the \fCwtstats\fP visualization tool\&. For more information, see \fBVisualizing performance with wtstats\fP\&.
+The log files are named \fCWiredTiger\fP\&.%d\&.%H, where \fC%d\fP is replaced with the day of the month as a decimal number (01-31), and \fC%H\fP is replaced by the hour (24-hour clock) as a decimal number (00-23)\&. Each log file contains the statistics for the hour specified in its name\&.
+.PP
+The location of the log files may be changed with the \fCstatistics_log\&.path\fP configuration string\&.
+.PP
+The resulting statistics can be displayed and interactively examined using the \fCwtstats\fP visualization tool\&. For more information, see \fBVisualizing performance with wtstats\fP\&.
 .PP
 The following example logs statistics every 30 seconds:
 .PP
@@ -103,7 +107,7 @@ Statistics for specific underlying data sources may be included by adding a list
 .nf
         ret = wiredtiger_open(home, NULL,
             "create, statistics_log=("
-            "sources=(\"lsm:table1\",\"lsm:table2\"), wait=5)",
+            "sources=(\"table:table1\",\"table:table2\"), wait=5)",
             &conn);
 .fi
 .PP
@@ -112,7 +116,7 @@ Statistics for specific underlying data sources may be included by adding a list
 .PP
 .nf
         ret = wiredtiger_open(home, NULL,
-            "create, statistics_log=(sources=(\"lsm:\"), wait=5)",
+            "create, statistics_log=(sources=(\"index:\"), wait=5)",
             &conn);
 .fi
 .PP
@@ -143,17 +147,4 @@ Mar 20 10:42:36 0 table:mytable bulk-loaded cursor-insert calls
 .PP
 No statistics are logged for any data source for which a handle is not currently open in the database, nor will any statistics requiring the traversal of a tree (as if the \fCstatistics_fast\fP configuration string were set)\&.
 .PP
-The location of the log files may be changed with the \fCstatistics_log\&.path\fP configuration string\&. The \fCpath\fP value value may contain ISO C90 standard strftime conversion specifications\&. WiredTiger will not create non-existent directories in the path, they must exist before \fBwiredtiger_open\fP is called\&.
-.PP
-The following example logs statistics into files named with the month, day and year:
-.PP
-.PP
-.nf
-        ret = wiredtiger_open(home, NULL,
-            "create,"
-            "statistics_log=(wait=120,path=/log/log\&.%m\&.%d\&.%y)", &conn);
-.fi
-.PP
- A Python script that parses the default logging output and uses the \fCgnuplot\fP, utility to generate Portable Network Graphics (PNG) format graphs is included in the WiredTiger distribution in the file \fCtools/statlog\&.py\fP\&.
-.PP
-To interactively examine statistics results, see \fBVisualizing performance with wtstats\fP\&. 
+A Python script that parses the default logging output and uses the \fCgnuplot\fP, utility to generate Portable Network Graphics (PNG) format graphs is included in the WiredTiger distribution in the file \fCtools/statlog\&.py\fP\&. 

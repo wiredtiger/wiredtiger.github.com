@@ -1,4 +1,4 @@
-.TH "security" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.TH "security" 3 "Fri Oct 7 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,7 +6,12 @@ security \- Security
 
 .SH "Database directory permissions"
 .PP
-All WiredTiger files are stored in the database home directory, and the WiredTiger database directory should have its permissions set to ensure database objects are not accessible to users without appropriate permissions\&. See \fBDatabase Home Directory\fP for more information\&.
+By default, WiredTiger files are stored beneath the database home directory\&. The WiredTiger database directory should have its permissions set to ensure database objects are not accessible to users without appropriate permissions\&. See \fBDatabase Home Directory\fP for more information\&.
+.SH "Absolute paths"
+.PP
+WiredTiger prepends the name of the database home to file names which do not appear to be absolute paths\&. (The absolute path test is simplistic, matching a leading slash character on POSIX systems or a leading alphabetic character and colon on Windows\&.) No file path sanitization or validation is done by WiredTiger, for example, file paths may match universal naming conventions (UNC), or include \fC'\&.\&./'\fP (dot dot slash) components\&.
+.PP
+Applications are responsible for validating user-supplied file paths as necessary to prevent directory traversal attacks\&.
 .SH "File permissions"
 .PP
 WiredTiger creates file system objects readable and writable by the process owner, group and user, as modified by the process' umask value\&. The group ownership of created file system objects may vary depending on the system, and is not controlled by WiredTiger\&.

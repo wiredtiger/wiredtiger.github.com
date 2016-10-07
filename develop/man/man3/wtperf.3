@@ -1,4 +1,4 @@
-.TH "wtperf" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.TH "wtperf" 3 "Fri Oct 7 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -153,7 +153,7 @@ checkpoint every rate operations during the populate phase in the populate threa
 number of checkpoint threads 
 .RE
 .PP
-\fBconn_config (string, default=create)\fP
+\fBconn_config (string, default='create')\fP
 .RS 4
 connection configuration string 
 .RE
@@ -163,7 +163,7 @@ connection configuration string
 post-populate compact for LSM merging activity 
 .RE
 .PP
-\fBcompression (string, default=none)\fP
+\fBcompression (string, default='none')\fP
 .RS 4
 compression extension\&. Allowed configuration values are: 'none', 'lz4', 'snappy', 'zlib' 
 .RE
@@ -178,7 +178,7 @@ do population phase; false to use existing database
 number of WiredTiger databases to use\&. Each database will execute the workload using a separate home directory and complete set of worker threads 
 .RE
 .PP
-\fBdrop_tables (unsigned int, default=0)\fP
+\fBdrop_tables (boolean, default=false)\fP
 .RS 4
 Whether to drop all tables at the end of the run, and report time taken to do the drop\&. 
 .RE
@@ -213,6 +213,11 @@ key size
 perform partial logging on first table only\&. 
 .RE
 .PP
+\fBlog_like_table (boolean, default=false)\fP
+.RS 4
+Append all modification operations to another shared table\&. 
+.RE
+.PP
 \fBmin_throughput (unsigned int, default=0)\fP
 .RS 4
 notify if any throughput measured is less than this amount\&. Aborts or prints warning based on min_throughput_fatal setting\&. Requires sample_interval to be configured 
@@ -225,7 +230,7 @@ print warning (false) or abort (true) of min_throughput failure\&.
 .PP
 \fBmax_latency (unsigned int, default=0)\fP
 .RS 4
-notify if any latency measured exceeds this number of milliseconds\&.Aborts or prints warning based on min_throughput_fatal setting\&. Requires sample_interval to be configured 
+notify if any latency measured exceeds this number of milliseconds\&. Aborts or prints warning based on min_throughput_fatal setting\&. Requires sample_interval to be configured 
 .RE
 .PP
 \fBmax_latency_fatal (boolean, default=false)\fP
@@ -300,10 +305,10 @@ performance logging every interval seconds, 0 to disable
 .PP
 \fBsample_rate (unsigned int, default=50)\fP
 .RS 4
-how often the latency of operations is measured\&. One for every operation,two for every second operation, three for every third operation etc\&. 
+how often the latency of operations is measured\&. One for every operation, two for every second operation, three for every third operation etc\&. 
 .RE
 .PP
-\fBsess_config (string, default=)\fP
+\fBsess_config (string, default='')\fP
 .RS 4
 session configuration string 
 .RE
@@ -313,7 +318,7 @@ session configuration string
 number of idle sessions to create\&. Default 0\&. 
 .RE
 .PP
-\fBtable_config (string, default=key_format=S,value_format=S,type=lsm,exclusive=true,allocation_size=4kb,internal_page_max=64kb,leaf_page_max=4kb,split_pct=100)\fP
+\fBtable_config (string, default='key_format=S,value_format=S,type=lsm,exclusive=true, allocation_size=4kb,internal_page_max=64kb,leaf_page_max=4kb, split_pct=100')\fP
 .RS 4
 table configuration string 
 .RE
@@ -328,19 +333,24 @@ number of tables to run operations over\&. Keys are divided evenly over the tabl
 number of tables to create, that won't be populated\&. Default 0\&. 
 .RE
 .PP
-\fBthreads (string, default=)\fP
+\fBthreads (string, default='')\fP
 .RS 4
 workload configuration: each 'count' entry is the total number of threads, and the 'insert', 'read' and 'update' entries are the ratios of insert, read and update operations done by each worker thread; If a throttle value is provided each thread will do a maximum of that number of operations per second; multiple workload configurations may be specified per threads configuration; for example, a more complex threads configuration might be 'threads=((count=2,reads=1)(count=8,reads=1,inserts=2,updates=1))' which would create 2 threads doing nothing but reads and 8 threads each doing 50% inserts and 25% reads and updates\&. Allowed configuration values are 'count', 'throttle', 'update_delta', 'reads', 'inserts', 'updates', 'truncate', 'truncate_pct' and 'truncate_count'\&. There are also behavior modifiers, supported modifiers are 'ops_per_txn' 
 .RE
 .PP
-\fBtransaction_config (string, default=)\fP
+\fBtransaction_config (string, default='')\fP
 .RS 4
-transaction configuration string, relevant when populate_opts_per_txn is nonzero 
+\fBWT_SESSION\&.begin_transaction\fP configuration string, applied during the populate phase when populate_ops_per_txn is nonzero 
 .RE
 .PP
-\fBtable_name (string, default=test)\fP
+\fBtable_name (string, default='test')\fP
 .RS 4
 table name 
+.RE
+.PP
+\fBtruncate_single_ops (boolean, default=false)\fP
+.RS 4
+Implement truncate via cursor remove instead of session API 
 .RE
 .PP
 \fBvalue_sz_max (unsigned int, default=1000)\fP

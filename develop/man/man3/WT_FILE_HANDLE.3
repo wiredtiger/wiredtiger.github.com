@@ -1,4 +1,4 @@
-.TH "WT_FILE_HANDLE" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.TH "WT_FILE_HANDLE" 3 "Fri Oct 7 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,17 +27,17 @@ WT_FILE_HANDLE \- A file handle implementation returned by WT_FILE_SYSTEM::open_
 .br
 .RI "\fIIndicate expected future use of file ranges, based on the POSIX 1003\&.1 standard fadvise\&. \fP"
 .ti -1c
-.RI "int(* \fBfh_allocate\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t, wt_off_t)"
+.RI "int(* \fBfh_extend\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset)"
 .br
-.RI "\fIEnsure disk space is allocated for the file, based on the POSIX 1003\&.1 standard fallocate\&. \fP"
+.RI "\fIExtend the file\&. \fP"
 .ti -1c
-.RI "int(* \fBfh_allocate_nolock\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t, wt_off_t)"
+.RI "int(* \fBfh_extend_nolock\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset)"
 .br
-.RI "\fIEnsure disk space is allocated for the file, based on the POSIX 1003\&.1 standard fallocate\&. \fP"
+.RI "\fIExtend the file\&. \fP"
 .ti -1c
 .RI "int(* \fBfh_lock\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, bool lock)"
 .br
-.RI "\fILock/unlock a file from the perspective of other processes running in the system\&. \fP"
+.RI "\fILock/unlock a file from the perspective of other processes running in the system, where necessary\&. \fP"
 .ti -1c
 .RI "int(* \fBfh_map\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, void *mapped_regionp, size_t *lengthp, void *mapped_cookiep)"
 .br
@@ -71,9 +71,9 @@ WT_FILE_HANDLE \- A file handle implementation returned by WT_FILE_SYSTEM::open_
 .br
 .RI "\fISchedule the outstanding file writes required for durability and return immediately\&. \fP"
 .ti -1c
-.RI "int(* \fBfh_truncate\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t length)"
+.RI "int(* \fBfh_truncate\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset)"
 .br
-.RI "\fILengthen or shorten a file to the specified length, based on the POSIX 1003\&.1 standard ftruncate\&. \fP"
+.RI "\fITruncate the file\&. \fP"
 .ti -1c
 .RI "int(* \fBfh_write\fP )(\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset, size_t length, const void *buf)"
 .br
@@ -142,12 +142,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_file_system\&.c\fP\&.
-.SS "int(* WT_FILE_HANDLE::fh_allocate) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t, wt_off_t)"
+.SS "int(* WT_FILE_HANDLE::fh_extend) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset)"
 
 .PP
-Ensure disk space is allocated for the file, based on the POSIX 1003\&.1 standard fallocate\&. This method is not required, and should be set to NULL when not supported by the file\&.
+Extend the file\&. This method is not required, and should be set to NULL when not supported by the file\&.
 .PP
-This method is not called by multiple threads concurrently (on the same file handle)\&. If the file handle's fallocate method supports concurrent calls, set the WT_FILE_HANDLE::fallocate_nolock method instead\&.
+Any allocated disk space must read as 0 bytes, and no existing file data may change\&. Allocating all necessary underlying storage (not changing just the file's metadata), is likely to result in increased performance\&.
+.PP
+This method is not called by multiple threads concurrently (on the same file handle)\&. If the file handle's extension method supports concurrent calls, set the \fBWT_FILE_HANDLE::fh_extend_nolock\fP method instead\&. See \fBCustom File Systems\fP for more information\&.
 .PP
 \fBReturns:\fP
 .RS 4
@@ -160,9 +162,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .br
 \fIsession\fP the current WiredTiger session 
 .br
-\fIoffset\fP the file offset 
-.br
-\fIlen\fP the size of the advisory 
+\fIoffset\fP desired file size after extension 
 .RE
 .PP
 
@@ -170,12 +170,14 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_file_system\&.c\fP\&.
-.SS "int(* WT_FILE_HANDLE::fh_allocate_nolock) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t, wt_off_t)"
+.SS "int(* WT_FILE_HANDLE::fh_extend_nolock) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset)"
 
 .PP
-Ensure disk space is allocated for the file, based on the POSIX 1003\&.1 standard fallocate\&. This method is not required, and should be set to NULL when not supported by the file\&.
+Extend the file\&. This method is not required, and should be set to NULL when not supported by the file\&.
 .PP
-This method may be called by multiple threads concurrently (on the same file handle)\&. If the file handle's fallocate method does not support concurrent calls, set the WT_FILE_HANDLE::fallocate method instead\&.
+Any allocated disk space must read as 0 bytes, and no existing file data may change\&. Allocating all necessary underlying storage (not only changing the file's metadata), is likely to result in increased performance\&.
+.PP
+This method may be called by multiple threads concurrently (on the same file handle)\&. If the file handle's extension method does not support concurrent calls, set the \fBWT_FILE_HANDLE::fh_extend\fP method instead\&. See \fBCustom File Systems\fP for more information\&.
 .PP
 \fBReturns:\fP
 .RS 4
@@ -188,9 +190,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .br
 \fIsession\fP the current WiredTiger session 
 .br
-\fIoffset\fP the file offset 
-.br
-\fIlen\fP the size of the advisory 
+\fIoffset\fP desired file size after extension 
 .RE
 .PP
 
@@ -201,7 +201,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .SS "int(* WT_FILE_HANDLE::fh_lock) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, bool lock)"
 
 .PP
-Lock/unlock a file from the perspective of other processes running in the system\&. 
+Lock/unlock a file from the perspective of other processes running in the system, where necessary\&. 
 .PP
 \fBReturns:\fP
 .RS 4
@@ -402,10 +402,12 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 \fBExamples: \fP
 .in +1c
 \fBex_file_system\&.c\fP\&.
-.SS "int(* WT_FILE_HANDLE::fh_truncate) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t length)"
+.SS "int(* WT_FILE_HANDLE::fh_truncate) (\fBWT_FILE_HANDLE\fP *file_handle, \fBWT_SESSION\fP *session, wt_off_t offset)"
 
 .PP
-Lengthen or shorten a file to the specified length, based on the POSIX 1003\&.1 standard ftruncate\&. This method is not required for read-only files, and should be set to NULL when not supported by the file\&.
+Truncate the file\&. This method is not required, and should be set to NULL when not supported by the file\&.
+.PP
+This method is not called by multiple threads concurrently (on the same file handle)\&.
 .PP
 \fBReturns:\fP
 .RS 4
@@ -418,7 +420,7 @@ zero on success and a non-zero error code on failure\&. See \fBError Returns\fP 
 .br
 \fIsession\fP the current WiredTiger session 
 .br
-\fIlength\fP desired file size after truncate 
+\fIoffset\fP desired file size after truncate 
 .RE
 .PP
 

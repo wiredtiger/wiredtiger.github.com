@@ -1,4 +1,4 @@
-.TH "readonly" 3 "Sat Jul 2 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
+.TH "readonly" 3 "Fri Oct 7 2016" "Version Version 2.8.1" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,4 +22,4 @@ If logging is enabled on the database when opened in read-only mode, log file ar
 If LSM trees are in use, read-only mode turns off all modification\&. Internal LSM operations such as merging, creating new chunks, creating bloom filters and dropping old chunks are disabled\&.
 .SH "Readonly configuration and multiple database handles"
 .PP
-One unusual affect of read-only operations is the potential for multiple read-only database handles open on the same database at the same time\&. WiredTiger prevents multiple connection handles by writing a lock file, and this locking is done even in read-only mode\&. However, if the lock file cannot be written, opening in read-only mode is still allowed to proceed\&. For that reason, multiple read-only connection handles could be open at the same time\&. Normal locking occurs if the lock file can be written in read-only mode, preventing multiple database connections\&. 
+One unusual affect of read-only operations is the potential for multiple read-only database handles open on the same database at the same time\&. WiredTiger prevents multiple connection handles by writing a lock file, and this locking is done even in read-only mode\&. However, if the lock file cannot be written, that is, if the WiredTiger home directory does not have write permission, opening in read-only mode is still allowed to proceed\&. For that reason, multiple read-only connection handles could be open at the same time\&. Normal locking occurs if the lock file can be written in read-only mode, preventing multiple database connections\&. 
