@@ -561,6 +561,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>huffman_value</code></td><td>configure Huffman encoding for values. Permitted values are <code>"none"</code>, <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
+<td><code>ignore_in_memory_cache_size</code></td><td>allow update and insert operations to proceed even if the cache is already at capacity. Only valid in conjunction with in-memory databases. Should be used with caution - this configuration allows WiredTiger to consume memory over the configured cache limit.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
 <td><code>immutable</code></td><td>configure the index to be immutable - that is an index is not changed by any update to a record in the table.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>internal_key_max</code></td><td>the largest key stored in an internal node, in bytes. If set, keys larger than the specified size are stored as overflow items (which may require additional I/O to access). The default and the maximum allowed value are both one-tenth the size of a newly split internal page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
