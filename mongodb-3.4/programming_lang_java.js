@@ -40,6 +40,7 @@ var programming_lang_java =
       [ "Using LZ4 compression", "compression_lang_java.html#compression_lz4_lang_java", null ],
       [ "Using snappy compression", "compression_lang_java.html#compression_snappy_lang_java", null ],
       [ "Using zlib compression", "compression_lang_java.html#compression_zlib_lang_java", null ],
+      [ "Using Zstd compression", "compression_lang_java.html#compression_zstd_lang_java", null ],
       [ "Upgrading compression engines", "compression_lang_java.html#compression_upgrading_lang_java", null ],
       [ "Custom compression engines", "compression_lang_java.html#compression_custom_lang_java", null ]
     ] ],
