@@ -168,7 +168,13 @@ var programming =
       [ "Flush call configuration", "tune_durability.html#tune_durability_flush_config", null ]
     ] ],
     [ "Checksums", "tune_checksum.html", null ],
-    [ "Compression", "tune_compression.html", null ],
+    [ "Compression", "tune_compression.html", [
+      [ "Block Compression Formats", "tune_compression.html#compression_formats", [
+        [ "Noraw Compression", "tune_compression.html#noraw_compression", null ],
+        [ "Raw Compression", "tune_compression.html#raw_compression", null ],
+        [ "Choosing between Raw and Noraw Compression", "tune_compression.html#to_raw_or_noraw", null ]
+      ] ]
+    ] ],
     [ "File allocation", "tune_file_alloc.html", [
       [ "File growth", "tune_file_alloc.html#tuning_system_file_block_grow", null ],
       [ "File block allocation", "tune_file_alloc.html#tuning_system_file_block_allocation", null ]
