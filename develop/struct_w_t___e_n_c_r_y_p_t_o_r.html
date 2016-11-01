@@ -111,9 +111,9 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line">        <a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> encryptor;         <span class="comment">/* Must come first */</span></div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api;               <span class="comment">/* Extension API */</span></div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;        <span class="comment">/* Extension API */</span></div>
 <div class="line"></div>
-<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> nop_calls;                <span class="comment">/* Count of calls */</span></div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> nop_calls;        <span class="comment">/* Count of calls */</span></div>
 <div class="line"></div>
 <div class="line">} NOP_ENCRYPTOR;</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">/*</span></div>
@@ -142,7 +142,7 @@ Public Attributes</h2></td></tr>
 <div class="line">        nop_encryptor-&gt;encryptor.sizing = nop_sizing;</div>
 <div class="line">        nop_encryptor-&gt;encryptor.terminate = nop_terminate;</div>
 <div class="line"></div>
-<div class="line">        nop_encryptor-&gt;wt_api = connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
+<div class="line">        nop_encryptor-&gt;wtext = connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
 <div class="line"></div>
 <div class="line">                                                <span class="comment">/* Load the encryptor */</span></div>
 <div class="line">        <span class="keywordflow">return</span> (connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949">add_encryptor</a>(</div>
@@ -272,7 +272,8 @@ Public Attributes</h2></td></tr>
 <div class="line">        ++nop_encryptor-&gt;nop_calls;             <span class="comment">/* Call count */</span></div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> (dst_len &lt; src_len)</div>
-<div class="line">                <span class="keywordflow">return</span> (ENOMEM);</div>
+<div class="line">                <span class="keywordflow">return</span> (nop_error(nop_encryptor, session,</div>
+<div class="line">                    ENOMEM, <span class="stringliteral">&quot;encrypt buffer not big enough&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        memcpy(dst, src, src_len);</div>
 <div class="line">        *result_lenp = src_len;</div>

@@ -144,7 +144,7 @@ Public Member Functions</h2></td></tr>
 <p>The connection may be opened within the same address space as the caller or accessed over a socket connection.</p>
 <p>Most applications will open a single connection to a database for each process. The first process to open a connection to a database will access the database in its own address space. Subsequent connections (if allowed) will communicate with the first process over a socket connection to perform their operations.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database. ">WT_CONNECTION</a> handle may be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a0">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a10">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a0">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a13">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a0">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a4">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a0">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a3">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#_a0">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a0">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a0">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a0">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a18">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a0">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a4">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a16">rotn_encrypt.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a0">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a10">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a0">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a13">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a0">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a4">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a0">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a3">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#_a0">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a0">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a0">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a0">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a18">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a0">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a6">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a16">rotn_encrypt.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a89290382c55f20e5a4e1bc9216c7a8c8"></a>
 <div class="memitem">
@@ -401,9 +401,9 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line">        <a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> encryptor;         <span class="comment">/* Must come first */</span></div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api;               <span class="comment">/* Extension API */</span></div>
+<div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;        <span class="comment">/* Extension API */</span></div>
 <div class="line"></div>
-<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> nop_calls;                <span class="comment">/* Count of calls */</span></div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> nop_calls;        <span class="comment">/* Count of calls */</span></div>
 <div class="line"></div>
 <div class="line">} NOP_ENCRYPTOR;</div>
 </div><!-- fragment --> <div class="fragment"><div class="line"><span class="comment">/*</span></div>
@@ -432,7 +432,7 @@ Public Member Functions</h2></td></tr>
 <div class="line">        nop_encryptor-&gt;encryptor.sizing = nop_sizing;</div>
 <div class="line">        nop_encryptor-&gt;encryptor.terminate = nop_terminate;</div>
 <div class="line"></div>
-<div class="line">        nop_encryptor-&gt;wt_api = connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
+<div class="line">        nop_encryptor-&gt;wtext = connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
 <div class="line"></div>
 <div class="line">                                                <span class="comment">/* Load the encryptor */</span></div>
 <div class="line">        <span class="keywordflow">return</span> (connection-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949">add_encryptor</a>(</div>
@@ -448,7 +448,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a15">ex_encrypt.c</a>, <a class="el" href="nop_encrypt_8c-example.html#a6">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a18">rotn_encrypt.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a15">ex_encrypt.c</a>, <a class="el" href="nop_encrypt_8c-example.html#a8">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a18">rotn_encrypt.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -778,7 +778,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to a <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html" title="Table of WiredTiger extension methods. ">WT_EXTENSION_API</a> structure. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a6">ex_encrypt.c</a>, <a class="el" href="ex_file_system_8c-example.html#a7">ex_file_system.c</a>, <a class="el" href="nop_encrypt_8c-example.html#a5">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a17">rotn_encrypt.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a6">ex_encrypt.c</a>, <a class="el" href="ex_file_system_8c-example.html#a7">ex_file_system.c</a>, <a class="el" href="nop_encrypt_8c-example.html#a7">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a17">rotn_encrypt.c</a>.</dd>
 </dl>
 </div>
 </div>

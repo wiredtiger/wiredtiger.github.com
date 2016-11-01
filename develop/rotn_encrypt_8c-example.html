@@ -159,8 +159,8 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line"><span class="comment"> *      Display an error from this module in a standard way.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">rotn_error(ROTN_ENCRYPTOR *encryptor, <a name="_a2"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keywordtype">int</span> err,</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *msg)</div>
+<div class="line">rotn_error(</div>
+<div class="line">    ROTN_ENCRYPTOR *encryptor, <a name="_a2"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keywordtype">int</span> err, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wtext;</div>
 <div class="line"></div>
@@ -258,7 +258,8 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">        (void)session;          <span class="comment">/* Unused */</span></div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> (dst_len &lt; src_len + CHKSUM_LEN + IV_LEN)</div>
-<div class="line">                <span class="keywordflow">return</span> (ENOMEM);</div>
+<div class="line">                <span class="keywordflow">return</span> (rotn_error(rotn_encryptor, session,</div>
+<div class="line">                    ENOMEM, <span class="stringliteral">&quot;encrypt buffer not big enough&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * !!! Most implementations would verify any needed</span></div>
@@ -393,7 +394,8 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line"><span class="comment">                 * In this demonstration, we expect keyid to be a number.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                <span class="keywordflow">if</span> ((keyid_val = atoi(keyid.<a name="a8"></a><a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>)) &lt; 0) {</div>
-<div class="line">                        ret = EINVAL;</div>
+<div class="line">                        ret = rotn_error(rotn_encryptor,</div>
+<div class="line">                            NULL, EINVAL, <span class="stringliteral">&quot;rotn_customize: invalid keyid&quot;</span>);</div>
 <div class="line">                        <span class="keywordflow">goto</span> err;</div>
 <div class="line">                }</div>
 <div class="line">                <span class="keywordflow">if</span> ((rotn_encryptor-&gt;keyid = malloc(keyid.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> + 1)) == NULL) {</div>
@@ -424,7 +426,8 @@ $(document).ready(function(){initNavTree('rotn_encrypt_8c-example.html','');});
 <div class="line">                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="charliteral">&#39;A&#39;</span> &lt;= secret.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[i] &amp;&amp; secret.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[i] &lt;= <span class="charliteral">&#39;Z&#39;</span>)</div>
 <div class="line">                                base = <span class="charliteral">&#39;A&#39;</span>;</div>
 <div class="line">                        <span class="keywordflow">else</span> {</div>
-<div class="line">                                ret = EINVAL;</div>
+<div class="line">                                ret = rotn_error(rotn_encryptor, NULL,</div>
+<div class="line">                                    EINVAL, <span class="stringliteral">&quot;rotn_customize: invalid key&quot;</span>);</div>
 <div class="line">                                <span class="keywordflow">goto</span> err;</div>
 <div class="line">                        }</div>
 <div class="line">                        base -= (u_char)keyid_val;</div>
