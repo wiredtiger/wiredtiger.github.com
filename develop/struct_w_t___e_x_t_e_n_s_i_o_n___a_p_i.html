@@ -111,12 +111,18 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ab34ce4a2511c0fb370f3ee46d8ffd880"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab34ce4a2511c0fb370f3ee46d8ffd880">collate</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *first, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *second, int *cmp)</td></tr>
 <tr class="memdesc:ab34ce4a2511c0fb370f3ee46d8ffd880"><td class="mdescLeft">&#160;</td><td class="mdescRight">The extension collator method.  <a href="#ab34ce4a2511c0fb370f3ee46d8ffd880">More...</a><br /></td></tr>
 <tr class="separator:ab34ce4a2511c0fb370f3ee46d8ffd880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d3aae2ceac28f7b45188bcfa4306d45"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config, const char *key, <a class="el" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> *value)</td></tr>
+<tr class="memdesc:a0d3aae2ceac28f7b45188bcfa4306d45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of a configuration key.  <a href="#a0d3aae2ceac28f7b45188bcfa4306d45">More...</a><br /></td></tr>
+<tr class="separator:a0d3aae2ceac28f7b45188bcfa4306d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acac24b7ad23022698ee8ef64be164727"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#acac24b7ad23022698ee8ef64be164727">config_get_string</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config, const char *key, <a class="el" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> *value)</td></tr>
+<tr class="memdesc:acac24b7ad23022698ee8ef64be164727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of a configuration key from a string.  <a href="#acac24b7ad23022698ee8ef64be164727">More...</a><br /></td></tr>
+<tr class="separator:acac24b7ad23022698ee8ef64be164727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a925298c80d5c887172e184ff67027ed6"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a925298c80d5c887172e184ff67027ed6">config_parser_open</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config, size_t len, <a class="el" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> **config_parserp)</td></tr>
 <tr class="memdesc:a925298c80d5c887172e184ff67027ed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs.  <a href="#a925298c80d5c887172e184ff67027ed6">More...</a><br /></td></tr>
 <tr class="separator:a925298c80d5c887172e184ff67027ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d3aae2ceac28f7b45188bcfa4306d45"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config, const char *key, <a class="el" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> *value)</td></tr>
-<tr class="memdesc:a0d3aae2ceac28f7b45188bcfa4306d45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of a configuration string.  <a href="#a0d3aae2ceac28f7b45188bcfa4306d45">More...</a><br /></td></tr>
-<tr class="separator:a0d3aae2ceac28f7b45188bcfa4306d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae498b02cf83cdb644c2665c37917e785"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae498b02cf83cdb644c2665c37917e785">config_parser_open_arg</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config, <a class="el" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> **config_parserp)</td></tr>
+<tr class="memdesc:ae498b02cf83cdb644c2665c37917e785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs.  <a href="#ae498b02cf83cdb644c2665c37917e785">More...</a><br /></td></tr>
+<tr class="separator:ae498b02cf83cdb644c2665c37917e785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeaf9e7dd804c528633a5570a4409c7f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f">metadata_insert</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *key, const char *value)</td></tr>
 <tr class="memdesc:afeaf9e7dd804c528633a5570a4409c7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a row into the metadata if it does not already exist.  <a href="#afeaf9e7dd804c528633a5570a4409c7f">More...</a><br /></td></tr>
 <tr class="separator:afeaf9e7dd804c528633a5570a4409c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -342,13 +348,13 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the value of a configuration string. </p>
+<p>Return the value of a configuration key. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wt_api</td><td>the extension handle </td></tr>
     <tr><td class="paramname">session</td><td>the session handle (or NULL if none available) </td></tr>
-    <tr><td class="paramname">key</td><td>configuration key string </td></tr>
     <tr><td class="paramname">config</td><td>the configuration information passed to an application </td></tr>
+    <tr><td class="paramname">key</td><td>configuration key string </td></tr>
     <tr><td class="paramname">value</td><td>the returned value </td></tr>
   </table>
   </dd>
@@ -377,8 +383,56 @@ Public Attributes</h2></td></tr>
 <div class="line">                my_data_source_key = <span class="stringliteral">&quot;recno&quot;</span>;</div>
 <div class="line">        <span class="keywordflow">else</span></div>
 <div class="line">                my_data_source_key = <span class="stringliteral">&quot;bytestring&quot;</span>;</div>
-</div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a7">ex_encrypt.c</a>, <a class="el" href="ex_file_system_8c-example.html#a10">ex_file_system.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a6">rotn_encrypt.c</a>.</dd>
+</div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a7">ex_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a6">rotn_encrypt.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="acac24b7ad23022698ee8ef64be164727"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::config_get_string) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config, const char *key, <a class="el" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> *value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the value of a configuration key from a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wt_api</td><td>the extension handle </td></tr>
+    <tr><td class="paramname">session</td><td>the session handle (or NULL if none available) </td></tr>
+    <tr><td class="paramname">config</td><td>the configuration string </td></tr>
+    <tr><td class="paramname">key</td><td>configuration key string </td></tr>
+    <tr><td class="paramname">value</td><td>the returned value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> v;</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *my_data_source_key;</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Retrieve the value of the string type configuration string</span></div>
+<div class="line"><span class="comment">         * &quot;key_format&quot;.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
+<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v)) != 0) {</div>
+<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
+<div class="line">                    <span class="stringliteral">&quot;key_format configuration: %s&quot;</span>,</div>
+<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        }</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Values returned from WT_EXTENSION_API::config in the str field are</span></div>
+<div class="line"><span class="comment">         * not nul-terminated; the associated length must be used instead.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (v.<a class="code" href="group__wt.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> == 1 &amp;&amp; v.<a class="code" href="group__wt.html#aa0ce7d30a32600e16824966c638ee45f">str</a>[0] == <span class="charliteral">&#39;r&#39;</span>)</div>
+<div class="line">                my_data_source_key = <span class="stringliteral">&quot;recno&quot;</span>;</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">                my_data_source_key = <span class="stringliteral">&quot;bytestring&quot;</span>;</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a925298c80d5c887172e184ff67027ed6"></a>
@@ -418,7 +472,47 @@ Public Attributes</h2></td></tr>
 <div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
 <div class="line">        }</div>
-</div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a11">ex_file_system.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a10">rotn_encrypt.c</a>.</dd>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ae498b02cf83cdb644c2665c37917e785"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::config_parser_open_arg) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config, <a class="el" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> **config_parserp)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs. </p>
+<p>This API is outside the scope of a WiredTiger connection handle, since applications may need to generate configuration strings prior to calling <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle to be used for error reporting (if NULL, error messages will be written to stderr). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>the configuration string being parsed. The string must remain valid for the lifetime of the parser handle. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">len</td><td>the number of valid bytes in <code>config</code> </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">config_parserp</td><td>A pointer to the newly opened handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> k, v;</div>
+<div class="line">        <a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> *parser;</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *config_string =</div>
+<div class="line">            <span class="stringliteral">&quot;path=/dev/loop,page_size=1024,log=(archive=true,file_max=20MB)&quot;</span>;</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a>(</div>
+<div class="line">            NULL, config_string, strlen(config_string), &amp;parser)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error creating configuration parser: %s\n&quot;</span>,</div>
+<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser)) != 0) {</div>
+<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing configuration parser: %s\n&quot;</span>,</div>
+<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
+<div class="line">        }</div>
+</div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a10">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
