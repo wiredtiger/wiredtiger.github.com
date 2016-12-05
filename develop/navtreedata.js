@@ -24,7 +24,7 @@ var NAVTREEINDEX =
 "error_handling_lang_java.html#error_translation_lang_java",
 "group__wt.html#ga59fa64f2848c2346b1d2bfe0b5c9b619",
 "group__wt.html#gafed49c2c4d8fdf1577ba9ca49496e68e",
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1ea4c874fa755ef49fc9645088dcad84"
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a13b8f3c923c8b0f8bb683ed3b192ee73"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

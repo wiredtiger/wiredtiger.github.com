@@ -524,6 +524,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
+<td><code>access_pattern_hint</code></td><td>It is recommended that workloads that consist primarily of updates and/or point queries specify <code>random</code>. Workloads that do many cursor scans through large ranges of data specify <code>sequential</code> and other workloads specify <code>none</code>. The option leads to an advisory call to an appropriate operating system API where available.</td><td>a string, chosen from the following options: <code>"none"</code>, <code>"random"</code>, <code>"sequential"</code>; default <code>none</code>. </td></tr>
+<tr>
 <td><code>allocation_size</code></td><td>the file unit allocation size, in bytes, must a power-of-two; smaller values decrease the file space required by overflow items, and the default value of 4KB is a good choice absent requirements from the operating system or storage device.</td><td>an integer between 512B and 128MB; default <code>4KB</code>. </td></tr>
 <tr>
 <td><code>app_metadata</code></td><td>application-owned metadata for this object.</td><td>a string; default empty. </td></tr>

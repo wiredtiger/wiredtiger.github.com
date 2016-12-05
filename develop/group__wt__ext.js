@@ -110,6 +110,8 @@ var group__wt__ext =
     [ "WT_FILE_HANDLE_DONTNEED", "group__wt__ext.html#ga6d6c6913fd2d03910419f8e20f0026a4", null ],
     [ "WT_FILE_HANDLE_WILLNEED", "group__wt__ext.html#gaa4979ed3f2610368e392be059390b62f", null ],
     [ "WT_FS_DURABLE", "group__wt__ext.html#ga93dc8e06b256a13bc46cd04b71b92d45", null ],
+    [ "WT_FS_OPEN_ACCESS_RAND", "group__wt__ext.html#gab975daa8226fa0fe422176afc3677ab0", null ],
+    [ "WT_FS_OPEN_ACCESS_SEQ", "group__wt__ext.html#ga19767a9a6283ce3c69a6d92be86d0c56", null ],
     [ "WT_FS_OPEN_CREATE", "group__wt__ext.html#gaf336409aa954d371159b0e9d78785179", null ],
     [ "WT_FS_OPEN_DIRECTIO", "group__wt__ext.html#ga33e13fa2f6113176ff3ea355c96749a3", null ],
     [ "WT_FS_OPEN_DURABLE", "group__wt__ext.html#ga6ff865a494747bc27525b6b9e1a61ae6", null ],
