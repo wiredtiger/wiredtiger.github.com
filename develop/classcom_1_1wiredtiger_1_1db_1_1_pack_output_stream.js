@@ -1,5 +1,6 @@
 var classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream =
 [
+    [ "PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a579b922f92766ad8556cfe6faee03557", null ],
     [ "PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a08eb775ff05feae95185d61be681647f", null ],
     [ "addByte", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#a98d5bc5c2a6101e790342e4c6ff3f653", null ],
     [ "addByteArray", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html#ab33b41ba4d9e0cdfc4f34e2a8ac4ecfe", null ],
