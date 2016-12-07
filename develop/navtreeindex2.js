@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"error_handling.html#error_translation":[0,4,4,0],
 "error_handling_lang_java.html":[0,5,4],
 "error_handling_lang_java.html#error_translation_lang_java":[0,5,4,0],
 "ex_access_8c-example.html":[5,0],
@@ -47,8 +48,8 @@ var NAVTREEINDEX2 =
 "file_formats_lang_java.html#file_formats_formats_lang_java":[0,5,7,0],
 "filesystems.html":[0,7,2],
 "filesystems.html#remote":[0,7,2,0],
-"functions.html":[4,0],
 "functions.html":[4,0,0],
+"functions.html":[4,0],
 "functions_b.html":[4,0,1],
 "functions_c.html":[4,0,2],
 "functions_d.html":[4,0,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga58af084ac45e0367be4492c50ffaadce":[1,0,159],
 "group__wt.html#ga58c45da5c5b26ed68f5e36410929eb21":[1,0,76],
 "group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d":[1,0,400],
-"group__wt.html#ga59a8afb65046004cccbfcc4063c19e5e":[1,0,370],
-"group__wt.html#ga59e43919a79c65932f489ac1046f8176":[1,0,375]
+"group__wt.html#ga59a8afb65046004cccbfcc4063c19e5e":[1,0,370]
 };
