@@ -88,6 +88,9 @@ $(document).ready(function(){initNavTree('struct_w_t___s_e_s_s_i_o_n.html','');}
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac6f0630cb70bb057aa4512f7888dc701"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701">alter</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
+<tr class="memdesc:ac6f0630cb70bb057aa4512f7888dc701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alter a table.  <a href="#ac6f0630cb70bb057aa4512f7888dc701">More...</a><br /></td></tr>
+<tr class="separator:ac6f0630cb70bb057aa4512f7888dc701"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96f25dfa6447034aea1f67ab02ab5698"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a96f25dfa6447034aea1f67ab02ab5698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the session handle.  <a href="#a96f25dfa6447034aea1f67ab02ab5698">More...</a><br /></td></tr>
 <tr class="separator:a96f25dfa6447034aea1f67ab02ab5698"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,6 +183,60 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a> handle is not usually shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a11">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a14">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a2">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a2">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a4">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a1">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a2">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a2">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a2">rotn_encrypt.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac6f0630cb70bb057aa4512f7888dc701"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::alter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alter a table. </p>
+<p>This will allow modification of some table settings after creation.</p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701">alter</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;access_pattern_hint=random&quot;</span>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">name</td><td>the URI of the object to alter, such as <code>"table:stock"</code> </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>access_pattern_hint</code></td><td>It is recommended that workloads that consist primarily of updates and/or point queries specify <code>random</code>. Workloads that do many cursor scans through large ranges of data specify <code>sequential</code> and other workloads specify <code>none</code>. The option leads to an advisory call to an appropriate operating system API where available.</td><td>a string, chosen from the following options: <code>"none"</code>, <code>"random"</code>, <code>"sequential"</code>; default <code>none</code>. </td></tr>
+<tr>
+<td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache. Not compatible with LSM tables; see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a7e26b16b26b5870498752322fad790bf"></a>
 <div class="memitem">
 <div class="memproto">

@@ -55,6 +55,36 @@ The \fCwt\fP tool supports several commands\&. If configured in the underlying d
 .PP
 .PP
  
+.SH "wt alter"
+.PP
+Alter a table\&.
+.SS "Synopsis"
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] alter uri configuration \&.\&.\&.\fP
+.PP
+The \fCuri\fP and \fCconfiguration\fP pairs may be specified to the \fCalter\fP command\&. These configuration pairs can be used to modify the configuration values from those passed to the \fBWT_SESSION::create\fP call\&.
+.PP
+The \fCuri\fP part of the configuration pair should match only one of the objects being altered, but may be a prefix of the object being matched\&. For example, the following two sets of configuration pairs are equivalent in the case of altering a single table named \fCxxx\fP\&.
+.PP
+.PP
+.nf
+table access_pattern_hint=sequential
+table:xxx access_pattern_hint=sequential
+.fi
+.PP
+.PP
+It's an error, however, to specify a matching prefix that matches more than a single object being altered\&.
+.PP
+Multiple \fCconfiguration\fP arguments may be specified\&. For example, the following two sets of configuration pairs are equivalent:
+.PP
+.PP
+.nf
+table:xxx access_pattern_hint=random,cache_resident=false
+table:xxx access_pattern_hint=random table:xxx cache_resident=false
+.fi
+.PP
+.PP
+.PP
+ 
 .SH "wt backup"
 .PP
 Perform a backup of a database or set of data sources\&.

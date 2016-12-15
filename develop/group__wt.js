@@ -44,6 +44,7 @@ var group__wt =
       [ "value_format", "struct_w_t___a_s_y_n_c___o_p.html#aad1344717c98c5ad0dbc65cf7302a2be", null ]
     ] ],
     [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", [
+      [ "alter", "struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701", null ],
       [ "begin_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf", null ],
       [ "checkpoint", "struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf", null ],
       [ "close", "struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698", null ],
@@ -328,6 +329,9 @@ var group__wt =
     [ "WT_STAT_CONN_RWLOCK_WRITE", "group__wt.html#ga754a35883bd35aff144c73002fa6b030", null ],
     [ "WT_STAT_CONN_SESSION_CURSOR_OPEN", "group__wt.html#gaf3f0e7f173e864ed816a4ce80a9a8f0a", null ],
     [ "WT_STAT_CONN_SESSION_OPEN", "group__wt.html#gaa753d17cb7f62e2811c4834961725c11", null ],
+    [ "WT_STAT_CONN_SESSION_TABLE_ALTER_FAIL", "group__wt.html#gacb0dfedaab0183271e30afaad6646d75", null ],
+    [ "WT_STAT_CONN_SESSION_TABLE_ALTER_SKIP", "group__wt.html#ga6a83f0a08781fc12b88c1fd4e31cc222", null ],
+    [ "WT_STAT_CONN_SESSION_TABLE_ALTER_SUCCESS", "group__wt.html#ga05ef85adc89639855ec2d1f48068f05a", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_COMPACT_FAIL", "group__wt.html#ga152fab37c0855fa5e935580b11e72a69", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_COMPACT_SUCCESS", "group__wt.html#gabbd575d4f3a21c0965dca5ee6d78af9b", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_CREATE_FAIL", "group__wt.html#ga180b824fdf33611883145ed24fbaddcc", null ],

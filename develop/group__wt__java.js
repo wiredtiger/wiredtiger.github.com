@@ -161,6 +161,7 @@ var group__wt__java =
     [ "Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html", [
       [ "Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a76afc8fe00e0b542b8424fd8b8fb5b84", null ],
       [ "_java_init", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a849ad022f16375699c7dd625b80cc7e8", null ],
+      [ "alter", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aabeba4de10b95083dae3c73b7172e4a7", null ],
       [ "begin_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#abda8ddc193622bedbe6fba26e061405a", null ],
       [ "checkpoint", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ae8a3a848702a49b9c3cb8e1ed1c1afd3", null ],
       [ "close", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a575d56d4413369b3db49bfeac3ff4caa", null ],

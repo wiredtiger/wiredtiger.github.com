@@ -87,6 +87,9 @@ $(document).ready(function(){initNavTree('struct_w_t___d_a_t_a___s_o_u_r_c_e.htm
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a1a7b6f26d733bd91ad8d205d8cb3482d"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a1a7b6f26d733bd91ad8d205d8cb3482d">alter</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
+<tr class="memdesc:a1a7b6f26d733bd91ad8d205d8cb3482d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to alter an object.  <a href="#a1a7b6f26d733bd91ad8d205d8cb3482d">More...</a><br /></td></tr>
+<tr class="separator:a1a7b6f26d733bd91ad8d205d8cb3482d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68491dde82170031c6526fe140ea39eb"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a68491dde82170031c6526fe140ea39eb">create</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
 <tr class="memdesc:a68491dde82170031c6526fe140ea39eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to create a new object.  <a href="#a68491dde82170031c6526fe140ea39eb">More...</a><br /></td></tr>
 <tr class="separator:a68491dde82170031c6526fe140ea39eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,6 +130,7 @@ Public Attributes</h2></td></tr>
 <p><b>Thread safety:</b> WiredTiger may invoke methods on the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> interface from multiple threads concurrently. It is the responsibility of the implementation to protect any shared data.</p>
 <p>Applications register their implementation with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source. ">WT_CONNECTION::add_data_source</a>.</p>
 <div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> my_dsrc = {</div>
+<div class="line">                my_alter,</div>
 <div class="line">                my_create,</div>
 <div class="line">                my_compact,</div>
 <div class="line">                my_drop,</div>
@@ -141,6 +145,23 @@ Public Attributes</h2></td></tr>
 <div class="line">        };</div>
 <div class="line">        ret = conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL);</div>
 </div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a1a7b6f26d733bd91ad8d205d8cb3482d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_DATA_SOURCE::alter) (<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to alter an object. </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">my_alter(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a0ab6e469464fa132901f3292934ad26c"></a>
 <div class="memitem">
 <div class="memproto">

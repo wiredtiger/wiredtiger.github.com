@@ -13,6 +13,7 @@ var group__wt__ext =
       [ "terminate", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ad23cc1486dc4c0cc51835cfaecb01a33", null ]
     ] ],
     [ "WT_DATA_SOURCE", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html", [
+      [ "alter", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a1a7b6f26d733bd91ad8d205d8cb3482d", null ],
       [ "checkpoint", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0ab6e469464fa132901f3292934ad26c", null ],
       [ "compact", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a8eae397273ef872bc8da6743aa9824cb", null ],
       [ "create", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a68491dde82170031c6526fe140ea39eb", null ],

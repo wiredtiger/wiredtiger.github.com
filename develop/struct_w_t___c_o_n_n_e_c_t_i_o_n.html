@@ -333,6 +333,7 @@ Public Member Functions</h2></td></tr>
 <p>See <a class="el" href="custom_data_sources.html">Custom Data Sources</a> for more information.</p>
 <p>The application must first implement the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> interface and then register the implementation with WiredTiger:</p>
 <div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> my_dsrc = {</div>
+<div class="line">                my_alter,</div>
 <div class="line">                my_create,</div>
 <div class="line">                my_compact,</div>
 <div class="line">                my_drop,</div>
