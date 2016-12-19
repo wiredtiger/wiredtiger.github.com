@@ -74,9 +74,14 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="textblock"><h1><a class="anchor" id="version_291"></a>
 Upgrading to Version 2.9.1</h1>
 <dl>
+<dt>WiredTiger now requires Python 2.7 at minimum </dt>
+<dd><p class="startdd">The minimum version of Python supported by WiredTiger is now 2.7 up from the previous version of 2.6. This is due to extra unit tests added in this release that depend on 2.7. This is not due to a change in the Python API. </p>
+<p class="enddd"></p>
+</dd>
 <dt>Changes to hazard pointer configuration </dt>
 <dd>The <code>hazard_max</code> parameter to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is now ignored. Memory is allocated for hazard pointers as required by each session.  </dd>
 </dl>
+<hr/>
 <h1><a class="anchor" id="version_290"></a>
 Upgrading to Version 2.9.0</h1>
 <dl>
