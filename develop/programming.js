@@ -150,10 +150,19 @@ var programming =
       [ "Manipulating the wtstats display", "wtstats.html#wtstats_display", null ]
     ] ],
     [ "Memory allocator", "tune_memory_allocator.html", null ],
-    [ "Page and overflow key/value sizes", "tune_page_sizes.html", [
-      [ "Page, key and value sizes", "tune_page_sizes.html#tune_page_sizes_sizes", null ],
-      [ "Split percentage", "tune_page_sizes.html#tune_page_sizes_split_percentage", null ],
-      [ "Allocation size", "tune_page_sizes.html#tune_page_sizes_allocation_size", null ]
+    [ "Tuning page size and compression", "tune_page_size_and_comp.html", [
+      [ "Data life cycle", "tune_page_size_and_comp.html#data_life_cycle", null ],
+      [ "Configurable page structures in WiredTiger", "tune_page_size_and_comp.html#configurable_page_struct", [
+        [ "memory_page_max", "tune_page_size_and_comp.html#memory_page_max", null ],
+        [ "internal_page_max", "tune_page_size_and_comp.html#internal_page_max", null ],
+        [ "leaf_page_max", "tune_page_size_and_comp.html#leaf_page_max", null ],
+        [ "allocation_size", "tune_page_size_and_comp.html#allocation_size", null ],
+        [ "internal/leaf key/value max", "tune_page_size_and_comp.html#key_val_max", null ],
+        [ "split_pct (split percentage)", "tune_page_size_and_comp.html#split_pct", null ]
+      ] ],
+      [ "Compression considerations", "tune_page_size_and_comp.html#compression_considerations", [
+        [ "Table summarizing compression in WiredTiger", "tune_page_size_and_comp.html#table_compress", null ]
+      ] ]
     ] ],
     [ "Cache and eviction tuning", "tune_cache.html", [
       [ "Cache size", "tune_cache.html#tuning_cache_size", null ],
@@ -168,13 +177,6 @@ var programming =
       [ "Flush call configuration", "tune_durability.html#tune_durability_flush_config", null ]
     ] ],
     [ "Checksums", "tune_checksum.html", null ],
-    [ "Compression", "tune_compression.html", [
-      [ "Block Compression Formats", "tune_compression.html#compression_formats", [
-        [ "Noraw Compression", "tune_compression.html#noraw_compression", null ],
-        [ "Raw Compression", "tune_compression.html#raw_compression", null ],
-        [ "Choosing between Raw and Noraw Compression", "tune_compression.html#to_raw_or_noraw", null ]
-      ] ]
-    ] ],
     [ "File allocation", "tune_file_alloc.html", [
       [ "File growth", "tune_file_alloc.html#tuning_system_file_block_grow", null ],
       [ "File block allocation", "tune_file_alloc.html#tuning_system_file_block_allocation", null ]

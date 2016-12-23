@@ -101,7 +101,7 @@ File formats and compression</h1>
 <li><p class="startli">Huffman encoding reduces the size requirement of both the in-memory and on-disk objects by compressing individual key/value items, and can be separately configured either or both keys and values. The cost is additional CPU and memory use when searching the in-memory tree (if keys are encoded), and additional CPU and memory use when returning values from the in-memory tree and when writing pages to disk. Note the additional CPU cost of Huffman encoding can be high, and should be considered. (See <a class="el" href="huffman.html">Huffman Encoding</a> for details.)</p>
 <p class="startli">Huffman encoding is disabled by default.</p>
 </li>
-<li><p class="startli">Block compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of block compression can be high, and should be considered. (See <a class="el" href="tune_compression.html#compression_formats">Block Compression Formats</a> for details.)</p>
+<li><p class="startli">Block compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of block compression can be high, and should be considered. (See <a class="el" href="tune_page_size_and_comp.html#compression_considerations">Compression considerations</a> for details.)</p>
 <p class="startli">Block compression is disabled by default.</p>
 </li>
 </ul>
@@ -116,13 +116,13 @@ File formats and compression</h1>
 <li><p class="startli">Huffman encoding reduces the size requirement of both the in-memory and on-disk objects by compressing individual value items. The cost is additional CPU and memory use when returning values from the in-memory tree and when writing pages to disk. Note the additional CPU cost of Huffman encoding can be high, and should be considered. (See <a class="el" href="huffman.html">Huffman Encoding</a> for details.)</p>
 <p class="startli">Huffman encoding is disabled by default.</p>
 </li>
-<li><p class="startli">Block compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of block compression can be high, and should be considered. (See <a class="el" href="tune_compression.html#compression_formats">Block Compression Formats</a> for details.)</p>
+<li><p class="startli">Block compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of block compression can be high, and should be considered. (See <a class="el" href="tune_page_size_and_comp.html#compression_considerations">Compression considerations</a> for details.)</p>
 <p class="startli">Block compression is disabled by default.</p>
 </li>
 </ul>
 <p>Column-stores with fixed-length byte values support a single type of compression: block compression.</p>
 <ul>
-<li><p class="startli">Block compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of block compression can be high, and should be considered. (See <a class="el" href="tune_compression.html#compression_formats">Block Compression Formats</a> for details.)</p>
+<li><p class="startli">Block compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of block compression can be high, and should be considered. (See <a class="el" href="tune_page_size_and_comp.html#compression_considerations">Compression considerations</a> for details.)</p>
 <p class="startli">Block compression is disabled by default. </p>
 </li>
 </ul>
