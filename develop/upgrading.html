@@ -75,7 +75,11 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 Upgrading to Version 2.9.1</h1>
 <dl>
 <dt>Changes to hazard pointer configuration </dt>
-<dd>The <code>hazard_max</code> parameter to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is now ignored. Memory is allocated for hazard pointers as required by each session.  </dd>
+<dd><p class="startdd">The <code>hazard_max</code> parameter to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is now ignored. Memory is allocated for hazard pointers as required by each session. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Change to the default fadvise behavior for data files </dt>
+<dd>The old default behavior was to advise the file system that access would be random for data files, and there was no way to alter that. We no longer call advise the file system of expected access patterns by default, and have added a new <code>access_pattern_hint</code> configuration option available for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> that can be used to restore the old default by setting the value to "random".  </dd>
 </dl>
 <h1><a class="anchor" id="version_290"></a>
 Upgrading to Version 2.9.0</h1>
