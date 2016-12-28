@@ -327,9 +327,21 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a65adc729674b14c70e86c68e62e630bf inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65adc729674b14c70e86c68e62e630bf"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_WALKS_ABANDONED</b></td></tr>
 <tr class="separator:a65adc729674b14c70e86c68e62e630bf inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585cea446da6eeb739b0fcc84b8c4f9a inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a585cea446da6eeb739b0fcc84b8c4f9a"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_ACTIVE_WORKERS</b></td></tr>
+<tr class="separator:a585cea446da6eeb739b0fcc84b8c4f9a inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ecf7502d2b969fba5fbd5c8218c3d22 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ecf7502d2b969fba5fbd5c8218c3d22"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_WORKER_CREATED</b></td></tr>
+<tr class="separator:a3ecf7502d2b969fba5fbd5c8218c3d22 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c99123ca3a521787fb3a082ed513c25 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c99123ca3a521787fb3a082ed513c25"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_WORKER_EVICTING</b></td></tr>
 <tr class="separator:a1c99123ca3a521787fb3a082ed513c25 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bf3d06b258070a828218fb1401dc17f inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bf3d06b258070a828218fb1401dc17f"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_WORKER_REMOVED</b></td></tr>
+<tr class="separator:a7bf3d06b258070a828218fb1401dc17f inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81b28e9fb4d10f5e9a9b751384282740 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81b28e9fb4d10f5e9a9b751384282740"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_STABLE_STATE_WORKERS</b></td></tr>
+<tr class="separator:a81b28e9fb4d10f5e9a9b751384282740 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac23fc38088fbace8661c64fd7ec21563 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac23fc38088fbace8661c64fd7ec21563"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_FORCE_FAIL</b></td></tr>
 <tr class="separator:ac23fc38088fbace8661c64fd7ec21563 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1353,7 +1365,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_J
 <tr>
 <td><code>eviction = (</code></td><td>eviction configuration options.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>8</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>

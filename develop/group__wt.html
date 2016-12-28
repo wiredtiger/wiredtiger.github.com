@@ -493,10 +493,26 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadffd2bd9c5562dceb845af287e1e034e">WT_STAT_CONN_CACHE_EVICTION_WALKS_ABANDONED</a></td></tr>
 <tr class="memdesc:gadffd2bd9c5562dceb845af287e1e034e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction walks abandoned <br /></td></tr>
 <tr class="separator:gadffd2bd9c5562dceb845af287e1e034e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28129696f2666b4bd9f6824b15e576bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga28129696f2666b4bd9f6824b15e576bd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga28129696f2666b4bd9f6824b15e576bd">WT_STAT_CONN_CACHE_EVICTION_ACTIVE_WORKERS</a></td></tr>
+<tr class="memdesc:ga28129696f2666b4bd9f6824b15e576bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread active <br /></td></tr>
+<tr class="separator:ga28129696f2666b4bd9f6824b15e576bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8249f83dca3b51b0d4fc1f9605b5345"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab8249f83dca3b51b0d4fc1f9605b5345"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab8249f83dca3b51b0d4fc1f9605b5345">WT_STAT_CONN_CACHE_EVICTION_WORKER_CREATED</a></td></tr>
+<tr class="memdesc:gab8249f83dca3b51b0d4fc1f9605b5345"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread created <br /></td></tr>
+<tr class="separator:gab8249f83dca3b51b0d4fc1f9605b5345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafac92de6de839e9e528529adc328e01a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafac92de6de839e9e528529adc328e01a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafac92de6de839e9e528529adc328e01a">WT_STAT_CONN_CACHE_EVICTION_WORKER_EVICTING</a></td></tr>
 <tr class="memdesc:gafac92de6de839e9e528529adc328e01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread evicting pages <br /></td></tr>
 <tr class="separator:gafac92de6de839e9e528529adc328e01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef84b3e887ff46b2942b337f12689eab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaef84b3e887ff46b2942b337f12689eab"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaef84b3e887ff46b2942b337f12689eab">WT_STAT_CONN_CACHE_EVICTION_WORKER_REMOVED</a></td></tr>
+<tr class="memdesc:gaef84b3e887ff46b2942b337f12689eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread removed <br /></td></tr>
+<tr class="separator:gaef84b3e887ff46b2942b337f12689eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7395ea1890d6cee6bdc069f9a31d709f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7395ea1890d6cee6bdc069f9a31d709f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7395ea1890d6cee6bdc069f9a31d709f">WT_STAT_CONN_CACHE_EVICTION_STABLE_STATE_WORKERS</a></td></tr>
+<tr class="memdesc:ga7395ea1890d6cee6bdc069f9a31d709f"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread stable number <br /></td></tr>
+<tr class="separator:ga7395ea1890d6cee6bdc069f9a31d709f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4d23021026116c1055c263e1d256725d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4d23021026116c1055c263e1d256725d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4d23021026116c1055c263e1d256725d">WT_STAT_CONN_CACHE_EVICTION_FORCE_FAIL</a></td></tr>
 <tr class="memdesc:ga4d23021026116c1055c263e1d256725d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: failed eviction of pages that exceeded the in-memory maximum <br /></td></tr>
@@ -2188,7 +2204,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>eviction = (</code></td><td>eviction configuration options.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>8</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
