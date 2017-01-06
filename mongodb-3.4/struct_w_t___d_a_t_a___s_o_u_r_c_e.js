@@ -1,5 +1,6 @@
 var struct_w_t___d_a_t_a___s_o_u_r_c_e =
 [
+    [ "alter", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a1a7b6f26d733bd91ad8d205d8cb3482d", null ],
     [ "checkpoint", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0ab6e469464fa132901f3292934ad26c", null ],
     [ "compact", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a8eae397273ef872bc8da6743aa9824cb", null ],
     [ "create", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a68491dde82170031c6526fe140ea39eb", null ],

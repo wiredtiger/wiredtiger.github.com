@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.8.1</span>
+   &#160;<span id="projectnumber">Version 2.9.1</span>
    </div>
-   <div id="projectbrief"><!-- 2.8.1 --></div>
+   <div id="projectbrief"><!-- 2.9.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -80,7 +80,7 @@ $(document).ready(function(){initNavTree('cursor_log_lang_java.html','');});
 <p>The unique log record identifier maps to a WT_LSN data structure, which has two fields: WT_LSN::id, the log file identifier, and WT_LSN::offset, the offset of the log record in the log file.</p>
 <p>Here is an example of getting the log cursor's key:</p>
 <div class="fragment"><div class="line">            lsn.file = cursor.getKeyInt();</div>
-<div class="line">            lsn.offset = cursor.getKeyLong();</div>
+<div class="line">            lsn.offset = cursor.getKeyInt();</div>
 <div class="line">            opcount = cursor.getKeyInt();</div>
 </div><!-- fragment --><p> The log cursor's value is comprised of six fields:</p>
 <ul>
@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('cursor_log_lang_java.html','');});
 <div class="line"><span class="comment">     *  A simple walk of the log.</span></div>
 <div class="line"><span class="comment">     */</span></div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">    simple_walk_log(Session session)</div>
+<div class="line">    simple_walk_log(Session session, <span class="keywordtype">int</span> count_min)</div>
 <div class="line">        <span class="keywordflow">throws</span> WiredTigerException</div>
 <div class="line">    {</div>
 <div class="line">        Cursor cursor;</div>
@@ -137,12 +137,14 @@ $(document).ready(function(){initNavTree('cursor_log_lang_java.html','');});
 <div class="line">        byte[] logrec_key, logrec_value;</div>
 <div class="line">        <span class="keywordtype">long</span> txnid;</div>
 <div class="line">        <span class="keywordtype">int</span> fileid, opcount, optype, rectype;</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line">        <span class="keywordtype">int</span> count, ret;</div>
 <div class="line"></div>
 <div class="line">        cursor = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(<span class="stringliteral">&quot;log:&quot;</span>, null, null);</div>
+<div class="line">        count = 0;</div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor.next()) == 0) {</div>
+<div class="line">            count++;</div>
 <div class="line">            lsn.file = cursor.getKeyInt();</div>
-<div class="line">            lsn.offset = cursor.getKeyLong();</div>
+<div class="line">            lsn.offset = cursor.getKeyInt();</div>
 <div class="line">            opcount = cursor.getKeyInt();</div>
 <div class="line">            txnid = cursor.getValueLong();</div>
 <div class="line">            rectype = cursor.getValueInt();</div>
@@ -156,14 +158,21 @@ $(document).ready(function(){initNavTree('cursor_log_lang_java.html','');});
 <div class="line">        <span class="keywordflow">if</span> (ret == wiredtiger.WT_NOTFOUND)</div>
 <div class="line">            ret = 0;</div>
 <div class="line">        ret = cursor.close();</div>
+<div class="line">        <span class="keywordflow">if</span> (count &lt; count_min) {</div>
+<div class="line">            System.err.println(<span class="stringliteral">&quot;Expected minimum &quot;</span> + count_min +</div>
+<div class="line">                               <span class="stringliteral">&quot; records, found &quot;</span> + count);</div>
+<div class="line">            <span class="keywordflow">return</span> (1);</div>
+<div class="line">        }</div>
 <div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">    }</div>
 </div><!-- fragment --><p> The log cursor's key can be used to search for specific records in the log (assuming the record still exists and has not been archived), by setting the key and calling Cursor.search. However, it is not possible to search for a specific operation within a log record, and the key's operation counter is ignored when the key is set. The result of a search for a log record with more than one operation is always the first operation in the log record.</p>
 <p>Here is an example of setting the log cursor's key:</p>
 <div class="fragment"><div class="line">        cursor.putKeyInt(lsnsave.file);</div>
-<div class="line">        cursor.putKeyLong(lsnsave.offset);</div>
+<div class="line">        cursor.putKeyInt(lsnsave.offset);</div>
+<div class="line">        cursor.putKeyInt(0);</div>
 </div><!-- fragment --><p> Log cursors are read-only, however applications can insert their own log records using Session.log_printf. Here is an example of adding an application record into the database log:</p>
 <div class="fragment"><div class="line">        ret = session.<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a>(<span class="stringliteral">&quot;Wrote &quot;</span> + record_count + <span class="stringliteral">&quot; records&quot;</span>);</div>
+<div class="line">        count_min++;</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

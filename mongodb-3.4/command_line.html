@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.8.1</span>
+   &#160;<span id="projectnumber">Version 2.9.1</span>
    </div>
-   <div id="projectbrief"><!-- 2.8.1 --></div>
+   <div id="projectbrief"><!-- 2.9.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -91,6 +91,21 @@ OPTIONS</h1>
 <p>Unless otherwise described by a <code>wt</code> command, the <code>wt</code> tool exits zero on success and non-zero on error.</p>
 <p>The <code>wt</code> tool supports several commands. If configured in the underlying database, some commands will run recovery when opening the database. If the user wants to force recovery on any command, use the <code>-R</code> option. In general, commands that modify the database or tables will run recovery by default and commands that only read data will not run recovery.</p>
 <hr/>
+ <h1><a class="anchor" id="util_alter"></a>
+wt alter</h1>
+<p>Alter a table.</p>
+<h2><a class="anchor" id="util_alter_synopsis"></a>
+Synopsis</h2>
+<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] alter uri configuration ...</code></p>
+<p>The <code>uri</code> and <code>configuration</code> pairs may be specified to the <code>alter</code> command. These configuration pairs can be used to modify the configuration values from those passed to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> call.</p>
+<p>The <code>uri</code> part of the configuration pair should match only one of the objects being altered, but may be a prefix of the object being matched. For example, the following two sets of configuration pairs are equivalent in the case of altering a single table named <code>xxx</code>.</p>
+<div class="fragment"><div class="line">table access_pattern_hint=sequential</div>
+<div class="line">table:xxx access_pattern_hint=sequential</div>
+</div><!-- fragment --><p>It's an error, however, to specify a matching prefix that matches more than a single object being altered.</p>
+<p>Multiple <code>configuration</code> arguments may be specified. For example, the following two sets of configuration pairs are equivalent:</p>
+<div class="fragment"><div class="line">table:xxx access_pattern_hint=random,cache_resident=<span class="keyword">false</span></div>
+<div class="line">table:xxx access_pattern_hint=random table:xxx cache_resident=<span class="keyword">false</span></div>
+</div><!-- fragment --><hr/>
  <h1><a class="anchor" id="util_backup"></a>
 wt backup</h1>
 <p>Perform a backup of a database or set of data sources.</p>

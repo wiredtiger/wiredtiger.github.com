@@ -3,6 +3,9 @@ var command_line =
     [ "SYNOPSIS", "command_line.html#util_global_synopsis", null ],
     [ "DESCRIPTION", "command_line.html#util_global_description", null ],
     [ "OPTIONS", "command_line.html#util_global_options", null ],
+    [ "wt alter", "command_line.html#util_alter", [
+      [ "Synopsis", "command_line.html#util_alter_synopsis", null ]
+    ] ],
     [ "wt backup", "command_line.html#util_backup", [
       [ "Synopsis", "command_line.html#util_backup_synopsis", null ],
       [ "Options", "command_line.html#util_backup_options", null ]

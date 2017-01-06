@@ -56,6 +56,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_async_op =
     [ "search_wrap", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ade974445c314fc23f59ad8c607d4ef96", null ],
     [ "update", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a1228739dd75066c8b03907b033c80c7c", null ],
     [ "update_wrap", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a4df7a1508b8b3e684b8ec37fba19f301", null ],
+    [ "javaRaw", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#aa7088d2dfa4bf670a5801de44329ef96", null ],
     [ "keyFormat", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ad1df733204cd4324d3bee18dff06f798", null ],
     [ "keyPacker", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a11a892de4cdd6cd9cb63cddf145c6d31", null ],
     [ "keyUnpacker", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#acf345795a87279fdd88b17ccc1e1a0a3", null ],

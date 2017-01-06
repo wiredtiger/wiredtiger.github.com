@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.8.1</span>
+   &#160;<span id="projectnumber">Version 2.9.1</span>
    </div>
-   <div id="projectbrief"><!-- 2.8.1 --></div>
+   <div id="projectbrief"><!-- 2.9.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -104,14 +104,13 @@ $(document).ready(function(){initNavTree('ex_thread_8c-example.html','');});
 <div class="line"><span class="comment"> *      table from multiple threads.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#ifndef _WIN32</span></div>
-<div class="line"><span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><span class="preprocessor">#ifndef _WIN32</span></div>
+<div class="line"><span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"><span class="preprocessor">#include &quot;windows_shim.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"></div>

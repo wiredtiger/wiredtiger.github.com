@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.8.1</span>
+   &#160;<span id="projectnumber">Version 2.9.1</span>
    </div>
-   <div id="projectbrief"><!-- 2.8.1 --></div>
+   <div id="projectbrief"><!-- 2.9.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -160,6 +160,9 @@ Key and value formats</h1>
 </div><!-- fragment --><p> A simple column-store table with strings for values would be created as follows:</p>
 <div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session,</div>
 <div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=r,value_format=S&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701">alter</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;access_pattern_hint=random&quot;</span>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="schema_cursor_formats"></a>
 Cursor formats</h1>
 <p>Cursors for a table have the same key format as the table itself. The key columns of a cursor are set with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation. ">WT_CURSOR::set_key</a> and accessed with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record. ">WT_CURSOR::get_key</a>. <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation. ">WT_CURSOR::set_key</a> is analogous to <code>printf</code>, and takes a list of value in the order the key columns are configured in <code>key_format</code>.</p>

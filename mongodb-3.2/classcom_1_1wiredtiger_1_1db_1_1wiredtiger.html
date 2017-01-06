@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.8.1</span>
+   &#160;<span id="projectnumber">Version 2.9.1</span>
    </div>
-   <div id="projectbrief"><!-- 2.8.1 --></div>
+   <div id="projectbrief"><!-- 2.9.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -732,6 +732,15 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a0ae8a752dfa94088cf36b13b5a9d913a inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ae8a752dfa94088cf36b13b5a9d913a"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_SESSION_OPEN</b></td></tr>
 <tr class="separator:a0ae8a752dfa94088cf36b13b5a9d913a inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa32e6ef68595ab2f05fd3cf5eaecc6e2 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa32e6ef68595ab2f05fd3cf5eaecc6e2"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_SESSION_TABLE_ALTER_FAIL</b></td></tr>
+<tr class="separator:aa32e6ef68595ab2f05fd3cf5eaecc6e2 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aef18424f23923c1af8290bbc47ce73 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9aef18424f23923c1af8290bbc47ce73"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_SESSION_TABLE_ALTER_SUCCESS</b></td></tr>
+<tr class="separator:a9aef18424f23923c1af8290bbc47ce73 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed4907738f8897b831f13d4ce9c3907f inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed4907738f8897b831f13d4ce9c3907f"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_SESSION_TABLE_ALTER_SKIP</b></td></tr>
+<tr class="separator:aed4907738f8897b831f13d4ce9c3907f inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37f5c79c11740d5d75095563cdaa4324 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37f5c79c11740d5d75095563cdaa4324"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_SESSION_TABLE_COMPACT_FAIL</b></td></tr>
 <tr class="separator:a37f5c79c11740d5d75095563cdaa4324 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1372,8 +1381,6 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_J
 <td><code>&#160;&#160;&#160;&#160;close_scan_interval</code></td><td>interval in seconds at which to check for files that are inactive and close them.</td><td>an integer between 1 and 100000; default <code>10</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
-<tr>
-<td><code>hazard_max</code></td><td>maximum number of simultaneous hazard pointers per session handle.</td><td>an integer greater than or equal to 15; default <code>1000</code>. </td></tr>
 <tr>
 <td><code>in_memory</code></td><td>keep data in-memory only. See <a class="el" href="in_memory.html">In-memory databases</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>

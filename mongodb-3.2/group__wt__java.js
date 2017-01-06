@@ -57,6 +57,7 @@ var group__wt__java =
       [ "search_wrap", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ade974445c314fc23f59ad8c607d4ef96", null ],
       [ "update", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a1228739dd75066c8b03907b033c80c7c", null ],
       [ "update_wrap", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a4df7a1508b8b3e684b8ec37fba19f301", null ],
+      [ "javaRaw", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#aa7088d2dfa4bf670a5801de44329ef96", null ],
       [ "keyFormat", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#ad1df733204cd4324d3bee18dff06f798", null ],
       [ "keyPacker", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#a11a892de4cdd6cd9cb63cddf145c6d31", null ],
       [ "keyUnpacker", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html#acf345795a87279fdd88b17ccc1e1a0a3", null ],
@@ -160,6 +161,7 @@ var group__wt__java =
     [ "Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html", [
       [ "Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a76afc8fe00e0b542b8424fd8b8fb5b84", null ],
       [ "_java_init", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a849ad022f16375699c7dd625b80cc7e8", null ],
+      [ "alter", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aabeba4de10b95083dae3c73b7172e4a7", null ],
       [ "begin_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#abda8ddc193622bedbe6fba26e061405a", null ],
       [ "checkpoint", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ae8a3a848702a49b9c3cb8e1ed1c1afd3", null ],
       [ "close", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a575d56d4413369b3db49bfeac3ff4caa", null ],

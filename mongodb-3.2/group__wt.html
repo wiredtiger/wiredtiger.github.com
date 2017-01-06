@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.8.1</span>
+   &#160;<span id="projectnumber">Version 2.9.1</span>
    </div>
-   <div id="projectbrief"><!-- 2.8.1 --></div>
+   <div id="projectbrief"><!-- 2.9.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -1033,6 +1033,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa753d17cb7f62e2811c4834961725c11">WT_STAT_CONN_SESSION_OPEN</a></td></tr>
 <tr class="memdesc:gaa753d17cb7f62e2811c4834961725c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: open session count <br /></td></tr>
 <tr class="separator:gaa753d17cb7f62e2811c4834961725c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb0dfedaab0183271e30afaad6646d75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacb0dfedaab0183271e30afaad6646d75"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacb0dfedaab0183271e30afaad6646d75">WT_STAT_CONN_SESSION_TABLE_ALTER_FAIL</a></td></tr>
+<tr class="memdesc:gacb0dfedaab0183271e30afaad6646d75"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: table alter failed calls <br /></td></tr>
+<tr class="separator:gacb0dfedaab0183271e30afaad6646d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga05ef85adc89639855ec2d1f48068f05a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga05ef85adc89639855ec2d1f48068f05a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga05ef85adc89639855ec2d1f48068f05a">WT_STAT_CONN_SESSION_TABLE_ALTER_SUCCESS</a></td></tr>
+<tr class="memdesc:ga05ef85adc89639855ec2d1f48068f05a"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: table alter successful calls <br /></td></tr>
+<tr class="separator:ga05ef85adc89639855ec2d1f48068f05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a83f0a08781fc12b88c1fd4e31cc222"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6a83f0a08781fc12b88c1fd4e31cc222"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6a83f0a08781fc12b88c1fd4e31cc222">WT_STAT_CONN_SESSION_TABLE_ALTER_SKIP</a></td></tr>
+<tr class="memdesc:ga6a83f0a08781fc12b88c1fd4e31cc222"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: table alter unchanged and skipped <br /></td></tr>
+<tr class="separator:ga6a83f0a08781fc12b88c1fd4e31cc222"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga152fab37c0855fa5e935580b11e72a69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga152fab37c0855fa5e935580b11e72a69"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga152fab37c0855fa5e935580b11e72a69">WT_STAT_CONN_SESSION_TABLE_COMPACT_FAIL</a></td></tr>
 <tr class="memdesc:ga152fab37c0855fa5e935580b11e72a69"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: table compact failed calls <br /></td></tr>
@@ -2203,8 +2215,6 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <td><code>&#160;&#160;&#160;&#160;close_scan_interval</code></td><td>interval in seconds at which to check for files that are inactive and close them.</td><td>an integer between 1 and 100000; default <code>10</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
-<tr>
-<td><code>hazard_max</code></td><td>maximum number of simultaneous hazard pointers per session handle.</td><td>an integer greater than or equal to 15; default <code>1000</code>. </td></tr>
 <tr>
 <td><code>in_memory</code></td><td>keep data in-memory only. See <a class="el" href="in_memory.html">In-memory databases</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
