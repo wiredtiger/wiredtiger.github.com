@@ -368,6 +368,18 @@ Include only 'fast' statistics in the output (equivalent to passing \fCstatistic
 .PP
 .PP
  
+.SH "wt truncate"
+.PP
+Truncate a table, removing all data\&.
+.PP
+The \fCtruncate\fP command truncates the specified \fCuri\fP\&. It is equivalent to a call to \fBWT_SESSION::truncate\fP with no start or stop specified\&.
+.SS "Synopsis"
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] truncate uri\fP
+.SS "Options"
+The \fCtruncate\fP command has no command-specific options\&.
+.PP
+.PP
+ 
 .SH "wt upgrade"
 .PP
 Upgrade a table\&.
