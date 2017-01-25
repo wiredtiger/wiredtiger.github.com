@@ -2222,7 +2222,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>exclusive</code></td><td>fail if the database already exists, generally used with the <code>create</code> option.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>extensions</code></td><td>list of shared library extensions to load (using dlopen). Any values specified to an library extension are passed to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68" title="Load an extension. ">WT_CONNECTION::load_extension</a> as the <code>config</code> parameter (for example, <code>extensions=(/path/ext.so={entry=my_entry})</code>).</td><td>a list of strings; default empty. </td></tr>
+<td><code>extensions</code></td><td>list of shared library extensions to load (using dlopen). Any values specified to a library extension are passed to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68" title="Load an extension. ">WT_CONNECTION::load_extension</a> as the <code>config</code> parameter (for example, <code>extensions=(/path/ext.so={entry=my_entry})</code>).</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>file_extend</code></td><td>file extension configuration. If set, extend files of the set type in allocations of the set size, instead of a block at a time as each new block is written. For example, <code>file_extend=(data=16MB)</code>.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
