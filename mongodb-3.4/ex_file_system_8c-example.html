@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.1</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.1 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -473,6 +473,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line">        uint32_t allocated, count;</div>
 <div class="line">        <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line">        <span class="keywordtype">char</span> *name, **entries;</div>
+<div class="line">        <span class="keywordtype">void</span> *p;</div>
 <div class="line"></div>
 <div class="line">        (void)session;                                          <span class="comment">/* Unused */</span></div>
 <div class="line"></div>
@@ -498,14 +499,16 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment">                 * matter if the list is a bit longer than necessary.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
 <div class="line">                <span class="keywordflow">if</span> (count &gt;= allocated) {</div>
-<div class="line">                        entries = realloc(</div>
-<div class="line">                            entries, (allocated + 10) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *));</div>
-<div class="line">                        <span class="keywordflow">if</span> (entries == NULL) {</div>
+<div class="line">                        p = realloc(</div>
+<div class="line">                            entries, (allocated + 10) * <span class="keyword">sizeof</span>(*entries));</div>
+<div class="line">                        <span class="keywordflow">if</span> (p == NULL) {</div>
 <div class="line">                                ret = ENOMEM;</div>
 <div class="line">                                <span class="keywordflow">goto</span> err;</div>
 <div class="line">                        }</div>
-<div class="line">                        memset(entries + allocated * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *),</div>
-<div class="line">                            0, 10 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *));</div>
+<div class="line"></div>
+<div class="line">                        entries = p;</div>
+<div class="line">                        memset(entries + allocated * <span class="keyword">sizeof</span>(*entries),</div>
+<div class="line">                            0, 10 * <span class="keyword">sizeof</span>(*entries));</div>
 <div class="line">                        allocated += 10;</div>
 <div class="line">                }</div>
 <div class="line">                entries[count++] = strdup(name);</div>

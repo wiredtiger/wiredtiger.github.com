@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.1</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.1 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -71,7 +71,55 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <div class="title">WiredTiger Change Log </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>WiredTiger release 2.9.0, 2016-09-06 </h2>
+<div class="textblock"><h2>WiredTiger release 2.9.1, 2016-12-22 </h2>
+<p>New features and API changes; refer to the API documentation for full details:</p>
+<ul>
+<li><a href="https://jira.mongodb.org/browse/SERVER-26545">SERVER-26545</a> Remove fixed-size limitation on WiredTiger hazard pointers. See the upgrading documentation for details</li>
+<li><a href="https://jira.mongodb.org/browse/WT-283">WT-283</a> Add a new <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701" title="Alter a table. ">WT_SESSION::alter</a> method that can be used to reconfigure table metadata</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2670">WT-2670</a> Change the default file system access pattern advice for data files from random to no advice. Add access_pattern_hint configuration option for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a> API that can be used to advise the file system of expected access semantics. See the upgrading documentation for details.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3034">WT-3034</a> Add support for including updates when reading from named snapshots</li>
+</ul>
+<p>Significant changes and bug fixes:</p>
+<ul>
+<li><a href="https://jira.mongodb.org/browse/WT-2960">WT-2960</a> Reduce likelihood of using the lookaside file, especially when inserting multi-megabyte values</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3056">WT-3056</a> Allow projected table and join cursors to use primary keys</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3070">WT-3070</a> Fix a bug in search_near on indexes</li>
+</ul>
+<p>Other noteworthy changes since the previous release:</p>
+<ul>
+<li><a href="https://jira.mongodb.org/browse/WT-2336">WT-2336</a> Add a test validating schema operations via file system call monitoring</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2402">WT-2402</a> Pad structures to avoid cache line sharing</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2771">WT-2771</a> Add a statistic to track per-btree dirty cache usage</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2833">WT-2833</a> Add projections to wt dump utility</li>
+<li><a href="https://jira.mongodb.org/browse/WT-2969">WT-2969</a> Possible snapshot corruption during compaction</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3014">WT-3014</a> Add GCC/clang support for ELF symbol visibility</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3021">WT-3021</a> Fixes for java log example, raw mode in java, and raw mode in log cursors</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3025">WT-3025</a> Fix error path in log_force_sync</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3028">WT-3028</a> Don't check for blocked eviction with in-memory workloads</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3030">WT-3030</a> Fix a race between scans and splits reading the index hint</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3037">WT-3037</a> Clean up some log slot comments</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3048">WT-3048</a> WiredTiger maximum size warning uses the wrong format</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3051">WT-3051</a> Remove external __wt_hex symbol</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3052">WT-3052</a> Improve search if index hint is wrong</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3053">WT-3053</a> Make Python use internal memory allocation again</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3054">WT-3054</a> Make a PackOutputStream constructor that is compatible with the previous interface.</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3055">WT-3055</a> When an AsyncOp is created, cache the whether the cursor is "raw"</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3057">WT-3057</a> WiredTiger hazard pointers should use the WT_REF, not the WT_PAGE</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3061">WT-3061</a> Syscall testing should support pwrite64 on Linux</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3064">WT-3064</a> Minor tree cleanups: .gitignore, NEWS misspelling</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3066">WT-3066</a> Minor code cleanups</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3068">WT-3068</a> Copy artifacts of test runs in wtperf_run script</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3068">WT-3068</a> Have Jenkins include specific files for copy rather than exclude</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3069">WT-3069</a> Fix LevelDB APIs build failures</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3071">WT-3071</a> Fixed sign-conversion compiler errors in Java and Python SWIG code</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3075">WT-3075</a> Document and enforce that WiredTiger now depends on Python 2.7</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3078">WT-3078</a> Test reconfiguration hang in the statlog server</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3080">WT-3080</a> Python test suite: add elapsed time for tests</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3082">WT-3082</a> Python test suite: shorten default run to avoid timeouts</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3084">WT-3084</a> Fix Coverity resource leak complaint</li>
+<li><a href="https://jira.mongodb.org/browse/WT-3091">WT-3091</a> Add stats to test_perf001 test, so we can investigate what happened when it failed</li>
+</ul>
+<h2>WiredTiger release 2.9.0, 2016-09-06 </h2>
 <p>New features and API changes; refer to the API documentation for full details:</p>
 <ul>
 <li><a href="https://jira.mongodb.org/browse/WT-2360">WT-2360</a> Add nesting and disjunction functionality to cursor joins</li>

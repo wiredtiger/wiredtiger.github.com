@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.1</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.1 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -280,6 +280,17 @@ Synopsis</h2>
 Options</h2>
 <p>The following are command-specific options for the <code>stat</code> command:</p>
 <dl class="section user"><dt>-f</dt><dd>Include only "fast" statistics in the output (equivalent to passing <code>statistics=(fast)</code>) to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a>.</dd></dl>
+<hr/>
+ <h1><a class="anchor" id="util_truncate"></a>
+wt truncate</h1>
+<p>Truncate a table, removing all data.</p>
+<p>The <code>truncate</code> command truncates the specified <code>uri</code>. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range. ">WT_SESSION::truncate</a> with no start or stop specified.</p>
+<h2><a class="anchor" id="util_truncate_synopsis"></a>
+Synopsis</h2>
+<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] truncate uri</code></p>
+<h2><a class="anchor" id="util_truncate_options"></a>
+Options</h2>
+<p>The <code>truncate</code> command has no command-specific options.</p>
 <hr/>
  <h1><a class="anchor" id="util_upgrade"></a>
 wt upgrade</h1>

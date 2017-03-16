@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.1</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.1 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -1017,7 +1017,7 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>eviction = (</code></td><td>eviction configuration options.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>8</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
@@ -1091,7 +1091,7 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
