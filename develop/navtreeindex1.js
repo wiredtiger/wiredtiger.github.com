@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#acf1af72ccd813c71e7e7bae7f0fb1f82":[2,0,0,0,6,3],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#acfc4ad09cf8faf58536523169512c94a":[2,0,0,0,6,2],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#aec0dfa7f50233e7aea607ac2f1c2bb89":[2,0,0,0,6,5],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#afb1f98f5054e5326b96be974cbe74533":[2,0,0,0,6,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#a3832456dc93125d7e63195ed55f57491":[2,0,0,0,2,2],
 "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#a99e6a79325373f6568a365f845ecd8b1":[2,0,0,0,2,1],
 "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#acf3bb35b2a382ca00d37d64e864827b9":[2,0,0,0,2,5],
-"enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#ae0200a76371aa5eb98d1872c6a1d2bbc":[2,0,0,0,2,3],
-"enumcom_1_1wiredtiger_1_1db_1_1_search_status.html":[2,0,0,0,8]
+"enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#ae0200a76371aa5eb98d1872c6a1d2bbc":[2,0,0,0,2,3]
 };

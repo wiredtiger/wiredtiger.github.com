@@ -139,6 +139,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abbba24fe607fee519c4c9c4669cd4455"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
 <tr class="memdesc:abbba24fe607fee519c4c9c4669cd4455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a record.  <a href="#abbba24fe607fee519c4c9c4669cd4455">More...</a><br /></td></tr>
 <tr class="separator:abbba24fe607fee519c4c9c4669cd4455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3acc1fd180c4a4220b459734305c90a6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6">reserve</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
+<tr class="memdesc:a3acc1fd180c4a4220b459734305c90a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve an existing record so a subsequent write is less likely to fail due to a conflict between concurrent operations.  <a href="#a3acc1fd180c4a4220b459734305c90a6">More...</a><br /></td></tr>
+<tr class="separator:a3acc1fd180c4a4220b459734305c90a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -581,6 +584,38 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </dl>
 </div>
 </div>
+<a class="anchor" id="a3acc1fd180c4a4220b459734305c90a6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CURSOR::reserve </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
+          <td class="paramname"><em>cursor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reserve an existing record so a subsequent write is less likely to fail due to a conflict between concurrent operations. </p>
+<p>The key must first be set and the record must already exist.</p>
+<div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6">reserve</a>(cursor);</div>
+</div><!-- fragment --><p> On success, the cursor ends positioned at the specified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="afc1b42c22c9c85e1ba08ce3b34437565"></a>
 <div class="memitem">
 <div class="memproto">
@@ -892,7 +927,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></li>
-    <li class="footer">Copyright (c) 2008-2016 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

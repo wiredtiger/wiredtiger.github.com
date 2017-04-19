@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.1</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.1 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -350,8 +350,8 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line">        <span class="keywordtype">char</span> cmd_buf[256], k[16], v[16];</div>
 <div class="line"></div>
 <div class="line">        count_min = 0;</div>
-<div class="line">        snprintf(cmd_buf, <span class="keyword">sizeof</span>(cmd_buf), <span class="stringliteral">&quot;rm -rf %s %s &amp;&amp; mkdir %s %s&quot;</span>,</div>
-<div class="line">            home1, home2, home1, home2);</div>
+<div class="line">        (void)snprintf(cmd_buf, <span class="keyword">sizeof</span>(cmd_buf),</div>
+<div class="line">            <span class="stringliteral">&quot;rm -rf %s %s &amp;&amp; mkdir %s %s&quot;</span>, home1, home2, home1, home2);</div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = system(cmd_buf)) != 0) {</div>
 <div class="line">                fprintf(stderr, <span class="stringliteral">&quot;%s: failed ret %d\n&quot;</span>, cmd_buf, ret);</div>
 <div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
@@ -371,8 +371,8 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"><span class="comment">         * Perform some operations with individual auto-commit transactions.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (record_count = 0, i = 0; i &lt; MAX_KEYS; i++, record_count++) {</div>
-<div class="line">                snprintf(k, <span class="keyword">sizeof</span>(k), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
-<div class="line">                snprintf(v, <span class="keyword">sizeof</span>(v), <span class="stringliteral">&quot;value%d&quot;</span>, i);</div>
+<div class="line">                (void)snprintf(k, <span class="keyword">sizeof</span>(k), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
+<div class="line">                (void)snprintf(v, <span class="keyword">sizeof</span>(v), <span class="stringliteral">&quot;value%d&quot;</span>, i);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, k);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, v);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
@@ -383,8 +383,8 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html','');});
 <div class="line"><span class="comment">         * Perform some operations within a single transaction.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (i = MAX_KEYS; i &lt; MAX_KEYS+5; i++, record_count++) {</div>
-<div class="line">                snprintf(k, <span class="keyword">sizeof</span>(k), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
-<div class="line">                snprintf(v, <span class="keyword">sizeof</span>(v), <span class="stringliteral">&quot;value%d&quot;</span>, i);</div>
+<div class="line">                (void)snprintf(k, <span class="keyword">sizeof</span>(k), <span class="stringliteral">&quot;key%d&quot;</span>, i);</div>
+<div class="line">                (void)snprintf(v, <span class="keyword">sizeof</span>(v), <span class="stringliteral">&quot;value%d&quot;</span>, i);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, k);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, v);</div>
 <div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>

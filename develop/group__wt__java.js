@@ -142,6 +142,7 @@ var group__wt__java =
       [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a2219b90a6028093404c907ff30db346c", null ],
       [ "remove", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a07781c4a66856b9e2aeb30e520335060", null ],
       [ "remove_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a8be6c66d2e7d05835b85686ea9f8abe8", null ],
+      [ "reserve", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a8a7d5faef93f695956492564ad13b92b", null ],
       [ "reset", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a3e53838f94cdf00798c1a50c86bf1c50", null ],
       [ "reset_wrap", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a1d05d97e259395b9efd8b9289b8336e9", null ],
       [ "search", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html#ada3437e64263221f33a8f713eba72148", null ],

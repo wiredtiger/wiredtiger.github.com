@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="contents">
 <p>Shows how to extend WiredTiger with a custom file-system implementation.</p>
 <div class="fragment"><div class="line"><span class="comment">/*-</span></div>
-<div class="line"><span class="comment"> * Public Domain 2014-2016 MongoDB, Inc.</span></div>
+<div class="line"><span class="comment"> * Public Domain 2014-2017 MongoDB, Inc.</span></div>
 <div class="line"><span class="comment"> * Public Domain 2008-2014 WiredTiger, Inc.</span></div>
 <div class="line"><span class="comment"> *</span></div>
 <div class="line"><span class="comment"> * This is free and unencumbered software released into the public domain.</span></div>
@@ -657,35 +657,35 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
 <div class="line">demo_fs_terminate(<a class="code" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *file_system, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
-<div class="line">        DEMO_FILE_HANDLE *demo_fh;</div>
+<div class="line">        DEMO_FILE_HANDLE *demo_fh, *demo_fh_tmp;</div>
 <div class="line">        DEMO_FILE_SYSTEM *demo_fs;</div>
 <div class="line">        <span class="keywordtype">int</span> ret = 0, tret;</div>
 <div class="line"></div>
 <div class="line">        demo_fs = (DEMO_FILE_SYSTEM *)file_system;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">while</span> ((demo_fh = TAILQ_FIRST(&amp;demo_fs-&gt;fileq)) != NULL)</div>
-<div class="line">                <span class="keywordflow">if</span> ((tret =</div>
+<div class="line">        TAILQ_FOREACH_SAFE(demo_fh, &amp;demo_fs-&gt;fileq, q, demo_fh_tmp)</div>
+<div class="line">                if ((tret =</div>
 <div class="line">                    demo_handle_remove(session, demo_fh)) != 0 &amp;&amp; ret == 0)</div>
 <div class="line">                        ret = tret;</div>
 <div class="line"></div>
-<div class="line">        printf(<span class="stringliteral">&quot;Custom file system\n&quot;</span>);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;\t%d unique file opens\n&quot;</span>, demo_fs-&gt;opened_unique_file_count);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;\t%d files opened\n&quot;</span>, demo_fs-&gt;opened_file_count);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;\t%d files closed\n&quot;</span>, demo_fs-&gt;closed_file_count);</div>
-<div class="line">        printf(<span class="stringliteral">&quot;\t%d reads, %d writes\n&quot;</span>,</div>
+<div class="line">        printf(&quot;Custom file system\n&quot;);</div>
+<div class="line">        printf(&quot;\t%d unique file opens\n&quot;, demo_fs-&gt;opened_unique_file_count);</div>
+<div class="line">        printf(&quot;\t%d files opened\n&quot;, demo_fs-&gt;opened_file_count);</div>
+<div class="line">        printf(&quot;\t%d files closed\n&quot;, demo_fs-&gt;closed_file_count);</div>
+<div class="line">        printf(&quot;\t%d reads, %d writes\n&quot;,</div>
 <div class="line">            demo_fs-&gt;read_ops, demo_fs-&gt;write_ops);</div>
 <div class="line"></div>
 <div class="line">        destroy_file_system_lock(&amp;demo_fs-&gt;lock);</div>
 <div class="line">        free(demo_fs);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        return (ret);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * demo_file_close --</span></div>
 <div class="line"><span class="comment"> *      ANSI C close.</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">static <span class="keywordtype">int</span></div>
 <div class="line">demo_file_close(<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
 <div class="line">        DEMO_FILE_HANDLE *demo_fh;</div>
@@ -1053,7 +1053,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Copyright (c) 2008-2016 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

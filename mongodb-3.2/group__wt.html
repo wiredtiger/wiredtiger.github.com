@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.1</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.1 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -493,10 +493,26 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadffd2bd9c5562dceb845af287e1e034e">WT_STAT_CONN_CACHE_EVICTION_WALKS_ABANDONED</a></td></tr>
 <tr class="memdesc:gadffd2bd9c5562dceb845af287e1e034e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction walks abandoned <br /></td></tr>
 <tr class="separator:gadffd2bd9c5562dceb845af287e1e034e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28129696f2666b4bd9f6824b15e576bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga28129696f2666b4bd9f6824b15e576bd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga28129696f2666b4bd9f6824b15e576bd">WT_STAT_CONN_CACHE_EVICTION_ACTIVE_WORKERS</a></td></tr>
+<tr class="memdesc:ga28129696f2666b4bd9f6824b15e576bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread active <br /></td></tr>
+<tr class="separator:ga28129696f2666b4bd9f6824b15e576bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8249f83dca3b51b0d4fc1f9605b5345"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab8249f83dca3b51b0d4fc1f9605b5345"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab8249f83dca3b51b0d4fc1f9605b5345">WT_STAT_CONN_CACHE_EVICTION_WORKER_CREATED</a></td></tr>
+<tr class="memdesc:gab8249f83dca3b51b0d4fc1f9605b5345"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread created <br /></td></tr>
+<tr class="separator:gab8249f83dca3b51b0d4fc1f9605b5345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafac92de6de839e9e528529adc328e01a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafac92de6de839e9e528529adc328e01a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafac92de6de839e9e528529adc328e01a">WT_STAT_CONN_CACHE_EVICTION_WORKER_EVICTING</a></td></tr>
 <tr class="memdesc:gafac92de6de839e9e528529adc328e01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread evicting pages <br /></td></tr>
 <tr class="separator:gafac92de6de839e9e528529adc328e01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef84b3e887ff46b2942b337f12689eab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaef84b3e887ff46b2942b337f12689eab"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaef84b3e887ff46b2942b337f12689eab">WT_STAT_CONN_CACHE_EVICTION_WORKER_REMOVED</a></td></tr>
+<tr class="memdesc:gaef84b3e887ff46b2942b337f12689eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread removed <br /></td></tr>
+<tr class="separator:gaef84b3e887ff46b2942b337f12689eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7395ea1890d6cee6bdc069f9a31d709f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7395ea1890d6cee6bdc069f9a31d709f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7395ea1890d6cee6bdc069f9a31d709f">WT_STAT_CONN_CACHE_EVICTION_STABLE_STATE_WORKERS</a></td></tr>
+<tr class="memdesc:ga7395ea1890d6cee6bdc069f9a31d709f"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread stable number <br /></td></tr>
+<tr class="separator:ga7395ea1890d6cee6bdc069f9a31d709f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4d23021026116c1055c263e1d256725d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4d23021026116c1055c263e1d256725d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4d23021026116c1055c263e1d256725d">WT_STAT_CONN_CACHE_EVICTION_FORCE_FAIL</a></td></tr>
 <tr class="memdesc:ga4d23021026116c1055c263e1d256725d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: failed eviction of pages that exceeded the in-memory maximum <br /></td></tr>
@@ -509,6 +525,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5cc6a0e9c2fd7212845f6b1c94ff5be2">WT_STAT_CONN_CACHE_EVICTION_WALKS_STARTED</a></td></tr>
 <tr class="memdesc:ga5cc6a0e9c2fd7212845f6b1c94ff5be2"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: files with new eviction walks started <br /></td></tr>
 <tr class="separator:ga5cc6a0e9c2fd7212845f6b1c94ff5be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga706424f2d9f53d865fa58fd90442d50c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga706424f2d9f53d865fa58fd90442d50c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga706424f2d9f53d865fa58fd90442d50c">WT_STAT_CONN_CACHE_EVICTION_FORCE_RETUNE</a></td></tr>
+<tr class="memdesc:ga706424f2d9f53d865fa58fd90442d50c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: force re-tuning of eviction workers once in a while <br /></td></tr>
+<tr class="separator:ga706424f2d9f53d865fa58fd90442d50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga58c45da5c5b26ed68f5e36410929eb21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga58c45da5c5b26ed68f5e36410929eb21"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga58c45da5c5b26ed68f5e36410929eb21">WT_STAT_CONN_CACHE_EVICTION_HAZARD</a></td></tr>
 <tr class="memdesc:ga58c45da5c5b26ed68f5e36410929eb21"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: hazard pointer blocked page eviction <br /></td></tr>
@@ -805,18 +825,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8b6c1c6d5e81affa83b418f47c774952">WT_STAT_CONN_LOCK_CHECKPOINT_WAIT_INTERNAL</a></td></tr>
 <tr class="memdesc:ga8b6c1c6d5e81affa83b418f47c774952"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: checkpoint lock internal thread wait time (usecs) <br /></td></tr>
 <tr class="separator:ga8b6c1c6d5e81affa83b418f47c774952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff86ac2c358611e9de54a2ed6e6edbc4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaff86ac2c358611e9de54a2ed6e6edbc4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaff86ac2c358611e9de54a2ed6e6edbc4">WT_STAT_CONN_LOCK_HANDLE_LIST_COUNT</a></td></tr>
-<tr class="memdesc:gaff86ac2c358611e9de54a2ed6e6edbc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: handle-list lock acquisitions <br /></td></tr>
-<tr class="separator:gaff86ac2c358611e9de54a2ed6e6edbc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga45f8251ef227842bc5bf6482ecddfbba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga45f8251ef227842bc5bf6482ecddfbba"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga45f8251ef227842bc5bf6482ecddfbba">WT_STAT_CONN_LOCK_HANDLE_LIST_WAIT_APPLICATION</a></td></tr>
-<tr class="memdesc:ga45f8251ef227842bc5bf6482ecddfbba"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: handle-list lock application thread wait time (usecs) <br /></td></tr>
-<tr class="separator:ga45f8251ef227842bc5bf6482ecddfbba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0a1cc2767d5fd9d00d50b2fe08c07812"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0a1cc2767d5fd9d00d50b2fe08c07812"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0a1cc2767d5fd9d00d50b2fe08c07812">WT_STAT_CONN_LOCK_HANDLE_LIST_WAIT_INTERNAL</a></td></tr>
-<tr class="memdesc:ga0a1cc2767d5fd9d00d50b2fe08c07812"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: handle-list lock internal thread wait time (usecs) <br /></td></tr>
-<tr class="separator:ga0a1cc2767d5fd9d00d50b2fe08c07812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8ca567b2908997280e4f0a20b80b358b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8ca567b2908997280e4f0a20b80b358b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8ca567b2908997280e4f0a20b80b358b">WT_STAT_CONN_LOCK_HANDLE_LIST_WAIT_EVICTION</a></td></tr>
+<tr class="memdesc:ga8ca567b2908997280e4f0a20b80b358b"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: handle-list lock eviction thread wait time (usecs) <br /></td></tr>
+<tr class="separator:ga8ca567b2908997280e4f0a20b80b358b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9278b4a7515a3a60260a299bd36dece"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad9278b4a7515a3a60260a299bd36dece"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad9278b4a7515a3a60260a299bd36dece">WT_STAT_CONN_LOCK_METADATA_COUNT</a></td></tr>
 <tr class="memdesc:gad9278b4a7515a3a60260a299bd36dece"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: metadata lock acquisitions <br /></td></tr>
@@ -861,6 +873,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga05b96acc3661323a325a47f3c576c13c">WT_STAT_CONN_LOG_SLOT_CLOSES</a></td></tr>
 <tr class="memdesc:ga05b96acc3661323a325a47f3c576c13c"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: consolidated slot closures <br /></td></tr>
 <tr class="separator:ga05b96acc3661323a325a47f3c576c13c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b6100cd38b7b9cff35675958691c04b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9b6100cd38b7b9cff35675958691c04b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9b6100cd38b7b9cff35675958691c04b">WT_STAT_CONN_LOG_SLOT_ACTIVE_CLOSED</a></td></tr>
+<tr class="memdesc:ga9b6100cd38b7b9cff35675958691c04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: consolidated slot join active slot closed <br /></td></tr>
+<tr class="separator:ga9b6100cd38b7b9cff35675958691c04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad72653bf305cdda2de8d4480d8cf0a86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad72653bf305cdda2de8d4480d8cf0a86"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad72653bf305cdda2de8d4480d8cf0a86">WT_STAT_CONN_LOG_SLOT_RACES</a></td></tr>
 <tr class="memdesc:gad72653bf305cdda2de8d4480d8cf0a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: consolidated slot join races <br /></td></tr>
@@ -873,6 +889,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga406a7995cf1505cc5132b1f2398d665c">WT_STAT_CONN_LOG_SLOT_JOINS</a></td></tr>
 <tr class="memdesc:ga406a7995cf1505cc5132b1f2398d665c"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: consolidated slot joins <br /></td></tr>
 <tr class="separator:ga406a7995cf1505cc5132b1f2398d665c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c04e13dc9c190826191813aa4a081ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1c04e13dc9c190826191813aa4a081ba"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1c04e13dc9c190826191813aa4a081ba">WT_STAT_CONN_LOG_SLOT_NO_FREE_SLOTS</a></td></tr>
+<tr class="memdesc:ga1c04e13dc9c190826191813aa4a081ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: consolidated slot transitions unable to find free slot <br /></td></tr>
+<tr class="separator:ga1c04e13dc9c190826191813aa4a081ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga20af41bced1df77fc7b3422d0fb0d7bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga20af41bced1df77fc7b3422d0fb0d7bc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga20af41bced1df77fc7b3422d0fb0d7bc">WT_STAT_CONN_LOG_SLOT_UNBUFFERED</a></td></tr>
 <tr class="memdesc:ga20af41bced1df77fc7b3422d0fb0d7bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: consolidated slot unbuffered writes <br /></td></tr>
@@ -1486,6 +1506,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7430f63be721622674b32f35e50ec8a9">WT_STAT_DSRC_CACHE_WRITE_RESTORE</a></td></tr>
 <tr class="memdesc:ga7430f63be721622674b32f35e50ec8a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages written requiring in-memory restoration <br /></td></tr>
 <tr class="separator:ga7430f63be721622674b32f35e50ec8a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6a4232aa7c25765203f696e8438cadc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad6a4232aa7c25765203f696e8438cadc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad6a4232aa7c25765203f696e8438cadc">WT_STAT_DSRC_CACHE_BYTES_DIRTY</a></td></tr>
+<tr class="memdesc:gad6a4232aa7c25765203f696e8438cadc"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: tracked dirty bytes in the cache <br /></td></tr>
+<tr class="separator:gad6a4232aa7c25765203f696e8438cadc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf67215f83cbfe1fe2cf775bca4e1bda0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf67215f83cbfe1fe2cf775bca4e1bda0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf67215f83cbfe1fe2cf775bca4e1bda0">WT_STAT_DSRC_CACHE_EVICTION_CLEAN</a></td></tr>
 <tr class="memdesc:gaf67215f83cbfe1fe2cf775bca4e1bda0"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: unmodified pages evicted <br /></td></tr>
@@ -2184,7 +2208,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>eviction = (</code></td><td>eviction configuration options.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>8</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
@@ -2202,7 +2226,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>exclusive</code></td><td>fail if the database already exists, generally used with the <code>create</code> option.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>extensions</code></td><td>list of shared library extensions to load (using dlopen). Any values specified to an library extension are passed to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68" title="Load an extension. ">WT_CONNECTION::load_extension</a> as the <code>config</code> parameter (for example, <code>extensions=(/path/ext.so={entry=my_entry})</code>).</td><td>a list of strings; default empty. </td></tr>
+<td><code>extensions</code></td><td>list of shared library extensions to load (using dlopen). Any values specified to a library extension are passed to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68" title="Load an extension. ">WT_CONNECTION::load_extension</a> as the <code>config</code> parameter (for example, <code>extensions=(/path/ext.so={entry=my_entry})</code>).</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>file_extend</code></td><td>file extension configuration. If set, extend files of the set type in allocations of the set size, instead of a block at a time as each new block is written. For example, <code>file_extend=(data=16MB)</code>.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
@@ -2299,7 +2323,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables even if the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 <tr>
 <td><code>write_through</code></td><td>Use <code>FILE_FLAG_WRITE_THROUGH</code> on Windows to write to files. Ignored on non-Windows systems. Options are given as a list, such as <code>"write_through=[data]"</code>. Configuring <code>write_through</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to write through cache, including <code>"log"</code> will cause WiredTiger log files to write through cache. <code>write_through</code> should be combined with <code>direct_io</code> to get the equivalent of POSIX <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 </table>

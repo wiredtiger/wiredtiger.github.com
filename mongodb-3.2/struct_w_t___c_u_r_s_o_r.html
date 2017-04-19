@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.1</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.1 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -429,7 +429,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite</code> is not configured and a record with the specified key already exists, <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and a record with the specified key already exists, <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a10">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a9">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a10">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a32">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a9">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a50">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a22">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a9">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a22">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a15">ex_thread.c</a>.</dd>
 </dl>
 </div>
@@ -562,21 +562,21 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor);</div>
-</div><!-- fragment --><p> If the cursor was not configured with "overwrite=true", the key must be set and the key's record must exist; the record will be removed.</p>
+</div><!-- fragment --><p> If the cursor was configured with "overwrite=false" (not the default), the key must be set and the key's record must exist; the record will be removed.</p>
+<p>Any cursor position does not change: if the cursor was positioned before the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record. ">WT_CURSOR::remove</a> call, the cursor remains positioned at the removed record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position. If the cursor was not positioned before the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record. ">WT_CURSOR::remove</a> call, the cursor ends with no position, and a subsequent call to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR::prev</a>) method will iterate from the beginning (end) of the table.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
 <div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite=false&quot;</span>, &amp;cursor);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor);</div>
 </div><!-- fragment --><p> Removing a record in a fixed-length bit field column-store (that is, a store with an 'r' type key and 't' type value) is identical to setting the record's value to 0.</p>
-<p>On success, the cursor ends positioned at the removed record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite</code> is not configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_cursor_8c-example.html#a12">ex_cursor.c</a>, and <a class="el" href="ex_extractor_8c-example.html#a17">ex_extractor.c</a>.</dd>
 </dl>
 </div>
@@ -828,7 +828,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, value);</div>
 <div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f">update</a>(cursor);</div>
-</div><!-- fragment --><p> On success, the cursor ends positioned at the modified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
+</div><!-- fragment --><p> On success, the cursor ends positioned at the modified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position. (The <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record. ">WT_CURSOR::insert</a> method never keeps a cursor position and may be more efficient for that reason.)</p>
 <p>The maximum length of a single column stored in a table is not fixed (as it partially depends on the underlying file configuration), but is always a small number of bytes less than 4GB.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -836,7 +836,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite</code> is not configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_cursor_8c-example.html#a11">ex_cursor.c</a>, and <a class="el" href="ex_schema_8c-example.html#a14">ex_schema.c</a>.</dd>
 </dl>
 </div>

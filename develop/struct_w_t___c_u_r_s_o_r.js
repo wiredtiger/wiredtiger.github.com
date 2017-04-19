@@ -10,6 +10,7 @@ var struct_w_t___c_u_r_s_o_r =
     [ "prev", "struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76", null ],
     [ "reconfigure", "struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a", null ],
     [ "remove", "struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455", null ],
+    [ "reserve", "struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6", null ],
     [ "reset", "struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565", null ],
     [ "search", "struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f", null ],
     [ "search_near", "struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c", null ],

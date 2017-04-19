@@ -191,6 +191,9 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 <tr class="memitem:a9d84cad5f0da58963dae3217a3ea763a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d84cad5f0da58963dae3217a3ea763a"></a>
 String&#160;</td><td class="memItemRight" valign="bottom"><b>getUri</b> ()</td></tr>
 <tr class="separator:a9d84cad5f0da58963dae3217a3ea763a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a7d5faef93f695956492564ad13b92b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a8a7d5faef93f695956492564ad13b92b">reserve</a> ()  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:a8a7d5faef93f695956492564ad13b92b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve an existing record so a subsequent write is less likely to fail due to a conflict between concurrent operations.  <a href="#a8a7d5faef93f695956492564ad13b92b">More...</a><br /></td></tr>
+<tr class="separator:a8a7d5faef93f695956492564ad13b92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc0e5bd37f139ba544f9a95191767bde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#adc0e5bd37f139ba544f9a95191767bde">close</a> ()  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:adc0e5bd37f139ba544f9a95191767bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the cursor.  <a href="#adc0e5bd37f139ba544f9a95191767bde">More...</a><br /></td></tr>
 <tr class="separator:adc0e5bd37f139ba544f9a95191767bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1280,6 +1283,37 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
 
 </div>
 </div>
+<a class="anchor" id="a8a7d5faef93f695956492564ad13b92b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Cursor.reserve </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reserve an existing record so a subsequent write is less likely to fail due to a conflict between concurrent operations. </p>
+<p>The key must first be set and the record must already exist.</p>
+<div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        cursor-&gt;set_key(cursor, key);</div>
+<div class="line">        ret = cursor-&gt;reserve(cursor);</div>
+</div><!-- fragment --><p> On success, the cursor ends positioned at the specified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a3e53838f94cdf00798c1a50c86bf1c50"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1354,7 +1388,7 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>com</b></li><li class="navelem"><b>wiredtiger</b></li><li class="navelem"><b>db</b></li><li class="navelem"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html">Cursor</a></li>
-    <li class="footer">Copyright (c) 2008-2016 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

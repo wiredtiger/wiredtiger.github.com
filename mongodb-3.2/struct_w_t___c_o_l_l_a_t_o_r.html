@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.1</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.1 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -146,8 +146,8 @@ Public Attributes</h2></td></tr>
 <div class="line"></div>
 <div class="line">        p1 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)value1-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
 <div class="line">        p2 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)value2-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
-<div class="line">        <span class="keywordflow">while</span> (*p1 != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; *p1 == *p2)</div>
-<div class="line">                p1++, p2++;</div>
+<div class="line">        <span class="keywordflow">for</span> (; *p1 != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; *p1 == *p2; ++p1, ++p2)</div>
+<div class="line">                ;</div>
 <div class="line"></div>
 <div class="line">        *cmp = (int)*p2 - (<span class="keywordtype">int</span>)*p1;</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>

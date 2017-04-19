@@ -1,4 +1,4 @@
-.TH "wt" 3 "Thu Apr 6 2017" "Version 2.9.1" "WiredTiger" \" -*- nroff -*-
+.TH "wt" 3 "Wed Apr 19 2017" "Version 2.9.2" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -365,6 +365,18 @@ The following are command-specific options for the \fCstat\fP command:
 .RS 4
 Include only 'fast' statistics in the output (equivalent to passing \fCstatistics=(fast)\fP) to \fBWT_SESSION::open_cursor\fP\&.
 .RE
+.PP
+.PP
+ 
+.SH "wt truncate"
+.PP
+Truncate a table, removing all data\&.
+.PP
+The \fCtruncate\fP command truncates the specified \fCuri\fP\&. It is equivalent to a call to \fBWT_SESSION::truncate\fP with no start or stop specified\&.
+.SS "Synopsis"
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] truncate uri\fP
+.SS "Options"
+The \fCtruncate\fP command has no command-specific options\&.
 .PP
 .PP
  
