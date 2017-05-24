@@ -363,6 +363,7 @@ var group__wt =
     [ "WT_STAT_CONN_THREAD_FSYNC_ACTIVE", "group__wt.html#gaa67758a777bba986d877e9b7bf0647a8", null ],
     [ "WT_STAT_CONN_THREAD_READ_ACTIVE", "group__wt.html#ga2d0fb8adffcbf22689471e54a47484e9", null ],
     [ "WT_STAT_CONN_THREAD_WRITE_ACTIVE", "group__wt.html#gafd41e8c590a5891d6c62887951bae24d", null ],
+    [ "WT_STAT_CONN_TIME_TRAVEL", "group__wt.html#ga6ca6a56888cc10d517d5c48392e3dc93", null ],
     [ "WT_STAT_CONN_TXN_BEGIN", "group__wt.html#ga89fc3c2ab4ee14451d9adf0b608ed4b5", null ],
     [ "WT_STAT_CONN_TXN_CHECKPOINT", "group__wt.html#gab97b7001b5c2642987718fa372355486", null ],
     [ "WT_STAT_CONN_TXN_CHECKPOINT_FSYNC_POST", "group__wt.html#ga03d269c9141be6f0663c9827778045d2", null ],

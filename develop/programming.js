@@ -149,7 +149,26 @@ var programming =
     [ "Visualizing performance with wtstats", "wtstats.html", [
       [ "Manipulating the wtstats display", "wtstats.html#wtstats_display", null ]
     ] ],
+    [ "gcc/clang build options", "tune_build_options.html", null ],
+    [ "Bulk-load", "tune_bulk_load.html", null ],
+    [ "Cache and eviction tuning", "tune_cache.html", [
+      [ "Cache size", "tune_cache.html#tuning_cache_size", null ],
+      [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
+      [ "Eviction tuning", "tune_cache.html#cache_eviction", null ]
+    ] ],
+    [ "Checksums", "tune_checksum.html", null ],
+    [ "Connection close", "tune_close.html", null ],
+    [ "Cursor persistence", "tune_cursor_persist.html", null ],
+    [ "Commit-level durability", "tune_durability.html", [
+      [ "Group commit", "tune_durability.html#tune_durability_group_commit", null ],
+      [ "Flush call configuration", "tune_durability.html#tune_durability_flush_config", null ]
+    ] ],
+    [ "File allocation", "tune_file_alloc.html", [
+      [ "File growth", "tune_file_alloc.html#tuning_system_file_block_grow", null ],
+      [ "File block allocation", "tune_file_alloc.html#tuning_system_file_block_allocation", null ]
+    ] ],
     [ "Memory allocator", "tune_memory_allocator.html", null ],
+    [ "Mutexes", "tune_mutex.html", null ],
     [ "Tuning page size and compression", "tune_page_size_and_comp.html", [
       [ "Data life cycle", "tune_page_size_and_comp.html#data_life_cycle", null ],
       [ "Configurable page structures in WiredTiger", "tune_page_size_and_comp.html#configurable_page_struct", [
@@ -164,30 +183,12 @@ var programming =
         [ "Table summarizing compression in WiredTiger", "tune_page_size_and_comp.html#table_compress", null ]
       ] ]
     ] ],
-    [ "Cache and eviction tuning", "tune_cache.html", [
-      [ "Cache size", "tune_cache.html#tuning_cache_size", null ],
-      [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
-      [ "Eviction tuning", "tune_cache.html#cache_eviction", null ]
-    ] ],
-    [ "Bulk-load", "tune_bulk_load.html", null ],
-    [ "Cursor persistence", "tune_cursor_persist.html", null ],
     [ "Read-only objects", "tune_read_only.html", null ],
-    [ "Commit-level durability", "tune_durability.html", [
-      [ "Group commit", "tune_durability.html#tune_durability_group_commit", null ],
-      [ "Flush call configuration", "tune_durability.html#tune_durability_flush_config", null ]
-    ] ],
-    [ "Checksums", "tune_checksum.html", null ],
-    [ "File allocation", "tune_file_alloc.html", [
-      [ "File growth", "tune_file_alloc.html#tuning_system_file_block_grow", null ],
-      [ "File block allocation", "tune_file_alloc.html#tuning_system_file_block_allocation", null ]
-    ] ],
     [ "System buffer cache", "tune_system_buffer_cache.html", [
       [ "Direct I/O", "tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io", null ],
       [ "os_cache_dirty_max", "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max", null ],
       [ "os_cache_max", "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max", null ]
     ] ],
     [ "Linux transparent huge pages", "tune_transparent_huge_pages.html", null ],
-    [ "Connection close", "tune_close.html", null ],
-    [ "Mutexes", "tune_mutex.html", null ],
     [ "Linux zone reclamation memory management", "tune_zone_reclaim.html", null ]
 ];
