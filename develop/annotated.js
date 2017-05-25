@@ -8,6 +8,7 @@ var annotated =
           [ "AsyncOpType", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type" ],
           [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", "classcom_1_1wiredtiger_1_1db_1_1_connection" ],
           [ "Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", "classcom_1_1wiredtiger_1_1db_1_1_cursor" ],
+          [ "Modify", "classcom_1_1wiredtiger_1_1db_1_1_modify.html", "classcom_1_1wiredtiger_1_1db_1_1_modify" ],
           [ "PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream" ],
           [ "PackInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream" ],
           [ "PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream" ],
@@ -19,7 +20,9 @@ var annotated =
           [ "wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
           [ "WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception" ],
           [ "WiredTigerPanicException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_panic_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_panic_exception" ],
-          [ "WiredTigerRollbackException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_rollback_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_rollback_exception" ]
+          [ "WiredTigerRollbackException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_rollback_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_rollback_exception" ],
+          [ "WT_ITEM_HOLD", "classcom_1_1wiredtiger_1_1db_1_1_w_t___i_t_e_m___h_o_l_d.html", "classcom_1_1wiredtiger_1_1db_1_1_w_t___i_t_e_m___h_o_l_d" ],
+          [ "WT_MODIFY_LIST", "classcom_1_1wiredtiger_1_1db_1_1_w_t___m_o_d_i_f_y___l_i_s_t.html", "classcom_1_1wiredtiger_1_1db_1_1_w_t___m_o_d_i_f_y___l_i_s_t" ]
         ] ]
       ] ]
     ] ],
@@ -39,6 +42,7 @@ var annotated =
     [ "WT_FILE_HANDLE", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html", "struct_w_t___f_i_l_e___h_a_n_d_l_e" ],
     [ "WT_FILE_SYSTEM", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html", "struct_w_t___f_i_l_e___s_y_s_t_e_m" ],
     [ "WT_ITEM", "group__wt.html#struct_w_t___i_t_e_m", "group__wt_struct_w_t___i_t_e_m" ],
+    [ "WT_MODIFY", "group__wt.html#struct_w_t___m_o_d_i_f_y", "group__wt_struct_w_t___m_o_d_i_f_y" ],
     [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", "struct_w_t___s_e_s_s_i_o_n" ],
     [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", "struct_w_t___t_x_n___n_o_t_i_f_y" ]
 ];

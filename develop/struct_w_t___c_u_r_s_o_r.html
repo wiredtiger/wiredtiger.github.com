@@ -133,6 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aac90d9fbcc031570f924db55f8a1cee3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
 <tr class="memdesc:aac90d9fbcc031570f924db55f8a1cee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a record and optionally update an existing record.  <a href="#aac90d9fbcc031570f924db55f8a1cee3">More...</a><br /></td></tr>
 <tr class="separator:aac90d9fbcc031570f924db55f8a1cee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a349b739f9f1d4fc50497682527a4d738"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738">modify</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, <a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> *entries, int nentries)</td></tr>
+<tr class="memdesc:a349b739f9f1d4fc50497682527a4d738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify an existing record.  <a href="#a349b739f9f1d4fc50497682527a4d738">More...</a><br /></td></tr>
+<tr class="separator:a349b739f9f1d4fc50497682527a4d738"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444cdc0952e7f8d55d23173516c7037f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f">update</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
 <tr class="memdesc:a444cdc0952e7f8d55d23173516c7037f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update an existing record and optionally insert a record.  <a href="#a444cdc0952e7f8d55d23173516c7037f">More...</a><br /></td></tr>
 <tr class="separator:a444cdc0952e7f8d55d23173516c7037f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -435,6 +438,82 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and a record with the specified key already exists, <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a10">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a9">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a10">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a32">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a9">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a50">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a22">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a9">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a22">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a15">ex_thread.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="a349b739f9f1d4fc50497682527a4d738"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CURSOR::modify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
+          <td class="paramname"><em>cursor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> *&#160;</td>
+          <td class="paramname"><em>entries</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nentries</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modify an existing record. </p>
+<p>Both the key and value must be set and the record must already exist; the record will be updated.</p>
+<p>Modification structures are applied in order, and later modifications can update earlier modifications.</p>
+<p>The modify method is only supported on raw byte arrays accessed using a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structure, that is, a format type of <code>u</code>.</p>
+<div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> entries[3];</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
+<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Position the cursor. */</span></div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Replace 20 bytes starting at byte offset 5. */</span></div>
+<div class="line">        entries[0].<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a> = <span class="stringliteral">&quot;some data&quot;</span>;</div>
+<div class="line">        entries[0].<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a> = strlen(entries[0].data.<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>);</div>
+<div class="line">        entries[0].<a class="code" href="group__wt.html#ab51931e55a2bc958cb82155aa9bd413f">offset</a> = 5;</div>
+<div class="line">        entries[0].<a class="code" href="group__wt.html#ac08f030bf6cfe86eed9810e90ba6cc20">size</a> = 20;</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Insert data at byte offset 40. */</span></div>
+<div class="line">        entries[1].<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a> = <span class="stringliteral">&quot;and more data&quot;</span>;</div>
+<div class="line">        entries[1].<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a> = strlen(entries[1].data.<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>);</div>
+<div class="line">        entries[1].<a class="code" href="group__wt.html#ab51931e55a2bc958cb82155aa9bd413f">offset</a> = 40;</div>
+<div class="line">        entries[1].<a class="code" href="group__wt.html#ac08f030bf6cfe86eed9810e90ba6cc20">size</a> = 0;</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* Replace 2 bytes starting at byte offset 10. */</span></div>
+<div class="line">        entries[2].<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a> = <span class="stringliteral">&quot;and more data&quot;</span>;</div>
+<div class="line">        entries[2].<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a> = strlen(entries[2].data.<a class="code" href="group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1">data</a>);</div>
+<div class="line">        entries[2].<a class="code" href="group__wt.html#ab51931e55a2bc958cb82155aa9bd413f">offset</a> = 10;</div>
+<div class="line">        entries[2].<a class="code" href="group__wt.html#ac08f030bf6cfe86eed9810e90ba6cc20">size</a> = 2;</div>
+<div class="line"></div>
+<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738">modify</a>(cursor, entries, 3);</div>
+</div><!-- fragment --><p> On success, the cursor ends positioned at the modified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
+<p>The maximum length of a single column stored in a table is not fixed (as it partially depends on the underlying file configuration), but is always a small number of bytes less than 4GB.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
+    <tr><td class="paramname">entries</td><td>an array of modification data structures </td></tr>
+    <tr><td class="paramname">nentries</td><td>the number of modification data structures </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>in_memory</code> is configured for the database and the modify requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a0503f16bd8f3d05aa3552f229b3a8e1b"></a>
@@ -871,7 +950,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. Also, if <code>in_memory</code> is configured for the database and the update requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_cursor_8c-example.html#a11">ex_cursor.c</a>, and <a class="el" href="ex_schema_8c-example.html#a14">ex_schema.c</a>.</dd>
 </dl>
 </div>

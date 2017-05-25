@@ -5,6 +5,7 @@ var hierarchy =
     [ "com.wiredtiger.db.AsyncOpType", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html", null ],
     [ "com.wiredtiger.db.Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", null ],
     [ "com.wiredtiger.db.Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", null ],
+    [ "com.wiredtiger.db.Modify", "classcom_1_1wiredtiger_1_1db_1_1_modify.html", null ],
     [ "com.wiredtiger.db.PackFormatInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html", null ],
     [ "com.wiredtiger.db.PackInputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html", null ],
     [ "com.wiredtiger.db.PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html", null ],
@@ -14,6 +15,8 @@ var hierarchy =
       [ "com.wiredtiger.db.wiredtiger", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger.html", null ]
     ] ],
     [ "com.wiredtiger.db.wiredtigerJNI", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger_j_n_i.html", null ],
+    [ "com.wiredtiger.db.WT_ITEM_HOLD", "classcom_1_1wiredtiger_1_1db_1_1_w_t___i_t_e_m___h_o_l_d.html", null ],
+    [ "com.wiredtiger.db.WT_MODIFY_LIST", "classcom_1_1wiredtiger_1_1db_1_1_w_t___m_o_d_i_f_y___l_i_s_t.html", null ],
     [ "RuntimeException", null, [
       [ "com.wiredtiger.db.WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", [
         [ "com.wiredtiger.db.WiredTigerPackingException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_packing_exception.html", null ],
@@ -37,6 +40,7 @@ var hierarchy =
     [ "WT_FILE_HANDLE", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html", null ],
     [ "WT_FILE_SYSTEM", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html", null ],
     [ "WT_ITEM", "group__wt.html#struct_w_t___i_t_e_m", null ],
+    [ "WT_MODIFY", "group__wt.html#struct_w_t___m_o_d_i_f_y", null ],
     [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", null ],
     [ "WT_TXN_NOTIFY", "struct_w_t___t_x_n___n_o_t_i_f_y.html", null ]
 ];

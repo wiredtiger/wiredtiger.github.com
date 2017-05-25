@@ -185,6 +185,8 @@ synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</
 <tr class="separator:ada3437e64263221f33a8f713eba72148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6951db2c5d9a2881df7c6e3d7043b0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enumcom_1_1wiredtiger_1_1db_1_1_search_status.html">SearchStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#ae6951db2c5d9a2881df7c6e3d7043b0f">search_near</a> ()  throws WiredTigerException </td></tr>
 <tr class="separator:ae6951db2c5d9a2881df7c6e3d7043b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347f47ece41c10b6d11adcdeea214c4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a347f47ece41c10b6d11adcdeea214c4b">modify</a> (<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_modify.html">Modify</a> mods[])  throws WiredTigerException </td></tr>
+<tr class="separator:a347f47ece41c10b6d11adcdeea214c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac99ca6470d4b998e2b1363d875a5bb7f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac99ca6470d4b998e2b1363d875a5bb7f"></a>
 <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSession</b> ()</td></tr>
 <tr class="separator:ac99ca6470d4b998e2b1363d875a5bb7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,6 +202,15 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>getUri</b> ()</td><
 <tr class="memitem:a2219b90a6028093404c907ff30db346c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_cursor.html#a2219b90a6028093404c907ff30db346c">reconfigure</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a2219b90a6028093404c907ff30db346c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure the cursor.  <a href="#a2219b90a6028093404c907ff30db346c">More...</a><br /></td></tr>
 <tr class="separator:a2219b90a6028093404c907ff30db346c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a6d182cb786fce8a9f8bdbf07e3df10"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a6d182cb786fce8a9f8bdbf07e3df10"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>modify_wrap</b> (<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_w_t___m_o_d_i_f_y___l_i_s_t.html">WT_MODIFY_LIST</a> list, byte[] k)</td></tr>
+<tr class="separator:a6a6d182cb786fce8a9f8bdbf07e3df10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88034fa1336ddda0ba693a3a0aec0e61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88034fa1336ddda0ba693a3a0aec0e61"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>_new_check_modify_list</b> (<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_w_t___m_o_d_i_f_y___l_i_s_t.html">WT_MODIFY_LIST</a> list)</td></tr>
+<tr class="separator:a88034fa1336ddda0ba693a3a0aec0e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ecca39cfd1a7df153ec7d609783f2c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ecca39cfd1a7df153ec7d609783f2c2"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>_new_check_modify</b> (<a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_modify.html">Modify</a> mod)</td></tr>
+<tr class="separator:a5ecca39cfd1a7df153ec7d609783f2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -766,6 +777,31 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>valueFormat</b></td
 </div><div class="memdoc">
 <p>Insert the cursor's current key/value into the table.</p>
 <dl class="section return"><dt>Returns</dt><dd>The status of the operation. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a347f47ece41c10b6d11adcdeea214c4b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Cursor.modify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_modify.html">Modify</a>&#160;</td>
+          <td class="paramname"><em>mods</em>[]</td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_modify.html">Modify</a> an existing record.</p>
+<p>The cursor must already be positioned, and the key's value will be updated.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mods</td><td>an array of modifications. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, errno on error. </dd></dl>
 
 </div>
 </div>
