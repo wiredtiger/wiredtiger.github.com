@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.2</span>
+   &#160;<span id="projectnumber">Version 2.9.3</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.2 --></div>
+   <div id="projectbrief"><!-- 2.9.3 --></div>
   </td>
  </tr>
  </tbody>
@@ -277,7 +277,6 @@ Configuration String Parsing examples</h1>
 </div><div class="memdoc">
 
 <p>Return the next key/value pair. </p>
-<p>When iteration would pass the end of the configuration string <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned.</p>
 <p>If an item has no explicitly assigned value, the item will be returned in <code>key</code> and the <code>value</code> will be set to the boolean <code>"true"</code> value.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -287,7 +286,7 @@ Configuration String Parsing examples</h1>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. When iteration would pass the end of the configuration string <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a11">ex_file_system.c</a>.</dd>
 </dl>
 </div>

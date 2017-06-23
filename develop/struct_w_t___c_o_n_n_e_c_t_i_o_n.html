@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.2</span>
+   &#160;<span id="projectnumber">Version 2.9.3</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.2 --></div>
+   <div id="projectbrief"><!-- 2.9.3 --></div>
   </td>
  </tr>
  </tbody>
@@ -113,6 +113,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afc75c44ff4497627c59d9b6aaa64c9d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *errhandler, const char *config, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> **sessionp)</td></tr>
 <tr class="memdesc:afc75c44ff4497627c59d9b6aaa64c9d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a session.  <a href="#afc75c44ff4497627c59d9b6aaa64c9d8">More...</a><br /></td></tr>
 <tr class="separator:afc75c44ff4497627c59d9b6aaa64c9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Transactions</div></td></tr>
+<tr class="memitem:a607cf2781661d03ba50586133e02cc11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a607cf2781661d03ba50586133e02cc11">query_timestamp</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, char *hex_timestamp, const char *config)</td></tr>
+<tr class="memdesc:a607cf2781661d03ba50586133e02cc11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the global transaction timestamp state.  <a href="#a607cf2781661d03ba50586133e02cc11">More...</a><br /></td></tr>
+<tr class="separator:a607cf2781661d03ba50586133e02cc11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad082439541b1b95d6aae6c15026fe512"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512">set_timestamp</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *config)</td></tr>
+<tr class="memdesc:ad082439541b1b95d6aae6c15026fe512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a global transaction timestamp.  <a href="#ad082439541b1b95d6aae6c15026fe512">More...</a><br /></td></tr>
+<tr class="separator:ad082439541b1b95d6aae6c15026fe512"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Extensions</div></td></tr>
 <tr class="memitem:ab6a56facfd217e5ff687aa4c012e8d68"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68">load_extension</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *path, const char *config)</td></tr>
 <tr class="memdesc:ab6a56facfd217e5ff687aa4c012e8d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an extension.  <a href="#ab6a56facfd217e5ff687aa4c012e8d68">More...</a><br /></td></tr>
@@ -958,6 +965,58 @@ Public Member Functions</h2></td></tr>
 </dl>
 </div>
 </div>
+<a class="anchor" id="a607cf2781661d03ba50586133e02cc11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CONNECTION::query_timestamp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>hex_timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Query the global transaction timestamp state. </p>
+<div class="fragment"><div class="line">        <span class="keywordtype">char</span> timestamp_buf[2 * WT_TIMESTAMP_SIZE + 1];</div>
+<div class="line"></div>
+<div class="line">        ret = conn-&gt;query_timestamp(conn, timestamp_buf, <span class="stringliteral">&quot;get=all_committed&quot;</span>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hex_timestamp</td><td>a buffer that will be set to the hexadecimal encoding of the timestamp being queried. Must be large enough to hold a hex-encoded timestamp (i.e., double the timestamp size plus one byte for NUL termination). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>get</code></td><td>specify which timestamp to query: <code>all_committed</code> returns the largest timestamp such that all earlier timestamps have committed. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string, chosen from the following options: <code>"all_committed"</code>; default <code>all_committed</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. If there is no matching timestamp (e.g., if this method is called before timestamps are used) <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a579141678af06217b22869cbc604c6d4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1091,7 +1150,7 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1162,6 +1221,49 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a25">ex_file_system.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="ad082439541b1b95d6aae6c15026fe512"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CONNECTION::set_timestamp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a global transaction timestamp. </p>
+<div class="fragment"><div class="line">        ret = conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>oldest_timestamp</code></td><td>future commits and queries will be no earlier than the specified timestamp. Supplied values must be monotonically increasing. see <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->

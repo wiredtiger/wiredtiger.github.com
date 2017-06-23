@@ -134,11 +134,13 @@ var NAVTREEINDEX0 =
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1b9848afb4bfe4b790579490e6e2263c":[1,2,1,5],
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1c404c400a9873926810241ad0997a4a":[1,2,1,9],
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2458441ed6301620ef4db71f3ef5c47c":[1,2,1,4],
-"classcom_1_1wiredtiger_1_1db_1_1_connection.html#a31658ee0e58784dd785b7226b1309476":[1,2,1,12],
-"classcom_1_1wiredtiger_1_1db_1_1_connection.html#a5e67d007427eb9a0b1c749b8c85468e2":[1,2,1,11],
+"classcom_1_1wiredtiger_1_1db_1_1_connection.html#a31658ee0e58784dd785b7226b1309476":[1,2,1,14],
+"classcom_1_1wiredtiger_1_1db_1_1_connection.html#a5e67d007427eb9a0b1c749b8c85468e2":[1,2,1,12],
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a6ca4a22fe3c729d68cd56c5abb047498":[1,2,1,2],
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a76c8444703541803fab4bc54606136ed":[1,2,1,3],
+"classcom_1_1wiredtiger_1_1db_1_1_connection.html#a77d25707d0ce76799a8b8d61f84b6a97":[1,2,1,11],
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a7ba72791fba4a03984c0d9b8faca1284":[1,2,1,8],
+"classcom_1_1wiredtiger_1_1db_1_1_connection.html#a84403030d0ef4f986544dda57498a1b4":[1,2,1,13],
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a9f3713033d9e9a1a84f4670da907c55d":[1,2,1,0],
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#aad6794c4baf107e2d0a735c80f9c8e52":[1,2,1,1],
 "classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad03cfc01de34342ab8c76934accb8745":[1,2,1,10],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#af69277daec69ccf4ee7fe25b806d2514":[2,0,0,0,6,12],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#af93a203c115920ab2640bee27ab6ca63":[2,0,0,0,6,11],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html":[2,0,0,0,7],
-"classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a0c754af84b39f0852a235fef1445f807":[2,0,0,0,7,1],
-"classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a33488a6e84379eb3294b8969e204535d":[2,0,0,0,7,4],
-"classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a5a18e5cb61d2fa56e6ffededa11230c5":[2,0,0,0,7,12]
+"classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a0c754af84b39f0852a235fef1445f807":[2,0,0,0,7,1]
 };

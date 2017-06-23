@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Signal handling</title>
+<title>WiredTiger: gcc/clang build options</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.3</span>
+   &#160;<span id="projectnumber">Version 2.9.2</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.3 --></div>
+   <div id="projectbrief"><!-- 2.9.2 --></div>
   </td>
  </tr>
  </tbody>
@@ -63,25 +63,22 @@
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('signals.html','');});
+$(document).ready(function(){initNavTree('tune_build_options.html','');});
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Signal handling </div>  </div>
+<div class="title">gcc/clang build options </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger has no signal handlers and does not modify process signal handler behavior in any way.</p>
-<p>WiredTiger restarts any system calls interrupted by a signal.</p>
-<p>WiredTiger applications exiting as a result of a signal should exit WiredTiger gracefully, closing any open WiredTiger handles, before terminating the process.</p>
-<p>WiredTiger is not re-entrant, and applications using WiredTiger should not make WiredTiger API calls from signal handlers. </p>
+<div class="textblock"><p>WiredTiger can be built using the gcc/clang <code>-fvisibility=hidden</code> flag, which may significantly reduce the size and load time of the WiredTiger library when built as a dynamic shared object, and allow the optimizer to produce better code (for example, by eliminating most lookups in the procedure linkage table). </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming_lang_java.html">Writing WiredTiger applications  in Java</a></li>
+    <li class="footer">Copyright (c) 2008-2016 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

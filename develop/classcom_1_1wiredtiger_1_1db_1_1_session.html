@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.2</span>
+   &#160;<span id="projectnumber">Version 2.9.3</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.2 --></div>
+   <div id="projectbrief"><!-- 2.9.3 --></div>
   </td>
  </tr>
  </tbody>
@@ -156,6 +156,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>strerror</b> (int e
 <tr class="memitem:a46ce42cc35d30590975054b12f8e2013"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a46ce42cc35d30590975054b12f8e2013">rollback_transaction</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a46ce42cc35d30590975054b12f8e2013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Roll back the current transaction.  <a href="#a46ce42cc35d30590975054b12f8e2013">More...</a><br /></td></tr>
 <tr class="separator:a46ce42cc35d30590975054b12f8e2013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a7c42b78d550fd51a955cd336c39e43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a8a7c42b78d550fd51a955cd336c39e43">timestamp_transaction</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:a8a7c42b78d550fd51a955cd336c39e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a timestamp on a transaction.  <a href="#a8a7c42b78d550fd51a955cd336c39e43">More...</a><br /></td></tr>
+<tr class="separator:a8a7c42b78d550fd51a955cd336c39e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#ae8a3a848702a49b9c3cb8e1ed1c1afd3">checkpoint</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#ae8a3a848702a49b9c3cb8e1ed1c1afd3">More...</a><br /></td></tr>
 <tr class="separator:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -306,6 +309,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <td><code>name</code></td><td>name of the transaction for tracing and debugging.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>priority</code></td><td>priority of the transaction for resolving conflicts. Transactions with higher values are less likely to abort.</td><td>an integer between -100 and 100; default <code>0</code>. </td></tr>
+<tr>
+<td><code>read_timestamp</code></td><td>read using the specified timestamp, see <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>snapshot</code></td><td>use a named, in-memory snapshot, see <a class="el" href="transactions.html#transaction_named_snapshots">Named Snapshots</a>.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -485,6 +490,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction, see <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
 </table>
@@ -1322,6 +1329,39 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <td><code>include_updates</code></td><td>make updates from the current transaction visible to users of the named snapshot. Transactions started with such a named snapshot are restricted to being read-only.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>name</code></td><td>specify a name for the snapshot.</td><td>a string; default empty. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8a7c42b78d550fd51a955cd336c39e43"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Session.timestamp_transaction </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a timestamp on a transaction. </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a>(session, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction, see <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 </table>
 </td></tr>
   </table>

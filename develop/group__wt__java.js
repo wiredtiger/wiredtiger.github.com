@@ -78,7 +78,9 @@ var group__wt__java =
       [ "is_new", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a7ba72791fba4a03984c0d9b8faca1284", null ],
       [ "load_extension", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1c404c400a9873926810241ad0997a4a", null ],
       [ "open_session", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad03cfc01de34342ab8c76934accb8745", null ],
+      [ "query_timestamp", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a77d25707d0ce76799a8b8d61f84b6a97", null ],
       [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a5e67d007427eb9a0b1c749b8c85468e2", null ],
+      [ "set_timestamp", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a84403030d0ef4f986544dda57498a1b4", null ],
       [ "swigCMemOwn", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a31658ee0e58784dd785b7226b1309476", null ]
     ] ],
     [ "Cursor", "classcom_1_1wiredtiger_1_1db_1_1_cursor.html", [
@@ -188,6 +190,7 @@ var group__wt__java =
       [ "salvage", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a4687837f13f03699d9c295fdd4380398", null ],
       [ "snapshot", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aa9c59ebe27793654d9a6206f28344809", null ],
       [ "strerror", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a0d3664f22568a5b36bece98592cb6ea4", null ],
+      [ "timestamp_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a8a7c42b78d550fd51a955cd336c39e43", null ],
       [ "transaction_pinned_range", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aed31a501ee163947de5a82f2b31b03b9", null ],
       [ "transaction_sync", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a65ecc08c6b9d27bb108dd5bdac93b8a3", null ],
       [ "truncate", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2c58845dfd2f75cc3935185c12d29329", null ],

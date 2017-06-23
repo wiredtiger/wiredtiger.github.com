@@ -24,6 +24,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_session =
     [ "salvage", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a4687837f13f03699d9c295fdd4380398", null ],
     [ "snapshot", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aa9c59ebe27793654d9a6206f28344809", null ],
     [ "strerror", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a0d3664f22568a5b36bece98592cb6ea4", null ],
+    [ "timestamp_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a8a7c42b78d550fd51a955cd336c39e43", null ],
     [ "transaction_pinned_range", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aed31a501ee163947de5a82f2b31b03b9", null ],
     [ "transaction_sync", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a65ecc08c6b9d27bb108dd5bdac93b8a3", null ],
     [ "truncate", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2c58845dfd2f75cc3935185c12d29329", null ],

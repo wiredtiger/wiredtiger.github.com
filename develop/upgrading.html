@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.2</span>
+   &#160;<span id="projectnumber">Version 2.9.3</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.2 --></div>
+   <div id="projectbrief"><!-- 2.9.3 --></div>
   </td>
  </tr>
  </tbody>
@@ -71,7 +71,16 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_292"></a>
+<div class="textblock"><h1><a class="anchor" id="version_293"></a>
+Upgrading to Version 2.9.3</h1>
+<dl>
+<dt>Logging subsystem statistics </dt>
+<dd><p class="startdd">Two logging subsystem statistics have been removed as they were a duplicate of other statistics. The <code>log_slot_joins</code> and <code>log_slot_transitions</code> statistics are no longer present. They were duplicates of <code>log_writes</code> and <code>log_slot_closes</code> respectively. Several new logging related statistics have been added. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ <h1><a class="anchor" id="version_292"></a>
 Upgrading to Version 2.9.2</h1>
 <dl>
 <dt>WiredTiger utility now supports truncate </dt>

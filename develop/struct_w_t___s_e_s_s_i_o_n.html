@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.2</span>
+   &#160;<span id="projectnumber">Version 2.9.3</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.2 --></div>
+   <div id="projectbrief"><!-- 2.9.3 --></div>
   </td>
  </tr>
  </tbody>
@@ -154,6 +154,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab45f521464ad9e54d9b15efc2ffe20a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:ab45f521464ad9e54d9b15efc2ffe20a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Roll back the current transaction.  <a href="#ab45f521464ad9e54d9b15efc2ffe20a1">More...</a><br /></td></tr>
 <tr class="separator:ab45f521464ad9e54d9b15efc2ffe20a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa449082ce4de7ee86a773595c416a69f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
+<tr class="memdesc:aa449082ce4de7ee86a773595c416a69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a timestamp on a transaction.  <a href="#aa449082ce4de7ee86a773595c416a69f">More...</a><br /></td></tr>
+<tr class="separator:aa449082ce4de7ee86a773595c416a69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6550c9079198955c5071583941c85bbf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a6550c9079198955c5071583941c85bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#a6550c9079198955c5071583941c85bbf">More...</a><br /></td></tr>
 <tr class="separator:a6550c9079198955c5071583941c85bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -307,6 +310,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <td><code>name</code></td><td>name of the transaction for tracing and debugging.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>priority</code></td><td>priority of the transaction for resolving conflicts. Transactions with higher values are less likely to abort.</td><td>an integer between -100 and 100; default <code>0</code>. </td></tr>
+<tr>
+<td><code>read_timestamp</code></td><td>read using the specified timestamp, see <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>snapshot</code></td><td>use a named, in-memory snapshot, see <a class="el" href="transactions.html#transaction_named_snapshots">Named Snapshots</a>.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -519,6 +524,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction, see <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
 </table>
@@ -1524,6 +1531,49 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#a10">ex_log.c</a>, and <a class="el" href="ex_thread_8c-example.html#a9">ex_thread.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="aa449082ce4de7ee86a773595c416a69f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::timestamp_transaction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a timestamp on a transaction. </p>
+<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a>(session, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction, see <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a1d108fab498cfddbb09ee23e3321a88d"></a>

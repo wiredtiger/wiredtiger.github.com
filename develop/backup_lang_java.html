@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.2</span>
+   &#160;<span id="projectnumber">Version 2.9.3</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.2 --></div>
+   <div id="projectbrief"><!-- 2.9.3 --></div>
   </td>
  </tr>
  </tbody>
@@ -85,6 +85,7 @@ Backup from an application</h1>
 <p>The database file may grow in size during the copy, and the file copy should not consider that an error. Blocks appended to the file after the copy starts can be safely ignored, that is, it is correct for the copy to determine an initial size of the file and then copy that many bytes, ignoring any bytes appended after the backup cursor was opened.</p>
 <p>The cursor must not be closed until all of the files have been copied, however, there is no requirement the files be copied in any order or in any relationship to the Cursor.next calls, only that all files have been copied before the cursor is closed. For example, applications might aggregate the file names from the cursor and then list the file names as arguments to a file archiver such as the system tar utility.</p>
 <p>During the period the backup cursor is open, database checkpoints can be created, but no checkpoints can be deleted. This may result in significant file growth.</p>
+<p>Additionally, if a crash occurs during the period the backup cursor is open and logging is disabled, then the system will be restored to the most recent checkpoint prior to the opening of the backup cursor, even if later database checkpoints were created.</p>
 <p>The following is a programmatic example of creating a backup:</p>
 <div class="fragment"><div class="line">    Cursor cursor;</div>
 <div class="line">    String filename;</div>

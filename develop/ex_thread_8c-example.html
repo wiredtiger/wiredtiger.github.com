@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.2</span>
+   &#160;<span id="projectnumber">Version 2.9.3</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.2 --></div>
+   <div id="projectbrief"><!-- 2.9.3 --></div>
   </td>
  </tr>
  </tbody>
@@ -108,21 +108,13 @@ $(document).ready(function(){initNavTree('ex_thread_8c-example.html','');});
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#ifndef _WIN32</span></div>
-<div class="line"><span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#else</span></div>
-<div class="line"><span class="preprocessor">#include &quot;windows_shim.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;wt_internal.h&quot;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> *scan_thread(<span class="keywordtype">void</span> *arg);</div>
-<div class="line"></div>
 <div class="line"><span class="preprocessor">#define NUM_THREADS     10</span></div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> *</div>
+<div class="line"><span class="keyword">static</span> WT_THREAD_RET</div>
 <div class="line">scan_thread(<span class="keywordtype">void</span> *conn_arg)</div>
 <div class="line">{</div>
 <div class="line">        <a name="_a0"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
@@ -147,7 +139,7 @@ $(document).ready(function(){initNavTree('ex_thread_8c-example.html','');});
 <div class="line">                fprintf(stderr,</div>
 <div class="line">                    <span class="stringliteral">&quot;WT_CURSOR.next: %s\n&quot;</span>, session-&gt;<a name="a9"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (NULL);</div>
+<div class="line">        <span class="keywordflow">return</span> (WT_THREAD_RET_VALUE);</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main(<span class="keywordtype">void</span>)</div>
@@ -155,7 +147,7 @@ $(document).ready(function(){initNavTree('ex_thread_8c-example.html','');});
 <div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
-<div class="line">        pthread_t threads[NUM_THREADS];</div>
+<div class="line">        wt_thread_t threads[NUM_THREADS];</div>
 <div class="line">        <span class="keywordtype">int</span> i, ret;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
@@ -184,10 +176,10 @@ $(document).ready(function(){initNavTree('ex_thread_8c-example.html','');});
 <div class="line">        ret = session-&gt;<a name="a16"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session, NULL);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; NUM_THREADS; i++)</div>
-<div class="line">                ret = pthread_create(&amp;threads[i], NULL, scan_thread, conn);</div>
+<div class="line">                ret = __wt_thread_create(NULL, &amp;threads[i], scan_thread, conn);</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; NUM_THREADS; i++)</div>
-<div class="line">                ret = pthread_join(threads[i], NULL);</div>
+<div class="line">                ret = __wt_thread_join(NULL, threads[i]);</div>
 <div class="line"></div>
 <div class="line">        ret = conn-&gt;<a name="a17"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
 <div class="line"></div>

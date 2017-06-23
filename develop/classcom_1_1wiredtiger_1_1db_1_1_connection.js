@@ -11,6 +11,8 @@ var classcom_1_1wiredtiger_1_1db_1_1_connection =
     [ "is_new", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a7ba72791fba4a03984c0d9b8faca1284", null ],
     [ "load_extension", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1c404c400a9873926810241ad0997a4a", null ],
     [ "open_session", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad03cfc01de34342ab8c76934accb8745", null ],
+    [ "query_timestamp", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a77d25707d0ce76799a8b8d61f84b6a97", null ],
     [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a5e67d007427eb9a0b1c749b8c85468e2", null ],
+    [ "set_timestamp", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a84403030d0ef4f986544dda57498a1b4", null ],
     [ "swigCMemOwn", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a31658ee0e58784dd785b7226b1309476", null ]
 ];

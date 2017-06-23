@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 2.9.2</span>
+   &#160;<span id="projectnumber">Version 2.9.3</span>
    </div>
-   <div id="projectbrief"><!-- 2.9.2 --></div>
+   <div id="projectbrief"><!-- 2.9.3 --></div>
   </td>
  </tr>
  </tbody>
@@ -165,7 +165,19 @@ Named Snapshots</h1>
 <p>Applications can create named snapshots by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> with a configuration that includes <code>"name=foo"</code>. This configuration creates a new named snapshot, as if a snapshot isolation transaction were started at the time of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> call.</p>
 <p>Subsequent transactions can be started "as of" that snapshot by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a> with a configuration that includes <code>snapshot=foo</code>. That transaction will run at snapshot isolation as if the transaction started at the time of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> call that created the snapshot.</p>
 <p>Named snapshots keep data pinned in cache as if a real transaction were running for the time that the named snapshot is active. The resources associated with named snapshots should be released by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> with a configuration that includes <code>"drop="</code>. See <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> documentation for details of the semantics supported by the drop configuration.</p>
-<p>Named snapshots are not durable: they do not survive <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection. ">WT_CONNECTION::close</a>. </p>
+<p>Named snapshots are not durable: they do not survive <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection. ">WT_CONNECTION::close</a>.</p>
+<h1><a class="anchor" id="transaction_timestamps"></a>
+Application-specified Transaction Timestamps</h1>
+<p>Some applications have their own notion of time, including an expected commit order for transactions that may be inconsistent with the order assigned by WiredTiger. We assume that applications can represent their notion of a timestamp as an integral value of some size that generally increases over time. For example, a simple 64-bit integer could be incremented to generate transaction timestamps, if that is sufficient for the application.</p>
+<p>The application's timestamp size is specified as a number of bytes at build time, with <code>configure &ndash;with-timestamp-size=X</code>. The default timestamp size is 8 bytes (i.e., 64 bits). Setting a size of zero disables transaction timestamp functionality.</p>
+<p>Applications can assign explicit commit timestamps to transactions, then read "as of" a timestamp. Timestamps and are communicated to WiredTiger using a lower case hexadecimal encoding, so the encoded value can be twice as long as the raw timestamp value.</p>
+<p>Setting a read timestamp in <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a> forces a transaction to run at snapshot isolation and ignore any commits with a newer timestamp.</p>
+<p>Setting an oldest timestamp in <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp. ">WT_CONNECTION::set_timestamp</a> indicates that future read timestamps will be at least as recent as the oldest timestamp, so WiredTiger can discard history before the specified point. It is critical that the oldest timestamp update frequently or the cache can become full of updates, reducing performance.</p>
+<p>Commit timestamps cannot be set in the past of any read timestamp that has been used. This is enforced by assertions in diagnostic builds, if applications violate this rule, data consistency can be violated.</p>
+<p>The commits to a particular data item must be performed in timestamp order. Again, this is only checked in diagnostic builds and if applications violate this rule, data consistency can be violated.</p>
+<h2><a class="anchor" id="Timestamp"></a>
+support in the extension API</h2>
+<p>The extension API, used by modules that extend WiredTiger via <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d" title="Return a reference to the WiredTiger extension functions. ">WT_CONNECTION::get_extension_api</a>, is not timestamp-aware. In particular, <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a618a7f943c768d687f1cab74f234b41f" title="Return the oldest transaction ID not yet visible to a running transaction. ">WT_EXTENSION_API::transaction_oldest</a> and <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a213698d35a1cdd67e5d83ec998056707" title="Return if the current transaction can see the given transaction ID. ">WT_EXTENSION_API::transaction_visible</a> do not take timestamps into account. Extensions relying on these functions may not work correctly with timestamps. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

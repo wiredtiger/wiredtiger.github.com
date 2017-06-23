@@ -17,7 +17,10 @@ var programming =
       [ "Implicit transactions", "transactions.html#transactions_implicit", null ],
       [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
       [ "Isolation levels", "transactions.html#transaction_isolation", null ],
-      [ "Named Snapshots", "transactions.html#transaction_named_snapshots", null ]
+      [ "Named Snapshots", "transactions.html#transaction_named_snapshots", null ],
+      [ "Application-specified Transaction Timestamps", "transactions.html#transaction_timestamps", [
+        [ "support in the extension API", "transactions.html#Timestamp", null ]
+      ] ]
     ] ],
     [ "Error handling", "error_handling.html", [
       [ "Translating errors", "error_handling.html#error_translation", null ],
