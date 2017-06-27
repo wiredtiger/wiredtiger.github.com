@@ -100,17 +100,15 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The interface implemented by applications to provide custom ordering of records. </p>
 <p>Applications register their implementation with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8" title="Add a custom collation function. ">WT_CONNECTION::add_collator</a>. See <a class="el" href="custom_collators.html">Custom Collators</a> for more information.</p>
-<div class="fragment"><div class="line">        ret = conn-&gt;add_collator(conn, <span class="stringliteral">&quot;nocase&quot;</span>, &amp;nocasecoll, NULL);</div>
-</div><!-- fragment --> <div class="fragment"><div class="line">        ret = conn-&gt;add_collator(conn, <span class="stringliteral">&quot;prefix10&quot;</span>, &amp;pcoll10.iface, NULL);</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;add_collator(conn, <span class="stringliteral">&quot;nocase&quot;</span>, &amp;nocasecoll, NULL));</div>
+</div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;add_collator(conn, <span class="stringliteral">&quot;prefix10&quot;</span>, &amp;pcoll10.iface, NULL));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Open a session for the current thread&#39;s work. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;open_session(conn, NULL, NULL, &amp;session)) != 0)</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error opening a session on %s: %s\n&quot;</span>,</div>
-<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">        error_check(conn-&gt;open_session(conn, NULL, NULL, &amp;session));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Do some work... */</span></div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;close(conn, NULL);</div>
+<div class="line">        error_check(conn-&gt;close(conn, NULL));</div>
 </div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_extending_8c-example.html#_a0">ex_extending.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a8b187a50a9830bfb63390ee5bf9b6cd0"></a>
@@ -160,8 +158,8 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *s1 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)v1-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *s2 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)v2-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
 <div class="line"></div>
-<div class="line">        (void)session; <span class="comment">/* unused */</span></div>
-<div class="line">        (void)collator; <span class="comment">/* unused */</span></div>
+<div class="line">        (void)session;                  <span class="comment">/* unused variable */</span></div>
+<div class="line">        (void)collator;                 <span class="comment">/* unused variable */</span></div>
 <div class="line"></div>
 <div class="line">        *cmp = strcasecmp(s1, s2);</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>

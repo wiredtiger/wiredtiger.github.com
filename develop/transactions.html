@@ -99,15 +99,15 @@ Transactional API</h1>
 <div class="line"><span class="comment">         * Opening cursors before the transaction begins allows applications to</span></div>
 <div class="line"><span class="comment">         * cache cursors and use them for multiple operations.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret =</div>
-<div class="line">            session-&gt;open_cursor(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        ret = session-&gt;begin_transaction(session, NULL);</div>
+<div class="line">        error_check(session-&gt;open_cursor(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">        error_check(session-&gt;begin_transaction(session, NULL));</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;update(cursor)) {</div>
+<div class="line">        <span class="keywordflow">switch</span> (cursor-&gt;update(cursor)) {</div>
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
-<div class="line">                ret = session-&gt;commit_transaction(session, NULL);</div>
+<div class="line">                error_check(session-&gt;commit_transaction(session, NULL));</div>
 <div class="line">                <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                 * If commit_transaction succeeds, cursors remain positioned; if</span></div>
 <div class="line"><span class="comment">                 * commit_transaction fails, the transaction was rolled-back and</span></div>
@@ -116,7 +116,7 @@ Transactional API</h1>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code" href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a>:                       <span class="comment">/* Update conflict */</span></div>
 <div class="line">        <span class="keywordflow">default</span>:                                <span class="comment">/* Other error */</span></div>
-<div class="line">                ret = session-&gt;rollback_transaction(session, NULL);</div>
+<div class="line">                error_check(session-&gt;rollback_transaction(session, NULL));</div>
 <div class="line">                <span class="comment">/* The rollback_transaction call resets all cursors. */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
@@ -147,19 +147,19 @@ Isolation levels</h1>
 </ul>
 <p>The transaction isolation level can be configured on a per-transaction basis:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* A single transaction configured for snapshot isolation. */</span></div>
-<div class="line">        ret =</div>
-<div class="line">            session-&gt;open_cursor(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        ret = session-&gt;begin_transaction(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;open_cursor(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">        error_check(session-&gt;begin_transaction(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>));</div>
 <div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;some-key&quot;</span>);</div>
 <div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;some-value&quot;</span>);</div>
-<div class="line">        ret = cursor-&gt;update(cursor);</div>
-<div class="line">        ret = session-&gt;commit_transaction(session, NULL);</div>
+<div class="line">        error_check(cursor-&gt;update(cursor));</div>
+<div class="line">        error_check(session-&gt;commit_transaction(session, NULL));</div>
 </div><!-- fragment --><p> Additionally, the default transaction isolation can be configured and re-configured on a per-session basis:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Open a session configured for read-uncommitted isolation. */</span></div>
-<div class="line">        ret = conn-&gt;open_session(</div>
-<div class="line">            conn, NULL, <span class="stringliteral">&quot;isolation=read_uncommitted&quot;</span>, &amp;session);</div>
+<div class="line">        error_check(conn-&gt;open_session(</div>
+<div class="line">            conn, NULL, <span class="stringliteral">&quot;isolation=read_uncommitted&quot;</span>, &amp;session));</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">        <span class="comment">/* Re-configure a session for snapshot isolation. */</span></div>
-<div class="line">        ret = session-&gt;reconfigure(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;reconfigure(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>));</div>
 </div><!-- fragment --> <h1><a class="anchor" id="transaction_named_snapshots"></a>
 Named Snapshots</h1>
 <p>Applications can create named snapshots by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> with a configuration that includes <code>"name=foo"</code>. This configuration creates a new named snapshot, as if a snapshot isolation transaction were started at the time of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873" title="Manage named snapshot transactions. ">WT_SESSION::snapshot</a> call.</p>

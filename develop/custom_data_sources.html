@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('custom_data_sources.html','');});
 <div class="line">                my_checkpoint,</div>
 <div class="line">                my_terminate</div>
 <div class="line">        };</div>
-<div class="line">        ret = conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL);</div>
+<div class="line">        error_check(conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL));</div>
 </div><!-- fragment --> <h1><a class="anchor" id="custom_ds_methods"></a>
 WT_DATA_SOURCE methods</h1>
 <p>Any of the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> methods may be initialized to NULL. Calling uninitialized <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> methods through a WiredTiger API will result in an "operation not supported" error. For example, an underlying data source that does not support a compaction operation should set the <code>compact</code> field of their <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> structure to NULL.</p>
@@ -146,8 +146,8 @@ fatal errors requiring the database restart should return WT_PANIC </li>
 </ul>
 <p>Otherwise, successful return from custom data source methods should be indicated by a return value of zero; error returns may be any value other than zero or an error in WiredTiger's <a class="el" href="error_handling.html">Error handling</a>. A simple approach is to always return either a system error value (that is, <code>errno</code>), or <code>WT_ERROR</code>. Error messages can be displayed using the WT_SESSION::msg_printf method. For example:</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * If an underlying function fails, log the error and then return an</span></div>
-<div class="line"><span class="comment">         * error within WiredTiger&#39;s name space.</span></div>
+<div class="line"><span class="comment">         * If an underlying function fails, log the error and then return a</span></div>
+<div class="line"><span class="comment">         * non-zero value.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">if</span> ((ret = data_source_cursor()) != 0) {</div>
 <div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api,</div>
@@ -169,13 +169,8 @@ Parsing configuration strings</h2>
 <div class="line"><span class="comment">         * Retrieve the value of the boolean type configuration string</span></div>
 <div class="line"><span class="comment">         * &quot;overwrite&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
-<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;v)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;overwrite configuration: %s&quot;</span>,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
+<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;v));</div>
 <div class="line">        my_data_source_overwrite = v.<a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a> != 0;</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> v;</div>
 <div class="line">        int64_t my_data_source_page_size;</div>
@@ -184,13 +179,8 @@ Parsing configuration strings</h2>
 <div class="line"><span class="comment">         * Retrieve the value of the integer type configuration string</span></div>
 <div class="line"><span class="comment">         * &quot;page_size&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
-<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;page_size&quot;</span>, &amp;v)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;page_size configuration: %s&quot;</span>,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
+<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;page_size&quot;</span>, &amp;v));</div>
 <div class="line">        my_data_source_page_size = v.<a class="code" href="group__wt.html#a4aefab7843f434e5a5cc18203e9fec5f">val</a>;</div>
 </div><!-- fragment --><p> The <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e" title="Callback to initialize a cursor. ">WT_DATA_SOURCE::open_cursor</a> method might retrieve the string value of a configuration string as follows:</p>
 <div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m">WT_CONFIG_ITEM</a> v;</div>
@@ -200,13 +190,8 @@ Parsing configuration strings</h2>
 <div class="line"><span class="comment">         * Retrieve the value of the string type configuration string</span></div>
 <div class="line"><span class="comment">         * &quot;key_format&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
-<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;key_format configuration: %s&quot;</span>,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
+<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Values returned from WT_EXTENSION_API::config in the str field are</span></div>
@@ -229,42 +214,43 @@ Creating data-specific configuration strings</h2>
 </ul>
 <p>For example, an application might add new boolean, integer, list or string type configuration strings as follows:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* my_boolean defaults to true. */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_boolean=true&quot;</span>, <span class="stringliteral">&quot;boolean&quot;</span>, NULL);</div>
+<div class="line">        error_check(conn-&gt;configure_method(</div>
+<div class="line">            conn, <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div>
+<div class="line">            NULL, <span class="stringliteral">&quot;my_boolean=true&quot;</span>, <span class="stringliteral">&quot;boolean&quot;</span>, NULL));</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/* my_integer defaults to 5. */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_integer=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, NULL);</div>
+<div class="line">        error_check(conn-&gt;configure_method(conn,</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_integer=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, NULL));</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/* my_list defaults to &quot;first&quot; and &quot;second&quot;. */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div>
-<div class="line">            NULL, <span class="stringliteral">&quot;my_list=[first, second]&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL);</div>
+<div class="line">        error_check(conn-&gt;configure_method(</div>
+<div class="line">            conn, <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div>
+<div class="line">            NULL, <span class="stringliteral">&quot;my_list=[first, second]&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL));</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/* my_string defaults to &quot;name&quot;. */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_string=name&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, NULL);</div>
+<div class="line">        error_check(conn-&gt;configure_method(conn,</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;my_string=name&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, NULL));</div>
 </div><!-- fragment --><p> Once these additional configuration calls have returned, application calls to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> method could then include configuration strings such as <code>my_boolean=false</code>, or <code>my_integer=37</code>, or <code>my_source=/home</code>.</p>
 <p>Additional checking information can be provided for <code>int</code>, <code>list</code> or <code>string</code> type configuration strings.</p>
 <p>For integers, either or both of a maximum or minimum value can be provided, so an error will result if the application attempts to set the value outside of the acceptable range:</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Limit the number of devices to between 1 and 30; the default is 5.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
+<div class="line">        error_check(conn-&gt;configure_method(conn,</div>
 <div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div>
-<div class="line">            NULL, <span class="stringliteral">&quot;devices=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1, max=30&quot;</span>);</div>
+<div class="line">            NULL, <span class="stringliteral">&quot;devices=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1, max=30&quot;</span>));</div>
 </div><!-- fragment --><p> For lists and strings, a set of valid choices can also be provided, so an error will result if the application attempts to set the value to a string not listed as a valid choice:</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Limit the target string to one of /device, /home or /target; default</span></div>
 <div class="line"><span class="comment">         * to /home.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
+<div class="line">        error_check(conn-&gt;configure_method(conn,</div>
 <div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;target=/home&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;choices=[/device, /home, /target]&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;choices=[/device, /home, /target]&quot;</span>));</div>
 </div><!-- fragment --><div class="fragment"><div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Limit the paths list to one or more of /device, /home, /mnt or</span></div>
 <div class="line"><span class="comment">         * /target; default to /mnt.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
+<div class="line">        error_check(conn-&gt;configure_method(conn,</div>
 <div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, NULL, <span class="stringliteral">&quot;paths=[/mnt]&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;choices=[/device, /home, /mnt, /target]&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;choices=[/device, /home, /mnt, /target]&quot;</span>));</div>
 </div><!-- fragment --> <h1><a class="anchor" id="custom_ds_cursor_collator"></a>
 WT_COLLATOR</h1>
 <p>Custom data sources do not support custom ordering of records, and attempting to create a custom data source with a collator configured will fail.</p>

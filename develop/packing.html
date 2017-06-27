@@ -94,14 +94,17 @@ Code samples</h1>
 <div class="fragment"><div class="line">        <span class="keywordtype">size_t</span> size;</div>
 <div class="line">        <span class="keywordtype">char</span> buf[50];</div>
 <div class="line"></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a>(session, &amp;size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9);</div>
+<div class="line">        error_check(</div>
+<div class="line">            <a class="code" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a>(session, &amp;size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9));</div>
 <div class="line">        <span class="keywordflow">if</span> (size &gt; <span class="keyword">sizeof</span>(buf)) {</div>
 <div class="line">                <span class="comment">/* Allocate a bigger buffer. */</span></div>
 <div class="line">        }</div>
 <div class="line"></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d">wiredtiger_struct_pack</a>(session, buf, size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9);</div>
+<div class="line">        error_check(</div>
+<div class="line">            <a class="code" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d">wiredtiger_struct_pack</a>(session, buf, size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9));</div>
 <div class="line"></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(session, buf, size, <span class="stringliteral">&quot;iii&quot;</span>, &amp;i, &amp;j, &amp;k);</div>
+<div class="line">        error_check(</div>
+<div class="line">            <a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(session, buf, size, <span class="stringliteral">&quot;iii&quot;</span>, &amp;i, &amp;j, &amp;k));</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

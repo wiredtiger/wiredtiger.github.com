@@ -102,18 +102,7 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line"><span class="comment"> * ex_extractor.c</span></div>
 <div class="line"><span class="comment"> *      Example of how to use a WiredTiger custom index extractor extension.</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#define RET_OK(ret)     ((ret) == 0 || (ret) == WT_NOTFOUND)</span></div>
-<div class="line"></div>
-<div class="line"><span class="keywordtype">int</span> add_extractor(<a name="_a0"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn);</div>
+<div class="line"><span class="preprocessor">#include &lt;test_util.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"></div>
@@ -144,22 +133,20 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line"><span class="comment"> * the given president&#39;s term.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">my_extract(<a name="_a1"></a><a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> *extractor, <a name="_a2"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div>
-<div class="line">    <span class="keyword">const</span> <a name="_a3"></a><a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key, <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *value, <a name="_a4"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *result_cursor)</div>
+<div class="line">my_extract(<a name="_a0"></a><a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> *extractor, <a name="_a1"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div>
+<div class="line">    <span class="keyword">const</span> <a name="_a2"></a><a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key, <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *value, <a name="_a3"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *result_cursor)</div>
 <div class="line">{</div>
-<div class="line">        <span class="keywordtype">char</span> *last_name, *first_name;</div>
 <div class="line">        uint16_t term_end, term_start, year;</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line">        <span class="keywordtype">char</span> *last_name, *first_name;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Unused parameters */</span></div>
 <div class="line">        (void)extractor;</div>
 <div class="line">        (void)key;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Unpack the value. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a5"></a><a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(</div>
-<div class="line">            session, value-&gt;<a name="a6"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>, value-&gt;<a name="a7"></a><a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, <span class="stringliteral">&quot;SSHH&quot;</span>,</div>
-<div class="line">            &amp;last_name, &amp;first_name, &amp;term_start, &amp;term_end)) != 0)</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        error_check(<a name="a4"></a><a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(</div>
+<div class="line">            session, value-&gt;<a name="a5"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>, value-&gt;<a name="a6"></a><a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, <span class="stringliteral">&quot;SSHH&quot;</span>,</div>
+<div class="line">            &amp;last_name, &amp;first_name, &amp;term_start, &amp;term_end));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * We have overlapping years, so multiple records may share the same</span></div>
@@ -176,13 +163,8 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line">                fprintf(stderr,</div>
 <div class="line">                    <span class="stringliteral">&quot;EXTRACTOR: index op for year %&quot;</span> PRIu16 <span class="stringliteral">&quot;: %s %s\n&quot;</span>,</div>
 <div class="line">                    year, first_name, last_name);</div>
-<div class="line">                result_cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(result_cursor, year);</div>
-<div class="line">                <span class="keywordflow">if</span> ((ret = result_cursor-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(result_cursor)) != 0) {</div>
-<div class="line">                        fprintf(stderr,</div>
-<div class="line">                            <span class="stringliteral">&quot;EXTRACTOR: op year %&quot;</span> PRIu16 <span class="stringliteral">&quot;: error %d\n&quot;</span>,</div>
-<div class="line">                            year, ret);</div>
-<div class="line">                        <span class="keywordflow">return</span> (ret);</div>
-<div class="line">                }</div>
+<div class="line">                result_cursor-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(result_cursor, year);</div>
+<div class="line">                error_check(result_cursor-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(result_cursor));</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
@@ -200,23 +182,20 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">int</span></div>
-<div class="line">add_extractor(<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn)</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
+<div class="line">add_extractor(<a name="_a9"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn)</div>
 <div class="line">{</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
-<div class="line"></div>
 <div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> my_extractor = {</div>
 <div class="line">            my_extract, NULL, my_extract_terminate</div>
 <div class="line">        };</div>
-<div class="line">        ret = conn-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903">add_extractor</a>(conn, <span class="stringliteral">&quot;my_extractor&quot;</span>, &amp;my_extractor, NULL);</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        error_check(conn-&gt;<a name="a10"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903">add_extractor</a>(</div>
+<div class="line">            conn, <span class="stringliteral">&quot;my_extractor&quot;</span>, &amp;my_extractor, NULL));</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * Read the index by year and print out who was in office that year.</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
 <div class="line">read_index(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
@@ -226,138 +205,123 @@ $(document).ready(function(){initNavTree('ex_extractor_8c-example.html','');});
 <div class="line"></div>
 <div class="line">        year = 0;</div>
 <div class="line">        srand((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)getpid());</div>
-<div class="line">        ret = session-&gt;<a name="a11"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;index:presidents:term&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        error_check(session-&gt;<a name="a11"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;index:presidents:term&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Pick 10 random years and read the data.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 10 &amp;&amp; RET_OK(ret); i++) {</div>
+<div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; 10; i++) {</div>
 <div class="line">                year = (uint16_t)((rand() % YEAR_SPAN) + YEAR_BASE);</div>
 <div class="line">                printf(<span class="stringliteral">&quot;Year %&quot;</span> PRIu16 <span class="stringliteral">&quot;:\n&quot;</span>, year);</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, year);</div>
-<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor)) != 0)</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;rec_year)) != 0)</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor,</div>
-<div class="line">                    &amp;last_name, &amp;first_name, &amp;term_start, &amp;term_end)) != 0)</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
+<div class="line">                error_check(cursor-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor));</div>
+<div class="line">                error_check(cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;rec_year));</div>
+<div class="line">                error_check(cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor,</div>
+<div class="line">                    &amp;last_name, &amp;first_name, &amp;term_start, &amp;term_end));</div>
 <div class="line"></div>
 <div class="line">                <span class="comment">/* Report all presidents that served during the chosen year */</span></div>
+<div class="line">                ret = 0;</div>
 <div class="line">                <span class="keywordflow">while</span> (term_start &lt;= year &amp;&amp;</div>
 <div class="line">                    year &lt;= term_end &amp;&amp; year == rec_year) {</div>
 <div class="line">                        printf(<span class="stringliteral">&quot;\t%s %s\n&quot;</span>, first_name, last_name);</div>
 <div class="line">                        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a name="a15"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) != 0)</div>
 <div class="line">                                <span class="keywordflow">break</span>;</div>
-<div class="line">                        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;rec_year)) != 0)</div>
-<div class="line">                                <span class="keywordflow">break</span>;</div>
-<div class="line">                        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;last_name,</div>
-<div class="line">                            &amp;first_name, &amp;term_start, &amp;term_end)) != 0)</div>
-<div class="line">                                <span class="keywordflow">break</span>;</div>
+<div class="line">                        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;rec_year));</div>
+<div class="line">                        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor,</div>
+<div class="line">                            &amp;last_name, &amp;first_name, &amp;term_start, &amp;term_end));</div>
 <div class="line">                }</div>
+<div class="line">                scan_end_check(ret == 0 || ret == <a name="a16"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> (!RET_OK(ret))</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error %d for year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, ret, year);</div>
 <div class="line"></div>
-<div class="line">        ret = cursor-&gt;<a name="a16"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor);</div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        error_check(cursor-&gt;<a name="a17"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * Remove some items from the primary table.</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
 <div class="line">remove_items(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <span class="keyword">struct </span>president_data p;</div>
-<div class="line">        <span class="keywordtype">int</span> i, ret;</div>
+<div class="line">        <span class="keywordtype">int</span> i;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Removing items from the primary table will call the extractor</span></div>
 <div class="line"><span class="comment">         * for the index and allow our custom extractor code to handle</span></div>
 <div class="line"><span class="comment">         * each custom key.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:presidents&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:presidents&quot;</span>, NULL, NULL, &amp;cursor));</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Just remove the first few items.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; example_data[i].last_name != NULL &amp;&amp; i &lt; 2; i++) {</div>
 <div class="line">                p = example_data[i];</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, p.id);</div>
-<div class="line">                ret = cursor-&gt;<a name="a17"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor);</div>
+<div class="line">                error_check(cursor-&gt;<a name="a18"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor));</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * Set up the table and index of the data.</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
 <div class="line">setup_table(<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <span class="keyword">struct </span>president_data p;</div>
-<div class="line">        <span class="keywordtype">int</span> i, ret;</div>
+<div class="line">        <span class="keywordtype">int</span> i;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Create the primary table. It has a key of the unique ID. */</span></div>
-<div class="line">        ret = session-&gt;<a name="a18"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:presidents&quot;</span>,</div>
+<div class="line">        error_check(session-&gt;<a name="a19"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:presidents&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;key_format=I,value_format=SSHH,&quot;</span></div>
-<div class="line">            <span class="stringliteral">&quot;columns=(ID,last_name,first_name,term_begin,term_end)&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;columns=(ID,last_name,first_name,term_begin,term_end)&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Create the index that is generated with an extractor. The index</span></div>
 <div class="line"><span class="comment">         * will generate an entry in the index for each year a president</span></div>
 <div class="line"><span class="comment">         * was in office.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;index:presidents:term&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;key_format=H,columns=(term),extractor=my_extractor&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;index:presidents:term&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;key_format=H,columns=(term),extractor=my_extractor&quot;</span>));</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:presidents&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:presidents&quot;</span>, NULL, NULL, &amp;cursor));</div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; example_data[i].last_name != NULL; i++) {</div>
 <div class="line">                p = example_data[i];</div>
 <div class="line">                cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, p.id);</div>
-<div class="line">                cursor-&gt;<a name="a19"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor,</div>
+<div class="line">                cursor-&gt;<a name="a20"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor,</div>
 <div class="line">                    p.last_name, p.first_name, p.term_start, p.term_end);</div>
 <div class="line">                fprintf(stderr,</div>
 <div class="line">                    <span class="stringliteral">&quot;SETUP: table insert %&quot;</span> PRIu16 <span class="stringliteral">&quot;-%&quot;</span> PRIu16 <span class="stringliteral">&quot;: %s %s\n&quot;</span>,</div>
 <div class="line">                    p.term_start, p.term_end,</div>
 <div class="line">                    p.first_name, p.last_name);</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor));</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span></div>
-<div class="line">main(<span class="keywordtype">void</span>)</div>
+<div class="line">main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
-<div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
-<div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
-<div class="line">                home = <span class="stringliteral">&quot;WT_HOME&quot;</span>;</div>
-<div class="line">                ret = system(<span class="stringliteral">&quot;rm -rf WT_HOME &amp;&amp; mkdir WT_HOME&quot;</span>);</div>
-<div class="line">        } <span class="keywordflow">else</span></div>
-<div class="line">                home = NULL;</div>
+<div class="line">        home = example_setup(argc, argv);</div>
 <div class="line"></div>
-<div class="line">        ret = <a name="a20"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn);</div>
-<div class="line">        ret = add_extractor(conn);</div>
-<div class="line">        ret = conn-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
+<div class="line">        error_check(</div>
+<div class="line">            <a name="a21"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,cache_size=500M&quot;</span>, &amp;conn));</div>
+<div class="line">        add_extractor(conn);</div>
+<div class="line">        error_check(conn-&gt;<a name="a22"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session));</div>
 <div class="line"></div>
-<div class="line">        ret = setup_table(session);</div>
-<div class="line">        ret = read_index(session);</div>
-<div class="line">        ret = remove_items(session);</div>
+<div class="line">        setup_table(session);</div>
+<div class="line">        read_index(session);</div>
+<div class="line">        remove_items(session);</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a name="a22"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
+<div class="line">        error_check(conn-&gt;<a name="a23"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL));</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret == 0 ? EXIT_SUCCESS : EXIT_FAILURE);</div>
+<div class="line">        <span class="keywordflow">return</span> (EXIT_SUCCESS);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

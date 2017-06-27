@@ -103,16 +103,7 @@ $(document).ready(function(){initNavTree('ex_extending_8c-example.html','');});
 <div class="line"><span class="comment"> *      This is an example demonstrating ways to extend WiredTiger with</span></div>
 <div class="line"><span class="comment"> *      extractors, collators and loadable modules.</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><span class="preprocessor">#define strcasecmp stricmp</span></div>
-<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor">#include &lt;test_util.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"></div>
@@ -124,8 +115,8 @@ $(document).ready(function(){initNavTree('ex_extending_8c-example.html','');});
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *s1 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)v1-&gt;<a name="a3"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *s2 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)v2-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
 <div class="line"></div>
-<div class="line">        (void)session; <span class="comment">/* unused */</span></div>
-<div class="line">        (void)collator; <span class="comment">/* unused */</span></div>
+<div class="line">        (void)session;                  <span class="comment">/* unused variable */</span></div>
+<div class="line">        (void)collator;                 <span class="comment">/* unused variable */</span></div>
 <div class="line"></div>
 <div class="line">        *cmp = strcasecmp(s1, s2);</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
@@ -157,39 +148,26 @@ $(document).ready(function(){initNavTree('ex_extending_8c-example.html','');});
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> PREFIX_COLLATOR pcoll10 = { {__compare_prefixes, NULL, NULL}, 10 };</div>
 <div class="line"><span class="keywordtype">int</span></div>
-<div class="line">main(<span class="keywordtype">void</span>)</div>
+<div class="line">main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
 <div class="line">{</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line">        <a name="_a4"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
-<div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
-<div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
-<div class="line">                home = <span class="stringliteral">&quot;WT_HOME&quot;</span>;</div>
-<div class="line">                ret = system(<span class="stringliteral">&quot;rm -rf WT_HOME &amp;&amp; mkdir WT_HOME&quot;</span>);</div>
-<div class="line">        } <span class="keywordflow">else</span></div>
-<div class="line">                home = NULL;</div>
+<div class="line">        home = example_setup(argc, argv);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a name="a5"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0)</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a name="a6"></a><a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">        error_check(<a name="a5"></a><a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn));</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8">add_collator</a>(conn, <span class="stringliteral">&quot;nocase&quot;</span>, &amp;nocasecoll, NULL);</div>
-<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8">add_collator</a>(conn, <span class="stringliteral">&quot;prefix10&quot;</span>, &amp;pcoll10.iface, NULL);</div>
+<div class="line">        error_check(conn-&gt;<a name="a6"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8">add_collator</a>(conn, <span class="stringliteral">&quot;nocase&quot;</span>, &amp;nocasecoll, NULL));</div>
+<div class="line">        error_check(conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8">add_collator</a>(conn, <span class="stringliteral">&quot;prefix10&quot;</span>, &amp;pcoll10.iface, NULL));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Open a session for the current thread&#39;s work. */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = conn-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session)) != 0)</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error opening a session on %s: %s\n&quot;</span>,</div>
-<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
+<div class="line">        error_check(conn-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Do some work... */</span></div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a name="a9"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
-<div class="line">        <span class="keywordflow">return</span> (ret == 0 ? EXIT_SUCCESS : EXIT_FAILURE);</div>
+<div class="line">        error_check(conn-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL));</div>
+<div class="line">        <span class="keywordflow">return</span> (EXIT_SUCCESS);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

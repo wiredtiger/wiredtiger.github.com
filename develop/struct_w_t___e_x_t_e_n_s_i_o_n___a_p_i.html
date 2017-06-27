@@ -290,7 +290,8 @@ Public Attributes</h2></td></tr>
 <div class="line">        second.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a> = key2;</div>
 <div class="line">        second.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a> = key2_len;</div>
 <div class="line"></div>
-<div class="line">        ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab34ce4a2511c0fb370f3ee46d8ffd880">collate</a>(wt_api, session, collator, &amp;first, &amp;second, &amp;cmp);</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab34ce4a2511c0fb370f3ee46d8ffd880">collate</a>(</div>
+<div class="line">            wt_api, session, collator, &amp;first, &amp;second, &amp;cmp));</div>
 <div class="line">        <span class="keywordflow">if</span> (cmp == 0)</div>
 <div class="line">                printf(<span class="stringliteral">&quot;key1 collates identically to key2\n&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmp &lt; 0)</div>
@@ -328,13 +329,8 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Configure the appropriate collator.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7ed2b2297783ea88c0f513721ff54b7c">collator_config</a>(wt_api, session,</div>
-<div class="line">            <span class="stringliteral">&quot;dsrc:&quot;</span>, config, &amp;collator, &amp;collator_owned)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;collator configuration: %s&quot;</span>,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7ed2b2297783ea88c0f513721ff54b7c">collator_config</a>(wt_api, session,</div>
+<div class="line">            <span class="stringliteral">&quot;dsrc:&quot;</span>, config, &amp;collator, &amp;collator_owned));</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -367,13 +363,8 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * Retrieve the value of the string type configuration string</span></div>
 <div class="line"><span class="comment">         * &quot;key_format&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
-<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;key_format configuration: %s&quot;</span>,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
+<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Values returned from WT_EXTENSION_API::config in the str field are</span></div>
@@ -416,13 +407,8 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         * Retrieve the value of the string type configuration string</span></div>
 <div class="line"><span class="comment">         * &quot;key_format&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
-<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;key_format configuration: %s&quot;</span>,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(</div>
+<div class="line">            wt_api, session, config, <span class="stringliteral">&quot;key_format&quot;</span>, &amp;v));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Values returned from WT_EXTENSION_API::config in the str field are</span></div>
@@ -461,17 +447,9 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *config_string =</div>
 <div class="line">            <span class="stringliteral">&quot;path=/dev/loop,page_size=1024,log=(archive=true,file_max=20MB)&quot;</span>;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a>(</div>
-<div class="line">            NULL, config_string, strlen(config_string), &amp;parser)) != 0) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error creating configuration parser: %s\n&quot;</span>,</div>
-<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser)) != 0) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing configuration parser: %s\n&quot;</span>,</div>
-<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(<a class="code" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a>(</div>
+<div class="line">            NULL, config_string, strlen(config_string), &amp;parser));</div>
+<div class="line">        error_check(parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser));</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -501,17 +479,9 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *config_string =</div>
 <div class="line">            <span class="stringliteral">&quot;path=/dev/loop,page_size=1024,log=(archive=true,file_max=20MB)&quot;</span>;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a>(</div>
-<div class="line">            NULL, config_string, strlen(config_string), &amp;parser)) != 0) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error creating configuration parser: %s\n&quot;</span>,</div>
-<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser)) != 0) {</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error closing configuration parser: %s\n&quot;</span>,</div>
-<div class="line">                    <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(<a class="code" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a>(</div>
+<div class="line">            NULL, config_string, strlen(config_string), &amp;parser));</div>
+<div class="line">        error_check(parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser));</div>
 </div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a10">ex_file_system.c</a>.</dd>
 </dl>
 </div>
@@ -594,12 +564,7 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;datasource_uri&quot;</span>;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;data source uri&#39;s record&quot;</span>;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f">metadata_insert</a>(wt_api, session, key, value)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;%s: metadata insert: %s&quot;</span>, key,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f">metadata_insert</a>(wt_api, session, key, value));</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -628,12 +593,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;datasource_uri&quot;</span>;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420">metadata_remove</a>(wt_api, session, key)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;%s: metadata remove: %s&quot;</span>, key,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420">metadata_remove</a>(wt_api, session, key));</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -664,13 +624,7 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;datasource_uri&quot;</span>;</div>
 <div class="line">        <span class="keywordtype">char</span> *value;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret =</div>
-<div class="line">            wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554">metadata_search</a>(wt_api, session, key, &amp;value)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;%s: metadata search: %s&quot;</span>, key,</div>
-<div class="line">                     session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554">metadata_search</a>(wt_api, session, key, &amp;value));</div>
 <div class="line">        printf(<span class="stringliteral">&quot;metadata: %s has a value of %s\n&quot;</span>, key, value);</div>
 </div><!-- fragment -->
 </div>
@@ -703,12 +657,7 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;datasource_uri&quot;</span>;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;data source uri&#39;s record&quot;</span>;</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7c47cf55646794f9e5cc3d185128ef3b">metadata_update</a>(wt_api, session, key, value)) != 0) {</div>
-<div class="line">                (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session,</div>
-<div class="line">                    <span class="stringliteral">&quot;%s: metadata update: %s&quot;</span>, key,</div>
-<div class="line">                    session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(session, ret));</div>
-<div class="line">                <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7c47cf55646794f9e5cc3d185128ef3b">metadata_update</a>(wt_api, session, key, value));</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1104,7 +1053,7 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
 <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___t_x_n___n_o_t_i_f_y.html">WT_TXN_NOTIFY</a> handler;</div>
 <div class="line">        handler.<a class="code" href="struct_w_t___t_x_n___n_o_t_i_f_y.html#a43ca2a5dc16287c8315279403fe371b1">notify</a> = data_source_notify;</div>
-<div class="line">        ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a49ee72480a65f9494215047f2b04006b">transaction_notify</a>(wt_api, session, &amp;handler);</div>
+<div class="line">        error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a49ee72480a65f9494215047f2b04006b">transaction_notify</a>(wt_api, session, &amp;handler));</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -81,12 +81,14 @@ $(document).ready(function(){initNavTree('cursor_ops.html','');});
 <h1><a class="anchor" id="cursor_opening"></a>
 Opening a cursor</h1>
 <p>Cursors are created using the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> method. For example, from the program <a class="el" href="ex_cursor_8c-example.html">ex_cursor.c</a>:</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:world&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:world&quot;</span>, NULL, NULL, &amp;cursor));</div>
 </div><!-- fragment --><p> Another example from the same program:</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:world(country,population)&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:world(country,population)&quot;</span>, NULL, NULL, &amp;cursor));</div>
 </div><!-- fragment --><p> In addition to traditional data sources, cursors in WiredTiger are used to access projections and even created data sources such as the run-time statistics:</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor));</div>
 </div><!-- fragment --><p> See <a class="el" href="cursors.html">Cursors</a> for more information on available cursor types.</p>
 <h1><a class="anchor" id="cursor_closing"></a>
 Closing a cursor</h1>
@@ -108,10 +110,12 @@ Positioning a cursor</h1>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key);</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value);</div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key));</div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value));</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> If the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> method is called on a cursor without a position in the data source, it is positioned at the beginning of the data source.</p>
 <p>To move a cursor backward in the data source, use the cursor <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR::prev</a> method:</p>
@@ -122,10 +126,12 @@ Positioning a cursor</h1>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76">prev</a>(cursor)) == 0) {</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key);</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value);</div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key));</div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value));</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line"></div>
+<div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> If the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR::prev</a> method is called on a cursor without a position in the data source, it is positioned at the end of the data source.</p>
 <p>To position a cursor at a specific location in the data source, use the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f" title="Return the record matching the key. ">WT_CURSOR::search</a> method:</p>
@@ -133,40 +139,37 @@ Positioning a cursor</h1>
 <div class="line">cursor_search(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *value;</div>
-<div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;foo&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor)) == 0)</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value);</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(cursor));</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value));</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> To position a cursor at or near a location in the data source, use the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c" title="Return the record matching the key if it exists, or an adjacent record. ">WT_CURSOR::search_near</a> method:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span></div>
 <div class="line">cursor_search_near(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *value;</div>
-<div class="line">        <span class="keywordtype">int</span> exact, ret;</div>
+<div class="line">        <span class="keywordtype">int</span> exact;</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;foo&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c">search_near</a>(cursor, &amp;exact)) == 0) {</div>
-<div class="line">                <span class="keywordflow">switch</span> (exact) {</div>
-<div class="line">                <span class="keywordflow">case</span> -1:        <span class="comment">/* Returned key smaller than search key */</span></div>
-<div class="line">                        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key);</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> 0:         <span class="comment">/* Exact match found */</span></div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> 1:         <span class="comment">/* Returned key larger than search key */</span></div>
-<div class="line">                        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key);</div>
-<div class="line">                        <span class="keywordflow">break</span>;</div>
-<div class="line">                }</div>
-<div class="line"></div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value);</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c">search_near</a>(cursor, &amp;exact));</div>
+<div class="line">        <span class="keywordflow">switch</span> (exact) {</div>
+<div class="line">        <span class="keywordflow">case</span> -1:        <span class="comment">/* Returned key smaller than search key */</span></div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key));</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">        <span class="keywordflow">case</span> 0:         <span class="comment">/* Exact match found */</span></div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">        <span class="keywordflow">case</span> 1:         <span class="comment">/* Returned key larger than search key */</span></div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key));</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value));</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret);</div>
+<div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> Cursor positions do not survive transactions: cursors that are open during <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a>, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction. ">WT_SESSION::commit_transaction</a> or <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction. ">WT_SESSION::rollback_transaction</a> will lose their position as if <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> was called.</p>
 <p>Cursors can be configured to move to a random position with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> is called, see <a class="el" href="cursor_random.html">Cursor random</a> for details.</p>

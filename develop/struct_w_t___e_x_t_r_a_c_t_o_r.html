@@ -102,8 +102,9 @@ Public Attributes</h2></td></tr>
 <p>Applications register implementations with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups. ">WT_CONNECTION::add_extractor</a>. See <a class="el" href="custom_extractors.html">Custom Extractors</a> for more information.</p>
 <div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___e_x_t_r_a_c_t_o_r.html">WT_EXTRACTOR</a> my_extractor = {my_extract, NULL, NULL};</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;add_extractor(conn, <span class="stringliteral">&quot;my_extractor&quot;</span>, &amp;my_extractor, NULL);</div>
-</div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_extractor_8c-example.html#_a1">ex_extractor.c</a>.</dd>
+<div class="line">        error_check(conn-&gt;add_extractor(</div>
+<div class="line">            conn, <span class="stringliteral">&quot;my_extractor&quot;</span>, &amp;my_extractor, NULL));</div>
+</div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_extractor_8c-example.html#_a0">ex_extractor.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="aead7ade6a5c1ea31917ed8cd0ef841aa"></a>
 <div class="memitem">

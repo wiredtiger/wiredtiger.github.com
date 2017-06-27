@@ -169,7 +169,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 <p>Wait for all outstanding operations to complete. </p>
 <div class="fragment"><div class="line">        <span class="comment">/* Wait for all outstanding operations to complete. */</span></div>
-<div class="line">        ret = conn-&gt;async_flush(conn);</div>
+<div class="line">        error_check(conn-&gt;async_flush(conn));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -266,7 +266,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 <p>Close a connection. </p>
 <p>Any open sessions will be closed.</p>
-<div class="fragment"><div class="line">        ret = conn-&gt;close(conn, NULL);</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;close(conn, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -336,17 +336,17 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div class="line"><span class="comment">         * The method being configured is specified using a concatenation of the</span></div>
 <div class="line"><span class="comment">         * handle name, a period and the method name.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
+<div class="line">        error_check(conn-&gt;configure_method(conn,</div>
 <div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;entries=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1,max=10&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;entries=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1,max=10&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div>
 <div class="line"><span class="comment">         * have an additional configuration option &quot;devices&quot;, which is a list</span></div>
 <div class="line"><span class="comment">         * of strings.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = conn-&gt;configure_method(conn,</div>
-<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;devices&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL);</div>
+<div class="line">        error_check(conn-&gt;configure_method(conn,</div>
+<div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;devices&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -414,11 +414,11 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Load an extension. </p>
-<div class="fragment"><div class="line">        ret = conn-&gt;load_extension(conn, <span class="stringliteral">&quot;my_extension.dll&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;load_extension(conn, <span class="stringliteral">&quot;my_extension.dll&quot;</span>, NULL));</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;load_extension(conn,</div>
+<div class="line">        error_check(conn-&gt;load_extension(conn,</div>
 <div class="line">            <span class="stringliteral">&quot;datasource/libdatasource.so&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;config=[device=/dev/sd1,alignment=64]&quot;</span>);</div>
+<div class="line">            <span class="stringliteral">&quot;config=[device=/dev/sd1,alignment=64]&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -459,7 +459,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 <p>Open a session. </p>
 <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
-<div class="line">        ret = conn-&gt;open_session(conn, NULL, NULL, &amp;session);</div>
+<div class="line">        error_check(conn-&gt;open_session(conn, NULL, NULL, &amp;session));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -508,7 +508,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <p>Query the global transaction timestamp state. </p>
 <div class="fragment"><div class="line">        <span class="keywordtype">char</span> timestamp_buf[2 * WT_TIMESTAMP_SIZE + 1];</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;query_timestamp(conn, timestamp_buf, <span class="stringliteral">&quot;get=all_committed&quot;</span>);</div>
+<div class="line">        error_check(conn-&gt;query_timestamp(</div>
+<div class="line">            conn, timestamp_buf, <span class="stringliteral">&quot;get=all_committed&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -542,7 +543,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Reconfigure a connection handle. </p>
-<div class="fragment"><div class="line">        ret = conn-&gt;reconfigure(conn, <span class="stringliteral">&quot;eviction_target=75&quot;</span>);</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;reconfigure(conn, <span class="stringliteral">&quot;eviction_target=75&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -675,7 +676,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Set a global transaction timestamp. </p>
-<div class="fragment"><div class="line">        ret = conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>);</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>

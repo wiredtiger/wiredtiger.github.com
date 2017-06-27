@@ -164,8 +164,8 @@ Error handling using the WT_EVENT_HANDLER</h1>
 <div class="line">        event_handler.h.handle_close = NULL;</div>
 <div class="line">        event_handler.app_id = <span class="stringliteral">&quot;example_event_handler&quot;</span>;</div>
 <div class="line"></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home,</div>
-<div class="line">            (<a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *)&amp;event_handler, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn);</div>
+<div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home,</div>
+<div class="line">            (<a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *)&amp;event_handler, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn));</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

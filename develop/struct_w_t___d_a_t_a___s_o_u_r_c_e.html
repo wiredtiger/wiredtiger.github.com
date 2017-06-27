@@ -143,7 +143,7 @@ Public Attributes</h2></td></tr>
 <div class="line">                my_checkpoint,</div>
 <div class="line">                my_terminate</div>
 <div class="line">        };</div>
-<div class="line">        ret = conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL);</div>
+<div class="line">        error_check(conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL));</div>
 </div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a1a7b6f26d733bd91ad8d205d8cb3482d"></a>
 <div class="memitem">
@@ -255,6 +255,7 @@ Public Attributes</h2></td></tr>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config, <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> **new_cursor)</div>
 <div class="line">{</div>
 <div class="line">        MY_CURSOR *cursor;</div>
+<div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Allocate and initialize a WiredTiger cursor. */</span></div>
 <div class="line">        <span class="keywordflow">if</span> ((cursor = calloc(1, <span class="keyword">sizeof</span>(*cursor))) == NULL)</div>

@@ -85,18 +85,18 @@ Code samples</h1>
 <div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *value;</div>
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key, *value;</div>
 <div class="line"></div>
 <div class="line">        conn = conn_arg;</div>
-<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="line">        error_check(conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL, NULL, &amp;cursor));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Show all records. */</span></div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key);</div>
-<div class="line">                ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value);</div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;key));</div>
+<div class="line">                error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value));</div>
 <div class="line"></div>
 <div class="line">                printf(<span class="stringliteral">&quot;Got record: %s : %s\n&quot;</span>, key, value);</div>
 <div class="line">        }</div>
@@ -108,48 +108,38 @@ Code samples</h1>
 <div class="line">}</div>
 </div><!-- fragment --><p> Here is the main function that starts the threads. It opens a single connection, shared between the threads, and closes the connection after waiting for all of the threads to exit.</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span></div>
-<div class="line">main(<span class="keywordtype">void</span>)</div>
+<div class="line">main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
 <div class="line">{</div>
 <div class="line">        <a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">        wt_thread_t threads[NUM_THREADS];</div>
-<div class="line">        <span class="keywordtype">int</span> i, ret;</div>
+<div class="line">        <span class="keywordtype">int</span> i;</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">         * Create a clean test directory for this run of the test program if the</span></div>
-<div class="line"><span class="comment">         * environment variable isn&#39;t already set (as is done by make check).</span></div>
-<div class="line"><span class="comment">         */</span></div>
-<div class="line">        <span class="keywordflow">if</span> (getenv(<span class="stringliteral">&quot;WIREDTIGER_HOME&quot;</span>) == NULL) {</div>
-<div class="line">                home = <span class="stringliteral">&quot;WT_HOME&quot;</span>;</div>
-<div class="line">                ret = system(<span class="stringliteral">&quot;rm -rf WT_HOME &amp;&amp; mkdir WT_HOME&quot;</span>);</div>
-<div class="line">        } <span class="keywordflow">else</span></div>
-<div class="line">                home = NULL;</div>
+<div class="line">        home = example_setup(argc, argv);</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn)) != 0)</div>
-<div class="line">                fprintf(stderr, <span class="stringliteral">&quot;Error connecting to %s: %s\n&quot;</span>,</div>
-<div class="line">                    home == NULL ? <span class="stringliteral">&quot;.&quot;</span> : home, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">        <span class="comment">/* Note: further error checking omitted for clarity. */</span></div>
+<div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn));</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;cursor);</div>
+<div class="line">        error_check(conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8">open_session</a>(conn, NULL, NULL, &amp;session));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:access&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:access&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite&quot;</span>, &amp;cursor));</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, <span class="stringliteral">&quot;key1&quot;</span>);</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, <span class="stringliteral">&quot;value1&quot;</span>);</div>
-<div class="line">        ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session, NULL);</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session, NULL));</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; NUM_THREADS; i++)</div>
-<div class="line">                ret = __wt_thread_create(NULL, &amp;threads[i], scan_thread, conn);</div>
+<div class="line">                error_check(</div>
+<div class="line">                    __wt_thread_create(NULL, &amp;threads[i], scan_thread, conn));</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">for</span> (i = 0; i &lt; NUM_THREADS; i++)</div>
-<div class="line">                ret = __wt_thread_join(NULL, threads[i]);</div>
+<div class="line">                error_check(__wt_thread_join(NULL, threads[i]));</div>
 <div class="line"></div>
-<div class="line">        ret = conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL);</div>
+<div class="line">        error_check(conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL));</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> (ret == 0 ? EXIT_SUCCESS : EXIT_FAILURE);</div>
+<div class="line">        <span class="keywordflow">return</span> (EXIT_SUCCESS);</div>
 <div class="line">}</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->

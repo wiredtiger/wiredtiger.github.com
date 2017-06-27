@@ -184,7 +184,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="textblock"><p>All data operations are performed in the context of a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a>. </p>
 <p>This encapsulates the thread and transactional context of the operation.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a> handle is not usually shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a11">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a14">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a2">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a2">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a4">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a1">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a2">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a2">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a2">rotn_encrypt.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#_a11">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a15">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a2">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a1">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a4">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a1">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a2">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a2">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a2">rotn_encrypt.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ac6f0630cb70bb057aa4512f7888dc701"></a>
 <div class="memitem">
@@ -218,8 +218,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Alter a table. </p>
 <p>This will allow modification of some table settings after creation.</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701">alter</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;access_pattern_hint=random&quot;</span>);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701">alter</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;access_pattern_hint=random&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -273,15 +273,15 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="line"><span class="comment">         * Opening cursors before the transaction begins allows applications to</span></div>
 <div class="line"><span class="comment">         * cache cursors and use them for multiple operations.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret =</div>
-<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL));</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;update(cursor)) {</div>
+<div class="line">        <span class="keywordflow">switch</span> (cursor-&gt;update(cursor)) {</div>
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
-<div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
+<div class="line">                error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div>
 <div class="line">                <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                 * If commit_transaction succeeds, cursors remain positioned; if</span></div>
 <div class="line"><span class="comment">                 * commit_transaction fails, the transaction was rolled-back and</span></div>
@@ -290,7 +290,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code" href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a>:                       <span class="comment">/* Update conflict */</span></div>
 <div class="line">        <span class="keywordflow">default</span>:                                <span class="comment">/* Other error */</span></div>
-<div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL);</div>
+<div class="line">                error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL));</div>
 <div class="line">                <span class="comment">/* The rollback_transaction call resets all cursors. */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
@@ -322,7 +322,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#a19">ex_log.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#a17">ex_log.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -353,50 +353,50 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Write a transactionally consistent snapshot of a database or set of objects. </p>
 <p>The checkpoint includes all transactions committed before the checkpoint starts. Additionally, checkpoints may optionally be discarded.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Checkpoint the database. */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, NULL);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, NULL));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Checkpoint of the database, creating a named snapshot. */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;name=June01&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;name=June01&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Checkpoint a list of objects.</span></div>
 <div class="line"><span class="comment">         * JSON parsing requires quoting the list of target URIs.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;</div>
-<div class="line">            <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;target=(\&quot;table:table1\&quot;,\&quot;table:table2\&quot;)&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;target=(\&quot;table:table1\&quot;,\&quot;table:table2\&quot;)&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Checkpoint a list of objects, creating a named snapshot.</span></div>
 <div class="line"><span class="comment">         * JSON parsing requires quoting the list of target URIs.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;</div>
-<div class="line">            <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;target=(\&quot;table:mytable\&quot;),name=midnight&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;target=(\&quot;table:mytable\&quot;),name=midnight&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Checkpoint the database, discarding all previous snapshots. */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(from=all)&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(from=all)&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Checkpoint the database, discarding the &quot;midnight&quot; snapshot. */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(midnight)&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(midnight)&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Checkpoint the database, discarding all snapshots after and</span></div>
 <div class="line"><span class="comment">         * including &quot;noon&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(from=noon)&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(from=noon)&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Checkpoint the database, discarding all snapshots before and</span></div>
 <div class="line"><span class="comment">         * including &quot;midnight&quot;.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(to=midnight)&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, <span class="stringliteral">&quot;drop=(to=midnight)&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Create a checkpoint of a table, creating the &quot;July01&quot; snapshot and</span></div>
 <div class="line"><span class="comment">         * discarding the &quot;May01&quot; and &quot;June01&quot; snapshots.</span></div>
 <div class="line"><span class="comment">         * JSON parsing requires quoting the list of target URIs.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;target=(\&quot;table:mytable\&quot;),name=July01,drop=(May01,June01)&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;target=(\&quot;table:mytable\&quot;),name=July01,drop=(May01,June01)&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -447,7 +447,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Close the session handle. </p>
 <p>This will release the resources associated with the session handle, including rolling back any active transactions and closing any cursors that remain open in the session.</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">close</a>(session, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -456,7 +456,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#a23">ex_log.c</a>, and <a class="el" href="ex_thread_8c-example.html#a16">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#a21">ex_log.c</a>, and <a class="el" href="ex_thread_8c-example.html#a15">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -493,15 +493,15 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="line"><span class="comment">         * Opening cursors before the transaction begins allows applications to</span></div>
 <div class="line"><span class="comment">         * cache cursors and use them for multiple operations.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret =</div>
-<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL));</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;update(cursor)) {</div>
+<div class="line">        <span class="keywordflow">switch</span> (cursor-&gt;update(cursor)) {</div>
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
-<div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
+<div class="line">                error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div>
 <div class="line">                <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                 * If commit_transaction succeeds, cursors remain positioned; if</span></div>
 <div class="line"><span class="comment">                 * commit_transaction fails, the transaction was rolled-back and</span></div>
@@ -510,7 +510,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code" href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a>:                       <span class="comment">/* Update conflict */</span></div>
 <div class="line">        <span class="keywordflow">default</span>:                                <span class="comment">/* Other error */</span></div>
-<div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL);</div>
+<div class="line">                error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL));</div>
 <div class="line">                <span class="comment">/* The rollback_transaction call resets all cursors. */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
@@ -534,7 +534,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#a16">ex_log.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#a14">ex_log.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -569,7 +569,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Compact a live row- or column-store btree or LSM tree. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -619,8 +619,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Create a table, column group, index or file. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -740,7 +740,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a6">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a14">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a6">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a18">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a29">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a18">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a46">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a28">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a6">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a7">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a12">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a5">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a14">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a5">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a18">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a29">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a19">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a46">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a26">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a5">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a7">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a11">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -775,7 +775,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Drop (delete) an object. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -834,33 +834,34 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Join a join cursor with a reference cursor. </p>
 <div class="fragment"><div class="line">        <span class="comment">/* Open cursors needed by the join. */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;join_cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;country_cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
-<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;year_cursor);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;join_cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:country&quot;</span>, NULL, NULL, &amp;country_cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session,</div>
+<div class="line">            <span class="stringliteral">&quot;index:poptable:immutable_year&quot;</span>, NULL, NULL, &amp;year_cursor));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* select values WHERE country == &quot;AU&quot; AND year &gt; 1900 */</span></div>
 <div class="line">        country_cursor-&gt;set_key(country_cursor, <span class="stringliteral">&quot;AU\0\0\0&quot;</span>);</div>
-<div class="line">        ret = country_cursor-&gt;search(country_cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, country_cursor,</div>
-<div class="line">            <span class="stringliteral">&quot;compare=eq,count=10&quot;</span>);</div>
+<div class="line">        error_check(country_cursor-&gt;search(country_cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(</div>
+<div class="line">            session, join_cursor, country_cursor, <span class="stringliteral">&quot;compare=eq,count=10&quot;</span>));</div>
 <div class="line">        year_cursor-&gt;set_key(year_cursor, (uint16_t)1900);</div>
-<div class="line">        ret = year_cursor-&gt;search(year_cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session, join_cursor, year_cursor,</div>
-<div class="line">            <span class="stringliteral">&quot;compare=gt,count=10,strategy=bloom&quot;</span>);</div>
+<div class="line">        error_check(year_cursor-&gt;search(year_cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84">join</a>(session,</div>
+<div class="line">            join_cursor, year_cursor, <span class="stringliteral">&quot;compare=gt,count=10,strategy=bloom&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* List the values that are joined */</span></div>
 <div class="line">        <span class="keywordflow">while</span> ((ret = join_cursor-&gt;next(join_cursor)) == 0) {</div>
-<div class="line">                ret = join_cursor-&gt;get_key(join_cursor, &amp;recno);</div>
-<div class="line">                ret = join_cursor-&gt;get_value(join_cursor, &amp;country, &amp;year,</div>
-<div class="line">                    &amp;population);</div>
+<div class="line">                error_check(join_cursor-&gt;get_key(join_cursor, &amp;recno));</div>
+<div class="line">                error_check(join_cursor-&gt;get_value(</div>
+<div class="line">                    join_cursor, &amp;country, &amp;year, &amp;population));</div>
 <div class="line">                printf(<span class="stringliteral">&quot;ID %&quot;</span> PRIu64, recno);</div>
 <div class="line">                printf(</div>
 <div class="line">                    <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>,</div>
 <div class="line">                    country, year, population);</div>
 <div class="line">        }</div>
+<div class="line">        scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -982,7 +983,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a28">ex_encrypt.c</a>, and <a class="el" href="ex_log_8c-example.html#a29">ex_log.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#a28">ex_encrypt.c</a>, and <a class="el" href="ex_log_8c-example.html#a27">ex_log.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1029,16 +1030,17 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Open a new cursor on a data source or duplicate an existing cursor. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
 </div><!-- fragment --><p> An existing cursor can be duplicated by passing it as the <code>to_dup</code> parameter and setting the <code>uri</code> parameter to <code>NULL:</code> </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
 <div class="line">        cursor-&gt;set_key(cursor, key);</div>
-<div class="line">        ret = cursor-&gt;search(cursor);</div>
+<div class="line">        error_check(cursor-&gt;search(cursor));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Duplicate the cursor. */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, NULL, cursor, NULL, &amp;duplicate);</div>
+<div class="line">        error_check(</div>
+<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, NULL, cursor, NULL, &amp;duplicate));</div>
 </div><!-- fragment --><p> Cursors being duplicated must have a key set, and successfully duplicated cursors are positioned at the same place in the data source as the original.</p>
 <p>Cursor handles should be discarded by calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor. ">WT_CURSOR::close</a>.</p>
 <p>Cursors capable of supporting transactional operations operate in the context of the current transaction, if any.</p>
@@ -1127,7 +1129,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a7">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a7">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a19">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a18">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a11">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a47">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a5">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a7">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a5">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a4">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a6">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a6">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a19">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a18">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a11">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a47">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a4">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a6">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a5">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a4">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1162,7 +1164,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Rebalance a table, see <a class="el" href="rebalance.html">Rebalance</a>. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984">rebalance</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984">rebalance</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1200,7 +1202,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Reconfigure a session handle. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6">reconfigure</a>(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6">reconfigure</a>(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>));</div>
 </div><!-- fragment --><p> <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6" title="Reconfigure a session handle. ">WT_SESSION::reconfigure</a> will fail if a transaction is in progress in the session.</p>
 <p>All cursors are reset.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1259,7 +1261,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Rename an object. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a>(session, <span class="stringliteral">&quot;table:old&quot;</span>, <span class="stringliteral">&quot;table:new&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a>(session, <span class="stringliteral">&quot;table:old&quot;</span>, <span class="stringliteral">&quot;table:new&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1289,7 +1291,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Reset the session handle. </p>
 <p>This will reset all cursors associated with this session and clear any buffers that each cursor held. After this the buffers associated with the session will be discarded. The session can be re-used immediately after this call returns. If a transaction is running on this session, then this call will take no action and return a busy error.</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787">reset</a>(session);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787">reset</a>(session));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1333,15 +1335,15 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="line"><span class="comment">         * Opening cursors before the transaction begins allows applications to</span></div>
 <div class="line"><span class="comment">         * cache cursors and use them for multiple operations.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret =</div>
-<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor);</div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL));</div>
 <div class="line"></div>
 <div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div>
 <div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">switch</span> (ret = cursor-&gt;update(cursor)) {</div>
+<div class="line">        <span class="keywordflow">switch</span> (cursor-&gt;update(cursor)) {</div>
 <div class="line">        <span class="keywordflow">case</span> 0:                                 <span class="comment">/* Update success */</span></div>
-<div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
+<div class="line">                error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div>
 <div class="line">                <span class="comment">/*</span></div>
 <div class="line"><span class="comment">                 * If commit_transaction succeeds, cursors remain positioned; if</span></div>
 <div class="line"><span class="comment">                 * commit_transaction fails, the transaction was rolled-back and</span></div>
@@ -1350,7 +1352,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code" href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a>:                       <span class="comment">/* Update conflict */</span></div>
 <div class="line">        <span class="keywordflow">default</span>:                                <span class="comment">/* Other error */</span></div>
-<div class="line">                ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL);</div>
+<div class="line">                error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1">rollback_transaction</a>(session, NULL));</div>
 <div class="line">                <span class="comment">/* The rollback_transaction call resets all cursors. */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">        }</div>
@@ -1403,7 +1405,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Salvage rebuilds the file, or files of which a table is comprised, discarding any corrupted file blocks.</p>
 <p>Previously deleted records may re-appear, and inserted records may disappear, when salvage is done, so salvage should not be run unless it is known to be necessary. Normally, salvage should be called after a file or table has been corrupted, as reported by the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a file or table. ">WT_SESSION::verify</a> method.</p>
 <p>Files are rebuilt in place, the salvage method overwrites the existing files.</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e">salvage</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e">salvage</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1448,15 +1450,14 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Manage named snapshot transactions. </p>
 <p>Use this API to create and drop named snapshots. Named snapshot transactions can be accessed via WT_CURSOR::open. See <a class="el" href="transactions.html#transaction_named_snapshots">Named Snapshots</a>.</p>
-<div class="fragment"><div class="line"></div>
-<div class="line">        <span class="comment">/* Create a named snapshot */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873">snapshot</a>(session, <span class="stringliteral">&quot;name=June01&quot;</span>);</div>
+<div class="fragment"><div class="line">        <span class="comment">/* Create a named snapshot */</span></div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873">snapshot</a>(session, <span class="stringliteral">&quot;name=June01&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Open a transaction at a given snapshot */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, <span class="stringliteral">&quot;snapshot=June01&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, <span class="stringliteral">&quot;snapshot=June01&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Drop all named snapshots */</span></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873">snapshot</a>(session, <span class="stringliteral">&quot;drop=(all)&quot;</span>);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873">snapshot</a>(session, <span class="stringliteral">&quot;drop=(all)&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1529,7 +1530,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_log_8c-example.html#a10">ex_log.c</a>, and <a class="el" href="ex_thread_8c-example.html#a9">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_thread_8c-example.html#a9">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1558,7 +1559,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Set a timestamp on a transaction. </p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a>(session, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>);</div>
+<div class="fragment"><div class="line">        error_check(</div>
+<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a>(session, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1605,7 +1607,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="fragment"><div class="line">        <span class="comment">/* Check the transaction ID range pinned by the session handle. */</span></div>
 <div class="line">        uint64_t range;</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">transaction_pinned_range</a>(session, &amp;range);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">transaction_pinned_range</a>(session, &amp;range));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1643,7 +1645,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Wait for a transaction to become synchronized. </p>
 <p>This method is only useful when <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is configured with the <code>transaction_sync</code> setting disabled. This method must be called when no transactions are active in the session.</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">transaction_sync</a>(session, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">transaction_sync</a>(session, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1704,20 +1706,21 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Truncate a file, table or cursor range. </p>
-<p>Truncate a file or table. </p><div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, NULL);</div>
+<p>Truncate a file or table. </p><div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, NULL));</div>
 </div><!-- fragment --><p> Truncate a cursor range. When truncating based on a cursor position, it is not required the cursor reference a record in the object, only that the key be set. This allows applications to discard portions of the object name space without knowing exactly what records the object contains. </p><div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *start, *stop;</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;start);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;start));</div>
 <div class="line">        start-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(start, <span class="stringliteral">&quot;June01&quot;</span>);</div>
-<div class="line">        ret = start-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(start);</div>
+<div class="line">        error_check(start-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(start));</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;stop);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;stop));</div>
 <div class="line">        stop-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(stop, <span class="stringliteral">&quot;June30&quot;</span>);</div>
-<div class="line">        ret = stop-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(stop);</div>
+<div class="line">        error_check(stop-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(stop));</div>
 <div class="line"></div>
-<div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(session, NULL, start, stop, NULL);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(session, NULL, start, stop, NULL));</div>
 </div><!-- fragment --><p> Any specified cursors end with no position, and subsequent calls to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR::prev</a>) method will iterate from the beginning (end) of the table.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1765,7 +1768,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Upgrade a file or table. </p>
 <p>Upgrade upgrades a file or table, if upgrade is required.</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69">upgrade</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69">upgrade</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1810,7 +1813,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Verify a file or table. </p>
 <p>Verify reports if a file, or the files of which a table is comprised, have been corrupted. The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e" title="Salvage a file or table. ">WT_SESSION::salvage</a> method can be used to repair a corrupted file,</p>
-<div class="fragment"><div class="line">        ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3">verify</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3">verify</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>

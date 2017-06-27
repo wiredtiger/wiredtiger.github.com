@@ -76,8 +76,8 @@ Cache size</h1>
 <p>The size of the cache is the single most important tuning knob for a WiredTiger application. Ideally the cache should be configured to be large enough to hold an application's working set.</p>
 <p>The cache size for the database is normally configured by setting the <code>cache_size</code> configuration string when calling the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function. The cache size can be adjusted after the open call with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a>.</p>
 <p>An example of setting a cache size to 5GB:</p>
-<div class="fragment"><div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on)&quot;</span>, &amp;conn);</div>
+<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
+<div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on)&quot;</span>, &amp;conn));</div>
 </div><!-- fragment --><p> The effectiveness of the chosen cache size can be measured by reviewing the page eviction statistics for the database.</p>
 <h1><a class="anchor" id="tuning_cache_resident"></a>
 Cache resident objects</h1>
@@ -90,8 +90,9 @@ Cache resident objects</h1>
 <li>If cache resident objects require more space than the configured cache size, then further operations will either return error or stall until space is made available by closing objects.</li>
 </ul>
 <p>An example of configuring a cache-resident object:</p>
-<div class="fragment"><div class="line">        ret = session-&gt;create(session,</div>
-<div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=r,value_format=S,cache_resident=true&quot;</span>);</div>
+<div class="fragment"><div class="line">        error_check(session-&gt;create(</div>
+<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=S,cache_resident=true&quot;</span>));</div>
 </div><!-- fragment --> <h1><a class="anchor" id="cache_eviction"></a>
 Eviction tuning</h1>
 <p>When an application approaches the maximum cache size, WiredTiger begins eviction to stop memory use from growing too large, approximating a least-recently-used algorithm.</p>
@@ -106,12 +107,12 @@ Eviction tuning</h1>
 <div class="line"><span class="comment">         * Configure eviction to begin at 90% full, and run until the cache</span></div>
 <div class="line"><span class="comment">         * is only 75% dirty.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create,eviction_trigger=90,eviction_dirty_target=75&quot;</span>, &amp;conn);</div>
+<div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
+<div class="line">            <span class="stringliteral">&quot;create,eviction_trigger=90,eviction_dirty_target=75&quot;</span>, &amp;conn));</div>
 </div><!-- fragment --><p> By default, WiredTiger cache eviction is handled by a single, separate thread. In a large, busy cache, a single thread will be insufficient (especially when the eviction thread must wait for I/O). The <code>eviction=</code>(threads_min) and <code>eviction=</code>(threads_max) configuration values can be used to configure the minimum and maximum number of additional threads WiredTiger will create to keep up with the application eviction load. Finally, if the Wiredtiger eviction threads are unable to keep up with application demand for cache space, application threads will be tasked with eviction as well, potentially resulting in latency spikes.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Configure up to four eviction threads */</span></div>
-<div class="line">        ret = <a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create,eviction_trigger=90,eviction=(threads_max=4)&quot;</span>, &amp;conn);</div>
+<div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
+<div class="line">            <span class="stringliteral">&quot;create,eviction_trigger=90,eviction=(threads_max=4)&quot;</span>, &amp;conn));</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

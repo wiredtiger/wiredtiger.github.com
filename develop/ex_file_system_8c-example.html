@@ -102,22 +102,7 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="comment"> * ex_file_system.c</span></div>
 <div class="line"><span class="comment"> *      demonstrates how to use the custom file system interface</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;queue.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#ifndef _WIN32</span></div>
-<div class="line"><span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#else</span></div>
-<div class="line"><span class="preprocessor">#include &quot;windows_shim.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;wiredtiger.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;wiredtiger_ext.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;test_util.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * This example code uses pthread functions for portable locking, we ignore</span></div>
@@ -126,25 +111,25 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html','');})
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
 <div class="line">allocate_file_system_lock(pthread_rwlock_t *lockp)</div>
 <div class="line">{</div>
-<div class="line">        assert(pthread_rwlock_init(lockp, NULL) == 0);</div>
+<div class="line">        error_check(pthread_rwlock_init(lockp, NULL));</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
 <div class="line">destroy_file_system_lock(pthread_rwlock_t *lockp)</div>
 <div class="line">{</div>
-<div class="line">        assert(pthread_rwlock_destroy(lockp) == 0);</div>
+<div class="line">        error_check(pthread_rwlock_destroy(lockp));</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
 <div class="line">lock_file_system(pthread_rwlock_t *lockp)</div>
 <div class="line">{</div>
-<div class="line">        assert(pthread_rwlock_wrlock(lockp) == 0);</div>
+<div class="line">        error_check(pthread_rwlock_wrlock(lockp));</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
 <div class="line">unlock_file_system(pthread_rwlock_t *lockp)</div>
 <div class="line">{</div>
-<div class="line">        assert(pthread_rwlock_unlock(lockp) == 0);</div>
+<div class="line">        error_check(pthread_rwlock_unlock(lockp));</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
