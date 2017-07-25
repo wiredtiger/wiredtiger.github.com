@@ -1,4 +1,4 @@
-.TH "WiredTiger" 3 "Mon Oct 20 2014" "Version Version 2.4.1" "WiredTiger" \" -*- nroff -*-
+.TH "WiredTiger" 3 "Mon Jul 24 2017" "Version 3.0.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -32,23 +32,11 @@ To access a database, first open a connection and create a session handle for th
         const char *key, *value;
         int ret;
 
-        /*
-         * Create a clean test directory for this run of the test program if the
-         * environment variable isn't already set (as is done by make check)\&.
-         */
-        if (getenv("WIREDTIGER_HOME") == NULL) {
-                home = "WT_HOME";
-                ret = system("rm -rf WT_HOME && mkdir WT_HOME");
-        } else
-                home = NULL;
-
         /* Open a connection to the database, creating it if necessary\&. */
-        if ((ret = wiredtiger_open(home, NULL, "create", &conn)) != 0 ||
-            (ret = conn->open_session(conn, NULL, NULL, &session)) != 0) {
-                fprintf(stderr, "Error connecting to %s: %s\n",
-                    home, wiredtiger_strerror(ret));
-                return (ret);
-        }
+        error_check(wiredtiger_open(home, NULL, "create", &conn));
+
+        /* Open a session handle for the database\&. */
+        error_check(conn->open_session(conn, NULL, NULL, &session));
 .fi
 .PP
  The configuration string \fC'create'\fP is passed to \fBwiredtiger_open\fP to indicate the database should be created if it does not already exist\&.
@@ -60,8 +48,8 @@ Create a table we can use to store data:
 .PP
 .PP
 .nf
-        ret = session->create(session,
-            "table:access", "key_format=S,value_format=S");
+        error_check(session->create(
+            session, "table:access", "key_format=S,value_format=S"));
 .fi
 .PP
  This call creates a table called \fC'access'\fP, configured to use strings for its key and value columns\&. (See \fBSchema, Columns, Column Groups, Indices and Projections\fP for more information on tables with other types of key and value columns\&.)
@@ -71,8 +59,8 @@ Now that we have a table, we open a cursor to perform some operations on it:
 .PP
 .PP
 .nf
-        ret = session->open_cursor(session,
-            "table:access", NULL, NULL, &cursor);
+        error_check(session->open_cursor(
+            session, "table:access", NULL, NULL, &cursor));
 .fi
 .PP
  Here, the string \fC'table:access'\fP specifies that we are opening the cursor on the table named \fC'access'\fP\&.
@@ -83,20 +71,21 @@ Then we insert a new row into the table\&. The \fBWT_CURSOR::set_key\fP and \fBW
 .nf
         cursor->set_key(cursor, "key1");        /* Insert a record\&. */
         cursor->set_value(cursor, "value1");
-        ret = cursor->insert(cursor);
+        error_check(cursor->insert(cursor));
 .fi
 .PP
  Now we iterate through all of the records in the table, printing them out as we go:
 .PP
 .PP
 .nf
-        ret = cursor->reset(cursor);            /* Restart the scan\&. */
+        error_check(cursor->reset(cursor));     /* Restart the scan\&. */
         while ((ret = cursor->next(cursor)) == 0) {
-                ret = cursor->get_key(cursor, &key);
-                ret = cursor->get_value(cursor, &value);
+                error_check(cursor->get_key(cursor, &key));
+                error_check(cursor->get_value(cursor, &value));
 
                 printf("Got record: %s : %s\n", key, value);
         }
+        scan_end_check(ret == WT_NOTFOUND);     /* Check for end-of-table\&. */
 .fi
 .PP
  Note that the key and value parts of the records are returned as C strings because the table was created that way (even if it was created by a previous run of the example)\&. No data extraction or conversion is required in the application\&.
@@ -116,7 +105,7 @@ Lastly, we close the connection, which implicitly closes the cursor and session 
 .PP
 .PP
 .nf
-        ret = conn->close(conn, NULL);
+        error_check(conn->close(conn, NULL));   /* Close all handles\&. */
 .fi
 .PP
 

@@ -30,7 +30,7 @@ var index =
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "WiredTiger Change Log", "md_changelog.html", null ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
-      [ "Upgrading to Version 2.9.3", "upgrading.html#version_293", null ],
+      [ "Upgrading to Version 3.0.0", "upgrading.html#version_300", null ],
       [ "Upgrading to Version 2.9.2", "upgrading.html#version_292", null ],
       [ "Upgrading to Version 2.9.1", "upgrading.html#version_291", null ],
       [ "Upgrading to Version 2.9.0", "upgrading.html#version_290", null ],
@@ -81,5 +81,6 @@ var index =
       [ "Concurrency testing", "testing.html#testing_threads", null ],
       [ "Static analysis", "testing.html#testing_static", null ]
     ] ],
-    [ "WiredTiger community and contact information", "community.html", null ]
+    [ "WiredTiger community and contact information", "community.html", null ],
+    [ "Developer Documentation", "devdoc-index.html", "devdoc-index" ]
 ];
