@@ -417,6 +417,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <td><code>name</code></td><td>if set, specify a name for the checkpoint (note that checkpoints including LSM trees may not be named).</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>target</code></td><td>if non-empty, checkpoint the list of objects.</td><td>a list of strings; default empty. </td></tr>
+<tr>
+<td><code>use_timestamp</code></td><td>by default, create the checkpoint as of the last stable timestamp if timestamps are in use, or all current updates if there is no stable timestamp set. If false, this option generates a checkpoint with all updates including those later than the timestamp.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 </table>
 </td></tr>
   </table>

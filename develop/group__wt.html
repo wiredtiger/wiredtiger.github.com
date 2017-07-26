@@ -283,6 +283,14 @@ Log record and operation types</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga709b4bff9cc64662aca0b5e7ebcedf86">WT_LOGOP_ROW_TRUNCATE</a></td></tr>
 <tr class="memdesc:ga709b4bff9cc64662aca0b5e7ebcedf86"><td class="mdescLeft">&#160;</td><td class="mdescRight">row truncate <br /></td></tr>
 <tr class="separator:ga709b4bff9cc64662aca0b5e7ebcedf86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga079e6a0b20affec5374bcc34e770ac0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga079e6a0b20affec5374bcc34e770ac0f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga079e6a0b20affec5374bcc34e770ac0f">WT_LOGOP_CHECKPOINT_START</a></td></tr>
+<tr class="memdesc:ga079e6a0b20affec5374bcc34e770ac0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint start <br /></td></tr>
+<tr class="separator:ga079e6a0b20affec5374bcc34e770ac0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ef3af55614bbb5b1cd0e626c46dad24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3ef3af55614bbb5b1cd0e626c46dad24"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3ef3af55614bbb5b1cd0e626c46dad24">WT_LOGOP_PREV_LSN</a></td></tr>
+<tr class="memdesc:ga3ef3af55614bbb5b1cd0e626c46dad24"><td class="mdescLeft">&#160;</td><td class="mdescRight">previous LSN <br /></td></tr>
+<tr class="separator:ga3ef3af55614bbb5b1cd0e626c46dad24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Connection statistics</h2></td></tr>
@@ -1280,6 +1288,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac2b7bf415b251f0299803960b2ba82e3">WT_STAT_CONN_DHANDLE_LOCK_BLOCKED</a></td></tr>
 <tr class="memdesc:gac2b7bf415b251f0299803960b2ba82e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: data handle lock yielded <br /></td></tr>
 <tr class="separator:gac2b7bf415b251f0299803960b2ba82e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa152f876f74d2f802c4f219e2ec201cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa152f876f74d2f802c4f219e2ec201cb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa152f876f74d2f802c4f219e2ec201cb">WT_STAT_CONN_PAGE_INDEX_SLOT_REF_BLOCKED</a></td></tr>
+<tr class="memdesc:gaa152f876f74d2f802c4f219e2ec201cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: get reference for page index and slot time sleeping (usecs) <br /></td></tr>
+<tr class="separator:gaa152f876f74d2f802c4f219e2ec201cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2c6868733b8b13adf6c69131f694a1bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2c6868733b8b13adf6c69131f694a1bd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2c6868733b8b13adf6c69131f694a1bd">WT_STAT_CONN_LOG_SERVER_SYNC_BLOCKED</a></td></tr>
 <tr class="memdesc:ga2c6868733b8b13adf6c69131f694a1bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: log server sync yielded for log write <br /></td></tr>
@@ -1306,16 +1318,12 @@ Connection statistics</h2></td></tr>
 <tr class="separator:ga3fcc56ec891bd6e24675dc053397691b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8bb75989de2ec1cd9d00829ae9e9ef8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8bb75989de2ec1cd9d00829ae9e9ef8d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8bb75989de2ec1cd9d00829ae9e9ef8d">WT_STAT_CONN_PAGE_DEL_ROLLBACK_BLOCKED</a></td></tr>
-<tr class="memdesc:ga8bb75989de2ec1cd9d00829ae9e9ef8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: page delete rollback yielded for instantiation <br /></td></tr>
+<tr class="memdesc:ga8bb75989de2ec1cd9d00829ae9e9ef8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: page delete rollback time sleeping for state change (usecs) <br /></td></tr>
 <tr class="separator:ga8bb75989de2ec1cd9d00829ae9e9ef8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8658fc3d52503f3228eac6ba33f2dec8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8658fc3d52503f3228eac6ba33f2dec8"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8658fc3d52503f3228eac6ba33f2dec8">WT_STAT_CONN_CHILD_MODIFY_BLOCKED_PAGE</a></td></tr>
 <tr class="memdesc:ga8658fc3d52503f3228eac6ba33f2dec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: page reconciliation yielded due to child modification <br /></td></tr>
 <tr class="separator:ga8658fc3d52503f3228eac6ba33f2dec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7e131830f59676db0699bd999d439ce6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7e131830f59676db0699bd999d439ce6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7e131830f59676db0699bd999d439ce6">WT_STAT_CONN_PAGE_INDEX_SLOT_BLOCKED</a></td></tr>
-<tr class="memdesc:ga7e131830f59676db0699bd999d439ce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: reference for page index and slot yielded <br /></td></tr>
-<tr class="separator:ga7e131830f59676db0699bd999d439ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga69f3fffeffd2b0a51fa09cc68b2c1095"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga69f3fffeffd2b0a51fa09cc68b2c1095"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga69f3fffeffd2b0a51fa09cc68b2c1095">WT_STAT_CONN_TREE_DESCEND_BLOCKED</a></td></tr>
 <tr class="memdesc:ga69f3fffeffd2b0a51fa09cc68b2c1095"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: tree descend one level yielded for split page index update <br /></td></tr>
