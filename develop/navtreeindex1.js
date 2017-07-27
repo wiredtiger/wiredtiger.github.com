@@ -242,12 +242,12 @@ var NAVTREEINDEX1 =
 "devdoc-index.html":[0,13],
 "devdoc-schema.html":[0,13,0],
 "devdoc-schema.html#schema_create":[0,13,0,0],
+"devdoc-schema.html#schema_rename":[0,13,0,1],
 "dump_formats.html":[0,6,21],
 "dump_formats.html#dump_formats_json":[0,6,21,0],
 "dump_formats.html#dump_formats_text":[0,6,21,1],
 "durability.html":[0,4,18],
 "durability.html#durability_archiving":[0,4,18,3],
 "durability.html#durability_backup":[0,4,18,1],
-"durability.html#durability_bulk":[0,4,18,2],
-"durability.html#durability_checkpoint":[0,4,18,0]
+"durability.html#durability_bulk":[0,4,18,2]
 };

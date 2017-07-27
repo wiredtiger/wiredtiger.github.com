@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"group__wt.html#gac2ca7cc07e141c44db8053f7da29c558":[1,0,401],
 "group__wt.html#gac32cdf598037a5b70e70cf46d8bfc68c":[1,0,454],
 "group__wt.html#gac4f8b4621bcafad9db744e87be24a798":[1,0,457],
 "group__wt.html#gac5127bd7c3c642935a02547c455b0614":[1,0,51],
@@ -168,8 +169,8 @@ var NAVTREEINDEX4 =
 "leveldb.html":[0,3],
 "leveldb.html#leveldb_build":[0,3,0],
 "leveldb.html#leveldb_caveats":[0,3,1],
-"license.html":[0,10],
 "license.html":[7],
+"license.html":[0,10],
 "license.html#license_crc32-power8":[0,10,1],
 "license.html#license_crc32-zseries":[0,10,2],
 "license.html#license_distribution":[0,10,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "schema_lang_java.html#schema_examples_lang_java":[0,5,5,10],
 "schema_lang_java.html#schema_format_types_lang_java":[0,5,5,2],
 "schema_lang_java.html#schema_index_immutable_lang_java":[0,5,5,8],
-"schema_lang_java.html#schema_index_projections_lang_java":[0,5,5,9],
-"schema_lang_java.html#schema_indices_lang_java":[0,5,5,7]
+"schema_lang_java.html#schema_index_projections_lang_java":[0,5,5,9]
 };
