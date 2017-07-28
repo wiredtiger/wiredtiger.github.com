@@ -473,6 +473,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>Both the key and value must be set and the record must already exist; the record will be updated.</p>
 <p>Modification structures are applied in order, and later modifications can update earlier modifications.</p>
 <p>The modify method is only supported on raw byte arrays accessed using a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structure, that is, a format type of <code>u</code>.</p>
+<p>Calling the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> method outside of snapshot isolation can lead to unexpected results. While <code>read-committed</code> isolation is supported with the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> method, <code>read-uncommitted</code> isolation is not.</p>
 <div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> entries[3];</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
 <div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
