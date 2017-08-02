@@ -81,5 +81,6 @@ var index =
       [ "Concurrency testing", "testing.html#testing_threads", null ],
       [ "Static analysis", "testing.html#testing_static", null ]
     ] ],
-    [ "WiredTiger community and contact information", "community.html", null ]
+    [ "WiredTiger community and contact information", "community.html", null ],
+    [ "Developer Documentation", "devdoc-index.html", "devdoc-index" ]
 ];
