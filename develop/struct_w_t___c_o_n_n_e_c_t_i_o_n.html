@@ -1267,7 +1267,7 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>oldest_timestamp</code></td><td>future commits and queries will be no earlier than the specified timestamp. Supplied values must be monotonically increasing. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>stable_timestamp</code></td><td>future checkpoints will be no later than the specified timestamp. Supplied values must be monotonically increasing. The stable timestamp data stability only applies to tables that are not being logged. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>stable_timestamp</code></td><td>checkpoints will not include commits that are newer than the specified timestamp in tables configured with <code>log=</code>(enabled=false). Supplied values must be monotonically increasing. The stable timestamp data stability only applies to tables that are not being logged. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
