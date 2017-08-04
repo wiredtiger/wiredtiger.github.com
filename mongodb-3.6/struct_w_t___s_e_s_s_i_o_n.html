@@ -357,7 +357,9 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Write a transactionally consistent snapshot of a database or set of objects. </p>
-<p>The checkpoint includes all transactions committed before the checkpoint starts. Additionally, checkpoints may optionally be discarded.</p>
+<p>In the absence of transaction timestamps, the checkpoint includes all transactions committed before the checkpoint starts.</p>
+<p>When timestamps are in use and a <code>stable_timestamp</code> has been set via <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp. ">WT_CONNECTION::set_timestamp</a> and the checkpoint runs with <code>use_timestamp=true</code> (the default), updates committed with a timestamp larger than the <code>stable_timestamp</code> will not be included in the checkpoint for tables configured with <code>log=</code>(enabled=false). For tables with logging enabled, all committed changes will be included in the checkpoint (since recovery would roll them forward anyway).</p>
+<p>Additionally, existing named checkpoints may optionally be discarded.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Checkpoint the database. */</span></div>
 <div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a>(session, NULL));</div>
 <div class="line"></div>
