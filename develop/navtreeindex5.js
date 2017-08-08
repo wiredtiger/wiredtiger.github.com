@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"schema_lang_java.html#schema_format_types_lang_java":[0,5,5,2],
 "schema_lang_java.html#schema_index_immutable_lang_java":[0,5,5,8],
 "schema_lang_java.html#schema_index_projections_lang_java":[0,5,5,9],
 "schema_lang_java.html#schema_indices_lang_java":[0,5,5,7],
@@ -59,12 +60,13 @@ var NAVTREEINDEX5 =
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4":[1,0,5,15],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949":[1,0,5,3],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a607cf2781661d03ba50586133e02cc11":[1,0,5,14],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b":[1,0,5,16],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b":[1,0,5,17],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8":[1,0,5,0],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28":[1,0,5,16],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d":[1,0,5,9],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68":[1,0,5,12],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137":[1,0,5,8],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512":[1,0,5,17],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512":[1,0,5,18],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39":[1,0,5,11],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545":[1,0,5,7],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8":[1,0,5,13],
@@ -242,12 +244,10 @@ var NAVTREEINDEX5 =
 "transactions_lang_java.html#transactions_api_lang_java":[0,5,3,1],
 "transactions_lang_java.html#transactions_concurrency_lang_java":[0,5,3,3],
 "transactions_lang_java.html#transactions_implicit_lang_java":[0,5,3,2],
-"tune_build_options.html":[0,5,28],
 "tune_build_options.html":[0,4,35],
+"tune_build_options.html":[0,5,28],
 "tune_bulk_load.html":[0,4,36],
 "tune_bulk_load.html":[0,5,29],
-"tune_cache.html":[0,4,37],
 "tune_cache.html":[0,5,30],
-"tune_cache.html#cache_eviction":[0,4,37,2],
-"tune_cache.html#cache_eviction":[0,5,30,2]
+"tune_cache.html":[0,4,37]
 };

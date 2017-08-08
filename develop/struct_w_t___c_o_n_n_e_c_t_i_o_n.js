@@ -16,6 +16,7 @@ var struct_w_t___c_o_n_n_e_c_t_i_o_n =
     [ "open_session", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#afc75c44ff4497627c59d9b6aaa64c9d8", null ],
     [ "query_timestamp", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a607cf2781661d03ba50586133e02cc11", null ],
     [ "reconfigure", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4", null ],
+    [ "rollback_to_stable", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28", null ],
     [ "set_file_system", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b", null ],
     [ "set_timestamp", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512", null ]
 ];

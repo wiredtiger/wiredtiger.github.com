@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"durability.html#durability_bulk":[0,4,18,2],
 "durability.html#durability_checkpoint":[0,4,18,0],
 "durability.html#durability_flush_config":[0,4,18,4,1],
 "durability.html#durability_group_commit":[0,4,18,4,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga38c1096a457e586e02992eda1c983c75":[1,0,42],
 "group__wt.html#ga38caaa1bd93da732986de36846285fad":[1,0,276],
 "group__wt.html#ga38f0e79fe5107b28a49a527b6b0639da":[1,0,256],
-"group__wt.html#ga3949013afb46f95ea29ba5b33a36d771":[1,0,155],
-"group__wt.html#ga3a28f511191b864b1a13b31d6bbfc80a":[1,0,198]
+"group__wt.html#ga3949013afb46f95ea29ba5b33a36d771":[1,0,155]
 };

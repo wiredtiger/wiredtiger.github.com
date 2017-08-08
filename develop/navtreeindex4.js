@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"group__wt.html#gac102bdcb189a5e5444e7f3d9b6dcd6ad":[1,0,75],
 "group__wt.html#gac1570e1f4bb067d56aedd07e38b33fc6":[1,0,444],
 "group__wt.html#gac2b7bf415b251f0299803960b2ba82e3":[1,0,169],
 "group__wt.html#gac2ca7cc07e141c44db8053f7da29c558":[1,0,403],
@@ -161,13 +162,13 @@ var NAVTREEINDEX4 =
 "huffman.html":[0,4,7,3],
 "in_memory.html":[0,4,19],
 "in_memory_lang_java.html":[0,5,18],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html":[2,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html#a4be4e275a37fc04a6789c4cf5e8a5fd9":[2,0,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html":[1,2,5],
-"keyvalue.html":[0,5,5,11],
 "keyvalue.html":[0,4,5,11],
+"keyvalue.html":[0,5,5,11],
 "leveldb.html":[0,3],
 "leveldb.html#leveldb_build":[0,3,0],
 "leveldb.html#leveldb_caveats":[0,3,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "schema_lang_java.html#schema_column_types_lang_java":[0,5,5,1],
 "schema_lang_java.html#schema_columns_lang_java":[0,5,5,5],
 "schema_lang_java.html#schema_cursor_formats_lang_java":[0,5,5,4],
-"schema_lang_java.html#schema_examples_lang_java":[0,5,5,10],
-"schema_lang_java.html#schema_format_types_lang_java":[0,5,5,2]
+"schema_lang_java.html#schema_examples_lang_java":[0,5,5,10]
 };

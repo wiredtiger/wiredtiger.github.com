@@ -117,6 +117,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>get_home</b> ()</td
 <tr class="memitem:a84403030d0ef4f986544dda57498a1b4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a84403030d0ef4f986544dda57498a1b4">set_timestamp</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a84403030d0ef4f986544dda57498a1b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a global transaction timestamp.  <a href="#a84403030d0ef4f986544dda57498a1b4">More...</a><br /></td></tr>
 <tr class="separator:a84403030d0ef4f986544dda57498a1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa133f587176b4510a753e1dc950fa5fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#aa133f587176b4510a753e1dc950fa5fc">rollback_to_stable</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:aa133f587176b4510a753e1dc950fa5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rollback in-memory non-logged state to an earlier point in time.  <a href="#aa133f587176b4510a753e1dc950fa5fc">More...</a><br /></td></tr>
+<tr class="separator:aa133f587176b4510a753e1dc950fa5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c404c400a9873926810241ad0997a4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1c404c400a9873926810241ad0997a4a">load_extension</a> (String path, String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a1c404c400a9873926810241ad0997a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an extension.  <a href="#a1c404c400a9873926810241ad0997a4a">More...</a><br /></td></tr>
 <tr class="separator:a1c404c400a9873926810241ad0997a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -660,6 +663,36 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa133f587176b4510a753e1dc950fa5fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Connection.rollback_to_stable </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rollback in-memory non-logged state to an earlier point in time. </p>
+<p>This method uses a timestamp to define the rollback point, and thus requires that the application uses timestamps and that the stable_timestamp must have been set via a call to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp. ">WT_CONNECTION::set_timestamp</a>. Any updates to checkpoint durable tables that are more recent than the stable timestamp are removed.</p>
+<p>This method requires that there are no active cursor operations for the duration of the call.</p>
+<p>Any updates made to logged tables will not be rolled back. Any updates made without an associated timestamp will not be rolled back. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</p>
+<div class="fragment"><div class="line">        error_check(conn-&gt;rollback_to_stable(conn, <span class="stringliteral">&quot;&quot;</span>));</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
   </table>
   </dd>
 </dl>
