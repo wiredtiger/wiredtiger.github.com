@@ -715,13 +715,16 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Set a global transaction timestamp. </p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div>
+</div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>commit_timestamp</code></td><td>reset the maximum commit timestamp tracked by WiredTiger. This will cause future calls to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a607cf2781661d03ba50586133e02cc11" title="Query the global transaction timestamp state. ">WT_CONNECTION::query_timestamp</a> to ignore commit timestamps greater than the specified value until the next commit moves the tracked commit timestamp forwards. This is only intended for use where the application is rolling back locally committed transactions. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>oldest_timestamp</code></td><td>future commits and queries will be no earlier than the specified timestamp. Supplied values must be monotonically increasing. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
