@@ -120,6 +120,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad082439541b1b95d6aae6c15026fe512"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512">set_timestamp</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *config)</td></tr>
 <tr class="memdesc:ad082439541b1b95d6aae6c15026fe512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a global transaction timestamp.  <a href="#ad082439541b1b95d6aae6c15026fe512">More...</a><br /></td></tr>
 <tr class="separator:ad082439541b1b95d6aae6c15026fe512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93dbc74accb426582b3c5c2f69e04b28"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28">rollback_to_stable</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *config)</td></tr>
+<tr class="memdesc:a93dbc74accb426582b3c5c2f69e04b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rollback in-memory non-logged state to an earlier point in time.  <a href="#a93dbc74accb426582b3c5c2f69e04b28">More...</a><br /></td></tr>
+<tr class="separator:a93dbc74accb426582b3c5c2f69e04b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Extensions</div></td></tr>
 <tr class="memitem:ab6a56facfd217e5ff687aa4c012e8d68"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68">load_extension</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *path, const char *config)</td></tr>
 <tr class="memdesc:ab6a56facfd217e5ff687aa4c012e8d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an extension.  <a href="#ab6a56facfd217e5ff687aa4c012e8d68">More...</a><br /></td></tr>
@@ -1169,6 +1172,46 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a93dbc74accb426582b3c5c2f69e04b28"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CONNECTION::rollback_to_stable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rollback in-memory non-logged state to an earlier point in time. </p>
+<p>This method uses a timestamp to define the rollback point, and thus requires that the application uses timestamps and that the stable_timestamp must have been set via a call to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp. ">WT_CONNECTION::set_timestamp</a>. Any updates to checkpoint durable tables that are more recent than the stable timestamp are removed.</p>
+<p>This method requires that there are no active cursor operations for the duration of the call.</p>
+<p>Any updates made to logged tables will not be rolled back. Any updates made without an associated timestamp will not be rolled back. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</p>
+<div class="fragment"><div class="line">        error_check(conn-&gt;rollback_to_stable(conn, <span class="stringliteral">&quot;&quot;</span>));</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a7c9d5b40133a6ba1cbc4a6b1d8e1e86b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1257,13 +1300,16 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set a global transaction timestamp. </p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div>
+</div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>commit_timestamp</code></td><td>reset the maximum commit timestamp tracked by WiredTiger. This will cause future calls to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a607cf2781661d03ba50586133e02cc11" title="Query the global transaction timestamp state. ">WT_CONNECTION::query_timestamp</a> to ignore commit timestamps greater than the specified value until the next commit moves the tracked commit timestamp forwards. This is only intended for use where the application is rolling back locally committed transactions. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>oldest_timestamp</code></td><td>future commits and queries will be no earlier than the specified timestamp. Supplied values must be monotonically increasing. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
