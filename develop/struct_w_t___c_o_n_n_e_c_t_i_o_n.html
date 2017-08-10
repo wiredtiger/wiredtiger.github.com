@@ -1200,7 +1200,7 @@ Public Member Functions</h2></td></tr>
 <p>This method uses a timestamp to define the rollback point, and thus requires that the application uses timestamps and that the stable_timestamp must have been set via a call to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp. ">WT_CONNECTION::set_timestamp</a>. Any updates to checkpoint durable tables that are more recent than the stable timestamp are removed.</p>
 <p>This method requires that there are no active cursor operations for the duration of the call.</p>
 <p>Any updates made to logged tables will not be rolled back. Any updates made without an associated timestamp will not be rolled back. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;rollback_to_stable(conn, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;rollback_to_stable(conn, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -1302,6 +1302,7 @@ Public Member Functions</h2></td></tr>
 <p>Set a global transaction timestamp. </p>
 <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div>
+</div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;stable_timestamp=2a&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>

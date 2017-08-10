@@ -157,7 +157,7 @@ Isolation levels</h1>
 </div><!-- fragment --><p> Additionally, the default transaction isolation can be configured and re-configured on a per-session basis:</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Open a session configured for read-uncommitted isolation. */</span></div>
 <div class="line">        error_check(conn-&gt;open_session(</div>
-<div class="line">            conn, NULL, <span class="stringliteral">&quot;isolation=read_uncommitted&quot;</span>, &amp;session));</div>
+<div class="line">            conn, NULL, <span class="stringliteral">&quot;isolation=read-uncommitted&quot;</span>, &amp;session));</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">        <span class="comment">/* Re-configure a session for snapshot isolation. */</span></div>
 <div class="line">        error_check(session-&gt;reconfigure(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>));</div>
 </div><!-- fragment --> <h1><a class="anchor" id="transaction_named_snapshots"></a>

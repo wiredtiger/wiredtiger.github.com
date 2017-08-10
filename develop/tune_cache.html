@@ -77,7 +77,8 @@ Cache size</h1>
 <p>The cache size for the database is normally configured by setting the <code>cache_size</code> configuration string when calling the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function. The cache size can be adjusted after the open call with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a>.</p>
 <p>An example of setting a cache size to 5GB:</p>
 <div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div>
-<div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on)&quot;</span>, &amp;conn));</div>
+<div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>,</div>
+<div class="line">            &amp;conn));</div>
 </div><!-- fragment --><p> The effectiveness of the chosen cache size can be measured by reviewing the page eviction statistics for the database.</p>
 <h1><a class="anchor" id="tuning_cache_resident"></a>
 Cache resident objects</h1>
