@@ -500,6 +500,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738">modify</a>(cursor, entries, 3));</div>
 </div><!-- fragment --><p> On success, the cursor ends positioned at the modified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
 <p>The maximum length of a single column stored in a table is not fixed (as it partially depends on the underlying file configuration), but is always a small number of bytes less than 4GB.</p>
+<p>The <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> method stores a change record in cache and writes a change record to the log, instead of the usual complete value. This can reduce cache and logging requirements, but may result in slower reads because the complete value must be assembled during retrieval.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
@@ -677,10 +678,10 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>Reserve an existing record so a subsequent write is less likely to fail due to a conflict between concurrent operations. </p>
 <p>The key must first be set and the record must already exist.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
-<div class="line">        session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL));</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6">reserve</a>(cursor));</div>
-<div class="line">        session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL);</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div>
 </div><!-- fragment --><p> On success, the cursor ends positioned at the specified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

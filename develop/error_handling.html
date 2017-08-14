@@ -72,7 +72,7 @@ $(document).ready(function(){initNavTree('error_handling.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>WiredTiger operations return a value of 0 on success and a non-zero value on error. Error codes may be either positive or negative: positive error codes are standard error codes as described for POSIX-like systems (for example, EINVAL or EBUSY), negative error codes are WiredTiger-specific (for example, WT_ROLLBACK).</p>
-<p>WiredTiger-specific error codes always appear in the -31,800 to -31,999 range.</p>
+<p>WiredTiger-specific error codes always appear in the -31,800 to -31,999 range, inclusive.</p>
 <p>The following is a list of possible WiredTiger-specific errors:</p>
 <dl class="section user"><dt>WT_ROLLBACK</dt><dd>This error is generated when an operation cannot be completed due to a conflict with concurrent operations. The operation may be retried; if a transaction is in progress, it should be rolled back and the operation retried in a new transaction.</dd></dl>
 <dl class="section user"><dt>WT_DUPLICATE_KEY</dt><dd>This error is generated when the application attempts to insert a record with the same key as an existing record without the 'overwrite' configuration to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a>.</dd></dl>
