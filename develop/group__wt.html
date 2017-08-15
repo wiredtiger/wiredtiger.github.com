@@ -2464,7 +2464,7 @@ The numeric value of a configuration boolean or integer. <p>If the configuration
 <tr>
 <td><code>checkpoint_sync</code></td><td>flush files to stable storage when closing or writing checkpoints.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>compatibility = (</code></td><td>set compatibility version of database.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>compatibility = (</code></td><td>set compatibility version of database. Changing the compatibility version requires that there are no active operations for the duration of the call.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;release</code></td><td>compatibility release version string.</td><td>a string; default empty. </td></tr>
 <tr>
