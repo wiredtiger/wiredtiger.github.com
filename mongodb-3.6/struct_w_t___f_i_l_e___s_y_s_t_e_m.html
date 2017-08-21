@@ -147,7 +147,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return a list of file names for the named directory. </p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">file_system</td><td>the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation. ">WT_FILE_SYSTEM</a> </td></tr>
@@ -174,7 +174,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Free memory allocated by WT_FILE_SYSTEM::directory_list. </p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_system</td><td>the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation. ">WT_FILE_SYSTEM</a> </td></tr>
@@ -199,7 +199,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return if the named file system object exists. </p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">file_system</td><td>the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation. ">WT_FILE_SYSTEM</a> </td></tr>
@@ -227,7 +227,7 @@ Public Attributes</h2></td></tr>
 <p>The method should return ENOENT if the file is not being created and does not exist.</p>
 <p>The method should return EACCES if the file cannot be opened in the requested mode (for example, a file opened for writing in a readonly file system).</p>
 <p>The method should return EBUSY if <a class="el" href="group__wt__ext.html#gab29effbad63261153d59ad01fcaf7d25" title="WT_FILE_SYSTEM::open_file flags: return EBUSY if exclusive use not available. ">WT_FS_OPEN_EXCLUSIVE</a> is set and the file is in use.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">file_system</td><td>the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation. ">WT_FILE_SYSTEM</a> </td></tr>
@@ -255,7 +255,7 @@ Public Attributes</h2></td></tr>
 
 <p>Remove a named file system object. </p>
 <p>This method is not required for readonly file systems and should be set to NULL when not required by the file system.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_system</td><td>the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation. ">WT_FILE_SYSTEM</a> </td></tr>
@@ -282,7 +282,7 @@ Public Attributes</h2></td></tr>
 
 <p>Rename a named file system object. </p>
 <p>This method is not required for readonly file systems and should be set to NULL when not required by the file system.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_system</td><td>the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation. ">WT_FILE_SYSTEM</a> </td></tr>
@@ -308,7 +308,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the size of a named file system object. </p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">file_system</td><td>the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation. ">WT_FILE_SYSTEM</a> </td></tr>

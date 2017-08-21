@@ -158,7 +158,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Close a file handle, the handle will not be further accessed by WiredTiger. </p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -182,7 +182,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Indicate expected future use of file ranges, based on the POSIX 1003.1 standard fadvise. </p>
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -211,7 +211,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
 <p>Any allocated disk space must read as 0 bytes, and no existing file data may change. Allocating all necessary underlying storage (not changing just the file's metadata), is likely to result in increased performance.</p>
 <p>This method is not called by multiple threads concurrently (on the same file handle). If the file handle's extension method supports concurrent calls, set the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2479acb713a211b2d7cc84aaada4b29b" title="Extend the file. ">WT_FILE_HANDLE::fh_extend_nolock</a> method instead. See <a class="el" href="custom_file_systems.html">Custom File Systems</a> for more information.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -238,7 +238,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
 <p>Any allocated disk space must read as 0 bytes, and no existing file data may change. Allocating all necessary underlying storage (not only changing the file's metadata), is likely to result in increased performance.</p>
 <p>This method may be called by multiple threads concurrently (on the same file handle). If the file handle's extension method does not support concurrent calls, set the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab4b685446f0ce09b7270dd32bb771ce7" title="Extend the file. ">WT_FILE_HANDLE::fh_extend</a> method instead. See <a class="el" href="custom_file_systems.html">Custom File Systems</a> for more information.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -262,7 +262,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Lock/unlock a file from the perspective of other processes running in the system, where necessary. </p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -287,7 +287,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Map a file into memory, based on the POSIX 1003.1 standard mmap. </p>
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -314,7 +314,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Unmap part of a memory mapped file, based on the POSIX 1003.1 standard madvise. </p>
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -341,7 +341,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Preload part of a memory mapped file, based on the POSIX 1003.1 standard madvise. </p>
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -367,7 +367,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Read from a file, based on the POSIX 1003.1 standard pread. </p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -393,7 +393,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Return the size of a file. </p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -418,7 +418,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Make outstanding file writes durable and do not return until writes are complete. </p>
 <p>This method is not required for read-only files, and should be set to NULL when not supported by the file.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -442,7 +442,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Schedule the outstanding file writes required for durability and return immediately. </p>
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -467,7 +467,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Truncate the file. </p>
 <p>This method is not required, and should be set to NULL when not supported by the file.</p>
 <p>This method is not called by multiple threads concurrently (on the same file handle).</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -492,7 +492,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Unmap a memory mapped file, based on the POSIX 1003.1 standard munmap. </p>
 <p>This method is only required if a valid implementation of map is provided by the file, and should be set to NULL otherwise.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>
@@ -519,7 +519,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Write to a file, based on the POSIX 1003.1 standard pwrite. </p>
 <p>This method is not required for read-only files, and should be set to NULL when not supported by the file.</p>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file. ">WT_FILE_HANDLE</a> </td></tr>

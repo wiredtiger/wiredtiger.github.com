@@ -193,7 +193,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_call_center_8c-example.html#a9">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a20">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a25">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a17">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a51">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a9">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a9">ex_schema.c</a>, and <a class="el" href="ex_stat_8c-example.html#a6">ex_stat.c</a>.</dd>
 </dl>
 </div>
@@ -247,7 +247,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -297,7 +297,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -337,7 +337,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a12">ex_access.c</a>, <a class="el" href="ex_cursor_8c-example.html#a2">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a20">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a13">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a53">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a6">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a11">ex_schema.c</a>, and <a class="el" href="ex_thread_8c-example.html#a6">ex_thread.c</a>.</dd>
 </dl>
 </div>
@@ -378,7 +378,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a13">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a12">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a3">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a21">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a14">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#a7">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a12">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a3">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a7">ex_thread.c</a>.</dd>
 </dl>
 </div>
@@ -408,7 +408,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor));</div>
 </div><!-- fragment --><p> If the cursor was not configured with "overwrite=true", both the key and value must be set and the record must not already exist; the record will be inserted.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Insert a new record and fail if the record exists. */</span></div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;new key&quot;</span>, *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
 <div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite=false&quot;</span>, &amp;cursor));</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
@@ -418,8 +418,6 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="fragment"><div class="line">        <span class="comment">/* Insert a new record and assign a record number. */</span></div>
 <div class="line">        uint64_t recno;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;some value&quot;</span>;</div>
-<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;append&quot;</span>, &amp;cursor));</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, value);</div>
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor));</div>
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;recno));</div>
@@ -434,7 +432,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and a record with the specified key already exists, <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. In particular, if <code>overwrite=false</code> is configured and a record with the specified key already exists, <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a9">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a8">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a11">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a32">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a8">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a50">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a20">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a8">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a22">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a14">ex_thread.c</a>.</dd>
 </dl>
 </div>
@@ -476,8 +474,6 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>Calling the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> method outside of snapshot isolation can lead to unexpected results. While <code>read-committed</code> isolation is supported with the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> method, <code>read-uncommitted</code> isolation is not.</p>
 <div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> entries[3];</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
-<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Position the cursor. */</span></div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
@@ -504,6 +500,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738">modify</a>(cursor, entries, 3));</div>
 </div><!-- fragment --><p> On success, the cursor ends positioned at the modified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
 <p>The maximum length of a single column stored in a table is not fixed (as it partially depends on the underlying file configuration), but is always a small number of bytes less than 4GB.</p>
+<p>The <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> method stores a change record in cache and writes a change record to the log, instead of the usual complete value. This can reduce cache and logging requirements, but may result in slower reads because the complete value must be assembled during retrieval.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
@@ -512,7 +509,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>in_memory</code> is configured for the database and the modify requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. In particular, if <code>in_memory</code> is configured for the database and the modify requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
 
 </div>
 </div>
@@ -538,7 +535,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a11">ex_access.c</a>, <a class="el" href="ex_cursor_8c-example.html#a1">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a19">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a15">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a52">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a5">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a10">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a2">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a5">ex_thread.c</a>.</dd>
 </dl>
 </div>
@@ -565,7 +562,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_call_center_8c-example.html#a14">ex_call_center.c</a>, and <a class="el" href="ex_cursor_8c-example.html#a5">ex_cursor.c</a>.</dd>
 </dl>
 </div>
@@ -598,11 +595,12 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>The cursor is reset.</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
 <div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;overwrite=false&quot;</span>, &amp;cursor));</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
-<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, value);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/* Reconfigure the cursor to overwrite the record. */</span></div>
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a">reconfigure</a>(cursor, <span class="stringliteral">&quot;overwrite=true&quot;</span>));</div>
+<div class="line"></div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">set_value</a>(cursor, value);</div>
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">insert</a>(cursor));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -619,7 +617,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -658,7 +656,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. In particular, if <code>overwrite=false</code> is configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_cursor_8c-example.html#a13">ex_cursor.c</a>, and <a class="el" href="ex_extractor_8c-example.html#a18">ex_extractor.c</a>.</dd>
 </dl>
 </div>
@@ -680,10 +678,10 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>Reserve an existing record so a subsequent write is less likely to fail due to a conflict between concurrent operations. </p>
 <p>The key must first be set and the record must already exist.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;some key&quot;</span>;</div>
-<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
-<div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL));</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6">reserve</a>(cursor));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div>
 </div><!-- fragment --><p> On success, the cursor ends positioned at the specified record; to minimize cursor resources, the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor. ">WT_CURSOR::reset</a> method should be called as soon as the cursor no longer needs that position.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -691,7 +689,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -719,7 +717,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a10">ex_access.c</a>, <a class="el" href="ex_cursor_8c-example.html#a6">ex_cursor.c</a>, and <a class="el" href="ex_log_8c-example.html#a23">ex_log.c</a>.</dd>
 </dl>
 </div>
@@ -750,7 +748,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_call_center_8c-example.html#a11">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a8">ex_cursor.c</a>, <a class="el" href="ex_extractor_8c-example.html#a12">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#a24">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a20">ex_schema.c</a>, and <a class="el" href="ex_stat_8c-example.html#a11">ex_stat.c</a>.</dd>
 </dl>
 </div>
@@ -822,7 +820,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_call_center_8c-example.html#a13">ex_call_center.c</a>, and <a class="el" href="ex_cursor_8c-example.html#a9">ex_cursor.c</a>.</dd>
 </dl>
 </div>
@@ -950,7 +948,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. In particular, if <code>overwrite=false</code> is configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. Also, if <code>in_memory</code> is configured for the database and the update requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. In particular, if <code>overwrite=false</code> is configured and no record with the specified key exists, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> is returned. Also, if <code>in_memory</code> is configured for the database and the update requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a> is returned. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_cursor_8c-example.html#a12">ex_cursor.c</a>, and <a class="el" href="ex_schema_8c-example.html#a13">ex_schema.c</a>.</dd>
 </dl>
 </div>

@@ -179,7 +179,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -249,7 +249,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. If there are no available handles, <code>EBUSY</code> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If there are no available handles, <code>EBUSY</code> is returned. </dd></dl>
 
 </div>
 </div>
@@ -283,7 +283,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -361,7 +361,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -442,7 +442,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -480,7 +480,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -511,6 +511,10 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <p>Query the global transaction timestamp state. </p>
 <div class="fragment"><div class="line">        <span class="keywordtype">char</span> timestamp_buf[2 * WT_TIMESTAMP_SIZE + 1];</div>
 <div class="line"></div>
+<div class="line">        error_check(</div>
+<div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a>(session, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div>
+<div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div>
+<div class="line"></div>
 <div class="line">        error_check(conn-&gt;query_timestamp(</div>
 <div class="line">            conn, timestamp_buf, <span class="stringliteral">&quot;get=all_committed&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
@@ -527,7 +531,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. If there is no matching timestamp (e.g., if this method is called before timestamps are used) <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If there is no matching timestamp (e.g., if this method is called before timestamps are used) <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned. </dd></dl>
 
 </div>
 </div>
@@ -576,7 +580,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>compatibility = (</code></td><td>set compatibility version of database.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>compatibility = (</code></td><td>set compatibility version of database. Changing the compatibility version requires that there are no active operations for the duration of the call.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;release</code></td><td>compatibility release version string.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -660,13 +664,13 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -686,9 +690,9 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 <p>Rollback in-memory non-logged state to an earlier point in time. </p>
 <p>This method uses a timestamp to define the rollback point, and thus requires that the application uses timestamps and that the stable_timestamp must have been set via a call to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp. ">WT_CONNECTION::set_timestamp</a>. Any updates to checkpoint durable tables that are more recent than the stable timestamp are removed.</p>
-<p>This method requires that there are no active cursor operations for the duration of the call.</p>
+<p>This method requires that there are no active operations for the duration of the call.</p>
 <p>Any updates made to logged tables will not be rolled back. Any updates made without an associated timestamp will not be rolled back. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;rollback_to_stable(conn, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="fragment"><div class="line">        error_check(conn-&gt;rollback_to_stable(conn, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -696,7 +700,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -717,6 +721,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <p>Set a global transaction timestamp. </p>
 <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div>
+</div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;stable_timestamp=2a&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
@@ -734,7 +739,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="group__wt.html#error_returns">Error Returns</a> for details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
