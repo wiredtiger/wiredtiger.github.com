@@ -34,7 +34,7 @@ var programming_lang_java =
       [ "Bloom filters", "lsm_lang_java.html#lsm_bloom_lang_java", null ],
       [ "Creating tables using LSM trees", "lsm_lang_java.html#lsm_schema_lang_java", null ],
       [ "Caveats", "lsm_lang_java.html#lsm_caveats_lang_java", [
-        [ "Hazard configuration", "lsm_lang_java.html#lsm_hazard_lang_java", null ],
+        [ "Key_format configuration", "lsm_lang_java.html#lsm_key_format_lang_java", null ],
         [ "Named checkpoints", "lsm_lang_java.html#lsm_checkpoints_lang_java", null ]
       ] ]
     ] ],
@@ -106,9 +106,6 @@ var programming_lang_java =
     [ "Simulating workloads with wtperf", "wtperf.html", [
       [ "Monitoring wtperf", "wtperf.html#monitor", null ],
       [ "Wtperf configuration options", "wtperf.html#config", null ]
-    ] ],
-    [ "Visualizing performance with wtstats", "wtstats.html", [
-      [ "Manipulating the wtstats display", "wtstats.html#wtstats_display", null ]
     ] ],
     [ "gcc/clang build options", "tune_build_options.html", null ],
     [ "Bulk-load", "tune_bulk_load.html", null ],

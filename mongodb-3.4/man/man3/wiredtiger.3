@@ -1,9 +1,9 @@
-.TH "WiredTiger" 3 "Fri Aug 25 2017" "Version 2.9.2" "WiredTiger" \" -*- nroff -*-
+.TH "WiredTiger" 3 "Wed Oct 25 2017" "Version 2.9.2" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WiredTiger \- Getting Started with the API 
-WiredTiger applications will generally use the following classes to access and manage data:
+WiredTigerGetting Started with the API 
+ \- WiredTiger applications will generally use the following classes to access and manage data:
 .PP
 .IP "\(bu" 2
 a \fBWT_CONNECTION\fP represents a connection to a database\&. Most applications will only open one connection to a database for each process\&. All methods in \fBWT_CONNECTION\fP are thread safe\&.
@@ -26,7 +26,7 @@ To access a database, first open a connection and create a session handle for th
 .PP
 .PP
 .nf
-        WT_CONNECTION *conn;
+      WT_CONNECTION *conn;
         WT_CURSOR *cursor;
         WT_SESSION *session;
         const char *key, *value;

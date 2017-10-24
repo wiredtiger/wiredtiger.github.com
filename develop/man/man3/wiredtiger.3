@@ -1,9 +1,9 @@
-.TH "WiredTiger" 3 "Fri Aug 25 2017" "Version 3.0.0" "WiredTiger" \" -*- nroff -*-
+.TH "WiredTiger" 3 "Wed Oct 25 2017" "Version 3.0.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-WiredTiger \- Getting Started with the API 
-WiredTiger applications will generally use the following classes to access and manage data:
+WiredTigerGetting Started with the API 
+ \- WiredTiger applications will generally use the following classes to access and manage data:
 .PP
 .IP "\(bu" 2
 a \fBWT_CONNECTION\fP represents a connection to a database\&. Most applications will only open one connection to a database for each process\&. All methods in \fBWT_CONNECTION\fP are thread safe\&.
@@ -26,7 +26,7 @@ To access a database, first open a connection and create a session handle for th
 .PP
 .PP
 .nf
-        WT_CONNECTION *conn;
+      WT_CONNECTION *conn;
         WT_CURSOR *cursor;
         WT_SESSION *session;
         const char *key, *value;
@@ -90,7 +90,7 @@ Then we insert a new row into the table\&. The \fBWT_CURSOR::set_key\fP and \fBW
 .PP
  Note that the key and value parts of the records are returned as C strings because the table was created that way (even if it was created by a previous run of the example)\&. No data extraction or conversion is required in the application\&.
 .PP
-Because the cursor was positioned in the table after the \fBWT_CURSOR::insert\fP call, we had to re-position it using the WT_CURSOR::first call; if we weren't using the cursor for the call to \fBWT_CURSOR::insert\fP above, this loop would simplify to:
+Because the cursor was positioned in the table after the \fBWT_CURSOR::insert\fP call, we had to re-position it using the \fBWT_CURSOR::reset\fP call; if we weren't using the cursor for the call to \fBWT_CURSOR::insert\fP above, this loop would simplify to:
 .PP
 .PP
 .nf

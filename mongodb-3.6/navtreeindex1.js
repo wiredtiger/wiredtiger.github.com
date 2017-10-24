@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html":[2,0,0,0,7],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a0c754af84b39f0852a235fef1445f807":[2,0,0,0,7,1],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a33488a6e84379eb3294b8969e204535d":[2,0,0,0,7,4],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a5a18e5cb61d2fa56e6ffededa11230c5":[2,0,0,0,7,12],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "dump_formats.html#dump_formats_json":[0,6,21,0],
 "dump_formats.html#dump_formats_text":[0,6,21,1],
 "durability.html":[0,4,18],
-"durability.html#durability_archiving":[0,4,18,3],
-"durability.html#durability_backup":[0,4,18,1]
+"durability.html#durability_archiving":[0,4,18,3]
 };

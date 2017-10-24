@@ -35,7 +35,7 @@ var programming =
       [ "Bloom filters", "lsm.html#lsm_bloom", null ],
       [ "Creating tables using LSM trees", "lsm.html#lsm_schema", null ],
       [ "Caveats", "lsm.html#lsm_caveats", [
-        [ "Hazard configuration", "lsm.html#lsm_hazard", null ],
+        [ "Key_format configuration", "lsm.html#lsm_key_format", null ],
         [ "Named checkpoints", "lsm.html#lsm_checkpoints", null ]
       ] ]
     ] ],
@@ -148,9 +148,6 @@ var programming =
     [ "Simulating workloads with wtperf", "wtperf.html", [
       [ "Monitoring wtperf", "wtperf.html#monitor", null ],
       [ "Wtperf configuration options", "wtperf.html#config", null ]
-    ] ],
-    [ "Visualizing performance with wtstats", "wtstats.html", [
-      [ "Manipulating the wtstats display", "wtstats.html#wtstats_display", null ]
     ] ],
     [ "gcc/clang build options", "tune_build_options.html", null ],
     [ "Bulk-load", "tune_bulk_load.html", null ],

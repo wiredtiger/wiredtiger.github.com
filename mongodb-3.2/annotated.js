@@ -27,7 +27,7 @@ var annotated =
     [ "WT_ASYNC_OP", "struct_w_t___a_s_y_n_c___o_p.html", "struct_w_t___a_s_y_n_c___o_p" ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", "struct_w_t___c_o_l_l_a_t_o_r" ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", "struct_w_t___c_o_m_p_r_e_s_s_o_r" ],
-    [ "WT_CONFIG_ITEM", "group__wt.html#struct_w_t___c_o_n_f_i_g___i_t_e_m", "group__wt_struct_w_t___c_o_n_f_i_g___i_t_e_m" ],
+    [ "WT_CONFIG_ITEM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html", "struct_w_t___c_o_n_f_i_g___i_t_e_m" ],
     [ "WT_CONFIG_PARSER", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r" ],
     [ "WT_CONNECTION", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html", "struct_w_t___c_o_n_n_e_c_t_i_o_n" ],
     [ "WT_CURSOR", "struct_w_t___c_u_r_s_o_r.html", "struct_w_t___c_u_r_s_o_r" ],

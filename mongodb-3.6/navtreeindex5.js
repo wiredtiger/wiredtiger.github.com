@@ -1,7 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"schema_lang_java.html#schema_format_types_lang_java":[0,5,5,2],
-"schema_lang_java.html#schema_index_immutable_lang_java":[0,5,5,8],
 "schema_lang_java.html#schema_index_projections_lang_java":[0,5,5,9],
 "schema_lang_java.html#schema_indices_lang_java":[0,5,5,7],
 "schema_lang_java.html#schema_intro_lang_java":[0,5,5,0],
@@ -46,6 +44,16 @@ var NAVTREEINDEX5 =
 "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a8b72f263db4faea37d8362ebc4725990":[1,1,1,3],
 "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ab19c8959b2fe1ee6abf1a51aac0c258f":[1,1,1,1],
 "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ad23cc1486dc4c0cc51835cfaecb01a33":[1,1,1,4],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html":[1,0,8],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a02883d8649c8f9cf4047ada5f7db9245":[1,0,8,7],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0a0d98189cee0438cd6c91bec663233085":[1,0,8,3],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0aa60d34a8a1fb1c7468cbd747a117fa8b":[1,0,8,4],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0aaf3e84e05814a538b630d161edba9c2d":[1,0,8,0],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0ad4cc6c35b608ec98a207cfd1d3a13922":[1,0,8,2],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d":[1,0,8,1],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a4aefab7843f434e5a5cc18203e9fec5f":[1,0,8,8],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#aa0ce7d30a32600e16824966c638ee45f":[1,0,8,6],
+"struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14":[1,0,8,5],
 "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html":[1,0,9],
 "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f":[1,0,9,2],
 "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3":[1,0,9,0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX5 =
 "transactions_lang_java.html#transaction_named_snapshots_lang_java":[0,5,3,5],
 "transactions_lang_java.html#transaction_timestamps_lang_java":[0,5,3,6],
 "transactions_lang_java.html#transactions_acid_lang_java":[0,5,3,0],
-"transactions_lang_java.html#transactions_api_lang_java":[0,5,3,1],
-"transactions_lang_java.html#transactions_concurrency_lang_java":[0,5,3,3],
-"transactions_lang_java.html#transactions_implicit_lang_java":[0,5,3,2],
-"tune_build_options.html":[0,4,35],
-"tune_build_options.html":[0,5,28],
-"tune_bulk_load.html":[0,4,36],
-"tune_bulk_load.html":[0,5,29],
-"tune_cache.html":[0,5,30],
-"tune_cache.html":[0,4,37]
+"transactions_lang_java.html#transactions_api_lang_java":[0,5,3,1]
 };
