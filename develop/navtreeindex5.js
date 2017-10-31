@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"schema_lang_java.html#schema_index_immutable_lang_java":[0,5,5,8],
 "schema_lang_java.html#schema_index_projections_lang_java":[0,5,5,9],
 "schema_lang_java.html#schema_indices_lang_java":[0,5,5,7],
 "schema_lang_java.html#schema_intro_lang_java":[0,5,5,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "transactions_lang_java.html#transaction_isolation_lang_java":[0,5,3,4],
 "transactions_lang_java.html#transaction_named_snapshots_lang_java":[0,5,3,5],
 "transactions_lang_java.html#transaction_timestamps_lang_java":[0,5,3,6],
-"transactions_lang_java.html#transactions_acid_lang_java":[0,5,3,0],
-"transactions_lang_java.html#transactions_api_lang_java":[0,5,3,1]
+"transactions_lang_java.html#transactions_acid_lang_java":[0,5,3,0]
 };
