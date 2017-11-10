@@ -430,6 +430,8 @@ var group__wt =
     [ "WT_STAT_CONN_TXN_PINNED_CHECKPOINT_RANGE", "group__wt.html#ga3b31a429e052e74b05dd55787a8444b6", null ],
     [ "WT_STAT_CONN_TXN_PINNED_RANGE", "group__wt.html#ga4525377acdbf81d2ca804e347f967a80", null ],
     [ "WT_STAT_CONN_TXN_PINNED_SNAPSHOT_RANGE", "group__wt.html#ga157db9dbbcaa1d101064c007056ecf03", null ],
+    [ "WT_STAT_CONN_TXN_PINNED_TIMESTAMP", "group__wt.html#ga9f44ff6954d8f64698c73f6ff83517ff", null ],
+    [ "WT_STAT_CONN_TXN_PINNED_TIMESTAMP_OLDEST", "group__wt.html#ga595e980cdbabf4c5eef6077111727e22", null ],
     [ "WT_STAT_CONN_TXN_READ_QUEUE_HEAD", "group__wt.html#gafdd933944ff0d27fbd8c95e65de8f209", null ],
     [ "WT_STAT_CONN_TXN_READ_QUEUE_INSERTS", "group__wt.html#ga5e9b162d3bfe2557531d4b254727a7d7", null ],
     [ "WT_STAT_CONN_TXN_READ_QUEUE_LEN", "group__wt.html#gaa1265659398b9349cd7f6e6e986e1dc1", null ],
