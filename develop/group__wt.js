@@ -179,6 +179,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_BYTES_INTERNAL", "group__wt.html#gabf5032c8b498b0c6824cdb1f2497955e", null ],
     [ "WT_STAT_CONN_CACHE_BYTES_INUSE", "group__wt.html#ga5d9371b0feab441fda3d791cb51992c4", null ],
     [ "WT_STAT_CONN_CACHE_BYTES_LEAF", "group__wt.html#gae4459a1a24408a41ed06db998cfec3cc", null ],
+    [ "WT_STAT_CONN_CACHE_BYTES_LOOKASIDE", "group__wt.html#ga8c487ac18d440c9a29ad5536cd0ff25f", null ],
     [ "WT_STAT_CONN_CACHE_BYTES_MAX", "group__wt.html#ga1fcf0c7313ec964431509e60b4e57db8", null ],
     [ "WT_STAT_CONN_CACHE_BYTES_OTHER", "group__wt.html#ga1d3fe9c675cec7e6aed401db2a1266a3", null ],
     [ "WT_STAT_CONN_CACHE_BYTES_READ", "group__wt.html#gad2c8d2f65106a89c5582149626a62c23", null ],
