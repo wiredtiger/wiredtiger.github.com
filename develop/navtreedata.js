@@ -24,8 +24,8 @@ var NAVTREEINDEX =
 "durability.html#durability_backup",
 "group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8",
 "group__wt.html#gac02dd31c8b605eb220e1f369dc75555c",
-"schema_lang_java.html#schema_cursor_formats_lang_java",
-"transactions_lang_java.html#transaction_named_snapshots_lang_java"
+"schema_lang_java.html#schema_column_types_lang_java",
+"transactions_lang_java.html#Timestamp_lang_java"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

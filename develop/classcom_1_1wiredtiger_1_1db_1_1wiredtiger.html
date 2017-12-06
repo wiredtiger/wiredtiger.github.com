@@ -1643,6 +1643,14 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_J
 <tr>
 <td><code>multiprocess</code></td><td>permit sharing between processes (will automatically start an RPC server for primary processes and use RPC for secondary processes). <b>Not yet supported in WiredTiger</b>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>operation_tracking = (</code></td><td>enable tracking of performance-critical functions. See <a class="el" href="operation_tracking.html">Track function calls</a> for more information.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable operation tracking subsystem.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the name of a directory into which operation tracking files are written. The directory must already exist. If the value is not an absolute path, the path is relative to the database home (see <a class="el" href="security.html#absolute_path">Absolute paths</a> for more information).</td><td>a string; default <code>"."</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>readonly</code></td><td>open connection in read-only mode. The database must exist. All methods that may modify a database are disabled. See <a class="el" href="readonly.html">Database read-only mode</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>session_max</code></td><td>maximum expected number of sessions (including server threads).</td><td>an integer greater than or equal to 1; default <code>100</code>. </td></tr>

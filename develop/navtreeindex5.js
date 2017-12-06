@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"schema_lang_java.html#schema_column_types_lang_java":[0,5,5,1],
+"schema_lang_java.html#schema_columns_lang_java":[0,5,5,5],
 "schema_lang_java.html#schema_cursor_formats_lang_java":[0,5,5,4],
 "schema_lang_java.html#schema_examples_lang_java":[0,5,5,10],
 "schema_lang_java.html#schema_format_types_lang_java":[0,5,5,2],
@@ -13,13 +15,13 @@ var NAVTREEINDEX5 =
 "security.html#directory_permissions":[0,7,3,0],
 "security.html#environment_variables":[0,7,3,3],
 "security.html#file_permissions":[0,7,3,2],
-"shared_cache.html":[0,4,23],
-"shared_cache_lang_java.html":[0,5,22],
+"shared_cache.html":[0,4,24],
+"shared_cache_lang_java.html":[0,5,23],
 "signals.html":[0,4,13],
-"statistics.html":[0,4,24],
-"statistics.html#statistics_log":[0,4,24,0],
-"statistics_lang_java.html":[0,5,23],
-"statistics_lang_java.html#statistics_log_lang_java":[0,5,23,0],
+"statistics.html":[0,4,25],
+"statistics.html#statistics_log":[0,4,25,0],
+"statistics_lang_java.html":[0,5,24],
+"statistics_lang_java.html#statistics_log_lang_java":[0,5,24,0],
 "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html":[1,0,6],
 "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html#a8859d51cae96e48f79bbd8322ee347ea":[1,0,6,0],
 "struct_w_t___a_s_y_n_c___o_p.html":[1,0,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "transactions.html#transactions_api":[0,4,3,1],
 "transactions.html#transactions_concurrency":[0,4,3,3],
 "transactions.html#transactions_implicit":[0,4,3,2],
-"transactions_lang_java.html":[0,5,3],
-"transactions_lang_java.html#Timestamp_lang_java":[0,5,3,6,0],
-"transactions_lang_java.html#transaction_isolation_lang_java":[0,5,3,4]
+"transactions_lang_java.html":[0,5,3]
 };
