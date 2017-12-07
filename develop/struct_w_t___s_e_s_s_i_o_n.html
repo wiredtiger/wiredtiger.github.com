@@ -619,6 +619,16 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>&#160;&#160;&#160;&#160;chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree. This limit is soft - it is possible for chunks to be temporarily larger than this value. This overrides the <code>memory_page_max</code> setting.</td><td>an integer between 512K and 500MB; default <code>10MB</code>. </td></tr>
 <tr>
+<td><code>&#160;&#160;&#160;&#160;merge_custom = (</code></td><td>configure the tree to merge into a custom data source.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;prefix</code></td><td>custom data source prefix instead of <code>"file"</code>.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;start _generation</code></td><td>merge generation at which the custom data source is used (zero indicates no custom data source).</td><td>an integer between 0 and 10; default <code>0</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;suffix</code></td><td>custom data source suffix instead of <code>".lsm"</code>.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>&#160;&#160;&#160;&#160;merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between 2 and 100; default <code>15</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;merge_min</code></td><td>the minimum number of chunks to include in a merge operation. If set to 0 or 1 half the value of merge_max is used.</td><td>an integer no more than 100; default <code>0</code>. </td></tr>
