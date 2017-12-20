@@ -136,9 +136,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga9e6adae3fc6964ef837a62795c7840ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a> (const char *home, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *errhandler, const char *config, <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> **connectionp)</td></tr>
-<tr class="memdesc:ga9e6adae3fc6964ef837a62795c7840ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection to a database.  <a href="#ga9e6adae3fc6964ef837a62795c7840ed">More...</a><br /></td></tr>
-<tr class="separator:ga9e6adae3fc6964ef837a62795c7840ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacbe8d118f978f5bfc8ccb4c77c9e8813"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a> (const char *home, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *event_handler, const char *config, <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> **connectionp)</td></tr>
+<tr class="memdesc:gacbe8d118f978f5bfc8ccb4c77c9e8813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection to a database.  <a href="#gacbe8d118f978f5bfc8ccb4c77c9e8813">More...</a><br /></td></tr>
+<tr class="separator:gacbe8d118f978f5bfc8ccb4c77c9e8813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a> (int error)</td></tr>
 <tr class="memdesc:gae8bf720ddb4a7a7390b70424594c40fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string (see <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string. ">WT_SESSION::strerror</a> for a thread-safe API).  <a href="#gae8bf720ddb4a7a7390b70424594c40fd">More...</a><br /></td></tr>
 <tr class="separator:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,15 +151,15 @@ Data packing and unpacking</h2></td></tr>
 <tr class="memitem:gac4f8b4621bcafad9db744e87be24a798"><td class="memItemLeft" align="right" valign="top">typedef struct __wt_pack_stream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a></td></tr>
 <tr class="memdesc:gac4f8b4621bcafad9db744e87be24a798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Streaming interface to packing.  <a href="#gac4f8b4621bcafad9db744e87be24a798">More...</a><br /></td></tr>
 <tr class="separator:gac4f8b4621bcafad9db744e87be24a798"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga58d055cb4d054715bebd58a2cb713b2d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d">wiredtiger_struct_pack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *buffer, size_t size, const char *format,...)</td></tr>
-<tr class="memdesc:ga58d055cb4d054715bebd58a2cb713b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a structure into a buffer.  <a href="#ga58d055cb4d054715bebd58a2cb713b2d">More...</a><br /></td></tr>
-<tr class="separator:ga58d055cb4d054715bebd58a2cb713b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2460e8022f3c8c7cb5f274ec9f1764e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, size_t *sizep, const char *format,...)</td></tr>
-<tr class="memdesc:ga2460e8022f3c8c7cb5f274ec9f1764e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the size required to pack a structure.  <a href="#ga2460e8022f3c8c7cb5f274ec9f1764e6">More...</a><br /></td></tr>
-<tr class="separator:ga2460e8022f3c8c7cb5f274ec9f1764e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const void *buffer, size_t size, const char *format,...)</td></tr>
-<tr class="memdesc:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a structure from a buffer.  <a href="#ga1db8298185374dbb61b398a4e9a3d1c8">More...</a><br /></td></tr>
-<tr class="separator:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab3d8a22e243360ece67baf33926d80fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *buffer, size_t len, const char *format,...)</td></tr>
+<tr class="memdesc:gab3d8a22e243360ece67baf33926d80fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a structure into a buffer.  <a href="#gab3d8a22e243360ece67baf33926d80fa">More...</a><br /></td></tr>
+<tr class="separator:gab3d8a22e243360ece67baf33926d80fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga156e7993d370495e1e52c29b2bb6b7d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, size_t *lenp, const char *format,...)</td></tr>
+<tr class="memdesc:ga156e7993d370495e1e52c29b2bb6b7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the size required to pack a structure.  <a href="#ga156e7993d370495e1e52c29b2bb6b7d4">More...</a><br /></td></tr>
+<tr class="separator:ga156e7993d370495e1e52c29b2bb6b7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7cdc8c688f2c15303188ed6999dcc1b4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const void *buffer, size_t len, const char *format,...)</td></tr>
+<tr class="memdesc:ga7cdc8c688f2c15303188ed6999dcc1b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a structure from a buffer.  <a href="#ga7cdc8c688f2c15303188ed6999dcc1b4">More...</a><br /></td></tr>
+<tr class="separator:ga7cdc8c688f2c15303188ed6999dcc1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7d1cae063863dd7f48a48b5cb65be253"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253">wiredtiger_pack_start</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format, void *buffer, size_t size, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **psp)</td></tr>
 <tr class="memdesc:ga7d1cae063863dd7f48a48b5cb65be253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a packing operation into a buffer with the given format string.  <a href="#ga7d1cae063863dd7f48a48b5cb65be253">More...</a><br /></td></tr>
 <tr class="separator:ga7d1cae063863dd7f48a48b5cb65be253"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2285,7 +2285,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div><div class="memdoc">
 
 <p>The maximum packed size of a 32-bit integer. </p>
-<p>The <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> function will pack single integers into at most this many bytes. </p>
+<p>The <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> function will pack single integers into at most this many bytes. </p>
 
 </div>
 </div>
@@ -2302,7 +2302,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div><div class="memdoc">
 
 <p>The maximum packed size of a 64-bit integer. </p>
-<p>The <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> function will pack single long integers into at most this many bytes. </p>
+<p>The <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> function will pack single long integers into at most this many bytes. </p>
 
 </div>
 </div>
@@ -2464,7 +2464,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div><div class="memdoc">
 
 <p>Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs. </p>
-<p>This API is outside the scope of a WiredTiger connection handle, since applications may need to generate configuration strings prior to calling <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This API is outside the scope of a WiredTiger connection handle, since applications may need to generate configuration strings prior to calling <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle to be used for error reporting (if NULL, error messages will be written to stderr). </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>the configuration string being parsed. The string must remain valid for the lifetime of the parser handle. </td></tr>
@@ -2477,8 +2477,8 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a> k, v;</div><div class="line">        <a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> *parser;</div><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *config_string =</div><div class="line">            <span class="stringliteral">&quot;path=/dev/loop,page_size=1024,log=(archive=true,file_max=20MB)&quot;</span>;</div><div class="line"></div><div class="line">        error_check(<a class="code" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a>(</div><div class="line">            NULL, config_string, strlen(config_string), &amp;parser));</div><div class="line">        error_check(parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser));</div></div><!-- fragment -->
 </div>
 </div>
-<a id="ga9e6adae3fc6964ef837a62795c7840ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9e6adae3fc6964ef837a62795c7840ed">&#9670;&nbsp;</a></span>wiredtiger_open()</h2>
+<a id="gacbe8d118f978f5bfc8ccb4c77c9e8813"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacbe8d118f978f5bfc8ccb4c77c9e8813">&#9670;&nbsp;</a></span>wiredtiger_open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2493,7 +2493,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *&#160;</td>
-          <td class="paramname"><em>errhandler</em>, </td>
+          <td class="paramname"><em>event_handler</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -2516,10 +2516,10 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div><div class="memdoc">
 
 <p>Open a connection to a database. </p>
-<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>,</div><div class="line">            &amp;conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>,</div><div class="line">            &amp;conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, a builtin error handler is installed that writes error messages to stderr. See <a class="el" href="error_handling.html#error_handling_event">Error handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">event_handler</td><td>An event handler. If <code>NULL</code>, a default event handler is installed that writes error messages to stderr. See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
@@ -2558,7 +2558,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>config_base</code></td><td>write the base configuration file if creating the database. If <code>false</code> in the config passed directly to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>, will ignore any existing base configuration file in addition to not creating one. See <a class="el" href="database_config.html#config_base">WiredTiger.basecfg file</a> for more information.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>config_base</code></td><td>write the base configuration file if creating the database. If <code>false</code> in the config passed directly to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>, will ignore any existing base configuration file in addition to not creating one. See <a class="el" href="database_config.html#config_base">WiredTiger.basecfg file</a> for more information.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -2570,7 +2570,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or custom encryption engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949" title="Add an encryption function. ">WT_CONNECTION::add_encryptor</a>. See <a class="el" href="encryption.html">Encryptors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;secretkey</code></td><td>A string that is passed to the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function. It is never stored in clear text, so must be given to any subsequent <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> calls to reopen the database. It must also be provided to any "wt" commands used with this database.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;secretkey</code></td><td>A string that is passed to the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function. It is never stored in clear text, so must be given to any subsequent <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> calls to reopen the database. It must also be provided to any "wt" commands used with this database.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -2993,8 +2993,8 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
 </dl>
 </div>
 </div>
-<a id="ga58d055cb4d054715bebd58a2cb713b2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga58d055cb4d054715bebd58a2cb713b2d">&#9670;&nbsp;</a></span>wiredtiger_struct_pack()</h2>
+<a id="gab3d8a22e243360ece67baf33926d80fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab3d8a22e243360ece67baf33926d80fa">&#9670;&nbsp;</a></span>wiredtiger_struct_pack()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3015,7 +3015,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
+          <td class="paramname"><em>len</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -3042,12 +3042,12 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
 <h1><a class="anchor" id="pack_examples"></a>
 Packing Examples</h1>
 <p>For example, the string <code>"iSh"</code> will pack a 32-bit integer followed by a NUL-terminated string, followed by a 16-bit integer. The default, big-endian encoding will be used, with no alignment. This could be used in C as follows:</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">char</span> buf[100];</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d">wiredtiger_struct_pack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, 42, <span class="stringliteral">&quot;hello&quot;</span>, -3));</div></div><!-- fragment --><p> Then later, the values can be unpacked as follows:</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">int</span> i;</div><div class="line">        <span class="keywordtype">char</span> *s;</div><div class="line">        <span class="keywordtype">short</span> h;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, &amp;i, &amp;s, &amp;h));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        <span class="keywordtype">char</span> buf[100];</div><div class="line">        error_check(<a class="code" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, 42, <span class="stringliteral">&quot;hello&quot;</span>, -3));</div></div><!-- fragment --><p> Then later, the values can be unpacked as follows:</p>
+<div class="fragment"><div class="line">        <span class="keywordtype">int</span> i;</div><div class="line">        <span class="keywordtype">char</span> *s;</div><div class="line">        <span class="keywordtype">short</span> h;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, &amp;i, &amp;s, &amp;h));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">buffer</td><td>a pointer to a packed byte array </td></tr>
-    <tr><td class="paramname">size</td><td>the number of valid bytes in the buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the number of valid bytes in the buffer </td></tr>
     <tr><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
   </table>
   </dd>
@@ -3057,8 +3057,8 @@ Packing Examples</h1>
 </dl>
 </div>
 </div>
-<a id="ga2460e8022f3c8c7cb5f274ec9f1764e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2460e8022f3c8c7cb5f274ec9f1764e6">&#9670;&nbsp;</a></span>wiredtiger_struct_size()</h2>
+<a id="ga156e7993d370495e1e52c29b2bb6b7d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga156e7993d370495e1e52c29b2bb6b7d4">&#9670;&nbsp;</a></span>wiredtiger_struct_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3073,7 +3073,7 @@ Packing Examples</h1>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t *&#160;</td>
-          <td class="paramname"><em>sizep</em>, </td>
+          <td class="paramname"><em>lenp</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -3097,10 +3097,10 @@ Packing Examples</h1>
 
 <p>Calculate the size required to pack a structure. </p>
 <p>Note that for variable-sized fields including variable-sized strings and integers, the calculated sized merely reflects the expected sizes specified in the format string itself.</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">size_t</span> size;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a>(</div><div class="line">            session, &amp;size, <span class="stringliteral">&quot;iSh&quot;</span>, 42, <span class="stringliteral">&quot;hello&quot;</span>, -3));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        <span class="keywordtype">size_t</span> size;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a>(</div><div class="line">            session, &amp;size, <span class="stringliteral">&quot;iSh&quot;</span>, 42, <span class="stringliteral">&quot;hello&quot;</span>, -3));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">sizep</td><td>a location where the number of bytes needed for the matching call to <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> is returned </td></tr>
+    <tr><td class="paramname">lenp</td><td>a location where the number of bytes needed for the matching call to <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> is returned </td></tr>
     <tr><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
   </table>
   </dd>
@@ -3110,8 +3110,8 @@ Packing Examples</h1>
 </dl>
 </div>
 </div>
-<a id="ga1db8298185374dbb61b398a4e9a3d1c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1db8298185374dbb61b398a4e9a3d1c8">&#9670;&nbsp;</a></span>wiredtiger_struct_unpack()</h2>
+<a id="ga7cdc8c688f2c15303188ed6999dcc1b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7cdc8c688f2c15303188ed6999dcc1b4">&#9670;&nbsp;</a></span>wiredtiger_struct_unpack()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3132,7 +3132,7 @@ Packing Examples</h1>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
+          <td class="paramname"><em>len</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -3155,12 +3155,12 @@ Packing Examples</h1>
 </div><div class="memdoc">
 
 <p>Unpack a structure from a buffer. </p>
-<p>Reverse of <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a>: gets values out of a packed byte string.</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">int</span> i;</div><div class="line">        <span class="keywordtype">char</span> *s;</div><div class="line">        <span class="keywordtype">short</span> h;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, &amp;i, &amp;s, &amp;h));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<p>Reverse of <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a>: gets values out of a packed byte string.</p>
+<div class="fragment"><div class="line">        <span class="keywordtype">int</span> i;</div><div class="line">        <span class="keywordtype">char</span> *s;</div><div class="line">        <span class="keywordtype">short</span> h;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, &amp;i, &amp;s, &amp;h));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">buffer</td><td>a pointer to a packed byte array </td></tr>
-    <tr><td class="paramname">size</td><td>the number of valid bytes in the buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the number of valid bytes in the buffer </td></tr>
     <tr><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
   </table>
   </dd>

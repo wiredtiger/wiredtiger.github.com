@@ -24,7 +24,7 @@ var programming =
     ] ],
     [ "Error handling", "error_handling.html", [
       [ "Translating errors", "error_handling.html#error_translation", null ],
-      [ "Error handling using the WT_EVENT_HANDLER", "error_handling.html#error_handling_event", null ]
+      [ "Message handling using the WT_EVENT_HANDLER", "error_handling.html#event_message_handling", null ]
     ] ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Log-Structured Merge Trees", "lsm.html", [

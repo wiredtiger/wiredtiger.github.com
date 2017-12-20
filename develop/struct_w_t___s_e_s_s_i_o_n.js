@@ -10,7 +10,7 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "drop", "struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70", null ],
     [ "join", "struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84", null ],
     [ "log_flush", "struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817", null ],
-    [ "log_printf", "struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9", null ],
+    [ "log_printf", "struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5", null ],
     [ "open_cursor", "struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d", null ],
     [ "rebalance", "struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984", null ],
     [ "reconfigure", "struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6", null ],

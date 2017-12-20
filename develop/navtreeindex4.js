@@ -1,6 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"group__wt.html#gab6e6f894ca6f5386107f9a9d340d24f5":[1,0,240],
 "group__wt.html#gab6eb2aa7a7a2f9aa978ae6be500526e4":[1,0,296],
 "group__wt.html#gab77eab473228d9f548f0c57cde75f99d":[1,0,419],
 "group__wt.html#gab8249f83dca3b51b0d4fc1f9605b5345":[1,0,120],
@@ -42,6 +41,7 @@ var NAVTREEINDEX4 =
 "group__wt.html#gacb3cbab83e6f6e940169629d549b2050":[1,0,168],
 "group__wt.html#gacb44b88acd3b00bee3236f9196f1b22e":[1,0,173],
 "group__wt.html#gacb800123d59ba49f1a210befc62f377b":[1,0,170],
+"group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813":[1,0,495],
 "group__wt.html#gaccb8b58a0c10c4c30f6537394bb5d84c":[1,0,196],
 "group__wt.html#gacde793f3bd5ccaf91b970852ed64da32":[1,0,140],
 "group__wt.html#gacf46b9dd314c216293141b26341b7b0e":[1,0,509],
@@ -191,8 +191,8 @@ var NAVTREEINDEX4 =
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html":[2,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html#a4be4e275a37fc04a6789c4cf5e8a5fd9":[2,0,0,0,0,0],
 "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html":[1,2,5],
-"keyvalue.html":[0,4,5,11],
 "keyvalue.html":[0,5,5,11],
+"keyvalue.html":[0,4,5,11],
 "leveldb.html":[0,3],
 "leveldb.html#leveldb_build":[0,3,0],
 "leveldb.html#leveldb_caveats":[0,3,1],

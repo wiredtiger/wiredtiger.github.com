@@ -372,7 +372,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>false (zero) if the connection existed before the call to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>, true (non-zero) if it was created by opening this handle. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>false (zero) if the connection existed before the call to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>, true (non-zero) if it was created by opening this handle. </dd></dl>
 
 </div>
 </div>
@@ -413,7 +413,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>config</code></td><td>configuration string passed to the entry point of the extension as its WT_CONFIG_ARG argument.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>early_load</code></td><td>whether this extension should be loaded at the beginning of <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. Only applicable to extensions loaded via the wiredtiger_open configurations string.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>early_load</code></td><td>whether this extension should be loaded at the beginning of <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>. Only applicable to extensions loaded via the wiredtiger_open configurations string.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>entry</code></td><td>the entry point of the extension, called to initialize the extension when it is loaded. The signature of the function must match <a class="el" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded. ">wiredtiger_extension_init</a>.</td><td>a string; default <code>wiredtiger_extension_init</code>. </td></tr>
 <tr>
@@ -447,7 +447,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div><div class="line">        error_check(conn-&gt;open_session(conn, NULL, NULL, &amp;session));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, the connection's error handler is used. See <a class="el" href="error_handling.html#error_handling_event">Error handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">event_handler</td><td>An event handler. If <code>NULL</code>, the connection's event handler is used. See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>

@@ -110,9 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1843292630960309129dcfe00e1a3817"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817">log_flush</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a1843292630960309129dcfe00e1a3817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the log.  <a href="#a1843292630960309129dcfe00e1a3817">More...</a><br /></td></tr>
 <tr class="separator:a1843292630960309129dcfe00e1a3817"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a504625d0b35da78f738d08530a409be9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a504625d0b35da78f738d08530a409be9">log_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *fmt,...)</td></tr>
-<tr class="memdesc:a504625d0b35da78f738d08530a409be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="message ">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called).  <a href="#a504625d0b35da78f738d08530a409be9">More...</a><br /></td></tr>
-<tr class="separator:a504625d0b35da78f738d08530a409be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85541ca42d7596857d9f50e03c78eb5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5">log_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format,...)</td></tr>
+<tr class="memdesc:ac85541ca42d7596857d9f50e03c78eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="message ">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called).  <a href="#ac85541ca42d7596857d9f50e03c78eb5">More...</a><br /></td></tr>
+<tr class="separator:ac85541ca42d7596857d9f50e03c78eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab21ec3055cade4d2682f162783314984"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984">rebalance</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *config)</td></tr>
 <tr class="memdesc:ab21ec3055cade4d2682f162783314984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rebalance a table or file, see <a class="el" href="rebalance.html">Rebalance</a>.  <a href="#ab21ec3055cade4d2682f162783314984">More...</a><br /></td></tr>
 <tr class="separator:ab21ec3055cade4d2682f162783314984"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,7 +223,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache. Not compatible with LSM tables; see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if log is enabled in <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if log is enabled in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>if false, this object has checkpoint-level durability.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
@@ -285,7 +285,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>snapshot</code></td><td>use a named, in-memory snapshot, see <a class="el" href="transactions.html#transaction_named_snapshots">Named Snapshots</a>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>sync</code></td><td>whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>.</td><td>a boolean flag; default empty. </td></tr>
+<td><code>sync</code></td><td>whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>.</td><td>a boolean flag; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -432,7 +432,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value should not be older than the first commit timestamp set for the current transaction. The value should also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
+<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -593,7 +593,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>leaf_value_max</code></td><td>the largest value stored in a leaf node, in bytes. If set, values larger than the specified size are stored as overflow items (which may require additional I/O to access). If the size is larger than the maximum leaf page size, the page size is temporarily ignored when large values are written. The default is one-half the size of a newly split leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
-<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if log is enabled in <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if log is enabled in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>if false, this object has checkpoint-level durability.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
@@ -837,8 +837,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 </div>
 </div>
-<a id="a504625d0b35da78f738d08530a409be9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a504625d0b35da78f738d08530a409be9">&#9670;&nbsp;</a></span>log_printf()</h2>
+<a id="ac85541ca42d7596857d9f50e03c78eb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac85541ca42d7596857d9f50e03c78eb5">&#9670;&nbsp;</a></span>log_printf()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -853,7 +853,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>fmt</em>, </td>
+          <td class="paramname"><em>format</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -873,7 +873,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">fmt</td><td>a printf format specifier </td></tr>
+    <tr><td class="paramname">format</td><td>a printf format specifier </td></tr>
   </table>
   </dd>
 </dl>
@@ -1006,7 +1006,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>readonly</code></td><td>only query operations are supported by this cursor. An error is returned if a modification is attempted using the cursor. The default is false for all cursor types except for log and metadata cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>statistics</code></td><td>Specify the statistics to be gathered. Choosing "all" gathers statistics regardless of cost and may include traversing on-disk files; "fast" gathers a subset of relatively inexpensive statistics. The selection must agree with the database <code>statistics</code> configuration specified to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a>. For example, "all" or "fast" can be configured when the database is configured with "all", but the cursor open will fail if "all" is specified when the database is configured with "fast", and the cursor open will fail in all cases when the database is configured with "none". If "size" is configured, only the underlying size of the object on disk is filled in and the object is not opened. If <code>statistics</code> is not configured, the default configuration is the database configuration. The "clear" configuration resets statistics after gathering them, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared). See <a class="el" href="statistics.html">Statistics</a> for more information.</td><td>a list, with values chosen from the following options: <code>"all"</code>, <code>"cache_walk"</code>, <code>"fast"</code>, <code>"clear"</code>, <code>"size"</code>, <code>"tree_walk"</code>; default empty. </td></tr>
+<td><code>statistics</code></td><td>Specify the statistics to be gathered. Choosing "all" gathers statistics regardless of cost and may include traversing on-disk files; "fast" gathers a subset of relatively inexpensive statistics. The selection must agree with the database <code>statistics</code> configuration specified to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a>. For example, "all" or "fast" can be configured when the database is configured with "all", but the cursor open will fail if "all" is specified when the database is configured with "fast", and the cursor open will fail in all cases when the database is configured with "none". If "size" is configured, only the underlying size of the object on disk is filled in and the object is not opened. If <code>statistics</code> is not configured, the default configuration is the database configuration. The "clear" configuration resets statistics after gathering them, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared). See <a class="el" href="statistics.html">Statistics</a> for more information.</td><td>a list, with values chosen from the following options: <code>"all"</code>, <code>"cache_walk"</code>, <code>"fast"</code>, <code>"clear"</code>, <code>"size"</code>, <code>"tree_walk"</code>; default empty. </td></tr>
 <tr>
 <td><code>target</code></td><td>if non-empty, backup the list of objects; valid only for a backup data source.</td><td>a list of strings; default empty. </td></tr>
 </table>
@@ -1500,7 +1500,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Wait for a transaction to become synchronized. </p>
-<p>This method is only useful when <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is configured with the <code>transaction_sync</code> setting disabled.</p>
+<p>This method is only useful when <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> is configured with the <code>transaction_sync</code> setting disabled.</p>
 <p>This method must not be called on a session with an active transaction.</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">transaction_sync</a>(session, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

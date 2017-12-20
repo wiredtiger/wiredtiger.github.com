@@ -14,7 +14,7 @@ var classcom_1_1wiredtiger_1_1db_1_1_session =
     [ "getConnection", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2f267cf49f92a76b4bad57015a05ba88", null ],
     [ "join", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a75ec87d13d61c38312f6097e86470b22", null ],
     [ "log_flush", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ac8790893082bc6ca34ca288008971944", null ],
-    [ "log_printf", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a094ae49ac5f0533817961284c89b8327", null ],
+    [ "log_printf", "classcom_1_1wiredtiger_1_1db_1_1_session.html#acf3ea0aa8ef9a33416409fa8b8da80ae", null ],
     [ "open_cursor", "classcom_1_1wiredtiger_1_1db_1_1_session.html#adc61edbe05447e070a2d0729bd36a084", null ],
     [ "rebalance", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ae8e72b903d72a3ca1f1a0dd019c186d7", null ],
     [ "reconfigure", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ab26e9fa8589c722544049adae0e70ad9", null ],

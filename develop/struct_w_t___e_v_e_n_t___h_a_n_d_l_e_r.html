@@ -84,7 +84,7 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:af08d42a14b46863708b2d453e99cd9c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle informational messages; by default, informational messages are written to the stdout stream.  <a href="#af08d42a14b46863708b2d453e99cd9c1">More...</a><br /></td></tr>
 <tr class="separator:af08d42a14b46863708b2d453e99cd9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad45e36ca496da5f15bb87ba5bfdecc2b"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b">handle_progress</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *operation, uint64_t progress)</td></tr>
-<tr class="memdesc:ad45e36ca496da5f15bb87ba5bfdecc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle progress messages; by default, no progress messages are written.  <a href="#ad45e36ca496da5f15bb87ba5bfdecc2b">More...</a><br /></td></tr>
+<tr class="memdesc:ad45e36ca496da5f15bb87ba5bfdecc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle progress messages; by default, progress messages are not written.  <a href="#ad45e36ca496da5f15bb87ba5bfdecc2b">More...</a><br /></td></tr>
 <tr class="separator:ad45e36ca496da5f15bb87ba5bfdecc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9531a89513becfdee205675cdc0d6f9e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e">handle_close</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
 <tr class="memdesc:a9531a89513becfdee205675cdc0d6f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle automatic close of a WiredTiger handle.  <a href="#a9531a89513becfdee205675cdc0d6f9e">More...</a><br /></td></tr>
@@ -131,9 +131,9 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle error messages; by default, error messages are written to the stderr stream. </p>
-<p>See <a class="el" href="error_handling.html">Error handling</a>.</p>
-<p>Errors that require the application to exit and restart will have their <code>error</code> value set to <code>WT_PANIC</code>. The application can exit immediately when <code>WT_PANIC</code> is passed to an error handler, there is no reason to return into WiredTiger.</p>
-<p>Error handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
+<p>See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
+<p>Errors that require the application to exit and restart will have their <code>error</code> value set to <code>WT_PANIC</code>. The application can exit immediately when <code>WT_PANIC</code> is passed to an event handler, there is no reason to return into WiredTiger.</p>
+<p>Event handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the WiredTiger session handle in use when the error was generated. The handle may have been created by the application or automatically by WiredTiger. </td></tr>
@@ -158,7 +158,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle informational messages; by default, informational messages are written to the stdout stream. </p>
-<p>See <a class="el" href="error_handling.html">Error handling</a>.</p>
+<p>See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
 <p>Message handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -182,8 +182,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Callback to handle progress messages; by default, no progress messages are written. </p>
-<p>See <a class="el" href="error_handling.html">Error handling</a>.</p>
+<p>Callback to handle progress messages; by default, progress messages are not written. </p>
+<p>See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
 <p>Progress handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
