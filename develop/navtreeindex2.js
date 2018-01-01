@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"durability.html#durability_archiving":[0,4,18,3],
 "durability.html#durability_backup":[0,4,18,1],
 "durability.html#durability_bulk":[0,4,18,2],
 "durability.html#durability_checkpoint":[0,4,18,0],
@@ -86,8 +87,8 @@ var NAVTREEINDEX2 =
 "file_formats_lang_java.html#file_formats_formats_lang_java":[0,5,7,0],
 "filesystems.html":[0,7,2],
 "filesystems.html#remote":[0,7,2,0],
-"functions.html":[4,0],
 "functions.html":[4,0,0],
+"functions.html":[4,0],
 "functions_b.html":[4,0,1],
 "functions_c.html":[4,0,2],
 "functions_d.html":[4,0,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga38c1096a457e586e02992eda1c983c75":[1,0,42],
 "group__wt.html#ga38caaa1bd93da732986de36846285fad":[1,0,313],
 "group__wt.html#ga38f0e79fe5107b28a49a527b6b0639da":[1,0,293],
-"group__wt.html#ga3949013afb46f95ea29ba5b33a36d771":[1,0,158],
-"group__wt.html#ga3a28f511191b864b1a13b31d6bbfc80a":[1,0,213]
+"group__wt.html#ga3949013afb46f95ea29ba5b33a36d771":[1,0,158]
 };

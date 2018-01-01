@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"group__wt.html#gaacd23e50c5c8815cf8687d9da6655ab4":[1,0,127],
 "group__wt.html#gaae519abcc3809b0c8c261a8193810e07":[1,0,497],
 "group__wt.html#gaaed5fd0a06d4df6d9a345c110c6471b0":[1,0,125],
 "group__wt.html#gab031f16842a914c8a9ac52d75e1ef353":[1,0,365],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "md_changelog.html":[0,8],
 "modules.html":[1],
 "namespace.html":[0,4,11],
-"namespace.html#namespace_c":[0,4,11,1],
-"namespace.html#namespace_env":[0,4,11,0]
+"namespace.html#namespace_c":[0,4,11,1]
 };
