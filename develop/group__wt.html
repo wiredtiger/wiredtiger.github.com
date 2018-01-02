@@ -2293,7 +2293,7 @@ New data. <p>The size of the new data may be zero when no new data is provided. 
 <td class="fieldname">
 offset</td>
 <td class="fielddoc">
-The zero-based byte offset in the value where the new data is placed. <p>If the offset is past the end of the value, nul bytes are appended to the value up to the specified offset. </p>
+The zero-based byte offset in the value where the new data is placed. <p>If the offset is past the end of the value, padding bytes are appended to the value up to the specified offset. If the value is a string (value format <code>S</code>), the padding byte is a space. If the value is a raw byte array accessed using a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structure (value format <code>u</code>), the padding byte is a nul. </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a id="ac08f030bf6cfe86eed9810e90ba6cc20"></a>size_t</td>
