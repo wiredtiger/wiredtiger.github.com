@@ -730,6 +730,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf9927116a3bd1b71cbaa626cb055a6ed">WT_STAT_CONN_CACHE_READ_LOOKASIDE</a></td></tr>
 <tr class="memdesc:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring lookaside entries <br /></td></tr>
 <tr class="separator:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44ba9fc07959271536d8d8e93df650eb"><td class="memItemLeft" align="right" valign="top"><a id="ga44ba9fc07959271536d8d8e93df650eb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga44ba9fc07959271536d8d8e93df650eb">WT_STAT_CONN_CACHE_READ_LOOKASIDE_SKIPPED</a></td></tr>
+<tr class="memdesc:ga44ba9fc07959271536d8d8e93df650eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache skipping older lookaside entries <br /></td></tr>
+<tr class="separator:ga44ba9fc07959271536d8d8e93df650eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga84714be9b21435088c27684129933cd4"><td class="memItemLeft" align="right" valign="top"><a id="ga84714be9b21435088c27684129933cd4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga84714be9b21435088c27684129933cd4">WT_STAT_CONN_CACHE_READ_LOOKASIDE_DELAY</a></td></tr>
+<tr class="memdesc:ga84714be9b21435088c27684129933cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache with skipped lookaside entries needed later <br /></td></tr>
+<tr class="separator:ga84714be9b21435088c27684129933cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac6812aa29e782b53d31cb94d6bb39ae2"><td class="memItemLeft" align="right" valign="top"><a id="gac6812aa29e782b53d31cb94d6bb39ae2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac6812aa29e782b53d31cb94d6bb39ae2">WT_STAT_CONN_CACHE_PAGES_REQUESTED</a></td></tr>
 <tr class="memdesc:gac6812aa29e782b53d31cb94d6bb39ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages requested from the cache <br /></td></tr>
@@ -2672,15 +2680,15 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level, expressed as a percentage of the total cache size. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 99; default <code>5</code>. </td></tr>
+<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level. It is a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 10TB; default <code>5</code>. </td></tr>
 <tr>
-<td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content, expressed as a percentage of the total cache size.</td><td>an integer between 1 and 99; default <code>5</code>. </td></tr>
+<td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content. It is a percentage of the cache size if the value is within the range of 1 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 1 and 10TB; default <code>5</code>. </td></tr>
 <tr>
-<td><code>eviction_dirty_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much dirty content, expressed as a percentage of the total cache size. This setting only alters behavior if it is lower than eviction_trigger.</td><td>an integer between 1 and 99; default <code>20</code>. </td></tr>
+<td><code>eviction_dirty_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much dirty content. It is a percentage of the cache size if the value is within the range of 1 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. This setting only alters behavior if it is lower than eviction_trigger.</td><td>an integer between 1 and 10TB; default <code>20</code>. </td></tr>
 <tr>
-<td><code>eviction_target</code></td><td>perform eviction in worker threads when the cache contains at least this much content, expressed as a percentage of the total cache size. Must be less than <code>eviction_trigger</code>.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
+<td><code>eviction_target</code></td><td>perform eviction in worker threads when the cache contains at least this much content. It is a percentage of the cache size if the value is within the range of 10 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 10 and 10TB; default <code>80</code>. </td></tr>
 <tr>
-<td><code>eviction_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much content, expressed as a percentage of the total cache size.</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
+<td><code>eviction_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much content. It is a percentage of the cache size if the value is within the range of 10 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 10 and 10TB; default <code>95</code>. </td></tr>
 <tr>
 <td><code>exclusive</code></td><td>fail if the database already exists, generally used with the <code>create</code> option.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -2744,7 +2752,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>session_max</code></td><td>maximum expected number of sessions (including server threads).</td><td>an integer greater than or equal to 1; default <code>100</code>. </td></tr>
 <tr>
-<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both. Enabling a shared cache uses a session from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both. Enabling a shared cache uses a session from the configured session_max. A shared cache can not have absolute values configured for cache eviction settings.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;chunk</code></td><td>the granularity that a shared cache is redistributed.</td><td>an integer between 1MB and 10TB; default <code>10MB</code>. </td></tr>
 <tr>

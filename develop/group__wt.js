@@ -256,6 +256,8 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_READ_APP_COUNT", "group__wt.html#ga8a73d792b5990146fb55d9e5ab336c01", null ],
     [ "WT_STAT_CONN_CACHE_READ_APP_TIME", "group__wt.html#ga895a7d761e1e60ba9896458c1d70d000", null ],
     [ "WT_STAT_CONN_CACHE_READ_LOOKASIDE", "group__wt.html#gaf9927116a3bd1b71cbaa626cb055a6ed", null ],
+    [ "WT_STAT_CONN_CACHE_READ_LOOKASIDE_DELAY", "group__wt.html#ga84714be9b21435088c27684129933cd4", null ],
+    [ "WT_STAT_CONN_CACHE_READ_LOOKASIDE_SKIPPED", "group__wt.html#ga44ba9fc07959271536d8d8e93df650eb", null ],
     [ "WT_STAT_CONN_CACHE_READ_OVERFLOW", "group__wt.html#gacde793f3bd5ccaf91b970852ed64da32", null ],
     [ "WT_STAT_CONN_CACHE_WRITE", "group__wt.html#ga94f3c473b10646f7ed3d047e275786db", null ],
     [ "WT_STAT_CONN_CACHE_WRITE_APP_COUNT", "group__wt.html#ga41d28222646d7848863cab2799e09d0c", null ],

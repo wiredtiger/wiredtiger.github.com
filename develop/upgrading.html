@@ -87,6 +87,10 @@ Upgrading to Version 3.0.0</h1>
 <dd><p class="startdd">The performance visualization tool <code>wtstats</code> has been removed and is no longer supported. </p>
 <p class="enddd"></p>
 </dd>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> cache configuration changes </dt>
+<dd><p class="startdd">The cache configuration options <code>eviction_checkpoint_target</code>, <code>eviction_dirty_target</code>, <code>eviction_dirty_trigger</code>, <code>eviction_target</code> and <code>eviction_trigger</code> have changed. The options can now take absolute size. It would be a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. This API change is compatible with existing usage. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_292"></a>
