@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -71,7 +71,7 @@ $(document).ready(function(){initNavTree('custom_data_sources.html','');});
 <div class="textblock"><p>Applications can implement their own custom data sources underneath WiredTiger using the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> interface. Each data source should support a set of methods for a different URI type (for example, in the same way WiredTiger supports the built-in type "file:", an application data source might support the type "dsrc:").</p>
 <p>The WiredTiger distribution includes an example of a complete custom data source implementation (based on Oracle's Berkeley DB database engine), in the file test/format/kvs_bdb.c. This example implementation is public domain software, please feel free to use this code as a prototype implementation of other custom data sources.</p>
 <p>Applications register their <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> interface implementations with WiredTiger using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source. ">WT_CONNECTION::add_data_source</a> method:</p>
-<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> my_dsrc = {</div><div class="line">                my_alter,</div><div class="line">                my_create,</div><div class="line">                my_compact,</div><div class="line">                my_drop,</div><div class="line">                my_open_cursor,</div><div class="line">                my_rename,</div><div class="line">                my_salvage,</div><div class="line">                my_truncate,</div><div class="line">                my_range_truncate,</div><div class="line">                my_verify,</div><div class="line">                my_checkpoint,</div><div class="line">                my_terminate</div><div class="line">        };</div><div class="line">        error_check(conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL));</div></div><!-- fragment --> <h1><a class="anchor" id="custom_ds_methods"></a>
+<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> my_dsrc = {</div><div class="line">                my_alter,</div><div class="line">                my_create,</div><div class="line">                my_compact,</div><div class="line">                my_drop,</div><div class="line">                my_open_cursor,</div><div class="line">                my_rename,</div><div class="line">                my_salvage,</div><div class="line">                my_size,</div><div class="line">                my_truncate,</div><div class="line">                my_range_truncate,</div><div class="line">                my_verify,</div><div class="line">                my_checkpoint,</div><div class="line">                my_terminate,</div><div class="line">                my_lsm_pre_merge</div><div class="line">        };</div><div class="line">        error_check(conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL));</div></div><!-- fragment --> <h1><a class="anchor" id="custom_ds_methods"></a>
 WT_DATA_SOURCE methods</h1>
 <p>Any of the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> methods may be initialized to NULL. Calling uninitialized <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> methods through a WiredTiger API will result in an "operation not supported" error. For example, an underlying data source that does not support a compaction operation should set the <code>compact</code> field of their <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> structure to NULL.</p>
 <h2><a class="anchor" id="custom_ds_create"></a>
@@ -164,7 +164,7 @@ Serialization</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

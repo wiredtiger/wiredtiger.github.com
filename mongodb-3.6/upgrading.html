@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -87,6 +87,10 @@ Upgrading to Version 3.0.0</h1>
 <dd><p class="startdd">The performance visualization tool <code>wtstats</code> has been removed and is no longer supported. </p>
 <p class="enddd"></p>
 </dd>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> cache configuration changes </dt>
+<dd><p class="startdd">The cache configuration options <code>eviction_checkpoint_target</code>, <code>eviction_dirty_target</code>, <code>eviction_dirty_trigger</code>, <code>eviction_target</code> and <code>eviction_trigger</code> have changed. The options can now take absolute size. It would be a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. This API change is compatible with existing usage. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr/>
  <h1><a class="anchor" id="version_292"></a>
@@ -123,7 +127,7 @@ Upgrading to Version 2.9.2</h1>
 Upgrading to Version 2.9.1</h1>
 <dl>
 <dt>Changes to hazard pointer configuration </dt>
-<dd><p class="startdd">The <code>hazard_max</code> parameter to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is now ignored. Memory is allocated for hazard pointers as required by each session. </p>
+<dd><p class="startdd">The <code>hazard_max</code> parameter to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> is now ignored. Memory is allocated for hazard pointers as required by each session. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Change to the default fadvise behavior for data files </dt>
@@ -140,7 +144,7 @@ Upgrading to Version 2.9.0</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Cache management defaults </dt>
-<dd><p class="startdd">The default values for the <code>eviction_dirty_target</code> and <code>eviction_dirty_trigger</code> settings to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> have changed to 5 and 20, respectively. This means that by default, WiredTiger will start writing dirty pages from cache when it becomes 5% dirty and will throttle activity to keep the volume of dirty data in cache under 20%. For write-heavy workloads, the new defaults may result in lower throughput and more threads writing to data files concurrently.</p>
+<dd><p class="startdd">The default values for the <code>eviction_dirty_target</code> and <code>eviction_dirty_trigger</code> settings to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> have changed to 5 and 20, respectively. This means that by default, WiredTiger will start writing dirty pages from cache when it becomes 5% dirty and will throttle activity to keep the volume of dirty data in cache under 20%. For write-heavy workloads, the new defaults may result in lower throughput and more threads writing to data files concurrently.</p>
 <p>There is also a new <code>eviction_checkpoint_target</code> setting that determines how much work is done at the beginning of a checkpoint to make the critical section of checkpoints complete more quickly. </p>
 <p class="enddd"></p>
 </dd>
@@ -149,11 +153,11 @@ Upgrading to Version 2.9.0</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Checkpoint server created checkpoint names </dt>
-<dd><p class="startdd">The <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> checkpoint configuration no longer supports the <code>name</code> configuration, and checkpoint server created checkpoints will always be named the default WiredTiger checkpoint name, "WiredTigerCheckpoint". Applications depending on the ability to set the checkpoint name for the checkpoint server will require modification. </p>
+<dd><p class="startdd">The <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> checkpoint configuration no longer supports the <code>name</code> configuration, and checkpoint server created checkpoints will always be named the default WiredTiger checkpoint name, "WiredTigerCheckpoint". Applications depending on the ability to set the checkpoint name for the checkpoint server will require modification. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Statistics logging path </dt>
-<dd><p class="startdd">The <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> statistics logging path configuration has been simplified to be only a path to a directory, and the file name component of the path may no longer be specified. Applications depending on the ability to set statistics log file names will require modification. </p>
+<dd><p class="startdd">The <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> statistics logging path configuration has been simplified to be only a path to a directory, and the file name component of the path may no longer be specified. Applications depending on the ability to set statistics log file names will require modification. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Removed and renamed statistics fields </dt>
@@ -197,7 +201,7 @@ Upgrading to Version 2.8.0</h1>
 Upgrading to Version 2.7.0</h1>
 <dl>
 <dt>Change to config_base=false </dt>
-<dd><p class="startdd">If <code>config_base=false</code> in the config passed directly to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>, any existing base configuration file will now be ignored. If an application was relying on this behavior, a connection will be opened with different settings after upgrading, which could lead to errors or unexpected behavior. </p>
+<dd><p class="startdd">If <code>config_base=false</code> in the config passed directly to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>, any existing base configuration file will now be ignored. If an application was relying on this behavior, a connection will be opened with different settings after upgrading, which could lead to errors or unexpected behavior. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Statistic change </dt>
@@ -239,7 +243,7 @@ Upgrading to Version 2.6.0</h1>
 <p class="enddd"></p>
 </dd>
 <dt>File handle closing </dt>
-<dd><p class="startdd">In WiredTiger, a separate thread of control periodically reviews open objects, closing ones which have been idle for some period of time and discarding them from the cache. In previous WiredTiger releases, this review was independent of the number of open file handles. In this release, WiredTiger only reviews the file handles if at least 250 file handles are open. How often file handles are reviewed (the default is 30 seconds), and how many file handles must be opened before review is triggered, can be configured using the <code>file_manager</code> configuration values to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> call. </p>
+<dd><p class="startdd">In WiredTiger, a separate thread of control periodically reviews open objects, closing ones which have been idle for some period of time and discarding them from the cache. In previous WiredTiger releases, this review was independent of the number of open file handles. In this release, WiredTiger only reviews the file handles if at least 250 file handles are open. How often file handles are reviewed (the default is 30 seconds), and how many file handles must be opened before review is triggered, can be configured using the <code>file_manager</code> configuration values to the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> call. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Table drop changes </dt>
@@ -319,8 +323,8 @@ Upgrading to Version 2.4.0</h1>
 </dd>
 <dt><a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface changes </dt>
 <dd>Add a new <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0" title="If non-NULL, this callback is called to customize the collator for each data source. ">WT_COLLATOR::customize</a> callback that WiredTiger will call (if set) for each data source configured to use the collator. Applications using the existing <a class="el" href="struct_w_t___c_o_l_l_a_t_o_r.html" title="The interface implemented by applications to provide custom ordering of records. ">WT_COLLATOR</a> interface that do not require the new functionality should set this callback to <code>NULL</code>.  </dd>
-<dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> lsm_merge option changed </dt>
-<dd>The global lsm_merge configuration setting has been moved into the <code>lsm_manager</code> option group. To disable merges in all LSM trees pass <code>lsm_manger=</code>(merge=false) to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.  </dd>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> lsm_merge option changed </dt>
+<dd>The global lsm_merge configuration setting has been moved into the <code>lsm_manager</code> option group. To disable merges in all LSM trees pass <code>lsm_manger=</code>(merge=false) to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>.  </dd>
 <dt>Java include path search changes </dt>
 <dd>We have updated the configure logic used to search for Java Native Interface files. This fixes problems building WiredTiger's Java API, particularly on OS X, but may introduce problems if your build procedure relied on the old search behavior.  </dd>
 <dt>Default mutex implementation changed </dt>
@@ -334,7 +338,7 @@ Upgrading to Version 2.4.0</h1>
  <h1><a class="anchor" id="version_231"></a>
 Upgrading to Version 2.3.1</h1>
 <dl>
-<dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> eviction_workers configuration changed </dt>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> eviction_workers configuration changed </dt>
 <dd><p class="startdd">The <code>eviction_workers</code> configuration setting has been replaced by <code>eviction=</code>(threads_min) and <code>eviction=</code>(threads_max) settings.</p>
 <p>There is also a semantic change because <code>eviction_workers</code> used to configure additional threads whereas the new settings configure the total number of threads involved with eviction. </p>
 <p class="enddd"></p>
@@ -347,10 +351,10 @@ Upgrading to Version 2.3.0</h1>
 <h1><a class="anchor" id="version_221"></a>
 Upgrading to Version 2.2.1</h1>
 <dl>
-<dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> configuration parsing order changed </dt>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> configuration parsing order changed </dt>
 <dd><p class="startdd">In the 2.2.1 release, the order that configuration strings are parsed and override earlier values changed. Applications using the <code>Wiredtiger.config</code> file or <code>WIREDTIGER_CONFIG</code> environment variable may need to change. The old order: </p><ol>
 <li>
-default <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> configuration </li>
+default <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> configuration </li>
 <li>
 base configuration file, created with the database </li>
 <li>
@@ -358,16 +362,16 @@ user configuration file <code>Wiredtiger.config</code> </li>
 <li>
 user environment variable <code>WIREDTIGER_CONFIG</code> </li>
 <li>
-configuration string passed in to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> </li>
+configuration string passed in to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> </li>
 </ol>
 <p>In the new order the user's configuration settings override:</p>
 <ol>
 <li>
-default <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> configuration </li>
+default <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> configuration </li>
 <li>
 base configuration file, created with the database </li>
 <li>
-configuration string passed in to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> </li>
+configuration string passed in to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> </li>
 <li>
 user configuration file <code>Wiredtiger.config</code> </li>
 <li>
@@ -380,7 +384,7 @@ user environment variable <code>WIREDTIGER_CONFIG</code> </li>
 <p class="enddd"></p>
 </dd>
 <dt><code>transaction_sync</code> setting change </dt>
-<dd><p class="startdd">In the 2.2.1 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code> configuration setting has changed from a string value to a structure with two fields: <code>method</code>, which corresponds to the previous value (<code>dsync</code>, <code>fsync</code> or <code>none</code>), and <code>enabled</code>, which determines whether there is a sync on every transaction commit by default. Applications can enable or disable sync for a specific transaction with the <code>sync</code> setting to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a>. </p>
+<dd><p class="startdd">In the 2.2.1 release of WiredTiger the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code> configuration setting has changed from a string value to a structure with two fields: <code>method</code>, which corresponds to the previous value (<code>dsync</code>, <code>fsync</code> or <code>none</code>), and <code>enabled</code>, which determines whether there is a sync on every transaction commit by default. Applications can enable or disable sync for a specific transaction with the <code>sync</code> setting to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session. ">WT_SESSION::begin_transaction</a>. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
@@ -401,8 +405,8 @@ Upgrading to Version 2.2.0</h1>
  <h1><a class="anchor" id="version_212"></a>
 Upgrading to Version 2.1.2</h1>
 <dl>
-<dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> shared_cache configuration changes </dt>
-<dd><p class="startdd">In the 2.1.2 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>shared_cache</code> configuration option group have changed. The option that was named <code>enable</code> is no longer available. To enable a <code>shared_cache</code> it is compulsory to name the pool being shared. We are now also enforcing that only one of <code>cache_size</code> and <code>shared_cache</code> are specified in the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> configuration string. </p>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> shared_cache configuration changes </dt>
+<dd><p class="startdd">In the 2.1.2 release of WiredTiger the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>shared_cache</code> configuration option group have changed. The option that was named <code>enable</code> is no longer available. To enable a <code>shared_cache</code> it is compulsory to name the pool being shared. We are now also enforcing that only one of <code>cache_size</code> and <code>shared_cache</code> are specified in the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> configuration string. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
@@ -428,7 +432,7 @@ Upgrading to Version 2.1</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Transaction sync default setting </dt>
-<dd><p class="startdd">In the 2.1 release of WiredTiger the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code> configuration setting default value has changed from "dsync" to "fsync". This is due to enhancements to the group commit implementation in WiredTiger - which mean that greater throughput can be achieved with explicit "fsync" calls than by enabling "dsync" on a file handle. Applications that don't execute concurrent transactions may see better throughput with transaction_sync set to "dsync". </p>
+<dd><p class="startdd">In the 2.1 release of WiredTiger the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code> configuration setting default value has changed from "dsync" to "fsync". This is due to enhancements to the group commit implementation in WiredTiger - which mean that greater throughput can be achieved with explicit "fsync" calls than by enabling "dsync" on a file handle. Applications that don't execute concurrent transactions may see better throughput with transaction_sync set to "dsync". </p>
 <p class="enddd"></p>
 </dd>
 </dl>
@@ -458,8 +462,8 @@ Upgrading to Version 1.6.6</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Statistics configuration </dt>
-<dd><p class="startdd">In previous releases, the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function took a <code>statistics</code> configuration, which defaulted to false; when set to true, additional, generally performance-expensive statistics were maintained by the database, above and beyond a default set of statistics. In version 1.6.6, the <code>statistics</code> configuration is a list which may be set to "all", "fast" or "none". When set to "none", no statistics are maintained by the database; when set to "fast", only relatively performance-inexpensive statistics are maintained, and when set to "all", all statistics are maintained, regardless of cost.</p>
-<p>In previous releases, the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function took a <code>statistics_log</code> configuration which logged the performance-inexpensive database statistics to a file. In version 1.6.6, the <code>statistics_log</code> configuration logs whatever statistics are configured for the database. If the database is configured with <code>statistics</code> to "none", no statistics will be logged to the file; if the database is configured with "all" or "fast", the corresponding statistics will be logged to the file.</p>
+<dd><p class="startdd">In previous releases, the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function took a <code>statistics</code> configuration, which defaulted to false; when set to true, additional, generally performance-expensive statistics were maintained by the database, above and beyond a default set of statistics. In version 1.6.6, the <code>statistics</code> configuration is a list which may be set to "all", "fast" or "none". When set to "none", no statistics are maintained by the database; when set to "fast", only relatively performance-inexpensive statistics are maintained, and when set to "all", all statistics are maintained, regardless of cost.</p>
+<p>In previous releases, the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function took a <code>statistics_log</code> configuration which logged the performance-inexpensive database statistics to a file. In version 1.6.6, the <code>statistics_log</code> configuration logs whatever statistics are configured for the database. If the database is configured with <code>statistics</code> to "none", no statistics will be logged to the file; if the database is configured with "all" or "fast", the corresponding statistics will be logged to the file.</p>
 <p>In previous releases, the WT_SESSION::cursor method took <code>statistics_clear</code> and a <code>statistics_fast</code> configurations. The <code>statistics_clear</code> configuration defaulted to false; when set to true, statistics counters were reset after they were gathered by the cursor. The <code>statistics_fast</code> configuration defaulted to true; when set to true, the cursor only gathered performance-inexpensive statistics for the cursor, and when set to false, the cursor gathered all available statistics, regardless of cost.</p>
 <p>In version 1.6.6, these two configuration booleans have been replaced with a new configuration list <code>statistics</code>, which may be set from the values "clear", "fast" and "all". When "fast" is configured, only relatively performance-inexpensive statistics are gathered, and when "all" is configured, all statistics are gathered, regardless of cost. When "clear" is configured, statistics counters are reset after they are gathered.</p>
 <p>Additionally, in version 1.6.6, statistics cursors must be configured to agree with the database statistics configuration; when the database statistics are configured to "none", attempts to open a statistics cursor will fail; when the database statistics are configured to "fast", a statistics cursor must also be configured to "fast"; when the database statistics are configured to "all", a statistics cursor may be configured to either "fast" or "all". Opening a statistics cursor without configuring either "fast" or "all" will configure the cursor to be the same as the current database configuration.</p>
@@ -468,7 +472,7 @@ Upgrading to Version 1.6.6</h1>
 </dd>
 <dt><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html" title="The interface implemented by applications to handle error, informational and progress messages...">WT_EVENT_HANDLER</a> interface changes </dt>
 <dd><p class="startdd">Add a new <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e" title="Callback to handle automatic close of a WiredTiger handle. ">WT_EVENT_HANDLER::handle_close</a> callback that WiredTiger will call any time it automatically closes an application session or cursor handle.</p>
-<p>Additionally add a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a> parameter into the existing <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f" title="Callback to handle error messages; by default, error messages are written to the stderr stream...">WT_EVENT_HANDLER::handle_error</a>, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1" title="Callback to handle informational messages; by default, informational messages are written to the stdo...">WT_EVENT_HANDLER::handle_message</a> and <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b" title="Callback to handle progress messages; by default, no progress messages are written. ">WT_EVENT_HANDLER::handle_progress</a> callback functions. </p>
+<p>Additionally add a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a> parameter into the existing <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f" title="Callback to handle error messages; by default, error messages are written to the stderr stream...">WT_EVENT_HANDLER::handle_error</a>, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1" title="Callback to handle informational messages; by default, informational messages are written to the stdo...">WT_EVENT_HANDLER::handle_message</a> and <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b" title="Callback to handle progress messages; by default, progress messages are not written. ">WT_EVENT_HANDLER::handle_progress</a> callback functions. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
@@ -485,7 +489,7 @@ Upgrading to Version 1.6.5</h1>
 <p class="enddd"></p>
 </dd>
 <dt>Synchronous checkpoint configuration </dt>
-<dd><p class="startdd">The <code>sync</code> configuration key to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> has been renamed <code>checkpoint_sync</code>. </p>
+<dd><p class="startdd">The <code>sync</code> configuration key to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> has been renamed <code>checkpoint_sync</code>. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
@@ -512,8 +516,8 @@ Upgrading to Version 1.6.3</h1>
 <p><b>This is a potentially serious API change that will not be detected by compilation.</b> Application cursors should be reviewed to confirm they are configured for the desired behavior. </p>
 <p class="enddd"></p>
 </dd>
-<dt><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> no longer accepts a <code>transactional</code> configuration </dt>
-<dd><p class="startdd">The <code>transactional</code> configuration key has been removed from <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. Any application setting it should simply remove it, no change in application behavior is needed. </p>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> no longer accepts a <code>transactional</code> configuration </dt>
+<dd><p class="startdd">The <code>transactional</code> configuration key has been removed from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>. Any application setting it should simply remove it, no change in application behavior is needed. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
@@ -614,7 +618,7 @@ The <code>exclusive</code> argument to the <a class="el" href="struct_w_t___d_a_
 Upgrading to Version 1.4.3</h1>
 <dl>
 <dt>Statistics </dt>
-<dd><p class="startdd">WiredTiger statistics are no longer maintained by default; to configure statistics, use the <code>statistics</code> configuration string to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function. </p>
+<dd><p class="startdd">WiredTiger statistics are no longer maintained by default; to configure statistics, use the <code>statistics</code> configuration string to the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
@@ -767,7 +771,7 @@ wt dump, list -s<br />
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

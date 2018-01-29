@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -68,11 +68,11 @@ $(document).ready(function(){initNavTree('home.html','');});
 <div class="title">Database Home Directory </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger file naming is based on the <code>home</code> argument specified to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function and the <code>WIREDTIGER_HOME</code> environment variable, determined by the following steps:</p>
+<div class="textblock"><p>WiredTiger file naming is based on the <code>home</code> argument specified to the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function and the <code>WIREDTIGER_HOME</code> environment variable, determined by the following steps:</p>
 <ol type="1">
-<li>If a <code>home</code> argument is specified to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function, its value is used as the database directory.</li>
+<li>If a <code>home</code> argument is specified to the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function, its value is used as the database directory.</li>
 <li>If the <code>WIREDTIGER_HOME</code> environment variable is not set, the database directory is the process' current working directory. No current working directory path is maintained by the WiredTiger software and changing the working directory after opening the WiredTiger database may cause failure.</li>
-<li>If the process is running with special privileges, the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function must be configured with the <code>use_environment_priv</code> flag. The <code>use_environment_priv</code> flag is intended for applications that have or acquire special privileges and wish to use an environment-specified home directory: if such an application does not configure the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function with the <code>use_environment_priv</code> flag, setting an environment value will cause the open to fail. On ISO/IEC 9945-1:1990 (POSIX.1) systems, "special privileges" is defined as a real user ID not equal to the effective user ID, or the real group ID not equal to the effective group ID.</li>
+<li>If the process is running with special privileges, the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function must be configured with the <code>use_environment_priv</code> flag. The <code>use_environment_priv</code> flag is intended for applications that have or acquire special privileges and wish to use an environment-specified home directory: if such an application does not configure the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function with the <code>use_environment_priv</code> flag, setting an environment value will cause the open to fail. On ISO/IEC 9945-1:1990 (POSIX.1) systems, "special privileges" is defined as a real user ID not equal to the effective user ID, or the real group ID not equal to the effective group ID.</li>
 <li>Otherwise, the value of the <code>WIREDTIGER_HOME</code> environment variable is used as the database directory.</li>
 </ol>
 <p>Finally, consider security when configuring WiredTiger to use the <code>WIREDTIGER_HOME</code> environment variable, especially in applications which run with permissions other than the user's. Such applications are potentially vulnerable to allowing users access to databases they could not otherwise access. </p>
@@ -82,7 +82,7 @@ $(document).ready(function(){initNavTree('home.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="admin.html">Managing WiredTiger databases</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

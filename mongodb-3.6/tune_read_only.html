@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -69,7 +69,7 @@ $(document).ready(function(){initNavTree('tune_read_only.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Cursors opened on checkpoints (either named, or using the special "last
-checkpoint" name "WiredTigerCheckpoint") are read-only objects. Unless memory mapping is configured off (using the "mmap" configuration string to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>), read-only objects are mapped into process memory instead of being read through the WiredTiger cache. Using read-only objects where possible minimizes the amount of buffer cache memory required by WiredTiger applications and the work required for buffer cache management, as well as reducing the number of memory copies from the operating system buffer cache into application memory.</p>
+checkpoint" name "WiredTigerCheckpoint") are read-only objects. Unless memory mapping is configured off (using the "mmap" configuration string to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>), read-only objects are mapped into process memory instead of being read through the WiredTiger cache. Using read-only objects where possible minimizes the amount of buffer cache memory required by WiredTiger applications and the work required for buffer cache management, as well as reducing the number of memory copies from the operating system buffer cache into application memory.</p>
 <p>To open a named checkpoint, use the configuration string "checkpoint" to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> method: </p><div class="fragment"><div class="line">        error_check(session-&gt;open_cursor(session,</div><div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;checkpoint=midnight&quot;</span>, &amp;cursor));</div></div><!-- fragment --><p> To open the last checkpoint taken in the object, use the configuration string "checkpoint" with the name "WiredTigerCheckpoint" to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> method: </p><div class="fragment"><div class="line">        error_check(session-&gt;open_cursor(session,</div><div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, <span class="stringliteral">&quot;checkpoint=WiredTigerCheckpoint&quot;</span>, &amp;cursor));</div></div><!-- fragment --><p> Reading from checkpoints is only supported on row- and column-store objects, LSM cursors cannot be opened with a non-empty <code>"checkpoint"</code> configuration. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
@@ -77,7 +77,7 @@ checkpoint" name "WiredTigerCheckpoint") are read-only objects. Unless memory ma
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming_lang_java.html">Writing WiredTiger applications  in Java</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

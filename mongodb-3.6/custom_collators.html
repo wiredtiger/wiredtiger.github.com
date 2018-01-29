@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -77,20 +77,20 @@ Introduction to Custom Collators</h1>
 <p>See <a class="el" href="ex_extending_8c-example.html">ex_extending.c</a> for more details about how to implement custom collators.</p>
 <h1><a class="anchor" id="custom_collators_recovery"></a>
 Custom Collators and Recovery</h1>
-<p>If logging is enabled, WiredTiger will run recovery as required in <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. Any custom collators in use must be registered before recovery runs. This is described in more detail in <a class="el" href="extensions.html#extensions_recovery">Extensions and recovery</a>.</p>
+<p>If logging is enabled, WiredTiger will run recovery as required in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>. Any custom collators in use must be registered before recovery runs. This is described in more detail in <a class="el" href="extensions.html#extensions_recovery">Extensions and recovery</a>.</p>
 <h1><a class="anchor" id="custom_collators_indices"></a>
 Custom Collators for Indices</h1>
 <p>Custom collators can be used with indices, but they must take into account how WiredTiger indices are implemented. The primary key columns are implicitly appended to the logical index key columns in order to create the key that is stored in the index. This is done so that the key stored in the index is unique even when multiple records have the same values for the index key columns.</p>
 <p>A collator must give an unambiguous ordering to records in the index, so it must use the primary key columns as well as the index columns when comparing two index records.</p>
 <p>What this means in practice is that if the table has <code>key_format=r</code> and the index is on a string column, then the index cursor will have <code>key_format=S</code>, but the actual keys stored in the index will have <code>key_format=Sr</code> (with the primary key appended).</p>
-<p>Collators usually call <a class="el" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8" title="Unpack a structure from a buffer. ">wiredtiger_struct_unpack</a> with the appropriate format to split the index key into fields that are used for the comparison. </p>
+<p>Collators usually call <a class="el" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4" title="Unpack a structure from a buffer. ">wiredtiger_struct_unpack</a> with the appropriate format to split the index key into fields that are used for the comparison. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

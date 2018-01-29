@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -136,9 +136,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga9e6adae3fc6964ef837a62795c7840ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a> (const char *home, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *errhandler, const char *config, <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> **connectionp)</td></tr>
-<tr class="memdesc:ga9e6adae3fc6964ef837a62795c7840ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection to a database.  <a href="#ga9e6adae3fc6964ef837a62795c7840ed">More...</a><br /></td></tr>
-<tr class="separator:ga9e6adae3fc6964ef837a62795c7840ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacbe8d118f978f5bfc8ccb4c77c9e8813"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a> (const char *home, <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *event_handler, const char *config, <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> **connectionp)</td></tr>
+<tr class="memdesc:gacbe8d118f978f5bfc8ccb4c77c9e8813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection to a database.  <a href="#gacbe8d118f978f5bfc8ccb4c77c9e8813">More...</a><br /></td></tr>
+<tr class="separator:gacbe8d118f978f5bfc8ccb4c77c9e8813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a> (int error)</td></tr>
 <tr class="memdesc:gae8bf720ddb4a7a7390b70424594c40fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string (see <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string. ">WT_SESSION::strerror</a> for a thread-safe API).  <a href="#gae8bf720ddb4a7a7390b70424594c40fd">More...</a><br /></td></tr>
 <tr class="separator:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,15 +151,15 @@ Data packing and unpacking</h2></td></tr>
 <tr class="memitem:gac4f8b4621bcafad9db744e87be24a798"><td class="memItemLeft" align="right" valign="top">typedef struct __wt_pack_stream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a></td></tr>
 <tr class="memdesc:gac4f8b4621bcafad9db744e87be24a798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Streaming interface to packing.  <a href="#gac4f8b4621bcafad9db744e87be24a798">More...</a><br /></td></tr>
 <tr class="separator:gac4f8b4621bcafad9db744e87be24a798"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga58d055cb4d054715bebd58a2cb713b2d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d">wiredtiger_struct_pack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *buffer, size_t size, const char *format,...)</td></tr>
-<tr class="memdesc:ga58d055cb4d054715bebd58a2cb713b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a structure into a buffer.  <a href="#ga58d055cb4d054715bebd58a2cb713b2d">More...</a><br /></td></tr>
-<tr class="separator:ga58d055cb4d054715bebd58a2cb713b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2460e8022f3c8c7cb5f274ec9f1764e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, size_t *sizep, const char *format,...)</td></tr>
-<tr class="memdesc:ga2460e8022f3c8c7cb5f274ec9f1764e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the size required to pack a structure.  <a href="#ga2460e8022f3c8c7cb5f274ec9f1764e6">More...</a><br /></td></tr>
-<tr class="separator:ga2460e8022f3c8c7cb5f274ec9f1764e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const void *buffer, size_t size, const char *format,...)</td></tr>
-<tr class="memdesc:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a structure from a buffer.  <a href="#ga1db8298185374dbb61b398a4e9a3d1c8">More...</a><br /></td></tr>
-<tr class="separator:ga1db8298185374dbb61b398a4e9a3d1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab3d8a22e243360ece67baf33926d80fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *buffer, size_t len, const char *format,...)</td></tr>
+<tr class="memdesc:gab3d8a22e243360ece67baf33926d80fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack a structure into a buffer.  <a href="#gab3d8a22e243360ece67baf33926d80fa">More...</a><br /></td></tr>
+<tr class="separator:gab3d8a22e243360ece67baf33926d80fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga156e7993d370495e1e52c29b2bb6b7d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, size_t *lenp, const char *format,...)</td></tr>
+<tr class="memdesc:ga156e7993d370495e1e52c29b2bb6b7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the size required to pack a structure.  <a href="#ga156e7993d370495e1e52c29b2bb6b7d4">More...</a><br /></td></tr>
+<tr class="separator:ga156e7993d370495e1e52c29b2bb6b7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7cdc8c688f2c15303188ed6999dcc1b4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const void *buffer, size_t len, const char *format,...)</td></tr>
+<tr class="memdesc:ga7cdc8c688f2c15303188ed6999dcc1b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a structure from a buffer.  <a href="#ga7cdc8c688f2c15303188ed6999dcc1b4">More...</a><br /></td></tr>
+<tr class="separator:ga7cdc8c688f2c15303188ed6999dcc1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7d1cae063863dd7f48a48b5cb65be253"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253">wiredtiger_pack_start</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format, void *buffer, size_t size, <a class="el" href="group__wt.html#gac4f8b4621bcafad9db744e87be24a798">WT_PACK_STREAM</a> **psp)</td></tr>
 <tr class="memdesc:ga7d1cae063863dd7f48a48b5cb65be253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a packing operation into a buffer with the given format string.  <a href="#ga7d1cae063863dd7f48a48b5cb65be253">More...</a><br /></td></tr>
 <tr class="separator:ga7d1cae063863dd7f48a48b5cb65be253"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -730,6 +730,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf9927116a3bd1b71cbaa626cb055a6ed">WT_STAT_CONN_CACHE_READ_LOOKASIDE</a></td></tr>
 <tr class="memdesc:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring lookaside entries <br /></td></tr>
 <tr class="separator:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44ba9fc07959271536d8d8e93df650eb"><td class="memItemLeft" align="right" valign="top"><a id="ga44ba9fc07959271536d8d8e93df650eb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga44ba9fc07959271536d8d8e93df650eb">WT_STAT_CONN_CACHE_READ_LOOKASIDE_SKIPPED</a></td></tr>
+<tr class="memdesc:ga44ba9fc07959271536d8d8e93df650eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache skipping older lookaside entries <br /></td></tr>
+<tr class="separator:ga44ba9fc07959271536d8d8e93df650eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga84714be9b21435088c27684129933cd4"><td class="memItemLeft" align="right" valign="top"><a id="ga84714be9b21435088c27684129933cd4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga84714be9b21435088c27684129933cd4">WT_STAT_CONN_CACHE_READ_LOOKASIDE_DELAY</a></td></tr>
+<tr class="memdesc:ga84714be9b21435088c27684129933cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache with skipped lookaside entries needed later <br /></td></tr>
+<tr class="separator:ga84714be9b21435088c27684129933cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac6812aa29e782b53d31cb94d6bb39ae2"><td class="memItemLeft" align="right" valign="top"><a id="gac6812aa29e782b53d31cb94d6bb39ae2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac6812aa29e782b53d31cb94d6bb39ae2">WT_STAT_CONN_CACHE_PAGES_REQUESTED</a></td></tr>
 <tr class="memdesc:gac6812aa29e782b53d31cb94d6bb39ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages requested from the cache <br /></td></tr>
@@ -926,6 +934,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8b6c1c6d5e81affa83b418f47c774952">WT_STAT_CONN_LOCK_CHECKPOINT_WAIT_INTERNAL</a></td></tr>
 <tr class="memdesc:ga8b6c1c6d5e81affa83b418f47c774952"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: checkpoint lock internal thread wait time (usecs) <br /></td></tr>
 <tr class="separator:ga8b6c1c6d5e81affa83b418f47c774952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad531cb17ab0bcdf2090c61ae57f6ed91"><td class="memItemLeft" align="right" valign="top"><a id="gad531cb17ab0bcdf2090c61ae57f6ed91"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad531cb17ab0bcdf2090c61ae57f6ed91">WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_WAIT_APPLICATION</a></td></tr>
+<tr class="memdesc:gad531cb17ab0bcdf2090c61ae57f6ed91"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: commit timestamp queue lock application thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="separator:gad531cb17ab0bcdf2090c61ae57f6ed91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga48ccec7f0ad8dce1240a2ccdd5e80964"><td class="memItemLeft" align="right" valign="top"><a id="ga48ccec7f0ad8dce1240a2ccdd5e80964"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga48ccec7f0ad8dce1240a2ccdd5e80964">WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_WAIT_INTERNAL</a></td></tr>
+<tr class="memdesc:ga48ccec7f0ad8dce1240a2ccdd5e80964"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: commit timestamp queue lock internal thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="separator:ga48ccec7f0ad8dce1240a2ccdd5e80964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac5500ef18e371f7ea61149b98cc54e1d"><td class="memItemLeft" align="right" valign="top"><a id="gac5500ef18e371f7ea61149b98cc54e1d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac5500ef18e371f7ea61149b98cc54e1d">WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_READ_COUNT</a></td></tr>
+<tr class="memdesc:gac5500ef18e371f7ea61149b98cc54e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: commit timestamp queue read lock acquisitions <br /></td></tr>
+<tr class="separator:gac5500ef18e371f7ea61149b98cc54e1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92a3750baddd988ae670281308c47281"><td class="memItemLeft" align="right" valign="top"><a id="ga92a3750baddd988ae670281308c47281"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga92a3750baddd988ae670281308c47281">WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_WRITE_COUNT</a></td></tr>
+<tr class="memdesc:ga92a3750baddd988ae670281308c47281"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: commit timestamp queue write lock acquisitions <br /></td></tr>
+<tr class="separator:ga92a3750baddd988ae670281308c47281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0d8fdfa31188f71b0003a2bbfcb8eac3"><td class="memItemLeft" align="right" valign="top"><a id="ga0d8fdfa31188f71b0003a2bbfcb8eac3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0d8fdfa31188f71b0003a2bbfcb8eac3">WT_STAT_CONN_LOCK_DHANDLE_WAIT_APPLICATION</a></td></tr>
 <tr class="memdesc:ga0d8fdfa31188f71b0003a2bbfcb8eac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: dhandle lock application thread time waiting for the dhandle lock (usecs) <br /></td></tr>
@@ -954,6 +978,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad13ce2f113e1f074f72dfe7d282166bf">WT_STAT_CONN_LOCK_METADATA_WAIT_INTERNAL</a></td></tr>
 <tr class="memdesc:gad13ce2f113e1f074f72dfe7d282166bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: metadata lock internal thread wait time (usecs) <br /></td></tr>
 <tr class="separator:gad13ce2f113e1f074f72dfe7d282166bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f4cf362ee59423389e4d2252ed39ac9"><td class="memItemLeft" align="right" valign="top"><a id="ga2f4cf362ee59423389e4d2252ed39ac9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2f4cf362ee59423389e4d2252ed39ac9">WT_STAT_CONN_LOCK_READ_TIMESTAMP_WAIT_APPLICATION</a></td></tr>
+<tr class="memdesc:ga2f4cf362ee59423389e4d2252ed39ac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: read timestamp queue lock application thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="separator:ga2f4cf362ee59423389e4d2252ed39ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d05dd70acd0e3e72a78e3392f95e7cf"><td class="memItemLeft" align="right" valign="top"><a id="ga8d05dd70acd0e3e72a78e3392f95e7cf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8d05dd70acd0e3e72a78e3392f95e7cf">WT_STAT_CONN_LOCK_READ_TIMESTAMP_WAIT_INTERNAL</a></td></tr>
+<tr class="memdesc:ga8d05dd70acd0e3e72a78e3392f95e7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: read timestamp queue lock internal thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="separator:ga8d05dd70acd0e3e72a78e3392f95e7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga472ffe8ae92d8bb083d497f73f58187c"><td class="memItemLeft" align="right" valign="top"><a id="ga472ffe8ae92d8bb083d497f73f58187c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga472ffe8ae92d8bb083d497f73f58187c">WT_STAT_CONN_LOCK_READ_TIMESTAMP_READ_COUNT</a></td></tr>
+<tr class="memdesc:ga472ffe8ae92d8bb083d497f73f58187c"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: read timestamp queue read lock acquisitions <br /></td></tr>
+<tr class="separator:ga472ffe8ae92d8bb083d497f73f58187c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga45ff74539e2c1f3bce3e1a23551bc94e"><td class="memItemLeft" align="right" valign="top"><a id="ga45ff74539e2c1f3bce3e1a23551bc94e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga45ff74539e2c1f3bce3e1a23551bc94e">WT_STAT_CONN_LOCK_READ_TIMESTAMP_WRITE_COUNT</a></td></tr>
+<tr class="memdesc:ga45ff74539e2c1f3bce3e1a23551bc94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: read timestamp queue write lock acquisitions <br /></td></tr>
+<tr class="separator:ga45ff74539e2c1f3bce3e1a23551bc94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4eee9b9cafd39cde7bfa6b3906471e05"><td class="memItemLeft" align="right" valign="top"><a id="ga4eee9b9cafd39cde7bfa6b3906471e05"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4eee9b9cafd39cde7bfa6b3906471e05">WT_STAT_CONN_LOCK_SCHEMA_COUNT</a></td></tr>
 <tr class="memdesc:ga4eee9b9cafd39cde7bfa6b3906471e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: schema lock acquisitions <br /></td></tr>
@@ -982,6 +1022,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga88c990e679f93ecf486575014dfa6cc3">WT_STAT_CONN_LOCK_TABLE_WRITE_COUNT</a></td></tr>
 <tr class="memdesc:ga88c990e679f93ecf486575014dfa6cc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: table write lock acquisitions <br /></td></tr>
 <tr class="separator:ga88c990e679f93ecf486575014dfa6cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga059000421e4199c64229337aeb491355"><td class="memItemLeft" align="right" valign="top"><a id="ga059000421e4199c64229337aeb491355"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga059000421e4199c64229337aeb491355">WT_STAT_CONN_LOCK_TXN_GLOBAL_WAIT_APPLICATION</a></td></tr>
+<tr class="memdesc:ga059000421e4199c64229337aeb491355"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: txn global lock application thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="separator:ga059000421e4199c64229337aeb491355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7fa3d91a1604e83e96d2842a6f40b91f"><td class="memItemLeft" align="right" valign="top"><a id="ga7fa3d91a1604e83e96d2842a6f40b91f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7fa3d91a1604e83e96d2842a6f40b91f">WT_STAT_CONN_LOCK_TXN_GLOBAL_WAIT_INTERNAL</a></td></tr>
+<tr class="memdesc:ga7fa3d91a1604e83e96d2842a6f40b91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: txn global lock internal thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="separator:ga7fa3d91a1604e83e96d2842a6f40b91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77e4d7ab151c245e62befb8925b5b236"><td class="memItemLeft" align="right" valign="top"><a id="ga77e4d7ab151c245e62befb8925b5b236"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga77e4d7ab151c245e62befb8925b5b236">WT_STAT_CONN_LOCK_TXN_GLOBAL_READ_COUNT</a></td></tr>
+<tr class="memdesc:ga77e4d7ab151c245e62befb8925b5b236"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: txn global read lock acquisitions <br /></td></tr>
+<tr class="separator:ga77e4d7ab151c245e62befb8925b5b236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaea6e6db0450e8e530e2a5fdaec089eb4"><td class="memItemLeft" align="right" valign="top"><a id="gaea6e6db0450e8e530e2a5fdaec089eb4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaea6e6db0450e8e530e2a5fdaec089eb4">WT_STAT_CONN_LOCK_TXN_GLOBAL_WRITE_COUNT</a></td></tr>
+<tr class="memdesc:gaea6e6db0450e8e530e2a5fdaec089eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: txn global write lock acquisitions <br /></td></tr>
+<tr class="separator:gaea6e6db0450e8e530e2a5fdaec089eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac591ceed458e9590aad96c4ff117dd38"><td class="memItemLeft" align="right" valign="top"><a id="gac591ceed458e9590aad96c4ff117dd38"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac591ceed458e9590aad96c4ff117dd38">WT_STAT_CONN_LOG_SLOT_SWITCH_BUSY</a></td></tr>
 <tr class="memdesc:gac591ceed458e9590aad96c4ff117dd38"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: busy returns attempting to switch slots <br /></td></tr>
@@ -1166,6 +1222,94 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7f2ca67519476ca8fbc3eb9f7a7b6ad5">WT_STAT_CONN_LOG_CLOSE_YIELDS</a></td></tr>
 <tr class="memdesc:ga7f2ca67519476ca8fbc3eb9f7a7b6ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: yields waiting for previous log file close <br /></td></tr>
 <tr class="separator:ga7f2ca67519476ca8fbc3eb9f7a7b6ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf77e58a01ad4a4c316be3abb2eb0233"><td class="memItemLeft" align="right" valign="top"><a id="gacf77e58a01ad4a4c316be3abb2eb0233"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf77e58a01ad4a4c316be3abb2eb0233">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT50</a></td></tr>
+<tr class="memdesc:gacf77e58a01ad4a4c316be3abb2eb0233"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 1) - 10-49ms <br /></td></tr>
+<tr class="separator:gacf77e58a01ad4a4c316be3abb2eb0233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab69575a0f89fd8c413a7b183204be7b3"><td class="memItemLeft" align="right" valign="top"><a id="gab69575a0f89fd8c413a7b183204be7b3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab69575a0f89fd8c413a7b183204be7b3">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT100</a></td></tr>
+<tr class="memdesc:gab69575a0f89fd8c413a7b183204be7b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 2) - 50-99ms <br /></td></tr>
+<tr class="separator:gab69575a0f89fd8c413a7b183204be7b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d08caf353b0128f29f1ebfdfcc29c0b"><td class="memItemLeft" align="right" valign="top"><a id="ga8d08caf353b0128f29f1ebfdfcc29c0b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8d08caf353b0128f29f1ebfdfcc29c0b">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT250</a></td></tr>
+<tr class="memdesc:ga8d08caf353b0128f29f1ebfdfcc29c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 3) - 100-249ms <br /></td></tr>
+<tr class="separator:ga8d08caf353b0128f29f1ebfdfcc29c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61097987bcab9ff220f9a597c10150c4"><td class="memItemLeft" align="right" valign="top"><a id="ga61097987bcab9ff220f9a597c10150c4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga61097987bcab9ff220f9a597c10150c4">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT500</a></td></tr>
+<tr class="memdesc:ga61097987bcab9ff220f9a597c10150c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 4) - 250-499ms <br /></td></tr>
+<tr class="separator:ga61097987bcab9ff220f9a597c10150c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd633e671069ea7c5f567af6677e2edb"><td class="memItemLeft" align="right" valign="top"><a id="gabd633e671069ea7c5f567af6677e2edb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabd633e671069ea7c5f567af6677e2edb">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT1000</a></td></tr>
+<tr class="memdesc:gabd633e671069ea7c5f567af6677e2edb"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 5) - 500-999ms <br /></td></tr>
+<tr class="separator:gabd633e671069ea7c5f567af6677e2edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc3e81183d0ba7224963618ba0f86f91"><td class="memItemLeft" align="right" valign="top"><a id="gacc3e81183d0ba7224963618ba0f86f91"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacc3e81183d0ba7224963618ba0f86f91">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_GT1000</a></td></tr>
+<tr class="memdesc:gacc3e81183d0ba7224963618ba0f86f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 6) - 1000ms+ <br /></td></tr>
+<tr class="separator:gacc3e81183d0ba7224963618ba0f86f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad59d124a0e6bffb9919bc51697497df4"><td class="memItemLeft" align="right" valign="top"><a id="gad59d124a0e6bffb9919bc51697497df4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad59d124a0e6bffb9919bc51697497df4">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT50</a></td></tr>
+<tr class="memdesc:gad59d124a0e6bffb9919bc51697497df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 1) - 10-49ms <br /></td></tr>
+<tr class="separator:gad59d124a0e6bffb9919bc51697497df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3b9d70cff9680e4614c2dbe2c27a7c4c"><td class="memItemLeft" align="right" valign="top"><a id="ga3b9d70cff9680e4614c2dbe2c27a7c4c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3b9d70cff9680e4614c2dbe2c27a7c4c">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT100</a></td></tr>
+<tr class="memdesc:ga3b9d70cff9680e4614c2dbe2c27a7c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 2) - 50-99ms <br /></td></tr>
+<tr class="separator:ga3b9d70cff9680e4614c2dbe2c27a7c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga339fdee8a1b559af384b994c0952c0ad"><td class="memItemLeft" align="right" valign="top"><a id="ga339fdee8a1b559af384b994c0952c0ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga339fdee8a1b559af384b994c0952c0ad">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT250</a></td></tr>
+<tr class="memdesc:ga339fdee8a1b559af384b994c0952c0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 3) - 100-249ms <br /></td></tr>
+<tr class="separator:ga339fdee8a1b559af384b994c0952c0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0128cef518080b49f6b708060211943c"><td class="memItemLeft" align="right" valign="top"><a id="ga0128cef518080b49f6b708060211943c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0128cef518080b49f6b708060211943c">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT500</a></td></tr>
+<tr class="memdesc:ga0128cef518080b49f6b708060211943c"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 4) - 250-499ms <br /></td></tr>
+<tr class="separator:ga0128cef518080b49f6b708060211943c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f2f8149523b1e6e4f64100ef198e050"><td class="memItemLeft" align="right" valign="top"><a id="ga9f2f8149523b1e6e4f64100ef198e050"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9f2f8149523b1e6e4f64100ef198e050">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT1000</a></td></tr>
+<tr class="memdesc:ga9f2f8149523b1e6e4f64100ef198e050"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 5) - 500-999ms <br /></td></tr>
+<tr class="separator:ga9f2f8149523b1e6e4f64100ef198e050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga70303b938fe2949c13884c1660179c5a"><td class="memItemLeft" align="right" valign="top"><a id="ga70303b938fe2949c13884c1660179c5a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga70303b938fe2949c13884c1660179c5a">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_GT1000</a></td></tr>
+<tr class="memdesc:ga70303b938fe2949c13884c1660179c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 6) - 1000ms+ <br /></td></tr>
+<tr class="separator:ga70303b938fe2949c13884c1660179c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d760a39df4232fb4c3e9308e21756a2"><td class="memItemLeft" align="right" valign="top"><a id="ga4d760a39df4232fb4c3e9308e21756a2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4d760a39df4232fb4c3e9308e21756a2">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT250</a></td></tr>
+<tr class="memdesc:ga4d760a39df4232fb4c3e9308e21756a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 1) - 100-249us <br /></td></tr>
+<tr class="separator:ga4d760a39df4232fb4c3e9308e21756a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74bd29055199ef15085d2b1c6fd82ff6"><td class="memItemLeft" align="right" valign="top"><a id="ga74bd29055199ef15085d2b1c6fd82ff6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga74bd29055199ef15085d2b1c6fd82ff6">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT500</a></td></tr>
+<tr class="memdesc:ga74bd29055199ef15085d2b1c6fd82ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 2) - 250-499us <br /></td></tr>
+<tr class="separator:ga74bd29055199ef15085d2b1c6fd82ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6f31e98a4b037443612d05c6f1442ab"><td class="memItemLeft" align="right" valign="top"><a id="gaf6f31e98a4b037443612d05c6f1442ab"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf6f31e98a4b037443612d05c6f1442ab">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT1000</a></td></tr>
+<tr class="memdesc:gaf6f31e98a4b037443612d05c6f1442ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 3) - 500-999us <br /></td></tr>
+<tr class="separator:gaf6f31e98a4b037443612d05c6f1442ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ab807fdce0ca362e3ad1ebef0e77507"><td class="memItemLeft" align="right" valign="top"><a id="ga4ab807fdce0ca362e3ad1ebef0e77507"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4ab807fdce0ca362e3ad1ebef0e77507">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT10000</a></td></tr>
+<tr class="memdesc:ga4ab807fdce0ca362e3ad1ebef0e77507"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 4) - 1000-9999us <br /></td></tr>
+<tr class="separator:ga4ab807fdce0ca362e3ad1ebef0e77507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa43ca231e73ce343409891029299872"><td class="memItemLeft" align="right" valign="top"><a id="gaaa43ca231e73ce343409891029299872"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaaa43ca231e73ce343409891029299872">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_GT10000</a></td></tr>
+<tr class="memdesc:gaaa43ca231e73ce343409891029299872"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 5) - 10000us+ <br /></td></tr>
+<tr class="separator:gaaa43ca231e73ce343409891029299872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff213856daa75fe9fa8c3fc46ed24141"><td class="memItemLeft" align="right" valign="top"><a id="gaff213856daa75fe9fa8c3fc46ed24141"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaff213856daa75fe9fa8c3fc46ed24141">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT250</a></td></tr>
+<tr class="memdesc:gaff213856daa75fe9fa8c3fc46ed24141"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 1) - 100-249us <br /></td></tr>
+<tr class="separator:gaff213856daa75fe9fa8c3fc46ed24141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8251dd1f2fcdb83e3924d3db24beac92"><td class="memItemLeft" align="right" valign="top"><a id="ga8251dd1f2fcdb83e3924d3db24beac92"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8251dd1f2fcdb83e3924d3db24beac92">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT500</a></td></tr>
+<tr class="memdesc:ga8251dd1f2fcdb83e3924d3db24beac92"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 2) - 250-499us <br /></td></tr>
+<tr class="separator:ga8251dd1f2fcdb83e3924d3db24beac92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73cac68702f3143f2146822c7398200a"><td class="memItemLeft" align="right" valign="top"><a id="ga73cac68702f3143f2146822c7398200a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga73cac68702f3143f2146822c7398200a">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT1000</a></td></tr>
+<tr class="memdesc:ga73cac68702f3143f2146822c7398200a"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 3) - 500-999us <br /></td></tr>
+<tr class="separator:ga73cac68702f3143f2146822c7398200a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga10569cd0fb0f341aafb831504e182ec2"><td class="memItemLeft" align="right" valign="top"><a id="ga10569cd0fb0f341aafb831504e182ec2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga10569cd0fb0f341aafb831504e182ec2">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT10000</a></td></tr>
+<tr class="memdesc:ga10569cd0fb0f341aafb831504e182ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 4) - 1000-9999us <br /></td></tr>
+<tr class="separator:ga10569cd0fb0f341aafb831504e182ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f2167c286f1f726286b2f20657dce63"><td class="memItemLeft" align="right" valign="top"><a id="ga4f2167c286f1f726286b2f20657dce63"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4f2167c286f1f726286b2f20657dce63">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_GT10000</a></td></tr>
+<tr class="memdesc:ga4f2167c286f1f726286b2f20657dce63"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 5) - 10000us+ <br /></td></tr>
+<tr class="separator:ga4f2167c286f1f726286b2f20657dce63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga56aba145afb1b81789e11557a37dabc9"><td class="memItemLeft" align="right" valign="top"><a id="ga56aba145afb1b81789e11557a37dabc9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga56aba145afb1b81789e11557a37dabc9">WT_STAT_CONN_REC_PAGE_DELETE_FAST</a></td></tr>
 <tr class="memdesc:ga56aba145afb1b81789e11557a37dabc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: fast-path pages deleted <br /></td></tr>
@@ -1346,6 +1490,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga69f3fffeffd2b0a51fa09cc68b2c1095">WT_STAT_CONN_TREE_DESCEND_BLOCKED</a></td></tr>
 <tr class="memdesc:ga69f3fffeffd2b0a51fa09cc68b2c1095"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: tree descend one level yielded for split page index update <br /></td></tr>
 <tr class="separator:ga69f3fffeffd2b0a51fa09cc68b2c1095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe9ae696cf24a548b230b5bc7de43266"><td class="memItemLeft" align="right" valign="top"><a id="gafe9ae696cf24a548b230b5bc7de43266"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafe9ae696cf24a548b230b5bc7de43266">WT_STAT_CONN_TXN_COMMIT_QUEUE_EMPTY</a></td></tr>
+<tr class="memdesc:gafe9ae696cf24a548b230b5bc7de43266"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue insert to empty <br /></td></tr>
+<tr class="separator:gafe9ae696cf24a548b230b5bc7de43266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad20e41e94e55a65a46fc1fa967829857"><td class="memItemLeft" align="right" valign="top"><a id="gad20e41e94e55a65a46fc1fa967829857"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad20e41e94e55a65a46fc1fa967829857">WT_STAT_CONN_TXN_COMMIT_QUEUE_HEAD</a></td></tr>
+<tr class="memdesc:gad20e41e94e55a65a46fc1fa967829857"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue inserts to head <br /></td></tr>
+<tr class="separator:gad20e41e94e55a65a46fc1fa967829857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e42c5ba33463da9910638a987e4283d"><td class="memItemLeft" align="right" valign="top"><a id="ga0e42c5ba33463da9910638a987e4283d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0e42c5ba33463da9910638a987e4283d">WT_STAT_CONN_TXN_COMMIT_QUEUE_INSERTS</a></td></tr>
+<tr class="memdesc:ga0e42c5ba33463da9910638a987e4283d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue inserts total <br /></td></tr>
+<tr class="separator:ga0e42c5ba33463da9910638a987e4283d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a0431d26d4b1622369a5adb892469aa"><td class="memItemLeft" align="right" valign="top"><a id="ga8a0431d26d4b1622369a5adb892469aa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8a0431d26d4b1622369a5adb892469aa">WT_STAT_CONN_TXN_COMMIT_QUEUE_LEN</a></td></tr>
+<tr class="memdesc:ga8a0431d26d4b1622369a5adb892469aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue length <br /></td></tr>
+<tr class="separator:ga8a0431d26d4b1622369a5adb892469aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga219347d44f2b9701e6254f4a16fba1bf"><td class="memItemLeft" align="right" valign="top"><a id="ga219347d44f2b9701e6254f4a16fba1bf"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga219347d44f2b9701e6254f4a16fba1bf">WT_STAT_CONN_TXN_SNAPSHOTS_CREATED</a></td></tr>
 <tr class="memdesc:ga219347d44f2b9701e6254f4a16fba1bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: number of named snapshots created <br /></td></tr>
@@ -1354,6 +1514,54 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5e8806d6c13e997ff8f26b1d332d750d">WT_STAT_CONN_TXN_SNAPSHOTS_DROPPED</a></td></tr>
 <tr class="memdesc:ga5e8806d6c13e997ff8f26b1d332d750d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: number of named snapshots dropped <br /></td></tr>
 <tr class="separator:ga5e8806d6c13e997ff8f26b1d332d750d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="memItemLeft" align="right" valign="top"><a id="ga99702821df60ac2845a9c89a7c9bc1cb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga99702821df60ac2845a9c89a7c9bc1cb">WT_STAT_CONN_TXN_QUERY_TS</a></td></tr>
+<tr class="memdesc:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: query timestamp calls <br /></td></tr>
+<tr class="separator:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc8b613d73e776000e804218a0c0e3ff"><td class="memItemLeft" align="right" valign="top"><a id="gadc8b613d73e776000e804218a0c0e3ff"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadc8b613d73e776000e804218a0c0e3ff">WT_STAT_CONN_TXN_READ_QUEUE_EMPTY</a></td></tr>
+<tr class="memdesc:gadc8b613d73e776000e804218a0c0e3ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: read timestamp queue insert to empty <br /></td></tr>
+<tr class="separator:gadc8b613d73e776000e804218a0c0e3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafdd933944ff0d27fbd8c95e65de8f209"><td class="memItemLeft" align="right" valign="top"><a id="gafdd933944ff0d27fbd8c95e65de8f209"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafdd933944ff0d27fbd8c95e65de8f209">WT_STAT_CONN_TXN_READ_QUEUE_HEAD</a></td></tr>
+<tr class="memdesc:gafdd933944ff0d27fbd8c95e65de8f209"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: read timestamp queue inserts to head <br /></td></tr>
+<tr class="separator:gafdd933944ff0d27fbd8c95e65de8f209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e9b162d3bfe2557531d4b254727a7d7"><td class="memItemLeft" align="right" valign="top"><a id="ga5e9b162d3bfe2557531d4b254727a7d7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5e9b162d3bfe2557531d4b254727a7d7">WT_STAT_CONN_TXN_READ_QUEUE_INSERTS</a></td></tr>
+<tr class="memdesc:ga5e9b162d3bfe2557531d4b254727a7d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: read timestamp queue inserts total <br /></td></tr>
+<tr class="separator:ga5e9b162d3bfe2557531d4b254727a7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1265659398b9349cd7f6e6e986e1dc1"><td class="memItemLeft" align="right" valign="top"><a id="gaa1265659398b9349cd7f6e6e986e1dc1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa1265659398b9349cd7f6e6e986e1dc1">WT_STAT_CONN_TXN_READ_QUEUE_LEN</a></td></tr>
+<tr class="memdesc:gaa1265659398b9349cd7f6e6e986e1dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: read timestamp queue length <br /></td></tr>
+<tr class="separator:gaa1265659398b9349cd7f6e6e986e1dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25777c1773b5be81573a121ac29b4d52"><td class="memItemLeft" align="right" valign="top"><a id="ga25777c1773b5be81573a121ac29b4d52"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga25777c1773b5be81573a121ac29b4d52">WT_STAT_CONN_TXN_SET_TS</a></td></tr>
+<tr class="memdesc:ga25777c1773b5be81573a121ac29b4d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp calls <br /></td></tr>
+<tr class="separator:ga25777c1773b5be81573a121ac29b4d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa77abf963e05dd0bce857414cc59776e"><td class="memItemLeft" align="right" valign="top"><a id="gaa77abf963e05dd0bce857414cc59776e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa77abf963e05dd0bce857414cc59776e">WT_STAT_CONN_TXN_SET_TS_COMMIT</a></td></tr>
+<tr class="memdesc:gaa77abf963e05dd0bce857414cc59776e"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp commit calls <br /></td></tr>
+<tr class="separator:gaa77abf963e05dd0bce857414cc59776e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabed827f2378e7d5c2802273fbe95406f"><td class="memItemLeft" align="right" valign="top"><a id="gabed827f2378e7d5c2802273fbe95406f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabed827f2378e7d5c2802273fbe95406f">WT_STAT_CONN_TXN_SET_TS_COMMIT_UPD</a></td></tr>
+<tr class="memdesc:gabed827f2378e7d5c2802273fbe95406f"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp commit updates <br /></td></tr>
+<tr class="separator:gabed827f2378e7d5c2802273fbe95406f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab23bbcd9ab6a3eaac2d39aa29468fcfa"><td class="memItemLeft" align="right" valign="top"><a id="gab23bbcd9ab6a3eaac2d39aa29468fcfa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab23bbcd9ab6a3eaac2d39aa29468fcfa">WT_STAT_CONN_TXN_SET_TS_OLDEST</a></td></tr>
+<tr class="memdesc:gab23bbcd9ab6a3eaac2d39aa29468fcfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp oldest calls <br /></td></tr>
+<tr class="separator:gab23bbcd9ab6a3eaac2d39aa29468fcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga226c08ccaa6b368b3ec8dfbfc727d44a"><td class="memItemLeft" align="right" valign="top"><a id="ga226c08ccaa6b368b3ec8dfbfc727d44a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga226c08ccaa6b368b3ec8dfbfc727d44a">WT_STAT_CONN_TXN_SET_TS_OLDEST_UPD</a></td></tr>
+<tr class="memdesc:ga226c08ccaa6b368b3ec8dfbfc727d44a"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp oldest updates <br /></td></tr>
+<tr class="separator:ga226c08ccaa6b368b3ec8dfbfc727d44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab33d53b5c787f3ea35af0d11fb669d3c"><td class="memItemLeft" align="right" valign="top"><a id="gab33d53b5c787f3ea35af0d11fb669d3c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab33d53b5c787f3ea35af0d11fb669d3c">WT_STAT_CONN_TXN_SET_TS_STABLE</a></td></tr>
+<tr class="memdesc:gab33d53b5c787f3ea35af0d11fb669d3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp stable calls <br /></td></tr>
+<tr class="separator:gab33d53b5c787f3ea35af0d11fb669d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab031f16842a914c8a9ac52d75e1ef353"><td class="memItemLeft" align="right" valign="top"><a id="gab031f16842a914c8a9ac52d75e1ef353"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab031f16842a914c8a9ac52d75e1ef353">WT_STAT_CONN_TXN_SET_TS_STABLE_UPD</a></td></tr>
+<tr class="memdesc:gab031f16842a914c8a9ac52d75e1ef353"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp stable updates <br /></td></tr>
+<tr class="separator:gab031f16842a914c8a9ac52d75e1ef353"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga89fc3c2ab4ee14451d9adf0b608ed4b5"><td class="memItemLeft" align="right" valign="top"><a id="ga89fc3c2ab4ee14451d9adf0b608ed4b5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga89fc3c2ab4ee14451d9adf0b608ed4b5">WT_STAT_CONN_TXN_BEGIN</a></td></tr>
 <tr class="memdesc:ga89fc3c2ab4ee14451d9adf0b608ed4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction begins <br /></td></tr>
@@ -1434,34 +1642,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf40fbeef46755a0c76d1755c4b63919f">WT_STAT_CONN_TXN_SYNC</a></td></tr>
 <tr class="memdesc:gaf40fbeef46755a0c76d1755c4b63919f"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction sync calls <br /></td></tr>
 <tr class="separator:gaf40fbeef46755a0c76d1755c4b63919f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad20e41e94e55a65a46fc1fa967829857"><td class="memItemLeft" align="right" valign="top"><a id="gad20e41e94e55a65a46fc1fa967829857"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad20e41e94e55a65a46fc1fa967829857">WT_STAT_CONN_TXN_COMMIT_QUEUE_HEAD</a></td></tr>
-<tr class="memdesc:gad20e41e94e55a65a46fc1fa967829857"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions commit timestamp queue inserts to head <br /></td></tr>
-<tr class="separator:gad20e41e94e55a65a46fc1fa967829857"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0e42c5ba33463da9910638a987e4283d"><td class="memItemLeft" align="right" valign="top"><a id="ga0e42c5ba33463da9910638a987e4283d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0e42c5ba33463da9910638a987e4283d">WT_STAT_CONN_TXN_COMMIT_QUEUE_INSERTS</a></td></tr>
-<tr class="memdesc:ga0e42c5ba33463da9910638a987e4283d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions commit timestamp queue inserts total <br /></td></tr>
-<tr class="separator:ga0e42c5ba33463da9910638a987e4283d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a0431d26d4b1622369a5adb892469aa"><td class="memItemLeft" align="right" valign="top"><a id="ga8a0431d26d4b1622369a5adb892469aa"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8a0431d26d4b1622369a5adb892469aa">WT_STAT_CONN_TXN_COMMIT_QUEUE_LEN</a></td></tr>
-<tr class="memdesc:ga8a0431d26d4b1622369a5adb892469aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions commit timestamp queue length <br /></td></tr>
-<tr class="separator:ga8a0431d26d4b1622369a5adb892469aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga83162e41a1eede606d6319717c3a893b"><td class="memItemLeft" align="right" valign="top"><a id="ga83162e41a1eede606d6319717c3a893b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga83162e41a1eede606d6319717c3a893b">WT_STAT_CONN_TXN_COMMIT</a></td></tr>
 <tr class="memdesc:ga83162e41a1eede606d6319717c3a893b"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions committed <br /></td></tr>
 <tr class="separator:ga83162e41a1eede606d6319717c3a893b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafdd933944ff0d27fbd8c95e65de8f209"><td class="memItemLeft" align="right" valign="top"><a id="gafdd933944ff0d27fbd8c95e65de8f209"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafdd933944ff0d27fbd8c95e65de8f209">WT_STAT_CONN_TXN_READ_QUEUE_HEAD</a></td></tr>
-<tr class="memdesc:gafdd933944ff0d27fbd8c95e65de8f209"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions read timestamp queue inserts to head <br /></td></tr>
-<tr class="separator:gafdd933944ff0d27fbd8c95e65de8f209"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5e9b162d3bfe2557531d4b254727a7d7"><td class="memItemLeft" align="right" valign="top"><a id="ga5e9b162d3bfe2557531d4b254727a7d7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5e9b162d3bfe2557531d4b254727a7d7">WT_STAT_CONN_TXN_READ_QUEUE_INSERTS</a></td></tr>
-<tr class="memdesc:ga5e9b162d3bfe2557531d4b254727a7d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions read timestamp queue inserts total <br /></td></tr>
-<tr class="separator:ga5e9b162d3bfe2557531d4b254727a7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1265659398b9349cd7f6e6e986e1dc1"><td class="memItemLeft" align="right" valign="top"><a id="gaa1265659398b9349cd7f6e6e986e1dc1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa1265659398b9349cd7f6e6e986e1dc1">WT_STAT_CONN_TXN_READ_QUEUE_LEN</a></td></tr>
-<tr class="memdesc:gaa1265659398b9349cd7f6e6e986e1dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions read timestamp queue length <br /></td></tr>
-<tr class="separator:gaa1265659398b9349cd7f6e6e986e1dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac59719438965d6f2f0c89df53676680b"><td class="memItemLeft" align="right" valign="top"><a id="gac59719438965d6f2f0c89df53676680b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac59719438965d6f2f0c89df53676680b">WT_STAT_CONN_TXN_ROLLBACK</a></td></tr>
 <tr class="memdesc:gac59719438965d6f2f0c89df53676680b"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions rolled back <br /></td></tr>
@@ -2117,7 +2301,7 @@ New data. <p>The size of the new data may be zero when no new data is provided. 
 <td class="fieldname">
 offset</td>
 <td class="fielddoc">
-The zero-based byte offset in the value where the new data is placed. <p>If the offset is past the end of the value, nul bytes are appended to the value up to the specified offset. </p>
+The zero-based byte offset in the value where the new data is placed. <p>If the offset is past the end of the value, padding bytes are appended to the value up to the specified offset. If the value is a string (value format <code>S</code>), the padding byte is a space. If the value is a raw byte array accessed using a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structure (value format <code>u</code>), the padding byte is a nul. </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a id="ac08f030bf6cfe86eed9810e90ba6cc20"></a>size_t</td>
@@ -2197,7 +2381,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div><div class="memdoc">
 
 <p>The maximum packed size of a 32-bit integer. </p>
-<p>The <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> function will pack single integers into at most this many bytes. </p>
+<p>The <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> function will pack single integers into at most this many bytes. </p>
 
 </div>
 </div>
@@ -2214,7 +2398,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div><div class="memdoc">
 
 <p>The maximum packed size of a 64-bit integer. </p>
-<p>The <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> function will pack single long integers into at most this many bytes. </p>
+<p>The <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> function will pack single long integers into at most this many bytes. </p>
 
 </div>
 </div>
@@ -2376,7 +2560,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div><div class="memdoc">
 
 <p>Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs. </p>
-<p>This API is outside the scope of a WiredTiger connection handle, since applications may need to generate configuration strings prior to calling <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This API is outside the scope of a WiredTiger connection handle, since applications may need to generate configuration strings prior to calling <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle to be used for error reporting (if NULL, error messages will be written to stderr). </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>the configuration string being parsed. The string must remain valid for the lifetime of the parser handle. </td></tr>
@@ -2389,8 +2573,8 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a> k, v;</div><div class="line">        <a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> *parser;</div><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *config_string =</div><div class="line">            <span class="stringliteral">&quot;path=/dev/loop,page_size=1024,log=(archive=true,file_max=20MB)&quot;</span>;</div><div class="line"></div><div class="line">        error_check(<a class="code" href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a>(</div><div class="line">            NULL, config_string, strlen(config_string), &amp;parser));</div><div class="line">        error_check(parser-&gt;<a class="code" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">close</a>(parser));</div></div><!-- fragment -->
 </div>
 </div>
-<a id="ga9e6adae3fc6964ef837a62795c7840ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9e6adae3fc6964ef837a62795c7840ed">&#9670;&nbsp;</a></span>wiredtiger_open()</h2>
+<a id="gacbe8d118f978f5bfc8ccb4c77c9e8813"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacbe8d118f978f5bfc8ccb4c77c9e8813">&#9670;&nbsp;</a></span>wiredtiger_open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2405,7 +2589,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *&#160;</td>
-          <td class="paramname"><em>errhandler</em>, </td>
+          <td class="paramname"><em>event_handler</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -2428,10 +2612,10 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div><div class="memdoc">
 
 <p>Open a connection to a database. </p>
-<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>,</div><div class="line">            &amp;conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>,</div><div class="line">            &amp;conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, a builtin error handler is installed that writes error messages to stderr. See <a class="el" href="error_handling.html#error_handling_event">Error handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">event_handler</td><td>An event handler. If <code>NULL</code>, a default event handler is installed that writes error messages to stderr. See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
@@ -2470,7 +2654,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>config_base</code></td><td>write the base configuration file if creating the database. If <code>false</code> in the config passed directly to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>, will ignore any existing base configuration file in addition to not creating one. See <a class="el" href="database_config.html#config_base">WiredTiger.basecfg file</a> for more information.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>config_base</code></td><td>write the base configuration file if creating the database. If <code>false</code> in the config passed directly to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>, will ignore any existing base configuration file in addition to not creating one. See <a class="el" href="database_config.html#config_base">WiredTiger.basecfg file</a> for more information.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -2482,7 +2666,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or custom encryption engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949" title="Add an encryption function. ">WT_CONNECTION::add_encryptor</a>. See <a class="el" href="encryption.html">Encryptors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;secretkey</code></td><td>A string that is passed to the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function. It is never stored in clear text, so must be given to any subsequent <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> calls to reopen the database. It must also be provided to any "wt" commands used with this database.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;secretkey</code></td><td>A string that is passed to the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a" title="If non-NULL, this callback is called to customize the encryptor. ">WT_ENCRYPTOR::customize</a> function. It is never stored in clear text, so must be given to any subsequent <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> calls to reopen the database. It must also be provided to any "wt" commands used with this database.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -2496,15 +2680,15 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level, expressed as a percentage of the total cache size. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 99; default <code>5</code>. </td></tr>
+<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level. It is a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 10TB; default <code>5</code>. </td></tr>
 <tr>
-<td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content, expressed as a percentage of the total cache size.</td><td>an integer between 1 and 99; default <code>5</code>. </td></tr>
+<td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content. It is a percentage of the cache size if the value is within the range of 1 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 1 and 10TB; default <code>5</code>. </td></tr>
 <tr>
-<td><code>eviction_dirty_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much dirty content, expressed as a percentage of the total cache size. This setting only alters behavior if it is lower than eviction_trigger.</td><td>an integer between 1 and 99; default <code>20</code>. </td></tr>
+<td><code>eviction_dirty_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much dirty content. It is a percentage of the cache size if the value is within the range of 1 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. This setting only alters behavior if it is lower than eviction_trigger.</td><td>an integer between 1 and 10TB; default <code>20</code>. </td></tr>
 <tr>
-<td><code>eviction_target</code></td><td>perform eviction in worker threads when the cache contains at least this much content, expressed as a percentage of the total cache size. Must be less than <code>eviction_trigger</code>.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
+<td><code>eviction_target</code></td><td>perform eviction in worker threads when the cache contains at least this much content. It is a percentage of the cache size if the value is within the range of 10 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 10 and 10TB; default <code>80</code>. </td></tr>
 <tr>
-<td><code>eviction_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much content, expressed as a percentage of the total cache size.</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
+<td><code>eviction_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much content. It is a percentage of the cache size if the value is within the range of 10 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 10 and 10TB; default <code>95</code>. </td></tr>
 <tr>
 <td><code>exclusive</code></td><td>fail if the database already exists, generally used with the <code>create</code> option.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -2556,11 +2740,19 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>multiprocess</code></td><td>permit sharing between processes (will automatically start an RPC server for primary processes and use RPC for secondary processes). <b>Not yet supported in WiredTiger</b>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>operation_tracking = (</code></td><td>enable tracking of performance-critical functions. See <a class="el" href="operation_tracking.html">Track function calls</a> for more information.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable operation tracking subsystem.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the name of a directory into which operation tracking files are written. The directory must already exist. If the value is not an absolute path, the path is relative to the database home (see <a class="el" href="security.html#absolute_path">Absolute paths</a> for more information).</td><td>a string; default <code>"."</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>readonly</code></td><td>open connection in read-only mode. The database must exist. All methods that may modify a database are disabled. See <a class="el" href="readonly.html">Database read-only mode</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>session_max</code></td><td>maximum expected number of sessions (including server threads).</td><td>an integer greater than or equal to 1; default <code>100</code>. </td></tr>
 <tr>
-<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both. Enabling a shared cache uses a session from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both. Enabling a shared cache uses a session from the configured session_max. A shared cache can not have absolute values configured for cache eviction settings.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;chunk</code></td><td>the granularity that a shared cache is redistributed.</td><td>an integer between 1MB and 10TB; default <code>10MB</code>. </td></tr>
 <tr>
@@ -2605,7 +2797,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables even if the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 <tr>
 <td><code>write_through</code></td><td>Use <code>FILE_FLAG_WRITE_THROUGH</code> on Windows to write to files. Ignored on non-Windows systems. Options are given as a list, such as <code>"write_through=[data]"</code>. Configuring <code>write_through</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to write through cache, including <code>"log"</code> will cause WiredTiger log files to write through cache. <code>write_through</code> should be combined with <code>direct_io</code> to get the equivalent of POSIX <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 </table>
@@ -2897,8 +3089,8 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
 </dl>
 </div>
 </div>
-<a id="ga58d055cb4d054715bebd58a2cb713b2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga58d055cb4d054715bebd58a2cb713b2d">&#9670;&nbsp;</a></span>wiredtiger_struct_pack()</h2>
+<a id="gab3d8a22e243360ece67baf33926d80fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab3d8a22e243360ece67baf33926d80fa">&#9670;&nbsp;</a></span>wiredtiger_struct_pack()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2919,7 +3111,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
+          <td class="paramname"><em>len</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -2946,12 +3138,12 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
 <h1><a class="anchor" id="pack_examples"></a>
 Packing Examples</h1>
 <p>For example, the string <code>"iSh"</code> will pack a 32-bit integer followed by a NUL-terminated string, followed by a 16-bit integer. The default, big-endian encoding will be used, with no alignment. This could be used in C as follows:</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">char</span> buf[100];</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d">wiredtiger_struct_pack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, 42, <span class="stringliteral">&quot;hello&quot;</span>, -3));</div></div><!-- fragment --><p> Then later, the values can be unpacked as follows:</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">int</span> i;</div><div class="line">        <span class="keywordtype">char</span> *s;</div><div class="line">        <span class="keywordtype">short</span> h;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, &amp;i, &amp;s, &amp;h));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        <span class="keywordtype">char</span> buf[100];</div><div class="line">        error_check(<a class="code" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, 42, <span class="stringliteral">&quot;hello&quot;</span>, -3));</div></div><!-- fragment --><p> Then later, the values can be unpacked as follows:</p>
+<div class="fragment"><div class="line">        <span class="keywordtype">int</span> i;</div><div class="line">        <span class="keywordtype">char</span> *s;</div><div class="line">        <span class="keywordtype">short</span> h;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, &amp;i, &amp;s, &amp;h));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">buffer</td><td>a pointer to a packed byte array </td></tr>
-    <tr><td class="paramname">size</td><td>the number of valid bytes in the buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the number of valid bytes in the buffer </td></tr>
     <tr><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
   </table>
   </dd>
@@ -2961,8 +3153,8 @@ Packing Examples</h1>
 </dl>
 </div>
 </div>
-<a id="ga2460e8022f3c8c7cb5f274ec9f1764e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2460e8022f3c8c7cb5f274ec9f1764e6">&#9670;&nbsp;</a></span>wiredtiger_struct_size()</h2>
+<a id="ga156e7993d370495e1e52c29b2bb6b7d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga156e7993d370495e1e52c29b2bb6b7d4">&#9670;&nbsp;</a></span>wiredtiger_struct_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2977,7 +3169,7 @@ Packing Examples</h1>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t *&#160;</td>
-          <td class="paramname"><em>sizep</em>, </td>
+          <td class="paramname"><em>lenp</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -3001,10 +3193,10 @@ Packing Examples</h1>
 
 <p>Calculate the size required to pack a structure. </p>
 <p>Note that for variable-sized fields including variable-sized strings and integers, the calculated sized merely reflects the expected sizes specified in the format string itself.</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">size_t</span> size;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a>(</div><div class="line">            session, &amp;size, <span class="stringliteral">&quot;iSh&quot;</span>, 42, <span class="stringliteral">&quot;hello&quot;</span>, -3));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        <span class="keywordtype">size_t</span> size;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a>(</div><div class="line">            session, &amp;size, <span class="stringliteral">&quot;iSh&quot;</span>, 42, <span class="stringliteral">&quot;hello&quot;</span>, -3));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">sizep</td><td>a location where the number of bytes needed for the matching call to <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> is returned </td></tr>
+    <tr><td class="paramname">lenp</td><td>a location where the number of bytes needed for the matching call to <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a> is returned </td></tr>
     <tr><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
   </table>
   </dd>
@@ -3014,8 +3206,8 @@ Packing Examples</h1>
 </dl>
 </div>
 </div>
-<a id="ga1db8298185374dbb61b398a4e9a3d1c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1db8298185374dbb61b398a4e9a3d1c8">&#9670;&nbsp;</a></span>wiredtiger_struct_unpack()</h2>
+<a id="ga7cdc8c688f2c15303188ed6999dcc1b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7cdc8c688f2c15303188ed6999dcc1b4">&#9670;&nbsp;</a></span>wiredtiger_struct_unpack()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3036,7 +3228,7 @@ Packing Examples</h1>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
+          <td class="paramname"><em>len</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -3059,12 +3251,12 @@ Packing Examples</h1>
 </div><div class="memdoc">
 
 <p>Unpack a structure from a buffer. </p>
-<p>Reverse of <a class="el" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a>: gets values out of a packed byte string.</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">int</span> i;</div><div class="line">        <span class="keywordtype">char</span> *s;</div><div class="line">        <span class="keywordtype">short</span> h;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, &amp;i, &amp;s, &amp;h));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<p>Reverse of <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer. ">wiredtiger_struct_pack</a>: gets values out of a packed byte string.</p>
+<div class="fragment"><div class="line">        <span class="keywordtype">int</span> i;</div><div class="line">        <span class="keywordtype">char</span> *s;</div><div class="line">        <span class="keywordtype">short</span> h;</div><div class="line">        error_check(<a class="code" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a>(</div><div class="line">            session, buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;iSh&quot;</span>, &amp;i, &amp;s, &amp;h));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">buffer</td><td>a pointer to a packed byte array </td></tr>
-    <tr><td class="paramname">size</td><td>the number of valid bytes in the buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the number of valid bytes in the buffer </td></tr>
     <tr><td class="paramname">format</td><td>the data format, see <a class="el" href="packing.html">Packing and Unpacking Data</a> </td></tr>
   </table>
   </dd>
@@ -3336,7 +3528,7 @@ Packing Examples</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -484,6 +484,12 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:ab633cab03bdd925036e9af2675fe8e2c"><td class="memItemLeft" align="right" valign="top"><a id="ab633cab03bdd925036e9af2675fe8e2c"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_READ_LOOKASIDE</b></td></tr>
 <tr class="separator:ab633cab03bdd925036e9af2675fe8e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfdd28ca275dd64fbe3392d314f616ce"><td class="memItemLeft" align="right" valign="top"><a id="acfdd28ca275dd64fbe3392d314f616ce"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_READ_LOOKASIDE_SKIPPED</b></td></tr>
+<tr class="separator:acfdd28ca275dd64fbe3392d314f616ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44deb32393f30758def9552eec3cb352"><td class="memItemLeft" align="right" valign="top"><a id="a44deb32393f30758def9552eec3cb352"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_READ_LOOKASIDE_DELAY</b></td></tr>
+<tr class="separator:a44deb32393f30758def9552eec3cb352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a258f12d3e16bd1c4cf12b52054677c49"><td class="memItemLeft" align="right" valign="top"><a id="a258f12d3e16bd1c4cf12b52054677c49"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_PAGES_REQUESTED</b></td></tr>
 <tr class="separator:a258f12d3e16bd1c4cf12b52054677c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -631,6 +637,18 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:ae9c31c48e2e629bf3024fb515df97f27"><td class="memItemLeft" align="right" valign="top"><a id="ae9c31c48e2e629bf3024fb515df97f27"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_CHECKPOINT_WAIT_INTERNAL</b></td></tr>
 <tr class="separator:ae9c31c48e2e629bf3024fb515df97f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a273262f3a8b3434c36163c5a7c249706"><td class="memItemLeft" align="right" valign="top"><a id="a273262f3a8b3434c36163c5a7c249706"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_WAIT_APPLICATION</b></td></tr>
+<tr class="separator:a273262f3a8b3434c36163c5a7c249706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c36eea6b4dd3a9bbffafcf56da5f0d4"><td class="memItemLeft" align="right" valign="top"><a id="a0c36eea6b4dd3a9bbffafcf56da5f0d4"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_WAIT_INTERNAL</b></td></tr>
+<tr class="separator:a0c36eea6b4dd3a9bbffafcf56da5f0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c9e9c643e7d6839e4eb66666879bb9"><td class="memItemLeft" align="right" valign="top"><a id="a76c9e9c643e7d6839e4eb66666879bb9"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_READ_COUNT</b></td></tr>
+<tr class="separator:a76c9e9c643e7d6839e4eb66666879bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c1bcda23b294b5c9c05db0b9f0f2d54"><td class="memItemLeft" align="right" valign="top"><a id="a7c1bcda23b294b5c9c05db0b9f0f2d54"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_WRITE_COUNT</b></td></tr>
+<tr class="separator:a7c1bcda23b294b5c9c05db0b9f0f2d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a597604f8e043b1e3a898c7e8205f06ac"><td class="memItemLeft" align="right" valign="top"><a id="a597604f8e043b1e3a898c7e8205f06ac"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_DHANDLE_WAIT_APPLICATION</b></td></tr>
 <tr class="separator:a597604f8e043b1e3a898c7e8205f06ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -652,6 +670,18 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:af9d22e7ad73ff037391ef99632e09bac"><td class="memItemLeft" align="right" valign="top"><a id="af9d22e7ad73ff037391ef99632e09bac"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_METADATA_WAIT_INTERNAL</b></td></tr>
 <tr class="separator:af9d22e7ad73ff037391ef99632e09bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12451187c4746a0725fd8c2831c42c20"><td class="memItemLeft" align="right" valign="top"><a id="a12451187c4746a0725fd8c2831c42c20"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_READ_TIMESTAMP_WAIT_APPLICATION</b></td></tr>
+<tr class="separator:a12451187c4746a0725fd8c2831c42c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37c0e51b040110959b8936d4f78eac00"><td class="memItemLeft" align="right" valign="top"><a id="a37c0e51b040110959b8936d4f78eac00"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_READ_TIMESTAMP_WAIT_INTERNAL</b></td></tr>
+<tr class="separator:a37c0e51b040110959b8936d4f78eac00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56fa753bb1ff1dc218425696ef9ae06f"><td class="memItemLeft" align="right" valign="top"><a id="a56fa753bb1ff1dc218425696ef9ae06f"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_READ_TIMESTAMP_READ_COUNT</b></td></tr>
+<tr class="separator:a56fa753bb1ff1dc218425696ef9ae06f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0071fedac33860ade67620fea8e6ae20"><td class="memItemLeft" align="right" valign="top"><a id="a0071fedac33860ade67620fea8e6ae20"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_READ_TIMESTAMP_WRITE_COUNT</b></td></tr>
+<tr class="separator:a0071fedac33860ade67620fea8e6ae20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe086084c6a4f694b6f80e4317284038"><td class="memItemLeft" align="right" valign="top"><a id="afe086084c6a4f694b6f80e4317284038"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_SCHEMA_COUNT</b></td></tr>
 <tr class="separator:afe086084c6a4f694b6f80e4317284038"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -673,6 +703,18 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a8c2ba086ef134241ce7886b8efccf725"><td class="memItemLeft" align="right" valign="top"><a id="a8c2ba086ef134241ce7886b8efccf725"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_TABLE_WRITE_COUNT</b></td></tr>
 <tr class="separator:a8c2ba086ef134241ce7886b8efccf725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a999600b29a253c8a2523c9ffd143372b"><td class="memItemLeft" align="right" valign="top"><a id="a999600b29a253c8a2523c9ffd143372b"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_TXN_GLOBAL_WAIT_APPLICATION</b></td></tr>
+<tr class="separator:a999600b29a253c8a2523c9ffd143372b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb01fa74b9eedd15a8d777381821becc"><td class="memItemLeft" align="right" valign="top"><a id="aeb01fa74b9eedd15a8d777381821becc"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_TXN_GLOBAL_WAIT_INTERNAL</b></td></tr>
+<tr class="separator:aeb01fa74b9eedd15a8d777381821becc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a9a6c0ae9165eede5bbfc3d2e35bf0"><td class="memItemLeft" align="right" valign="top"><a id="aa7a9a6c0ae9165eede5bbfc3d2e35bf0"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_TXN_GLOBAL_READ_COUNT</b></td></tr>
+<tr class="separator:aa7a9a6c0ae9165eede5bbfc3d2e35bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a882fb0949319026e2b27b332bb72e5e4"><td class="memItemLeft" align="right" valign="top"><a id="a882fb0949319026e2b27b332bb72e5e4"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOCK_TXN_GLOBAL_WRITE_COUNT</b></td></tr>
+<tr class="separator:a882fb0949319026e2b27b332bb72e5e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9c392a034a09db55bc1dd632cd5c546"><td class="memItemLeft" align="right" valign="top"><a id="ae9c392a034a09db55bc1dd632cd5c546"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_SLOT_SWITCH_BUSY</b></td></tr>
 <tr class="separator:ae9c392a034a09db55bc1dd632cd5c546"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -811,6 +853,72 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:ab3e2708984bfff98c256f1aad1dbd885"><td class="memItemLeft" align="right" valign="top"><a id="ab3e2708984bfff98c256f1aad1dbd885"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_LOG_CLOSE_YIELDS</b></td></tr>
 <tr class="separator:ab3e2708984bfff98c256f1aad1dbd885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6381adb92bf9f61a3d4f7d3dfb78cd5"><td class="memItemLeft" align="right" valign="top"><a id="ac6381adb92bf9f61a3d4f7d3dfb78cd5"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT50</b></td></tr>
+<tr class="separator:ac6381adb92bf9f61a3d4f7d3dfb78cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a957faddb65e4a68d5298f0986eb1d27e"><td class="memItemLeft" align="right" valign="top"><a id="a957faddb65e4a68d5298f0986eb1d27e"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT100</b></td></tr>
+<tr class="separator:a957faddb65e4a68d5298f0986eb1d27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe955b069c4348a76976bbac60d3ad3"><td class="memItemLeft" align="right" valign="top"><a id="acfe955b069c4348a76976bbac60d3ad3"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT250</b></td></tr>
+<tr class="separator:acfe955b069c4348a76976bbac60d3ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd4dd931b3c419593229038b68d8aba3"><td class="memItemLeft" align="right" valign="top"><a id="acd4dd931b3c419593229038b68d8aba3"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT500</b></td></tr>
+<tr class="separator:acd4dd931b3c419593229038b68d8aba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bbf67a092d125f9d79a39e1ec1d1892"><td class="memItemLeft" align="right" valign="top"><a id="a0bbf67a092d125f9d79a39e1ec1d1892"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT1000</b></td></tr>
+<tr class="separator:a0bbf67a092d125f9d79a39e1ec1d1892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1240686c4ca70c046ed71c4f8dcfb2c7"><td class="memItemLeft" align="right" valign="top"><a id="a1240686c4ca70c046ed71c4f8dcfb2c7"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_GT1000</b></td></tr>
+<tr class="separator:a1240686c4ca70c046ed71c4f8dcfb2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac30df61f8949ae931cb8068974c38a1f"><td class="memItemLeft" align="right" valign="top"><a id="ac30df61f8949ae931cb8068974c38a1f"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT50</b></td></tr>
+<tr class="separator:ac30df61f8949ae931cb8068974c38a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d2a14672a4b61fcd47d3a7978887d7"><td class="memItemLeft" align="right" valign="top"><a id="a85d2a14672a4b61fcd47d3a7978887d7"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT100</b></td></tr>
+<tr class="separator:a85d2a14672a4b61fcd47d3a7978887d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97b01d0b496db18e9da842cac5d218ff"><td class="memItemLeft" align="right" valign="top"><a id="a97b01d0b496db18e9da842cac5d218ff"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT250</b></td></tr>
+<tr class="separator:a97b01d0b496db18e9da842cac5d218ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4a4d12c9dbdc92643392877682b9c19"><td class="memItemLeft" align="right" valign="top"><a id="ae4a4d12c9dbdc92643392877682b9c19"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT500</b></td></tr>
+<tr class="separator:ae4a4d12c9dbdc92643392877682b9c19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f934a0e133d281864dcfc258287fc01"><td class="memItemLeft" align="right" valign="top"><a id="a8f934a0e133d281864dcfc258287fc01"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT1000</b></td></tr>
+<tr class="separator:a8f934a0e133d281864dcfc258287fc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae40f1a5e5b113575207d543172bcbe4e"><td class="memItemLeft" align="right" valign="top"><a id="ae40f1a5e5b113575207d543172bcbe4e"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_GT1000</b></td></tr>
+<tr class="separator:ae40f1a5e5b113575207d543172bcbe4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbaa695123909f650ef339b8c745c32a"><td class="memItemLeft" align="right" valign="top"><a id="afbaa695123909f650ef339b8c745c32a"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT250</b></td></tr>
+<tr class="separator:afbaa695123909f650ef339b8c745c32a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6860c5fa335a572400d87c9fd8f03b9"><td class="memItemLeft" align="right" valign="top"><a id="aa6860c5fa335a572400d87c9fd8f03b9"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT500</b></td></tr>
+<tr class="separator:aa6860c5fa335a572400d87c9fd8f03b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d807e686a8b16c1b95c01246591f3c"><td class="memItemLeft" align="right" valign="top"><a id="a19d807e686a8b16c1b95c01246591f3c"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT1000</b></td></tr>
+<tr class="separator:a19d807e686a8b16c1b95c01246591f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467265fc824cc40a60a4a9b629e9022b"><td class="memItemLeft" align="right" valign="top"><a id="a467265fc824cc40a60a4a9b629e9022b"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT10000</b></td></tr>
+<tr class="separator:a467265fc824cc40a60a4a9b629e9022b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9728a2307accb0d787fcc037c2789cf0"><td class="memItemLeft" align="right" valign="top"><a id="a9728a2307accb0d787fcc037c2789cf0"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_GT10000</b></td></tr>
+<tr class="separator:a9728a2307accb0d787fcc037c2789cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed0074fdfdb05e3b459773e7e8eaf4c1"><td class="memItemLeft" align="right" valign="top"><a id="aed0074fdfdb05e3b459773e7e8eaf4c1"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT250</b></td></tr>
+<tr class="separator:aed0074fdfdb05e3b459773e7e8eaf4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d53a4823b4828cab0cec8ba066e4a12"><td class="memItemLeft" align="right" valign="top"><a id="a0d53a4823b4828cab0cec8ba066e4a12"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT500</b></td></tr>
+<tr class="separator:a0d53a4823b4828cab0cec8ba066e4a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe29445ce50b498b08a5996567af9c14"><td class="memItemLeft" align="right" valign="top"><a id="afe29445ce50b498b08a5996567af9c14"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT1000</b></td></tr>
+<tr class="separator:afe29445ce50b498b08a5996567af9c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d4289eaad3da65ed2891dd86da16d7c"><td class="memItemLeft" align="right" valign="top"><a id="a3d4289eaad3da65ed2891dd86da16d7c"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT10000</b></td></tr>
+<tr class="separator:a3d4289eaad3da65ed2891dd86da16d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace012e0896e8b21b66cb97f8949427f2"><td class="memItemLeft" align="right" valign="top"><a id="ace012e0896e8b21b66cb97f8949427f2"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_GT10000</b></td></tr>
+<tr class="separator:ace012e0896e8b21b66cb97f8949427f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bbea036a5c7519e436de05053d441bf"><td class="memItemLeft" align="right" valign="top"><a id="a5bbea036a5c7519e436de05053d441bf"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_REC_PAGE_DELETE_FAST</b></td></tr>
 <tr class="separator:a5bbea036a5c7519e436de05053d441bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -946,12 +1054,60 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a4cecfe3f83cccf2a7fd18645dca78257"><td class="memItemLeft" align="right" valign="top"><a id="a4cecfe3f83cccf2a7fd18645dca78257"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TREE_DESCEND_BLOCKED</b></td></tr>
 <tr class="separator:a4cecfe3f83cccf2a7fd18645dca78257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3fe3a13d835c623862e91b5986ffd0"><td class="memItemLeft" align="right" valign="top"><a id="a5f3fe3a13d835c623862e91b5986ffd0"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_COMMIT_QUEUE_EMPTY</b></td></tr>
+<tr class="separator:a5f3fe3a13d835c623862e91b5986ffd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af08a2dc255334fd2dfb00bb109e1c80f"><td class="memItemLeft" align="right" valign="top"><a id="af08a2dc255334fd2dfb00bb109e1c80f"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_COMMIT_QUEUE_HEAD</b></td></tr>
+<tr class="separator:af08a2dc255334fd2dfb00bb109e1c80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0922e9b0ef1e2174485945d6b5966449"><td class="memItemLeft" align="right" valign="top"><a id="a0922e9b0ef1e2174485945d6b5966449"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_COMMIT_QUEUE_INSERTS</b></td></tr>
+<tr class="separator:a0922e9b0ef1e2174485945d6b5966449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2576802e044077509a527d482f56750"><td class="memItemLeft" align="right" valign="top"><a id="ae2576802e044077509a527d482f56750"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_COMMIT_QUEUE_LEN</b></td></tr>
+<tr class="separator:ae2576802e044077509a527d482f56750"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77ece1b618cf036b582867a3355dff22"><td class="memItemLeft" align="right" valign="top"><a id="a77ece1b618cf036b582867a3355dff22"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SNAPSHOTS_CREATED</b></td></tr>
 <tr class="separator:a77ece1b618cf036b582867a3355dff22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc9e94eeaeec42a28133b7071272387f"><td class="memItemLeft" align="right" valign="top"><a id="afc9e94eeaeec42a28133b7071272387f"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SNAPSHOTS_DROPPED</b></td></tr>
 <tr class="separator:afc9e94eeaeec42a28133b7071272387f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a114fa2126f922c5cb20d195ae10d3c1d"><td class="memItemLeft" align="right" valign="top"><a id="a114fa2126f922c5cb20d195ae10d3c1d"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_QUERY_TS</b></td></tr>
+<tr class="separator:a114fa2126f922c5cb20d195ae10d3c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45b18ad5b69ce484386bbd89be36d6ce"><td class="memItemLeft" align="right" valign="top"><a id="a45b18ad5b69ce484386bbd89be36d6ce"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_READ_QUEUE_EMPTY</b></td></tr>
+<tr class="separator:a45b18ad5b69ce484386bbd89be36d6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f3c88e538aabd8363d39c12a8214d82"><td class="memItemLeft" align="right" valign="top"><a id="a8f3c88e538aabd8363d39c12a8214d82"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_READ_QUEUE_HEAD</b></td></tr>
+<tr class="separator:a8f3c88e538aabd8363d39c12a8214d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a814e3b37ca745e2cb7eb05bd59f9b611"><td class="memItemLeft" align="right" valign="top"><a id="a814e3b37ca745e2cb7eb05bd59f9b611"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_READ_QUEUE_INSERTS</b></td></tr>
+<tr class="separator:a814e3b37ca745e2cb7eb05bd59f9b611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aa9ab24bbd586c2090d3d7c84a40f51"><td class="memItemLeft" align="right" valign="top"><a id="a3aa9ab24bbd586c2090d3d7c84a40f51"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_READ_QUEUE_LEN</b></td></tr>
+<tr class="separator:a3aa9ab24bbd586c2090d3d7c84a40f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04019a20e3b1660dca6baf9a84b69249"><td class="memItemLeft" align="right" valign="top"><a id="a04019a20e3b1660dca6baf9a84b69249"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SET_TS</b></td></tr>
+<tr class="separator:a04019a20e3b1660dca6baf9a84b69249"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12369b7fe9a15ed7c8d029cca59171a"><td class="memItemLeft" align="right" valign="top"><a id="ae12369b7fe9a15ed7c8d029cca59171a"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SET_TS_COMMIT</b></td></tr>
+<tr class="separator:ae12369b7fe9a15ed7c8d029cca59171a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0971ba2a7387d4bf488390a49fa457d9"><td class="memItemLeft" align="right" valign="top"><a id="a0971ba2a7387d4bf488390a49fa457d9"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SET_TS_COMMIT_UPD</b></td></tr>
+<tr class="separator:a0971ba2a7387d4bf488390a49fa457d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f778d1c00a0d1492df8b7402c92a376"><td class="memItemLeft" align="right" valign="top"><a id="a9f778d1c00a0d1492df8b7402c92a376"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SET_TS_OLDEST</b></td></tr>
+<tr class="separator:a9f778d1c00a0d1492df8b7402c92a376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fa45fd6fb94302a54bd8a65cb4e2720"><td class="memItemLeft" align="right" valign="top"><a id="a5fa45fd6fb94302a54bd8a65cb4e2720"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SET_TS_OLDEST_UPD</b></td></tr>
+<tr class="separator:a5fa45fd6fb94302a54bd8a65cb4e2720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a785f081026f03be58dc50fdcae39c88a"><td class="memItemLeft" align="right" valign="top"><a id="a785f081026f03be58dc50fdcae39c88a"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SET_TS_STABLE</b></td></tr>
+<tr class="separator:a785f081026f03be58dc50fdcae39c88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c6cd67e0fae59289089a70e91006d3d"><td class="memItemLeft" align="right" valign="top"><a id="a9c6cd67e0fae59289089a70e91006d3d"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SET_TS_STABLE_UPD</b></td></tr>
+<tr class="separator:a9c6cd67e0fae59289089a70e91006d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ababce1829d03f82da422330414c380f6"><td class="memItemLeft" align="right" valign="top"><a id="ababce1829d03f82da422330414c380f6"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_BEGIN</b></td></tr>
 <tr class="separator:ababce1829d03f82da422330414c380f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1012,27 +1168,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a15144966fb82e94c4b48204659c3eeed"><td class="memItemLeft" align="right" valign="top"><a id="a15144966fb82e94c4b48204659c3eeed"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_SYNC</b></td></tr>
 <tr class="separator:a15144966fb82e94c4b48204659c3eeed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af08a2dc255334fd2dfb00bb109e1c80f"><td class="memItemLeft" align="right" valign="top"><a id="af08a2dc255334fd2dfb00bb109e1c80f"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_COMMIT_QUEUE_HEAD</b></td></tr>
-<tr class="separator:af08a2dc255334fd2dfb00bb109e1c80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0922e9b0ef1e2174485945d6b5966449"><td class="memItemLeft" align="right" valign="top"><a id="a0922e9b0ef1e2174485945d6b5966449"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_COMMIT_QUEUE_INSERTS</b></td></tr>
-<tr class="separator:a0922e9b0ef1e2174485945d6b5966449"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2576802e044077509a527d482f56750"><td class="memItemLeft" align="right" valign="top"><a id="ae2576802e044077509a527d482f56750"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_COMMIT_QUEUE_LEN</b></td></tr>
-<tr class="separator:ae2576802e044077509a527d482f56750"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b8c051478589606a354df06d88280f1"><td class="memItemLeft" align="right" valign="top"><a id="a4b8c051478589606a354df06d88280f1"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_COMMIT</b></td></tr>
 <tr class="separator:a4b8c051478589606a354df06d88280f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f3c88e538aabd8363d39c12a8214d82"><td class="memItemLeft" align="right" valign="top"><a id="a8f3c88e538aabd8363d39c12a8214d82"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_READ_QUEUE_HEAD</b></td></tr>
-<tr class="separator:a8f3c88e538aabd8363d39c12a8214d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a814e3b37ca745e2cb7eb05bd59f9b611"><td class="memItemLeft" align="right" valign="top"><a id="a814e3b37ca745e2cb7eb05bd59f9b611"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_READ_QUEUE_INSERTS</b></td></tr>
-<tr class="separator:a814e3b37ca745e2cb7eb05bd59f9b611"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3aa9ab24bbd586c2090d3d7c84a40f51"><td class="memItemLeft" align="right" valign="top"><a id="a3aa9ab24bbd586c2090d3d7c84a40f51"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_READ_QUEUE_LEN</b></td></tr>
-<tr class="separator:a3aa9ab24bbd586c2090d3d7c84a40f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4e6a60332d7b53c9015773206fa9a7f"><td class="memItemLeft" align="right" valign="top"><a id="ab4e6a60332d7b53c9015773206fa9a7f"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_ROLLBACK</b></td></tr>
 <tr class="separator:ab4e6a60332d7b53c9015773206fa9a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1475,7 +1613,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_J
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>com</b></li><li class="navelem"><b>wiredtiger</b></li><li class="navelem"><b>db</b></li><li class="navelem"><a class="el" href="interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html">wiredtigerConstants</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

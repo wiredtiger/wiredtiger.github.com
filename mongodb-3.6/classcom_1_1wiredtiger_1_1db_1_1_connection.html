@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -372,7 +372,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>false (zero) if the connection existed before the call to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>, true (non-zero) if it was created by opening this handle. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>false (zero) if the connection existed before the call to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>, true (non-zero) if it was created by opening this handle. </dd></dl>
 
 </div>
 </div>
@@ -413,7 +413,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>config</code></td><td>configuration string passed to the entry point of the extension as its WT_CONFIG_ARG argument.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>early_load</code></td><td>whether this extension should be loaded at the beginning of <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>. Only applicable to extensions loaded via the wiredtiger_open configurations string.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>early_load</code></td><td>whether this extension should be loaded at the beginning of <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>. Only applicable to extensions loaded via the wiredtiger_open configurations string.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>entry</code></td><td>the entry point of the extension, called to initialize the extension when it is loaded. The signature of the function must match <a class="el" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3" title="Entry point to an extension, called when the extension is loaded. ">wiredtiger_extension_init</a>.</td><td>a string; default <code>wiredtiger_extension_init</code>. </td></tr>
 <tr>
@@ -447,7 +447,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div class="fragment"><div class="line">        <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div><div class="line">        error_check(conn-&gt;open_session(conn, NULL, NULL, &amp;session));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">errhandler</td><td>An error handler. If <code>NULL</code>, the connection's error handler is used. See <a class="el" href="error_handling.html#error_handling_event">Error handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">event_handler</td><td>An event handler. If <code>NULL</code>, the connection's event handler is used. See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
@@ -572,15 +572,15 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level, expressed as a percentage of the total cache size. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 99; default <code>5</code>. </td></tr>
+<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level. It is a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 10TB; default <code>5</code>. </td></tr>
 <tr>
-<td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content, expressed as a percentage of the total cache size.</td><td>an integer between 1 and 99; default <code>5</code>. </td></tr>
+<td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content. It is a percentage of the cache size if the value is within the range of 1 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 1 and 10TB; default <code>5</code>. </td></tr>
 <tr>
-<td><code>eviction_dirty_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much dirty content, expressed as a percentage of the total cache size. This setting only alters behavior if it is lower than eviction_trigger.</td><td>an integer between 1 and 99; default <code>20</code>. </td></tr>
+<td><code>eviction_dirty_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much dirty content. It is a percentage of the cache size if the value is within the range of 1 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. This setting only alters behavior if it is lower than eviction_trigger.</td><td>an integer between 1 and 10TB; default <code>20</code>. </td></tr>
 <tr>
-<td><code>eviction_target</code></td><td>perform eviction in worker threads when the cache contains at least this much content, expressed as a percentage of the total cache size. Must be less than <code>eviction_trigger</code>.</td><td>an integer between 10 and 99; default <code>80</code>. </td></tr>
+<td><code>eviction_target</code></td><td>perform eviction in worker threads when the cache contains at least this much content. It is a percentage of the cache size if the value is within the range of 10 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 10 and 10TB; default <code>80</code>. </td></tr>
 <tr>
-<td><code>eviction_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much content, expressed as a percentage of the total cache size.</td><td>an integer between 10 and 99; default <code>95</code>. </td></tr>
+<td><code>eviction_trigger</code></td><td>trigger application threads to perform eviction when the cache contains at least this much content. It is a percentage of the cache size if the value is within the range of 10 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 10 and 10TB; default <code>95</code>. </td></tr>
 <tr>
 <td><code>file_manager = (</code></td><td>control how file handles are managed.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
@@ -610,7 +610,15 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both. Enabling a shared cache uses a session from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>operation_tracking = (</code></td><td>enable tracking of performance-critical functions. See <a class="el" href="operation_tracking.html">Track function calls</a> for more information.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable operation tracking subsystem.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;path</code></td><td>the name of a directory into which operation tracking files are written. The directory must already exist. If the value is not an absolute path, the path is relative to the database home (see <a class="el" href="security.html#absolute_path">Absolute paths</a> for more information).</td><td>a string; default <code>"."</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
+<td><code>shared_cache = (</code></td><td>shared cache configuration options. A database should configure either a cache_size or a shared_cache not both. Enabling a shared cache uses a session from the configured session_max. A shared cache can not have absolute values configured for cache eviction settings.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;chunk</code></td><td>the granularity that a shared cache is redistributed.</td><td>an integer between 1MB and 10TB; default <code>10MB</code>. </td></tr>
 <tr>
@@ -640,7 +648,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Only available if WiredTiger is configured with &ndash;enable-verbose. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -727,7 +735,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>com</b></li><li class="navelem"><b>wiredtiger</b></li><li class="navelem"><b>db</b></li><li class="navelem"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html">Connection</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +68,7 @@ $(document).ready(function(){initNavTree('in_memory.html','');});
 <div class="title">In-memory databases </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> <code>in_memory</code> configuration changes WiredTiger to run in cache without writing to a backing disk. Data is limited to the configured cache size.</p>
+<div class="textblock"><p>The <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>in_memory</code> configuration changes WiredTiger to run in cache without writing to a backing disk. Data is limited to the configured cache size.</p>
 <p>If <code>in_memory</code> is configured, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record. ">WT_CURSOR::insert</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update an existing record and optionally insert a record. ">WT_CURSOR::update</a> methods may return an additional error, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache. ">WT_CACHE_FULL</a>, indicating the insert or update operation requires more than the configured cache size to complete. If a transaction is in progress, it should be rolled back. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
@@ -76,7 +76,7 @@ $(document).ready(function(){initNavTree('in_memory.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -76,7 +76,7 @@ Database read-only configuration considerations</h1>
 <p>Where a user configured setting contradicts read-only operation, WiredTiger will return an error. For example, zero-filling log files is not allowed in read-only mode, and attempting to configure them will return an error.</p>
 <h1><a class="anchor" id="readonly_recovery"></a>
 Readonly configuration and recovery</h1>
-<p>Because recovery modifies the database, recovery cannot be done in read-only mode. A <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> call to open a database in read-only mode will fail if the database was not cleanly shutdown and recovery is required.</p>
+<p>Because recovery modifies the database, recovery cannot be done in read-only mode. A <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> call to open a database in read-only mode will fail if the database was not cleanly shutdown and recovery is required.</p>
 <h1><a class="anchor" id="readonly_logging"></a>
 Readonly configuration and logging</h1>
 <p>If logging is enabled on the database when opened in read-only mode, log file archiving and log file pre-allocation are disabled and the log files will not be modified any way.</p>
@@ -92,7 +92,7 @@ Readonly configuration and multiple database handles</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

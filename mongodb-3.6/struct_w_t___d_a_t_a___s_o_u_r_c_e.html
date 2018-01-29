@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -98,6 +98,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a4f8baf9dba6309b6051f79c9cbbb10e2"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4f8baf9dba6309b6051f79c9cbbb10e2">salvage</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
 <tr class="memdesc:a4f8baf9dba6309b6051f79c9cbbb10e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to salvage an object.  <a href="#a4f8baf9dba6309b6051f79c9cbbb10e2">More...</a><br /></td></tr>
 <tr class="separator:a4f8baf9dba6309b6051f79c9cbbb10e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a817b5bc96a33010a1caca4a745a9d16d"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a817b5bc96a33010a1caca4a745a9d16d">size</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, wt_off_t *size)</td></tr>
+<tr class="memdesc:a817b5bc96a33010a1caca4a745a9d16d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to get the size of an object.  <a href="#a817b5bc96a33010a1caca4a745a9d16d">More...</a><br /></td></tr>
+<tr class="separator:a817b5bc96a33010a1caca4a745a9d16d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7747944c269ade792fda0bb381624c4"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#af7747944c269ade792fda0bb381624c4">truncate</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</td></tr>
 <tr class="memdesc:af7747944c269ade792fda0bb381624c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to truncate an object.  <a href="#af7747944c269ade792fda0bb381624c4">More...</a><br /></td></tr>
 <tr class="separator:af7747944c269ade792fda0bb381624c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,13 +116,16 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af5cd0560bbb44e348178bd9823f1d714"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#af5cd0560bbb44e348178bd9823f1d714">terminate</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
 <tr class="memdesc:af5cd0560bbb44e348178bd9823f1d714"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, a callback performed when the database is closed.  <a href="#af5cd0560bbb44e348178bd9823f1d714">More...</a><br /></td></tr>
 <tr class="separator:af5cd0560bbb44e348178bd9823f1d714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe905b28d7831df185f9623c62f40e35"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html#afe905b28d7831df185f9623c62f40e35">lsm_pre_merge</a> )(<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *source, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *dest)</td></tr>
+<tr class="memdesc:afe905b28d7831df185f9623c62f40e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">If non-NULL, a callback performed before an LSM merge.  <a href="#afe905b28d7831df185f9623c62f40e35">More...</a><br /></td></tr>
+<tr class="separator:afe905b28d7831df185f9623c62f40e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Applications can extend WiredTiger by providing new implementations of the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> class. </p>
 <p>Each data source supports a different URI scheme for data sources to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a> and related methods. See <a class="el" href="custom_data_sources.html">Custom Data Sources</a> for more information.</p>
 <p><b>Thread safety:</b> WiredTiger may invoke methods on the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class...">WT_DATA_SOURCE</a> interface from multiple threads concurrently. It is the responsibility of the implementation to protect any shared data.</p>
 <p>Applications register their implementation with WiredTiger by calling <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea" title="Add a custom data source. ">WT_CONNECTION::add_data_source</a>.</p>
-<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> my_dsrc = {</div><div class="line">                my_alter,</div><div class="line">                my_create,</div><div class="line">                my_compact,</div><div class="line">                my_drop,</div><div class="line">                my_open_cursor,</div><div class="line">                my_rename,</div><div class="line">                my_salvage,</div><div class="line">                my_truncate,</div><div class="line">                my_range_truncate,</div><div class="line">                my_verify,</div><div class="line">                my_checkpoint,</div><div class="line">                my_terminate</div><div class="line">        };</div><div class="line">        error_check(conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL));</div></div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
+<div class="fragment"><div class="line">        <span class="keyword">static</span> <a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> my_dsrc = {</div><div class="line">                my_alter,</div><div class="line">                my_create,</div><div class="line">                my_compact,</div><div class="line">                my_drop,</div><div class="line">                my_open_cursor,</div><div class="line">                my_rename,</div><div class="line">                my_salvage,</div><div class="line">                my_size,</div><div class="line">                my_truncate,</div><div class="line">                my_range_truncate,</div><div class="line">                my_verify,</div><div class="line">                my_checkpoint,</div><div class="line">                my_terminate,</div><div class="line">                my_lsm_pre_merge</div><div class="line">        };</div><div class="line">        error_check(conn-&gt;add_data_source(conn, <span class="stringliteral">&quot;dsrc:&quot;</span>, &amp;my_dsrc, NULL));</div></div><!-- fragment --></div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a1a7b6f26d733bd91ad8d205d8cb3482d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a7b6f26d733bd91ad8d205d8cb3482d">&#9670;&nbsp;</a></span>alter</h2>
 
@@ -200,6 +206,29 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div><div class="line">my_drop(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div></div><!-- fragment -->
 </div>
 </div>
+<a id="afe905b28d7831df185f9623c62f40e35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe905b28d7831df185f9623c62f40e35">&#9670;&nbsp;</a></span>lsm_pre_merge</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_DATA_SOURCE::lsm_pre_merge) (<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *source, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *dest)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If non-NULL, a callback performed before an LSM merge. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">source</td><td>a cursor configured with the data being merged </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dest</td><td>a cursor on the new object being filled by the merge</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div><div class="line">my_lsm_pre_merge(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *source, <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *dest)</div></div><!-- fragment -->
+</div>
+</div>
 <a id="a81e45e31dedcdeaf8ff970d3c118da2e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81e45e31dedcdeaf8ff970d3c118da2e">&#9670;&nbsp;</a></span>open_cursor</h2>
 
@@ -264,6 +293,22 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div><div class="line">my_salvage(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div></div><!-- fragment -->
 </div>
 </div>
+<a id="a817b5bc96a33010a1caca4a745a9d16d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a817b5bc96a33010a1caca4a745a9d16d">&#9670;&nbsp;</a></span>size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_DATA_SOURCE::size) (<a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, wt_off_t *size)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to get the size of an object. </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div><div class="line">my_size(<a class="code" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a> *dsrc, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session,</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *uri, wt_off_t *size)</div></div><!-- fragment -->
+</div>
+</div>
 <a id="af5cd0560bbb44e348178bd9823f1d714"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5cd0560bbb44e348178bd9823f1d714">&#9670;&nbsp;</a></span>terminate</h2>
 
@@ -319,7 +364,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html">WT_DATA_SOURCE</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

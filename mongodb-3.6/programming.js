@@ -24,7 +24,7 @@ var programming =
     ] ],
     [ "Error handling", "error_handling.html", [
       [ "Translating errors", "error_handling.html#error_translation", null ],
-      [ "Error handling using the WT_EVENT_HANDLER", "error_handling.html#error_handling_event", null ]
+      [ "Message handling using the WT_EVENT_HANDLER", "error_handling.html#event_message_handling", null ]
     ] ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
@@ -99,6 +99,7 @@ var programming =
     [ "In-memory databases", "in_memory.html", null ],
     [ "Join cursors", "cursor_join.html", null ],
     [ "Log cursors", "cursor_log.html", null ],
+    [ "Track function calls", "operation_tracking.html", null ],
     [ "Rebalance", "rebalance.html", null ],
     [ "Per-process shared caches", "shared_cache.html", null ],
     [ "Statistics", "statistics.html", [

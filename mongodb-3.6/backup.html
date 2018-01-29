@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -77,7 +77,7 @@ Backup from an application</h1>
 <li>Copy each file returned by the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> method to the backup location, for example, a different directory. Do not reuse backup locations unless all files have first been removed from them, in other words, remove any previous backup information before using a backup location.</li>
 <li>Close the cursor; the cursor must not be closed until all of the files have been copied.</li>
 </ol>
-<p>The directory into which the files are copied may subsequently be specified as an directory to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function and accessed as a WiredTiger database home.</p>
+<p>The directory into which the files are copied may subsequently be specified as an directory to the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function and accessed as a WiredTiger database home.</p>
 <p>Copying the database files for a backup does not require any special alignment or block size (specifically, Linux or Windows filesystems that do not support read/write isolation can be safely read for backups).</p>
 <p>The database file may grow in size during the copy, and the file copy should not consider that an error. Blocks appended to the file after the copy starts can be safely ignored, that is, it is correct for the copy to determine an initial size of the file and then copy that many bytes, ignoring any bytes appended after the backup cursor was opened.</p>
 <p>The cursor must not be closed until all of the files have been copied, however, there is no requirement the files be copied in any order or in any relationship to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> calls, only that all files have been copied before the cursor is closed. For example, applications might aggregate the file names from the cursor and then list the file names as arguments to a file archiver such as the system tar utility.</p>
@@ -92,7 +92,7 @@ Backup from the command line</h1>
 Incremental backup</h1>
 <p>Once a backup has been done, it can be rolled forward incrementally by adding log files to the backup copy. Adding log files to the copy decreases potential data loss from switching to the copy, but increases the recovery time necessary to switch to the copy. To reset the recovery time necessary to switch to the copy, perform a full backup of the database. For example, an application might do a full backup of the database once a week during a quiet period, and then incrementally copy new log files into the backup directory for the rest of the week. Incremental backups may also save time when the tables are very large.</p>
 <p>Bulk-loads are not commit-level durable, that is, the creation and bulk-load of an object will not appear in the database log files. For this reason, applications doing incremental backups after a full backup should repeat the full backup step after doing a bulk-load to make the bulk-load durable. In addition, incremental backups after a bulk-load can cause recovery to report errors because there are log records that apply to data files which don't appear in the backup.</p>
-<p>By default, WiredTiger automatically removes log files no longer required for recovery. Applications wanting to use log files for incremental backup must first disable automatic log file removal using the <code>log=</code>(archive=false) configuration to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a>.</p>
+<p>By default, WiredTiger automatically removes log files no longer required for recovery. Applications wanting to use log files for incremental backup must first disable automatic log file removal using the <code>log=</code>(archive=false) configuration to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>.</p>
 <p>The following is the procedure for incrementally backing up a database and removing log files from the original database home:</p>
 <ol type="1">
 <li>Perform a full backup of the database (as described above).</li>
@@ -112,7 +112,7 @@ Backup and O_DIRECT</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

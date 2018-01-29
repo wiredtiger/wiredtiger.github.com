@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -68,22 +68,22 @@ $(document).ready(function(){initNavTree('database_config.html','');});
 <div class="title">Database Configuration </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger databases are configured using the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> call, which takes a configuration string argument. In addition to this, the database configuration can be specified using the <code>WiredTiger.config</code> file or the WIREDTIGER_CONFIG environment variable.</p>
-<p>When a WiredTiger database is created, the configuration string passed to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is saved to a WiredTiger home directory file named <code>WiredTiger.basecfg</code>, and that configuration file is read whenever the database is subsequently opened.</p>
-<p>The configuration string to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> call allows applications to do per run settings (such as with or without statistics) or override original creation settings. The user config file and the environment variable allow system administrators to override application settings without recompilation.</p>
+<div class="textblock"><p>WiredTiger databases are configured using the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> call, which takes a configuration string argument. In addition to this, the database configuration can be specified using the <code>WiredTiger.config</code> file or the WIREDTIGER_CONFIG environment variable.</p>
+<p>When a WiredTiger database is created, the configuration string passed to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> is saved to a WiredTiger home directory file named <code>WiredTiger.basecfg</code>, and that configuration file is read whenever the database is subsequently opened.</p>
+<p>The configuration string to the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> call allows applications to do per run settings (such as with or without statistics) or override original creation settings. The user config file and the environment variable allow system administrators to override application settings without recompilation.</p>
 <h1><a class="anchor" id="config_order"></a>
 Configuration ordering</h1>
 <p>When a database is created or opened, the order of configuration is:</p>
 <ul>
 <li>Any <code>WiredTiger.basecfg</code> file,</li>
-<li>which is overridden by the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> configuration string argument.</li>
+<li>which is overridden by the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> configuration string argument.</li>
 <li>which is overridden by the <code>WiredTiger.config</code> file,</li>
 <li>which is overridden by the <code>WIREDTIGER_CONFIG</code> environment variable,</li>
 </ul>
 <h1><a class="anchor" id="config_env"></a>
 WIREDTIGER_CONFIG environment variable</h1>
 <p>If the <code>WIREDTIGER_CONFIG</code> environment variable is set, it is read as a configuration string.</p>
-<p>If the process is running with special privileges and <code>WIREDTIGER_CONFIG</code> is set, the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function must be configured with the <code>use_environment_priv</code> flag, or the call to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> will fail. See <a class="el" href="home.html">Database Home Directory</a> for more details.</p>
+<p>If the process is running with special privileges and <code>WIREDTIGER_CONFIG</code> is set, the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function must be configured with the <code>use_environment_priv</code> flag, or the call to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> will fail. See <a class="el" href="home.html">Database Home Directory</a> for more details.</p>
 <h1><a class="anchor" id="config_file"></a>
 WiredTiger.config file</h1>
 <p>If a file named <code>WiredTiger.config</code> appears in the WiredTiger home directory, it is read as a configuration string.</p>
@@ -106,17 +106,17 @@ Otherwise, all lines are concatenated and the newline characters replaced with c
 </ul>
 <h1><a class="anchor" id="config_base"></a>
 WiredTiger.basecfg file</h1>
-<p>When a WiredTiger database is created, non-default configuration information specified to <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is saved to a WiredTiger home directory file named <code>WiredTiger.basecfg</code>, and that configuration file is read whenever the database is subsequently opened.</p>
+<p>When a WiredTiger database is created, non-default configuration information specified to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> is saved to a WiredTiger home directory file named <code>WiredTiger.basecfg</code>, and that configuration file is read whenever the database is subsequently opened.</p>
 <p>For example, if a shared library extensions are required, those settings will be saved to the base configuration file so it's easier to write general-purpose applications that might not be aware of how a particular database was created and configured.</p>
 <p>Users should not not edit this file, set the <code>WIREDTIGER_CONFIG</code> environment variable or create a <code>WiredTiger.config</code> file instead, as those settings override the settings in the base configuration file.</p>
-<p>This file is a potential problem for applications that want to retain the ability to downgrade to previous releases. If a new database is created after an upgrade, the base configuration file might have configuration strings that would cause a previous version of the application to fail. For this reason, applications that may want to downgrade should configure the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> value <code>config_base</code> to <code>false</code> so the base configuration file is not written as part of database create. </p>
+<p>This file is a potential problem for applications that want to retain the ability to downgrade to previous releases. If a new database is created after an upgrade, the base configuration file might have configuration strings that would cause a previous version of the application to fail. For this reason, applications that may want to downgrade should configure the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> value <code>config_base</code> to <code>false</code> so the base configuration file is not written as part of database create. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="admin.html">Managing WiredTiger databases</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

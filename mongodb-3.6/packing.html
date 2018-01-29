@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -88,13 +88,13 @@ $(document).ready(function(){initNavTree('packing.html','');});
 <h1><a class="anchor" id="config_examples"></a>
 Code samples</h1>
 <p>The code below is taken from the complete example program <a class="el" href="ex_pack_8c-example.html">ex_pack.c</a>. It demonstrates how to pack three integer values into a buffer and then unpack them again.</p>
-<div class="fragment"><div class="line">        <span class="keywordtype">size_t</span> size;</div><div class="line">        <span class="keywordtype">char</span> buf[50];</div><div class="line"></div><div class="line">        error_check(</div><div class="line">            <a class="code" href="group__wt.html#ga2460e8022f3c8c7cb5f274ec9f1764e6">wiredtiger_struct_size</a>(session, &amp;size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9));</div><div class="line">        <span class="keywordflow">if</span> (size &gt; <span class="keyword">sizeof</span>(buf)) {</div><div class="line">                <span class="comment">/* Allocate a bigger buffer. */</span></div><div class="line">        }</div><div class="line"></div><div class="line">        error_check(</div><div class="line">            <a class="code" href="group__wt.html#ga58d055cb4d054715bebd58a2cb713b2d">wiredtiger_struct_pack</a>(session, buf, size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9));</div><div class="line"></div><div class="line">        error_check(</div><div class="line">            <a class="code" href="group__wt.html#ga1db8298185374dbb61b398a4e9a3d1c8">wiredtiger_struct_unpack</a>(session, buf, size, <span class="stringliteral">&quot;iii&quot;</span>, &amp;i, &amp;j, &amp;k));</div></div><!-- fragment --></div></div><!-- contents -->
+<div class="fragment"><div class="line">        <span class="keywordtype">size_t</span> size;</div><div class="line">        <span class="keywordtype">char</span> buf[50];</div><div class="line"></div><div class="line">        error_check(</div><div class="line">            <a class="code" href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a>(session, &amp;size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9));</div><div class="line">        <span class="keywordflow">if</span> (size &gt; <span class="keyword">sizeof</span>(buf)) {</div><div class="line">                <span class="comment">/* Allocate a bigger buffer. */</span></div><div class="line">        }</div><div class="line"></div><div class="line">        error_check(</div><div class="line">            <a class="code" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a>(session, buf, size, <span class="stringliteral">&quot;iii&quot;</span>, 42, 1000, -9));</div><div class="line"></div><div class="line">        error_check(</div><div class="line">            <a class="code" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a>(session, buf, size, <span class="stringliteral">&quot;iii&quot;</span>, &amp;i, &amp;j, &amp;k));</div></div><!-- fragment --></div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li><li class="navelem"><a class="el" href="schema.html">Schema, Columns, Column Groups, Indices and Projections</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

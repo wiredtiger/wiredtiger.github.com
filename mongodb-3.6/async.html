@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -80,9 +80,9 @@ $(document).ready(function(){initNavTree('async.html','');});
 <p>The <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation. ">WT_ASYNC_OP</a> handle does not survive after the callback function returns into the WiredTiger library. When the application callback returns the handle is returned to the system pool. The application callback must copy out any key, value or other information that it needs before the callback function returns.</p>
 <h1><a class="anchor" id="async_config"></a>
 Configuring asynchronous operations</h1>
-<p>To perform asynchronous operations, the application must first include the <code>async</code> configuration option when <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> is called. Additional configuration parameters include the number of WiredTiger worker threads created to handle the incoming queue of operations and the maximum number of simultaneous asynchronous operations that are expected.</p>
+<p>To perform asynchronous operations, the application must first include the <code>async</code> configuration option when <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> is called. Additional configuration parameters include the number of WiredTiger worker threads created to handle the incoming queue of operations and the maximum number of simultaneous asynchronous operations that are expected.</p>
 <p>For example, the following configures an application for asynchronous operations, with a maximum of 10 asynchronous operations and 2 supporting threads:</p>
-<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=100MB,&quot;</span></div><div class="line">            <span class="stringliteral">&quot;async=(enabled=true,ops_max=20,threads=2)&quot;</span>, &amp;conn));</div></div><!-- fragment --><p> If the number of requests exceeds the configured maximum number, a <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation. ">WT_ASYNC_OP</a> handle won't immediately be available and an error will be returned to the application when it attempts to allocate a handle. If the number of configured worker threads are unable to keep up with the requests, requests will be forced to wait for worker threads to become available.</p>
+<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=100MB,&quot;</span></div><div class="line">            <span class="stringliteral">&quot;async=(enabled=true,ops_max=20,threads=2)&quot;</span>, &amp;conn));</div></div><!-- fragment --><p> If the number of requests exceeds the configured maximum number, a <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation. ">WT_ASYNC_OP</a> handle won't immediately be available and an error will be returned to the application when it attempts to allocate a handle. If the number of configured worker threads are unable to keep up with the requests, requests will be forced to wait for worker threads to become available.</p>
 <h1><a class="anchor" id="async_alloc"></a>
 Allocating an asynchronous operations handle</h1>
 <p>A <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation. ">WT_ASYNC_OP</a> handle is allocated using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672" title="Return an async operation handle. ">WT_CONNECTION::async_new_op</a> method. This method takes an existing object URI and a callback. For example:</p>
@@ -111,7 +111,7 @@ Asynchronous operations and transactions</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

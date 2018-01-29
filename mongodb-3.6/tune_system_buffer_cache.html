@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   &#160;<span id="projectnumber">Version 3.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.0.0 --></div>
+   <div id="projectbrief"><!-- 3.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -75,8 +75,8 @@ Direct I/O</h1>
 <li>avoid double-buffering of blocks in WiredTiger's cache and the operating system buffer cache, and</li>
 <li>avoid stalling underlying solid-state drives by writing a large number of dirty blocks.</li>
 </ul>
-<p>Direct I/O is configured using the "direct_io" configuration string to the <a class="el" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed" title="Open a connection to a database. ">wiredtiger_open</a> function. An example of configuring direct I/O for WiredTiger's data files:</p>
-<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#ga9e6adae3fc6964ef837a62795c7840ed">wiredtiger_open</a>(</div><div class="line">            home, NULL, <span class="stringliteral">&quot;create,direct_io=[data]&quot;</span>, &amp;conn));</div></div><!-- fragment --><p> On Windows, the "direct_io" configuration string controls whether the operating system cache is used to buffer reads, and writes to disk, i.e., FILE_FLAG_NO_BUFFERING. When "direct_io" is off, Windows will use free RAM to cache access to files. This may had adverse effects because Windows may page out the WiredTiger buffer cache instead of its file cache. An additional configuration string "write_through" controls whether the disk is allowed to cache the writes. Enabling this flag increases write latency as the drive must ensure all writes are persisted to disk, but it ensures write durability. To get the equivalent of <code>O_DIRECT</code> on Windows, "direct_io", and "write_through" must be both set.</p>
+<p>Direct I/O is configured using the "direct_io" configuration string to the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> function. An example of configuring direct I/O for WiredTiger's data files:</p>
+<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(</div><div class="line">            home, NULL, <span class="stringliteral">&quot;create,direct_io=[data]&quot;</span>, &amp;conn));</div></div><!-- fragment --><p> On Windows, the "direct_io" configuration string controls whether the operating system cache is used to buffer reads, and writes to disk, i.e., FILE_FLAG_NO_BUFFERING. When "direct_io" is off, Windows will use free RAM to cache access to files. This may had adverse effects because Windows may page out the WiredTiger buffer cache instead of its file cache. An additional configuration string "write_through" controls whether the disk is allowed to cache the writes. Enabling this flag increases write latency as the drive must ensure all writes are persisted to disk, but it ensures write durability. To get the equivalent of <code>O_DIRECT</code> on Windows, "direct_io", and "write_through" must be both set.</p>
 <p>Direct I/O implies a writing thread waits for the write to complete (which is a slower operation than writing into the system buffer cache), and configuring direct I/O is likely to decrease overall application performance.</p>
 <p>Many Linux systems do not support mixing <code>O_DIRECT</code> and memory mapping or normal I/O to the same file, and attempting to do so can result in data loss or corruption. For this reason:</p>
 <ul>
@@ -106,7 +106,7 @@ os_cache_max</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li><li class="navelem"><a class="el" href="programming_lang_java.html">Writing WiredTiger applications  in Java</a></li>
-    <li class="footer">Copyright (c) 2008-2017 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>
