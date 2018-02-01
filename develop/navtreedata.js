@@ -22,8 +22,8 @@ var NAVTREEINDEX =
 ".html",
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html",
 "durability.html#durability_archiving",
-"group__wt.html#ga3a28f511191b864b1a13b31d6bbfc80a",
-"group__wt.html#gaaa43ca231e73ce343409891029299872",
+"group__wt.html#ga3949013afb46f95ea29ba5b33a36d771",
+"group__wt.html#gaaa0285e2524dfb34262a7a8637a86713",
 "namespace.html",
 "struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817"
 ];
