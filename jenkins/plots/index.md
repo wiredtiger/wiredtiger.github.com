@@ -129,6 +129,18 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 [![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.2/plot/getPlot?index=7&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.2/plot)
 [![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.2/plot/getPlot?index=8&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.2/plot)
 
+## mongodb-perf-ycsb-mongodb-3.4 jobs [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=mongodb-perf-ycsb-mongodb-3.4)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/)
+
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=3&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=4&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=5&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=6&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=7&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot/getPlot?index=8&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-mongodb-3.4/plot)
+
 ## mongodb-perf-ycsb-windows jobs [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=mongodb-perf-ycsb-windows)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-windows/)
 
 [![](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-windows/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-windows/plot)
