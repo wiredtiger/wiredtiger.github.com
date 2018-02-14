@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"group__wt.html#gaa9064c56649bc3fdfc11bb7f7c5086fc":[1,0,428],
+"group__wt.html#gaaa0285e2524dfb34262a7a8637a86713":[1,0,123],
 "group__wt.html#gaaa43ca231e73ce343409891029299872":[1,0,285],
 "group__wt.html#gaaafd78afedb632fce1408426ee9408f0":[1,0,244],
 "group__wt.html#gaacd23e50c5c8815cf8687d9da6655ab4":[1,0,127],
@@ -68,7 +70,6 @@ var NAVTREEINDEX4 =
 "group__wt.html#gacf46b9dd314c216293141b26341b7b0e":[1,0,533],
 "group__wt.html#gacf77e58a01ad4a4c316be3abb2eb0233":[1,0,277],
 "group__wt.html#gad13ce2f113e1f074f72dfe7d282166bf":[1,0,190],
-"group__wt.html#gad20e41e94e55a65a46fc1fa967829857":[1,0,345],
 "group__wt.html#gad2ab31f06e851a8a733a28698b0ac60c":[1,0,169],
 "group__wt.html#gad2c8d2f65106a89c5582149626a62c23":[1,0,66],
 "group__wt.html#gad3928585fe04068ea44325b7069ae3eb":[1,0,439],
@@ -207,8 +208,8 @@ var NAVTREEINDEX4 =
 "helium.html#helium_objects":[0,4,32,2],
 "hierarchy.html":[3],
 "home.html":[0,7,0],
-"huffman.html":[0,5,7,3],
 "huffman.html":[0,4,7,3],
+"huffman.html":[0,5,7,3],
 "in_memory.html":[0,4,19],
 "in_memory_lang_java.html":[0,5,18],
 "index.html":[0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "lsm_lang_java.html#lsm_key_format_lang_java":[0,5,6,6,0],
 "lsm_lang_java.html#lsm_merge_lang_java":[0,5,6,3],
 "lsm_lang_java.html#lsm_schema_lang_java":[0,5,6,5],
-"md_changelog.html":[0,8],
-"modules.html":[1]
+"md_changelog.html":[0,8]
 };

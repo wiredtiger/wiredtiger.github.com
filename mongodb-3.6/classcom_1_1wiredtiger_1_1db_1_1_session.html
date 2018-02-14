@@ -143,6 +143,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>strerror</b> (int e
 <tr class="memitem:a707380a753afffb89b3195c16938ce8f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a707380a753afffb89b3195c16938ce8f">commit_transaction</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a707380a753afffb89b3195c16938ce8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commit the current transaction.  <a href="#a707380a753afffb89b3195c16938ce8f">More...</a><br /></td></tr>
 <tr class="separator:a707380a753afffb89b3195c16938ce8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa824eb8055b405d362997a1ccdb3ea1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#aa824eb8055b405d362997a1ccdb3ea1a">prepare_transaction</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:aa824eb8055b405d362997a1ccdb3ea1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare the current transaction.  <a href="#aa824eb8055b405d362997a1ccdb3ea1a">More...</a><br /></td></tr>
+<tr class="separator:aa824eb8055b405d362997a1ccdb3ea1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46ce42cc35d30590975054b12f8e2013"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a46ce42cc35d30590975054b12f8e2013">rollback_transaction</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a46ce42cc35d30590975054b12f8e2013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Roll back the current transaction.  <a href="#a46ce42cc35d30590975054b12f8e2013">More...</a><br /></td></tr>
 <tr class="separator:a46ce42cc35d30590975054b12f8e2013"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -273,6 +276,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>ignore_prepare</code></td><td>whether to ignore the updates by other prepared transactions as part of read operations of this transaction.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>isolation</code></td><td>the isolation level for this transaction; defaults to the session's isolation level.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default empty. </td></tr>
 <tr>
@@ -933,6 +938,42 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </table>
 </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">cursorp</td><td>a pointer to the newly opened cursor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
+
+</div>
+</div>
+<a id="aa824eb8055b405d362997a1ccdb3ea1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa824eb8055b405d362997a1ccdb3ea1a">&#9670;&nbsp;</a></span>prepare_transaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Session.prepare_transaction </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prepare the current transaction. </p>
+<p>A transaction must be in progress when this method is called. Preparing a transaction will guarantee subsequent commit will succeed. Only commit and rollback are allowed on a transaction after it has been prepared. At the moment, prepare transaction is designed to support MongoDB exclusively.</p>
+<p>This method must be called on a session with an active transaction.</p>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">         * Prepare a transaction which guarantees a subsequent commit will</span></div><div class="line"><span class="comment">         * succeed. Only commit and rollback are allowed on a transaction after</span></div><div class="line"><span class="comment">         * it has been prepared.</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div><div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL));</div><div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div><div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div><div class="line">        session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008">prepare_transaction</a>(session, <span class="stringliteral">&quot;prepare_timestamp=2a&quot;</span>);</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>prepare_timestamp</code></td><td>set the prepare timestamp for the updates of the current transaction. The supplied value should not be older than any active read timestamps. This configuration option is mandatory. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+</table>
+</td></tr>
   </table>
   </dd>
 </dl>
