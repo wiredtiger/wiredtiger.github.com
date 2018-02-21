@@ -228,6 +228,9 @@ Error returns</h2></td></tr>
 <tr class="memitem:ga528be8ed3402d370b51aa5f6d70e15f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4">WT_CACHE_FULL</a></td></tr>
 <tr class="memdesc:ga528be8ed3402d370b51aa5f6d70e15f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operation would overflow cache.  <a href="#ga528be8ed3402d370b51aa5f6d70e15f4">More...</a><br /></td></tr>
 <tr class="separator:ga528be8ed3402d370b51aa5f6d70e15f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62f73045c5d37d8daee4533dd720376e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga62f73045c5d37d8daee4533dd720376e">WT_PREPARE_CONFLICT</a></td></tr>
+<tr class="memdesc:ga62f73045c5d37d8daee4533dd720376e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict with a prepared update.  <a href="#ga62f73045c5d37d8daee4533dd720376e">More...</a><br /></td></tr>
+<tr class="separator:ga62f73045c5d37d8daee4533dd720376e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Log record and operation types</h2></td></tr>
@@ -2470,6 +2473,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>WiredTiger library panic. </p>
 <p>This error indicates an underlying problem that requires a database restart. The application may exit immediately, no further WiredTiger calls are required (and further calls will themselves immediately fail). </p>
+
+</div>
+</div>
+<a id="ga62f73045c5d37d8daee4533dd720376e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga62f73045c5d37d8daee4533dd720376e">&#9670;&nbsp;</a></span>WT_PREPARE_CONFLICT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_PREPARE_CONFLICT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conflict with a prepared update. </p>
+<p>This error is generated when the application attempts to update an already updated record which is in prepared state. An updated record will be in prepared state, when the transaction that performed the update is in prepared state. </p>
 
 </div>
 </div>

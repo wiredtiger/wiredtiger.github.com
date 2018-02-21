@@ -150,6 +150,7 @@ var group__wt =
     [ "WT_LOGREC_SYSTEM", "group__wt.html#ga65a82cc484f9e18f6e6319425af0f908", null ],
     [ "WT_NOTFOUND", "group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8", null ],
     [ "WT_PANIC", "group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992", null ],
+    [ "WT_PREPARE_CONFLICT", "group__wt.html#ga62f73045c5d37d8daee4533dd720376e", null ],
     [ "WT_ROLLBACK", "group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8", null ],
     [ "WT_RUN_RECOVERY", "group__wt.html#ga76bb44d946fbe56ddb93470ab95a1e78", null ],
     [ "WT_STAT_CONN_APPLICATION_CACHE_TIME", "group__wt.html#ga82db17f977dfe8bb1b1caf2b594a33b8", null ],

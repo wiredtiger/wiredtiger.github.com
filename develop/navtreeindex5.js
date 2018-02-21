@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"lsm_lang_java.html#lsm_api_lang_java":[0,5,6,2],
 "lsm_lang_java.html#lsm_background_lang_java":[0,5,6,0],
 "lsm_lang_java.html#lsm_bloom_lang_java":[0,5,6,4],
 "lsm_lang_java.html#lsm_caveats_lang_java":[0,5,6,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad41718cb1f7a59cfb21a68785aa09897":[1,1,6,8],
 "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4203cea23fd8f62765564ba9a24fe6c":[1,1,6,11],
 "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad4f3371981540000e182ed0cb75eefad":[1,1,6,10],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f":[1,1,6,5],
-"struct_w_t___f_i_l_e___s_y_s_t_e_m.html":[1,1,5]
+"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f":[1,1,6,5]
 };
