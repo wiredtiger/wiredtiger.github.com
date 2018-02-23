@@ -285,7 +285,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>priority</code></td><td>priority of the transaction for resolving conflicts. Transactions with higher values are less likely to abort.</td><td>an integer between -100 and 100; default <code>0</code>. </td></tr>
 <tr>
-<td><code>read_timestamp</code></td><td>read using the specified timestamp. The supplied value should not be older than the current oldest timestamp. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>read_timestamp</code></td><td>read using the specified timestamp. The supplied value must not be older than the current oldest timestamp. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>round_to_oldest</code></td><td>if read timestamp is earlier than oldest timestamp, read timestamp will be rounded to oldest timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -422,7 +422,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value should not be older than the first commit timestamp set for the current transaction. The value should also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value must not be older than the first commit timestamp set for the current transaction. The value must also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
 </table>
@@ -972,7 +972,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>prepare_timestamp</code></td><td>set the prepare timestamp for the updates of the current transaction. The supplied value should not be older than any active read timestamps. This configuration option is mandatory. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>prepare_timestamp</code></td><td>set the prepare timestamp for the updates of the current transaction. The supplied value must not be older than any active read timestamps. This configuration option is mandatory. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1290,7 +1290,11 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value should not be older than the first commit timestamp set for the current transaction. The value should also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value must not be older than the first commit timestamp set for the current transaction. The value must also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>read_timestamp</code></td><td>read using the specified timestamp. The supplied value must not be older than the current oldest timestamp. This can only be set once for a transaction. <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>round_to_oldest</code></td><td>if read timestamp is earlier than oldest timestamp, read timestamp will be rounded to oldest timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>
 </td></tr>
   </table>
