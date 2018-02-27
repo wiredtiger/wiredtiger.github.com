@@ -260,6 +260,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
 <td><code>leak_memory</code></td><td>don't free memory during close.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>use_timestamp</code></td><td>by default, create the close checkpoint as of the last stable timestamp if timestamps are in use, or all current updates if there is no stable timestamp set. If false, this option generates a checkpoint with all updates.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 </table>
 </td></tr>
   </table>
