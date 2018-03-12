@@ -284,7 +284,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>priority</code></td><td>priority of the transaction for resolving conflicts. Transactions with higher values are less likely to abort.</td><td>an integer between -100 and 100; default <code>0</code>. </td></tr>
 <tr>
-<td><code>read_timestamp</code></td><td>read using the specified timestamp. The supplied value should not be older than the current oldest timestamp. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>read_timestamp</code></td><td>read using the specified timestamp. The supplied value must not be older than the current oldest timestamp. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>round_to_oldest</code></td><td>if read timestamp is earlier than oldest timestamp, read timestamp will be rounded to oldest timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -435,7 +435,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value should not be older than the first commit timestamp set for the current transaction. The value should also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value must not be older than the first commit timestamp set for the current transaction. The value must also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>transaction_sync</code>. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized. ">WT_SESSION::transaction_sync</a>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
 </table>
@@ -1052,16 +1052,17 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Prepare the current transaction. </p>
-<p>A transaction must be in progress when this method is called. Preparing a transaction will guarantee subsequent commit will succeed. Only commit and rollback are allowed on a transaction after it has been prepared. At the moment, prepare transaction is designed to support MongoDB exclusively.</p>
+<p>A transaction must be in progress when this method is called.</p>
+<p>Preparing a transaction will guarantee a subsequent commit will succeed. Only commit and rollback are allowed on a transaction after it has been prepared. The transaction prepare API is designed to support MongoDB exclusively, and guarantees update conflicts have been resolved, but does not guarantee durability.</p>
 <p>This method must be called on a session with an active transaction.</p>
-<div class="fragment"><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">         * Prepare a transaction which guarantees a subsequent commit will</span></div><div class="line"><span class="comment">         * succeed. Only commit and rollback are allowed on a transaction after</span></div><div class="line"><span class="comment">         * it has been prepared.</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div><div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL));</div><div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div><div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div><div class="line">        session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008">prepare_transaction</a>(session, <span class="stringliteral">&quot;prepare_timestamp=2a&quot;</span>);</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">         * Prepare a transaction which guarantees a subsequent commit will</span></div><div class="line"><span class="comment">         * succeed. Only commit and rollback are allowed on a transaction after</span></div><div class="line"><span class="comment">         * it has been prepared.</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div><div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;cursor));</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">begin_transaction</a>(session, NULL));</div><div class="line">        cursor-&gt;set_key(cursor, <span class="stringliteral">&quot;key&quot;</span>);</div><div class="line">        cursor-&gt;set_value(cursor, <span class="stringliteral">&quot;value&quot;</span>);</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008">prepare_transaction</a>(</div><div class="line">            session, <span class="stringliteral">&quot;prepare_timestamp=2a&quot;</span>));</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(</div><div class="line">            session, <span class="stringliteral">&quot;commit_timestamp=2b&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>prepare_timestamp</code></td><td>set the prepare timestamp for the updates of the current transaction. The supplied value should not be older than any active read timestamps. This configuration option is mandatory. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>prepare_timestamp</code></td><td>set the prepare timestamp for the updates of the current transaction. The supplied value must not be older than any active read timestamps. This configuration option is mandatory. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1152,6 +1153,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
     <tr><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>cache_cursors</code></td><td>enable caching of cursors for reuse. Any calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor. ">WT_CURSOR::close</a> for a cursor created in this session will mark the cursor as cached and keep it available to be reused for later calls to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor. ">WT_SESSION::open_cursor</a>. Cached cursors may be eventually closed. This value is inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> <code>cache_cursors</code>.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>ignore_cache_size</code></td><td>when set, operations performed by this session ignore the cache size and are not blocked when the cache is full. Note that use of this option for operations that create cache pressure can starve ordinary sessions that obey the cache size.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -1475,7 +1478,11 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value should not be older than the first commit timestamp set for the current transaction. The value should also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. The supplied value must not be older than the first commit timestamp set for the current transaction. The value must also not be older than the current oldest and stable timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>read_timestamp</code></td><td>read using the specified timestamp. The supplied value must not be older than the current oldest timestamp. This can only be set once for a transaction. <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>round_to_oldest</code></td><td>if read timestamp is earlier than oldest timestamp, read timestamp will be rounded to oldest timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>
 </td></tr>
   </table>
