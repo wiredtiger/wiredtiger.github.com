@@ -1561,6 +1561,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa1265659398b9349cd7f6e6e986e1dc1">WT_STAT_CONN_TXN_READ_QUEUE_LEN</a></td></tr>
 <tr class="memdesc:gaa1265659398b9349cd7f6e6e986e1dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: read timestamp queue length <br /></td></tr>
 <tr class="separator:gaa1265659398b9349cd7f6e6e986e1dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1fd0c5f56ad70d6dc00b4e433320e780"><td class="memItemLeft" align="right" valign="top"><a id="ga1fd0c5f56ad70d6dc00b4e433320e780"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1fd0c5f56ad70d6dc00b4e433320e780">WT_STAT_CONN_TXN_ROLLBACK_TO_STABLE</a></td></tr>
+<tr class="memdesc:ga1fd0c5f56ad70d6dc00b4e433320e780"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable calls <br /></td></tr>
+<tr class="separator:ga1fd0c5f56ad70d6dc00b4e433320e780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad44523254b502dd5dcfdb0d0ea46364"><td class="memItemLeft" align="right" valign="top"><a id="gaad44523254b502dd5dcfdb0d0ea46364"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaad44523254b502dd5dcfdb0d0ea46364">WT_STAT_CONN_TXN_ROLLBACK_UPD_ABORTED</a></td></tr>
+<tr class="memdesc:gaad44523254b502dd5dcfdb0d0ea46364"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable updates aborted <br /></td></tr>
+<tr class="separator:gaad44523254b502dd5dcfdb0d0ea46364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6fd049adbd7a3d5c19e7703324f448d1"><td class="memItemLeft" align="right" valign="top"><a id="ga6fd049adbd7a3d5c19e7703324f448d1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6fd049adbd7a3d5c19e7703324f448d1">WT_STAT_CONN_TXN_ROLLBACK_LAS_REMOVED</a></td></tr>
+<tr class="memdesc:ga6fd049adbd7a3d5c19e7703324f448d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable updates removed from lookaside <br /></td></tr>
+<tr class="separator:ga6fd049adbd7a3d5c19e7703324f448d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga25777c1773b5be81573a121ac29b4d52"><td class="memItemLeft" align="right" valign="top"><a id="ga25777c1773b5be81573a121ac29b4d52"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga25777c1773b5be81573a121ac29b4d52">WT_STAT_CONN_TXN_SET_TS</a></td></tr>
 <tr class="memdesc:ga25777c1773b5be81573a121ac29b4d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp calls <br /></td></tr>
@@ -2672,7 +2684,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">event_handler</td><td>An event handler. If <code>NULL</code>, a default event handler is installed that writes error messages to stderr. See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">config</td><td>Configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
