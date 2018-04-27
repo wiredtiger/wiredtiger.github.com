@@ -733,6 +733,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6c8dd12c4309ce389014a84cd1105f4e">WT_STAT_CONN_CACHE_READ_DELETED</a></td></tr>
 <tr class="memdesc:ga6c8dd12c4309ce389014a84cd1105f4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache after truncate <br /></td></tr>
 <tr class="separator:ga6c8dd12c4309ce389014a84cd1105f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga10b195a4bf9b02aedeb766f9e8a4b03d"><td class="memItemLeft" align="right" valign="top"><a id="ga10b195a4bf9b02aedeb766f9e8a4b03d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga10b195a4bf9b02aedeb766f9e8a4b03d">WT_STAT_CONN_CACHE_READ_DELETED_PREPARED</a></td></tr>
+<tr class="memdesc:ga10b195a4bf9b02aedeb766f9e8a4b03d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache after truncate in prepare state <br /></td></tr>
+<tr class="separator:ga10b195a4bf9b02aedeb766f9e8a4b03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="memItemLeft" align="right" valign="top"><a id="gaf9927116a3bd1b71cbaa626cb055a6ed"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf9927116a3bd1b71cbaa626cb055a6ed">WT_STAT_CONN_CACHE_READ_LOOKASIDE</a></td></tr>
 <tr class="memdesc:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring lookaside entries <br /></td></tr>
@@ -1489,6 +1493,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2c6868733b8b13adf6c69131f694a1bd">WT_STAT_CONN_LOG_SERVER_SYNC_BLOCKED</a></td></tr>
 <tr class="memdesc:ga2c6868733b8b13adf6c69131f694a1bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: log server sync yielded for log write <br /></td></tr>
 <tr class="separator:ga2c6868733b8b13adf6c69131f694a1bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga444f33af556b4f82d215f8e84b473199"><td class="memItemLeft" align="right" valign="top"><a id="ga444f33af556b4f82d215f8e84b473199"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga444f33af556b4f82d215f8e84b473199">WT_STAT_CONN_PREPARED_TRANSITION_BLOCKED_PAGE</a></td></tr>
+<tr class="memdesc:ga444f33af556b4f82d215f8e84b473199"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: page access yielded due to prepare state change <br /></td></tr>
+<tr class="separator:ga444f33af556b4f82d215f8e84b473199"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab54ab74ebe4e861834a16402c3d5b1c4"><td class="memItemLeft" align="right" valign="top"><a id="gab54ab74ebe4e861834a16402c3d5b1c4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab54ab74ebe4e861834a16402c3d5b1c4">WT_STAT_CONN_PAGE_BUSY_BLOCKED</a></td></tr>
 <tr class="memdesc:gab54ab74ebe4e861834a16402c3d5b1c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: page acquire busy blocked <br /></td></tr>
@@ -1541,6 +1549,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5e8806d6c13e997ff8f26b1d332d750d">WT_STAT_CONN_TXN_SNAPSHOTS_DROPPED</a></td></tr>
 <tr class="memdesc:ga5e8806d6c13e997ff8f26b1d332d750d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: number of named snapshots dropped <br /></td></tr>
 <tr class="separator:ga5e8806d6c13e997ff8f26b1d332d750d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga235a8969a4c35c1661bafb8d288f7bd5"><td class="memItemLeft" align="right" valign="top"><a id="ga235a8969a4c35c1661bafb8d288f7bd5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga235a8969a4c35c1661bafb8d288f7bd5">WT_STAT_CONN_TXN_PREPARE</a></td></tr>
+<tr class="memdesc:ga235a8969a4c35c1661bafb8d288f7bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: prepared transactions <br /></td></tr>
+<tr class="separator:ga235a8969a4c35c1661bafb8d288f7bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga78b904803390302399c32d1da85690f9"><td class="memItemLeft" align="right" valign="top"><a id="ga78b904803390302399c32d1da85690f9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga78b904803390302399c32d1da85690f9">WT_STAT_CONN_TXN_PREPARE_COMMIT</a></td></tr>
+<tr class="memdesc:ga78b904803390302399c32d1da85690f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: prepared transactions committed <br /></td></tr>
+<tr class="separator:ga78b904803390302399c32d1da85690f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4710dc41dd8f6487cfbd9411a1f48c5c"><td class="memItemLeft" align="right" valign="top"><a id="ga4710dc41dd8f6487cfbd9411a1f48c5c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4710dc41dd8f6487cfbd9411a1f48c5c">WT_STAT_CONN_TXN_PREPARE_ACTIVE</a></td></tr>
+<tr class="memdesc:ga4710dc41dd8f6487cfbd9411a1f48c5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: prepared transactions currently active <br /></td></tr>
+<tr class="separator:ga4710dc41dd8f6487cfbd9411a1f48c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad33543a1462eb42e44251ea0800f7ebe"><td class="memItemLeft" align="right" valign="top"><a id="gad33543a1462eb42e44251ea0800f7ebe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad33543a1462eb42e44251ea0800f7ebe">WT_STAT_CONN_TXN_PREPARE_ROLLBACK</a></td></tr>
+<tr class="memdesc:gad33543a1462eb42e44251ea0800f7ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: prepared transactions rolled back <br /></td></tr>
+<tr class="separator:gad33543a1462eb42e44251ea0800f7ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="memItemLeft" align="right" valign="top"><a id="ga99702821df60ac2845a9c89a7c9bc1cb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga99702821df60ac2845a9c89a7c9bc1cb">WT_STAT_CONN_TXN_QUERY_TS</a></td></tr>
 <tr class="memdesc:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: query timestamp calls <br /></td></tr>
@@ -1978,6 +2002,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4ed3e961b29792b394e782b502f81e7c">WT_STAT_DSRC_CACHE_READ_DELETED</a></td></tr>
 <tr class="memdesc:ga4ed3e961b29792b394e782b502f81e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache after truncate <br /></td></tr>
 <tr class="separator:ga4ed3e961b29792b394e782b502f81e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga206aa7b3d554cb388480394bc5d7ab46"><td class="memItemLeft" align="right" valign="top"><a id="ga206aa7b3d554cb388480394bc5d7ab46"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga206aa7b3d554cb388480394bc5d7ab46">WT_STAT_DSRC_CACHE_READ_DELETED_PREPARED</a></td></tr>
+<tr class="memdesc:ga206aa7b3d554cb388480394bc5d7ab46"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache after truncate in prepare state <br /></td></tr>
+<tr class="separator:ga206aa7b3d554cb388480394bc5d7ab46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad3928585fe04068ea44325b7069ae3eb"><td class="memItemLeft" align="right" valign="top"><a id="gad3928585fe04068ea44325b7069ae3eb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad3928585fe04068ea44325b7069ae3eb">WT_STAT_DSRC_CACHE_READ_LOOKASIDE</a></td></tr>
 <tr class="memdesc:gad3928585fe04068ea44325b7069ae3eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring lookaside entries <br /></td></tr>
