@@ -1758,6 +1758,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_J
 <tr>
 <td><code>&#160;&#160;&#160;&#160;release</code></td><td>compatibility release version string.</td><td>a string; default empty. </td></tr>
 <tr>
+<td><code>&#160;&#160;&#160;&#160;require_min</code></td><td>required minimum compatibility version of existing data files. Must be less than or equal to any release version set in the <code>release</code> setting. Has no effect if creating the database.</td><td>a string; default empty. </td></tr>
+<tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>config_base</code></td><td>write the base configuration file if creating the database. If <code>false</code> in the config passed directly to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>, will ignore any existing base configuration file in addition to not creating one. See <a class="el" href="database_config.html#config_base">WiredTiger.basecfg file</a> for more information.</td><td>a boolean flag; default <code>true</code>. </td></tr>
