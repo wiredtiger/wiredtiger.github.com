@@ -19,7 +19,10 @@ var programming =
       [ "Isolation levels", "transactions.html#transaction_isolation", null ],
       [ "Named Snapshots", "transactions.html#transaction_named_snapshots", null ],
       [ "Application-specified Transaction Timestamps", "transactions.html#transaction_timestamps", [
-        [ "support in the extension API", "transactions.html#Timestamp", null ]
+        [ "Timestamp overview", "transactions.html#timestamp_overview", null ],
+        [ "Using transactions with timestamps", "transactions.html#timestamp_transactions", null ],
+        [ "Managing global timestamp state", "transactions.html#timestamp_connection", null ],
+        [ "Timestamp support in the extension API", "transactions.html#timestamp_extensions", null ]
       ] ]
     ] ],
     [ "Error handling", "error_handling.html", [

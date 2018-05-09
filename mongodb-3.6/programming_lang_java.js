@@ -19,7 +19,10 @@ var programming_lang_java =
       [ "Isolation levels", "transactions_lang_java.html#transaction_isolation_lang_java", null ],
       [ "Named Snapshots", "transactions_lang_java.html#transaction_named_snapshots_lang_java", null ],
       [ "Application-specified Transaction Timestamps", "transactions_lang_java.html#transaction_timestamps_lang_java", [
-        [ "support in the extension API", "transactions_lang_java.html#Timestamp_lang_java", null ]
+        [ "Timestamp overview", "transactions_lang_java.html#timestamp_overview_lang_java", null ],
+        [ "Using transactions with timestamps", "transactions_lang_java.html#timestamp_transactions_lang_java", null ],
+        [ "Managing global timestamp state", "transactions_lang_java.html#timestamp_connection_lang_java", null ],
+        [ "Timestamp support in the extension API", "transactions_lang_java.html#timestamp_extensions_lang_java", null ]
       ] ]
     ] ],
     [ "Error handling  in Java", "error_handling_lang_java.html", [
