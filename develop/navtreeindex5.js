@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"license.html#license_distribution":[0,10,4],
 "license.html#license_leveldb":[0,10,3],
 "license.html#license_library":[0,10,0],
 "lsm.html":[0,4,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___f_i_l_e___h_a_n_d_l_e.html":[1,1,6],
 "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e":[1,1,6,6],
 "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e0b90f0a4fcf943e81b22b94069738b":[1,1,6,9],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2479acb713a211b2d7cc84aaada4b29b":[1,1,6,3],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a350e1db2cd51c8c2479b03beae9af90f":[1,1,6,7]
+"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2479acb713a211b2d7cc84aaada4b29b":[1,1,6,3]
 };

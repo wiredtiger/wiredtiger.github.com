@@ -201,6 +201,14 @@ Configuration strings</h2></td></tr>
 <tr class="separator:ga512297da65ccc30ac91bf6adf95f043f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Support functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpbcca18d09ee0ca20e31b7e0e2e39aa40"></a><a class="anchor" id="support_functions"></a></p>
+</td></tr>
+<tr class="memitem:ga7edad34ec38545508ee2436c61e47b82"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7edad34ec38545508ee2436c61e47b82">wiredtiger_checksum_crc32c</a> (const void *buffer, size_t len)</td></tr>
+<tr class="memdesc:ga7edad34ec38545508ee2436c61e47b82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a buffer's CRC32C checksum.  <a href="#ga7edad34ec38545508ee2436c61e47b82">More...</a><br /></td></tr>
+<tr class="separator:ga7edad34ec38545508ee2436c61e47b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Error returns</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp95425dbb5082391424a4535dff5b92e8"></a>Most functions and methods in WiredTiger return an integer code indicating whether the operation succeeded or failed.</p>
 <p>A return of zero indicates success, all non-zero return values indicate some kind of failure.</p>
@@ -2629,6 +2637,45 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga7edad34ec38545508ee2436c61e47b82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7edad34ec38545508ee2436c61e47b82">&#9670;&nbsp;</a></span>wiredtiger_checksum_crc32c()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t wiredtiger_checksum_crc32c </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a buffer's CRC32C checksum. </p>
+<p>The WiredTiger library CRC32C checksum function uses hardware support where available, else it falls back to a software implementation.</p>
+<div class="fragment"><div class="line">        uint32_t crc32c;</div><div class="line">        crc32c = <a class="code" href="group__wt.html#ga7edad34ec38545508ee2436c61e47b82">wiredtiger_checksum_crc32c</a>(buffer, len);</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>a pointer to a buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the number of valid bytes in the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the buffer's CRC32C checksum </dd></dl>
+
+</div>
+</div>
 <a id="ga512297da65ccc30ac91bf6adf95f043f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga512297da65ccc30ac91bf6adf95f043f">&#9670;&nbsp;</a></span>wiredtiger_config_parser_open()</h2>
 
