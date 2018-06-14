@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"group__wt.html#ga9f2f8149523b1e6e4f64100ef198e050":[1,0,292],
 "group__wt.html#ga9f44ff6954d8f64698c73f6ff83517ff":[1,0,363],
 "group__wt.html#ga9ff1fba476748be20b404ed21a38a3e6":[1,0,252],
 "group__wt.html#gaa0a189dbe2755d92eb90645bed73c7e7":[1,0,352],
@@ -46,7 +47,6 @@ var NAVTREEINDEX4 =
 "group__wt.html#gab77eab473228d9f548f0c57cde75f99d":[1,0,463],
 "group__wt.html#gab8249f83dca3b51b0d4fc1f9605b5345":[1,0,121],
 "group__wt.html#gab97b7001b5c2642987718fa372355486":[1,0,342],
-"group__wt.html#gab9830aaab699f93327f57cacf5010e06":[1,0,227],
 "group__wt.html#gaba18123fa8bf7710d672e0bde88f8094":[1,0,46],
 "group__wt.html#gabadc7e6950a7172e26769381f005057c":[1,0,512],
 "group__wt.html#gabbadad28b5762d9a5cd01aa51730ed4c":[1,0,409],
@@ -246,8 +246,8 @@ var NAVTREEINDEX4 =
 "leveldb.html":[0,3],
 "leveldb.html#leveldb_build":[0,3,0],
 "leveldb.html#leveldb_caveats":[0,3,1],
-"license.html":[7],
 "license.html":[0,10],
+"license.html":[7],
 "license.html#license_crc32-power8":[0,10,1],
 "license.html#license_crc32-zseries":[0,10,2]
 };
