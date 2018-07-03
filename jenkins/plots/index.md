@@ -78,6 +78,15 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot/getPlot?index=8&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot/getPlot?index=9&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-perf-long/plot)
 
+
+---------------
+
+## mongodb-million-collections jobs [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=mongodb-million-collections)](http://build.wiredtiger.com:8080/job/mongodb-million-collections/)
+
+[![](http://build.wiredtiger.com:8080/job/mongodb-million-collections/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-million-collections/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-million-collections/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-million-collections/plot)
+[![](http://build.wiredtiger.com:8080/job/mongodb-million-collections/plot/getPlot?index=2&width=750&height=450)](http://build.wiredtiger.com:8080/job/mongodb-million-collections/plot)
+
 ---------------
 
 ## mongodb-perf-ycsb-compare-releases jobs [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=mongodb-perf-ycsb-compare-releases)](http://build.wiredtiger.com:8080/job/mongodb-perf-ycsb-compare-releases/)
