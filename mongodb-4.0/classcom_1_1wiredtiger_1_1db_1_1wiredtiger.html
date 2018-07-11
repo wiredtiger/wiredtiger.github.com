@@ -455,6 +455,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a01030fc9cbfe180ae456b681dda844e9 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a01030fc9cbfe180ae456b681dda844e9"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_APP_DIRTY</b></td></tr>
 <tr class="separator:a01030fc9cbfe180ae456b681dda844e9 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae49714ac10908e74eeeace3b6d54950f inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="ae49714ac10908e74eeeace3b6d54950f"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_TIMED_OUT_OPS</b></td></tr>
+<tr class="separator:ae49714ac10908e74eeeace3b6d54950f inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10a32c8d32a446bcdb501995c3d62dff inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a10a32c8d32a446bcdb501995c3d62dff"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_READ_OVERFLOW</b></td></tr>
 <tr class="separator:a10a32c8d32a446bcdb501995c3d62dff inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1226,6 +1229,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:abd84181ad3847cc50f0f06132f4ff8e7 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="abd84181ad3847cc50f0f06132f4ff8e7"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_PINNED_TIMESTAMP</b></td></tr>
 <tr class="separator:abd84181ad3847cc50f0f06132f4ff8e7 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea710a4572656b604440776399feda21 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="aea710a4572656b604440776399feda21"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_PINNED_TIMESTAMP_CHECKPOINT</b></td></tr>
+<tr class="separator:aea710a4572656b604440776399feda21 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ea50062aa4c2146b952970dbb1687fc inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a3ea50062aa4c2146b952970dbb1687fc"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_TXN_PINNED_TIMESTAMP_OLDEST</b></td></tr>
 <tr class="separator:a3ea50062aa4c2146b952970dbb1687fc inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1746,6 +1752,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_J
 <tr>
 <td><code>cache_cursors</code></td><td>enable caching of cursors for reuse. This is the default value for any sessions created, and can be overridden in configuring <code>cache_cursors</code> in <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0" title="Open a session. ">WT_CONNECTION.open_session</a>.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
+<td><code>cache_max_wait_ms</code></td><td>the maximum number of milliseconds an application thread will wait for space to be available in cache before giving up. Default will wait forever.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<tr>
 <td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
@@ -1796,7 +1804,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_J
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level. It is a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 10TB; default <code>5</code>. </td></tr>
+<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level. It is a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 10TB; default <code>1</code>. </td></tr>
 <tr>
 <td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content. It is a percentage of the cache size if the value is within the range of 1 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 1 and 10TB; default <code>5</code>. </td></tr>
 <tr>

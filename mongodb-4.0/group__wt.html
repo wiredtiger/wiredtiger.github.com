@@ -685,6 +685,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabfba2de2c9e25ee4c8f2a18473855d6d">WT_STAT_CONN_CACHE_EVICTION_APP_DIRTY</a></td></tr>
 <tr class="memdesc:gabfba2de2c9e25ee4c8f2a18473855d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: modified pages evicted by application threads <br /></td></tr>
 <tr class="separator:gabfba2de2c9e25ee4c8f2a18473855d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e0abcb34bbffff590eb7fd82d18f7aa"><td class="memItemLeft" align="right" valign="top"><a id="ga5e0abcb34bbffff590eb7fd82d18f7aa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5e0abcb34bbffff590eb7fd82d18f7aa">WT_STAT_CONN_CACHE_TIMED_OUT_OPS</a></td></tr>
+<tr class="memdesc:ga5e0abcb34bbffff590eb7fd82d18f7aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: operations timed out waiting for space in cache <br /></td></tr>
+<tr class="separator:ga5e0abcb34bbffff590eb7fd82d18f7aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacde793f3bd5ccaf91b970852ed64da32"><td class="memItemLeft" align="right" valign="top"><a id="gacde793f3bd5ccaf91b970852ed64da32"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacde793f3bd5ccaf91b970852ed64da32">WT_STAT_CONN_CACHE_READ_OVERFLOW</a></td></tr>
 <tr class="memdesc:gacde793f3bd5ccaf91b970852ed64da32"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: overflow pages read into cache <br /></td></tr>
@@ -1713,6 +1717,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9f44ff6954d8f64698c73f6ff83517ff">WT_STAT_CONN_TXN_PINNED_TIMESTAMP</a></td></tr>
 <tr class="memdesc:ga9f44ff6954d8f64698c73f6ff83517ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction range of timestamps currently pinned <br /></td></tr>
 <tr class="separator:ga9f44ff6954d8f64698c73f6ff83517ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec880fd6bee28b0b303a373e09885bdc"><td class="memItemLeft" align="right" valign="top"><a id="gaec880fd6bee28b0b303a373e09885bdc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaec880fd6bee28b0b303a373e09885bdc">WT_STAT_CONN_TXN_PINNED_TIMESTAMP_CHECKPOINT</a></td></tr>
+<tr class="memdesc:gaec880fd6bee28b0b303a373e09885bdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction range of timestamps pinned by a checkpoint <br /></td></tr>
+<tr class="separator:gaec880fd6bee28b0b303a373e09885bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga595e980cdbabf4c5eef6077111727e22"><td class="memItemLeft" align="right" valign="top"><a id="ga595e980cdbabf4c5eef6077111727e22"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga595e980cdbabf4c5eef6077111727e22">WT_STAT_CONN_TXN_PINNED_TIMESTAMP_OLDEST</a></td></tr>
 <tr class="memdesc:ga595e980cdbabf4c5eef6077111727e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction range of timestamps pinned by the oldest timestamp <br /></td></tr>
@@ -2791,6 +2799,8 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>cache_cursors</code></td><td>enable caching of cursors for reuse. This is the default value for any sessions created, and can be overridden in configuring <code>cache_cursors</code> in <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0" title="Open a session. ">WT_CONNECTION.open_session</a>.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
+<td><code>cache_max_wait_ms</code></td><td>the maximum number of milliseconds an application thread will wait for space to be available in cache before giving up. Default will wait forever.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<tr>
 <td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
@@ -2841,7 +2851,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level. It is a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 10TB; default <code>5</code>. </td></tr>
+<td><code>eviction_checkpoint_target</code></td><td>perform eviction at the beginning of checkpoints to bring the dirty content in cache to this level. It is a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>. Ignored if set to zero or <code>in_memory</code> is <code>true</code>.</td><td>an integer between 0 and 10TB; default <code>1</code>. </td></tr>
 <tr>
 <td><code>eviction_dirty_target</code></td><td>perform eviction in worker threads when the cache contains at least this much dirty content. It is a percentage of the cache size if the value is within the range of 1 to 100 or an absolute size when greater than 100. The value is not allowed to exceed the <code>cache_size</code>.</td><td>an integer between 1 and 10TB; default <code>5</code>. </td></tr>
 <tr>
