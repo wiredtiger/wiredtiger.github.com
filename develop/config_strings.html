@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.1.0</span>
+   &#160;<span id="projectnumber">Version 3.1.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.1.0 --></div>
+   <div id="projectbrief"><!-- 3.1.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -82,7 +82,7 @@ Introduction</h1>
 <div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>,</div><div class="line">            &amp;conn));</div></div><!-- fragment --><p> Configuration strings are also used to configure the table schema. For example, to create a table that uses C language strings for keys and values:</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session,</div><div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>));</div></div><!-- fragment --><p> To handle more complex schema configuration, such as specifying multiple columns in a table, values are nested using parentheses. For example:</p>
 <div class="fragment"><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">         * Create a table with columns: keys are record numbers, values are</span></div><div class="line"><span class="comment">         * (string, signed 32-bit integer, unsigned 16-bit integer).</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>,</div><div class="line">            <span class="stringliteral">&quot;key_format=r,value_format=SiH,&quot;</span></div><div class="line">            <span class="stringliteral">&quot;columns=(id,department,salary,year-started)&quot;</span>));</div></div><!-- fragment --><p> All types of parentheses are treated equivalently by the parser.</p>
-<p>When an integer values is expected, the value may have multiplier characters appended, as follows:</p>
+<p>When an integer value is expected, the value may have multiplier characters appended, as follows:</p>
 <table class="doxtable">
 <tr>
 <th>Character</th><th>Meaning</th><th>Change to value </th></tr>
