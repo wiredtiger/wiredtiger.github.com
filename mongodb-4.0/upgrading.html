@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.1.0</span>
+   &#160;<span id="projectnumber">Version 3.1.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.1.0 --></div>
+   <div id="projectbrief"><!-- 3.1.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +68,36 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_300"></a>
+<div class="textblock"><h1><a class="anchor" id="version_310"></a>
+Upgrading to Version 3.1.0</h1>
+<dl>
+<dt>WiredTiger on-disk log file format change </dt>
+<dd><p class="startdd">The WiredTiger on-disk file format for write-ahead log files has changed as the log file version number was incremented. See <a href="https://jira.mongodb.org/browse/WT-4029">WT-4029</a> for details. </p>
+<p class="enddd"></p>
+</dd>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> compatibility configuration changes </dt>
+<dd><p class="startdd">The compatibility setting now takes additional options that can define the minimum or maximum required version of existing data files. See <a href="https://jira.mongodb.org/browse/WT-4056">WT-4056</a> and <a href="https://jira.mongodb.org/browse/WT-4098">WT-4098</a> for details. </p>
+<p class="enddd"></p>
+</dd>
+<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> cache configuration changes </dt>
+<dd><p class="startdd">The cache configuration options <code>eviction_checkpoint_target</code>, <code>eviction_dirty_target</code>, <code>eviction_dirty_trigger</code>, <code>eviction_target</code> and <code>eviction_trigger</code> have changed. The options can now take an absolute size. It would be a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. This API change is compatible with existing usage. See <a href="https://jira.mongodb.org/browse/WT-3632">WT-3632</a> for details. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Changed transaction semantics around schema operations </dt>
+<dd><p class="startdd">WiredTiger does not offer fully transactional create and drop operations. We have made some changes to how create and drop are implemented if done within the scope of an explicit transaction. If an application is relying on particular visibility/atomicity guarantees around table create or drop, care should be taken when upgrading. See <a href="https://jira.mongodb.org/browse/WT-3964">WT-3964</a> for details. </p>
+<p class="enddd"></p>
+</dd>
+<dt>On-disk format change for metadata </dt>
+<dd><p class="startdd">There was a change to the content stored in the WiredTiger owned metadata files, which means metadata created or updated by this version of WiredTiger is not compatible with earlier versions. See <a href="https://jira.mongodb.org/browse/WT-3905">WT-3905</a> for details. </p>
+<p class="enddd"></p>
+</dd>
+<dt>Implement a per-session cursor cache </dt>
+<dd><p class="startdd">WiredTiger now holds a cache of recently closed cursors in each session. This improves performance for applications that open and close cursors frequently, but increases memory overhead. The cache is enabled by default, but can be disabled. See <a href="https://jira.mongodb.org/browse/WT-1228">WT-1228</a> for details. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr/>
+ <h1><a class="anchor" id="version_300"></a>
 Upgrading to Version 3.0.0</h1>
 <dl>
 <dt>WiredTiger on-disk log file format change </dt>
@@ -85,10 +114,6 @@ Upgrading to Version 3.0.0</h1>
 </dd>
 <dt>Performance visualization tool wtstats </dt>
 <dd><p class="startdd">The performance visualization tool <code>wtstats</code> has been removed and is no longer supported. </p>
-<p class="enddd"></p>
-</dd>
-<dt><a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> cache configuration changes </dt>
-<dd><p class="startdd">The cache configuration options <code>eviction_checkpoint_target</code>, <code>eviction_dirty_target</code>, <code>eviction_dirty_trigger</code>, <code>eviction_target</code> and <code>eviction_trigger</code> have changed. The options can now take absolute size. It would be a percentage of the cache size if the value is within the range of 0 to 100 or an absolute size when greater than 100. This API change is compatible with existing usage. </p>
 <p class="enddd"></p>
 </dd>
 </dl>

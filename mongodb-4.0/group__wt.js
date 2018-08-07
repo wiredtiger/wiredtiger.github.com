@@ -667,7 +667,6 @@ var group__wt =
       [ "WT_AOP_SEARCH", "group__wt.html#gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44", null ],
       [ "WT_AOP_UPDATE", "group__wt.html#gga24152c6e1509c488192df653d511a82ca6b24879fd4e50bb05a4c53e443c5f390", null ]
     ] ],
-    [ "wiredtiger_checksum_crc32c", "group__wt.html#ga7edad34ec38545508ee2436c61e47b82", null ],
     [ "wiredtiger_config_parser_open", "group__wt.html#ga512297da65ccc30ac91bf6adf95f043f", null ],
     [ "wiredtiger_open", "group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813", null ],
     [ "wiredtiger_pack_close", "group__wt.html#gad506573d475f00f3e6aae9ce36d8bc53", null ],
@@ -685,5 +684,6 @@ var group__wt =
     [ "wiredtiger_unpack_start", "group__wt.html#gad93973bfd0e21ba845878ba3c4b97d96", null ],
     [ "wiredtiger_unpack_str", "group__wt.html#gacf46b9dd314c216293141b26341b7b0e", null ],
     [ "wiredtiger_unpack_uint", "group__wt.html#gad8d121ab997028a85598e73771609bb4", null ],
-    [ "wiredtiger_version", "group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4", null ]
+    [ "wiredtiger_version", "group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4", null ],
+    [ "wiredtiger_crc32c_func", "group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12", null ]
 ];

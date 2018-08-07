@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.1.0</span>
+   &#160;<span id="projectnumber">Version 3.1.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.1.0 --></div>
+   <div id="projectbrief"><!-- 3.1.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -204,9 +204,9 @@ Configuration strings</h2></td></tr>
 Support functions</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpbcca18d09ee0ca20e31b7e0e2e39aa40"></a><a class="anchor" id="support_functions"></a></p>
 </td></tr>
-<tr class="memitem:ga7edad34ec38545508ee2436c61e47b82"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7edad34ec38545508ee2436c61e47b82">wiredtiger_checksum_crc32c</a> (const void *buffer, size_t len)</td></tr>
-<tr class="memdesc:ga7edad34ec38545508ee2436c61e47b82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a buffer's CRC32C checksum.  <a href="#ga7edad34ec38545508ee2436c61e47b82">More...</a><br /></td></tr>
-<tr class="separator:ga7edad34ec38545508ee2436c61e47b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="memItemLeft" align="right" valign="top">uint32_t(*)(const void *, size_t)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a> (void)</td></tr>
+<tr class="memdesc:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to a function that calculates a CRC32C checksum.  <a href="#ga205f45ca53fdac610f8a9c59c84b5e12">More...</a><br /></td></tr>
+<tr class="separator:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Error returns</h2></td></tr>
@@ -991,11 +991,11 @@ Connection statistics</h2></td></tr>
 <tr class="separator:ga8b6c1c6d5e81affa83b418f47c774952"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad531cb17ab0bcdf2090c61ae57f6ed91"><td class="memItemLeft" align="right" valign="top"><a id="gad531cb17ab0bcdf2090c61ae57f6ed91"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad531cb17ab0bcdf2090c61ae57f6ed91">WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_WAIT_APPLICATION</a></td></tr>
-<tr class="memdesc:gad531cb17ab0bcdf2090c61ae57f6ed91"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: commit timestamp queue lock application thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="memdesc:gad531cb17ab0bcdf2090c61ae57f6ed91"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: commit timestamp queue lock application thread time waiting (usecs) <br /></td></tr>
 <tr class="separator:gad531cb17ab0bcdf2090c61ae57f6ed91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga48ccec7f0ad8dce1240a2ccdd5e80964"><td class="memItemLeft" align="right" valign="top"><a id="ga48ccec7f0ad8dce1240a2ccdd5e80964"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga48ccec7f0ad8dce1240a2ccdd5e80964">WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_WAIT_INTERNAL</a></td></tr>
-<tr class="memdesc:ga48ccec7f0ad8dce1240a2ccdd5e80964"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: commit timestamp queue lock internal thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="memdesc:ga48ccec7f0ad8dce1240a2ccdd5e80964"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: commit timestamp queue lock internal thread time waiting (usecs) <br /></td></tr>
 <tr class="separator:ga48ccec7f0ad8dce1240a2ccdd5e80964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac5500ef18e371f7ea61149b98cc54e1d"><td class="memItemLeft" align="right" valign="top"><a id="gac5500ef18e371f7ea61149b98cc54e1d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac5500ef18e371f7ea61149b98cc54e1d">WT_STAT_CONN_LOCK_COMMIT_TIMESTAMP_READ_COUNT</a></td></tr>
@@ -1007,11 +1007,11 @@ Connection statistics</h2></td></tr>
 <tr class="separator:ga92a3750baddd988ae670281308c47281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0d8fdfa31188f71b0003a2bbfcb8eac3"><td class="memItemLeft" align="right" valign="top"><a id="ga0d8fdfa31188f71b0003a2bbfcb8eac3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0d8fdfa31188f71b0003a2bbfcb8eac3">WT_STAT_CONN_LOCK_DHANDLE_WAIT_APPLICATION</a></td></tr>
-<tr class="memdesc:ga0d8fdfa31188f71b0003a2bbfcb8eac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: dhandle lock application thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="memdesc:ga0d8fdfa31188f71b0003a2bbfcb8eac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: dhandle lock application thread time waiting (usecs) <br /></td></tr>
 <tr class="separator:ga0d8fdfa31188f71b0003a2bbfcb8eac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga46e21553168cee4df6fde841a3cd72c2"><td class="memItemLeft" align="right" valign="top"><a id="ga46e21553168cee4df6fde841a3cd72c2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga46e21553168cee4df6fde841a3cd72c2">WT_STAT_CONN_LOCK_DHANDLE_WAIT_INTERNAL</a></td></tr>
-<tr class="memdesc:ga46e21553168cee4df6fde841a3cd72c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: dhandle lock internal thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="memdesc:ga46e21553168cee4df6fde841a3cd72c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: dhandle lock internal thread time waiting (usecs) <br /></td></tr>
 <tr class="separator:ga46e21553168cee4df6fde841a3cd72c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8ada8a01f949465158a89204a1f62d30"><td class="memItemLeft" align="right" valign="top"><a id="ga8ada8a01f949465158a89204a1f62d30"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8ada8a01f949465158a89204a1f62d30">WT_STAT_CONN_LOCK_DHANDLE_READ_COUNT</a></td></tr>
@@ -1035,11 +1035,11 @@ Connection statistics</h2></td></tr>
 <tr class="separator:gad13ce2f113e1f074f72dfe7d282166bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2f4cf362ee59423389e4d2252ed39ac9"><td class="memItemLeft" align="right" valign="top"><a id="ga2f4cf362ee59423389e4d2252ed39ac9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2f4cf362ee59423389e4d2252ed39ac9">WT_STAT_CONN_LOCK_READ_TIMESTAMP_WAIT_APPLICATION</a></td></tr>
-<tr class="memdesc:ga2f4cf362ee59423389e4d2252ed39ac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: read timestamp queue lock application thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="memdesc:ga2f4cf362ee59423389e4d2252ed39ac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: read timestamp queue lock application thread time waiting (usecs) <br /></td></tr>
 <tr class="separator:ga2f4cf362ee59423389e4d2252ed39ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8d05dd70acd0e3e72a78e3392f95e7cf"><td class="memItemLeft" align="right" valign="top"><a id="ga8d05dd70acd0e3e72a78e3392f95e7cf"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8d05dd70acd0e3e72a78e3392f95e7cf">WT_STAT_CONN_LOCK_READ_TIMESTAMP_WAIT_INTERNAL</a></td></tr>
-<tr class="memdesc:ga8d05dd70acd0e3e72a78e3392f95e7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: read timestamp queue lock internal thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="memdesc:ga8d05dd70acd0e3e72a78e3392f95e7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: read timestamp queue lock internal thread time waiting (usecs) <br /></td></tr>
 <tr class="separator:ga8d05dd70acd0e3e72a78e3392f95e7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga472ffe8ae92d8bb083d497f73f58187c"><td class="memItemLeft" align="right" valign="top"><a id="ga472ffe8ae92d8bb083d497f73f58187c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga472ffe8ae92d8bb083d497f73f58187c">WT_STAT_CONN_LOCK_READ_TIMESTAMP_READ_COUNT</a></td></tr>
@@ -1079,11 +1079,11 @@ Connection statistics</h2></td></tr>
 <tr class="separator:ga88c990e679f93ecf486575014dfa6cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga059000421e4199c64229337aeb491355"><td class="memItemLeft" align="right" valign="top"><a id="ga059000421e4199c64229337aeb491355"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga059000421e4199c64229337aeb491355">WT_STAT_CONN_LOCK_TXN_GLOBAL_WAIT_APPLICATION</a></td></tr>
-<tr class="memdesc:ga059000421e4199c64229337aeb491355"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: txn global lock application thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="memdesc:ga059000421e4199c64229337aeb491355"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: txn global lock application thread time waiting (usecs) <br /></td></tr>
 <tr class="separator:ga059000421e4199c64229337aeb491355"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7fa3d91a1604e83e96d2842a6f40b91f"><td class="memItemLeft" align="right" valign="top"><a id="ga7fa3d91a1604e83e96d2842a6f40b91f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7fa3d91a1604e83e96d2842a6f40b91f">WT_STAT_CONN_LOCK_TXN_GLOBAL_WAIT_INTERNAL</a></td></tr>
-<tr class="memdesc:ga7fa3d91a1604e83e96d2842a6f40b91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: txn global lock internal thread time waiting for the dhandle lock (usecs) <br /></td></tr>
+<tr class="memdesc:ga7fa3d91a1604e83e96d2842a6f40b91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: txn global lock internal thread time waiting (usecs) <br /></td></tr>
 <tr class="separator:ga7fa3d91a1604e83e96d2842a6f40b91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga77e4d7ab151c245e62befb8925b5b236"><td class="memItemLeft" align="right" valign="top"><a id="ga77e4d7ab151c245e62befb8925b5b236"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga77e4d7ab151c245e62befb8925b5b236">WT_STAT_CONN_LOCK_TXN_GLOBAL_READ_COUNT</a></td></tr>
@@ -2645,45 +2645,6 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga7edad34ec38545508ee2436c61e47b82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7edad34ec38545508ee2436c61e47b82">&#9670;&nbsp;</a></span>wiredtiger_checksum_crc32c()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t wiredtiger_checksum_crc32c </td>
-          <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return a buffer's CRC32C checksum. </p>
-<p>The WiredTiger library CRC32C checksum function uses hardware support where available, else it falls back to a software implementation.</p>
-<div class="fragment"><div class="line">        uint32_t crc32c;</div><div class="line">        crc32c = <a class="code" href="group__wt.html#ga7edad34ec38545508ee2436c61e47b82">wiredtiger_checksum_crc32c</a>(buffer, len);</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">buffer</td><td>a pointer to a buffer </td></tr>
-    <tr><td class="paramname">len</td><td>the number of valid bytes in the buffer </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the buffer's CRC32C checksum </dd></dl>
-
-</div>
-</div>
 <a id="ga512297da65ccc30ac91bf6adf95f043f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga512297da65ccc30ac91bf6adf95f043f">&#9670;&nbsp;</a></span>wiredtiger_config_parser_open()</h2>
 
@@ -2893,7 +2854,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;recover</code></td><td>run recovery or error if recovery needs to run after an unclean shutdown.</td><td>a string, chosen from the following options: <code>"error"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;recover</code></td><td>run recovery or error if recovery needs to run after an unclean shutdown.</td><td>a string, chosen from the following options: <code>"error"</code>, <code>"on"</code>, <code>"salvage"</code>; default <code>on</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;zero_fill</code></td><td>manually write zeroes into log files.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -2968,7 +2929,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables even if the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"error_returns"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 <tr>
 <td><code>write_through</code></td><td>Use <code>FILE_FLAG_WRITE_THROUGH</code> on Windows to write to files. Ignored on non-Windows systems. Options are given as a list, such as <code>"write_through=[data]"</code>. Configuring <code>write_through</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to write through cache, including <code>"log"</code> will cause WiredTiger log files to write through cache. <code>write_through</code> should be combined with <code>direct_io</code> to get the equivalent of POSIX <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 </table>
@@ -3691,6 +3652,25 @@ Packing Examples</h1>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a string representation of the version </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ga205f45ca53fdac610f8a9c59c84b5e12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga205f45ca53fdac610f8a9c59c84b5e12">&#9670;&nbsp;</a></span>wiredtiger_crc32c_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a pointer to a function that calculates a CRC32C checksum. </p>
+<p>The WiredTiger library CRC32C checksum function uses hardware support where available, else it falls back to a software implementation.</p>
+<div class="fragment"><div class="line">        uint32_t crc32c, (*func)(<span class="keyword">const</span> <span class="keywordtype">void</span> *, size_t);</div><div class="line">        func = <a class="code" href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a>();</div><div class="line">        crc32c = func(buffer, len);</div></div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>a pointer to a function that takes a buffer and length and returns the CRC32C checksum </dd></dl>
 
 </div>
 </div>
