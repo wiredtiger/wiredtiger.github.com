@@ -152,6 +152,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>strerror</b> (int e
 <tr class="memitem:a8a7c42b78d550fd51a955cd336c39e43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#a8a7c42b78d550fd51a955cd336c39e43">timestamp_transaction</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a8a7c42b78d550fd51a955cd336c39e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a timestamp on a transaction.  <a href="#a8a7c42b78d550fd51a955cd336c39e43">More...</a><br /></td></tr>
 <tr class="separator:a8a7c42b78d550fd51a955cd336c39e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09f01b6d71809614567c84110d95cc1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#ad09f01b6d71809614567c84110d95cc1">query_timestamp</a> (String hex_timestamp, String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
+<tr class="memdesc:ad09f01b6d71809614567c84110d95cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the session's transaction timestamp state.  <a href="#ad09f01b6d71809614567c84110d95cc1">More...</a><br /></td></tr>
+<tr class="separator:ad09f01b6d71809614567c84110d95cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html#ae8a3a848702a49b9c3cb8e1ed1c1afd3">checkpoint</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#ae8a3a848702a49b9c3cb8e1ed1c1afd3">More...</a><br /></td></tr>
 <tr class="separator:ae8a3a848702a49b9c3cb8e1ed1c1afd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -983,6 +986,51 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
+
+</div>
+</div>
+<a id="ad09f01b6d71809614567c84110d95cc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09f01b6d71809614567c84110d95cc1">&#9670;&nbsp;</a></span>query_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.wiredtiger.db.Session.query_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>hex_timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Query the session's transaction timestamp state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hex_timestamp</td><td>a buffer that will be set to the hexadecimal encoding of the timestamp being queried. Must be large enough to hold a hex-encoded timestamp (i.e., double the timestamp size plus one byte for NUL termination). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>get</code></td><td>specify which timestamp to query: <code>commit</code> returns the most recently set commit_timestamp. <code>first_commit</code> returns the first set commit_timestamp. <code>prepare</code> returns the timestamp used in preparing a transaction. <code>read</code> returns the timestamp at which the transaction is reading at. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string, chosen from the following options: <code>"commit"</code>, <code>"first_commit"</code>, <code>"prepare"</code>, <code>"read"</code>; default <code>read</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If the session is not in a transaction <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned. </dd></dl>
 
 </div>
 </div>

@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"license.html":[0,10],
+"license.html":[7],
 "license.html#license_crc32-power8":[0,10,1],
 "license.html#license_crc32-zseries":[0,10,2],
 "license.html#license_distribution":[0,10,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___e_x_t_r_a_c_t_o_r.html":[1,1,4],
 "struct_w_t___e_x_t_r_a_c_t_o_r.html#a4db101f00fce80af9ebd4f29f56f7b6a":[1,1,4,1],
 "struct_w_t___e_x_t_r_a_c_t_o_r.html#ad73a6c0903ad726e029ec25201ef12ae":[1,1,4,2],
-"struct_w_t___e_x_t_r_a_c_t_o_r.html#aead7ade6a5c1ea31917ed8cd0ef841aa":[1,1,4,0],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html":[1,1,6],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e":[1,1,6,6]
+"struct_w_t___e_x_t_r_a_c_t_o_r.html#aead7ade6a5c1ea31917ed8cd0ef841aa":[1,1,4,0]
 };
