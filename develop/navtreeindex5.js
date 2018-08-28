@@ -1,9 +1,10 @@
 var NAVTREEINDEX5 =
 {
+"leveldb.html":[0,3],
 "leveldb.html#leveldb_build":[0,3,0],
 "leveldb.html#leveldb_caveats":[0,3,1],
-"license.html":[7],
 "license.html":[0,10],
+"license.html":[7],
 "license.html#license_crc32-power8":[0,10,1],
 "license.html#license_crc32-zseries":[0,10,2],
 "license.html#license_distribution":[0,10,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554":[1,1,8,10],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af0256206a330cf5b8ec738c1ec60c6a9":[1,1,8,23],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f":[1,1,8,8],
-"struct_w_t___e_x_t_r_a_c_t_o_r.html":[1,1,4],
-"struct_w_t___e_x_t_r_a_c_t_o_r.html#a4db101f00fce80af9ebd4f29f56f7b6a":[1,1,4,1]
+"struct_w_t___e_x_t_r_a_c_t_o_r.html":[1,1,4]
 };
