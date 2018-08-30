@@ -125,9 +125,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_CACHE_
 <tr class="memitem:a9b39f1605f794cfcf201cc2469cd5b76 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a9b39f1605f794cfcf201cc2469cd5b76"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_PREPARE_CONFLICT</b></td></tr>
 <tr class="separator:a9b39f1605f794cfcf201cc2469cd5b76 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15e15d1bffc04aaeb6b623bea488d670 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a15e15d1bffc04aaeb6b623bea488d670"></a>
-static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_DATA_CORRUPTION</b></td></tr>
-<tr class="separator:a15e15d1bffc04aaeb6b623bea488d670 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2b1c26e7572af9b7a8d5d9a8031413b inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="ad2b1c26e7572af9b7a8d5d9a8031413b"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_TRY_SALVAGE</b></td></tr>
+<tr class="separator:ad2b1c26e7572af9b7a8d5d9a8031413b inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76f1262ff26deabc91211655140a6a55 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a76f1262ff26deabc91211655140a6a55"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_DEADLOCK</b></td></tr>
 <tr class="separator:a76f1262ff26deabc91211655140a6a55 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1886,7 +1886,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_J
 <tr>
 <td><code>readonly</code></td><td>open connection in read-only mode. The database must exist. All methods that may modify a database are disabled. See <a class="el" href="readonly.html">Database read-only mode</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>salvage</code></td><td>open connection and salvage any WiredTiger-owned database and log files that it detects as corrupted. This API should only be used after getting an error return of WT_DATA_CORRUPTION. Salvage rebuilds files in place, overwriting existing files. We recommend making a backup copy of all files with the WiredTiger prefix prior to passing this flag.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>salvage</code></td><td>open connection and salvage any WiredTiger-owned database and log files that it detects as corrupted. This API should only be used after getting an error return of WT_TRY_SALVAGE. Salvage rebuilds files in place, overwriting existing files. We recommend making a backup copy of all files with the WiredTiger prefix prior to passing this flag.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>session_max</code></td><td>maximum expected number of sessions (including server threads).</td><td>an integer greater than or equal to 1; default <code>100</code>. </td></tr>
 <tr>

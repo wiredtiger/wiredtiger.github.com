@@ -239,9 +239,9 @@ Error returns</h2></td></tr>
 <tr class="memitem:ga62f73045c5d37d8daee4533dd720376e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga62f73045c5d37d8daee4533dd720376e">WT_PREPARE_CONFLICT</a></td></tr>
 <tr class="memdesc:ga62f73045c5d37d8daee4533dd720376e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict with a prepared update.  <a href="#ga62f73045c5d37d8daee4533dd720376e">More...</a><br /></td></tr>
 <tr class="separator:ga62f73045c5d37d8daee4533dd720376e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga125bb7df9545eed535ac639c6932284f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga125bb7df9545eed535ac639c6932284f">WT_DATA_CORRUPTION</a></td></tr>
-<tr class="memdesc:ga125bb7df9545eed535ac639c6932284f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Database corruption detected.  <a href="#ga125bb7df9545eed535ac639c6932284f">More...</a><br /></td></tr>
-<tr class="separator:ga125bb7df9545eed535ac639c6932284f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga848dbb8ea23d57d22e8103ce70a08f50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga848dbb8ea23d57d22e8103ce70a08f50">WT_TRY_SALVAGE</a></td></tr>
+<tr class="memdesc:ga848dbb8ea23d57d22e8103ce70a08f50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Database corruption detected.  <a href="#ga848dbb8ea23d57d22e8103ce70a08f50">More...</a><br /></td></tr>
+<tr class="separator:ga848dbb8ea23d57d22e8103ce70a08f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Log record and operation types</h2></td></tr>
@@ -2456,23 +2456,6 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 </div>
 </div>
-<a id="ga125bb7df9545eed535ac639c6932284f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga125bb7df9545eed535ac639c6932284f">&#9670;&nbsp;</a></span>WT_DATA_CORRUPTION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define WT_DATA_CORRUPTION</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Database corruption detected. </p>
-<p>This error is generated when corruption is detected in an on-disk file. The application may choose to salvage the file or retry wiredtiger_open with the 'salvage=true' configuration setting. </p>
-
-</div>
-</div>
 <a id="gaeca1f3c4a70b8b71b56d2c2fc99a469c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaeca1f3c4a70b8b71b56d2c2fc99a469c">&#9670;&nbsp;</a></span>WT_DUPLICATE_KEY</h2>
 
@@ -2624,6 +2607,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>Recovery must be run to continue. </p>
 <p>This error is generated when wiredtiger_open is configured to return an error if recovery is required to use the database. </p>
+
+</div>
+</div>
+<a id="ga848dbb8ea23d57d22e8103ce70a08f50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga848dbb8ea23d57d22e8103ce70a08f50">&#9670;&nbsp;</a></span>WT_TRY_SALVAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_TRY_SALVAGE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Database corruption detected. </p>
+<p>This error is generated when corruption is detected in an on-disk file. The application may choose to salvage the file or retry wiredtiger_open with the 'salvage=true' configuration setting. </p>
 
 </div>
 </div>
@@ -2914,7 +2914,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>readonly</code></td><td>open connection in read-only mode. The database must exist. All methods that may modify a database are disabled. See <a class="el" href="readonly.html">Database read-only mode</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>salvage</code></td><td>open connection and salvage any WiredTiger-owned database and log files that it detects as corrupted. This API should only be used after getting an error return of WT_DATA_CORRUPTION. Salvage rebuilds files in place, overwriting existing files. We recommend making a backup copy of all files with the WiredTiger prefix prior to passing this flag.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>salvage</code></td><td>open connection and salvage any WiredTiger-owned database and log files that it detects as corrupted. This API should only be used after getting an error return of WT_TRY_SALVAGE. Salvage rebuilds files in place, overwriting existing files. We recommend making a backup copy of all files with the WiredTiger prefix prior to passing this flag.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>session_max</code></td><td>maximum expected number of sessions (including server threads).</td><td>an integer greater than or equal to 1; default <code>100</code>. </td></tr>
 <tr>
