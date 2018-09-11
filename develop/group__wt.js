@@ -247,6 +247,8 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_HAZARD_WALKS", "group__wt.html#gaaed5fd0a06d4df6d9a345c110c6471b0", null ],
     [ "WT_STAT_CONN_CACHE_INMEM_SPLIT", "group__wt.html#gac651643da398d7bcdabf205a12ca2c74", null ],
     [ "WT_STAT_CONN_CACHE_INMEM_SPLITTABLE", "group__wt.html#gaacd23e50c5c8815cf8687d9da6655ab4", null ],
+    [ "WT_STAT_CONN_CACHE_LOOKASIDE_CURSOR_WAIT_APPLICATION", "group__wt.html#ga256a6208e7b8d7e48a22666796b65d00", null ],
+    [ "WT_STAT_CONN_CACHE_LOOKASIDE_CURSOR_WAIT_INTERNAL", "group__wt.html#ga7dcccbf2cc4c74ef1ba51b796f59024c", null ],
     [ "WT_STAT_CONN_CACHE_LOOKASIDE_ENTRIES", "group__wt.html#ga3e22557e3feb4488563db0160a8891d2", null ],
     [ "WT_STAT_CONN_CACHE_LOOKASIDE_INSERT", "group__wt.html#ga5b48117f3b0675390522d9104c9f62f5", null ],
     [ "WT_STAT_CONN_CACHE_LOOKASIDE_REMOVE", "group__wt.html#ga04bccbee64a4a75aa5e05a14365bde76", null ],
