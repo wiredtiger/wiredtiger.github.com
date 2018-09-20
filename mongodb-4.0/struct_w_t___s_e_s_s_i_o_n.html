@@ -150,6 +150,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa449082ce4de7ee86a773595c416a69f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:aa449082ce4de7ee86a773595c416a69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a timestamp on a transaction.  <a href="#aa449082ce4de7ee86a773595c416a69f">More...</a><br /></td></tr>
 <tr class="separator:aa449082ce4de7ee86a773595c416a69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec1349581b7f97fc90573550fff8b6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aeec1349581b7f97fc90573550fff8b6b">query_timestamp</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, char *hex_timestamp, const char *config)</td></tr>
+<tr class="memdesc:aeec1349581b7f97fc90573550fff8b6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the session's transaction timestamp state.  <a href="#aeec1349581b7f97fc90573550fff8b6b">More...</a><br /></td></tr>
+<tr class="separator:aeec1349581b7f97fc90573550fff8b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6550c9079198955c5071583941c85bbf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a6550c9079198955c5071583941c85bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#a6550c9079198955c5071583941c85bbf">More...</a><br /></td></tr>
 <tr class="separator:a6550c9079198955c5071583941c85bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1013,6 +1016,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>read_once</code></td><td>results that are brought into cache from disk by this cursor will be given less priority in the cache.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
 <td><code>readonly</code></td><td>only query operations are supported by this cursor. An error is returned if a modification is attempted using the cursor. The default is false for all cursor types except for log and metadata cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>statistics</code></td><td>Specify the statistics to be gathered. Choosing "all" gathers statistics regardless of cost and may include traversing on-disk files; "fast" gathers a subset of relatively inexpensive statistics. The selection must agree with the database <code>statistics</code> configuration specified to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a>. For example, "all" or "fast" can be configured when the database is configured with "all", but the cursor open will fail if "all" is specified when the database is configured with "fast", and the cursor open will fail in all cases when the database is configured with "none". If "size" is configured, only the underlying size of the object on disk is filled in and the object is not opened. If <code>statistics</code> is not configured, the default configuration is the database configuration. The "clear" configuration resets statistics after gathering them, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared). See <a class="el" href="statistics.html">Statistics</a> for more information.</td><td>a list, with values chosen from the following options: <code>"all"</code>, <code>"cache_walk"</code>, <code>"fast"</code>, <code>"clear"</code>, <code>"size"</code>, <code>"tree_walk"</code>; default empty. </td></tr>
@@ -1073,6 +1078,57 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
+
+</div>
+</div>
+<a id="aeec1349581b7f97fc90573550fff8b6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeec1349581b7f97fc90573550fff8b6b">&#9670;&nbsp;</a></span>query_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::query_timestamp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>hex_timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Query the session's transaction timestamp state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hex_timestamp</td><td>a buffer that will be set to the hexadecimal encoding of the timestamp being queried. Must be large enough to hold a hex-encoded timestamp (i.e., double the timestamp size plus one byte for NUL termination). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>get</code></td><td>specify which timestamp to query: <code>commit</code> returns the most recently set commit_timestamp. <code>first_commit</code> returns the first set commit_timestamp. <code>prepare</code> returns the timestamp used in preparing a transaction. <code>read</code> returns the timestamp at which the transaction is reading at. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string, chosen from the following options: <code>"commit"</code>, <code>"first_commit"</code>, <code>"prepare"</code>, <code>"read"</code>; default <code>read</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If the session is not in a transaction <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned. </dd></dl>
 
 </div>
 </div>

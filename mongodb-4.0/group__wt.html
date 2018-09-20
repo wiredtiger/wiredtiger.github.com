@@ -239,6 +239,9 @@ Error returns</h2></td></tr>
 <tr class="memitem:ga62f73045c5d37d8daee4533dd720376e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga62f73045c5d37d8daee4533dd720376e">WT_PREPARE_CONFLICT</a></td></tr>
 <tr class="memdesc:ga62f73045c5d37d8daee4533dd720376e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict with a prepared update.  <a href="#ga62f73045c5d37d8daee4533dd720376e">More...</a><br /></td></tr>
 <tr class="separator:ga62f73045c5d37d8daee4533dd720376e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga848dbb8ea23d57d22e8103ce70a08f50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga848dbb8ea23d57d22e8103ce70a08f50">WT_TRY_SALVAGE</a></td></tr>
+<tr class="memdesc:ga848dbb8ea23d57d22e8103ce70a08f50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Database corruption detected.  <a href="#ga848dbb8ea23d57d22e8103ce70a08f50">More...</a><br /></td></tr>
+<tr class="separator:ga848dbb8ea23d57d22e8103ce70a08f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Log record and operation types</h2></td></tr>
@@ -459,7 +462,7 @@ Connection statistics</h2></td></tr>
 <tr class="separator:ga95b027f5b194153c84970ac0058570fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8c487ac18d440c9a29ad5536cd0ff25f"><td class="memItemLeft" align="right" valign="top"><a id="ga8c487ac18d440c9a29ad5536cd0ff25f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8c487ac18d440c9a29ad5536cd0ff25f">WT_STAT_CONN_CACHE_BYTES_LOOKASIDE</a></td></tr>
-<tr class="memdesc:ga8c487ac18d440c9a29ad5536cd0ff25f"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: bytes belonging to the lookaside table in the cache <br /></td></tr>
+<tr class="memdesc:ga8c487ac18d440c9a29ad5536cd0ff25f"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: bytes belonging to the cache overflow table in the cache <br /></td></tr>
 <tr class="separator:ga8c487ac18d440c9a29ad5536cd0ff25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5d9371b0feab441fda3d791cb51992c4"><td class="memItemLeft" align="right" valign="top"><a id="ga5d9371b0feab441fda3d791cb51992c4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5d9371b0feab441fda3d791cb51992c4">WT_STAT_CONN_CACHE_BYTES_INUSE</a></td></tr>
@@ -477,6 +480,30 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga12c3ae32c02caaede67814a6129bd722">WT_STAT_CONN_CACHE_BYTES_WRITE</a></td></tr>
 <tr class="memdesc:ga12c3ae32c02caaede67814a6129bd722"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: bytes written from cache <br /></td></tr>
 <tr class="separator:ga12c3ae32c02caaede67814a6129bd722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga256a6208e7b8d7e48a22666796b65d00"><td class="memItemLeft" align="right" valign="top"><a id="ga256a6208e7b8d7e48a22666796b65d00"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga256a6208e7b8d7e48a22666796b65d00">WT_STAT_CONN_CACHE_LOOKASIDE_CURSOR_WAIT_APPLICATION</a></td></tr>
+<tr class="memdesc:ga256a6208e7b8d7e48a22666796b65d00"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow cursor application thread wait time (usecs) <br /></td></tr>
+<tr class="separator:ga256a6208e7b8d7e48a22666796b65d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7dcccbf2cc4c74ef1ba51b796f59024c"><td class="memItemLeft" align="right" valign="top"><a id="ga7dcccbf2cc4c74ef1ba51b796f59024c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7dcccbf2cc4c74ef1ba51b796f59024c">WT_STAT_CONN_CACHE_LOOKASIDE_CURSOR_WAIT_INTERNAL</a></td></tr>
+<tr class="memdesc:ga7dcccbf2cc4c74ef1ba51b796f59024c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow cursor internal thread wait time (usecs) <br /></td></tr>
+<tr class="separator:ga7dcccbf2cc4c74ef1ba51b796f59024c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8ffe2e94e5c030e0a6f10e11c40c9da3"><td class="memItemLeft" align="right" valign="top"><a id="ga8ffe2e94e5c030e0a6f10e11c40c9da3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8ffe2e94e5c030e0a6f10e11c40c9da3">WT_STAT_CONN_CACHE_LOOKASIDE_SCORE</a></td></tr>
+<tr class="memdesc:ga8ffe2e94e5c030e0a6f10e11c40c9da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow score <br /></td></tr>
+<tr class="separator:ga8ffe2e94e5c030e0a6f10e11c40c9da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3e22557e3feb4488563db0160a8891d2"><td class="memItemLeft" align="right" valign="top"><a id="ga3e22557e3feb4488563db0160a8891d2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3e22557e3feb4488563db0160a8891d2">WT_STAT_CONN_CACHE_LOOKASIDE_ENTRIES</a></td></tr>
+<tr class="memdesc:ga3e22557e3feb4488563db0160a8891d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow table entries <br /></td></tr>
+<tr class="separator:ga3e22557e3feb4488563db0160a8891d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b48117f3b0675390522d9104c9f62f5"><td class="memItemLeft" align="right" valign="top"><a id="ga5b48117f3b0675390522d9104c9f62f5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5b48117f3b0675390522d9104c9f62f5">WT_STAT_CONN_CACHE_LOOKASIDE_INSERT</a></td></tr>
+<tr class="memdesc:ga5b48117f3b0675390522d9104c9f62f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow table insert calls <br /></td></tr>
+<tr class="separator:ga5b48117f3b0675390522d9104c9f62f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04bccbee64a4a75aa5e05a14365bde76"><td class="memItemLeft" align="right" valign="top"><a id="ga04bccbee64a4a75aa5e05a14365bde76"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga04bccbee64a4a75aa5e05a14365bde76">WT_STAT_CONN_CACHE_LOOKASIDE_REMOVE</a></td></tr>
+<tr class="memdesc:ga04bccbee64a4a75aa5e05a14365bde76"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow table remove calls <br /></td></tr>
+<tr class="separator:ga04bccbee64a4a75aa5e05a14365bde76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad4a6cc370550ba33a15edf6070d15546"><td class="memItemLeft" align="right" valign="top"><a id="gad4a6cc370550ba33a15edf6070d15546"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad4a6cc370550ba33a15edf6070d15546">WT_STAT_CONN_CACHE_EVICTION_CHECKPOINT</a></td></tr>
 <tr class="memdesc:gad4a6cc370550ba33a15edf6070d15546"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint blocked page eviction <br /></td></tr>
@@ -653,22 +680,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4cc6f03ab41775215862fc7c8e8c0ff1">WT_STAT_CONN_CACHE_EVICTION_SPLIT_LEAF</a></td></tr>
 <tr class="memdesc:ga4cc6f03ab41775215862fc7c8e8c0ff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: leaf pages split during eviction <br /></td></tr>
 <tr class="separator:ga4cc6f03ab41775215862fc7c8e8c0ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8ffe2e94e5c030e0a6f10e11c40c9da3"><td class="memItemLeft" align="right" valign="top"><a id="ga8ffe2e94e5c030e0a6f10e11c40c9da3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8ffe2e94e5c030e0a6f10e11c40c9da3">WT_STAT_CONN_CACHE_LOOKASIDE_SCORE</a></td></tr>
-<tr class="memdesc:ga8ffe2e94e5c030e0a6f10e11c40c9da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: lookaside score <br /></td></tr>
-<tr class="separator:ga8ffe2e94e5c030e0a6f10e11c40c9da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3e22557e3feb4488563db0160a8891d2"><td class="memItemLeft" align="right" valign="top"><a id="ga3e22557e3feb4488563db0160a8891d2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3e22557e3feb4488563db0160a8891d2">WT_STAT_CONN_CACHE_LOOKASIDE_ENTRIES</a></td></tr>
-<tr class="memdesc:ga3e22557e3feb4488563db0160a8891d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: lookaside table entries <br /></td></tr>
-<tr class="separator:ga3e22557e3feb4488563db0160a8891d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5b48117f3b0675390522d9104c9f62f5"><td class="memItemLeft" align="right" valign="top"><a id="ga5b48117f3b0675390522d9104c9f62f5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5b48117f3b0675390522d9104c9f62f5">WT_STAT_CONN_CACHE_LOOKASIDE_INSERT</a></td></tr>
-<tr class="memdesc:ga5b48117f3b0675390522d9104c9f62f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: lookaside table insert calls <br /></td></tr>
-<tr class="separator:ga5b48117f3b0675390522d9104c9f62f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga04bccbee64a4a75aa5e05a14365bde76"><td class="memItemLeft" align="right" valign="top"><a id="ga04bccbee64a4a75aa5e05a14365bde76"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga04bccbee64a4a75aa5e05a14365bde76">WT_STAT_CONN_CACHE_LOOKASIDE_REMOVE</a></td></tr>
-<tr class="memdesc:ga04bccbee64a4a75aa5e05a14365bde76"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: lookaside table remove calls <br /></td></tr>
-<tr class="separator:ga04bccbee64a4a75aa5e05a14365bde76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1fcf0c7313ec964431509e60b4e57db8"><td class="memItemLeft" align="right" valign="top"><a id="ga1fcf0c7313ec964431509e60b4e57db8"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1fcf0c7313ec964431509e60b4e57db8">WT_STAT_CONN_CACHE_BYTES_MAX</a></td></tr>
 <tr class="memdesc:ga1fcf0c7313ec964431509e60b4e57db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum bytes configured <br /></td></tr>
@@ -699,7 +710,7 @@ Connection statistics</h2></td></tr>
 <tr class="separator:ga64209e3be0f53337b5c2f01346cf92fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8857394274e973c900d7951d4ee9e663"><td class="memItemLeft" align="right" valign="top"><a id="ga8857394274e973c900d7951d4ee9e663"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8857394274e973c900d7951d4ee9e663">WT_STAT_CONN_CACHE_WRITE_LOOKASIDE</a></td></tr>
-<tr class="memdesc:ga8857394274e973c900d7951d4ee9e663"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: page written requiring lookaside records <br /></td></tr>
+<tr class="memdesc:ga8857394274e973c900d7951d4ee9e663"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: page written requiring cache overflow records <br /></td></tr>
 <tr class="separator:ga8857394274e973c900d7951d4ee9e663"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab5a819ba891f98903ee2be2df3c565f1"><td class="memItemLeft" align="right" valign="top"><a id="gab5a819ba891f98903ee2be2df3c565f1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab5a819ba891f98903ee2be2df3c565f1">WT_STAT_CONN_CACHE_PAGES_INUSE</a></td></tr>
@@ -751,23 +762,23 @@ Connection statistics</h2></td></tr>
 <tr class="separator:ga10b195a4bf9b02aedeb766f9e8a4b03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="memItemLeft" align="right" valign="top"><a id="gaf9927116a3bd1b71cbaa626cb055a6ed"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf9927116a3bd1b71cbaa626cb055a6ed">WT_STAT_CONN_CACHE_READ_LOOKASIDE</a></td></tr>
-<tr class="memdesc:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring lookaside entries <br /></td></tr>
+<tr class="memdesc:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring cache overflow entries <br /></td></tr>
 <tr class="separator:gaf9927116a3bd1b71cbaa626cb055a6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf7f1f7ab00b9f673370ef3766865d5fc"><td class="memItemLeft" align="right" valign="top"><a id="gaf7f1f7ab00b9f673370ef3766865d5fc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf7f1f7ab00b9f673370ef3766865d5fc">WT_STAT_CONN_CACHE_READ_LOOKASIDE_CHECKPOINT</a></td></tr>
-<tr class="memdesc:gaf7f1f7ab00b9f673370ef3766865d5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring lookaside for checkpoint <br /></td></tr>
+<tr class="memdesc:gaf7f1f7ab00b9f673370ef3766865d5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring cache overflow for checkpoint <br /></td></tr>
 <tr class="separator:gaf7f1f7ab00b9f673370ef3766865d5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga44ba9fc07959271536d8d8e93df650eb"><td class="memItemLeft" align="right" valign="top"><a id="ga44ba9fc07959271536d8d8e93df650eb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga44ba9fc07959271536d8d8e93df650eb">WT_STAT_CONN_CACHE_READ_LOOKASIDE_SKIPPED</a></td></tr>
-<tr class="memdesc:ga44ba9fc07959271536d8d8e93df650eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache skipping older lookaside entries <br /></td></tr>
+<tr class="memdesc:ga44ba9fc07959271536d8d8e93df650eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache skipping older cache overflow entries <br /></td></tr>
 <tr class="separator:ga44ba9fc07959271536d8d8e93df650eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga84714be9b21435088c27684129933cd4"><td class="memItemLeft" align="right" valign="top"><a id="ga84714be9b21435088c27684129933cd4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga84714be9b21435088c27684129933cd4">WT_STAT_CONN_CACHE_READ_LOOKASIDE_DELAY</a></td></tr>
-<tr class="memdesc:ga84714be9b21435088c27684129933cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache with skipped lookaside entries needed later <br /></td></tr>
+<tr class="memdesc:ga84714be9b21435088c27684129933cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache with skipped cache overflow entries needed later <br /></td></tr>
 <tr class="separator:ga84714be9b21435088c27684129933cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6a1727e746c2da276731462d2b22cbbd"><td class="memItemLeft" align="right" valign="top"><a id="ga6a1727e746c2da276731462d2b22cbbd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6a1727e746c2da276731462d2b22cbbd">WT_STAT_CONN_CACHE_READ_LOOKASIDE_DELAY_CHECKPOINT</a></td></tr>
-<tr class="memdesc:ga6a1727e746c2da276731462d2b22cbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache with skipped lookaside entries needed later by checkpoint <br /></td></tr>
+<tr class="memdesc:ga6a1727e746c2da276731462d2b22cbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache with skipped cache overflow entries needed later by checkpoint <br /></td></tr>
 <tr class="separator:ga6a1727e746c2da276731462d2b22cbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac6812aa29e782b53d31cb94d6bb39ae2"><td class="memItemLeft" align="right" valign="top"><a id="gac6812aa29e782b53d31cb94d6bb39ae2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac6812aa29e782b53d31cb94d6bb39ae2">WT_STAT_CONN_CACHE_PAGES_REQUESTED</a></td></tr>
@@ -1397,6 +1408,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa753d17cb7f62e2811c4834961725c11">WT_STAT_CONN_SESSION_OPEN</a></td></tr>
 <tr class="memdesc:gaa753d17cb7f62e2811c4834961725c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: open session count <br /></td></tr>
 <tr class="separator:gaa753d17cb7f62e2811c4834961725c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba56aa11bb184cc9adfa6a1fbda154de"><td class="memItemLeft" align="right" valign="top"><a id="gaba56aa11bb184cc9adfa6a1fbda154de"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaba56aa11bb184cc9adfa6a1fbda154de">WT_STAT_CONN_SESSION_QUERY_TS</a></td></tr>
+<tr class="memdesc:gaba56aa11bb184cc9adfa6a1fbda154de"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: session query timestamp calls <br /></td></tr>
+<tr class="separator:gaba56aa11bb184cc9adfa6a1fbda154de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacb0dfedaab0183271e30afaad6646d75"><td class="memItemLeft" align="right" valign="top"><a id="gacb0dfedaab0183271e30afaad6646d75"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacb0dfedaab0183271e30afaad6646d75">WT_STAT_CONN_SESSION_TABLE_ALTER_FAIL</a></td></tr>
 <tr class="memdesc:gacb0dfedaab0183271e30afaad6646d75"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: table alter failed calls <br /></td></tr>
@@ -1545,14 +1560,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8658fc3d52503f3228eac6ba33f2dec8">WT_STAT_CONN_CHILD_MODIFY_BLOCKED_PAGE</a></td></tr>
 <tr class="memdesc:ga8658fc3d52503f3228eac6ba33f2dec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: page reconciliation yielded due to child modification <br /></td></tr>
 <tr class="separator:ga8658fc3d52503f3228eac6ba33f2dec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa5799163191a9feffd1ea070f6dc53c0"><td class="memItemLeft" align="right" valign="top"><a id="gaa5799163191a9feffd1ea070f6dc53c0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa5799163191a9feffd1ea070f6dc53c0">WT_STAT_CONN_TXN_COMMIT_QUEUE_WALKED</a></td></tr>
+<tr class="memdesc:gaa5799163191a9feffd1ea070f6dc53c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue entries walked <br /></td></tr>
+<tr class="separator:gaa5799163191a9feffd1ea070f6dc53c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafe9ae696cf24a548b230b5bc7de43266"><td class="memItemLeft" align="right" valign="top"><a id="gafe9ae696cf24a548b230b5bc7de43266"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafe9ae696cf24a548b230b5bc7de43266">WT_STAT_CONN_TXN_COMMIT_QUEUE_EMPTY</a></td></tr>
 <tr class="memdesc:gafe9ae696cf24a548b230b5bc7de43266"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue insert to empty <br /></td></tr>
 <tr class="separator:gafe9ae696cf24a548b230b5bc7de43266"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga11576e004e511b6e3d93d3bda34dd4e6"><td class="memItemLeft" align="right" valign="top"><a id="ga11576e004e511b6e3d93d3bda34dd4e6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga11576e004e511b6e3d93d3bda34dd4e6">WT_STAT_CONN_TXN_COMMIT_QUEUE_TAIL</a></td></tr>
-<tr class="memdesc:ga11576e004e511b6e3d93d3bda34dd4e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue inserts to tail <br /></td></tr>
-<tr class="separator:ga11576e004e511b6e3d93d3bda34dd4e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad20e41e94e55a65a46fc1fa967829857"><td class="memItemLeft" align="right" valign="top"><a id="gad20e41e94e55a65a46fc1fa967829857"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad20e41e94e55a65a46fc1fa967829857">WT_STAT_CONN_TXN_COMMIT_QUEUE_HEAD</a></td></tr>
+<tr class="memdesc:gad20e41e94e55a65a46fc1fa967829857"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue inserts to head <br /></td></tr>
+<tr class="separator:gad20e41e94e55a65a46fc1fa967829857"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0e42c5ba33463da9910638a987e4283d"><td class="memItemLeft" align="right" valign="top"><a id="ga0e42c5ba33463da9910638a987e4283d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0e42c5ba33463da9910638a987e4283d">WT_STAT_CONN_TXN_COMMIT_QUEUE_INSERTS</a></td></tr>
 <tr class="memdesc:ga0e42c5ba33463da9910638a987e4283d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: commit timestamp queue inserts total <br /></td></tr>
@@ -1589,6 +1608,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga99702821df60ac2845a9c89a7c9bc1cb">WT_STAT_CONN_TXN_QUERY_TS</a></td></tr>
 <tr class="memdesc:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: query timestamp calls <br /></td></tr>
 <tr class="separator:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa4578e471e7365f011284068aaa4cc13"><td class="memItemLeft" align="right" valign="top"><a id="gaa4578e471e7365f011284068aaa4cc13"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa4578e471e7365f011284068aaa4cc13">WT_STAT_CONN_TXN_READ_QUEUE_WALKED</a></td></tr>
+<tr class="memdesc:gaa4578e471e7365f011284068aaa4cc13"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: read timestamp queue entries walked <br /></td></tr>
+<tr class="separator:gaa4578e471e7365f011284068aaa4cc13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadc8b613d73e776000e804218a0c0e3ff"><td class="memItemLeft" align="right" valign="top"><a id="gadc8b613d73e776000e804218a0c0e3ff"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadc8b613d73e776000e804218a0c0e3ff">WT_STAT_CONN_TXN_READ_QUEUE_EMPTY</a></td></tr>
 <tr class="memdesc:gadc8b613d73e776000e804218a0c0e3ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: read timestamp queue insert to empty <br /></td></tr>
@@ -1615,7 +1638,7 @@ Connection statistics</h2></td></tr>
 <tr class="separator:gaad44523254b502dd5dcfdb0d0ea46364"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6fd049adbd7a3d5c19e7703324f448d1"><td class="memItemLeft" align="right" valign="top"><a id="ga6fd049adbd7a3d5c19e7703324f448d1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6fd049adbd7a3d5c19e7703324f448d1">WT_STAT_CONN_TXN_ROLLBACK_LAS_REMOVED</a></td></tr>
-<tr class="memdesc:ga6fd049adbd7a3d5c19e7703324f448d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable updates removed from lookaside <br /></td></tr>
+<tr class="memdesc:ga6fd049adbd7a3d5c19e7703324f448d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable updates removed from cache overflow <br /></td></tr>
 <tr class="separator:ga6fd049adbd7a3d5c19e7703324f448d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga25777c1773b5be81573a121ac29b4d52"><td class="memItemLeft" align="right" valign="top"><a id="ga25777c1773b5be81573a121ac29b4d52"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga25777c1773b5be81573a121ac29b4d52">WT_STAT_CONN_TXN_SET_TS</a></td></tr>
@@ -2016,7 +2039,7 @@ Statistics for data sources</h2></td></tr>
 <tr class="separator:gaa4f0993b5393568c7419aa039c7c9417"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6dda6ff62b477170ea60570e81ffc5f7"><td class="memItemLeft" align="right" valign="top"><a id="ga6dda6ff62b477170ea60570e81ffc5f7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6dda6ff62b477170ea60570e81ffc5f7">WT_STAT_DSRC_CACHE_WRITE_LOOKASIDE</a></td></tr>
-<tr class="memdesc:ga6dda6ff62b477170ea60570e81ffc5f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: page written requiring lookaside records <br /></td></tr>
+<tr class="memdesc:ga6dda6ff62b477170ea60570e81ffc5f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: page written requiring cache overflow records <br /></td></tr>
 <tr class="separator:ga6dda6ff62b477170ea60570e81ffc5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga42c0304e959ce5786e8d4f6787465a08"><td class="memItemLeft" align="right" valign="top"><a id="ga42c0304e959ce5786e8d4f6787465a08"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga42c0304e959ce5786e8d4f6787465a08">WT_STAT_DSRC_CACHE_READ</a></td></tr>
@@ -2032,7 +2055,7 @@ Statistics for data sources</h2></td></tr>
 <tr class="separator:ga206aa7b3d554cb388480394bc5d7ab46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad3928585fe04068ea44325b7069ae3eb"><td class="memItemLeft" align="right" valign="top"><a id="gad3928585fe04068ea44325b7069ae3eb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad3928585fe04068ea44325b7069ae3eb">WT_STAT_DSRC_CACHE_READ_LOOKASIDE</a></td></tr>
-<tr class="memdesc:gad3928585fe04068ea44325b7069ae3eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring lookaside entries <br /></td></tr>
+<tr class="memdesc:gad3928585fe04068ea44325b7069ae3eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache requiring cache overflow entries <br /></td></tr>
 <tr class="separator:gad3928585fe04068ea44325b7069ae3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga52a8e522caf9ce090d9a8b2708ff1d92"><td class="memItemLeft" align="right" valign="top"><a id="ga52a8e522caf9ce090d9a8b2708ff1d92"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga52a8e522caf9ce090d9a8b2708ff1d92">WT_STAT_DSRC_CACHE_PAGES_REQUESTED</a></td></tr>
@@ -2595,6 +2618,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 </div>
 </div>
+<a id="ga848dbb8ea23d57d22e8103ce70a08f50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga848dbb8ea23d57d22e8103ce70a08f50">&#9670;&nbsp;</a></span>WT_TRY_SALVAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_TRY_SALVAGE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Database corruption detected. </p>
+<p>This error is generated when corruption is detected in an on-disk file. The application may choose to salvage the file or retry wiredtiger_open with the 'salvage=true' configuration setting. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="gac4f8b4621bcafad9db744e87be24a798"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac4f8b4621bcafad9db744e87be24a798">&#9670;&nbsp;</a></span>WT_PACK_STREAM</h2>
@@ -2854,7 +2894,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;recover</code></td><td>run recovery or error if recovery needs to run after an unclean shutdown.</td><td>a string, chosen from the following options: <code>"error"</code>, <code>"on"</code>, <code>"salvage"</code>; default <code>on</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;recover</code></td><td>run recovery or error if recovery needs to run after an unclean shutdown.</td><td>a string, chosen from the following options: <code>"error"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;zero_fill</code></td><td>manually write zeroes into log files.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -2881,6 +2921,8 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>readonly</code></td><td>open connection in read-only mode. The database must exist. All methods that may modify a database are disabled. See <a class="el" href="readonly.html">Database read-only mode</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>salvage</code></td><td>open connection and salvage any WiredTiger-owned database and log files that it detects as corrupted. This API should only be used after getting an error return of WT_TRY_SALVAGE. Salvage rebuilds files in place, overwriting existing files. We recommend making a backup copy of all files with the WiredTiger prefix prior to passing this flag.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>session_max</code></td><td>maximum expected number of sessions (including server threads).</td><td>an integer greater than or equal to 1; default <code>100</code>. </td></tr>
 <tr>
