@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.1.0</span>
+   &#160;<span id="projectnumber">Version 3.1.1</span>
    </div>
-   <div id="projectbrief"><!-- 3.1.0 --></div>
+   <div id="projectbrief"><!-- 3.1.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -150,6 +150,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa449082ce4de7ee86a773595c416a69f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:aa449082ce4de7ee86a773595c416a69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a timestamp on a transaction.  <a href="#aa449082ce4de7ee86a773595c416a69f">More...</a><br /></td></tr>
 <tr class="separator:aa449082ce4de7ee86a773595c416a69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec1349581b7f97fc90573550fff8b6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aeec1349581b7f97fc90573550fff8b6b">query_timestamp</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, char *hex_timestamp, const char *config)</td></tr>
+<tr class="memdesc:aeec1349581b7f97fc90573550fff8b6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the session's transaction timestamp state.  <a href="#aeec1349581b7f97fc90573550fff8b6b">More...</a><br /></td></tr>
+<tr class="separator:aeec1349581b7f97fc90573550fff8b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6550c9079198955c5071583941c85bbf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">checkpoint</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
 <tr class="memdesc:a6550c9079198955c5071583941c85bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of objects.  <a href="#a6550c9079198955c5071583941c85bbf">More...</a><br /></td></tr>
 <tr class="separator:a6550c9079198955c5071583941c85bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -642,6 +645,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
+<td><code>memory_page_image_max</code></td><td>the maximum in-memory page image represented by a single storage block. Depending on compression efficiency, compression can create storage blocks which require significant resources to re-instantiate in the cache, penalizing the performance of future point updates. The value limits the maximum in-memory page image a storage block will need. If set to 0, a default of 4 times <code>leaf_page_max</code> is used.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<tr>
 <td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>leaf_page_max</code>, and an upper bound of <code>cache_size / 10</code>. This limit is soft - it is possible for pages to be temporarily larger than this value. This setting is ignored for LSM trees, see <code>chunk_size</code>.</td><td>an integer between 512B and 10TB; default <code>5MB</code>. </td></tr>
 <tr>
 <td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
@@ -1011,6 +1016,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>read_once</code></td><td>results that are brought into cache from disk by this cursor will be given less priority in the cache.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
 <td><code>readonly</code></td><td>only query operations are supported by this cursor. An error is returned if a modification is attempted using the cursor. The default is false for all cursor types except for log and metadata cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>statistics</code></td><td>Specify the statistics to be gathered. Choosing "all" gathers statistics regardless of cost and may include traversing on-disk files; "fast" gathers a subset of relatively inexpensive statistics. The selection must agree with the database <code>statistics</code> configuration specified to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle. ">WT_CONNECTION::reconfigure</a>. For example, "all" or "fast" can be configured when the database is configured with "all", but the cursor open will fail if "all" is specified when the database is configured with "fast", and the cursor open will fail in all cases when the database is configured with "none". If "size" is configured, only the underlying size of the object on disk is filled in and the object is not opened. If <code>statistics</code> is not configured, the default configuration is the database configuration. The "clear" configuration resets statistics after gathering them, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared). See <a class="el" href="statistics.html">Statistics</a> for more information.</td><td>a list, with values chosen from the following options: <code>"all"</code>, <code>"cache_walk"</code>, <code>"fast"</code>, <code>"clear"</code>, <code>"size"</code>, <code>"tree_walk"</code>; default empty. </td></tr>
@@ -1071,6 +1078,57 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
+
+</div>
+</div>
+<a id="aeec1349581b7f97fc90573550fff8b6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeec1349581b7f97fc90573550fff8b6b">&#9670;&nbsp;</a></span>query_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_SESSION::query_timestamp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>hex_timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Query the session's transaction timestamp state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hex_timestamp</td><td>a buffer that will be set to the hexadecimal encoding of the timestamp being queried. Must be large enough to hold a hex-encoded timestamp (i.e., double the timestamp size plus one byte for NUL termination). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>get</code></td><td>specify which timestamp to query: <code>commit</code> returns the most recently set commit_timestamp. <code>first_commit</code> returns the first set commit_timestamp. <code>prepare</code> returns the timestamp used in preparing a transaction. <code>read</code> returns the timestamp at which the transaction is reading at. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string, chosen from the following options: <code>"commit"</code>, <code>"first_commit"</code>, <code>"prepare"</code>, <code>"read"</code>; default <code>read</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If the session is not in a transaction <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned. </dd></dl>
 
 </div>
 </div>
@@ -1625,6 +1683,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Truncate a file, table or cursor range. </p>
 <p>Truncate a table or file. </p><div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(</div><div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, NULL));</div></div><!-- fragment --><p> Truncate a cursor range. When truncating based on a cursor position, it is not required the cursor reference a record in the object, only that the key be set. This allows applications to discard portions of the object name space without knowing exactly what records the object contains. </p><div class="fragment"><div class="line">        <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *start, *stop;</div><div class="line"></div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div><div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;start));</div><div class="line">        start-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(start, <span class="stringliteral">&quot;June01&quot;</span>);</div><div class="line">        error_check(start-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(start));</div><div class="line"></div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div><div class="line">            session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;stop));</div><div class="line">        stop-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(stop, <span class="stringliteral">&quot;June30&quot;</span>);</div><div class="line">        error_check(stop-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">search</a>(stop));</div><div class="line"></div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(session, NULL, start, stop, NULL));</div></div><!-- fragment --><p> Any specified cursors end with no position, and subsequent calls to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR::prev</a>) method will iterate from the beginning (end) of the table.</p>
+<p>When a range truncate is in progress, and another transaction inserts a key into that range, the behavior is not well defined - a conflict may be detected or both transactions may be permitted to commit. If they do commit, and if there is a crash and recovery runs, the result may be different than what was in cache before the crash.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>

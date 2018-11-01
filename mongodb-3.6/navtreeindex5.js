@@ -1,5 +1,14 @@
 var NAVTREEINDEX5 =
 {
+"keyvalue.html":[0,4,5,11],
+"keyvalue.html":[0,5,5,11],
+"leveldb.html":[0,3],
+"leveldb.html#leveldb_build":[0,3,0],
+"leveldb.html#leveldb_caveats":[0,3,1],
+"license.html":[0,10],
+"license.html":[7],
+"license.html#license_crc32-power8":[0,10,1],
+"license.html#license_crc32-zseries":[0,10,2],
 "license.html#license_distribution":[0,10,4],
 "license.html#license_leveldb":[0,10,3],
 "license.html#license_library":[0,10,0],
@@ -240,14 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae498b02cf83cdb644c2665c37917e785":[1,1,8,5],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae87ae081fa676db65a7e06fe03a20fc6":[1,1,8,32],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554":[1,1,8,10],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af0256206a330cf5b8ec738c1ec60c6a9":[1,1,8,23],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f":[1,1,8,8],
-"struct_w_t___e_x_t_r_a_c_t_o_r.html":[1,1,4],
-"struct_w_t___e_x_t_r_a_c_t_o_r.html#a4db101f00fce80af9ebd4f29f56f7b6a":[1,1,4,1],
-"struct_w_t___e_x_t_r_a_c_t_o_r.html#ad73a6c0903ad726e029ec25201ef12ae":[1,1,4,2],
-"struct_w_t___e_x_t_r_a_c_t_o_r.html#aead7ade6a5c1ea31917ed8cd0ef841aa":[1,1,4,0],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html":[1,1,6],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e":[1,1,6,6],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e0b90f0a4fcf943e81b22b94069738b":[1,1,6,9],
-"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2479acb713a211b2d7cc84aaada4b29b":[1,1,6,3]
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af0256206a330cf5b8ec738c1ec60c6a9":[1,1,8,23]
 };
