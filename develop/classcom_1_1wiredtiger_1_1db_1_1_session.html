@@ -1021,7 +1021,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">hex_timestamp</td><td>a buffer that will be set to the hexadecimal encoding of the timestamp being queried. Must be large enough to hold a hex-encoded timestamp (i.e., double the timestamp size plus one byte for NUL termination). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hex_timestamp</td><td>a buffer that will be set to the hexadecimal encoding of the timestamp being queried. Must be large enough to hold a NUL terminated, hex-encoded 8B timestamp (17 bytes). </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
