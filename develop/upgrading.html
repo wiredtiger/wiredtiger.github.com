@@ -72,8 +72,12 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
  <h1><a class="anchor" id="version_311"></a>
 Upgrading to Version 3.1.1</h1>
 <dl>
+<dt>Raw compression </dt>
+<dd><p class="startdd">Support for "raw compression" has been removed in the 3.1.1 release. Only applications configuring their own compressors will require modification, those applications should remove their initialization of the <code><a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression. ">WT_COMPRESSOR</a></code> structure's <code>WT_COMPRESSOR::compress_raw</code> field. Applications configuring the "lz4" or "zlib" compressors (the existing WiredTiger compressors that supported raw compression), will work without change, but applications may see different compression ratios from previous releases. </p>
+<p class="enddd"></p>
+</dd>
 <dt>WiredTiger timestamps </dt>
-<dd><p class="startdd">In previous releases of WiredTiger, it was possible to disable timestamp support as well as to configure a timestamp size different from the 64-bit default, using the <code>&ndash;with-timestamp-size=X</code> configuration option. That is no longer the case, in the 3.1.1 release, timestamps are always configured, and are always 64-bit unsigned integers.</p>
+<dd><p class="startdd">In previous releases of WiredTiger, it was possible to disable timestamp support as well as to configure a timestamp size different from the 64-bit default, using the <code>&ndash;with-timestamp-size=X</code> configuration option. That is no longer the case, in the 3.1.1 release, timestamps are always configured, and are always 64-bit unsigned integers. </p>
 <p class="enddd"></p>
 </dd>
 <dt><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> transaction requirements </dt>
@@ -466,7 +470,7 @@ Upgrading to Version 2.1</h1>
 <dd><p class="startdd">In the 2.1 release of WiredTiger <a class="el" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55" title="The number of bytes in the data item. ">WT_ITEM::size</a> type has changed from <code>uint32_t</code> to <code>size_t</code>. Applications may require modifications to resolve compile-time errors. </p>
 <p class="enddd"></p>
 </dd>
-<dt><a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ab19c8959b2fe1ee6abf1a51aac0c258f" title="Callback to compress a list of byte strings. ">WT_COMPRESSOR::compress_raw</a> signature </dt>
+<dt>WT_COMPRESSOR::compress_raw signature </dt>
 <dd><p class="startdd">In the 2.1 release of WiredTiger, the behavior of the compress_raw callback has changed so that it will only be retried if it returns <code>EAGAIN</code>. If it returns zero and sets <code>result_slots</code> to zero, WiredTiger will assume that raw compression has failed and will fall back to calling <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a075294c61c5d29abd55fc4603afe431f" title="Callback to compress a chunk of data. ">WT_COMPRESSOR::compress</a>. </p>
 <p class="enddd"></p>
 </dd>
@@ -589,8 +593,8 @@ Upgrading to Version 1.6.1</h1>
 <dd><p class="startdd">In the 1.6.1 release, an explicit shared_cache=(enable=boolean) option was added to the wiredtiger_open configuration options. Existing applications that use shared cache functionality will need to add the enable option to the configuration string. The default value for the option is false. </p>
 <p class="enddd"></p>
 </dd>
-<dt><a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ab19c8959b2fe1ee6abf1a51aac0c258f" title="Callback to compress a list of byte strings. ">WT_COMPRESSOR::compress_raw</a> signature </dt>
-<dd><p class="startdd">In the 1.6.1 release, the <code>split_pct</code> argument to the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ab19c8959b2fe1ee6abf1a51aac0c258f" title="Callback to compress a list of byte strings. ">WT_COMPRESSOR::compress_raw</a> function changed type from <code>u_int</code> to <code>int</code>, applications may require modification to avoid compiler warnings. </p>
+<dt>WT_COMPRESSOR::compress_raw signature </dt>
+<dd><p class="startdd">In the 1.6.1 release, the <code>split_pct</code> argument to the WT_COMPRESSOR::compress_raw function changed type from <code>u_int</code> to <code>int</code>, applications may require modification to avoid compiler warnings. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
@@ -666,7 +670,7 @@ Upgrading to Version 1.4.3</h1>
 Upgrading to Version 1.3.9</h1>
 <dl>
 <dt>Compression </dt>
-<dd><p class="startdd">A new member, <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ab19c8959b2fe1ee6abf1a51aac0c258f" title="Callback to compress a list of byte strings. ">WT_COMPRESSOR::compress_raw</a>, was added to the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression. ">WT_COMPRESSOR</a> extension API. Applications using the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression. ">WT_COMPRESSOR</a> extension API should add a NULL as the second field of that structure. </p>
+<dd><p class="startdd">A new member, WT_COMPRESSOR::compress_raw, was added to the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression. ">WT_COMPRESSOR</a> extension API. Applications using the <a class="el" href="struct_w_t___c_o_m_p_r_e_s_s_o_r.html" title="The interface implemented by applications to provide custom compression. ">WT_COMPRESSOR</a> extension API should add a NULL as the second field of that structure. </p>
 <p class="enddd"></p>
 </dd>
 <dt>Checksums </dt>
