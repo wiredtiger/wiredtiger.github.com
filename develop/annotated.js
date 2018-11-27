@@ -14,6 +14,7 @@ var annotated =
           [ "PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream" ],
           [ "SearchStatus", "enumcom_1_1wiredtiger_1_1db_1_1_search_status.html", "enumcom_1_1wiredtiger_1_1db_1_1_search_status" ],
           [ "Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html", "classcom_1_1wiredtiger_1_1db_1_1_session" ],
+          [ "SWIGTYPE_p_int", "classcom_1_1wiredtiger_1_1db_1_1_s_w_i_g_t_y_p_e__p__int.html", "classcom_1_1wiredtiger_1_1db_1_1_s_w_i_g_t_y_p_e__p__int" ],
           [ "wiredtiger", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger.html", null ],
           [ "wiredtigerConstants", "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html", null ],
           [ "WiredTigerException", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html", "classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception" ],

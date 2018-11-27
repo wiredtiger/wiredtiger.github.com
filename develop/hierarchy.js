@@ -11,6 +11,7 @@ var hierarchy =
     [ "com.wiredtiger.db.PackOutputStream", "classcom_1_1wiredtiger_1_1db_1_1_pack_output_stream.html", null ],
     [ "com.wiredtiger.db.SearchStatus", "enumcom_1_1wiredtiger_1_1db_1_1_search_status.html", null ],
     [ "com.wiredtiger.db.Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html", null ],
+    [ "com.wiredtiger.db.SWIGTYPE_p_int", "classcom_1_1wiredtiger_1_1db_1_1_s_w_i_g_t_y_p_e__p__int.html", null ],
     [ "com.wiredtiger.db.wiredtigerConstants", "interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants.html", [
       [ "com.wiredtiger.db.wiredtiger", "classcom_1_1wiredtiger_1_1db_1_1wiredtiger.html", null ]
     ] ],

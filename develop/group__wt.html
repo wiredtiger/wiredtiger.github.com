@@ -142,9 +142,6 @@ Functions</h2></td></tr>
 <tr class="memitem:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a> (int error)</td></tr>
 <tr class="memdesc:gae8bf720ddb4a7a7390b70424594c40fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return information about a WiredTiger error as a string (see <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string. ">WT_SESSION::strerror</a> for a thread-safe API).  <a href="#gae8bf720ddb4a7a7390b70424594c40fd">More...</a><br /></td></tr>
 <tr class="separator:gae8bf720ddb4a7a7390b70424594c40fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a> (int *majorp, int *minorp, int *patchp)</td></tr>
-<tr class="memdesc:ga1b29826f4b418891d67e86850f7cbcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get version information.  <a href="#ga1b29826f4b418891d67e86850f7cbcf4">More...</a><br /></td></tr>
-<tr class="separator:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Data packing and unpacking</h2></td></tr>
@@ -207,6 +204,12 @@ Support functions</h2></td></tr>
 <tr class="memitem:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="memItemLeft" align="right" valign="top">uint32_t(*)(const void *, size_t)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a> (void)</td></tr>
 <tr class="memdesc:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to a function that calculates a CRC32C checksum.  <a href="#ga205f45ca53fdac610f8a9c59c84b5e12">More...</a><br /></td></tr>
 <tr class="separator:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb2cb3b5e55a85a481a3175f37de3a29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">wiredtiger_calc_modify</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *oldv, const <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *newv, size_t maxdiff, <a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> *entries, int *nentriesp)</td></tr>
+<tr class="memdesc:gacb2cb3b5e55a85a481a3175f37de3a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate a set of <a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y" title="A set of modifications for a value, including a pointer to new data and a length, plus a target offse...">WT_MODIFY</a> operations to represent an update.  <a href="#gacb2cb3b5e55a85a481a3175f37de3a29">More...</a><br /></td></tr>
+<tr class="separator:gacb2cb3b5e55a85a481a3175f37de3a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a> (int *majorp, int *minorp, int *patchp)</td></tr>
+<tr class="memdesc:ga1b29826f4b418891d67e86850f7cbcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get version information.  <a href="#ga1b29826f4b418891d67e86850f7cbcf4">More...</a><br /></td></tr>
+<tr class="separator:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Error returns</h2></td></tr>
@@ -2730,6 +2733,75 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gacb2cb3b5e55a85a481a3175f37de3a29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacb2cb3b5e55a85a481a3175f37de3a29">&#9670;&nbsp;</a></span>wiredtiger_calc_modify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiredtiger_calc_modify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *&#160;</td>
+          <td class="paramname"><em>oldv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *&#160;</td>
+          <td class="paramname"><em>newv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>maxdiff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> *&#160;</td>
+          <td class="paramname"><em>entries</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nentriesp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate a set of <a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y" title="A set of modifications for a value, including a pointer to new data and a length, plus a target offse...">WT_MODIFY</a> operations to represent an update. </p>
+<p>This call will calculate a set of modifications to an old value that produce the new value. If more modifications are required than fit in the array passed in by the caller, or if more bytes have changed than the <code>maxdiff</code> parameter, the call will fail. The matching algorithm is approximate, so it may fail and return WT_NOTFOUND if a matching set of <a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y" title="A set of modifications for a value, including a pointer to new data and a length, plus a target offse...">WT_MODIFY</a> operations is not found.</p>
+<p>The <code>maxdiff</code> parameter bounds how much work will be done searching for a match: to ensure a match is found, it may need to be set larger than actual number of bytes that differ between the old and new values. In particular, repeated patterns of bytes in the values can lead to suboptimal matching, and matching ranges less than 64 bytes long will not be detected.</p>
+<p>If the call succeeds, the <a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y" title="A set of modifications for a value, including a pointer to new data and a length, plus a target offse...">WT_MODIFY</a> operations will point into <code>newv</code>, which must remain valid until <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> is called.</p>
+<div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> mod[3];</div><div class="line">        <span class="keywordtype">int</span> nmod = 3;</div><div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> prev, newv;</div><div class="line">        prev.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a> = <span class="stringliteral">&quot;the quick brown fox jumped over the lazy dog. &quot;</span> \</div><div class="line">                <span class="stringliteral">&quot;THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. &quot;</span> \</div><div class="line">                <span class="stringliteral">&quot;the quick brown fox jumped over the lazy dog. &quot;</span> \</div><div class="line">                <span class="stringliteral">&quot;THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. &quot;</span>;</div><div class="line">        prev.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a> = strlen(prev.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>);</div><div class="line">        newv.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a> = <span class="stringliteral">&quot;A quick brown fox jumped over the lazy dog. &quot;</span> \</div><div class="line">                <span class="stringliteral">&quot;THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. &quot;</span> \</div><div class="line">                <span class="stringliteral">&quot;then a quick brown fox jumped over the lazy dog. &quot;</span> \</div><div class="line">                <span class="stringliteral">&quot;THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. &quot;</span> \</div><div class="line">                <span class="stringliteral">&quot;then what?&quot;</span>;</div><div class="line">        newv.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a> = strlen(newv.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>);</div><div class="line">        error_check(<a class="code" href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">wiredtiger_calc_modify</a>(NULL, &amp;prev, &amp;newv, 20, mod, &amp;nmod));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the current WiredTiger session (may be NULL) </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">oldv</td><td>old value </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">newv</td><td>new value </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">maxdiff</td><td>maximum bytes difference </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">entries</td><td>array of modifications producing the new value </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">nentriesp</td><td>size of <code>entries</code> array passed in, set to the number of entries used </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
+
+</div>
+</div>
 <a id="ga512297da65ccc30ac91bf6adf95f043f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga512297da65ccc30ac91bf6adf95f043f">&#9670;&nbsp;</a></span>wiredtiger_config_parser_open()</h2>
 

@@ -684,6 +684,7 @@ var group__wt =
       [ "WT_AOP_SEARCH", "group__wt.html#gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44", null ],
       [ "WT_AOP_UPDATE", "group__wt.html#gga24152c6e1509c488192df653d511a82ca6b24879fd4e50bb05a4c53e443c5f390", null ]
     ] ],
+    [ "wiredtiger_calc_modify", "group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29", null ],
     [ "wiredtiger_config_parser_open", "group__wt.html#ga512297da65ccc30ac91bf6adf95f043f", null ],
     [ "wiredtiger_open", "group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813", null ],
     [ "wiredtiger_pack_close", "group__wt.html#gad506573d475f00f3e6aae9ce36d8bc53", null ],
