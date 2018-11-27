@@ -236,6 +236,10 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>if false, this object has checkpoint-level durability.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
+<tr>
+<td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<tr>
+<td><code>os_cache_max</code></td><td>maximum system buffer cache usage, in bytes. If non-zero, evict object blocks from the system buffer cache after that many bytes from this object are read or written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 </table>
 </td></tr>
   </table>
