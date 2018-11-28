@@ -1,8 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"group__wt.html#ga95e26dd1e15f0352f1c8c05aaf1ab2b3":[1,0,450],
-"group__wt.html#ga97364970b5a1debfb7bbe0061e293365":[1,0,259],
-"group__wt.html#ga97423db84a9cf4119c0351c10d39b3b9":[1,0,227],
 "group__wt.html#ga976d439a0d290b96cc454ab2b7b02af8":[1,0,270],
 "group__wt.html#ga97c4acda5623ec001833a75ed12f8d1d":[1,0,269],
 "group__wt.html#ga99702821df60ac2845a9c89a7c9bc1cb":[1,0,380],
@@ -249,5 +246,8 @@ var NAVTREEINDEX4 =
 "group__wt__java.html":[1,2],
 "helium.html":[0,4,32],
 "helium.html#helium_build":[0,4,32,0],
-"helium.html#helium_limitations":[0,4,32,4]
+"helium.html#helium_limitations":[0,4,32,4],
+"helium.html#helium_load":[0,4,32,1],
+"helium.html#helium_notes":[0,4,32,3],
+"helium.html#helium_objects":[0,4,32,2]
 };
