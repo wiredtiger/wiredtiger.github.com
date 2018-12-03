@@ -1890,6 +1890,8 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>&#160;&#160;&#160;&#160;file_max</code></td><td>the maximum size of log files.</td><td>an integer between 100KB and 2GB; default <code>100MB</code>. </td></tr>
 <tr>
+<td><code>&#160;&#160;&#160;&#160;os_cache_dirty_pct</code></td><td>maximum dirty system buffer cache usage, as a percentage of the log's <code>file_max</code>. If non-zero, schedule writes for dirty blocks belonging to the log in the system buffer cache after that percentage of the log has been written into the buffer cache without an intervening file sync.</td><td>an integer between 0 and 100; default <code>0</code>. </td></tr>
+<tr>
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the name of a directory into which log files are written. The directory must already exist. If the value is not an absolute path, the path is relative to the database home (see <a class="el" href="security.html#absolute_path">Absolute paths</a> for more information).</td><td>a string; default <code>"."</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
