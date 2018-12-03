@@ -72,6 +72,10 @@ $(document).ready(function(){initNavTree('upgrading.html','');});
  <h1><a class="anchor" id="version_311"></a>
 Upgrading to Version 3.1.1</h1>
 <dl>
+<dt>WiredTiger timestamps </dt>
+<dd><p class="startdd">In previous releases of WiredTiger, it was possible to disable timestamp support as well as to configure a timestamp size different from the 64-bit default, using the <code>&ndash;with-timestamp-size=X</code> configuration option. That is no longer the case, in the 3.1.1 release, timestamps are always configured, and are always 64-bit unsigned integers.</p>
+<p class="enddd"></p>
+</dd>
 <dt><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> transaction requirements </dt>
 <dd><p class="startdd">In previous releases of WiredTiger, it was possible to use implicit transactions in combination with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> operations. This requires applications be extraordinarily careful to avoid multiple threads which are changing the same values racing with each other. In the 3.1.1 release, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738" title="Modify an existing record. ">WT_CURSOR::modify</a> operations must be performed in an explicit transaction, and will fail if that's not the case. </p>
 <p class="enddd"></p>
