@@ -554,6 +554,7 @@ var group__wt =
     [ "WT_STAT_DSRC_BTREE_MAXLEAFPAGE", "group__wt.html#ga66c77276624f1d35095653b79af42326", null ],
     [ "WT_STAT_DSRC_BTREE_MAXLEAFVALUE", "group__wt.html#ga22a1069e10c8bdb17208553585239d05", null ],
     [ "WT_STAT_DSRC_BTREE_OVERFLOW", "group__wt.html#ga079f2d70ac0826f54e36b8535d7194e5", null ],
+    [ "WT_STAT_DSRC_BTREE_ROW_EMPTY_VALUES", "group__wt.html#ga4fa270d39c91e14af2f4048135c6bd8d", null ],
     [ "WT_STAT_DSRC_BTREE_ROW_INTERNAL", "group__wt.html#ga5c4c829c445e2c09325464356132e950", null ],
     [ "WT_STAT_DSRC_BTREE_ROW_LEAF", "group__wt.html#gad68b0d8aebe130afacb0f8702389991d", null ],
     [ "WT_STAT_DSRC_CACHE_BYTES_DIRTY", "group__wt.html#gad6a4232aa7c25765203f696e8438cadc", null ],
