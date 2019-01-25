@@ -629,7 +629,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p>Reset the cursor. </p>
 <p>Any resources held by the cursor are released, and the cursor's key and position are no longer valid. Subsequent iterations with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> will move to the first record, or with <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record. ">WT_CURSOR::prev</a> will move to the last record.</p>
-<p>In the case of a statistics cursor, resetting the cursor refreshes the statistics information returned.</p>
+<p>In the case of a statistics cursor, resetting the cursor refreshes the statistics information returned. Resetting a session statistics cursor resets all the session statistics values to zero.</p>
 <div class="fragment"><div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565">reset</a>(cursor));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
