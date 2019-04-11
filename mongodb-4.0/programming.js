@@ -160,6 +160,7 @@ var programming =
       [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
       [ "Eviction tuning", "tune_cache.html#cache_eviction", null ]
     ] ],
+    [ "Capacity tuning", "tune_capacity.html", null ],
     [ "Checksums", "tune_checksum.html", null ],
     [ "Connection close", "tune_close.html", null ],
     [ "Cursor persistence", "tune_cursor_persist.html", null ],

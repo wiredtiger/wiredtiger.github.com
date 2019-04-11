@@ -598,6 +598,12 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
+<td><code>io_capacity = (</code></td><td>control how many bytes per second are written and read. Exceeding the capacity results in throttling.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;total</code></td><td>number of bytes per second available to all subsystems in total. When set, decisions about what subsystems are throttled, and in what proportion, are made internally. The minimum non-zero setting is 1MB.</td><td>an integer between 0 and 1TB; default <code>0</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>log = (</code></td><td>enable logging. Enabling logging uses three sessions from the configured session_max.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;archive</code></td><td>automatically archive unneeded log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
@@ -743,7 +749,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>com</b></li><li class="navelem"><b>wiredtiger</b></li><li class="navelem"><b>db</b></li><li class="navelem"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html">Connection</a></li>
-    <li class="footer">Copyright (c) 2008-2018 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
+    <li class="footer">Copyright (c) 2008-2019 MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>
 </body>

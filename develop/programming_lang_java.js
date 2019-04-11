@@ -21,6 +21,7 @@ var programming_lang_java =
       [ "Application-specified Transaction Timestamps", "transactions_lang_java.html#transaction_timestamps_lang_java", [
         [ "Timestamp overview", "transactions_lang_java.html#timestamp_overview_lang_java", null ],
         [ "Using transactions with timestamps", "transactions_lang_java.html#timestamp_transactions_lang_java", null ],
+        [ "Automatic rounding of timestamps", "transactions_lang_java.html#timestamp_roundup_lang_java", null ],
         [ "Managing global timestamp state", "transactions_lang_java.html#timestamp_connection_lang_java", null ],
         [ "Timestamp support in the extension API", "transactions_lang_java.html#timestamp_extensions_lang_java", null ]
       ] ]
@@ -118,6 +119,7 @@ var programming_lang_java =
       [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
       [ "Eviction tuning", "tune_cache.html#cache_eviction", null ]
     ] ],
+    [ "Capacity tuning", "tune_capacity.html", null ],
     [ "Checksums", "tune_checksum.html", null ],
     [ "Connection close", "tune_close.html", null ],
     [ "Cursor persistence", "tune_cursor_persist.html", null ],

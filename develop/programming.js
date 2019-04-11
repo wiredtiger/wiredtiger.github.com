@@ -21,6 +21,7 @@ var programming =
       [ "Application-specified Transaction Timestamps", "transactions.html#transaction_timestamps", [
         [ "Timestamp overview", "transactions.html#timestamp_overview", null ],
         [ "Using transactions with timestamps", "transactions.html#timestamp_transactions", null ],
+        [ "Automatic rounding of timestamps", "transactions.html#timestamp_roundup", null ],
         [ "Managing global timestamp state", "transactions.html#timestamp_connection", null ],
         [ "Timestamp support in the extension API", "transactions.html#timestamp_extensions", null ]
       ] ]
@@ -160,6 +161,7 @@ var programming =
       [ "Cache resident objects", "tune_cache.html#tuning_cache_resident", null ],
       [ "Eviction tuning", "tune_cache.html#cache_eviction", null ]
     ] ],
+    [ "Capacity tuning", "tune_capacity.html", null ],
     [ "Checksums", "tune_checksum.html", null ],
     [ "Connection close", "tune_close.html", null ],
     [ "Cursor persistence", "tune_cursor_persist.html", null ],

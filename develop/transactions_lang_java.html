@@ -132,11 +132,51 @@ Using transactions with timestamps</h2>
 <p>Commit timestamps cannot be set in the past of any read timestamp that has been used. This is enforced by assertions in diagnostic builds, if applications violate this rule, data consistency can be violated.</p>
 <p>The commits to a particular data item must be performed in timestamp order. If applications violate this rule, data consistency can be violated.</p>
 <p>The Session.prepare_transaction API is designed to be used in conjunction with timestamps and assigns a prepare timestamp to the transaction, which will be used for visibility checks until the transaction is committed or aborted. Once a transaction has been prepared the only other operations that can be completed are Session.commit_transaction or Session.rollback_transaction. The Session.prepare_transaction API only guarantees that transactional conflicts will not cause the transaction to rollback - it does not guarantee that the transactions updates are durable. If a read operation encounters an update from a prepared transaction a WT_PREPARE_CONFLICT error will be returned indicating that it is not possible to choose a version of data to return until a prepared transaction is resolved, it is reasonable to retry such operations.</p>
+<p>Durability of the data updates performed by a prepared transaction, on tables configured with log=(enabled=false), can be controlled by specifying a durable timestamp during Session.commit_transaction. Checkpoint will consider the durable timestamp, instead of commit timestamp for persisting the data updates. If the durable timestamp is not specified, then the commit timestamp will be considered as the durable timestamp.</p>
+<p>There are a number of constraints around assigning timestamps for running transactions - the table below summarizes those constraints:</p>
+<table class="doxtable">
+<tr>
+<th>API </th><th>Prepared </th><th>Constraint </th><th>Enforced </th><th>Description  </th></tr>
+<tr>
+<td>Prepare </td><td>During </td><td>prepare_timestamp &gt;= stable_timestamp </td><td>Y </td><td>None </td></tr>
+<tr>
+<td>Commit </td><td>No </td><td>commit_timestamp &gt; stable_timestamp </td><td>Y </td><td>None </td></tr>
+<tr>
+<td>Commit </td><td>Yes </td><td>commit_timestamp &gt;= prepare_timestamp </td><td>Y </td><td>The commit timestamp may be older than the oldest timestamp at the time of commit. </td></tr>
+<tr>
+<td>Commit </td><td>Yes </td><td>durable_timestamp &gt; stable_timestamp </td><td>Y </td><td>None </td></tr>
+<tr>
+<td>Commit </td><td>Yes </td><td>durable_timestamp != 0 || commit_timestamp &gt; stable_timestamp </td><td>N </td><td>If no durable timestamp is given when committing a prepared transaction, the commit timestamp must be greater than the stable timestamp. </td></tr>
+</table>
+<h2><a class="anchor" id="timestamp_roundup_lang_java"></a>
+Automatic rounding of timestamps</h2>
+<p>Applications setting timestamps for a transaction have to comply with the constraints based on the global timestamp state. In order to be compliant with the constraints applications need to query the global timestamp state and check their timestamps for compliance and adjust timestamps if required. To simplify the burden on applications related to rounding up timestamps WiredTiger supports automatic rounding of timestamps in some scenarios.</p>
+<p>Applications can configure <code>roundup_timestamps=(prepared=true,read=true)</code> with Session.begin_transaction.</p>
+<p>The configuration <code>roundup_timestamps=(prepared=true)</code> will be valid only for prepared transactions. It indicates that the prepare timestamp could be rounded up to the oldest timestamp, if the prepare timestamp is less than the oldest timestamp. This setting also indicates that the commit timestamp of the transaction could be rounded up to the prepare timestamp, if the commit timestamp is less than the prepare timestamp. Based on the timestamps values and constraints, enabling this configuration could result in only one of timestamps being rounded up. For example, for the timestamp values <code>prepare_timestamp=100, commit_timestamp=300, oldest_timestamp=200</code> with configuration <code>roundup_timestamps=(prepared=true)</code> only the prepare timestamp will be rounded up to the oldest timestamp and the commit timestamp will not be adjusted and the result will be <code>prepare_timestamp=200, commit_timestamp=300, oldest_timestamp=200</code>. For cases where both the prepare timestamp and the commit timestamp needs to be rounded up, first the prepare timestamp will be rounded to the oldest timestamp and then the commit timestamp will be rounded up to the new prepare timestamp. For example, for the timestamp values <code>prepare_timestamp=100, commit_timestamp=150, oldest_timestamp=200</code> with configuration <code>roundup_timestamps=(prepared=true)</code>, the prepare timestamp is rounded up to the oldest timestamp, as part of the Session.prepare_transaction, as <code>prepare_timestamp=200</code> and subsequently as part of Session.commit_transaction, the commit timestamp is rounded up to the new prepare timestamp as <code>commit_timestamp=200</code>.</p>
+<p>Configuring <code>roundup_timestamps=(read=true)</code> causes the read timestamp to be rounded up to the oldest timestamp, if the read timestamp is greater than the oldest timestamp no change will be made.</p>
 <h2><a class="anchor" id="timestamp_connection_lang_java"></a>
 Managing global timestamp state</h2>
 <p>Applications that use timestamps need to manage some global state in order to allow WiredTiger to clean up old updates, and not make new updates durable until it is safe to do so. That state is managed using the Connection.set_timestamp API.</p>
 <p>Setting an oldest timestamp in Connection.set_timestamp indicates that future read timestamps will be at least as recent as the oldest timestamp, so WiredTiger can discard history before the specified point. It is critical that the oldest timestamp update frequently or the cache can become full of updates, reducing performance.</p>
 <p>Setting a stable timestamp in Connection.set_timestamp indicates a known stable location that is sufficient for durability. During a checkpoint the state of a table will be saved only as of the stable timestamp. Newer updates after that stable timestamp will not be included in the checkpoint. That can be overridden in the call to Session.checkpoint. It is expected that the stable timestamp is updated frequently. Setting a stable location provides the ability, if needed, to rollback to this location by placing a call to Connection.rollback_to_stable. With the rollback, however, WiredTiger does not automatically reset the maximum commit timestamp it is tracking. The application should explicitly do so by setting a commit timestamp in Connection.set_timestamp.</p>
+<table class="doxtable">
+<tr>
+<th>Timestamp </th><th>Description </th><th>Constraint  </th></tr>
+<tr>
+<td>all_committed </td><td>The oldest timestamp at which all previous write transactions have committed. </td><td></td></tr>
+<tr>
+<td>last_checkpoint </td><td>The point at which the last checkpoint ran. If no checkpoint has run it's value will be 0. </td><td>last_checkpoint &lt;= stable timestamp </td></tr>
+<tr>
+<td>oldest </td><td>Point in time readers cannot be created using a timestamp older than the oldest timestamp, as explained above modification history is discarded prior to the oldest timestamp. This timestamp can be set via the API. </td><td>0 &lt;= oldest &lt;= stable </td></tr>
+<tr>
+<td>oldest_reader </td><td>The timestamp of the oldest currently active read transaction, if there is no current read transaction then querying for the oldest_reader with Connection.query_timestamp will return WT_NOTFOUND. </td><td></td></tr>
+<tr>
+<td>pinned </td><td>Minimum of the oldest_reader and oldest timestamp. </td><td></td></tr>
+<tr>
+<td>recovery </td><td>The stable timestamp used, if any, in the most recent checkpoint prior to the last shutdown. </td><td></td></tr>
+<tr>
+<td>stable </td><td>Any active transaction with a commit timestamp less than or equal to the current stable timestamp will not be able to modify data, except in the instance of prepared transactions. This timestamp can be set via the API. </td><td>stable &gt;= oldest </td></tr>
+</table>
 <h2><a class="anchor" id="timestamp_extensions_lang_java"></a>
 Timestamp support in the extension API</h2>
 <p>The extension API, used by modules that extend WiredTiger via Connection.get_extension_api, is not timestamp-aware. In particular, <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a618a7f943c768d687f1cab74f234b41f" title="Return the oldest transaction ID not yet visible to a running transaction. ">WT_EXTENSION_API::transaction_oldest</a> and <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a213698d35a1cdd67e5d83ec998056707" title="Return if the current transaction can see the given transaction ID. ">WT_EXTENSION_API::transaction_visible</a> do not take timestamps into account. Extensions relying on these functions may not work correctly with timestamps. </p>
