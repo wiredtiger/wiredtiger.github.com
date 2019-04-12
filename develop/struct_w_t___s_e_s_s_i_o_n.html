@@ -295,8 +295,6 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>read_timestamp</code></td><td>read using the specified timestamp. The supplied value must not be older than the current oldest timestamp. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>round_to_oldest</code></td><td>if read timestamp is earlier than oldest timestamp, read timestamp will be rounded to oldest timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
 <td><code>roundup_timestamps = (</code></td><td>round up timestamps of the transaction. This setting alters the visibility expected in a transaction. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prepared</code></td><td>applicable only for prepared transactions. Indicates if the prepare timestamp and the commit timestamp of this transaction can be rounded up. If the prepare timestamp is less than the oldest timestamp, the prepare timestamp will be rounded to the oldest timestamp. If the commit timestamp is less than the prepare timestamp, the commit timestamp will be rounded up to the prepare timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
@@ -1559,8 +1557,6 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <td><code>prepare_timestamp</code></td><td>set the prepare timestamp for the updates of the current transaction. The supplied value must not be older than any active read timestamps. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>read_timestamp</code></td><td>read using the specified timestamp. The supplied value must not be older than the current oldest timestamp. This can only be set once for a transaction. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</td><td>a string; default empty. </td></tr>
-<tr>
-<td><code>round_to_oldest</code></td><td>if read timestamp is earlier than oldest timestamp, read timestamp will be rounded to oldest timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>
 </td></tr>
   </table>
