@@ -3015,7 +3015,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;ops_max</code></td><td>maximum number of expected simultaneous asynchronous operations.</td><td>an integer between 1 and 4096; default <code>1024</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads</code></td><td>the number of worker threads to service asynchronous requests. Each worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; threads</code></td><td>the number of worker threads to service asynchronous requests. Each worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -3045,7 +3045,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;release</code></td><td>compatibility release version string.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;require_max</code></td><td>required maximum compatibility version of existing data files. Must be greater than or equal to any release version set in the <code>release</code> setting. Has no effect if creating the database.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; require_max</code></td><td>required maximum compatibility version of existing data files. Must be greater than or equal to any release version set in the <code>release</code> setting. Has no effect if creating the database.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;require_min</code></td><td>required minimum compatibility version of existing data files. Must be less than or equal to any release version set in the <code>release</code> setting. Has no effect if creating the database.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -3071,7 +3071,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>eviction = (</code></td><td>eviction configuration options.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>8</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>8</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
@@ -3097,7 +3097,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;close_handle_minimum</code></td><td>number of handles open before the file manager will look for handles to close.</td><td>an integer greater than or equal to 0; default <code>250</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it. A setting of 0 means that idle handles are not closed.</td><td>an integer between 0 and 100000; default <code>30</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it. A setting of 0 means that idle handles are not closed.</td><td>an integer between 0 and 100000; default <code>30</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;close_scan_interval</code></td><td>interval in seconds at which to check for files that are inactive and close them.</td><td>an integer between 1 and 100000; default <code>10</code>. </td></tr>
 <tr>
@@ -3137,7 +3137,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;merge</code></td><td>merge LSM chunks where possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between 3 and 20; default <code>4</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between 3 and 20; default <code>4</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
