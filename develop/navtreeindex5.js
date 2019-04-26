@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"group__wt.html#struct_w_t___i_t_e_m":[1,0,0],
 "group__wt.html#struct_w_t___m_o_d_i_f_y":[1,0,1],
 "group__wt__ext.html":[1,1],
 "group__wt__ext.html#ga19767a9a6283ce3c69a6d92be86d0c56":[1,1,13],
@@ -33,8 +34,8 @@ var NAVTREEINDEX5 =
 "helium.html#helium_objects":[0,4,32,2],
 "hierarchy.html":[3],
 "home.html":[0,7,0],
-"huffman.html":[0,4,7,3],
 "huffman.html":[0,5,7,3],
+"huffman.html":[0,4,7,3],
 "in_memory.html":[0,4,19],
 "in_memory_lang_java.html":[0,5,18],
 "index.html":[],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___e_n_c_r_y_p_t_o_r.html#a0f0f363b689363d36ffce7fdf8a337ac":[1,1,3,2],
 "struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a":[1,1,3,0],
 "struct_w_t___e_n_c_r_y_p_t_o_r.html#abad5447ebeb99d06b9024df435cffc26":[1,1,3,1],
-"struct_w_t___e_n_c_r_y_p_t_o_r.html#ac965990f0d81b99fc10ec0b13b9df162":[1,1,3,3],
-"struct_w_t___e_n_c_r_y_p_t_o_r.html#ad9337c89e540be05d207995c33bbe993":[1,1,3,4]
+"struct_w_t___e_n_c_r_y_p_t_o_r.html#ac965990f0d81b99fc10ec0b13b9df162":[1,1,3,3]
 };
