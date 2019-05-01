@@ -7,7 +7,7 @@ var NAVTREEINDEX7 =
 "upgrading.html#version_292":[0,9,3],
 "upgrading.html#version_300":[0,9,2],
 "upgrading.html#version_310":[0,9,1],
-"upgrading.html#version_311":[0,9,0],
+"upgrading.html#version_320":[0,9,0],
 "wtperf.html":[0,5,27],
 "wtperf.html":[0,4,34],
 "wtperf.html#config":[0,5,27,1],
