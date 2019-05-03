@@ -549,6 +549,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Create a table, column group, index or file. </p>
+<p>This method is not transactional, and will not guarantee ACID properties, see <a class="el" href="transactions.html">Transactions</a> for more details.</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session,</div><div class="line">            <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -718,6 +719,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Drop (delete) an object. </p>
 <p>This method requires exclusive access to the specified data source(s). If any cursors are open with the specified name(s) or a data source is otherwise in use, the call will fail and return <code>EBUSY</code>.</p>
+<p>This method is not transactional, and will not guarantee ACID properties, see <a class="el" href="transactions.html">Transactions</a> for more details.</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1279,6 +1281,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Rename an object. </p>
+<p>This method is not transactional, and will not guarantee ACID properties, see <a class="el" href="transactions.html">Transactions</a> for more details.</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a>(session, <span class="stringliteral">&quot;table:old&quot;</span>, <span class="stringliteral">&quot;table:new&quot;</span>, NULL));</div></div><!-- fragment --><p> This method requires exclusive access to the specified data source(s). If any cursors are open with the specified name(s) or a data source is otherwise in use, the call will fail and return <code>EBUSY</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
