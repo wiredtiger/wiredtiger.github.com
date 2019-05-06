@@ -20,10 +20,6 @@ var index =
       [ "Installing WiredTiger", "build-windows.html#windows_installing", null ],
       [ "Configuring WiredTiger", "build-windows.html#windows_configure", null ]
     ] ],
-    [ "Building and installing the LevelDB compatibility API", "leveldb.html", [
-      [ "Building and using WiredTiger's LevelDB API", "leveldb.html#leveldb_build", null ],
-      [ "Caveats", "leveldb.html#leveldb_caveats", null ]
-    ] ],
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "Writing WiredTiger applications  in Java", "programming_lang_java.html", "programming_lang_java" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
@@ -73,7 +69,6 @@ var index =
       [ "3rd party software always included in the WiredTiger library", "license.html#license_library", null ],
       [ "3rd party software optionally included in the WiredTiger library: PPC64", "license.html#license_crc32-power8", null ],
       [ "3rd party software optionally included in the WiredTiger library: s390x", "license.html#license_crc32-zseries", null ],
-      [ "3rd party software optionally included in the WiredTiger library: LevelDB", "license.html#license_leveldb", null ],
       [ "3rd party software included in the WiredTiger distribution", "license.html#license_distribution", null ]
     ] ],
     [ "WiredTiger testing", "testing.html", [
