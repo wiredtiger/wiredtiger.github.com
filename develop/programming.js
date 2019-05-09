@@ -142,13 +142,6 @@ var programming =
       [ "Serialization", "custom_data_sources.html#custom_data_source_cursor_serialize", null ]
     ] ],
     [ "Custom File Systems", "custom_file_systems.html", null ],
-    [ "WiredTiger Helium support", "helium.html", [
-      [ "Building the WiredTiger Helium Support", "helium.html#helium_build", null ],
-      [ "Loading the WiredTiger Helium Support", "helium.html#helium_load", null ],
-      [ "Creating WiredTiger objects on Helium volumes", "helium.html#helium_objects", null ],
-      [ "Helium notes", "helium.html#helium_notes", null ],
-      [ "Helium limitations", "helium.html#helium_limitations", null ]
-    ] ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Simulating workloads with wtperf", "wtperf.html", [
       [ "Monitoring wtperf", "wtperf.html#monitor", null ],

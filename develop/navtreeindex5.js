@@ -26,12 +26,6 @@ var NAVTREEINDEX5 =
 "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8ad96f702fb4cff2391a0b5601a5c2bb08":[1,1,23,4],
 "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8aefe46c7fefa38ef06a32a8357791f852":[1,1,23,2],
 "group__wt__java.html":[1,2],
-"helium.html":[0,3,32],
-"helium.html#helium_build":[0,3,32,0],
-"helium.html#helium_limitations":[0,3,32,4],
-"helium.html#helium_load":[0,3,32,1],
-"helium.html#helium_notes":[0,3,32,3],
-"helium.html#helium_objects":[0,3,32,2],
 "hierarchy.html":[3],
 "home.html":[0,6,0],
 "huffman.html":[0,4,7,3],
@@ -249,5 +243,11 @@ var NAVTREEINDEX5 =
 "struct_w_t___e_n_c_r_y_p_t_o_r.html#ad9337c89e540be05d207995c33bbe993":[1,1,3,4],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html":[1,0,7],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e":[1,0,7,0],
-"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f":[1,0,7,1]
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f":[1,0,7,1],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b":[1,0,7,3],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1":[1,0,7,2],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html":[1,1,8],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420":[1,1,8,9],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f":[1,1,8,35],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45":[1,1,8,2]
 };
