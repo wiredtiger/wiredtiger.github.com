@@ -314,6 +314,10 @@ Log record and operation types</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9053af2348a51595e7ffff81492c1b5b">WT_LOGOP_ROW_MODIFY</a></td></tr>
 <tr class="memdesc:ga9053af2348a51595e7ffff81492c1b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">row-store modify <br /></td></tr>
 <tr class="separator:ga9053af2348a51595e7ffff81492c1b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f6c39d714b2a99e809d6186cc0d4248"><td class="memItemLeft" align="right" valign="top"><a id="ga8f6c39d714b2a99e809d6186cc0d4248"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8f6c39d714b2a99e809d6186cc0d4248">WT_LOGOP_TXN_TIMESTAMP</a></td></tr>
+<tr class="memdesc:ga8f6c39d714b2a99e809d6186cc0d4248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diagnostic: transaction timestamps. <br /></td></tr>
+<tr class="separator:ga8f6c39d714b2a99e809d6186cc0d4248"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Connection statistics</h2></td></tr>
@@ -3058,6 +3062,16 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <td><code>config_base</code></td><td>write the base configuration file if creating the database. If <code>false</code> in the config passed directly to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database. ">wiredtiger_open</a>, will ignore any existing base configuration file in addition to not creating one. See <a class="el" href="database_config.html#config_base">WiredTiger.basecfg file</a> for more information.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>debug_mode = (</code></td><td>control the settings of various extended debugging features.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;checkpoint_retention</code></td><td>adjust log archiving to retain the log records of this number of checkpoints. Zero or one means perform normal archiving.</td><td>an integer between 0 and 1024; default <code>0</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;rollback_error</code></td><td>return a WT_ROLLBACK error from a transaction operation about every Nth operation to simulate a collision.</td><td>an integer between 0 and 10M; default <code>0</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;table_logging</code></td><td>if true, write transaction related information to the log for all operations, even operations for tables with logging turned off. This setting introduces a log format change that may break older versions of WiredTiger. These operations are informational and skipped in recovery.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> on POSIX systems, and <code>FILE_FLAG_NO_BUFFERING</code> on Windows to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to use direct I/O, including <code>"log"</code> will cause WiredTiger log files to use direct I/O, and including <code>"checkpoint"</code> will cause WiredTiger data files opened at a checkpoint (i.e: read only) to use direct I/O. <code>direct_io</code> should be combined with <code>write_through</code> to get the equivalent of <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"checkpoint"</code>, <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>

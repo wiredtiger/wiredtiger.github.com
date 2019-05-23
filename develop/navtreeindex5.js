@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"group__wt.html#gga24152c6e1509c488192df653d511a82caa40ee85e0f72cadac54d2fb83ac75ded":[1,0,587,2],
 "group__wt.html#struct_w_t___i_t_e_m":[1,0,0],
 "group__wt.html#struct_w_t___m_o_d_i_f_y":[1,0,1],
 "group__wt__ext.html":[1,1],
@@ -28,8 +29,8 @@ var NAVTREEINDEX5 =
 "group__wt__java.html":[1,2],
 "hierarchy.html":[3],
 "home.html":[0,6,0],
-"huffman.html":[0,4,7,3],
 "huffman.html":[0,3,7,3],
+"huffman.html":[0,4,7,3],
 "in_memory.html":[0,3,19],
 "in_memory_lang_java.html":[0,4,18],
 "index.html":[],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1":[1,0,7,2],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html":[1,1,8],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420":[1,1,8,9],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f":[1,1,8,35],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45":[1,1,8,2]
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f":[1,1,8,35]
 };

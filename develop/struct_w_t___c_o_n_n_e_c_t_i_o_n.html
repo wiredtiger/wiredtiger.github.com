@@ -947,6 +947,16 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
+<td><code>debug_mode = (</code></td><td>control the settings of various extended debugging features.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;checkpoint_retention</code></td><td>adjust log archiving to retain the log records of this number of checkpoints. Zero or one means perform normal archiving.</td><td>an integer between 0 and 1024; default <code>0</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160; rollback_error</code></td><td>return a WT_ROLLBACK error from a transaction operation about every Nth operation to simulate a collision.</td><td>an integer between 0 and 10M; default <code>0</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;table_logging</code></td><td>if true, write transaction related information to the log for all operations, even operations for tables with logging turned off. This setting introduces a log format change that may break older versions of WiredTiger. These operations are informational and skipped in recovery.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>error_prefix</code></td><td>prefix string for error messages.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>eviction = (</code></td><td>eviction configuration options.</td><td>a set of related configuration options defined below. </td></tr>
