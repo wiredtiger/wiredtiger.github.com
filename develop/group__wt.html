@@ -511,6 +511,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5b48117f3b0675390522d9104c9f62f5">WT_STAT_CONN_CACHE_LOOKASIDE_INSERT</a></td></tr>
 <tr class="memdesc:ga5b48117f3b0675390522d9104c9f62f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow table insert calls <br /></td></tr>
 <tr class="separator:ga5b48117f3b0675390522d9104c9f62f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e2d91e1ef7266d3e1468bf022fdd6ad"><td class="memItemLeft" align="right" valign="top"><a id="ga1e2d91e1ef7266d3e1468bf022fdd6ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1e2d91e1ef7266d3e1468bf022fdd6ad">WT_STAT_CONN_CACHE_LOOKASIDE_ONDISK_MAX</a></td></tr>
+<tr class="memdesc:ga1e2d91e1ef7266d3e1468bf022fdd6ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow table max on-disk size <br /></td></tr>
+<tr class="separator:ga1e2d91e1ef7266d3e1468bf022fdd6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga27c28d8d94fa3cfdce01d75ab5d41c76"><td class="memItemLeft" align="right" valign="top"><a id="ga27c28d8d94fa3cfdce01d75ab5d41c76"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga27c28d8d94fa3cfdce01d75ab5d41c76">WT_STAT_CONN_CACHE_LOOKASIDE_ONDISK</a></td></tr>
 <tr class="memdesc:ga27c28d8d94fa3cfdce01d75ab5d41c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: cache overflow table on-disk size <br /></td></tr>
@@ -3035,6 +3039,12 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>cache_max_wait_ms</code></td><td>the maximum number of milliseconds an application thread will wait for space to be available in cache before giving up. Default will wait forever.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
+<td><code>cache_overflow = (</code></td><td>cache overflow configuration options.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;file_max</code></td><td>The maximum number of bytes that WiredTiger is allowed to use for its cache overflow mechanism. If the cache overflow file exceeds this size, a panic will be triggered. The default value means that the cache overflow file is unbounded and may use as much space as the filesystem will accommodate. The minimum non-zero setting is 100MB.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
@@ -3073,7 +3083,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> on POSIX systems, and <code>FILE_FLAG_NO_BUFFERING</code> on Windows to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to use direct I/O, including <code>"log"</code> will cause WiredTiger log files to use direct I/O, and including <code>"checkpoint"</code> will cause WiredTiger data files opened at a checkpoint (i.e: read only) to use direct I/O. <code>direct_io</code> should be combined with <code>write_through</code> to get the equivalent of <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"checkpoint"</code>, <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
+<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> on POSIX systems, and <code>FILE_FLAG_NO_BUFFERING</code> on Windows to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to use direct I/O, including <code>"log"</code> will cause WiredTiger log files to use direct I/O, and including <code>"checkpoint"</code> will cause WiredTiger data files opened at a checkpoint (i.e: read-only) to use direct I/O. <code>direct_io</code> should be combined with <code>write_through</code> to get the equivalent of <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"checkpoint"</code>, <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
 <td><code>encryption = (</code></td><td>configure an encryptor for system wide metadata and logs. If a system wide encryptor is set, it is also used for encrypting data files and tables, unless encryption configuration is explicitly set for them when they are created with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>

@@ -286,7 +286,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>ignore_prepare</code></td><td>whether to ignore the updates by other prepared transactions as part of read operations of this transaction.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>ignore_prepare</code></td><td>whether to ignore the updates by other prepared transactions as part of read operations of this transaction. When <code>true</code>, forces the transaction to be read-only. Use <code>force</code> to ignore prepared updates and permit writes (which can cause lost updates unless the application knows something about the relationship between prepared transactions and the updates that are ignoring them).</td><td>a string, chosen from the following options: <code>"false"</code>, <code>"force"</code>, <code>"true"</code>; default <code>false</code>. </td></tr>
 <tr>
 <td><code>isolation</code></td><td>the isolation level for this transaction; defaults to the session's isolation level.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default empty. </td></tr>
 <tr>

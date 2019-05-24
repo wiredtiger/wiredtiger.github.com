@@ -320,6 +320,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a139238da86ec6ea666cd198fbd545fa3 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a139238da86ec6ea666cd198fbd545fa3"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_LOOKASIDE_INSERT</b></td></tr>
 <tr class="separator:a139238da86ec6ea666cd198fbd545fa3 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b7b3ea8ad0f7efc3f1eceb27f4cdd9 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a31b7b3ea8ad0f7efc3f1eceb27f4cdd9"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_LOOKASIDE_ONDISK_MAX</b></td></tr>
+<tr class="separator:a31b7b3ea8ad0f7efc3f1eceb27f4cdd9 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afed76f6a119e7be401f265b9274b6c0e inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="afed76f6a119e7be401f265b9274b6c0e"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_LOOKASIDE_ONDISK</b></td></tr>
 <tr class="separator:afed76f6a119e7be401f265b9274b6c0e inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1886,6 +1889,12 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>cache_max_wait_ms</code></td><td>the maximum number of milliseconds an application thread will wait for space to be available in cache before giving up. Default will wait forever.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
+<td><code>cache_overflow = (</code></td><td>cache overflow configuration options.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;file_max</code></td><td>The maximum number of bytes that WiredTiger is allowed to use for its cache overflow mechanism. If the cache overflow file exceeds this size, a panic will be triggered. The default value means that the cache overflow file is unbounded and may use as much space as the filesystem will accommodate. The minimum non-zero setting is 100MB.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
@@ -1924,7 +1933,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> on POSIX systems, and <code>FILE_FLAG_NO_BUFFERING</code> on Windows to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to use direct I/O, including <code>"log"</code> will cause WiredTiger log files to use direct I/O, and including <code>"checkpoint"</code> will cause WiredTiger data files opened at a checkpoint (i.e: read only) to use direct I/O. <code>direct_io</code> should be combined with <code>write_through</code> to get the equivalent of <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"checkpoint"</code>, <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
+<td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> on POSIX systems, and <code>FILE_FLAG_NO_BUFFERING</code> on Windows to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to use direct I/O, including <code>"log"</code> will cause WiredTiger log files to use direct I/O, and including <code>"checkpoint"</code> will cause WiredTiger data files opened at a checkpoint (i.e: read-only) to use direct I/O. <code>direct_io</code> should be combined with <code>write_through</code> to get the equivalent of <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"checkpoint"</code>, <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
 <td><code>encryption = (</code></td><td>configure an encryptor for system wide metadata and logs. If a system wide encryptor is set, it is also used for encrypting data files and tables, unless encryption configuration is explicitly set for them when they are created with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
