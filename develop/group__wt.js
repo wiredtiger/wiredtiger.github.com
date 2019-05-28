@@ -644,6 +644,8 @@ var group__wt =
     [ "WT_STAT_DSRC_CACHE_WRITE", "group__wt.html#ga4797cf2942d2c243f1341aa78dc50999", null ],
     [ "WT_STAT_DSRC_CACHE_WRITE_LOOKASIDE", "group__wt.html#ga6dda6ff62b477170ea60570e81ffc5f7", null ],
     [ "WT_STAT_DSRC_CACHE_WRITE_RESTORE", "group__wt.html#ga7430f63be721622674b32f35e50ec8a9", null ],
+    [ "WT_STAT_DSRC_COMPRESS_PRECOMP_INTL_MAX_PAGE_SIZE", "group__wt.html#gaf358561ffe949073c4c1aa1f56b2edb5", null ],
+    [ "WT_STAT_DSRC_COMPRESS_PRECOMP_LEAF_MAX_PAGE_SIZE", "group__wt.html#gae62f07eae3d345f4e3e7c7fc0eb6b0a8", null ],
     [ "WT_STAT_DSRC_COMPRESS_READ", "group__wt.html#ga1dbb9ecef94c2209236eaec8104587b7", null ],
     [ "WT_STAT_DSRC_COMPRESS_WRITE", "group__wt.html#ga63194c514dd5d46ccd6c6b6b3b13b221", null ],
     [ "WT_STAT_DSRC_COMPRESS_WRITE_FAIL", "group__wt.html#ga20cf6d95bc6fd56b34df9c3e69ddbacb", null ],
