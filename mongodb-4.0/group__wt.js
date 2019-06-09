@@ -144,6 +144,7 @@ var group__wt =
     [ "WT_LOGOP_ROW_PUT", "group__wt.html#ga696e6723bc1e3d4c3e5b5dde84fed73e", null ],
     [ "WT_LOGOP_ROW_REMOVE", "group__wt.html#ga3583383fc8ba9c297b3df83e216cdd01", null ],
     [ "WT_LOGOP_ROW_TRUNCATE", "group__wt.html#ga709b4bff9cc64662aca0b5e7ebcedf86", null ],
+    [ "WT_LOGOP_TXN_TIMESTAMP", "group__wt.html#ga8f6c39d714b2a99e809d6186cc0d4248", null ],
     [ "WT_LOGREC_CHECKPOINT", "group__wt.html#ga2c8e394decd03d41ca1983d009fc7b2c", null ],
     [ "WT_LOGREC_COMMIT", "group__wt.html#gafa49e810f6f760c2bcd2721ec2934991", null ],
     [ "WT_LOGREC_FILE_SYNC", "group__wt.html#gac87bc0790c3fa62c75fce67417178c8e", null ],

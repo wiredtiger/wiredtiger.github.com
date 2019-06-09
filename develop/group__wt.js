@@ -476,6 +476,8 @@ var group__wt =
     [ "WT_STAT_CONN_SESSION_TABLE_CREATE_SUCCESS", "group__wt.html#gacaaee96b837c98541b60503040dce258", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_DROP_FAIL", "group__wt.html#ga4ed4ac83e86ef0bae8606ad45466c090", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_DROP_SUCCESS", "group__wt.html#gaa15f6d3ba9905fd0b5cff1a40d648725", null ],
+    [ "WT_STAT_CONN_SESSION_TABLE_IMPORT_FAIL", "group__wt.html#ga01e5fb87564ad592db2ffd69f219efd6", null ],
+    [ "WT_STAT_CONN_SESSION_TABLE_IMPORT_SUCCESS", "group__wt.html#gae2d9df553b86e61776c985c6576b76f9", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_REBALANCE_FAIL", "group__wt.html#ga38caaa1bd93da732986de36846285fad", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_REBALANCE_SUCCESS", "group__wt.html#ga2c435f00e8911a18d1ccad4bed5d4fba", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_RENAME_FAIL", "group__wt.html#ga7d2a21e1368ea69bb728ab1e5eed4d82", null ],

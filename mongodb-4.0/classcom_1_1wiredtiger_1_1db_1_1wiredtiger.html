@@ -1869,6 +1869,16 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>create</code></td><td>create the database if it does not exist.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>debug_mode = (</code></td><td>control the settings of various extended debugging features.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;checkpoint_retention</code></td><td>adjust log archiving to retain the log records of this number of checkpoints. Zero or one means perform normal archiving.</td><td>an integer between 0 and 1024; default <code>0</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;rollback_error</code></td><td>return a WT_ROLLBACK error from a transaction operation about every Nth operation to simulate a collision.</td><td>an integer between 0 and 10M; default <code>0</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;table_logging</code></td><td>if true, write transaction related information to the log for all operations, even operations for tables with logging turned off. This setting introduces a log format change that may break older versions of WiredTiger. These operations are informational and skipped in recovery.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>direct_io</code></td><td>Use <code>O_DIRECT</code> on POSIX systems, and <code>FILE_FLAG_NO_BUFFERING</code> on Windows to access files. Options are given as a list, such as <code>"direct_io=[data]"</code>. Configuring <code>direct_io</code> requires care, see <a class="el" href="tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io">Direct I/O</a> for important warnings. Including <code>"data"</code> will cause WiredTiger data files to use direct I/O, including <code>"log"</code> will cause WiredTiger log files to use direct I/O, and including <code>"checkpoint"</code> will cause WiredTiger data files opened at a checkpoint (i.e: read only) to use direct I/O. <code>direct_io</code> should be combined with <code>write_through</code> to get the equivalent of <code>O_DIRECT</code> on Windows.</td><td>a list, with values chosen from the following options: <code>"checkpoint"</code>, <code>"data"</code>, <code>"log"</code>; default empty. </td></tr>
 <tr>
 <td><code>encryption = (</code></td><td>configure an encryptor for system wide metadata and logs. If a system wide encryptor is set, it is also used for encrypting data files and tables, unless encryption configuration is explicitly set for them when they are created with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file. ">WT_SESSION::create</a>.</td><td>a set of related configuration options defined below. </td></tr>
