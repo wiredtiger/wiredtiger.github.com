@@ -254,6 +254,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_LOOKASIDE_ENTRIES", "group__wt.html#ga3e22557e3feb4488563db0160a8891d2", null ],
     [ "WT_STAT_CONN_CACHE_LOOKASIDE_INSERT", "group__wt.html#ga5b48117f3b0675390522d9104c9f62f5", null ],
     [ "WT_STAT_CONN_CACHE_LOOKASIDE_ONDISK", "group__wt.html#ga27c28d8d94fa3cfdce01d75ab5d41c76", null ],
+    [ "WT_STAT_CONN_CACHE_LOOKASIDE_ONDISK_MAX", "group__wt.html#ga1e2d91e1ef7266d3e1468bf022fdd6ad", null ],
     [ "WT_STAT_CONN_CACHE_LOOKASIDE_REMOVE", "group__wt.html#ga04bccbee64a4a75aa5e05a14365bde76", null ],
     [ "WT_STAT_CONN_CACHE_LOOKASIDE_SCORE", "group__wt.html#ga8ffe2e94e5c030e0a6f10e11c40c9da3", null ],
     [ "WT_STAT_CONN_CACHE_OVERHEAD", "group__wt.html#gaf8f0e2e86dee76423a1a51f6aee74018", null ],
