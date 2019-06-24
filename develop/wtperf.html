@@ -129,6 +129,10 @@ Wtperf configuration options</h1>
 <dl class="section user"><dt>run_time (unsigned int, default=0)</dt><dd>total workload seconds </dd></dl>
 <dl class="section user"><dt>sample_interval (unsigned int, default=0)</dt><dd>performance logging every interval seconds, 0 to disable </dd></dl>
 <dl class="section user"><dt>sample_rate (unsigned int, default=50)</dt><dd>how often the latency of operations is measured. One for every operation, two for every second operation, three for every third operation etc. </dd></dl>
+<dl class="section user"><dt>scan_icount (unsigned int, default=0)</dt><dd>number of records in scan tables to populate </dd></dl>
+<dl class="section user"><dt>scan_interval (unsigned int, default=0)</dt><dd>scan tables every interval seconds during the workload phase, 0 to disable </dd></dl>
+<dl class="section user"><dt>scan_pct (unsigned int, default=10)</dt><dd>percentage of entire data set scanned, if scan_interval is enabled </dd></dl>
+<dl class="section user"><dt>scan_table_count (unsigned int, default=0)</dt><dd>number of separate tables to be used for scanning. Zero indicates that tables are shared with other operations </dd></dl>
 <dl class="section user"><dt>sess_config (string, default="")</dt><dd>session configuration string </dd></dl>
 <dl class="section user"><dt>session_count_idle (unsigned int, default=0)</dt><dd>number of idle sessions to create. Default 0. </dd></dl>
 <dl class="section user"><dt>table_config (string, default="key_format=S,value_format=S,type=lsm,exclusive=true, allocation_size=4kb,internal_page_max=64kb,leaf_page_max=4kb, split_pct=100")</dt><dd>table configuration string </dd></dl>
