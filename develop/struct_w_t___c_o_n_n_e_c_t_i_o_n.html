@@ -542,7 +542,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Close a connection. </p>
-<p>Any open sessions will be closed.</p>
+<p>Any open sessions will be closed. This will release the resources associated with the session handle, including rolling back any active transactions and closing any cursors that remain open in the session.</p>
 <div class="fragment"><div class="line">        error_check(conn-&gt;close(conn, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
