@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"group__wt__ext.html#ga84ae45d6803da8dab05bb72c2e69aa0f":[1,1,19],
 "group__wt__ext.html#ga91e49502eb5f12a2e4c12a78d93bf4bd":[1,1,18],
 "group__wt__ext.html#ga93dc8e06b256a13bc46cd04b71b92d45":[1,1,11],
 "group__wt__ext.html#gaa4979ed3f2610368e392be059390b62f":[1,1,10],
@@ -21,8 +22,8 @@ var NAVTREEINDEX5 =
 "helium.html#helium_objects":[0,4,32,2],
 "hierarchy.html":[3],
 "home.html":[0,7,0],
-"huffman.html":[0,5,7,3],
 "huffman.html":[0,4,7,3],
+"huffman.html":[0,5,7,3],
 "in_memory.html":[0,4,19],
 "in_memory_lang_java.html":[0,5,18],
 "index.html":[],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f":[1,1,8,35],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45":[1,1,8,2],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a13b8f3c923c8b0f8bb683ed3b192ee73":[1,1,8,20],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1a46e4d4a21195c00fb20cf5b3b2768c":[1,1,8,17],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1ea4c874fa755ef49fc9645088dcad84":[1,1,8,30]
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1a46e4d4a21195c00fb20cf5b3b2768c":[1,1,8,17]
 };

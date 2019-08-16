@@ -214,6 +214,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_EVICTION_MAXIMUM_PAGE_SIZE", "group__wt.html#ga4f6602776c86fb0851c54768859bd108", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_PAGES_QUEUED", "group__wt.html#ga152d332955207001864cb2f672a4f346", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_PAGES_QUEUED_OLDEST", "group__wt.html#gaf1f0bc4ced125c4993e8a76c649dddcf", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_PAGES_QUEUED_POST_LRU", "group__wt.html#gaaa5167ebb954677e7f6af264061bab75", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_PAGES_QUEUED_URGENT", "group__wt.html#ga459719926622ef321580d639607b97df", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_PAGES_SEEN", "group__wt.html#ga041ca8a44335ed832e799a83a383ebb2", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_QUEUE_EMPTY", "group__wt.html#gaa1a554d88a1feb7a76f647a5c2b0fcff", null ],
