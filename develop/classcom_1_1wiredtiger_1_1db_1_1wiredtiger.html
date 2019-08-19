@@ -1893,7 +1893,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 </div><div class="memdoc">
 
 <p>Open a connection to a database. </p>
-<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>,</div><div class="line">            &amp;conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(</div><div class="line">      home, NULL, <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>, &amp;conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">event_handler</td><td>An event handler. If <code>NULL</code>, a default event handler is installed that writes error messages to stderr. See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
@@ -1907,7 +1907,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>&#160;&#160;&#160;&#160;ops_max</code></td><td>maximum number of expected simultaneous asynchronous operations.</td><td>an integer between 1 and 4096; default <code>1024</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; threads</code></td><td>the number of worker threads to service asynchronous requests. Each worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads</code></td><td>the number of worker threads to service asynchronous requests. Each worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -1955,13 +1955,13 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>debug_mode = (</code></td><td>control the settings of various extended debugging features.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;checkpoint_retention</code></td><td>adjust log archiving to retain the log records of this number of checkpoints. Zero or one means perform normal archiving.</td><td>an integer between 0 and 1024; default <code>0</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; checkpoint_retention</code></td><td>adjust log archiving to retain the log records of this number of checkpoints. Zero or one means perform normal archiving.</td><td>an integer between 0 and 1024; default <code>0</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;eviction</code></td><td>if true, modify internal algorithms to change skew to force lookaside eviction to happen more aggressively. This includes but is not limited to not skewing newest, not favoring leaf pages, and modifying the eviction score mechanism.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;rollback_error</code></td><td>return a WT_ROLLBACK error from a transaction operation about every Nth operation to simulate a collision.</td><td>an integer between 0 and 10M; default <code>0</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;table_logging</code></td><td>if true, write transaction related information to the log for all operations, even operations for tables with logging turned off. This setting introduces a log format change that may break older versions of WiredTiger. These operations are informational and skipped in recovery.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; table_logging</code></td><td>if true, write transaction related information to the log for all operations, even operations for tables with logging turned off. This setting introduces a log format change that may break older versions of WiredTiger. These operations are informational and skipped in recovery.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -1981,9 +1981,9 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>eviction = (</code></td><td>eviction configuration options.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>8</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>8</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between 1 and 20; default <code>1</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -2007,7 +2007,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>&#160;&#160;&#160;&#160;close_handle_minimum</code></td><td>number of handles open before the file manager will look for handles to close.</td><td>an integer greater than or equal to 0; default <code>250</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it. A setting of 0 means that idle handles are not closed.</td><td>an integer between 0 and 100000; default <code>30</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it. A setting of 0 means that idle handles are not closed.</td><td>an integer between 0 and 100000; default <code>30</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;close_scan_interval</code></td><td>interval in seconds at which to check for files that are inactive and close them.</td><td>an integer between 1 and 100000; default <code>10</code>. </td></tr>
 <tr>
@@ -2047,7 +2047,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>&#160;&#160;&#160;&#160;merge</code></td><td>merge LSM chunks where possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between 3 and 20; default <code>4</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between 3 and 20; default <code>4</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -2095,8 +2095,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>&#160;&#160;&#160;&#160;sources</code></td><td>if non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging. The list may include URIs matching a single data source ("table:mytable"), or a URI matching all data sources of a particular type ("table:").</td><td>a list of strings; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;timestamp</code></td><td>a timestamp prepended to each log record, may contain strftime conversion specifications, when <code>json</code> is configured, defaults to <code>"%FT%Y.000Z"</code>.</td><td>a string; default <code>"%b %d
-%H:%M:%S"</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;timestamp</code></td><td>a timestamp prepended to each log record, may contain strftime conversion specifications, when <code>json</code> is configured, defaults to <code>"%FT%Y.000Z"</code>.</td><td>a string; default <code>"%b %d %H:%M:%S"</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each write of the log records; setting this value above 0 configures statistics logging.</td><td>an integer between 0 and 100000; default <code>0</code>. </td></tr>
 <tr>

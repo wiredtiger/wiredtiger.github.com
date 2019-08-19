@@ -1833,7 +1833,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 </div><div class="memdoc">
 
 <p>Open a connection to a database. </p>
-<div class="fragment"><div class="line">        error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL,</div><div class="line">            <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>,</div><div class="line">            &amp;conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(</div><div class="line">      home, NULL, <span class="stringliteral">&quot;create,cache_size=5GB,log=(enabled,recover=on),statistics=(all)&quot;</span>, &amp;conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">home</td><td>The path to the database home directory. See <a class="el" href="home.html">Database Home Directory</a> for more information. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">event_handler</td><td>An event handler. If <code>NULL</code>, a default event handler is installed that writes error messages to stderr. See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information. </td></tr>
@@ -2035,8 +2035,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>&#160;&#160;&#160;&#160;sources</code></td><td>if non-empty, include statistics for the list of data source URIs, if they are open at the time of the statistics logging. The list may include URIs matching a single data source ("table:mytable"), or a URI matching all data sources of a particular type ("table:").</td><td>a list of strings; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;timestamp</code></td><td>a timestamp prepended to each log record, may contain strftime conversion specifications, when <code>json</code> is configured, defaults to <code>"%FT%Y.000Z"</code>.</td><td>a string; default <code>"%b %d
-%H:%M:%S"</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;timestamp</code></td><td>a timestamp prepended to each log record, may contain strftime conversion specifications, when <code>json</code> is configured, defaults to <code>"%FT%Y.000Z"</code>.</td><td>a string; default <code>"%b %d %H:%M:%S"</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each write of the log records; setting this value above 0 configures statistics logging.</td><td>an integer between 0 and 100000; default <code>0</code>. </td></tr>
 <tr>

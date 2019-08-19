@@ -165,7 +165,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Wait for all outstanding operations to complete. </p>
-<div class="fragment"><div class="line">        <span class="comment">/* Wait for all outstanding operations to complete. */</span></div><div class="line">        error_check(conn-&gt;async_flush(conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    <span class="comment">/* Wait for all outstanding operations to complete. */</span></div><div class="line">    error_check(conn-&gt;async_flush(conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
   </table>
@@ -208,7 +208,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Return an async operation handle. </p>
-<div class="fragment"><div class="line">                <span class="keywordflow">while</span> ((ret = conn-&gt;async_new_op(conn,</div><div class="line">                    <span class="stringliteral">&quot;table:async&quot;</span>, NULL, &amp;ex_asynckeys.iface, &amp;op)) != 0) {</div><div class="line">                        <span class="comment">/*</span></div><div class="line"><span class="comment">                         * If we used up all the handles, pause and retry to</span></div><div class="line"><span class="comment">                         * give the workers a chance to catch up.</span></div><div class="line"><span class="comment">                         */</span></div><div class="line">                        fprintf(stderr,</div><div class="line">                            <span class="stringliteral">&quot;asynchronous operation handle not available\n&quot;</span>);</div><div class="line">                        <span class="keywordflow">if</span> (ret == EBUSY)</div><div class="line">                                sleep(1);</div><div class="line">                        <span class="keywordflow">else</span></div><div class="line">                                <span class="keywordflow">return</span> (EXIT_FAILURE);</div><div class="line">                }</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        <span class="keywordflow">while</span> (</div><div class="line">          (ret = conn-&gt;async_new_op(conn, <span class="stringliteral">&quot;table:async&quot;</span>, NULL, &amp;ex_asynckeys.iface, &amp;op)) != 0) {</div><div class="line">            <span class="comment">/*</span></div><div class="line"><span class="comment">             * If we used up all the handles, pause and retry to give the workers a chance to catch</span></div><div class="line"><span class="comment">             * up.</span></div><div class="line"><span class="comment">             */</span></div><div class="line">            fprintf(stderr, <span class="stringliteral">&quot;asynchronous operation handle not available\n&quot;</span>);</div><div class="line">            <span class="keywordflow">if</span> (ret == EBUSY)</div><div class="line">                sleep(1);</div><div class="line">            <span class="keywordflow">else</span></div><div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div><div class="line">        }</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">uri</td><td>the connection handle </td></tr>
@@ -252,7 +252,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 <p>Close a connection. </p>
 <p>Any open sessions will be closed. This will release the resources associated with the session handle, including rolling back any active transactions and closing any cursors that remain open in the session.</p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;close(conn, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    error_check(conn-&gt;close(conn, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
@@ -317,7 +317,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 
 <p>Add configuration options for a method. </p>
 <p>See <a class="el" href="custom_data_sources.html#custom_ds_config_add">Creating data-specific configuration strings</a> for more information.</p>
-<div class="fragment"><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">         * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div><div class="line"><span class="comment">         * have an additional configuration option &quot;entries&quot;, which is an</span></div><div class="line"><span class="comment">         * integer type, defaults to 5, and must be an integer between 1 and 10.</span></div><div class="line"><span class="comment">         *</span></div><div class="line"><span class="comment">         * The method being configured is specified using a concatenation of the</span></div><div class="line"><span class="comment">         * handle name, a period and the method name.</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        error_check(conn-&gt;configure_method(conn,</div><div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>,</div><div class="line">            <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;entries=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1,max=10&quot;</span>));</div><div class="line"></div><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">         * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div><div class="line"><span class="comment">         * have an additional configuration option &quot;devices&quot;, which is a list</span></div><div class="line"><span class="comment">         * of strings.</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        error_check(conn-&gt;configure_method(conn,</div><div class="line">            <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;devices&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * Applications opening a cursor for the data-source object &quot;my_data&quot;</span></div><div class="line"><span class="comment">     * have an additional configuration option &quot;entries&quot;, which is an</span></div><div class="line"><span class="comment">     * integer type, defaults to 5, and must be an integer between 1 and 10.</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * The method being configured is specified using a concatenation of the</span></div><div class="line"><span class="comment">     * handle name, a period and the method name.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    error_check(conn-&gt;configure_method(</div><div class="line">      conn, <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;entries=5&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;min=1,max=10&quot;</span>));</div><div class="line"></div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * Applications opening a cursor for the data-source object &quot;my_data&quot; have an additional</span></div><div class="line"><span class="comment">     * configuration option &quot;devices&quot;, which is a list of strings.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    error_check(</div><div class="line">      conn-&gt;configure_method(conn, <span class="stringliteral">&quot;WT_SESSION.open_cursor&quot;</span>, <span class="stringliteral">&quot;my_data:&quot;</span>, <span class="stringliteral">&quot;devices&quot;</span>, <span class="stringliteral">&quot;list&quot;</span>, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">method</td><td>the method being configured </td></tr>
@@ -368,7 +368,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Return if opening this handle created the database. </p>
-<div class="fragment"><div class="line">        <span class="keywordflow">if</span> (conn-&gt;is_new(conn)) {</div><div class="line">                <span class="comment">/* First time initialization. */</span></div><div class="line">        }</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    <span class="keywordflow">if</span> (conn-&gt;is_new(conn)) {</div><div class="line">        <span class="comment">/* First time initialization. */</span></div><div class="line">    }</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
   </table>
@@ -405,7 +405,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Load an extension. </p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;load_extension(conn, <span class="stringliteral">&quot;my_extension.dll&quot;</span>, NULL));</div><div class="line"></div><div class="line">        error_check(conn-&gt;load_extension(conn,</div><div class="line">            <span class="stringliteral">&quot;datasource/libdatasource.so&quot;</span>,</div><div class="line">            <span class="stringliteral">&quot;config=[device=/dev/sd1,alignment=64]&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    error_check(conn-&gt;load_extension(conn, <span class="stringliteral">&quot;my_extension.dll&quot;</span>, NULL));</div><div class="line"></div><div class="line">    error_check(conn-&gt;load_extension(</div><div class="line">      conn, <span class="stringliteral">&quot;datasource/libdatasource.so&quot;</span>, <span class="stringliteral">&quot;config=[device=/dev/sd1,alignment=64]&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">path</td><td>the filename of the extension module, or <code>"local"</code> to search the current application binary for the initialization function, see <a class="el" href="extensions.html">Extending WiredTiger</a> for more details. </td></tr>
@@ -496,7 +496,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Query the global transaction timestamp state. </p>
-<div class="fragment"><div class="line">        <span class="keywordtype">char</span> timestamp_buf[2 * <span class="keyword">sizeof</span>(uint64_t) + 1];</div><div class="line"></div><div class="line">        error_check(</div><div class="line">            session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a>(session, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div><div class="line"></div><div class="line">        error_check(conn-&gt;query_timestamp(</div><div class="line">            conn, timestamp_buf, <span class="stringliteral">&quot;get=all_committed&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">        <span class="keywordtype">char</span> timestamp_buf[2 * <span class="keyword">sizeof</span>(uint64_t) + 1];</div><div class="line"></div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">timestamp_transaction</a>(session, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">commit_transaction</a>(session, NULL));</div><div class="line"></div><div class="line">        error_check(conn-&gt;query_timestamp(conn, timestamp_buf, <span class="stringliteral">&quot;get=all_committed&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">hex_timestamp</td><td>a buffer that will be set to the hexadecimal encoding of the timestamp being queried. Must be large enough to hold a NUL terminated, hex-encoded 8B timestamp (17 bytes). </td></tr>
@@ -531,7 +531,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Reconfigure a connection handle. </p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;reconfigure(conn, <span class="stringliteral">&quot;eviction_target=75&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    error_check(conn-&gt;reconfigure(conn, <span class="stringliteral">&quot;eviction_target=75&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
@@ -576,9 +576,9 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>debug_mode = (</code></td><td>control the settings of various extended debugging features.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;checkpoint_retention</code></td><td>adjust log archiving to retain the log records of this number of checkpoints. Zero or one means perform normal archiving.</td><td>an integer between 0 and 1024; default <code>0</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; checkpoint_retention</code></td><td>adjust log archiving to retain the log records of this number of checkpoints. Zero or one means perform normal archiving.</td><td>an integer between 0 and 1024; default <code>0</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; eviction</code></td><td>if true, modify internal algorithms to change skew to force lookaside eviction to happen more aggressively. This includes but is not limited to not skewing newest, not favoring leaf pages, and modifying the eviction score mechanism.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;eviction</code></td><td>if true, modify internal algorithms to change skew to force lookaside eviction to happen more aggressively. This includes but is not limited to not skewing newest, not favoring leaf pages, and modifying the eviction score mechanism.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;rollback_error</code></td><td>return a WT_ROLLBACK error from a transaction operation about every Nth operation to simulate a collision.</td><td>an integer between 0 and 10M; default <code>0</code>. </td></tr>
 <tr>
@@ -608,7 +608,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>file_manager = (</code></td><td>control how file handles are managed.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;close_handle_minimum</code></td><td>number of handles open before the file manager will look for handles to close.</td><td>an integer greater than or equal to 0; default <code>250</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; close_handle_minimum</code></td><td>number of handles open before the file manager will look for handles to close.</td><td>an integer greater than or equal to 0; default <code>250</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it. A setting of 0 means that idle handles are not closed.</td><td>an integer between 0 and 100000; default <code>30</code>. </td></tr>
 <tr>
@@ -630,7 +630,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prealloc</code></td><td>pre-allocate log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; zero_fill</code></td><td>manually write zeroes into log files.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;zero_fill</code></td><td>manually write zeroes into log files.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -638,7 +638,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>&#160;&#160;&#160;&#160;merge</code></td><td>merge LSM chunks where possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between 3 and 20; default <code>4</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between 3 and 20; default <code>4</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -660,7 +660,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>&#160;&#160;&#160;&#160;reserve</code></td><td>amount of cache this database is guaranteed to have available from the shared cache. This setting is per database. Defaults to the chunk size.</td><td>an integer; default <code>0</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;size</code></td><td>maximum memory to allocate for the shared cache. Setting this will update the value if one is already set.</td><td>an integer between 1MB and 10TB; default <code>500MB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; size</code></td><td>maximum memory to allocate for the shared cache. Setting this will update the value if one is already set.</td><td>an integer between 1MB and 10TB; default <code>500MB</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -676,7 +676,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>&#160;&#160;&#160;&#160;timestamp</code></td><td>a timestamp prepended to each log record, may contain strftime conversion specifications, when <code>json</code> is configured, defaults to <code>"%FT%Y.000Z"</code>.</td><td>a string; default <code>"%b %d %H:%M:%S"</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each write of the log records; setting this value above 0 configures statistics logging.</td><td>an integer between 0 and 100000; default <code>0</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; wait</code></td><td>seconds to wait between each write of the log records; setting this value above 0 configures statistics logging.</td><td>an integer between 0 and 100000; default <code>0</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -710,7 +710,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <p>This method uses a timestamp to define the rollback point, and thus requires that the application uses timestamps and that the stable_timestamp must have been set via a call to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp. ">WT_CONNECTION::set_timestamp</a>. Any updates to checkpoint durable tables that are more recent than the stable timestamp are removed.</p>
 <p>This method requires that there are no active operations for the duration of the call.</p>
 <p>Any updates made to logged tables will not be rolled back. Any updates made without an associated timestamp will not be rolled back. See <a class="el" href="transactions.html#transaction_timestamps">Application-specified Transaction Timestamps</a>.</p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;rollback_to_stable(conn, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    error_check(conn-&gt;rollback_to_stable(conn, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
@@ -738,7 +738,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 </div><div class="memdoc">
 
 <p>Set a global transaction timestamp. </p>
-<div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div></div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div></div><!-- fragment --> <div class="fragment"><div class="line">        error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;stable_timestamp=2a&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line">    error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;commit_timestamp=2a&quot;</span>));</div></div><!-- fragment --> <div class="fragment"><div class="line">    error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;oldest_timestamp=2a&quot;</span>));</div></div><!-- fragment --> <div class="fragment"><div class="line">    error_check(conn-&gt;set_timestamp(conn, <span class="stringliteral">&quot;stable_timestamp=2a&quot;</span>));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
     <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
