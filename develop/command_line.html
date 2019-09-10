@@ -71,7 +71,7 @@ $(document).ready(function(){initNavTree('command_line.html','');});
 <div class="textblock"><p>WiredTiger includes a command line utility, <code>wt</code>.</p>
 <h1><a class="anchor" id="util_global_synopsis"></a>
 SYNOPSIS</h1>
-<p><code>wt [-LRVv] [-C config] [-E secretkey ] [-h directory] command [command-specific arguments]</code></p>
+<p><code>wt [-LRrVv] [-C config] [-E secretkey ] [-h directory] command [command-specific arguments]</code></p>
 <h1><a class="anchor" id="util_global_description"></a>
 DESCRIPTION</h1>
 <p>The <code>wt</code> tool is a command-line utility that provides access to various pieces of the WiredTiger functionality.</p>
@@ -83,10 +83,11 @@ OPTIONS</h1>
 <dl class="section user"><dt>-h directory</dt><dd>Specify a database home directory. </dd></dl>
 <dl class="section user"><dt>-L</dt><dd>Forcibly turn off logging subsystem for debugging purposes. </dd></dl>
 <dl class="section user"><dt>-R</dt><dd>Run recovery if the underlying database is configured to do so. </dd></dl>
+<dl class="section user"><dt>-r</dt><dd>Access the database via a readonly connection </dd></dl>
 <dl class="section user"><dt>-V</dt><dd>Display WiredTiger version and exit. </dd></dl>
 <dl class="section user"><dt>-v</dt><dd>Set verbose output.</dd></dl>
 <p>Unless otherwise described by a <code>wt</code> command, the <code>wt</code> tool exits zero on success and non-zero on error.</p>
-<p>The <code>wt</code> tool supports several commands. If configured in the underlying database, some commands will run recovery when opening the database. If the user wants to force recovery on any command, use the <code>-R</code> option. In general, commands that modify the database or tables will run recovery by default and commands that only read data will not run recovery.</p>
+<p>The <code>wt</code> tool supports several commands. If configured in the underlying database, some commands will run recovery when opening the database. If the user wants to force recovery on any command, use the <code>-R</code> option. In general, commands that modify the database or tables will run recovery by default and commands that only read data will not run recovery. It is recommended when attempting to diagnose a corrupt database, that the -r flag be used. This flag will open the connection read-only and prevent utility commands from writing prevent utility commands from writing to any of the existing database objects.</p>
 <hr/>
  <h1><a class="anchor" id="util_alter"></a>
 wt alter</h1>
@@ -152,7 +153,7 @@ wt dump</h1>
 <p>See <a class="el" href="dump_formats.html">Dump Formats</a> for details of the dump file formats.</p>
 <h2><a class="anchor" id="util_dump_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] uri</code></p>
+<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] uri</code></p>
 <h2><a class="anchor" id="util_dump_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>dump</code> command:</p>
@@ -168,7 +169,7 @@ wt list</h1>
 <p>By default, the <code>list</code> command prints out the tables stored in the database. If a URI is specified as an argument, only information about that data source is printed.</p>
 <h2><a class="anchor" id="util_list_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]</code></p>
+<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]</code></p>
 <h2><a class="anchor" id="util_list_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>list</code> command:</p>
@@ -216,7 +217,7 @@ wt printlog</h1>
 <p>The <code>printlog</code> command outputs the database log.</p>
 <h2><a class="anchor" id="util_printlog_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] printlog [-x] [-f output]</code></p>
+<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] printlog [-x] [-f output]</code></p>
 <h2><a class="anchor" id="util_printlog_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>printlog</code> command:</p>
@@ -230,7 +231,7 @@ wt read</h1>
 <p>The <code>read</code> command exits non-zero if a specified record is not found.</p>
 <h2><a class="anchor" id="util_read_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] read uri key ...</code></p>
+<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] read uri key ...</code></p>
 <h2><a class="anchor" id="util_read_options"></a>
 Options</h2>
 <p>The <code>read</code> command has no command-specific options.</p>
@@ -298,7 +299,7 @@ wt verify</h1>
 <p>The <code>verify</code> command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted.</p>
 <h2><a class="anchor" id="util_verify_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] verify uri</code></p>
+<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify uri</code></p>
 <h2><a class="anchor" id="util_verify_options"></a>
 Options</h2>
 <p>The <code>verify</code> command has no command-specific options.</p>
