@@ -642,6 +642,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
+<td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the number of elapsed real time milliseconds application threads will take to complete database operations. Time is measured from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to 1; default <code>0</code>. </td></tr>
+<tr>
 <td><code>operation_tracking = (</code></td><td>enable tracking of performance-critical functions. See <a class="el" href="operation_tracking.html">Track function calls</a> for more information.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable operation tracking subsystem.</td><td>a boolean flag; default <code>false</code>. </td></tr>
