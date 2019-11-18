@@ -1,5 +1,16 @@
 var NAVTREEINDEX7 =
 {
+"upgrading.html#version_220":[0,8,19],
+"upgrading.html#version_221":[0,8,18],
+"upgrading.html#version_230":[0,8,17],
+"upgrading.html#version_231":[0,8,16],
+"upgrading.html#version_240":[0,8,15],
+"upgrading.html#version_241":[0,8,14],
+"upgrading.html#version_250":[0,8,13],
+"upgrading.html#version_251":[0,8,12],
+"upgrading.html#version_252":[0,8,11],
+"upgrading.html#version_253":[0,8,10],
+"upgrading.html#version_260":[0,8,9],
 "upgrading.html#version_261":[0,8,8],
 "upgrading.html#version_270":[0,8,7],
 "upgrading.html#version_280":[0,8,6],
@@ -9,10 +20,10 @@ var NAVTREEINDEX7 =
 "upgrading.html#version_300":[0,8,2],
 "upgrading.html#version_310":[0,8,1],
 "upgrading.html#version_321":[0,8,0],
-"wtperf.html":[0,3,33],
 "wtperf.html":[0,4,27],
-"wtperf.html#config":[0,3,33,1],
+"wtperf.html":[0,3,33],
 "wtperf.html#config":[0,4,27,1],
-"wtperf.html#monitor":[0,4,27,0],
-"wtperf.html#monitor":[0,3,33,0]
+"wtperf.html#config":[0,3,33,1],
+"wtperf.html#monitor":[0,3,33,0],
+"wtperf.html#monitor":[0,4,27,0]
 };
