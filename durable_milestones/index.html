@@ -11,9 +11,19 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
   <style>
-  .boxforcompleted {
+  .boxfor_completed {
+    width:50%;
+    background-color:#00b200;
     border-style:solid;
     border-color:#00b200;
+  }
+  </style>
+  <style>
+  .boxfor_inprogress {
+    width:50%;
+    background-color:#ff4000;
+    border-style:solid;
+    border-color:#ff4000;
   }
   </style>
 </head>
@@ -24,10 +34,38 @@
     alt="Pretty picture showing the milestones"
     width="100%" />
 
-  <h1> In More Detail</h1>
-  <p class="boxforcompleted">
+  <h1>Decoding the Shortened Milestones</h1>
+  <p class="boxfor_completed">
   <h2>Granular History</h2><p>
 The project to allow returning content directly from the lookaside file, rather than having to pull it into a page from a data file in cache as a block first.
+  </p>
+  <p class="boxfor_inprogress">
+  <h2>Testing Durable History</h2><p>
+    We have been making great progress on increasing the amount of testing done in Evergreen. Soon we will turn on that testing for the feature branch, so we get good coverage while working on the long running feature branch.
+  </p>
+  <p class="boxfor_inprogress">
+  <h2></h2><p>
+    
+  </p>
+  <p class="boxfor_inprogress">
+  <h2>Checkpoint Reclaims History</h2><p>
+    The history store is going to do garbage collection by tracking information about the window of history (timestamp range) covered by each checkpoint, and deleting checkpoints once all of their content is older than the oldest timestamp.
+  </p>
+  <p class="boxfor_inprogress">
+  <h2>MVP Durable History</h2><p>
+    TODO
+  </p>
+  <p class="boxfor_inprogress">
+  <h2>Recovery Works</h2><p>
+    This is a synonym for implementing rollback_to_stable. It is done as part of PM-1521.
+  </p>
+  <p class="boxfor_inprogress">
+  <h2>Prepare Works</h2><p>
+    Allowing updates for actively prepared transactions to be evicted from cache is likely to introduce some corner cases in how durable history works. This milestone means we’ve sorted out those wrinkles.
+  </p>
+  <p class="boxfor_inprogress">
+  <h2>Merge Branch</h2><p>
+    The long running feature branch can be merged back to WiredTiger develop - and then into MongoDB master. Feature complete at this stage, and chasing bugs and performance improvements.
   </p>
 </body>
 </html>
