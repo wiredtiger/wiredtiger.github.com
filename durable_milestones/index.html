@@ -11,19 +11,24 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
   <style>
+  .box_container {
+    text-align: center;
+  }
   .boxfor_completed {
     width:50%;
     background-color:#93c47d;
+    text-align:center;
     border-style:solid;
     border-color:#000000;
+    display: inline-block;
   }
-  </style>
-  <style>
   .boxfor_inprogress {
     width:50%;
     background-color:#e06666;
+    text-align:center;
     border-style:solid;
     border-color:#000000;
+    display: inline-block;
   }
   </style>
 </head>
@@ -34,6 +39,7 @@
     alt="Pretty picture showing the milestones"
     width="100%" />
 
+  <div class="box_container">
   <h1>Decoding the Shortened Milestones</h1>
   <div class="boxfor_completed">
   <h2>Granular History</h2><p>
@@ -62,6 +68,7 @@ The project to allow returning content directly from the lookaside file, rather 
   <div class="boxfor_inprogress">
   <h2>Merge Branch</h2><p>
     The long running feature branch can be merged back to WiredTiger develop - and then into MongoDB master. Feature complete at this stage, and chasing bugs and performance improvements.
+  </div>
   </div>
 </body>
 </html>
