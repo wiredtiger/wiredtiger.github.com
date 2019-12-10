@@ -1,7 +1,11 @@
 var NAVTREEINDEX2 =
 {
+"devdoc-perf-flamegraphs.html":[0,12,5],
+"devdoc-perf.html":[0,12,4],
+"devdoc-schema.html":[0,12,0],
 "devdoc-schema.html#schema_create":[0,12,0,0],
 "devdoc-schema.html#schema_rename":[0,12,0,1],
+"devdoc-statistics.html":[0,12,2],
 "dump_formats.html":[0,5,21],
 "dump_formats.html#dump_formats_json":[0,5,21,0],
 "dump_formats.html#dump_formats_text":[0,5,21,1],
@@ -93,8 +97,8 @@ var NAVTREEINDEX2 =
 "file_formats_lang_java.html#file_formats_formats_lang_java":[0,4,7,0],
 "filesystems.html":[0,6,2],
 "filesystems.html#remote":[0,6,2,0],
-"functions.html":[4,0,0],
 "functions.html":[4,0],
+"functions.html":[4,0,0],
 "functions_b.html":[4,0,1],
 "functions_c.html":[4,0,2],
 "functions_d.html":[4,0,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga2734c2ce0f946fffc03c9483fadaa37a":[1,0,254],
 "group__wt.html#ga27c28d8d94fa3cfdce01d75ab5d41c76":[1,0,150],
 "group__wt.html#ga28129696f2666b4bd9f6824b15e576bd":[1,0,71],
-"group__wt.html#ga299aa559e53378571cfd013fd57760ae":[1,0,290],
-"group__wt.html#ga2a096a20eb52ebedd1972a32e8832d9d":[1,0,493],
-"group__wt.html#ga2af5c768712ce6c6b840badd17dd13b9":[1,0,455],
-"group__wt.html#ga2c435f00e8911a18d1ccad4bed5d4fba":[1,0,376],
-"group__wt.html#ga2c6868733b8b13adf6c69131f694a1bd":[1,0,285]
+"group__wt.html#ga299aa559e53378571cfd013fd57760ae":[1,0,290]
 };
