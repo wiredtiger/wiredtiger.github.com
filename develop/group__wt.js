@@ -128,6 +128,9 @@ var group__wt =
       [ "get", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#ad0b4eef618f34b00edfbac44b24c5c16", null ],
       [ "next", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f", null ]
     ] ],
+    [ "WT_BACKUP_FILE", "group__wt.html#ga1dd7fafb4ceb01bc9abb3eb75d6d4de9", null ],
+    [ "WT_BACKUP_INVALID", "group__wt.html#ga82f1acce741fdac529ff1b6d83f2d65e", null ],
+    [ "WT_BACKUP_RANGE", "group__wt.html#ga9d6d9a86e8a5b970cfaced5708cbc801", null ],
     [ "WT_CACHE_FULL", "group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4", null ],
     [ "WT_DUPLICATE_KEY", "group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c", null ],
     [ "WT_ERROR", "group__wt.html#gafdfe4d6ca06cb7337272f883f60c991e", null ],

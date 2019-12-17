@@ -1024,6 +1024,22 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>dump</code></td><td>configure the cursor for dump format inputs and outputs: "hex" selects a simple hexadecimal format, "json" selects a JSON format with each record formatted as fields named by column names if available, and "print" selects a format where only non-printing characters are hexadecimal encoded. These formats are compatible with the <a class="el" href="command_line.html#util_dump">wt dump</a> and <a class="el" href="command_line.html#util_load">wt load</a> commands.</td><td>a string, chosen from the following options: <code>"hex"</code>, <code>"json"</code>, <code>"print"</code>; default empty. </td></tr>
 <tr>
+<td><code>incremental = (</code></td><td>configure the cursor for block incremental backup usage. These formats are only compatible with the backup data source; see <a class="el" href="backup.html">Backups</a>.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>whether to configure this backup as the starting point for a subsequent incremental backup.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;file</code></td><td>the file name when opening a duplicate incremental backup cursor. That duplicate cursor will return the block modifications relevant to the given file name.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;force_stop</code></td><td>causes all block incremental backup information to be released. This is on an open_cursor call and the resources will be released when this cursor is closed. No other operations should be done on this open cursor.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;granularity</code></td><td>this setting manages the granularity of how WiredTiger maintains modification maps internally. The larger the granularity, the smaller amount of information WiredTiger need to maintain.</td><td>an integer between 1MB and 2GB; default <code>16MB</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;src_id</code></td><td>a string that identifies a previous checkpoint backup source as the source of this incremental backup. This identifier must have already been created by use of the 'this_id' configuration in an earlier backup. A source id is required to begin an incremental backup.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;this_id</code></td><td>a string that identifies the current system state as a future backup source for an incremental backup via 'src_id'. This identifier is required when opening an incremental backup cursor and an error will be returned if one is not provided.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>next_random</code></td><td>configure the cursor to return a pseudo-random record from the object when the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record. ">WT_CURSOR::next</a> method is called; valid only for row-store cursors. See <a class="el" href="cursor_random.html">Cursor random</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>next_random_sample_size</code></td><td>cursors configured by <code>next_random</code> to return pseudo-random records from the object randomly select from the entire object, by default. Setting <code>next_random_sample_size</code> to a non-zero value sets the number of samples the application expects to take using the <code>next_random</code> cursor. A cursor configured with both <code>next_random</code> and <code>next_random_sample_size</code> attempts to divide the object into <code>next_random_sample_size</code> equal-sized pieces, and each retrieval returns a record from one of those pieces. See <a class="el" href="cursor_random.html">Cursor random</a> for details.</td><td>a string; default <code>0</code>. </td></tr>
