@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"upgrading.html#version_162":[0,8,28],
+"upgrading.html#version_163":[0,8,27],
+"upgrading.html#version_164":[0,8,26],
+"upgrading.html#version_165":[0,8,25],
 "upgrading.html#version_166":[0,8,24],
 "upgrading.html#version_20":[0,8,23],
 "upgrading.html#version_21":[0,8,22],
@@ -27,8 +31,8 @@ var NAVTREEINDEX7 =
 "upgrading.html#version_321":[0,8,0],
 "wtperf.html":[0,4,27],
 "wtperf.html":[0,3,33],
-"wtperf.html#config":[0,4,27,1],
 "wtperf.html#config":[0,3,33,1],
-"wtperf.html#monitor":[0,3,33,0],
-"wtperf.html#monitor":[0,4,27,0]
+"wtperf.html#config":[0,4,27,1],
+"wtperf.html#monitor":[0,4,27,0],
+"wtperf.html#monitor":[0,3,33,0]
 };

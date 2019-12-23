@@ -244,10 +244,10 @@ var NAVTREEINDEX1 =
 "database_config.html#config_env":[0,6,1,1],
 "database_config.html#config_file":[0,6,1,2],
 "database_config.html#config_order":[0,6,1,0],
-"devdoc-dhandle-lifecycle.html":[0,12,1],
-"devdoc-dhandle-lifecycle.html#dhandle-creation":[0,12,1,0],
-"devdoc-dhandle-lifecycle.html#dhandle-sweep":[0,12,1,2],
-"devdoc-dhandle-lifecycle.html#session-cache-sweep":[0,12,1,1],
-"devdoc-index.html":[0,12],
-"devdoc-optrack.html":[0,12,3]
+"devdoc-dhandle-lifecycle.html":[0,12,2],
+"devdoc-dhandle-lifecycle.html#dhandle-creation":[0,12,2,0],
+"devdoc-dhandle-lifecycle.html#dhandle-sweep":[0,12,2,2],
+"devdoc-dhandle-lifecycle.html#session-cache-sweep":[0,12,2,1],
+"devdoc-glossary.html":[0,12,0],
+"devdoc-glossary.html#devdoc-glossary-checkpoint":[0,12,0,1]
 };

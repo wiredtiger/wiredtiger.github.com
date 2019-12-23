@@ -1,11 +1,15 @@
 var NAVTREEINDEX2 =
 {
-"devdoc-perf-flamegraphs.html":[0,12,5],
-"devdoc-perf.html":[0,12,4],
-"devdoc-schema.html":[0,12,0],
-"devdoc-schema.html#schema_create":[0,12,0,0],
-"devdoc-schema.html#schema_rename":[0,12,0,1],
-"devdoc-statistics.html":[0,12,2],
+"devdoc-glossary.html#devdoc-glossary-general":[0,12,0,0],
+"devdoc-glossary.html#devdoc-glossary-transactions":[0,12,0,2],
+"devdoc-index.html":[0,12],
+"devdoc-optrack.html":[0,12,4],
+"devdoc-perf-flamegraphs.html":[0,12,6],
+"devdoc-perf.html":[0,12,5],
+"devdoc-schema.html":[0,12,1],
+"devdoc-schema.html#schema_create":[0,12,1,0],
+"devdoc-schema.html#schema_rename":[0,12,1,1],
+"devdoc-statistics.html":[0,12,3],
 "dump_formats.html":[0,5,21],
 "dump_formats.html#dump_formats_json":[0,5,21,0],
 "dump_formats.html#dump_formats_text":[0,5,21,1],
@@ -85,8 +89,8 @@ var NAVTREEINDEX2 =
 "extensions.html#extensions_recovery":[0,4,9,4,1],
 "extensions.html#extensions_recovery":[0,4,9,5,1],
 "extensions.html#extensions_recovery":[0,3,27,1],
-"extensions.html#extensions_recovery":[0,3,9,4,1],
 "extensions.html#extensions_recovery":[0,3,9,5,1],
+"extensions.html#extensions_recovery":[0,3,9,4,1],
 "file_formats.html":[0,3,7],
 "file_formats.html#file_formats_choice":[0,3,7,1],
 "file_formats.html#file_formats_compression":[0,3,7,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga245f046b1545b54ed669c9fba8532cc3":[1,0,48],
 "group__wt.html#ga253b2126413546418ce7555c91641ffd":[1,0,464],
 "group__wt.html#ga256a6208e7b8d7e48a22666796b65d00":[1,0,149],
-"group__wt.html#ga25777c1773b5be81573a121ac29b4d52":[1,0,436],
-"group__wt.html#ga2592ffd12c2b47e2e41ff249a2cb648a":[1,0,309],
-"group__wt.html#ga2734c2ce0f946fffc03c9483fadaa37a":[1,0,257],
-"group__wt.html#ga27c28d8d94fa3cfdce01d75ab5d41c76":[1,0,153],
-"group__wt.html#ga28129696f2666b4bd9f6824b15e576bd":[1,0,74]
+"group__wt.html#ga25777c1773b5be81573a121ac29b4d52":[1,0,436]
 };
