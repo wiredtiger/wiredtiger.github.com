@@ -180,7 +180,7 @@ Options</h2>
 wt load</h1>
 <p>Load a table from dump output.</p>
 <p>The <code>load</code> command reads the standard input for data and loads it into a table, creating the table if it does not yet exist. The data should be the format produced by the <code>dump</code> command; see <a class="el" href="dump_formats.html">Dump Formats</a> for details.</p>
-<p>By default, if the table already exists, data in the table will be overwritten by the new data (use the <code>-n</code> option to make an attempt to overwrite existing data return an error).</p>
+<p>By default, if the table already exists, key/value pairs in the table will be overwritten by new data with matching keys (use the <code>-n</code> option to make an attempt to overwrite existing data return an error). Existing keys will not be removed.</p>
 <h2><a class="anchor" id="util_load_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] load [-ajn] [-f input] [-r name] [uri configuration ...]</code></p>
@@ -202,7 +202,7 @@ wt loadtext</h1>
 <p>Load text into a table.</p>
 <p>The <code>loadtext</code> command reads the standard input for text and loads it into a table. The input data should be printable characters, with newline delimiters for each key or value.</p>
 <p>The <code>loadtext</code> command does not create the object if it does not yet exist.</p>
-<p>In the case of inserting values into a column-store table, each value is appended to the table; in the case of inserting values into a row-store table, lines are handled in pairs, where the first line is the key and the second line is the value. If the row-store table already exists, data in the table will be overwritten by the new data.</p>
+<p>In the case of inserting values into a column-store table, each value is appended to the table; in the case of inserting values into a row-store table, lines are handled in pairs, where the first line is the key and the second line is the value. If the row-store table already exists, key/value pairs in the table will be overwritten by new data with matching keys. For either column-store or row-store tables, existing keys will not be removed.</p>
 <h2><a class="anchor" id="util_loadtext_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input] uri</code></p>
