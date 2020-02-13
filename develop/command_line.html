@@ -153,7 +153,7 @@ wt dump</h1>
 <p>See <a class="el" href="dump_formats.html">Dump Formats</a> for details of the dump file formats.</p>
 <h2><a class="anchor" id="util_dump_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] uri</code></p>
+<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] [-t timestamp] uri</code></p>
 <h2><a class="anchor" id="util_dump_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>dump</code> command:</p>
@@ -162,6 +162,7 @@ Options</h2>
 <dl class="section user"><dt>-j</dt><dd>Dump in JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format.</dd></dl>
 <dl class="section user"><dt>-r</dt><dd>Dump in reverse order, from largest key to smallest.</dd></dl>
 <dl class="section user"><dt>-x</dt><dd>Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded).</dd></dl>
+<dl class="section user"><dt>-t</dt><dd>By default, the <code>dump</code> command reads the most recent timestamp versions of the data source; the <code>-t</code> option changes the <code>dump</code> command to read at a specific timestamp.</dd></dl>
 <hr/>
  <h1><a class="anchor" id="util_list"></a>
 wt list</h1>
@@ -299,10 +300,12 @@ wt verify</h1>
 <p>The <code>verify</code> command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted.</p>
 <h2><a class="anchor" id="util_verify_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify uri</code></p>
+<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify [-d dump_address | dump_blocks | dump_history | dump_layout | dump_offsets=#,# | dump_pages ] [-h] [-S] uri</code></p>
 <h2><a class="anchor" id="util_verify_options"></a>
 Options</h2>
-<p>The <code>verify</code> command has no command-specific options.</p>
+<p>The following are command-specific options for the <code>verify</code> command:</p>
+<p><code>-d [config]</code> This option allows you to specify values which you want to be displayed when verification is run. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table or file. ">WT_SESSION::verify</a> configuration options.</p>
+<p><code>-h [config]</code> This options allows you to verify the history store against the current state of the data store.</p>
 <hr/>
  <h1><a class="anchor" id="util_write"></a>
 wt write</h1>

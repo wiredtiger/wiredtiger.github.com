@@ -1590,15 +1590,21 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>dump_address</code></td><td>Display addresses and page types as pages are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>dump_address</code></td><td>Display page addresses, start and stop time pairs and page types as pages are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>dump_blocks</code></td><td>Display the contents of on-disk blocks as they are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>dump_history</code></td><td>Display a key's values along with its start and stop time pairs as they are verified against the history store, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>dump_layout</code></td><td>Display the layout of the files as they are verified, using the application's message handler, intended for debugging; requires optional support from the block manager.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>dump_offsets</code></td><td>Display the contents of specific on-disk blocks, using the application's message handler, intended for debugging.</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>dump_pages</code></td><td>Display the contents of in-memory pages as they are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>hs_verify</code></td><td>Verify the history store.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>stable_timestamp</code></td><td>Ensure that no valid timestamps after the stable timestamp exist, to be run after rollback_to_stable.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>strict</code></td><td>Treat any verification problem as an error; by default, verify will warn, but not fail, in the case of errors that won't affect future behavior (for example, a leaked block).</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>

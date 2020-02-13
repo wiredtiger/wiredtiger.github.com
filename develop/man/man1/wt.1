@@ -156,7 +156,7 @@ The \fCdump\fP command outputs the specified table in a portable format which ca
 .PP
 See \fBDump Formats\fP for details of the dump file formats\&.
 .SS "Synopsis"
-\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] uri\fP
+\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] [-t timestamp] uri\fP
 .SS "Options"
 The following are command-specific options for the \fCdump\fP command:
 .PP
@@ -183,6 +183,11 @@ Dump in reverse order, from largest key to smallest\&.
 \fB-x\fP
 .RS 4
 Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded)\&.
+.RE
+.PP
+\fB-t\fP
+.RS 4
+By default, the \fCdump\fP command reads the most recent timestamp versions of the data source; the \fC-t\fP option changes the \fCdump\fP command to read at a specific timestamp\&.
 .RE
 .PP
 .PP
@@ -403,9 +408,13 @@ Check the structural integrity of a table\&.
 .PP
 The \fCverify\fP command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted\&.
 .SS "Synopsis"
-\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify uri\fP
+\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify [-d dump_address | dump_blocks | dump_history | dump_layout | dump_offsets=#,# | dump_pages ] [-h] [-S] uri\fP
 .SS "Options"
-The \fCverify\fP command has no command-specific options\&.
+The following are command-specific options for the \fCverify\fP command:
+.PP
+\fC-d [config]\fP This option allows you to specify values which you want to be displayed when verification is run\&. See the \fBWT_SESSION::verify\fP configuration options\&.
+.PP
+\fC-h [config]\fP This options allows you to verify the history store against the current state of the data store\&.
 .PP
 .PP
  

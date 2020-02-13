@@ -580,7 +580,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>&#160;&#160;&#160;&#160;cursor_copy</code></td><td>if true, use the system allocator to make a copy of any data returned by a cursor operation and return the copy instead. The copy is freed on the next cursor operation. This allows memory sanitizers to detect inappropriate references to memory owned by cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;eviction</code></td><td>if true, modify internal algorithms to change skew to force lookaside eviction to happen more aggressively. This includes but is not limited to not skewing newest, not favoring leaf pages, and modifying the eviction score mechanism.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;eviction</code></td><td>if true, modify internal algorithms to change skew to force history store eviction to happen more aggressively. This includes but is not limited to not skewing newest, not favoring leaf pages, and modifying the eviction score mechanism.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;realloc_exact</code></td><td>if true, reallocation of memory will only provide the exact amount requested. This will help with spotting memory allocation issues more easily.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -619,6 +619,12 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <td><code>&#160;&#160;&#160;&#160;close_idle_time</code></td><td>amount of time in seconds a file handle needs to be idle before attempting to close it. A setting of 0 means that idle handles are not closed.</td><td>an integer between 0 and 100000; default <code>30</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;close_scan_interval</code></td><td>interval in seconds at which to check for files that are inactive and close them.</td><td>an integer between 1 and 100000; default <code>10</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
+<td><code>history_store = (</code></td><td>history store configuration options.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;file_max</code></td><td>The maximum number of bytes that WiredTiger is allowed to use for its history store mechanism. If the history store file exceeds this size, a panic will be triggered. The default value means that the history store file is unbounded and may use as much space as the filesystem will accommodate. The minimum non-zero setting is 100MB.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -688,7 +694,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"backup"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"compact_progress"</code>, <code>"error_returns"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"lookaside"</code>, <code>"lookaside_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"backup"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_gc"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"compact_progress"</code>, <code>"error_returns"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"history_store"</code>, <code>"history_store_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"rebalance"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
