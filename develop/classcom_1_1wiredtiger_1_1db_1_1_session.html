@@ -1585,7 +1585,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">name</td><td>the URI of the table or file to verify </td></tr>
+    <tr><td class="paramname">name</td><td>the URI of the table or file to verify, optional if verifying the history store </td></tr>
     <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
@@ -1602,9 +1602,9 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>dump_pages</code></td><td>Display the contents of in-memory pages as they are verified, using the application's message handler, intended for debugging.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>hs_verify</code></td><td>Verify the history store.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>history_store</code></td><td>Verify the history store.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>stable_timestamp</code></td><td>Ensure that no valid timestamps after the stable timestamp exist, to be run after rollback_to_stable.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>stable_timestamp</code></td><td>Ensure that no data has a start timestamp after the stable timestamp, to be run after rollback_to_stable.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>strict</code></td><td>Treat any verification problem as an error; by default, verify will warn, but not fail, in the case of errors that won't affect future behavior (for example, a leaked block).</td><td>a boolean flag; default <code>false</code>. </td></tr>
 </table>
