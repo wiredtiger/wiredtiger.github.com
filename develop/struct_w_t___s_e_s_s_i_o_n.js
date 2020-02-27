@@ -20,7 +20,6 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "reset", "struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787", null ],
     [ "rollback_transaction", "struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1", null ],
     [ "salvage", "struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e", null ],
-    [ "snapshot", "struct_w_t___s_e_s_s_i_o_n.html#ab15f6b5f81e6e98c9b6b41c451732873", null ],
     [ "strerror", "struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9", null ],
     [ "timestamp_transaction", "struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f", null ],
     [ "transaction_pinned_range", "struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d", null ],

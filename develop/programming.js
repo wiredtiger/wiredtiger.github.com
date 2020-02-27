@@ -17,7 +17,6 @@ var programming =
       [ "Implicit transactions", "transactions.html#transactions_implicit", null ],
       [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
       [ "Isolation levels", "transactions.html#transaction_isolation", null ],
-      [ "Named Snapshots", "transactions.html#transaction_named_snapshots", null ],
       [ "Application-specified Transaction Timestamps", "transactions.html#transaction_timestamps", [
         [ "Timestamp overview", "transactions.html#timestamp_overview", null ],
         [ "Using transactions with timestamps", "transactions.html#timestamp_transactions", null ],

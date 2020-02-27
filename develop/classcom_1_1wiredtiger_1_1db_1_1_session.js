@@ -25,7 +25,6 @@ var classcom_1_1wiredtiger_1_1db_1_1_session =
     [ "reset", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a2ce840af5f1ffff040dd097a2a3065e4", null ],
     [ "rollback_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a46ce42cc35d30590975054b12f8e2013", null ],
     [ "salvage", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a4687837f13f03699d9c295fdd4380398", null ],
-    [ "snapshot", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aa9c59ebe27793654d9a6206f28344809", null ],
     [ "strerror", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a0d3664f22568a5b36bece98592cb6ea4", null ],
     [ "timestamp_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a8a7c42b78d550fd51a955cd336c39e43", null ],
     [ "transaction_pinned_range", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aed31a501ee163947de5a82f2b31b03b9", null ],

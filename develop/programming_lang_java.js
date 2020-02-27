@@ -17,7 +17,6 @@ var programming_lang_java =
       [ "Implicit transactions", "transactions_lang_java.html#transactions_implicit_lang_java", null ],
       [ "Concurrency control", "transactions_lang_java.html#transactions_concurrency_lang_java", null ],
       [ "Isolation levels", "transactions_lang_java.html#transaction_isolation_lang_java", null ],
-      [ "Named Snapshots", "transactions_lang_java.html#transaction_named_snapshots_lang_java", null ],
       [ "Application-specified Transaction Timestamps", "transactions_lang_java.html#transaction_timestamps_lang_java", [
         [ "Timestamp overview", "transactions_lang_java.html#timestamp_overview_lang_java", null ],
         [ "Using transactions with timestamps", "transactions_lang_java.html#timestamp_transactions_lang_java", null ],
