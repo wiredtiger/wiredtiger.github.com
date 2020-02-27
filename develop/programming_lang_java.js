@@ -77,7 +77,8 @@ var programming_lang_java =
     [ "Backups  in Java", "backup_lang_java.html", [
       [ "Backup from an application", "backup_lang_java.html#backup_process_lang_java", null ],
       [ "Backup from the command line", "backup_lang_java.html#backup_util_lang_java", null ],
-      [ "Incremental backup", "backup_lang_java.html#backup_incremental_lang_java", null ],
+      [ "Block-based Incremental backup", "backup_lang_java.html#backup_incremental_lang_java-block", null ],
+      [ "Log-based Incremental backup", "backup_lang_java.html#backup_incremental_lang_java", null ],
       [ "Backup and O_DIRECT", "backup_lang_java.html#backup_o_direct_lang_java", null ]
     ] ],
     [ "Compaction  in Java", "compact_lang_java.html", null ],

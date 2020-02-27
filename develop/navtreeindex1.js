@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#af69277daec69ccf4ee7fe25b806d2514":[2,0,0,0,6,12],
+"classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#af93a203c115920ab2640bee27ab6ca63":[2,0,0,0,6,11],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html":[2,0,0,0,7],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a0c754af84b39f0852a235fef1445f807":[2,0,0,0,7,1],
 "classcom_1_1wiredtiger_1_1db_1_1_pack_input_stream.html#a33488a6e84379eb3294b8969e204535d":[2,0,0,0,7,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "devdoc-dhandle-lifecycle.html":[0,12,2],
 "devdoc-dhandle-lifecycle.html#dhandle-creation":[0,12,2,0],
 "devdoc-dhandle-lifecycle.html#dhandle-sweep":[0,12,2,2],
-"devdoc-dhandle-lifecycle.html#session-cache-sweep":[0,12,2,1],
-"devdoc-glossary.html":[0,12,0],
-"devdoc-glossary.html#devdoc-glossary-checkpoint":[0,12,0,1]
+"devdoc-dhandle-lifecycle.html#session-cache-sweep":[0,12,2,1]
 };

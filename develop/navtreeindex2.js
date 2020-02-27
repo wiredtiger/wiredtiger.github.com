@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"devdoc-glossary.html":[0,12,0],
+"devdoc-glossary.html#devdoc-glossary-checkpoint":[0,12,0,1],
 "devdoc-glossary.html#devdoc-glossary-general":[0,12,0,0],
 "devdoc-glossary.html#devdoc-glossary-transactions":[0,12,0,2],
 "devdoc-index.html":[0,12],
@@ -101,16 +103,16 @@ var NAVTREEINDEX2 =
 "file_formats_lang_java.html#file_formats_formats_lang_java":[0,4,7,0],
 "filesystems.html":[0,6,2],
 "filesystems.html#remote":[0,6,2,0],
-"functions.html":[4,0,0],
 "functions.html":[4,0],
+"functions.html":[4,0,0],
 "functions_b.html":[4,0,1],
 "functions_c.html":[4,0,2],
 "functions_d.html":[4,0,3],
 "functions_e.html":[4,0,4],
 "functions_eval.html":[4,3],
 "functions_f.html":[4,0,5],
-"functions_func.html":[4,1,0],
 "functions_func.html":[4,1],
+"functions_func.html":[4,1,0],
 "functions_func_b.html":[4,1,1],
 "functions_func_c.html":[4,1,2],
 "functions_func_d.html":[4,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga2458b00913566edeb44734eb4db24d9d":[1,0,469],
 "group__wt.html#ga245f046b1545b54ed669c9fba8532cc3":[1,0,48],
 "group__wt.html#ga253b2126413546418ce7555c91641ffd":[1,0,471],
-"group__wt.html#ga25777c1773b5be81573a121ac29b4d52":[1,0,443],
-"group__wt.html#ga2592ffd12c2b47e2e41ff249a2cb648a":[1,0,308],
-"group__wt.html#ga2734c2ce0f946fffc03c9483fadaa37a":[1,0,256]
+"group__wt.html#ga25777c1773b5be81573a121ac29b4d52":[1,0,443]
 };

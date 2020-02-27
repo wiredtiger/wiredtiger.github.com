@@ -80,7 +80,8 @@ var programming =
     [ "Backups", "backup.html", [
       [ "Backup from an application", "backup.html#backup_process", null ],
       [ "Backup from the command line", "backup.html#backup_util", null ],
-      [ "Incremental backup", "backup.html#backup_incremental", null ],
+      [ "Block-based Incremental backup", "backup.html#backup_incremental-block", null ],
+      [ "Log-based Incremental backup", "backup.html#backup_incremental", null ],
       [ "Backup and O_DIRECT", "backup.html#backup_o_direct", null ]
     ] ],
     [ "Compaction", "compact.html", null ],
