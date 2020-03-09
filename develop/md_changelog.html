@@ -1533,7 +1533,7 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <li>Add maximum filesystem buffer cache settings to wiredtiger_open called "os_cache_max" and "os_cache_dirty_max". After doing the specified amount of reads or writes, WiredTiger will call fadvise and/or sync_file_range to drop pages from the filesystem cache. This is an alternative to direct I/O with less impact on performance.</li>
 <li>Make run-time statistics optional, defaulted to "off".</li>
 <li>Change how we detect if shared cache is used. It used to rely on a name, now it will be used if the shared_cache configuration option is included.</li>
-<li>Add the ability to specify a per-connection reserved size for cache pools. Ensure cache pool reconfiguration is honoured quickly.</li>
+<li>Add the ability to specify a per-connection reserved size for cache pools. Ensure cache pool reconfiguration is honored quickly.</li>
 <li>Rework hazard pointer coupling during cursor walks to be more efficient.</li>
 <li>Add a cache_eviction_walk statistic to track the pages we walk and a cache_eviction_force statistic to track the count of pages queued for forced eviction.</li>
 <li>Fixes to reduce the number of operations on shared data that were causing bottlenecks in read only workloads.</li>
