@@ -103,8 +103,8 @@ var programming =
     [ "In-memory databases", "in_memory.html", null ],
     [ "Join cursors", "cursor_join.html", null ],
     [ "Log cursors", "cursor_log.html", null ],
-    [ "Track function calls", "operation_tracking.html", null ],
     [ "Rebalance", "rebalance.html", null ],
+    [ "Track function calls", "operation_tracking.html", null ],
     [ "Per-process shared caches", "shared_cache.html", null ],
     [ "Statistics", "statistics.html", [
       [ "Statistics logging", "statistics.html#statistics_log", null ]

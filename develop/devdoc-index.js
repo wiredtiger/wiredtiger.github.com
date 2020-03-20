@@ -17,5 +17,6 @@ var devdoc_index =
     [ "Statistics Logging", "devdoc-statistics.html", null ],
     [ "Operation Tracking", "devdoc-optrack.html", null ],
     [ "Performance Monitoring", "devdoc-perf.html", null ],
+    [ "Instrumentation and introspection with XRay", "devdoc-xray.html", null ],
     [ "CPU Flame Graphs", "devdoc-perf-flamegraphs.html", null ]
 ];

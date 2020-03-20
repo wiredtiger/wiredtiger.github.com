@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 3.2.2</span>
+   &#160;<span id="projectnumber">Version 10.0.0</span>
    </div>
-   <div id="projectbrief"><!-- 3.2.2 --></div>
+   <div id="projectbrief"><!-- 10.0.0 --></div>
   </td>
  </tr>
  </tbody>
@@ -80,6 +80,8 @@ $(document).ready(function(){initNavTree('devdoc-index.html','');});
 <p>The purpose of operation tracking is to visualize WiredTiger's execution so that correlations between performance anomalies are easily spotted. This operation tracking tutorial provides a general overview of operation tracking and describes ways to visualize the data in fine detail.</p>
 <p><a class="el" href="devdoc-perf.html">Performance Monitoring</a></p>
 <p>Linux <code>perf</code> is a tool that allows counting and sampling of various events in the hardware and in the kernel. Hardware events are available via performance monitoring units (PMU); they measure CPU cycles, cache misses, branches, etc. Kernel events include scheduling context switches, page faults and block I/O. Here we provide a quick cheat sheet of how to use <code>perf</code> with WiredTiger.</p>
+<p><a class="el" href="devdoc-xray.html">Instrumentation and introspection with XRay</a></p>
+<p>XRay is a tool, originally developed at Google and now integrated in LLVM, that instruments the program such that when it runs it produces a trace of executed functions and their timestamps. This article explains how to instrument WiredTiger, collect the XRay traces, and analyze them.</p>
 <p><a class="el" href="devdoc-perf-flamegraphs.html">CPU Flame Graphs</a></p>
 <p>Why is my CPU busy? FlameGraphs help visually summarize on-CPU call stacks and allow for the quick identification of hot code paths. Here we explain how to generate FlameGraphs from WiredTiger <code>perf</code> data. </p>
 </div></div><!-- contents -->
