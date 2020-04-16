@@ -90,6 +90,13 @@ var programming =
       [ "Checkpoint naming", "checkpoint.html#checkpoint_naming", null ],
       [ "Checkpoints and file compaction", "checkpoint.html#checkpoint_compaction", null ]
     ] ],
+    [ "Eviction", "eviction.html", [
+      [ "Eviction overview", "eviction.html#overview", null ],
+      [ "Clean eviction", "eviction.html#clean_eviction", null ],
+      [ "History store eviction", "eviction.html#hs_eviction", null ],
+      [ "Update restore eviction", "eviction.html#update_restore_eviction", null ],
+      [ "Exceptions", "eviction.html#exceptions", null ]
+    ] ],
     [ "Commit-level durability", "durability.html", [
       [ "Checkpoints", "durability.html#durability_checkpoint", null ],
       [ "Backups", "durability.html#durability_backup", null ],

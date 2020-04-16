@@ -1021,7 +1021,7 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <li>Fix several bugs that prevent page eviction. refs <a href="https://jira.mongodb.org/browse/SERVER-16662">SERVER-16662</a>, <a href="https://jira.mongodb.org/browse/SERVER-17382">SERVER-17382</a>, <a href="https://jira.mongodb.org/browse/WT-1777">WT-1777</a></li>
 <li>Fix a race when stopping eviction workers on shutdown. refs <a href="https://jira.mongodb.org/browse/WT-1698">WT-1698</a></li>
 <li>Fix a bug where if the system crashes during create the base configuration file could be left in an invalid state. refs <a href="https://jira.mongodb.org/browse/WT-1775">WT-1775</a>, <a href="https://jira.mongodb.org/browse/WT-1776">WT-1776</a>, <a href="https://jira.mongodb.org/browse/SERVER-17571">SERVER-17571</a></li>
-<li>Fix cases where <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range. ">WT_SESSION::truncate</a> could return EBUSY when a schema level operation is running - for example a checkpoint. refs <a href="https://jira.mongodb.org/browse/WT-1404">WT-1404</a>, <a href="https://jira.mongodb.org/browse/WT-1643">WT-1643</a></li>
+<li>Fix cases where <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table, cursor range, or backup cursor. ">WT_SESSION::truncate</a> could return EBUSY when a schema level operation is running - for example a checkpoint. refs <a href="https://jira.mongodb.org/browse/WT-1404">WT-1404</a>, <a href="https://jira.mongodb.org/browse/WT-1643">WT-1643</a></li>
 <li>Fix a bug in logging - where we could fail to update the end of the log when there is a gap in the log records. refs <a href="https://jira.mongodb.org/browse/WT-1766">WT-1766</a>, <a href="https://jira.mongodb.org/browse/SERVER-17569">SERVER-17569</a>, <a href="https://jira.mongodb.org/browse/SERVER-17613">SERVER-17613</a></li>
 <li>Fix how we account for space used in the cache to be more accurate. refs <a href="https://jira.mongodb.org/browse/SERVER-17424">SERVER-17424</a></li>
 <li>Fix a bug where we could leak memory if opening a statistics cursor failed. refs <a href="https://jira.mongodb.org/browse/WT-1760">WT-1760</a></li>
@@ -1761,7 +1761,7 @@ $(document).ready(function(){initNavTree('md_changelog.html','');});
 <p>[#198] Handle page-generation wraparound.</p>
 <p>[#236] Implement hot backups.</p>
 <p>[#244] Index cursors for column-store objects may not be created using the record number as the index key.</p>
-<p>[#247] Add a fast-path for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table or cursor range. ">WT_SESSION::truncate</a> that avoids reading most data to be deleted.</p>
+<p>[#247] Add a fast-path for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table, cursor range, or backup cursor. ">WT_SESSION::truncate</a> that avoids reading most data to be deleted.</p>
 <p>[#259] Performance hack for cursor open: don't parse the configuration strings for a default value if the application didn't specify a configuration string.</p>
 <p>[#262] Disable dump on child cursors: only the top-level cursor is wrapped in a dump cursor.</p>
 <p>[#266] Deal with new / dropped indices in __wt_schema_open_index.</p>

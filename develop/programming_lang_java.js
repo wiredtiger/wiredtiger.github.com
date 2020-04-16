@@ -87,6 +87,13 @@ var programming_lang_java =
       [ "Checkpoint naming", "checkpoint_lang_java.html#checkpoint_naming_lang_java", null ],
       [ "Checkpoints and file compaction", "checkpoint_lang_java.html#checkpoint_compaction_lang_java", null ]
     ] ],
+    [ "Eviction  in Java", "eviction_lang_java.html", [
+      [ "Eviction overview", "eviction_lang_java.html#overview_lang_java", null ],
+      [ "Clean eviction", "eviction_lang_java.html#clean_eviction_lang_java", null ],
+      [ "History store eviction", "eviction_lang_java.html#hs_eviction_lang_java", null ],
+      [ "Update restore eviction", "eviction_lang_java.html#update_restore_eviction_lang_java", null ],
+      [ "Exceptions", "eviction_lang_java.html#exceptions_lang_java", null ]
+    ] ],
     [ "Commit-level durability  in Java", "durability_lang_java.html", [
       [ "Checkpoints", "durability_lang_java.html#durability_checkpoint_lang_java", null ],
       [ "Backups", "durability_lang_java.html#durability_backup_lang_java", null ],
