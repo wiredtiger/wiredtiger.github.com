@@ -1,4 +1,4 @@
-.TH "wt" 3 "Thu Apr 16 2020" "Version 10.0.0" "WiredTiger" \" -*- nroff -*-
+.TH "wt" 3 "Fri May 8 2020" "Version 10.0.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,13 +6,18 @@ wtWiredTiger command line utility
  \- WiredTiger includes a command line utility, \fCwt\fP\&.
 .SH "SYNOPSIS"
 .PP
-\fCwt [-LRrVv] [-C config] [-E secretkey ] [-h directory] command [command-specific arguments]\fP
+\fCwt [-BLRrVv] [-C config] [-E secretkey ] [-h directory] command [command-specific arguments]\fP
 .SH "DESCRIPTION"
 .PP
 The \fCwt\fP tool is a command-line utility that provides access to various pieces of the WiredTiger functionality\&.
 .SH "OPTIONS"
 .PP
 There are several global options:
+.PP
+\fB-B\fP
+.RS 4
+Maintain release 3\&.3 log file compatibility\&. 
+.RE
 .PP
 \fB-C config\fP
 .RS 4
@@ -32,6 +37,11 @@ Specify a database home directory\&.
 \fB-L\fP
 .RS 4
 Forcibly turn off logging subsystem for debugging purposes\&. 
+.RE
+.PP
+\fB-m\fP
+.RS 4
+Verify the WiredTiger metadata as part of opening the database\&. 
 .RE
 .PP
 \fB-R\fP
@@ -136,6 +146,23 @@ Include a configuration string to be passed to \fBWT_SESSION::create\fP\&.
 .PP
 .PP
  
+.SH "wt downgrade"
+.PP
+Downgrade a database\&.
+.PP
+The \fCdowngrade\fP command downgrades the database to the specified compatibility version\&.
+.SS "Synopsis"
+\fCwt [-RVv] [-C config] [-E secretkey ] [-h directory] downgrade -V version\fP
+.SS "Options"
+The following are command-specific options for the \fCdowngrade\fP command:
+.PP
+\fB-V version\fP
+.RS 4
+The \fC-V\fP option is required, and specfies the version to which the database is downgraded\&.
+.RE
+.PP
+.PP
+ 
 .SH "wt drop"
 .PP
 Drop a table\&.
@@ -162,7 +189,7 @@ The following are command-specific options for the \fCdump\fP command:
 .PP
 \fB-c\fP
 .RS 4
-By default, the \fCdump\fP command opens the most recent version of the data source; the \fC-c\fP option changes the \fCdump\fP command to open the named checkpoint\&.
+By default, the \fCdump\fP command opens the most recent version of the data source; the \fC-c\fP option changes the \fCdump\fP command to dump as of the named checkpoint\&.
 .RE
 .PP
 \fB-f\fP
@@ -180,14 +207,14 @@ Dump in JSON (\fCJavaScript Object Notation\fP) format\&.
 Dump in reverse order, from largest key to smallest\&.
 .RE
 .PP
+\fB-t\fP
+.RS 4
+By default, the \fCdump\fP command opens the most recent version of the data source; the \fC-c\fP option changes the \fCdump\fP command to dump as of the specified timestamp\&.
+.RE
+.PP
 \fB-x\fP
 .RS 4
 Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded)\&.
-.RE
-.PP
-\fB-t\fP
-.RS 4
-By default, the \fCdump\fP command reads the most recent timestamp versions of the data source; the \fC-t\fP option changes the \fCdump\fP command to read at a specific timestamp\&.
 .RE
 .PP
 .PP
@@ -408,15 +435,13 @@ Check the structural integrity of a table\&.
 .PP
 The \fCverify\fP command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted\&.
 .SS "Synopsis"
-\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify [-d dump_address | dump_blocks | dump_history | dump_layout | dump_offsets=#,# | dump_pages ] [-s] -a|uri\fP
+\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify [-s] [-d dump_address | dump_blocks | dump_history | dump_layout | dump_offsets=#,# | dump_pages ] [uri]\fP
 .SS "Options"
 The following are command-specific options for the \fCverify\fP command:
 .PP
 \fC-d [config]\fP This option allows you to specify values which you want to be displayed when verification is run\&. See the \fBWT_SESSION::verify\fP configuration options\&.
 .PP
-\fC-s [config]\fP This option allows you to verify against the stable timestamp, valid only after a rollback-to-stable operation\&. See the \fBWT_SESSION::verify\fP configuration options\&.
-.PP
-\fC-a [config]\fP This options allows you to verify the history store against the current state of the data store\&. A uri is not passed along with this option\&. See the \fBWT_SESSION::verify\fP configuration options\&.
+\fC-s\fP This option allows you to verify against the stable timestamp, valid only after a rollback-to-stable operation\&. See the \fBWT_SESSION::verify\fP configuration options\&.
 .PP
 .PP
  

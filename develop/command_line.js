@@ -18,6 +18,10 @@ var command_line =
       [ "Synopsis", "command_line.html#util_create_synopsis", null ],
       [ "Options", "command_line.html#util_create_options", null ]
     ] ],
+    [ "wt downgrade", "command_line.html#util_downgrade", [
+      [ "Synopsis", "command_line.html#util_downgrade_synopsis", null ],
+      [ "Options", "command_line.html#util_downgrade_options", null ]
+    ] ],
     [ "wt drop", "command_line.html#util_drop", [
       [ "Synopsis", "command_line.html#util_drop_synopsis", null ],
       [ "Options", "command_line.html#util_drop_options", null ]

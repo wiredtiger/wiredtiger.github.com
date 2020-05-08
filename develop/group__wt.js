@@ -722,6 +722,7 @@ var group__wt =
     [ "WT_STAT_DSRC_REC_PAGES", "group__wt.html#ga3cce27756256b57520fb29a2f8095c8d", null ],
     [ "WT_STAT_DSRC_REC_PAGES_EVICTION", "group__wt.html#gac02dd31c8b605eb220e1f369dc75555c", null ],
     [ "WT_STAT_DSRC_REC_PREFIX_COMPRESSION", "group__wt.html#ga76e1013024e2e87cbe93cfa07e6e4bac", null ],
+    [ "WT_STAT_DSRC_REC_PREPARE_VALUE", "group__wt.html#ga1688520ab76a2dfa4ab57b1f872c8939", null ],
     [ "WT_STAT_DSRC_REC_SUFFIX_COMPRESSION", "group__wt.html#ga3eee70bbc9c9868267e4bb01e00b4e6a", null ],
     [ "WT_STAT_DSRC_SESSION_COMPACT", "group__wt.html#gae3a08df82d5b3571c61bed609980f845", null ],
     [ "WT_STAT_DSRC_TXN_UPDATE_CONFLICT", "group__wt.html#gab3edfe41012927e52357fc5a723b4e85", null ],
