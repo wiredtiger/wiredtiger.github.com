@@ -446,6 +446,15 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_C
 <tr class="memitem:a76a499a09e8f8ece70d183833c0568c3 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a76a499a09e8f8ece70d183833c0568c3"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_FORCE_RETUNE</b></td></tr>
 <tr class="separator:a76a499a09e8f8ece70d183833c0568c3 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d883ac8d0b7167d8362e5d8071a8bb3 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a5d883ac8d0b7167d8362e5d8071a8bb3"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_FORCE_HS_FAIL</b></td></tr>
+<tr class="separator:a5d883ac8d0b7167d8362e5d8071a8bb3 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc72fce18e1489e473e1b4f270c7620e inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="abc72fce18e1489e473e1b4f270c7620e"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_FORCE_HS</b></td></tr>
+<tr class="separator:abc72fce18e1489e473e1b4f270c7620e inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e667e3c1ba5ab83477e84e17911fc0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="ab7e667e3c1ba5ab83477e84e17911fc0"></a>
+static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_FORCE_HS_SUCCESS</b></td></tr>
+<tr class="separator:ab7e667e3c1ba5ab83477e84e17911fc0 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fdcd0bc635c546a226c1d4796f90464 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memItemLeft" align="right" valign="top"><a id="a8fdcd0bc635c546a226c1d4796f90464"></a>
 static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_CONN_CACHE_EVICTION_FORCE_CLEAN</b></td></tr>
 <tr class="separator:a8fdcd0bc635c546a226c1d4796f90464 inherit pub_static_attribs_interfacecom_1_1wiredtiger_1_1db_1_1wiredtiger_constants"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2151,7 +2160,7 @@ static final int&#160;</td><td class="memItemRight" valign="bottom"><b>WT_STAT_S
 <tr>
 <td><code>mmap</code></td><td>Use memory mapping when accessing files in a read-only mode.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>mmap_all</code></td><td>Use memory mapping to read and write all data files.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>mmap_all</code></td><td>Use memory mapping to read and write all data files, may not be configured with direct I/O.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>multiprocess</code></td><td>permit sharing between processes (will automatically start an RPC server for primary processes and use RPC for secondary processes). <b>Not yet supported in WiredTiger</b>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>

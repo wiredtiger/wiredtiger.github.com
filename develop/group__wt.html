@@ -684,6 +684,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga706424f2d9f53d865fa58fd90442d50c">WT_STAT_CONN_CACHE_EVICTION_FORCE_RETUNE</a></td></tr>
 <tr class="memdesc:ga706424f2d9f53d865fa58fd90442d50c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: force re-tuning of eviction workers once in a while <br /></td></tr>
 <tr class="separator:ga706424f2d9f53d865fa58fd90442d50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga72b3a71f9952b718b410a62388c575d1"><td class="memItemLeft" align="right" valign="top"><a id="ga72b3a71f9952b718b410a62388c575d1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga72b3a71f9952b718b410a62388c575d1">WT_STAT_CONN_CACHE_EVICTION_FORCE_HS_FAIL</a></td></tr>
+<tr class="memdesc:ga72b3a71f9952b718b410a62388c575d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: forced eviction - history store pages failed to evict while session has history store cursor open <br /></td></tr>
+<tr class="separator:ga72b3a71f9952b718b410a62388c575d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga066546b32939ec63553b87ae4bc72401"><td class="memItemLeft" align="right" valign="top"><a id="ga066546b32939ec63553b87ae4bc72401"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga066546b32939ec63553b87ae4bc72401">WT_STAT_CONN_CACHE_EVICTION_FORCE_HS</a></td></tr>
+<tr class="memdesc:ga066546b32939ec63553b87ae4bc72401"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: forced eviction - history store pages selected while session has history store cursor open <br /></td></tr>
+<tr class="separator:ga066546b32939ec63553b87ae4bc72401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85959acc371747331d2c9eb62eea85e2"><td class="memItemLeft" align="right" valign="top"><a id="ga85959acc371747331d2c9eb62eea85e2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga85959acc371747331d2c9eb62eea85e2">WT_STAT_CONN_CACHE_EVICTION_FORCE_HS_SUCCESS</a></td></tr>
+<tr class="memdesc:ga85959acc371747331d2c9eb62eea85e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: forced eviction - history store pages successfully evicted while session has history store cursor open <br /></td></tr>
+<tr class="separator:ga85959acc371747331d2c9eb62eea85e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf22dc79624dbedede3f8f173305246e6"><td class="memItemLeft" align="right" valign="top"><a id="gaf22dc79624dbedede3f8f173305246e6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf22dc79624dbedede3f8f173305246e6">WT_STAT_CONN_CACHE_EVICTION_FORCE_CLEAN</a></td></tr>
 <tr class="memdesc:gaf22dc79624dbedede3f8f173305246e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: forced eviction - pages evicted that were clean count <br /></td></tr>
@@ -3344,7 +3356,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>mmap</code></td><td>Use memory mapping when accessing files in a read-only mode.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>mmap_all</code></td><td>Use memory mapping to read and write all data files.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>mmap_all</code></td><td>Use memory mapping to read and write all data files, may not be configured with direct I/O.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>multiprocess</code></td><td>permit sharing between processes (will automatically start an RPC server for primary processes and use RPC for secondary processes). <b>Not yet supported in WiredTiger</b>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
