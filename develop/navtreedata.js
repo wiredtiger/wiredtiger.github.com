@@ -22,11 +22,11 @@ var NAVTREEINDEX =
 ".html",
 "classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#af69277daec69ccf4ee7fe25b806d2514",
 "devdoc-dhandle-lifecycle.html#dhandle-sweep",
-"group__wt.html#ga206aa7b3d554cb388480394bc5d7ab46",
-"group__wt.html#ga7f2ca67519476ca8fbc3eb9f7a7b6ad5",
-"group__wt.html#gae795fdf9e9c5c43514837297566c1132",
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640",
-"tune_page_size_and_comp.html#memory_page_max"
+"group__wt.html#ga1d64c555abc38e142c59bb67d9cfec6a",
+"group__wt.html#ga76e1013024e2e87cbe93cfa07e6e4bac",
+"group__wt.html#gad2c4346861916de6cd90b54f3d5a15a4",
+"schema_lang_java.html#schema_index_immutable_lang_java",
+"transactions_lang_java.html#timestamp_connection_lang_java"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

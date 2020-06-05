@@ -1,4 +1,4 @@
-.TH "wt" 3 "Thu May 21 2020" "Version 10.0.0" "WiredTiger" \" -*- nroff -*-
+.TH "wt" 3 "Fri Jun 5 2020" "Version 10.0.0" "WiredTiger" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -183,7 +183,7 @@ The \fCdump\fP command outputs the specified table in a portable format which ca
 .PP
 See \fBDump Formats\fP for details of the dump file formats\&.
 .SS "Synopsis"
-\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] dump [-jrx] [-c checkpoint] [-f output] [-t timestamp] uri\fP
+\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] dump [-jprx] [-c checkpoint] [-f output] [-t timestamp] uri\fP
 .SS "Options"
 The following are command-specific options for the \fCdump\fP command:
 .PP
@@ -200,6 +200,11 @@ By default, the \fCdump\fP command output is written to the standard output; the
 \fB-j\fP
 .RS 4
 Dump in JSON (\fCJavaScript Object Notation\fP) format\&.
+.RE
+.PP
+\fB-p\fP
+.RS 4
+Dump in human-readable format (pretty-print)\&. The \fC-p\fP flag is incompatible with the \fCload\fP command\&.
 .RE
 .PP
 \fB-r\fP
@@ -329,13 +334,18 @@ Display the database log\&.
 .PP
 The \fCprintlog\fP command outputs the database log\&.
 .SS "Synopsis"
-\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] printlog [-x] [-f output]\fP
+\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] printlog [-mx] [-f output]\fP
 .SS "Options"
 The following are command-specific options for the \fCprintlog\fP command:
 .PP
 \fB-f\fP
 .RS 4
 By default, the \fCprintlog\fP command output is written to the standard output; the \fC-f\fP option re-directs the output to the specified file\&.
+.RE
+.PP
+\fB-m\fP
+.RS 4
+Print only message-type log records\&.
 .RE
 .PP
 \fB-x\fP
@@ -435,7 +445,7 @@ Check the structural integrity of a table\&.
 .PP
 The \fCverify\fP command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted\&.
 .SS "Synopsis"
-\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify [-s] [-d dump_address | dump_blocks | dump_history | dump_layout | dump_offsets=#,# | dump_pages ] [uri]\fP
+\fCwt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify [-s] [-d dump_address | dump_blocks | dump_layout | dump_offsets=#,# | dump_pages ] [uri]\fP
 .SS "Options"
 The following are command-specific options for the \fCverify\fP command:
 .PP

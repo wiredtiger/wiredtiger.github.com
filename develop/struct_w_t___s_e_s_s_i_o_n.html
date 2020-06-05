@@ -1017,7 +1017,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>checkpoint</code></td><td>the name of a checkpoint to open (the reserved name "WiredTigerCheckpoint" opens the most recent internal checkpoint taken for the object). The cursor does not support data modification.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>dump</code></td><td>configure the cursor for dump format inputs and outputs: "hex" selects a simple hexadecimal format, "json" selects a JSON format with each record formatted as fields named by column names if available, and "print" selects a format where only non-printing characters are hexadecimal encoded. These formats are compatible with the <a class="el" href="command_line.html#util_dump">wt dump</a> and <a class="el" href="command_line.html#util_load">wt load</a> commands.</td><td>a string, chosen from the following options: <code>"hex"</code>, <code>"json"</code>, <code>"print"</code>; default empty. </td></tr>
+<td><code>dump</code></td><td>configure the cursor for dump format inputs and outputs: "hex" selects a simple hexadecimal format, "json" selects a JSON format with each record formatted as fields named by column names if available, "pretty" selects a human-readable format (making it incompatible with the "load") and "print" selects a format where only non-printing characters are hexadecimal encoded. These formats are compatible with the <a class="el" href="command_line.html#util_dump">wt dump</a> and <a class="el" href="command_line.html#util_load">wt load</a> commands.</td><td>a string, chosen from the following options: <code>"hex"</code>, <code>"json"</code>, <code>"pretty"</code>, <code>"print"</code>; default empty. </td></tr>
 <tr>
 <td><code>incremental = (</code></td><td>configure the cursor for block incremental backup usage. These formats are only compatible with the backup data source; see <a class="el" href="backup.html">Backups</a>.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
@@ -1027,7 +1027,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>&#160;&#160;&#160;&#160;force_stop</code></td><td>causes all block incremental backup information to be released. This is on an open_cursor call and the resources will be released when this cursor is closed. No other operations should be done on this open cursor.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;granularity</code></td><td>this setting manages the granularity of how WiredTiger maintains modification maps internally. The larger the granularity, the smaller amount of information WiredTiger need to maintain.</td><td>an integer between 1MB and 2GB; default <code>16MB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;granularity</code></td><td>this setting manages the granularity of how WiredTiger maintains modification maps internally. The larger the granularity, the smaller amount of information WiredTiger need to maintain.</td><td>an integer between 4KB and 2GB; default <code>16MB</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;src_id</code></td><td>a string that identifies a previous checkpoint backup source as the source of this incremental backup. This identifier must have already been created by use of the 'this_id' configuration in an earlier backup. A source id is required to begin an incremental backup.</td><td>a string; default empty. </td></tr>
 <tr>
