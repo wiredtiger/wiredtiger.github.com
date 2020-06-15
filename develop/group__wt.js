@@ -604,6 +604,7 @@ var group__wt =
     [ "WT_STAT_CONN_TXN_RTS_KEYS_REMOVED", "group__wt.html#ga92729ab65a1a8bbb800c192f9762c835", null ],
     [ "WT_STAT_CONN_TXN_RTS_KEYS_RESTORED", "group__wt.html#ga3af51aa8e5a3ece8e44493a81f597f44", null ],
     [ "WT_STAT_CONN_TXN_RTS_PAGES_VISITED", "group__wt.html#gac3b53417033e57b382228a630f5da869", null ],
+    [ "WT_STAT_CONN_TXN_RTS_SKIP_INTERAL_PAGES_WALK", "group__wt.html#gaacec80cb5e959cd47456fbcc2216739d", null ],
     [ "WT_STAT_CONN_TXN_RTS_SWEEP_HS_KEYS", "group__wt.html#ga9c1c8514b06afe6e8a1bf17fe383e999", null ],
     [ "WT_STAT_CONN_TXN_RTS_UPD_ABORTED", "group__wt.html#gaef9d66fc30c30e5ecc2a775bdfc1e8b3", null ],
     [ "WT_STAT_CONN_TXN_SET_TS", "group__wt.html#ga25777c1773b5be81573a121ac29b4d52", null ],
