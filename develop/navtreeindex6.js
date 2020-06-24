@@ -1,5 +1,12 @@
 var NAVTREEINDEX6 =
 {
+"schema.html#schema_key_and_value_formats":[0,3,5,3],
+"schema_lang_java.html":[0,4,5],
+"schema_lang_java.html#schema_column_groups_lang_java":[0,4,5,6],
+"schema_lang_java.html#schema_column_types_lang_java":[0,4,5,1],
+"schema_lang_java.html#schema_columns_lang_java":[0,4,5,5],
+"schema_lang_java.html#schema_cursor_formats_lang_java":[0,4,5,4],
+"schema_lang_java.html#schema_examples_lang_java":[0,4,5,10],
 "schema_lang_java.html#schema_format_types_lang_java":[0,4,5,2],
 "schema_lang_java.html#schema_index_immutable_lang_java":[0,4,5,8],
 "schema_lang_java.html#schema_index_projections_lang_java":[0,4,5,9],
@@ -242,12 +249,5 @@ var NAVTREEINDEX6 =
 "transactions.html#timestamp_connection":[0,3,3,5,3],
 "transactions.html#timestamp_extensions":[0,3,3,5,4],
 "transactions.html#timestamp_overview":[0,3,3,5,0],
-"transactions.html#timestamp_roundup":[0,3,3,5,2],
-"transactions.html#timestamp_transactions":[0,3,3,5,1],
-"transactions.html#transaction_isolation":[0,3,3,4],
-"transactions.html#transaction_timestamps":[0,3,3,5],
-"transactions.html#transactions_acid":[0,3,3,0],
-"transactions.html#transactions_api":[0,3,3,1],
-"transactions.html#transactions_concurrency":[0,3,3,3],
-"transactions.html#transactions_implicit":[0,3,3,2]
+"transactions.html#timestamp_roundup":[0,3,3,5,2]
 };
