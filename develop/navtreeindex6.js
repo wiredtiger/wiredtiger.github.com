@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"schema.html#schema_examples":[0,3,5,10],
+"schema.html#schema_format_types":[0,3,5,2],
+"schema.html#schema_index_immutable":[0,3,5,8],
+"schema.html#schema_index_projections":[0,3,5,9],
+"schema.html#schema_indices":[0,3,5,7],
+"schema.html#schema_intro":[0,3,5,0],
 "schema.html#schema_key_and_value_formats":[0,3,5,3],
 "schema_lang_java.html":[0,4,5],
 "schema_lang_java.html#schema_column_groups_lang_java":[0,4,5,6],
@@ -243,11 +249,5 @@ var NAVTREEINDEX6 =
 "testing.html#testing_threads":[0,10,3],
 "threads.html":[0,3,10],
 "threads.html#threads_example":[0,3,10,0],
-"threads_lang_java.html":[0,4,10],
-"threads_lang_java.html#threads_example_lang_java":[0,4,10,0],
-"transactions.html":[0,3,3],
-"transactions.html#timestamp_connection":[0,3,3,5,3],
-"transactions.html#timestamp_extensions":[0,3,3,5,4],
-"transactions.html#timestamp_overview":[0,3,3,5,0],
-"transactions.html#timestamp_roundup":[0,3,3,5,2]
+"threads_lang_java.html":[0,4,10]
 };
