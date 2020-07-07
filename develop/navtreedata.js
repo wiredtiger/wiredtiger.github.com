@@ -24,9 +24,9 @@ var NAVTREEINDEX =
 "devdoc-dhandle-lifecycle.html#dhandle-sweep",
 "group__wt.html#ga1c10b7149fc49d50a0e48cbd03279d38",
 "group__wt.html#ga74bd29055199ef15085d2b1c6fd82ff6",
-"group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813",
-"schema.html#schema_examples",
-"threads_lang_java.html#threads_example_lang_java"
+"group__wt.html#gacb800123d59ba49f1a210befc62f377b",
+"schema.html#schema_cursor_formats",
+"threads_lang_java.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

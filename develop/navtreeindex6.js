@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"schema.html#schema_cursor_formats":[0,3,5,4],
 "schema.html#schema_examples":[0,3,5,10],
 "schema.html#schema_format_types":[0,3,5,2],
 "schema.html#schema_index_immutable":[0,3,5,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "testing.html#testing_stress":[0,10,2],
 "testing.html#testing_threads":[0,10,3],
 "threads.html":[0,3,10],
-"threads.html#threads_example":[0,3,10,0],
-"threads_lang_java.html":[0,4,10]
+"threads.html#threads_example":[0,3,10,0]
 };
