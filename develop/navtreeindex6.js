@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"schema.html#schema_column_types":[0,3,5,1],
+"schema.html#schema_columns":[0,3,5,5],
 "schema.html#schema_cursor_formats":[0,3,5,4],
 "schema.html#schema_examples":[0,3,5,10],
 "schema.html#schema_format_types":[0,3,5,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "testing.html#testing_performance":[0,10,1],
 "testing.html#testing_static":[0,10,4],
 "testing.html#testing_stress":[0,10,2],
-"testing.html#testing_threads":[0,10,3],
-"threads.html":[0,3,10],
-"threads.html#threads_example":[0,3,10,0]
+"testing.html#testing_threads":[0,10,3]
 };
