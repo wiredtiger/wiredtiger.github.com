@@ -76,14 +76,14 @@ $(document).ready(function(){initNavTree('devdoc-xray.html','');});
 <div class="fragment"><div class="line">$ cd build_posix</div><div class="line">$ make</div></div><!-- fragment --><h2>Step 3: Run wtperf</h2>
 <p>Use the script <code>wtperf_xray.sh</code> to launch <code>wtperf</code> from the directory containing the <code>wtperf</code> binary. The first argument to the script must be the benchmark configuration file. For example:</p>
 <div class="fragment"><div class="line">$ cd bench/wtperf</div><div class="line">$ ../../../bench/wtperf/runners/wtperf_xray.sh  ../../../bench/wtperf/runners/small-btree.wtperf</div></div><!-- fragment --><p>In general the usage is:  </p>
-<div class="fragment"><div class="line">wtperf_xray.sh &lt;wtperf-config-file&gt; [-h output-directory] [wtperf other arguments]</div></div><!-- fragment --><p>The <code>wtperf_xray.sh</code> produces a few outputs to help analyse performance:</p>
+<div class="fragment"><div class="line">wtperf_xray.sh &lt;wtperf-config-file&gt; [-h output-directory] [wtperf other arguments]</div></div><!-- fragment --><p>The <code>wtperf_xray.sh</code> produces a few outputs to help analyze performance:</p>
 <ul>
 <li><code>wtperf_account.txt:</code> The top 10 functions where the workload is spending the most time with a count, min, max and some percentiles for each one.</li>
 <li><code>wtperf_stacks.txt:</code> The top 10 stack traces where the workload is spending the most time. This calculation is done separately per thread.</li>
-<li><code>wtperf_graph.svg:</code> A function call graph showing what functions call each other. The edges are labelled and coloured proportionally to represent the ratio of time spent in each function call.</li>
-<li><code>wtperf_flame.svg:</code> A graph visualising stack traces and the time spent within each stack frame. If <code>FLAME_GRAPH_PATH</code> is not specified, this graph won't be generated.</li>
+<li><code>wtperf_graph.svg:</code> A function call graph showing what functions call each other. The edges are labeled and colored proportionally to represent the ratio of time spent in each function call.</li>
+<li><code>wtperf_flame.svg:</code> A graph visualizing stack traces and the time spent within each stack frame. If <code>FLAME_GRAPH_PATH</code> is not specified, this graph won't be generated.</li>
 </ul>
-<p>The <code>wtperf_xray.sh</code> script uses a few optional environment variables to modify its behaviour:</p>
+<p>The <code>wtperf_xray.sh</code> script uses a few optional environment variables to modify its behavior:</p>
 <ul>
 <li><code>XRAY_BINARY:</code> The binary to use to inspect the XRay log. The script defaults to using <code>llvm-xray</code> however, if you compiled with a particular <code>clang</code> version, you should use the corresponding <code>llvm-xray</code> version. For example, if you selected <code>clang-8</code> like the configuration above, you should set <code>XRAY_BINARY</code> to <code>llvm-xray-8</code>.</li>
 <li><code>FLAME_GRAPH_PATH:</code> As part of the script's analysis phase, it can optionally produce a FlameGraph. The <code>FLAME_GRAPH_PATH</code> variable must be set to your copy of Brendan Gregg's FlameGraph script (<code>flamegraph.pl</code>).</li>
@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('devdoc-xray.html','');});
 <p>The <code>llvm-config</code> command line tool is used to supply the required compiler and linker flags to build programs such like <code>xray_to_optrack</code> on top of LLVM.</p>
 <h2>Step 3: Configure the WiredTiger build with LLVM flags</h2>
 <p>Supply the <code>&ndash;enable-llvm</code> flag to your configuration to build anything with a dependency to LLVM.</p>
-<div class="fragment"><div class="line">$ ../configure --enable-llvm</div></div><!-- fragment --><p>Take care NOT to customise <code>CC</code> or <code>CXX</code>. Customising either of these variables will cause C++ programs such as <code>workgen</code> or <code>xray_to_optrack</code> to be skipped since we can't reliably link object files emitted by C and C++ compilers unless they are the system's default <code>cc</code> and <code>c++</code>.</p>
+<div class="fragment"><div class="line">$ ../configure --enable-llvm</div></div><!-- fragment --><p>Take care NOT to customize <code>CC</code> or <code>CXX</code>. Customizing either of these variables will cause C++ programs such as <code>workgen</code> or <code>xray_to_optrack</code> to be skipped since we can't reliably link object files emitted by C and C++ compilers unless they are the system's default <code>cc</code> and <code>c++</code>.</p>
 <h2>Step 4: Build as usual</h2>
 <div class="fragment"><div class="line">$ cd build_posix</div><div class="line">$ make</div></div><!-- fragment --><h2>Step 5: Process the traces</h2>
 <p>To process the traces, use the <code>xray_to_optrack</code> tool in the <code>tools/xray_to_optrack</code> directory.</p>
