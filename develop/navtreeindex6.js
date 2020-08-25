@@ -1,5 +1,13 @@
 var NAVTREEINDEX6 =
 {
+"readonly.html#readonly_lsm":[0,3,12,3],
+"readonly.html#readonly_recovery":[0,3,12,1],
+"readonly_lang_java.html":[0,4,12],
+"readonly_lang_java.html#readonly_config_lang_java":[0,4,12,0],
+"readonly_lang_java.html#readonly_handles_lang_java":[0,4,12,4],
+"readonly_lang_java.html#readonly_logging_lang_java":[0,4,12,2],
+"readonly_lang_java.html#readonly_lsm_lang_java":[0,4,12,3],
+"readonly_lang_java.html#readonly_recovery_lang_java":[0,4,12,1],
 "rebalance.html":[0,3,23],
 "rebalance_lang_java.html":[0,4,22],
 "rotn_encrypt_8c-example.html":[5,15],
@@ -241,13 +249,5 @@ var NAVTREEINDEX6 =
 "struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1":[1,0,4,18],
 "struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9":[1,0,4,20],
 "struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a":[1,0,4,24],
-"struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701":[1,0,4,0],
-"struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5":[1,0,4,10],
-"struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70":[1,0,4,7],
-"struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84":[1,0,4,8],
-"struct_w_t___s_e_s_s_i_o_n.html#aeec1349581b7f97fc90573550fff8b6b":[1,0,4,13],
-"struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d":[1,0,4,11],
-"struct_w_t___t_x_n___n_o_t_i_f_y.html":[1,1,7],
-"struct_w_t___t_x_n___n_o_t_i_f_y.html#a43ca2a5dc16287c8315279403fe371b1":[1,1,7,0],
-"testing.html":[0,10]
+"struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701":[1,0,4,0]
 };
