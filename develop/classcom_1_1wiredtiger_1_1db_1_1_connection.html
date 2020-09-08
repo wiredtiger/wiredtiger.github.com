@@ -550,12 +550,6 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <tr>
 <td><code>cache_max_wait_ms</code></td><td>the maximum number of milliseconds an application thread will wait for space to be available in cache before giving up. Default will wait forever.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
-<td><code>cache_overflow = (</code></td><td>cache overflow configuration options.</td><td>a set of related configuration options defined below. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;file_max</code></td><td>The maximum number of bytes that WiredTiger is allowed to use for its cache overflow mechanism. If the cache overflow file exceeds this size, a panic will be triggered. The default value means that the cache overflow file is unbounded and may use as much space as the filesystem will accommodate. The minimum non-zero setting is 100MB.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
-<tr>
-<td><code> )</code></td><td></td><td></td></tr>
-<tr>
 <td><code>cache_overhead</code></td><td>assume the heap allocator overhead is the specified percentage, and adjust the cache usage by that amount (for example, if there is 10GB of data in cache, a percentage of 10 means WiredTiger treats this as 11GB). This value is configurable because different heap allocators have different overhead and different workloads will have different heap allocation sizes and patterns, therefore applications may need to adjust this value based on allocator choice and behavior in measured workloads.</td><td>an integer between 0 and 30; default <code>8</code>. </td></tr>
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between 1MB and 10TB; default <code>100MB</code>. </td></tr>
