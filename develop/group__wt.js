@@ -344,6 +344,8 @@ var group__wt =
     [ "WT_STAT_CONN_CURSOR_MODIFY_BYTES", "group__wt.html#ga1c6ac48866cd180fb9089ce29db08d15", null ],
     [ "WT_STAT_CONN_CURSOR_MODIFY_BYTES_TOUCH", "group__wt.html#ga6f61b37bdc0104b92ae5fefc4cd2b75d", null ],
     [ "WT_STAT_CONN_CURSOR_NEXT", "group__wt.html#ga1b0c81ef9431dc6fc3a27f4880d579a9", null ],
+    [ "WT_STAT_CONN_CURSOR_NEXT_HS_TOMBSTONE", "group__wt.html#ga6dc1c0e42493ade1dac8ab7c88827b9e", null ],
+    [ "WT_STAT_CONN_CURSOR_NEXT_HS_TOMBSTONE_RTS", "group__wt.html#ga8070918dad6270301bb472433756febf", null ],
     [ "WT_STAT_CONN_CURSOR_NEXT_SKIP_GE_100", "group__wt.html#ga0675af11b12428626acd9aac95358b4d", null ],
     [ "WT_STAT_CONN_CURSOR_NEXT_SKIP_LT_100", "group__wt.html#ga91703366450f49b261b97ba9a793ad9a", null ],
     [ "WT_STAT_CONN_CURSOR_NEXT_SKIP_TOTAL", "group__wt.html#ga85a9f784048fdddd288a0a36ef662f6b", null ],

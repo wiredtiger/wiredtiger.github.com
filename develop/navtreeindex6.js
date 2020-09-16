@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"readonly.html#readonly_handles":[0,3,12,4],
+"readonly.html#readonly_logging":[0,3,12,2],
 "readonly.html#readonly_lsm":[0,3,12,3],
 "readonly.html#readonly_recovery":[0,3,12,1],
 "readonly_lang_java.html":[0,4,12],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984":[1,0,4,14],
 "struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e":[1,0,4,19],
 "struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1":[1,0,4,18],
-"struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9":[1,0,4,20],
-"struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a":[1,0,4,24],
-"struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701":[1,0,4,0]
+"struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9":[1,0,4,20]
 };
