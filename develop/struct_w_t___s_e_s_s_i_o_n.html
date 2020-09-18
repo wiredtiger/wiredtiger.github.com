@@ -601,6 +601,16 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>immutable</code></td><td>configure the index to be immutable - that is an index is not changed by any update to a record in the table.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
+<td><code>import = (</code></td><td>configure import of an existing object into the currently running database.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>whether to import the input URI from disk.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;file_metadata</code></td><td>the file configuration extracted from the metadata of the export database.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;repair</code></td><td>whether to reconstruct the metadata from the raw file content.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>internal_key_max</code></td><td>the largest key stored in an internal node, in bytes. If set, keys larger than the specified size are stored as overflow items (which may require additional I/O to access). The default and the maximum allowed value are both one-tenth the size of a newly split internal page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>internal_key_truncate</code></td><td>configure internal key truncation, discarding unnecessary trailing bytes on internal keys (ignored for custom collators).</td><td>a boolean flag; default <code>true</code>. </td></tr>
