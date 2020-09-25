@@ -33,23 +33,6 @@ var group__wt =
       [ "uri", "struct_w_t___c_u_r_s_o_r.html#a9158605cfaab4e3b00c5ef1af3d3bc3f", null ],
       [ "value_format", "struct_w_t___c_u_r_s_o_r.html#abe668c6625fa16b5595a1c393f71862d", null ]
     ] ],
-    [ "WT_ASYNC_OP", "struct_w_t___a_s_y_n_c___o_p.html", [
-      [ "compact", "struct_w_t___a_s_y_n_c___o_p.html#ae6421d4c43369146502e8c7b54c06ac0", null ],
-      [ "get_id", "struct_w_t___a_s_y_n_c___o_p.html#aa10a973cc683c48944f4909e2f18b3b9", null ],
-      [ "get_key", "struct_w_t___a_s_y_n_c___o_p.html#a3c0ab580d7d7cc18f669ef8259254b8c", null ],
-      [ "get_type", "struct_w_t___a_s_y_n_c___o_p.html#adb476ee741ca2483fad081c892aea420", null ],
-      [ "get_value", "struct_w_t___a_s_y_n_c___o_p.html#a46ec0ae7d0294b9f4f206c390dd886b3", null ],
-      [ "insert", "struct_w_t___a_s_y_n_c___o_p.html#a60ed981eeae3a80b13ca8af708e4704b", null ],
-      [ "remove", "struct_w_t___a_s_y_n_c___o_p.html#af24159844b9e5d616ce5c312f790308f", null ],
-      [ "search", "struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220", null ],
-      [ "set_key", "struct_w_t___a_s_y_n_c___o_p.html#a9931651a57133df0d6d881e0cb9386ab", null ],
-      [ "set_value", "struct_w_t___a_s_y_n_c___o_p.html#a6cb91888b737850ebffd7e01215bff53", null ],
-      [ "update", "struct_w_t___a_s_y_n_c___o_p.html#afff4b702e6a6364a7f36de4a1fa6b038", null ],
-      [ "app_private", "struct_w_t___a_s_y_n_c___o_p.html#a072a0338cc2bdd30243f2fb2e98d7aa9", null ],
-      [ "connection", "struct_w_t___a_s_y_n_c___o_p.html#aafeab82f8e38de6d72aa3c42dab096f1", null ],
-      [ "key_format", "struct_w_t___a_s_y_n_c___o_p.html#ac2eb1b30034ed905715700143a746fb7", null ],
-      [ "value_format", "struct_w_t___a_s_y_n_c___o_p.html#aad1344717c98c5ad0dbc65cf7302a2be", null ]
-    ] ],
     [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", [
       [ "alter", "struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701", null ],
       [ "begin_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf", null ],
@@ -87,8 +70,6 @@ var group__wt =
       [ "add_data_source", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea", null ],
       [ "add_encryptor", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949", null ],
       [ "add_extractor", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903", null ],
-      [ "async_flush", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a43d649d7eca3c9c281a833ec4e73473b", null ],
-      [ "async_new_op", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a0cfd7bfb13c5b2ad8499f44e43d62672", null ],
       [ "close", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545", null ],
       [ "configure_method", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137", null ],
       [ "get_extension_api", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d", null ],
@@ -101,9 +82,6 @@ var group__wt =
       [ "rollback_to_stable", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28", null ],
       [ "set_file_system", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b", null ],
       [ "set_timestamp", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512", null ]
-    ] ],
-    [ "WT_ASYNC_CALLBACK", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html", [
-      [ "notify", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html#a8859d51cae96e48f79bbd8322ee347ea", null ]
     ] ],
     [ "WT_EVENT_HANDLER", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html", [
       [ "handle_close", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e", null ],
@@ -159,19 +137,6 @@ var group__wt =
     [ "WT_RUN_RECOVERY", "group__wt.html#ga76bb44d946fbe56ddb93470ab95a1e78", null ],
     [ "WT_STAT_CONN_APPLICATION_CACHE_TIME", "group__wt.html#ga82db17f977dfe8bb1b1caf2b594a33b8", null ],
     [ "WT_STAT_CONN_APPLICATION_EVICT_TIME", "group__wt.html#gabfab50036b67c8e5040831954b8d7dd6", null ],
-    [ "WT_STAT_CONN_ASYNC_ALLOC_RACE", "group__wt.html#gaf2709f55d4ee4797b8a1f1c568d23f0e", null ],
-    [ "WT_STAT_CONN_ASYNC_ALLOC_VIEW", "group__wt.html#ga01a389247d44f494eaff44ac9304bde6", null ],
-    [ "WT_STAT_CONN_ASYNC_CUR_QUEUE", "group__wt.html#gae0788093d8b82038e000c8a4c96550f1", null ],
-    [ "WT_STAT_CONN_ASYNC_FLUSH", "group__wt.html#ga4cdc606de0960ed7f4e73523dea43524", null ],
-    [ "WT_STAT_CONN_ASYNC_FULL", "group__wt.html#ga3b3312d31e7be0776b9f2e6ab7cef748", null ],
-    [ "WT_STAT_CONN_ASYNC_MAX_QUEUE", "group__wt.html#ga38c1096a457e586e02992eda1c983c75", null ],
-    [ "WT_STAT_CONN_ASYNC_NOWORK", "group__wt.html#ga245f046b1545b54ed669c9fba8532cc3", null ],
-    [ "WT_STAT_CONN_ASYNC_OP_ALLOC", "group__wt.html#gafa7ac3262d9633b0e8d6a5b97ee43d00", null ],
-    [ "WT_STAT_CONN_ASYNC_OP_COMPACT", "group__wt.html#gaba18123fa8bf7710d672e0bde88f8094", null ],
-    [ "WT_STAT_CONN_ASYNC_OP_INSERT", "group__wt.html#ga3485db26d7855f860b31fb9c64ab426c", null ],
-    [ "WT_STAT_CONN_ASYNC_OP_REMOVE", "group__wt.html#gad4242907ae3d90f7c36430ae17508996", null ],
-    [ "WT_STAT_CONN_ASYNC_OP_SEARCH", "group__wt.html#ga5bf3ce7e29117530d3770d8ee51d841d", null ],
-    [ "WT_STAT_CONN_ASYNC_OP_UPDATE", "group__wt.html#ga69fb4a6bb84c218ef36e633ccca0384f", null ],
     [ "WT_STAT_CONN_BLOCK_BYTE_MAP_READ", "group__wt.html#ga902d17d446dc12fd91bffca8f2270884", null ],
     [ "WT_STAT_CONN_BLOCK_BYTE_READ", "group__wt.html#ga178a70adb0b784ec0675071df67379b9", null ],
     [ "WT_STAT_CONN_BLOCK_BYTE_READ_MMAP", "group__wt.html#ga7d17efd4e712fa3e83900a6e0042877c", null ],
@@ -841,14 +806,6 @@ var group__wt =
     [ "WT_STAT_SESSION_WRITE_TIME", "group__wt.html#gaaada8a06df6d927df43718f75b712da0", null ],
     [ "WT_TRY_SALVAGE", "group__wt.html#ga848dbb8ea23d57d22e8103ce70a08f50", null ],
     [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", null ],
-    [ "WT_ASYNC_OPTYPE", "group__wt.html#ga24152c6e1509c488192df653d511a82c", [
-      [ "WT_AOP_NONE", "group__wt.html#gga24152c6e1509c488192df653d511a82ca84d609caa741779c25004dd4484b9660", null ],
-      [ "WT_AOP_COMPACT", "group__wt.html#gga24152c6e1509c488192df653d511a82ca9847c3459bc2b0eaa527f91afdf84722", null ],
-      [ "WT_AOP_INSERT", "group__wt.html#gga24152c6e1509c488192df653d511a82caa40ee85e0f72cadac54d2fb83ac75ded", null ],
-      [ "WT_AOP_REMOVE", "group__wt.html#gga24152c6e1509c488192df653d511a82ca0b2111b2347684c8f0409673a898359c", null ],
-      [ "WT_AOP_SEARCH", "group__wt.html#gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44", null ],
-      [ "WT_AOP_UPDATE", "group__wt.html#gga24152c6e1509c488192df653d511a82ca6b24879fd4e50bb05a4c53e443c5f390", null ]
-    ] ],
     [ "wiredtiger_calc_modify", "group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29", null ],
     [ "wiredtiger_config_parser_open", "group__wt.html#ga512297da65ccc30ac91bf6adf95f043f", null ],
     [ "wiredtiger_open", "group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813", null ],

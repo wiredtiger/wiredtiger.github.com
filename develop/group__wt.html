@@ -67,7 +67,6 @@ $(document).ready(function(){initNavTree('group__wt.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">WiredTiger API</div>  </div>
@@ -88,17 +87,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor. ">WT_CURSOR</a> handle is the interface to a cursor.  <a href="struct_w_t___c_u_r_s_o_r.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___a_s_y_n_c___o_p.html">WT_ASYNC_OP</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_w_t___a_s_y_n_c___o_p.html" title="A WT_ASYNC_OP handle is the interface to an asynchronous operation. ">WT_ASYNC_OP</a> handle is the interface to an asynchronous operation.  <a href="struct_w_t___a_s_y_n_c___o_p.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">All data operations are performed in the context of a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a>.  <a href="struct_w_t___s_e_s_s_i_o_n.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A connection to a WiredTiger database.  <a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html">WT_ASYNC_CALLBACK</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The interface implemented by applications to accept notifications of the completion of asynchronous operations.  <a href="struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The interface implemented by applications to handle error, informational and progress messages.  <a href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#details">More...</a><br /></td></tr>
@@ -118,21 +111,6 @@ Macros</h2></td></tr>
 <tr class="memitem:ga56fdfd15cc3721bcb251cfc859a915ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga56fdfd15cc3721bcb251cfc859a915ad">WT_INTPACK32_MAXSIZE</a></td></tr>
 <tr class="memdesc:ga56fdfd15cc3721bcb251cfc859a915ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum packed size of a 32-bit integer.  <a href="#ga56fdfd15cc3721bcb251cfc859a915ad">More...</a><br /></td></tr>
 <tr class="separator:ga56fdfd15cc3721bcb251cfc859a915ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:ga24152c6e1509c488192df653d511a82c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga24152c6e1509c488192df653d511a82c">WT_ASYNC_OPTYPE</a> { <br />
-&#160;&#160;<a class="el" href="group__wt.html#gga24152c6e1509c488192df653d511a82ca84d609caa741779c25004dd4484b9660">WT_AOP_NONE</a>, 
-<a class="el" href="group__wt.html#gga24152c6e1509c488192df653d511a82ca9847c3459bc2b0eaa527f91afdf84722">WT_AOP_COMPACT</a>, 
-<a class="el" href="group__wt.html#gga24152c6e1509c488192df653d511a82caa40ee85e0f72cadac54d2fb83ac75ded">WT_AOP_INSERT</a>, 
-<a class="el" href="group__wt.html#gga24152c6e1509c488192df653d511a82ca0b2111b2347684c8f0409673a898359c">WT_AOP_REMOVE</a>, 
-<br />
-&#160;&#160;<a class="el" href="group__wt.html#gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44">WT_AOP_SEARCH</a>, 
-<a class="el" href="group__wt.html#gga24152c6e1509c488192df653d511a82ca6b24879fd4e50bb05a4c53e443c5f390">WT_AOP_UPDATE</a>
-<br />
- }<tr class="memdesc:ga24152c6e1509c488192df653d511a82c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronous operation types.  <a href="group__wt.html#ga24152c6e1509c488192df653d511a82c">More...</a><br /></td></tr>
-</td></tr>
-<tr class="separator:ga24152c6e1509c488192df653d511a82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -380,58 +358,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab31549ae67b2f248d41a9d4214575b3f">WT_STAT_CONN_LSM_WORK_QUEUE_MAX</a></td></tr>
 <tr class="memdesc:gab31549ae67b2f248d41a9d4214575b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: tree queue hit maximum. <br /></td></tr>
 <tr class="separator:gab31549ae67b2f248d41a9d4214575b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae0788093d8b82038e000c8a4c96550f1"><td class="memItemLeft" align="right" valign="top"><a id="gae0788093d8b82038e000c8a4c96550f1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae0788093d8b82038e000c8a4c96550f1">WT_STAT_CONN_ASYNC_CUR_QUEUE</a></td></tr>
-<tr class="memdesc:gae0788093d8b82038e000c8a4c96550f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: current work queue length <br /></td></tr>
-<tr class="separator:gae0788093d8b82038e000c8a4c96550f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga38c1096a457e586e02992eda1c983c75"><td class="memItemLeft" align="right" valign="top"><a id="ga38c1096a457e586e02992eda1c983c75"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga38c1096a457e586e02992eda1c983c75">WT_STAT_CONN_ASYNC_MAX_QUEUE</a></td></tr>
-<tr class="memdesc:ga38c1096a457e586e02992eda1c983c75"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: maximum work queue length <br /></td></tr>
-<tr class="separator:ga38c1096a457e586e02992eda1c983c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2709f55d4ee4797b8a1f1c568d23f0e"><td class="memItemLeft" align="right" valign="top"><a id="gaf2709f55d4ee4797b8a1f1c568d23f0e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf2709f55d4ee4797b8a1f1c568d23f0e">WT_STAT_CONN_ASYNC_ALLOC_RACE</a></td></tr>
-<tr class="memdesc:gaf2709f55d4ee4797b8a1f1c568d23f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: number of allocation state races <br /></td></tr>
-<tr class="separator:gaf2709f55d4ee4797b8a1f1c568d23f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4cdc606de0960ed7f4e73523dea43524"><td class="memItemLeft" align="right" valign="top"><a id="ga4cdc606de0960ed7f4e73523dea43524"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4cdc606de0960ed7f4e73523dea43524">WT_STAT_CONN_ASYNC_FLUSH</a></td></tr>
-<tr class="memdesc:ga4cdc606de0960ed7f4e73523dea43524"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: number of flush calls <br /></td></tr>
-<tr class="separator:ga4cdc606de0960ed7f4e73523dea43524"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga01a389247d44f494eaff44ac9304bde6"><td class="memItemLeft" align="right" valign="top"><a id="ga01a389247d44f494eaff44ac9304bde6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga01a389247d44f494eaff44ac9304bde6">WT_STAT_CONN_ASYNC_ALLOC_VIEW</a></td></tr>
-<tr class="memdesc:ga01a389247d44f494eaff44ac9304bde6"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: number of operation slots viewed for allocation <br /></td></tr>
-<tr class="separator:ga01a389247d44f494eaff44ac9304bde6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3b3312d31e7be0776b9f2e6ab7cef748"><td class="memItemLeft" align="right" valign="top"><a id="ga3b3312d31e7be0776b9f2e6ab7cef748"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3b3312d31e7be0776b9f2e6ab7cef748">WT_STAT_CONN_ASYNC_FULL</a></td></tr>
-<tr class="memdesc:ga3b3312d31e7be0776b9f2e6ab7cef748"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: number of times operation allocation failed <br /></td></tr>
-<tr class="separator:ga3b3312d31e7be0776b9f2e6ab7cef748"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga245f046b1545b54ed669c9fba8532cc3"><td class="memItemLeft" align="right" valign="top"><a id="ga245f046b1545b54ed669c9fba8532cc3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga245f046b1545b54ed669c9fba8532cc3">WT_STAT_CONN_ASYNC_NOWORK</a></td></tr>
-<tr class="memdesc:ga245f046b1545b54ed669c9fba8532cc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: number of times worker found no work <br /></td></tr>
-<tr class="separator:ga245f046b1545b54ed669c9fba8532cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafa7ac3262d9633b0e8d6a5b97ee43d00"><td class="memItemLeft" align="right" valign="top"><a id="gafa7ac3262d9633b0e8d6a5b97ee43d00"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafa7ac3262d9633b0e8d6a5b97ee43d00">WT_STAT_CONN_ASYNC_OP_ALLOC</a></td></tr>
-<tr class="memdesc:gafa7ac3262d9633b0e8d6a5b97ee43d00"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: total allocations <br /></td></tr>
-<tr class="separator:gafa7ac3262d9633b0e8d6a5b97ee43d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaba18123fa8bf7710d672e0bde88f8094"><td class="memItemLeft" align="right" valign="top"><a id="gaba18123fa8bf7710d672e0bde88f8094"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaba18123fa8bf7710d672e0bde88f8094">WT_STAT_CONN_ASYNC_OP_COMPACT</a></td></tr>
-<tr class="memdesc:gaba18123fa8bf7710d672e0bde88f8094"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: total compact calls <br /></td></tr>
-<tr class="separator:gaba18123fa8bf7710d672e0bde88f8094"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3485db26d7855f860b31fb9c64ab426c"><td class="memItemLeft" align="right" valign="top"><a id="ga3485db26d7855f860b31fb9c64ab426c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3485db26d7855f860b31fb9c64ab426c">WT_STAT_CONN_ASYNC_OP_INSERT</a></td></tr>
-<tr class="memdesc:ga3485db26d7855f860b31fb9c64ab426c"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: total insert calls <br /></td></tr>
-<tr class="separator:ga3485db26d7855f860b31fb9c64ab426c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad4242907ae3d90f7c36430ae17508996"><td class="memItemLeft" align="right" valign="top"><a id="gad4242907ae3d90f7c36430ae17508996"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad4242907ae3d90f7c36430ae17508996">WT_STAT_CONN_ASYNC_OP_REMOVE</a></td></tr>
-<tr class="memdesc:gad4242907ae3d90f7c36430ae17508996"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: total remove calls <br /></td></tr>
-<tr class="separator:gad4242907ae3d90f7c36430ae17508996"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5bf3ce7e29117530d3770d8ee51d841d"><td class="memItemLeft" align="right" valign="top"><a id="ga5bf3ce7e29117530d3770d8ee51d841d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5bf3ce7e29117530d3770d8ee51d841d">WT_STAT_CONN_ASYNC_OP_SEARCH</a></td></tr>
-<tr class="memdesc:ga5bf3ce7e29117530d3770d8ee51d841d"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: total search calls <br /></td></tr>
-<tr class="separator:ga5bf3ce7e29117530d3770d8ee51d841d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga69fb4a6bb84c218ef36e633ccca0384f"><td class="memItemLeft" align="right" valign="top"><a id="ga69fb4a6bb84c218ef36e633ccca0384f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga69fb4a6bb84c218ef36e633ccca0384f">WT_STAT_CONN_ASYNC_OP_UPDATE</a></td></tr>
-<tr class="memdesc:ga69fb4a6bb84c218ef36e633ccca0384f"><td class="mdescLeft">&#160;</td><td class="mdescRight">async: total update calls <br /></td></tr>
-<tr class="separator:ga69fb4a6bb84c218ef36e633ccca0384f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8ecf265dba023ad13a6cdf3e02fa9d50"><td class="memItemLeft" align="right" valign="top"><a id="ga8ecf265dba023ad13a6cdf3e02fa9d50"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8ecf265dba023ad13a6cdf3e02fa9d50">WT_STAT_CONN_BLOCK_PRELOAD</a></td></tr>
 <tr class="memdesc:ga8ecf265dba023ad13a6cdf3e02fa9d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: blocks pre-loaded <br /></td></tr>
@@ -3100,7 +3026,7 @@ Statistics for session</h2></td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>A raw item of data to be managed, including a pointer to the data and a length. </p>
 <p><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structures do not need to be cleared before use. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_async_8c-example.html#_a2">ex_async.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a17">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a2">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a2">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#_a10">ex_log.c</a>, and <a class="el" href="ex_schema_8c-example.html#_a15">ex_schema.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_encrypt_8c-example.html#_a17">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a2">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a2">ex_extractor.c</a>, <a class="el" href="ex_log_8c-example.html#_a10">ex_log.c</a>, and <a class="el" href="ex_schema_8c-example.html#_a15">ex_schema.c</a>.</dd>
 </dl></div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -3370,37 +3296,6 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 </div>
 </div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="ga24152c6e1509c488192df653d511a82c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga24152c6e1509c488192df653d511a82c">&#9670;&nbsp;</a></span>WT_ASYNC_OPTYPE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="group__wt.html#ga24152c6e1509c488192df653d511a82c">WT_ASYNC_OPTYPE</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Asynchronous operation types. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga24152c6e1509c488192df653d511a82ca84d609caa741779c25004dd4484b9660"></a>WT_AOP_NONE&#160;</td><td class="fielddoc"><p>No operation type set. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga24152c6e1509c488192df653d511a82ca9847c3459bc2b0eaa527f91afdf84722"></a>WT_AOP_COMPACT&#160;</td><td class="fielddoc"><p><a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#ae6421d4c43369146502e8c7b54c06ac0" title="Invoke the underlying WT_SESSION::compact method; see that method for configuration, return and error values. ">WT_ASYNC_OP::compact</a>. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga24152c6e1509c488192df653d511a82caa40ee85e0f72cadac54d2fb83ac75ded"></a>WT_AOP_INSERT&#160;</td><td class="fielddoc"><p><a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#a60ed981eeae3a80b13ca8af708e4704b" title="Invoke the underlying WT_CURSOR::insert method; see that method for configuration, return and error values. ">WT_ASYNC_OP::insert</a>. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga24152c6e1509c488192df653d511a82ca0b2111b2347684c8f0409673a898359c"></a>WT_AOP_REMOVE&#160;</td><td class="fielddoc"><p><a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#af24159844b9e5d616ce5c312f790308f" title="Invoke the underlying WT_CURSOR::remove method; see that method for configuration, return and error values. ">WT_ASYNC_OP::remove</a>. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga24152c6e1509c488192df653d511a82ca0a70cdcda8801256cc086e8ab7d78b44"></a>WT_AOP_SEARCH&#160;</td><td class="fielddoc"><p><a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#a5cd1b495d3796c5318a49422a3f7e220" title="Invoke the underlying WT_CURSOR::search method; see that method for configuration, return and error values. ">WT_ASYNC_OP::search</a>. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga24152c6e1509c488192df653d511a82ca6b24879fd4e50bb05a4c53e443c5f390"></a>WT_AOP_UPDATE&#160;</td><td class="fielddoc"><p><a class="el" href="struct_w_t___a_s_y_n_c___o_p.html#afff4b702e6a6364a7f36de4a1fa6b038" title="Invoke the underlying WT_CURSOR::update method; see that method for configuration, return and error values. ">WT_ASYNC_OP::update</a>. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gacb2cb3b5e55a85a481a3175f37de3a29"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gacb2cb3b5e55a85a481a3175f37de3a29">&#9670;&nbsp;</a></span>wiredtiger_calc_modify()</h2>
@@ -3569,16 +3464,6 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
     <tr><td class="paramdir"></td><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
-<tr>
-<td><code>async = (</code></td><td>asynchronous operations configuration options.</td><td>a set of related configuration options defined below. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable asynchronous operation.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;ops_max</code></td><td>maximum number of expected simultaneous asynchronous operations.</td><td>an integer between 1 and 4096; default <code>1024</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;threads</code></td><td>the number of worker threads to service asynchronous requests. Each worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
-<tr>
-<td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>buffer_alignment</code></td><td>in-memory alignment (in bytes) for buffers used for I/O. The default value of -1 indicates a platform-specific alignment value should be used (4KB on Linux systems when direct I/O is configured, zero elsewhere).</td><td>an integer between -1 and 1MB; default <code>-1</code>. </td></tr>
 <tr>
@@ -3820,7 +3705,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a3">ex_access.c</a>, <a class="el" href="ex_async_8c-example.html#a12">ex_async.c</a>, <a class="el" href="ex_call_center_8c-example.html#a3">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a16">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a26">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#a5">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#a21">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a43">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#a2">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a2">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a2">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a3">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a19">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a10">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a3">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a3">ex_call_center.c</a>, <a class="el" href="ex_cursor_8c-example.html#a16">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a26">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#a5">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#a21">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a43">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#a2">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a2">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a2">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a3">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a19">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a10">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -4098,7 +3983,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_async_8c-example.html#a5">ex_async.c</a>, and <a class="el" href="ex_file_system_8c-example.html#a44">ex_file_system.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a44">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>

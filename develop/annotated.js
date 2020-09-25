@@ -3,7 +3,6 @@ var annotated =
     [ "com", null, [
       [ "wiredtiger", null, [
         [ "db", null, [
-          [ "AsyncCallback", "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback.html", "interfacecom_1_1wiredtiger_1_1db_1_1_async_callback" ],
           [ "AsyncOp", "classcom_1_1wiredtiger_1_1db_1_1_async_op.html", "classcom_1_1wiredtiger_1_1db_1_1_async_op" ],
           [ "AsyncOpType", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type" ],
           [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html", "classcom_1_1wiredtiger_1_1db_1_1_connection" ],
@@ -26,8 +25,6 @@ var annotated =
         ] ]
       ] ]
     ] ],
-    [ "WT_ASYNC_CALLBACK", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k.html", "struct_w_t___a_s_y_n_c___c_a_l_l_b_a_c_k" ],
-    [ "WT_ASYNC_OP", "struct_w_t___a_s_y_n_c___o_p.html", "struct_w_t___a_s_y_n_c___o_p" ],
     [ "WT_COLLATOR", "struct_w_t___c_o_l_l_a_t_o_r.html", "struct_w_t___c_o_l_l_a_t_o_r" ],
     [ "WT_COMPRESSOR", "struct_w_t___c_o_m_p_r_e_s_s_o_r.html", "struct_w_t___c_o_m_p_r_e_s_s_o_r" ],
     [ "WT_CONFIG_ITEM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html", "struct_w_t___c_o_n_f_i_g___i_t_e_m" ],

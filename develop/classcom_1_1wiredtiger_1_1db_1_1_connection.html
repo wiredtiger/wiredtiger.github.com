@@ -83,9 +83,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0e8af34ebdff2b71b682095ed085cebe"><td class="memItemLeft" align="right" valign="top"><a id="a0e8af34ebdff2b71b682095ed085cebe"></a>
 synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>delete</b> ()</td></tr>
 <tr class="separator:a0e8af34ebdff2b71b682095ed085cebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ca4a22fe3c729d68cd56c5abb047498"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a6ca4a22fe3c729d68cd56c5abb047498">async_flush</a> ()  throws com.wiredtiger.db.WiredTigerException </td></tr>
-<tr class="memdesc:a6ca4a22fe3c729d68cd56c5abb047498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for all outstanding operations to complete.  <a href="#a6ca4a22fe3c729d68cd56c5abb047498">More...</a><br /></td></tr>
-<tr class="separator:a6ca4a22fe3c729d68cd56c5abb047498"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2458441ed6301620ef4db71f3ef5c47c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2458441ed6301620ef4db71f3ef5c47c">close</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a2458441ed6301620ef4db71f3ef5c47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a connection.  <a href="#a2458441ed6301620ef4db71f3ef5c47c">More...</a><br /></td></tr>
 <tr class="separator:a2458441ed6301620ef4db71f3ef5c47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,9 +112,6 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>get_home</b> ()</td
 <tr class="memitem:a1c404c400a9873926810241ad0997a4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1c404c400a9873926810241ad0997a4a">load_extension</a> (String path, String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:a1c404c400a9873926810241ad0997a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an extension.  <a href="#a1c404c400a9873926810241ad0997a4a">More...</a><br /></td></tr>
 <tr class="separator:a1c404c400a9873926810241ad0997a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76c8444703541803fab4bc54606136ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html">AsyncOp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#a76c8444703541803fab4bc54606136ed">async_new_op</a> (String uri, String config, Object callbackObject)  throws com.wiredtiger.db.WiredTigerException </td></tr>
-<tr class="memdesc:a76c8444703541803fab4bc54606136ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an async operation handle.  <a href="#a76c8444703541803fab4bc54606136ed">More...</a><br /></td></tr>
-<tr class="separator:a76c8444703541803fab4bc54606136ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad03cfc01de34342ab8c76934accb8745"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_session.html">Session</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_connection.html#ad03cfc01de34342ab8c76934accb8745">open_session</a> (String config)  throws com.wiredtiger.db.WiredTigerException </td></tr>
 <tr class="memdesc:ad03cfc01de34342ab8c76934accb8745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a session.  <a href="#ad03cfc01de34342ab8c76934accb8745">More...</a><br /></td></tr>
 <tr class="separator:ad03cfc01de34342ab8c76934accb8745"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,91 +143,6 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
 <p>Most applications will open a single connection to a database for each process. The first process to open a connection to a database will access the database in its own address space. Subsequent connections (if allowed) will communicate with the first process over a socket connection to perform their operations.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database. ">WT_CONNECTION</a> handle may be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6ca4a22fe3c729d68cd56c5abb047498"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ca4a22fe3c729d68cd56c5abb047498">&#9670;&nbsp;</a></span>async_flush()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int com.wiredtiger.db.Connection.async_flush </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Wait for all outstanding operations to complete. </p>
-<div class="fragment"><div class="line">    <span class="comment">/* Wait for all outstanding operations to complete. */</span></div><div class="line">    error_check(conn-&gt;async_flush(conn));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">connection</td><td>the connection handle </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-
-</div>
-</div>
-<a id="a76c8444703541803fab4bc54606136ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76c8444703541803fab4bc54606136ed">&#9670;&nbsp;</a></span>async_new_op()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_async_op.html">AsyncOp</a> com.wiredtiger.db.Connection.async_new_op </td>
-          <td>(</td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>uri</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>config</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Object&#160;</td>
-          <td class="paramname"><em>callbackObject</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> throws <a class="el" href="classcom_1_1wiredtiger_1_1db_1_1_wired_tiger_exception.html">com.wiredtiger.db.WiredTigerException</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return an async operation handle. </p>
-<div class="fragment"><div class="line">        <span class="keywordflow">while</span> (</div><div class="line">          (ret = conn-&gt;async_new_op(conn, <span class="stringliteral">&quot;table:async&quot;</span>, NULL, &amp;ex_asynckeys.iface, &amp;op)) != 0) {</div><div class="line">            <span class="comment">/*</span></div><div class="line"><span class="comment">             * If we used up all the handles, pause and retry to give the workers a chance to catch</span></div><div class="line"><span class="comment">             * up.</span></div><div class="line"><span class="comment">             */</span></div><div class="line">            fprintf(stderr, <span class="stringliteral">&quot;asynchronous operation handle not available\n&quot;</span>);</div><div class="line">            <span class="keywordflow">if</span> (ret == EBUSY)</div><div class="line">                sleep(1);</div><div class="line">            <span class="keywordflow">else</span></div><div class="line">                <span class="keywordflow">return</span> (EXIT_FAILURE);</div><div class="line">        }</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">connection</td><td>the connection handle </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">uri</td><td>the connection handle </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
-<tr>
-<th>Name</th><th>Effect</th><th>Values </th></tr>
-<tr>
-<td><code>append</code></td><td>append the value as a new record, creating a new record number key; valid only for operations with record number keys.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
-<td><code>overwrite</code></td><td>configures whether the cursor's insert, update and remove methods check the existing state of the record. If <code>overwrite</code> is <code>false</code>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record. ">WT_CURSOR::insert</a> fails with <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key. ">WT_DUPLICATE_KEY</a> if the record exists, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update an existing record and optionally insert a record. ">WT_CURSOR::update</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record. ">WT_CURSOR::remove</a> fail with <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> if the record does not exist.</td><td>a boolean flag; default <code>true</code>. </td></tr>
-<tr>
-<td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
-<td><code>timeout</code></td><td>maximum amount of time to allow for compact in seconds. The actual amount of time spent in compact may exceed the configured value. A value of zero disables the timeout.</td><td>an integer; default <code>1200</code>. </td></tr>
-</table>
-</td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">callback</td><td>the operation callback </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">asyncopp</td><td>the new op handle </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If there are no available handles, <code>EBUSY</code> is returned. </dd></dl>
-
-</div>
-</div>
 <a id="a2458441ed6301620ef4db71f3ef5c47c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2458441ed6301620ef4db71f3ef5c47c">&#9670;&nbsp;</a></span>close()</h2>
 
@@ -537,16 +446,6 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>swigCMemOwn</b></t
     <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values: <table class="doxtable">
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
-<tr>
-<td><code>async = (</code></td><td>asynchronous operations configuration options.</td><td>a set of related configuration options defined below. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>enable asynchronous operation.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;ops_max</code></td><td>maximum number of expected simultaneous asynchronous operations.</td><td>an integer between 1 and 4096; default <code>1024</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;threads</code></td><td>the number of worker threads to service asynchronous requests. Each worker thread uses a session from the configured session_max.</td><td>an integer between 1 and 20; default <code>2</code>. </td></tr>
-<tr>
-<td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>cache_max_wait_ms</code></td><td>the maximum number of milliseconds an application thread will wait for space to be available in cache before giving up. Default will wait forever.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>

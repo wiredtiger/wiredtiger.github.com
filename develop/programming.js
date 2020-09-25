@@ -69,13 +69,6 @@ var programming =
       [ "Readonly configuration and multiple database handles", "readonly.html#readonly_handles", null ]
     ] ],
     [ "Signal handling", "signals.html", null ],
-    [ "Asynchronous operations", "async.html", [
-      [ "Configuring asynchronous operations", "async.html#async_config", null ],
-      [ "Allocating an asynchronous operations handle", "async.html#async_alloc", null ],
-      [ "Executing asynchronous operations", "async.html#async_operations", null ],
-      [ "Waiting for outstanding operations to complete", "async.html#async_flush", null ],
-      [ "Asynchronous operations and transactions", "async.html#async_transactions", null ]
-    ] ],
     [ "Backups", "backup.html", [
       [ "Backup from an application", "backup.html#backup_process", null ],
       [ "Backup from the command line", "backup.html#backup_util", null ],

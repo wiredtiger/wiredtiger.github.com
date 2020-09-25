@@ -66,13 +66,6 @@ var programming_lang_java =
       [ "Readonly configuration and LSM trees", "readonly_lang_java.html#readonly_lsm_lang_java", null ],
       [ "Readonly configuration and multiple database handles", "readonly_lang_java.html#readonly_handles_lang_java", null ]
     ] ],
-    [ "Asynchronous operations  in Java", "async_lang_java.html", [
-      [ "Configuring asynchronous operations", "async_lang_java.html#async_config_lang_java", null ],
-      [ "Allocating an asynchronous operations handle", "async_lang_java.html#async_alloc_lang_java", null ],
-      [ "Executing asynchronous operations", "async_lang_java.html#async_operations_lang_java", null ],
-      [ "Waiting for outstanding operations to complete", "async_lang_java.html#async_flush_lang_java", null ],
-      [ "Asynchronous operations and transactions", "async_lang_java.html#async_transactions_lang_java", null ]
-    ] ],
     [ "Backups  in Java", "backup_lang_java.html", [
       [ "Backup from an application", "backup_lang_java.html#backup_process_lang_java", null ],
       [ "Backup from the command line", "backup_lang_java.html#backup_util_lang_java", null ],
