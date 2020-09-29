@@ -24,9 +24,9 @@ var NAVTREEINDEX =
 "devdoc-xray.html",
 "group__wt.html#ga206aa7b3d554cb388480394bc5d7ab46",
 "group__wt.html#ga78209aa1be24d3631701ece8b1a31dea",
-"group__wt.html#gacf46b9dd314c216293141b26341b7b0e",
-"security.html",
-"tune_checksum.html"
+"group__wt.html#gacde793f3bd5ccaf91b970852ed64da32",
+"schema_lang_java.html#schema_intro_lang_java",
+"tune_capacity.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

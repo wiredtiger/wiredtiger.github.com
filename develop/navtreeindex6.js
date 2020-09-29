@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"schema_lang_java.html#schema_intro_lang_java":[0,4,5,0],
+"schema_lang_java.html#schema_key_and_value_formats_lang_java":[0,4,5,3],
 "security.html":[0,6,3],
 "security.html#absolute_path":[0,6,3,1],
 "security.html#directory_permissions":[0,6,3,0],
@@ -240,14 +242,12 @@ var NAVTREEINDEX6 =
 "tune_build_options.html":[0,3,34],
 "tune_bulk_load.html":[0,4,29],
 "tune_bulk_load.html":[0,3,35],
-"tune_cache.html":[0,4,30],
 "tune_cache.html":[0,3,36],
-"tune_cache.html#cache_eviction":[0,3,36,2],
+"tune_cache.html":[0,4,30],
 "tune_cache.html#cache_eviction":[0,4,30,2],
-"tune_cache.html#tuning_cache_resident":[0,3,36,1],
+"tune_cache.html#cache_eviction":[0,3,36,2],
 "tune_cache.html#tuning_cache_resident":[0,4,30,1],
-"tune_cache.html#tuning_cache_size":[0,4,30,0],
+"tune_cache.html#tuning_cache_resident":[0,3,36,1],
 "tune_cache.html#tuning_cache_size":[0,3,36,0],
-"tune_capacity.html":[0,4,31],
-"tune_capacity.html":[0,3,37]
+"tune_cache.html#tuning_cache_size":[0,4,30,0]
 };
