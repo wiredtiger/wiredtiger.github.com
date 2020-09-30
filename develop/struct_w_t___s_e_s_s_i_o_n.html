@@ -113,9 +113,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac85541ca42d7596857d9f50e03c78eb5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5">log_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format,...)</td></tr>
 <tr class="memdesc:ac85541ca42d7596857d9f50e03c78eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="message ">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called).  <a href="#ac85541ca42d7596857d9f50e03c78eb5">More...</a><br /></td></tr>
 <tr class="separator:ac85541ca42d7596857d9f50e03c78eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab21ec3055cade4d2682f162783314984"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984">rebalance</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *config)</td></tr>
-<tr class="memdesc:ab21ec3055cade4d2682f162783314984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rebalance a table or file, see <a class="el" href="rebalance.html">Rebalance</a>.  <a href="#ab21ec3055cade4d2682f162783314984">More...</a><br /></td></tr>
-<tr class="separator:ab21ec3055cade4d2682f162783314984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d24b02549009f78b7c6463da0247614"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *newuri, const char *config)</td></tr>
 <tr class="memdesc:a1d24b02549009f78b7c6463da0247614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="#a1d24b02549009f78b7c6463da0247614">More...</a><br /></td></tr>
 <tr class="separator:a1d24b02549009f78b7c6463da0247614"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1168,52 +1165,6 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If the session is not in a transaction <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found. ">WT_NOTFOUND</a> will be returned. </dd></dl>
-
-</div>
-</div>
-<a id="ab21ec3055cade4d2682f162783314984"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab21ec3055cade4d2682f162783314984">&#9670;&nbsp;</a></span>rebalance()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int WT_SESSION::rebalance </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
-          <td class="paramname"><em>session</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>uri</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>config</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Rebalance a table or file, see <a class="el" href="rebalance.html">Rebalance</a>. </p>
-<p>This method requires exclusive access to the specified data source(s). If any cursors are open with the specified name(s) or a data source is otherwise in use, the call will fail and return <code>EBUSY</code>.</p>
-<div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984">rebalance</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">uri</td><td>the current URI of the object, such as <code>"table:mytable"</code> </td></tr>
-    <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. No values currently permitted. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success, EBUSY if the object is not available for exclusive access, and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>

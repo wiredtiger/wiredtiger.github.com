@@ -14,7 +14,6 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "open_cursor", "struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d", null ],
     [ "prepare_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008", null ],
     [ "query_timestamp", "struct_w_t___s_e_s_s_i_o_n.html#aeec1349581b7f97fc90573550fff8b6b", null ],
-    [ "rebalance", "struct_w_t___s_e_s_s_i_o_n.html#ab21ec3055cade4d2682f162783314984", null ],
     [ "reconfigure", "struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6", null ],
     [ "rename", "struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614", null ],
     [ "reset", "struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787", null ],

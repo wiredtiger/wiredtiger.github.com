@@ -100,7 +100,6 @@ var programming_lang_java =
     [ "In-memory databases  in Java", "in_memory_lang_java.html", null ],
     [ "Join cursors  in Java", "cursor_join_lang_java.html", null ],
     [ "Log cursors  in Java", "cursor_log_lang_java.html", null ],
-    [ "Rebalance  in Java", "rebalance_lang_java.html", null ],
     [ "Track function calls  in Java", "operation_tracking_lang_java.html", null ],
     [ "Per-process shared caches  in Java", "shared_cache_lang_java.html", null ],
     [ "Statistics  in Java", "statistics_lang_java.html", [
