@@ -81,7 +81,7 @@ var programming_lang_java =
       [ "Checkpoints and file compaction", "checkpoint_lang_java.html#checkpoint_compaction_lang_java", null ]
     ] ],
     [ "Eviction  in Java", "eviction_lang_java.html", [
-      [ "Eviction overview", "eviction_lang_java.html#overview_lang_java", null ],
+      [ "Eviction overview", "eviction_lang_java.html#eviction_overview_lang_java", null ],
       [ "Clean eviction", "eviction_lang_java.html#clean_eviction_lang_java", null ],
       [ "History store eviction", "eviction_lang_java.html#hs_eviction_lang_java", null ],
       [ "Update restore eviction", "eviction_lang_java.html#update_restore_eviction_lang_java", null ],

@@ -1,11 +1,11 @@
 var index =
 [
-    [ "WiredTiger Architecture", "architecture.html", [
-      [ "Multi-core scaling", "architecture.html#multi_core", null ],
-      [ "Hot caches", "architecture.html#cache", null ],
-      [ "Making I/O more valuable", "architecture.html#io", null ],
-      [ "Production quality", "architecture.html#quality", null ],
-      [ "NoSQL and Open Source", "architecture.html#nosql", null ]
+    [ "WiredTiger Overview and Features", "overview.html", [
+      [ "Multi-core scaling", "overview.html#multi_core", null ],
+      [ "Hot caches", "overview.html#cache", null ],
+      [ "Making I/O more valuable", "overview.html#io", null ],
+      [ "Production quality", "overview.html#quality", null ],
+      [ "NoSQL and Open Source", "overview.html#nosql", null ]
     ] ],
     [ "Building and installing WiredTiger on POSIX", "build-posix.html", [
       [ "Building using Git and GitHub", "build-posix.html#posix_github", null ],
@@ -22,6 +22,8 @@ var index =
     ] ],
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "Writing WiredTiger applications  in Java", "programming_lang_java.html", "programming_lang_java" ],
+    [ "WiredTiger Architecture Guide", "arch-index.html", "arch-index" ],
+    [ "Tools and Techniques", "tool-index.html", "tool-index" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "WiredTiger Change Log", "md_changelog.html", null ],
@@ -79,6 +81,5 @@ var index =
       [ "Concurrency testing", "testing.html#testing_threads", null ],
       [ "Static analysis", "testing.html#testing_static", null ]
     ] ],
-    [ "WiredTiger community and contact information", "community.html", null ],
-    [ "Developer Documentation", "devdoc-index.html", "devdoc-index" ]
+    [ "WiredTiger community and contact information", "community.html", null ]
 ];

@@ -84,7 +84,7 @@ var programming =
       [ "Checkpoints and file compaction", "checkpoint.html#checkpoint_compaction", null ]
     ] ],
     [ "Eviction", "eviction.html", [
-      [ "Eviction overview", "eviction.html#overview", null ],
+      [ "Eviction overview", "eviction.html#eviction_overview", null ],
       [ "Clean eviction", "eviction.html#clean_eviction", null ],
       [ "History store eviction", "eviction.html#hs_eviction", null ],
       [ "Update restore eviction", "eviction.html#update_restore_eviction", null ],
