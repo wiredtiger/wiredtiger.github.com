@@ -3505,8 +3505,6 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160; checkpoint_retention</code></td><td>adjust log archiving to retain the log records of this number of checkpoints. Zero or one means perform normal archiving.</td><td>an integer between 0 and 1024; default <code>0</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;corruption_abort</code></td><td>if true, dump the core in the diagnostic mode on encountering the data corruption.</td><td>a boolean flag; default <code>true</code>. </td></tr>
-<tr>
 <td><code>&#160;&#160;&#160;&#160;cursor_copy</code></td><td>if true, use the system allocator to make a copy of any data returned by a cursor operation and return the copy instead. The copy is freed on the next cursor operation. This allows memory sanitizers to detect inappropriate references to memory owned by cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160; eviction</code></td><td>if true, modify internal algorithms to change skew to force history store eviction to happen more aggressively. This includes but is not limited to not skewing newest, not favoring leaf pages, and modifying the eviction score mechanism.</td><td>a boolean flag; default <code>false</code>. </td></tr>
