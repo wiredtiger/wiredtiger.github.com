@@ -35,6 +35,12 @@ var NAVTREEINDEX0 =
 "arch-index.html":[0,4],
 "arch-log-file.html":[0,4,11],
 "arch-logging.html":[0,4,10],
+"arch-logging.html#log_configuration":[0,4,10,1],
+"arch-logging.html#log_files":[0,4,10,0],
+"arch-logging.html#log_records":[0,4,10,2],
+"arch-logging.html#log_subsystem":[0,4,10,3],
+"arch-logging.html#log_threads":[0,4,10,4],
+"arch-logging.html#log_usage":[0,4,10,5],
 "arch-metadata.html":[0,4,12],
 "arch-python.html":[0,4,13],
 "arch-row.html":[0,4,14],
@@ -243,11 +249,5 @@ var NAVTREEINDEX0 =
 "ex_extending_8c-example.html":[4,4],
 "ex_extractor_8c-example.html":[4,5],
 "ex_file_system_8c-example.html":[4,6],
-"ex_hello_8c-example.html":[4,7],
-"ex_log_8c-example.html":[4,8],
-"ex_pack_8c-example.html":[4,9],
-"ex_schema_8c-example.html":[4,10],
-"ex_stat_8c-example.html":[4,11],
-"ex_thread_8c-example.html":[4,12],
-"examples.html":[4]
+"ex_hello_8c-example.html":[4,7]
 };

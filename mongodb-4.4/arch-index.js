@@ -23,7 +23,14 @@ var arch_index =
     [ "Eviction (Architecture Guide)", "arch-eviction.html", null ],
     [ "File System and Operating System Interface (Architecture Guide)", "arch-fs-os.html", null ],
     [ "History Store (Architecture Guide)", "arch-hs.html", null ],
-    [ "Logging (Architecture Guide)", "arch-logging.html", null ],
+    [ "Logging (Architecture Guide)", "arch-logging.html", [
+      [ "Log-related files in the database directory", "arch-logging.html#log_files", null ],
+      [ "Configuration choices and their implications", "arch-logging.html#log_configuration", null ],
+      [ "Log operations and records", "arch-logging.html#log_records", null ],
+      [ "Logging subsystem data structures and algorithms", "arch-logging.html#log_subsystem", null ],
+      [ "Internal Threads", "arch-logging.html#log_threads", null ],
+      [ "Using the log", "arch-logging.html#log_usage", null ]
+    ] ],
     [ "Log File Format (Architecture Guide)", "arch-log-file.html", null ],
     [ "Metadata (Architecture Guide)", "arch-metadata.html", null ],
     [ "Python API (Architecture Guide)", "arch-python.html", null ],
