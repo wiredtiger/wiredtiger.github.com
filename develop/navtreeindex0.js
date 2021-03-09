@@ -244,10 +244,10 @@ var NAVTREEINDEX0 =
 "eviction.html#update_restore_eviction":[0,3,17,3],
 "ex_access_8c-example.html":[4,0],
 "ex_call_center_8c-example.html":[4,1],
-"ex_cursor_8c-example.html":[4,2],
-"ex_encrypt_8c-example.html":[4,3],
-"ex_extending_8c-example.html":[4,4],
-"ex_extractor_8c-example.html":[4,5],
-"ex_file_system_8c-example.html":[4,6],
-"ex_hello_8c-example.html":[4,7]
+"ex_col_store_8c-example.html":[4,2],
+"ex_cursor_8c-example.html":[4,3],
+"ex_encrypt_8c-example.html":[4,4],
+"ex_extending_8c-example.html":[4,5],
+"ex_extractor_8c-example.html":[4,6],
+"ex_file_system_8c-example.html":[4,7]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"group__wt.html#gaf67215f83cbfe1fe2cf775bca4e1bda0":[1,0,551],
 "group__wt.html#gaf6f31e98a4b037443612d05c6f1442ab":[1,0,369],
 "group__wt.html#gaf749a43b2c3769500a7e29fc107d7fe1":[1,0,485],
 "group__wt.html#gaf83dad08fcd70c19041768e4d4dbbb84":[1,0,525],
@@ -83,7 +84,7 @@ var NAVTREEINDEX4 =
 "namespace.html#namespace_env":[0,3,11,0],
 "namespace.html#namespace_error":[0,3,11,3],
 "namespace.html#namespace_filesystem":[0,3,11,2],
-"nop_encrypt_8c-example.html":[4,13],
+"nop_encrypt_8c-example.html":[4,14],
 "operation_tracking.html":[0,3,22],
 "overview.html":[0,0],
 "overview.html#cache":[0,0,1],
@@ -101,7 +102,7 @@ var NAVTREEINDEX4 =
 "readonly.html#readonly_logging":[0,3,12,2],
 "readonly.html#readonly_lsm":[0,3,12,3],
 "readonly.html#readonly_recovery":[0,3,12,1],
-"rotn_encrypt_8c-example.html":[4,14],
+"rotn_encrypt_8c-example.html":[4,15],
 "schema.html":[0,3,5],
 "schema.html#diff_logged_non_logged_tables":[0,3,5,12],
 "schema.html#logged_non_logged_tables":[0,3,5,11],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ac55b0c42dc2eda2774cc2cf8668961fe":[1,1,8,15],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#acac24b7ad23022698ee8ef64be164727":[1,1,8,3],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae498b02cf83cdb644c2665c37917e785":[1,1,8,5],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae87ae081fa676db65a7e06fe03a20fc6":[1,1,8,32],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554":[1,1,8,10]
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae87ae081fa676db65a7e06fe03a20fc6":[1,1,8,32]
 };

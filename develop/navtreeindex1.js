@@ -1,10 +1,11 @@
 var NAVTREEINDEX1 =
 {
-"ex_log_8c-example.html":[4,8],
-"ex_pack_8c-example.html":[4,9],
-"ex_schema_8c-example.html":[4,10],
-"ex_stat_8c-example.html":[4,11],
-"ex_thread_8c-example.html":[4,12],
+"ex_hello_8c-example.html":[4,8],
+"ex_log_8c-example.html":[4,9],
+"ex_pack_8c-example.html":[4,10],
+"ex_schema_8c-example.html":[4,11],
+"ex_stat_8c-example.html":[4,12],
+"ex_thread_8c-example.html":[4,13],
 "examples.html":[4],
 "extensions.html":[0,3,26],
 "extensions.html":[0,3,9,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga48feb7515a448b62028171306c66eec6":[1,0,84],
 "group__wt.html#ga49204374e4b4734e1346f4e2b497d726":[1,0,136],
 "group__wt.html#ga493b0c8f476fad8ea5c481cc2e4d97da":[1,0,83],
-"group__wt.html#ga4956ab32b2a25e5bfda84279de69363c":[1,0,390],
-"group__wt.html#ga49db256bc3ed29097a38573b91232906":[1,0,43]
+"group__wt.html#ga4956ab32b2a25e5bfda84279de69363c":[1,0,390]
 };
