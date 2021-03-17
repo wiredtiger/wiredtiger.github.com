@@ -7,7 +7,7 @@ var NAVTREE =
     [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
     [ "Class Members", "functions.html", [
       [ "All", "functions.html", "functions_dup" ],
-      [ "Functions", "functions_func.html", null ],
+      [ "Functions", "functions_func.html", "functions_func" ],
       [ "Variables", "functions_vars.html", null ],
       [ "Enumerator", "functions_eval.html", null ]
     ] ],
@@ -20,12 +20,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"custom_data_sources.html#custom_ds_create",
-"group__wt.html#ga256a6208e7b8d7e48a22666796b65d00",
-"group__wt.html#ga847d1ce0ec89f9e34353080e61efb6dc",
-"group__wt.html#gaf2709f55d4ee4797b8a1f1c568d23f0e",
-"struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455",
-"upgrading.html#version_135"
+"classcom_1_1wiredtiger_1_1db_1_1_pack_format_input_stream.html#af69277daec69ccf4ee7fe25b806d2514",
+"devdoc-glossary.html",
+"group__wt.html#ga245f046b1545b54ed669c9fba8532cc3",
+"group__wt.html#ga8418218e828dc7a6cf298ef2cfd929a3",
+"group__wt.html#gaf1f0bc4ced125c4993e8a76c649dddcf",
+"struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f",
+"upgrade.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
