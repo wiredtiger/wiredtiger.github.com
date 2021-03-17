@@ -2,6 +2,7 @@ var examples =
 [
     [ "ex_access.c", "ex_access_8c-example.html", null ],
     [ "ex_call_center.c", "ex_call_center_8c-example.html", null ],
+    [ "ex_col_store.c", "ex_col_store_8c-example.html", null ],
     [ "ex_cursor.c", "ex_cursor_8c-example.html", null ],
     [ "ex_encrypt.c", "ex_encrypt_8c-example.html", null ],
     [ "ex_extending.c", "ex_extending_8c-example.html", null ],
