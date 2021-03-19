@@ -6,5 +6,5 @@ var classcom_1_1wiredtiger_1_1db_1_1_modify =
     [ "delete", "classcom_1_1wiredtiger_1_1db_1_1_modify.html#ae7fa64db8831c80da2ec805a9f9fdb61", null ],
     [ "getOffset", "classcom_1_1wiredtiger_1_1db_1_1_modify.html#ae7e3bac151819a08d35cb1c489a9fa14", null ],
     [ "setOffset", "classcom_1_1wiredtiger_1_1db_1_1_modify.html#aa1ec17155155afda2c9dbd332ff0e8a0", null ],
-    [ "swigCMemOwn", "classcom_1_1wiredtiger_1_1db_1_1_modify.html#ab0838ea9aa56918579fda7cd3ee02389", null ]
+    [ "swigCMemOwn", "classcom_1_1wiredtiger_1_1db_1_1_modify.html#abab346172b5aef1421d53ffe7d6f037a", null ]
 ];
