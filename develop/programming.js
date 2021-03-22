@@ -142,6 +142,7 @@ var programming =
       [ "Transactions", "custom_data_sources.html#custom_data_source_transactions", null ]
     ] ],
     [ "Custom File Systems", "custom_file_systems.html", null ],
+    [ "Custom Tiered Storage sources", "custom_storage_sources.html", "custom_storage_sources" ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Simulating workloads with wtperf", "wtperf.html", [
       [ "Monitoring wtperf", "wtperf.html#monitor", null ],

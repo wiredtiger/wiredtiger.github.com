@@ -177,7 +177,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="textblock"><p>All data operations are performed in the context of a <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a>. </p>
 <p>This encapsulates the thread and transactional context of the operation.</p>
 <p><b>Thread safety:</b> A <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION. ">WT_SESSION</a> handle is not usually shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#_a0">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a15">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a2">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a1">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a4">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a1">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#_a2">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a2">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a2">rotn_encrypt.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#_a2">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#_a0">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#_a0">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a1">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#_a0">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a15">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a2">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#_a1">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a1">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a4">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#_a1">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#_a1">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#_a1">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#_a2">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a1">ex_stat.c</a>, <a class="el" href="ex_storage_source_8c-example.html#_a3">ex_storage_source.c</a>, <a class="el" href="ex_thread_8c-example.html#_a2">ex_thread.c</a>, <a class="el" href="nop_encrypt_8c-example.html#_a2">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#_a2">rotn_encrypt.c</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac6f0630cb70bb057aa4512f7888dc701"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6f0630cb70bb057aa4512f7888dc701">&#9670;&nbsp;</a></span>alter()</h2>
@@ -374,7 +374,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_stat_8c-example.html#a23">ex_stat.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_backup_8c-example.html#a15">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a15">ex_backup_block.c</a>, and <a class="el" href="ex_stat_8c-example.html#a23">ex_stat.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -699,6 +699,20 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
+<td><code>tiered_storage = (</code></td><td>configure a storage source for this table.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;auth_token</code></td><td>authentication string identifier.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;bucket</code></td><td>The bucket indicating the location for this table.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;local_retention</code></td><td>time in seconds to retain data on tiered storage on the local tier for faster read access.</td><td>an integer between 0 and 10000; default <code>300</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or custom storage source name created with WT_CONNECTION::add_storage_source. See <a class="el" href="custom_storage_sources.html">Custom Tiered Storage sources</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160; object_target_size</code></td><td>the approximate size of objects before creating them on the tiered storage tier.</td><td>an integer between 100K and 10TB; default <code>10M</code>. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
+<tr>
 <td><code>type</code></td><td>set the type of data source used to store a column group, index or simple table. By default, a <code>"file:"</code> URI is derived from the object name. The <code>type</code> configuration can be used to switch to a different data source, such as LSM or an extension configured by the application.</td><td>a string; default <code>file</code>. </td></tr>
 <tr>
 <td><code>value_format</code></td><td>the format of the data packed into value items. See <a class="el" href="schema.html#schema_format_types">Format types</a> for details. By default, the value_format is <code>'u'</code> and applications use a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structure to manipulate raw byte arrays. Value items of type 't' are bitfields, and when configured with record number type keys, will be stored using a fixed-length store.</td><td>a format string; default <code>u</code>. </td></tr>
@@ -712,7 +726,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a5">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a5">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a19">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a18">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a29">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a19">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a46">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a26">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a5">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a7">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a11">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a5">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a14">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a14">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#a5">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a19">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a18">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a29">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a19">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a46">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a26">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a5">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a7">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a11">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1100,7 +1114,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a6">ex_access.c</a>, <a class="el" href="ex_call_center_8c-example.html#a6">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a2">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a19">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a18">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a11">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a47">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a4">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a6">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a5">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a4">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a6">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a2">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a2">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#a6">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a2">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a19">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a18">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a11">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a47">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a4">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a6">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a5">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a4">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1698,7 +1712,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_backup_8c-example.html#a10">ex_backup.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a556046adc68a33bd317865c6a8d9ad69"></a>
