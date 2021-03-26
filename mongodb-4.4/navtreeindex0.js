@@ -207,6 +207,10 @@ var NAVTREEINDEX0 =
 "custom_extractors.html#custom_extractors_notes":[0,3,28,1],
 "custom_extractors.html#custom_extractors_raw":[0,3,28,2],
 "custom_file_systems.html":[0,3,30],
+"custom_storage_sources.html":[0,3,31],
+"custom_storage_sources.html#storage_examples":[0,3,31,2],
+"custom_storage_sources.html#storage_overview":[0,3,31,0],
+"custom_storage_sources.html#storage_parameters":[0,3,31,1],
 "data_sources.html":[0,3,2,7],
 "data_sources.html#data_builtin":[0,3,2,7,0],
 "data_sources.html#data_files":[0,3,2,7,0,0],
@@ -243,11 +247,7 @@ var NAVTREEINDEX0 =
 "eviction.html#hs_eviction":[0,3,17,2],
 "eviction.html#update_restore_eviction":[0,3,17,3],
 "ex_access_8c-example.html":[4,0],
-"ex_call_center_8c-example.html":[4,1],
-"ex_col_store_8c-example.html":[4,2],
-"ex_cursor_8c-example.html":[4,3],
-"ex_encrypt_8c-example.html":[4,4],
-"ex_extending_8c-example.html":[4,5],
-"ex_extractor_8c-example.html":[4,6],
-"ex_file_system_8c-example.html":[4,7]
+"ex_backup_8c-example.html":[4,1],
+"ex_backup_block_8c-example.html":[4,2],
+"ex_call_center_8c-example.html":[4,3]
 };
