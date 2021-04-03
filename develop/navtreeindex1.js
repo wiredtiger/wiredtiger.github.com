@@ -11,8 +11,7 @@ var NAVTREEINDEX1 =
 "ex_pack_8c-example.html":[4,12],
 "ex_schema_8c-example.html":[4,13],
 "ex_stat_8c-example.html":[4,14],
-"ex_storage_source_8c-example.html":[4,15],
-"ex_thread_8c-example.html":[4,16],
+"ex_thread_8c-example.html":[4,15],
 "examples.html":[4],
 "extensions.html":[0,3,26],
 "extensions.html":[0,3,31,3],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga469b9284fc40ab58e2e51c7728eed1c9":[1,0,576],
 "group__wt.html#ga46b1452494200a476905134622073b09":[1,0,587],
 "group__wt.html#ga46e21553168cee4df6fde841a3cd72c2":[1,0,265],
-"group__wt.html#ga4710dc41dd8f6487cfbd9411a1f48c5c":[1,0,477]
+"group__wt.html#ga4710dc41dd8f6487cfbd9411a1f48c5c":[1,0,477],
+"group__wt.html#ga472ffe8ae92d8bb083d497f73f58187c":[1,0,274]
 };
