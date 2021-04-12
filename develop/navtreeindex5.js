@@ -158,6 +158,7 @@ var NAVTREEINDEX5 =
 "tune_zone_reclaim.html":[0,3,49],
 "upgrade.html":[0,3,25],
 "upgrading.html":[0,9],
+"upgrading.html#version_1000":[0,9,0],
 "upgrading.html#version_13":[0,9,38],
 "upgrading.html#version_135":[0,9,37],
 "upgrading.html#version_136":[0,9,36],
@@ -196,7 +197,6 @@ var NAVTREEINDEX5 =
 "upgrading.html#version_300":[0,9,3],
 "upgrading.html#version_310":[0,9,2],
 "upgrading.html#version_321":[0,9,1],
-"upgrading.html#version_322":[0,9,0],
 "wtperf.html":[0,3,33],
 "wtperf.html#config":[0,3,33,1],
 "wtperf.html#monitor":[0,3,33,0]
