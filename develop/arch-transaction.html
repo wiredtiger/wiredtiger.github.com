@@ -140,9 +140,6 @@ Timestamps</h2>
 Visibility</h2>
 <p>The visibility of the transactions in WiredTiger considers both the operations' transaction ids and timestamps. The operation is visible only when both its transaction id and its timestamp are visible to the reading transaction.</p>
 <p>To read a key, WiredTiger first traverses all the updates of that key still in memory until a visible update is found. The in-memory updates in WiredTiger are organized as a singly linked list with the newest update at the head, called the update chain. If no value is visible on the update chain, it checks the version on the disk image, which is the version that was chosen to be written to disk in the last reconciliation. If it is still invisible, WiredTiger will search the history store to check if there is a version visible to the reader there.</p>
-<p>The repeated read guarantee under snapshot isolation may break in one case if the timestamps committed to the updates are out of order, e.g,</p>
-<p><code>U@20 -&gt; U@30 -&gt; U@15</code></p>
-<p>In the above example, reading with timestamp 15 doesn't guarantee to return the third update. In some cases, users may read the second update U@30 if it is moved to the history store.</p>
 <h2><a class="anchor" id="Durability"></a>
 Durability</h2>
 <p>WiredTiger transactions support commit level durability and checkpoint level durability. An operation is commit level durable if logging is enabled on the table (<a class="el" href="arch-logging.html">Logging (Architecture Guide)</a>). After it has been successfully committed, the operation is guaranteed to survive restart. An operation will only survive across restart under checkpoint durability if it is included in the last successful checkpoint.</p>
