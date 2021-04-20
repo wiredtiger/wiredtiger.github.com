@@ -190,7 +190,6 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_EVICTION_FORCE_HS_FAIL", "group__wt.html#ga72b3a71f9952b718b410a62388c575d1", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_FORCE_HS_SUCCESS", "group__wt.html#ga85959acc371747331d2c9eb62eea85e2", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_FORCE_RETUNE", "group__wt.html#ga706424f2d9f53d865fa58fd90442d50c", null ],
-    [ "WT_STAT_CONN_CACHE_EVICTION_FORCE_ROLLBACK", "group__wt.html#ga8d75414913fc6b95190234dd9438891d", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_GET_REF", "group__wt.html#ga800df37c105304da8e531e44a4188148", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_GET_REF_EMPTY", "group__wt.html#gaa6b5e0c8a9de233186cafa92c9e8b94c", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_GET_REF_EMPTY2", "group__wt.html#ga40511caf4893be3c6c8c3b73f0cd6810", null ],
