@@ -21,9 +21,9 @@ var NAVTREEINDEX =
 "admin.html",
 "ex_col_store_8c-example.html",
 "group__wt.html#ga476c96e900f1a66becc78adcd46c165b",
-"group__wt.html#ga94f3c473b10646f7ed3d047e275786db",
-"group__wt.html#gaf358561ffe949073c4c1aa1f56b2edb5",
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aa465dc00b4fdcb127963da236f322652"
+"group__wt.html#ga94e4c63cd5cc0a714ede12431a8e228c",
+"group__wt.html#gaf27320397284b8ba82f96f777ef68f4e",
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7ed2b2297783ea88c0f513721ff54b7c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
