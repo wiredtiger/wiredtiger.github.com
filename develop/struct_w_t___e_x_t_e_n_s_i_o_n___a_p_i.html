@@ -113,6 +113,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae498b02cf83cdb644c2665c37917e785"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae498b02cf83cdb644c2665c37917e785">config_parser_open_arg</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config, <a class="el" href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a> **config_parserp)</td></tr>
 <tr class="memdesc:ae498b02cf83cdb644c2665c37917e785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a handle that can be used to parse or create configuration strings compatible with WiredTiger APIs.  <a href="#ae498b02cf83cdb644c2665c37917e785">More...</a><br /></td></tr>
 <tr class="separator:ae498b02cf83cdb644c2665c37917e785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2faf34830a57d69b6e7e8ae6310e69f7"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a2faf34830a57d69b6e7e8ae6310e69f7">file_system_get</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> **file_system)</td></tr>
+<tr class="memdesc:a2faf34830a57d69b6e7e8ae6310e69f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file system abstraction used by WiredTiger.  <a href="#a2faf34830a57d69b6e7e8ae6310e69f7">More...</a><br /></td></tr>
+<tr class="separator:a2faf34830a57d69b6e7e8ae6310e69f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeaf9e7dd804c528633a5570a4409c7f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f">metadata_insert</a> )(<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *key, const char *value)</td></tr>
 <tr class="memdesc:afeaf9e7dd804c528633a5570a4409c7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a row into the metadata if it does not already exist.  <a href="#afeaf9e7dd804c528633a5570a4409c7f">More...</a><br /></td></tr>
 <tr class="separator:afeaf9e7dd804c528633a5570a4409c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -386,6 +389,31 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <div class="fragment"><div class="line">        (void)wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">err_printf</a>(wt_api, session, <span class="stringliteral">&quot;extension error message: %s&quot;</span>, msg);</div></div><!-- fragment --><dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a8">ex_file_system.c</a>, <a class="el" href="nop_encrypt_8c-example.html#a3">nop_encrypt.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a3">rotn_encrypt.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a id="a2faf34830a57d69b6e7e8ae6310e69f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2faf34830a57d69b6e7e8ae6310e69f7">&#9670;&nbsp;</a></span>file_system_get</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EXTENSION_API::file_system_get) (<a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> **file_system)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the file system abstraction used by WiredTiger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wt_api</td><td>the extension handle </td></tr>
+    <tr><td class="paramname">session</td><td>the session handle (or NULL if none available) </td></tr>
+    <tr><td class="paramname">file_system</td><td>the returned file system handle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If called from an extension's initialization routine, this may return WT_NOTFOUND if the file system has not yet been established.</dd></dl>
+<div class="fragment"><div class="line">            <span class="comment">/*</span></div><div class="line"><span class="comment">             * Insert a new WiredTiger metadata record.</span></div><div class="line"><span class="comment">             */</span></div><div class="line">            <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;datasource_uri&quot;</span>;</div><div class="line">            <span class="keyword">const</span> <span class="keywordtype">char</span> *value = <span class="stringliteral">&quot;data source uri&#39;s record&quot;</span>;</div><div class="line"></div><div class="line">            error_check(wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f">metadata_insert</a>(wt_api, session, key, value));</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a638754053ec9ed74ded16e97b78849ca"></a>
