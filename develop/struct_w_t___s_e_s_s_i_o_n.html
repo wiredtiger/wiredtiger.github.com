@@ -691,25 +691,19 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>split_pct</code></td><td>the Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size.</td><td>an integer between 50 and 100; default <code>90</code>. </td></tr>
 <tr>
-<td><code>tiered = (</code></td><td>options only relevant for tiered data sources.</td><td>a set of related configuration options defined below. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;chunk_size</code></td><td>the maximum size of the hot chunk of tiered tree. This limit is soft - it is possible for chunks to be temporarily larger than this value.</td><td>an integer greater than or equal to 1M; default <code>1GB</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;tiers</code></td><td>list of data sources to combine into a tiered storage structure.</td><td>a list of strings; default empty. </td></tr>
-<tr>
-<td><code> )</code></td><td></td><td></td></tr>
-<tr>
 <td><code>tiered_storage = (</code></td><td>configure a storage source for this table.</td><td>a set of related configuration options defined below. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;auth_token</code></td><td>authentication string identifier.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;bucket</code></td><td>The bucket indicating the location for this table.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bucket</code></td><td>the bucket indicating the location for this table.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;bucket_prefix</code></td><td>the unique bucket prefix for this table.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;local_retention</code></td><td>time in seconds to retain data on tiered storage on the local tier for faster read access.</td><td>an integer between 0 and 10000; default <code>300</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or custom storage source name created with WT_CONNECTION::add_storage_source. See <a class="el" href="custom_storage_sources.html">Custom Tiered Storage sources</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>permitted values are <code>"none"</code> or custom storage source name created with WT_CONNECTION::add_storage_source. See <a class="el" href="custom_storage_sources.html">Custom Tiered Storage sources</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; object_target_size</code></td><td>the approximate size of objects before creating them on the tiered storage tier.</td><td>an integer between 100K and 10TB; default <code>10M</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;object_target_size</code></td><td>the approximate size of objects before creating them on the tiered storage tier.</td><td>an integer between 100K and 10TB; default <code>10M</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
