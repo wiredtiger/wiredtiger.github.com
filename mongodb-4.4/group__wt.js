@@ -582,6 +582,7 @@ var group__wt =
     [ "WT_STAT_CONN_TXN_READ_RACE_PREPARE_UPDATE", "group__wt.html#ga383c6857d8a70a747f2f5584b5cca035", null ],
     [ "WT_STAT_CONN_TXN_RELEASE_BLOCKED", "group__wt.html#ga52df57d3185b8f38832d3a38584ef6a0", null ],
     [ "WT_STAT_CONN_TXN_ROLLBACK", "group__wt.html#gac59719438965d6f2f0c89df53676680b", null ],
+    [ "WT_STAT_CONN_TXN_ROLLBACK_TO_STABLE_RUNNING", "group__wt.html#gaa0e2f6a54ff799ab0f250a851547c1c8", null ],
     [ "WT_STAT_CONN_TXN_RTS", "group__wt.html#ga1c5c3f035c634a9a53dfd09bb21f7944", null ],
     [ "WT_STAT_CONN_TXN_RTS_HS_REMOVED", "group__wt.html#gaf749a43b2c3769500a7e29fc107d7fe1", null ],
     [ "WT_STAT_CONN_TXN_RTS_HS_RESTORE_TOMBSTONES", "group__wt.html#ga0ee079d59f8fb33eee857fff5ddbb32e", null ],
