@@ -15,7 +15,6 @@ var examples =
     [ "ex_pack.c", "ex_pack_8c-example.html", null ],
     [ "ex_schema.c", "ex_schema_8c-example.html", null ],
     [ "ex_stat.c", "ex_stat_8c-example.html", null ],
-    [ "ex_storage_source.c", "ex_storage_source_8c-example.html", null ],
     [ "ex_thread.c", "ex_thread_8c-example.html", null ],
     [ "nop_encrypt.c", "nop_encrypt_8c-example.html", null ],
     [ "rotn_encrypt.c", "rotn_encrypt_8c-example.html", null ]

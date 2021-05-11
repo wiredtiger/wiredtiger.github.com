@@ -26,9 +26,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 10.0.0</span>
+   &#160;<span id="projectnumber">Version 10.0.1</span>
    </div>
-   <div id="projectbrief"><!-- 10.0.0 --></div>
+   <div id="projectbrief"><!-- 10.0.1 --></div>
   </td>
  </tr>
  </tbody>
@@ -582,10 +582,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab38cd08d13c57e89d5876459d09bc05b">WT_STAT_CONN_CACHE_EVICTION_FORCE_FAIL_TIME</a></td></tr>
 <tr class="memdesc:gab38cd08d13c57e89d5876459d09bc05b"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: forced eviction - pages selected unable to be evicted time <br /></td></tr>
 <tr class="separator:gab38cd08d13c57e89d5876459d09bc05b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8d75414913fc6b95190234dd9438891d"><td class="memItemLeft" align="right" valign="top"><a id="ga8d75414913fc6b95190234dd9438891d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8d75414913fc6b95190234dd9438891d">WT_STAT_CONN_CACHE_EVICTION_FORCE_ROLLBACK</a></td></tr>
-<tr class="memdesc:ga8d75414913fc6b95190234dd9438891d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: forced eviction - session returned rollback error while force evicting due to being oldest <br /></td></tr>
-<tr class="separator:ga8d75414913fc6b95190234dd9438891d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaa0285e2524dfb34262a7a8637a86713"><td class="memItemLeft" align="right" valign="top"><a id="gaaa0285e2524dfb34262a7a8637a86713"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaaa0285e2524dfb34262a7a8637a86713">WT_STAT_CONN_CACHE_HAZARD_CHECKS</a></td></tr>
 <tr class="memdesc:gaaa0285e2524dfb34262a7a8637a86713"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: hazard pointer check calls <br /></td></tr>
@@ -1606,6 +1602,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaef9d66fc30c30e5ecc2a775bdfc1e8b3">WT_STAT_CONN_TXN_RTS_UPD_ABORTED</a></td></tr>
 <tr class="memdesc:gaef9d66fc30c30e5ecc2a775bdfc1e8b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable updates aborted <br /></td></tr>
 <tr class="separator:gaef9d66fc30c30e5ecc2a775bdfc1e8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac80f4d772c21331eea472cff5d82697c"><td class="memItemLeft" align="right" valign="top"><a id="gac80f4d772c21331eea472cff5d82697c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac80f4d772c21331eea472cff5d82697c">WT_STAT_CONN_TXN_SESSIONS_WALKED</a></td></tr>
+<tr class="memdesc:gac80f4d772c21331eea472cff5d82697c"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: sessions scanned in each walk of concurrent sessions <br /></td></tr>
+<tr class="separator:gac80f4d772c21331eea472cff5d82697c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga25777c1773b5be81573a121ac29b4d52"><td class="memItemLeft" align="right" valign="top"><a id="ga25777c1773b5be81573a121ac29b4d52"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga25777c1773b5be81573a121ac29b4d52">WT_STAT_CONN_TXN_SET_TS</a></td></tr>
 <tr class="memdesc:ga25777c1773b5be81573a121ac29b4d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: set timestamp calls <br /></td></tr>
@@ -1642,6 +1642,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1eeabc1852a1dde2390f5b2c1dd4cda7">WT_STAT_CONN_TXN_CHECKPOINT_RUNNING</a></td></tr>
 <tr class="memdesc:ga1eeabc1852a1dde2390f5b2c1dd4cda7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint currently running <br /></td></tr>
 <tr class="separator:ga1eeabc1852a1dde2390f5b2c1dd4cda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9361bcdc11364d520ca71d5c9be89b75"><td class="memItemLeft" align="right" valign="top"><a id="ga9361bcdc11364d520ca71d5c9be89b75"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9361bcdc11364d520ca71d5c9be89b75">WT_STAT_CONN_TXN_CHECKPOINT_RUNNING_HS</a></td></tr>
+<tr class="memdesc:ga9361bcdc11364d520ca71d5c9be89b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint currently running for history store file <br /></td></tr>
+<tr class="separator:ga9361bcdc11364d520ca71d5c9be89b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaee8805d58d2f0455e8e229b9fd40c1ec"><td class="memItemLeft" align="right" valign="top"><a id="gaee8805d58d2f0455e8e229b9fd40c1ec"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaee8805d58d2f0455e8e229b9fd40c1ec">WT_STAT_CONN_TXN_CHECKPOINT_GENERATION</a></td></tr>
 <tr class="memdesc:gaee8805d58d2f0455e8e229b9fd40c1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint generation <br /></td></tr>
@@ -1814,6 +1818,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad4a6cc370550ba33a15edf6070d15546">WT_STAT_CONN_CACHE_EVICTION_CHECKPOINT</a></td></tr>
 <tr class="memdesc:gad4a6cc370550ba33a15edf6070d15546"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint blocked page eviction <br /></td></tr>
 <tr class="separator:gad4a6cc370550ba33a15edf6070d15546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf3a3bcf21e9d9701695b789744f28191"><td class="memItemLeft" align="right" valign="top"><a id="gaf3a3bcf21e9d9701695b789744f28191"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf3a3bcf21e9d9701695b789744f28191">WT_STAT_CONN_CACHE_EVICTION_BLOCKED_CHECKPOINT_HS</a></td></tr>
+<tr class="memdesc:gaf3a3bcf21e9d9701695b789744f28191"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint of history store file blocked non-history store page eviction <br /></td></tr>
+<tr class="separator:gaf3a3bcf21e9d9701695b789744f28191"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga16c72fa3964a29a346a29f4241b8a00e"><td class="memItemLeft" align="right" valign="top"><a id="ga16c72fa3964a29a346a29f4241b8a00e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga16c72fa3964a29a346a29f4241b8a00e">WT_STAT_CONN_CACHE_EVICTION_TARGET_PAGE_LT10</a></td></tr>
 <tr class="memdesc:ga16c72fa3964a29a346a29f4241b8a00e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction walk target pages histogram - 0-9 <br /></td></tr>
@@ -1886,14 +1894,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga096e57bb11644cb4f600141fdefb1614">WT_STAT_CONN_CACHE_HS_ORDER_LOSE_DURABLE_TIMESTAMP</a></td></tr>
 <tr class="memdesc:ga096e57bb11644cb4f600141fdefb1614"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table out-of-order resolved updates that lose their durable timestamp <br /></td></tr>
 <tr class="separator:ga096e57bb11644cb4f600141fdefb1614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3565f23a1f6d3ab1422976651587e3c6"><td class="memItemLeft" align="right" valign="top"><a id="ga3565f23a1f6d3ab1422976651587e3c6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3565f23a1f6d3ab1422976651587e3c6">WT_STAT_CONN_CACHE_HS_ORDER_FIXUP_MOVE</a></td></tr>
-<tr class="memdesc:ga3565f23a1f6d3ab1422976651587e3c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table out-of-order updates that were fixed up by moving existing records <br /></td></tr>
-<tr class="separator:ga3565f23a1f6d3ab1422976651587e3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8c75e9b25ca49e922d44f43a4c115c92"><td class="memItemLeft" align="right" valign="top"><a id="ga8c75e9b25ca49e922d44f43a4c115c92"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8c75e9b25ca49e922d44f43a4c115c92">WT_STAT_CONN_CACHE_HS_ORDER_FIXUP_INSERT</a></td></tr>
-<tr class="memdesc:ga8c75e9b25ca49e922d44f43a4c115c92"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table out-of-order updates that were fixed up during insertion <br /></td></tr>
-<tr class="separator:ga8c75e9b25ca49e922d44f43a4c115c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd89d2b5dc963f876b79405802e378c9"><td class="memItemLeft" align="right" valign="top"><a id="gabd89d2b5dc963f876b79405802e378c9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabd89d2b5dc963f876b79405802e378c9">WT_STAT_CONN_CACHE_HS_ORDER_REINSERT</a></td></tr>
+<tr class="memdesc:gabd89d2b5dc963f876b79405802e378c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table out-of-order updates that were fixed up by reinserting with the fixed timestamp <br /></td></tr>
+<tr class="separator:gabd89d2b5dc963f876b79405802e378c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga78209aa1be24d3631701ece8b1a31dea"><td class="memItemLeft" align="right" valign="top"><a id="ga78209aa1be24d3631701ece8b1a31dea"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga78209aa1be24d3631701ece8b1a31dea">WT_STAT_CONN_CACHE_HS_READ</a></td></tr>
 <tr class="memdesc:ga78209aa1be24d3631701ece8b1a31dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table reads <br /></td></tr>
@@ -1922,10 +1926,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga580b3ceeaa1103892fb42a68f4f2166c">WT_STAT_CONN_CACHE_HS_KEY_TRUNCATE_ONPAGE_REMOVAL</a></td></tr>
 <tr class="memdesc:ga580b3ceeaa1103892fb42a68f4f2166c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table truncation to remove range of updates due to key being removed from the data page during reconciliation <br /></td></tr>
 <tr class="separator:ga580b3ceeaa1103892fb42a68f4f2166c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac4e330788db40fa65f6aea1b9c2c8b13"><td class="memItemLeft" align="right" valign="top"><a id="gac4e330788db40fa65f6aea1b9c2c8b13"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac4e330788db40fa65f6aea1b9c2c8b13">WT_STAT_CONN_CACHE_HS_KEY_TRUNCATE_NON_TS</a></td></tr>
-<tr class="memdesc:gac4e330788db40fa65f6aea1b9c2c8b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table truncation to remove range of updates due to non timestamped update on data page <br /></td></tr>
-<tr class="separator:gac4e330788db40fa65f6aea1b9c2c8b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59c334734c52660ffd64a718aee0a5ae"><td class="memItemLeft" align="right" valign="top"><a id="ga59c334734c52660ffd64a718aee0a5ae"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga59c334734c52660ffd64a718aee0a5ae">WT_STAT_CONN_CACHE_HS_ORDER_REMOVE</a></td></tr>
+<tr class="memdesc:ga59c334734c52660ffd64a718aee0a5ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table truncation to remove range of updates due to out-of-order timestamp update on data page <br /></td></tr>
+<tr class="separator:ga59c334734c52660ffd64a718aee0a5ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaaa6c5d9d3b755ec4dbbb64ce5594984"><td class="memItemLeft" align="right" valign="top"><a id="gaaaa6c5d9d3b755ec4dbbb64ce5594984"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaaaa6c5d9d3b755ec4dbbb64ce5594984">WT_STAT_CONN_CACHE_HS_WRITE_SQUASH</a></td></tr>
 <tr class="memdesc:gaaaa6c5d9d3b755ec4dbbb64ce5594984"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table writes requiring squashed modifies <br /></td></tr>
@@ -2030,6 +2034,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab0a60b0b8b29f855ac68283edc70b1db">WT_STAT_CONN_CURSOR_SKIP_HS_CUR_POSITION</a></td></tr>
 <tr class="memdesc:gab0a60b0b8b29f855ac68283edc70b1db"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of entries skipped to position the history store cursor <br /></td></tr>
 <tr class="separator:gab0a60b0b8b29f855ac68283edc70b1db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa2c972e3f9b3c8ea664abbc3f1ff54c4"><td class="memItemLeft" align="right" valign="top"><a id="gaa2c972e3f9b3c8ea664abbc3f1ff54c4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa2c972e3f9b3c8ea664abbc3f1ff54c4">WT_STAT_CONN_CURSOR_SEARCH_NEAR_PREFIX_FAST_PATHS</a></td></tr>
+<tr class="memdesc:gaa2c972e3f9b3c8ea664abbc3f1ff54c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of times a search near has exited due to prefix config <br /></td></tr>
+<tr class="separator:gaa2c972e3f9b3c8ea664abbc3f1ff54c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6dc1c0e42493ade1dac8ab7c88827b9e"><td class="memItemLeft" align="right" valign="top"><a id="ga6dc1c0e42493ade1dac8ab7c88827b9e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6dc1c0e42493ade1dac8ab7c88827b9e">WT_STAT_CONN_CURSOR_NEXT_HS_TOMBSTONE</a></td></tr>
 <tr class="memdesc:ga6dc1c0e42493ade1dac8ab7c88827b9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: cursor next calls that skip due to a globally visible history store tombstone <br /></td></tr>
@@ -2663,6 +2671,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga02878b5a32a66036a37ef072b9c6ffbc">WT_STAT_DSRC_CACHE_EVICTION_CHECKPOINT</a></td></tr>
 <tr class="memdesc:ga02878b5a32a66036a37ef072b9c6ffbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint blocked page eviction <br /></td></tr>
 <tr class="separator:ga02878b5a32a66036a37ef072b9c6ffbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac5d3524e70bc1ebfa55751aef98c678"><td class="memItemLeft" align="right" valign="top"><a id="gaac5d3524e70bc1ebfa55751aef98c678"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaac5d3524e70bc1ebfa55751aef98c678">WT_STAT_DSRC_CACHE_EVICTION_BLOCKED_CHECKPOINT_HS</a></td></tr>
+<tr class="memdesc:gaac5d3524e70bc1ebfa55751aef98c678"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint of history store file blocked non-history store page eviction <br /></td></tr>
+<tr class="separator:gaac5d3524e70bc1ebfa55751aef98c678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga922cff992f212271f62014228d362e42"><td class="memItemLeft" align="right" valign="top"><a id="ga922cff992f212271f62014228d362e42"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga922cff992f212271f62014228d362e42">WT_STAT_DSRC_CACHE_EVICTION_TARGET_PAGE_LT10</a></td></tr>
 <tr class="memdesc:ga922cff992f212271f62014228d362e42"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction walk target pages histogram - 0-9 <br /></td></tr>
@@ -2735,14 +2747,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae038a28d4cb936df7c390fbb46341bc3">WT_STAT_DSRC_CACHE_HS_ORDER_LOSE_DURABLE_TIMESTAMP</a></td></tr>
 <tr class="memdesc:gae038a28d4cb936df7c390fbb46341bc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table out-of-order resolved updates that lose their durable timestamp <br /></td></tr>
 <tr class="separator:gae038a28d4cb936df7c390fbb46341bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadf36301aca968773b4c4688a58e1e0f1"><td class="memItemLeft" align="right" valign="top"><a id="gadf36301aca968773b4c4688a58e1e0f1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadf36301aca968773b4c4688a58e1e0f1">WT_STAT_DSRC_CACHE_HS_ORDER_FIXUP_MOVE</a></td></tr>
-<tr class="memdesc:gadf36301aca968773b4c4688a58e1e0f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table out-of-order updates that were fixed up by moving existing records <br /></td></tr>
-<tr class="separator:gadf36301aca968773b4c4688a58e1e0f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6a75bb217a06178d92b2ac6793ea4b40"><td class="memItemLeft" align="right" valign="top"><a id="ga6a75bb217a06178d92b2ac6793ea4b40"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6a75bb217a06178d92b2ac6793ea4b40">WT_STAT_DSRC_CACHE_HS_ORDER_FIXUP_INSERT</a></td></tr>
-<tr class="memdesc:ga6a75bb217a06178d92b2ac6793ea4b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table out-of-order updates that were fixed up during insertion <br /></td></tr>
-<tr class="separator:ga6a75bb217a06178d92b2ac6793ea4b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2cddfd2e3da158e9f4e2f9a5340af789"><td class="memItemLeft" align="right" valign="top"><a id="ga2cddfd2e3da158e9f4e2f9a5340af789"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2cddfd2e3da158e9f4e2f9a5340af789">WT_STAT_DSRC_CACHE_HS_ORDER_REINSERT</a></td></tr>
+<tr class="memdesc:ga2cddfd2e3da158e9f4e2f9a5340af789"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table out-of-order updates that were fixed up by reinserting with the fixed timestamp <br /></td></tr>
+<tr class="separator:ga2cddfd2e3da158e9f4e2f9a5340af789"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2d746771b67008f25e5fd466d04f2e7a"><td class="memItemLeft" align="right" valign="top"><a id="ga2d746771b67008f25e5fd466d04f2e7a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2d746771b67008f25e5fd466d04f2e7a">WT_STAT_DSRC_CACHE_HS_READ</a></td></tr>
 <tr class="memdesc:ga2d746771b67008f25e5fd466d04f2e7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table reads <br /></td></tr>
@@ -2771,10 +2779,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab3d57103f47aa21f9841e3f578f16ab6">WT_STAT_DSRC_CACHE_HS_KEY_TRUNCATE_ONPAGE_REMOVAL</a></td></tr>
 <tr class="memdesc:gab3d57103f47aa21f9841e3f578f16ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table truncation to remove range of updates due to key being removed from the data page during reconciliation <br /></td></tr>
 <tr class="separator:gab3d57103f47aa21f9841e3f578f16ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafed1a8b4f0e6e80af7d99951015bebd4"><td class="memItemLeft" align="right" valign="top"><a id="gafed1a8b4f0e6e80af7d99951015bebd4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafed1a8b4f0e6e80af7d99951015bebd4">WT_STAT_DSRC_CACHE_HS_KEY_TRUNCATE_NON_TS</a></td></tr>
-<tr class="memdesc:gafed1a8b4f0e6e80af7d99951015bebd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table truncation to remove range of updates due to non timestamped update on data page <br /></td></tr>
-<tr class="separator:gafed1a8b4f0e6e80af7d99951015bebd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae23a1aa15faae774e090b71ccfb19524"><td class="memItemLeft" align="right" valign="top"><a id="gae23a1aa15faae774e090b71ccfb19524"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae23a1aa15faae774e090b71ccfb19524">WT_STAT_DSRC_CACHE_HS_ORDER_REMOVE</a></td></tr>
+<tr class="memdesc:gae23a1aa15faae774e090b71ccfb19524"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table truncation to remove range of updates due to out-of-order timestamp update on data page <br /></td></tr>
+<tr class="separator:gae23a1aa15faae774e090b71ccfb19524"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad7be880a45ec68ef8e1e4003e6ace83a"><td class="memItemLeft" align="right" valign="top"><a id="gad7be880a45ec68ef8e1e4003e6ace83a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad7be880a45ec68ef8e1e4003e6ace83a">WT_STAT_DSRC_CACHE_HS_WRITE_SQUASH</a></td></tr>
 <tr class="memdesc:gad7be880a45ec68ef8e1e4003e6ace83a"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: history store table writes requiring squashed modifies <br /></td></tr>
@@ -2879,6 +2887,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga54fa71b12afecf9522845e5f7c72a1b4">WT_STAT_DSRC_CURSOR_SKIP_HS_CUR_POSITION</a></td></tr>
 <tr class="memdesc:ga54fa71b12afecf9522845e5f7c72a1b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of entries skipped to position the history store cursor <br /></td></tr>
 <tr class="separator:ga54fa71b12afecf9522845e5f7c72a1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8eac2073822ae363fed963f4ddfad665"><td class="memItemLeft" align="right" valign="top"><a id="ga8eac2073822ae363fed963f4ddfad665"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8eac2073822ae363fed963f4ddfad665">WT_STAT_DSRC_CURSOR_SEARCH_NEAR_PREFIX_FAST_PATHS</a></td></tr>
+<tr class="memdesc:ga8eac2073822ae363fed963f4ddfad665"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of times a search near has exited due to prefix config <br /></td></tr>
+<tr class="separator:ga8eac2073822ae363fed963f4ddfad665"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga89ff884bd84c34da59f894af4d3af68d"><td class="memItemLeft" align="right" valign="top"><a id="ga89ff884bd84c34da59f894af4d3af68d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga89ff884bd84c34da59f894af4d3af68d">WT_STAT_DSRC_CURSOR_NEXT_HS_TOMBSTONE</a></td></tr>
 <tr class="memdesc:ga89ff884bd84c34da59f894af4d3af68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: cursor next calls that skip due to a globally visible history store tombstone <br /></td></tr>
@@ -3293,7 +3305,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>Item not found. </p>
 <p>This error indicates an operation did not find a value to return. This includes cursor search and other operations where no record matched the cursor's search key such as <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update an existing record and optionally insert a record. ">WT_CURSOR::update</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record. ">WT_CURSOR::remove</a>. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a14">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a9">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a9">ex_backup_block.c</a>, <a class="el" href="ex_col_store_8c-example.html#a6">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a4">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a24">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a16">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a15">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a8">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a14">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a4">ex_stat.c</a>, <a class="el" href="ex_storage_source_8c-example.html#a14">ex_storage_source.c</a>, <a class="el" href="ex_thread_8c-example.html#a8">ex_thread.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a10">rotn_encrypt.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a14">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a9">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a9">ex_backup_block.c</a>, <a class="el" href="ex_col_store_8c-example.html#a6">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a4">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a24">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a16">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a15">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a8">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a14">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a4">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#a8">ex_thread.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a10">rotn_encrypt.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -3799,7 +3811,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables even if the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"backup"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_cleanup"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"compact_progress"</code>, <code>"error_returns"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"history_store"</code>, <code>"history_store_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"rts"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default <code></code>[]. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various events. Options are given as a list, such as <code>"verbose=[evictserver,read]"</code>.</td><td>a list, with values chosen from the following options: <code>"api"</code>, <code>"backup"</code>, <code>"block"</code>, <code>"checkpoint"</code>, <code>"checkpoint_cleanup"</code>, <code>"checkpoint_progress"</code>, <code>"compact"</code>, <code>"compact_progress"</code>, <code>"error_returns"</code>, <code>"evict"</code>, <code>"evict_stuck"</code>, <code>"evictserver"</code>, <code>"fileops"</code>, <code>"handleops"</code>, <code>"log"</code>, <code>"history_store"</code>, <code>"history_store_activity"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"overflow"</code>, <code>"read"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"rts"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"tiered"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default <code></code>[]. </td></tr>
 <tr>
 <td><code>verify_metadata</code></td><td>open connection and verify any WiredTiger metadata. This API allows verification and detection of corruption in WiredTiger metadata.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -3811,7 +3823,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a3">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a12">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a13">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#a3">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a17">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a16">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a26">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#a5">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#a21">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a43">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#a2">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a2">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a2">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a3">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a19">ex_stat.c</a>, <a class="el" href="ex_storage_source_8c-example.html#a33">ex_storage_source.c</a>, and <a class="el" href="ex_thread_8c-example.html#a10">ex_thread.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_access_8c-example.html#a3">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a12">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a13">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#a3">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a17">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a16">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a26">ex_encrypt.c</a>, <a class="el" href="ex_extending_8c-example.html#a5">ex_extending.c</a>, <a class="el" href="ex_extractor_8c-example.html#a21">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a43">ex_file_system.c</a>, <a class="el" href="ex_hello_8c-example.html#a2">ex_hello.c</a>, <a class="el" href="ex_log_8c-example.html#a2">ex_log.c</a>, <a class="el" href="ex_pack_8c-example.html#a2">ex_pack.c</a>, <a class="el" href="ex_schema_8c-example.html#a3">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a19">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a10">ex_thread.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -4089,7 +4101,7 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a string representation of the error </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a44">ex_file_system.c</a>, and <a class="el" href="ex_storage_source_8c-example.html#a32">ex_storage_source.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="ex_file_system_8c-example.html#a44">ex_file_system.c</a>.</dd>
 </dl>
 </div>
 </div>
