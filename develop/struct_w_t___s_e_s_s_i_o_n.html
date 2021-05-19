@@ -601,7 +601,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>format</code></td><td>the file format.</td><td>a string, chosen from the following options: <code>"btree"</code>; default <code>btree</code>. </td></tr>
 <tr>
-<td><code>huffman_key</code></td><td>This option is no longer supported. Retained for backward compatibility. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
+<td><code>huffman_key</code></td><td>This option is no longer supported, retained for backward compatibility.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code>huffman_value</code></td><td>configure Huffman encoding for values. Permitted values are <code>"none"</code>, <code>"english"</code>, <code>"utf8&lt;file&gt;"</code> or <code>"utf16&lt;file&gt;"</code>. See <a class="el" href="huffman.html">Huffman Encoding</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
@@ -619,6 +619,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
+<td><code>internal_item_max</code></td><td>This option is no longer supported, retained for backward compatibility.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<tr>
 <td><code>internal_key_max</code></td><td>the largest key stored in an internal node, in bytes. If set, keys larger than the specified size are stored as overflow items (which may require additional I/O to access). The default and the maximum allowed value are both one-tenth the size of a newly split internal page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>internal_key_truncate</code></td><td>configure internal key truncation, discarding unnecessary trailing bytes on internal keys (ignored for custom collators).</td><td>a boolean flag; default <code>true</code>. </td></tr>
@@ -626,6 +628,10 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <td><code>internal_page_max</code></td><td>the maximum page size for internal nodes, in bytes; the size must be a multiple of the allocation size and is significant for applications wanting to avoid excessive L2 cache misses while searching the tree. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>4KB</code>. </td></tr>
 <tr>
 <td><code>key_format</code></td><td>the format of the data packed into key items. See <a class="el" href="schema.html#schema_format_types">Format types</a> for details. By default, the key_format is <code>'u'</code> and applications use <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length. ">WT_ITEM</a> structures to manipulate raw byte arrays. By default, records are stored in row-store files: keys of type <code>'r'</code> are record numbers and records referenced by record number are stored in column-store files.</td><td>a format string; default <code>u</code>. </td></tr>
+<tr>
+<td><code>key_gap</code></td><td>This option is no longer supported, retained for backward compatibility.</td><td>an integer greater than or equal to 0; default <code>10</code>. </td></tr>
+<tr>
+<td><code>leaf_item_max</code></td><td>This option is no longer supported, retained for backward compatibility.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
 <td><code>leaf_key_max</code></td><td>the largest key stored in a leaf node, in bytes. If set, keys larger than the specified size are stored as overflow items (which may require additional I/O to access). The default value is one-tenth the size of a newly split leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
 <tr>
