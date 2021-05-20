@@ -79,9 +79,8 @@ ACID properties</h1>
 </ul>
 <p>WiredTiger supports transactions with the following caveats to the ACID properties:</p>
 <ul>
-<li>the maximum level of isolation supported is snapshot isolation. See <a class="el" href="transactions.html#transaction_isolation">Isolation levels</a> for more details.</li>
+<li>the maximum level of isolation supported is snapshot isolation and all updates must be done at snapshot isolation. See <a class="el" href="transactions.html#transaction_isolation">Isolation levels</a> for more details.</li>
 <li>transactional updates are made durable by a combination of checkpoints and logging. See <a class="el" href="checkpoint.html">Checkpoint durability</a> for information on checkpoint durability and <a class="el" href="durability.html">Commit-level durability</a> for information on commit-level durability.</li>
-<li>each transaction's uncommitted changes must fit in memory: for efficiency, WiredTiger does not write to the log until a transaction commits.</li>
 </ul>
 <h1><a class="anchor" id="transactions_api"></a>
 Transactional API</h1>
@@ -104,7 +103,7 @@ Concurrency control</h1>
 <p>Operations in transactions may also fail with the <a class="el" href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8" title="Conflict between concurrent operations. ">WT_ROLLBACK</a> error if some resource cannot be allocated after repeated attempts. For example, if the cache is not large enough to hold the updates required to satisfy transactional readers, an operation may fail and return <a class="el" href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8" title="Conflict between concurrent operations. ">WT_ROLLBACK</a>.</p>
 <h1><a class="anchor" id="transaction_isolation"></a>
 Isolation levels</h1>
-<p>WiredTiger supports <code>read-uncommitted</code>, <code>read-committed</code> and <code>snapshot</code> isolation levels; the default isolation level is <code>snapshot</code>.</p>
+<p>WiredTiger supports <code>read-uncommitted</code>, <code>read-committed</code> and <code>snapshot</code> isolation levels; the default isolation level is <code>snapshot</code>, and all updates must be done at snapshot isolation.</p>
 <ul>
 <li><code>read-uncommitted</code>: Transactions can see changes made by other transactions before those transactions are committed. Dirty reads, non-repeatable reads and phantoms are possible.</li>
 <li><code>read-committed</code>: Transactions cannot see changes made by other transactions before those transactions are committed. Dirty reads are not possible; non-repeatable reads and phantoms are possible. Committed changes from concurrent transactions become visible when no cursor is positioned in the read-committed transaction.</li>
