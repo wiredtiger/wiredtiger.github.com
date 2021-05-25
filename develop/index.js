@@ -7,13 +7,7 @@ var index =
       [ "Production quality", "overview.html#quality", null ],
       [ "NoSQL and Open Source", "overview.html#nosql", null ]
     ] ],
-    [ "Building and installing WiredTiger on POSIX", "build-posix.html", [
-      [ "Building using Git and GitHub", "build-posix.html#posix_github", null ],
-      [ "Building WiredTiger", "build-posix.html#posix_building", null ],
-      [ "Installing WiredTiger", "build-posix.html#posix_installing", null ],
-      [ "Configuring WiredTiger", "build-posix.html#posix_configure", null ],
-      [ "Changing compiler or loader options", "build-posix.html#posix_compiler", null ]
-    ] ],
+    [ "Building and installing WiredTiger on POSIX", "build-posix.html", "build-posix" ],
     [ "Building and installing WiredTiger on Windows", "build-windows.html", [
       [ "Building using Git and GitHub", "build-windows.html#windows_github", null ],
       [ "Building on Windows", "build-windows.html#windows_building", null ],

@@ -79,6 +79,12 @@ var NAVTREEINDEX0 =
 "basic_api.html#basic_connection":[0,3,0,0],
 "basic_api.html#basic_create_table":[0,3,0,1],
 "basic_api.html#basic_cursors":[0,3,0,2],
+"build-autoconf.html":[0,1,5],
+"build-autoconf.html#autoconf_building":[0,1,5,1],
+"build-autoconf.html#autoconf_compiler":[0,1,5,4],
+"build-autoconf.html#autoconf_configure":[0,1,5,3],
+"build-autoconf.html#autoconf_github":[0,1,5,0],
+"build-autoconf.html#autoconf_installing":[0,1,5,2],
 "build-posix.html":[0,1],
 "build-posix.html#posix_building":[0,1,1],
 "build-posix.html#posix_compiler":[0,1,4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX0 =
 "eviction.html":[0,3,17],
 "eviction.html#clean_eviction":[0,3,17,1],
 "eviction.html#eviction_overview":[0,3,17,0],
-"eviction.html#exceptions":[0,3,17,4],
-"eviction.html#hs_eviction":[0,3,17,2],
-"eviction.html#update_restore_eviction":[0,3,17,3],
-"ex_access_8c-example.html":[4,0],
-"ex_backup_8c-example.html":[4,1],
-"ex_backup_block_8c-example.html":[4,2],
-"ex_call_center_8c-example.html":[4,3]
+"eviction.html#exceptions":[0,3,17,4]
 };

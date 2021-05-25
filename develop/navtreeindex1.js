@@ -1,5 +1,11 @@
 var NAVTREEINDEX1 =
 {
+"eviction.html#hs_eviction":[0,3,17,2],
+"eviction.html#update_restore_eviction":[0,3,17,3],
+"ex_access_8c-example.html":[4,0],
+"ex_backup_8c-example.html":[4,1],
+"ex_backup_block_8c-example.html":[4,2],
+"ex_call_center_8c-example.html":[4,3],
 "ex_col_store_8c-example.html":[4,4],
 "ex_cursor_8c-example.html":[4,5],
 "ex_encrypt_8c-example.html":[4,6],
@@ -243,11 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga44437a326761711252f7f3ce44deab56":[1,0,584],
 "group__wt.html#ga444f33af556b4f82d215f8e84b473199":[1,0,378],
 "group__wt.html#ga44fad50f9ad71787e316df629ecef7f2":[1,0,696],
-"group__wt.html#ga4525377acdbf81d2ca804e347f967a80":[1,0,474],
-"group__wt.html#ga459719926622ef321580d639607b97df":[1,0,108],
-"group__wt.html#ga45ff74539e2c1f3bce3e1a23551bc94e":[1,0,277],
-"group__wt.html#ga460fc1b2d25f9f08bb5132bcf93434a1":[1,0,195],
-"group__wt.html#ga4621505f48ba6399902a137ec0af556c":[1,0,206],
-"group__wt.html#ga469b9284fc40ab58e2e51c7728eed1c9":[1,0,585],
-"group__wt.html#ga46b1452494200a476905134622073b09":[1,0,595]
+"group__wt.html#ga4525377acdbf81d2ca804e347f967a80":[1,0,474]
 };
