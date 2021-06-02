@@ -2,7 +2,13 @@ var arch_index =
 [
     [ "Block Manager (Architecture Guide)", "arch-block.html", null ],
     [ "Cache (Architecture Guide)", "arch-cache.html", null ],
-    [ "Checkpoint (Architecture Guide)", "arch-checkpoint.html", null ],
+    [ "Checkpoint (Architecture Guide)", "arch-checkpoint.html", [
+      [ "Overview", "arch-checkpoint.html#autotoc_md0", null ],
+      [ "The checkpoint algorithm", "arch-checkpoint.html#autotoc_md1", null ],
+      [ "Skipping checkpoints", "arch-checkpoint.html#autotoc_md2", null ],
+      [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md3", null ],
+      [ "Garbage collection", "arch-checkpoint.html#autotoc_md4", null ]
+    ] ],
     [ "Column Store (Architecture Guide)", "arch-column.html", null ],
     [ "Cursor (Architecture Guide)", "arch-cursor.html", [
       [ "Data translation", "arch-cursor.html#arch_cursor_raw", null ],

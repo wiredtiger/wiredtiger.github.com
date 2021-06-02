@@ -1,7 +1,7 @@
 var classcom_1_1wiredtiger_1_1db_1_1_session =
 [
     [ "Session", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a76afc8fe00e0b542b8424fd8b8fb5b84", null ],
-    [ "_java_init", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a849ad022f16375699c7dd625b80cc7e8", null ],
+    [ "_java_init", "classcom_1_1wiredtiger_1_1db_1_1_session.html#ad0e61b2a46d28a73cc1f29474f46d027", null ],
     [ "alter", "classcom_1_1wiredtiger_1_1db_1_1_session.html#aabeba4de10b95083dae3c73b7172e4a7", null ],
     [ "begin_transaction", "classcom_1_1wiredtiger_1_1db_1_1_session.html#abda8ddc193622bedbe6fba26e061405a", null ],
     [ "breakpoint", "classcom_1_1wiredtiger_1_1db_1_1_session.html#a14615b126a4824d04b7126b69ce5db6a", null ],

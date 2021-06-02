@@ -1,3 +1,25 @@
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this file.
+
+Copyright (C) 1997-2019 by Dimitri van Heesch
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of version 2 of the GNU General Public License as published by
+the Free Software Foundation
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+@licend  The above is the entire license notice
+for the JavaScript code in this file
+*/
 var NAVTREE =
 [
   [ "WiredTiger", "index.html", [
@@ -19,11 +41,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "admin.html",
-"ex_col_store_8c-example.html",
-"group__wt.html#ga472ffe8ae92d8bb083d497f73f58187c",
-"group__wt.html#ga9361bcdc11364d520ca71d5c9be89b75",
-"group__wt.html#gaef84b3e887ff46b2942b337f12689eab",
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5a3766f959083f362e3668c40ac995c5"
+"error_handling.html#event_message_handling",
+"group__wt.html#ga43f1791f227e58e339d7bbc740b360dc",
+"group__wt.html#ga8f6c39d714b2a99e809d6186cc0d4248",
+"group__wt.html#gae97f1ace91fd5339337cb2f9300f8b97",
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28",
+"transactions.html#transactions_acid"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

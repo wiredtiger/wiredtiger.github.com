@@ -5,5 +5,6 @@ var enumcom_1_1wiredtiger_1_1db_1_1_async_op_type =
     [ "WT_AOP_INSERT", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#a3832456dc93125d7e63195ed55f57491", null ],
     [ "WT_AOP_NONE", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#ae0200a76371aa5eb98d1872c6a1d2bbc", null ],
     [ "WT_AOP_REMOVE", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#a08673ec19005842fa0b90af84a4f0304", null ],
-    [ "WT_AOP_SEARCH", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#acf3bb35b2a382ca00d37d64e864827b9", null ]
+    [ "WT_AOP_SEARCH", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#acf3bb35b2a382ca00d37d64e864827b9", null ],
+    [ "WT_AOP_UPDATE", "enumcom_1_1wiredtiger_1_1db_1_1_async_op_type.html#ad1d0a439470eaf446b3414f8a764507c", null ]
 ];

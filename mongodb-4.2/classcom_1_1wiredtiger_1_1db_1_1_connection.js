@@ -1,9 +1,9 @@
 var classcom_1_1wiredtiger_1_1db_1_1_connection =
 [
     [ "Connection", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a9f3713033d9e9a1a84f4670da907c55d", null ],
-    [ "_java_init", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#aad6794c4baf107e2d0a735c80f9c8e52", null ],
+    [ "_java_init", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a37fc69fcd3a8d1eaaa05d894861a9fec", null ],
     [ "async_flush", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a6ca4a22fe3c729d68cd56c5abb047498", null ],
-    [ "async_new_op", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a76c8444703541803fab4bc54606136ed", null ],
+    [ "async_new_op", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2a0314a9f6ff5f8d6816a266ba969d09", null ],
     [ "close", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a2458441ed6301620ef4db71f3ef5c47c", null ],
     [ "configure_method", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#a1b9848afb4bfe4b790579490e6e2263c", null ],
     [ "debug_info", "classcom_1_1wiredtiger_1_1db_1_1_connection.html#af0d653b71e7fede300bea53337323087", null ],
