@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b":[1,0,4,15],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8":[1,0,4,0],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28":[1,0,4,14],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d":[1,0,4,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "transactions.html#timestamp_extensions":[0,3,3,5,4],
 "transactions.html#timestamp_overview":[0,3,3,5,0],
 "transactions.html#timestamp_roundup":[0,3,3,5,2],
-"transactions.html#timestamp_transactions":[0,3,3,5,1],
-"transactions.html#transaction_isolation":[0,3,3,4]
+"transactions.html#timestamp_transactions":[0,3,3,5,1]
 };

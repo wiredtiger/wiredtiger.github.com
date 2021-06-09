@@ -352,6 +352,7 @@ var group__wt =
     [ "WT_STAT_CONN_DH_SWEEPS", "group__wt.html#ga05ee44b590869d161fc28a7e41c5acf2", null ],
     [ "WT_STAT_CONN_DHANDLE_LOCK_BLOCKED", "group__wt.html#gac2b7bf415b251f0299803960b2ba82e3", null ],
     [ "WT_STAT_CONN_FILE_OPEN", "group__wt.html#gacb44b88acd3b00bee3236f9196f1b22e", null ],
+    [ "WT_STAT_CONN_FLUSH_STATE_RACES", "group__wt.html#ga4a68168bebad3edf827bc4cbfbbce88a", null ],
     [ "WT_STAT_CONN_FLUSH_TIER", "group__wt.html#gabc61eff3d60349bbbc99fcdb41645bc8", null ],
     [ "WT_STAT_CONN_FLUSH_TIER_BUSY", "group__wt.html#ga995b663d9234db0c26660f9423a9cbb0", null ],
     [ "WT_STAT_CONN_FSYNC_ALL_FH", "group__wt.html#gac74c93105f4eb1e839ab6f1b5b6136ae", null ],
