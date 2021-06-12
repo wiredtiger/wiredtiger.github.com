@@ -99,7 +99,8 @@ src/include/dhandle.h<br  />
 src/conn/conn_dhandle.c<br  />
 src/session/session_dhandle.c</code></code></td></tr>
 </table>
-</div><p>An internal structure called a Data Handle (dhandle) is used to represent and access Btrees and other data sources in WiredTiger. A dhandle is created when a table is accessed for the first time. It is kept in a global list and is shared across the sessions. When a dhandle is not needed anymore and has been idle for a while, it is closed and destroyed, releasing all the resources associated with it.</p>
+</div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
+<p>An internal structure called a Data Handle (dhandle) is used to represent and access Btrees and other data sources in WiredTiger. A dhandle is created when a table is accessed for the first time. It is kept in a global list and is shared across the sessions. When a dhandle is not needed anymore and has been idle for a while, it is closed and destroyed, releasing all the resources associated with it.</p>
 <p>A Btree is one kind of dhandle. It embodies both the on-disk and in-memory representations of the Btree.</p>
 <p><a class="el" href="arch-dhandle-lifecycle.html">Data Handle Lifecycle</a></p>
 <p>This section describes how dhandles are created, and how and when they are destroyed. </p>

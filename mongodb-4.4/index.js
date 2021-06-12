@@ -7,7 +7,7 @@ var index =
       [ "Production quality", "overview.html#quality", null ],
       [ "NoSQL and Open Source", "overview.html#nosql", null ]
     ] ],
-    [ "Building and installing WiredTiger on POSIX", "build-posix.html", "build-posix" ],
+    [ "Building and installing WiredTiger on POSIX (Linux, *BSD, OS X):", "build-posix.html", "build-posix" ],
     [ "Building and installing WiredTiger on Windows", "build-windows.html", [
       [ "Building using Git and GitHub", "build-windows.html#windows_github", null ],
       [ "Building on Windows", "build-windows.html#windows_building", null ],
@@ -15,8 +15,6 @@ var index =
       [ "Configuring WiredTiger", "build-windows.html#windows_configure", null ]
     ] ],
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
-    [ "WiredTiger Architecture Guide", "arch-index.html", "arch-index" ],
-    [ "Tools and Techniques", "tool-index.html", "tool-index" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "WiredTiger Change Log", "md_changelog.html", [
@@ -149,5 +147,7 @@ var index =
         [ "Cyclomatic Complexity", "testing.html#coverage_cyclomatic", null ]
       ] ]
     ] ],
+    [ "Tools and Techniques", "tool-index.html", "tool-index" ],
+    [ "WiredTiger Architecture Guide", "arch-index.html", "arch-index" ],
     [ "WiredTiger community and contact information", "community.html", null ]
 ];

@@ -101,7 +101,8 @@ src/include/os_windows.h<br  />
 src/os_posix/<br  />
 src/os_win/</code></code></td></tr>
 </table>
-</div><p>Internally, a layer of abstraction is above all operating system calls, allowing main line WiredTiger code to make a call to single set of interfaces. There are currently OS specific APIs for POSIX and Windows.</p>
+</div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
+<p>Internally, a layer of abstraction is above all operating system calls, allowing main line WiredTiger code to make a call to single set of interfaces. There are currently OS specific APIs for POSIX and Windows.</p>
 <p>Additionally, a program can use <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b" title="Configure a custom file system.">WT_CONNECTION::set_file_system</a> to register a set of functions that will be called for each file system operation. WiredTiger will then call these functions at the appropriate time. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -95,7 +95,8 @@ $(document).ready(function(){initNavTree('arch-rts.html',''); initResizable(); }
 <tr>
 <td><code><code></code></code></td><td><code><code>src/txn/</code></code></td></tr>
 </table>
-</div><p>Rollback to stable is an operation that retains only the modifications that are stable according to the stable timestamp and recovered checkpoint snapshot. The checkpoint transaction snapshot details are saved at the end of every checkpoint are recovered and used as a recovered checkpoint snapshot.</p>
+</div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
+<p>Rollback to stable is an operation that retains only the modifications that are stable according to the stable timestamp and recovered checkpoint snapshot. The checkpoint transaction snapshot details are saved at the end of every checkpoint are recovered and used as a recovered checkpoint snapshot.</p>
 <h1><a class="anchor" id="rts-overview"></a>
 Overview of rollback to stable</h1>
 <p>Rollback to stable scans each and every table present in the database except metadata <a class="el" href="arch-metadata.html">Metadata (Architecture Guide)</a> to remove the modifications from the table that are more than stable timestamp and recovered checkpoint snapshot.</p>

@@ -95,7 +95,8 @@ $(document).ready(function(){initNavTree('arch-hs.html',''); initResizable(); })
 <tr>
 <td><code><code>WT_CURSOR_HS</code></code></td><td><code><code>src/history/</code></code></td></tr>
 </table>
-</div><p>The History Store in WiredTiger tracks old (all but the latest committed) versions of records. By having these records in storage separate from the current version, they can be used to service long running transactions, and be evicted as necessary, without interfering with activity that uses the most recent committed versions. </p>
+</div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
+<p>The History Store in WiredTiger tracks old (all but the latest committed) versions of records. By having these records in storage separate from the current version, they can be used to service long running transactions, and be evicted as necessary, without interfering with activity that uses the most recent committed versions. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

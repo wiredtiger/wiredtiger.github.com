@@ -97,7 +97,8 @@ $(document).ready(function(){initNavTree('arch-cache.html',''); initResizable();
 WT_CACHE_POOL</code></code></td><td><code><code>src/include/cache.h<br  />
 src/include/cache_inline.h</code></code></td></tr>
 </table>
-</div><p>Cache in WiredTiger is represented by the various shared data structures that make up in-memory Btrees and subordinate data structures.</p>
+</div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
+<p>Cache in WiredTiger is represented by the various shared data structures that make up in-memory Btrees and subordinate data structures.</p>
 <p>Memory used to read in and write out the on-disk representations of Btrees is not cached, it only exists temporarily during the I/O operation and while the data is transferred to or from the on-disk format.</p>
 <p>Internally, the current cache state is represented by the WT_CACHE structure, which contains various counters that drive statistics and information used for eviction. </p>
 </div></div><!-- contents -->

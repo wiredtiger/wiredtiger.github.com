@@ -95,7 +95,8 @@ $(document).ready(function(){initNavTree('arch-snapshot.html',''); initResizable
 <tr>
 <td><code><code>WT_TXN</code></code></td><td><code><code>src/include/txn.h</code></code></td></tr>
 </table>
-</div><p>When the snapshot isolation level is used in WiredTiger, the transaction will see versions of records committed before the transaction started.</p>
+</div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
+<p>When the snapshot isolation level is used in WiredTiger, the transaction will see versions of records committed before the transaction started.</p>
 <p>Snapshots are implemented by storing the set of transaction ids committed before the transaction started in the <code>WT_TXN</code> structure. Transaction ids older than a certain point need not be stored. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

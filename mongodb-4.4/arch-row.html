@@ -95,7 +95,8 @@ $(document).ready(function(){initNavTree('arch-row.html',''); initResizable(); }
 <tr>
 <td><code><code>WT_BTREE</code></code></td><td><code><code>src/include/btree.h</code></code></td></tr>
 </table>
-</div><p>Row Stores are Btrees stored in WiredTiger that do not have a record id as key. Thus, they implement a generalized version of a Btree, where the key and data can be arbitrary length.</p>
+</div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
+<p>Row Stores are Btrees stored in WiredTiger that do not have a record id as key. Thus, they implement a generalized version of a Btree, where the key and data can be arbitrary length.</p>
 <p>Internally, a row store and column store both use a common <code>WT_BTREE</code> structure. The fundamental difference is that <code>WT_BTREE-&gt;type == BTREE_ROW</code> for row stores. Internal functions that navigate, access and manipulate Btrees have code sprinkled throughout that is conditional on <code>WT_BTREE-&gt;type</code>. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
