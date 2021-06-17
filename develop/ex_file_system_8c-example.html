@@ -607,9 +607,12 @@ $(document).ready(function(){initNavTree('ex_file_system_8c-example.html',''); i
 <div class="line"> </div>
 <div class="line">    ret = ENOENT;</div>
 <div class="line">    lock_file_system(&amp;demo_fs-&gt;lock);</div>
-<div class="line">    <span class="keywordflow">if</span> ((demo_fh = demo_handle_search(file_system, name)) != NULL)</div>
+<div class="line">    <span class="keywordflow">if</span> ((demo_fh = demo_handle_search(file_system, name)) != NULL) {</div>
+<div class="line">        unlock_file_system(&amp;demo_fs-&gt;lock);</div>
 <div class="line">        ret = demo_file_size((<a class="code" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *)demo_fh, session, sizep);</div>
-<div class="line">    unlock_file_system(&amp;demo_fs-&gt;lock);</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        unlock_file_system(&amp;demo_fs-&gt;lock);</div>
+<div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
