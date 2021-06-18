@@ -1,6 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"transactions.html":[0,3,3],
 "transactions.html#timestamp_connection":[0,3,3,5,3],
 "transactions.html#timestamp_extensions":[0,3,3,5,4],
 "transactions.html#timestamp_overview":[0,3,3,5,0],
