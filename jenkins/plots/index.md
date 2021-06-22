@@ -81,7 +81,7 @@ This page displays all of the performance plots from Jenkins wtperf jobs so we d
 
 ---------------
 
-## wiredtiger-many-dhandles [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-many-dhandles)](http://build.wiredtiger.com:8080/job/wiredtiger-many-dhanles/)
+## wiredtiger-many-dhandles [![Build Status](http://build.wiredtiger.com:8080/buildStatus/icon?job=wiredtiger-many-dhandles)](http://build.wiredtiger.com:8080/job/wiredtiger-many-dhandles/)
 
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-many-dhandles/plot/getPlot?index=0&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-many-dhandles/plot)
 [![](http://build.wiredtiger.com:8080/job/wiredtiger-many-dhandles/plot/getPlot?index=1&width=750&height=450)](http://build.wiredtiger.com:8080/job/wiredtiger-many-dhandles/plot)
