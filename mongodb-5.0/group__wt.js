@@ -354,6 +354,7 @@ var group__wt =
     [ "WT_STAT_CONN_FILE_OPEN", "group__wt.html#gacb44b88acd3b00bee3236f9196f1b22e", null ],
     [ "WT_STAT_CONN_FLUSH_STATE_RACES", "group__wt.html#ga4a68168bebad3edf827bc4cbfbbce88a", null ],
     [ "WT_STAT_CONN_FLUSH_TIER", "group__wt.html#gabc61eff3d60349bbbc99fcdb41645bc8", null ],
+    [ "WT_STAT_CONN_FLUSH_TIER_BUSY", "group__wt.html#ga995b663d9234db0c26660f9423a9cbb0", null ],
     [ "WT_STAT_CONN_FSYNC_ALL_FH", "group__wt.html#gac74c93105f4eb1e839ab6f1b5b6136ae", null ],
     [ "WT_STAT_CONN_FSYNC_ALL_FH_TOTAL", "group__wt.html#gaada001075b64f3573b321b1b83ec4841", null ],
     [ "WT_STAT_CONN_FSYNC_ALL_TIME", "group__wt.html#ga3631a9b0759fd78b61d82ef55df93d01", null ],
