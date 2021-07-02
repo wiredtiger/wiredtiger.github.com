@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"error_handling.html#error_translation":[0,3,4,0],
 "error_handling.html#event_message_handling":[0,3,4,1],
 "eviction.html":[0,3,17],
 "eviction.html#clean_eviction":[0,3,17,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga4250b520e13aa173222a5ec9a80fdd92":[1,0,685],
 "group__wt.html#ga427404b64562785f79e898f8cc9bff65":[1,0,192],
 "group__wt.html#ga42c0304e959ce5786e8d4f6787465a08":[1,0,602],
-"group__wt.html#ga4349484e45f9de41b63a085d52f88757":[1,0,180],
-"group__wt.html#ga436090d49ebd06cdbc2140bcf5438d9f":[1,0,409]
+"group__wt.html#ga4349484e45f9de41b63a085d52f88757":[1,0,180]
 };
