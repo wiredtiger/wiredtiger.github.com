@@ -177,6 +177,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_EVICTION_EMPTY_SCORE", "group__wt.html#gac102bdcb189a5e5444e7f3d9b6dcd6ad", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_FAIL", "group__wt.html#gae536a122add18fad5e849ded8cfe623d", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_FAIL_ACTIVE_CHILDREN_ON_AN_INTERNAL_PAGE", "group__wt.html#ga9e670a2a79aba0e18f98d8b58ff34b7e", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_FAIL_CHECKPOINT_OUT_OF_ORDER_TS", "group__wt.html#ga3c5c23b981ca6c69e0c90d05996553c8", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_FAIL_IN_RECONCILIATION", "group__wt.html#ga5c4de42cc667c059ae6bf7d88e5c581e", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_FAIL_PARENT_HAS_OVERFLOW_ITEMS", "group__wt.html#ga0d932f0910b26615569b92ac1dc97575", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_FORCE", "group__wt.html#ga32d5fb6b0015f3890100e050dc652e97", null ],
