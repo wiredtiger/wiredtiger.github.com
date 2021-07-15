@@ -245,9 +245,9 @@ var NAVTREEINDEX0 =
 "durability.html#durability_group_commit":[0,3,18,4,0],
 "durability.html#durability_tuning":[0,3,18,4],
 "encryption.html":[0,3,9],
-"encryption.html#encryption_custom":[0,3,9,2],
-"encryption.html#encryption_examples":[0,3,9,3],
-"encryption.html#encryption_overview":[0,3,9,0],
-"encryption.html#encryption_parameters":[0,3,9,1],
-"error_handling.html":[0,3,4]
+"encryption.html#encryption_config":[0,3,9,2],
+"encryption.html#encryption_custom":[0,3,9,5],
+"encryption.html#encryption_ex":[0,3,9,9],
+"encryption.html#encryption_keyid":[0,3,9,3],
+"encryption.html#encryption_nop":[0,3,9,7]
 };

@@ -105,39 +105,39 @@ Format types</h1>
 <p>WiredTiger's uses format strings similar to those specified in the Python struct module to describe the types of columns in a table: <a href="http://docs.python.org/library/struct">http://docs.python.org/library/struct</a></p>
 <table class="doxtable">
 <tr>
-<th>Format</th><th>C Type</th><th>Java type</th><th>Python type</th><th>Notes </th></tr>
+<th>Format</th><th>C Type</th><th>Python type</th><th>Notes </th></tr>
 <tr>
 <td><code>x</code> </td><td>N/A</td><td>N/A</td><td>N/A</td><td>pad byte, no associated value </td></tr>
 <tr>
-<td><code>b</code> </td><td><code>int8_t</code> </td><td><code>byte</code> </td><td><code>int</code> </td><td>signed byte </td></tr>
+<td><code>b</code> </td><td><code>int8_t</code> </td><td><code>int</code> </td><td>signed byte </td></tr>
 <tr>
-<td><code>B</code> </td><td><code>uint8_t</code> </td><td><code>byte</code> </td><td><code>int</code> </td><td>unsigned byte </td></tr>
+<td><code>B</code> </td><td><code>uint8_t</code> </td><td><code>int</code> </td><td>unsigned byte </td></tr>
 <tr>
-<td><code>h</code> </td><td><code>int16_t</code> </td><td><code>short</code> </td><td><code>int</code> </td><td>signed 16-bit </td></tr>
+<td><code>h</code> </td><td><code>int16_t</code> </td><td><code>int</code> </td><td>signed 16-bit </td></tr>
 <tr>
-<td><code>H</code> </td><td><code>uint16_t</code> </td><td><code>short</code> </td><td><code>int</code> </td><td>unsigned 16-bit </td></tr>
+<td><code>H</code> </td><td><code>uint16_t</code> </td><td><code>int</code> </td><td>unsigned 16-bit </td></tr>
 <tr>
-<td><code>i</code> </td><td><code>int32_t</code> </td><td><code>int</code> </td><td><code>int</code> </td><td>signed 32-bit </td></tr>
+<td><code>i</code> </td><td><code>int32_t</code> </td><td><code>int</code> </td><td>signed 32-bit </td></tr>
 <tr>
-<td><code>I</code> </td><td><code>uint32_t</code> </td><td><code>int</code> </td><td><code>int</code> </td><td>unsigned 32-bit </td></tr>
+<td><code>I</code> </td><td><code>uint32_t</code> </td><td><code>int</code> </td><td>unsigned 32-bit </td></tr>
 <tr>
-<td><code>l</code> </td><td><code>int32_t</code> </td><td><code>int</code> </td><td><code>int</code> </td><td>signed 32-bit </td></tr>
+<td><code>l</code> </td><td><code>int32_t</code> </td><td><code>int</code> </td><td>signed 32-bit </td></tr>
 <tr>
-<td><code>L</code> </td><td><code>uint32_t</code> </td><td><code>int</code> </td><td><code>int</code> </td><td>unsigned 32-bit </td></tr>
+<td><code>L</code> </td><td><code>uint32_t</code> </td><td><code>int</code> </td><td>unsigned 32-bit </td></tr>
 <tr>
-<td><code>q</code> </td><td><code>int64_t</code> </td><td><code>long</code> </td><td><code>int</code> </td><td>signed 64-bit </td></tr>
+<td><code>q</code> </td><td><code>int64_t</code> </td><td><code>int</code> </td><td>signed 64-bit </td></tr>
 <tr>
-<td><code>Q</code> </td><td><code>uint64_t</code> </td><td><code>long</code> </td><td><code>int</code> </td><td>unsigned 64-bit </td></tr>
+<td><code>Q</code> </td><td><code>uint64_t</code> </td><td><code>int</code> </td><td>unsigned 64-bit </td></tr>
 <tr>
-<td><code>r</code> </td><td><code>uint64_t</code> </td><td><code>long</code> </td><td><code>int</code> </td><td>record number </td></tr>
+<td><code>r</code> </td><td><code>uint64_t</code> </td><td><code>int</code> </td><td>record number </td></tr>
 <tr>
-<td><code>s</code> </td><td><code>char</code>[]</td><td><code>String</code> </td><td><code>str</code> </td><td>fixed-length string </td></tr>
+<td><code>s</code> </td><td><code>char</code>[]</td><td><code>str</code> </td><td>fixed-length string </td></tr>
 <tr>
-<td><code>S</code> </td><td><code>char</code>[]</td><td><code>String</code> </td><td><code>str</code> </td><td>NUL-terminated string </td></tr>
+<td><code>S</code> </td><td><code>char</code>[]</td><td><code>str</code> </td><td>NUL-terminated string </td></tr>
 <tr>
-<td><code>t</code> </td><td><code>uint8_t</code> </td><td><code>byte</code> </td><td><code>int</code> </td><td>fixed-length bit field </td></tr>
+<td><code>t</code> </td><td><code>uint8_t</code> </td><td><code>int</code> </td><td>fixed-length bit field </td></tr>
 <tr>
-<td><code>u</code> </td><td><code><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> *</code></td><td><code>byte[]</code></td><td><code>str</code> </td><td>raw byte array </td></tr>
+<td><code>u</code> </td><td><code><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> *</code></td><td><code>bytes</code> </td><td>raw byte array </td></tr>
 </table>
 <p>The <code>'r'</code> type is used for record number keys in column stores. It is otherwise identical to the <code>'Q'</code> type.</p>
 <p>The <code>'s'</code> type is used for fixed-length strings. If it is preceded by a size, that indicates the number of bytes to store; the default is a length of 1 byte.</p>
@@ -667,14 +667,14 @@ Other differences between Logged and Non-logged tables</h1>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aa756090890615a197dea313155f5e7b7"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aa756090890615a197dea313155f5e7b7">WT_CURSOR::close</a></div><div class="ttdeci">int close(WT_HANDLE_CLOSED(WT_CURSOR) *cursor)</div><div class="ttdoc">Close the cursor.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a0503f16bd8f3d05aa3552f229b3a8e1b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">WT_CURSOR::next</a></div><div class="ttdeci">int next(WT_CURSOR *cursor)</div><div class="ttdoc">Return the next record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_af85364a5af50b95bbc46c82e72f75c01"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">WT_CURSOR::get_value</a></div><div class="ttdeci">int get_value(WT_CURSOR *cursor,...)</div><div class="ttdoc">Get the value for the current record.</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a></div><div class="ttdoc">A connection to a WiredTiger database.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:1962</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a></div><div class="ttdoc">A connection to a WiredTiger database.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:1963</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a8068ddce20d0775f26f6dac6e5eb209c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c">WT_CURSOR::search_near</a></div><div class="ttdeci">int search_near(WT_CURSOR *cursor, int *exactp)</div><div class="ttdoc">Return the record matching the key if it exists, or an adjacent record.</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_ab2bfe8a5f92c932cbe5aad2f4e603ca6"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6">WT_CONNECTION::close</a></div><div class="ttdeci">int close(WT_HANDLE_CLOSED(WT_CONNECTION) *connection, const char *config)</div><div class="ttdoc">Close a connection.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a27f7cbd0cd3e561f6a145704813ad64c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">WT_CURSOR::set_value</a></div><div class="ttdeci">void set_value(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the value for the next operation.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a444cdc0952e7f8d55d23173516c7037f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f">WT_CURSOR::update</a></div><div class="ttdeci">int update(WT_CURSOR *cursor)</div><div class="ttdoc">Update an existing record and optionally insert a record.</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3651</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3652</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a></div><div class="ttdoc">All data operations are performed in the context of a WT_SESSION.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:739</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aac90d9fbcc031570f924db55f8a1cee3"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">WT_CURSOR::insert</a></div><div class="ttdeci">int insert(WT_CURSOR *cursor)</div><div class="ttdoc">Insert a record and optionally update an existing record.</div></div>
 <!-- start footer part -->

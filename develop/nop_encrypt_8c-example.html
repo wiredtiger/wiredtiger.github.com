@@ -190,6 +190,87 @@ $(document).ready(function(){initNavTree('nop_encrypt_8c-example.html',''); init
 <div class="line">    <span class="keywordflow">return</span> (0);</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * nop_customize --</span></div>
+<div class="line"><span class="comment"> *     The customize function creates a customized encryptor.</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">nop_customize(<a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> *encryptor, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *encrypt_config,</div>
+<div class="line">  <a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> **customp)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * This is how keys are set: the extension is first loaded, and then for every distinct key used</span></div>
+<div class="line"><span class="comment">     * a copy is made by calling the customize method. The original uncustomized WT_ENCRYPTOR is</span></div>
+<div class="line"><span class="comment">     * ordinarily never used to encrypt or decrypt anything.</span></div>
+<div class="line"><span class="comment">     *</span></div>
+<div class="line"><span class="comment">     * The copy, with the key installed into it, should be returned to the caller via the customp</span></div>
+<div class="line"><span class="comment">     * argument. If the customize method succeeds but sets *customp to NULL, the original encryptor</span></div>
+<div class="line"><span class="comment">     * is used for that key.</span></div>
+<div class="line"><span class="comment">     *</span></div>
+<div class="line"><span class="comment">     * The customize method need not be provided, but in that case key configuration is not</span></div>
+<div class="line"><span class="comment">     * performed, the original encryptor is used for all encryption, and it must have some other</span></div>
+<div class="line"><span class="comment">     * means to get the key or keys it should use.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">const</span> NOP_ENCRYPTOR *orig;</div>
+<div class="line">    NOP_ENCRYPTOR *<span class="keyword">new</span>;</div>
+<div class="line">    <a name="_a5"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a> keyid, secretkey;</div>
+<div class="line">    <a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a> *wt_api;</div>
+<div class="line">    <span class="keywordtype">int</span> ret;</div>
+<div class="line"> </div>
+<div class="line">    orig = (<span class="keyword">const</span> NOP_ENCRYPTOR *)encryptor;</div>
+<div class="line">    wt_api = orig-&gt;wt_api;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Allocate and initialize the new encryptor. */</span></div>
+<div class="line">    <span class="keywordflow">if</span> ((<span class="keyword">new</span> = calloc(1, <span class="keyword">sizeof</span>(*<span class="keyword">new</span>))) == NULL)</div>
+<div class="line">        <span class="keywordflow">return</span> (errno);</div>
+<div class="line">    *<span class="keyword">new</span> = *orig;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Get the keyid, if any. */</span></div>
+<div class="line">    ret = wt_api-&gt;<a name="a6"></a><a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(wt_api, session, encrypt_config, <span class="stringliteral">&quot;keyid&quot;</span>, &amp;keyid);</div>
+<div class="line">    <span class="keywordflow">if</span> (ret != 0)</div>
+<div class="line">        keyid.<a name="a7"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> = 0;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Get the explicit secret key, if any. */</span></div>
+<div class="line">    ret = wt_api-&gt;<a class="code" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">config_get</a>(wt_api, session, encrypt_config, <span class="stringliteral">&quot;secretkey&quot;</span>, &amp;secretkey);</div>
+<div class="line">    <span class="keywordflow">if</span> (ret != 0)</div>
+<div class="line">        secretkey.<a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> = 0;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Providing both a keyid and a secretkey is an error. */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (keyid.<a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> != 0 &amp;&amp; secretkey.<a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> != 0) {</div>
+<div class="line">        ret = nop_error(</div>
+<div class="line">          <span class="keyword">new</span>, NULL, EINVAL, <span class="stringliteral">&quot;nop_customize: keys specified with both keyid= and secretkey=&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">goto</span> err;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Providing neither is also normally an error. Allow it here for the benefit of the test suite.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (keyid.<a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> == 0 &amp;&amp; secretkey.<a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> == 0)</div>
+<div class="line">        (void)keyid; <span class="comment">/* do nothing */</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (keyid.<a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> != 0)</div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Here one would contact a key manager to get the key, then install it.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        (void)keyid.<a name="a8"></a><a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#aa0ce7d30a32600e16824966c638ee45f">str</a>; <span class="comment">/* do nothing; add code here */</span></div>
+<div class="line"> </div>
+<div class="line">    if (secretkey.<a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">len</a> != 0)</div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Here one would install the explicit secret key, probably after base64- or hex-decoding</span></div>
+<div class="line"><span class="comment">         * it. If it&#39;s a passphrase rather than a key, one might hash it first. Other</span></div>
+<div class="line"><span class="comment">         * transformations might be needed or wanted as well.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        (void)secretkey.<a class="code" href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#aa0ce7d30a32600e16824966c638ee45f">str</a>; <span class="comment">/* do nothing; add code here */</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Return the new encryptor. */</span></div>
+<div class="line">    *customp = (<a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> *)<span class="keyword">new</span>;</div>
+<div class="line">    <span class="keywordflow">return</span> (0);</div>
+<div class="line"> </div>
+<div class="line">err:</div>
+<div class="line">    free(<span class="keyword">new</span>);</div>
+<div class="line">    <span class="keywordflow">return</span> (ret);</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * nop_terminate --</span></div>
 <div class="line"><span class="comment"> *     WiredTiger no-op encryption termination.</span></div>
 <div class="line"><span class="comment"> */</span></div>
@@ -212,7 +293,7 @@ $(document).ready(function(){initNavTree('nop_encrypt_8c-example.html',''); init
 <div class="line"><span class="comment"> *     A simple shared library encryption example.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keywordtype">int</span></div>
-<div class="line"><a name="a5"></a><a class="code" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3">wiredtiger_extension_init</a>(<a name="_a6"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div>
+<div class="line"><a name="a9"></a><a class="code" href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3">wiredtiger_extension_init</a>(<a name="_a10"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, <a class="code" href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a> *config)</div>
 <div class="line">{</div>
 <div class="line">    NOP_ENCRYPTOR *nop_encryptor;</div>
 <div class="line">    <span class="keywordtype">int</span> ret;</div>
@@ -231,12 +312,13 @@ $(document).ready(function(){initNavTree('nop_encrypt_8c-example.html',''); init
 <div class="line">    nop_encryptor-&gt;encryptor.encrypt = nop_encrypt;</div>
 <div class="line">    nop_encryptor-&gt;encryptor.decrypt = nop_decrypt;</div>
 <div class="line">    nop_encryptor-&gt;encryptor.sizing = nop_sizing;</div>
+<div class="line">    nop_encryptor-&gt;encryptor.customize = nop_customize;</div>
 <div class="line">    nop_encryptor-&gt;encryptor.terminate = nop_terminate;</div>
 <div class="line"> </div>
-<div class="line">    nop_encryptor-&gt;wt_api = connection-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
+<div class="line">    nop_encryptor-&gt;wt_api = connection-&gt;<a name="a11"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">get_extension_api</a>(connection);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Load the encryptor */</span></div>
-<div class="line">    <span class="keywordflow">if</span> ((ret = connection-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949">add_encryptor</a>(connection, <span class="stringliteral">&quot;nop&quot;</span>, (<a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> *)nop_encryptor, NULL)) ==</div>
+<div class="line">    <span class="keywordflow">if</span> ((ret = connection-&gt;<a name="a12"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949">add_encryptor</a>(connection, <span class="stringliteral">&quot;nop&quot;</span>, (<a class="code" href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a> *)nop_encryptor, NULL)) ==</div>
 <div class="line">      0)</div>
 <div class="line">        <span class="keywordflow">return</span> (0);</div>
 <div class="line"> </div>
@@ -246,15 +328,19 @@ $(document).ready(function(){initNavTree('nop_encrypt_8c-example.html',''); init
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="astruct_w_t___e_x_t_e_n_s_i_o_n___a_p_i_html"><div class="ttname"><a href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a></div><div class="ttdoc">Table of WiredTiger extension methods.</div><div class="ttdef"><b>Definition:</b> wiredtiger_ext.h:94</div></div>
-<div class="ttc" id="agroup__wt__ext_html_ga6fa5797cf581d18dc843e07333a497e4"><div class="ttname"><a href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a></div><div class="ttdeci">struct WT_CONFIG_ARG WT_CONFIG_ARG</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3717</div></div>
+<div class="ttc" id="agroup__wt__ext_html_ga6fa5797cf581d18dc843e07333a497e4"><div class="ttname"><a href="group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4">WT_CONFIG_ARG</a></div><div class="ttdeci">struct WT_CONFIG_ARG WT_CONFIG_ARG</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3718</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_a99df5b3a17564eb5b3e4ec076590133d"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d">WT_CONNECTION::get_extension_api</a></div><div class="ttdeci">WT_EXTENSION_API * get_extension_api(WT_CONNECTION *wt_conn)</div><div class="ttdoc">Return a reference to the WiredTiger extension functions.</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html_aa0ce7d30a32600e16824966c638ee45f"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#aa0ce7d30a32600e16824966c638ee45f">WT_CONFIG_ITEM::str</a></div><div class="ttdeci">const char * str</div><div class="ttdoc">The value of a configuration string.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3374</div></div>
 <div class="ttc" id="astruct_w_t___e_x_t_e_n_s_i_o_n___a_p_i_html_a3fd4b5255e2f82139a846d66d67be565"><div class="ttname"><a href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565">WT_EXTENSION_API::strerror</a></div><div class="ttdeci">const char *(* strerror)(WT_EXTENSION_API *, WT_SESSION *session, int error)</div><div class="ttdoc">Return information about an error as a string.</div><div class="ttdef"><b>Definition:</b> wiredtiger_ext.h:136</div></div>
-<div class="ttc" id="astruct_w_t___e_n_c_r_y_p_t_o_r_html"><div class="ttname"><a href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a></div><div class="ttdoc">The interface implemented by applications to provide custom encryption.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4073</div></div>
+<div class="ttc" id="astruct_w_t___e_n_c_r_y_p_t_o_r_html"><div class="ttname"><a href="struct_w_t___e_n_c_r_y_p_t_o_r.html">WT_ENCRYPTOR</a></div><div class="ttdoc">The interface implemented by applications to provide custom encryption.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4072</div></div>
+<div class="ttc" id="astruct_w_t___e_x_t_e_n_s_i_o_n___a_p_i_html_a0d3aae2ceac28f7b45188bcfa4306d45"><div class="ttname"><a href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45">WT_EXTENSION_API::config_get</a></div><div class="ttdeci">int(* config_get)(WT_EXTENSION_API *wt_api, WT_SESSION *session, WT_CONFIG_ARG *config, const char *key, WT_CONFIG_ITEM *value)</div><div class="ttdoc">Return the value of a configuration key.</div><div class="ttdef"><b>Definition:</b> wiredtiger_ext.h:220</div></div>
 <div class="ttc" id="agroup__wt__ext_html_ga5ed14c916d5dcfe0e81aea9d9ccb7fe3"><div class="ttname"><a href="group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3">wiredtiger_extension_init</a></div><div class="ttdeci">int wiredtiger_extension_init(WT_CONNECTION *connection, WT_CONFIG_ARG *config)</div><div class="ttdoc">Entry point to an extension, called when the extension is loaded.</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a></div><div class="ttdoc">A connection to a WiredTiger database.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:1962</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a></div><div class="ttdoc">A connection to a WiredTiger database.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:1963</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_a59d203f4474780ca34bd3e07b8064949"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949">WT_CONNECTION::add_encryptor</a></div><div class="ttdeci">int add_encryptor(WT_CONNECTION *connection, const char *name, WT_ENCRYPTOR *encryptor, const char *config)</div><div class="ttdoc">Add an encryption function.</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html_adff0f6e5a3f781f0228015e8336f1a14"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14">WT_CONFIG_ITEM::len</a></div><div class="ttdeci">size_t len</div><div class="ttdoc">The number of bytes in the value referenced by str.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3377</div></div>
 <div class="ttc" id="astruct_w_t___e_x_t_e_n_s_i_o_n___a_p_i_html_a6d58298e356dbf58ac854c3d1af99678"><div class="ttname"><a href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678">WT_EXTENSION_API::err_printf</a></div><div class="ttdeci">int(* err_printf)(WT_EXTENSION_API *wt_api, WT_SESSION *session, const char *fmt,...)</div><div class="ttdoc">Insert an error message into the WiredTiger error stream.</div><div class="ttdef"><b>Definition:</b> wiredtiger_ext.h:112</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a></div><div class="ttdoc">All data operations are performed in the context of a WT_SESSION.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:739</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3363</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
