@@ -1,5 +1,9 @@
 var NAVTREEINDEX5 =
 {
+"struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3":[1,0,7,0],
+"struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#ad0b4eef618f34b00edfbac44b24c5c16":[1,0,7,1],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html":[1,0,4],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903":[1,0,4,4],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea":[1,0,4,2],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640":[1,0,4,8],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783":[1,0,4,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX5 =
 "tool-statistics.html#autotoc_md106":[0,10,1,4],
 "tool-xray.html":[0,10,4],
 "tool-xray.html#autotoc_md107":[0,10,4,0],
-"tool-xray.html#autotoc_md108":[0,10,4,0,0],
-"tool-xray.html#autotoc_md109":[0,10,4,0,1],
-"tool-xray.html#autotoc_md110":[0,10,4,0,2],
-"tool-xray.html#autotoc_md111":[0,10,4,1],
-"tool-xray.html#autotoc_md112":[0,10,4,1,0]
+"tool-xray.html#autotoc_md108":[0,10,4,0,0]
 };
