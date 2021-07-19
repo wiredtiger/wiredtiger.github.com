@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"tool-xray.html#autotoc_md108":[0,10,4,0,0],
 "tool-xray.html#autotoc_md109":[0,10,4,0,1],
 "tool-xray.html#autotoc_md110":[0,10,4,0,2],
 "tool-xray.html#autotoc_md111":[0,10,4,1],
