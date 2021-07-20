@@ -121,7 +121,18 @@ Changing compiler or loader options</h1>
 </div><!-- fragment --><p>To explicitly specify the Clang toolchain:</p>
 <div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../build_cmake/toolchains/clang.cmake -G Ninja ../.</div>
 </div><!-- fragment --><p>By default, WiredTiger builds with the <code>-O3</code> compiler optimization flag unless manually specified through the <code>-DCC_OPTIMIZE_LEVEL</code> configuration option. For example, to specify a different level of optimization:</p>
-<div class="fragment"><div class="line">cmake -DCC_OPTIMIZE_LEVEL=-01 -G Ninja ../.</div>
+<div class="fragment"><div class="line">cmake -DCC_OPTIMIZE_LEVEL=-O1 -G Ninja ../.</div>
+</div><!-- fragment --><h1><a class="anchor" id="posix_ctest"></a>
+Running WiredTiger C/C++ Tests</h1>
+<p>The WiredTiger CMake build makes available a suite of C/C++ based tests. To run the available tests you can use our smoke test alias (<code>check</code>). Ensure you're in the build directory and execute:</p>
+<div class="fragment"><div class="line">ctest -j$(nproc) -L check</div>
+</div><!-- fragment --><p>Alternatively to just run all the tests available:</p>
+<div class="fragment"><div class="line">ctest -j$(nproc)</div>
+</div><!-- fragment --><p>In addition, to get verbose output with your test run you can use the <code>-VV</code> flag:</p>
+<div class="fragment"><div class="line">ctest -j$(nproc) -VV</div>
+</div><!-- fragment --><p>If you want to focus on running a specific test (i.e. run a test that may be failing) you can use the <code>-R</code> flag:</p>
+<div class="fragment"><div class="line"><span class="preprocessor"># Note: -R specifies a regex, where any matching test will be run</span></div>
+<div class="line"><span class="preprocessor">ctest -j$(nproc) -R test_name</span></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

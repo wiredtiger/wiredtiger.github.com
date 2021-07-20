@@ -148,6 +148,8 @@ Wtperf configuration options</h1>
 <dl class="section user"><dt>random_range (unsigned int, default=0)</dt><dd>if non zero choose a value from within this range as the key for insert operations </dd></dl>
 <dl class="section user"><dt>random_value (boolean, default=false)</dt><dd>generate random content for the value </dd></dl>
 <dl class="section user"><dt>range_partition (boolean, default=false)</dt><dd>partition data by range (vs hash) </dd></dl>
+<dl class="section user"><dt>read_range (unsigned int, default=0)</dt><dd>read a sequential range of keys upon each read operation. This value tells us how many keys to read each time, or an upper bound on the number of keys read if read_range_random is set. </dd></dl>
+<dl class="section user"><dt>read_range_random (boolean, default=false)</dt><dd>if doing range reads, select the number of keys to read in a range uniformly at random. </dd></dl>
 <dl class="section user"><dt>readonly (boolean, default=false)</dt><dd>reopen the connection between populate and workload phases in readonly mode. Requires reopen_connection turned on (default). Requires that read be the only workload specified </dd></dl>
 <dl class="section user"><dt>reopen_connection (boolean, default=true)</dt><dd>close and reopen the connection between populate and workload phases </dd></dl>
 <dl class="section user"><dt>report_interval (unsigned int, default=2)</dt><dd>output throughput information every interval seconds, 0 to disable </dd></dl>
@@ -159,6 +161,7 @@ Wtperf configuration options</h1>
 <dl class="section user"><dt>scan_interval (unsigned int, default=0)</dt><dd>scan tables every interval seconds during the workload phase, 0 to disable </dd></dl>
 <dl class="section user"><dt>scan_pct (unsigned int, default=10)</dt><dd>percentage of entire data set scanned, if scan_interval is enabled </dd></dl>
 <dl class="section user"><dt>scan_table_count (unsigned int, default=0)</dt><dd>number of separate tables to be used for scanning. Zero indicates that tables are shared with other operations </dd></dl>
+<dl class="section user"><dt>select_latest (boolean, default=false)</dt><dd>in workloads that involve inserts and another type of operation, select the recently inserted records with higher probability </dd></dl>
 <dl class="section user"><dt>sess_config (string, default="")</dt><dd>session configuration string </dd></dl>
 <dl class="section user"><dt>session_count_idle (unsigned int, default=0)</dt><dd>number of idle sessions to create. Default 0. </dd></dl>
 <dl class="section user"><dt>table_config (string, default="key_format=S,value_format=S,type=file,exclusive=true,leaf_value_max=64MB,memory_page_max=10m, split_pct=90,checksum=on")</dt><dd>table configuration string </dd></dl>
