@@ -17,5 +17,6 @@ var examples =
     [ "ex_stat.c", "ex_stat_8c-example.html", null ],
     [ "ex_thread.c", "ex_thread_8c-example.html", null ],
     [ "nop_encrypt.c", "nop_encrypt_8c-example.html", null ],
-    [ "rotn_encrypt.c", "rotn_encrypt_8c-example.html", null ]
+    [ "rotn_encrypt.c", "rotn_encrypt_8c-example.html", null ],
+    [ "sodium_encrypt.c", "sodium_encrypt_8c-example.html", null ]
 ];
