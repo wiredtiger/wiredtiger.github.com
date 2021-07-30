@@ -159,9 +159,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d108fab498cfddbb09ee23e3321a88d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">transaction_pinned_range</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, uint64_t *range)</td></tr>
 <tr class="memdesc:a1d108fab498cfddbb09ee23e3321a88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transaction ID range pinned by the session handle.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">More...</a><br /></td></tr>
 <tr class="separator:a1d108fab498cfddbb09ee23e3321a88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61c8c3ad80d8228172db66ca70bd90fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">transaction_sync</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *config)</td></tr>
-<tr class="memdesc:a61c8c3ad80d8228172db66ca70bd90fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a transaction to become synchronized.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">More...</a><br /></td></tr>
-<tr class="separator:a61c8c3ad80d8228172db66ca70bd90fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -571,7 +568,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the time taken to complete operations in this transaction. Time is measured in real time milliseconds from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to 1; default <code>0</code>. </td></tr>
 <tr>
-<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>transaction_sync</code>. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized.">WT_SESSION::transaction_sync</a>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
+<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>transaction_sync</code>. The <code>off</code> setting does not wait for record to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1046,7 +1043,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>sync</code></td><td>forcibly flush the log and wait for it to achieve the synchronization level specified. The <code>background</code> setting initiates a background synchronization intended to be used with a later call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd" title="Wait for a transaction to become synchronized.">WT_SESSION::transaction_sync</a>. The <code>off</code> setting forces any buffered log records to be written to the file system. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"background"</code>, <code>"off"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
+<td><code>sync</code></td><td>forcibly flush the log and wait for it to achieve the synchronization level specified. The <code>off</code> setting forces any buffered log records to be written to the file system. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"off"</code>, <code>"on"</code>; default <code>on</code>. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1845,55 +1842,6 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 </div>
 </div>
-<a id="a61c8c3ad80d8228172db66ca70bd90fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61c8c3ad80d8228172db66ca70bd90fd">&#9670;&nbsp;</a></span>transaction_sync()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int WT_SESSION::transaction_sync </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *&#160;</td>
-          <td class="paramname"><em>session</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>config</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Wait for a transaction to become synchronized. </p>
-<p>This method is only useful when <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> is configured with the <code>transaction_sync</code> setting disabled.</p>
-<p>This method must not be called on a session with an active transaction.<br  />
-<br  />
- </p><div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">transaction_sync</a>(session, NULL));</div>
-</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values:<br  />
- <table class="doxtable">
-<tr>
-<th>Name</th><th>Effect</th><th>Values </th></tr>
-<tr>
-<td><code>timeout_ms</code></td><td>maximum amount of time to wait for background sync to complete in milliseconds. A value of zero disables the timeout and returns immediately.</td><td>an integer; default <code>1200000</code>. </td></tr>
-</table>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-
-</div>
-</div>
 <a id="a11b86fb4685c58388b7d70fb59f0856c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a11b86fb4685c58388b7d70fb59f0856c">&#9670;&nbsp;</a></span>truncate()</h2>
 
@@ -2094,7 +2042,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a556046adc68a33bd317865c6a8d9ad69"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69">WT_SESSION::upgrade</a></div><div class="ttdeci">int upgrade(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Upgrade a table or file.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a358ca4141d59c345f401c58501276bbb"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">WT_SESSION::create</a></div><div class="ttdeci">int create(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Create a table, column group, index or file.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aa449082ce4de7ee86a773595c416a69f"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">WT_SESSION::timestamp_transaction</a></div><div class="ttdeci">int timestamp_transaction(WT_SESSION *session, const char *config)</div><div class="ttdoc">Set a timestamp on a transaction.</div></div>
-<div class="ttc" id="agroup__wt_html_ga5ee3c6fcd074e11efd118f3e68e91db8"><div class="ttname"><a href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a></div><div class="ttdeci">#define WT_ROLLBACK</div><div class="ttdoc">Conflict between concurrent operations.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3635</div></div>
+<div class="ttc" id="agroup__wt_html_ga5ee3c6fcd074e11efd118f3e68e91db8"><div class="ttname"><a href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a></div><div class="ttdeci">#define WT_ROLLBACK</div><div class="ttdoc">Conflict between concurrent operations.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3611</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a7bfb7d5fb5db47a35985559669f1b964"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a7bfb7d5fb5db47a35985559669f1b964">WT_SESSION::open_cursor</a></div><div class="ttdeci">int open_cursor(WT_SESSION *session, const char *uri, WT_HANDLE_NULLABLE(WT_CURSOR) *to_dup, const char *config, WT_CURSOR **cursorp)</div><div class="ttdoc">Open a new cursor on a data source or duplicate an existing cursor.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aafa7a12a4891a5bfdc98673a5b8f9c69"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">WT_SESSION::compact</a></div><div class="ttdeci">int compact(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Compact a live row- or column-store btree or LSM tree.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></div><div class="ttdoc">A WT_CURSOR handle is the interface to a cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:211</div></div>
@@ -2109,12 +2057,11 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a0334da4c85fe8af4197c9a7de27467d3"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3">WT_SESSION::verify</a></div><div class="ttdeci">int verify(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Verify a table or file.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a7e26b16b26b5870498752322fad790bf"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf">WT_SESSION::begin_transaction</a></div><div class="ttdeci">int begin_transaction(WT_SESSION *session, const char *config)</div><div class="ttdoc">Start a transaction in this session.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a578f0fbd8a83339f1f9c00e135f006e6"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6">WT_SESSION::reconfigure</a></div><div class="ttdeci">int reconfigure(WT_SESSION *session, const char *config)</div><div class="ttdoc">Reconfigure a session handle.</div></div>
-<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a61c8c3ad80d8228172db66ca70bd90fd"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a61c8c3ad80d8228172db66ca70bd90fd">WT_SESSION::transaction_sync</a></div><div class="ttdeci">int transaction_sync(WT_SESSION *session, const char *config)</div><div class="ttdoc">Wait for a transaction to become synchronized.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a6550c9079198955c5071583941c85bbf"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">WT_SESSION::checkpoint</a></div><div class="ttdeci">int checkpoint(WT_SESSION *session, const char *config)</div><div class="ttdoc">Write a transactionally consistent snapshot of a database or set of objects.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_adf785ef53c16d9dcc77e22cc04c87b70"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">WT_SESSION::drop</a></div><div class="ttdeci">int drop(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Drop (delete) an object.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a96b8a369610c8cbb08b8a7c504fd1008"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008">WT_SESSION::prepare_transaction</a></div><div class="ttdeci">int prepare_transaction(WT_SESSION *session, const char *config)</div><div class="ttdoc">Prepare the current transaction.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3655</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3631</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a1d108fab498cfddbb09ee23e3321a88d"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">WT_SESSION::transaction_pinned_range</a></div><div class="ttdeci">int transaction_pinned_range(WT_SESSION *session, uint64_t *range)</div><div class="ttdoc">Return the transaction ID range pinned by the session handle.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a2117021276bad0e6f541e61a5459ec59"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59">WT_SESSION::reset_snapshot</a></div><div class="ttdeci">int reset_snapshot(WT_SESSION *session)</div><div class="ttdoc">Reset the snapshot.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_abb6534713ebc37cf7cc00ecc8736d391"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#abb6534713ebc37cf7cc00ecc8736d391">WT_SESSION::close</a></div><div class="ttdeci">int close(WT_HANDLE_CLOSED(WT_SESSION) *session, const char *config)</div><div class="ttdoc">Close the session handle.</div></div>

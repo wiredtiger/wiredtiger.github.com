@@ -102,8 +102,8 @@ Overview of rollback to stable</h1>
 <p>Rollback to stable scans each and every table present in the database except metadata <a class="el" href="arch-metadata.html">Metadata (Architecture Guide)</a> to remove the modifications from the table that are more than stable timestamp and recovered checkpoint snapshot.</p>
 <p>In the process of removing newer modifications from the table, all the in-memory updates are aborted and the on-disk version updates are replaced with an update from history store otherwise the data store version is removed.</p>
 <p>Rollback to stable is performed in three phases</p><ol type="1">
-<li>WT startup</li>
-<li>WT shutdown</li>
+<li>WiredTiger startup</li>
+<li>WiredTiger shutdown</li>
 <li>Application initiated</li>
 </ol>
 <p>To improve the performance of rollback to stable operation, rollback to stable will perform only on particular tables that need rollback. Rollback to stable doesn't operate on logged tables as the updates on these are stable when the transaction gets committed.</p>

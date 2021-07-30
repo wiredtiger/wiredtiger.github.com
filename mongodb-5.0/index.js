@@ -130,7 +130,7 @@ var index =
         [ "CSuite", "testing.html#test_csuite", null ],
         [ "CPPSuite", "testing.html#test_cppsuite", null ],
         [ "Format", "testing.html#test_format", null ],
-        [ "WT Perf", "testing.html#test_perf", null ],
+        [ "WiredTiger Perf", "testing.html#test_perf", null ],
         [ "Workgen", "testing.html#test_workgen", null ]
       ] ],
       [ "Compatibility Testing", "testing.html#testing_compatibility", null ],

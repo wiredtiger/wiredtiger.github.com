@@ -1,5 +1,18 @@
 var NAVTREEINDEX6 =
 {
+"tool-perf.html#autotoc_md98":[0,10,3,4],
+"tool-perf.html#autotoc_md99":[0,10,3,5],
+"tool-statistics.html":[0,10,1],
+"tool-statistics.html#autotoc_md100":[0,10,1,0],
+"tool-statistics.html#autotoc_md101":[0,10,1,1],
+"tool-statistics.html#autotoc_md102":[0,10,1,2],
+"tool-statistics.html#autotoc_md103":[0,10,1,3],
+"tool-statistics.html#autotoc_md104":[0,10,1,3,0],
+"tool-statistics.html#autotoc_md105":[0,10,1,3,1],
+"tool-statistics.html#autotoc_md106":[0,10,1,4],
+"tool-xray.html":[0,10,4],
+"tool-xray.html#autotoc_md107":[0,10,4,0],
+"tool-xray.html#autotoc_md108":[0,10,4,0,0],
 "tool-xray.html#autotoc_md109":[0,10,4,0,1],
 "tool-xray.html#autotoc_md110":[0,10,4,0,2],
 "tool-xray.html#autotoc_md111":[0,10,4,1],

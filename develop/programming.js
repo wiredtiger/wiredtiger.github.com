@@ -71,6 +71,7 @@ var programming =
     [ "Signal handling", "signals.html", null ],
     [ "Backups", "backup.html", [
       [ "Backup from an application", "backup.html#backup_process", null ],
+      [ "Duplicate backup cursors", "backup.html#backup_duplicate", null ],
       [ "Backup from the command line", "backup.html#backup_util", null ],
       [ "Block-based Incremental backup", "backup.html#backup_incremental-block", null ],
       [ "Log-based Incremental backup", "backup.html#backup_incremental", null ],
