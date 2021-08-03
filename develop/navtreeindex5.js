@@ -1,9 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"struct_w_t___c_o_l_l_a_t_o_r.html#af85a41db9b4d5919303cdb8c80039717":[1,1,0,2],
-"struct_w_t___c_o_m_p_r_e_s_s_o_r.html":[1,1,1],
-"struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a075294c61c5d29abd55fc4603afe431f":[1,1,1,0],
-"struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a12e35ffbbe63b041c0571fb622b7f9da":[1,1,1,1],
 "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a8b72f263db4faea37d8362ebc4725990":[1,1,1,2],
 "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#ad23cc1486dc4c0cc51835cfaecb01a33":[1,1,1,3],
 "struct_w_t___c_o_n_f_i_g___i_t_e_m.html":[1,0,6],
@@ -249,5 +245,9 @@ var NAVTREEINDEX5 =
 "tool-perf-flamegraphs.html":[0,10,5],
 "tool-perf-flamegraphs.html#autotoc_md97":[0,10,5,0],
 "tool-perf-flamegraphs.html#autotoc_md98":[0,10,5,1],
-"tool-perf.html":[0,10,3]
+"tool-perf.html":[0,10,3],
+"tool-perf.html#autotoc_md100":[0,10,3,1],
+"tool-perf.html#autotoc_md101":[0,10,3,2],
+"tool-perf.html#autotoc_md102":[0,10,3,3],
+"tool-perf.html#autotoc_md103":[0,10,3,4]
 };
