@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: File System and Operating System Interface (Architecture Guide)</title>
+<title>WiredTiger: Row Store &amp; Column Store (Architecture Guide)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,13 +59,13 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('arch-fs-os.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('arch-row-column.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">File System and Operating System Interface (Architecture Guide) </div>  </div>
+<div class="title">Row Store &amp; Column Store (Architecture Guide) </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><div class="arch_head"><table class="doxtable">
@@ -92,17 +92,61 @@ $(document).ready(function(){initNavTree('arch-fs-os.html',''); initResizable();
 <area shape="rect" id="id19" href="arch-fs-os.html" title="arch-fs-os.html" alt="" coords="175,755,357,771"/>
 </map>
 <tr>
-<td><code><code><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation.">WT_FILE_SYSTEM</a></code></code></td><td><code><code>src/include/os.h<br  />
-src/include/os_fhandle_inline.h<br  />
-src/include/os_fs_inline.h<br  />
-src/include/os_fstream_inline.h<br  />
-src/include/os_windows.h<br  />
-src/os_posix/<br  />
-src/os_win/</code></code></td></tr>
+<td><code><code>WT_BTREE</code></code></td><td><code><code>src/include/btree.h</code></code></td></tr>
 </table>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
-<p>Internally, a layer of abstraction is above all operating system calls, allowing main line WiredTiger code to make a call to single set of interfaces. There are currently OS specific APIs for POSIX and Windows.</p>
-<p>Additionally, a program can use <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b" title="Configure a custom file system.">WT_CONNECTION::set_file_system</a> to register a set of functions that will be called for each file system operation. WiredTiger will then call these functions at the appropriate time. </p>
+<h1><a class="anchor" id="row_column_definition"></a>
+Definition</h1>
+<p>WiredTiger supports both row-stores and column-stores and each access method is represented internally by a B-Tree. Keys and values in row-stores can be of variable length. Furthermore, keys are explicitly stored. Column-stores use a 64-bit unsigned integer record id as keys and they are implied given the row's position in the B-Tree.</p>
+<p>There are two types of column-stores in WiredTiger:</p><ul>
+<li>The fixed length column-store, as its name implies, the value has a fixed length, and furthermore the value is restricted to between 1 and 8 bits in length. The bit length is specified when the column store is created. The fixed length column store has specialized use cases like bitmaps.</li>
+<li>The variable length is a more general case which allows for values to have any length similarly to row-stores.</li>
+</ul>
+<p>Please refer to <a class="el" href="arch-data-file.html">Data File Format (Architecture Guide)</a> to learn more about the on-disk format for row-stores and column-stores.</p>
+<h1><a class="anchor" id="row_column_rs"></a>
+Row-stores</h1>
+<p>Row-stores are probably seen as the traditional access method and they serve a general purpose. In WiredTiger, row-store keys are explicitly stored and they can be duplicated within the same single file which directly impacts the on-disk storage size. However, keys are only duplicated if they are the first key on the page, which gets them copied/promoted to an internal page. They are not necessarily duplicated, too, they can be prefix/suffix compressed to discard unnecessary bytes on the internal pages.</p>
+<h1><a class="anchor" id="row_column_vlcs"></a>
+Variable length column-stores</h1>
+<p>Keys in column-stores are not stored but derived from the row's position in the B-Tree which saves disk space. In fact, there is a starting key on each page which is used to figure out the rest of the keys present on that same page. Column-stores values also present an advantage to further save more disk space as they can be written in more compact forms through encoding techniques. In WiredTiger, the run-length encoding is used to replace any sequence of the same value with a count and value indicator. However, this makes the access to a specific record more complicated, it makes it impossible to jump to a record in a leaf page.</p>
+<h1><a class="anchor" id="row_column_flcs"></a>
+Fixed length column-stores</h1>
+<p>Fixed length column stores are very different internally and usually serve specific purposes as it is a <a href="https://en.wikipedia.org/wiki/Bitmap"><b>Bitmap</b></a>. It makes fixed length column-stores efficient to retrieve a value at a given offset, the use of <a href="https://en.wikipedia.org/wiki/Bloom_filter"><b>Bloom filter</b></a> is probably one of the best examples.</p>
+<h1><a class="anchor" id="row_column_internal_use"></a>
+Internal usage</h1>
+<p>Internally, row-stores and column-stores use a common <code>WT_BTREE</code> structure. The fundamental difference is that the <code>WT_BTREE-&gt;type</code> field is set to <code>BTREE_ROW</code> for row-stores and <code>BTREE_COL</code> for column-stores. Internal functions that navigate, access and manipulate B-Trees have code sprinkled throughout that is conditional on <code>WT_BTREE-&gt;type</code>.</p>
+<table class="doxtable">
+<tr>
+<th></th><th>Row Store</th><th>Column Store - Variable Length</th><th>Column Store - Fixed Length </th></tr>
+<tr>
+<td>Characteristics</td><td></td><td></td><td></td><td></td></tr>
+<tr>
+<td>Internal representation</td><td>B-Tree (<code>WT_BTREE</code>)</td><td>B-Tree (<code>WT_BTREE</code>)</td><td>B-Tree (<code>WT_BTREE</code>) </td></tr>
+<tr>
+<td>B-Tree type</td><td>Generalized (<code>BTREE_ROW</code>)</td><td>Specialized (<code>BTREE_COL_VAR</code>)</td><td>Specialized (<code>BTREE_COL_FIX</code>) </td></tr>
+<tr>
+<td>Leaf pages</td><td>Key count equal to half the number of physical entries (unless all empty values flag is set where key count is equal to the number of physical entries)</td><td>Only the first key is stored</td><td>Only the first key is stored </td></tr>
+<tr>
+<td>Record key</td><td>Anything (byte-string) prefix compressed or overflow objects</td><td>Record id (64 bit unsigned integer)</td><td>Record id (64 bit unsigned integer) </td></tr>
+<tr>
+<td>Record value</td><td>Variable byte string length</td><td>Variable byte string length</td><td>Fixed bit string length (up to 8 bits) </td></tr>
+<tr>
+<td>Features</td><td></td><td></td><td></td><td></td></tr>
+<tr>
+<td>Random cursor</td><td>Yes</td><td>No</td><td>No </td></tr>
+<tr>
+<td>Block compression</td><td>Yes</td><td>Yes</td><td>Yes </td></tr>
+<tr>
+<td>Dictionary compression</td><td>Yes</td><td>Yes</td><td>No </td></tr>
+<tr>
+<td>Fast truncate</td><td>Yes</td><td>No</td><td>No </td></tr>
+<tr>
+<td>Huffman encoding</td><td>Yes</td><td>Yes</td><td>No </td></tr>
+<tr>
+<td>Prefix and suffix compression</td><td>Yes</td><td>No</td><td>No </td></tr>
+<tr>
+<td>RLE compression</td><td>No</td><td>Yes</td><td>No </td></tr>
+</table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

@@ -16,7 +16,6 @@ var arch_index =
       [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md8", null ],
       [ "Garbage collection", "arch-checkpoint.html#autotoc_md9", null ]
     ] ],
-    [ "Column Store (Architecture Guide)", "arch-column.html", null ],
     [ "Cursor (Architecture Guide)", "arch-cursor.html", [
       [ "Data translation", "arch-cursor.html#arch_cursor_raw", null ],
       [ "File cursors", "arch-cursor.html#arch_cursor_file", null ],
@@ -62,7 +61,13 @@ var arch_index =
       ] ]
     ] ],
     [ "Python API (Architecture Guide)", "arch-python.html", null ],
-    [ "Row Store (Architecture Guide)", "arch-row.html", null ],
+    [ "Row Store & Column Store (Architecture Guide)", "arch-row-column.html", [
+      [ "Definition", "arch-row-column.html#row_column_definition", null ],
+      [ "Row-stores", "arch-row-column.html#row_column_rs", null ],
+      [ "Variable length column-stores", "arch-row-column.html#row_column_vlcs", null ],
+      [ "Fixed length column-stores", "arch-row-column.html#row_column_flcs", null ],
+      [ "Internal usage", "arch-row-column.html#row_column_internal_use", null ]
+    ] ],
     [ "Rollback to stable (Architecture Guide)", "arch-rts.html", [
       [ "Overview of rollback to stable", "arch-rts.html#rts-overview", null ],
       [ "Stable update of rollback to stable", "arch-rts.html#rts-stable-update", null ],
