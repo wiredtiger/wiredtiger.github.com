@@ -40,7 +40,18 @@ var arch_index =
     [ "Data Handles and Btrees (Architecture Guide)", "arch-dhandle.html", "arch-dhandle" ],
     [ "Eviction (Architecture Guide)", "arch-eviction.html", null ],
     [ "File System and Operating System Interface (Architecture Guide)", "arch-fs-os.html", null ],
-    [ "History Store (Architecture Guide)", "arch-hs.html", null ],
+    [ "History Store (Architecture Guide)", "arch-hs.html", [
+      [ "History store table structure", "arch-hs.html#arch_hs_table", [
+        [ "Tombstones in the history store table", "arch-hs.html#arch_hs_table_tombstone", null ]
+      ] ],
+      [ "History store initialization", "arch-hs.html#arch_hs_initialize", null ],
+      [ "History store cursor interface", "arch-hs.html#arch_hs_cursor", null ],
+      [ "History store cursor interface and visibility rules", "arch-hs.html#arch_hs_cursor_visibility", null ],
+      [ "History store and reconciliation", "arch-hs.html#arch_hs_reconciliation", null ],
+      [ "Searching for older versions of a key in History Store", "arch-hs.html#arch_hs_read", null ],
+      [ "History store and rollback-to-stable", "arch-hs.html#arch_hs_rts", null ],
+      [ "History store and prepared transactions", "arch-hs.html#arch_hs_prepared", null ]
+    ] ],
     [ "Logging (Architecture Guide)", "arch-logging.html", [
       [ "Log-related files in the database directory", "arch-logging.html#log_files", null ],
       [ "Configuration choices and their implications", "arch-logging.html#log_configuration", null ],
