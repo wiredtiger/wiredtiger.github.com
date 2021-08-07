@@ -43,9 +43,7 @@ var NAVTREEINDEX0 =
 "arch-eviction.html":[0,11,7],
 "arch-fs-os.html":[0,11,8],
 "arch-glossary.html":[0,11,19],
-"arch-glossary.html#arch-glossary-checkpoint":[0,11,19,1],
-"arch-glossary.html#arch-glossary-general":[0,11,19,0],
-"arch-glossary.html#arch-glossary-transactions":[0,11,19,2],
+"arch-glossary.html#arch-glossary-transactions":[0,11,19,0],
 "arch-hs.html":[0,11,9],
 "arch-hs.html#arch_hs_cursor":[0,11,9,2],
 "arch-hs.html#arch_hs_cursor_visibility":[0,11,9,3],
@@ -249,5 +247,7 @@ var NAVTREEINDEX0 =
 "custom_extractors.html":[0,3,28],
 "custom_extractors.html#custom_extractors_intro":[0,3,28,0],
 "custom_extractors.html#custom_extractors_notes":[0,3,28,1],
-"custom_extractors.html#custom_extractors_raw":[0,3,28,2]
+"custom_extractors.html#custom_extractors_raw":[0,3,28,2],
+"custom_file_systems.html":[0,3,30],
+"custom_storage_sources.html":[0,3,31]
 };

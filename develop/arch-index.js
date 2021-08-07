@@ -103,9 +103,5 @@ var arch_index =
       ] ],
       [ "Transactions", "arch-transaction.html#Prepared", null ]
     ] ],
-    [ "Architecture Guide Glossary of Terms", "arch-glossary.html", [
-      [ "General Terms Used in WiredTiger", "arch-glossary.html#arch-glossary-general", null ],
-      [ "Terms Related to Checkpoints", "arch-glossary.html#arch-glossary-checkpoint", null ],
-      [ "Terms Related to Transactions", "arch-glossary.html#arch-glossary-transactions", null ]
-    ] ]
+    [ "Architecture Guide Glossary of Terms", "arch-glossary.html", "arch-glossary" ]
 ];

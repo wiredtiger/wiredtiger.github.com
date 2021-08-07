@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"custom_file_systems.html":[0,3,30],
-"custom_storage_sources.html":[0,3,31],
 "custom_storage_sources.html#storage_examples":[0,3,31,2],
 "custom_storage_sources.html#storage_overview":[0,3,31,0],
 "custom_storage_sources.html#storage_parameters":[0,3,31,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga35cc96dfb2c728e0dfbcb406d56d8a8c":[1,0,611],
 "group__wt.html#ga3631a9b0759fd78b61d82ef55df93d01":[1,0,263],
 "group__wt.html#ga37622ee476097218be4b2076a4a51a8f":[1,0,625],
-"group__wt.html#ga3795b4e2170d7d00a34890dd18b55e46":[1,0,489]
+"group__wt.html#ga3795b4e2170d7d00a34890dd18b55e46":[1,0,489],
+"group__wt.html#ga37bb741ecdd7e0488da729e9d766bcdc":[1,0,645],
+"group__wt.html#ga37f2eac516cdecb655dc5d8ca9851a57":[1,0,189]
 };
