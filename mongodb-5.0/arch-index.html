@@ -7,6 +7,7 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="sorttable.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
@@ -85,8 +86,7 @@ $(document).ready(function(){initNavTree('arch-index.html',''); initResizable();
 <area shape="rect" id="id11" href="arch-snapshot.html" title="arch-snapshot.html" alt="" coords="381,441,455,457"/>
 <area shape="rect" id="id12" href="arch-transaction.html" title="arch-transaction.html" alt="" coords="339,328,428,344"/>
 <area shape="rect" id="id13" href="arch-hs.html" title="arch-hs.html" alt="" coords="93,642,140,674"/>
-<area shape="rect" id="id14" href="arch-row.html" title="arch-row.html" alt="" coords="163,433,217,465"/>
-<area shape="rect" id="id15" href="arch-column.html" title="arch-column.html" alt="" coords="272,433,326,465"/>
+<area shape="rect" id="id14" href="arch-row-column.html" title="arch-row-column.html" alt="" coords="163,433,217,465"/>
 <area shape="rect" id="id16" href="arch-block.html" title="arch-block.html" alt="" coords="196,642,256,674"/>
 <area shape="rect" id="id17" href="arch-dhandle.html" title="arch-dhandle.html" alt="" coords="181,320,242,352"/>
 <area shape="rect" id="id18" href="arch-data-file.html" title="arch-data-file.html" alt="" coords="179,865,245,897"/>
@@ -94,14 +94,14 @@ $(document).ready(function(){initNavTree('arch-index.html',''); initResizable();
 </map>
 </div>
  </div><div class="arch_diagram"></div><p>We go into some detail for some of the internal components.</p>
+<p><a class="el" href="arch-backup.html">Backup (Architecture Guide)</a></p>
+<p>Hot backup uses a type of cursor to backup the database.</p>
 <p><a class="el" href="arch-block.html">Block Manager (Architecture Guide)</a></p>
 <p>The Block Manager manages the reading and writing of disk blocks.</p>
 <p><a class="el" href="arch-cache.html">Cache (Architecture Guide)</a></p>
 <p>Cache is represented by the various shared data structures that make up in-memory Btrees and subordinate data structures.</p>
 <p><a class="el" href="arch-checkpoint.html">Checkpoint (Architecture Guide)</a></p>
 <p>A checkpoint is created by WiredTiger to serve as a point from which it can recover.</p>
-<p><a class="el" href="arch-column.html">Column Store (Architecture Guide)</a></p>
-<p>Column Stores are Btrees that have as their key a record id.</p>
 <p><a class="el" href="arch-cursor.html">Cursor (Architecture Guide)</a></p>
 <p>Cursors are used to get and modify data.</p>
 <p><a class="el" href="arch-data-file.html">Data File Format (Architecture Guide)</a></p>
@@ -122,8 +122,8 @@ $(document).ready(function(){initNavTree('arch-index.html',''); initResizable();
 <p>Metadata is stored as <code>uri, config</code> K/V pairs in a designated table.</p>
 <p><a class="el" href="arch-python.html">Python API (Architecture Guide)</a></p>
 <p>WiredTiger has a Python API that is useful for scripting and experimentation.</p>
-<p><a class="el" href="arch-row.html">Row Store (Architecture Guide)</a></p>
-<p>Row Stores are Btrees that have a variable size key and data.</p>
+<p><a class="el" href="arch-row-column.html">Row Store &amp; Column Store (Architecture Guide)</a></p>
+<p>Row stores and column store are B-Trees. Row stores have a variable size key and data while column stores have as their key a record id.</p>
 <p><a class="el" href="arch-rts.html">Rollback to stable (Architecture Guide)</a></p>
 <p>Rollback to stable to remove the unstable updates from the database.</p>
 <p><a class="el" href="arch-schema.html">Schema (Architecture Guide)</a></p>

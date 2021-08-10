@@ -1,15 +1,21 @@
 var arch_index =
 [
+    [ "Backup (Architecture Guide)", "arch-backup.html", [
+      [ "Overview", "arch-backup.html#autotoc_md0", null ],
+      [ "Full database", "arch-backup.html#autotoc_md1", null ],
+      [ "Block-based incremental backup", "arch-backup.html#autotoc_md2", null ],
+      [ "Log-based incremental backup", "arch-backup.html#autotoc_md3", null ],
+      [ "Target backup", "arch-backup.html#autotoc_md4", null ]
+    ] ],
     [ "Block Manager (Architecture Guide)", "arch-block.html", null ],
     [ "Cache (Architecture Guide)", "arch-cache.html", null ],
     [ "Checkpoint (Architecture Guide)", "arch-checkpoint.html", [
-      [ "Overview", "arch-checkpoint.html#autotoc_md0", null ],
-      [ "The checkpoint algorithm", "arch-checkpoint.html#autotoc_md1", null ],
-      [ "Skipping checkpoints", "arch-checkpoint.html#autotoc_md2", null ],
-      [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md3", null ],
-      [ "Garbage collection", "arch-checkpoint.html#autotoc_md4", null ]
+      [ "Overview", "arch-checkpoint.html#autotoc_md5", null ],
+      [ "The checkpoint algorithm", "arch-checkpoint.html#autotoc_md6", null ],
+      [ "Skipping checkpoints", "arch-checkpoint.html#autotoc_md7", null ],
+      [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md8", null ],
+      [ "Garbage collection", "arch-checkpoint.html#autotoc_md9", null ]
     ] ],
-    [ "Column Store (Architecture Guide)", "arch-column.html", null ],
     [ "Cursor (Architecture Guide)", "arch-cursor.html", [
       [ "Data translation", "arch-cursor.html#arch_cursor_raw", null ],
       [ "File cursors", "arch-cursor.html#arch_cursor_file", null ],
@@ -34,7 +40,18 @@ var arch_index =
     [ "Data Handles and Btrees (Architecture Guide)", "arch-dhandle.html", "arch-dhandle" ],
     [ "Eviction (Architecture Guide)", "arch-eviction.html", null ],
     [ "File System and Operating System Interface (Architecture Guide)", "arch-fs-os.html", null ],
-    [ "History Store (Architecture Guide)", "arch-hs.html", null ],
+    [ "History Store (Architecture Guide)", "arch-hs.html", [
+      [ "History store table structure", "arch-hs.html#arch_hs_table", [
+        [ "Tombstones in the history store table", "arch-hs.html#arch_hs_table_tombstone", null ]
+      ] ],
+      [ "History store initialization", "arch-hs.html#arch_hs_initialize", null ],
+      [ "History store cursor interface", "arch-hs.html#arch_hs_cursor", null ],
+      [ "History store cursor interface and visibility rules", "arch-hs.html#arch_hs_cursor_visibility", null ],
+      [ "History store and reconciliation", "arch-hs.html#arch_hs_reconciliation", null ],
+      [ "Searching for older versions of a key in History Store", "arch-hs.html#arch_hs_read", null ],
+      [ "History store and rollback-to-stable", "arch-hs.html#arch_hs_rts", null ],
+      [ "History store and prepared transactions", "arch-hs.html#arch_hs_prepared", null ]
+    ] ],
     [ "Logging (Architecture Guide)", "arch-logging.html", [
       [ "Log-related files in the database directory", "arch-logging.html#log_files", null ],
       [ "Configuration choices and their implications", "arch-logging.html#log_configuration", null ],
@@ -55,7 +72,13 @@ var arch_index =
       ] ]
     ] ],
     [ "Python API (Architecture Guide)", "arch-python.html", null ],
-    [ "Row Store (Architecture Guide)", "arch-row.html", null ],
+    [ "Row Store & Column Store (Architecture Guide)", "arch-row-column.html", [
+      [ "Definition", "arch-row-column.html#row_column_definition", null ],
+      [ "Row-stores", "arch-row-column.html#row_column_rs", null ],
+      [ "Variable length column-stores", "arch-row-column.html#row_column_vlcs", null ],
+      [ "Fixed length column-stores", "arch-row-column.html#row_column_flcs", null ],
+      [ "Internal usage", "arch-row-column.html#row_column_internal_use", null ]
+    ] ],
     [ "Rollback to stable (Architecture Guide)", "arch-rts.html", [
       [ "Overview of rollback to stable", "arch-rts.html#rts-overview", null ],
       [ "Stable update of rollback to stable", "arch-rts.html#rts-stable-update", null ],
@@ -80,9 +103,5 @@ var arch_index =
       ] ],
       [ "Transactions", "arch-transaction.html#Prepared", null ]
     ] ],
-    [ "Architecture Guide Glossary of Terms", "arch-glossary.html", [
-      [ "General Terms Used in WiredTiger", "arch-glossary.html#arch-glossary-general", null ],
-      [ "Terms Related to Checkpoints", "arch-glossary.html#arch-glossary-checkpoint", null ],
-      [ "Terms Related to Transactions", "arch-glossary.html#arch-glossary-transactions", null ]
-    ] ]
+    [ "Architecture Guide Glossary of Terms", "arch-glossary.html", "arch-glossary" ]
 ];
