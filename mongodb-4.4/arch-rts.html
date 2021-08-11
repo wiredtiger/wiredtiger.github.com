@@ -7,6 +7,7 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="sorttable.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
@@ -85,8 +86,7 @@ $(document).ready(function(){initNavTree('arch-rts.html',''); initResizable(); }
 <area shape="rect" id="id11" href="arch-snapshot.html" title="arch-snapshot.html" alt="" coords="381,441,455,457"/>
 <area shape="rect" id="id12" href="arch-transaction.html" title="arch-transaction.html" alt="" coords="339,328,428,344"/>
 <area shape="rect" id="id13" href="arch-hs.html" title="arch-hs.html" alt="" coords="93,642,140,674"/>
-<area shape="rect" id="id14" href="arch-row.html" title="arch-row.html" alt="" coords="163,433,217,465"/>
-<area shape="rect" id="id15" href="arch-column.html" title="arch-column.html" alt="" coords="272,433,326,465"/>
+<area shape="rect" id="id14" href="arch-row-column.html" title="arch-row-column.html" alt="" coords="163,433,217,465"/>
 <area shape="rect" id="id16" href="arch-block.html" title="arch-block.html" alt="" coords="196,642,256,674"/>
 <area shape="rect" id="id17" href="arch-dhandle.html" title="arch-dhandle.html" alt="" coords="181,320,242,352"/>
 <area shape="rect" id="id18" href="arch-data-file.html" title="arch-data-file.html" alt="" coords="179,865,245,897"/>
@@ -102,8 +102,8 @@ Overview of rollback to stable</h1>
 <p>Rollback to stable scans each and every table present in the database except metadata <a class="el" href="arch-metadata.html">Metadata (Architecture Guide)</a> to remove the modifications from the table that are more than stable timestamp and recovered checkpoint snapshot.</p>
 <p>In the process of removing newer modifications from the table, all the in-memory updates are aborted and the on-disk version updates are replaced with an update from history store otherwise the data store version is removed.</p>
 <p>Rollback to stable is performed in three phases</p><ol type="1">
-<li>WT startup</li>
-<li>WT shutdown</li>
+<li>WiredTiger startup</li>
+<li>WiredTiger shutdown</li>
 <li>Application initiated</li>
 </ol>
 <p>To improve the performance of rollback to stable operation, rollback to stable will perform only on particular tables that need rollback. Rollback to stable doesn't operate on logged tables as the updates on these are stable when the transaction gets committed.</p>
