@@ -44,9 +44,9 @@ var NAVTREEINDEX =
 "custom_storage_sources.html#storage_examples",
 "group__wt.html#ga383c6857d8a70a747f2f5584b5cca035",
 "group__wt.html#ga8502631a2a854252ca3038769de80ff8",
-"group__wt.html#gadb31b97f4ef3c120e3647a68a343d941",
-"security.html#absolute_path",
-"tool-optrack.html#autotoc_md89"
+"group__wt.html#gad9b3c957ba8ef559bfc4e8b392d519c1",
+"schema.html#schema_indices",
+"tool-optrack.html#autotoc_md85"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
