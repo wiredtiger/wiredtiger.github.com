@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"schema.html#schema_columns":[0,3,5,5],
+"schema.html#schema_cursor_formats":[0,3,5,4],
+"schema.html#schema_examples":[0,3,5,10],
+"schema.html#schema_format_types":[0,3,5,2],
+"schema.html#schema_index_immutable":[0,3,5,8],
+"schema.html#schema_index_projections":[0,3,5,9],
 "schema.html#schema_indices":[0,3,5,7],
 "schema.html#schema_intro":[0,3,5,0],
 "schema.html#schema_key_and_value_formats":[0,3,5,3],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "tool-libfuzzer.html#autotoc_md76":[0,10,6,1,1,0],
 "tool-libfuzzer.html#autotoc_md77":[0,10,6,2],
 "tool-libfuzzer.html#autotoc_md78":[0,10,6,2,0],
-"tool-libfuzzer.html#autotoc_md79":[0,10,6,2,1],
-"tool-libfuzzer.html#autotoc_md80":[0,10,6,2,2],
-"tool-optrack.html":[0,10,2],
-"tool-optrack.html#autotoc_md81":[0,10,2,0],
-"tool-optrack.html#autotoc_md82":[0,10,2,0,0],
-"tool-optrack.html#autotoc_md83":[0,10,2,0,1],
-"tool-optrack.html#autotoc_md84":[0,10,2,0,2]
+"tool-libfuzzer.html#autotoc_md79":[0,10,6,2,1]
 };

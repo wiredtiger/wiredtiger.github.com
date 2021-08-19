@@ -16,6 +16,14 @@ var arch_index =
       [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md8", null ],
       [ "Garbage collection", "arch-checkpoint.html#autotoc_md9", null ]
     ] ],
+    [ "Connection (Architecture Guide)", "arch-connection.html", [
+      [ "Definition", "arch-connection.html#arch_conn_def", null ],
+      [ "Life cycle", "arch-connection.html#arch_conn_lifecycle", [
+        [ "Initialization", "arch-connection.html#arch_conn_init", null ],
+        [ "Runtime", "arch-connection.html#arch_conn_runtime", null ],
+        [ "Closure", "arch-connection.html#arch_conn_closure", null ]
+      ] ]
+    ] ],
     [ "Cursor (Architecture Guide)", "arch-cursor.html", [
       [ "Data translation", "arch-cursor.html#arch_cursor_raw", null ],
       [ "File cursors", "arch-cursor.html#arch_cursor_file", null ],
