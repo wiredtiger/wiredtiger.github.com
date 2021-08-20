@@ -116,11 +116,11 @@ Configuring WiredTiger</h1>
 <dl class="section user"><dt>-DSPINLOCK_TYPE[=pthread, pthread_adaptive, gcc]</dt><dd>Configure WiredTiger to use a specific mutex type for serialization; options are <code>pthread</code> (the default, which configures WiredTiger to use POSIX 1003.1c pthread mutexes), <code>pthread_adaptive</code> (which configures WiredTiger to use POSIX 1003.1c pthread mutexes configured to be adaptive (where that functionality is available), or <code>gcc</code> (which configures WiredTiger to use gcc-based spinlocks).</dd></dl>
 <h1><a class="anchor" id="posix_compiler"></a>
 Changing compiler or loader options</h1>
-<p>By default CMake will use your default system compiler (<code>cc</code>). If you want to use a specific toolchain you can pass a toolchain file. We have provided a toolchain file for both GCC (<code>build_cmake/toolchains/gcc.cmake</code>) and Clang (<code>build_cmake/toolchains/clang.cmake</code>). To use either toolchain you can pass the <code>-DCMAKE_TOOLCHAIN_FILE=</code> to the CMake configuration step. For example:</p>
+<p>By default CMake will use your default system compiler (<code>cc</code>). If you want to use a specific toolchain you can pass a toolchain file. We have provided a toolchain file for both GCC (<code>cmake/toolchains/gcc.cmake</code>) and Clang (<code>cmake/toolchains/clang.cmake</code>). To use either toolchain you can pass the <code>-DCMAKE_TOOLCHAIN_FILE=</code> to the CMake configuration step. For example:</p>
 <p>For example, to explicitly specify the GCC toolchain:</p>
-<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../build_cmake/toolchains/gcc.cmake -G Ninja ../.</div>
+<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/gcc.cmake -G Ninja ../.</div>
 </div><!-- fragment --><p>To explicitly specify the Clang toolchain:</p>
-<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../build_cmake/toolchains/clang.cmake -G Ninja ../.</div>
+<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang.cmake -G Ninja ../.</div>
 </div><!-- fragment --><p>By default, WiredTiger builds with the <code>-O3</code> compiler optimization flag unless manually specified through the <code>-DCC_OPTIMIZE_LEVEL</code> configuration option. For example, to specify a different level of optimization:</p>
 <div class="fragment"><div class="line">cmake -DCC_OPTIMIZE_LEVEL=-O1 -G Ninja ../.</div>
 </div><!-- fragment --><h1><a class="anchor" id="posix_ctest"></a>

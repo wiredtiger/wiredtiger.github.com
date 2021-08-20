@@ -440,7 +440,7 @@ Upgrading to Version 2.4.0</h1>
 <dt>Default mutex implementation changed </dt>
 <dd>The default mutex implementation has been changed from adaptive pthread mutexes to non-adaptive pthread mutexes. Installations can explicitly select adaptive pthread mutexes by specifying <code>&ndash;with-spinlock=pthread_adaptive</code> at configuration time.  </dd>
 <dt>LSM merge threads option change </dt>
-<dd><p class="startdd">The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> <code>lsm=</code>(merge_threads) configuration option has been replaced by the W::wiredtiger_open <code>lsm_manager=</code>(worker_thread_max) option. The new version specifies a set of LSM threads that are shared across all LSM trees in a database, the older configuration was per LSM table. </p>
+<dd><p class="startdd">The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> <code>lsm=</code>(merge_threads) configuration option has been replaced by the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>lsm_manager=</code>(worker_thread_max) option. The new version specifies a set of LSM threads that are shared across all LSM trees in a database, the older configuration was per LSM table. </p>
 <p class="enddd"></p>
 </dd>
 </dl>
