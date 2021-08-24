@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Connection (Architecture Guide)</title>
+<title>WiredTiger: Session (Architecture Guide)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,13 +60,13 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('arch-connection.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('arch-session.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Connection (Architecture Guide) </div>  </div>
+<div class="title">Session (Architecture Guide) </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><div class="arch_head"><table class="doxtable">
@@ -93,27 +93,32 @@ $(document).ready(function(){initNavTree('arch-connection.html',''); initResizab
 <area shape="rect" id="id19" href="arch-fs-os.html" title="arch-fs-os.html" alt="" coords="175,755,357,771"/>
 </map>
 <tr>
-<td><code><code><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a></code></code></td><td><code><code>src/include/connection.h</code></code></td></tr>
+<td><code><code><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a></code></code></td><td><code><code>src/include/session.h</code></code></td></tr>
 </table>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
-<h1><a class="anchor" id="arch_conn_def"></a>
+<h1><a class="anchor" id="arch_session_def"></a>
 Definition</h1>
-<p>A connection is a handle to a WiredTiger database instance. The connection has exclusive access to the database through a file lock, hence only one connection can be opened at a time. Internally, a connection is represented by <code><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a></code>.</p>
-<h1><a class="anchor" id="arch_conn_lifecycle"></a>
-Life cycle</h1>
-<h2><a class="anchor" id="arch_conn_init"></a>
-Initialization</h2>
-<p>A connection is initialized when WT_CONNECTION::wiredtiger_open is called by the user application. WT_CONNECTION::wiredtiger_open accepts a list of configuration items (see <a class="el" href="database_config.html">Database Configuration</a>) that can be used to enable different WiredTiger features and tune their behavior. Those features are for example related to <a class="el" href="arch-eviction.html">Eviction (Architecture Guide)</a>, <a class="el" href="arch-logging.html">Logging (Architecture Guide)</a>, <a class="el" href="arch-checkpoint.html">Checkpoint (Architecture Guide)</a>, <a class="el" href="arch-cache.html">Cache (Architecture Guide)</a>, statistics, etc. All the different available configuration settings are described in the documentation for WT_CONNECTION::wiredtiger_open.</p>
-<p>WT_CONNECTION::wiredtiger_open also performs different sanity checks depending on the configuration item "create". When "create" is specified and a database does not already exist, a new database is created along with specific WiredTiger files such as the turtle file and other metadata files. If a database already exists, whether "create" is specified or not, WiredTiger will try to open it and check for the existence of the different required WiredTiger files. If "create" is not specified, WiredTiger expects a previously created database where it is executed. If the existing database is corrupted and cannot be opened, either <code>WT_RUN_RECOVERY</code> or <code>WT_TRY_SALVAGE</code> error (see <a class="el" href="error_handling.html">Error handling</a>) is returned to the user application and the connection is not created. In this case, a recovery operation will be required to bring the database to a consistent state (see <a class="el" href="command_line.html">WiredTiger command line utility</a> for more details) before a connection can be successfully established with the database.</p>
-<p>Once the database has been successfully opened, internal worker threads are started to provide global services used at runtime. Those services consist of different threads to handle statistics, logging, eviction, checkpoint and cache management. The sweeping server that manages the active and inactive dhandles is started too, see <a class="el" href="arch-dhandle.html">Data Handles and Btrees (Architecture Guide)</a> for more information.</p>
-<p>Finally, before the connection is completely initialized, the database is set to a consistent state by running rollback to stable, see <a class="el" href="arch-rts.html">Rollback to stable (Architecture Guide)</a> for more details.</p>
-<h2><a class="anchor" id="arch_conn_runtime"></a>
-Runtime</h2>
-<p>At runtime, database-wide operations can be executed using the connection interface. For instance, it is possible to reconfigure WiredTiger features and behavior using <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">WT_CONNECTION::reconfigure</a> instead of closing the connection and calling WT_CONNECTION::open again. However, almost all CRUD operations on the database are executed in the context of a session (see <a class="el" href="arch-session.html">Session (Architecture Guide)</a>) which can be created using <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0" title="Open a session.">WT_CONNECTION::open_session</a>. See the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a>:: documentation to discover other available APIs related to WiredTiger connections.</p>
-<p>A connection also keeps tracks of global information, see <code>WT_CONNECTION_IMPL</code> defined in <code>connection.h</code>. Finally, a <code><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a></code> handle may be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information.</p>
-<h2><a class="anchor" id="arch_conn_closure"></a>
-Closure</h2>
-<p>When a connection is no longer required, it can be closed using <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6" title="Close a connection.">WT_CONNECTION::close</a>. As a result, any resource held by the connection (i.e sessions) is freed unless configured differently and the database is restored to a consistent state if necessary. It is worth noting that this final step might take some time as it may involve running the rollback to stable operation. </p>
+<p>After a <a class="el" href="arch-connection.html">Connection (Architecture Guide)</a> has been established between the application and WiredTiger, the application can start sending requests to WiredTiger using a session. A session is internally represented by <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a> and plays an important role since almost all operations are performed under the context of a session.</p>
+<p>A session can only be created through an existing connection with the API <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0" title="Open a session.">WT_CONNECTION::open_session</a> and it is possible to create multiple sessions through the same connection. In fact, one connection can have multiple sessions but one session can only be associated with one connection. The maximum number of sessions is set through the configuration item <code>session_max</code> as part of the configuration string in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>.</p>
+<p>Sessions created by the calling application are called "user sessions". WiredTiger also performs some internal operations such as <a class="el" href="arch-eviction.html">Eviction (Architecture Guide)</a> through self-created sessions. These sessions are called "internal sessions". The usage rules and guidelines for both internal sessions and user sessions are the same and the only difference between them is their origin of creation.</p>
+<h1><a class="anchor" id="arch_session_ops"></a>
+Operations</h1>
+<p>The different operations that can be performed on a WiredTiger session are related to cursors, tables and transactions. You can read the complete description of each possible operation in the documentation related to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html" title="All data operations are performed in the context of a WT_SESSION.">WT_SESSION</a>.</p>
+<h1><a class="anchor" id="arch_session_txn"></a>
+Transactions</h1>
+<p>It is possible to group several operations within a session, in other words, multiple operations can be treated as a single atomic operation. This can be done using <a class="el" href="arch-transaction.html">Transactions (Architecture Guide)</a>. Furthermore, a session can hold only one running transaction at any given time and this transaction only belongs to that session.</p>
+<h1><a class="anchor" id="arch_session_cur"></a>
+Cursors</h1>
+<p>A session can perform multiple data operations on one or several collections using multiple cursors (see <a class="el" href="arch-cursor.html">Cursor (Architecture Guide)</a> for more details). All the cursors associated with a session share that session transaction context. It is also possible to cache those cursors if required through the configuration string given to <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0" title="Open a session.">WT_CONNECTION::open_session</a> or <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>. The configuration item for this purpose is <code>cache_cursors</code>.</p>
+<h1><a class="anchor" id="arch_session_dhandles"></a>
+Data Handles</h1>
+<p>During its lifetime, a session can accumulate a list of data handles (see <a class="el" href="arch-dhandle.html">Data Handles and Btrees (Architecture Guide)</a>). Indeed, when a session accesses a table for the first time, the data handle of that table is acquired and cached. Once a session no longer needs to operate on a table, it marks the associated data handle as idle. This helps the sweep server release data handles that are inactive, see <a class="el" href="arch-dhandle-lifecycle.html">Data Handle Lifecycle</a> for more details.</p>
+<h1><a class="anchor" id="arch_session_closure"></a>
+Closure</h1>
+<p>A session can be closed using <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abb6534713ebc37cf7cc00ecc8736d391" title="Close the session handle.">WT_SESSION::close</a>. Closing the connection will also close all opened sessions. When a session is closed, it releases all the resources associated with it including rolling back any active transaction and closing the cursors that are still open.</p>
+<h1><a class="anchor" id="arch_session_thread"></a>
+Multithreading</h1>
+<p>A session is always executed as a single thread, see <a class="el" href="threads.html">Multithreading</a> for more details. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

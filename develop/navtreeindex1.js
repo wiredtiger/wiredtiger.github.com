@@ -1,5 +1,17 @@
 var NAVTREEINDEX1 =
 {
+"custom_data_sources.html#custom_data_source_cursor_serialize":[0,3,29,6],
+"custom_data_sources.html#custom_data_source_transactions":[0,3,29,7],
+"custom_data_sources.html#custom_ds_config":[0,3,29,4],
+"custom_data_sources.html#custom_ds_config_add":[0,3,29,4,1],
+"custom_data_sources.html#custom_ds_config_parsing":[0,3,29,4,0],
+"custom_data_sources.html#custom_ds_create":[0,3,29,0,0],
+"custom_data_sources.html#custom_ds_cursor_collator":[0,3,29,5],
+"custom_data_sources.html#custom_ds_cursor_fields":[0,3,29,2],
+"custom_data_sources.html#custom_ds_cursor_insert":[0,3,29,1,0],
+"custom_data_sources.html#custom_ds_cursor_methods":[0,3,29,1],
+"custom_data_sources.html#custom_ds_error_handling":[0,3,29,3],
+"custom_data_sources.html#custom_ds_methods":[0,3,29,0],
 "custom_extractors.html":[0,3,28],
 "custom_extractors.html#custom_extractors_intro":[0,3,28,0],
 "custom_extractors.html#custom_extractors_notes":[0,3,28,1],
@@ -237,17 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga2f69defe9f4a1711da1377a079fe9754":[1,0,21],
 "group__wt.html#ga2f773e70a8df43fc93245ae6c89b3f21":[1,0,416],
 "group__wt.html#ga2f77a9a08f6d5b6a848950b34e940fb8":[1,0,547],
-"group__wt.html#ga309dafb64c7e9e3d214ee9b73ec81d61":[1,0,302],
-"group__wt.html#ga31017cdd8a0daa2b69b37944461c06c8":[1,0,527],
-"group__wt.html#ga31115f7b951021f07d06b752405e370b":[1,0,273],
-"group__wt.html#ga316fdbae511d81eb9ad9fcea5a0b8a1e":[1,0,58],
-"group__wt.html#ga31915cfae97578c6bece955ce695b01c":[1,0,384],
-"group__wt.html#ga328dbfa667ae495091818314972a667c":[1,0,740],
-"group__wt.html#ga32c545f7c61a032d70754a0382cff472":[1,0,592],
-"group__wt.html#ga32d5fb6b0015f3890100e050dc652e97":[1,0,83],
-"group__wt.html#ga33883fdec5108a9e14dad7d6cec547e8":[1,0,122],
-"group__wt.html#ga339fdee8a1b559af384b994c0952c0ad":[1,0,369],
-"group__wt.html#ga33ac35e64c48896c09905f7b5e7068d4":[1,0,311],
-"group__wt.html#ga342eae1a0c6bbf8b7788f7e9fd5fc199":[1,0,244],
-"group__wt.html#ga3583383fc8ba9c297b3df83e216cdd01":[1,0,25]
+"group__wt.html#ga309dafb64c7e9e3d214ee9b73ec81d61":[1,0,302]
 };

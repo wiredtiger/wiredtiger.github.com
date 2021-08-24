@@ -1,5 +1,17 @@
 var NAVTREEINDEX5 =
 {
+"readonly.html":[0,3,12],
+"readonly.html#readonly_config":[0,3,12,0],
+"readonly.html#readonly_handles":[0,3,12,4],
+"readonly.html#readonly_logging":[0,3,12,2],
+"readonly.html#readonly_lsm":[0,3,12,3],
+"readonly.html#readonly_recovery":[0,3,12,1],
+"rotn_encrypt_8c-example.html":[4,17],
+"schema.html":[0,3,5],
+"schema.html#diff_logged_non_logged_tables":[0,3,5,12],
+"schema.html#logged_non_logged_tables":[0,3,5,11],
+"schema.html#schema_column_groups":[0,3,5,6],
+"schema.html#schema_column_types":[0,3,5,1],
 "schema.html#schema_columns":[0,3,5,5],
 "schema.html#schema_cursor_formats":[0,3,5,4],
 "schema.html#schema_examples":[0,3,5,10],
@@ -237,17 +249,5 @@ var NAVTREEINDEX5 =
 "threads.html#threads_example":[0,3,10,0],
 "tool-index.html":[0,10],
 "tool-index.html#tool-other":[0,10,0],
-"tool-libfuzzer.html":[0,10,6],
-"tool-libfuzzer.html#autotoc_md68":[0,10,6,0],
-"tool-libfuzzer.html#autotoc_md69":[0,10,6,0,0],
-"tool-libfuzzer.html#autotoc_md70":[0,10,6,0,1],
-"tool-libfuzzer.html#autotoc_md71":[0,10,6,0,2],
-"tool-libfuzzer.html#autotoc_md72":[0,10,6,0,2,0],
-"tool-libfuzzer.html#autotoc_md73":[0,10,6,1],
-"tool-libfuzzer.html#autotoc_md74":[0,10,6,1,0],
-"tool-libfuzzer.html#autotoc_md75":[0,10,6,1,1],
-"tool-libfuzzer.html#autotoc_md76":[0,10,6,1,1,0],
-"tool-libfuzzer.html#autotoc_md77":[0,10,6,2],
-"tool-libfuzzer.html#autotoc_md78":[0,10,6,2,0],
-"tool-libfuzzer.html#autotoc_md79":[0,10,6,2,1]
+"tool-libfuzzer.html":[0,10,6]
 };
