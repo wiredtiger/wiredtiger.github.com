@@ -7,7 +7,27 @@ var arch_index =
       [ "Log-based incremental backup", "arch-backup.html#autotoc_md3", null ],
       [ "Target backup", "arch-backup.html#autotoc_md4", null ]
     ] ],
-    [ "Block Manager (Architecture Guide)", "arch-block.html", null ],
+    [ "Block Manager (Architecture Guide)", "arch-block.html", [
+      [ "What is a block?", "arch-block.html#block", null ],
+      [ "Block manager implementation details", "arch-block.html#block_implementation", [
+        [ "Writing", "arch-block.html#write_once", null ],
+        [ "Descriptor blocks", "arch-block.html#desc_block", null ],
+        [ "Extent lists", "arch-block.html#block_lists", null ]
+      ] ],
+      [ "Configuration options", "arch-block.html#configuration", [
+        [ "Allocation size", "arch-block.html#alloc_size", null ],
+        [ "Checksum", "arch-block.html#checksum", null ]
+      ] ],
+      [ "How WiredTiger uses the block manager", "arch-block.html#block_usage", [
+        [ "File creation and the block manager", "arch-block.html#creation", null ],
+        [ "Reading files and pages", "arch-block.html#read", null ],
+        [ "Writing", "arch-block.html#Writing", [
+          [ "Checkpoint", "arch-block.html#Checkpoint", null ],
+          [ "Eviction", "arch-block.html#Eviction", null ]
+        ] ],
+        [ "Compaction", "arch-block.html#Compaction", null ]
+      ] ]
+    ] ],
     [ "Cache (Architecture Guide)", "arch-cache.html", [
       [ "Basic operation", "arch-cache.html#arch_cache_basics", null ],
       [ "Cache structure", "arch-cache.html#arch_cache_structure", null ],
