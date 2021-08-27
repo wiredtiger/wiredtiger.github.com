@@ -7,14 +7,47 @@ var arch_index =
       [ "Log-based incremental backup", "arch-backup.html#autotoc_md3", null ],
       [ "Target backup", "arch-backup.html#autotoc_md4", null ]
     ] ],
-    [ "Block Manager (Architecture Guide)", "arch-block.html", null ],
-    [ "Cache (Architecture Guide)", "arch-cache.html", null ],
+    [ "Block Manager (Architecture Guide)", "arch-block.html", [
+      [ "What is a block?", "arch-block.html#block", null ],
+      [ "Block manager implementation details", "arch-block.html#block_implementation", [
+        [ "Writing", "arch-block.html#write_once", null ],
+        [ "Descriptor blocks", "arch-block.html#desc_block", null ],
+        [ "Extent lists", "arch-block.html#block_lists", null ]
+      ] ],
+      [ "Configuration options", "arch-block.html#configuration", [
+        [ "Allocation size", "arch-block.html#alloc_size", null ],
+        [ "Checksum", "arch-block.html#checksum", null ]
+      ] ],
+      [ "How WiredTiger uses the block manager", "arch-block.html#block_usage", [
+        [ "File creation and the block manager", "arch-block.html#creation", null ],
+        [ "Reading files and pages", "arch-block.html#read", null ],
+        [ "Writing", "arch-block.html#Writing", [
+          [ "Checkpoint", "arch-block.html#Checkpoint", null ],
+          [ "Eviction", "arch-block.html#Eviction", null ]
+        ] ],
+        [ "Compaction", "arch-block.html#Compaction", null ]
+      ] ]
+    ] ],
+    [ "Cache (Architecture Guide)", "arch-cache.html", [
+      [ "Basic operation", "arch-cache.html#arch_cache_basics", null ],
+      [ "Cache structure", "arch-cache.html#arch_cache_structure", null ],
+      [ "Cache size and content", "arch-cache.html#arch_cache_size", null ],
+      [ "Shared caches", "arch-cache.html#arch_cache_shared", null ]
+    ] ],
     [ "Checkpoint (Architecture Guide)", "arch-checkpoint.html", [
       [ "Overview", "arch-checkpoint.html#autotoc_md5", null ],
       [ "The checkpoint algorithm", "arch-checkpoint.html#autotoc_md6", null ],
       [ "Skipping checkpoints", "arch-checkpoint.html#autotoc_md7", null ],
       [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md8", null ],
       [ "Garbage collection", "arch-checkpoint.html#autotoc_md9", null ]
+    ] ],
+    [ "Connection (Architecture Guide)", "arch-connection.html", [
+      [ "Definition", "arch-connection.html#arch_conn_def", null ],
+      [ "Life cycle", "arch-connection.html#arch_conn_lifecycle", [
+        [ "Initialization", "arch-connection.html#arch_conn_init", null ],
+        [ "Runtime", "arch-connection.html#arch_conn_runtime", null ],
+        [ "Closure", "arch-connection.html#arch_conn_closure", null ]
+      ] ]
     ] ],
     [ "Cursor (Architecture Guide)", "arch-cursor.html", [
       [ "Data translation", "arch-cursor.html#arch_cursor_raw", null ],
@@ -91,6 +124,15 @@ var arch_index =
       [ "Skipping reading unnecessary pages into memory", "arch-rts.html#rts-page-skip", null ]
     ] ],
     [ "Schema (Architecture Guide)", "arch-schema.html", "arch-schema" ],
+    [ "Session (Architecture Guide)", "arch-session.html", [
+      [ "Definition", "arch-session.html#arch_session_def", null ],
+      [ "Operations", "arch-session.html#arch_session_ops", null ],
+      [ "Transactions", "arch-session.html#arch_session_txn", null ],
+      [ "Cursors", "arch-session.html#arch_session_cur", null ],
+      [ "Data Handles", "arch-session.html#arch_session_dhandles", null ],
+      [ "Closure", "arch-session.html#arch_session_closure", null ],
+      [ "Multithreading", "arch-session.html#arch_session_thread", null ]
+    ] ],
     [ "Snapshot (Architecture Guide)", "arch-snapshot.html", null ],
     [ "Transactions (Architecture Guide)", "arch-transaction.html", [
       [ "Lifecycle", "arch-transaction.html#Lifecycle", null ],
