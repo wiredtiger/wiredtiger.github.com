@@ -133,7 +133,12 @@ var arch_index =
       [ "Closure", "arch-session.html#arch_session_closure", null ],
       [ "Multithreading", "arch-session.html#arch_session_thread", null ]
     ] ],
-    [ "Snapshot (Architecture Guide)", "arch-snapshot.html", null ],
+    [ "Snapshot (Architecture Guide)", "arch-snapshot.html", [
+      [ "Transactions using Snapshots", "arch-snapshot.html#snapshot_transaction", null ],
+      [ "Snapshot Internals", "arch-snapshot.html#snapshot_internals", null ],
+      [ "Snapshot Visibility", "arch-snapshot.html#snapshot_visibility", null ],
+      [ "Snapshots & Checkpoints", "arch-snapshot.html#snapshot_checkpoint", null ]
+    ] ],
     [ "Transactions (Architecture Guide)", "arch-transaction.html", [
       [ "Lifecycle", "arch-transaction.html#Lifecycle", null ],
       [ "Properties", "arch-transaction.html#ACID", [

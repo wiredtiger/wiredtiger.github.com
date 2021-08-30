@@ -126,6 +126,10 @@ var NAVTREEINDEX0 =
 "arch-session.html#arch_session_thread":[0,11,18,6],
 "arch-session.html#arch_session_txn":[0,11,18,2],
 "arch-snapshot.html":[0,11,19],
+"arch-snapshot.html#snapshot_checkpoint":[0,11,19,3],
+"arch-snapshot.html#snapshot_internals":[0,11,19,1],
+"arch-snapshot.html#snapshot_transaction":[0,11,19,0],
+"arch-snapshot.html#snapshot_visibility":[0,11,19,2],
 "arch-transaction.html":[0,11,20],
 "arch-transaction.html#ACID":[0,11,20,1],
 "arch-transaction.html#Atomicity":[0,11,20,1,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX0 =
 "config_strings.html#config_json":[0,3,1,1],
 "cursor_join.html":[0,3,20],
 "cursor_log.html":[0,3,21],
-"cursor_ops.html":[0,3,2,6],
-"cursor_ops.html#cursor_closing":[0,3,2,6,1],
-"cursor_ops.html#cursor_error":[0,3,2,6,4],
-"cursor_ops.html#cursor_memory_scoping":[0,3,2,6,5],
-"cursor_ops.html#cursor_opening":[0,3,2,6,0]
+"cursor_ops.html":[0,3,2,6]
 };

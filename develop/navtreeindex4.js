@@ -1,5 +1,9 @@
 var NAVTREEINDEX4 =
 {
+"group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813":[1,0,756],
+"group__wt.html#gacc3e81183d0ba7224963618ba0f86f91":[1,0,360],
+"group__wt.html#gacc455c596005a132e216b4dc6fbc17b1":[1,0,392],
+"group__wt.html#gaccb8b58a0c10c4c30f6537394bb5d84c":[1,0,286],
 "group__wt.html#gacd4fe8b42f7751c385647773dc20cda2":[1,0,411],
 "group__wt.html#gacde793f3bd5ccaf91b970852ed64da32":[1,0,178],
 "group__wt.html#gacf46b9dd314c216293141b26341b7b0e":[1,0,770],
@@ -169,8 +173,8 @@ var NAVTREEINDEX4 =
 "huffman.html":[0,11,21,1],
 "huffman.html":[0,3,7,3],
 "in_memory.html":[0,3,19],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "keyvalue.html":[0,3,5,13],
 "license.html":[6],
 "license.html":[0,8],
@@ -245,9 +249,5 @@ var NAVTREEINDEX4 =
 "md_changelog.html#autotoc_md63":[0,6,53],
 "md_changelog.html#autotoc_md64":[0,6,54],
 "md_changelog.html#autotoc_md65":[0,6,55],
-"md_changelog.html#autotoc_md66":[0,6,56],
-"md_changelog.html#autotoc_md67":[0,6,57],
-"modules.html":[1],
-"namespace.html":[0,3,11],
-"namespace.html#namespace_c":[0,3,11,1]
+"md_changelog.html#autotoc_md66":[0,6,56]
 };
