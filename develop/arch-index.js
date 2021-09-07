@@ -28,6 +28,14 @@ var arch_index =
         [ "Compaction", "arch-block.html#Compaction", null ]
       ] ]
     ] ],
+    [ "B-Trees (Architecture Guide)", "arch-btree.html", [
+      [ "B-Tree Data Source (WT_BTREE)", "arch-btree.html#btree_btree_data_source", null ],
+      [ "B-Tree In-Memory Representation", "arch-btree.html#btree_btree_in_memory_representation", null ],
+      [ "Truncate Operation", "arch-btree.html#btree_truncate_operation", null ],
+      [ "Range Truncate On Files", "arch-btree.html#btree_range_truncate_file", null ],
+      [ "Interaction With Other Operations", "arch-btree.html#btree_truncate_interaction_with_other_operations", null ],
+      [ "Performing Reads On Truncated Pages", "arch-btree.html#btree_truncate_performing_reads_on_truncated_pages", null ]
+    ] ],
     [ "Cache (Architecture Guide)", "arch-cache.html", [
       [ "Basic operation", "arch-cache.html#arch_cache_basics", null ],
       [ "Cache structure", "arch-cache.html#arch_cache_structure", null ],
@@ -70,9 +78,29 @@ var arch_index =
       [ "Page Types", "arch-data-file.html#data_file_page_types", null ],
       [ "Data File Functions", "arch-data-file.html#data_file_functions", null ]
     ] ],
-    [ "Data Handles and Btrees (Architecture Guide)", "arch-dhandle.html", "arch-dhandle" ],
-    [ "Eviction (Architecture Guide)", "arch-eviction.html", null ],
-    [ "File System and Operating System Interface (Architecture Guide)", "arch-fs-os.html", null ],
+    [ "Data Handles (Architecture Guide)", "arch-dhandle.html", [
+      [ "Data Handle Lifecycle", "arch-dhandle.html#dhandle_data_handle_lifecycle", null ],
+      [ "Data Handle Creation", "arch-dhandle.html#dhandle_data_handle_creation", null ],
+      [ "Data Handle Reference Counts", "arch-dhandle.html#dhandle_data_handle_reference_counts", null ],
+      [ "Sweep-Server Dhandle Sweep", "arch-dhandle.html#dhandle_sweep_server_dhandle_sweep", null ],
+      [ "Dhandle Session Cache Sweep", "arch-dhandle.html#dhandle_dhandle_session_cache_sweep", null ]
+    ] ],
+    [ "Eviction (Architecture Guide)", "arch-eviction.html", [
+      [ "Eviction", "arch-eviction.html#eviction_overall", null ],
+      [ "Clean vs dirty data", "arch-eviction.html#clean_dirty_data", null ],
+      [ "Clean vs dirty eviction", "arch-eviction.html#clean_dirty_eviction", null ]
+    ] ],
+    [ "File System Interface and Operating System Support (Architecture Guide)", "arch-fs-os.html", [
+      [ "Support for Multiple Operating Systems", "arch-fs-os.html#multiple_os", null ],
+      [ "WiredTiger File System and File Handle Interfaces", "arch-fs-os.html#file_system_and_handle", [
+        [ "File System Interface", "arch-fs-os.html#file_system", null ],
+        [ "File Handle Interface", "arch-fs-os.html#file_handle", null ],
+        [ "File System and Handle Customization", "arch-fs-os.html#file_customization", null ],
+        [ "In-memory support", "arch-fs-os.html#file_in_memory", null ],
+        [ "File Stream", "arch-fs-os.html#file_stream", null ]
+      ] ],
+      [ "Multiple System Architecture Support", "arch-fs-os.html#filesystem_usage", null ]
+    ] ],
     [ "History Store (Architecture Guide)", "arch-hs.html", [
       [ "History store table structure", "arch-hs.html#arch_hs_table", [
         [ "Tombstones in the history store table", "arch-hs.html#arch_hs_table_tombstone", null ]
@@ -82,7 +110,7 @@ var arch_index =
       [ "History store cursor interface and visibility rules", "arch-hs.html#arch_hs_cursor_visibility", null ],
       [ "History store and reconciliation", "arch-hs.html#arch_hs_reconciliation", null ],
       [ "Searching for older versions of a key in History Store", "arch-hs.html#arch_hs_read", null ],
-      [ "History store and rollback-to-stable", "arch-hs.html#arch_hs_rts", null ],
+      [ "History store and rollback to stable", "arch-hs.html#arch_hs_rts", null ],
       [ "History store and prepared transactions", "arch-hs.html#arch_hs_prepared", null ]
     ] ],
     [ "Logging (Architecture Guide)", "arch-logging.html", [
@@ -105,14 +133,14 @@ var arch_index =
       ] ]
     ] ],
     [ "Python API (Architecture Guide)", "arch-python.html", null ],
-    [ "Row Store & Column Store (Architecture Guide)", "arch-row-column.html", [
+    [ "Row Store and Column Store (Architecture Guide)", "arch-row-column.html", [
       [ "Definition", "arch-row-column.html#row_column_definition", null ],
       [ "Row-stores", "arch-row-column.html#row_column_rs", null ],
       [ "Variable length column-stores", "arch-row-column.html#row_column_vlcs", null ],
       [ "Fixed length column-stores", "arch-row-column.html#row_column_flcs", null ],
       [ "Internal usage", "arch-row-column.html#row_column_internal_use", null ]
     ] ],
-    [ "Rollback to stable (Architecture Guide)", "arch-rts.html", [
+    [ "Rollback to Stable (Architecture Guide)", "arch-rts.html", [
       [ "Overview of rollback to stable", "arch-rts.html#rts-overview", null ],
       [ "Stable update of rollback to stable", "arch-rts.html#rts-stable-update", null ],
       [ "Pre-conditions required for rollback to stable", "arch-rts.html#rts-preconditions", null ],
@@ -123,7 +151,18 @@ var arch_index =
       [ "Rollback to stable history store search", "arch-rts.html#rts-hs-search", null ],
       [ "Skipping reading unnecessary pages into memory", "arch-rts.html#rts-page-skip", null ]
     ] ],
-    [ "Schema (Architecture Guide)", "arch-schema.html", "arch-schema" ],
+    [ "Schema (Architecture Guide)", "arch-schema.html", [
+      [ "Data Formats", "arch-schema.html#schema_data_formats", null ],
+      [ "Data Files", "arch-schema.html#schema_files", null ],
+      [ "Schema Integrity", "arch-schema.html#schema_integrity", null ],
+      [ "Schema Manipulation", "arch-schema.html#schema_api", [
+        [ "Create", "arch-schema.html#schema_create", null ],
+        [ "Drop", "arch-schema.html#schema_drop", null ],
+        [ "Rename", "arch-schema.html#schema_rename", null ],
+        [ "Alter", "arch-schema.html#schema_alter", null ],
+        [ "Truncate", "arch-schema.html#schema_truncate", null ]
+      ] ]
+    ] ],
     [ "Session (Architecture Guide)", "arch-session.html", [
       [ "Definition", "arch-session.html#arch_session_def", null ],
       [ "Operations", "arch-session.html#arch_session_ops", null ],

@@ -94,47 +94,48 @@ $(document).ready(function(){initNavTree('arch-index.html',''); initResizable();
 </map>
 </div>
  </div><div class="arch_diagram"></div><p>We go into some detail for some of the internal components.</p>
-<p><a class="el" href="arch-backup.html">Backup (Architecture Guide)</a></p>
+<p><a class="el" href="arch-backup.html">Backup</a></p>
 <p>Hot backup uses a type of cursor to backup the database.</p>
-<p><a class="el" href="arch-block.html">Block Manager (Architecture Guide)</a></p>
+<p><a class="el" href="arch-block.html">Block Manager</a></p>
 <p>The Block Manager manages the reading and writing of disk blocks.</p>
+<p><a class="el" href="arch-btree.html">B-Trees (Architecture Guide)</a> A B-Tree is one type of underlying data source in a dhandle and is organized into pages.</p>
 <p><a class="el" href="arch-cache.html">Cache (Architecture Guide)</a></p>
 <p>Cache is represented by the various shared data structures that make up in-memory Btrees and subordinate data structures.</p>
-<p><a class="el" href="arch-checkpoint.html">Checkpoint (Architecture Guide)</a></p>
+<p><a class="el" href="arch-checkpoint.html">Checkpoint</a></p>
 <p>A checkpoint is created by WiredTiger to serve as a point from which it can recover.</p>
-<p><a class="el" href="arch-connection.html">Connection (Architecture Guide)</a></p>
+<p><a class="el" href="arch-connection.html">Connection</a></p>
 <p>A connection is a handle to a WiredTiger database instance.</p>
-<p><a class="el" href="arch-cursor.html">Cursor (Architecture Guide)</a></p>
+<p><a class="el" href="arch-cursor.html">Cursor</a></p>
 <p>Cursors are used to get and modify data.</p>
-<p><a class="el" href="arch-data-file.html">Data File Format (Architecture Guide)</a></p>
+<p><a class="el" href="arch-data-file.html">Data File Format</a></p>
 <p>The format of the data file is given by structures in <code>block.h</code> .</p>
-<p><a class="el" href="arch-dhandle.html">Data Handles and Btrees (Architecture Guide)</a></p>
+<p><a class="el" href="arch-dhandle.html">Data Handles</a></p>
 <p>An internal structure called a Data Handle (dhandle) is used to represent and access Btrees and other data sources in WiredTiger.</p>
-<p><a class="el" href="arch-eviction.html">Eviction (Architecture Guide)</a></p>
+<p><a class="el" href="arch-eviction.html">Eviction</a></p>
 <p>Eviction represents the process or removing old data from the cache, writing it to disk if it is dirty.</p>
-<p><a class="el" href="arch-fs-os.html">File System and Operating System Interface (Architecture Guide)</a></p>
+<p><a class="el" href="arch-fs-os.html">File System and Operating System Interface</a></p>
 <p>A layer of abstraction is above all operating system calls and a set of functions can be registered to be called for each file system operation.</p>
-<p><a class="el" href="arch-hs.html">History Store (Architecture Guide)</a></p>
+<p><a class="el" href="arch-hs.html">History Store</a></p>
 <p>The History Store tracks old versions of records.</p>
-<p><a class="el" href="arch-logging.html">Logging (Architecture Guide)</a></p>
+<p><a class="el" href="arch-logging.html">Logging</a></p>
 <p>WiredTiger writes all changes into a write-ahead log when configured.</p>
-<p><a class="el" href="arch-log-file.html">Log File Format (Architecture Guide)</a></p>
+<p><a class="el" href="arch-log-file.html">Log File Format</a></p>
 <p>The format of a log file is defined in <code>log.h</code> .</p>
-<p><a class="el" href="arch-metadata.html">Metadata (Architecture Guide)</a></p>
+<p><a class="el" href="arch-metadata.html">Metadata</a></p>
 <p>Metadata is stored as <code>uri, config</code> K/V pairs in a designated table.</p>
-<p><a class="el" href="arch-python.html">Python API (Architecture Guide)</a></p>
+<p><a class="el" href="arch-python.html">Python API</a></p>
 <p>WiredTiger has a Python API that is useful for scripting and experimentation.</p>
-<p><a class="el" href="arch-row-column.html">Row Store &amp; Column Store (Architecture Guide)</a></p>
+<p><a class="el" href="arch-row-column.html">Row Store and Column Store</a></p>
 <p>Row stores and column store are B-Trees. Row stores have a variable size key and data while column stores have as their key a record id.</p>
-<p><a class="el" href="arch-rts.html">Rollback to stable (Architecture Guide)</a></p>
+<p><a class="el" href="arch-rts.html">Rollback to Stable</a></p>
 <p>Rollback to stable to remove the unstable updates from the database.</p>
-<p><a class="el" href="arch-schema.html">Schema (Architecture Guide)</a></p>
+<p><a class="el" href="arch-schema.html">Schema</a></p>
 <p>A schema defines the format of the application data in WiredTiger.</p>
-<p><a class="el" href="arch-session.html">Session (Architecture Guide)</a></p>
+<p><a class="el" href="arch-session.html">Session</a></p>
 <p>A session defines the context for most operations performed in WiredTiger.</p>
-<p><a class="el" href="arch-snapshot.html">Snapshot (Architecture Guide)</a></p>
+<p><a class="el" href="arch-snapshot.html">Snapshot</a></p>
 <p>Snapshots are implemented by storing transaction ids committed before the transaction started.</p>
-<p><a class="el" href="arch-transaction.html">Transactions (Architecture Guide)</a></p>
+<p><a class="el" href="arch-transaction.html">Transactions</a></p>
 <p>Transactions provide a powerful abstraction for multiple threads to operate on data concurrently.</p>
 <p><a class="el" href="arch-glossary.html">Architecture Guide Glossary of Terms</a></p>
 <p>WiredTiger assigns specific meanings to certain words. Here we decode them. </p>

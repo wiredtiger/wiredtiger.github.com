@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Data Handles and Btrees (Architecture Guide)</title>
+<title>WiredTiger: Data Handles (Architecture Guide)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(document).ready(function(){initNavTree('arch-dhandle.html',''); initResizable(
 <div id="doc-content">
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Data Handles and Btrees (Architecture Guide) </div>  </div>
+<div class="title">Data Handles (Architecture Guide) </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><div class="arch_head"><table class="doxtable">
@@ -93,17 +93,30 @@ $(document).ready(function(){initNavTree('arch-dhandle.html',''); initResizable(
 <area shape="rect" id="id19" href="arch-fs-os.html" title="arch-fs-os.html" alt="" coords="175,755,357,771"/>
 </map>
 <tr>
-<td><code><code>WT_BTREE<br  />
-WT_DHANDLE</code></code></td><td><code><code>src/include/btree.h<br  />
-src/include/dhandle.h<br  />
+<td><code><code>WT_DHANDLE</code></code></td><td><code><code>src/include/dhandle.h<br  />
 src/conn/conn_dhandle.c<br  />
 src/session/session_dhandle.c</code></code></td></tr>
 </table>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
-<p>An internal structure called a Data Handle (dhandle) is used to represent and access Btrees and other data sources in WiredTiger. A dhandle is created when a table is accessed for the first time. It is kept in a global list and is shared across the sessions. When a dhandle is not needed anymore and has been idle for a while, it is closed and destroyed, releasing all the resources associated with it.</p>
-<p>A Btree is one kind of dhandle. It embodies both the on-disk and in-memory representations of the Btree.</p>
-<p><a class="el" href="arch-dhandle-lifecycle.html">Data Handle Lifecycle</a></p>
-<p>This section describes how dhandles are created, and how and when they are destroyed. </p>
+<p>The data handle (dhandle) (<code>WT_DATA_HANDLE</code>) is a generic representation of any named data source. Dhandles are required to access any data source in the system. For the dhandle of B-Tree type, the <code>void</code> *handle field can be used like so <code>(WT_BTREE *)dhandle-&gt;handle</code> to get the B-Tree. For other data sources such as the table, LSM or tiered storage types, a type cast can be used on the <code>dhandle</code> itself to gain access to the structure for the data source. The dhandle structure also contains a set of flags, some reference counts, and individual data source statistics.</p>
+<h1><a class="anchor" id="dhandle_data_handle_lifecycle"></a>
+Data Handle Lifecycle</h1>
+<p>Dhandles are owned by the connection and shared among sessions. WiredTiger maintains all dhandles in a global dhandle list accessed from the connection. Multiple sessions access this list, which is protected by a R/W lock. Each session also maintains a session dhandle cache which is a cache of dhandles a session has operated upon. The entries in the cache are references into the global dhandle list.</p>
+<h1><a class="anchor" id="dhandle_data_handle_creation"></a>
+Data Handle Creation</h1>
+<p>Generally, dhandles are created when accessing tables and other data sources that have not been accessed before. When a cursor in a session is opened on a WiredTiger table, it first attempts to find the dhandle in the session dhandle cache. If the dhandle is not found in the session dhandle cache, it searches the global dhandle list while holding the read lock. In the case that it doesn't find the dhandle there, it creates a dhandle for this table and puts it in the global dhandle list while holding the write lock on the global dhandle list. Finally, the cursor operation puts a reference to the dhandle in the session's dhandle cache.</p>
+<h1><a class="anchor" id="dhandle_data_handle_reference_counts"></a>
+Data Handle Reference Counts</h1>
+<p>There are two relevant reference counters in the dhandle structure, <code>session_ref</code> and <code>session_inuse</code>. <code>session_ref</code> counts the number of session dhandle cache lists that contain this dhandle. <code>session_inuse</code> is a count of the number of cursors opened and operating on this dhandle. Both these counters are incremented by the session as the cursor is opened on this dhandle. <code>session_inuse</code> is decremented when the operation completes and the cursor is closed.</p>
+<h1><a class="anchor" id="dhandle_sweep_server_dhandle_sweep"></a>
+Sweep-Server Dhandle Sweep</h1>
+<p>WiredTiger maintains a sweep server in the background for the cleanup of the global dhandle list. As dictated by the <code>close_scan_interval</code> variable, the sweep server periodically revisits the dhandles in the global list and if a dhandle is no longer being used (signified by the <code>session_inuse</code> count going to 0), it assigns the current time as the time of death if not already done before.</p>
+<p>Dhandles are not immediately closed when the time of death field is set. The sweep server will keep the dhandle there for a configured amount of idle time (<code>close_idle_time</code>), and will only close the associated data source if it remained idle for that amount of time since time of death. The closure of the dhandle often occurs on the next iteration of the sweep when the sweep server detects the dhandle has remained idle for long enough. The server marks the dhandle as dead so that the next time a session with a reference walks its own cache list, it will see the handle marked dead and remove it from the session's dhandle cache list.</p>
+<p>The sweep server then checks for any sessions that are referencing this dhandle. If a dhandle stays referenced by at least one session (<code>session_ref</code> count &gt; 0), the dhandle cannot be removed from the global list. If the dhandle is not referenced by any session, the sweep server removes the dhandle from the global dhandle list and frees any remaining resources associated with it. The removal of the dhandle from the global list completes the lifecycle, and any future access of the associated table will require the dhandle to be created again.</p>
+<h1><a class="anchor" id="dhandle_dhandle_session_cache_sweep"></a>
+Dhandle Session Cache Sweep</h1>
+<p>A session's dhandle cache list is periodically cleaned out through a dhandle cache sweep, which removes references to the dhandles that have not been accessed by the session in a long time. Sessions have their own sweeps; since a session is single-threaded, a session's dhandle cache can only be altered by that session alone.</p>
+<p>Each time a session accesses a dhandle, it checks if enough time has elapsed to do a session cache sweep for that session. As it walks the session dhandle cache list, it notices if any dhandle on its list has been marked dead (idle for too long). If it has, the session removes that dhandle from its list and decrements the session_ref count. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
