@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"testing.html#test_perf":[0,9,0,4],
+"testing.html#test_python":[0,9,0,0],
 "testing.html#test_suite":[0,9,0],
 "testing.html#test_workgen":[0,9,0,5],
 "testing.html#testing_compatibility":[0,9,1],

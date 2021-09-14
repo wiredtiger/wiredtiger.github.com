@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"namespace.html":[0,3,11],
+"namespace.html#namespace_c":[0,3,11,1],
 "namespace.html#namespace_env":[0,3,11,0],
 "namespace.html#namespace_error":[0,3,11,3],
 "namespace.html#namespace_filesystem":[0,3,11,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "testing.html#coverage_tests":[0,9,8,0],
 "testing.html#test_cppsuite":[0,9,0,2],
 "testing.html#test_csuite":[0,9,0,1],
-"testing.html#test_format":[0,9,0,3],
-"testing.html#test_perf":[0,9,0,4],
-"testing.html#test_python":[0,9,0,0]
+"testing.html#test_format":[0,9,0,3]
 };
