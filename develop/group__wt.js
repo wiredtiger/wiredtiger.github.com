@@ -585,6 +585,8 @@ var group__wt =
     [ "WT_STAT_CONN_TXN_PREPARE_ACTIVE", "group__wt.html#ga4710dc41dd8f6487cfbd9411a1f48c5c", null ],
     [ "WT_STAT_CONN_TXN_PREPARE_COMMIT", "group__wt.html#ga78b904803390302399c32d1da85690f9", null ],
     [ "WT_STAT_CONN_TXN_PREPARE_ROLLBACK", "group__wt.html#gad33543a1462eb42e44251ea0800f7ebe", null ],
+    [ "WT_STAT_CONN_TXN_PREPARE_ROLLBACK_DO_NOT_REMOVE_HS_UPDATE", "group__wt.html#ga0c4a937ac68908324e85424c8eca318e", null ],
+    [ "WT_STAT_CONN_TXN_PREPARE_ROLLBACK_FIX_HS_UPDATE_WITH_CKPT_RESERVED_TXNID", "group__wt.html#ga850f17d284adabf224731e7ccda31e0a", null ],
     [ "WT_STAT_CONN_TXN_PREPARED_UPDATES", "group__wt.html#ga7d1a582e1c51eaf9c2ca16dbd14b8055", null ],
     [ "WT_STAT_CONN_TXN_PREPARED_UPDATES_COMMITTED", "group__wt.html#gaa598bdb935e9fded30b19d098f49f1e9", null ],
     [ "WT_STAT_CONN_TXN_PREPARED_UPDATES_KEY_REPEATED", "group__wt.html#ga3795b4e2170d7d00a34890dd18b55e46", null ],

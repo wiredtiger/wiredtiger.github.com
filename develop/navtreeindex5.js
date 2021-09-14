@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"md_changelog.html#autotoc_md38":[0,6,28],
+"md_changelog.html#autotoc_md39":[0,6,29],
 "md_changelog.html#autotoc_md40":[0,6,30],
 "md_changelog.html#autotoc_md41":[0,6,31],
 "md_changelog.html#autotoc_md42":[0,6,32],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d":[1,0,3,22],
 "struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614":[1,0,3,15],
 "struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59":[1,0,3,17],
-"struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6":[1,0,3,27],
-"struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787":[1,0,3,16],
-"struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb":[1,0,3,6]
+"struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6":[1,0,3,27]
 };
