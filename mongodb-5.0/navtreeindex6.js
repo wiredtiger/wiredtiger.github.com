@@ -1,5 +1,13 @@
 var NAVTREEINDEX6 =
 {
+"testing.html":[0,9],
+"testing.html#coverage_code":[0,9,8,2],
+"testing.html#coverage_cyclomatic":[0,9,8,3],
+"testing.html#coverage_tags":[0,9,8,1],
+"testing.html#coverage_tests":[0,9,8,0],
+"testing.html#test_cppsuite":[0,9,0,2],
+"testing.html#test_csuite":[0,9,0,1],
+"testing.html#test_format":[0,9,0,3],
 "testing.html#test_perf":[0,9,0,4],
 "testing.html#test_python":[0,9,0,0],
 "testing.html#test_suite":[0,9,0],
