@@ -144,7 +144,7 @@ Projections and plans</h1>
 </ul>
 <p>Notice that this plan requires many switches of cursors and several <code>"s"</code> (skip) operations. Each skip involves enough decoding of the data item to determine its length so its data can be skipped over.</p>
 <p>With the default (complete) projection, getting values is fast. Using the default plan, the needed columns are pulled out of each subordinate cursor one by one, and get copied to the caller's arguments. With projections, the simple algorithm following the plan works well if the columns in the projection are grouped by column group and requested in order. Without that discipline, as in this example, the performance will not be optimal.</p>
-<p>The implementation of plan creation and execution resides in the <a class="el" href="arch-schema.html">Schema (Architecture Guide)</a>.</p>
+<p>The implementation of plan creation and execution resides in the <a class="el" href="arch-schema.html">Schema</a>.</p>
 <h1><a class="anchor" id="arch_cursor_dump"></a>
 Dump cursors</h1>
 <p>Dump cursors are used in two rather different ways. Regular dump cursors retrieve the raw keys and values and translate bytes either as raw characters or as hex values. This flavor of dump cursor is used by the <code>wt dump</code> or <code>wt dump -x</code> utility. JSON dump cursors do more sophisticated translation, returning a string that is a JSON formatted record, with the name for each key and its data and the name for each value and its corresponding data. Data is translated to either integral, floating point, or string depending on the format of the column in the schema. This flavor of dump cursor is used by the <code>wt dump -j</code> command as part of creating a JSON dump of a WiredTiger table or file.</p>

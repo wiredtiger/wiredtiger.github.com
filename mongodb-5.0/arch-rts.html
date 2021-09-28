@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Rollback to stable (Architecture Guide)</title>
+<title>WiredTiger: Rollback to Stable (Architecture Guide)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(document).ready(function(){initNavTree('arch-rts.html',''); initResizable(); }
 <div id="doc-content">
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Rollback to stable (Architecture Guide) </div>  </div>
+<div class="title">Rollback to Stable (Architecture Guide) </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><div class="arch_head"><table class="doxtable">
@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('arch-rts.html',''); initResizable(); }
 <p>Rollback to stable is an operation that retains only the modifications that are stable according to the stable timestamp and recovered checkpoint snapshot. The checkpoint transaction snapshot details are saved at the end of every checkpoint are recovered and used as a recovered checkpoint snapshot.</p>
 <h1><a class="anchor" id="rts-overview"></a>
 Overview of rollback to stable</h1>
-<p>Rollback to stable scans each and every table present in the database except metadata <a class="el" href="arch-metadata.html">Metadata (Architecture Guide)</a> to remove the modifications from the table that are more than stable timestamp and recovered checkpoint snapshot.</p>
+<p>Rollback to stable scans each and every table present in the database except <a class="el" href="arch-metadata.html">Metadata</a> to remove the modifications from the table that are more than stable timestamp and recovered checkpoint snapshot.</p>
 <p>In the process of removing newer modifications from the table, all the in-memory updates are aborted and the on-disk version updates are replaced with an update from history store otherwise the data store version is removed.</p>
 <p>Rollback to stable is performed in three phases</p><ol type="1">
 <li>WiredTiger startup</li>

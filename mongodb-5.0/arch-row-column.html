@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Row Store &amp; Column Store (Architecture Guide)</title>
+<title>WiredTiger: Row Store and Column Store (Architecture Guide)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(document).ready(function(){initNavTree('arch-row-column.html',''); initResizab
 <div id="doc-content">
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Row Store &amp; Column Store (Architecture Guide) </div>  </div>
+<div class="title">Row Store and Column Store (Architecture Guide) </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><div class="arch_head"><table class="doxtable">
@@ -103,7 +103,7 @@ Definition</h1>
 <li>The fixed length column-store, as its name implies, the value has a fixed length, and furthermore the value is restricted to between 1 and 8 bits in length. The bit length is specified when the column store is created. The fixed length column store has specialized use cases like bitmaps.</li>
 <li>The variable length is a more general case which allows for values to have any length similarly to row-stores.</li>
 </ul>
-<p>Please refer to <a class="el" href="arch-data-file.html">Data File Format (Architecture Guide)</a> to learn more about the on-disk format for row-stores and column-stores.</p>
+<p>Please refer to <a class="el" href="arch-data-file.html">Data File Format</a> to learn more about the on-disk format for row-stores and column-stores.</p>
 <h1><a class="anchor" id="row_column_rs"></a>
 Row-stores</h1>
 <p>Row-stores are probably seen as the traditional access method and they serve a general purpose. In WiredTiger, row-store keys are explicitly stored and they can be duplicated within the same single file which directly impacts the on-disk storage size. However, keys are only duplicated if they are the first key on the page, which gets them copied/promoted to an internal page. They are not necessarily duplicated, too, they can be prefix/suffix compressed to discard unnecessary bytes on the internal pages.</p>
