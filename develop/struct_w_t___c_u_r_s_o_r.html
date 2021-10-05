@@ -85,6 +85,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad6a97a309e2c1ada7ca32a422c46612a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a">reconfigure</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, const char *config)</td></tr>
 <tr class="memdesc:ad6a97a309e2c1ada7ca32a422c46612a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure the cursor.  <a href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a">More...</a><br /></td></tr>
 <tr class="separator:ad6a97a309e2c1ada7ca32a422c46612a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49f70806bf693462e5644edbbb864c1b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a49f70806bf693462e5644edbbb864c1b">largest_key</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
+<tr class="memdesc:a49f70806bf693462e5644edbbb864c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the largest key of the cursor regardless of visibility.  <a href="struct_w_t___c_u_r_s_o_r.html#a49f70806bf693462e5644edbbb864c1b">More...</a><br /></td></tr>
+<tr class="separator:a49f70806bf693462e5644edbbb864c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data access</div></td></tr>
 <tr class="memitem:af19f6f9d9c7fc248ab38879032620b2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor,...)</td></tr>
 <tr class="memdesc:af19f6f9d9c7fc248ab38879032620b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the key for the current record.  <a href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">More...</a><br /></td></tr>
@@ -189,7 +192,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_backup_8c-example.html#a6">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a6">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#a9">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a7">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a20">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a25">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a17">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a51">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a9">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a9">ex_schema.c</a>, and <a class="el" href="ex_stat_8c-example.html#a6">ex_stat.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_backup_8c-example.html#a6">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a6">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#a9">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a7">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a21">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a25">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a17">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a51">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a9">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a9">ex_schema.c</a>, and <a class="el" href="ex_stat_8c-example.html#a6">ex_stat.c</a>.</dd>
 </dl>
 
 </div>
@@ -440,6 +443,37 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. In particular, if <code>overwrite=false</code> is configured and a record with the specified key already exists, <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key.">WT_DUPLICATE_KEY</a> is returned. Also, if <code>in_memory</code> is configured for the database and the insert requires more than the configured cache size to complete, <a class="el" href="group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4" title="Operation would overflow cache.">WT_CACHE_FULL</a> is returned. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_access_8c-example.html#a9">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a5">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a5">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#a8">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#a20">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a11">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a32">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a8">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a50">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a20">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a8">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a22">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#a14">ex_thread.c</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a49f70806bf693462e5644edbbb864c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49f70806bf693462e5644edbbb864c1b">&#9670;&nbsp;</a></span>largest_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CURSOR::largest_key </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
+          <td class="paramname"><em>cursor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the largest key of the cursor regardless of visibility. </p>
+<p>The cursor is not positioned after calling this api. Only supported by data cursors.</p>
+<div class="fragment"><div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565">reset</a>(cursor));</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. If <code>read_timestamp</code> is set, EINVAL is returned. Also, calling <code><a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a></code> after this api call returns EINVAL. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_cursor_8c-example.html#a14">ex_cursor.c</a>.</dd>
 </dl>
 
 </div>
@@ -1057,7 +1091,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a444cdc0952e7f8d55d23173516c7037f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f">WT_CURSOR::update</a></div><div class="ttdeci">int update(WT_CURSOR *cursor)</div><div class="ttdoc">Update an existing record and optionally insert a record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3638</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3651</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a050e8dfd68303048921e528fa591a00c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">WT_CURSOR::session</a></div><div class="ttdeci">WT_SESSION * session</div><div class="ttdoc">The session handle for this cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:212</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aac90d9fbcc031570f924db55f8a1cee3"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">WT_CURSOR::insert</a></div><div class="ttdeci">int insert(WT_CURSOR *cursor)</div><div class="ttdoc">Insert a record and optionally update an existing record.</div></div>
 <div class="ttc" id="agroup__wt_html_ab51931e55a2bc958cb82155aa9bd413f"><div class="ttname"><a href="group__wt.html#ab51931e55a2bc958cb82155aa9bd413f">WT_MODIFY::offset</a></div><div class="ttdeci">size_t offset</div><div class="ttdoc">The zero-based byte offset in the value where the new data is placed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:161</div></div>
