@@ -254,6 +254,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_EVICTION_WALK_LEAF_NOTFOUND", "group__wt.html#ga8aba290e8fbae68f1168becbd2bd0a4d", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_WALK_PASSES", "group__wt.html#ga6708fee683eedc5595b1ad2cd12a7269", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_WALK_SAVED_POS", "group__wt.html#gaa856248a617951afd55125651ed5d83b", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_WALK_SLEEPS", "group__wt.html#ga71cb15205225ec738abd25f5ebabbe7f", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_WALKS_ABANDONED", "group__wt.html#gadffd2bd9c5562dceb845af287e1e034e", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_WALKS_ACTIVE", "group__wt.html#ga49204374e4b4734e1346f4e2b497d726", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_WALKS_ENDED", "group__wt.html#ga0006b95dec53ad4b45996062775caf59", null ],

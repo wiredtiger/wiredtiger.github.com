@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"schema_lang_java.html#schema_examples_lang_java":[0,4,5,10],
 "schema_lang_java.html#schema_format_types_lang_java":[0,4,5,2],
 "schema_lang_java.html#schema_index_immutable_lang_java":[0,4,5,8],
 "schema_lang_java.html#schema_index_projections_lang_java":[0,4,5,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "transactions.html#transaction_isolation":[0,3,3,4],
 "transactions.html#transaction_named_snapshots":[0,3,3,5],
 "transactions.html#transaction_timestamps":[0,3,3,6],
-"transactions.html#transactions_acid":[0,3,3,0],
-"transactions.html#transactions_api":[0,3,3,1]
+"transactions.html#transactions_acid":[0,3,3,0]
 };
