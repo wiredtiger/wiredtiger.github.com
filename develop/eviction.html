@@ -116,7 +116,7 @@ Update restore eviction</h1>
 <p>For the restored keys, eviction also frees all the values that have been written to the disk image or moved to the history store as there is no need to duplicate them on the update chains. For the clean keys that are not restored, their whole update chains are removed from memory along with the old disk image.</p>
 <h1><a class="anchor" id="exceptions"></a>
 Exceptions</h1>
-<p>Eviction works differently for in-memory database and fixed-length column store. Since they don't support the history store, eviction only discards the update chains when all the values on the update chains are globally visible. For the same reason, we cannot free the updates older than the update written to the disk image. Because there is no disk storage for in-memory database, eviction has to keep all the reconciled disk images in memory. </p>
+<p>Eviction works differently for in-memory databases. Since they don't support the history store, eviction only discards the update chains when all the values on the update chains are globally visible. For the same reason, we cannot free the updates older than the update written to the disk image. Because there is no disk storage for in-memory database, eviction has to keep all the reconciled disk images in memory. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

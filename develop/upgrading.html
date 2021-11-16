@@ -100,6 +100,10 @@ Upgrading to Version 10.0.1</h1>
 <dd><p class="startdd">The WT_SESSION::transaction_sync API and the sync=background configuration option to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817" title="Flush the log.">WT_SESSION::log_flush</a> and <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> have all been removed from WiredTiger. </p>
 <p class="enddd"></p>
 </dd>
+<dt>Fixed-length column-stores </dt>
+<dd><p class="startdd">Support for timestamps and history for fixed-length column stores requires version 10.0.1. Data written by version 10.0.1 can be read (and written) by version 10.0.0, but the associated timestamps will be lost if any changes are made. </p>
+<p class="enddd"></p>
+</dd>
 </dl>
 <hr  />
  <h1><a class="anchor" id="version_1000"></a>

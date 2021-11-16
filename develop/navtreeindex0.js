@@ -42,6 +42,7 @@ var NAVTREEINDEX0 =
 "arch-checkpoint.html#autotoc_md7":[0,11,5,0,2],
 "arch-checkpoint.html#autotoc_md8":[0,11,5,0,3],
 "arch-checkpoint.html#autotoc_md9":[0,11,5,0,4],
+"arch-compact.html":[0,11,5,3],
 "arch-connection.html":[0,11,0,0],
 "arch-connection.html#arch_conn_closure":[0,11,0,0,1,2],
 "arch-connection.html#arch_conn_def":[0,11,0,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "command_line.html#util_dump":[0,11,7,1,9],
 "command_line.html#util_dump_options":[0,4,9,1],
 "command_line.html#util_dump_options":[0,11,7,1,9,1],
-"command_line.html#util_dump_synopsis":[0,4,9,0],
-"command_line.html#util_dump_synopsis":[0,11,7,1,9,0]
+"command_line.html#util_dump_synopsis":[0,4,9,0]
 };
