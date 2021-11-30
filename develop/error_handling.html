@@ -120,81 +120,15 @@ Translating errors</h1>
 <div class="line">            fprintf(stderr, <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
 <div class="line">            <span class="keywordflow">return</span> (ret);</div>
 <div class="line">        }</div>
-</div><!-- fragment --><p> Note that <a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd" title="Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...">wiredtiger_strerror</a> is not thread-safe.</p>
-<h1><a class="anchor" id="event_message_handling"></a>
-Message handling using the WT_EVENT_HANDLER</h1>
-<p>Specific error and other message handling can be configured by passing an implementation of <a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html" title="The interface implemented by applications to handle error, informational and progress messages.">WT_EVENT_HANDLER</a> to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0" title="Open a session.">WT_CONNECTION::open_session</a>.</p>
-<p>For example, both informational and error messages might be passed to an application-specific logging function that added a timestamp and logged the message to a file, and error messages might additionally be output to the <code>stderr</code> file stream.</p>
-<p>Additionally, applications will normally handle <code>WT_PANIC</code> as a special case. WiredTiger will always call the error handler callback with <code>WT_PANIC</code> in the case of a fatal error requiring database restart, however, WiredTiger cannot guarantee applications will see an application thread return <code>WT_PANIC</code> from a WiredTiger API call. For this reason, a correctly-written WiredTiger application will likely specify at least an error handler which will immediately exit or otherwise handle fatal errors. Note that no further WiredTiger calls are required after an error handler is called with <code>WT_PANIC</code> (and further calls will themselves immediately fail).</p>
-<div class="fragment"><div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * Create our own event handler structure to allow us to pass context through to event handler</span></div>
-<div class="line"><span class="comment"> * callbacks. For this to work the WiredTiger event handler must appear first in our custom event</span></div>
-<div class="line"><span class="comment"> * handler structure.</span></div>
-<div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line">    <a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> h;</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *app_id;</div>
-<div class="line">} CUSTOM_EVENT_HANDLER;</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * handle_wiredtiger_error --</span></div>
-<div class="line"><span class="comment"> *     Function to handle error callbacks from WiredTiger.</span></div>
-<div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keywordtype">int</span></div>
-<div class="line">handle_wiredtiger_error(</div>
-<div class="line">  <a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keywordtype">int</span> error, <span class="keyword">const</span> <span class="keywordtype">char</span> *message)</div>
-<div class="line">{</div>
-<div class="line">    CUSTOM_EVENT_HANDLER *custom_handler;</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">/* Cast the handler back to our custom handler. */</span></div>
-<div class="line">    custom_handler = (CUSTOM_EVENT_HANDLER *)handler;</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">/* Report the error on the console. */</span></div>
-<div class="line">    fprintf(stderr, <span class="stringliteral">&quot;app_id %s, thread context %p, error %d, message %s\n&quot;</span>, custom_handler-&gt;app_id,</div>
-<div class="line">      (<span class="keywordtype">void</span> *)session, error, message);</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">/* Exit if the database has a fatal error. */</span></div>
-<div class="line">    <span class="keywordflow">if</span> (error == <a class="code" href="group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992">WT_PANIC</a>)</div>
-<div class="line">        exit(1);</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * handle_wiredtiger_message --</span></div>
-<div class="line"><span class="comment"> *     Function to handle message callbacks from WiredTiger.</span></div>
-<div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keywordtype">int</span></div>
-<div class="line">handle_wiredtiger_message(<a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keyword">const</span> <span class="keywordtype">char</span> *message)</div>
-<div class="line">{</div>
-<div class="line">    <span class="comment">/* Cast the handler back to our custom handler. */</span></div>
-<div class="line">    printf(<span class="stringliteral">&quot;app id %s, thread context %p, message %s\n&quot;</span>, ((CUSTOM_EVENT_HANDLER *)handler)-&gt;app_id,</div>
-<div class="line">      (<span class="keywordtype">void</span> *)session, message);</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
-</div><!-- fragment --><div class="fragment"><div class="line">    CUSTOM_EVENT_HANDLER event_handler;</div>
-<div class="line"> </div>
-<div class="line">    event_handler.h.handle_error = handle_wiredtiger_error;</div>
-<div class="line">    event_handler.h.handle_message = handle_wiredtiger_message;</div>
-<div class="line">    <span class="comment">/* Set handlers to NULL to use the default handler. */</span></div>
-<div class="line">    event_handler.h.handle_progress = NULL;</div>
-<div class="line">    event_handler.h.handle_close = NULL;</div>
-<div class="line">    event_handler.app_id = <span class="stringliteral">&quot;example_event_handler&quot;</span>;</div>
-<div class="line"> </div>
-<div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, (<a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *)&amp;event_handler, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn));</div>
-</div><!-- fragment --></div></div><!-- contents -->
+</div><!-- fragment --><p> Note that <a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd" title="Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...">wiredtiger_strerror</a> is not thread-safe. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div class="ttc" id="agroup__wt_html_gae8bf720ddb4a7a7390b70424594c40fd"><div class="ttname"><a href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a></div><div class="ttdeci">const char * wiredtiger_strerror(int error)</div><div class="ttdoc">Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...</div></div>
-<div class="ttc" id="astruct_w_t___e_v_e_n_t___h_a_n_d_l_e_r_html"><div class="ttname"><a href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a></div><div class="ttdoc">The interface implemented by applications to handle error, informational and progress messages.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3178</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
-<div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a></div><div class="ttdoc">All data operations are performed in the context of a WT_SESSION.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:753</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a050e8dfd68303048921e528fa591a00c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">WT_CURSOR::session</a></div><div class="ttdeci">WT_SESSION * session</div><div class="ttdoc">The session handle for this cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:212</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_abe03ccb716e097ed1bb4d42eb733c1f9"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">WT_SESSION::strerror</a></div><div class="ttdeci">const char * strerror(WT_SESSION *session, int error)</div><div class="ttdoc">Return information about an error as a string.</div></div>
-<div class="ttc" id="agroup__wt_html_gaf4fc8744eb8fe4f1c6e125d0f2361992"><div class="ttname"><a href="group__wt.html#gaf4fc8744eb8fe4f1c6e125d0f2361992">WT_PANIC</a></div><div class="ttdeci">#define WT_PANIC</div><div class="ttdoc">WiredTiger library panic.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3765</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

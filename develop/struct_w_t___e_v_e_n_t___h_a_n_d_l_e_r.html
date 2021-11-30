@@ -155,7 +155,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle error messages; by default, error messages are written to the stderr stream. </p>
-<p>See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
+<p>See <a class="el" href="message_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
 <p>Errors that require the application to exit and restart will have their <code>error</code> value set to <code>WT_PANIC</code>. The application can exit immediately when <code>WT_PANIC</code> is passed to an event handler, there is no reason to return into WiredTiger.</p>
 <p>Event handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -182,7 +182,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle informational messages; by default, informational messages are written to the stdout stream. </p>
-<p>See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
+<p>See <a class="el" href="message_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
 <p>Message handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -207,7 +207,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback to handle progress messages; by default, progress messages are not written. </p>
-<p>See <a class="el" href="error_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
+<p>See <a class="el" href="message_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
 <p>Progress handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

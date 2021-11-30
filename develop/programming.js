@@ -26,8 +26,20 @@ var programming =
       ] ]
     ] ],
     [ "Error handling", "error_handling.html", [
-      [ "Translating errors", "error_handling.html#error_translation", null ],
-      [ "Message handling using the WT_EVENT_HANDLER", "error_handling.html#event_message_handling", null ]
+      [ "Translating errors", "error_handling.html#error_translation", null ]
+    ] ],
+    [ "Message handling", "message_handling.html", [
+      [ "Message handling using the WT_EVENT_HANDLER", "message_handling.html#event_message_handling", null ],
+      [ "Output format of the WT_EVENT_HANDLER", "message_handling.html#message_handling_output", [
+        [ "Flat string format", "message_handling.html#message_handling_output_flat_string", null ],
+        [ "JSON format", "message_handling.html#message_handling_output_json", null ]
+      ] ]
+    ] ],
+    [ "Verbose Messaging", "verbose_messaging.html", [
+      [ "Verbosity Levels", "verbose_messaging.html#verbosity_levels", null ],
+      [ "Verbosity Categories", "verbose_messaging.html#verbosity_categories", [
+        [ "Configuring Verbose Categories", "verbose_messaging.html#verbosity_configuration", null ]
+      ] ]
     ] ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Log-Structured Merge Trees", "lsm.html", [
