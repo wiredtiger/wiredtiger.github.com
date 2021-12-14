@@ -153,7 +153,7 @@ internal_page_max</h2>
 </pre><h2><a class="anchor" id="leaf_page_max"></a>
 leaf_page_max</h2>
 <p>The maximum page size for the reconciled on-disk leaf pages of the B-Tree, in bytes. When a leaf page grows past this size, it splits into multiple pages.</p><ul>
-<li>An integer, with acceptable values between 512B and 512MB</li>
+<li>An integer, with acceptable values between 512B and 512MB (fixed-length column store pages are limited to 128KB; the configured size does not include the additional size of timestamp information when timestamps are in use)</li>
 <li>Default size: 32 KB (*appropriate for applications with relatively small keys and values)</li>
 <li>Additionally constrained by the condition: must be a multiple of the allocation size</li>
 <li>Motivation to tune the value: <br  />
