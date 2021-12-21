@@ -2406,18 +2406,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga83162e41a1eede606d6319717c3a893b">WT_STAT_CONN_TXN_COMMIT</a></td></tr>
 <tr class="memdesc:ga83162e41a1eede606d6319717c3a893b"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions committed <br /></td></tr>
 <tr class="separator:ga83162e41a1eede606d6319717c3a893b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7677128f019aa74f945b94f94d9730a4"><td class="memItemLeft" align="right" valign="top"><a id="ga7677128f019aa74f945b94f94d9730a4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7677128f019aa74f945b94f94d9730a4">WT_STAT_CONN_TXN_COMMIT_SLOW_RESOLVED</a></td></tr>
-<tr class="memdesc:ga7677128f019aa74f945b94f94d9730a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions committed with one or more updates resolved through the slow path <br /></td></tr>
-<tr class="separator:ga7677128f019aa74f945b94f94d9730a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac59719438965d6f2f0c89df53676680b"><td class="memItemLeft" align="right" valign="top"><a id="gac59719438965d6f2f0c89df53676680b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac59719438965d6f2f0c89df53676680b">WT_STAT_CONN_TXN_ROLLBACK</a></td></tr>
 <tr class="memdesc:gac59719438965d6f2f0c89df53676680b"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions rolled back <br /></td></tr>
 <tr class="separator:gac59719438965d6f2f0c89df53676680b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga12566441478daecb0ecd93d319792ab7"><td class="memItemLeft" align="right" valign="top"><a id="ga12566441478daecb0ecd93d319792ab7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga12566441478daecb0ecd93d319792ab7">WT_STAT_CONN_TXN_ROLLBACK_SLOW_RESOLVED</a></td></tr>
-<tr class="memdesc:ga12566441478daecb0ecd93d319792ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions rolled back with one or more updates resolved through the slow path <br /></td></tr>
-<tr class="separator:ga12566441478daecb0ecd93d319792ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga540949dc6759add7e477d27dad6ff82d"><td class="memItemLeft" align="right" valign="top"><a id="ga540949dc6759add7e477d27dad6ff82d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga540949dc6759add7e477d27dad6ff82d">WT_STAT_CONN_TXN_UPDATE_CONFLICT</a></td></tr>
 <tr class="memdesc:ga540949dc6759add7e477d27dad6ff82d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: update conflicts <br /></td></tr>
@@ -3409,6 +3401,86 @@ Statistics for session</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5ca0953043527edcb10365c34a179444">WT_STAT_SESSION_CACHE_TIME</a></td></tr>
 <tr class="memdesc:ga5ca0953043527edcb10365c34a179444"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: time waiting for cache (usecs) <br /></td></tr>
 <tr class="separator:ga5ca0953043527edcb10365c34a179444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Verbose categories</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp4950066395114c695e576540c5394356"></a><a class="anchor" id="verbose_categories"></a></p>
+</td></tr>
+<tr class="memitem:ga559a8cfb19158a0647c28a2748d5284a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga559a8cfb19158a0647c28a2748d5284a">WT_VERBOSE_CATEGORY</a> { <br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aae699ed09bce17b1078a0af16c8569843">WT_VERB_API</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa91d90eec055823a1e7531f6e6f5627be">WT_VERB_BACKUP</a>, 
+<b>WT_VERB_BLKCACHE</b>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaf936bde40b450ababcd7dafecf0147df">WT_VERB_BLOCK</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaf76faaeaf4c992535c6811c2369320d3">WT_VERB_CHECKPOINT</a>, 
+<b>WT_VERB_CHECKPOINT_CLEANUP</b>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa38d3aad7bacd44c7b2df0361f953ef31">WT_VERB_CHECKPOINT_PROGRESS</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8030d1fc58ccfefee44a984a7f57fa2d">WT_VERB_COMPACT</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa143c7725515bcd1fc8dea8ccf2adaaf6">WT_VERB_COMPACT_PROGRESS</a>, 
+<b>WT_VERB_DEFAULT</b>, 
+<b>WT_VERB_ERROR_RETURNS</b>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa9bf5f06571fffaa893cc57048d698f18">WT_VERB_EVICT</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa9db7bdc28ef4cbc99611fe05dda45253">WT_VERB_EVICTSERVER</a>, 
+<b>WT_VERB_EVICT_STUCK</b>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa5dc56b2f27d621a6ad3fc015cc937c63">WT_VERB_EXTENSION</a>, 
+<b>WT_VERB_FILEOPS</b>, 
+<br />
+&#160;&#160;<b>WT_VERB_GENERATION</b>, 
+<b>WT_VERB_HANDLEOPS</b>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aad95f2ce44aba1047cd83e97d75008e80">WT_VERB_HS</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa15cd23c3e415138701f3fb4312074c7d">WT_VERB_HS_ACTIVITY</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaa45045cbb53310aa033774e625e553fe">WT_VERB_LOG</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaba06c857a5c528828b18ddcf8af600c2">WT_VERB_LSM</a>, 
+<b>WT_VERB_LSM_MANAGER</b>, 
+<b>WT_VERB_MUTEX</b>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaa248364229f454c9da1c0908e1e89a85">WT_VERB_METADATA</a>, 
+<b>WT_VERB_OUT_OF_ORDER</b>, 
+<b>WT_VERB_OVERFLOW</b>, 
+<b>WT_VERB_READ</b>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaa9d0daaac5a8ffe5a2f68777b23031d4">WT_VERB_RECONCILE</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaab7957644f0bd9a8567a3d8dbb92d86d">WT_VERB_RECOVERY</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa44720d507f58e8b70a482a1be939142c">WT_VERB_RECOVERY_PROGRESS</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaf94478716f77447b487412f650955b66">WT_VERB_RTS</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa12e3aade522045b1a304cd5f45111ae0">WT_VERB_SALVAGE</a>, 
+<b>WT_VERB_SHARED_CACHE</b>, 
+<b>WT_VERB_SPLIT</b>, 
+<b>WT_VERB_TEMPORARY</b>, 
+<br />
+&#160;&#160;<b>WT_VERB_THREAD_GROUP</b>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa220f3ef6ea799f241a8d72f52795edb3">WT_VERB_TIERED</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8a7edd91839deb27bd3944e91449e22b">WT_VERB_TIMESTAMP</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa5449cc4e93639aa509653ab9cd067d65">WT_VERB_TRANSACTION</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8778a2d19f830c86ecef2103ba3cd43b">WT_VERB_VERIFY</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa4d0b758c4b88e428ce69b85f76d754da">WT_VERB_VERSION</a>, 
+<b>WT_VERB_WRITE</b>, 
+<b>WT_VERB_NUM_CATEGORIES</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:ga559a8cfb19158a0647c28a2748d5284a"><td class="mdescLeft">&#160;</td><td class="mdescRight">WiredTiger verbose event categories.  <a href="group__wt.html#ga559a8cfb19158a0647c28a2748d5284a">More...</a><br /></td></tr>
+<tr class="separator:ga559a8cfb19158a0647c28a2748d5284a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Verbose levels</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpec5ee723026197f6e88a547dd8264274"></a><a class="anchor" id="verbose_levels"></a></p>
+</td></tr>
+<tr class="memitem:ga2da77cd00dfa6016ed4b37ac085cf875"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2da77cd00dfa6016ed4b37ac085cf875">WT_VERBOSE_LEVEL</a> { <br />
+&#160;&#160;<a class="el" href="group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a9ef709763ba8b06329a7d4809fe5bcd3">WT_VERBOSE_ERROR</a>, 
+<a class="el" href="group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875ac4c19b20f0dbdd7bd6e044096a0d961b">WT_VERBOSE_WARNING</a>, 
+<a class="el" href="group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a48b592ec23832bc1fb0e6d45aed43753">WT_VERBOSE_NOTICE</a>, 
+<a class="el" href="group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a6b85f656541cf298c732b5cb4b7347b1">WT_VERBOSE_INFO</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875ad55572719cc118f0ffc4eaf6d5d5c85b">WT_VERBOSE_DEBUG</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ga2da77cd00dfa6016ed4b37ac085cf875"><td class="mdescLeft">&#160;</td><td class="mdescRight">WiredTiger verbosity levels.  <a href="group__wt.html#ga2da77cd00dfa6016ed4b37ac085cf875">More...</a><br /></td></tr>
+<tr class="separator:ga2da77cd00dfa6016ed4b37ac085cf875"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>The functions, handles and methods applications use to access and manage data with WiredTiger. </p>
@@ -3697,6 +3769,105 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>Streaming interface to packing. </p>
 <p>This allows applications to pack or unpack records one field at a time. This is an opaque handle returned by <a class="el" href="group__wt.html#ga7d1cae063863dd7f48a48b5cb65be253" title="Start a packing operation into a buffer with the given format string.">wiredtiger_pack_start</a> or <a class="el" href="group__wt.html#gad93973bfd0e21ba845878ba3c4b97d96" title="Start an unpacking operation from a buffer with the given format string.">wiredtiger_unpack_start</a>. It must be closed with <a class="el" href="group__wt.html#gad506573d475f00f3e6aae9ce36d8bc53" title="Close a packing stream.">wiredtiger_pack_close</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga559a8cfb19158a0647c28a2748d5284a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga559a8cfb19158a0647c28a2748d5284a">&#9670;&nbsp;</a></span>WT_VERBOSE_CATEGORY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__wt.html#ga559a8cfb19158a0647c28a2748d5284a">WT_VERBOSE_CATEGORY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>WiredTiger verbose event categories. </p>
+<p>Note that the verbose categories cover a wide set of sub-systems and operations within WiredTiger. As such, the categories are subject to change and evolve between different WiredTiger releases. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aae699ed09bce17b1078a0af16c8569843"></a>WT_VERB_API&#160;</td><td class="fielddoc"><p>API messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa91d90eec055823a1e7531f6e6f5627be"></a>WT_VERB_BACKUP&#160;</td><td class="fielddoc"><p>Backup messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaf936bde40b450ababcd7dafecf0147df"></a>WT_VERB_BLOCK&#160;</td><td class="fielddoc"><p>Block manager messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaf76faaeaf4c992535c6811c2369320d3"></a>WT_VERB_CHECKPOINT&#160;</td><td class="fielddoc"><p>Checkpoint messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa38d3aad7bacd44c7b2df0361f953ef31"></a>WT_VERB_CHECKPOINT_PROGRESS&#160;</td><td class="fielddoc"><p>Checkpoint progress messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa8030d1fc58ccfefee44a984a7f57fa2d"></a>WT_VERB_COMPACT&#160;</td><td class="fielddoc"><p>Compact messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa143c7725515bcd1fc8dea8ccf2adaaf6"></a>WT_VERB_COMPACT_PROGRESS&#160;</td><td class="fielddoc"><p>Compact progress messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa9bf5f06571fffaa893cc57048d698f18"></a>WT_VERB_EVICT&#160;</td><td class="fielddoc"><p>Eviction messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa9db7bdc28ef4cbc99611fe05dda45253"></a>WT_VERB_EVICTSERVER&#160;</td><td class="fielddoc"><p>Eviction server messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa5dc56b2f27d621a6ad3fc015cc937c63"></a>WT_VERB_EXTENSION&#160;</td><td class="fielddoc"><p>Extension messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aad95f2ce44aba1047cd83e97d75008e80"></a>WT_VERB_HS&#160;</td><td class="fielddoc"><p>History store messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa15cd23c3e415138701f3fb4312074c7d"></a>WT_VERB_HS_ACTIVITY&#160;</td><td class="fielddoc"><p>History store activity messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaa45045cbb53310aa033774e625e553fe"></a>WT_VERB_LOG&#160;</td><td class="fielddoc"><p>Log messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaba06c857a5c528828b18ddcf8af600c2"></a>WT_VERB_LSM&#160;</td><td class="fielddoc"><p>LSM messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaa248364229f454c9da1c0908e1e89a85"></a>WT_VERB_METADATA&#160;</td><td class="fielddoc"><p>Metadata messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaa9d0daaac5a8ffe5a2f68777b23031d4"></a>WT_VERB_RECONCILE&#160;</td><td class="fielddoc"><p>Reconcile messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaab7957644f0bd9a8567a3d8dbb92d86d"></a>WT_VERB_RECOVERY&#160;</td><td class="fielddoc"><p>Recovery messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa44720d507f58e8b70a482a1be939142c"></a>WT_VERB_RECOVERY_PROGRESS&#160;</td><td class="fielddoc"><p>Recovery progress messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaf94478716f77447b487412f650955b66"></a>WT_VERB_RTS&#160;</td><td class="fielddoc"><p>RTS messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa12e3aade522045b1a304cd5f45111ae0"></a>WT_VERB_SALVAGE&#160;</td><td class="fielddoc"><p>Salvage messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa220f3ef6ea799f241a8d72f52795edb3"></a>WT_VERB_TIERED&#160;</td><td class="fielddoc"><p>Tiered messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa8a7edd91839deb27bd3944e91449e22b"></a>WT_VERB_TIMESTAMP&#160;</td><td class="fielddoc"><p>Timestamp messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa5449cc4e93639aa509653ab9cd067d65"></a>WT_VERB_TRANSACTION&#160;</td><td class="fielddoc"><p>Transaction messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa8778a2d19f830c86ecef2103ba3cd43b"></a>WT_VERB_VERIFY&#160;</td><td class="fielddoc"><p>Verify messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa4d0b758c4b88e428ce69b85f76d754da"></a>WT_VERB_VERSION&#160;</td><td class="fielddoc"><p>Version messages. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ga2da77cd00dfa6016ed4b37ac085cf875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2da77cd00dfa6016ed4b37ac085cf875">&#9670;&nbsp;</a></span>WT_VERBOSE_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__wt.html#ga2da77cd00dfa6016ed4b37ac085cf875">WT_VERBOSE_LEVEL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>WiredTiger verbosity levels. </p>
+<p>The levels define a range of severity categories, with <code>WT_VERBOSE_ERROR</code> being the lowest, most critical level (used by messages on critical error paths) and <code>WT_VERBOSE_DEBUG</code> being the highest verbosity/informational level (mostly adopted for debugging). </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga2da77cd00dfa6016ed4b37ac085cf875a9ef709763ba8b06329a7d4809fe5bcd3"></a>WT_VERBOSE_ERROR&#160;</td><td class="fielddoc"><p>Error conditions triggered in WiredTiger. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2da77cd00dfa6016ed4b37ac085cf875ac4c19b20f0dbdd7bd6e044096a0d961b"></a>WT_VERBOSE_WARNING&#160;</td><td class="fielddoc"><p>Warning conditions potentially signaling non-imminent errors and behaviors. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2da77cd00dfa6016ed4b37ac085cf875a48b592ec23832bc1fb0e6d45aed43753"></a>WT_VERBOSE_NOTICE&#160;</td><td class="fielddoc"><p>Messages for significant events in WiredTiger, usually worth noting. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2da77cd00dfa6016ed4b37ac085cf875a6b85f656541cf298c732b5cb4b7347b1"></a>WT_VERBOSE_INFO&#160;</td><td class="fielddoc"><p>Informational style messages. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2da77cd00dfa6016ed4b37ac085cf875ad55572719cc118f0ffc4eaf6d5d5c85b"></a>WT_VERBOSE_DEBUG&#160;</td><td class="fielddoc"><p>Low severity messages, useful for debugging purposes. </p>
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -4942,19 +5113,19 @@ Packing Examples</h1>
 <div class="ttc" id="agroup__wt_html_gae8bf720ddb4a7a7390b70424594c40fd"><div class="ttname"><a href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a></div><div class="ttdeci">const char * wiredtiger_strerror(int error)</div><div class="ttdoc">Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...</div></div>
 <div class="ttc" id="agroup__wt_html_gacb2cb3b5e55a85a481a3175f37de3a29"><div class="ttname"><a href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">wiredtiger_calc_modify</a></div><div class="ttdeci">int wiredtiger_calc_modify(WT_SESSION *session, const WT_ITEM *oldv, const WT_ITEM *newv, size_t maxdiff, WT_MODIFY *entries, int *nentriesp)</div><div class="ttdoc">Calculate a set of WT_MODIFY operations to represent an update.</div></div>
 <div class="ttc" id="agroup__wt_html_abd8b1299dfb5c54dc049fa42a4680b55"><div class="ttname"><a href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">WT_ITEM::size</a></div><div class="ttdeci">size_t size</div><div class="ttdoc">The number of bytes in the data item.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:120</div></div>
-<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3654</div></div>
+<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3658</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html_a44eea5e27a4da10006ab444ee7cf00f3"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">WT_CONFIG_PARSER::close</a></div><div class="ttdeci">int close(WT_CONFIG_PARSER *config_parser)</div><div class="ttdoc">Close the configuration scanner releasing any resources.</div></div>
 <div class="ttc" id="agroup__wt_html_ga7cdc8c688f2c15303188ed6999dcc1b4"><div class="ttname"><a href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a></div><div class="ttdeci">int wiredtiger_struct_unpack(WT_SESSION *session, const void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Unpack a structure from a buffer.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___m_o_d_i_f_y"><div class="ttname"><a href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a></div><div class="ttdoc">A set of modifications for a value, including a pointer to new data and a length, plus a target offse...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:145</div></div>
 <div class="ttc" id="agroup__wt_html_ga1b29826f4b418891d67e86850f7cbcf4"><div class="ttname"><a href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a></div><div class="ttdeci">const char * wiredtiger_version(int *majorp, int *minorp, int *patchp)</div><div class="ttdoc">Get version information.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___i_t_e_m"><div class="ttname"><a href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></div><div class="ttdoc">A raw item of data to be managed, including a pointer to the data and a length.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:103</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with WiredTiger API...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3594</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with WiredTiger API...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3598</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="agroup__wt_html_ga512297da65ccc30ac91bf6adf95f043f"><div class="ttname"><a href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a></div><div class="ttdeci">int wiredtiger_config_parser_open(WT_SESSION *session, const char *config, size_t len, WT_CONFIG_PARSER **config_parserp)</div><div class="ttdoc">Create a handle that can be used to parse or create configuration strings compatible with WiredTiger ...</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
 <div class="ttc" id="agroup__wt_html_ga156e7993d370495e1e52c29b2bb6b7d4"><div class="ttname"><a href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a></div><div class="ttdeci">int wiredtiger_struct_size(WT_SESSION *session, size_t *lenp, const char *format,...)</div><div class="ttdoc">Calculate the size required to pack a structure.</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3467</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3471</div></div>
 <div class="ttc" id="agroup__wt_html_gab3d8a22e243360ece67baf33926d80fa"><div class="ttname"><a href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a></div><div class="ttdeci">int wiredtiger_struct_pack(WT_SESSION *session, void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Pack a structure into a buffer.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
