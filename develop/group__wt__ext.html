@@ -125,9 +125,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A file handle implementation returned by WT_FILE_SYSTEM::open_file.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___t_x_n___n_o_t_i_f_y.html">WT_TXN_NOTIFY</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Snapshot isolation level, returned by <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5a3766f959083f362e3668c40ac995c5" title="Return the current transaction&#39;s isolation level; returns one of WT_TXN_ISO_READ_COMMITTED,...">WT_EXTENSION_API::transaction_isolation_level</a>.  <a href="struct_w_t___t_x_n___n_o_t_i_f_y.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:struct____wt__extension__spinlock"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#struct____wt__extension__spinlock">WT_EXTENSION_SPINLOCK</a></td></tr>
 <tr class="memdesc:struct____wt__extension__spinlock"><td class="mdescLeft">&#160;</td><td class="mdescRight">A placeholder data structure that allows for using the WiredTiger spinlock implementation from within extensions.  <a href="group__wt__ext.html#struct____wt__extension__spinlock">More...</a><br /></td></tr>
 <tr class="separator:struct____wt__extension__spinlock"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,18 +174,6 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#gaa4979ed3f2610368e392be059390b62f">WT_FILE_HANDLE_WILLNEED</a></td></tr>
 <tr class="memdesc:gaa4979ed3f2610368e392be059390b62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">WT_FILE_HANDLE::fadvise flags: will need. <br /></td></tr>
 <tr class="separator:gaa4979ed3f2610368e392be059390b62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga84ae45d6803da8dab05bb72c2e69aa0f"><td class="memItemLeft" align="right" valign="top"><a id="ga84ae45d6803da8dab05bb72c2e69aa0f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga84ae45d6803da8dab05bb72c2e69aa0f">WT_TXN_ISO_READ_COMMITTED</a></td></tr>
-<tr class="memdesc:ga84ae45d6803da8dab05bb72c2e69aa0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read-committed isolation level, returned by <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5a3766f959083f362e3668c40ac995c5" title="Return the current transaction&#39;s isolation level; returns one of WT_TXN_ISO_READ_COMMITTED,...">WT_EXTENSION_API::transaction_isolation_level</a>. <br /></td></tr>
-<tr class="separator:ga84ae45d6803da8dab05bb72c2e69aa0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga604e4478bcef2026786b0826e34f5262"><td class="memItemLeft" align="right" valign="top"><a id="ga604e4478bcef2026786b0826e34f5262"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga604e4478bcef2026786b0826e34f5262">WT_TXN_ISO_READ_UNCOMMITTED</a></td></tr>
-<tr class="memdesc:ga604e4478bcef2026786b0826e34f5262"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read-uncommitted isolation level, returned by <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5a3766f959083f362e3668c40ac995c5" title="Return the current transaction&#39;s isolation level; returns one of WT_TXN_ISO_READ_COMMITTED,...">WT_EXTENSION_API::transaction_isolation_level</a>. <br /></td></tr>
-<tr class="separator:ga604e4478bcef2026786b0826e34f5262"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga36207e3a80d960f7e0c822e8ab483014"><td class="memItemLeft" align="right" valign="top"><a id="ga36207e3a80d960f7e0c822e8ab483014"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#ga36207e3a80d960f7e0c822e8ab483014">WT_TXN_ISO_SNAPSHOT</a></td></tr>
-<tr class="memdesc:ga36207e3a80d960f7e0c822e8ab483014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Snapshot isolation level, returned by <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5a3766f959083f362e3668c40ac995c5" title="Return the current transaction&#39;s isolation level; returns one of WT_TXN_ISO_READ_COMMITTED,...">WT_EXTENSION_API::transaction_isolation_level</a>. <br /></td></tr>
-<tr class="separator:ga36207e3a80d960f7e0c822e8ab483014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>

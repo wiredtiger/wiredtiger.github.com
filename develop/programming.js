@@ -21,8 +21,7 @@ var programming =
         [ "Timestamp overview", "transactions.html#timestamp_overview", null ],
         [ "Using transactions with timestamps", "transactions.html#timestamp_transactions", null ],
         [ "Automatic rounding of timestamps", "transactions.html#timestamp_roundup", null ],
-        [ "Managing global timestamp state", "transactions.html#timestamp_connection", null ],
-        [ "Timestamp support in the extension API", "transactions.html#timestamp_extensions", null ]
+        [ "Managing global timestamp state", "transactions.html#timestamp_connection", null ]
       ] ]
     ] ],
     [ "Error handling", "error_handling.html", [
