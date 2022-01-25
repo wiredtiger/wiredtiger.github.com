@@ -245,10 +245,6 @@ Upgrading to Version 2.9.2</h1>
 <dd><p class="startdd">In the 2.9.1 release we added statistics tracking handle list lock timing, we have switched that lock from a spin lock to a read-write lock, and consequently changed the statistics tracking lock related wait time. </p>
 <p class="enddd"></p>
 </dd>
-<dt>Logging subsystem statistics </dt>
-<dd><p class="startdd">Two logging subsystem statistics have been removed as they were a duplicate of other statistics. The <code>log_slot_joins</code> and <code>log_slot_transitions</code> statistics are no longer present. They were duplicates of <code>log_writes</code> and <code>log_slot_closes</code> respectively. Several new logging related statistics have been added. </p>
-<p class="enddd"></p>
-</dd>
 <dt>Forced and named checkpoint error conditions changed </dt>
 <dd><p class="startdd">There are new cases where checkpoints created with an explicit name or the "force" configuration option can return an EBUSY error. This can happen if the checkpoint overlaps with other schema operations, for example table create. </p>
 <p class="enddd"></p>

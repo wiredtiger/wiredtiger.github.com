@@ -393,7 +393,7 @@ var searchData=
   ['wt_5fstat_5fconn_5flog_5fcompress_5fwrite_5ffails_636',['WT_STAT_CONN_LOG_COMPRESS_WRITE_FAILS',['../group__wt.html#gad866c0aefbf1f6351d1ea5a37d7f65de',1,'wiredtiger.in']]],
   ['wt_5fstat_5fconn_5flog_5fcompress_5fwrites_637',['WT_STAT_CONN_LOG_COMPRESS_WRITES',['../group__wt.html#ga309dafb64c7e9e3d214ee9b73ec81d61',1,'wiredtiger.in']]],
   ['wt_5fstat_5fconn_5flog_5fflush_638',['WT_STAT_CONN_LOG_FLUSH',['../group__wt.html#ga3a28f511191b864b1a13b31d6bbfc80a',1,'wiredtiger.in']]],
-  ['wt_5fstat_5fconn_5flog_5fforce_5farchive_5fsleep_639',['WT_STAT_CONN_LOG_FORCE_ARCHIVE_SLEEP',['../group__wt.html#ga1e3c3660877e8654c65e64d3ccc48ccc',1,'wiredtiger.in']]],
+  ['wt_5fstat_5fconn_5flog_5fforce_5fremove_5fsleep_639',['WT_STAT_CONN_LOG_FORCE_REMOVE_SLEEP',['../group__wt.html#ga2b1e1b32263327b509a2560b800f8d8e',1,'wiredtiger.in']]],
   ['wt_5fstat_5fconn_5flog_5fforce_5fwrite_640',['WT_STAT_CONN_LOG_FORCE_WRITE',['../group__wt.html#ga8b5a8a3421f8c074cb7ed768ca1a6b73',1,'wiredtiger.in']]],
   ['wt_5fstat_5fconn_5flog_5fforce_5fwrite_5fskip_641',['WT_STAT_CONN_LOG_FORCE_WRITE_SKIP',['../group__wt.html#gafad1a15db915e22643108eed45558027',1,'wiredtiger.in']]],
   ['wt_5fstat_5fconn_5flog_5fmax_5ffilesize_642',['WT_STAT_CONN_LOG_MAX_FILESIZE',['../group__wt.html#ga4ca1e771613773fb02c6d423415f6ffa',1,'wiredtiger.in']]],

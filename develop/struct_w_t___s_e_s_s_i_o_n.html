@@ -381,7 +381,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_log_8c-example.html#a17">ex_log.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_cursor_8c-example.html#a22">ex_cursor.c</a>, and <a class="el" href="ex_log_8c-example.html#a17">ex_log.c</a>.</dd>
 </dl>
 
 </div>
@@ -1260,6 +1260,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <td><code>checkpoint</code></td><td>the name of a checkpoint to open (the reserved name "WiredTigerCheckpoint" opens the most recent internal checkpoint taken for the object). The cursor does not support data modification.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>debug = (</code></td><td>configure debug specific behavior on a cursor. Generally only used for internal testing purposes.</td><td>a set of related configuration options defined below. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;dump_version</code></td><td>open a version cursor, which is a debug cursor on a table that enables iteration through the history of values for a given key.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;release_evict</code></td><td>Configure the cursor to evict the page positioned on when the reset API is used.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
