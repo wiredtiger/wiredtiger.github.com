@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['upgrading_20and_20downgrading_20databases_1482',['Upgrading and downgrading databases',['../upgrade.html',1,'programming']]],
-  ['upgrading_20wiredtiger_20applications_1483',['Upgrading WiredTiger applications',['../upgrading.html',1,'index']]]
+  ['upgrading_20and_20downgrading_20databases_1480',['Upgrading and downgrading databases',['../upgrade.html',1,'programming']]],
+  ['upgrading_20wiredtiger_20applications_1481',['Upgrading WiredTiger applications',['../upgrading.html',1,'index']]]
 ];

@@ -100,40 +100,53 @@ Building using Git and GitHub</h1>
 </div><!-- fragment --><p>Now proceed with <a class="el" href="build-windows.html#windows_building">Building on Windows</a></p>
 <h1><a class="anchor" id="windows_building"></a>
 Building on Windows</h1>
-<p>Building WiredTiger on Windows requires <a href="http://www.scons.org">SCons</a> as well as the Microsoft Visual C++ compiler in Microsoft Visual Studio.</p>
-<p>Change directory to the top-level directory, then build the software:</p>
+<p>Building WiredTiger on Windows requires <a href="https://cmake.org/">CMake</a> as well as the Microsoft Visual C++ compiler in Microsoft Visual Studio.</p>
+<p>You can build WiredTiger from source using command-line tools. When compiling via command-line tools, we recommend a prompt/shell that has been appropriately configured with VS toolchain environment variables. We usually recommend using the <a href="https://docs.microsoft.com/en-us/visualstudio/ide/reference/command-prompt-powershell">Visual Studio Developer Command Prompt/Powershell</a> to ensure an appropriately configured environment.</p>
+<p>Change directory to the top-level directory, then create and configure a new directory to run your build from:</p>
 <div class="fragment"><div class="line">cd wiredtiger</div>
-<div class="line">scons</div>
-</div><!-- fragment --><p>To rebuild from scratch, discard any previous configuration by cleaning out the build area:</p>
-<div class="fragment"><div class="line">scons -c</div>
-</div><!-- fragment --><p>To see additional configuration options, run:</p>
-<div class="fragment"><div class="line">scons --help</div>
+<div class="line">mkdir build</div>
+<div class="line">cd build</div>
+</div><!-- fragment --><p>Change into your newly created build directory and using CMake run the build configuration step to generate your build.</p>
+<div class="fragment"><div class="line">cmake ..\.</div>
+</div><!-- fragment --><p>In the absence of an explicit generator, CMake will generate Visual Studio project files (<code></code>.vcxproj), representing build targets within WiredTiger. To compile the entire WiredTiger project, in the same directory we configured the build, run <code>msbuild:</code> </p><div class="fragment"><div class="line">msbuild ALL_BUILD.vcxproj</div>
 </div><!-- fragment --><p>To build the python language support, a 64-bit version of Python is required. The required version is referred to as x86-64 on <a href="www.python.org">Python.org</a> or x64 on <a href="http://www.activestate.com/activepython/downloads">ActiveState Python</a>.</p>
 <h1><a class="anchor" id="windows_installing"></a>
 Installing WiredTiger</h1>
 <p>The WiredTiger software consists of a library and a single standalone utility.</p>
 <p>WiredTiger's distribution follows the GNU Coding Standards installation guidelines, and by default WiredTiger builds and installs a static library and dll version of the library.</p>
-<div class="fragment"><div class="line">file &lt;root directory&gt;/package/bin/</div>
+<div class="fragment"><div class="line">file &lt;root directory&gt;/bin/</div>
 <div class="line">wt.exe:                 x64 standalone executable</div>
-<div class="line">wiredtiger.dll:         x64 dynamically linked library</div>
 <div class="line"> </div>
-<div class="line">file &lt;root directory&gt;/package/lib/</div>
+<div class="line">file &lt;root directory&gt;/lib/</div>
 <div class="line">libwiredtiger.lib:      x64 <span class="keyword">static</span> library</div>
 <div class="line">wiredtiger.lib:         x64 <span class="keyword">import</span> library <span class="keywordflow">for</span> dll</div>
 </div><!-- fragment --><p>To install WiredTiger:</p>
-<div class="fragment"><div class="line">scons install</div>
-</div><!-- fragment --><p>To install WiredTiger's libraries or binaries into alternate locations, you can use the &ndash;prefix configuration option.</p>
-<div class="fragment"><div class="line">scons --prefix=c:\wiredtiger install</div>
+<div class="fragment"><div class="line">msbuild INSTALL.vcxproj</div>
+</div><!-- fragment --><p>To install WiredTiger's libraries or binaries into alternate locations, you can use the <code>-DCMAKE_INSTALL_PREFIX</code> configuration option.</p>
+<div class="fragment"><div class="line">cmake -DCMAKE_INSTALL_PREFIX=c:\wiredtiger</div>
 </div><!-- fragment --><h1><a class="anchor" id="windows_configure"></a>
 Configuring WiredTiger</h1>
 <p>The WiredTiger software supports some additional configuration options:</p>
-<dl class="section user"><dt><code>&ndash;enable-attach</code> </dt><dd>Configure WiredTiger to sleep and wait for a debugger to attach on failure. <b>DO NOT</b> configure this option in production environments.</dd></dl>
-<dl class="section user"><dt><code>&ndash;enable-diagnostic</code> </dt><dd>Configure WiredTiger to perform various run-time diagnostic tests. <b>DO NOT</b> configure this option in production environments.</dd></dl>
-<dl class="section user"><dt><code>&ndash;enable-python</code> </dt><dd>Build the WiredTiger <a href="http://www.python.org">Python</a> API, requires path to swig.exe on Windows.</dd></dl>
-<dl class="section user"><dt><code>&ndash;enable-snappy</code> </dt><dd>Configure WiredTiger for <a href="http://code.google.com/p/snappy/">snappy</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
-<dl class="section user"><dt><code>&ndash;enable-zlib</code> </dt><dd>Configure WiredTiger for <a href="http://www.zlib.net/">zlib</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
-<dl class="section user"><dt><code>&ndash;disable-standalone-build</code> </dt><dd>Configure WiredTiger to disable standalone build. Standalone build is enabled by default. </dd></dl>
-</div></div><!-- contents -->
+<dl class="section user"><dt><code>-DHAVE_ATTACH=1</code> </dt><dd>Configure WiredTiger to sleep and wait for a debugger to attach on failure. <b>DO NOT</b> configure this option in production environments.</dd></dl>
+<dl class="section user"><dt><code>-DHAVE_DIAGNOSTIC=1</code> </dt><dd>Configure WiredTiger to perform various run-time diagnostic tests. <b>DO NOT</b> configure this option in production environments.</dd></dl>
+<dl class="section user"><dt><code>-DENABLE_LZ4=1</code> </dt><dd>Configure WiredTiger for <a href="https://github.com/Cyan4973/lz4">LZ4</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
+<dl class="section user"><dt><code>-DENABLE_PYTHON=1</code> </dt><dd>Build the WiredTiger <a href="http://www.python.org">Python</a> API; requires <a href="http://swig.org">SWIG</a>.</dd></dl>
+<dl class="section user"><dt><code>-DENABLE_SNAPPY=1</code> </dt><dd>Configure WiredTiger for <a href="http://code.google.com/p/snappy/">snappy</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
+<dl class="section user"><dt><code>-DENABLE_ZLIB=1</code> </dt><dd>Configure WiredTiger for <a href="http://www.zlib.net/">zlib</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
+<dl class="section user"><dt><code>-DENABLE_ZSTD=1</code> </dt><dd>Configure WiredTiger for <a href="https://github.com/facebook/zstd">Zstd</a> compression; see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
+<dl class="section user"><dt><code>-DWT_STANDALONE_BUILD=0</code> </dt><dd>Configure WiredTiger to disable standalone build. Standalone build is enabled by default.</dd></dl>
+<h1><a class="anchor" id="windows_ctest"></a>
+Running WiredTiger C/C++ Tests</h1>
+<p>The WiredTiger CMake build makes available a suite of C/C++ based tests. To run the available tests you can use our smoke test alias (<code>check</code>). Ensure you're in the build directory and execute:</p>
+<div class="fragment"><div class="line">ctest -C &lt;Debug|Release&gt; -L check</div>
+</div><!-- fragment --><p>Alternatively to just run all the tests available:</p>
+<div class="fragment"><div class="line">ctest -C &lt;Debug|Release&gt;</div>
+</div><!-- fragment --><p>In addition, to get verbose output with your test run you can use the <code>-VV</code> flag:</p>
+<div class="fragment"><div class="line">ctest -C &lt;Debug|Release&gt; -VV</div>
+</div><!-- fragment --><p>If you want to focus on running a specific test (i.e. run a test that may be failing) you can use the <code>-R</code> flag:</p>
+<div class="fragment"><div class="line"><span class="preprocessor"># Note: -R specifies a regex, where any matching test will be run</span></div>
+<div class="line"><span class="preprocessor">ctest -C &lt;Debug|Release&gt; -R test_name</span></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

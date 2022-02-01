@@ -92,11 +92,10 @@ $(document).ready(function(){initNavTree('build-posix.html',''); initResizable()
 <div class="title">Building and installing WiredTiger on POSIX (Linux, *BSD, OS X): </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>To read instructions on using the legacy autoconf build system, see <a class="el" href="build-autoconf.html">Building and installing WiredTiger with autoconf/libtool</a>.</p>
-<h1><a class="anchor" id="posix_github"></a>
+<div class="textblock"><h1><a class="anchor" id="posix_github"></a>
 Building using Git and GitHub</h1>
 <p>Skip this step if you are building from a WiredTiger release package, and proceed with <a class="el" href="build-posix.html#posix_building">Building WiredTiger</a>.</p>
-<p>To build from the WiredTiger GitHub repository requires <a href="http://git-scm.com/">git</a>, <a href="https://cmake.org/">CMake</a>, <a href="https://ninja-build.org/">Ninja</a>. We also suggest <a href="https://ccache.dev/">ccache</a> for improved build times and <a href="http://www.swig.org/">SWIG</a> for building with Python support.</p>
+<p>To build from the WiredTiger GitHub repository requires <a href="http://git-scm.com/">git</a>, <a href="https://cmake.org/">CMake</a>. We also suggest <a href="https://ninja-build.org/">Ninja</a> and <a href="https://ccache.dev/">ccache</a> for improved incremental build times and <a href="http://www.swig.org/">SWIG</a> for building with Python support.</p>
 <p>First, clone the repository:</p>
 <div class="fragment"><div class="line">git clone git:<span class="comment">//github.com/wiredtiger/wiredtiger.git</span></div>
 </div><!-- fragment --><p>Now proceed with <a class="el" href="build-posix.html#posix_building">Building WiredTiger</a>.</p>
@@ -106,8 +105,11 @@ Building WiredTiger</h1>
 <div class="fragment"><div class="line">cd wiredtiger</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
-</div><!-- fragment --><p>Change into your newly created build directory and using CMake run the build configuration step to generate your ninja build. </p><div class="fragment"><div class="line">cmake -G Ninja ../.</div>
-</div><!-- fragment --><p>Lastly, in the same directory you configured your build, run the ninja command to start the build: </p><div class="fragment"><div class="line">ninja</div>
+</div><!-- fragment --><p>Change into your newly created build directory and using CMake run the build configuration step to generate your build. </p><div class="fragment"><div class="line">cmake ../.</div>
+<div class="line"># If <span class="keyword">using</span> the Ninja build tool, you can additionally specify the generator <span class="stringliteral">&#39;-G Ninja&#39;</span> to construct a</div>
+<div class="line"><span class="preprocessor"># ninja build i.e &#39;cmake -G Ninja ../.&#39;.</span></div>
+</div><!-- fragment --><p>Lastly, in the same directory you configured your build, start the build: </p><div class="fragment"><div class="line">make</div>
+<div class="line"><span class="preprocessor"># Or &#39;ninja&#39; if using the Ninja build tool.</span></div>
 </div><!-- fragment --><h1><a class="anchor" id="posix_installing"></a>
 Installing WiredTiger</h1>
 <p>The WiredTiger software consists of a library and a single standalone utility.</p>
@@ -118,7 +120,8 @@ Installing WiredTiger</h1>
 </div><!-- fragment --><p>WiredTiger uses <a href="https://cmake.org/">CMake</a> to build and install the libraries. By default, the shared libraries are built. To build only static libraries, configure WiredTiger using the <code>-DENABLE_STATIC=1</code> argument.</p>
 <p>In addition, WiredTiger installs a standalone utility program named <code>wt</code>. By default, this utility is installed in <code>/usr/local/bin/wt</code>.</p>
 <p>To install WiredTiger:</p>
-<div class="fragment"><div class="line">ninja install</div>
+<div class="fragment"><div class="line">make install</div>
+<div class="line"><span class="preprocessor"># Or &#39;ninja install&#39; if using the Ninja build tool.</span></div>
 </div><!-- fragment --><p>To uninstall WiredTiger:</p>
 <div class="fragment"><div class="line">xargs rm &lt; install_manifest.txt</div>
 </div><!-- fragment --><p>The <code>install_manifest.txt</code> file is created when you run <code>ninja install</code>.</p>
@@ -141,11 +144,11 @@ Configuring WiredTiger</h1>
 Changing compiler or loader options</h1>
 <p>By default CMake will use your default system compiler (<code>cc</code>). If you want to use a specific toolchain you can pass a toolchain file. We have provided a toolchain file for both GCC (<code>cmake/toolchains/gcc.cmake</code>) and Clang (<code>cmake/toolchains/clang.cmake</code>). To use either toolchain you can pass the <code>-DCMAKE_TOOLCHAIN_FILE=</code> to the CMake configuration step. For example:</p>
 <p>For example, to explicitly specify the GCC toolchain:</p>
-<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/gcc.cmake -G Ninja ../.</div>
+<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/gcc.cmake ../.</div>
 </div><!-- fragment --><p>To explicitly specify the Clang toolchain:</p>
-<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang.cmake -G Ninja ../.</div>
+<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang.cmake ../.</div>
 </div><!-- fragment --><p>By default, WiredTiger builds with the <code>-O3</code> compiler optimization flag unless manually specified through the <code>-DCC_OPTIMIZE_LEVEL</code> configuration option. For example, to specify a different level of optimization:</p>
-<div class="fragment"><div class="line">cmake -DCC_OPTIMIZE_LEVEL=-O1 -G Ninja ../.</div>
+<div class="fragment"><div class="line">cmake -DCC_OPTIMIZE_LEVEL=-O1 ../.</div>
 </div><!-- fragment --><h1><a class="anchor" id="posix_ctest"></a>
 Running WiredTiger C/C++ Tests</h1>
 <p>The WiredTiger CMake build makes available a suite of C/C++ based tests. To run the available tests you can use our smoke test alias (<code>check</code>). Ensure you're in the build directory and execute:</p>

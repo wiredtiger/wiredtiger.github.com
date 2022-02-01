@@ -1,10 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903":[1,0,4,4],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea":[1,0,4,2],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640":[1,0,4,8],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783":[1,0,4,1],
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4":[1,0,4,13],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949":[1,0,4,3],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a607cf2781661d03ba50586133e02cc11":[1,0,4,12],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b":[1,0,4,15],
@@ -241,13 +236,18 @@ var NAVTREEINDEX6 =
 "tool-xray.html#autotoc_md112":[0,10,4,0],
 "tool-xray.html#autotoc_md113":[0,10,4,0,0],
 "tool-xray.html#autotoc_md114":[0,10,4,0,1],
-"tool-xray.html#autotoc_md115":[0,10,4,0,2],
-"tool-xray.html#autotoc_md116":[0,10,4,1],
-"tool-xray.html#autotoc_md117":[0,10,4,1,0],
-"tool-xray.html#autotoc_md118":[0,10,4,1,1],
-"tool-xray.html#autotoc_md119":[0,10,4,1,2],
-"tool-xray.html#autotoc_md120":[0,10,4,1,3],
-"tool-xray.html#autotoc_md121":[0,10,4,1,4],
+"tool-xray.html#autotoc_md115":[0,10,4,1],
+"tool-xray.html#autotoc_md116":[0,10,4,1,0],
+"tool-xray.html#autotoc_md117":[0,10,4,1,1],
+"tool-xray.html#autotoc_md118":[0,10,4,1,2],
+"tool-xray.html#autotoc_md119":[0,10,4,1,3],
 "transactions.html":[0,3,3],
-"transactions.html#timestamp_connection":[0,3,3,5,3]
+"transactions.html#timestamp_connection":[0,3,3,5,3],
+"transactions.html#timestamp_overview":[0,3,3,5,0],
+"transactions.html#timestamp_roundup":[0,3,3,5,2],
+"transactions.html#timestamp_transactions":[0,3,3,5,1],
+"transactions.html#transaction_isolation":[0,3,3,4],
+"transactions.html#transaction_timestamps":[0,3,3,5],
+"transactions.html#transactions_acid":[0,3,3,0],
+"transactions.html#transactions_api":[0,3,3,1]
 };
