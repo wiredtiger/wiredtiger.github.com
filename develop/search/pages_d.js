@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['on_20disk_20concepts_1453',['On Disk Concepts',['../arch-toc-on-disk.html',1,'arch-index']]],
-  ['operation_20tracking_1454',['Operation Tracking',['../tool-optrack.html',1,'tool-index']]]
+  ['name_20spaces_1467',['Name spaces',['../namespace.html',1,'programming']]]
 ];

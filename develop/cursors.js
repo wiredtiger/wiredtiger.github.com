@@ -2,7 +2,6 @@ var cursors =
 [
     [ "Cursor types", "cursors.html#cursor_types", null ],
     [ "Projections", "cursors.html#cursor_projections", null ],
-    [ "Cursors and Transactions", "cursors.html#cursors_transactions", null ],
     [ "Cursors and Eviction", "cursors.html#cursors_eviction", null ],
     [ "Raw mode", "cursors.html#cursor_raw", null ],
     [ "Reading WiredTiger Metadata", "cursors.html#metadata", null ],

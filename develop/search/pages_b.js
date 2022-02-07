@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['managing_20wiredtiger_20databases_1445',['Managing WiredTiger databases',['../admin.html',1,'index']]],
-  ['metadata_1446',['Metadata',['../arch-metadata.html',1,'arch-toc-data-org']]],
-  ['moving_20data_20between_20memory_20and_20disk_1447',['Moving Data Between Memory and Disk',['../arch-toc-mem-disk.html',1,'arch-index']]],
-  ['message_20handling_1448',['Message handling',['../message_handling.html',1,'programming']]],
-  ['multithreading_1449',['Multithreading',['../threads.html',1,'programming']]],
-  ['memory_20allocator_1450',['Memory allocator',['../tune_memory_allocator.html',1,'programming']]],
-  ['mutexes_1451',['Mutexes',['../tune_mutex.html',1,'programming']]]
+  ['log_20file_20format_1451',['Log File Format',['../arch-log-file.html',1,'arch-toc-recovery']]],
+  ['logging_1452',['Logging',['../arch-logging.html',1,'arch-toc-recovery']]],
+  ['log_20cursors_1453',['Log cursors',['../cursor_log.html',1,'programming']]],
+  ['log_2dstructured_20merge_20trees_1454',['Log-Structured Merge Trees',['../lsm.html',1,'programming']]],
+  ['linux_20transparent_20huge_20pages_1455',['Linux transparent huge pages',['../tune_transparent_huge_pages.html',1,'programming']]],
+  ['linux_20zone_20reclamation_20memory_20management_1456',['Linux zone reclamation memory management',['../tune_zone_reclaim.html',1,'programming']]]
 ];

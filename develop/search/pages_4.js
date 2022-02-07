@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['file_20system_20interface_20and_20operating_20system_20support_1424',['File System Interface and Operating System Support',['../arch-fs-os.html',1,'arch-toc-platform']]],
-  ['fundamentals_1425',['Fundamentals',['../arch-toc-fundamentals.html',1,'arch-index']]],
-  ['file_20formats_20and_20compression_1426',['File formats and compression',['../file_formats.html',1,'programming']]],
-  ['filesystems_1427',['Filesystems',['../filesystems.html',1,'admin']]],
-  ['file_20allocation_1428',['File allocation',['../tune_file_alloc.html',1,'programming']]]
+  ['eviction_1432',['Eviction',['../arch-eviction.html',1,'arch-toc-in-mem'],['../eviction.html',1,'programming']]],
+  ['encryptors_1433',['Encryptors',['../encryption.html',1,'programming']]],
+  ['error_20handling_1434',['Error handling',['../error_handling.html',1,'programming']]],
+  ['extending_20wiredtiger_1435',['Extending WiredTiger',['../extensions.html',1,'encryption']]]
 ];

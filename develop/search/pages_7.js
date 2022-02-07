@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['in_20memory_20concepts_1434',['In Memory Concepts',['../arch-toc-in-mem.html',1,'arch-index']]],
-  ['in_2dmemory_20databases_1435',['In-memory databases',['../in_memory.html',1,'programming']]],
-  ['instrumentation_20and_20introspection_20with_20xray_1436',['Instrumentation and introspection with XRay',['../tool-xray.html',1,'tool-index']]]
+  ['history_20store_1444',['History Store',['../arch-hs.html',1,'arch-toc-on-disk']]],
+  ['huffman_20encoding_1445',['Huffman Encoding',['../huffman.html',1,'file_formats']]]
 ];

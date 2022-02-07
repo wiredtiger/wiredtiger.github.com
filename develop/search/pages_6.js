@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['history_20store_1432',['History Store',['../arch-hs.html',1,'arch-toc-on-disk']]],
-  ['huffman_20encoding_1433',['Huffman Encoding',['../huffman.html',1,'file_formats']]]
+  ['glossary_20of_20terms_1441',['Glossary of Terms',['../arch-glossary.html',1,'arch-index']]],
+  ['getting_20started_20with_20the_20api_1442',['Getting Started with the API',['../basic_api.html',1,'programming']]],
+  ['gcc_2fclang_20build_20options_1443',['gcc/clang build options',['../tune_build_options.html',1,'programming']]]
 ];

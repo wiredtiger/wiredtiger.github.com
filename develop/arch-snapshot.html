@@ -127,7 +127,7 @@ Transactions using Snapshots</h1>
 <li><code>snapshot:</code> A snapshot is created at the beginning of a snapshot-level isolated transaction and is sustained throughout the entire life cycle of the transaction. In effect, a transaction using <code>snapshot</code> isolation will only read versions of records before the transaction started. The default isolation level is <code>snapshot</code>.</li>
 <li><code>read-committed</code>: Read-committed transactions ensure a transaction is able to see committed updates by other transactions at the time of reading. To achieve this, under a read-committed isolation, a snapshot is created when performing a search. The same snapshot is used for all subsequent reads until another search is called.</li>
 </ul>
-<p>See <a class="el" href="transactions.html">Transactions</a> for further details about how WiredTiger transactions utilize snapshots to create isolation guarantees and implement concurrency control.</p>
+<p>See <a class="el" href="transactions.html">Transactional applications</a> for further details about how WiredTiger transactions utilize snapshots to create isolation guarantees and implement concurrency control.</p>
 <h1><a class="anchor" id="snapshot_internals"></a>
 Snapshot Internals</h1>
 <p>Snapshots are implemented by capturing the global state of transactions in the system at the time of snapshot creation. Snapshots are managed within per-session transaction contexts, encapsulated by the <code>WT_TXN</code> data structure. The main data points that encapsulate a given snapshot include:</p>

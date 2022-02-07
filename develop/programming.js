@@ -11,36 +11,91 @@ var programming =
       [ "JavaScript Object Notation (JSON) compatibility", "config_strings.html#config_json", null ]
     ] ],
     [ "Cursors", "cursors.html", "cursors" ],
-    [ "Transactions", "transactions.html", [
-      [ "ACID properties", "transactions.html#transactions_acid", null ],
-      [ "Transactional API", "transactions.html#transactions_api", null ],
-      [ "Implicit transactions", "transactions.html#transactions_implicit", null ],
-      [ "Concurrency control", "transactions.html#transactions_concurrency", null ],
-      [ "Isolation levels", "transactions.html#transaction_isolation", null ],
-      [ "Application-specified Transaction Timestamps", "transactions.html#transaction_timestamps", [
-        [ "Timestamp overview", "transactions.html#timestamp_overview", null ],
-        [ "Using transactions with timestamps", "transactions.html#timestamp_transactions", null ],
-        [ "Automatic rounding of timestamps", "transactions.html#timestamp_roundup", null ],
-        [ "Managing global timestamp state", "transactions.html#timestamp_connection", null ]
-      ] ]
-    ] ],
+    [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Error handling", "error_handling.html", [
       [ "Translating errors", "error_handling.html#error_translation", null ]
     ] ],
-    [ "Message handling", "message_handling.html", [
-      [ "Message handling using the WT_EVENT_HANDLER", "message_handling.html#event_message_handling", null ],
-      [ "Output format of the WT_EVENT_HANDLER", "message_handling.html#message_handling_output", [
-        [ "Flat string format", "message_handling.html#message_handling_output_flat_string", null ],
-        [ "JSON format", "message_handling.html#message_handling_output_json", null ]
+    [ "Transactional applications", "transactions.html", null ],
+    [ "Transactional API calls", "transactions_api.html", [
+      [ "Explicit transactions", "transactions_api.html#transactions_grouping", null ],
+      [ "Implicit transactions", "transactions_api.html#transactions_implicit", null ],
+      [ "Concurrency control", "transactions_api.html#transactions_concurrency", null ],
+      [ "Isolation levels", "transactions_api.html#isolation_levels", null ],
+      [ "Cursors and transactions", "transactions_api.html#cursors_transactions", null ],
+      [ "Resetting the session snapshot", "transactions_api.html#snapshot_reset", null ]
+    ] ],
+    [ "Checkpoint durability", "checkpoint.html", [
+      [ "Checkpoints vs. snapshots", "checkpoint.html#checkpoint_snapshot", null ],
+      [ "Checkpoints", "checkpoint.html#checkpoints", null ],
+      [ "Checkpoint cursors", "checkpoint.html#checkpoint_cursors", null ],
+      [ "Checkpoint naming", "checkpoint.html#checkpoint_naming", null ],
+      [ "Checkpoint durability and backups", "checkpoint.html#checkpoint_backup", null ],
+      [ "Checkpoints and file compaction", "checkpoint.html#checkpoint_compaction", null ]
+    ] ],
+    [ "Commit-level durability", "durability.html", [
+      [ "Enabling commit-level durability", "durability.html#commit_durability_enable", null ],
+      [ "Commit-level durability and logs", "durability.html#commit_durability_logs", null ],
+      [ "Recovery", "durability.html#durability_recovery", null ],
+      [ "Checkpoints", "durability.html#durability_checkpoint", null ],
+      [ "Backups", "durability.html#durability_backup", null ],
+      [ "Log file archival and removal", "durability.html#durability_archiving", null ],
+      [ "Log cursors", "durability.html#log_cursors", null ],
+      [ "Bulk loads", "durability.html#durability_bulk", null ],
+      [ "Tuning commit-level durability", "durability.html#durability_tuning", [
+        [ "Group commit", "durability.html#durability_group_commit", null ],
+        [ "Flush call configuration", "durability.html#durability_flush_config", null ]
       ] ]
     ] ],
-    [ "Verbose Messaging", "verbose_messaging.html", [
-      [ "Verbosity Levels", "verbose_messaging.html#verbosity_levels", null ],
-      [ "Verbosity Categories", "verbose_messaging.html#verbosity_categories", [
-        [ "Configuring Verbose Categories", "verbose_messaging.html#verbosity_configuration", null ]
+    [ "Timestamp overview", "timestamp_model.html", [
+      [ "Global timestamps", "timestamp_model.html#timestamps_global", null ],
+      [ "Timestamps and transactions", "timestamp_model.html#timestamp_transactions", null ],
+      [ "Timestamp format", "timestamp_model.html#timestamps_format", null ],
+      [ "Logged objects, commit-level durability and timestamps", "timestamp_model.html#timestamps_durability_commit", [
+        [ "Checkpoint durability and timestamps", "timestamp_model.html#timestamps_durability_checkpoint", null ]
       ] ]
     ] ],
-    [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
+    [ "Managing the global timestamp state", "timestamp_global_api.html", [
+      [ "Setting global timestamps", "timestamp_global_api.html#timestamp_global_setting_timestamps", [
+        [ "Setting the global \"durable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_durable_timestamp", null ],
+        [ "Setting the \"oldest_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_oldest_timestamp", null ],
+        [ "Setting the \"stable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp", null ],
+        [ "Forcing global timestamps", "timestamp_global_api.html#timestamp_global_forcing", null ]
+      ] ],
+      [ "Querying global timestamps", "timestamp_global_api.html#timestamp_global_querying_timestamps", [
+        [ "Reading the \"all_durable\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_all_durable", null ],
+        [ "Reading the \"last_checkpoint\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_last_checkpoint", null ],
+        [ "Reading the \"oldest_reader\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_oldest_reader", null ],
+        [ "Reading the \"oldest_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_oldest_timestamp", null ],
+        [ "Reading the \"pinned\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_pinned", null ],
+        [ "Reading the \"recovery\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_recovery", null ],
+        [ "Reading the \"stable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_stable_timestamp", null ]
+      ] ]
+    ] ],
+    [ "Managing the transaction timestamp state", "timestamp_txn_api.html", [
+      [ "Enforcing application timestamp behavior", "timestamp_txn_api.html#timestamp_txn_api_configure", null ],
+      [ "Querying transaction timestamp information", "timestamp_txn_api.html#timestamp_txn_api_query", null ],
+      [ "Configuring transaction timestamp information with WT_SESSION::begin_transaction", "timestamp_txn_api.html#timestamp_txn_api_begin", null ],
+      [ "Configuring transaction timestamp information with WT_SESSION::commit_transaction", "timestamp_txn_api.html#timestamp_txn_api_commit", null ],
+      [ "Configuring transaction timestamp information with WT_SESSION::prepare_transaction", "timestamp_txn_api.html#timestamp_txn_api_prepare", null ],
+      [ "Configuring transaction timestamp information with WT_SESSION::timestamp_transaction", "timestamp_txn_api.html#timestamp_txn_api_timestamp_transaction", null ],
+      [ "Setting the transaction's \"commit_timestamp\"", "timestamp_txn_api.html#timestamp_txn_api_commit_timestamp", null ],
+      [ "Setting the transaction's \"read_timestamp\"", "timestamp_txn_api.html#timestamp_txn_api_read_timestamp", null ]
+    ] ],
+    [ "Using transaction prepare with timestamps", "timestamp_prepare.html", null ],
+    [ "Automatic timestamp rounding", "timestamp_roundup.html", null ],
+    [ "Miscellaneous timestamp topics", "timestamp_misc.html", [
+      [ "Using rollback-to-stable with timestamps", "timestamp_misc.html#timestamp_misc_rts", null ],
+      [ "Using diagnostic configurations to enforce timestamp usage", "timestamp_misc.html#timestamp_misc_diagnostic", null ],
+      [ "Resetting the snapshot", "timestamp_misc.html#timestamp_misc_reset_snapshot", null ]
+    ] ],
+    [ "Tutorial: transactions and ACID properties", "explain_acid.html", null ],
+    [ "Tutorial: durability models", "explain_durability.html", [
+      [ "In-memory databases", "explain_durability.html#explain_durability_in_memory", null ],
+      [ "Checkpoint durability (without timestamps)", "explain_durability.html#explain_durability_checkpoint", null ],
+      [ "Commit-level durability (without timestamps)", "explain_durability.html#explain_durability_commit", null ],
+      [ "Adding timestamps", "explain_durability.html#explain_durability_timestamp", null ]
+    ] ],
+    [ "Tutorial: isolation levels", "explain_isolation.html", null ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],
       [ "Description of LSM trees", "lsm.html#lsm_description", null ],
@@ -63,6 +118,19 @@ var programming =
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
     [ "Encryptors", "encryption.html", "encryption" ],
+    [ "Message handling", "message_handling.html", [
+      [ "Message handling using the WT_EVENT_HANDLER", "message_handling.html#event_message_handling", null ],
+      [ "Output format of the WT_EVENT_HANDLER", "message_handling.html#message_handling_output", [
+        [ "Flat string format", "message_handling.html#message_handling_output_flat_string", null ],
+        [ "JSON format", "message_handling.html#message_handling_output_json", null ]
+      ] ]
+    ] ],
+    [ "Verbose messaging", "verbose_messaging.html", [
+      [ "Verbosity Levels", "verbose_messaging.html#verbosity_levels", null ],
+      [ "Verbosity Categories", "verbose_messaging.html#verbosity_categories", [
+        [ "Configuring Verbose Categories", "verbose_messaging.html#verbosity_configuration", null ]
+      ] ]
+    ] ],
     [ "Multithreading", "threads.html", [
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
@@ -89,12 +157,7 @@ var programming =
       [ "Backup and O_DIRECT", "backup.html#backup_o_direct", null ]
     ] ],
     [ "Compaction", "compact.html", null ],
-    [ "Checkpoint durability", "checkpoint.html", [
-      [ "Automatic checkpoints", "checkpoint.html#checkpoint_server", null ],
-      [ "Checkpoint cursors", "checkpoint.html#checkpoint_cursors", null ],
-      [ "Checkpoint naming", "checkpoint.html#checkpoint_naming", null ],
-      [ "Checkpoints and file compaction", "checkpoint.html#checkpoint_compaction", null ]
-    ] ],
+    [ "In-memory databases", "in_memory.html", null ],
     [ "Eviction", "eviction.html", [
       [ "Eviction overview", "eviction.html#eviction_overview", null ],
       [ "Clean eviction", "eviction.html#clean_eviction", null ],
@@ -102,17 +165,6 @@ var programming =
       [ "Update restore eviction", "eviction.html#update_restore_eviction", null ],
       [ "Exceptions", "eviction.html#exceptions", null ]
     ] ],
-    [ "Commit-level durability", "durability.html", [
-      [ "Checkpoints", "durability.html#durability_checkpoint", null ],
-      [ "Backups", "durability.html#durability_backup", null ],
-      [ "Bulk loads", "durability.html#durability_bulk", null ],
-      [ "Log file archival", "durability.html#durability_archiving", null ],
-      [ "Tuning commit-level durability", "durability.html#durability_tuning", [
-        [ "Group commit", "durability.html#durability_group_commit", null ],
-        [ "Flush call configuration", "durability.html#durability_flush_config", null ]
-      ] ]
-    ] ],
-    [ "In-memory databases", "in_memory.html", null ],
     [ "Join cursors", "cursor_join.html", null ],
     [ "Log cursors", "cursor_log.html", null ],
     [ "Track function calls", "operation_tracking.html", null ],

@@ -40,7 +40,13 @@ var arch_toc_fundamentals =
         [ "Visibility", "arch-transaction.html#Visibility", null ],
         [ "Durability", "arch-transaction.html#Durability", null ]
       ] ],
-      [ "Transactions", "arch-transaction.html#Prepared", null ]
+      [ "Prepared Transactions", "arch-transaction.html#arch-transaction-prepare", null ]
+    ] ],
+    [ "Timestamps and timestamping", "arch-timestamp.html", [
+      [ "Timestamp data model and worldview", "arch-timestamp.html#arch-timestamp-model", null ],
+      [ "Representation of timestamps and time windows", "arch-timestamp.html#arch-timestamp-representation", null ],
+      [ "Handling of timestamps in updates and disk pages", "arch-timestamp.html#arch-timestamp-handling", null ],
+      [ "Prepared transactions", "arch-timestamp.html#arch-timestamp-prepare", null ]
     ] ],
     [ "Snapshot", "arch-snapshot.html", [
       [ "Transactions using Snapshots", "arch-snapshot.html#snapshot_transaction", null ],

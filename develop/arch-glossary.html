@@ -221,7 +221,7 @@ Glossary</h1>
 <tr>
 <td>raw</td><td>schema</td><td>data as it appears on-disk, typically in a packed format. </td></tr>
 <tr>
-<td>read timestamp</td><td>transactions</td><td>a timestamp that specifies what data should be visible. </td></tr>
+<td>read timestamp</td><td>transactions</td><td>a timestamp that specifies the time for reading data and thus what data should be visible. </td></tr>
 <tr>
 <td>recno</td><td>general</td><td>a 64 bit integer. When used as a key, the Btree is said to be a column store, and the keys are assigned incrementally by WiredTiger when new records are inserted. </td></tr>
 <tr>
@@ -247,7 +247,7 @@ Glossary</h1>
 <tr>
 <td>split</td><td>btree</td><td>see page split </td></tr>
 <tr>
-<td>stable timestamp</td><td>transactions</td><td>a connection-wide value, checkpoints will not include commits newer than this value. </td></tr>
+<td>stable timestamp</td><td>transactions</td><td>a connection-wide value. Checkpoints will not include commits newer than this value. </td></tr>
 <tr>
 <td>table</td><td>schema</td><td>an abstraction that allows one or more btrees to be used in a coordinated way, which is specified by the schema. The table coordinates indices and column groups. </td></tr>
 <tr>

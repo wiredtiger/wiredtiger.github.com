@@ -94,19 +94,32 @@ $(document).ready(function(){initNavTree('programming.html',''); initResizable()
 <div class="contents">
 <div class="textblock"><p>This section covers topics of interest for programmers writing WiredTiger applications.</p>
 <p>We follow SQL terminology: a database is set of tables managed together. Tables consist of rows, where each row is a key and its associated value. Tables may optionally have an associated schema, splitting the value into a set of columns. Tables may also have associated indices, each of which is ordered by one or more columns.</p>
-<h2>Using the API</h2>
+<h2>The WiredTiger API</h2>
 <ul>
 <li><a class="el" href="basic_api.html">Getting Started with the API</a></li>
 <li><a class="el" href="config_strings.html">Configuration Strings</a></li>
 <li><a class="el" href="cursors.html">Cursors</a></li>
-<li><a class="el" href="transactions.html">Transactions</a></li>
+<li><a class="el" href="schema.html">Schema, Columns, Column Groups, Indices and Projections</a></li>
 <li><a class="el" href="error_handling.html">Error handling</a></li>
-<li><a class="el" href="message_handling.html">Message handling</a></li>
-<li><a class="el" href="verbose_messaging.html">Verbose Messaging</a></li>
+</ul>
+<h2>Transactions</h2>
+<ul>
+<li><a class="el" href="transactions.html">Transactional applications</a></li>
+<li><a class="el" href="transactions_api.html">Transactional API calls</a></li>
+<li><a class="el" href="checkpoint.html">Checkpoint durability</a></li>
+<li><a class="el" href="durability.html">Commit-level durability</a></li>
+<li><a class="el" href="timestamp_model.html">Timestamp overview</a></li>
+<li><a class="el" href="timestamp_global_api.html">Managing the global timestamp state</a></li>
+<li><a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a></li>
+<li><a class="el" href="timestamp_prepare.html">Using transaction prepare with timestamps</a></li>
+<li><a class="el" href="timestamp_roundup.html">Automatic timestamp rounding</a></li>
+<li><a class="el" href="timestamp_misc.html">Miscellaneous timestamp topics</a></li>
+<li><a class="el" href="explain_acid.html">Tutorial: transactions and ACID properties</a></li>
+<li><a class="el" href="explain_durability.html">Tutorial: durability models</a></li>
+<li><a class="el" href="explain_isolation.html">Tutorial: isolation levels</a></li>
 </ul>
 <h2>Storage options</h2>
 <ul>
-<li><a class="el" href="schema.html">Schema, Columns, Column Groups, Indices and Projections</a></li>
 <li><a class="el" href="lsm.html">Log-Structured Merge Trees</a></li>
 <li><a class="el" href="file_formats.html">File formats and compression</a></li>
 <li><a class="el" href="compression.html">Compressors</a></li>
@@ -114,6 +127,8 @@ $(document).ready(function(){initNavTree('programming.html',''); initResizable()
 </ul>
 <h2>Programming notes</h2>
 <ul>
+<li><a class="el" href="message_handling.html">Message handling</a></li>
+<li><a class="el" href="verbose_messaging.html">Verbose messaging</a></li>
 <li><a class="el" href="threads.html">Multithreading</a></li>
 <li><a class="el" href="namespace.html">Name spaces</a></li>
 <li><a class="el" href="readonly.html">Database read-only mode</a></li>
@@ -123,10 +138,8 @@ $(document).ready(function(){initNavTree('programming.html',''); initResizable()
 <ul>
 <li><a class="el" href="backup.html">Backups</a></li>
 <li><a class="el" href="compact.html">Compaction</a></li>
-<li><a class="el" href="checkpoint.html">Checkpoint durability</a></li>
-<li><a class="el" href="eviction.html">Eviction</a></li>
-<li><a class="el" href="durability.html">Commit-level durability</a></li>
 <li><a class="el" href="in_memory.html">In-memory databases</a></li>
+<li><a class="el" href="eviction.html">Eviction</a></li>
 <li><a class="el" href="cursor_join.html">Join cursors</a></li>
 <li><a class="el" href="cursor_log.html">Log cursors</a></li>
 <li><a class="el" href="operation_tracking.html">Track function calls</a></li>

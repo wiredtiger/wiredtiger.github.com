@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['schema_1465',['Schema',['../arch-schema.html',1,'arch-toc-data-org'],['../schema.html',1,'programming']]],
-  ['session_1466',['Session',['../arch-session.html',1,'arch-toc-fundamentals']]],
-  ['snapshot_1467',['Snapshot',['../arch-snapshot.html',1,'arch-toc-fundamentals']]],
-  ['security_1468',['Security',['../security.html',1,'admin']]],
-  ['signal_20handling_1469',['Signal handling',['../signals.html',1,'programming']]],
-  ['statistics_1470',['Statistics',['../statistics.html',1,'programming']]],
-  ['statistics_20logging_1471',['Statistics Logging',['../tool-statistics.html',1,'tool-index']]],
-  ['system_20buffer_20cache_1472',['System buffer cache',['../tune_system_buffer_cache.html',1,'programming']]],
-  ['simulating_20workloads_20with_20wtperf_1473',['Simulating workloads with wtperf',['../wtperf.html',1,'programming']]]
+  ['row_20store_20and_20column_20store_1475',['Row Store and Column Store',['../arch-row-column.html',1,'arch-toc-data-src']]],
+  ['rollback_20to_20stable_1476',['Rollback to Stable',['../arch-rts.html',1,'arch-toc-fundamentals']]],
+  ['recovery_1477',['Recovery',['../arch-toc-recovery.html',1,'arch-index']]],
+  ['reference_20guide_1478',['Reference Guide',['../index.html',1,'']]],
+  ['read_2donly_20objects_1479',['Read-only objects',['../tune_read_only.html',1,'programming']]]
 ];

@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['glossary_20of_20terms_1429',['Glossary of Terms',['../arch-glossary.html',1,'arch-index']]],
-  ['getting_20started_20with_20the_20api_1430',['Getting Started with the API',['../basic_api.html',1,'programming']]],
-  ['gcc_2fclang_20build_20options_1431',['gcc/clang build options',['../tune_build_options.html',1,'programming']]]
+  ['file_20system_20interface_20and_20operating_20system_20support_1436',['File System Interface and Operating System Support',['../arch-fs-os.html',1,'arch-toc-platform']]],
+  ['fundamentals_1437',['Fundamentals',['../arch-toc-fundamentals.html',1,'arch-index']]],
+  ['file_20formats_20and_20compression_1438',['File formats and compression',['../file_formats.html',1,'programming']]],
+  ['filesystems_1439',['Filesystems',['../filesystems.html',1,'admin']]],
+  ['file_20allocation_1440',['File allocation',['../tune_file_alloc.html',1,'programming']]]
 ];
