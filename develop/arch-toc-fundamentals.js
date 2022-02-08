@@ -42,7 +42,7 @@ var arch_toc_fundamentals =
       ] ],
       [ "Prepared Transactions", "arch-transaction.html#arch-transaction-prepare", null ]
     ] ],
-    [ "Timestamps and timestamping", "arch-timestamp.html", [
+    [ "Timestamps", "arch-timestamp.html", [
       [ "Timestamp data model and worldview", "arch-timestamp.html#arch-timestamp-model", null ],
       [ "Representation of timestamps and time windows", "arch-timestamp.html#arch-timestamp-representation", null ],
       [ "Handling of timestamps in updates and disk pages", "arch-timestamp.html#arch-timestamp-handling", null ],

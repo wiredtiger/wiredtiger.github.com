@@ -99,7 +99,8 @@ Using rollback-to-stable with timestamps</h1>
 <p>The database must be quiescent during this process. Applications should close or reset all open cursors before calling the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a> method.</p>
 <h1><a class="anchor" id="timestamp_misc_diagnostic"></a>
 Using diagnostic configurations to enforce timestamp usage</h1>
-<p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method supports additional checking of timestamp usage on a per-key or per-table basis. These performance checks can significantly decrease application performance, but are useful development tools. Setting the <code>write_timestamp_usage</code> configuration specifies how timestamps are expected to be used by the table:</p>
+<p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method supports additional checking of timestamp usage on a per-key or per-table basis. While these usage checks can decrease application performance and applications may not choose to configure them in production settings, they are strongly recommended during development.</p>
+<p>Setting the <code>write_timestamp_usage</code> configuration specifies how timestamps are expected to be used by the table:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Configuration </th><th class="markdownTableHeadNone">Description  </th></tr>

@@ -92,7 +92,8 @@ $(document).ready(function(){initNavTree('lsm.html',''); initResizable(); });
 <div class="title">Log-Structured Merge Trees </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="lsm_background"></a>
+<div class="textblock"><dl class="section warning"><dt>Warning</dt><dd>The WiredTiger LSM support has not been developed, tested or tuned in production scenarios in some years, and should be viewed as experimental code.</dd></dl>
+<h1><a class="anchor" id="lsm_background"></a>
 Background</h1>
 <p>A common requirement is sustained throughput under a workload that consists of random inserts, where either the key range is chosen so that inserts are very unlikely to conflict (e.g., 128-bit hashes), or where inserts are expected to overwrite existing values.</p>
 <p>With traditional btree variants, inserts are very fast while the data set remains in cache, but once the tree overflows the cache, performance drops significantly. There are two factors involved:</p>

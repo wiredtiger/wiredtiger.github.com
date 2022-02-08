@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('explain_durability.html',''); initResi
 <p>For WiredTiger, the situation is more complicated because WiredTiger is designed to be able to participate in application-level distributed transaction schemes, which implies the ability to roll back committed transactions when so instructed by the application. In this manual we use the following terminology:</p>
 <ul>
 <li>A transaction is <em>committed</em> when <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> has been called and has returned successfully.</li>
-<li>A transaction is <em>durable</em> (also <em>locally durable</em>) when all changes in it have been written to stable storage such that failures will not cause it to be lost.</li>
+<li>A transaction is <em>durable</em> when all changes in it have been written to stable storage such that failures will not cause it to be lost.</li>
 <li>A transaction is <em>stable</em> when it is durable, and furthermore cannot be rolled back by application-level transaction management activity.</li>
 </ul>
 <p>This page describes both the points at which transactions proceed from one of these states to the next, and also what kinds of failures transactions are protected from.</p>

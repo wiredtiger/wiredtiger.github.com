@@ -11,8 +11,6 @@ var schema =
     [ "Immutable indices", "schema.html#schema_index_immutable", null ],
     [ "Index cursor projections", "schema.html#schema_index_projections", null ],
     [ "Code samples", "schema.html#schema_examples", null ],
-    [ "Logged and Non-logged tables", "schema.html#logged_non_logged_tables", null ],
-    [ "Other differences between Logged and Non-logged tables", "schema.html#diff_logged_non_logged_tables", null ],
     [ "Key/Value pairs", "keyvalue.html", null ],
     [ "Packing and Unpacking Data", "packing.html", [
       [ "Code samples", "packing.html#config_examples", null ]

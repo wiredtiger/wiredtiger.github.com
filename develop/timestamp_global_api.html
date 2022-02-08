@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('timestamp_global_api.html',''); initRe
 <div class="textblock"><p>Applications using timestamps need to manage the global timestamp state. These timestamps are queried using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a607cf2781661d03ba50586133e02cc11" title="Query the global transaction timestamp state.">WT_CONNECTION::query_timestamp</a> method and set using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> method.</p>
 <p>Applications will generally focus on two of these global timestamps: first, the beginning of the database's read window, called <code>oldest_timestamp</code>, and second, the application time at which data is known to be stable and will never be rolled back, called <code>stable_timestamp</code>.</p>
 <p>The oldest timestamp is the oldest time at which a transaction is allowed to read. The historic values of data modified before this time can no longer be read by new transactions. (Transactions already in progress are not affected when the <code>oldest_timestamp</code> changes.)</p>
-<p>The stable timestamp is the newest time at which data is considered fully stable. It is saved along with every checkpoint, and that saved time is the point to which the database is recovered after a crash. It is also the earliest point to which the database can be returned via an explicit <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a> call. (See <a class="el" href="timestamp_misc.html#timestamp_misc_rts">Using rollback-to-stable with timestamps</a>.) All transactions must commit after the current <code>stable</code> timestamp.</p>
+<p>The stable timestamp is the earliest time at which data is considered fully stable. It is saved along with every checkpoint, and that saved time is the point to which the database is recovered after a crash. It is also the earliest point to which the database can be returned via an explicit <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a> call. (See <a class="el" href="timestamp_misc.html#timestamp_misc_rts">Using rollback-to-stable with timestamps</a>.) All transactions must commit after the current <code>stable</code> timestamp.</p>
 <p>Applications are responsible for managing these timestamps and periodically updating them. Applications must move both timestamps forward relative to the amount of data being written; not updating them can result in pinning large amounts of data in the cache, which can in turn affect application performance.</p>
 <p>Note that updating the stable timestamp does not itself trigger a database checkpoint or change data durability; updates before the new stable timestamp become stable (and thus visible after recovery) as part of the next checkpoint.</p>
 <h1><a class="anchor" id="timestamp_global_setting_timestamps"></a>
@@ -114,7 +114,7 @@ Setting global timestamps</h1>
 <h2><a class="anchor" id="timestamp_global_set_api_durable_timestamp"></a>
 Setting the global "durable_timestamp" timestamp</h2>
 <p>The global <code>durable_timestamp</code> functions as application input into the timestamp returned by querying the <code>all_durable</code> timestamp (see below). It is not otherwise used; in particular, moving it forward does not force data to disk. To force data to disk, advance the stable timestamp as desired and take a checkpoint.</p>
-<dl class="section warning"><dt>Warning</dt><dd>The <code>durable_timestamp</code> is not changed when the application calls the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a> method, and likely should be reset by the application in that case.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The <code>durable_timestamp</code> is not changed when the application calls the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a> method, and should be reset by the application in that case.</dd></dl>
 <h2><a class="anchor" id="timestamp_global_set_api_oldest_timestamp"></a>
 Setting the "oldest_timestamp" timestamp</h2>
 <p>Setting <code>oldest_timestamp</code> indicates future read timestamps will be at least as recent as the timestamp, allowing WiredTiger to discard history before the specified point. It is not required there be no currently active readers at earlier timestamps: this setting only indicates future application needs. In other words, as active readers age out of the system, historic data up to the oldest timestamp will be discarded, but no historic data at or after the <code>oldest</code> timestamp will be discarded. It is critical the application update the oldest timestamp frequently as retaining history can be expensive in terms of both cache and I/O resources.</p>
@@ -129,7 +129,7 @@ Setting the "stable_timestamp" timestamp</h2>
 <p>Attempting to set the <code>stable_timestamp</code> to a value earlier than its current value will be silently ignored.</p>
 <h2><a class="anchor" id="timestamp_global_forcing"></a>
 Forcing global timestamps</h2>
-<dl class="section warning"><dt>Warning</dt><dd>The <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> method includes a <code>force</code> flag which allows applications to violate the usual constraints. For example, this can be used to move <code>stable_timestamp</code> backward. Violating these constraints can lead to adverse behavior. For example, while moving <code>oldest_timestamp</code> backward with this mechanism may make some historical data accessible again, other obsolete historical data may have already been discarded, and no guarantees of consistency are made.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> method includes a <code>force</code> flag which allows applications to violate the usual constraints. For example, this can be used to move <code>stable_timestamp</code> backward. Violating these constraints can lead to undefined or incorrect behavior. For example, while moving <code>oldest_timestamp</code> backward with this mechanism may make some historical data accessible again, other obsolete historical data may have already been discarded, and no guarantees of consistency are made.</dd></dl>
 <h1><a class="anchor" id="timestamp_global_querying_timestamps"></a>
 Querying global timestamps</h1>
 <p>The following table lists the global timestamps an application can query using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> method, including constraints.</p>
@@ -137,7 +137,7 @@ Querying global timestamps</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Timestamp </th><th class="markdownTableHeadNone">Constraints </th><th class="markdownTableHeadNone">Description  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">all_durable </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The largest timestamp such that all timestamps up to that value have been made durable, that is, committed locally.  </td></tr>
+<td class="markdownTableBodyNone">all_durable </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The largest timestamp such that all timestamps up to that value have been made durable.  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">last_checkpoint </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The stable timestamp at which the last checkpoint ran (or 0 if no checkpoints have run).  </td></tr>
 <tr class="markdownTableRowOdd">
@@ -151,6 +151,7 @@ Querying global timestamps</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">stable_timestamp </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The current application-set <code>stable_timestamp</code> value.  </td></tr>
 </table>
+<p>In all cases, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found.">WT_NOTFOUND</a> is returned if there is no matching timestamp.</p>
 <h2><a class="anchor" id="timestamp_global_query_api_all_durable"></a>
 Reading the "all_durable" timestamp</h2>
 <p>The <code>all_durable</code> timestamp is the minimum of the global <code>durable_timestamp</code> (as set by the application), and the durable timestamps of all currently running transactions in the system.</p>
@@ -162,7 +163,7 @@ Reading the "last_checkpoint" timestamp</h2>
 <p>The <code>last_checkpoint</code> timestamp is read-only.</p>
 <h2><a class="anchor" id="timestamp_global_query_api_oldest_reader"></a>
 Reading the "oldest_reader" timestamp</h2>
-<p>The <code>oldest_reader</code> timestamp is the oldest transaction read timestamp active, including the read timestamp of any running checkpoint. <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found.">WT_NOTFOUND</a> is returned if there are no active readers.</p>
+<p>The <code>oldest_reader</code> timestamp is the oldest transaction read timestamp active, including the read timestamp of any running checkpoint.</p>
 <p>The <code>oldest_reader</code> timestamp is read-only.</p>
 <h2><a class="anchor" id="timestamp_global_query_api_oldest_timestamp"></a>
 Reading the "oldest_timestamp" timestamp</h2>

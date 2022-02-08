@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['timestamps_20and_20timestamping_224',['Timestamps and timestamping',['../arch-timestamp.html',1,'arch-toc-fundamentals']]],
+  ['timestamps_224',['Timestamps',['../arch-timestamp.html',1,'arch-toc-fundamentals']]],
   ['tools_225',['Tools',['../arch-toc-tools.html',1,'arch-index']]],
   ['transactions_226',['Transactions',['../arch-transaction.html',1,'arch-toc-fundamentals'],['../transactions.html',1,'programming']]],
   ['tutorial_3a_20transactions_20and_20acid_20properties_227',['Tutorial: transactions and ACID properties',['../explain_acid.html',1,'programming']]],

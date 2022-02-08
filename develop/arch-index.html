@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('arch-index.html',''); initResizable();
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>The WiredTiger Architecture Guide provides a comprehensive overview of WiredTiger internals and code that should be useful for any database engineer wanting to understand how the storage engine works. The goal of this guide is to help both MongoDB engineers and external users quickly understand the workings of WiredTiger.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</dd></dl>
 <p>The relationships between the software components in WiredTiger are illustrated in the diagram below. An arrow originating at Component A and pointing to Component B indicates that Component B is used by Component A.</p>
 <div class="arch_diagram"> <div class="image">
 <img src="wt_diagram.png" usemap="#wt_diagram_map" alt=""/>
@@ -125,7 +126,7 @@ $(document).ready(function(){initNavTree('arch-index.html',''); initResizable();
 <li><a class="el" href="arch-session.html">Session</a></li>
 <li><a class="el" href="arch-cursor.html">Cursor</a></li>
 <li><a class="el" href="arch-transaction.html">Transactions</a></li>
-<li><a class="el" href="arch-timestamp.html">Timestamps and timestamping</a></li>
+<li><a class="el" href="arch-timestamp.html">Timestamps</a></li>
 <li><a class="el" href="arch-snapshot.html">Snapshot</a></li>
 <li><a class="el" href="arch-rts.html">Rollback to Stable</a></li>
 </ul>

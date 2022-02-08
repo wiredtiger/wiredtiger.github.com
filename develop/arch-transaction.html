@@ -160,7 +160,7 @@ Timestamps</h2>
 <p>WiredTiger provides a mechanism to control when operations should be visible, called timestamps. Timestamps are user specified sequence numbers that are associated with each operation. In addition, users can assign an immutable read timestamp to a transaction at the beginning. A transaction can only see updates with timestamps smaller or equal to its read timestamp. Note that read timestamp 0 means no read timestamp and the transaction can see the updates regardless of timestamps. Also note that timestamps don't have to be derived from physical times. Users can use any 64 bit unsigned integer as logical timestamps. For a single operation, the timestamps associated with the operations in the same transaction don't have to be the same as long as they are monotonically increasing.</p>
 <p>Apart from the operation level timestamps, the users are also responsible for managing the global level timestamps, i.e, the oldest timestamp, and the stable timestamp. The oldest timestamp is the timestamp that should be visible by all concurrent transactions. The stable timestamp is the minimum timestamp that a new operation can commit at.</p>
 <p>Only transactions running in snapshot isolation can run with timestamps.</p>
-<p>See <a class="el" href="arch-timestamp.html">Timestamps and timestamping</a> for further discussion.</p>
+<p>See <a class="el" href="arch-timestamp.html">Timestamps</a> for further discussion.</p>
 <h2><a class="anchor" id="Visibility"></a>
 Visibility</h2>
 <p>The visibility of the transactions in WiredTiger considers both the operations' transaction ids and timestamps. The operation is visible only when both its transaction id and its timestamp are visible to the reading transaction.</p>

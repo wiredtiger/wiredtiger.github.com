@@ -99,8 +99,16 @@ $(document).ready(function(){initNavTree('overview.html',''); initResizable(); }
 <li>WiredTiger has predictable behavior under heavy access and large volumes of data,</li>
 <li>WiredTiger offers transactional semantics without blocking,</li>
 <li>WiredTiger stores are not corrupted by torn writes, reverting to the last checkpoint after system failure,</li>
+<li>WiredTiger supports both checkpoint-level and commit-level durability, as well as an additional timestamp mode which gives applications fine-grained control over database durability,</li>
 <li>WiredTiger supports petabyte tables, records up to 4GB, and record numbers up to 64-bits.</li>
 </ul>
+<h1><a class="anchor" id="quality"></a>
+Production quality</h1>
+<p>WiredTiger is production quality, supported software, engineered for the most demanding application environments. WiredTiger is the primary storage engine under the MongoDB Database and the MongoDB Atlas product line.</p>
+<p>As a no-overwrite data engine, WiredTiger is safe from operating system and hardware-level torn writes. Additionally, WiredTiger includes end-to-end checksums and verification support so you can verify data sets, and salvage support as a last-ditch protection: data can be retrieved even if it somehow becomes corrupted.</p>
+<h1><a class="anchor" id="nosql"></a>
+NoSQL and Open Source</h1>
+<p>WiredTiger is an Open Source, NoSQL data engine. See the <a class="el" href="license.html">WiredTiger licensing</a> for details.</p>
 <p>WiredTiger's design is focused on a few core principles:</p>
 <h1><a class="anchor" id="multi_core"></a>
 Multi-core scaling</h1>
@@ -119,14 +127,7 @@ Making I/O more valuable</h1>
 <p>WiredTiger supports variable-length pages, meaning there is less wasted space for large objects, and no need for compaction as pages grow and shrink naturally when key/value pairs are inserted or deleted.</p>
 <p>WiredTiger supports block compression on table pages. Because WiredTiger supports variable-length pages, pages do not have to shrink by a fixed amount in order to benefit from block compression. Block compression is selectable on a per-table basis, allowing applications to choose the compression algorithm most appropriate for their data. Block compression typically reduces the amount of information written to disk by 30-80%.</p>
 <p>WiredTiger supports leaf pages of up to 512MB in size. Disk seeks are less likely when reading large amounts of data from disk, significantly improving table scan performance.</p>
-<p>Also, as noted in the <a class="el" href="overview.html#cache">Hot caches</a> section, WiredTiger supports column-store formats, prefix compression and static encoding. While each of these features makes WiredTiger's use of memory more efficient, they also maximize the amount of useful data transferred per disk I/O.</p>
-<h1><a class="anchor" id="quality"></a>
-Production quality</h1>
-<p>WiredTiger is production quality, supported software, engineered for the most demanding application environments. For example, as a no-overwrite data engine, torn writes can never corrupt a WiredTiger data store.</p>
-<p>WiredTiger includes verification support so you can verify data sets, and salvage support as a last-ditch protection: data can be retrieved even if it somehow becomes corrupted.</p>
-<h1><a class="anchor" id="nosql"></a>
-NoSQL and Open Source</h1>
-<p>WiredTiger is an Open Source, NoSQL data engine. See the <a class="el" href="license.html">WiredTiger licensing</a> for details. </p>
+<p>Also, as noted in the <a class="el" href="overview.html#cache">Hot caches</a> section, WiredTiger supports column-store formats, prefix compression and static encoding. While each of these features makes WiredTiger's use of memory more efficient, they also maximize the amount of useful data transferred per disk I/O. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
