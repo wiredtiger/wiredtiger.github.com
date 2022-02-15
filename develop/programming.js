@@ -26,7 +26,9 @@ var programming =
     ] ],
     [ "Checkpoint durability", "checkpoint.html", [
       [ "Checkpoints vs. snapshots", "checkpoint.html#checkpoint_snapshot", null ],
-      [ "Checkpoints", "checkpoint.html#checkpoints", null ],
+      [ "Checkpoints", "checkpoint.html#checkpoints", [
+        [ "Checkpointing specific objects", "checkpoint.html#checkpoint_target", null ]
+      ] ],
       [ "Checkpoint cursors", "checkpoint.html#checkpoint_cursors", null ],
       [ "Checkpoint naming", "checkpoint.html#checkpoint_naming", null ],
       [ "Checkpoint durability and backups", "checkpoint.html#checkpoint_backup", null ],
@@ -50,9 +52,8 @@ var programming =
       [ "Global timestamps", "timestamp_model.html#timestamps_global", null ],
       [ "Timestamps and transactions", "timestamp_model.html#timestamp_transactions", null ],
       [ "Timestamp format", "timestamp_model.html#timestamps_format", null ],
-      [ "Logged objects, commit-level durability and timestamps", "timestamp_model.html#timestamps_durability_commit", [
-        [ "Checkpoint durability and timestamps", "timestamp_model.html#timestamps_durability_checkpoint", null ]
-      ] ]
+      [ "Logged objects, commit-level durability and timestamps", "timestamp_model.html#timestamps_durability_commit", null ],
+      [ "Checkpoint durability and timestamps", "timestamp_model.html#timestamps_durability_checkpoint", null ]
     ] ],
     [ "Managing the global timestamp state", "timestamp_global_api.html", [
       [ "Setting global timestamps", "timestamp_global_api.html#timestamp_global_setting_timestamps", [
@@ -86,7 +87,8 @@ var programming =
     [ "Miscellaneous timestamp topics", "timestamp_misc.html", [
       [ "Using rollback-to-stable with timestamps", "timestamp_misc.html#timestamp_misc_rts", null ],
       [ "Using diagnostic configurations to enforce timestamp usage", "timestamp_misc.html#timestamp_misc_diagnostic", null ],
-      [ "Resetting the snapshot", "timestamp_misc.html#timestamp_misc_reset_snapshot", null ]
+      [ "Resetting the snapshot", "timestamp_misc.html#timestamp_misc_reset_snapshot", null ],
+      [ "In-memory configurations and timestamps", "timestamp_misc.html#timestamps_misc_in_memory", null ]
     ] ],
     [ "Tutorial: transactions and ACID properties", "explain_acid.html", null ],
     [ "Tutorial: durability models", "explain_durability.html", [

@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4f8baf9dba6309b6051f79c9cbbb10e2":[1,1,2,9],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a68491dde82170031c6526fe140ea39eb":[1,1,2,3],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a817b5bc96a33010a1caca4a745a9d16d":[1,1,2,10],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e":[1,1,2,6],
@@ -137,9 +138,10 @@ var NAVTREEINDEX6 =
 "timestamp_misc.html#timestamp_misc_diagnostic":[0,3,14,1],
 "timestamp_misc.html#timestamp_misc_reset_snapshot":[0,3,14,2],
 "timestamp_misc.html#timestamp_misc_rts":[0,3,14,0],
+"timestamp_misc.html#timestamps_misc_in_memory":[0,3,14,3],
 "timestamp_model.html":[0,3,9],
 "timestamp_model.html#timestamp_transactions":[0,3,9,1],
-"timestamp_model.html#timestamps_durability_checkpoint":[0,3,9,3,0],
+"timestamp_model.html#timestamps_durability_checkpoint":[0,3,9,4],
 "timestamp_model.html#timestamps_durability_commit":[0,3,9,3],
 "timestamp_model.html#timestamps_format":[0,3,9,2],
 "timestamp_model.html#timestamps_global":[0,3,9,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "tune_page_size_and_comp.html#data_life_cycle":[0,3,57,0],
 "tune_page_size_and_comp.html#internal_page_max":[0,3,57,1,1],
 "tune_page_size_and_comp.html#key_val_max":[0,3,57,1,4],
-"tune_page_size_and_comp.html#leaf_page_max":[0,3,57,1,2],
-"tune_page_size_and_comp.html#memory_page_max":[0,3,57,1,0],
-"tune_page_size_and_comp.html#split_pct":[0,3,57,1,5]
+"tune_page_size_and_comp.html#leaf_page_max":[0,3,57,1,2]
 };

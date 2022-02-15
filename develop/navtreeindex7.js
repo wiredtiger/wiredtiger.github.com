@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"tune_page_size_and_comp.html#memory_page_max":[0,3,57,1,0],
+"tune_page_size_and_comp.html#split_pct":[0,3,57,1,5],
 "tune_page_size_and_comp.html#table_compress":[0,3,57,2,0],
 "tune_read_only.html":[0,3,58],
 "tune_statistics.html":[0,3,44],

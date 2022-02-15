@@ -117,7 +117,10 @@ Using diagnostic configurations to enforce timestamp usage</h1>
 <p>Note this is a best-effort check by WiredTiger, and there are cases where application misbehavior will not be detected.</p>
 <h1><a class="anchor" id="timestamp_misc_reset_snapshot"></a>
 Resetting the snapshot</h1>
-<p>Transactions that have not set <code>read_timestamp</code> can use <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59" title="Reset the snapshot.">WT_SESSION::reset_snapshot</a> with timestamped tables as with non-timestamped tables, to get a new snapshot of the database to read from. See <a class="el" href="transactions_api.html#snapshot_reset">Resetting the session snapshot</a>. Transactions that have set <code>read_timestamp</code> can also call <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59" title="Reset the snapshot.">WT_SESSION::reset_snapshot</a>, but it will have no effect. </p>
+<p>Transactions that have not set <code>read_timestamp</code> can use <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59" title="Reset the snapshot.">WT_SESSION::reset_snapshot</a> with timestamped tables as with non-timestamped tables, to get a new snapshot of the database to read from. See <a class="el" href="transactions_api.html#snapshot_reset">Resetting the session snapshot</a>. Transactions that have set <code>read_timestamp</code> can also call <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59" title="Reset the snapshot.">WT_SESSION::reset_snapshot</a>, but it will have no effect.</p>
+<h1><a class="anchor" id="timestamps_misc_in_memory"></a>
+In-memory configurations and timestamps</h1>
+<p>Timestamps are supported for in-memory databases. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

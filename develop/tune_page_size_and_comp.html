@@ -229,19 +229,18 @@ internal/leaf key/value max</h2>
 </pre><h2><a class="anchor" id="split_pct"></a>
 split_pct (split percentage)</h2>
 <p>The size (specified as percentage of internal/leaf page_max) at which the reconciled page must be split into multiple smaller pages before being sent for compression and then be written to the disk. If the reconciled page can fit into a single on-disk page without the page growing beyond it's set max size, split_pct is ignored and the page isn't split.</p><ul>
-<li>an integer between 25 and 100</li>
-<li>default : 75</li>
+<li>an integer between 50 and 100</li>
+<li>default : 90</li>
 <li>Motivation to tune the value: <br  />
  Most applications should not need to tune the split percentage size.<ul>
-<li>This value should be selected to avoid creating a large number of tiny pages or repeatedly splitting whenever new entries are inserted. <br  />
- For example, if the maximum page size is 1MB, a split_pct value of 10% would potentially result in creating a large number of 100KB pages, which may not be optimal for future I/O. Or, if the maximum page size is 1MB, a split_pct value of 90% would potentially result in repeatedly splitting pages as the split pages grow to 1MB over and over. The default value for split_pct is 75%, intended to keep large pages relatively large, while still giving split pages room to grow.</li>
+<li>This value should be selected based on the expected workload. Workloads that perform many random updates benefit from values around 66%, leaving room on the newly split pages for future updates. Append-only workloads benefit from a value of 100%, as they will not add updates to the newly split pages. The default value for split_pct is 90%, intended as a balance between these two workload types.</li>
 </ul>
 </li>
 <li>Configuration: <br  />
  Specified as split_pct configuration option to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. An example of such a configuration string is as follows:</li>
 </ul>
 <pre>
-     "key_format=S,value_format=S,split_pct=60"
+     "key_format=S,value_format=S,split_pct=80"
 </pre><h1><a class="anchor" id="compression_considerations"></a>
 Compression considerations</h1>
 <p>WiredTiger compresses data at several stages to preserve memory and disk space. Applications can configure these different compression algorithms to tailor their requirements between memory, disk and CPU consumption. Compression algorithms other than block compression work by modifying how the keys and values are represented, and will reduce data size both in-memory and on-disk. Block compression compresses the data in its binary representation while saving it on the disk, and so only reduces the data size on-disk.</p>

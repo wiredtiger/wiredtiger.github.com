@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"command_line.html#util_dump_options":[0,10,7,1,9,1],
 "command_line.html#util_dump_options":[0,4,9,1],
 "command_line.html#util_dump_synopsis":[0,10,7,1,9,0],
 "command_line.html#util_dump_synopsis":[0,4,9,0],
@@ -207,8 +208,8 @@ var NAVTREEINDEX1 =
 "explain_durability.html#explain_durability_in_memory":[0,3,16,0],
 "explain_durability.html#explain_durability_timestamp":[0,3,16,3],
 "explain_isolation.html":[0,3,17],
-"extensions.html":[0,3,38],
 "extensions.html":[0,3,21,10],
+"extensions.html":[0,3,38],
 "extensions.html":[0,3,43,3],
 "extensions.html#extensions_loadable":[0,3,21,10,0],
 "extensions.html#extensions_loadable":[0,3,38,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga02d956409fe55978a66167ac55452ab2":[1,0,423],
 "group__wt.html#ga036a87a790eb07ac0d83fc2f3f7c1be5":[1,0,99],
 "group__wt.html#ga03aec170331a03e12754616b16ffd9ab":[1,0,576],
-"group__wt.html#ga03d269c9141be6f0663c9827778045d2":[1,0,480],
-"group__wt.html#ga041ca8a44335ed832e799a83a383ebb2":[1,0,136]
+"group__wt.html#ga03d269c9141be6f0663c9827778045d2":[1,0,480]
 };
