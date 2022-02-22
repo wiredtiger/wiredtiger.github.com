@@ -147,6 +147,9 @@ var NAVTREEINDEX6 =
 "timestamp_model.html#timestamps_global":[0,3,9,0],
 "timestamp_prepare.html":[0,3,12],
 "timestamp_roundup.html":[0,3,13],
+"timestamp_roundup.html#timestamp_roundup_prepare":[0,3,13,1],
+"timestamp_roundup.html#timestamp_roundup_prepare_safety":[0,3,13,1,0],
+"timestamp_roundup.html#timestamp_roundup_read":[0,3,13,0],
 "timestamp_txn_api.html":[0,3,11],
 "timestamp_txn_api.html#timestamp_txn_api_begin":[0,3,11,2],
 "timestamp_txn_api.html#timestamp_txn_api_commit":[0,3,11,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX6 =
 "tune_page_size_and_comp.html#allocation_size":[0,3,57,1,3],
 "tune_page_size_and_comp.html#compression_considerations":[0,3,57,2],
 "tune_page_size_and_comp.html#configurable_page_struct":[0,3,57,1],
-"tune_page_size_and_comp.html#data_life_cycle":[0,3,57,0],
-"tune_page_size_and_comp.html#internal_page_max":[0,3,57,1,1],
-"tune_page_size_and_comp.html#key_val_max":[0,3,57,1,4],
-"tune_page_size_and_comp.html#leaf_page_max":[0,3,57,1,2]
+"tune_page_size_and_comp.html#data_life_cycle":[0,3,57,0]
 };

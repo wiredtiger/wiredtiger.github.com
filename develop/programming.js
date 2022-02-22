@@ -83,7 +83,12 @@ var programming =
       [ "Setting the transaction's \"read_timestamp\"", "timestamp_txn_api.html#timestamp_txn_api_read_timestamp", null ]
     ] ],
     [ "Using transaction prepare with timestamps", "timestamp_prepare.html", null ],
-    [ "Automatic timestamp rounding", "timestamp_roundup.html", null ],
+    [ "Automatic timestamp rounding", "timestamp_roundup.html", [
+      [ "Rounding up the read timestamp", "timestamp_roundup.html#timestamp_roundup_read", null ],
+      [ "Replaying prepared transactions by rounding up the prepare timestamp", "timestamp_roundup.html#timestamp_roundup_prepare", [
+        [ "Safety rationale and details", "timestamp_roundup.html#timestamp_roundup_prepare_safety", null ]
+      ] ]
+    ] ],
     [ "Miscellaneous timestamp topics", "timestamp_misc.html", [
       [ "Using rollback-to-stable with timestamps", "timestamp_misc.html#timestamp_misc_rts", null ],
       [ "Using diagnostic configurations to enforce timestamp usage", "timestamp_misc.html#timestamp_misc_diagnostic", null ],
