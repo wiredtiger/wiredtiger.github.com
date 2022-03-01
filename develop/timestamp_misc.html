@@ -92,7 +92,12 @@ $(document).ready(function(){initNavTree('timestamp_misc.html',''); initResizabl
 <div class="title">Miscellaneous timestamp topics </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="timestamp_misc_rts"></a>
+<div class="textblock"><h1><a class="anchor" id="timestamp_read_roundup"></a>
+Rounding up the read timestamp</h1>
+<p>Applications setting timestamps for a transaction have to comply with the constraints based on the global timestamp state. In order to be compliant with the constraints applications will need to query the global timestamp state and check their timestamps for compliance and adjust timestamps if required, and this creates obvious races with other threads. To reduce application burden, WiredTiger supports automatic timestamp rounding in some scenarios.</p>
+<p>Applications can configure <code>roundup_timestamps=(prepared=true,read=true)</code> with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">WT_SESSION::begin_transaction</a> method.</p>
+<p>Configuring <code>roundup_timestamps=(read=true)</code> causes the read timestamp to be rounded up to the oldest timestamp. If the read timestamp is greater than the oldest timestamp no change will be made.</p>
+<h1><a class="anchor" id="timestamp_misc_rts"></a>
 Using rollback-to-stable with timestamps</h1>
 <p>Applications can explicitly roll back the system to a specific stable timestamp by calling the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a> method. Applications must first set the <code>stable</code> timestamp using <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> and then call <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a>, which will discard all updates to checkpoint-durable tables that have commit timestamps more recent than the set stable timestamp.</p>
 <p>Logged tables and updates made without an associated commit timestamp are unaffected.</p>

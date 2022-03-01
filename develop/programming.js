@@ -79,17 +79,18 @@ var programming =
       [ "Configuring transaction timestamp information with WT_SESSION::commit_transaction", "timestamp_txn_api.html#timestamp_txn_api_commit", null ],
       [ "Configuring transaction timestamp information with WT_SESSION::prepare_transaction", "timestamp_txn_api.html#timestamp_txn_api_prepare", null ],
       [ "Configuring transaction timestamp information with WT_SESSION::timestamp_transaction", "timestamp_txn_api.html#timestamp_txn_api_timestamp_transaction", null ],
-      [ "Setting the transaction's \"commit_timestamp\"", "timestamp_txn_api.html#timestamp_txn_api_commit_timestamp", null ],
-      [ "Setting the transaction's \"read_timestamp\"", "timestamp_txn_api.html#timestamp_txn_api_read_timestamp", null ]
+      [ "Setting the transaction's commit timestamp", "timestamp_txn_api.html#timestamp_txn_api_commit_timestamp", null ],
+      [ "Setting the transaction's read timestamp", "timestamp_txn_api.html#timestamp_txn_api_read_timestamp", null ]
     ] ],
-    [ "Using transaction prepare with timestamps", "timestamp_prepare.html", null ],
-    [ "Automatic timestamp rounding", "timestamp_roundup.html", [
-      [ "Rounding up the read timestamp", "timestamp_roundup.html#timestamp_roundup_read", null ],
-      [ "Replaying prepared transactions by rounding up the prepare timestamp", "timestamp_roundup.html#timestamp_roundup_prepare", [
-        [ "Safety rationale and details", "timestamp_roundup.html#timestamp_roundup_prepare_safety", null ]
-      ] ]
+    [ "Using transaction prepare with timestamps", "timestamp_prepare.html", [
+      [ "Configuring ignore_prepare", "timestamp_prepare.html#timestamp_prepare_ignore_prepare", null ]
+    ] ],
+    [ "Automatic prepare timestamp rounding", "timestamp_prepare_roundup.html", [
+      [ "Replaying prepared transactions by rounding up the prepare timestamp", "timestamp_prepare_roundup.html#timestamp_prepare_roundup_replay", null ],
+      [ "Safety rationale and details", "timestamp_prepare_roundup.html#timestamp_prepare_roundup_safety", null ]
     ] ],
     [ "Miscellaneous timestamp topics", "timestamp_misc.html", [
+      [ "Rounding up the read timestamp", "timestamp_misc.html#timestamp_read_roundup", null ],
       [ "Using rollback-to-stable with timestamps", "timestamp_misc.html#timestamp_misc_rts", null ],
       [ "Using diagnostic configurations to enforce timestamp usage", "timestamp_misc.html#timestamp_misc_diagnostic", null ],
       [ "Resetting the snapshot", "timestamp_misc.html#timestamp_misc_reset_snapshot", null ],

@@ -120,6 +120,7 @@ Checkpoint naming</h1>
 Checkpoint durability and backups</h1>
 <p>Backups are done using backup cursors (see <a class="el" href="backup.html">Backups</a> for more information).</p>
 <dl class="section warning"><dt>Warning</dt><dd>When applications are using checkpoint-level durability, checkpoints taken while a backup cursor is open are not durable. That is, if a crash occurs when a backup cursor is open, then the system will be restored to the most recent checkpoint prior to the opening of the backup cursor, even if later database checkpoints were completed.</dd></dl>
+<p>Applications using commit-level durability retain durability via the write-ahead log even though checkpoints taken while a backup cursor is open are not durable. All log files are retained once the backup cursor is opened and, in the event of a crash, all operations will be replayed to provide durability.</p>
 <h1><a class="anchor" id="checkpoint_compaction"></a>
 Checkpoints and file compaction</h1>
 <p>Checkpoints share file blocks, and dropping a checkpoint may or may not make file blocks available for re-use, depending on whether the dropped checkpoint contained the last reference to those file blocks. Because named checkpoints are not discarded until explicitly discarded or replaced, they may prevent <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> from reducing file size due to shared file blocks. </p>

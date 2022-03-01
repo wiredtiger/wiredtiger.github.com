@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"tune_page_size_and_comp.html#data_life_cycle":[0,3,57,0],
 "tune_page_size_and_comp.html#internal_page_max":[0,3,57,1,1],
 "tune_page_size_and_comp.html#key_val_max":[0,3,57,1,4],
 "tune_page_size_and_comp.html#leaf_page_max":[0,3,57,1,2],
