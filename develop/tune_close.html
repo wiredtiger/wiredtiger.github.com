@@ -92,13 +92,13 @@ $(document).ready(function(){initNavTree('tune_close.html',''); initResizable();
 <div class="title">Connection close </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Closing a <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a>:: handle can be expensive, in part because of the cost of freeing memory (for example, the memory allocated for a large cache). If the process is exiting regardless, configuring <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6" title="Close a connection.">WT_CONNECTION::close</a> to leak memory on close can significantly speed up the close.</p>
-<p>An example of configuring <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6" title="Close a connection.">WT_CONNECTION::close</a> to leak memory:</p>
-<div class="fragment"><div class="line">    error_check(conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6">close</a>(conn, <span class="stringliteral">&quot;leak_memory=true&quot;</span>));</div>
+<div class="textblock"><p>Closing a <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a>:: handle can be expensive, in part because of the cost of freeing memory (for example, the memory allocated for a large cache). If the process is exiting regardless, configuring <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a> to leak memory on close can significantly speed up the close.</p>
+<p>An example of configuring <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a> to leak memory:</p>
+<div class="fragment"><div class="line">    error_check(conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, <span class="stringliteral">&quot;leak_memory=true&quot;</span>));</div>
 </div><!-- fragment --></div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
-<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_ab2bfe8a5f92c932cbe5aad2f4e603ca6"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6">WT_CONNECTION::close</a></div><div class="ttdeci">int close(WT_HANDLE_CLOSED(WT_CONNECTION) *connection, const char *config)</div><div class="ttdoc">Close a connection.</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_af535c517df851eeac8ebf3594d40b545"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">WT_CONNECTION::close</a></div><div class="ttdeci">int close(WT_CONNECTION *connection, const char *config)</div><div class="ttdoc">Close a connection.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

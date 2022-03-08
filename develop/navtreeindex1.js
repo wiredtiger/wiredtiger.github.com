@@ -1,5 +1,11 @@
 var NAVTREEINDEX1 =
 {
+"command_line.html#util_drop_options":[0,10,7,1,8,1],
+"command_line.html#util_drop_options":[0,4,8,1],
+"command_line.html#util_drop_synopsis":[0,10,7,1,8,0],
+"command_line.html#util_drop_synopsis":[0,4,8,0],
+"command_line.html#util_dump":[0,10,7,1,9],
+"command_line.html#util_dump":[0,4,9],
 "command_line.html#util_dump_options":[0,10,7,1,9,1],
 "command_line.html#util_dump_options":[0,4,9,1],
 "command_line.html#util_dump_synopsis":[0,10,7,1,9,0],
@@ -177,7 +183,9 @@ var NAVTREEINDEX1 =
 "encryption.html#encryption_sodium":[0,3,21,6],
 "encryption.html#encryption_use":[0,3,21,1],
 "error_handling.html":[0,3,4],
-"error_handling.html#error_translation":[0,3,4,0],
+"error_handling.html#error_ebusy":[0,3,4,0],
+"error_handling.html#error_list":[0,3,4,1],
+"error_handling.html#error_translation":[0,3,4,2],
 "eviction.html":[0,3,31],
 "eviction.html#clean_eviction":[0,3,31,1],
 "eviction.html#eviction_overview":[0,3,31,0],
@@ -208,9 +216,9 @@ var NAVTREEINDEX1 =
 "explain_durability.html#explain_durability_in_memory":[0,3,16,0],
 "explain_durability.html#explain_durability_timestamp":[0,3,16,3],
 "explain_isolation.html":[0,3,17],
+"extensions.html":[0,3,43,3],
 "extensions.html":[0,3,21,10],
 "extensions.html":[0,3,38],
-"extensions.html":[0,3,43,3],
 "extensions.html#extensions_loadable":[0,3,43,3,0],
 "extensions.html#extensions_loadable":[0,3,21,10,0],
 "extensions.html#extensions_loadable":[0,3,38,0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX1 =
 "group__wt.html#ga00263f73de3f30af2e2aa2f6fca000d6":[1,0,666],
 "group__wt.html#ga0033cbf8339024705bfa2fe7d8ebc203":[1,0,264],
 "group__wt.html#ga008e3e59a4d0c6f66a35ec52309033dc":[1,0,505],
-"group__wt.html#ga0128cef518080b49f6b708060211943c":[1,0,397],
-"group__wt.html#ga01cb1d76367070427a7b8f874a14463e":[1,0,489],
-"group__wt.html#ga01f2c3cc7b75a0c6548e25ecbc21864d":[1,0,339],
-"group__wt.html#ga027d009369699f78ab6af7f1d7896076":[1,0,46],
-"group__wt.html#ga02878b5a32a66036a37ef072b9c6ffbc":[1,0,604],
-"group__wt.html#ga02d956409fe55978a66167ac55452ab2":[1,0,423],
-"group__wt.html#ga036a87a790eb07ac0d83fc2f3f7c1be5":[1,0,99],
-"group__wt.html#ga03aec170331a03e12754616b16ffd9ab":[1,0,576],
-"group__wt.html#ga03d269c9141be6f0663c9827778045d2":[1,0,480]
+"group__wt.html#ga0128cef518080b49f6b708060211943c":[1,0,397]
 };

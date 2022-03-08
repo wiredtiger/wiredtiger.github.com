@@ -180,7 +180,7 @@ Options</h2>
  <h1><a class="anchor" id="util_drop"></a>
 wt drop</h1>
 <p>Drop a table.</p>
-<p>The <code>drop</code> command drops the specified <code>uri</code>. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) an object.">WT_SESSION::drop</a> with the "force" configuration argument.</p>
+<p>The <code>drop</code> command drops the specified <code>uri</code>. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) a table.">WT_SESSION::drop</a> with the "force" configuration argument.</p>
 <h2><a class="anchor" id="util_drop_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] drop uri</code></p>
@@ -319,12 +319,12 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_stat_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>stat</code> command:</p>
-<dl class="section user"><dt>-f</dt><dd>Include only "fast" statistics in the output (equivalent to passing <code>statistics=(fast)</code>) to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7bfb7d5fb5db47a35985559669f1b964" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>.</dd></dl>
+<dl class="section user"><dt>-f</dt><dd>Include only "fast" statistics in the output (equivalent to passing <code>statistics=(fast)</code>) to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_truncate"></a>
 wt truncate</h1>
 <p>Truncate a table, removing all data.</p>
-<p>The <code>truncate</code> command truncates the specified <code>uri</code>. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a11b86fb4685c58388b7d70fb59f0856c" title="Truncate a file, table, cursor range, or backup cursor.">WT_SESSION::truncate</a> with no start or stop specified.</p>
+<p>The <code>truncate</code> command truncates the specified <code>uri</code>. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table, cursor range, or backup cursor.">WT_SESSION::truncate</a> with no start or stop specified.</p>
 <h2><a class="anchor" id="util_truncate_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] truncate uri</code></p>
@@ -353,8 +353,8 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_verify_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>verify</code> command:</p>
-<p><code>-d [config]</code> This option allows you to specify values which you want to be displayed when verification is run. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table or file.">WT_SESSION::verify</a> configuration options.</p>
-<p><code>-s</code> This option allows you to verify against the stable timestamp, valid only after a rollback-to-stable operation. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table or file.">WT_SESSION::verify</a> configuration options.</p>
+<p><code>-d [config]</code> This option allows you to specify values which you want to be displayed when verification is run. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
+<p><code>-s</code> This option allows you to verify against the stable timestamp, valid only after a rollback-to-stable operation. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
 <hr  />
  <h1><a class="anchor" id="util_write"></a>
 wt write</h1>

@@ -136,7 +136,7 @@ Runtime</h2>
 <p>A connection also keeps tracks of global information, see <code>WT_CONNECTION_IMPL</code> defined in <code>connection.h</code>. Finally, a <code><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a></code> handle may be shared between threads, see <a class="el" href="threads.html">Multithreading</a> for more information.</p>
 <h2><a class="anchor" id="arch_conn_closure"></a>
 Closure</h2>
-<p>When a connection is no longer required, it can be closed using <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6" title="Close a connection.">WT_CONNECTION::close</a>. As a result, any resource held by the connection (i.e sessions) is freed unless configured differently and the database is restored to a consistent state if necessary. It is worth noting that this final step might take some time as it may involve running the rollback to stable operation. </p>
+<p>When a connection is no longer required, it can be closed using <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545" title="Close a connection.">WT_CONNECTION::close</a>. As a result, any resource held by the connection (i.e sessions) is freed unless configured differently and the database is restored to a consistent state if necessary. It is worth noting that this final step might take some time as it may involve running the rollback to stable operation. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

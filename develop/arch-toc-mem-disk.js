@@ -27,5 +27,12 @@ var arch_toc_mem_disk =
       [ "On-Disk Page Format and Layout", "arch-data-file.html#data_file_on_disk_page_format", null ],
       [ "Page Types", "arch-data-file.html#data_file_page_types", null ],
       [ "Data File Functions", "arch-data-file.html#data_file_functions", null ]
+    ] ],
+    [ "S3 Storage Source", "arch-s3-extension.html", [
+      [ "S3 Storage Source Implementation", "arch-s3-extension.html#s3_extension_storage_source", null ],
+      [ "S3 Connection class", "arch-s3-extension.html#s3_extension_connection", null ],
+      [ "S3_FILE_SYSTEM", "arch-s3-extension.html#s3_extension_file_system", null ],
+      [ "S3_FILE_HANDLE", "arch-s3-extension.html#s3_extension_file_handle", null ],
+      [ "S3 Logging and Statistics", "arch-s3-extension.html#s3_extension_log_stat", null ]
     ] ]
 ];

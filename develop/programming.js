@@ -13,6 +13,8 @@ var programming =
     [ "Cursors", "cursors.html", "cursors" ],
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Error handling", "error_handling.html", [
+      [ "EBUSY errors", "error_handling.html#error_ebusy", null ],
+      [ "WiredTiger-specific errors", "error_handling.html#error_list", null ],
       [ "Translating errors", "error_handling.html#error_translation", null ]
     ] ],
     [ "Transactional applications", "transactions.html", null ],

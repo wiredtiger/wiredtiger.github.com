@@ -142,7 +142,7 @@ Reading Metadata</h1>
 <p>The contents of the metadata table is ASCII printable. The URIs and configuration values are all printable strings.</p>
 <h2><a class="anchor" id="metadata_cursor"></a>
 "metadata:" cursor</h2>
-<p>To read the metadata, a caller can open a cursor, via <code><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7bfb7d5fb5db47a35985559669f1b964" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a></code>, with a <code>uri</code> equal to <code>"metadata:"</code>. Changes to the metadata cannot be written through the metadata cursor interface i.e. the metadata cursor is a read-only interface. Metadata is only changed/affected by API calls.</p>
+<p>To read the metadata, a caller can open a cursor, via <code><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a></code>, with a <code>uri</code> equal to <code>"metadata:"</code>. Changes to the metadata cannot be written through the metadata cursor interface i.e. the metadata cursor is a read-only interface. Metadata is only changed/affected by API calls.</p>
 <h2><a class="anchor" id="metadata_create_cursor"></a>
 "metadata:create" cursor</h2>
 <p>Additionally, to only read strings relating to creation configurations of the various <code>uri</code> keys present, a cursor can be opened with a <code>uri</code> equal to <code>"metadata:create"</code>. This type of cursor causes WiredTiger to strip out internal metadata when querying.</p>
