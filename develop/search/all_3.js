@@ -1,7 +1,7 @@
 var searchData=
 [
   ['cache_16',['Cache',['../arch-cache.html',1,'arch-toc-in-mem']]],
-  ['checkpoint_17',['Checkpoint',['../arch-checkpoint.html',1,'arch-toc-on-disk'],['../checkpoint.html',1,'programming']]],
+  ['checkpoint_17',['Checkpoint',['../arch-checkpoint.html',1,'arch-toc-on-disk']]],
   ['compaction_18',['Compaction',['../arch-compact.html',1,'arch-toc-on-disk']]],
   ['connection_19',['Connection',['../arch-connection.html',1,'arch-toc-fundamentals']]],
   ['cursor_20',['Cursor',['../arch-cursor.html',1,'arch-toc-fundamentals']]],
@@ -32,12 +32,13 @@ var searchData=
   ['custom_20file_20systems_45',['Custom File Systems',['../custom_file_systems.html',1,'programming']]],
   ['custom_20tiered_20storage_20sources_46',['Custom Tiered Storage sources',['../custom_storage_sources.html',1,'programming']]],
   ['customize_47',['customize',['../struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0',1,'WT_COLLATOR::customize()'],['../struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a',1,'WT_ENCRYPTOR::customize()'],['../struct_w_t___e_x_t_r_a_c_t_o_r.html#aead7ade6a5c1ea31917ed8cd0ef841aa',1,'WT_EXTRACTOR::customize()']]],
-  ['commit_2dlevel_20durability_48',['Commit-level durability',['../durability.html',1,'programming']]],
-  ['cpu_20flame_20graphs_49',['CPU Flame Graphs',['../tool-perf-flamegraphs.html',1,'tool-index']]],
-  ['cache_20and_20eviction_20tuning_50',['Cache and eviction tuning',['../tune_cache.html',1,'programming']]],
-  ['capacity_20tuning_51',['Capacity tuning',['../tune_capacity.html',1,'programming']]],
-  ['checksums_52',['Checksums',['../tune_checksum.html',1,'programming']]],
-  ['connection_20close_53',['Connection close',['../tune_close.html',1,'programming']]],
-  ['cursor_20persistence_54',['Cursor persistence',['../tune_cursor_persist.html',1,'programming']]],
-  ['commit_2dlevel_20durability_55',['Commit-level durability',['../tune_durability.html',1,'programming']]]
+  ['checkpoint_2dlevel_20durability_48',['Checkpoint-level durability',['../durability_checkpoint.html',1,'programming']]],
+  ['commit_2dlevel_20durability_49',['Commit-level durability',['../durability_log.html',1,'programming']]],
+  ['cpu_20flame_20graphs_50',['CPU Flame Graphs',['../tool-perf-flamegraphs.html',1,'tool-index']]],
+  ['cache_20and_20eviction_20tuning_51',['Cache and eviction tuning',['../tune_cache.html',1,'programming']]],
+  ['capacity_20tuning_52',['Capacity tuning',['../tune_capacity.html',1,'programming']]],
+  ['checksums_53',['Checksums',['../tune_checksum.html',1,'programming']]],
+  ['connection_20close_54',['Connection close',['../tune_close.html',1,'programming']]],
+  ['cursor_20persistence_55',['Cursor persistence',['../tune_cursor_persist.html',1,'programming']]],
+  ['commit_2dlevel_20durability_56',['Commit-level durability',['../tune_durability.html',1,'programming']]]
 ];

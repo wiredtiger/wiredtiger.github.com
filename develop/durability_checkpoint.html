@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Checkpoint durability</title>
+<title>WiredTiger: Checkpoint-level durability</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('checkpoint.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('durability_checkpoint.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,20 +89,20 @@ $(document).ready(function(){initNavTree('checkpoint.html',''); initResizable();
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Checkpoint durability </div>  </div>
+<div class="title">Checkpoint-level durability </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger supports checkpoint durability by default, and optionally commit-level durability when logging is enabled. In most applications, commit-level durability impacts performance more than checkpoint durability; checkpoints offer basic operation durability across application or system failure without impacting performance (although the creation of each checkpoint is a relatively heavy-weight operation). See <a class="el" href="durability.html">Commit-level durability</a> for information on commit-level durability.</p>
+<div class="textblock"><p>WiredTiger supports checkpoint durability by default, and optionally commit-level durability when logging is enabled. In most applications, commit-level durability impacts performance more than checkpoint durability; checkpoints offer basic operation durability across application or system failure without impacting performance (although the creation of each checkpoint is a relatively heavy-weight operation). See <a class="el" href="durability_log.html">Commit-level durability</a> for information on commit-level durability.</p>
 <h1><a class="anchor" id="checkpoint_snapshot"></a>
 Checkpoints vs. snapshots</h1>
-<p>Since the terms "checkpoint" and "snapshot" are widely used in this manual, a quick explanation of the difference: a checkpoint is an on-disk entity that captures the persistent state of some or all of the database, while a snapshot is a lightweight in-memory entity that captures the current state of pending updates in the cache. Isolation refers to snapshots, because isolation is about runtime state and which updates can be seen by other threads' transactions as they run. Durability refers to checkpoints, because durability is about on-disk persistence. The two concepts are closely connected, of course; when a checkpoint is created the code involved uses a snapshot to determine which updates should and should not appear in the checkpoint.</p>
-<h1><a class="anchor" id="checkpoints"></a>
+<p>Here is a brief explanation of the terms "checkpoint" and "snapshot", as they are widely used in this manual. A checkpoint is an on-disk entity that captures the persistent state of some or all of the database, while a snapshot is a lightweight in-memory entity that captures the current state of pending updates in the cache. Isolation refers to snapshots, because isolation is about runtime state and which updates can be seen by other threads' transactions as they run. Durability refers to checkpoints, because durability is about on-disk persistence. The two concepts are closely connected, of course; when a checkpoint is created the code involved uses a snapshot to determine which updates should and should not appear in the checkpoint.</p>
+<h1><a class="anchor" id="checkpoint_checkpoints"></a>
 Checkpoints</h1>
 <p>A checkpoint is automatically created for each individual file whenever the last reference to a modified data source is closed.</p>
 <p>Checkpoints of the entire database can be explicitly created with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of individual objects.">WT_SESSION::checkpoint</a> method. Automatic database-wide checkpoints can be scheduled based on elapsed time or data size with the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>checkpoint</code> configuration. In this mode of operation, an internal server thread is created to perform these checkpoints.</p>
 <p>All transactional updates committed before a checkpoint are made durable by the checkpoint, therefore the frequency of checkpoints limits the volume of data that may be lost due to application or system failure.</p>
 <p>Data sources that are involved in an exclusive operation when the checkpoint starts, including bulk load, upgrade or salvage, will be skipped by the checkpoint.</p>
-<p>When a data source is first opened, it appears in the same state it was in when it was most recently checkpointed. In other words, updates after the most recent checkpoint will not appear in the data source at checkpoint-level durability. If no checkpoint is found when the data source is opened, the data source will appear empty.</p>
+<p>When a data source is first opened, it appears in the same state it was in when it was most recently checkpointed. In other words, updates after the most recent checkpoint (for example, in the case of failure), will not appear in the data source at checkpoint-level durability. If no checkpoint is found when the data source is opened, the data source will appear empty.</p>
 <h2><a class="anchor" id="checkpoint_target"></a>
 Checkpointing specific objects</h2>
 <p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of individual objects.">WT_SESSION::checkpoint</a> method supports checkpoint of a set of target objects (as opposed to a database-wide checkpoint), using the <code>target</code> configuration.</p>
@@ -119,7 +119,7 @@ Checkpoint naming</h1>
 <h1><a class="anchor" id="checkpoint_backup"></a>
 Checkpoint durability and backups</h1>
 <p>Backups are done using backup cursors (see <a class="el" href="backup.html">Backups</a> for more information).</p>
-<dl class="section warning"><dt>Warning</dt><dd>When applications are using checkpoint-level durability, checkpoints taken while a backup cursor is open are not durable. That is, if a crash occurs when a backup cursor is open, then the system will be restored to the most recent checkpoint prior to the opening of the backup cursor, even if later database checkpoints were completed.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>When applications are using checkpoint-level durability, checkpoints taken while a backup cursor is open are not durable. That is, if a crash occurs when a backup cursor is open, then the system will be restored to the most recent checkpoint prior to the opening of the backup cursor, even if later database checkpoints were completed. As soon as the backup cursor is closed, the system will again be restored to the most recent checkpoint taken.</dd></dl>
 <p>Applications using commit-level durability retain durability via the write-ahead log even though checkpoints taken while a backup cursor is open are not durable. All log files are retained once the backup cursor is opened and, in the event of a crash, all operations will be replayed to provide durability.</p>
 <h1><a class="anchor" id="checkpoint_compaction"></a>
 Checkpoints and file compaction</h1>

@@ -26,28 +26,34 @@ var programming =
       [ "Cursors and transactions", "transactions_api.html#cursors_transactions", null ],
       [ "Resetting the session snapshot", "transactions_api.html#snapshot_reset", null ]
     ] ],
-    [ "Checkpoint durability", "checkpoint.html", [
-      [ "Checkpoints vs. snapshots", "checkpoint.html#checkpoint_snapshot", null ],
-      [ "Checkpoints", "checkpoint.html#checkpoints", [
-        [ "Checkpointing specific objects", "checkpoint.html#checkpoint_target", null ]
-      ] ],
-      [ "Checkpoint cursors", "checkpoint.html#checkpoint_cursors", null ],
-      [ "Checkpoint naming", "checkpoint.html#checkpoint_naming", null ],
-      [ "Checkpoint durability and backups", "checkpoint.html#checkpoint_backup", null ],
-      [ "Checkpoints and file compaction", "checkpoint.html#checkpoint_compaction", null ]
+    [ "Durability overview", "durability_overview.html", [
+      [ "In-memory databases", "durability_overview.html#explain_durability_in_memory", null ],
+      [ "Checkpoint durability (without timestamps)", "durability_overview.html#explain_durability_checkpoint", null ],
+      [ "Commit-level durability (without timestamps)", "durability_overview.html#explain_durability_commit", null ],
+      [ "Adding timestamps", "durability_overview.html#explain_durability_timestamp", null ]
     ] ],
-    [ "Commit-level durability", "durability.html", [
-      [ "Enabling commit-level durability", "durability.html#commit_durability_enable", null ],
-      [ "Commit-level durability and logs", "durability.html#commit_durability_logs", null ],
-      [ "Recovery", "durability.html#durability_recovery", null ],
-      [ "Checkpoints", "durability.html#durability_checkpoint", null ],
-      [ "Backups", "durability.html#durability_backup", null ],
-      [ "Log file archival and removal", "durability.html#durability_archiving", null ],
-      [ "Log cursors", "durability.html#log_cursors", null ],
-      [ "Bulk loads", "durability.html#durability_bulk", null ],
-      [ "Tuning commit-level durability", "durability.html#durability_tuning", [
-        [ "Group commit", "durability.html#durability_group_commit", null ],
-        [ "Flush call configuration", "durability.html#durability_flush_config", null ]
+    [ "Checkpoint-level durability", "durability_checkpoint.html", [
+      [ "Checkpoints vs. snapshots", "durability_checkpoint.html#checkpoint_snapshot", null ],
+      [ "Checkpoints", "durability_checkpoint.html#checkpoint_checkpoints", [
+        [ "Checkpointing specific objects", "durability_checkpoint.html#checkpoint_target", null ]
+      ] ],
+      [ "Checkpoint cursors", "durability_checkpoint.html#checkpoint_cursors", null ],
+      [ "Checkpoint naming", "durability_checkpoint.html#checkpoint_naming", null ],
+      [ "Checkpoint durability and backups", "durability_checkpoint.html#checkpoint_backup", null ],
+      [ "Checkpoints and file compaction", "durability_checkpoint.html#checkpoint_compaction", null ]
+    ] ],
+    [ "Commit-level durability", "durability_log.html", [
+      [ "Enabling commit-level durability", "durability_log.html#commit_durability_enable", null ],
+      [ "Commit-level durability and logs", "durability_log.html#commit_durability_logs", null ],
+      [ "Recovery", "durability_log.html#commit_durability_recovery", null ],
+      [ "Checkpoints", "durability_log.html#commit_durability_checkpoint", null ],
+      [ "Backups", "durability_log.html#commit_durability_backup", null ],
+      [ "Log file archival and removal", "durability_log.html#commit_durability_archiving", null ],
+      [ "Log cursors", "durability_log.html#commit_log_cursors", null ],
+      [ "Bulk loads", "durability_log.html#commit_durability_bulk", null ],
+      [ "Tuning commit-level durability", "durability_log.html#commit_durability_tuning", [
+        [ "Group commit", "durability_log.html#commit_durability_group_commit", null ],
+        [ "Flush call configuration", "durability_log.html#commit_durability_flush_config", null ]
       ] ]
     ] ],
     [ "Timestamp overview", "timestamp_model.html", [
@@ -99,12 +105,6 @@ var programming =
       [ "In-memory configurations and timestamps", "timestamp_misc.html#timestamps_misc_in_memory", null ]
     ] ],
     [ "Tutorial: transactions and ACID properties", "explain_acid.html", null ],
-    [ "Tutorial: durability models", "explain_durability.html", [
-      [ "In-memory databases", "explain_durability.html#explain_durability_in_memory", null ],
-      [ "Checkpoint durability (without timestamps)", "explain_durability.html#explain_durability_checkpoint", null ],
-      [ "Commit-level durability (without timestamps)", "explain_durability.html#explain_durability_commit", null ],
-      [ "Adding timestamps", "explain_durability.html#explain_durability_timestamp", null ]
-    ] ],
     [ "Tutorial: isolation levels", "explain_isolation.html", null ],
     [ "Log-Structured Merge Trees", "lsm.html", [
       [ "Background", "lsm.html#lsm_background", null ],

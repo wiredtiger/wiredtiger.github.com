@@ -41,7 +41,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "admin.html",
-"command_line.html#util_drop_options",
+"command_line.html#util_dump_synopsis",
 "group__wt.html#ga01cb1d76367070427a7b8f874a14463e",
 "group__wt.html#ga50f5628d54b22933469db2fa2621c006",
 "group__wt.html#ga9c1c8514b06afe6e8a1bf17fe383e999",

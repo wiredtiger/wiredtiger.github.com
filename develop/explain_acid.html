@@ -94,13 +94,13 @@ $(document).ready(function(){initNavTree('explain_acid.html',''); initResizable(
 <div class="contents">
 <div class="textblock"><p>Transactions provide a powerful abstraction for multiple threads to operate on data concurrently because they have the following properties:</p>
 <ul>
-<li>Atomicity: all or none of a transaction is completed.</li>
-<li>Consistency: if each transaction maintains some property when considered separately, then the combined effect of executing the transactions concurrently will maintain the same property.</li>
-<li>Isolation: every execution of a transaction is equivalent to one that runs single-threaded.</li>
-<li>Durability: once a transaction is fully complete, changes it made cannot be lost.</li>
+<li><b>Atomicity:</b> all or none of a transaction is completed.</li>
+<li><b>Consistency:</b> if each transaction maintains some property when considered separately, then the combined effect of executing the transactions concurrently will maintain the same property.</li>
+<li><b>Isolation:</b> every execution of a transaction is equivalent to one that runs single-threaded.</li>
+<li><b>Durability:</b> once a transaction is fully complete, changes it made cannot be lost.</li>
 </ul>
 <p>These properties greatly simplify the reasoning required for writing concurrent applications. Developers can reason about transactions as if they run single-threaded and independently.</p>
-<p>When the data operations in a transaction are complete, the application will normally <em>commit</em> it. This causes it to "take effect". In keeping with the atomicity property, a transaction that fails during execution, or that fails to commit due to a conflict with another running transaction, is then <em>aborted</em> and any changes it may have made are rolled back. </p>
+<p>When the data operations in a transaction are complete, the application will normally <em>commit</em> it. This causes it to "take effect." In keeping with the atomicity property, a transaction that fails during execution, or that fails to commit due to a conflict with another running transaction, is then <em>aborted</em> and any changes it may have made are rolled back. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
