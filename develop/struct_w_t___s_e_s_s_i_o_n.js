@@ -22,6 +22,7 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "salvage", "struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e", null ],
     [ "strerror", "struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9", null ],
     [ "timestamp_transaction", "struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f", null ],
+    [ "timestamp_transaction_uint", "struct_w_t___s_e_s_s_i_o_n.html#a1d4d22f14aef710c0c3ac6a543004686", null ],
     [ "transaction_pinned_range", "struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d", null ],
     [ "truncate", "struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a", null ],
     [ "upgrade", "struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69", null ],

@@ -57,6 +57,7 @@ var group__wt =
       [ "salvage", "struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e", null ],
       [ "strerror", "struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9", null ],
       [ "timestamp_transaction", "struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f", null ],
+      [ "timestamp_transaction_uint", "struct_w_t___s_e_s_s_i_o_n.html#a1d4d22f14aef710c0c3ac6a543004686", null ],
       [ "transaction_pinned_range", "struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d", null ],
       [ "truncate", "struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a", null ],
       [ "upgrade", "struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69", null ],
@@ -896,6 +897,12 @@ var group__wt =
     [ "WT_STAT_SESSION_WRITE_TIME", "group__wt.html#gaaada8a06df6d927df43718f75b712da0", null ],
     [ "WT_TRY_SALVAGE", "group__wt.html#ga848dbb8ea23d57d22e8103ce70a08f50", null ],
     [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", null ],
+    [ "WT_TS_TXN_TYPE", "group__wt.html#ga3307ac01d47089125814f62e90b6ef6e", [
+      [ "WT_TS_TXN_TYPE_COMMIT", "group__wt.html#gga3307ac01d47089125814f62e90b6ef6ea20ed2533cb281af4aa546fd73303e3c5", null ],
+      [ "WT_TS_TXN_TYPE_DURABLE", "group__wt.html#gga3307ac01d47089125814f62e90b6ef6eac1ec24bb531fbc8ea75e4ab9786cb06f", null ],
+      [ "WT_TS_TXN_TYPE_PREPARE", "group__wt.html#gga3307ac01d47089125814f62e90b6ef6ea26fe5acc7ac90fd7912ea1428fa18150", null ],
+      [ "WT_TS_TXN_TYPE_READ", "group__wt.html#gga3307ac01d47089125814f62e90b6ef6eac8c0d0f83ff41baca193fc140e0850de", null ]
+    ] ],
     [ "WT_VERBOSE_CATEGORY", "group__wt.html#ga559a8cfb19158a0647c28a2748d5284a", [
       [ "WT_VERB_API", "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aae699ed09bce17b1078a0af16c8569843", null ],
       [ "WT_VERB_BACKUP", "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa91d90eec055823a1e7531f6e6f5627be", null ],
