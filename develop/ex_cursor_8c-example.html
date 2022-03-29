@@ -133,7 +133,6 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html',''); initRe
 <div class="line"><span class="keywordtype">int</span> cursor_insert(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor);</div>
 <div class="line"><span class="keywordtype">int</span> cursor_update(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor);</div>
 <div class="line"><span class="keywordtype">int</span> cursor_remove(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor);</div>
-<div class="line"><span class="keywordtype">int</span> cursor_largest_key(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor);</div>
 <div class="line"><span class="keywordtype">int</span> version_cursor_dump(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor);</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
@@ -229,11 +228,6 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html',''); initRe
 <div class="line">    <span class="keywordflow">return</span> (cursor-&gt;<a name="a13"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor));</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">int</span></div>
-<div class="line">cursor_largest_key(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</div>
-<div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> (cursor-&gt;<a name="a14"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#a49f70806bf693462e5644edbbb864c1b">largest_key</a>(cursor));</div>
-<div class="line">}</div>
-<div class="line"><span class="keywordtype">int</span></div>
 <div class="line">version_cursor_dump(<a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</div>
 <div class="line">{</div>
 <div class="line">    wt_timestamp_t start_ts, start_durable_ts, stop_ts, stop_durable_ts;</div>
@@ -250,22 +244,22 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html',''); initRe
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
 <div class="line">{</div>
-<div class="line">    <a name="_a15"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
+<div class="line">    <a name="_a14"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
 <div class="line">    <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
-<div class="line">    <a name="_a16"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
+<div class="line">    <a name="_a15"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line"> </div>
 <div class="line">    home = example_setup(argc, argv);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
-<div class="line">    error_check(<a name="a17"></a><a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,statistics=(fast)&quot;</span>, &amp;conn));</div>
+<div class="line">    error_check(<a name="a16"></a><a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,statistics=(fast)&quot;</span>, &amp;conn));</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Open a session for the current thread&#39;s work. */</span></div>
-<div class="line">    error_check(conn-&gt;<a name="a18"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0">open_session</a>(conn, NULL, NULL, &amp;session));</div>
+<div class="line">    error_check(conn-&gt;<a name="a17"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0">open_session</a>(conn, NULL, NULL, &amp;session));</div>
 <div class="line"> </div>
-<div class="line">    error_check(session-&gt;<a name="a19"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:world&quot;</span>,</div>
+<div class="line">    error_check(session-&gt;<a name="a18"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:world&quot;</span>,</div>
 <div class="line">      <span class="stringliteral">&quot;key_format=r,value_format=5sii,columns=(id,country,population,area)&quot;</span>));</div>
 <div class="line"> </div>
-<div class="line">    error_check(session-&gt;<a name="a20"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:world&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">    error_check(session-&gt;<a name="a19"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:world&quot;</span>, NULL, NULL, &amp;cursor));</div>
 <div class="line">    error_check(</div>
 <div class="line">      session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:world(country,population)&quot;</span>, NULL, NULL, &amp;cursor));</div>
 <div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, NULL, &amp;cursor));</div>
@@ -281,8 +275,7 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html',''); initRe
 <div class="line">    error_check(cursor_update(cursor));</div>
 <div class="line">    error_check(cursor_remove(cursor));</div>
 <div class="line">    error_check(cursor_insert(cursor));</div>
-<div class="line">    error_check(cursor_largest_key(cursor));</div>
-<div class="line">    error_check(cursor-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
+<div class="line">    error_check(cursor-&gt;<a name="a20"></a><a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Create a version cursor. */</span></div>
 <div class="line">    error_check(</div>
@@ -291,7 +284,7 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html',''); initRe
 <div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Note: closing the connection implicitly closes open session(s). */</span></div>
-<div class="line">    error_check(conn-&gt;<a name="a22"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL));</div>
+<div class="line">    error_check(conn-&gt;<a name="a21"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL));</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> (EXIT_SUCCESS);</div>
 <div class="line">}</div>
@@ -303,12 +296,11 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html',''); initRe
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_af19f6f9d9c7fc248ab38879032620b2f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">WT_CURSOR::get_key</a></div><div class="ttdeci">int get_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Get the key for the current record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></div><div class="ttdoc">A WT_CURSOR handle is the interface to a cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:199</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a7e25b2ced2cf3ec68bd5429bf921c79f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">WT_CURSOR::search</a></div><div class="ttdeci">int search(WT_CURSOR *cursor)</div><div class="ttdoc">Return the record matching the key.</div></div>
-<div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a49f70806bf693462e5644edbbb864c1b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a49f70806bf693462e5644edbbb864c1b">WT_CURSOR::largest_key</a></div><div class="ttdeci">int largest_key(WT_CURSOR *cursor)</div><div class="ttdoc">Get the table's largest key, ignoring visibility.</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_adad5965cd4a60f65b5ac01f7ca6d1fc0"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0">WT_CONNECTION::open_session</a></div><div class="ttdeci">int open_session(WT_CONNECTION *connection, WT_EVENT_HANDLER *event_handler, const char *config, WT_SESSION **sessionp)</div><div class="ttdoc">Open a session.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a0503f16bd8f3d05aa3552f229b3a8e1b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">WT_CURSOR::next</a></div><div class="ttdeci">int next(WT_CURSOR *cursor)</div><div class="ttdoc">Return the next record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_afc1b42c22c9c85e1ba08ce3b34437565"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565">WT_CURSOR::reset</a></div><div class="ttdeci">int reset(WT_CURSOR *cursor)</div><div class="ttdoc">Reset the cursor.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_af85364a5af50b95bbc46c82e72f75c01"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">WT_CURSOR::get_value</a></div><div class="ttdeci">int get_value(WT_CURSOR *cursor,...)</div><div class="ttdoc">Get the value for the current record.</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a></div><div class="ttdoc">A connection to a WiredTiger database.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:2039</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a></div><div class="ttdoc">A connection to a WiredTiger database.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:2040</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a8068ddce20d0775f26f6dac6e5eb209c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c">WT_CURSOR::search_near</a></div><div class="ttdeci">int search_near(WT_CURSOR *cursor, int *exactp)</div><div class="ttdoc">Return the record matching the key if it exists, or an adjacent record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aeea071f192cab12245a50fbe71c3460b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">WT_CURSOR::close</a></div><div class="ttdeci">int close(WT_CURSOR *cursor)</div><div class="ttdoc">Close the cursor.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a27f7cbd0cd3e561f6a145704813ad64c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">WT_CURSOR::set_value</a></div><div class="ttdeci">void set_value(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the value for the next operation.</div></div>
@@ -316,8 +308,8 @@ $(document).ready(function(){initNavTree('ex_cursor_8c-example.html',''); initRe
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a444cdc0952e7f8d55d23173516c7037f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f">WT_CURSOR::update</a></div><div class="ttdeci">int update(WT_CURSOR *cursor)</div><div class="ttdoc">Update an existing record and optionally insert a record.</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3825</div></div>
-<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a></div><div class="ttdoc">All data operations are performed in the context of a WT_SESSION.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:752</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3826</div></div>
+<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a></div><div class="ttdoc">All data operations are performed in the context of a WT_SESSION.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:751</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_af535c517df851eeac8ebf3594d40b545"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">WT_CONNECTION::close</a></div><div class="ttdeci">int close(WT_CONNECTION *connection, const char *config)</div><div class="ttdoc">Close a connection.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aac90d9fbcc031570f924db55f8a1cee3"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">WT_CURSOR::insert</a></div><div class="ttdeci">int insert(WT_CURSOR *cursor)</div><div class="ttdoc">Insert a record and optionally update an existing record.</div></div>
 <!-- start footer part -->

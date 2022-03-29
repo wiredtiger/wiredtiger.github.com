@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"group__wt.html#gaec880fd6bee28b0b303a373e09885bdc":[1,0,510],
 "group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c":[1,0,12],
 "group__wt.html#gaee121d492a9d27060e8549152669ebb4":[1,0,50],
 "group__wt.html#gaee8805d58d2f0455e8e229b9fd40c1ec":[1,0,482],
@@ -120,11 +121,11 @@ var NAVTREEINDEX5 =
 "huffman.html":[0,10,9,1],
 "huffman.html":[0,3,19,3],
 "in_memory.html":[0,3,30],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "keyvalue.html":[0,3,3,11],
-"license.html":[6],
 "license.html":[0,8],
+"license.html":[6],
 "license.html#license_crc32-power8":[0,8,1],
 "license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f":[1,0,2,14],
 "struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c":[1,0,2,15],
 "struct_w_t___c_u_r_s_o_r.html#a9158605cfaab4e3b00c5ef1af3d3bc3f":[1,0,2,21],
-"struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3":[1,0,2,5],
-"struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455":[1,0,2,11]
+"struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3":[1,0,2,5]
 };

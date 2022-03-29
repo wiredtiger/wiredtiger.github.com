@@ -114,16 +114,12 @@ Translating errors</h1>
 <p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string.">WT_SESSION::strerror</a> and <a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd" title="Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...">wiredtiger_strerror</a> functions return the standard text message associated with any WiredTiger, ISO C, or POSIX standard API.</p>
 <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0)</div>
 <div class="line">            fprintf(stderr, <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">session</a>-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9">strerror</a>(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">session</a>, ret));</div>
-<div class="line">            <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *key = <span class="stringliteral">&quot;non-existent key&quot;</span>;</div>
 <div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, key);</div>
-<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">remove</a>(cursor)) != 0)</div>
 <div class="line">            fprintf(stderr, <span class="stringliteral">&quot;cursor.remove: %s\n&quot;</span>, <a class="code" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a>(ret));</div>
-<div class="line">            <span class="keywordflow">return</span> (ret);</div>
-<div class="line">        }</div>
 </div><!-- fragment --><p> Note that <a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd" title="Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...">wiredtiger_strerror</a> is not thread-safe. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
