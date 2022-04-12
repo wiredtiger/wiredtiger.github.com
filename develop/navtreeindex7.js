@@ -1,7 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"tune_cache.html#tuning_cache_size":[0,3,48,0],
-"tune_capacity.html":[0,3,49],
 "tune_checksum.html":[0,3,50],
 "tune_close.html":[0,3,51],
 "tune_cursor_persist.html":[0,3,52],

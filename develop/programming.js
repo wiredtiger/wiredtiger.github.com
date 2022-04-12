@@ -101,7 +101,6 @@ var programming =
       [ "Rounding up the read timestamp", "timestamp_misc.html#timestamp_read_roundup", null ],
       [ "Using rollback-to-stable with timestamps", "timestamp_misc.html#timestamp_misc_rts", null ],
       [ "Using diagnostic configurations to enforce timestamp usage", "timestamp_misc.html#timestamp_misc_diagnostic", null ],
-      [ "Resetting the snapshot", "timestamp_misc.html#timestamp_misc_reset_snapshot", null ],
       [ "In-memory configurations and timestamps", "timestamp_misc.html#timestamps_misc_in_memory", null ]
     ] ],
     [ "Tutorial: transactions and ACID properties", "explain_acid.html", null ],
