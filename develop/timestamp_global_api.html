@@ -134,14 +134,14 @@ Forcing global timestamps</h2>
 <dl class="section warning"><dt>Warning</dt><dd>The <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> method includes a <code>force</code> flag which allows applications to violate the usual constraints. For example, this can be used to move <code>stable_timestamp</code> backward. Violating these constraints can lead to undefined or incorrect behavior. For example, while moving <code>oldest_timestamp</code> backward with this mechanism may make some historical data accessible again, other obsolete historical data may have already been discarded, and no guarantees of consistency are made.</dd></dl>
 <h1><a class="anchor" id="timestamp_global_querying_timestamps"></a>
 Querying global timestamps</h1>
-<p>The following table lists the global timestamps an application can query using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> method, including constraints.</p>
+<p>The following table lists the global timestamps an application can query using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> method, including constraints. In all cases, a timestamp of 0 is returned if the timestamp is not available or has not been set, for example, the <code>last_checkpoint</code> timestamp if no checkpoints have run, or <code>oldest_reader</code> if there are no active transactions.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Timestamp </th><th class="markdownTableHeadNone">Constraints </th><th class="markdownTableHeadNone">Description  </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">all_durable </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The largest timestamp such that all timestamps up to that value have been made durable (see <a class="el" href="timestamp_prepare.html">Using transaction prepare with timestamps</a> for discussion of the durable timestamp).  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">last_checkpoint </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The stable timestamp at which the last checkpoint ran (or 0 if no checkpoints have run).  </td></tr>
+<td class="markdownTableBodyNone">last_checkpoint </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The stable timestamp at which the last checkpoint ran.  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">oldest_reader </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The timestamp of the oldest currently active read transaction.  </td></tr>
 <tr class="markdownTableRowEven">
@@ -149,11 +149,10 @@ Querying global timestamps</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">pinned </td><td class="markdownTableBodyNone">&lt;= oldest </td><td class="markdownTableBodyNone">The minimum of the <code>oldest_timestamp</code> and the oldest active reader.  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">recovery </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The stable timestamp used in the most recent checkpoint prior to the last shutdown (or 0 if none available).  </td></tr>
+<td class="markdownTableBodyNone">recovery </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The stable timestamp used in the most recent checkpoint prior to the last shutdown.  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">stable_timestamp </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The current application-set <code>stable_timestamp</code> value.  </td></tr>
 </table>
-<p>In all cases, <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found.">WT_NOTFOUND</a> is returned if there is no matching timestamp.</p>
 <h2><a class="anchor" id="timestamp_global_query_api_all_durable"></a>
 Reading the "all_durable" timestamp</h2>
 <p>The <code>all_durable</code> timestamp is the minimum of the global <code>durable_timestamp</code> (as set by the application), and the durable timestamps of all currently running transactions in the system.</p>

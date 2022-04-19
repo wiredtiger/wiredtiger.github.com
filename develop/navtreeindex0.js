@@ -236,8 +236,8 @@ var NAVTREEINDEX0 =
 "command_line.html#util_create_synopsis":[0,10,7,1,6,0],
 "command_line.html#util_downgrade":[0,4,7],
 "command_line.html#util_downgrade":[0,10,7,1,7],
-"command_line.html#util_downgrade_options":[0,10,7,1,7,1],
 "command_line.html#util_downgrade_options":[0,4,7,1],
+"command_line.html#util_downgrade_options":[0,10,7,1,7,1],
 "command_line.html#util_downgrade_synopsis":[0,4,7,0],
 "command_line.html#util_downgrade_synopsis":[0,10,7,1,7,0],
 "command_line.html#util_drop":[0,10,7,1,8],
@@ -248,6 +248,6 @@ var NAVTREEINDEX0 =
 "command_line.html#util_drop_synopsis":[0,4,8,0],
 "command_line.html#util_dump":[0,10,7,1,9],
 "command_line.html#util_dump":[0,4,9],
-"command_line.html#util_dump_options":[0,10,7,1,9,1],
-"command_line.html#util_dump_options":[0,4,9,1]
+"command_line.html#util_dump_options":[0,4,9,1],
+"command_line.html#util_dump_options":[0,10,7,1,9,1]
 };

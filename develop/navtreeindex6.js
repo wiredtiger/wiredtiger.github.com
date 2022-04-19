@@ -151,10 +151,9 @@ var NAVTREEINDEX6 =
 "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp":[0,3,11,0,2],
 "timestamp_global_api.html#timestamp_global_setting_timestamps":[0,3,11,0],
 "timestamp_misc.html":[0,3,15],
-"timestamp_misc.html#timestamp_misc_diagnostic":[0,3,15,2],
 "timestamp_misc.html#timestamp_misc_rts":[0,3,15,1],
 "timestamp_misc.html#timestamp_read_roundup":[0,3,15,0],
-"timestamp_misc.html#timestamps_misc_in_memory":[0,3,15,3],
+"timestamp_misc.html#timestamps_misc_in_memory":[0,3,15,2],
 "timestamp_model.html":[0,3,10],
 "timestamp_model.html#timestamp_transactions":[0,3,10,1],
 "timestamp_model.html#timestamps_durability_checkpoint":[0,3,10,4],
@@ -249,5 +248,6 @@ var NAVTREEINDEX6 =
 "tune_cache.html#cache_eviction":[0,3,48,2],
 "tune_cache.html#tuning_cache_resident":[0,3,48,1],
 "tune_cache.html#tuning_cache_size":[0,3,48,0],
-"tune_capacity.html":[0,3,49]
+"tune_capacity.html":[0,3,49],
+"tune_checksum.html":[0,3,50]
 };

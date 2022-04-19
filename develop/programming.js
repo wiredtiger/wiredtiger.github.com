@@ -81,7 +81,7 @@ var programming =
       ] ]
     ] ],
     [ "Managing the transaction timestamp state", "timestamp_txn_api.html", [
-      [ "Enforcing application timestamp behavior", "timestamp_txn_api.html#timestamp_txn_api_configure", null ],
+      [ "Application timestamp configuration", "timestamp_txn_api.html#timestamp_txn_api_configure", null ],
       [ "Querying transaction timestamp information", "timestamp_txn_api.html#timestamp_txn_api_query", null ],
       [ "Configuring transaction timestamp information with WT_SESSION::begin_transaction", "timestamp_txn_api.html#timestamp_txn_api_begin", null ],
       [ "Configuring transaction timestamp information with WT_SESSION::commit_transaction", "timestamp_txn_api.html#timestamp_txn_api_commit", null ],
@@ -100,7 +100,6 @@ var programming =
     [ "Miscellaneous timestamp topics", "timestamp_misc.html", [
       [ "Rounding up the read timestamp", "timestamp_misc.html#timestamp_read_roundup", null ],
       [ "Using rollback-to-stable with timestamps", "timestamp_misc.html#timestamp_misc_rts", null ],
-      [ "Using diagnostic configurations to enforce timestamp usage", "timestamp_misc.html#timestamp_misc_diagnostic", null ],
       [ "In-memory configurations and timestamps", "timestamp_misc.html#timestamps_misc_in_memory", null ]
     ] ],
     [ "Tutorial: transactions and ACID properties", "explain_acid.html", null ],
