@@ -67,8 +67,7 @@ var programming =
       [ "Setting global timestamps", "timestamp_global_api.html#timestamp_global_setting_timestamps", [
         [ "Setting the global \"durable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_durable_timestamp", null ],
         [ "Setting the \"oldest_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_oldest_timestamp", null ],
-        [ "Setting the \"stable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp", null ],
-        [ "Forcing global timestamps", "timestamp_global_api.html#timestamp_global_forcing", null ]
+        [ "Setting the \"stable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp", null ]
       ] ],
       [ "Querying global timestamps", "timestamp_global_api.html#timestamp_global_querying_timestamps", [
         [ "Reading the \"all_durable\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_all_durable", null ],
