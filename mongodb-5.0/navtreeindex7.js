@@ -1,5 +1,11 @@
 var NAVTREEINDEX7 =
 {
+"tune_durability.html#tune_durability_group_commit":[0,3,41,0],
+"tune_file_alloc.html":[0,3,42],
+"tune_file_alloc.html#tuning_system_file_block_allocation":[0,3,42,1],
+"tune_file_alloc.html#tuning_system_file_block_grow":[0,3,42,0],
+"tune_memory_allocator.html":[0,3,43],
+"tune_mutex.html":[0,3,44],
 "tune_page_size_and_comp.html":[0,3,45],
 "tune_page_size_and_comp.html#allocation_size":[0,3,45,1,3],
 "tune_page_size_and_comp.html#compression_considerations":[0,3,45,2],
