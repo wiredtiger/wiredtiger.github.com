@@ -155,7 +155,7 @@ History store cursor interface and visibility rules</h1>
 <p>History store cursor users must use one of the flags if the caller thread is running in a lower isolation level and doesn't hold a valid snapshot.</p>
 <h1><a class="anchor" id="arch_hs_reconciliation"></a>
 History store and reconciliation</h1>
-<p>When a dirty page is reconciled on a user file btree, the update chain is examined and the latest committed update is chosen as the on-disk value. All older updates are added to the history store table assuming they are not yet obsolete. Additionally any mixed mode timestamps will be applied.</p>
+<p>When a dirty page is reconciled on a user file btree, the update chain is examined and the latest committed update is chosen as the on-disk value. All older updates are added to the history store table assuming they are not yet obsolete. Additionally any updates without timestamps will be applied.</p>
 <p>Consider the following update chain for a user table with btree id 1000 and data store key "AAA":</p>
 <div class="image">
 <img src="hs_update_chain.png" alt=""/>

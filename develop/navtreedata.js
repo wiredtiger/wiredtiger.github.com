@@ -43,9 +43,9 @@ var NAVTREEINDEX =
 "admin.html",
 "command_line.html#util_dump_synopsis",
 "group__wt.html#ga0128cef518080b49f6b708060211943c",
-"group__wt.html#ga50f5628d54b22933469db2fa2621c006",
-"group__wt.html#ga9b6100cd38b7b9cff35675958691c04b",
-"group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c",
+"group__wt.html#ga512297da65ccc30ac91bf6adf95f043f",
+"group__wt.html#ga9c363f1dee7ff3ce2d4663e939ed20c3",
+"group__wt.html#gaee8805d58d2f0455e8e229b9fd40c1ec",
 "struct_w_t___c_u_r_s_o_r.html#abe668c6625fa16b5595a1c393f71862d",
 "tune_durability.html#tune_durability_flush_config"
 ];
