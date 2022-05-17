@@ -597,6 +597,7 @@ var group__wt =
     [ "WT_STAT_CONN_TXN_CHECKPOINT_SCRUB_TARGET", "group__wt.html#ga743e13ac0185d8bac1871bf8acd9e909", null ],
     [ "WT_STAT_CONN_TXN_CHECKPOINT_SCRUB_TIME", "group__wt.html#gab15fec6630fa93558763afcf8e02b140", null ],
     [ "WT_STAT_CONN_TXN_CHECKPOINT_SKIPPED", "group__wt.html#ga42234e7fd3df3f14fb84bfc12a402d91", null ],
+    [ "WT_STAT_CONN_TXN_CHECKPOINT_STOP_STRESS_ACTIVE", "group__wt.html#ga169025cc01630fc4b7b2f439b2abceff", null ],
     [ "WT_STAT_CONN_TXN_CHECKPOINT_TIME_MAX", "group__wt.html#gaa538c42c7e12859876f0a9d53baaccfe", null ],
     [ "WT_STAT_CONN_TXN_CHECKPOINT_TIME_MIN", "group__wt.html#gaebf2e7fc45e804290e2f6874dde1dbc7", null ],
     [ "WT_STAT_CONN_TXN_CHECKPOINT_TIME_RECENT", "group__wt.html#gaa0a189dbe2755d92eb90645bed73c7e7", null ],
