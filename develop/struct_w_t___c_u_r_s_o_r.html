@@ -111,6 +111,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad6a97a309e2c1ada7ca32a422c46612a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a">reconfigure</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, const char *config)</td></tr>
 <tr class="memdesc:ad6a97a309e2c1ada7ca32a422c46612a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure the cursor.  <a href="struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a">More...</a><br /></td></tr>
 <tr class="separator:ad6a97a309e2c1ada7ca32a422c46612a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f31636c1cf31f72df576b82b03a4c44"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a1f31636c1cf31f72df576b82b03a4c44">bound</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, const char *config)</td></tr>
+<tr class="memdesc:a1f31636c1cf31f72df576b82b03a4c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set range bounds on the cursor.  <a href="struct_w_t___c_u_r_s_o_r.html#a1f31636c1cf31f72df576b82b03a4c44">More...</a><br /></td></tr>
+<tr class="separator:a1f31636c1cf31f72df576b82b03a4c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Data access</div></td></tr>
 <tr class="memitem:af19f6f9d9c7fc248ab38879032620b2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor,...)</td></tr>
 <tr class="memdesc:af19f6f9d9c7fc248ab38879032620b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the key for the current record.  <a href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">More...</a><br /></td></tr>
@@ -189,6 +192,55 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_access_8c-example.html#_a1">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#_a1">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#_a1">ex_backup_block.c</a>, <a class="el" href="ex_call_center_8c-example.html#_a2">ex_call_center.c</a>, <a class="el" href="ex_col_store_8c-example.html#_a1">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#_a0">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#_a16">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#_a3">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#_a42">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#_a3">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#_a1">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#_a0">ex_stat.c</a>, and <a class="el" href="ex_thread_8c-example.html#_a1">ex_thread.c</a>.</dd>
 </dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1f31636c1cf31f72df576b82b03a4c44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f31636c1cf31f72df576b82b03a4c44">&#9670;&nbsp;</a></span>bound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CURSOR::bound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
+          <td class="paramname"><em>cursor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set range bounds on the cursor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
+    <tr><td class="paramname">config</td><td>configuration string, see <a class="el" href="config_strings.html">Configuration Strings</a>. Permitted values:<br  />
+ <table class="doxtable">
+<tr>
+<th>Name</th><th>Effect</th><th>Values </th></tr>
+<tr>
+<td><code>action</code></td><td>configures whether this call into the api will set or clear range bounds on the given cursor, it takes two values "set" or "clear". If "set" is specified then "bound" must also be specified. If "clear" is specified without any bounds then both will be cleared. The keys relevant to the given bound must have been set prior to the call using <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a>. This configuration is currently a work in progress and should not be used.</td><td>a string, chosen from the following options: <code>"clear"</code>, <code>"set"</code>; default <code>set</code>. </td></tr>
+<tr>
+<td><code>bound</code></td><td>configures which bound is being operated on, it takes two values "lower" and "upper". This configuration is currently a work in progress and should not be used.</td><td>a string, chosen from the following options: <code>"lower"</code>, <code>"upper"</code>; default empty. </td></tr>
+<tr>
+<td><code>inclusive</code></td><td>configures whether the given bound is inclusive or not. This configuration is currently a work in progress and should not be used.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
+
+</div>
+</div>
 <a id="aeea071f192cab12245a50fbe71c3460b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeea071f192cab12245a50fbe71c3460b">&#9670;&nbsp;</a></span>close()</h2>
 
@@ -1119,7 +1171,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a444cdc0952e7f8d55d23173516c7037f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f">WT_CURSOR::update</a></div><div class="ttdeci">int update(WT_CURSOR *cursor)</div><div class="ttdoc">Update an existing record and optionally insert a record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3817</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3840</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a050e8dfd68303048921e528fa591a00c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">WT_CURSOR::session</a></div><div class="ttdeci">WT_SESSION * session</div><div class="ttdoc">The session handle for this cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:200</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aac90d9fbcc031570f924db55f8a1cee3"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">WT_CURSOR::insert</a></div><div class="ttdeci">int insert(WT_CURSOR *cursor)</div><div class="ttdoc">Insert a record and optionally update an existing record.</div></div>
 <div class="ttc" id="agroup__wt_html_ab51931e55a2bc958cb82155aa9bd413f"><div class="ttname"><a href="group__wt.html#ab51931e55a2bc958cb82155aa9bd413f">WT_MODIFY::offset</a></div><div class="ttdeci">size_t offset</div><div class="ttdoc">The zero-based byte offset in the value where the new data is placed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:149</div></div>
