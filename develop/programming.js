@@ -161,6 +161,7 @@ var programming =
       [ "Backup from the command line", "backup.html#backup_util", null ],
       [ "Block-based Incremental backup", "backup.html#backup_incremental-block", null ],
       [ "Log-based Incremental backup", "backup.html#backup_incremental", null ],
+      [ "Export tables using backup cursor", "backup.html#backup_export", null ],
       [ "Backup and O_DIRECT", "backup.html#backup_o_direct", null ]
     ] ],
     [ "Compaction", "compact.html", null ],

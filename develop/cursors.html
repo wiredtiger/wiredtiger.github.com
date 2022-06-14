@@ -118,7 +118,11 @@ Cursor types</h1>
 <tr>
 <th>URI</th><th>Type</th><th>Notes </th></tr>
 <tr>
-<td><code>backup:[query_id]</code></td><td>backup cursor (optionally only returning block incremental ids if <code>query_id</code> is appended)</td><td>key=<code>string</code>, see <a class="el" href="backup.html">Backups</a> for details </td></tr>
+<td><code>backup:</code></td><td>backup cursor</td><td>key=<code>string</code>, see <a class="el" href="backup.html">Backups</a> for details </td></tr>
+<tr>
+<td><code>backup:export</code></td><td>export cursor that generates a text file WiredTiger.export. The file contains metadata for all objects in the database. It can be used in the import process as the value for <code>metadata_file</code> configuration option</td><td>key=<code>string</code>, see <a class="el" href="backup.html#backup_export">Export tables using backup cursor</a> for details </td></tr>
+<tr>
+<td><code>backup:query_id</code></td><td>backup cursor that only returns block incremental ids</td><td>key=<code>string</code>, see <a class="el" href="backup.html">Backups</a> for details </td></tr>
 <tr>
 <td><code>log:</code></td><td>log cursor</td><td>key=<code>(long fileID, long offset, int seqno)</code>,<br  />
  value=<code>(uint64_t txnid, uint32_t rectype,<br  />
@@ -221,7 +225,7 @@ Reading WiredTiger Metadata</h1>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a0503f16bd8f3d05aa3552f229b3a8e1b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">WT_CURSOR::next</a></div><div class="ttdeci">int next(WT_CURSOR *cursor)</div><div class="ttdoc">Return the next record.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___i_t_e_m"><div class="ttname"><a href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></div><div class="ttdoc">A raw item of data to be managed, including a pointer to the data and a length.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:91</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_af85364a5af50b95bbc46c82e72f75c01"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">WT_CURSOR::get_value</a></div><div class="ttdeci">int get_value(WT_CURSOR *cursor,...)</div><div class="ttdoc">Get the value for the current record.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3857</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3854</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -391,6 +391,7 @@ var group__wt =
     [ "WT_STAT_CONN_CURSOR_SWEEP_CLOSED", "group__wt.html#ga0033cbf8339024705bfa2fe7d8ebc203", null ],
     [ "WT_STAT_CONN_CURSOR_SWEEP_EXAMINED", "group__wt.html#ga8537fafa81d33c14901e8642a4d79759", null ],
     [ "WT_STAT_CONN_CURSOR_TRUNCATE", "group__wt.html#ga809fa186a02916a18838bf860b6173eb", null ],
+    [ "WT_STAT_CONN_CURSOR_TRUNCATE_KEYS_DELETED", "group__wt.html#gab510708d7285f1d44c0864c77bd09f8b", null ],
     [ "WT_STAT_CONN_CURSOR_UPDATE", "group__wt.html#ga342eae1a0c6bbf8b7788f7e9fd5fc199", null ],
     [ "WT_STAT_CONN_CURSOR_UPDATE_BYTES", "group__wt.html#gad6e2f762f32fe6459c02485fd0acbff0", null ],
     [ "WT_STAT_CONN_CURSOR_UPDATE_BYTES_CHANGED", "group__wt.html#ga7f1d92ef4a0d98c528050ea88b070de2", null ],
