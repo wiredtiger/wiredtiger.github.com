@@ -1,6 +1,6 @@
 var NAVTREEINDEX1 =
 {
-"command_line.html#util_dump_options":[0,10,7,1,9,1],
+"command_line.html#util_dump_options":[0,4,9,1],
 "command_line.html#util_dump_synopsis":[0,10,7,1,9,0],
 "command_line.html#util_dump_synopsis":[0,4,9,0],
 "command_line.html#util_global_description":[0,4,1],

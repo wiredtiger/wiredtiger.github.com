@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('arch-backup.html',''); initResizable()
 src/cursor/cur_backup_incr.c</code></code></td></tr>
 </table>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
-<h1><a class="anchor" id="autotoc_md0"></a>
+<h1><a class="anchor" id="autotoc_md1"></a>
 Overview</h1>
 <p>Backup in WiredTiger can be performed using the <code>"backup:"</code> cursor. WiredTiger supports four types of backups.</p>
 <ol type="1">
@@ -130,19 +130,19 @@ Overview</h1>
 <li>Target backup</li>
 </ol>
 <p>The following page describes how backup works inside the WiredTiger. Please refer to <a class="el" href="backup.html">Backups</a> for details on how to use each of these types of backups.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Full database</h1>
 <p>When the application opens the backup cursor, internally WiredTiger generates a list of all files in the database that are necessary for the backup. WiredTiger takes both the checkpoint and schema locks to block database file modifications while generating the list files. There is a contract that all files that exist at the time the backup starts exist for the entire time the backup cursor is open. This contract applies to all files in the database, not just files that are included in the generated list.</p>
 <p>WiredTiger log files are also part of the generated file list for backup. There is a contract that the log files do not contain or make visible operations that are added to the log after the backup started that could have adverse affects during recovery and restore. Therefore WiredTiger forces a log file switch when opening the backup cursor. To fulfill the earlier contract that all files must exist during backup, WiredTiger does not use any pre-allocated log files nor does it remove log files during the time the backup cursor is open.</p>
 <p>Once the backup is opened successfully, any checkpoints that exist on the database before backup starts must be retained until the backup cursor is closed. All the newer checkpoints that are created during the backup in progress are cleaned whenever a newer checkpoint is created.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Block-based incremental backup</h1>
 <p>Block-based incremental backup is performed by tracking the modified blocks in the checkpoint. Whenever a new checkpoint occurs on a file, any new or modified blocks in this checkpoint are recorded as a bit string. This bit string information is updated with every new checkpoint.</p>
 <p>Whenever the incremental backup cursor is opened to perform the backup, WiredTiger returns all the file offsets and sizes that are modified from the previous source backup identifier. WiredTiger returns the full file information to be copied for all the new files that are created, renamed or imported into the database after the incremental backup cursor is opened. Refer to <a class="el" href="backup.html#backup_incremental-block">Block-based Incremental backup</a> for more information on how to use the block-based incremental backup.</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Log-based incremental backup</h1>
 <p>When the backup cursor is opened with the <code>target</code> configuration string as <code>"target=(\"log:\")"</code> the log-based incremental backup is performed by adding all the existing log files in the database to the list of files that needs to be copied. Applications wanting to use log files for incremental backup must first disable automatic log file removal using the <code>"log=(remove=false)"</code> configuration to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>. By default, WiredTiger automatically removes log files no longer required for recovery. Refer to <a class="el" href="backup.html#backup_incremental">Log-based Incremental backup</a> for more information on how to use the log-based incremental backup.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Target backup</h1>
 <p>When the backup cursor is opened with the <code>target</code> configuration string as <code>"target="</code>, WiredTiger internally generates a list of targeted files instead of all files like the full backup. If the targeted object is a table, all the indexes and column groups of the table are also backed up.</p>
 <p>Note: There can only be one backup cursor open at a time unless using duplicate backup cursors. The duplicate backup cursors are used for catching up with the log files or with block-based incremental backup. Please refer to <a class="el" href="backup.html#backup_duplicate">Duplicate backup cursors</a> for more details. </p>

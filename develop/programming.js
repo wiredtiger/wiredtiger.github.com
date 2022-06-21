@@ -81,13 +81,14 @@ var programming =
     ] ],
     [ "Managing the transaction timestamp state", "timestamp_txn_api.html", [
       [ "Application timestamp configuration", "timestamp_txn_api.html#timestamp_txn_api_configure", null ],
+      [ "Setting the transaction's commit timestamp", "timestamp_txn_api.html#timestamp_txn_api_commit_timestamp", null ],
+      [ "Setting multiple commit timestamps", "timestamp_txn_api.html#timestamp_txn_api_commit_multi_timestamp", null ],
+      [ "Setting the transaction's read timestamp", "timestamp_txn_api.html#timestamp_txn_api_read_timestamp", null ],
       [ "Querying transaction timestamp information", "timestamp_txn_api.html#timestamp_txn_api_query", null ],
       [ "Configuring transaction timestamp information with WT_SESSION::begin_transaction", "timestamp_txn_api.html#timestamp_txn_api_begin", null ],
       [ "Configuring transaction timestamp information with WT_SESSION::commit_transaction", "timestamp_txn_api.html#timestamp_txn_api_commit", null ],
       [ "Configuring transaction timestamp information with WT_SESSION::prepare_transaction", "timestamp_txn_api.html#timestamp_txn_api_prepare", null ],
-      [ "Configuring transaction timestamp information with WT_SESSION::timestamp_transaction", "timestamp_txn_api.html#timestamp_txn_api_timestamp_transaction", null ],
-      [ "Setting the transaction's commit timestamp", "timestamp_txn_api.html#timestamp_txn_api_commit_timestamp", null ],
-      [ "Setting the transaction's read timestamp", "timestamp_txn_api.html#timestamp_txn_api_read_timestamp", null ]
+      [ "Configuring transaction timestamp information with WT_SESSION::timestamp_transaction", "timestamp_txn_api.html#timestamp_txn_api_timestamp_transaction", null ]
     ] ],
     [ "Using transaction prepare with timestamps", "timestamp_prepare.html", [
       [ "Configuring ignore_prepare", "timestamp_prepare.html#timestamp_prepare_ignore_prepare", null ]

@@ -26,7 +26,7 @@ var index =
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "WiredTiger Change Log", "md_changelog.html", [
-      [ "WiredTiger release 11.0.1, 2022-XX-XX", "md_changelog.html#autotoc_md10", null ]
+      [ "WiredTiger release 11.0.1, 2022-XX-XX", "md_changelog.html#autotoc_md11", null ]
     ] ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
       [ "Upgrading to Version 11.0.1", "upgrading.html#version_1101", null ]

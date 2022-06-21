@@ -106,6 +106,23 @@ existed" and is visible regardless of timestamp. This makes sense when loading i
 <p>There are additional timestamp usage checks in diagnostic builds. While building in diagnostic mode to enable these usage checks will decrease application performance, and applications should not configure diagnostic builds for production use, they are strongly recommended during development.</p>
 <p>If WiredTiger detects a violation of timestamp policy, an error message will be logged and the transaction commit will fail. In diagnostic builds, the library will log an error message and drop core at the failing check.</p>
 <dl class="section warning"><dt>Warning</dt><dd>These are best-effort checks by WiredTiger, and there are cases where application misbehavior will not be detected.</dd></dl>
+<h1><a class="anchor" id="timestamp_txn_api_commit_timestamp"></a>
+Setting the transaction's commit timestamp</h1>
+<p>The <code>commit</code> time is the time at which other transactions with appropriately set read timestamps will see the transaction's updates.</p>
+<p>The commit timestamp can be set at any point in the transaction's lifecycle. For prepared transactions, however, it can only be set after the transaction has been successfully prepared.</p>
+<dl class="section warning"><dt>Warning</dt><dd>Commit (and prepare) timestamps must not be set in the past of any read timestamp that has ever been used. This rule is enforced by assertions in diagnostic builds, but if applications violate this rule in non-diagnostic builds, data consistency can be violated. Similarly, because reading without a read timestamp reads the latest values for all keys, one must not commit into the past of such a transaction.</dd></dl>
+<p>Applications using timestamps usually specify a timestamp to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> method to set the commit time for all updates in the transaction.</p>
+<p>For prepared transactions, the commit timestamp must not be before the prepare timestamp. Otherwise, the commit timestamp must be after the stable timestamp.</p>
+<h1><a class="anchor" id="timestamp_txn_api_commit_multi_timestamp"></a>
+Setting multiple commit timestamps</h1>
+<p>Applications may set different commit timestamps for different updates in a single transaction by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f" title="Set a timestamp on a transaction.">WT_SESSION::timestamp_transaction</a> repeatedly to set a new commit timestamp between updates in the transaction. Each new commit timestamp is applied to any subsequent updates. This gives applications the ability to commit updates that take effect at different times; that is, it is possible to create chains of updates where each update appears at a different time to readers. For transactions that set multiple commit timestamps, the first commit timestamp set is also required to be the earliest: the second and subsequent commit timestamps may not be earlier than the first commit timestamp. This feature is not compatible with prepared transactions, which must use only a single commit timestamp.</p>
+<p>This functionality is generally available as a mechanism to allow an optimized implementation of re-creating a timestamp view of a data set. For example, in a MongoDB replica set, content is generated on one node where transactions are assigned a single commit timestamp, that content is re-created on each other member in a replica set. When re-creating the content multiple changes from the original node are batched together into a single WiredTiger transaction.</p>
+<h1><a class="anchor" id="timestamp_txn_api_read_timestamp"></a>
+Setting the transaction's read timestamp</h1>
+<p>Setting the transaction's read timestamp causes a transaction to not see any commits with a newer timestamp. (Updates may still conflict with commits having a newer timestamp, of course.),</p>
+<p>The read timestamp may be set to any time equal to or after the system's <code>oldest</code> timestamp.</p>
+<p>This restriction is enforced and applications can rely on an error return to detect attempts to set the read timestamp older than the <code>oldest</code> timestamp.</p>
+<p>The read timestamp may only be set once in the lifetime of a transaction.</p>
 <h1><a class="anchor" id="timestamp_txn_api_query"></a>
 Querying transaction timestamp information</h1>
 <p>The following table lists the timestamps that can be queried using <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aeec1349581b7f97fc90573550fff8b6b" title="Query the session&#39;s transaction timestamp state.">WT_SESSION::query_timestamp</a>. In all cases, a timestamp of 0 is returned if the timestamp is not available or has not been set, for example, the <code>commit</code> timestamp if no commit timestamp has been set.</p>
@@ -167,20 +184,6 @@ Configuring transaction timestamp information with WT_SESSION::timestamp_transac
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">read_timestamp </td><td class="markdownTableBodyNone">&gt;= oldest </td><td class="markdownTableBodyNone">the transaction's read timestamp, see <a class="el" href="timestamp_txn_api.html#timestamp_txn_api_read_timestamp">Setting the transaction's read timestamp</a> for details  </td></tr>
 </table>
-<h1><a class="anchor" id="timestamp_txn_api_commit_timestamp"></a>
-Setting the transaction's commit timestamp</h1>
-<p>The <code>commit</code> time is the time at which other transactions with appropriately set read timestamps will see the transaction's updates.</p>
-<p>The commit timestamp can be set at any point in the transaction's lifecycle. For prepared transactions, however, it can only be set after the transaction has been successfully prepared.</p>
-<dl class="section warning"><dt>Warning</dt><dd>Commit (and prepare) timestamps must not be set in the past of any read timestamp that has ever been used. This rule is enforced by assertions in diagnostic builds, but if applications violate this rule in non-diagnostic builds, data consistency can be violated. Similarly, because reading without a read timestamp reads the latest values for all keys, one must not commit into the past of such a transaction.</dd></dl>
-<p>Applications using timestamps usually specify a timestamp to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2" title="Commit the current transaction.">WT_SESSION::commit_transaction</a> method to set the commit time for all updates in the transaction.</p>
-<p>Applications may set different commit timestamps for different updates in a single transaction by calling <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f" title="Set a timestamp on a transaction.">WT_SESSION::timestamp_transaction</a> repeatedly to set a new commit timestamp between updates in the transaction. Each new commit timestamp is applied to any subsequent updates. This gives applications the ability to commit updates that take effect at different times; that is, it is possible to create chains of updates where each update appears at a different time to readers. For transactions that set multiple commit timestamps, the first commit timestamp set is also required to be the earliest: the second and subsequent commit timestamps may not be earlier than the first commit timestamp. This feature is not compatible with prepared transactions, which must use only a single commit timestamp.</p>
-<p>For prepared transactions, the commit timestamp must not be before the prepare timestamp. Otherwise, the commit timestamp must be after the stable timestamp.</p>
-<h1><a class="anchor" id="timestamp_txn_api_read_timestamp"></a>
-Setting the transaction's read timestamp</h1>
-<p>Setting the transaction's read timestamp causes a transaction to not see any commits with a newer timestamp. (Updates may still conflict with commits having a newer timestamp, of course.),</p>
-<p>The read timestamp may be set to any time equal to or after the system's <code>oldest</code> timestamp.</p>
-<p>This restriction is enforced and applications can rely on an error return to detect attempts to set the read timestamp older than the <code>oldest</code> timestamp.</p>
-<p>The read timestamp may only be set once in the lifetime of a transaction. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
