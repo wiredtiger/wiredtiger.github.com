@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 10.0.2</span>
+   &#160;<span id="projectnumber">Version 11.0.0</span>
    </div>
-   <div id="projectbrief"><!-- 10.0.2 --></div>
+   <div id="projectbrief"><!-- 11.0.0 --></div>
   </td>
  </tr>
  </tbody>
@@ -156,12 +156,12 @@ Public Attributes</h2></td></tr>
 
 <p>Callback to handle error messages; by default, error messages are written to the stderr stream. </p>
 <p>See <a class="el" href="message_handling.html#event_message_handling">Message handling using the WT_EVENT_HANDLER</a> for more information.</p>
-<p>Errors that require the application to exit and restart will have their <code>error</code> value set to <code>WT_PANIC</code>. The application can exit immediately when <code>WT_PANIC</code> is passed to an event handler, there is no reason to return into WiredTiger.</p>
+<p>Errors that require the application to exit and restart will have their <code>error</code> value set to <code>WT_PANIC</code>. The application can exit immediately when <code>WT_PANIC</code> is passed to an event handler; there is no reason to return into WiredTiger.</p>
 <p>Event handler returns are not ignored: if the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail, and may even cause operation or library failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the WiredTiger session handle in use when the error was generated. The handle may have been created by the application or automatically by WiredTiger. </td></tr>
-    <tr><td class="paramname">error</td><td>a return value from a WiredTiger, ISO C, or POSIX standard API, which can be converted to a string using <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string.">WT_SESSION::strerror</a> </td></tr>
+    <tr><td class="paramname">error</td><td>a return value from a WiredTiger, ISO C, or POSIX standard API call, which can be converted to a string using <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string.">WT_SESSION::strerror</a> </td></tr>
     <tr><td class="paramname">message</td><td>an error string </td></tr>
   </table>
   </dd>

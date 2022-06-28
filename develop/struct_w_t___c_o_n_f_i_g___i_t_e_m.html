@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 10.0.2</span>
+   &#160;<span id="projectnumber">Version 11.0.0</span>
    </div>
-   <div id="projectbrief"><!-- 10.0.2 --></div>
+   <div id="projectbrief"><!-- 11.0.0 --></div>
   </td>
  </tr>
  </tbody>
@@ -178,7 +178,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>The value of a configuration string. </p>
 <p>Regardless of the type of the configuration string (boolean, int, list or string), the <code>str</code> field will reference the value of the configuration string.</p>
-<p>The bytes referenced by <code>str</code> are <b>not</b> nul-terminated, use the <code>len</code> field instead of a terminating nul byte. </p>
+<p>The bytes referenced by <code>str</code> are <b>not</b> nul-terminated. Use the <code>len</code> field instead of a terminating nul byte. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_encrypt_8c-example.html#a9">ex_encrypt.c</a>, <a class="el" href="ex_file_system_8c-example.html#a12">ex_file_system.c</a>, <a class="el" href="nop_encrypt_8c-example.html#a8">nop_encrypt.c</a>, <a class="el" href="rotn_encrypt_8c-example.html#a8">rotn_encrypt.c</a>, and <a class="el" href="sodium_encrypt_8c-example.html#a9">sodium_encrypt.c</a>.</dd>
 </dl>
 
@@ -215,7 +215,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>The numeric value of a configuration boolean or integer. </p>
 <p>If the configuration string's value is "true" or "false", the <code>val</code> field will be set to 1 (true), or 0 (false).</p>
-<p>If the configuration string can be legally interpreted as an integer, using the strtoll function rules as specified in ISO/IEC 9899:1990 ("ISO C90"), that integer will be stored in the <code>val</code> field. </p>
+<p>If the configuration string can be legally interpreted as an integer, using the <code>strtoll</code> function rules as specified in ISO/IEC 9899:1990 ("ISO C90"), that integer will be stored in the <code>val</code> field. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_file_system_8c-example.html#a14">ex_file_system.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a9">rotn_encrypt.c</a>.</dd>
 </dl>
 

@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 10.0.2</span>
+   &#160;<span id="projectnumber">Version 11.0.0</span>
    </div>
-   <div id="projectbrief"><!-- 10.0.2 --></div>
+   <div id="projectbrief"><!-- 11.0.0 --></div>
   </td>
  </tr>
  </tbody>
@@ -96,21 +96,21 @@ $(document).ready(function(){initNavTree('struct_w_t___f_i_l_e___h_a_n_d_l_e.htm
 </div><!--header-->
 <div class="contents">
 
-<p>A file handle implementation returned by WT_FILE_SYSTEM::open_file.  
+<p>A file handle implementation returned by <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99" title="Open a handle for a named file system object.">WT_FILE_SYSTEM::fs_open_file</a>.  
  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a8a8cadc351799d3f5c1b55d266cff780"><td class="memItemLeft" align="right" valign="top"><a id="a8a8cadc351799d3f5c1b55d266cff780"></a>
 <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a8a8cadc351799d3f5c1b55d266cff780">file_system</a></td></tr>
-<tr class="memdesc:a8a8cadc351799d3f5c1b55d266cff780"><td class="mdescLeft">&#160;</td><td class="mdescRight">The enclosing file system, set by WT_FILE_SYSTEM::open_file. <br /></td></tr>
+<tr class="memdesc:a8a8cadc351799d3f5c1b55d266cff780"><td class="mdescLeft">&#160;</td><td class="mdescRight">The enclosing file system, set by <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99" title="Open a handle for a named file system object.">WT_FILE_SYSTEM::fs_open_file</a>. <br /></td></tr>
 <tr class="separator:a8a8cadc351799d3f5c1b55d266cff780"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a2c8838d62efa219404eeb006bddd5"><td class="memItemLeft" align="right" valign="top"><a id="ad2a2c8838d62efa219404eeb006bddd5"></a>
 char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad2a2c8838d62efa219404eeb006bddd5">name</a></td></tr>
-<tr class="memdesc:ad2a2c8838d62efa219404eeb006bddd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the file, set by WT_FILE_SYSTEM::open_file. <br /></td></tr>
+<tr class="memdesc:ad2a2c8838d62efa219404eeb006bddd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the file, set by <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99" title="Open a handle for a named file system object.">WT_FILE_SYSTEM::fs_open_file</a>. <br /></td></tr>
 <tr class="separator:ad2a2c8838d62efa219404eeb006bddd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4376c70336f8a0bbd8bf1c91749aeed"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed">close</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
-<tr class="memdesc:aa4376c70336f8a0bbd8bf1c91749aeed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a file handle, the handle will not be further accessed by WiredTiger.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed">More...</a><br /></td></tr>
+<tr class="memdesc:aa4376c70336f8a0bbd8bf1c91749aeed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a file handle.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed">More...</a><br /></td></tr>
 <tr class="separator:aa4376c70336f8a0bbd8bf1c91749aeed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b68b388279c64add7b0ef893b1d2e00"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5b68b388279c64add7b0ef893b1d2e00">fh_advise</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, wt_off_t offset, wt_off_t len, int advice)</td></tr>
 <tr class="memdesc:a5b68b388279c64add7b0ef893b1d2e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate expected future use of file ranges, based on the POSIX 1003.1 standard fadvise.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5b68b388279c64add7b0ef893b1d2e00">More...</a><br /></td></tr>
@@ -156,8 +156,8 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr class="separator:ab69c295b076627307a6528793d7a9b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A file handle implementation returned by WT_FILE_SYSTEM::open_file. </p>
-<p><b>Thread safety:</b> Unless explicitly stated otherwise, WiredTiger may invoke methods on the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> interface from multiple threads concurrently. It is the responsibility of the implementation to protect any shared data.</p>
+<div class="textblock"><p>A file handle implementation returned by <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99" title="Open a handle for a named file system object.">WT_FILE_SYSTEM::fs_open_file</a>. </p>
+<p><b>Thread safety:</b> Unless explicitly stated otherwise, WiredTiger may invoke methods on the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> interface from multiple threads concurrently. It is the responsibility of the implementation to protect any shared data.</p>
 <p>See <a class="el" href="custom_file_systems.html">Custom File Systems</a> for more information. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_file_system_8c-example.html#_a2">ex_file_system.c</a>.</dd>
 </dl>
@@ -174,11 +174,12 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
       </table>
 </div><div class="memdoc">
 
-<p>Close a file handle, the handle will not be further accessed by WiredTiger. </p>
+<p>Close a file handle. </p>
+<p>The handle will not be further accessed by WiredTiger.</p>
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
   </table>
   </dd>
@@ -205,7 +206,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">offset</td><td>the file offset </td></tr>
     <tr><td class="paramname">len</td><td>the size of the advisory </td></tr>
@@ -237,7 +238,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">offset</td><td>desired file size after extension </td></tr>
   </table>
@@ -267,7 +268,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">offset</td><td>desired file size after extension </td></tr>
   </table>
@@ -294,7 +295,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">lock</td><td>whether to lock or unlock </td></tr>
   </table>
@@ -322,7 +323,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">mapped_regionp</td><td>a reference to a memory location into which should be stored a pointer to the start of the mapped region </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lengthp</td><td>a reference to a memory location into which should be stored the length of the region </td></tr>
@@ -352,7 +353,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">map</td><td>a location in the mapped region unlikely to be used in the near future </td></tr>
     <tr><td class="paramname">length</td><td>the length of the mapped region to discard </td></tr>
@@ -382,7 +383,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">map</td><td>a location in the mapped region likely to be used in the near future </td></tr>
     <tr><td class="paramname">length</td><td>the size of the mapped region to preload </td></tr>
@@ -411,7 +412,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">offset</td><td>the offset in the file to start reading from </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">len</td><td>the amount to read </td></tr>
@@ -440,7 +441,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">sizep</td><td>the size of the file </td></tr>
   </table>
@@ -468,7 +469,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
   </table>
   </dd>
@@ -495,7 +496,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
   </table>
   </dd>
@@ -523,7 +524,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">offset</td><td>desired file size after truncate </td></tr>
   </table>
@@ -551,7 +552,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">mapped_region</td><td>a pointer to the start of the mapped region </td></tr>
     <tr><td class="paramname">length</td><td>the length of the mapped region </td></tr>
@@ -581,7 +582,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> </td></tr>
+    <tr><td class="paramname">file_handle</td><td>the <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> </td></tr>
     <tr><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
     <tr><td class="paramname">offset</td><td>offset at which to start writing </td></tr>
     <tr><td class="paramname">length</td><td>amount of data to write </td></tr>

@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 10.0.2</span>
+   &#160;<span id="projectnumber">Version 11.0.0</span>
    </div>
-   <div id="projectbrief"><!-- 10.0.2 --></div>
+   <div id="projectbrief"><!-- 11.0.0 --></div>
   </td>
  </tr>
  </tbody>
@@ -103,7 +103,7 @@ Application timestamp configuration</h1>
 existed" and is visible regardless of timestamp. This makes sense when loading initial data into an object, but once timestamps are used to update a particular value, subsequent updates will normally also have a commit timestamp. Similarly, because implicit transactions have no associated timestamp, implicit transactions are generally only useful until timestamps have been used to update a table.</p>
 <p>These requirements can be changed on a per-table basis, to specify no updates to a table have timestamps, with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method's <code>"write_timestamp_usage=(never)"</code> configuration.</p>
 <p>These requirements can be changed on a per-transaction basis, to permit updates without timestamps, after a key has already been updated using a timestamp, with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf" title="Start a transaction in this session.">WT_SESSION::begin_transaction</a> method's <code>no_timestamp</code> configuration. Updating a key without a commit timestamp, after making updates with a commit timestamp, will discard all prior historical values, and future reads will read the new value regardless of read timestamp. In other words, readers with already acquired snapshots will see prior historical values based on their timestamps. Readers acquiring a snapshot after the commit of the update without a timestamp will not see prior historical values regardless of their read timestamps.</p>
-<p>There are additional timestamp usage checks in diagnostic builds. While building in diagnostic mode to enable these usage checks will decrease application performance, and applications should not configure diagnostic builds for production use, they are strongly recommended during development.</p>
+<p>There are additional timestamp usage checks in diagnostic builds. Building in diagnostic mode to enable these usage checks will decrease application performance. While applications should not configure diagnostic builds for production use, they are strongly recommended during development.</p>
 <p>If WiredTiger detects a violation of timestamp policy, an error message will be logged and the transaction commit will fail. In diagnostic builds, the library will log an error message and drop core at the failing check.</p>
 <dl class="section warning"><dt>Warning</dt><dd>These are best-effort checks by WiredTiger, and there are cases where application misbehavior will not be detected.</dd></dl>
 <h1><a class="anchor" id="timestamp_txn_api_commit_timestamp"></a>

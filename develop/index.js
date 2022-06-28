@@ -25,11 +25,8 @@ var index =
     [ "Writing WiredTiger applications", "programming.html", "programming" ],
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
-    [ "WiredTiger Change Log", "md_changelog.html", [
-      [ "WiredTiger release 11.0.1, 2022-XX-XX", "md_changelog.html#autotoc_md11", null ]
-    ] ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
-      [ "Upgrading to Version 11.0.1", "upgrading.html#version_1101", null ]
+      [ "Upgrading to Version 11.0.0", "upgrading.html#version_1100", null ]
     ] ],
     [ "WiredTiger licensing", "license.html", [
       [ "3rd party software always included in the WiredTiger library", "license.html#license_library", null ],

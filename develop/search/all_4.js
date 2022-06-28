@@ -1,17 +1,11 @@
 var searchData=
 [
-  ['data_20file_20format_58',['Data File Format',['../arch-data-file.html',1,'arch-toc-mem-disk']]],
-  ['data_20handles_59',['Data Handles',['../arch-dhandle.html',1,'arch-toc-data-src']]],
-  ['data_20organization_60',['Data Organization',['../arch-toc-data-org.html',1,'arch-index']]],
-  ['data_20sources_61',['Data Sources',['../arch-toc-data-src.html',1,'arch-index']]],
-  ['data_62',['data',['../group__wt.html#a57f5e62aa968275d7e398cfa70e49450',1,'WT_ITEM::data()'],['../group__wt.html#a263d61ab5ccb1fb61f1d5c32d42e7ad1',1,'WT_MODIFY::data()']]],
-  ['data_20sources_63',['Data Sources',['../data_sources.html',1,'cursors']]],
-  ['database_20configuration_64',['Database Configuration',['../database_config.html',1,'admin']]],
-  ['decompress_65',['decompress',['../struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a12e35ffbbe63b041c0571fb622b7f9da',1,'WT_COMPRESSOR']]],
-  ['decrypt_66',['decrypt',['../struct_w_t___e_n_c_r_y_p_t_o_r.html#abad5447ebeb99d06b9024df435cffc26',1,'WT_ENCRYPTOR']]],
-  ['drop_67',['drop',['../struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4569fa21343c2681357dedb4dd5facc1',1,'WT_DATA_SOURCE::drop()'],['../struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70',1,'WT_SESSION::drop()']]],
-  ['dump_20formats_68',['Dump Formats',['../dump_formats.html',1,'command_line']]],
-  ['durability_20overview_69',['Durability overview',['../durability_overview.html',1,'programming']]],
-  ['database_20home_20directory_70',['Database Home Directory',['../home.html',1,'admin']]],
-  ['database_20read_2donly_20mode_71',['Database read-only mode',['../readonly.html',1,'programming']]]
+  ['eviction_71',['Eviction',['../arch-eviction.html',1,'arch-toc-in-mem'],['../eviction.html',1,'programming']]],
+  ['encrypt_72',['encrypt',['../struct_w_t___e_n_c_r_y_p_t_o_r.html#a0f0f363b689363d36ffce7fdf8a337ac',1,'WT_ENCRYPTOR']]],
+  ['encryptors_73',['Encryptors',['../encryption.html',1,'programming']]],
+  ['equals_74',['equals',['../struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b',1,'WT_CURSOR']]],
+  ['err_5fprintf_75',['err_printf',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6d58298e356dbf58ac854c3d1af99678',1,'WT_EXTENSION_API']]],
+  ['error_20handling_76',['Error handling',['../error_handling.html',1,'programming']]],
+  ['extending_20wiredtiger_77',['Extending WiredTiger',['../extensions.html',1,'encryption']]],
+  ['extract_78',['extract',['../struct_w_t___e_x_t_r_a_c_t_o_r.html#a4db101f00fce80af9ebd4f29f56f7b6a',1,'WT_EXTRACTOR']]]
 ];

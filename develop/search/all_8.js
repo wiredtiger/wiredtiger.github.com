@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['history_20store_116',['History Store',['../arch-hs.html',1,'arch-toc-on-disk']]],
-  ['handle_5fclose_117',['handle_close',['../struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e',1,'WT_EVENT_HANDLER']]],
-  ['handle_5ferror_118',['handle_error',['../struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f',1,'WT_EVENT_HANDLER']]],
-  ['handle_5fmessage_119',['handle_message',['../struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1',1,'WT_EVENT_HANDLER']]],
-  ['handle_5fprogress_120',['handle_progress',['../struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b',1,'WT_EVENT_HANDLER']]],
-  ['huffman_20encoding_121',['Huffman Encoding',['../huffman.html',1,'file_formats']]]
+  ['in_20memory_20concepts_121',['In Memory Concepts',['../arch-toc-in-mem.html',1,'arch-index']]],
+  ['in_2dmemory_20databases_122',['In-memory databases',['../in_memory.html',1,'programming']]],
+  ['insert_123',['insert',['../struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3',1,'WT_CURSOR']]],
+  ['is_5fnew_124',['is_new',['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39',1,'WT_CONNECTION']]],
+  ['instrumentation_20and_20introspection_20with_20xray_125',['Instrumentation and introspection with XRay',['../tool-xray.html',1,'tool-index']]]
 ];

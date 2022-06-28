@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 10.0.2</span>
+   &#160;<span id="projectnumber">Version 11.0.0</span>
    </div>
-   <div id="projectbrief"><!-- 10.0.2 --></div>
+   <div id="projectbrief"><!-- 11.0.0 --></div>
   </td>
  </tr>
  </tbody>
@@ -135,7 +135,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1843292630960309129dcfe00e1a3817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the log.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817">More...</a><br /></td></tr>
 <tr class="separator:a1843292630960309129dcfe00e1a3817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac85541ca42d7596857d9f50e03c78eb5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5">log_printf</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *format,...)</td></tr>
-<tr class="memdesc:ac85541ca42d7596857d9f50e03c78eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="message">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called).  <a href="struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5">More...</a><br /></td></tr>
+<tr class="memdesc:ac85541ca42d7596857d9f50e03c78eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="Message.">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called).  <a href="struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5">More...</a><br /></td></tr>
 <tr class="separator:ac85541ca42d7596857d9f50e03c78eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d24b02549009f78b7c6463da0247614"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *uri, const char *newuri, const char *config)</td></tr>
 <tr class="memdesc:a1d24b02549009f78b7c6463da0247614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an object.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">More...</a><br /></td></tr>
@@ -183,7 +183,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6550c9079198955c5071583941c85bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a transactionally consistent snapshot of a database or set of individual objects.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf">More...</a><br /></td></tr>
 <tr class="separator:a6550c9079198955c5071583941c85bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2117021276bad0e6f541e61a5459ec59"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59">reset_snapshot</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
-<tr class="memdesc:a2117021276bad0e6f541e61a5459ec59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the snapshot.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59">More...</a><br /></td></tr>
+<tr class="memdesc:a2117021276bad0e6f541e61a5459ec59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the snapshot used for database visibility.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59">More...</a><br /></td></tr>
 <tr class="separator:a2117021276bad0e6f541e61a5459ec59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d108fab498cfddbb09ee23e3321a88d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">transaction_pinned_range</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, uint64_t *range)</td></tr>
 <tr class="memdesc:a1d108fab498cfddbb09ee23e3321a88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transaction ID range pinned by the session handle.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">More...</a><br /></td></tr>
@@ -253,27 +253,27 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>access_pattern_hint</code></td><td>It is recommended that workloads that consist primarily of updates and/or point queries specify <code>random</code>. Workloads that do many cursor scans through large ranges of data specify <code>sequential</code> and other workloads specify <code>none</code>. The option leads to an advisory call to an appropriate operating system API where available.</td><td>a string, chosen from the following options: <code>"none"</code>, <code>"random"</code>, <code>"sequential"</code>; default <code>none</code>. </td></tr>
+<td><code>access_pattern_hint</code></td><td>It is recommended that workloads that consist primarily of updates and/or point queries specify <code>random</code>. Workloads that do many cursor scans through large ranges of data should specify <code>sequential</code> and other workloads should specify <code>none</code>. The option leads to an appropriate operating system advisory call where available.</td><td>a string, chosen from the following options: <code>"none"</code>, <code>"random"</code>, <code>"sequential"</code>; default <code>none</code>. </td></tr>
 <tr>
 <td><code>app_metadata</code></td><td>application-owned metadata for this object.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>assert = (</code></td><td>declare timestamp usage.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>assert = (</code></td><td>declare timestamp usage.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;read_timestamp</code></td><td>check timestamps are <code>always</code> or <code>never</code> used on reads with this table, writing an error message if policy is violated. If the library was built in diagnostic mode, drop core at the failing check.</td><td>a string, chosen from the following options: <code>"always"</code>, <code>"never"</code>, <code>"none"</code>; default <code>none</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;read_timestamp</code></td><td>if set, check that timestamps are <code>always</code> or <code>never</code> used on reads with this table, writing an error message if the policy is violated. If the library was built in diagnostic mode, drop core at the failing check.</td><td>a string, chosen from the following options: <code>"always"</code>, <code>"never"</code>, <code>"none"</code>; default <code>none</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache. Not compatible with LSM tables; see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if log is enabled in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if <code>log</code> is enabled in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>if false, this object has checkpoint-level durability.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>os_cache_max</code></td><td>maximum system buffer cache usage, in bytes. If non-zero, evict object blocks from the system buffer cache after that many bytes from this object are read or written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>os_cache_max</code></td><td>maximum system buffer cache usage, in bytes. If non-zero, evict object blocks from the system buffer cache after that many bytes from this object are read or written into the buffer cache.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
 <td><code>write_timestamp_usage</code></td><td>describe how timestamps are expected to be used on table modifications. The choices are the default, which ensures that once timestamps are used for a key, they are always used, and also that multiple updates to a key never use decreasing timestamps and <code>never</code> which enforces that timestamps are never used for a table. (The <code>always</code>, <code>key_consistent</code>, <code>mixed_mode</code> and <code>ordered</code> choices should not be used, and are retained for backward compatibility.).</td><td>a string, chosen from the following options: <code>"always"</code>, <code>"key_consistent"</code>, <code>"mixed_mode"</code>, <code>"never"</code>, <code>"none"</code>, <code>"ordered"</code>; default <code>none</code>. </td></tr>
 </table>
@@ -351,25 +351,25 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>ignore_prepare</code></td><td>whether to ignore the updates by other prepared transactions as part of read operations of this transaction. When <code>true</code>, forces the transaction to be read-only. Use <code>force</code> to ignore prepared updates and permit writes (see <a class="el" href="timestamp_prepare.html#timestamp_prepare_ignore_prepare">Configuring ignore_prepare</a> for more information).</td><td>a string, chosen from the following options: <code>"false"</code>, <code>"force"</code>, <code>"true"</code>; default <code>false</code>. </td></tr>
+<td><code>ignore_prepare</code></td><td>whether to ignore updates by other prepared transactions when doing of read operations of this transaction. When <code>true</code>, forces the transaction to be read-only. Use <code>force</code> to ignore prepared updates and permit writes (see <a class="el" href="timestamp_prepare.html#timestamp_prepare_ignore_prepare">Configuring ignore_prepare</a> for more information).</td><td>a string, chosen from the following options: <code>"false"</code>, <code>"force"</code>, <code>"true"</code>; default <code>false</code>. </td></tr>
 <tr>
 <td><code>isolation</code></td><td>the isolation level for this transaction; defaults to the session's isolation level.</td><td>a string, chosen from the following options: <code>"read-uncommitted"</code>, <code>"read-committed"</code>, <code>"snapshot"</code>; default empty. </td></tr>
 <tr>
 <td><code>name</code></td><td>name of the transaction for tracing and debugging.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>no_timestamp</code></td><td>allow a commit without a timestamp, creating a value that has "always existed" and is visible regardless of timestamp. See <a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>no_timestamp</code></td><td>allow a commit without a timestamp, creating values that have "always existed" and are visible regardless of timestamp. See <a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the time taken to complete operations in this transaction. Time is measured in real time milliseconds from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to 1; default <code>0</code>. </td></tr>
+<td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the time taken to complete operations in this transaction. Time is measured in real time milliseconds from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to <code>1</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>priority</code></td><td>priority of the transaction for resolving conflicts. Transactions with higher values are less likely to abort.</td><td>an integer between -100 and 100; default <code>0</code>. </td></tr>
+<td><code>priority</code></td><td>priority of the transaction for resolving conflicts. Transactions with higher values are less likely to abort.</td><td>an integer between <code>-100</code> and <code>100</code>; default <code>0</code>. </td></tr>
 <tr>
 <td><code>read_timestamp</code></td><td>read using the specified timestamp. The value must not be older than the current oldest timestamp. See <a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>roundup_timestamps = (</code></td><td>round up timestamps of the transaction.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>roundup_timestamps = (</code></td><td>round up timestamps of the transaction.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;prepared</code></td><td>applicable only for prepared transactions, and intended only for special-purpose use, see <a class="el" href="timestamp_prepare_roundup.html">Automatic prepare timestamp rounding</a>. Allows the prepare timestamp and the commit timestamp of this transaction to be rounded up to be no older than the oldest timestamp, and allows violating the usual restriction that the prepare timestamp must be newer than the stable timestamp. Specifically: at transaction prepare, if the prepare timestamp is less than or equal to the oldest timestamp, the prepare timestamp will be rounded to the oldest timestamp. Subsequently, at commit time, if the commit timestamp is less than the (now rounded) prepare timestamp, the commit timestamp will be rounded up to it and thus to at least oldest. Neither timestamp will be checked against the stable timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;prepared</code></td><td>applicable only for prepared transactions, and intended only for special-purpose use. See <a class="el" href="timestamp_prepare_roundup.html">Automatic prepare timestamp rounding</a>. Allows the prepare timestamp and the commit timestamp of this transaction to be rounded up to be no older than the oldest timestamp, and allows violating the usual restriction that the prepare timestamp must be newer than the stable timestamp. Specifically: at transaction prepare, if the prepare timestamp is less than or equal to the oldest timestamp, the prepare timestamp will be rounded to the oldest timestamp. Subsequently, at commit time, if the commit timestamp is less than the (now rounded) prepare timestamp, the commit timestamp will be rounded up to it and thus to at least oldest. Neither timestamp will be checked against the stable timestamp.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;read</code></td><td>if the read timestamp is less than the oldest timestamp, the read timestamp will be rounded up to the oldest timestamp, see <a class="el" href="timestamp_misc.html#timestamp_read_roundup">Rounding up the read timestamp</a>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;read</code></td><td>if the read timestamp is less than the oldest timestamp, the read timestamp will be rounded up to the oldest timestamp. See <a class="el" href="timestamp_misc.html#timestamp_read_roundup">Rounding up the read timestamp</a>.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -413,7 +413,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 <p>Write a transactionally consistent snapshot of a database or set of individual objects. </p>
 <p>When timestamps are not in use, the checkpoint includes all transactions committed before the checkpoint starts. When timestamps are in use and the checkpoint runs with <code>use_timestamp=true</code> (the default), updates committed with a timestamp after the <code>stable</code> timestamp, in tables configured for checkpoint-level durability, are not included in the checkpoint. Updates committed in tables configured for commit-level durability are always included in the checkpoint. See <a class="el" href="durability_checkpoint.html">Checkpoint-level durability</a> and <a class="el" href="durability_log.html">Commit-level durability</a> for more information.</p>
-<p>Calling the checkpoint method multiple times serializes the checkpoints, new checkpoint calls wait for running checkpoint calls to complete.</p>
+<p>Calling the checkpoint method multiple times serializes the checkpoints; new checkpoint calls wait for running checkpoint calls to complete.</p>
 <p>Existing named checkpoints may optionally be discarded.</p>
 <p>This method must not be called on a session with an active transaction.<br  />
 <br  />
@@ -466,11 +466,11 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>drop</code></td><td>specify a list of checkpoints to drop. The list may additionally contain one of the following keys: <code>"from=all"</code> to drop all checkpoints, <code>"from=&lt;checkpoint&gt;"</code> to drop all checkpoints after and including the named checkpoint, or <code>"to=&lt;checkpoint&gt;"</code> to drop all checkpoints before and including the named checkpoint. Checkpoints cannot be dropped if open in a cursor. While a hot backup is in progress, checkpoints created prior to the start of the backup cannot be dropped.</td><td>a list of strings; default empty. </td></tr>
 <tr>
-<td><code>force</code></td><td>if false (the default), checkpoints may be skipped if the underlying object has not been modified, if true, this option forces the checkpoint.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>force</code></td><td>if false (the default), checkpoints may be skipped if the underlying object has not been modified. If true, this option forces the checkpoint.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>name</code></td><td>if set, specify a name for the checkpoint (note that checkpoints including LSM trees may not be named).</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>target</code></td><td>if non-empty, checkpoint the list of objects. Checkpointing a list of objects separately from a database-wide checkpoint can lead to data inconsistencies, see <a class="el" href="durability_checkpoint.html#checkpoint_target">Checkpointing specific objects</a> for more information.</td><td>a list of strings; default empty. </td></tr>
+<td><code>target</code></td><td>if non-empty, checkpoint the list of objects. Checkpointing a list of objects separately from a database-wide checkpoint can lead to data inconsistencies; see <a class="el" href="durability_checkpoint.html#checkpoint_target">Checkpointing specific objects</a> for more information.</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>use_timestamp</code></td><td>if true (the default), create the checkpoint as of the last stable timestamp if timestamps are in use, or with all committed updates if there is no stable timestamp set. If false, always generate a checkpoint with all committed updates, ignoring any stable timestamp.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 </table>
@@ -593,13 +593,13 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. For non-prepared transactions, value must not be older than the first commit timestamp already set for the current transaction, if any, must not be older than the current oldest timestamp and must be after the current stable timestamp. For prepared transactions, a commit timestamp is required, must not be older than the prepare timestamp and can be set only once. See <a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a> and <a class="el" href="timestamp_prepare.html">Using transaction prepare with timestamps</a>.</td><td>a string; default empty. </td></tr>
+<td><code>commit_timestamp</code></td><td>set the commit timestamp for the current transaction. For non-prepared transactions, the value must not be older than the first commit timestamp already set for the current transaction (if any), must not be older than the current oldest timestamp, and must be after the current stable timestamp. For prepared transactions, a commit timestamp is required, must not be older than the prepare timestamp, and can be set only once. See <a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a> and <a class="el" href="timestamp_prepare.html">Using transaction prepare with timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>durable_timestamp</code></td><td>set the durable timestamp for the current transaction. Required for the commit of a prepared transaction, and otherwise not permitted. The value must also be after the current oldest and stable timestamps and must not be older than the commit timestamp. See <a class="el" href="timestamp_prepare.html">Using transaction prepare with timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the time taken to complete operations in this transaction. Time is measured in real time milliseconds from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to 1; default <code>0</code>. </td></tr>
+<td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the time taken to complete operations in this transaction. Time is measured in real time milliseconds from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to <code>1</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>sync</code></td><td>override whether to sync log records when the transaction commits, inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>transaction_sync</code>. The <code>off</code> setting does not wait for records to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
+<td><code>sync</code></td><td>override whether to sync log records when the transaction commits. The default is inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>transaction_sync</code>. The <code>off</code> setting does not wait for records to be written or synchronized. The <code>on</code> setting forces log records to be written to the storage device.</td><td>a string, chosen from the following options: <code>"off"</code>, <code>"on"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -697,7 +697,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><div class="memdoc">
 
 <p>Create a table, column group, index or file. </p>
-<p>This method is not transactional, and will not guarantee ACID properties, see <a class="el" href="transactions.html">Transactional applications</a> for more details.</p>
+<p>This method is not transactional, and will not guarantee ACID properties; see <a class="el" href="transactions.html">Transactional applications</a> for more details.</p>
 <div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;key_format=S,value_format=S&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -708,45 +708,45 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>access_pattern_hint</code></td><td>It is recommended that workloads that consist primarily of updates and/or point queries specify <code>random</code>. Workloads that do many cursor scans through large ranges of data specify <code>sequential</code> and other workloads specify <code>none</code>. The option leads to an advisory call to an appropriate operating system API where available.</td><td>a string, chosen from the following options: <code>"none"</code>, <code>"random"</code>, <code>"sequential"</code>; default <code>none</code>. </td></tr>
+<td><code>access_pattern_hint</code></td><td>It is recommended that workloads that consist primarily of updates and/or point queries specify <code>random</code>. Workloads that do many cursor scans through large ranges of data should specify <code>sequential</code> and other workloads should specify <code>none</code>. The option leads to an appropriate operating system advisory call where available.</td><td>a string, chosen from the following options: <code>"none"</code>, <code>"random"</code>, <code>"sequential"</code>; default <code>none</code>. </td></tr>
 <tr>
-<td><code>allocation_size</code></td><td>the file unit allocation size, in bytes, must a power-of-two; smaller values decrease the file space required by overflow items, and the default value of 4KB is a good choice absent requirements from the operating system or storage device.</td><td>an integer between 512B and 128MB; default <code>4KB</code>. </td></tr>
+<td><code>allocation_size</code></td><td>the file unit allocation size, in bytes, must be a power of two; smaller values decrease the file space required by overflow items, and the default value of 4KB is a good choice absent requirements from the operating system or storage device.</td><td>an integer between <code>512B</code> and <code>128MB</code>; default <code>4KB</code>. </td></tr>
 <tr>
 <td><code>app_metadata</code></td><td>application-owned metadata for this object.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>assert = (</code></td><td>declare timestamp usage.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>assert = (</code></td><td>declare timestamp usage.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;read_timestamp</code></td><td>check timestamps are <code>always</code> or <code>never</code> used on reads with this table, writing an error message if policy is violated. If the library was built in diagnostic mode, drop core at the failing check.</td><td>a string, chosen from the following options: <code>"always"</code>, <code>"never"</code>, <code>"none"</code>; default <code>none</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;read_timestamp</code></td><td>if set, check that timestamps are <code>always</code> or <code>never</code> used on reads with this table, writing an error message if the policy is violated. If the library was built in diagnostic mode, drop core at the failing check.</td><td>a string, chosen from the following options: <code>"always"</code>, <code>"never"</code>, <code>"none"</code>; default <code>none</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>block_allocation</code></td><td>configure block allocation. Permitted values are <code>"best"</code> or <code>"first"</code>; the <code>"best"</code> configuration uses a best-fit algorithm, the <code>"first"</code> configuration uses a first-available algorithm during block allocation.</td><td>a string, chosen from the following options: <code>"best"</code>, <code>"first"</code>; default <code>best</code>. </td></tr>
 <tr>
-<td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are <code>"none"</code> or custom compression engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>. If WiredTiger has builtin support for <code>"lz4"</code>, <code>"snappy"</code>, <code>"zlib"</code> or <code>"zstd"</code> compression, these names are also available. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
+<td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are <code>"none"</code> or a custom compression engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>. If WiredTiger has builtin support for <code>"lz4"</code>, <code>"snappy"</code>, <code>"zlib"</code> or <code>"zstd"</code> compression, these names are also available. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache. Not compatible with LSM tables; see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>checksum</code></td><td>configure block checksums; the permitted values are <code>on</code>, <code>off</code>, <code>uncompressed</code> and <code>unencrypted</code>. The default is <code>on</code>, in which case all block writes include a checksum subsequently verified when the block is read. The <code>off</code> setting does no checksums, the <code>uncompressed</code> setting only checksums blocks that are not compressed, and the <code>unencrypted</code> setting only checksums blocks that are not encrypted. See <a class="el" href="tune_checksum.html">Checksums</a> for more information.</td><td>a string, chosen from the following options: <code>"on"</code>, <code>"off"</code>, <code>"uncompressed"</code>, <code>"unencrypted"</code>; default <code>on</code>. </td></tr>
 <tr>
-<td><code>colgroups</code></td><td>comma-separated list of names of column groups. Each column group is stored separately, keyed by the primary key of the table. If no column groups are specified, all columns are stored together in a single file. All value columns in the table must appear in at least one column group. Each column group must be created with a separate call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</td><td>a list of strings; default empty. </td></tr>
+<td><code>colgroups</code></td><td>comma-separated list of names of column groups. Each column group is stored separately, keyed by the primary key of the table. If no column groups are specified, all columns are stored together in a single file. All value columns in the table must appear in at least one column group. Each column group must be created with a separate call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> using a <code>colgroup:</code> URI.</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>collator</code></td><td>configure custom collation for keys. Permitted values are <code>"none"</code> or a custom collator name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8" title="Add a custom collation function.">WT_CONNECTION::add_collator</a>.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code>columns</code></td><td>list of the column names. Comma-separated list of the form <code>(column[,...])</code>. For tables, the number of entries must match the total number of values in <code>key_format</code> and <code>value_format</code>. For colgroups and indices, all column names must appear in the list of columns for the table.</td><td>a list of strings; default empty. </td></tr>
 <tr>
-<td><code>dictionary</code></td><td>the maximum number of unique values remembered in the Btree row-store leaf page value dictionary; see <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>dictionary</code></td><td>the maximum number of unique values remembered in the Btree row-store leaf page value dictionary; see <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>encryption = (</code></td><td>configure an encryptor for file blocks. When a table is created, its encryptor is not implicitly used for any related indices or column groups.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>encryption = (</code></td><td>configure an encryptor for file blocks. When a table is created, its encryptor is not implicitly used for any related indices or column groups.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; keyid</code></td><td>An identifier that identifies a unique instance of the encryptor. It is stored in clear text, and thus is available when the wiredtiger database is reopened. On the first use of a (name, keyid) combination, the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a" title="If non-NULL, this callback is called to load keys into the encryptor.">WT_ENCRYPTOR::customize</a> function is called with the keyid as an argument.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;keyid</code></td><td>An identifier that identifies a unique instance of the encryptor. It is stored in clear text, and thus is available when the WiredTiger database is reopened. On the first use of a (name, keyid) combination, the <a class="el" href="struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a" title="If non-NULL, this callback is called to load keys into the encryptor.">WT_ENCRYPTOR::customize</a> function is called with the keyid as an argument.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or custom encryption engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949" title="Add an encryption function.">WT_CONNECTION::add_encryptor</a>. See <a class="el" href="encryption.html">Encryptors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>Permitted values are <code>"none"</code> or a custom encryption engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949" title="Add an encryption function.">WT_CONNECTION::add_encryptor</a>. See <a class="el" href="encryption.html">Encryptors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>exclusive</code></td><td>fail if the object exists. When false (the default), if the object exists, check that its settings match the specified configuration.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>extractor</code></td><td>configure custom extractor for indices. Permitted values are <code>"none"</code> or an extractor name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups.">WT_CONNECTION::add_extractor</a>.</td><td>a string; default <code>none</code>. </td></tr>
+<td><code>extractor</code></td><td>configure a custom extractor for indices. Permitted values are <code>"none"</code> or an extractor name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903" title="Add a custom extractor for index keys or column groups.">WT_CONNECTION::add_extractor</a>.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code>format</code></td><td>the file format.</td><td>a string, chosen from the following options: <code>"btree"</code>; default <code>btree</code>. </td></tr>
 <tr>
@@ -756,9 +756,9 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>ignore_in_memory_cache_size</code></td><td>allow update and insert operations to proceed even if the cache is already at capacity. Only valid in conjunction with in-memory databases. Should be used with caution - this configuration allows WiredTiger to consume memory over the configured cache limit.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>immutable</code></td><td>configure the index to be immutable - that is an index is not changed by any update to a record in the table.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>immutable</code></td><td>configure the index to be immutable &ndash; that is, the index is not changed by any update to a record in the table.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>import = (</code></td><td>configure import of an existing object into the currently running database.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>import = (</code></td><td>configure import of an existing object into the currently running database.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;compare_timestamp</code></td><td>allow importing files with timestamps smaller or equal to the configured global timestamps. Note the history of the files are not imported together and thus snapshot read of historical data will not work with the option "stable_timestamp". (The <code>oldest</code> and <code>stable</code> arguments are deprecated short-hand for <code>oldest_timestamp</code> and <code>stable_timestamp</code>, respectively).</td><td>a string, chosen from the following options: <code>"oldest"</code>, <code>"oldest_timestamp"</code>, <code>"stable"</code>, <code>"stable_timestamp"</code>; default <code>oldest_timestamp</code>. </td></tr>
 <tr>
@@ -772,79 +772,79 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>internal_key_max</code></td><td>This option is no longer supported, retained for backward compatibility.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>internal_key_max</code></td><td>This option is no longer supported, retained for backward compatibility.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
 <td><code>internal_key_truncate</code></td><td>configure internal key truncation, discarding unnecessary trailing bytes on internal keys (ignored for custom collators).</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>internal_page_max</code></td><td>the maximum page size for internal nodes, in bytes; the size must be a multiple of the allocation size and is significant for applications wanting to avoid excessive L2 cache misses while searching the tree. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between 512B and 512MB; default <code>4KB</code>. </td></tr>
+<td><code>internal_page_max</code></td><td>the maximum page size for internal nodes, in bytes; the size must be a multiple of the allocation size and is significant for applications wanting to avoid excessive L2 cache misses while searching the tree. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done.</td><td>an integer between <code>512B</code> and <code>512MB</code>; default <code>4KB</code>. </td></tr>
 <tr>
 <td><code>key_format</code></td><td>the format of the data packed into key items. See <a class="el" href="schema.html#schema_format_types">Format types</a> for details. By default, the key_format is <code>'u'</code> and applications use <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> structures to manipulate raw byte arrays. By default, records are stored in row-store files: keys of type <code>'r'</code> are record numbers and records referenced by record number are stored in column-store files.</td><td>a format string; default <code>u</code>. </td></tr>
 <tr>
-<td><code>key_gap</code></td><td>This option is no longer supported, retained for backward compatibility.</td><td>an integer greater than or equal to 0; default <code>10</code>. </td></tr>
+<td><code>key_gap</code></td><td>This option is no longer supported, retained for backward compatibility.</td><td>an integer greater than or equal to <code>0</code>; default <code>10</code>. </td></tr>
 <tr>
-<td><code>leaf_key_max</code></td><td>the largest key stored in a leaf node, in bytes. If set, keys larger than the specified size are stored as overflow items (which may require additional I/O to access). The default value is one-tenth the size of a newly split leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>leaf_key_max</code></td><td>the largest key stored in a leaf node, in bytes. If set, keys larger than the specified size are stored as overflow items (which may require additional I/O to access). The default value is one-tenth the size of a newly split leaf page.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done. For fixed-length column store, the size includes only the bitmap data; pages containing timestamp information can be larger, and the size is limited to 128KB rather than 512MB.</td><td>an integer between 512B and 512MB; default <code>32KB</code>. </td></tr>
+<td><code>leaf_page_max</code></td><td>the maximum page size for leaf nodes, in bytes; the size must be a multiple of the allocation size, and is significant for applications wanting to maximize sequential data transfer from a storage device. The page maximum is the bytes of uncompressed data, that is, the limit is applied before any block compression is done. For fixed-length column store, the size includes only the bitmap data; pages containing timestamp information can be larger, and the size is limited to 128KB rather than 512MB.</td><td>an integer between <code>512B</code> and <code>512MB</code>; default <code>32KB</code>. </td></tr>
 <tr>
-<td><code>leaf_value_max</code></td><td>the largest value stored in a leaf node, in bytes. If set, values larger than the specified size are stored as overflow items (which may require additional I/O to access). If the size is larger than the maximum leaf page size, the page size is temporarily ignored when large values are written. The default is one-half the size of a newly split leaf page.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>leaf_value_max</code></td><td>the largest value stored in a leaf node, in bytes. If set, values larger than the specified size are stored as overflow items (which may require additional I/O to access). If the size is larger than the maximum leaf page size, the page size is temporarily ignored when large values are written. The default is one-half the size of a newly split leaf page.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if log is enabled in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if <code>log</code> is enabled in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;enabled</code></td><td>if false, this object has checkpoint-level durability.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>lsm = (</code></td><td>options only relevant for LSM data sources.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>lsm = (</code></td><td>options only relevant for LSM data sources.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;auto_throttle</code></td><td>Throttle inserts into LSM trees if flushing to disk isn't keeping up.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;bloom</code></td><td>create bloom filters on LSM tree chunks as they are merged.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom</code></td><td>create Bloom filters on LSM tree chunks as they are merged.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;bloom_bit_count</code></td><td>the number of bits used per item for LSM bloom filters.</td><td>an integer between 2 and 1000; default <code>16</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom_bit_count</code></td><td>the number of bits used per item for LSM Bloom filters.</td><td>an integer between <code>2</code> and <code>1000</code>; default <code>16</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;bloom_config</code></td><td>config string used when creating Bloom filter files, passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;bloom_hash_count</code></td><td>the number of hash values per item used for LSM bloom filters.</td><td>an integer between 2 and 100; default <code>8</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom_hash_count</code></td><td>the number of hash values per item used for LSM Bloom filters.</td><td>an integer between <code>2</code> and <code>100</code>; default <code>8</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;bloom_oldest</code></td><td>create a bloom filter on the oldest LSM tree chunk. Only supported if bloom filters are enabled.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;bloom_oldest</code></td><td>create a Bloom filter on the oldest LSM tree chunk. Only supported if Bloom filters are enabled.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;chunk_count_limit</code></td><td>the maximum number of chunks to allow in an LSM tree. This option automatically times out old data. As new chunks are added old chunks will be removed. Enabling this option disables LSM background merges.</td><td>an integer; default <code>0</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;chunk_max</code></td><td>the maximum size a single chunk can be. Chunks larger than this size are not considered for further merges. This is a soft limit, and chunks larger than this value can be created. Must be larger than chunk_size.</td><td>an integer between 100MB and 10TB; default <code>5GB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;chunk_max</code></td><td>the maximum size a single chunk can be. Chunks larger than this size are not considered for further merges. This is a soft limit, and chunks larger than this value can be created. Must be larger than chunk_size.</td><td>an integer between <code>100MB</code> and <code>10TB</code>; default <code>5GB</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree. This limit is soft, it is possible for chunks to be temporarily larger than this value. This overrides the <code>memory_page_max</code> setting.</td><td>an integer between 512K and 500MB; default <code>10MB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree. This limit is soft, it is possible for chunks to be temporarily larger than this value. This overrides the <code>memory_page_max</code> setting.</td><td>an integer between <code>512K</code> and <code>500MB</code>; default <code>10MB</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;merge_custom = (</code></td><td>configure the tree to merge into a custom data source.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;merge_custom = (</code></td><td>configure the tree to merge into a custom data source.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;prefix</code></td><td>custom data source prefix instead of <code>"file"</code>.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; prefix</code></td><td>custom data source prefix instead of <code>"file"</code>.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;start_generation</code></td><td>merge generation at which the custom data source is used (zero indicates no custom data source).</td><td>an integer between 0 and 10; default <code>0</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;start_generation</code></td><td>merge generation at which the custom data source is used (zero indicates no custom data source).</td><td>an integer between <code>0</code> and <code>10</code>; default <code>0</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;suffix</code></td><td>custom data source suffix instead of <code>".lsm"</code>.</td><td>a string; default empty. </td></tr>
 <tr>
+<td><code>&#160;&#160;&#160;&#160; )</code></td><td></td><td></td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between <code>2</code> and <code>100</code>; default <code>15</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;merge_min</code></td><td>the minimum number of chunks to include in a merge operation. If set to 0 or 1 half the value of merge_max is used.</td><td>an integer no more than <code>100</code>; default <code>0</code>. </td></tr>
+<tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between 2 and 100; default <code>15</code>. </td></tr>
+<td><code>memory_page_image_max</code></td><td>the maximum in-memory page image represented by a single storage block. Depending on compression efficiency, compression can create storage blocks which require significant resources to re-instantiate in the cache, penalizing the performance of future point updates. The value limits the maximum in-memory page image a storage block will need. If set to 0, a default of 4 times <code>leaf_page_max</code> is used.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;merge_min</code></td><td>the minimum number of chunks to include in a merge operation. If set to 0 or 1 half the value of merge_max is used.</td><td>an integer no more than 100; default <code>0</code>. </td></tr>
+<td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>leaf_page_max</code>, and an upper bound of <code>cache_size / 10</code>. This limit is soft - it is possible for pages to be temporarily larger than this value. This setting is ignored for LSM trees, see <code>chunk_size</code>.</td><td>an integer between <code>512B</code> and <code>10TB</code>; default <code>5MB</code>. </td></tr>
 <tr>
-<td><code> )</code></td><td></td><td></td></tr>
+<td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>memory_page_image_max</code></td><td>the maximum in-memory page image represented by a single storage block. Depending on compression efficiency, compression can create storage blocks which require significant resources to re-instantiate in the cache, penalizing the performance of future point updates. The value limits the maximum in-memory page image a storage block will need. If set to 0, a default of 4 times <code>leaf_page_max</code> is used.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
-<tr>
-<td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>leaf_page_max</code>, and an upper bound of <code>cache_size / 10</code>. This limit is soft - it is possible for pages to be temporarily larger than this value. This setting is ignored for LSM trees, see <code>chunk_size</code>.</td><td>an integer between 512B and 10TB; default <code>5MB</code>. </td></tr>
-<tr>
-<td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
-<tr>
-<td><code>os_cache_max</code></td><td>maximum system buffer cache usage, in bytes. If non-zero, evict object blocks from the system buffer cache after that many bytes from this object are read or written into the buffer cache.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>os_cache_max</code></td><td>maximum system buffer cache usage, in bytes. If non-zero, evict object blocks from the system buffer cache after that many bytes from this object are read or written into the buffer cache.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
 <td><code>prefix_compression</code></td><td>configure prefix compression on row-store leaf pages.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>prefix_compression_min</code></td><td>minimum gain before prefix compression will be used on row-store leaf pages.</td><td>an integer greater than or equal to 0; default <code>4</code>. </td></tr>
+<td><code>prefix_compression_min</code></td><td>minimum gain before prefix compression will be used on row-store leaf pages.</td><td>an integer greater than or equal to <code>0</code>; default <code>4</code>. </td></tr>
 <tr>
-<td><code>split_pct</code></td><td>the Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size.</td><td>an integer between 50 and 100; default <code>90</code>. </td></tr>
+<td><code>split_pct</code></td><td>the Btree page split size as a percentage of the maximum Btree page size, that is, when a Btree page is split, it will be split into smaller pages, where each page is the specified percentage of the maximum Btree page size.</td><td>an integer between <code>50</code> and <code>100</code>; default <code>90</code>. </td></tr>
 <tr>
-<td><code>tiered_storage = (</code></td><td>configure a storage source for this table.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>tiered_storage = (</code></td><td>configure a storage source for this table.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;auth_token</code></td><td>authentication string identifier.</td><td>a string; default empty. </td></tr>
 <tr>
@@ -854,9 +854,9 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code>&#160;&#160;&#160;&#160;cache_directory</code></td><td>a directory to store locally cached versions of files in the storage source. By default, it is named with <code>"-cache"</code> appended to the bucket name. A relative directory name is relative to the home directory.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;local_retention</code></td><td>time in seconds to retain data on tiered storage on the local tier for faster read access.</td><td>an integer between 0 and 10000; default <code>300</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;local_retention</code></td><td>time in seconds to retain data on tiered storage on the local tier for faster read access.</td><td>an integer between <code>0</code> and <code>10000</code>; default <code>300</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;name</code></td><td>permitted values are <code>"none"</code> or custom storage source name created with WT_CONNECTION::add_storage_source. See <a class="el" href="custom_storage_sources.html">Custom Tiered Storage sources</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;name</code></td><td>permitted values are <code>"none"</code> or a custom storage source name created with WT_CONNECTION::add_storage_source. See <a class="el" href="custom_storage_sources.html">Custom Tiered Storage sources</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -911,7 +911,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Drop (delete) a table. </p>
 <p>This method requires exclusive access to the specified data source(s). If any cursors are open with the specified name(s) or a data source is otherwise in use, the call will fail and return <code>EBUSY</code>. See <a class="el" href="error_handling.html">Error handling</a> for details.<br  />
 <br  />
- This method is not transactional, and will not guarantee ACID properties, see <a class="el" href="transactions.html">Transactional applications</a> for more details.</p>
+ This method is not transactional, and will not guarantee ACID properties; see <a class="el" href="transactions.html">Transactional applications</a> for more details.</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1016,19 +1016,19 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>bloom_bit_count</code></td><td>the number of bits used per item for the bloom filter.</td><td>an integer between 2 and 1000; default <code>16</code>. </td></tr>
+<td><code>bloom_bit_count</code></td><td>the number of bits used per item for the Bloom filter.</td><td>an integer between <code>2</code> and <code>1000</code>; default <code>16</code>. </td></tr>
 <tr>
-<td><code>bloom_false_positives</code></td><td>return all values that pass the bloom filter, without eliminating any false positives.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>bloom_false_positives</code></td><td>return all values that pass the Bloom filter, without eliminating any false positives.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>bloom_hash_count</code></td><td>the number of hash values per item for the bloom filter.</td><td>an integer between 2 and 100; default <code>8</code>. </td></tr>
+<td><code>bloom_hash_count</code></td><td>the number of hash values per item for the Bloom filter.</td><td>an integer between <code>2</code> and <code>100</code>; default <code>8</code>. </td></tr>
 <tr>
 <td><code>compare</code></td><td>modifies the set of items to be returned so that the index key satisfies the given comparison relative to the key set in this cursor.</td><td>a string, chosen from the following options: <code>"eq"</code>, <code>"ge"</code>, <code>"gt"</code>, <code>"le"</code>, <code>"lt"</code>; default <code>"eq"</code>. </td></tr>
 <tr>
-<td><code>count</code></td><td>set an approximate count of the elements that would be included in the join. This is used in sizing the bloom filter, and also influences evaluation order for cursors in the join. When the count is equal for multiple bloom filters in a composition of joins, the bloom filter may be shared.</td><td>an integer; default <code></code>. </td></tr>
+<td><code>count</code></td><td>set an approximate count of the elements that would be included in the join. This is used in sizing the Bloom filter, and also influences evaluation order for cursors in the join. When the count is equal for multiple Bloom filters in a composition of joins, the Bloom filter may be shared.</td><td>an integer; default <code>0</code>. </td></tr>
 <tr>
 <td><code>operation</code></td><td>the operation applied between this and other joined cursors. When "operation=and" is specified, all the conditions implied by joins must be satisfied for an entry to be returned by the join cursor; when "operation=or" is specified, only one must be satisfied. All cursors joined to a join cursor must have matching operations.</td><td>a string, chosen from the following options: <code>"and"</code>, <code>"or"</code>; default <code>"and"</code>. </td></tr>
 <tr>
-<td><code>strategy</code></td><td>when set to bloom, a bloom filter is created and populated for this index. This has an up front cost but may reduce the number of accesses to the main table when iterating the joined cursor. The bloom setting requires that count be set.</td><td>a string, chosen from the following options: <code>"bloom"</code>, <code>"default"</code>; default empty. </td></tr>
+<td><code>strategy</code></td><td>when set to <code>bloom</code>, a Bloom filter is created and populated for this index. This has an up front cost but may reduce the number of accesses to the main table when iterating the joined cursor. The <code>bloom</code> setting requires that <code>count</code> be set.</td><td>a string, chosen from the following options: <code>"bloom"</code>, <code>"default"</code>; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1118,7 +1118,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
       </table>
 </div><div class="memdoc">
 
-<p>Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="message">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called). </p>
+<p>Insert a <a class="el" href="group__wt.html#ga8cf04a003979e7852209079d4093d783" title="Message.">WT_LOGREC_MESSAGE</a> type record in the database log files (the database must be configured for logging when this method is called). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -1188,9 +1188,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </div><!-- fragment --><p> Cursors being duplicated must have a key set, and successfully duplicated cursors are positioned at the same place in the data source as the original.</p>
 <p>Cursor handles should be discarded by calling <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a>.</p>
 <p>Cursors capable of supporting transactional operations operate in the context of the current transaction, if any.</p>
-<p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a> implicitly resets all cursors associated with the </p>
-<h1><a class="anchor" id="autotoc_md0"></a>
-session.</h1>
+<p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1" title="Roll back the current transaction.">WT_SESSION::rollback_transaction</a> implicitly resets all cursors associated with the session.</p>
 <p>Cursors are relatively light-weight objects but may hold references to heavier-weight objects; applications should re-use cursors when possible, but instantiating new cursors is not so expensive that applications need to cache cursors at all cost.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1252,23 +1250,23 @@ session.</h1>
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>append</code></td><td>append the value as a new record, creating a new record number key; valid only for cursors with record number keys.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>append</code></td><td>append written values as new records, giving each a new record number key; valid only for cursors with record number keys.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>bulk</code></td><td>configure the cursor for bulk-loading, a fast, initial load path (see <a class="el" href="tune_bulk_load.html">Bulk-load</a> for more information). Bulk-load may only be used for newly created objects and applications should use the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> method to insert rows. When bulk-loading, rows must be loaded in sorted order. The value is usually a true/false flag; when bulk-loading fixed-length column store objects, the special value <code>bitmap</code> allows chunks of a memory resident bitmap to be loaded directly into a file by passing a <code><a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a></code> to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c" title="Set the value for the next operation.">WT_CURSOR::set_value</a> where the <code>size</code> field indicates the number of records in the bitmap (as specified by the object's <code>value_format</code> configuration). Bulk-loaded bitmap values must end on a byte boundary relative to the bit count (except for the last set of values loaded).</td><td>a string; default <code>false</code>. </td></tr>
 <tr>
-<td><code>checkpoint</code></td><td>the name of a checkpoint to open (the reserved name "WiredTigerCheckpoint" opens the most recent checkpoint taken for the object). The cursor does not support data modification.</td><td>a string; default empty. </td></tr>
+<td><code>checkpoint</code></td><td>the name of a checkpoint to open. (The reserved name "WiredTigerCheckpoint" opens the most recent checkpoint taken for the object.) The cursor does not support data modification.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>debug = (</code></td><td>configure debug specific behavior on a cursor. Generally only used for internal testing purposes.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>debug = (</code></td><td>configure debug specific behavior on a cursor. Generally only used for internal testing purposes.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;dump_version</code></td><td>open a version cursor, which is a debug cursor on a table that enables iteration through the history of values for a given key.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;release_evict</code></td><td>Configure the cursor to evict the page positioned on when the reset API is used.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; release_evict</code></td><td>Configure the cursor to evict the page positioned on when the reset API call is used.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>dump</code></td><td>configure the cursor for dump format inputs and outputs: "hex" selects a simple hexadecimal format, "json" selects a JSON format with each record formatted as fields named by column names if available, "pretty" selects a human-readable format (making it incompatible with the "load"), "pretty_hex" is similar to "pretty" (also incompatible with "load") except raw byte data elements will be printed like "hex" format, and "print" selects a format where only non-printing characters are hexadecimal encoded. These formats are compatible with the <a class="el" href="command_line.html#util_dump">wt dump</a> and <a class="el" href="command_line.html#util_load">wt load</a> commands.</td><td>a string, chosen from the following options: <code>"hex"</code>, <code>"json"</code>, <code>"pretty"</code>, <code>"pretty_hex"</code>, <code>"print"</code>; default empty. </td></tr>
 <tr>
-<td><code>incremental = (</code></td><td>configure the cursor for block incremental backup usage. These formats are only compatible with the backup data source; see <a class="el" href="backup.html">Backups</a>.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>incremental = (</code></td><td>configure the cursor for block incremental backup usage. These formats are only compatible with the backup data source; see <a class="el" href="backup.html">Backups</a>.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160; consolidate</code></td><td>causes block incremental backup information to be consolidated if adjacent granularity blocks are modified. If false, information will be returned in granularity sized blocks only. This must be set on the primary backup cursor and it applies to all files for this backup.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -1278,11 +1276,11 @@ session.</h1>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;force_stop</code></td><td>causes all block incremental backup information to be released. This is on an open_cursor call and the resources will be released when this cursor is closed. No other operations should be done on this open cursor.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;granularity</code></td><td>this setting manages the granularity of how WiredTiger maintains modification maps internally. The larger the granularity, the smaller amount of information WiredTiger need to maintain.</td><td>an integer between 4KB and 2GB; default <code>16MB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;granularity</code></td><td>this setting manages the granularity of how WiredTiger maintains modification maps internally. The larger the granularity, the smaller amount of information WiredTiger need to maintain.</td><td>an integer between <code>4KB</code> and <code>2GB</code>; default <code>16MB</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;src_id</code></td><td>a string that identifies a previous checkpoint backup source as the source of this incremental backup. This identifier must have already been created by use of the 'this_id' configuration in an earlier backup. A source id is required to begin an incremental backup.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;this_id</code></td><td>a string that identifies the current system state as a future backup source for an incremental backup via 'src_id'. This identifier is required when opening an incremental backup cursor and an error will be returned if one is not provided. The identifiers can be any text string, but should be unique.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;this_id</code></td><td>a string that identifies the current system state as a future backup source for an incremental backup via <code>src_id</code>. This identifier is required when opening an incremental backup cursor and an error will be returned if one is not provided. The identifiers can be any text string, but should be unique.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -1290,17 +1288,17 @@ session.</h1>
 <tr>
 <td><code>next_random_sample_size</code></td><td>cursors configured by <code>next_random</code> to return pseudo-random records from the object randomly select from the entire object, by default. Setting <code>next_random_sample_size</code> to a non-zero value sets the number of samples the application expects to take using the <code>next_random</code> cursor. A cursor configured with both <code>next_random</code> and <code>next_random_sample_size</code> attempts to divide the object into <code>next_random_sample_size</code> equal-sized pieces, and each retrieval returns a record from one of those pieces. See <a class="el" href="cursor_random.html">Cursor random</a> for details.</td><td>a string; default <code>0</code>. </td></tr>
 <tr>
-<td><code>overwrite</code></td><td>configures whether the cursor's insert and update methods check the existing state of the record. If <code>overwrite</code> is <code>false</code>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> fails with <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key.">WT_DUPLICATE_KEY</a> if the record exists, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update an existing record and optionally insert a record.">WT_CURSOR::update</a> fails with <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found.">WT_NOTFOUND</a> if the record does not exist.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>overwrite</code></td><td>configures whether the cursor's insert and update methods check the existing state of the record. If <code>overwrite</code> is <code>false</code>, <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3" title="Insert a record and optionally update an existing record.">WT_CURSOR::insert</a> fails with <a class="el" href="group__wt.html#gaeca1f3c4a70b8b71b56d2c2fc99a469c" title="Attempt to insert an existing key.">WT_DUPLICATE_KEY</a> if the record exists, and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update an existing record and optionally insert a record.">WT_CURSOR::update</a> fails with <a class="el" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8" title="Item not found.">WT_NOTFOUND</a> if the record does not exist.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>raw</code></td><td>ignore the encodings for the key and value, manage data as if the formats were <code>"u"</code>. See <a class="el" href="cursors.html#cursor_raw">Raw mode</a> for details.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>read_once</code></td><td>results that are brought into cache from disk by this cursor will be given less priority in the cache.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>readonly</code></td><td>only query operations are supported by this cursor. An error is returned if a modification is attempted using the cursor. The default is false for all cursor types except for metadata cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>readonly</code></td><td>only query operations are supported by this cursor. An error is returned if a modification is attempted using the cursor. The default is false for all cursor types except for metadata cursors and checkpoint cursors.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>statistics</code></td><td>Specify the statistics to be gathered. Choosing "all" gathers statistics regardless of cost and may include traversing on-disk files; "fast" gathers a subset of relatively inexpensive statistics. The selection must agree with the database <code>statistics</code> configuration specified to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> or <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">WT_CONNECTION::reconfigure</a>. For example, "all" or "fast" can be configured when the database is configured with "all", but the cursor open will fail if "all" is specified when the database is configured with "fast", and the cursor open will fail in all cases when the database is configured with "none". If "size" is configured, only the underlying size of the object on disk is filled in and the object is not opened. If <code>statistics</code> is not configured, the default configuration is the database configuration. The "clear" configuration resets statistics after gathering them, where appropriate (for example, a cache size statistic is not cleared, while the count of cursor insert operations will be cleared). See <a class="el" href="statistics.html">Statistics</a> for more information.</td><td>a list, with values chosen from the following options: <code>"all"</code>, <code>"cache_walk"</code>, <code>"fast"</code>, <code>"clear"</code>, <code>"size"</code>, <code>"tree_walk"</code>; default empty. </td></tr>
 <tr>
-<td><code>target</code></td><td>if non-empty, backup the list of objects; valid only for a backup data source.</td><td>a list of strings; default empty. </td></tr>
+<td><code>target</code></td><td>if non-empty, back up the given list of objects; valid only for a backup data source.</td><td>a list of strings; default empty. </td></tr>
 </table>
 </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">cursorp</td><td>a pointer to the newly opened cursor </td></tr>
@@ -1465,9 +1463,9 @@ session.</h1>
 <tr>
 <td><code>cache_cursors</code></td><td>enable caching of cursors for reuse. Any calls to <a class="el" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b" title="Close the cursor.">WT_CURSOR::close</a> for a cursor created in this session will mark the cursor as cached and keep it available to be reused for later calls to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>. Cached cursors may be eventually closed. This value is inherited from <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>cache_cursors</code>.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
-<td><code>cache_max_wait_ms</code></td><td>the maximum number of milliseconds an application thread will wait for space to be available in cache before giving up. Default value will be the global setting of the connection config.</td><td>an integer greater than or equal to 0; default <code>0</code>. </td></tr>
+<td><code>cache_max_wait_ms</code></td><td>the maximum number of milliseconds an application thread will wait for space to be available in cache before giving up. Default value will be the global setting of the connection config.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>debug = (</code></td><td>configure debug specific behavior on a session. Generally only used for internal testing purposes.</td><td>a set of related configuration options defined below. </td></tr>
+<td><code>debug = (</code></td><td>configure debug specific behavior on a session. Generally only used for internal testing purposes.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;release_evict_page</code></td><td>Configure the session to evict the page when it is released and no longer needed.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -1524,7 +1522,7 @@ session.</h1>
 </div><div class="memdoc">
 
 <p>Rename an object. </p>
-<p>This method is not transactional, and will not guarantee ACID properties, see <a class="el" href="transactions.html">Transactional applications</a> for more details.</p>
+<p>This method is not transactional, and will not guarantee ACID properties; see <a class="el" href="transactions.html">Transactional applications</a> for more details.</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">rename</a>(session, <span class="stringliteral">&quot;table:old&quot;</span>, <span class="stringliteral">&quot;table:new&quot;</span>, NULL));</div>
 </div><!-- fragment --><p> This method requires exclusive access to the specified data source(s). If any cursors are open with the specified name(s) or a data source is otherwise in use, the call will fail and return <code>EBUSY</code>. See <a class="el" href="error_handling.html">Error handling</a> for details.<br  />
 <br  />
@@ -1586,9 +1584,9 @@ session.</h1>
       </table>
 </div><div class="memdoc">
 
-<p>Reset the snapshot. </p>
-<p>This method resets snapshots for snapshot isolation transactions to update their existing snapshot. It raises an error when this API is used in an isolation other than snapshot, or when the transaction has performed any write operations.</p>
-<p>This API internally releases the current snapshot and gets the new running transactions snapshot to avoid pinning the content in the database that is no longer needed. Applications not using read timestamps for search may see different results after the snapshot is updated.</p>
+<p>Reset the snapshot used for database visibility. </p>
+<p>For transactions running with snapshot isolation, this method releases the existing snapshot of the database and gets a new one. This makes newer commits visible. The call can be used to avoid pinning old and no-longer-needed content in the database. Applications not using read timestamps for search may see different results after the snapshot is updated.</p>
+<p>It is an error to call this method when using an isolation level other than snapshot isolation, or if the current transaction has already written any data.</p>
 <p>This method must be called on a session with an active transaction.<br  />
 <br  />
  </p><div class="fragment"><div class="line">        <span class="comment">/*</span></div>
@@ -1681,7 +1679,7 @@ session.</h1>
 <tr>
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
-<td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the time taken to complete operations in this transaction. Time is measured in real time milliseconds from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to 1; default <code>0</code>. </td></tr>
+<td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the time taken to complete operations in this transaction. Time is measured in real time milliseconds from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to <code>1</code>; default <code>0</code>. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1724,9 +1722,9 @@ session.</h1>
 </div><div class="memdoc">
 
 <p>Salvage a table. </p>
-<p>Salvage rebuilds the file, or files of which a table is comprised, discarding any corrupted file blocks.</p>
-<p>Previously deleted records may re-appear, and inserted records may disappear, when salvage is done, so salvage should not be run unless it is known to be necessary. Normally, salvage should be called after a table or file has been corrupted, as reported by the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> method.</p>
-<p>Files are rebuilt in place, the salvage method overwrites the existing files.</p>
+<p>Salvage rebuilds the file or files which comprise a table, discarding any corrupted file blocks.</p>
+<p>When salvage is done, previously deleted records may re-appear, and inserted records may disappear, so salvage should not be run unless it is known to be necessary. Normally, salvage should be called after a table or file has been corrupted, as reported by the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> method.</p>
+<p>Files are rebuilt in place. The salvage method overwrites the existing files.</p>
 <p>This method requires exclusive access to the specified data source(s). If any cursors are open with the specified name(s) or a data source is otherwise in use, the call will fail and return <code>EBUSY</code>. See <a class="el" href="error_handling.html">Error handling</a> for details.<br  />
 <br  />
  </p><div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e">salvage</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
@@ -1783,7 +1781,7 @@ session.</h1>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
-    <tr><td class="paramname">error</td><td>a return value from a WiredTiger, ISO C, or POSIX standard API </td></tr>
+    <tr><td class="paramname">error</td><td>a return value from a WiredTiger, ISO C, or POSIX standard API call </td></tr>
   </table>
   </dd>
 </dl>
@@ -1925,7 +1923,7 @@ session.</h1>
 </div><div class="memdoc">
 
 <p>Return the transaction ID range pinned by the session handle. </p>
-<p>The ID range is approximate and is calculated based on the oldest ID needed for the active transaction in this session, compared to the newest transaction in the system.</p>
+<p>The ID range is an approximate count of transactions and is calculated based on the oldest ID needed for the active transaction in this session, compared to the newest transaction in the system.</p>
 <div class="fragment"><div class="line">        <span class="comment">/* Check the transaction ID range pinned by the session handle. */</span></div>
 <div class="line">        uint64_t range;</div>
 <div class="line"> </div>
@@ -1987,7 +1985,8 @@ session.</h1>
 
 <p>Truncate a file, table, cursor range, or backup cursor. </p>
 <p>Truncate a table or file. </p><div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, NULL));</div>
-</div><!-- fragment --><p> Truncate a cursor range. When truncating based on a cursor position, it is not required the cursor reference a record in the object, only that the key be set. This allows applications to discard portions of the object name space without knowing exactly what records the object contains. </p><div class="fragment"><div class="line">                <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *start, *stop;</div>
+</div><!-- fragment --><p> Truncate a cursor range. When truncating based on a cursor position, it is not required the cursor reference a record in the object, only that the key be set. This allows applications to discard portions of the object name space without knowing exactly what records the object contains. The start and stop points are both inclusive; that is, the key set in the start cursor is the first record to be deleted and the key set in the stop cursor is the last.</p>
+<div class="fragment"><div class="line">                <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *start, *stop;</div>
 <div class="line"> </div>
 <div class="line">                error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL, NULL, &amp;start));</div>
 <div class="line">                start-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(start, <span class="stringliteral">&quot;June01&quot;</span>);</div>
@@ -2001,7 +2000,7 @@ session.</h1>
 </div><!-- fragment --><p> Range truncate is implemented as a "scan and write" operation, specifically without range locks. Inserts or other operations in the range, as well as operations before or after the range when no explicit starting or ending key is set, are not well defined: conflicts may be detected or both transactions may commit. If both commit, there's a failure and recovery runs, the result may be different than what was in cache before the crash.</p>
 <p>The WT_CURSOR::truncate range truncate operation can only be used at snapshot isolation.</p>
 <p>Any specified cursors end with no position, and subsequent calls to the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b" title="Return the next record.">WT_CURSOR::next</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76" title="Return the previous record.">WT_CURSOR::prev</a>) method will iterate from the beginning (end) of the table.</p>
-<p>Truncate a backup cursor. This operation removes all log files that have been returned by the backup cursor. It can be used to remove log files after copying them during <a class="el" href="backup.html#backup_incremental">Log-based Incremental backup</a>. </p><div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(session, <span class="stringliteral">&quot;log:&quot;</span>, cursor, NULL, NULL));</div>
+<p>Example: truncate a backup cursor. This operation removes all log files that have been returned by the backup cursor. It can be used to remove log files after copying them during <a class="el" href="backup.html#backup_incremental">Log-based Incremental backup</a>. </p><div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">truncate</a>(session, <span class="stringliteral">&quot;log:&quot;</span>, cursor, NULL, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>the session handle </td></tr>
@@ -2100,7 +2099,7 @@ session.</h1>
 </div><div class="memdoc">
 
 <p>Verify a table. </p>
-<p>Verify reports if a file, or the files of which a table is comprised, have been corrupted. The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e" title="Salvage a table.">WT_SESSION::salvage</a> method can be used to repair a corrupted file,</p>
+<p>Verify reports if a file, or the files that comprise a table, have been corrupted. The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e" title="Salvage a table.">WT_SESSION::salvage</a> method can be used to repair a corrupted file.</p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3">verify</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --><p> This method requires exclusive access to the specified data source(s). If any cursors are open with the specified name(s) or a data source is otherwise in use, the call will fail and return <code>EBUSY</code>. See <a class="el" href="error_handling.html">Error handling</a> for details.<br  />
 <br  />
@@ -2144,7 +2143,7 @@ session.</h1>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a96f25dfa6447034aea1f67ab02ab5698"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">WT_SESSION::close</a></div><div class="ttdeci">int close(WT_SESSION *session, const char *config)</div><div class="ttdoc">Close the session handle.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a358ca4141d59c345f401c58501276bbb"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">WT_SESSION::create</a></div><div class="ttdeci">int create(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Create a table, column group, index or file.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aa449082ce4de7ee86a773595c416a69f"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">WT_SESSION::timestamp_transaction</a></div><div class="ttdeci">int timestamp_transaction(WT_SESSION *session, const char *config)</div><div class="ttdoc">Set a timestamp on a transaction.</div></div>
-<div class="ttc" id="agroup__wt_html_ga5ee3c6fcd074e11efd118f3e68e91db8"><div class="ttname"><a href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a></div><div class="ttdeci">#define WT_ROLLBACK</div><div class="ttdoc">Conflict between concurrent operations.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3834</div></div>
+<div class="ttc" id="agroup__wt_html_ga5ee3c6fcd074e11efd118f3e68e91db8"><div class="ttname"><a href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a></div><div class="ttdeci">#define WT_ROLLBACK</div><div class="ttdoc">Conflict between concurrent operations.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3858</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_afb5b4a69c2c5cafe411b2b04fdc1c75d"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">WT_SESSION::open_cursor</a></div><div class="ttdeci">int open_cursor(WT_SESSION *session, const char *uri, WT_CURSOR *to_dup, const char *config, WT_CURSOR **cursorp)</div><div class="ttdoc">Open a new cursor on a data source or duplicate an existing cursor.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aafa7a12a4891a5bfdc98673a5b8f9c69"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">WT_SESSION::compact</a></div><div class="ttdeci">int compact(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Compact a live row- or column-store btree or LSM tree.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></div><div class="ttdoc">A WT_CURSOR handle is the interface to a cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:199</div></div>
@@ -2154,7 +2153,7 @@ session.</h1>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a1d24b02549009f78b7c6463da0247614"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614">WT_SESSION::rename</a></div><div class="ttdeci">int rename(WT_SESSION *session, const char *uri, const char *newuri, const char *config)</div><div class="ttdoc">Rename an object.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_ac6f0630cb70bb057aa4512f7888dc701"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701">WT_SESSION::alter</a></div><div class="ttdeci">int alter(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Alter a table.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a307800663ed211447a18c46863c28787"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787">WT_SESSION::reset</a></div><div class="ttdeci">int reset(WT_SESSION *session)</div><div class="ttdoc">Reset the session handle.</div></div>
-<div class="ttc" id="agroup__wt_html_gga3307ac01d47089125814f62e90b6ef6ea20ed2533cb281af4aa546fd73303e3c5"><div class="ttname"><a href="group__wt.html#gga3307ac01d47089125814f62e90b6ef6ea20ed2533cb281af4aa546fd73303e3c5">WT_TS_TXN_TYPE_COMMIT</a></div><div class="ttdeci">@ WT_TS_TXN_TYPE_COMMIT</div><div class="ttdoc">Commit timestamp.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:788</div></div>
+<div class="ttc" id="agroup__wt_html_gga3307ac01d47089125814f62e90b6ef6ea20ed2533cb281af4aa546fd73303e3c5"><div class="ttname"><a href="group__wt.html#gga3307ac01d47089125814f62e90b6ef6ea20ed2533cb281af4aa546fd73303e3c5">WT_TS_TXN_TYPE_COMMIT</a></div><div class="ttdeci">@ WT_TS_TXN_TYPE_COMMIT</div><div class="ttdoc">Commit timestamp.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:790</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_ab3399430e474f7005bd5ea20e6ec7a8e"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e">WT_SESSION::salvage</a></div><div class="ttdeci">int salvage(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Salvage a table.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a0334da4c85fe8af4197c9a7de27467d3"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3">WT_SESSION::verify</a></div><div class="ttdeci">int verify(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Verify a table.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_ac2bad195e24710d52d730fe3a7c1756a"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a">WT_SESSION::truncate</a></div><div class="ttdeci">int truncate(WT_SESSION *session, const char *name, WT_CURSOR *start, WT_CURSOR *stop, const char *config)</div><div class="ttdoc">Truncate a file, table, cursor range, or backup cursor.</div></div>
@@ -2165,9 +2164,9 @@ session.</h1>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a1d4d22f14aef710c0c3ac6a543004686"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a1d4d22f14aef710c0c3ac6a543004686">WT_SESSION::timestamp_transaction_uint</a></div><div class="ttdeci">int timestamp_transaction_uint(WT_SESSION *session, WT_TS_TXN_TYPE which, uint64_t ts)</div><div class="ttdoc">Set a timestamp on a transaction numerically.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a96b8a369610c8cbb08b8a7c504fd1008"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008">WT_SESSION::prepare_transaction</a></div><div class="ttdeci">int prepare_transaction(WT_SESSION *session, const char *config)</div><div class="ttdoc">Prepare the current transaction.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3855</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3879</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a1d108fab498cfddbb09ee23e3321a88d"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d">WT_SESSION::transaction_pinned_range</a></div><div class="ttdeci">int transaction_pinned_range(WT_SESSION *session, uint64_t *range)</div><div class="ttdoc">Return the transaction ID range pinned by the session handle.</div></div>
-<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a2117021276bad0e6f541e61a5459ec59"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59">WT_SESSION::reset_snapshot</a></div><div class="ttdeci">int reset_snapshot(WT_SESSION *session)</div><div class="ttdoc">Reset the snapshot.</div></div>
+<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a2117021276bad0e6f541e61a5459ec59"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59">WT_SESSION::reset_snapshot</a></div><div class="ttdeci">int reset_snapshot(WT_SESSION *session)</div><div class="ttdoc">Reset the snapshot used for database visibility.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

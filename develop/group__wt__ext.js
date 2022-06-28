@@ -68,7 +68,7 @@ var group__wt__ext =
       [ "file_system", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a8a8cadc351799d3f5c1b55d266cff780", null ],
       [ "name", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad2a2c8838d62efa219404eeb006bddd5", null ]
     ] ],
-    [ "WT_EXTENSION_SPINLOCK", "group__wt__ext.html#struct____wt__extension__spinlock", [
+    [ "WT_EXTENSION_SPINLOCK", "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k", [
       [ "spinlock", "group__wt__ext.html#a26928fd4ccc55207a2c06145b181d4b2", null ]
     ] ],
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", [

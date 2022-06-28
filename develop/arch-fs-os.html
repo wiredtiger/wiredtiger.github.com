@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 10.0.2</span>
+   &#160;<span id="projectnumber">Version 11.0.0</span>
    </div>
-   <div id="projectbrief"><!-- 10.0.2 --></div>
+   <div id="projectbrief"><!-- 11.0.0 --></div>
   </td>
  </tr>
  </tbody>
@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('arch-fs-os.html',''); initResizable();
 <area shape="rect" id="id18" href="arch-fs-os.html" title="arch-fs-os.html" alt="" coords="175,755,357,771"/>
 </map>
 <tr>
-<td><code><code><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a><br  />
+<td><code><code><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a><br  />
 <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation.">WT_FILE_SYSTEM</a></code></code></td><td><code><code>src/include/os.h<br  />
 src/include/os_fhandle_inline.h<br  />
 src/include/os_fs_inline.h<br  />
@@ -139,7 +139,7 @@ File System Interface</h2>
 <p>The file system interface handles system calls on the file system namespace such as creation and deletion. WiredTiger defines the file system interface through <code><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation.">WT_FILE_SYSTEM</a></code>, which is initialized when a WiredTiger connection is opened. The interface has a set of function pointers that represent the file system functionalities that WiredTiger supports for a directory. WiredTiger defines POSIX and Windows file system function implementations in <code>os_fs.c</code>.</p>
 <h2><a class="anchor" id="file_handle"></a>
 File Handle Interface</h2>
-<p>WiredTiger has a file handle interface called <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::open_file.">WT_FILE_HANDLE</a> which defines a set of function pointers that represent I/O operations for a file. We use this interface as a base class to create file handle implementations specific to the operating system, for example <code>WT_FILE_HANDLE_POSIX</code> or <code>WT_FILE_HANDLE_WINDOWS</code>. These WiredTiger file handle structures are initialized when <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99" title="Open a handle for a named file system object.">WT_FILE_SYSTEM::fs_open_file</a> is called.</p>
+<p>WiredTiger has a file handle interface called <a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html" title="A file handle implementation returned by WT_FILE_SYSTEM::fs_open_file.">WT_FILE_HANDLE</a> which defines a set of function pointers that represent I/O operations for a file. We use this interface as a base class to create file handle implementations specific to the operating system, for example <code>WT_FILE_HANDLE_POSIX</code> or <code>WT_FILE_HANDLE_WINDOWS</code>. These WiredTiger file handle structures are initialized when <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99" title="Open a handle for a named file system object.">WT_FILE_SYSTEM::fs_open_file</a> is called.</p>
 <p>In WiredTiger, whenever a file is opened a file handle is created to accommodate the state of the file in cache. To prevent multiple file handles being created for a file, WiredTiger uses a hash table to maintain an single file handle for each opened file. A structure called <code>WT_FH</code> is used for accessing each entry in the hash table. Thus WiredTiger checks the hash table via <code>WT_FH</code> for an open file handle.</p>
 <h2><a class="anchor" id="file_customization"></a>
 File System and Handle Customization</h2>

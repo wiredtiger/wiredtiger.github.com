@@ -27,9 +27,9 @@
   <td id="projectlogo"><a href="http://wiredtiger.com/"><img alt="Logo" src="LogoFinal-header.png" alt="WiredTiger" /></a></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">
-   &#160;<span id="projectnumber">Version 10.0.2</span>
+   &#160;<span id="projectnumber">Version 11.0.0</span>
    </div>
-   <div id="projectbrief"><!-- 10.0.2 --></div>
+   <div id="projectbrief"><!-- 11.0.0 --></div>
   </td>
  </tr>
  </tbody>
@@ -123,11 +123,11 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The interface implemented by applications to provide a custom file system implementation.  <a href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A file handle implementation returned by WT_FILE_SYSTEM::open_file.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A file handle implementation returned by <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99" title="Open a handle for a named file system object.">WT_FILE_SYSTEM::fs_open_file</a>.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:struct____wt__extension__spinlock"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#struct____wt__extension__spinlock">WT_EXTENSION_SPINLOCK</a></td></tr>
-<tr class="memdesc:struct____wt__extension__spinlock"><td class="mdescLeft">&#160;</td><td class="mdescRight">A placeholder data structure that allows for using the WiredTiger spinlock implementation from within extensions.  <a href="group__wt__ext.html#struct____wt__extension__spinlock">More...</a><br /></td></tr>
-<tr class="separator:struct____wt__extension__spinlock"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k">WT_EXTENSION_SPINLOCK</a></td></tr>
+<tr class="memdesc:struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k"><td class="mdescLeft">&#160;</td><td class="mdescRight">A placeholder data structure that allows for using the WiredTiger spinlock implementation from within extensions.  <a href="group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k">More...</a><br /></td></tr>
+<tr class="separator:struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html">WT_EXTENSION_API</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of WiredTiger extension methods.  <a href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,14 +206,14 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>The functions and interfaces applications use to customize and extend the behavior of WiredTiger. </p>
 <hr/><h2 class="groupheader">Class Documentation</h2>
-<a name="struct____wt__extension__spinlock" id="struct____wt__extension__spinlock"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#struct____wt__extension__spinlock">&#9670;&nbsp;</a></span>__wt_extension_spinlock</h2>
+<a name="struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k" id="struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k">&#9670;&nbsp;</a></span>WT_EXTENSION_SPINLOCK</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct __wt_extension_spinlock</td>
+          <td class="memname">struct WT_EXTENSION_SPINLOCK</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -242,7 +242,7 @@ spinlock</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>A configuration object passed to some extension interfaces. This is an opaque type: configuration values can be queried using <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45" title="Return the value of a configuration key.">WT_EXTENSION_API::config_get</a> </p>
+<p>A configuration object passed to some extension interfaces. This is an opaque type: configuration values can be queried using <a class="el" href="struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45" title="Return the value of a configuration key.">WT_EXTENSION_API::config_get</a>. </p>
 
 </div>
 </div>
