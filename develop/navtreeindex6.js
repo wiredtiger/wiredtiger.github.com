@@ -1,5 +1,10 @@
 var NAVTREEINDEX6 =
 {
+"shared_cache.html":[0,3,35],
+"signals.html":[0,3,27],
+"sodium_encrypt_8c-example.html":[4,18],
+"statistics.html":[0,3,36],
+"statistics.html#statistics_log":[0,3,36,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html":[1,1,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html#a8b187a50a9830bfb63390ee5bf9b6cd0":[1,1,0,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0":[1,1,0,1],
@@ -244,10 +249,5 @@ var NAVTREEINDEX6 =
 "tool-libfuzzer.html#autotoc_md18":[0,8,6,1,1,0],
 "tool-libfuzzer.html#autotoc_md19":[0,8,6,2],
 "tool-libfuzzer.html#autotoc_md20":[0,8,6,2,0],
-"tool-libfuzzer.html#autotoc_md21":[0,8,6,2,1],
-"tool-libfuzzer.html#autotoc_md22":[0,8,6,2,2],
-"tool-optrack.html":[0,8,2],
-"tool-optrack.html#autotoc_md23":[0,8,2,0],
-"tool-optrack.html#autotoc_md24":[0,8,2,0,0],
-"tool-optrack.html#autotoc_md25":[0,8,2,0,1]
+"tool-libfuzzer.html#autotoc_md21":[0,8,6,2,1]
 };
