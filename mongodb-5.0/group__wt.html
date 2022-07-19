@@ -629,6 +629,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf28a544870259a4d6a265d789681f461">WT_STAT_CONN_CACHE_EVICTION_BLOCKED_OOO_CHECKPOINT_RACE_4</a></td></tr>
 <tr class="memdesc:gaf28a544870259a4d6a265d789681f461"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction gave up due to detecting out of order timestamps on the update chain after the selected on disk update <br /></td></tr>
 <tr class="separator:gaf28a544870259a4d6a265d789681f461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac191be266aafb7c4161aa5b359c106c5"><td class="memItemLeft" align="right" valign="top"><a id="gac191be266aafb7c4161aa5b359c106c5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac191be266aafb7c4161aa5b359c106c5">WT_STAT_CONN_CACHE_EVICTION_BLOCKED_REMOVE_HS_RACE_WITH_CHECKPOINT</a></td></tr>
+<tr class="memdesc:gac191be266aafb7c4161aa5b359c106c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction gave up due to needing to remove a record from the history store but checkpoint is running <br /></td></tr>
+<tr class="separator:gac191be266aafb7c4161aa5b359c106c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6708fee683eedc5595b1ad2cd12a7269"><td class="memItemLeft" align="right" valign="top"><a id="ga6708fee683eedc5595b1ad2cd12a7269"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6708fee683eedc5595b1ad2cd12a7269">WT_STAT_CONN_CACHE_EVICTION_WALK_PASSES</a></td></tr>
 <tr class="memdesc:ga6708fee683eedc5595b1ad2cd12a7269"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction passes of a file <br /></td></tr>
@@ -2149,14 +2153,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad33543a1462eb42e44251ea0800f7ebe">WT_STAT_CONN_TXN_PREPARE_ROLLBACK</a></td></tr>
 <tr class="memdesc:gad33543a1462eb42e44251ea0800f7ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: prepared transactions rolled back <br /></td></tr>
 <tr class="separator:gad33543a1462eb42e44251ea0800f7ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c4a937ac68908324e85424c8eca318e"><td class="memItemLeft" align="right" valign="top"><a id="ga0c4a937ac68908324e85424c8eca318e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0c4a937ac68908324e85424c8eca318e">WT_STAT_CONN_TXN_PREPARE_ROLLBACK_DO_NOT_REMOVE_HS_UPDATE</a></td></tr>
-<tr class="memdesc:ga0c4a937ac68908324e85424c8eca318e"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: prepared transactions rolled back and do not remove the history store entry <br /></td></tr>
-<tr class="separator:ga0c4a937ac68908324e85424c8eca318e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga850f17d284adabf224731e7ccda31e0a"><td class="memItemLeft" align="right" valign="top"><a id="ga850f17d284adabf224731e7ccda31e0a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga850f17d284adabf224731e7ccda31e0a">WT_STAT_CONN_TXN_PREPARE_ROLLBACK_FIX_HS_UPDATE_WITH_CKPT_RESERVED_TXNID</a></td></tr>
-<tr class="memdesc:ga850f17d284adabf224731e7ccda31e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: prepared transactions rolled back and fix the history store entry with checkpoint reserved transaction id <br /></td></tr>
-<tr class="separator:ga850f17d284adabf224731e7ccda31e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="memItemLeft" align="right" valign="top"><a id="ga99702821df60ac2845a9c89a7c9bc1cb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga99702821df60ac2845a9c89a7c9bc1cb">WT_STAT_CONN_TXN_QUERY_TS</a></td></tr>
 <tr class="memdesc:ga99702821df60ac2845a9c89a7c9bc1cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: query timestamp calls <br /></td></tr>
@@ -2642,6 +2638,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacd553b47605ae1a747f63c78083266d6">WT_STAT_DSRC_CACHE_EVICTION_BLOCKED_OOO_CHECKPOINT_RACE_4</a></td></tr>
 <tr class="memdesc:gacd553b47605ae1a747f63c78083266d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction gave up due to detecting out of order timestamps on the update chain after the selected on disk update <br /></td></tr>
 <tr class="separator:gacd553b47605ae1a747f63c78083266d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a9f1d006a44e45e5cadfa2da221b333"><td class="memItemLeft" align="right" valign="top"><a id="ga0a9f1d006a44e45e5cadfa2da221b333"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0a9f1d006a44e45e5cadfa2da221b333">WT_STAT_DSRC_CACHE_EVICTION_BLOCKED_REMOVE_HS_RACE_WITH_CHECKPOINT</a></td></tr>
+<tr class="memdesc:ga0a9f1d006a44e45e5cadfa2da221b333"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction gave up due to needing to remove a record from the history store but checkpoint is running <br /></td></tr>
+<tr class="separator:ga0a9f1d006a44e45e5cadfa2da221b333"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa9064c56649bc3fdfc11bb7f7c5086fc"><td class="memItemLeft" align="right" valign="top"><a id="gaa9064c56649bc3fdfc11bb7f7c5086fc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa9064c56649bc3fdfc11bb7f7c5086fc">WT_STAT_DSRC_CACHE_EVICTION_WALK_PASSES</a></td></tr>
 <tr class="memdesc:gaa9064c56649bc3fdfc11bb7f7c5086fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction walk passes of a file <br /></td></tr>
