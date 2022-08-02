@@ -55,7 +55,7 @@ var group__wt__ext =
       [ "fh_extend", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ab4b685446f0ce09b7270dd32bb771ce7", null ],
       [ "fh_extend_nolock", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2479acb713a211b2d7cc84aaada4b29b", null ],
       [ "fh_lock", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5db2aa421c5297d9119b9517e1117afb", null ],
-      [ "fh_map", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f", null ],
+      [ "fh_map", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aff0f1b582876fc0fad4d2093197d1124", null ],
       [ "fh_map_discard", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e", null ],
       [ "fh_map_preload", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a350e1db2cd51c8c2479b03beae9af90f", null ],
       [ "fh_read", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#ad41718cb1f7a59cfb21a68785aa09897", null ],

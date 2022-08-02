@@ -124,9 +124,9 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr class="memitem:a5db2aa421c5297d9119b9517e1117afb"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5db2aa421c5297d9119b9517e1117afb">fh_lock</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, bool lock)</td></tr>
 <tr class="memdesc:a5db2aa421c5297d9119b9517e1117afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock/unlock a file from the perspective of other processes running in the system, where necessary.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a5db2aa421c5297d9119b9517e1117afb">More...</a><br /></td></tr>
 <tr class="separator:a5db2aa421c5297d9119b9517e1117afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaf6ca726275db6772700eaca399c89f"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f">fh_map</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *mapped_regionp, size_t *lengthp, void *mapped_cookiep)</td></tr>
-<tr class="memdesc:afaf6ca726275db6772700eaca399c89f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map a file into memory, based on the POSIX 1003.1 standard mmap.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#afaf6ca726275db6772700eaca399c89f">More...</a><br /></td></tr>
-<tr class="separator:afaf6ca726275db6772700eaca399c89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff0f1b582876fc0fad4d2093197d1124"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aff0f1b582876fc0fad4d2093197d1124">fh_map</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void **mapped_regionp, size_t *lengthp, void **mapped_cookiep)</td></tr>
+<tr class="memdesc:aff0f1b582876fc0fad4d2093197d1124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map a file into memory, based on the POSIX 1003.1 standard mmap.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aff0f1b582876fc0fad4d2093197d1124">More...</a><br /></td></tr>
+<tr class="separator:aff0f1b582876fc0fad4d2093197d1124"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02b0e75636d323ce5bd42fdf7e83615e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e">fh_map_discard</a> )(<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *map, size_t length, void *mapped_cookie)</td></tr>
 <tr class="memdesc:a02b0e75636d323ce5bd42fdf7e83615e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmap part of a memory mapped file, based on the POSIX 1003.1 standard madvise.  <a href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a02b0e75636d323ce5bd42fdf7e83615e">More...</a><br /></td></tr>
 <tr class="separator:a02b0e75636d323ce5bd42fdf7e83615e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -306,14 +306,14 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 </div>
 </div>
-<a id="afaf6ca726275db6772700eaca399c89f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afaf6ca726275db6772700eaca399c89f">&#9670;&nbsp;</a></span>fh_map</h2>
+<a id="aff0f1b582876fc0fad4d2093197d1124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff0f1b582876fc0fad4d2093197d1124">&#9670;&nbsp;</a></span>fh_map</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* WT_FILE_HANDLE::fh_map) (<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void *mapped_regionp, size_t *lengthp, void *mapped_cookiep)</td>
+          <td class="memname">int(* WT_FILE_HANDLE::fh_map) (<a class="el" href="struct_w_t___f_i_l_e___h_a_n_d_l_e.html">WT_FILE_HANDLE</a> *file_handle, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, void **mapped_regionp, size_t *lengthp, void **mapped_cookiep)</td>
         </tr>
       </table>
 </div><div class="memdoc">
