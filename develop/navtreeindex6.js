@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"schema.html#schema_indices":[0,3,3,7],
+"schema.html#schema_intro":[0,3,3,0],
+"schema.html#schema_key_and_value_formats":[0,3,3,3],
+"security.html":[0,5,3],
+"security.html#absolute_path":[0,5,3,1],
+"security.html#directory_permissions":[0,5,3,0],
 "security.html#environment_variables":[0,5,3,3],
 "security.html#file_permissions":[0,5,3,2],
 "shared_cache.html":[0,3,35],
@@ -243,11 +249,5 @@ var NAVTREEINDEX6 =
 "tool-libfuzzer.html#autotoc_md10":[0,8,6,0],
 "tool-libfuzzer.html#autotoc_md11":[0,8,6,0,0],
 "tool-libfuzzer.html#autotoc_md12":[0,8,6,0,1],
-"tool-libfuzzer.html#autotoc_md13":[0,8,6,0,2],
-"tool-libfuzzer.html#autotoc_md14":[0,8,6,0,2,0],
-"tool-libfuzzer.html#autotoc_md15":[0,8,6,1],
-"tool-libfuzzer.html#autotoc_md16":[0,8,6,1,0],
-"tool-libfuzzer.html#autotoc_md17":[0,8,6,1,1],
-"tool-libfuzzer.html#autotoc_md18":[0,8,6,1,1,0],
-"tool-libfuzzer.html#autotoc_md19":[0,8,6,2]
+"tool-libfuzzer.html#autotoc_md13":[0,8,6,0,2]
 };
