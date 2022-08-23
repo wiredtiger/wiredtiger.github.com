@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['timestamps_1576',['Timestamps',['../arch-timestamp.html',1,'arch-toc-fundamentals']]],
-  ['tools_1577',['Tools',['../arch-toc-tools.html',1,'arch-index']]],
-  ['transactions_1578',['Transactions',['../arch-transaction.html',1,'arch-toc-fundamentals'],['../transactions.html',1,'programming']]],
-  ['tutorial_3a_20transactions_20and_20acid_20properties_1579',['Tutorial: transactions and ACID properties',['../explain_acid.html',1,'programming']]],
-  ['tutorial_3a_20isolation_20levels_1580',['Tutorial: isolation levels',['../explain_isolation.html',1,'programming']]],
-  ['track_20function_20calls_1581',['Track function calls',['../operation_tracking.html',1,'programming']]],
-  ['timestamp_20overview_1582',['Timestamp overview',['../timestamp_model.html',1,'programming']]],
-  ['tools_20and_20techniques_1583',['Tools and Techniques',['../tool-index.html',1,'index']]],
-  ['testing_20with_20llvm_20libfuzzer_1584',['Testing with LLVM LibFuzzer',['../tool-libfuzzer.html',1,'tool-index']]],
-  ['transactional_20api_20calls_1585',['Transactional API calls',['../transactions_api.html',1,'programming']]],
-  ['tuning_20page_20size_20and_20compression_1586',['Tuning page size and compression',['../tune_page_size_and_comp.html',1,'programming']]]
+  ['timestamps_1577',['Timestamps',['../arch-timestamp.html',1,'arch-toc-fundamentals']]],
+  ['tools_1578',['Tools',['../arch-toc-tools.html',1,'arch-index']]],
+  ['transactions_1579',['Transactions',['../arch-transaction.html',1,'arch-toc-fundamentals'],['../transactions.html',1,'programming']]],
+  ['tutorial_3a_20transactions_20and_20acid_20properties_1580',['Tutorial: transactions and ACID properties',['../explain_acid.html',1,'programming']]],
+  ['tutorial_3a_20isolation_20levels_1581',['Tutorial: isolation levels',['../explain_isolation.html',1,'programming']]],
+  ['track_20function_20calls_1582',['Track function calls',['../operation_tracking.html',1,'programming']]],
+  ['timestamp_20overview_1583',['Timestamp overview',['../timestamp_model.html',1,'programming']]],
+  ['tools_20and_20techniques_1584',['Tools and Techniques',['../tool-index.html',1,'index']]],
+  ['testing_20with_20llvm_20libfuzzer_1585',['Testing with LLVM LibFuzzer',['../tool-libfuzzer.html',1,'tool-index']]],
+  ['transactional_20api_20calls_1586',['Transactional API calls',['../transactions_api.html',1,'programming']]],
+  ['tuning_20page_20size_20and_20compression_1587',['Tuning page size and compression',['../tune_page_size_and_comp.html',1,'programming']]]
 ];
