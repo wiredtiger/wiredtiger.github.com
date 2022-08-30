@@ -43,14 +43,14 @@ var tool_index =
     ] ],
     [ "Instrumentation and introspection with XRay", "tool-xray.html", [
       [ "Instrumenting with XRay", "tool-xray.html#autotoc_md54", [
-        [ "Step 1: Configure and compile WiredTiger with XRay instrumentation", "tool-xray.html#autotoc_md55", null ],
-        [ "Step 2: Run wtperf", "tool-xray.html#autotoc_md56", null ]
+        [ "Step 1: Install LLVM and graphviz", "tool-xray.html#autotoc_md55", null ],
+        [ "Step 2: Configure and compile WiredTiger with XRay instrumentation", "tool-xray.html#autotoc_md56", null ],
+        [ "Step 3: Run wtperf", "tool-xray.html#autotoc_md57", null ]
       ] ],
-      [ "Convert XRay logs to the Operation Tracking format (optional)", "tool-xray.html#autotoc_md57", [
-        [ "Step 1: Take a copy of the wtperf binary and the XRay log", "tool-xray.html#autotoc_md58", null ],
-        [ "Step 2: Install LLVM", "tool-xray.html#autotoc_md59", null ],
-        [ "Step 3: Configure and build WiredTiger with LLVM flags", "tool-xray.html#autotoc_md60", null ],
-        [ "Step 4: Process the traces", "tool-xray.html#autotoc_md61", null ]
+      [ "Convert XRay logs to the Operation Tracking format (optional)", "tool-xray.html#autotoc_md58", [
+        [ "Step 1: Take a copy of the wtperf binary and the XRay log", "tool-xray.html#autotoc_md59", null ],
+        [ "Step 2: Configure and build WiredTiger with LLVM flags", "tool-xray.html#autotoc_md60", null ],
+        [ "Step 3: Process the traces", "tool-xray.html#autotoc_md61", null ]
       ] ]
     ] ],
     [ "CPU Flame Graphs", "tool-perf-flamegraphs.html", [
