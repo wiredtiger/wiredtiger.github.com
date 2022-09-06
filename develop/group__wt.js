@@ -418,6 +418,7 @@ var group__wt =
     [ "WT_STAT_CONN_DHANDLE_LOCK_BLOCKED", "group__wt.html#gac2b7bf415b251f0299803960b2ba82e3", null ],
     [ "WT_STAT_CONN_FILE_OPEN", "group__wt.html#gacb44b88acd3b00bee3236f9196f1b22e", null ],
     [ "WT_STAT_CONN_FLUSH_TIER", "group__wt.html#gabc61eff3d60349bbbc99fcdb41645bc8", null ],
+    [ "WT_STAT_CONN_FLUSH_TIER_FAIL", "group__wt.html#ga538d37eca733b1fb0c378e91d4e2e9aa", null ],
     [ "WT_STAT_CONN_FLUSH_TIER_SKIPPED", "group__wt.html#ga37a1bbf0d3619451cc16ec72bde57b44", null ],
     [ "WT_STAT_CONN_FLUSH_TIER_SWITCHED", "group__wt.html#gadd841a49c21d38fcf31ef24e9c219dc7", null ],
     [ "WT_STAT_CONN_FSYNC_ALL_FH", "group__wt.html#gac74c93105f4eb1e839ab6f1b5b6136ae", null ],
