@@ -64,5 +64,24 @@ var arch_toc_fundamentals =
       [ "How rollback to stable aborts on-disk update", "arch-rts.html#rts-abort-on-disk-update", null ],
       [ "Rollback to stable history store search", "arch-rts.html#rts-hs-search", null ],
       [ "Skipping reading unnecessary pages into memory", "arch-rts.html#rts-page-skip", null ]
+    ] ],
+    [ "Deleted Pages and Fast-Truncate", "arch-fast-truncate.html", [
+      [ "Deleted Pages", "arch-fast-truncate.html#ft_deleted_pages", null ],
+      [ "Instantiated Pages", "arch-fast-truncate.html#ft_instantiated_pages", [
+        [ "The instantiated flag and the page_del field", "arch-fast-truncate.html#ft_instantiated_instantiated", null ],
+        [ "The inst_updates field", "arch-fast-truncate.html#ft_instantiated_updates", null ]
+      ] ],
+      [ "Instantiation", "arch-fast-truncate.html#ft_instantiation", null ],
+      [ "Internal page reconciliation", "arch-fast-truncate.html#ft_internal_reconciliation", null ],
+      [ "Leaf (child) reconciliation", "arch-fast-truncate.html#ft_leaf_reconciliation", null ],
+      [ "On-disk format", "arch-fast-truncate.html#ft_on_disk_format", null ],
+      [ "Truncation", "arch-fast-truncate.html#ft_truncate", null ],
+      [ "Generation of other deleted pages", "arch-fast-truncate.html#ft_deleted_generation", null ],
+      [ "Skipping deleted pages", "arch-fast-truncate.html#ft_page_skip", null ],
+      [ "VLCS considerations", "arch-fast-truncate.html#ft_vlcs", null ],
+      [ "FLCS and deleted pages", "arch-fast-truncate.html#ft_flcs", null ],
+      [ "Notes on visibility", "arch-fast-truncate.html#ft_visibility", null ],
+      [ "Miscellaneous other notes", "arch-fast-truncate.html#ft_misc", null ],
+      [ "Pointers to pieces of the implementation", "arch-fast-truncate.html#ft_pointers", null ]
     ] ]
 ];

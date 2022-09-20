@@ -5,8 +5,7 @@ var arch_toc_data_src =
       [ "B-Tree In-Memory Representation", "arch-btree.html#btree_btree_in_memory_representation", null ],
       [ "Truncate Operation", "arch-btree.html#btree_truncate_operation", null ],
       [ "Range Truncate On Files", "arch-btree.html#btree_range_truncate_file", null ],
-      [ "Interaction With Other Operations", "arch-btree.html#btree_truncate_interaction_with_other_operations", null ],
-      [ "Performing Reads On Truncated Pages", "arch-btree.html#btree_truncate_performing_reads_on_truncated_pages", null ]
+      [ "Interaction With Other Operations", "arch-btree.html#btree_truncate_interaction_with_other_operations", null ]
     ] ],
     [ "Data Handles", "arch-dhandle.html", [
       [ "Data Handle Lifecycle", "arch-dhandle.html#dhandle_data_handle_lifecycle", null ],

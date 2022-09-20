@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('ex_access_8c-example.html',''); initRe
 <div class="line">    <span class="keywordtype">int</span> ret;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
-<div class="line">    error_check(<a name="a3"></a><a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn));</div>
+<div class="line">    error_check(<a name="a3"></a><a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,statistics=(all)&quot;</span>, &amp;conn));</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Open a session handle for the database. */</span></div>
 <div class="line">    error_check(conn-&gt;<a name="a4"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0">open_session</a>(conn, NULL, NULL, &amp;session));</div>
