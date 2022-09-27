@@ -1,5 +1,9 @@
 var NAVTREEINDEX6 =
 {
+"overview.html#nosql":[0,0,1],
+"overview.html#quality":[0,0,0],
+"packing.html":[0,3,3,12],
+"packing.html#config_examples":[0,3,3,12,0],
 "pages.html":[],
 "programming.html":[0,3],
 "readonly.html":[0,3,26],
@@ -120,9 +124,10 @@ var NAVTREEINDEX6 =
 "struct_w_t___e_n_c_r_y_p_t_o_r.html#ad9337c89e540be05d207995c33bbe993":[1,1,3,4],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html":[1,0,5],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e":[1,0,5,0],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ab668210348b290ca2c9919935c89fd6e":[1,0,5,2],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f":[1,0,5,1],
-"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b":[1,0,5,3],
-"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1":[1,0,5,2],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b":[1,0,5,4],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1":[1,0,5,3],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html":[1,1,8],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420":[1,1,8,10],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f":[1,1,8,35],
@@ -244,10 +249,5 @@ var NAVTREEINDEX6 =
 "timestamp_model.html#timestamp_transactions":[0,3,10,1],
 "timestamp_model.html#timestamps_durability_checkpoint":[0,3,10,4],
 "timestamp_model.html#timestamps_durability_commit":[0,3,10,3],
-"timestamp_model.html#timestamps_format":[0,3,10,2],
-"timestamp_model.html#timestamps_global":[0,3,10,0],
-"timestamp_prepare.html":[0,3,13],
-"timestamp_prepare.html#timestamp_prepare_ignore_prepare":[0,3,13,0],
-"timestamp_prepare_roundup.html":[0,3,14],
-"timestamp_prepare_roundup.html#timestamp_prepare_roundup_replay":[0,3,14,0]
+"timestamp_model.html#timestamps_format":[0,3,10,2]
 };

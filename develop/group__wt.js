@@ -88,6 +88,7 @@ var group__wt =
     [ "WT_EVENT_HANDLER", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html", [
       [ "handle_close", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e", null ],
       [ "handle_error", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f", null ],
+      [ "handle_general", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ab668210348b290ca2c9919935c89fd6e", null ],
       [ "handle_message", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1", null ],
       [ "handle_progress", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b", null ]
     ] ],
@@ -970,6 +971,11 @@ var group__wt =
     [ "WT_STAT_SESSION_WRITE_TIME", "group__wt.html#gaaada8a06df6d927df43718f75b712da0", null ],
     [ "WT_TRY_SALVAGE", "group__wt.html#ga848dbb8ea23d57d22e8103ce70a08f50", null ],
     [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", null ],
+    [ "WT_EVENT_TYPE", "group__wt.html#ga418f8fac44f030fb265f1a6a118bd254", [
+      [ "WT_EVENT_COMPACT_CHECK", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254af41b2383baccffd1bcb42da6c39fd0d2", null ],
+      [ "WT_EVENT_CONN_CLOSE", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254abae25fac53b09d7896f42f8be5f91b94", null ],
+      [ "WT_EVENT_CONN_READY", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254aad1390dabd56140107505c4b5509c889", null ]
+    ] ],
     [ "WT_TS_TXN_TYPE", "group__wt.html#ga3307ac01d47089125814f62e90b6ef6e", [
       [ "WT_TS_TXN_TYPE_COMMIT", "group__wt.html#gga3307ac01d47089125814f62e90b6ef6ea20ed2533cb281af4aa546fd73303e3c5", null ],
       [ "WT_TS_TXN_TYPE_DURABLE", "group__wt.html#gga3307ac01d47089125814f62e90b6ef6eac1ec24bb531fbc8ea75e4ab9786cb06f", null ],

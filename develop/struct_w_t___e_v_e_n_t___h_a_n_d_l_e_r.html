@@ -113,6 +113,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a9531a89513becfdee205675cdc0d6f9e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e">handle_close</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor)</td></tr>
 <tr class="memdesc:a9531a89513becfdee205675cdc0d6f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle automatic close of a WiredTiger handle.  <a href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e">More...</a><br /></td></tr>
 <tr class="separator:a9531a89513becfdee205675cdc0d6f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab668210348b290ca2c9919935c89fd6e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ab668210348b290ca2c9919935c89fd6e">handle_general</a> )(<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *wt_conn, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt.html#ga418f8fac44f030fb265f1a6a118bd254">WT_EVENT_TYPE</a> type)</td></tr>
+<tr class="memdesc:ab668210348b290ca2c9919935c89fd6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle general events.  <a href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ab668210348b290ca2c9919935c89fd6e">More...</a><br /></td></tr>
+<tr class="separator:ab668210348b290ca2c9919935c89fd6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The interface implemented by applications to handle error, informational and progress messages. </p>
@@ -163,6 +166,32 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">session</td><td>the WiredTiger session handle in use when the error was generated. The handle may have been created by the application or automatically by WiredTiger. </td></tr>
     <tr><td class="paramname">error</td><td>a return value from a WiredTiger, ISO C, or POSIX standard API call, which can be converted to a string using <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string.">WT_SESSION::strerror</a> </td></tr>
     <tr><td class="paramname">message</td><td>an error string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab668210348b290ca2c9919935c89fd6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab668210348b290ca2c9919935c89fd6e">&#9670;&nbsp;</a></span>handle_general</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_EVENT_HANDLER::handle_general) (<a class="el" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *handler, <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *wt_conn, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <a class="el" href="group__wt.html#ga418f8fac44f030fb265f1a6a118bd254">WT_EVENT_TYPE</a> type)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to handle general events. </p>
+<p>The application may choose to handle only some types of events. An unhandled event should return 0.</p>
+<p>General event returns are not ignored in most cases. If the handler returns non-zero, the error may cause the WiredTiger function posting the event to fail.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wt_conn</td><td>The connection handle for the database. </td></tr>
+    <tr><td class="paramname">session</td><td>the WiredTiger session handle in use when the progress message was generated. The handle may have been created by the application or automatically by WiredTiger or may be NULL. </td></tr>
+    <tr><td class="paramname">type</td><td>A type indicator for what special event occurred. (see <a class="el" href="group__wt.html#ga418f8fac44f030fb265f1a6a118bd254" title="WT_EVENT_HANDLER::special event types.">WT_EVENT_TYPE</a> for available options.) </td></tr>
   </table>
   </dd>
 </dl>
