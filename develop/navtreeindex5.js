@@ -1,8 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"group__wt.html#gad203d1f2492062b40b1b31d614f9743c":[1,0,241],
-"group__wt.html#gad206bad154af8a4e4ec4c73c149a51f0":[1,0,768],
-"group__wt.html#gad2ab31f06e851a8a733a28698b0ac60c":[1,0,310],
 "group__wt.html#gad2c4346861916de6cd90b54f3d5a15a4":[1,0,477],
 "group__wt.html#gad2c8d2f65106a89c5582149626a62c23":[1,0,86],
 "group__wt.html#gad33543a1462eb42e44251ea0800f7ebe":[1,0,557],
@@ -214,11 +211,11 @@ var NAVTREEINDEX5 =
 "huffman.html":[0,3,19,3],
 "huffman.html":[0,9,9,1],
 "in_memory.html":[0,3,30],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "keyvalue.html":[0,3,3,11],
-"license.html":[6],
 "license.html":[0,7],
+"license.html":[6],
 "license.html#license_crc32-power8":[0,7,1],
 "license.html#license_crc32-zseries":[0,7,2],
 "license.html#license_distribution":[0,7,3],
@@ -249,5 +246,8 @@ var NAVTREEINDEX5 =
 "overview.html":[0,0],
 "overview.html#cache":[0,0,3],
 "overview.html#io":[0,0,4],
-"overview.html#multi_core":[0,0,2]
+"overview.html#multi_core":[0,0,2],
+"overview.html#nosql":[0,0,1],
+"overview.html#quality":[0,0,0],
+"packing.html":[0,3,3,12]
 };

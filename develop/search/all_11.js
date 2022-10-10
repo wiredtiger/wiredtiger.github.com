@@ -1,7 +1,7 @@
 var searchData=
 [
   ['row_20store_20and_20column_20store_184',['Row Store and Column Store',['../arch-row-column.html',1,'arch-toc-data-src']]],
-  ['rollback_20to_20stable_185',['Rollback to Stable',['../arch-rts.html',1,'arch-toc-fundamentals']]],
+  ['rollback_20to_20stable_20_28rts_29_185',['Rollback to Stable (RTS)',['../arch-rts.html',1,'arch-toc-fundamentals']]],
   ['recovery_186',['Recovery',['../arch-toc-recovery.html',1,'arch-index']]],
   ['reference_20guide_187',['Reference Guide',['../index.html',1,'']]],
   ['range_5ftruncate_188',['range_truncate',['../struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf57e661895f06a479dc359d51819d7c',1,'WT_DATA_SOURCE']]],

@@ -54,16 +54,13 @@ var arch_toc_fundamentals =
       [ "Snapshot Visibility", "arch-snapshot.html#snapshot_visibility", null ],
       [ "Snapshots & Checkpoints", "arch-snapshot.html#snapshot_checkpoint", null ]
     ] ],
-    [ "Rollback to Stable", "arch-rts.html", [
-      [ "Overview of rollback to stable", "arch-rts.html#rts-overview", null ],
-      [ "Stable update of rollback to stable", "arch-rts.html#rts-stable-update", null ],
-      [ "Pre-conditions required for rollback to stable", "arch-rts.html#rts-preconditions", null ],
-      [ "Checks performed on a table by rollback to stable", "arch-rts.html#rts-table-check", null ],
-      [ "How rollback to stable fixes the unstable updates", "arch-rts.html#rts-how", null ],
-      [ "How rollback to stable aborts in-memory updates", "arch-rts.html#rts-abort-update", null ],
-      [ "How rollback to stable aborts on-disk update", "arch-rts.html#rts-abort-on-disk-update", null ],
-      [ "Rollback to stable history store search", "arch-rts.html#rts-hs-search", null ],
-      [ "Skipping reading unnecessary pages into memory", "arch-rts.html#rts-page-skip", null ]
+    [ "Rollback to Stable (RTS)", "arch-rts.html", [
+      [ "Overview of RTS", "arch-rts.html#rts-overview", null ],
+      [ "How RTS aborts unstable updates", "arch-rts.html#rts-abort-updates", null ],
+      [ "Skipping reading unnecessary pages into memory", "arch-rts.html#rts-page-skip", null ],
+      [ "Example 1", "arch-rts.html#rts-example-1", null ],
+      [ "Example 2", "arch-rts.html#rts-example-2", null ],
+      [ "Example 3", "arch-rts.html#rts-example-3", null ]
     ] ],
     [ "Deleted Pages and Fast-Truncate", "arch-fast-truncate.html", [
       [ "Deleted Pages", "arch-fast-truncate.html#ft_deleted_pages", null ],
