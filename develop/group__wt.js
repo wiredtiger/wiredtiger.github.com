@@ -664,6 +664,7 @@ var group__wt =
     [ "WT_STAT_CONN_TXN_PREPARED_UPDATES_KEY_REPEATED", "group__wt.html#ga3795b4e2170d7d00a34890dd18b55e46", null ],
     [ "WT_STAT_CONN_TXN_PREPARED_UPDATES_ROLLEDBACK", "group__wt.html#ga646dde52877a49e163f75704a6cf6815", null ],
     [ "WT_STAT_CONN_TXN_QUERY_TS", "group__wt.html#ga99702821df60ac2845a9c89a7c9bc1cb", null ],
+    [ "WT_STAT_CONN_TXN_READ_OVERFLOW_REMOVE", "group__wt.html#ga09754133ce5110e0084f12f897b954e4", null ],
     [ "WT_STAT_CONN_TXN_READ_RACE_PREPARE_UPDATE", "group__wt.html#ga383c6857d8a70a747f2f5584b5cca035", null ],
     [ "WT_STAT_CONN_TXN_RELEASE_BLOCKED", "group__wt.html#ga52df57d3185b8f38832d3a38584ef6a0", null ],
     [ "WT_STAT_CONN_TXN_ROLLBACK", "group__wt.html#gac59719438965d6f2f0c89df53676680b", null ],
@@ -946,6 +947,7 @@ var group__wt =
     [ "WT_STAT_DSRC_REC_VLCS_EMPTIED_PAGES", "group__wt.html#ga27a35109ea0f26b2187a5e619b4288b5", null ],
     [ "WT_STAT_DSRC_SESSION_COMPACT", "group__wt.html#gae3a08df82d5b3571c61bed609980f845", null ],
     [ "WT_STAT_DSRC_TXN_CHECKPOINT_OBSOLETE_APPLIED", "group__wt.html#ga645adef100b38ac4a28b36f0b9135bce", null ],
+    [ "WT_STAT_DSRC_TXN_READ_OVERFLOW_REMOVE", "group__wt.html#ga523808289211f6784c0782b5fdb8e53d", null ],
     [ "WT_STAT_DSRC_TXN_READ_RACE_PREPARE_UPDATE", "group__wt.html#ga4ce7485574d7923e0f5355759d2b4da3", null ],
     [ "WT_STAT_DSRC_TXN_RTS_DELETE_RLE_SKIPPED", "group__wt.html#gad1ca757307c821f7abee416640e30648", null ],
     [ "WT_STAT_DSRC_TXN_RTS_HS_REMOVED", "group__wt.html#gac7e6fa0c9bff001882c75150a34c722b", null ],
@@ -1016,7 +1018,11 @@ var group__wt =
       [ "WT_VERBOSE_WARNING", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875ac4c19b20f0dbdd7bd6e044096a0d961b", null ],
       [ "WT_VERBOSE_NOTICE", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a48b592ec23832bc1fb0e6d45aed43753", null ],
       [ "WT_VERBOSE_INFO", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a6b85f656541cf298c732b5cb4b7347b1", null ],
-      [ "WT_VERBOSE_DEBUG", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875ad55572719cc118f0ffc4eaf6d5d5c85b", null ]
+      [ "WT_VERBOSE_DEBUG_1", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a235355298e7083e760345c5050ef720d", null ],
+      [ "WT_VERBOSE_DEBUG_2", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875acb735545c80085977cb9f8c2d2c30c9b", null ],
+      [ "WT_VERBOSE_DEBUG_3", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875ab39e63d918a2e0a0a469ae529eb9bf68", null ],
+      [ "WT_VERBOSE_DEBUG_4", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a8de55ea3189c8d4a9f064c90dbffa13f", null ],
+      [ "WT_VERBOSE_DEBUG_5", "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875af47191175f04d5122f360c2af30aeb02", null ]
     ] ],
     [ "wiredtiger_calc_modify", "group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29", null ],
     [ "wiredtiger_config_parser_open", "group__wt.html#ga512297da65ccc30ac91bf6adf95f043f", null ],

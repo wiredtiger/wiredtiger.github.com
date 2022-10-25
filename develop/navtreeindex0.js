@@ -50,8 +50,9 @@ var NAVTREEINDEX0 =
 "arch-connection.html#arch_conn_runtime":[0,9,0,0,1,1],
 "arch-cursor.html":[0,9,0,2],
 "arch-cursor.html#arch_cursor_backup":[0,9,0,2,5],
+"arch-cursor.html#arch_cursor_bound":[0,9,0,2,11],
 "arch-cursor.html#arch_cursor_caching":[0,9,0,2,9],
-"arch-cursor.html#arch_cursor_debug_copy":[0,9,0,2,11],
+"arch-cursor.html#arch_cursor_debug_copy":[0,9,0,2,12],
 "arch-cursor.html#arch_cursor_dhandle":[0,9,0,2,8],
 "arch-cursor.html#arch_cursor_dump":[0,9,0,2,4],
 "arch-cursor.html#arch_cursor_duplicate":[0,9,0,2,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "command_line.html#util_create_options":[0,9,7,1,6,1],
 "command_line.html#util_create_synopsis":[0,4,6,0],
 "command_line.html#util_create_synopsis":[0,9,7,1,6,0],
-"command_line.html#util_downgrade":[0,4,7],
-"command_line.html#util_downgrade":[0,9,7,1,7]
+"command_line.html#util_downgrade":[0,4,7]
 };

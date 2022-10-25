@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('verbose_messaging.html',''); initResiz
 <div class="textblock"><p>As part of normal operation, WiredTiger will produce verbose messages around various events, actions and possible issues/errors. Verbose messages are spread across various categories, representing different sub-systems throughout WiredTiger. Verbose messages can be usefully leveraged to monitor, debug and diagnose events across WiredTiger's runtime.</p>
 <h1><a class="anchor" id="verbosity_levels"></a>
 Verbosity Levels</h1>
-<p>WiredTiger associates a verbosity level with each message. The verbosity level denotes the severity of a given message, ranging from high severity error messages (<code>ERROR</code>) to low severity debug informational messages (<code>DEBUG</code>). The full range of verbosity levels and their associated meanings are:</p>
+<p>WiredTiger associates a verbosity level with each message. The verbosity level denotes the severity of a given message, ranging from high severity error messages (<code>ERROR</code>) to low severity debug informational messages (<code>DEBUG_5</code>). The full range of verbosity levels and their associated meanings are:</p>
 <table class="doxtable">
 <tr>
 <th>Level</th><th>Value</th><th>Description </th></tr>
@@ -108,28 +108,38 @@ Verbosity Levels</h1>
 <tr>
 <td><code>INFO</code> </td><td>0</td><td>Informational style messages, usually describing statuses and actions performed by WiredTiger.  </td></tr>
 <tr>
-<td><code>DEBUG</code> </td><td>1</td><td>Low severity messages, useful for debugging purposes.  </td></tr>
+<td><code>DEBUG_1</code> </td><td>1</td><td>Low severity messages, useful for debugging purposes.  </td></tr>
+<tr>
+<td><code>DEBUG_2</code> </td><td>2</td><td>Lower severity messages, an increase in verbosity from <code>DEBUG_1</code>.  </td></tr>
+<tr>
+<td><code>DEBUG_3</code> </td><td>3</td><td>Low severity messages.  </td></tr>
+<tr>
+<td><code>DEBUG_4</code> </td><td>4</td><td>Low severity messages.  </td></tr>
+<tr>
+<td><code>DEBUG_5</code> </td><td>5</td><td>Lowest severity messages.  </td></tr>
 </table>
 <h1><a class="anchor" id="verbosity_categories"></a>
 Verbosity Categories</h1>
 <p>Each verbose message is associated with a category. Verbose categories represent a range of different sub-systems in WiredTiger, where messages will denote a specific operation or event under a given sub-system. To see the complete exhaustive list of available verbose categories, refer to the <code>'verbose'</code> configuration option under <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>.</p>
-<p>Each verbosity category can be individually configured with a verbosity level (as described in <a class="el" href="verbose_messaging.html#verbosity_levels">Verbosity Levels</a>). This allowing the end user to fine tune and tailor the verbosity of each category to fit their use case e.g configuring WiredTiger's runtime for debugging/monitoring a specific sub-system.</p>
-<p>When a category is assigned a verbosity level, any associated message less than or equal to (<code>&lt;=</code>) that level will be displayed. As an example, configuring the <code>checkpoint</code> category with the <code>DEBUG</code> verbosity level would display <code>checkpoint</code> related messages less than or equal to the <code>DEBUG</code> level. Any category that is not explicitly configured with a verbosity level will default to the <code>NOTICE</code> (<code>-1</code>) level, effectively masking <code>INFO</code> and <code>DEBUG</code> informational messages.</p>
+<p>Each verbosity category can be individually configured with a verbosity level (as described in <a class="el" href="verbose_messaging.html#verbosity_levels">Verbosity Levels</a>). This allowing the end user to fine tune and tailor the verbosity of each category to fit their use case e.g. configuring WiredTiger's runtime for debugging/monitoring a specific sub-system.</p>
+<p>When a category is assigned a verbosity level, any associated message less than or equal to (<code>&lt;=</code>) that level will be displayed. As an example, configuring the <code>checkpoint</code> category with the <code>DEBUG_1</code> verbosity level would display <code>checkpoint</code> related messages less than or equal to the <code>DEBUG_1</code> level.</p>
+<p><code>DEBUG_1</code> is a reasonable starting point when debugging, with the higher debug levels being intended for cases where <code>DEBUG_1</code> does not provide enough information.</p>
+<p>Any category that is not explicitly configured with a verbosity level will default to the <code>NOTICE</code> (<code>-1</code>) level, effectively masking <code>INFO</code> and <code>DEBUG_1</code> through <code>DEBUG_5</code> informational messages.</p>
 <h2><a class="anchor" id="verbosity_configuration"></a>
 Configuring Verbose Categories</h2>
 <p>Configuration of the verbose messaging system is achieved via the <code>verbose</code> configuration option when either opening a wiredtiger connection (<a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>) or re-configuring a wiredtiger connection (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">WT_CONNECTION::reconfigure</a>). The <code>verbose</code> configuration takes in a list of categories, where each category can be optionally associated with a verbosity level. An example configuring a WiredTiger connection with verbosity enabled:</p>
 <div class="fragment"><div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(</div>
 <div class="line">      home, (<a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *)&amp;event_handler, <span class="stringliteral">&quot;create,verbose=[api:1,version,write:0]&quot;</span>, &amp;conn));</div>
 </div><!-- fragment --><p> In the above example:</p><ul>
-<li><code>api</code> is configured to the <code>DEBUG</code> verbosity level.</li>
-<li><code>version</code> is configured to the <code>DEBUG</code> verbosity level. If a category is passed without a verbosity level (.e.g <code><code></code>:0</code>), the category will default to the <code>DEBUG</code> level (i.e <code>verbose=[version]</code> is equivalent to <code>verbose=[version:1]</code>).</li>
+<li><code>api</code> is configured to the <code>DEBUG_1</code> verbosity level.</li>
+<li><code>version</code> is configured to the <code>DEBUG_1</code> verbosity level. If a category is passed without a verbosity level (e.g. <code><code></code>:0</code>), the category will default to the <code>DEBUG_1</code> level (i.e. <code>verbose=[version]</code> is equivalent to <code>verbose=[version:1]</code>).</li>
 <li><code>write</code> is configured to the <code>INFO</code> verbosity level.</li>
 </ul>
 <p>When configuring verbosity levels, the lowest value the user can associate with a category is <code>0</code> (<code>INFO</code>). This ensuring the lower verbosity levels, <code>NOTICE</code> (<code>-1</code>) and below, are unmasked. Messages with levels less than or equal to <code>NOTICE</code> are considered to have important diagnostic information and thus should not be hidden. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
-<div class="ttc" id="astruct_w_t___e_v_e_n_t___h_a_n_d_l_e_r_html"><div class="ttname"><a href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a></div><div class="ttdoc">The interface implemented by applications to handle error, informational and progress messages.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3323</div></div>
+<div class="ttc" id="astruct_w_t___e_v_e_n_t___h_a_n_d_l_e_r_html"><div class="ttname"><a href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a></div><div class="ttdoc">The interface implemented by applications to handle error, informational and progress messages.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3325</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

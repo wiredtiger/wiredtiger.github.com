@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"command_line.html#util_downgrade":[0,9,7,1,7],
 "command_line.html#util_downgrade_options":[0,4,7,1],
 "command_line.html#util_downgrade_options":[0,9,7,1,7,1],
 "command_line.html#util_downgrade_synopsis":[0,4,7,0],
@@ -26,8 +27,8 @@ var NAVTREEINDEX1 =
 "command_line.html#util_list":[0,9,7,1,10],
 "command_line.html#util_list_options":[0,4,10,1],
 "command_line.html#util_list_options":[0,9,7,1,10,1],
-"command_line.html#util_list_synopsis":[0,9,7,1,10,0],
 "command_line.html#util_list_synopsis":[0,4,10,0],
+"command_line.html#util_list_synopsis":[0,9,7,1,10,0],
 "command_line.html#util_load":[0,4,11],
 "command_line.html#util_load":[0,9,7,1,11],
 "command_line.html#util_load_options":[0,4,11,1],
@@ -110,6 +111,7 @@ var NAVTREEINDEX1 =
 "cursor_join.html":[0,3,32],
 "cursor_log.html":[0,3,33],
 "cursor_ops.html":[0,3,2,5],
+"cursor_ops.html#cursor_bound":[0,3,2,5,7],
 "cursor_ops.html#cursor_closing":[0,3,2,5,1],
 "cursor_ops.html#cursor_error":[0,3,2,5,5],
 "cursor_ops.html#cursor_largest":[0,3,2,5,4],
@@ -117,7 +119,7 @@ var NAVTREEINDEX1 =
 "cursor_ops.html#cursor_opening":[0,3,2,5,0],
 "cursor_ops.html#cursor_position":[0,3,2,5,2],
 "cursor_ops.html#cursor_writes":[0,3,2,5,3],
-"cursor_random.html":[0,3,2,5,7],
+"cursor_random.html":[0,3,2,5,8],
 "cursors.html":[0,3,2],
 "cursors.html#cursor_projections":[0,3,2,1],
 "cursors.html#cursor_raw":[0,3,2,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "file_formats.html#file_formats_choice":[0,3,19,1],
 "file_formats.html#file_formats_compression":[0,3,19,2],
 "file_formats.html#file_formats_formats":[0,3,19,0],
-"filesystems.html":[0,5,2],
-"filesystems.html#remote":[0,5,2,0],
-"functions.html":[3,0]
+"filesystems.html":[0,5,2]
 };
