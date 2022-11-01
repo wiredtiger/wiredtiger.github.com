@@ -102,16 +102,16 @@ DESCRIPTION</h1>
 <h1><a class="anchor" id="util_global_options"></a>
 OPTIONS</h1>
 <p>There are several global options:</p>
-<dl class="section user"><dt>-B</dt><dd>Maintain release 3.3 log file compatibility. </dd></dl>
-<dl class="section user"><dt>-C config</dt><dd>Specify configuration strings for the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> function. </dd></dl>
-<dl class="section user"><dt>-E secretkey</dt><dd>Specify an encryption secret key for the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> function. </dd></dl>
-<dl class="section user"><dt>-h directory</dt><dd>Specify a database home directory. </dd></dl>
-<dl class="section user"><dt>-L</dt><dd>Forcibly turn off logging subsystem for debugging purposes. </dd></dl>
-<dl class="section user"><dt>-m</dt><dd>Verify the WiredTiger metadata as part of opening the database. </dd></dl>
-<dl class="section user"><dt>-R</dt><dd>Run recovery if the underlying database is configured to do so. </dd></dl>
-<dl class="section user"><dt>-r</dt><dd>Access the database via a readonly connection </dd></dl>
-<dl class="section user"><dt>-V</dt><dd>Display WiredTiger version and exit. </dd></dl>
-<dl class="section user"><dt>-v</dt><dd>Set verbose output.</dd></dl>
+<dl class="section user"><dt><code>-B</code> </dt><dd>Maintain release 3.3 log file compatibility. </dd></dl>
+<dl class="section user"><dt><code>-C</code> config</dt><dd>Specify configuration strings for the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> function. </dd></dl>
+<dl class="section user"><dt><code>-E</code> secretkey</dt><dd>Specify an encryption secret key for the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> function. </dd></dl>
+<dl class="section user"><dt><code>-h</code> directory</dt><dd>Specify a database home directory. </dd></dl>
+<dl class="section user"><dt><code>-L</code> </dt><dd>Forcibly turn off logging subsystem for debugging purposes. </dd></dl>
+<dl class="section user"><dt><code>-m</code> </dt><dd>Verify the WiredTiger metadata as part of opening the database. </dd></dl>
+<dl class="section user"><dt><code>-R</code> </dt><dd>Run recovery if the underlying database is configured to do so. </dd></dl>
+<dl class="section user"><dt><code>-r</code> </dt><dd>Access the database via a readonly connection </dd></dl>
+<dl class="section user"><dt><code>-V</code> </dt><dd>Display WiredTiger version and exit. </dd></dl>
+<dl class="section user"><dt><code>-v</code> </dt><dd>Set verbose output.</dd></dl>
 <p>Unless otherwise described by a <code>wt</code> command, the <code>wt</code> tool exits zero on success and non-zero on error.</p>
 <p>The <code>wt</code> tool supports several commands. If configured in the underlying database, some commands will run recovery when opening the database. If the user wants to force recovery on any command, use the <code>-R</code> option. In general, commands that modify the database or tables will run recovery by default and commands that only read data will not run recovery. It is recommended when attempting to diagnose a corrupt database, that the -r flag be used. This flag will open the connection read-only and prevent utility commands from writing prevent utility commands from writing to any of the existing database objects.</p>
 <hr  />
@@ -140,7 +140,7 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_backup_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>backup</code> command:</p>
-<dl class="section user"><dt>-t uri</dt><dd>By default, the <code>backup</code> command does a backup of the entire database; the <code>-t</code> option changes the <code>backup</code> command to do a backup of only the named data sources.</dd></dl>
+<dl class="section user"><dt><code>-t</code> uri</dt><dd>By default, the <code>backup</code> command does a backup of the entire database; the <code>-t</code> option changes the <code>backup</code> command to do a backup of only the named data sources.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_compact"></a>
 wt compact</h1>
@@ -163,7 +163,7 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_create_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>create</code> command:</p>
-<dl class="section user"><dt>-c</dt><dd>Include a configuration string to be passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</dd></dl>
+<dl class="section user"><dt><code>-c</code> </dt><dd>Include a configuration string to be passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_downgrade"></a>
 wt downgrade</h1>
@@ -175,7 +175,7 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_downgrade_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>downgrade</code> command:</p>
-<dl class="section user"><dt>-V version</dt><dd>The <code>-V</code> option is required, and specifies the version to which the database is downgraded.</dd></dl>
+<dl class="section user"><dt><code>-V</code> version</dt><dd>The <code>-V</code> option is required, and specifies the version to which the database is downgraded.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_drop"></a>
 wt drop</h1>
@@ -199,13 +199,13 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_dump_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>dump</code> command:</p>
-<dl class="section user"><dt>-c</dt><dd>By default, the <code>dump</code> command opens the most recent version of the data source; the <code>-c</code> option changes the <code>dump</code> command to dump as of the named checkpoint.</dd></dl>
-<dl class="section user"><dt>-f</dt><dd>By default, the <code>dump</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
-<dl class="section user"><dt>-j</dt><dd>Dump in JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format.</dd></dl>
-<dl class="section user"><dt>-p</dt><dd>Dump in human-readable format (pretty-print). The <code>-p</code> flag is incompatible with the <code>load</code> command. The <code>-p</code> flag can be combined with <code>-x</code>. In this case, raw data elements will be formatted like <code>-x</code> with hexadecimal encoding.</dd></dl>
-<dl class="section user"><dt>-r</dt><dd>Dump in reverse order, from largest key to smallest.</dd></dl>
-<dl class="section user"><dt>-t</dt><dd>By default, the <code>dump</code> command opens the most recent version of the data source; the <code>-t</code> option changes the <code>dump</code> command to dump as of the specified timestamp.</dd></dl>
-<dl class="section user"><dt>-x</dt><dd>Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded). The <code>-x</code> flag can be combined with <code>-p</code>. In this case, the dump will be formatted similar to <code>-p</code> except for raw data elements, which will look like <code>-x</code> with hexadecimal encoding. If the two options are combined the output is no longer compatible with <code>load</code>.</dd></dl>
+<dl class="section user"><dt><code>-c</code> </dt><dd>By default, the <code>dump</code> command opens the most recent version of the data source; the <code>-c</code> option changes the <code>dump</code> command to dump as of the named checkpoint.</dd></dl>
+<dl class="section user"><dt><code>-f</code> </dt><dd>By default, the <code>dump</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
+<dl class="section user"><dt><code>-j</code> </dt><dd>Dump in JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format.</dd></dl>
+<dl class="section user"><dt><code>-p</code> </dt><dd>Dump in human-readable format (pretty-print). The <code>-p</code> flag is incompatible with the <code>load</code> command. The <code>-p</code> flag can be combined with <code>-x</code>. In this case, raw data elements will be formatted like <code>-x</code> with hexadecimal encoding.</dd></dl>
+<dl class="section user"><dt><code>-r</code> </dt><dd>Dump in reverse order, from largest key to smallest.</dd></dl>
+<dl class="section user"><dt><code>-t</code> </dt><dd>By default, the <code>dump</code> command opens the most recent version of the data source; the <code>-t</code> option changes the <code>dump</code> command to dump as of the specified timestamp.</dd></dl>
+<dl class="section user"><dt><code>-x</code> </dt><dd>Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded). The <code>-x</code> flag can be combined with <code>-p</code>. In this case, the dump will be formatted similar to <code>-p</code> except for raw data elements, which will look like <code>-x</code> with hexadecimal encoding. If the two options are combined the output is no longer compatible with <code>load</code>.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_list"></a>
 wt list</h1>
@@ -217,8 +217,8 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_list_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>list</code> command:</p>
-<dl class="section user"><dt>-c</dt><dd>If the <code>-c</code> option is specified, the data source's checkpoints are printed in a human-readable format.</dd></dl>
-<dl class="section user"><dt>-v</dt><dd>If the <code>-v</code> option is specified, the data source's complete schema table value is printed.</dd></dl>
+<dl class="section user"><dt><code>-c</code> </dt><dd>If the <code>-c</code> option is specified, the data source's checkpoints are printed in a human-readable format.</dd></dl>
+<dl class="section user"><dt><code>-v</code> </dt><dd>If the <code>-v</code> option is specified, the data source's complete schema table value is printed.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_load"></a>
 wt load</h1>
@@ -231,11 +231,11 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_load_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>load</code> command:</p>
-<dl class="section user"><dt>-a</dt><dd>If the <code>-a</code> option is specified, record number keys in the input are ignored and the data is appended to the data source and assigned new record number keys. The <code>-a</code> option is only applicable when loading into a column store.</dd></dl>
-<dl class="section user"><dt>-f</dt><dd>By default, the <code>load</code> command reads from the standard input; the <code>-f</code> option reads the input from the specified file.</dd></dl>
-<dl class="section user"><dt>-j</dt><dd>Load input in the JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format that was created by the <code>dump -j</code> command.</dd></dl>
-<dl class="section user"><dt>-n</dt><dd>By default, input data will overwrite existing data where the key/value pair already exists in the data source; the <code>-n</code> option causes the <code>load</code> command to fail if there's an attempt to overwrite already existing data.</dd></dl>
-<dl class="section user"><dt>-r</dt><dd>By default, the <code>load</code> command uses the table name taken from the input; the <code>-r</code> option renames the data source.</dd></dl>
+<dl class="section user"><dt><code>-a</code> </dt><dd>If the <code>-a</code> option is specified, record number keys in the input are ignored and the data is appended to the data source and assigned new record number keys. The <code>-a</code> option is only applicable when loading into a column store.</dd></dl>
+<dl class="section user"><dt><code>-f</code> </dt><dd>By default, the <code>load</code> command reads from the standard input; the <code>-f</code> option reads the input from the specified file.</dd></dl>
+<dl class="section user"><dt><code>-j</code> </dt><dd>Load input in the JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format that was created by the <code>dump</code> -j command.</dd></dl>
+<dl class="section user"><dt><code>-n</code> </dt><dd>By default, input data will overwrite existing data where the key/value pair already exists in the data source; the <code>-n</code> option causes the <code>load</code> command to fail if there's an attempt to overwrite already existing data.</dd></dl>
+<dl class="section user"><dt><code>-r</code> </dt><dd>By default, the <code>load</code> command uses the table name taken from the input; the <code>-r</code> option renames the data source.</dd></dl>
 <p>Additionally, <code>uri</code> and <code>configuration</code> pairs may be specified to the <code>load</code> command. These configuration pairs can be used to modify the configuration values from the dump header passed to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> call.</p>
 <p>The <code>uri</code> part of the configuration pair should match only one of the objects being loaded, but may be a prefix of the object being matched. For example, the following two sets of configuration pairs are equivalent in the case of loading a single table named <code>xxx</code>.</p>
 <div class="fragment"><div class="line">table block_allocation=first</div>
@@ -257,7 +257,7 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_loadtext_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>loadtext</code> command:</p>
-<dl class="section user"><dt>-f</dt><dd>By default, the <code>loadtext</code> command reads from the standard input; the <code>-f</code> option reads the input from the specified file.</dd></dl>
+<dl class="section user"><dt><code>-f</code> </dt><dd>By default, the <code>loadtext</code> command reads from the standard input; the <code>-f</code> option reads the input from the specified file.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_printlog"></a>
 wt printlog</h1>
@@ -265,14 +265,14 @@ wt printlog</h1>
 <p>The <code>printlog</code> command outputs the database log.</p>
 <h2><a class="anchor" id="util_printlog_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] printlog [-mux] [-f output]</code></p>
+<p><code>wt</code> [-RrVv] [-C config] [-E secretkey ] [-h directory] printlog [-mux] [-f output]</p>
 <h2><a class="anchor" id="util_printlog_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>printlog</code> command:</p>
-<dl class="section user"><dt>-f</dt><dd>By default, the <code>printlog</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
-<dl class="section user"><dt>-m</dt><dd>Print only message-type log records.</dd></dl>
-<dl class="section user"><dt>-u</dt><dd>Display user data.</dd></dl>
-<dl class="section user"><dt>-x</dt><dd>Keys and value items in the log are printed in hex format in addition to the default string format.</dd></dl>
+<dl class="section user"><dt><code>-f</code> </dt><dd>By default, the <code>printlog</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
+<dl class="section user"><dt><code>-m</code> </dt><dd>Print only message-type log records.</dd></dl>
+<dl class="section user"><dt><code>-u</code> </dt><dd>Display user data.</dd></dl>
+<dl class="section user"><dt><code>-x</code> </dt><dd>Keys and value items in the log are printed in hex format in addition to the default string format.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_read"></a>
 wt read</h1>
@@ -307,7 +307,7 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_salvage_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>salvage</code> command:</p>
-<dl class="section user"><dt>-F</dt><dd>By default, salvage will refuse to salvage tables that fail basic tests (for example, tables that don't appear to be in a WiredTiger format). The <code>-F</code> option forces the salvage of the table, regardless.</dd></dl>
+<dl class="section user"><dt><code>-F</code> </dt><dd>By default, salvage will refuse to salvage tables that fail basic tests (for example, tables that don't appear to be in a WiredTiger format). The <code>-F</code> option forces the salvage of the table, regardless.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_stat"></a>
 wt stat</h1>
@@ -319,7 +319,7 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_stat_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>stat</code> command:</p>
-<dl class="section user"><dt>-f</dt><dd>Include only "fast" statistics in the output (equivalent to passing <code>statistics=(fast)</code>) to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>.</dd></dl>
+<dl class="section user"><dt><code>-f</code> </dt><dd>Include only "fast" statistics in the output (equivalent to passing <code>statistics=(fast))</code> to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_truncate"></a>
 wt truncate</h1>
@@ -353,7 +353,7 @@ Synopsis</h2>
 <h2><a class="anchor" id="util_verify_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>verify</code> command:</p>
-<p><code>-d [config]</code> This option allows you to specify values which you want to be displayed when verification is run. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
+<p><code>-d</code> [config] This option allows you to specify values which you want to be displayed when verification is run. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
 <p><code>-s</code> This option allows you to verify against the stable timestamp, valid only after a rollback-to-stable operation. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
 <hr  />
  <h1><a class="anchor" id="util_write"></a>
@@ -364,13 +364,13 @@ wt write</h1>
 <p>Attempting to overwrite an already existing record will fail.</p>
 <h2><a class="anchor" id="util_write_synopsis"></a>
 Synopsis</h2>
-<p><code> wt [-RVv] [-C config] [-E secretkey ] [-h directory] write -a uri value ... <br  />
- wt [-RVv] [-C config] [-E secretkey ] [-h directory] write [-o] uri key value ... </code></p>
+<p><code>wt</code> [-RVv] [-C config] [-E secretkey ] [-h directory] write -a uri value ... <br  />
+ wt [-RVv] [-C config] [-E secretkey ] [-h directory] write [-o] uri key value ...</p>
 <h2><a class="anchor" id="util_write_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>write</code> command:</p>
-<dl class="section user"><dt>-a</dt><dd>Append each value as a new record in the data source.</dd></dl>
-<dl class="section user"><dt>-o</dt><dd>By default, attempting to overwrite an already existing record will fail. The <code>-o</code> option changes <code>write</code> to overwrite previously existing records. </dd></dl>
+<dl class="section user"><dt><code>-a</code> </dt><dd>Append each value as a new record in the data source.</dd></dl>
+<dl class="section user"><dt><code>-o</code> </dt><dd>By default, attempting to overwrite an already existing record will fail. The <code>-o</code> option changes <code>write</code> to overwrite previously existing records. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

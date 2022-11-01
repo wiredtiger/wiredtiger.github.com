@@ -111,12 +111,12 @@ $(document).ready(function(){initNavTree('wtperf.html',''); initResizable(); });
 </div><!-- fragment --><p>More complex workloads can be configured by creating more threads doing inserts and updates as well as reads. For example, to configure two inserting threads two threads doing a mixture of inserts, reads and updates:</p>
 <div class="fragment"><div class="line">threads=((count=2,inserts=1),(count=2,inserts=1,reads=1,updates=1))</div>
 </div><!-- fragment --><p>Example <code>wtperf</code> configuration files can be found in the <code>bench/wtperf/runners/</code> directory.</p>
-<p>There are also a number of command line arguments that can be passed to <code>wtperf:</code> </p><dl class="section user"><dt>-C config</dt><dd>Specify configuration strings for the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> function. This argument is additive to the <code>conn_config</code> parameter in the configuration file. </dd></dl>
-<dl class="section user"><dt>-h directory</dt><dd>Specify a database home directory. The default is <code></code>./WT_TEST. </dd></dl>
-<dl class="section user"><dt>-m monitor_directory</dt><dd>Specify a directory for all monitoring related files. The default is the database home directory. </dd></dl>
-<dl class="section user"><dt>-O config_file</dt><dd>Specify the configuration file to run. </dd></dl>
-<dl class="section user"><dt>-o config</dt><dd>Specify configuration strings for the <code>wtperf</code> program. This argument will override settings in the configuration file. </dd></dl>
-<dl class="section user"><dt>-T config</dt><dd>Specify configuration strings for the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> function. This argument is additive to the <code>table_config</code> parameter in the configuration file.</dd></dl>
+<p>There are also a number of command line arguments that can be passed to <code>wtperf:</code> </p><dl class="section user"><dt><code>-C</code> config</dt><dd>Specify configuration strings for the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> function. This argument is additive to the <code>conn_config</code> parameter in the configuration file. </dd></dl>
+<dl class="section user"><dt><code>-h</code> directory</dt><dd>Specify a database home directory. The default is <code></code>./WT_TEST. </dd></dl>
+<dl class="section user"><dt><code>-m</code> monitor_directory</dt><dd>Specify a directory for all monitoring related files. The default is the database home directory. </dd></dl>
+<dl class="section user"><dt><code>-O</code> config_file</dt><dd>Specify the configuration file to run. </dd></dl>
+<dl class="section user"><dt><code>-o</code> config</dt><dd>Specify configuration strings for the <code>wtperf</code> program. This argument will override settings in the configuration file. </dd></dl>
+<dl class="section user"><dt><code>-T</code> config</dt><dd>Specify configuration strings for the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> function. This argument is additive to the <code>table_config</code> parameter in the configuration file.</dd></dl>
 <h1><a class="anchor" id="monitor"></a>
 Monitoring wtperf</h1>
 <p>Like all WiredTiger applications, the <code>wtperf</code> command can be configured with statistics logging.</p>
