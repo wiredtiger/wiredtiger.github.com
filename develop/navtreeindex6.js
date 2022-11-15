@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"namespace.html#namespace_error":[0,3,25,3],
 "namespace.html#namespace_filesystem":[0,3,25,2],
 "nop_encrypt_8c-example.html":[4,16],
 "operation_tracking.html":[0,3,34],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "timestamp_global_api.html#timestamp_global_set_api_oldest_timestamp":[0,3,11,0,1],
 "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp":[0,3,11,0,2],
 "timestamp_global_api.html#timestamp_global_setting_timestamps":[0,3,11,0],
-"timestamp_misc.html":[0,3,15],
-"timestamp_misc.html#timestamp_misc_rts":[0,3,15,1]
+"timestamp_misc.html":[0,3,15]
 };

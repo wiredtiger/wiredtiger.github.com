@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"timestamp_misc.html#timestamp_misc_rts":[0,3,15,1],
 "timestamp_misc.html#timestamp_read_roundup":[0,3,15,0],
 "timestamp_misc.html#timestamps_misc_in_memory":[0,3,15,2],
 "timestamp_model.html":[0,3,10],

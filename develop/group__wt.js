@@ -153,6 +153,7 @@ var group__wt =
     [ "WT_STAT_CONN_BLOCK_CACHE_BLOCKS_INSERT_READ", "group__wt.html#gaee121d492a9d27060e8549152669ebb4", null ],
     [ "WT_STAT_CONN_BLOCK_CACHE_BLOCKS_INSERT_WRITE", "group__wt.html#ga477a698115a27974809ce35aaab909b2", null ],
     [ "WT_STAT_CONN_BLOCK_CACHE_BLOCKS_REMOVED", "group__wt.html#ga4e50f34c994960bc2b8cad9a7434b754", null ],
+    [ "WT_STAT_CONN_BLOCK_CACHE_BLOCKS_REMOVED_BLOCKED", "group__wt.html#gaf898210e92b6d47e719158473f2e76d5", null ],
     [ "WT_STAT_CONN_BLOCK_CACHE_BLOCKS_UPDATE", "group__wt.html#ga8716cdf54f081e4c2c9b97dc8af5a190", null ],
     [ "WT_STAT_CONN_BLOCK_CACHE_BYPASS_CHKPT", "group__wt.html#gaa3054b67f79bf45619f3efd188b9d237", null ],
     [ "WT_STAT_CONN_BLOCK_CACHE_BYPASS_FILESIZE", "group__wt.html#ga9547e882337c739657bb67e6769874d6", null ],
