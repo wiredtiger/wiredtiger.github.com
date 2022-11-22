@@ -475,9 +475,9 @@ Pointers to pieces of the implementation</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>txn_rollback_to_stable.c</td><td>Hook</td><td>in <code>__rollback_page_needs_abort</code> </td><td>Check <code>page_del</code> when deciding whether the page contains unstable values that need to be examined. </td></tr>
+<td>rts_visibility.c</td><td>Hook</td><td>in <code>__wt_rollback_page_needs_abort</code> </td><td>Check <code>page_del</code> when deciding whether the page contains unstable values that need to be examined. </td></tr>
 <tr>
-<td>txn_rollback_to_stable.c</td><td>Hook</td><td>in <code>__rollback_to_stable_page_skip</code> </td><td><p class="starttd">Check <code>page</code> del when deciding whether to skip over the page.</p>
+<td>rts_btree_walk.c</td><td>Hook</td><td>in <code>__rollback_to_stable_page_skip</code> </td><td><p class="starttd">Check <code>page</code> del when deciding whether to skip over the page.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>

@@ -6,6 +6,7 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "close", "struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698", null ],
     [ "commit_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2", null ],
     [ "compact", "struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69", null ],
+    [ "count", "struct_w_t___s_e_s_s_i_o_n.html#ad409e01a8e892ad58bf5c1f3ac894331", null ],
     [ "create", "struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb", null ],
     [ "drop", "struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70", null ],
     [ "join", "struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84", null ],
