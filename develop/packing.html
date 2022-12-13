@@ -107,8 +107,7 @@ $(document).ready(function(){initNavTree('packing.html',''); initResizable(); })
 <td><code>@</code></td><td>native</td><td>native</td><td>native </td></tr>
 </table>
 <p>If the first character is not one of these, '.' (big-endian, packed) is assumed: it naturally sorts in lexicographic order, and the packed format uses variable-sized encoding of values to reduce the data size.</p>
-<p>Note: <b> little-endian format</b> not yet supported in WiredTiger.<br  />
- </p>
+<p>Note: Only the default big-endian, packed format is currently supported.</p>
 <p>The remaining characters in the format string specify the type of each field to be packed into or unpacked from a byte array. See <a class="el" href="schema.html#schema_column_types">Column types</a> for the list of supported types.</p>
 <h1><a class="anchor" id="config_examples"></a>
 Code samples</h1>
