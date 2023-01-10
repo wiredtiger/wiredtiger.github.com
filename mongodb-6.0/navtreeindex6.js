@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455":[1,0,2,11],
 "struct_w_t___c_u_r_s_o_r.html#abe668c6625fa16b5595a1c393f71862d":[1,0,2,22],
 "struct_w_t___c_u_r_s_o_r.html#acd3f345e375e26d223ad5c6f35dc15e8":[1,0,2,1],
 "struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc":[1,0,2,16],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "tune_cache.html#tuning_cache_resident":[0,3,48,1],
 "tune_cache.html#tuning_cache_size":[0,3,48,0],
 "tune_capacity.html":[0,3,49],
-"tune_checksum.html":[0,3,50],
-"tune_close.html":[0,3,51]
+"tune_checksum.html":[0,3,50]
 };

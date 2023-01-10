@@ -893,6 +893,7 @@ var group__wt =
     [ "WT_STAT_SESSION_LOCK_DHANDLE_WAIT", "group__wt.html#gada474b3090ea94c26fb8e471d889dc8d", null ],
     [ "WT_STAT_SESSION_LOCK_SCHEMA_WAIT", "group__wt.html#ga829a05c9b54db3526c723bfba5a10012", null ],
     [ "WT_STAT_SESSION_READ_TIME", "group__wt.html#gaac44a45afb2985b39de9de136ad3e468", null ],
+    [ "WT_STAT_SESSION_TXN_BYTES_DIRTY", "group__wt.html#ga2ba38156cffcff1fd3d2873c451e50b3", null ],
     [ "WT_STAT_SESSION_WRITE_TIME", "group__wt.html#gaaada8a06df6d927df43718f75b712da0", null ],
     [ "WT_TRY_SALVAGE", "group__wt.html#ga848dbb8ea23d57d22e8103ce70a08f50", null ],
     [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", null ],

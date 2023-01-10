@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"tune_close.html":[0,3,51],
 "tune_cursor_persist.html":[0,3,52],
 "tune_durability.html":[0,3,53],
 "tune_durability.html#tune_durability_flush_config":[0,3,53,1],
