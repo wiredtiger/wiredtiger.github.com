@@ -1215,6 +1215,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9182ecd3b4d49d081d49ecb657a360bf">WT_STAT_CONN_MEMORY_GROW</a></td></tr>
 <tr class="memdesc:ga9182ecd3b4d49d081d49ecb657a360bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">connection: memory re-allocations <br /></td></tr>
 <tr class="separator:ga9182ecd3b4d49d081d49ecb657a360bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1deb73cc6cebd2eb042a272f9fc5ba16"><td class="memItemLeft" align="right" valign="top"><a id="ga1deb73cc6cebd2eb042a272f9fc5ba16"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1deb73cc6cebd2eb042a272f9fc5ba16">WT_STAT_CONN_NO_SESSION_SWEEP_5MIN</a></td></tr>
+<tr class="memdesc:ga1deb73cc6cebd2eb042a272f9fc5ba16"><td class="mdescLeft">&#160;</td><td class="mdescRight">connection: number of sessions without a sweep for 5+ minutes <br /></td></tr>
+<tr class="separator:ga1deb73cc6cebd2eb042a272f9fc5ba16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e25ede06825d8bbf614f51576c16c0a"><td class="memItemLeft" align="right" valign="top"><a id="ga0e25ede06825d8bbf614f51576c16c0a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0e25ede06825d8bbf614f51576c16c0a">WT_STAT_CONN_NO_SESSION_SWEEP_60MIN</a></td></tr>
+<tr class="memdesc:ga0e25ede06825d8bbf614f51576c16c0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">connection: number of sessions without a sweep for 60+ minutes <br /></td></tr>
+<tr class="separator:ga0e25ede06825d8bbf614f51576c16c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga138063fbf1faaff0fd3b868244cb35a1"><td class="memItemLeft" align="right" valign="top"><a id="ga138063fbf1faaff0fd3b868244cb35a1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga138063fbf1faaff0fd3b868244cb35a1">WT_STAT_CONN_COND_WAIT</a></td></tr>
 <tr class="memdesc:ga138063fbf1faaff0fd3b868244cb35a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">connection: pthread mutex condition wait calls <br /></td></tr>
@@ -2335,6 +2343,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga09754133ce5110e0084f12f897b954e4">WT_STAT_CONN_TXN_READ_OVERFLOW_REMOVE</a></td></tr>
 <tr class="memdesc:ga09754133ce5110e0084f12f897b954e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: number of times overflow removed value is read <br /></td></tr>
 <tr class="separator:ga09754133ce5110e0084f12f897b954e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8a57170e2bc1f8e346939e07698afcd"><td class="memItemLeft" align="right" valign="top"><a id="gad8a57170e2bc1f8e346939e07698afcd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad8a57170e2bc1f8e346939e07698afcd">WT_STAT_CONN_TXN_ROLLBACK_OLDEST_PINNED</a></td></tr>
+<tr class="memdesc:gad8a57170e2bc1f8e346939e07698afcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: oldest pinned transaction ID rolled back for eviction <br /></td></tr>
+<tr class="separator:gad8a57170e2bc1f8e346939e07698afcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga235a8969a4c35c1661bafb8d288f7bd5"><td class="memItemLeft" align="right" valign="top"><a id="ga235a8969a4c35c1661bafb8d288f7bd5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga235a8969a4c35c1661bafb8d288f7bd5">WT_STAT_CONN_TXN_PREPARE</a></td></tr>
 <tr class="memdesc:ga235a8969a4c35c1661bafb8d288f7bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: prepared transactions <br /></td></tr>
@@ -2551,10 +2563,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga42234e7fd3df3f14fb84bfc12a402d91">WT_STAT_CONN_TXN_CHECKPOINT_SKIPPED</a></td></tr>
 <tr class="memdesc:ga42234e7fd3df3f14fb84bfc12a402d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoints skipped because database was clean <br /></td></tr>
 <tr class="separator:ga42234e7fd3df3f14fb84bfc12a402d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga008e3e59a4d0c6f66a35ec52309033dc"><td class="memItemLeft" align="right" valign="top"><a id="ga008e3e59a4d0c6f66a35ec52309033dc"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga008e3e59a4d0c6f66a35ec52309033dc">WT_STAT_CONN_TXN_FAIL_CACHE</a></td></tr>
-<tr class="memdesc:ga008e3e59a4d0c6f66a35ec52309033dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction failures due to history store <br /></td></tr>
-<tr class="separator:ga008e3e59a4d0c6f66a35ec52309033dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga03d269c9141be6f0663c9827778045d2"><td class="memItemLeft" align="right" valign="top"><a id="ga03d269c9141be6f0663c9827778045d2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga03d269c9141be6f0663c9827778045d2">WT_STAT_CONN_TXN_CHECKPOINT_FSYNC_POST</a></td></tr>
 <tr class="memdesc:ga03d269c9141be6f0663c9827778045d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction fsync calls for checkpoint after allocating the transaction ID <br /></td></tr>

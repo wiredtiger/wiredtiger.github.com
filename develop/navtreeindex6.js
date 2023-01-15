@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"message_handling.html":[0,3,22],
+"message_handling.html#event_message_handling":[0,3,22,0],
 "message_handling.html#message_handling_output":[0,3,22,1],
 "message_handling.html#message_handling_output_flat_string":[0,3,22,1,0],
 "message_handling.html#message_handling_output_json":[0,3,22,1,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "timestamp_global_api.html":[0,3,11],
 "timestamp_global_api.html#timestamp_global_query_api_all_durable":[0,3,11,1,0],
 "timestamp_global_api.html#timestamp_global_query_api_last_checkpoint":[0,3,11,1,1],
-"timestamp_global_api.html#timestamp_global_query_api_oldest_reader":[0,3,11,1,2],
-"timestamp_global_api.html#timestamp_global_query_api_oldest_timestamp":[0,3,11,1,3],
-"timestamp_global_api.html#timestamp_global_query_api_pinned":[0,3,11,1,4]
+"timestamp_global_api.html#timestamp_global_query_api_oldest_reader":[0,3,11,1,2]
 };
