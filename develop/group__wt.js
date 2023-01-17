@@ -15,6 +15,7 @@ var group__wt =
       [ "compare", "struct_w_t___c_u_r_s_o_r.html#acd3f345e375e26d223ad5c6f35dc15e8", null ],
       [ "equals", "struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b", null ],
       [ "get_key", "struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f", null ],
+      [ "get_raw_key_value", "struct_w_t___c_u_r_s_o_r.html#a74b676b408570e1feb981a37166fc6fa", null ],
       [ "get_value", "struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01", null ],
       [ "insert", "struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3", null ],
       [ "largest_key", "struct_w_t___c_u_r_s_o_r.html#a49f70806bf693462e5644edbbb864c1b", null ],

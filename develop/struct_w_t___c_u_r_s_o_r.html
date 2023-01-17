@@ -121,6 +121,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af85364a5af50b95bbc46c82e72f75c01"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor,...)</td></tr>
 <tr class="memdesc:af85364a5af50b95bbc46c82e72f75c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value for the current record.  <a href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">More...</a><br /></td></tr>
 <tr class="separator:af85364a5af50b95bbc46c82e72f75c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b676b408570e1feb981a37166fc6fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#a74b676b408570e1feb981a37166fc6fa">get_raw_key_value</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *key, <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *value)</td></tr>
+<tr class="memdesc:a74b676b408570e1feb981a37166fc6fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw key and value for the current record.  <a href="struct_w_t___c_u_r_s_o_r.html#a74b676b408570e1feb981a37166fc6fa">More...</a><br /></td></tr>
+<tr class="separator:a74b676b408570e1feb981a37166fc6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1088d719df40babc1f57d086691ebdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a> (<a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor,...)</td></tr>
 <tr class="memdesc:ad1088d719df40babc1f57d086691ebdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the key for the next operation.  <a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">More...</a><br /></td></tr>
 <tr class="separator:ad1088d719df40babc1f57d086691ebdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -420,6 +423,57 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_access_8c-example.html#a12">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a8">ex_backup.c</a>, <a class="el" href="ex_backup_block_8c-example.html#a8">ex_backup_block.c</a>, <a class="el" href="ex_col_store_8c-example.html#a4">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a2">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a20">ex_encrypt.c</a>, <a class="el" href="ex_extractor_8c-example.html#a13">ex_extractor.c</a>, <a class="el" href="ex_file_system_8c-example.html#a53">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a6">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a11">ex_schema.c</a>, and <a class="el" href="ex_thread_8c-example.html#a6">ex_thread.c</a>.</dd>
 </dl>
+
+</div>
+</div>
+<a id="a74b676b408570e1feb981a37166fc6fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b676b408570e1feb981a37166fc6fa">&#9670;&nbsp;</a></span>get_raw_key_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WT_CURSOR::get_raw_key_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *&#160;</td>
+          <td class="paramname"><em>cursor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the raw key and value for the current record. </p>
+<div class="fragment"><div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> key;   <span class="comment">/* Get the raw key and value for the current record. */</span></div>
+<div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> value; <span class="comment">/* Get the raw key and value for the current record. */</span></div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a74b676b408570e1feb981a37166fc6fa">get_raw_key_value</a>(cursor, &amp;key, &amp;value));</div>
+</div><!-- fragment --> <div class="fragment"><div class="line">        uint64_t recno = 37; <span class="comment">/* Set the cursor&#39;s record number key. */</span></div>
+<div class="line">        cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">set_key</a>(cursor, recno);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor</td><td>the cursor handle </td></tr>
+    <tr><td class="paramname">key</td><td>pointer to an item that will contains the current record's raw key </td></tr>
+    <tr><td class="paramname">value</td><td>pointer to an item that will contains the current record's raw value</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The caller can optionally pass in NULL for either key or value to retrieve only the other of the key or value.</p>
+<p>If an error occurs during this operation, a flag will be set in the cursor, and the next operation to access the key will fail. This simplifies error handling in applications. </p><dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details. </dd></dl>
 
 </div>
 </div>
@@ -1172,8 +1226,9 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a27f7cbd0cd3e561f6a145704813ad64c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c">WT_CURSOR::set_value</a></div><div class="ttdeci">void set_value(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the value for the next operation.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a444cdc0952e7f8d55d23173516c7037f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f">WT_CURSOR::update</a></div><div class="ttdeci">int update(WT_CURSOR *cursor)</div><div class="ttdoc">Update an existing record and optionally insert a record.</div></div>
+<div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a74b676b408570e1feb981a37166fc6fa"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a74b676b408570e1feb981a37166fc6fa">WT_CURSOR::get_raw_key_value</a></div><div class="ttdeci">int get_raw_key_value(WT_CURSOR *cursor, WT_ITEM *key, WT_ITEM *value)</div><div class="ttdoc">Get the raw key and value for the current record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3958</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3979</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a050e8dfd68303048921e528fa591a00c"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c">WT_CURSOR::session</a></div><div class="ttdeci">WT_SESSION * session</div><div class="ttdoc">The session handle for this cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:200</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aac90d9fbcc031570f924db55f8a1cee3"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3">WT_CURSOR::insert</a></div><div class="ttdeci">int insert(WT_CURSOR *cursor)</div><div class="ttdoc">Insert a record and optionally update an existing record.</div></div>
 <div class="ttc" id="agroup__wt_html_ab51931e55a2bc958cb82155aa9bd413f"><div class="ttname"><a href="group__wt.html#ab51931e55a2bc958cb82155aa9bd413f">WT_MODIFY::offset</a></div><div class="ttdeci">size_t offset</div><div class="ttdoc">The zero-based byte offset in the value where the new data is placed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:149</div></div>
