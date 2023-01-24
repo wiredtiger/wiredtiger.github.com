@@ -14,6 +14,10 @@ var command_line =
       [ "Synopsis", "command_line.html#util_compact_synopsis", null ],
       [ "Options", "command_line.html#util_compact_options", null ]
     ] ],
+    [ "wt copyright", "command_line.html#util_copyright", [
+      [ "Synopsis", "command_line.html#util_copyright_synopsis", null ],
+      [ "Options", "command_line.html#util_copyright_options", null ]
+    ] ],
     [ "wt create", "command_line.html#util_create", [
       [ "Synopsis", "command_line.html#util_create_synopsis", null ],
       [ "Options", "command_line.html#util_create_options", null ]

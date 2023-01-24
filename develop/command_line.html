@@ -110,17 +110,19 @@ OPTIONS</h1>
 <dl class="section user"><dt><code>-m</code> </dt><dd>Verify the WiredTiger metadata as part of opening the database. </dd></dl>
 <dl class="section user"><dt><code>-R</code> </dt><dd>Run recovery if the underlying database is configured to do so. </dd></dl>
 <dl class="section user"><dt><code>-r</code> </dt><dd>Access the database via a readonly connection </dd></dl>
+<dl class="section user"><dt><code>-S</code> </dt><dd>Run salvage recovery if the underlying database is configured to do so. </dd></dl>
 <dl class="section user"><dt><code>-V</code> </dt><dd>Display WiredTiger version and exit. </dd></dl>
-<dl class="section user"><dt><code>-v</code> </dt><dd>Set verbose output.</dd></dl>
+<dl class="section user"><dt><code>-v</code> </dt><dd>Set verbose output. </dd></dl>
+<dl class="section user"><dt><code>-</code>?</dt><dd>Print the help message and exit.</dd></dl>
 <p>Unless otherwise described by a <code>wt</code> command, the <code>wt</code> tool exits zero on success and non-zero on error.</p>
-<p>The <code>wt</code> tool supports several commands. If configured in the underlying database, some commands will run recovery when opening the database. If the user wants to force recovery on any command, use the <code>-R</code> option. In general, commands that modify the database or tables will run recovery by default and commands that only read data will not run recovery. It is recommended when attempting to diagnose a corrupt database, that the -r flag be used. This flag will open the connection read-only and prevent utility commands from writing prevent utility commands from writing to any of the existing database objects.</p>
+<p>The <code>wt</code> tool supports several commands. You can use the <code>-</code>? option with any of these commands to print the help message. If configured in the underlying database, some commands will run recovery when opening the database. If the user wants to force recovery on any command, use the <code>-R</code> option. In general, commands that modify the database or tables will run recovery by default and commands that only read data will not run recovery. It is recommended when attempting to diagnose a corrupt database, that the -r flag be used. This flag will open the connection read-only and prevent utility commands from writing prevent utility commands from writing to any of the existing database objects.</p>
 <hr  />
  <h1><a class="anchor" id="util_alter"></a>
 wt alter</h1>
 <p>Alter a table.</p>
 <h2><a class="anchor" id="util_alter_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] alter uri configuration ...</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] alter uri configuration ...</code></p>
 <p>The <code>uri</code> and <code>configuration</code> pairs may be specified to the <code>alter</code> command. These configuration pairs can be used to modify the configuration values from those passed to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> call.</p>
 <p>The <code>uri</code> part of the configuration pair should match only one of the objects being altered, but may be a prefix of the object being matched. For example, the following two sets of configuration pairs are equivalent in the case of altering a single table named <code>xxx</code>.</p>
 <div class="fragment"><div class="line">table access_pattern_hint=sequential</div>
@@ -136,7 +138,7 @@ wt backup</h1>
 <p>The <code>backup</code> command performs a backup of the database, copying the underlying files to a <code>specified</code> directory, which can be subsequently opened as a WiredTiger database. See <a class="el" href="backup.html">Backups</a> for more information, and <a class="el" href="security.html#file_permissions">File permissions</a> for specifics on the copied file permissions.</p>
 <h2><a class="anchor" id="util_backup_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] backup [-t uri] directory</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] backup [-t uri] directory</code></p>
 <h2><a class="anchor" id="util_backup_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>backup</code> command:</p>
@@ -148,10 +150,21 @@ wt compact</h1>
 <p>The <code>compact</code> command attempts to rewrite the specified table to consume less disk space.</p>
 <h2><a class="anchor" id="util_compact_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] compact uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] compact uri</code></p>
 <h2><a class="anchor" id="util_compact_options"></a>
 Options</h2>
 <p>The <code>compact</code> command has no command-specific options.</p>
+<hr  />
+ <h1><a class="anchor" id="util_copyright"></a>
+wt copyright</h1>
+<p>Print the copyright information.</p>
+<p>The <code>copyright</code> command just prints the copyright information and exits.</p>
+<h2><a class="anchor" id="util_copyright_synopsis"></a>
+Synopsis</h2>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] copyright</code></p>
+<h2><a class="anchor" id="util_copyright_options"></a>
+Options</h2>
+<p>The <code>copyright</code> command has no command-specific options.</p>
 <hr  />
  <h1><a class="anchor" id="util_create"></a>
 wt create</h1>
@@ -159,7 +172,7 @@ wt create</h1>
 <p>The <code>create</code> command creates the specified <code>uri</code> with the specified configuration. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> with the specified string arguments.</p>
 <h2><a class="anchor" id="util_create_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] create [-c config] uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] create [-c config] uri</code></p>
 <h2><a class="anchor" id="util_create_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>create</code> command:</p>
@@ -171,7 +184,7 @@ wt downgrade</h1>
 <p>The <code>downgrade</code> command downgrades the database to the specified compatibility version.</p>
 <h2><a class="anchor" id="util_downgrade_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] downgrade -V version</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] downgrade -V version</code></p>
 <h2><a class="anchor" id="util_downgrade_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>downgrade</code> command:</p>
@@ -183,7 +196,7 @@ wt drop</h1>
 <p>The <code>drop</code> command drops the specified <code>uri</code>. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) a table.">WT_SESSION::drop</a> with the "force" configuration argument.</p>
 <h2><a class="anchor" id="util_drop_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] drop uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] drop uri</code></p>
 <h2><a class="anchor" id="util_drop_options"></a>
 Options</h2>
 <p>The <code>drop</code> command has no command-specific options.</p>
@@ -195,7 +208,7 @@ wt dump</h1>
 <p>See <a class="el" href="dump_formats.html">Dump Formats</a> for details of the dump file formats.</p>
 <h2><a class="anchor" id="util_dump_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] dump [-jprx] [-c checkpoint] [-f output] [-t timestamp] uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] dump [-jprx] [-c checkpoint] [-f output] [-t timestamp] uri</code></p>
 <h2><a class="anchor" id="util_dump_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>dump</code> command:</p>
@@ -213,7 +226,7 @@ wt list</h1>
 <p>By default, the <code>list</code> command prints out the tables stored in the database. If a URI is specified as an argument, only information about that data source is printed.</p>
 <h2><a class="anchor" id="util_list_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]</code></p>
 <h2><a class="anchor" id="util_list_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>list</code> command:</p>
@@ -227,7 +240,7 @@ wt load</h1>
 <p>By default, if the table already exists, key/value pairs in the table will be overwritten by new data with matching keys (use the <code>-n</code> option to make an attempt to overwrite existing data return an error). Existing keys will not be removed.</p>
 <h2><a class="anchor" id="util_load_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] load [-ajn] [-f input] [-r name] [uri configuration ...]</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] load [-ajn] [-f input] [-r name] [uri configuration ...]</code></p>
 <h2><a class="anchor" id="util_load_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>load</code> command:</p>
@@ -253,7 +266,7 @@ wt loadtext</h1>
 <p>In the case of inserting values into a column-store table, each value is appended to the table; in the case of inserting values into a row-store table, lines are handled in pairs, where the first line is the key and the second line is the value. If the row-store table already exists, key/value pairs in the table will be overwritten by new data with matching keys. For either column-store or row-store tables, existing keys will not be removed.</p>
 <h2><a class="anchor" id="util_loadtext_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input] uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] loadtext [-f input] uri</code></p>
 <h2><a class="anchor" id="util_loadtext_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>loadtext</code> command:</p>
@@ -265,11 +278,12 @@ wt printlog</h1>
 <p>The <code>printlog</code> command outputs the database log.</p>
 <h2><a class="anchor" id="util_printlog_synopsis"></a>
 Synopsis</h2>
-<p><code>wt</code> [-RrVv] [-C config] [-E secretkey ] [-h directory] printlog [-mux] [-f output]</p>
+<p><code>wt</code> [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] printlog [-mux] [-f output] [-l start-file,start-offset]|[-l start-file,start-offset,end-file,end-offset]</p>
 <h2><a class="anchor" id="util_printlog_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>printlog</code> command:</p>
 <dl class="section user"><dt><code>-f</code> </dt><dd>By default, the <code>printlog</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
+<dl class="section user"><dt><code>-l</code> </dt><dd>Specify the start LSN from which the log will be printed, and optionally also the end LSN.</dd></dl>
 <dl class="section user"><dt><code>-m</code> </dt><dd>Print only message-type log records.</dd></dl>
 <dl class="section user"><dt><code>-u</code> </dt><dd>Display user data.</dd></dl>
 <dl class="section user"><dt><code>-x</code> </dt><dd>Keys and value items in the log are printed in hex format in addition to the default string format.</dd></dl>
@@ -281,7 +295,7 @@ wt read</h1>
 <p>The <code>read</code> command exits non-zero if a specified record is not found.</p>
 <h2><a class="anchor" id="util_read_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] read uri key ...</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] read uri key ...</code></p>
 <h2><a class="anchor" id="util_read_options"></a>
 Options</h2>
 <p>The <code>read</code> command has no command-specific options.</p>
@@ -292,7 +306,7 @@ wt rename</h1>
 <p>The <code>rename</code> command renames the specified table.</p>
 <h2><a class="anchor" id="util_rename_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] rename uri name</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] rename uri new-uri</code></p>
 <h2><a class="anchor" id="util_rename_options"></a>
 Options</h2>
 <p>The <code>rename</code> command has no command-specific options.</p>
@@ -303,7 +317,7 @@ wt salvage</h1>
 <p>The <code>salvage</code> command salvages the specified data source, discarding any data that cannot be recovered. Underlying files are re-written in place, overwriting the original file contents.</p>
 <h2><a class="anchor" id="util_salvage_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] salvage [-F] uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] salvage [-F] uri</code></p>
 <h2><a class="anchor" id="util_salvage_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>salvage</code> command:</p>
@@ -315,7 +329,7 @@ wt stat</h1>
 <p>The <code>stat</code> command outputs run-time statistics for the WiredTiger engine, or, if specified, for the URI on the command-line.</p>
 <h2><a class="anchor" id="util_stat_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] stat [-f] [uri]</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] stat [-f] [uri]</code></p>
 <h2><a class="anchor" id="util_stat_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>stat</code> command:</p>
@@ -327,7 +341,7 @@ wt truncate</h1>
 <p>The <code>truncate</code> command truncates the specified <code>uri</code>. It is equivalent to a call to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table, cursor range, or backup cursor.">WT_SESSION::truncate</a> with no start or stop specified.</p>
 <h2><a class="anchor" id="util_truncate_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] truncate uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] truncate uri</code></p>
 <h2><a class="anchor" id="util_truncate_options"></a>
 Options</h2>
 <p>The <code>truncate</code> command has no command-specific options.</p>
@@ -338,7 +352,7 @@ wt upgrade</h1>
 <p>The <code>upgrade</code> command upgrades the specified table, exiting success if the data source is up-to-date, and failure if the data source cannot be upgraded.</p>
 <h2><a class="anchor" id="util_upgrade_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RVv] [-C config] [-E secretkey ] [-h directory] upgrade uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] upgrade uri</code></p>
 <h2><a class="anchor" id="util_upgrade_options"></a>
 Options</h2>
 <p>The <code>upgrade</code> command has no command-specific options.</p>
@@ -349,12 +363,15 @@ wt verify</h1>
 <p>The <code>verify</code> command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted.</p>
 <h2><a class="anchor" id="util_verify_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-RrVv] [-C config] [-E secretkey ] [-h directory] verify [-s] [-d dump_address | dump_blocks | dump_layout | dump_offsets=#,# | dump_pages ] [uri]</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] verify [-cstu] [-d dump_address | dump_blocks | dump_layout | dump_offsets=#,# | dump_pages ] [uri]</code></p>
 <h2><a class="anchor" id="util_verify_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>verify</code> command:</p>
+<p><code>-c</code> Continue to the next page after encountering error during verification.</p>
 <p><code>-d</code> [config] This option allows you to specify values which you want to be displayed when verification is run. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
 <p><code>-s</code> This option allows you to verify against the stable timestamp, valid only after a rollback-to-stable operation. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
+<p><code>-t</code> Do not clear transaction IDs during verification.</p>
+<p><code>-u</code> Display the application data when dumping with configuration <code>dump_blocks</code> or <code>dump_page</code>.</p>
 <hr  />
  <h1><a class="anchor" id="util_write"></a>
 wt write</h1>
@@ -364,8 +381,8 @@ wt write</h1>
 <p>Attempting to overwrite an already existing record will fail.</p>
 <h2><a class="anchor" id="util_write_synopsis"></a>
 Synopsis</h2>
-<p><code>wt</code> [-RVv] [-C config] [-E secretkey ] [-h directory] write -a uri value ... <br  />
- wt [-RVv] [-C config] [-E secretkey ] [-h directory] write [-o] uri key value ...</p>
+<p><code>wt</code> [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] write -a uri value ... <br  />
+ <code>wt</code> [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] write [-o] uri key value ...</p>
 <h2><a class="anchor" id="util_write_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>write</code> command:</p>
