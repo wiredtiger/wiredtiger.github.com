@@ -360,13 +360,14 @@ Options</h2>
  <h1><a class="anchor" id="util_verify"></a>
 wt verify</h1>
 <p>Check the structural integrity of a table.</p>
-<p>The <code>verify</code> command verifies the specified table, exiting success if the data source is correct, and failure if the data source is corrupted.</p>
+<p>The <code>verify</code> command verifies the specified table if a URI argument is provided, exiting success if the data source is correct, and failure if the data source is corrupted. If no URI argument is provided, it verifies each table in the database, reporting on any that are damaged. If the abort on error option <code>-a</code> is specified, terminate the verification process if one of the tables is damaged. Currently, the verify operation is not supported with tiered tables and the history store file.</p>
 <h2><a class="anchor" id="util_verify_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] verify [-cstu] [-d dump_address | dump_blocks | dump_layout | dump_offsets=#,# | dump_pages ] [uri]</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] verify [-acstu] [-d dump_address | dump_blocks | dump_layout | dump_offsets=#,# | dump_pages ] [uri]</code></p>
 <h2><a class="anchor" id="util_verify_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>verify</code> command:</p>
+<p><em>-a</em> Abort immediately if verify encounters a damaged table instead of continuing to verify the rest of the tables in the database.</p>
 <p><code>-c</code> Continue to the next page after encountering error during verification.</p>
 <p><code>-d</code> [config] This option allows you to specify values which you want to be displayed when verification is run. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
 <p><code>-s</code> This option allows you to verify against the stable timestamp, valid only after a rollback-to-stable operation. See the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION::verify</a> configuration options.</p>
