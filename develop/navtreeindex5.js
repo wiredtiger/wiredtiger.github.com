@@ -242,12 +242,12 @@ var NAVTREEINDEX5 =
 "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8aefe46c7fefa38ef06a32a8357791f852":[1,1,20,2],
 "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k":[1,1,7],
 "home.html":[0,5,0],
-"huffman.html":[0,3,19,3],
 "huffman.html":[0,9,9,1],
+"huffman.html":[0,3,19,3],
 "in_memory.html":[0,3,30],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "keyvalue.html":[0,3,3,11],
-"license.html":[6],
-"license.html":[0,7]
+"license.html":[0,7],
+"license.html":[6]
 };
