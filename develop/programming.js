@@ -139,6 +139,13 @@ var programming =
         [ "Configuring Verbose Categories", "verbose_messaging.html#verbosity_configuration", null ]
       ] ]
     ] ],
+    [ "Debugging", "debugging.html", [
+      [ "Assertions", "debugging.html#assertions", null ],
+      [ "Diagnostic Code Blocks", "debugging.html#diagnostic_code_blocks", null ],
+      [ "Diagnostic Categories", "debugging.html#diagnostic_categories", [
+        [ "Configuring runtime diagnostics", "debugging.html#extra_diagnostics_configuration", null ]
+      ] ]
+    ] ],
     [ "Multithreading", "threads.html", [
       [ "Code samples", "threads.html#threads_example", null ]
     ] ],
