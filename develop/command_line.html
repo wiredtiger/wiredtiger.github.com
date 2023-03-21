@@ -208,16 +208,22 @@ wt dump</h1>
 <p>See <a class="el" href="dump_formats.html">Dump Formats</a> for details of the dump file formats.</p>
 <h2><a class="anchor" id="util_dump_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] dump [-jprx] [-c checkpoint] [-f output] [-t timestamp] uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] dump [-ejnprx] [-c checkpoint] [-f output] [-l lower bound] [-t timestamp] [-u upper bound] [-w window] uri</code></p>
 <h2><a class="anchor" id="util_dump_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>dump</code> command:</p>
 <dl class="section user"><dt><code>-c</code> </dt><dd>By default, the <code>dump</code> command opens the most recent version of the data source; the <code>-c</code> option changes the <code>dump</code> command to dump as of the named checkpoint.</dd></dl>
+<dl class="section user"><dt><code>-e</code> </dt><dd>Start the explore mode to dump the file interactively.</dd></dl>
 <dl class="section user"><dt><code>-f</code> </dt><dd>By default, the <code>dump</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
 <dl class="section user"><dt><code>-j</code> </dt><dd>Dump in JSON (<a href="http://www.json.org">JavaScript Object Notation</a>) format.</dd></dl>
+<dl class="section user"><dt><code>-k</code> </dt><dd>The specific key to look for in the format of the data packed into key items.</dd></dl>
+<dl class="section user"><dt><code>-l</code> </dt><dd>The lower bound of the key range to dump.</dd></dl>
+<dl class="section user"><dt><code>-n</code> </dt><dd>If the requested key (see the <code>-k</code> option) cannot be found, return the key retrieved by <code>search_near</code>.</dd></dl>
 <dl class="section user"><dt><code>-p</code> </dt><dd>Dump in human-readable format (pretty-print). The <code>-p</code> flag is incompatible with the <code>load</code> command. The <code>-p</code> flag can be combined with <code>-x</code>. In this case, raw data elements will be formatted like <code>-x</code> with hexadecimal encoding.</dd></dl>
 <dl class="section user"><dt><code>-r</code> </dt><dd>Dump in reverse order, from largest key to smallest.</dd></dl>
 <dl class="section user"><dt><code>-t</code> </dt><dd>By default, the <code>dump</code> command opens the most recent version of the data source; the <code>-t</code> option changes the <code>dump</code> command to dump as of the specified timestamp.</dd></dl>
+<dl class="section user"><dt><code>-u</code> </dt><dd>The upper bound of the key range to dump.</dd></dl>
+<dl class="section user"><dt><code>-w</code> </dt><dd>Dump n records before and after the record sought.</dd></dl>
 <dl class="section user"><dt><code>-x</code> </dt><dd>Dump all characters in a hexadecimal encoding (the default is to leave printable characters unencoded). The <code>-x</code> flag can be combined with <code>-p</code>. In this case, the dump will be formatted similar to <code>-p</code> except for raw data elements, which will look like <code>-x</code> with hexadecimal encoding. If the two options are combined the output is no longer compatible with <code>load</code>.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_list"></a>
@@ -378,16 +384,18 @@ Options</h2>
 wt write</h1>
 <p>Write records to a table.</p>
 <p>The <code>write</code> command stores records into the specified data source. The data source must be configured with string or record number keys and string values.</p>
-<p>If the <code>write</code> command is called with the <code>-a</code> option, each command-line argument is a single value to be appended to the specified column-store data source. If the <code>write</code> command is not called with the <code>-a</code> option, the command-line arguments are key/value pairs.</p>
+<p>If the <code>write</code> command is called with the <code>-a</code> option, each command-line argument is a single value to be appended to the specified column-store data source. If the <code>write</code> command is called with the <code>-r</code> option, the command-line argument is a key. If the <code>write</code> command is called with neither the <code>-a</code> nor the <code>-r</code> option, the command-line arguments are key/value pairs.</p>
 <p>Attempting to overwrite an already existing record will fail.</p>
 <h2><a class="anchor" id="util_write_synopsis"></a>
 Synopsis</h2>
-<p><code>wt</code> [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] write -a uri value ... <br  />
- <code>wt</code> [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] write [-o] uri key value ...</p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] write -a uri value ...</code> <br  />
+ <code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] write -r uri key</code> <br  />
+ <code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] write [-o] uri key value ...</code></p>
 <h2><a class="anchor" id="util_write_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>write</code> command:</p>
-<dl class="section user"><dt><code>-a</code> </dt><dd>Append each value as a new record in the data source.</dd></dl>
+<dl class="section user"><dt><code>-a</code> </dt><dd>Append each value as a new record in the column-store data source.</dd></dl>
+<dl class="section user"><dt><code>-r</code> </dt><dd>Remove an existing record from the data source.</dd></dl>
 <dl class="section user"><dt><code>-o</code> </dt><dd>By default, attempting to overwrite an already existing record will fail. The <code>-o</code> option changes <code>write</code> to overwrite previously existing records. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
