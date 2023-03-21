@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_u_r_s_o_r.html#a9158605cfaab4e3b00c5ef1af3d3bc3f":[1,0,2,21],
 "struct_w_t___c_u_r_s_o_r.html#aa756090890615a197dea313155f5e7b7":[1,0,2,0],
 "struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3":[1,0,2,5],
 "struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455":[1,0,2,11],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "tune_close.html":[0,3,39],
 "tune_cursor_persist.html":[0,3,40],
 "tune_durability.html":[0,3,41],
-"tune_durability.html#tune_durability_flush_config":[0,3,41,1],
-"tune_durability.html#tune_durability_group_commit":[0,3,41,0]
+"tune_durability.html#tune_durability_flush_config":[0,3,41,1]
 };
