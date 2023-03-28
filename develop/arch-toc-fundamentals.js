@@ -61,7 +61,16 @@ var arch_toc_fundamentals =
       [ "Skipping reading unnecessary pages into memory", "arch-rts.html#rts-page-skip", null ],
       [ "Example 1", "arch-rts.html#rts-example-1", null ],
       [ "Example 2", "arch-rts.html#rts-example-2", null ],
-      [ "Example 3", "arch-rts.html#rts-example-3", null ]
+      [ "Example 3", "arch-rts.html#rts-example-3", null ],
+      [ "Interaction with timestamps", "arch-rts.html#interaction-with-timestamps", null ],
+      [ "Interaction with transaction IDs", "arch-rts.html#interaction-with-transaction-ids", null ],
+      [ "Operations on the history store", "arch-rts.html#operations-on-the-history-store", null ],
+      [ "Iterating over B-Trees", "arch-rts.html#iterating-over-b-trees", null ],
+      [ "Iterating over pages", "arch-rts.html#iterating-over-pages", null ],
+      [ "Iterating over updates", "arch-rts.html#iterating-over-updates", null ],
+      [ "Interaction with checkpoints and eviction", "arch-rts.html#interaction-with-checkpoints-and-eviction", null ],
+      [ "Dry-run mode", "arch-rts.html#dry-run-mode", null ],
+      [ "RTS for a single table", "arch-rts.html#rts-for-a-single-table", null ]
     ] ],
     [ "Deleted Pages and Fast-Truncate", "arch-fast-truncate.html", [
       [ "Deleted Pages", "arch-fast-truncate.html#ft_deleted_pages", null ],
