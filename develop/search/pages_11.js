@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s3_20storage_20source_1634',['S3 Storage Source',['../arch-s3-extension.html',1,'arch-toc-mem-disk']]],
+  ['storage_20source_1634',['Storage Source',['../arch-cloud-storage-extension.html',1,'arch-toc-mem-disk']]],
   ['schema_1635',['Schema',['../arch-schema.html',1,'arch-toc-data-org'],['../schema.html',1,'programming']]],
   ['session_1636',['Session',['../arch-session.html',1,'arch-toc-fundamentals']]],
   ['snapshot_1637',['Snapshot',['../arch-snapshot.html',1,'arch-toc-fundamentals']]],

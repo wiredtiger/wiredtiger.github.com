@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"ex_stat_8c-example.html":[4,14],
+"ex_thread_8c-example.html":[4,15],
 "examples.html":[4],
 "explain_acid.html":[0,3,16],
 "explain_isolation.html":[0,3,17],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga3ba4d6c12abe10285dc3b599f082a4e4":[1,0,622],
 "group__wt.html#ga3bb2ca006c10411eb0d652544b13f18f":[1,0,618],
 "group__wt.html#ga3c02a8ad3e312477f869aeb8b7207b37":[1,0,278],
-"group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8":[1,0,33],
-"group__wt.html#ga3cce27756256b57520fb29a2f8095c8d":[1,0,849],
-"group__wt.html#ga3d395bb08367040916f3d3d249eb8e45":[1,0,694]
+"group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8":[1,0,33]
 };
