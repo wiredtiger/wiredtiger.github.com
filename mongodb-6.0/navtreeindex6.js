@@ -1,5 +1,9 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f":[1,0,2,18],
+"struct_w_t___c_u_r_s_o_r.html#a49f70806bf693462e5644edbbb864c1b":[1,0,2,6],
+"struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b":[1,0,2,2],
+"struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f":[1,0,2,14],
 "struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c":[1,0,2,15],
 "struct_w_t___c_u_r_s_o_r.html#a9158605cfaab4e3b00c5ef1af3d3bc3f":[1,0,2,21],
 "struct_w_t___c_u_r_s_o_r.html#aac90d9fbcc031570f924db55f8a1cee3":[1,0,2,5],
@@ -245,9 +249,5 @@ var NAVTREEINDEX6 =
 "transactions_api.html#transactions_concurrency":[0,3,6,2],
 "transactions_api.html#transactions_grouping":[0,3,6,0],
 "transactions_api.html#transactions_implicit":[0,3,6,1],
-"tune_build_options.html":[0,3,46],
-"tune_bulk_load.html":[0,3,47],
-"tune_cache.html":[0,3,48],
-"tune_cache.html#cache_eviction":[0,3,48,2],
-"tune_cache.html#tuning_cache_resident":[0,3,48,1]
+"tune_build_options.html":[0,3,46]
 };

@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"tune_bulk_load.html":[0,3,47],
+"tune_cache.html":[0,3,48],
+"tune_cache.html#cache_eviction":[0,3,48,2],
+"tune_cache.html#tuning_cache_resident":[0,3,48,1],
 "tune_cache.html#tuning_cache_size":[0,3,48,0],
 "tune_capacity.html":[0,3,49],
 "tune_checksum.html":[0,3,50],
