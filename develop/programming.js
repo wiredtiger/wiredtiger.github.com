@@ -121,7 +121,7 @@ var programming =
       [ "Using LZ4 compression", "compression.html#compression_lz4", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],
       [ "Using zlib compression", "compression.html#compression_zlib", null ],
-      [ "Using Zstd compression", "compression.html#compression_zstd", null ],
+      [ "Using zstd compression", "compression.html#compression_zstd", null ],
       [ "Upgrading compression engines", "compression.html#compression_upgrading", null ],
       [ "Custom compression engines", "compression.html#compression_custom", null ]
     ] ],
