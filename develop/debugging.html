@@ -115,12 +115,12 @@ Assertions</h1>
 </table>
 <h1><a class="anchor" id="diagnostic_code_blocks"></a>
 Diagnostic Code Blocks</h1>
-<p>Longer, more extensive checks are marked by <code><code>#ifdef</code> HAVE_DIAGNOSTIC</code> or <code>EXTRA_DIAGNOSTICS_ENABLED</code> blocks. Similar to assertions these checks are enabled either by running WiredTiger in diagnostic mode or by setting <code>extra_diagnostics</code> on the <code><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a></code>.</p>
+<p>Longer, more extensive checks are marked by <code>#ifdef HAVE_DIAGNOSTIC</code> or <code>EXTRA_DIAGNOSTICS_ENABLED</code> blocks. Similar to assertions these checks are enabled either by running WiredTiger in diagnostic mode or by setting <code>extra_diagnostics</code> on the <code><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a></code>.</p>
 <table class="doxtable">
 <tr>
 <th>Check</th><th>Behavior in diagnostic mode</th><th>Behavior in release mode </th></tr>
 <tr>
-<td><code><code>#ifdef</code> HAVE_DIAGNOSTIC</code></td><td>Always run the code block</td><td>Never run the code block. </td></tr>
+<td><code>#ifdef HAVE_DIAGNOSTIC</code></td><td>Always run the code block</td><td>Never run the code block. </td></tr>
 <tr>
 <td><code>EXTRA_DIAGNOSTICS_ENABLED</code> </td><td>Always run the code block</td><td>Takes a <code>WT_DIAGNOSTIC_*</code> category as an argument and only runs when the category is enabled on the <code><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html" title="A connection to a WiredTiger database.">WT_CONNECTION</a></code>. </td></tr>
 </table>
