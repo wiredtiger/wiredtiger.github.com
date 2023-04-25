@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['data_20file_20format_1588',['Data File Format',['../arch-data-file.html',1,'arch-toc-mem-disk']]],
-  ['data_20handles_1589',['Data Handles',['../arch-dhandle.html',1,'arch-toc-data-src']]],
-  ['deleted_20pages_20and_20fast_2dtruncate_1590',['Deleted Pages and Fast-Truncate',['../arch-fast-truncate.html',1,'arch-toc-fundamentals']]],
-  ['data_20organization_1591',['Data Organization',['../arch-toc-data-org.html',1,'arch-index']]],
-  ['data_20sources_1592',['Data Sources',['../arch-toc-data-src.html',1,'arch-index']]],
-  ['data_20sources_1593',['Data Sources',['../data_sources.html',1,'cursors']]],
-  ['database_20configuration_1594',['Database Configuration',['../database_config.html',1,'admin']]],
-  ['debugging_1595',['Debugging',['../debugging.html',1,'programming']]],
-  ['dump_20formats_1596',['Dump Formats',['../dump_formats.html',1,'command_line']]],
-  ['durability_20overview_1597',['Durability overview',['../durability_overview.html',1,'programming']]],
-  ['database_20home_20directory_1598',['Database Home Directory',['../home.html',1,'admin']]],
-  ['database_20read_2donly_20mode_1599',['Database read-only mode',['../readonly.html',1,'programming']]]
+  ['data_20file_20format_1592',['Data File Format',['../arch-data-file.html',1,'arch-toc-mem-disk']]],
+  ['data_20handles_1593',['Data Handles',['../arch-dhandle.html',1,'arch-toc-data-src']]],
+  ['deleted_20pages_20and_20fast_2dtruncate_1594',['Deleted Pages and Fast-Truncate',['../arch-fast-truncate.html',1,'arch-toc-fundamentals']]],
+  ['data_20organization_1595',['Data Organization',['../arch-toc-data-org.html',1,'arch-index']]],
+  ['data_20sources_1596',['Data Sources',['../arch-toc-data-src.html',1,'arch-index']]],
+  ['data_20sources_1597',['Data Sources',['../data_sources.html',1,'cursors']]],
+  ['database_20configuration_1598',['Database Configuration',['../database_config.html',1,'admin']]],
+  ['debugging_1599',['Debugging',['../debugging.html',1,'programming']]],
+  ['dump_20formats_1600',['Dump Formats',['../dump_formats.html',1,'command_line']]],
+  ['durability_20overview_1601',['Durability overview',['../durability_overview.html',1,'programming']]],
+  ['database_20home_20directory_1602',['Database Home Directory',['../home.html',1,'admin']]],
+  ['database_20read_2donly_20mode_1603',['Database read-only mode',['../readonly.html',1,'programming']]]
 ];
