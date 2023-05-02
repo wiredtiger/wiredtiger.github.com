@@ -967,14 +967,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1fcf0c7313ec964431509e60b4e57db8">WT_STAT_CONN_CACHE_BYTES_MAX</a></td></tr>
 <tr class="memdesc:ga1fcf0c7313ec964431509e60b4e57db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum bytes configured <br /></td></tr>
 <tr class="separator:ga1fcf0c7313ec964431509e60b4e57db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0008269d518efdf980648930d6e2af20"><td class="memItemLeft" align="right" valign="top"><a id="ga0008269d518efdf980648930d6e2af20"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0008269d518efdf980648930d6e2af20">WT_STAT_CONN_CACHE_EVICTION_MAXIMUM_MILLISECONDS</a></td></tr>
+<tr class="memdesc:ga0008269d518efdf980648930d6e2af20"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum milliseconds spent at a single eviction <br /></td></tr>
+<tr class="separator:ga0008269d518efdf980648930d6e2af20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4f6602776c86fb0851c54768859bd108"><td class="memItemLeft" align="right" valign="top"><a id="ga4f6602776c86fb0851c54768859bd108"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4f6602776c86fb0851c54768859bd108">WT_STAT_CONN_CACHE_EVICTION_MAXIMUM_PAGE_SIZE</a></td></tr>
 <tr class="memdesc:ga4f6602776c86fb0851c54768859bd108"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum page size seen at eviction <br /></td></tr>
 <tr class="separator:ga4f6602776c86fb0851c54768859bd108"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8d3fae63a8398202e119b7d5c72e3285"><td class="memItemLeft" align="right" valign="top"><a id="ga8d3fae63a8398202e119b7d5c72e3285"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8d3fae63a8398202e119b7d5c72e3285">WT_STAT_CONN_CACHE_EVICTION_MAXIMUM_SECONDS</a></td></tr>
-<tr class="memdesc:ga8d3fae63a8398202e119b7d5c72e3285"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum seconds spent at a single eviction <br /></td></tr>
-<tr class="separator:ga8d3fae63a8398202e119b7d5c72e3285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae05b171e43c7d814284ee4db9d77c995"><td class="memItemLeft" align="right" valign="top"><a id="gae05b171e43c7d814284ee4db9d77c995"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae05b171e43c7d814284ee4db9d77c995">WT_STAT_CONN_CACHE_EVICTION_DIRTY</a></td></tr>
 <tr class="memdesc:gae05b171e43c7d814284ee4db9d77c995"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: modified pages evicted <br /></td></tr>
@@ -1115,6 +1115,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4e5a6bf23546b110698d301da327deac">WT_STAT_CONN_CACHE_HS_INSERT_REVERSE_MODIFY</a></td></tr>
 <tr class="memdesc:ga4e5a6bf23546b110698d301da327deac"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: the number of times reverse modify inserted to history store <br /></td></tr>
 <tr class="separator:ga4e5a6bf23546b110698d301da327deac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac8c1b04861d378583625bcb339757e1f"><td class="memItemLeft" align="right" valign="top"><a id="gac8c1b04861d378583625bcb339757e1f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac8c1b04861d378583625bcb339757e1f">WT_STAT_CONN_CACHE_REENTRY_HS_EVICTION_MILLISECONDS</a></td></tr>
+<tr class="memdesc:gac8c1b04861d378583625bcb339757e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: total milliseconds spent inside reentrant history store evictions in a reconciliation <br /></td></tr>
+<tr class="separator:gac8c1b04861d378583625bcb339757e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabf5032c8b498b0c6824cdb1f2497955e"><td class="memItemLeft" align="right" valign="top"><a id="gabf5032c8b498b0c6824cdb1f2497955e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabf5032c8b498b0c6824cdb1f2497955e">WT_STAT_CONN_CACHE_BYTES_INTERNAL</a></td></tr>
 <tr class="memdesc:gabf5032c8b498b0c6824cdb1f2497955e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: tracked bytes belonging to internal pages in the cache <br /></td></tr>
@@ -2067,18 +2071,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga38ef7862fb425a9e1a86c5a552bfd866">WT_STAT_CONN_REC_OVERFLOW_KEY_LEAF</a></td></tr>
 <tr class="memdesc:ga38ef7862fb425a9e1a86c5a552bfd866"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: leaf-page overflow keys <br /></td></tr>
 <tr class="separator:ga38ef7862fb425a9e1a86c5a552bfd866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga31915cfae97578c6bece955ce695b01c"><td class="memItemLeft" align="right" valign="top"><a id="ga31915cfae97578c6bece955ce695b01c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga31915cfae97578c6bece955ce695b01c">WT_STAT_CONN_REC_MAXIMUM_SECONDS</a></td></tr>
-<tr class="memdesc:ga31915cfae97578c6bece955ce695b01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum seconds spent in a reconciliation call <br /></td></tr>
-<tr class="separator:ga31915cfae97578c6bece955ce695b01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga56c1f65cbc9fb3050a7c0d6a01fa8c05"><td class="memItemLeft" align="right" valign="top"><a id="ga56c1f65cbc9fb3050a7c0d6a01fa8c05"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga56c1f65cbc9fb3050a7c0d6a01fa8c05">WT_STAT_CONN_REC_MAXIMUM_IMAGE_BUILD_SECONDS</a></td></tr>
-<tr class="memdesc:ga56c1f65cbc9fb3050a7c0d6a01fa8c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum seconds spent in building a disk image in a reconciliation <br /></td></tr>
-<tr class="separator:ga56c1f65cbc9fb3050a7c0d6a01fa8c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga08f695beee5ce1b9c998acc0be908279"><td class="memItemLeft" align="right" valign="top"><a id="ga08f695beee5ce1b9c998acc0be908279"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga08f695beee5ce1b9c998acc0be908279">WT_STAT_CONN_REC_MAXIMUM_HS_WRAPUP_SECONDS</a></td></tr>
-<tr class="memdesc:ga08f695beee5ce1b9c998acc0be908279"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum seconds spent in moving updates to the history store in a reconciliation <br /></td></tr>
-<tr class="separator:ga08f695beee5ce1b9c998acc0be908279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga460480e2546d203dee08d08bffac9be6"><td class="memItemLeft" align="right" valign="top"><a id="ga460480e2546d203dee08d08bffac9be6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga460480e2546d203dee08d08bffac9be6">WT_STAT_CONN_REC_MAXIMUM_MILLISECONDS</a></td></tr>
+<tr class="memdesc:ga460480e2546d203dee08d08bffac9be6"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum milliseconds spent in a reconciliation call <br /></td></tr>
+<tr class="separator:ga460480e2546d203dee08d08bffac9be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga450fc31c6799eb85d2db345e9553a42f"><td class="memItemLeft" align="right" valign="top"><a id="ga450fc31c6799eb85d2db345e9553a42f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga450fc31c6799eb85d2db345e9553a42f">WT_STAT_CONN_REC_MAXIMUM_IMAGE_BUILD_MILLISECONDS</a></td></tr>
+<tr class="memdesc:ga450fc31c6799eb85d2db345e9553a42f"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum milliseconds spent in building a disk image in a reconciliation <br /></td></tr>
+<tr class="separator:ga450fc31c6799eb85d2db345e9553a42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d90ff7b7cd318f020761e8c8a6ef0c9"><td class="memItemLeft" align="right" valign="top"><a id="ga4d90ff7b7cd318f020761e8c8a6ef0c9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4d90ff7b7cd318f020761e8c8a6ef0c9">WT_STAT_CONN_REC_MAXIMUM_HS_WRAPUP_MILLISECONDS</a></td></tr>
+<tr class="memdesc:ga4d90ff7b7cd318f020761e8c8a6ef0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum milliseconds spent in moving updates to the history store in a reconciliation <br /></td></tr>
+<tr class="separator:ga4d90ff7b7cd318f020761e8c8a6ef0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga75e67aeb18efafb45ecee561e65e1486"><td class="memItemLeft" align="right" valign="top"><a id="ga75e67aeb18efafb45ecee561e65e1486"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga75e67aeb18efafb45ecee561e65e1486">WT_STAT_CONN_REC_PAGES</a></td></tr>
 <tr class="memdesc:ga75e67aeb18efafb45ecee561e65e1486"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: page reconciliation calls <br /></td></tr>
@@ -4706,6 +4710,8 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>cache_size</code></td><td>maximum heap memory to allocate for the cache. A database should configure either <code>cache_size</code> or <code>shared_cache</code> but not both.</td><td>an integer between <code>1MB</code> and <code>10TB</code>; default <code>100MB</code>. </td></tr>
 <tr>
+<td><code>cache_stuck_timeout_ms</code></td><td>the number of milliseconds to wait before a stuck cache times out in diagnostic mode. Default will wait for 5 minutes, 0 will wait forever.</td><td>an integer greater than or equal to <code>0</code>; default <code>300000</code>. </td></tr>
+<tr>
 <td><code>checkpoint = (</code></td><td>periodically checkpoint the database. Enabling the checkpoint server uses a session from the configured <code>session_max</code>.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;log_size</code></td><td>wait for this amount of log record bytes to be written to the log between each checkpoint. If non-zero, this value will use a minimum of the log file size. A database can configure both log_size and wait to set an upper bound for checkpoints; setting this value above 0 configures periodic checkpoints.</td><td>an integer between <code>0</code> and <code>2GB</code>; default <code>0</code>. </td></tr>
@@ -4773,6 +4779,8 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <td><code>&#160;&#160;&#160;&#160;stress_skiplist</code></td><td>Configure various internal parameters to encourage race conditions and other issues with internal skip lists, e.g. using a more dense representation.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160; table_logging</code></td><td>if true, write transaction related information to the log for all operations, even operations for tables with logging turned off. This additional logging information is intended for debugging and is informational only, that is, it is ignored during recovery.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;tiered_flush_error_continue</code></td><td>on a write to tiered storage, continue when an error occurs.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;update_restore_evict</code></td><td>if true, control all dirty page evictions through forcing update restore eviction.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -5733,19 +5741,19 @@ Packing Examples</h1>
 <div class="ttc" id="agroup__wt_html_gae8bf720ddb4a7a7390b70424594c40fd"><div class="ttname"><a href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a></div><div class="ttdeci">const char * wiredtiger_strerror(int error)</div><div class="ttdoc">Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...</div></div>
 <div class="ttc" id="agroup__wt_html_gacb2cb3b5e55a85a481a3175f37de3a29"><div class="ttname"><a href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">wiredtiger_calc_modify</a></div><div class="ttdeci">int wiredtiger_calc_modify(WT_SESSION *session, const WT_ITEM *oldv, const WT_ITEM *newv, size_t maxdiff, WT_MODIFY *entries, int *nentriesp)</div><div class="ttdoc">Calculate a set of WT_MODIFY operations to represent an update.</div></div>
 <div class="ttc" id="agroup__wt_html_abd8b1299dfb5c54dc049fa42a4680b55"><div class="ttname"><a href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">WT_ITEM::size</a></div><div class="ttdeci">size_t size</div><div class="ttdoc">The number of bytes in the data item.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:108</div></div>
-<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3877</div></div>
+<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3885</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html_a44eea5e27a4da10006ab444ee7cf00f3"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">WT_CONFIG_PARSER::close</a></div><div class="ttdeci">int close(WT_CONFIG_PARSER *config_parser)</div><div class="ttdoc">Close the configuration scanner releasing any resources.</div></div>
 <div class="ttc" id="agroup__wt_html_ga7cdc8c688f2c15303188ed6999dcc1b4"><div class="ttname"><a href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a></div><div class="ttdeci">int wiredtiger_struct_unpack(WT_SESSION *session, const void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Unpack a structure from a buffer.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___m_o_d_i_f_y"><div class="ttname"><a href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a></div><div class="ttdoc">A set of modifications for a value, including a pointer to new data and a length, plus a target offse...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:133</div></div>
 <div class="ttc" id="agroup__wt_html_ga1b29826f4b418891d67e86850f7cbcf4"><div class="ttname"><a href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a></div><div class="ttdeci">const char * wiredtiger_version(int *majorp, int *minorp, int *patchp)</div><div class="ttdoc">Get version information.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___i_t_e_m"><div class="ttname"><a href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></div><div class="ttdoc">A raw item of data to be managed, including a pointer to the data and a length.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:91</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3817</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3825</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="agroup__wt_html_ga512297da65ccc30ac91bf6adf95f043f"><div class="ttname"><a href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a></div><div class="ttdeci">int wiredtiger_config_parser_open(WT_SESSION *session, const char *config, size_t len, WT_CONFIG_PARSER **config_parserp)</div><div class="ttdoc">Create a handle that can be used to parse or create configuration strings compatible with the WiredTi...</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
 <div class="ttc" id="agroup__wt_html_ga156e7993d370495e1e52c29b2bb6b7d4"><div class="ttname"><a href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a></div><div class="ttdeci">int wiredtiger_struct_size(WT_SESSION *session, size_t *lenp, const char *format,...)</div><div class="ttdoc">Calculate the size required to pack a structure.</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3690</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3698</div></div>
 <div class="ttc" id="agroup__wt_html_gab3d8a22e243360ece67baf33926d80fa"><div class="ttname"><a href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a></div><div class="ttdeci">int wiredtiger_struct_pack(WT_SESSION *session, void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Pack a structure into a buffer.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

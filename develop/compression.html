@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('compression.html',''); initResizable()
 <div class="title">Compressors </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This section explains how to configure WiredTiger's builtin support for the lz4, snappy, zlib and zstd compression engines.</p>
+<div class="textblock"><p>This section explains how to configure WiredTiger's builtin support for the lz4, snappy, zlib, zstd and iaa compression engines.</p>
 <h1><a class="anchor" id="compression_lz4"></a>
 Using LZ4 compression</h1>
 <p>To use the builtin support for Yann Collet's <a href="https://github.com/Cyan4973/lz4">LZ4</a> compression, first check that LZ4 is installed in include and library directories searched by the compiler. Once LZ4 is installed, you can enable LZ4 using the <code>-DENABLE_LZ4=1</code> option to cmake.</p>
@@ -145,6 +145,17 @@ Using zstd compression</h1>
 </div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>zstd:</code> </p>
 <div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(</div>
 <div class="line">      session, <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;block_compressor=zstd,key_format=S,value_format=S&quot;</span>));</div>
+</div><!-- fragment --> <h1><a class="anchor" id="compression_iaa"></a>
+Using iaa compression</h1>
+<p>To use the builtin support for Intel's <a href="https://github.com/intel/qpl/">qpl</a> compression, first check that qpl is installed in include and library directories searched by the compiler. Once qpl is installed, you can enable iaa using the <code>-DENABLE_IAA=1</code> option to cmake.</p>
+<p>If iaa is installed in a location not normally searched by the compiler toolchain, you'll need to modify the include and library paths to indicate these locations. For example, with the iaa includes and libraries installed in <code>/usr/local/include</code> and <code>/usr/local/lib</code>, you would run cmake with the following additional arguments:</p>
+<div class="fragment"><div class="line">-DENABLE_IAA=1 -DCMAKE_INCLUDE_PATH=/usr/local/include -DCMAKE_LIBRARY_PATH=/usr/local/lib</div>
+</div><!-- fragment --><p>When opening the WiredTiger database, load the iaa shared library as an extension. For example, with the WiredTiger library installed in <code>/usr/local/lib</code>, you would use the following extension:</p>
+<div class="fragment"><div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(</div>
+<div class="line">      home, NULL, <span class="stringliteral">&quot;create,extensions=[/usr/local/lib/libwiredtiger_iaa.so]&quot;</span>, &amp;conn));</div>
+</div><!-- fragment --><p> Finally, when creating the WiredTiger object, set <code>block_compressor</code> to <code>iaa:</code> </p>
+<div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">create</a>(</div>
+<div class="line">      session, <span class="stringliteral">&quot;table:mytable&quot;</span>, <span class="stringliteral">&quot;block_compressor=iaa,key_format=S,value_format=S&quot;</span>));</div>
 </div><!-- fragment --> <h1><a class="anchor" id="compression_upgrading"></a>
 Upgrading compression engines</h1>
 <p>WiredTiger does not store information with file blocks to identify the compression engine used to compressed the block. Applications wanting to upgrade to some future compression engine (without requiring a file dump and re-load), should ensure each compressed block includes enough information to identify the compression engine used, so its compression code can correctly decompress old and new blocks.</p>
