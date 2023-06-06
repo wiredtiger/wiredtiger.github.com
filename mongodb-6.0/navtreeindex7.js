@@ -1,5 +1,8 @@
 var NAVTREEINDEX7 =
 {
+"transactions_api.html#transactions_grouping":[0,3,6,0],
+"transactions_api.html#transactions_implicit":[0,3,6,1],
+"tune_build_options.html":[0,3,46],
 "tune_bulk_load.html":[0,3,47],
 "tune_cache.html":[0,3,48],
 "tune_cache.html#cache_eviction":[0,3,48,2],

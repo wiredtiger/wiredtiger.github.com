@@ -1,5 +1,8 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738":[1,0,2,7],
+"struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6":[1,0,2,12],
+"struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76":[1,0,2,9],
 "struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f":[1,0,2,18],
 "struct_w_t___c_u_r_s_o_r.html#a49f70806bf693462e5644edbbb864c1b":[1,0,2,6],
 "struct_w_t___c_u_r_s_o_r.html#a6736da9b394239a201ba97761b7b941b":[1,0,2,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX6 =
 "transactions_api.html#cursors_transactions":[0,3,6,4],
 "transactions_api.html#isolation_levels":[0,3,6,3],
 "transactions_api.html#snapshot_reset":[0,3,6,5],
-"transactions_api.html#transactions_concurrency":[0,3,6,2],
-"transactions_api.html#transactions_grouping":[0,3,6,0],
-"transactions_api.html#transactions_implicit":[0,3,6,1],
-"tune_build_options.html":[0,3,46]
+"transactions_api.html#transactions_concurrency":[0,3,6,2]
 };
