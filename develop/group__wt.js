@@ -348,7 +348,6 @@ var group__wt =
     [ "WT_STAT_CONN_CHUNK_CACHE_BYTES_INUSE", "group__wt.html#gae2323b741dafdc8b3966bcd1f9f92165", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_CHUNKS_EVICTED", "group__wt.html#ga4f4a32e812310e7a13a552283aa30912", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_CHUNKS_INUSE", "group__wt.html#ga1e432bae8d86a76593c89b8c7a323d7d", null ],
-    [ "WT_STAT_CONN_CHUNK_CACHE_CHUNKS_INVALIDATED", "group__wt.html#ga092e65e5140f6613750b5c7430d4d03f", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_EXCEEDED_CAPACITY", "group__wt.html#ga02c66a84828f7043b77338757791702c", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_IO_FAILED", "group__wt.html#gae3b0c00ad30e84c2cacf97fe8e894ada", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_LOOKUPS", "group__wt.html#gab1bed8c3b4aff0618fa2b758fff149e9", null ],
