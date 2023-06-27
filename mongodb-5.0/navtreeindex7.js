@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"tune_close.html":[0,3,39],
+"tune_cursor_persist.html":[0,3,40],
+"tune_durability.html":[0,3,41],
+"tune_durability.html#tune_durability_flush_config":[0,3,41,1],
 "tune_durability.html#tune_durability_group_commit":[0,3,41,0],
 "tune_file_alloc.html":[0,3,42],
 "tune_file_alloc.html#tuning_system_file_block_allocation":[0,3,42,1],
