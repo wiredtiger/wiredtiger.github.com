@@ -845,9 +845,13 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1fcf0c7313ec964431509e60b4e57db8">WT_STAT_CONN_CACHE_BYTES_MAX</a></td></tr>
 <tr class="memdesc:ga1fcf0c7313ec964431509e60b4e57db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum bytes configured <br /></td></tr>
 <tr class="separator:ga1fcf0c7313ec964431509e60b4e57db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0008269d518efdf980648930d6e2af20"><td class="memItemLeft" align="right" valign="top"><a id="ga0008269d518efdf980648930d6e2af20"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0008269d518efdf980648930d6e2af20">WT_STAT_CONN_CACHE_EVICTION_MAXIMUM_MILLISECONDS</a></td></tr>
+<tr class="memdesc:ga0008269d518efdf980648930d6e2af20"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum milliseconds spent at a single eviction <br /></td></tr>
+<tr class="separator:ga0008269d518efdf980648930d6e2af20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4f6602776c86fb0851c54768859bd108"><td class="memItemLeft" align="right" valign="top"><a id="ga4f6602776c86fb0851c54768859bd108"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4f6602776c86fb0851c54768859bd108">WT_STAT_CONN_CACHE_EVICTION_MAXIMUM_PAGE_SIZE</a></td></tr>
-<tr class="memdesc:ga4f6602776c86fb0851c54768859bd108"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum page size at eviction <br /></td></tr>
+<tr class="memdesc:ga4f6602776c86fb0851c54768859bd108"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum page size seen at eviction <br /></td></tr>
 <tr class="separator:ga4f6602776c86fb0851c54768859bd108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae05b171e43c7d814284ee4db9d77c995"><td class="memItemLeft" align="right" valign="top"><a id="gae05b171e43c7d814284ee4db9d77c995"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae05b171e43c7d814284ee4db9d77c995">WT_STAT_CONN_CACHE_EVICTION_DIRTY</a></td></tr>
@@ -973,6 +977,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4e5a6bf23546b110698d301da327deac">WT_STAT_CONN_CACHE_HS_INSERT_REVERSE_MODIFY</a></td></tr>
 <tr class="memdesc:ga4e5a6bf23546b110698d301da327deac"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: the number of times reverse modify inserted to history store <br /></td></tr>
 <tr class="separator:ga4e5a6bf23546b110698d301da327deac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac8c1b04861d378583625bcb339757e1f"><td class="memItemLeft" align="right" valign="top"><a id="gac8c1b04861d378583625bcb339757e1f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac8c1b04861d378583625bcb339757e1f">WT_STAT_CONN_CACHE_REENTRY_HS_EVICTION_MILLISECONDS</a></td></tr>
+<tr class="memdesc:gac8c1b04861d378583625bcb339757e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: total milliseconds spent inside reentrant history store evictions in a reconciliation <br /></td></tr>
+<tr class="separator:gac8c1b04861d378583625bcb339757e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabf5032c8b498b0c6824cdb1f2497955e"><td class="memItemLeft" align="right" valign="top"><a id="gabf5032c8b498b0c6824cdb1f2497955e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabf5032c8b498b0c6824cdb1f2497955e">WT_STAT_CONN_CACHE_BYTES_INTERNAL</a></td></tr>
 <tr class="memdesc:gabf5032c8b498b0c6824cdb1f2497955e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: tracked bytes belonging to internal pages in the cache <br /></td></tr>
@@ -1733,10 +1741,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga38ef7862fb425a9e1a86c5a552bfd866">WT_STAT_CONN_REC_OVERFLOW_KEY_LEAF</a></td></tr>
 <tr class="memdesc:ga38ef7862fb425a9e1a86c5a552bfd866"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: leaf-page overflow keys <br /></td></tr>
 <tr class="separator:ga38ef7862fb425a9e1a86c5a552bfd866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga31915cfae97578c6bece955ce695b01c"><td class="memItemLeft" align="right" valign="top"><a id="ga31915cfae97578c6bece955ce695b01c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga31915cfae97578c6bece955ce695b01c">WT_STAT_CONN_REC_MAXIMUM_SECONDS</a></td></tr>
-<tr class="memdesc:ga31915cfae97578c6bece955ce695b01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum seconds spent in a reconciliation call <br /></td></tr>
-<tr class="separator:ga31915cfae97578c6bece955ce695b01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga460480e2546d203dee08d08bffac9be6"><td class="memItemLeft" align="right" valign="top"><a id="ga460480e2546d203dee08d08bffac9be6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga460480e2546d203dee08d08bffac9be6">WT_STAT_CONN_REC_MAXIMUM_MILLISECONDS</a></td></tr>
+<tr class="memdesc:ga460480e2546d203dee08d08bffac9be6"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum milliseconds spent in a reconciliation call <br /></td></tr>
+<tr class="separator:ga460480e2546d203dee08d08bffac9be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga450fc31c6799eb85d2db345e9553a42f"><td class="memItemLeft" align="right" valign="top"><a id="ga450fc31c6799eb85d2db345e9553a42f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga450fc31c6799eb85d2db345e9553a42f">WT_STAT_CONN_REC_MAXIMUM_IMAGE_BUILD_MILLISECONDS</a></td></tr>
+<tr class="memdesc:ga450fc31c6799eb85d2db345e9553a42f"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum milliseconds spent in building a disk image in a reconciliation <br /></td></tr>
+<tr class="separator:ga450fc31c6799eb85d2db345e9553a42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d90ff7b7cd318f020761e8c8a6ef0c9"><td class="memItemLeft" align="right" valign="top"><a id="ga4d90ff7b7cd318f020761e8c8a6ef0c9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4d90ff7b7cd318f020761e8c8a6ef0c9">WT_STAT_CONN_REC_MAXIMUM_HS_WRAPUP_MILLISECONDS</a></td></tr>
+<tr class="memdesc:ga4d90ff7b7cd318f020761e8c8a6ef0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: maximum milliseconds spent in moving updates to the history store in a reconciliation <br /></td></tr>
+<tr class="separator:ga4d90ff7b7cd318f020761e8c8a6ef0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga75e67aeb18efafb45ecee561e65e1486"><td class="memItemLeft" align="right" valign="top"><a id="ga75e67aeb18efafb45ecee561e65e1486"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga75e67aeb18efafb45ecee561e65e1486">WT_STAT_CONN_REC_PAGES</a></td></tr>
 <tr class="memdesc:ga75e67aeb18efafb45ecee561e65e1486"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: page reconciliation calls <br /></td></tr>
