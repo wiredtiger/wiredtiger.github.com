@@ -150,10 +150,11 @@ wt compact</h1>
 <p>The <code>compact</code> command attempts to rewrite the specified table to consume less disk space.</p>
 <h2><a class="anchor" id="util_compact_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] compact uri</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] compact [-c config] uri</code></p>
 <h2><a class="anchor" id="util_compact_options"></a>
 Options</h2>
-<p>The <code>compact</code> command has no command-specific options.</p>
+<p>The following are command-specific options for the <code>compact</code> command:</p>
+<dl class="section user"><dt><code>-c</code> </dt><dd>Include a configuration string to be passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a>.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_copyright"></a>
 wt copyright</h1>
