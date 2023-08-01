@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_u_r_s_o_r.html#a21f35d032987318a8c3b9eb1b0c6a1dc":[1,0,2,19],
 "struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c":[1,0,2,17],
 "struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738":[1,0,2,7],
 "struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6":[1,0,2,12],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "transactions.html":[0,3,5],
 "transactions_api.html":[0,3,6],
 "transactions_api.html#cursors_transactions":[0,3,6,4],
-"transactions_api.html#isolation_levels":[0,3,6,3],
-"transactions_api.html#snapshot_reset":[0,3,6,5]
+"transactions_api.html#isolation_levels":[0,3,6,3]
 };
