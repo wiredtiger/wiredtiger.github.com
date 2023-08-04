@@ -615,6 +615,7 @@ var group__wt =
     [ "WT_STAT_CONN_REC_VLCS_EMPTIED_PAGES", "group__wt.html#gab286bff3609830a92b4077ab871d515c", null ],
     [ "WT_STAT_CONN_RWLOCK_READ", "group__wt.html#gae98d672955f1a11067e1e9122e2db475", null ],
     [ "WT_STAT_CONN_RWLOCK_WRITE", "group__wt.html#ga754a35883bd35aff144c73002fa6b030", null ],
+    [ "WT_STAT_CONN_SESSION_BACKGROUND_COMPACT_RUNNING", "group__wt.html#ga8d4dc5f217958c4a7ce714f94138401e", null ],
     [ "WT_STAT_CONN_SESSION_OPEN", "group__wt.html#gaa753d17cb7f62e2811c4834961725c11", null ],
     [ "WT_STAT_CONN_SESSION_QUERY_TS", "group__wt.html#gaba56aa11bb184cc9adfa6a1fbda154de", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_ALTER_FAIL", "group__wt.html#gacb0dfedaab0183271e30afaad6646d75", null ],
