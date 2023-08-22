@@ -1227,22 +1227,154 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga427404b64562785f79e898f8cc9bff65">WT_STAT_CONN_CAPACITY_TIME_READ</a></td></tr>
 <tr class="memdesc:ga427404b64562785f79e898f8cc9bff65"><td class="mdescLeft">&#160;</td><td class="mdescRight">capacity: time waiting during read (usecs) <br /></td></tr>
 <tr class="separator:ga427404b64562785f79e898f8cc9bff65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac96a662ca59ef7f93d39e268d60365cd"><td class="memItemLeft" align="right" valign="top"><a id="gac96a662ca59ef7f93d39e268d60365cd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac96a662ca59ef7f93d39e268d60365cd">WT_STAT_CONN_CC_PAGES_EVICT</a></td></tr>
-<tr class="memdesc:gac96a662ca59ef7f93d39e268d60365cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint-cleanup: pages added for eviction <br /></td></tr>
-<tr class="separator:gac96a662ca59ef7f93d39e268d60365cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga460fc1b2d25f9f08bb5132bcf93434a1"><td class="memItemLeft" align="right" valign="top"><a id="ga460fc1b2d25f9f08bb5132bcf93434a1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga460fc1b2d25f9f08bb5132bcf93434a1">WT_STAT_CONN_CC_PAGES_REMOVED</a></td></tr>
-<tr class="memdesc:ga460fc1b2d25f9f08bb5132bcf93434a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint-cleanup: pages removed <br /></td></tr>
-<tr class="separator:ga460fc1b2d25f9f08bb5132bcf93434a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6e6054c5d046e152a23890e87b1445e8"><td class="memItemLeft" align="right" valign="top"><a id="ga6e6054c5d046e152a23890e87b1445e8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6e6054c5d046e152a23890e87b1445e8">WT_STAT_CONN_CC_PAGES_WALK_SKIPPED</a></td></tr>
-<tr class="memdesc:ga6e6054c5d046e152a23890e87b1445e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint-cleanup: pages skipped during tree walk <br /></td></tr>
-<tr class="separator:ga6e6054c5d046e152a23890e87b1445e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga990e2bac5d438d088a22eb193632509a"><td class="memItemLeft" align="right" valign="top"><a id="ga990e2bac5d438d088a22eb193632509a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga990e2bac5d438d088a22eb193632509a">WT_STAT_CONN_CC_PAGES_VISITED</a></td></tr>
-<tr class="memdesc:ga990e2bac5d438d088a22eb193632509a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint-cleanup: pages visited <br /></td></tr>
-<tr class="separator:ga990e2bac5d438d088a22eb193632509a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabfb3caf8d6a26d5876ca01aa6cf18a70"><td class="memItemLeft" align="right" valign="top"><a id="gabfb3caf8d6a26d5876ca01aa6cf18a70"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabfb3caf8d6a26d5876ca01aa6cf18a70">WT_STAT_CONN_CHECKPOINT_SNAPSHOT_ACQUIRED</a></td></tr>
+<tr class="memdesc:gabfb3caf8d6a26d5876ca01aa6cf18a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: checkpoint has acquired a snapshot for its transaction <br /></td></tr>
+<tr class="separator:gabfb3caf8d6a26d5876ca01aa6cf18a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga893aa524f7f226e6e1bd5e3f81ed60c4"><td class="memItemLeft" align="right" valign="top"><a id="ga893aa524f7f226e6e1bd5e3f81ed60c4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga893aa524f7f226e6e1bd5e3f81ed60c4">WT_STAT_CONN_CHECKPOINT_SKIPPED</a></td></tr>
+<tr class="memdesc:ga893aa524f7f226e6e1bd5e3f81ed60c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: checkpoints skipped because database was clean <br /></td></tr>
+<tr class="separator:ga893aa524f7f226e6e1bd5e3f81ed60c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f7de7cfb58d19270b0bfe8285793028"><td class="memItemLeft" align="right" valign="top"><a id="ga0f7de7cfb58d19270b0bfe8285793028"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0f7de7cfb58d19270b0bfe8285793028">WT_STAT_CONN_CHECKPOINT_FSYNC_POST</a></td></tr>
+<tr class="memdesc:ga0f7de7cfb58d19270b0bfe8285793028"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: fsync calls after allocating the transaction ID <br /></td></tr>
+<tr class="separator:ga0f7de7cfb58d19270b0bfe8285793028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a8bbdef361d6e12ce62e08e7d966d4e"><td class="memItemLeft" align="right" valign="top"><a id="ga6a8bbdef361d6e12ce62e08e7d966d4e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6a8bbdef361d6e12ce62e08e7d966d4e">WT_STAT_CONN_CHECKPOINT_FSYNC_POST_DURATION</a></td></tr>
+<tr class="memdesc:ga6a8bbdef361d6e12ce62e08e7d966d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: fsync duration after allocating the transaction ID (usecs) <br /></td></tr>
+<tr class="separator:ga6a8bbdef361d6e12ce62e08e7d966d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0d6d3685883ec56f630242034d28b2cf"><td class="memItemLeft" align="right" valign="top"><a id="ga0d6d3685883ec56f630242034d28b2cf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0d6d3685883ec56f630242034d28b2cf">WT_STAT_CONN_CHECKPOINT_GENERATION</a></td></tr>
+<tr class="memdesc:ga0d6d3685883ec56f630242034d28b2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: generation <br /></td></tr>
+<tr class="separator:ga0d6d3685883ec56f630242034d28b2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca56fe8a3acfbd4aaffeba42e310158f"><td class="memItemLeft" align="right" valign="top"><a id="gaca56fe8a3acfbd4aaffeba42e310158f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaca56fe8a3acfbd4aaffeba42e310158f">WT_STAT_CONN_CHECKPOINT_TIME_MAX</a></td></tr>
+<tr class="memdesc:gaca56fe8a3acfbd4aaffeba42e310158f"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: max time (msecs) <br /></td></tr>
+<tr class="separator:gaca56fe8a3acfbd4aaffeba42e310158f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5a402f95a01a693353d7b9badecb4807"><td class="memItemLeft" align="right" valign="top"><a id="ga5a402f95a01a693353d7b9badecb4807"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5a402f95a01a693353d7b9badecb4807">WT_STAT_CONN_CHECKPOINT_TIME_MIN</a></td></tr>
+<tr class="memdesc:ga5a402f95a01a693353d7b9badecb4807"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: min time (msecs) <br /></td></tr>
+<tr class="separator:ga5a402f95a01a693353d7b9badecb4807"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafc71d1f772f4cbefe7232523af425a12"><td class="memItemLeft" align="right" valign="top"><a id="gafc71d1f772f4cbefe7232523af425a12"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafc71d1f772f4cbefe7232523af425a12">WT_STAT_CONN_CHECKPOINT_HANDLE_DURATION</a></td></tr>
+<tr class="memdesc:gafc71d1f772f4cbefe7232523af425a12"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: most recent duration for gathering all handles (usecs) <br /></td></tr>
+<tr class="separator:gafc71d1f772f4cbefe7232523af425a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04e86cead9f17246149a699e8c32585b"><td class="memItemLeft" align="right" valign="top"><a id="ga04e86cead9f17246149a699e8c32585b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga04e86cead9f17246149a699e8c32585b">WT_STAT_CONN_CHECKPOINT_HANDLE_DURATION_APPLY</a></td></tr>
+<tr class="memdesc:ga04e86cead9f17246149a699e8c32585b"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: most recent duration for gathering applied handles (usecs) <br /></td></tr>
+<tr class="separator:ga04e86cead9f17246149a699e8c32585b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8febbf1e8095bcd946f9ce7df1402443"><td class="memItemLeft" align="right" valign="top"><a id="ga8febbf1e8095bcd946f9ce7df1402443"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8febbf1e8095bcd946f9ce7df1402443">WT_STAT_CONN_CHECKPOINT_HANDLE_DURATION_SKIP</a></td></tr>
+<tr class="memdesc:ga8febbf1e8095bcd946f9ce7df1402443"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: most recent duration for gathering skipped handles (usecs) <br /></td></tr>
+<tr class="separator:ga8febbf1e8095bcd946f9ce7df1402443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae01437d3b2fdd2fc3655cb767ebf82a8"><td class="memItemLeft" align="right" valign="top"><a id="gae01437d3b2fdd2fc3655cb767ebf82a8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae01437d3b2fdd2fc3655cb767ebf82a8">WT_STAT_CONN_CHECKPOINT_HANDLE_APPLIED</a></td></tr>
+<tr class="memdesc:gae01437d3b2fdd2fc3655cb767ebf82a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: most recent handles applied <br /></td></tr>
+<tr class="separator:gae01437d3b2fdd2fc3655cb767ebf82a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga937c2c1317024291d4c6cfb77eee5995"><td class="memItemLeft" align="right" valign="top"><a id="ga937c2c1317024291d4c6cfb77eee5995"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga937c2c1317024291d4c6cfb77eee5995">WT_STAT_CONN_CHECKPOINT_HANDLE_SKIPPED</a></td></tr>
+<tr class="memdesc:ga937c2c1317024291d4c6cfb77eee5995"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: most recent handles skipped <br /></td></tr>
+<tr class="separator:ga937c2c1317024291d4c6cfb77eee5995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga18c303615de1e55003ec313428aa7b03"><td class="memItemLeft" align="right" valign="top"><a id="ga18c303615de1e55003ec313428aa7b03"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga18c303615de1e55003ec313428aa7b03">WT_STAT_CONN_CHECKPOINT_HANDLE_WALKED</a></td></tr>
+<tr class="memdesc:ga18c303615de1e55003ec313428aa7b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: most recent handles walked <br /></td></tr>
+<tr class="separator:ga18c303615de1e55003ec313428aa7b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa4888d9d85ae38e48607616351a03172"><td class="memItemLeft" align="right" valign="top"><a id="gaa4888d9d85ae38e48607616351a03172"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa4888d9d85ae38e48607616351a03172">WT_STAT_CONN_CHECKPOINT_TIME_RECENT</a></td></tr>
+<tr class="memdesc:gaa4888d9d85ae38e48607616351a03172"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: most recent time (msecs) <br /></td></tr>
+<tr class="separator:gaa4888d9d85ae38e48607616351a03172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga96bdb2161f6adffa0fe96f95c2fefaeb"><td class="memItemLeft" align="right" valign="top"><a id="ga96bdb2161f6adffa0fe96f95c2fefaeb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga96bdb2161f6adffa0fe96f95c2fefaeb">WT_STAT_CONN_CHECKPOINTS</a></td></tr>
+<tr class="memdesc:ga96bdb2161f6adffa0fe96f95c2fefaeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of checkpoints started <br /></td></tr>
+<tr class="separator:ga96bdb2161f6adffa0fe96f95c2fefaeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad56c0e2309b03d194c54841c591877f1"><td class="memItemLeft" align="right" valign="top"><a id="gad56c0e2309b03d194c54841c591877f1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad56c0e2309b03d194c54841c591877f1">WT_STAT_CONN_CHECKPOINT_SYNC</a></td></tr>
+<tr class="memdesc:gad56c0e2309b03d194c54841c591877f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of files synced <br /></td></tr>
+<tr class="separator:gad56c0e2309b03d194c54841c591877f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga804d25cd7257dfac3cebbebf322142d3"><td class="memItemLeft" align="right" valign="top"><a id="ga804d25cd7257dfac3cebbebf322142d3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga804d25cd7257dfac3cebbebf322142d3">WT_STAT_CONN_CHECKPOINT_PRESYNC</a></td></tr>
+<tr class="memdesc:ga804d25cd7257dfac3cebbebf322142d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of handles visited after writes complete <br /></td></tr>
+<tr class="separator:ga804d25cd7257dfac3cebbebf322142d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga323e9a0834864ea325d10470f186ea7a"><td class="memItemLeft" align="right" valign="top"><a id="ga323e9a0834864ea325d10470f186ea7a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga323e9a0834864ea325d10470f186ea7a">WT_STAT_CONN_CHECKPOINT_HS_PAGES_RECONCILED</a></td></tr>
+<tr class="memdesc:ga323e9a0834864ea325d10470f186ea7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of history store pages caused to be reconciled <br /></td></tr>
+<tr class="separator:ga323e9a0834864ea325d10470f186ea7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga910e27c261f446c3b22a85023d04bcee"><td class="memItemLeft" align="right" valign="top"><a id="ga910e27c261f446c3b22a85023d04bcee"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga910e27c261f446c3b22a85023d04bcee">WT_STAT_CONN_CHECKPOINT_PAGES_VISITED_INTERNAL</a></td></tr>
+<tr class="memdesc:ga910e27c261f446c3b22a85023d04bcee"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of internal pages visited <br /></td></tr>
+<tr class="separator:ga910e27c261f446c3b22a85023d04bcee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga085b0e40e67af8b97d35bc630b777955"><td class="memItemLeft" align="right" valign="top"><a id="ga085b0e40e67af8b97d35bc630b777955"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga085b0e40e67af8b97d35bc630b777955">WT_STAT_CONN_CHECKPOINT_PAGES_VISITED_LEAF</a></td></tr>
+<tr class="memdesc:ga085b0e40e67af8b97d35bc630b777955"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of leaf pages visited <br /></td></tr>
+<tr class="separator:ga085b0e40e67af8b97d35bc630b777955"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc8e5bcbe1a63d5fbc2d021410fa182a"><td class="memItemLeft" align="right" valign="top"><a id="gabc8e5bcbe1a63d5fbc2d021410fa182a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabc8e5bcbe1a63d5fbc2d021410fa182a">WT_STAT_CONN_CHECKPOINT_PAGES_RECONCILED</a></td></tr>
+<tr class="memdesc:gabc8e5bcbe1a63d5fbc2d021410fa182a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of pages caused to be reconciled <br /></td></tr>
+<tr class="separator:gabc8e5bcbe1a63d5fbc2d021410fa182a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92401873382408b5a7210cfcb9773e25"><td class="memItemLeft" align="right" valign="top"><a id="ga92401873382408b5a7210cfcb9773e25"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga92401873382408b5a7210cfcb9773e25">WT_STAT_CONN_CHECKPOINT_CLEANUP_PAGES_EVICT</a></td></tr>
+<tr class="memdesc:ga92401873382408b5a7210cfcb9773e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: pages added for eviction during checkpoint cleanup <br /></td></tr>
+<tr class="separator:ga92401873382408b5a7210cfcb9773e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabba4033bb25656437f4df113b995b69d"><td class="memItemLeft" align="right" valign="top"><a id="gabba4033bb25656437f4df113b995b69d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabba4033bb25656437f4df113b995b69d">WT_STAT_CONN_CHECKPOINT_CLEANUP_PAGES_REMOVED</a></td></tr>
+<tr class="memdesc:gabba4033bb25656437f4df113b995b69d"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: pages removed during checkpoint cleanup <br /></td></tr>
+<tr class="separator:gabba4033bb25656437f4df113b995b69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe0736ee4a6c8abd5c80af55d2aaff07"><td class="memItemLeft" align="right" valign="top"><a id="gafe0736ee4a6c8abd5c80af55d2aaff07"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafe0736ee4a6c8abd5c80af55d2aaff07">WT_STAT_CONN_CHECKPOINT_CLEANUP_PAGES_WALK_SKIPPED</a></td></tr>
+<tr class="memdesc:gafe0736ee4a6c8abd5c80af55d2aaff07"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: pages skipped during checkpoint cleanup tree walk <br /></td></tr>
+<tr class="separator:gafe0736ee4a6c8abd5c80af55d2aaff07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf9575d01957d1cac1f30fdfc9dbaca3"><td class="memItemLeft" align="right" valign="top"><a id="gacf9575d01957d1cac1f30fdfc9dbaca3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf9575d01957d1cac1f30fdfc9dbaca3">WT_STAT_CONN_CHECKPOINT_CLEANUP_PAGES_VISITED</a></td></tr>
+<tr class="memdesc:gacf9575d01957d1cac1f30fdfc9dbaca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: pages visited during checkpoint cleanup <br /></td></tr>
+<tr class="separator:gacf9575d01957d1cac1f30fdfc9dbaca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga517694dbe1e9eacfca9bae5e38ed030f"><td class="memItemLeft" align="right" valign="top"><a id="ga517694dbe1e9eacfca9bae5e38ed030f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga517694dbe1e9eacfca9bae5e38ed030f">WT_STAT_CONN_CHECKPOINT_PREP_RUNNING</a></td></tr>
+<tr class="memdesc:ga517694dbe1e9eacfca9bae5e38ed030f"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: prepare currently running <br /></td></tr>
+<tr class="separator:ga517694dbe1e9eacfca9bae5e38ed030f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabf1c9cdcafe0fc22a9d6d339774e805c"><td class="memItemLeft" align="right" valign="top"><a id="gabf1c9cdcafe0fc22a9d6d339774e805c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabf1c9cdcafe0fc22a9d6d339774e805c">WT_STAT_CONN_CHECKPOINT_PREP_MAX</a></td></tr>
+<tr class="memdesc:gabf1c9cdcafe0fc22a9d6d339774e805c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: prepare max time (msecs) <br /></td></tr>
+<tr class="separator:gabf1c9cdcafe0fc22a9d6d339774e805c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa11f54d4c3dd9c45ecef8806788979d"><td class="memItemLeft" align="right" valign="top"><a id="gaaa11f54d4c3dd9c45ecef8806788979d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaaa11f54d4c3dd9c45ecef8806788979d">WT_STAT_CONN_CHECKPOINT_PREP_MIN</a></td></tr>
+<tr class="memdesc:gaaa11f54d4c3dd9c45ecef8806788979d"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: prepare min time (msecs) <br /></td></tr>
+<tr class="separator:gaaa11f54d4c3dd9c45ecef8806788979d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad3c1be4f043985c7ce5d69b505a1a248"><td class="memItemLeft" align="right" valign="top"><a id="gad3c1be4f043985c7ce5d69b505a1a248"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad3c1be4f043985c7ce5d69b505a1a248">WT_STAT_CONN_CHECKPOINT_PREP_RECENT</a></td></tr>
+<tr class="memdesc:gad3c1be4f043985c7ce5d69b505a1a248"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: prepare most recent time (msecs) <br /></td></tr>
+<tr class="separator:gad3c1be4f043985c7ce5d69b505a1a248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga530353b5b7c8de1f087695253e924645"><td class="memItemLeft" align="right" valign="top"><a id="ga530353b5b7c8de1f087695253e924645"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga530353b5b7c8de1f087695253e924645">WT_STAT_CONN_CHECKPOINT_PREP_TOTAL</a></td></tr>
+<tr class="memdesc:ga530353b5b7c8de1f087695253e924645"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: prepare total time (msecs) <br /></td></tr>
+<tr class="separator:ga530353b5b7c8de1f087695253e924645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4124a8271895f0c6fc3de03224a10ea4"><td class="memItemLeft" align="right" valign="top"><a id="ga4124a8271895f0c6fc3de03224a10ea4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4124a8271895f0c6fc3de03224a10ea4">WT_STAT_CONN_CHECKPOINT_STATE</a></td></tr>
+<tr class="memdesc:ga4124a8271895f0c6fc3de03224a10ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: progress state <br /></td></tr>
+<tr class="separator:ga4124a8271895f0c6fc3de03224a10ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba2dbf0887c59558644c1e2ac9cc8210"><td class="memItemLeft" align="right" valign="top"><a id="gaba2dbf0887c59558644c1e2ac9cc8210"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaba2dbf0887c59558644c1e2ac9cc8210">WT_STAT_CONN_CHECKPOINT_SCRUB_TARGET</a></td></tr>
+<tr class="memdesc:gaba2dbf0887c59558644c1e2ac9cc8210"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: scrub dirty target <br /></td></tr>
+<tr class="separator:gaba2dbf0887c59558644c1e2ac9cc8210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga146fd5134d6a599284b808e8994309b2"><td class="memItemLeft" align="right" valign="top"><a id="ga146fd5134d6a599284b808e8994309b2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga146fd5134d6a599284b808e8994309b2">WT_STAT_CONN_CHECKPOINT_SCRUB_TIME</a></td></tr>
+<tr class="memdesc:ga146fd5134d6a599284b808e8994309b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: scrub time (msecs) <br /></td></tr>
+<tr class="separator:ga146fd5134d6a599284b808e8994309b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8fa86a15607f1bc706a0b4b414dab49"><td class="memItemLeft" align="right" valign="top"><a id="gaa8fa86a15607f1bc706a0b4b414dab49"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa8fa86a15607f1bc706a0b4b414dab49">WT_STAT_CONN_CHECKPOINT_STOP_STRESS_ACTIVE</a></td></tr>
+<tr class="memdesc:gaa8fa86a15607f1bc706a0b4b414dab49"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: stop timing stress active <br /></td></tr>
+<tr class="separator:gaa8fa86a15607f1bc706a0b4b414dab49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf4d1e6a06091c7effd7a4326ff0e597"><td class="memItemLeft" align="right" valign="top"><a id="gacf4d1e6a06091c7effd7a4326ff0e597"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf4d1e6a06091c7effd7a4326ff0e597">WT_STAT_CONN_CHECKPOINT_TIME_TOTAL</a></td></tr>
+<tr class="memdesc:gacf4d1e6a06091c7effd7a4326ff0e597"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: total time (msecs) <br /></td></tr>
+<tr class="separator:gacf4d1e6a06091c7effd7a4326ff0e597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf10432207509011396cd90be567f14e"><td class="memItemLeft" align="right" valign="top"><a id="gacf10432207509011396cd90be567f14e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf10432207509011396cd90be567f14e">WT_STAT_CONN_CHECKPOINT_OBSOLETE_APPLIED</a></td></tr>
+<tr class="memdesc:gacf10432207509011396cd90be567f14e"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: transaction checkpoints due to obsolete pages <br /></td></tr>
+<tr class="separator:gacf10432207509011396cd90be567f14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a2d18fd296aba5c61e85bf79eccce91"><td class="memItemLeft" align="right" valign="top"><a id="ga0a2d18fd296aba5c61e85bf79eccce91"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0a2d18fd296aba5c61e85bf79eccce91">WT_STAT_CONN_CHECKPOINT_WAIT_REDUCE_DIRTY</a></td></tr>
+<tr class="memdesc:ga0a2d18fd296aba5c61e85bf79eccce91"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: wait cycles while cache dirty level is decreasing <br /></td></tr>
+<tr class="separator:ga0a2d18fd296aba5c61e85bf79eccce91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8bea141da7acf009dc756e48776a9a79"><td class="memItemLeft" align="right" valign="top"><a id="ga8bea141da7acf009dc756e48776a9a79"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8bea141da7acf009dc756e48776a9a79">WT_STAT_CONN_CHUNK_CACHE_SPANS_CHUNKS_READ</a></td></tr>
 <tr class="memdesc:ga8bea141da7acf009dc756e48776a9a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: aggregate number of spanned chunks on read <br /></td></tr>
@@ -2463,10 +2595,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1a32b8dc6f765eed857ba6486ce35927">WT_STAT_CONN_TXN_READ_RACE_PREPARE_COMMIT</a></td></tr>
 <tr class="memdesc:ga1a32b8dc6f765eed857ba6486ce35927"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: a reader raced with a prepared transaction commit and skipped an update or updates <br /></td></tr>
 <tr class="separator:ga1a32b8dc6f765eed857ba6486ce35927"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5e652cb8ab201ddf9962de830eca5318"><td class="memItemLeft" align="right" valign="top"><a id="ga5e652cb8ab201ddf9962de830eca5318"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5e652cb8ab201ddf9962de830eca5318">WT_STAT_CONN_TXN_CHECKPOINT_SNAPSHOT_ACQUIRED</a></td></tr>
-<tr class="memdesc:ga5e652cb8ab201ddf9962de830eca5318"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: checkpoint has acquired a snapshot for its transaction <br /></td></tr>
-<tr class="separator:ga5e652cb8ab201ddf9962de830eca5318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga09754133ce5110e0084f12f897b954e4"><td class="memItemLeft" align="right" valign="top"><a id="ga09754133ce5110e0084f12f897b954e4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga09754133ce5110e0084f12f897b954e4">WT_STAT_CONN_TXN_READ_OVERFLOW_REMOVE</a></td></tr>
 <tr class="memdesc:ga09754133ce5110e0084f12f897b954e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: number of times overflow removed value is read <br /></td></tr>
@@ -2619,114 +2747,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga89fc3c2ab4ee14451d9adf0b608ed4b5">WT_STAT_CONN_TXN_BEGIN</a></td></tr>
 <tr class="memdesc:ga89fc3c2ab4ee14451d9adf0b608ed4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction begins <br /></td></tr>
 <tr class="separator:ga89fc3c2ab4ee14451d9adf0b608ed4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1eeabc1852a1dde2390f5b2c1dd4cda7"><td class="memItemLeft" align="right" valign="top"><a id="ga1eeabc1852a1dde2390f5b2c1dd4cda7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1eeabc1852a1dde2390f5b2c1dd4cda7">WT_STAT_CONN_TXN_CHECKPOINT_RUNNING</a></td></tr>
-<tr class="memdesc:ga1eeabc1852a1dde2390f5b2c1dd4cda7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint currently running <br /></td></tr>
-<tr class="separator:ga1eeabc1852a1dde2390f5b2c1dd4cda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9361bcdc11364d520ca71d5c9be89b75"><td class="memItemLeft" align="right" valign="top"><a id="ga9361bcdc11364d520ca71d5c9be89b75"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9361bcdc11364d520ca71d5c9be89b75">WT_STAT_CONN_TXN_CHECKPOINT_RUNNING_HS</a></td></tr>
-<tr class="memdesc:ga9361bcdc11364d520ca71d5c9be89b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint currently running for history store file <br /></td></tr>
-<tr class="separator:ga9361bcdc11364d520ca71d5c9be89b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaee8805d58d2f0455e8e229b9fd40c1ec"><td class="memItemLeft" align="right" valign="top"><a id="gaee8805d58d2f0455e8e229b9fd40c1ec"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaee8805d58d2f0455e8e229b9fd40c1ec">WT_STAT_CONN_TXN_CHECKPOINT_GENERATION</a></td></tr>
-<tr class="memdesc:gaee8805d58d2f0455e8e229b9fd40c1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint generation <br /></td></tr>
-<tr class="separator:gaee8805d58d2f0455e8e229b9fd40c1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga63ab43b17f7d416087d928444b40b4a0"><td class="memItemLeft" align="right" valign="top"><a id="ga63ab43b17f7d416087d928444b40b4a0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga63ab43b17f7d416087d928444b40b4a0">WT_STAT_CONN_TXN_HS_CKPT_DURATION</a></td></tr>
 <tr class="memdesc:ga63ab43b17f7d416087d928444b40b4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint history store file duration (usecs) <br /></td></tr>
 <tr class="separator:ga63ab43b17f7d416087d928444b40b4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa538c42c7e12859876f0a9d53baaccfe"><td class="memItemLeft" align="right" valign="top"><a id="gaa538c42c7e12859876f0a9d53baaccfe"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa538c42c7e12859876f0a9d53baaccfe">WT_STAT_CONN_TXN_CHECKPOINT_TIME_MAX</a></td></tr>
-<tr class="memdesc:gaa538c42c7e12859876f0a9d53baaccfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint max time (msecs) <br /></td></tr>
-<tr class="separator:gaa538c42c7e12859876f0a9d53baaccfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaebf2e7fc45e804290e2f6874dde1dbc7"><td class="memItemLeft" align="right" valign="top"><a id="gaebf2e7fc45e804290e2f6874dde1dbc7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaebf2e7fc45e804290e2f6874dde1dbc7">WT_STAT_CONN_TXN_CHECKPOINT_TIME_MIN</a></td></tr>
-<tr class="memdesc:gaebf2e7fc45e804290e2f6874dde1dbc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint min time (msecs) <br /></td></tr>
-<tr class="separator:gaebf2e7fc45e804290e2f6874dde1dbc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac1c7e36af772ed8e11e6f68ec7965d63"><td class="memItemLeft" align="right" valign="top"><a id="gac1c7e36af772ed8e11e6f68ec7965d63"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac1c7e36af772ed8e11e6f68ec7965d63">WT_STAT_CONN_TXN_CHECKPOINT_HANDLE_DURATION</a></td></tr>
-<tr class="memdesc:gac1c7e36af772ed8e11e6f68ec7965d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint most recent duration for gathering all handles (usecs) <br /></td></tr>
-<tr class="separator:gac1c7e36af772ed8e11e6f68ec7965d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21b90949abd89ec119e6ca1cf0960ae4"><td class="memItemLeft" align="right" valign="top"><a id="ga21b90949abd89ec119e6ca1cf0960ae4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga21b90949abd89ec119e6ca1cf0960ae4">WT_STAT_CONN_TXN_CHECKPOINT_HANDLE_DURATION_APPLY</a></td></tr>
-<tr class="memdesc:ga21b90949abd89ec119e6ca1cf0960ae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint most recent duration for gathering applied handles (usecs) <br /></td></tr>
-<tr class="separator:ga21b90949abd89ec119e6ca1cf0960ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad9b3c957ba8ef559bfc4e8b392d519c1"><td class="memItemLeft" align="right" valign="top"><a id="gad9b3c957ba8ef559bfc4e8b392d519c1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad9b3c957ba8ef559bfc4e8b392d519c1">WT_STAT_CONN_TXN_CHECKPOINT_HANDLE_DURATION_SKIP</a></td></tr>
-<tr class="memdesc:gad9b3c957ba8ef559bfc4e8b392d519c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint most recent duration for gathering skipped handles (usecs) <br /></td></tr>
-<tr class="separator:gad9b3c957ba8ef559bfc4e8b392d519c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9f81f455ef5114681cb2560f68edec93"><td class="memItemLeft" align="right" valign="top"><a id="ga9f81f455ef5114681cb2560f68edec93"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9f81f455ef5114681cb2560f68edec93">WT_STAT_CONN_TXN_CHECKPOINT_HANDLE_APPLIED</a></td></tr>
-<tr class="memdesc:ga9f81f455ef5114681cb2560f68edec93"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint most recent handles applied <br /></td></tr>
-<tr class="separator:ga9f81f455ef5114681cb2560f68edec93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1a68386321b1e185cba04b1872973d9f"><td class="memItemLeft" align="right" valign="top"><a id="ga1a68386321b1e185cba04b1872973d9f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1a68386321b1e185cba04b1872973d9f">WT_STAT_CONN_TXN_CHECKPOINT_HANDLE_SKIPPED</a></td></tr>
-<tr class="memdesc:ga1a68386321b1e185cba04b1872973d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint most recent handles skipped <br /></td></tr>
-<tr class="separator:ga1a68386321b1e185cba04b1872973d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa6e85ba6ef440a19dd4abce4e3c89c23"><td class="memItemLeft" align="right" valign="top"><a id="gaa6e85ba6ef440a19dd4abce4e3c89c23"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa6e85ba6ef440a19dd4abce4e3c89c23">WT_STAT_CONN_TXN_CHECKPOINT_HANDLE_WALKED</a></td></tr>
-<tr class="memdesc:gaa6e85ba6ef440a19dd4abce4e3c89c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint most recent handles walked <br /></td></tr>
-<tr class="separator:gaa6e85ba6ef440a19dd4abce4e3c89c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0a189dbe2755d92eb90645bed73c7e7"><td class="memItemLeft" align="right" valign="top"><a id="gaa0a189dbe2755d92eb90645bed73c7e7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa0a189dbe2755d92eb90645bed73c7e7">WT_STAT_CONN_TXN_CHECKPOINT_TIME_RECENT</a></td></tr>
-<tr class="memdesc:gaa0a189dbe2755d92eb90645bed73c7e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint most recent time (msecs) <br /></td></tr>
-<tr class="separator:gaa0a189dbe2755d92eb90645bed73c7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gade37f46b6f8707a87f5430dd99cc6c59"><td class="memItemLeft" align="right" valign="top"><a id="gade37f46b6f8707a87f5430dd99cc6c59"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gade37f46b6f8707a87f5430dd99cc6c59">WT_STAT_CONN_TXN_CHECKPOINT_PREP_RUNNING</a></td></tr>
-<tr class="memdesc:gade37f46b6f8707a87f5430dd99cc6c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint prepare currently running <br /></td></tr>
-<tr class="separator:gade37f46b6f8707a87f5430dd99cc6c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab5488998e92b81342644cf76cdb4b971"><td class="memItemLeft" align="right" valign="top"><a id="gab5488998e92b81342644cf76cdb4b971"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab5488998e92b81342644cf76cdb4b971">WT_STAT_CONN_TXN_CHECKPOINT_PREP_MAX</a></td></tr>
-<tr class="memdesc:gab5488998e92b81342644cf76cdb4b971"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint prepare max time (msecs) <br /></td></tr>
-<tr class="separator:gab5488998e92b81342644cf76cdb4b971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae407f790ce9fe81563e291239339469d"><td class="memItemLeft" align="right" valign="top"><a id="gae407f790ce9fe81563e291239339469d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae407f790ce9fe81563e291239339469d">WT_STAT_CONN_TXN_CHECKPOINT_PREP_MIN</a></td></tr>
-<tr class="memdesc:gae407f790ce9fe81563e291239339469d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint prepare min time (msecs) <br /></td></tr>
-<tr class="separator:gae407f790ce9fe81563e291239339469d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga00141367cd2d8ad1acc6cb944d86bcde"><td class="memItemLeft" align="right" valign="top"><a id="ga00141367cd2d8ad1acc6cb944d86bcde"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga00141367cd2d8ad1acc6cb944d86bcde">WT_STAT_CONN_TXN_CHECKPOINT_PREP_RECENT</a></td></tr>
-<tr class="memdesc:ga00141367cd2d8ad1acc6cb944d86bcde"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint prepare most recent time (msecs) <br /></td></tr>
-<tr class="separator:ga00141367cd2d8ad1acc6cb944d86bcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5ee55ed1c22a6e303b048cc1631f7242"><td class="memItemLeft" align="right" valign="top"><a id="ga5ee55ed1c22a6e303b048cc1631f7242"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5ee55ed1c22a6e303b048cc1631f7242">WT_STAT_CONN_TXN_CHECKPOINT_PREP_TOTAL</a></td></tr>
-<tr class="memdesc:ga5ee55ed1c22a6e303b048cc1631f7242"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint prepare total time (msecs) <br /></td></tr>
-<tr class="separator:ga5ee55ed1c22a6e303b048cc1631f7242"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga743e13ac0185d8bac1871bf8acd9e909"><td class="memItemLeft" align="right" valign="top"><a id="ga743e13ac0185d8bac1871bf8acd9e909"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga743e13ac0185d8bac1871bf8acd9e909">WT_STAT_CONN_TXN_CHECKPOINT_SCRUB_TARGET</a></td></tr>
-<tr class="memdesc:ga743e13ac0185d8bac1871bf8acd9e909"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint scrub dirty target <br /></td></tr>
-<tr class="separator:ga743e13ac0185d8bac1871bf8acd9e909"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab15fec6630fa93558763afcf8e02b140"><td class="memItemLeft" align="right" valign="top"><a id="gab15fec6630fa93558763afcf8e02b140"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab15fec6630fa93558763afcf8e02b140">WT_STAT_CONN_TXN_CHECKPOINT_SCRUB_TIME</a></td></tr>
-<tr class="memdesc:gab15fec6630fa93558763afcf8e02b140"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint scrub time (msecs) <br /></td></tr>
-<tr class="separator:gab15fec6630fa93558763afcf8e02b140"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga169025cc01630fc4b7b2f439b2abceff"><td class="memItemLeft" align="right" valign="top"><a id="ga169025cc01630fc4b7b2f439b2abceff"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga169025cc01630fc4b7b2f439b2abceff">WT_STAT_CONN_TXN_CHECKPOINT_STOP_STRESS_ACTIVE</a></td></tr>
-<tr class="memdesc:ga169025cc01630fc4b7b2f439b2abceff"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint stop timing stress active <br /></td></tr>
-<tr class="separator:ga169025cc01630fc4b7b2f439b2abceff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5405afab183326ff46c852a237d57a41"><td class="memItemLeft" align="right" valign="top"><a id="ga5405afab183326ff46c852a237d57a41"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5405afab183326ff46c852a237d57a41">WT_STAT_CONN_TXN_CHECKPOINT_TIME_TOTAL</a></td></tr>
-<tr class="memdesc:ga5405afab183326ff46c852a237d57a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoint total time (msecs) <br /></td></tr>
-<tr class="separator:ga5405afab183326ff46c852a237d57a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab97b7001b5c2642987718fa372355486"><td class="memItemLeft" align="right" valign="top"><a id="gab97b7001b5c2642987718fa372355486"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab97b7001b5c2642987718fa372355486">WT_STAT_CONN_TXN_CHECKPOINT</a></td></tr>
-<tr class="memdesc:gab97b7001b5c2642987718fa372355486"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoints <br /></td></tr>
-<tr class="separator:gab97b7001b5c2642987718fa372355486"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga01cb1d76367070427a7b8f874a14463e"><td class="memItemLeft" align="right" valign="top"><a id="ga01cb1d76367070427a7b8f874a14463e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga01cb1d76367070427a7b8f874a14463e">WT_STAT_CONN_TXN_CHECKPOINT_OBSOLETE_APPLIED</a></td></tr>
-<tr class="memdesc:ga01cb1d76367070427a7b8f874a14463e"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoints due to obsolete pages <br /></td></tr>
-<tr class="separator:ga01cb1d76367070427a7b8f874a14463e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga42234e7fd3df3f14fb84bfc12a402d91"><td class="memItemLeft" align="right" valign="top"><a id="ga42234e7fd3df3f14fb84bfc12a402d91"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga42234e7fd3df3f14fb84bfc12a402d91">WT_STAT_CONN_TXN_CHECKPOINT_SKIPPED</a></td></tr>
-<tr class="memdesc:ga42234e7fd3df3f14fb84bfc12a402d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoints skipped because database was clean <br /></td></tr>
-<tr class="separator:ga42234e7fd3df3f14fb84bfc12a402d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga03d269c9141be6f0663c9827778045d2"><td class="memItemLeft" align="right" valign="top"><a id="ga03d269c9141be6f0663c9827778045d2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga03d269c9141be6f0663c9827778045d2">WT_STAT_CONN_TXN_CHECKPOINT_FSYNC_POST</a></td></tr>
-<tr class="memdesc:ga03d269c9141be6f0663c9827778045d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction fsync calls for checkpoint after allocating the transaction ID <br /></td></tr>
-<tr class="separator:ga03d269c9141be6f0663c9827778045d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga944ea8324de96f55f426da509235cca1"><td class="memItemLeft" align="right" valign="top"><a id="ga944ea8324de96f55f426da509235cca1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga944ea8324de96f55f426da509235cca1">WT_STAT_CONN_TXN_CHECKPOINT_FSYNC_POST_DURATION</a></td></tr>
-<tr class="memdesc:ga944ea8324de96f55f426da509235cca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction fsync duration for checkpoint after allocating the transaction ID (usecs) <br /></td></tr>
-<tr class="separator:ga944ea8324de96f55f426da509235cca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4525377acdbf81d2ca804e347f967a80"><td class="memItemLeft" align="right" valign="top"><a id="ga4525377acdbf81d2ca804e347f967a80"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4525377acdbf81d2ca804e347f967a80">WT_STAT_CONN_TXN_PINNED_RANGE</a></td></tr>
 <tr class="memdesc:ga4525377acdbf81d2ca804e347f967a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction range of IDs currently pinned <br /></td></tr>
@@ -3340,22 +3364,30 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf8fe1bb48348a1229b884bd86c06844d">WT_STAT_DSRC_CACHE_STATE_PAGES</a></td></tr>
 <tr class="memdesc:gaf8fe1bb48348a1229b884bd86c06844d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache_walk: Total number of pages currently in cache, only reported if cache_walk or all statistics are enabled <br /></td></tr>
 <tr class="separator:gaf8fe1bb48348a1229b884bd86c06844d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf35b7e0080d9c161aa0e70b836a833c4"><td class="memItemLeft" align="right" valign="top"><a id="gaf35b7e0080d9c161aa0e70b836a833c4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf35b7e0080d9c161aa0e70b836a833c4">WT_STAT_DSRC_CC_PAGES_EVICT</a></td></tr>
-<tr class="memdesc:gaf35b7e0080d9c161aa0e70b836a833c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint-cleanup: pages added for eviction <br /></td></tr>
-<tr class="separator:gaf35b7e0080d9c161aa0e70b836a833c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8008a95057e03dc256f3ac21ac93b9a8"><td class="memItemLeft" align="right" valign="top"><a id="ga8008a95057e03dc256f3ac21ac93b9a8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8008a95057e03dc256f3ac21ac93b9a8">WT_STAT_DSRC_CC_PAGES_REMOVED</a></td></tr>
-<tr class="memdesc:ga8008a95057e03dc256f3ac21ac93b9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint-cleanup: pages removed <br /></td></tr>
-<tr class="separator:ga8008a95057e03dc256f3ac21ac93b9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5acf88d3115b1a186c5a5044dfadc38d"><td class="memItemLeft" align="right" valign="top"><a id="ga5acf88d3115b1a186c5a5044dfadc38d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5acf88d3115b1a186c5a5044dfadc38d">WT_STAT_DSRC_CC_PAGES_WALK_SKIPPED</a></td></tr>
-<tr class="memdesc:ga5acf88d3115b1a186c5a5044dfadc38d"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint-cleanup: pages skipped during tree walk <br /></td></tr>
-<tr class="separator:ga5acf88d3115b1a186c5a5044dfadc38d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga68740375860db0fbc41c022c319c4b54"><td class="memItemLeft" align="right" valign="top"><a id="ga68740375860db0fbc41c022c319c4b54"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga68740375860db0fbc41c022c319c4b54">WT_STAT_DSRC_CC_PAGES_VISITED</a></td></tr>
-<tr class="memdesc:ga68740375860db0fbc41c022c319c4b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint-cleanup: pages visited <br /></td></tr>
-<tr class="separator:ga68740375860db0fbc41c022c319c4b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga080556abf98c9794d033b02db4e09676"><td class="memItemLeft" align="right" valign="top"><a id="ga080556abf98c9794d033b02db4e09676"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga080556abf98c9794d033b02db4e09676">WT_STAT_DSRC_CHECKPOINT_SNAPSHOT_ACQUIRED</a></td></tr>
+<tr class="memdesc:ga080556abf98c9794d033b02db4e09676"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: checkpoint has acquired a snapshot for its transaction <br /></td></tr>
+<tr class="separator:ga080556abf98c9794d033b02db4e09676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1be7332166cceab767c2d09f82ee31f"><td class="memItemLeft" align="right" valign="top"><a id="gab1be7332166cceab767c2d09f82ee31f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab1be7332166cceab767c2d09f82ee31f">WT_STAT_DSRC_CHECKPOINT_CLEANUP_PAGES_EVICT</a></td></tr>
+<tr class="memdesc:gab1be7332166cceab767c2d09f82ee31f"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: pages added for eviction during checkpoint cleanup <br /></td></tr>
+<tr class="separator:gab1be7332166cceab767c2d09f82ee31f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc90cf731ce77f1cbef5d857558bb0f5"><td class="memItemLeft" align="right" valign="top"><a id="gabc90cf731ce77f1cbef5d857558bb0f5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabc90cf731ce77f1cbef5d857558bb0f5">WT_STAT_DSRC_CHECKPOINT_CLEANUP_PAGES_REMOVED</a></td></tr>
+<tr class="memdesc:gabc90cf731ce77f1cbef5d857558bb0f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: pages removed during checkpoint cleanup <br /></td></tr>
+<tr class="separator:gabc90cf731ce77f1cbef5d857558bb0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab40f3833bbeeba335ef8fe7295d3ffce"><td class="memItemLeft" align="right" valign="top"><a id="gab40f3833bbeeba335ef8fe7295d3ffce"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab40f3833bbeeba335ef8fe7295d3ffce">WT_STAT_DSRC_CHECKPOINT_CLEANUP_PAGES_WALK_SKIPPED</a></td></tr>
+<tr class="memdesc:gab40f3833bbeeba335ef8fe7295d3ffce"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: pages skipped during checkpoint cleanup tree walk <br /></td></tr>
+<tr class="separator:gab40f3833bbeeba335ef8fe7295d3ffce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f631a1eb0e4225b59770df70ecf82f6"><td class="memItemLeft" align="right" valign="top"><a id="ga4f631a1eb0e4225b59770df70ecf82f6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4f631a1eb0e4225b59770df70ecf82f6">WT_STAT_DSRC_CHECKPOINT_CLEANUP_PAGES_VISITED</a></td></tr>
+<tr class="memdesc:ga4f631a1eb0e4225b59770df70ecf82f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: pages visited during checkpoint cleanup <br /></td></tr>
+<tr class="separator:ga4f631a1eb0e4225b59770df70ecf82f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa607903573895adef682ee4f2ea4bcea"><td class="memItemLeft" align="right" valign="top"><a id="gaa607903573895adef682ee4f2ea4bcea"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa607903573895adef682ee4f2ea4bcea">WT_STAT_DSRC_CHECKPOINT_OBSOLETE_APPLIED</a></td></tr>
+<tr class="memdesc:gaa607903573895adef682ee4f2ea4bcea"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: transaction checkpoints due to obsolete pages <br /></td></tr>
+<tr class="separator:gaa607903573895adef682ee4f2ea4bcea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf358561ffe949073c4c1aa1f56b2edb5"><td class="memItemLeft" align="right" valign="top"><a id="gaf358561ffe949073c4c1aa1f56b2edb5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf358561ffe949073c4c1aa1f56b2edb5">WT_STAT_DSRC_COMPRESS_PRECOMP_INTL_MAX_PAGE_SIZE</a></td></tr>
 <tr class="memdesc:gaf358561ffe949073c4c1aa1f56b2edb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">compression: compressed page maximum internal page size prior to compression <br /></td></tr>
@@ -3824,10 +3856,6 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga15bdd5eb87a65f1f5b0b3beed164bfd5">WT_STAT_DSRC_TXN_READ_RACE_PREPARE_COMMIT</a></td></tr>
 <tr class="memdesc:ga15bdd5eb87a65f1f5b0b3beed164bfd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: a reader raced with a prepared transaction commit and skipped an update or updates <br /></td></tr>
 <tr class="separator:ga15bdd5eb87a65f1f5b0b3beed164bfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga26627527d50799d69c3373de7c013bcd"><td class="memItemLeft" align="right" valign="top"><a id="ga26627527d50799d69c3373de7c013bcd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga26627527d50799d69c3373de7c013bcd">WT_STAT_DSRC_TXN_CHECKPOINT_SNAPSHOT_ACQUIRED</a></td></tr>
-<tr class="memdesc:ga26627527d50799d69c3373de7c013bcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: checkpoint has acquired a snapshot for its transaction <br /></td></tr>
-<tr class="separator:ga26627527d50799d69c3373de7c013bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga523808289211f6784c0782b5fdb8e53d"><td class="memItemLeft" align="right" valign="top"><a id="ga523808289211f6784c0782b5fdb8e53d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga523808289211f6784c0782b5fdb8e53d">WT_STAT_DSRC_TXN_READ_OVERFLOW_REMOVE</a></td></tr>
 <tr class="memdesc:ga523808289211f6784c0782b5fdb8e53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: number of times overflow removed value is read <br /></td></tr>
@@ -3900,10 +3928,6 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1828b8ec666e4b600beb019a62b8f4b0">WT_STAT_DSRC_TXN_RTS_HS_REMOVED_DRYRUN</a></td></tr>
 <tr class="memdesc:ga1828b8ec666e4b600beb019a62b8f4b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable updates that would have been removed from history store in non-dryrun mode <br /></td></tr>
 <tr class="separator:ga1828b8ec666e4b600beb019a62b8f4b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga645adef100b38ac4a28b36f0b9135bce"><td class="memItemLeft" align="right" valign="top"><a id="ga645adef100b38ac4a28b36f0b9135bce"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga645adef100b38ac4a28b36f0b9135bce">WT_STAT_DSRC_TXN_CHECKPOINT_OBSOLETE_APPLIED</a></td></tr>
-<tr class="memdesc:ga645adef100b38ac4a28b36f0b9135bce"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transaction checkpoints due to obsolete pages <br /></td></tr>
-<tr class="separator:ga645adef100b38ac4a28b36f0b9135bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab3edfe41012927e52357fc5a723b4e85"><td class="memItemLeft" align="right" valign="top"><a id="gab3edfe41012927e52357fc5a723b4e85"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab3edfe41012927e52357fc5a723b4e85">WT_STAT_DSRC_TXN_UPDATE_CONFLICT</a></td></tr>
 <tr class="memdesc:gab3edfe41012927e52357fc5a723b4e85"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: update conflicts <br /></td></tr>
@@ -4762,7 +4786,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>chunk_cache = (</code></td><td>chunk cache configuration options.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;capacity</code></td><td>maximum memory or storage to use for the chunk cache.</td><td>an integer between <code>0</code> and <code>100TB</code>; default <code>10GB</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;capacity</code></td><td>maximum memory or storage to use for the chunk cache.</td><td>an integer between <code>512KB</code> and <code>100TB</code>; default <code>10GB</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;chunk_cache_evict_trigger</code></td><td>chunk cache percent full that triggers eviction.</td><td>an integer between <code>0</code> and <code>100</code>; default <code>90</code>. </td></tr>
 <tr>
