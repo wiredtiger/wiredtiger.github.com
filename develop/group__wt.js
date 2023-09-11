@@ -145,6 +145,7 @@ var group__wt =
     [ "WT_STAT_CONN_AUTOCOMMIT_UPDATE_RETRY", "group__wt.html#ga2dd059923563070b2a4a1e696e10149f", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_FAIL", "group__wt.html#ga28f4cf12bee16a19de0b87152e86dddf", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_FAIL_CACHE_PRESSURE", "group__wt.html#ga849c25c9b56267d65b77d5b9310e1400", null ],
+    [ "WT_STAT_CONN_BACKGROUND_COMPACT_FILES_TRACKED", "group__wt.html#ga587ab0a1549a81ba001b77163d1d0fa5", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_INTERRUPTED", "group__wt.html#gad2f7248c7e937e76289610fafdf54e38", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_RUNNING", "group__wt.html#ga52f6cafb671f29bd0e0836e77ed4e283", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_SKIPPED", "group__wt.html#ga26758727845a4bfd106b8411cbb16494", null ],
