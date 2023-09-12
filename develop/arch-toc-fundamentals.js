@@ -30,7 +30,8 @@ var arch_toc_fundamentals =
       [ "Cursor caching", "arch-cursor.html#arch_cursor_caching", null ],
       [ "Session cursor sweep", "arch-cursor.html#arch_cursor_sweep", null ],
       [ "Range bounded cursors", "arch-cursor.html#arch_cursor_bound", null ],
-      [ "Debug copy", "arch-cursor.html#arch_cursor_debug_copy", null ]
+      [ "Debug copy", "arch-cursor.html#arch_cursor_debug_copy", null ],
+      [ "Random Cursor", "arch-cursor.html#arch_random_cursor", null ]
     ] ],
     [ "Transactions", "arch-transaction.html", [
       [ "Lifecycle", "arch-transaction.html#Lifecycle", null ],

@@ -70,6 +70,7 @@ var NAVTREEINDEX0 =
 "arch-cursor.html#arch_cursor_raw":[0,9,0,2,0],
 "arch-cursor.html#arch_cursor_sweep":[0,9,0,2,10],
 "arch-cursor.html#arch_cursor_table":[0,9,0,2,2],
+"arch-cursor.html#arch_random_cursor":[0,9,0,2,13],
 "arch-data-file.html":[0,9,4,1],
 "arch-data-file.html#data_file_database_files":[0,9,4,1,0],
 "arch-data-file.html#data_file_format":[0,9,4,1,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "command_line.html#util_backup":[0,9,7,1,4],
 "command_line.html#util_backup_options":[0,4,4,1],
 "command_line.html#util_backup_options":[0,9,7,1,4,1],
-"command_line.html#util_backup_synopsis":[0,4,4,0],
-"command_line.html#util_backup_synopsis":[0,9,7,1,4,0]
+"command_line.html#util_backup_synopsis":[0,4,4,0]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"command_line.html#util_backup_synopsis":[0,9,7,1,4,0],
 "command_line.html#util_compact":[0,4,5],
 "command_line.html#util_compact":[0,9,7,1,5],
 "command_line.html#util_compact_options":[0,4,5,1],
@@ -58,8 +59,8 @@ var NAVTREEINDEX1 =
 "command_line.html#util_loadtext":[0,9,7,1,13],
 "command_line.html#util_loadtext_options":[0,4,13,1],
 "command_line.html#util_loadtext_options":[0,9,7,1,13,1],
-"command_line.html#util_loadtext_synopsis":[0,9,7,1,13,0],
 "command_line.html#util_loadtext_synopsis":[0,4,13,0],
+"command_line.html#util_loadtext_synopsis":[0,9,7,1,13,0],
 "command_line.html#util_printlog":[0,9,7,1,14],
 "command_line.html#util_printlog":[0,4,14],
 "command_line.html#util_printlog_options":[0,9,7,1,14,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "ex_encrypt_8c-example.html":[4,6],
 "ex_extending_8c-example.html":[4,7],
 "ex_extractor_8c-example.html":[4,8],
-"ex_file_system_8c-example.html":[4,9],
-"ex_hello_8c-example.html":[4,10]
+"ex_file_system_8c-example.html":[4,9]
 };

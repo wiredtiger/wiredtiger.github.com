@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"group__wt.html#gaffb1dfa379540d441b250561db5eb5b7":[1,0,179],
 "group__wt.html#gaffdb5662c9c6efde5f4b2a627d08bc4e":[1,0,110],
 "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a235355298e7083e760345c5050ef720d":[1,0,952,4],
 "group__wt.html#gga2da77cd00dfa6016ed4b37ac085cf875a48b592ec23832bc1fb0e6d45aed43753":[1,0,952,2],
@@ -68,14 +69,14 @@ var NAVTREEINDEX6 =
 "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8aefe46c7fefa38ef06a32a8357791f852":[1,1,20,2],
 "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k":[1,1,7],
 "home.html":[0,5,0],
-"huffman.html":[0,9,9,1],
 "huffman.html":[0,3,19,3],
+"huffman.html":[0,9,9,1],
 "in_memory.html":[0,3,32],
 "index.html":[0],
 "index.html":[],
 "keyvalue.html":[0,3,3,11],
-"license.html":[0,7],
 "license.html":[6],
+"license.html":[0,7],
 "license.html#license_crc32-power8":[0,7,1],
 "license.html#license_crc32-zseries":[0,7,2],
 "license.html#license_distribution":[0,7,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a2cab4053dd45354e393401d45eea8888":[1,1,8,31],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a2faf34830a57d69b6e7e8ae6310e69f7":[1,1,8,7],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a353dd240d0f7b32910d1bb97c0762ee8":[1,1,8,27],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565":[1,1,8,26],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a4bff77f867b83e76a65426eabd9e6da3":[1,1,8,29]
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a3fd4b5255e2f82139a846d66d67be565":[1,1,8,26]
 };
