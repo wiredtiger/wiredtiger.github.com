@@ -212,7 +212,7 @@ Generation of other deleted pages</h1>
 <p>Finally, new trees are created with a single empty deleted leaf page, because creating the tree with no leaves at all causes problems.</p>
 <h1><a class="anchor" id="ft_page_skip"></a>
 Skipping deleted pages</h1>
-<p>There are two separate skip functions for skipping deleted pages during tree walks. The basic skip function is <code>__wt_delete_page_skip</code> in <code>bt_delete.c</code>; it is always called in tree walks when <code>WT_READ_SKIP_DELETED</code> is set, which is all tree walks except <a class="el" href="arch-rts.html">Rollback to Stable (RTS)</a>. It checks for whether the ref state is <code>WT_REF_DELETED</code> and the truncation is visible to the caller.</p>
+<p>There are two separate skip functions for skipping deleted pages during tree walks. The basic skip function is <code>__wt_delete_page_skip</code> in <code>bt_delete.c</code>; it is always called in tree walks when <code>WT_READ_SEE_DELETED</code> is not set, which is all tree walks except <a class="el" href="arch-rts.html">Rollback to Stable (RTS)</a> and column-store appends. It checks for whether the ref state is <code>WT_REF_DELETED</code> and the truncation is visible to the caller.</p>
 <p>As in other cases (see <a class="el" href="arch-fast-truncate.html#ft_visibility">Notes on visibility</a>) we must treat prepared truncations as not visible; in order to generate prepare conflicts we cannot skip over truncations that are prepared but not yet committed.</p>
 <p>The other skip function is <code>__wt_btcur_skip_page</code> in <code>btree_inline.h</code>. This is used by cursor next and previous to skip over deleted pages in those traversals specifically, and in addition to checking for <code>WT_REF_DELETED</code> with visible <code>page_del</code>, it also inspects the address cell. If the page is in memory and unmodified and the address cell contains page-delete information, it checks for the visibility of that deletion. Failing that, it checks the time aggregate in case all the values on the page are no longer visible, e.g. because the page was slow-truncated and reconciled.</p>
 <p>For an unmodified in-memory page the deletion information in the address should be the same as present in the ref's <code>page_del</code> structure. However, inspecting the unpacked copy instead, which is free since we are unpacking the cell to look at the time aggregate anyway, makes this check independent of the lifecycle of the ref's <code>page_del</code>. This was more important in previous iterations of the code than it is now; however, in principle it's possible to drop the ref's <code>page_del</code> immediately upon instantiation in a read-only tree, since it is kept for internal page reconciliation and pages in read-only trees are never reconciled. Checking the unpacked information here avoids interfering with that option.</p>
@@ -419,9 +419,7 @@ Pointers to pieces of the implementation</h1>
 <tr>
 <td>bt_walk.c</td><td>Hook</td><td>in <code>__tree_walk_internal</code> </td><td>Disable fast-truncate for FLCS. </td></tr>
 <tr>
-<td>bt_walk.c</td><td>Hook</td><td>in <code>__tree_walk_internal</code> </td><td>Engage <code>WT_READ_SKIP_DELETED</code> by default. </td></tr>
-<tr>
-<td>bt_walk.c</td><td>Hook</td><td>in <code>__tree_walk_internal</code> </td><td>Call <code>__wt_delete_page_skip</code> when <code>WT_READ_SKIP_DELETED</code> is set. </td></tr>
+<td>bt_walk.c</td><td>Hook</td><td>in <code>__tree_walk_internal</code> </td><td>Call <code>__wt_delete_page_skip</code> when <code>WT_READ_SEE_DELETED</code> is not set. </td></tr>
 <tr>
 <td>bt_walk.c</td><td>Hook</td><td>in <code>__tree_walk_internal</code> </td><td>Call <code>__wt_delete_page</code> when <code>WT_READ_TRUNCATE</code> is set. </td></tr>
 <tr>
