@@ -848,7 +848,6 @@ var group__wt =
     [ "WT_STAT_DSRC_REC_OVERFLOW_VALUE", "group__wt.html#ga4250b520e13aa173222a5ec9a80fdd92", null ],
     [ "WT_STAT_DSRC_REC_PAGE_DELETE", "group__wt.html#gac1570e1f4bb067d56aedd07e38b33fc6", null ],
     [ "WT_STAT_DSRC_REC_PAGE_DELETE_FAST", "group__wt.html#ga59e43919a79c65932f489ac1046f8176", null ],
-    [ "WT_STAT_DSRC_REC_PAGE_MATCH", "group__wt.html#ga4b35dc204a3f4f6fc365c6e4532e64b8", null ],
     [ "WT_STAT_DSRC_REC_PAGES", "group__wt.html#ga3cce27756256b57520fb29a2f8095c8d", null ],
     [ "WT_STAT_DSRC_REC_PAGES_EVICTION", "group__wt.html#gac02dd31c8b605eb220e1f369dc75555c", null ],
     [ "WT_STAT_DSRC_REC_PREFIX_COMPRESSION", "group__wt.html#ga76e1013024e2e87cbe93cfa07e6e4bac", null ],
