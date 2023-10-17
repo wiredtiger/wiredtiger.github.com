@@ -145,6 +145,7 @@ var group__wt =
     [ "WT_STAT_CONN_AUTOCOMMIT_UPDATE_RETRY", "group__wt.html#ga2dd059923563070b2a4a1e696e10149f", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_BYTES_RECOVERED", "group__wt.html#ga8d65ca5cfda57a60f8ee09e3b11f823e", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_EMA", "group__wt.html#ga681697b234eb7df163430f62477719d9", null ],
+    [ "WT_STAT_CONN_BACKGROUND_COMPACT_EXCLUDE", "group__wt.html#gadde963a0758dac061b30d8ad1f9e38c3", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_FAIL", "group__wt.html#ga28f4cf12bee16a19de0b87152e86dddf", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_FAIL_CACHE_PRESSURE", "group__wt.html#ga849c25c9b56267d65b77d5b9310e1400", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_FILES_TRACKED", "group__wt.html#ga587ab0a1549a81ba001b77163d1d0fa5", null ],
@@ -270,6 +271,9 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_EVICTION_QUEUE_EMPTY", "group__wt.html#gaa1a554d88a1feb7a76f647a5c2b0fcff", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_QUEUE_NOT_EMPTY", "group__wt.html#gae0c2363f67939c5b1db61d7989668b18", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_SERVER_EVICTING", "group__wt.html#ga5f6a66daeaa436a2301e469a2f434822", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_SERVER_SKIP_DIRTY_PAGES_DURING_CHECKPOINT", "group__wt.html#ga92ee226063766a4cf595ff741e340a39", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_SERVER_SKIP_PAGES_LAST_RUNNING", "group__wt.html#ga5b37117677b07b63e9c7761b7a9b74bc", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_SERVER_SKIP_PAGES_RETRY", "group__wt.html#ga193b22946b4bc64725847fc41422a829", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_SERVER_SLEPT", "group__wt.html#gafddb1885f74ab7abf0de9c9ae0630cb9", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_SLOW", "group__wt.html#ga0d85c851ad211915a351fd3b85672ad6", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_SPLIT_INTERNAL", "group__wt.html#gafe6471e2e771aabd0a4f52d85d853e5a", null ],
@@ -402,6 +406,7 @@ var group__wt =
     [ "WT_STAT_CONN_CHUNK_CACHE_BYTES_INUSE_PINNED", "group__wt.html#gab5db38f599466b0095fdc4ad44c867da", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_CHUNKS_EVICTED", "group__wt.html#ga4f4a32e812310e7a13a552283aa30912", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_CHUNKS_INUSE", "group__wt.html#ga1e432bae8d86a76593c89b8c7a323d7d", null ],
+    [ "WT_STAT_CONN_CHUNK_CACHE_CHUNKS_LOADED_FROM_FLUSHED_TABLES", "group__wt.html#gab9209e352dfb78a09f545a91b96300ff", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_CHUNKS_PINNED", "group__wt.html#ga5fed301b3d94bc4c96492a110c0b5489", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_EXCEEDED_CAPACITY", "group__wt.html#ga02c66a84828f7043b77338757791702c", null ],
     [ "WT_STAT_CONN_CHUNK_CACHE_IO_FAILED", "group__wt.html#gae3b0c00ad30e84c2cacf97fe8e894ada", null ],
@@ -1072,6 +1077,7 @@ var group__wt =
       [ "WT_TS_TXN_TYPE_READ", "group__wt.html#gga3307ac01d47089125814f62e90b6ef6eac8c0d0f83ff41baca193fc140e0850de", null ]
     ] ],
     [ "WT_VERBOSE_CATEGORY", "group__wt.html#ga559a8cfb19158a0647c28a2748d5284a", [
+      [ "WT_VERB_ALL", "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa4655c66d0e7a19fa277e8158712b1524", null ],
       [ "WT_VERB_API", "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aae699ed09bce17b1078a0af16c8569843", null ],
       [ "WT_VERB_BACKUP", "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa91d90eec055823a1e7531f6e6f5627be", null ],
       [ "WT_VERB_BLOCK", "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaf936bde40b450ababcd7dafecf0147df", null ],

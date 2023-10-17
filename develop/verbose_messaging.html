@@ -128,8 +128,8 @@ Verbosity Categories</h1>
 <h2><a class="anchor" id="verbosity_configuration"></a>
 Configuring Verbose Categories</h2>
 <p>Configuration of the verbose messaging system is achieved via the <code>verbose</code> configuration option when either opening a wiredtiger connection (<a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>) or re-configuring a wiredtiger connection (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">WT_CONNECTION::reconfigure</a>). The <code>verbose</code> configuration takes in a list of categories, where each category can be optionally associated with a verbosity level. An example configuring a WiredTiger connection with verbosity enabled:</p>
-<div class="fragment"><div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(</div>
-<div class="line">      home, (<a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *)&amp;event_handler, <span class="stringliteral">&quot;create,verbose=[api:1,version,write:0]&quot;</span>, &amp;conn));</div>
+<div class="fragment"><div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, (<a class="code" href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a> *)&amp;event_handler,</div>
+<div class="line">      <span class="stringliteral">&quot;create,verbose=[api:1,all:0,version,write:2]&quot;</span>, &amp;conn));</div>
 </div><!-- fragment --><p> In the above example:</p><ul>
 <li><code>api</code> is configured to the <code>DEBUG_1</code> verbosity level.</li>
 <li><code>version</code> is configured to the <code>DEBUG_1</code> verbosity level. If a category is passed without a verbosity level (e.g. <code><code></code>:0</code>), the category will default to the <code>DEBUG_1</code> level (i.e. <code>verbose=[version]</code> is equivalent to <code>verbose=[version:1]</code>).</li>
@@ -139,7 +139,7 @@ Configuring Verbose Categories</h2>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
-<div class="ttc" id="astruct_w_t___e_v_e_n_t___h_a_n_d_l_e_r_html"><div class="ttname"><a href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a></div><div class="ttdoc">The interface implemented by applications to handle error, informational and progress messages.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3373</div></div>
+<div class="ttc" id="astruct_w_t___e_v_e_n_t___h_a_n_d_l_e_r_html"><div class="ttname"><a href="struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html">WT_EVENT_HANDLER</a></div><div class="ttdoc">The interface implemented by applications to handle error, informational and progress messages.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3400</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

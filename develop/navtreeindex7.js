@@ -1,5 +1,11 @@
 var NAVTREEINDEX7 =
 {
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f":[1,0,5,1],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b":[1,0,5,4],
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#af08d42a14b46863708b2d453e99cd9c1":[1,0,5,3],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html":[1,1,8],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420":[1,1,8,10],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f":[1,1,8,35],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45":[1,1,8,2],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a13b8f3c923c8b0f8bb683ed3b192ee73":[1,1,8,21],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a18438824d6782a7e73c00e09e5e69066":[1,1,8,24],
@@ -243,11 +249,5 @@ var NAVTREEINDEX7 =
 "upgrade.html":[0,3,39],
 "upgrading.html":[0,6],
 "upgrading.html#version_1100":[0,6,0],
-"verbose_messaging.html":[0,3,23],
-"verbose_messaging.html#verbosity_categories":[0,3,23,1],
-"verbose_messaging.html#verbosity_configuration":[0,3,23,1,0],
-"verbose_messaging.html#verbosity_levels":[0,3,23,0],
-"wtperf.html":[0,3,47],
-"wtperf.html#config":[0,3,47,1],
-"wtperf.html#monitor":[0,3,47,0]
+"verbose_messaging.html":[0,3,23]
 };
