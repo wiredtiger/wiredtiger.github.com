@@ -174,7 +174,8 @@ var programming =
       [ "Backup and O_DIRECT", "backup.html#backup_o_direct", null ]
     ] ],
     [ "Chunkcache", "chunkcache.html", [
-      [ "Pinned Content", "chunkcache.html#pinned", null ]
+      [ "Pinned Content", "chunkcache.html#pinned", null ],
+      [ "Newly inserted or modified content", "chunkcache.html#inserts", null ]
     ] ],
     [ "Compaction", "compact.html", null ],
     [ "In-memory databases", "in_memory.html", null ],

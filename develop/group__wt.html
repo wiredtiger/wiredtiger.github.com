@@ -1443,58 +1443,74 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0a2d18fd296aba5c61e85bf79eccce91">WT_STAT_CONN_CHECKPOINT_WAIT_REDUCE_DIRTY</a></td></tr>
 <tr class="memdesc:ga0a2d18fd296aba5c61e85bf79eccce91"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: wait cycles while cache dirty level is decreasing <br /></td></tr>
 <tr class="separator:ga0a2d18fd296aba5c61e85bf79eccce91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8bea141da7acf009dc756e48776a9a79"><td class="memItemLeft" align="right" valign="top"><a id="ga8bea141da7acf009dc756e48776a9a79"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8bea141da7acf009dc756e48776a9a79">WT_STAT_CONN_CHUNK_CACHE_SPANS_CHUNKS_READ</a></td></tr>
-<tr class="memdesc:ga8bea141da7acf009dc756e48776a9a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: aggregate number of spanned chunks on read <br /></td></tr>
-<tr class="separator:ga8bea141da7acf009dc756e48776a9a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4f4a32e812310e7a13a552283aa30912"><td class="memItemLeft" align="right" valign="top"><a id="ga4f4a32e812310e7a13a552283aa30912"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4f4a32e812310e7a13a552283aa30912">WT_STAT_CONN_CHUNK_CACHE_CHUNKS_EVICTED</a></td></tr>
-<tr class="memdesc:ga4f4a32e812310e7a13a552283aa30912"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: chunks evicted <br /></td></tr>
-<tr class="separator:ga4f4a32e812310e7a13a552283aa30912"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga02c66a84828f7043b77338757791702c"><td class="memItemLeft" align="right" valign="top"><a id="ga02c66a84828f7043b77338757791702c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga02c66a84828f7043b77338757791702c">WT_STAT_CONN_CHUNK_CACHE_EXCEEDED_CAPACITY</a></td></tr>
-<tr class="memdesc:ga02c66a84828f7043b77338757791702c"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: could not allocate due to exceeding capacity <br /></td></tr>
-<tr class="separator:ga02c66a84828f7043b77338757791702c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab1bed8c3b4aff0618fa2b758fff149e9"><td class="memItemLeft" align="right" valign="top"><a id="gab1bed8c3b4aff0618fa2b758fff149e9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab1bed8c3b4aff0618fa2b758fff149e9">WT_STAT_CONN_CHUNK_CACHE_LOOKUPS</a></td></tr>
-<tr class="memdesc:gab1bed8c3b4aff0618fa2b758fff149e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: lookups <br /></td></tr>
-<tr class="separator:gab1bed8c3b4aff0618fa2b758fff149e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab9209e352dfb78a09f545a91b96300ff"><td class="memItemLeft" align="right" valign="top"><a id="gab9209e352dfb78a09f545a91b96300ff"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab9209e352dfb78a09f545a91b96300ff">WT_STAT_CONN_CHUNK_CACHE_CHUNKS_LOADED_FROM_FLUSHED_TABLES</a></td></tr>
-<tr class="memdesc:gab9209e352dfb78a09f545a91b96300ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: number of chunks loaded from flushed tables in chunk cache <br /></td></tr>
-<tr class="separator:gab9209e352dfb78a09f545a91b96300ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga623dfab07c5b979001b7379f59d73c68"><td class="memItemLeft" align="right" valign="top"><a id="ga623dfab07c5b979001b7379f59d73c68"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga623dfab07c5b979001b7379f59d73c68">WT_STAT_CONN_CHUNK_CACHE_MISSES</a></td></tr>
-<tr class="memdesc:ga623dfab07c5b979001b7379f59d73c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: number of misses <br /></td></tr>
-<tr class="separator:ga623dfab07c5b979001b7379f59d73c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3b0c00ad30e84c2cacf97fe8e894ada"><td class="memItemLeft" align="right" valign="top"><a id="gae3b0c00ad30e84c2cacf97fe8e894ada"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae3b0c00ad30e84c2cacf97fe8e894ada">WT_STAT_CONN_CHUNK_CACHE_IO_FAILED</a></td></tr>
-<tr class="memdesc:gae3b0c00ad30e84c2cacf97fe8e894ada"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: number of times a read from storage failed <br /></td></tr>
-<tr class="separator:gae3b0c00ad30e84c2cacf97fe8e894ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4a434a65e9b9337b5a1094a6664148f2"><td class="memItemLeft" align="right" valign="top"><a id="ga4a434a65e9b9337b5a1094a6664148f2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4a434a65e9b9337b5a1094a6664148f2">WT_STAT_CONN_CHUNK_CACHE_RETRIES</a></td></tr>
-<tr class="memdesc:ga4a434a65e9b9337b5a1094a6664148f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: retried accessing a chunk while I/O was in progress <br /></td></tr>
-<tr class="separator:ga4a434a65e9b9337b5a1094a6664148f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa607e2a7080331af8cb36f66825c0261"><td class="memItemLeft" align="right" valign="top"><a id="gaa607e2a7080331af8cb36f66825c0261"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa607e2a7080331af8cb36f66825c0261">WT_STAT_CONN_CHUNK_CACHE_TOOMANY_RETRIES</a></td></tr>
-<tr class="memdesc:gaa607e2a7080331af8cb36f66825c0261"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: timed out due to too many retries <br /></td></tr>
-<tr class="separator:gaa607e2a7080331af8cb36f66825c0261"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae2323b741dafdc8b3966bcd1f9f92165"><td class="memItemLeft" align="right" valign="top"><a id="gae2323b741dafdc8b3966bcd1f9f92165"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae2323b741dafdc8b3966bcd1f9f92165">WT_STAT_CONN_CHUNK_CACHE_BYTES_INUSE</a></td></tr>
-<tr class="memdesc:gae2323b741dafdc8b3966bcd1f9f92165"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total bytes used by the cache <br /></td></tr>
-<tr class="separator:gae2323b741dafdc8b3966bcd1f9f92165"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab5db38f599466b0095fdc4ad44c867da"><td class="memItemLeft" align="right" valign="top"><a id="gab5db38f599466b0095fdc4ad44c867da"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab5db38f599466b0095fdc4ad44c867da">WT_STAT_CONN_CHUNK_CACHE_BYTES_INUSE_PINNED</a></td></tr>
-<tr class="memdesc:gab5db38f599466b0095fdc4ad44c867da"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total bytes used by the cache for pinned chunks <br /></td></tr>
-<tr class="separator:gab5db38f599466b0095fdc4ad44c867da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1e432bae8d86a76593c89b8c7a323d7d"><td class="memItemLeft" align="right" valign="top"><a id="ga1e432bae8d86a76593c89b8c7a323d7d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1e432bae8d86a76593c89b8c7a323d7d">WT_STAT_CONN_CHUNK_CACHE_CHUNKS_INUSE</a></td></tr>
-<tr class="memdesc:ga1e432bae8d86a76593c89b8c7a323d7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total chunks held by the chunk cache <br /></td></tr>
-<tr class="separator:ga1e432bae8d86a76593c89b8c7a323d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5fed301b3d94bc4c96492a110c0b5489"><td class="memItemLeft" align="right" valign="top"><a id="ga5fed301b3d94bc4c96492a110c0b5489"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5fed301b3d94bc4c96492a110c0b5489">WT_STAT_CONN_CHUNK_CACHE_CHUNKS_PINNED</a></td></tr>
-<tr class="memdesc:ga5fed301b3d94bc4c96492a110c0b5489"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total pinned chunks held by the chunk cache <br /></td></tr>
-<tr class="separator:ga5fed301b3d94bc4c96492a110c0b5489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f98b41aad9eff8e44e85c5f801fc778"><td class="memItemLeft" align="right" valign="top"><a id="ga5f98b41aad9eff8e44e85c5f801fc778"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5f98b41aad9eff8e44e85c5f801fc778">WT_STAT_CONN_CHUNKCACHE_SPANS_CHUNKS_READ</a></td></tr>
+<tr class="memdesc:ga5f98b41aad9eff8e44e85c5f801fc778"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: aggregate number of spanned chunks on read <br /></td></tr>
+<tr class="separator:ga5f98b41aad9eff8e44e85c5f801fc778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9da50e1e2357d2bb895f5064593de896"><td class="memItemLeft" align="right" valign="top"><a id="ga9da50e1e2357d2bb895f5064593de896"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9da50e1e2357d2bb895f5064593de896">WT_STAT_CONN_CHUNKCACHE_CHUNKS_EVICTED</a></td></tr>
+<tr class="memdesc:ga9da50e1e2357d2bb895f5064593de896"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: chunks evicted <br /></td></tr>
+<tr class="separator:ga9da50e1e2357d2bb895f5064593de896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3032d030739551b19483701f0e4639d4"><td class="memItemLeft" align="right" valign="top"><a id="ga3032d030739551b19483701f0e4639d4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3032d030739551b19483701f0e4639d4">WT_STAT_CONN_CHUNKCACHE_EXCEEDED_BITMAP_CAPACITY</a></td></tr>
+<tr class="memdesc:ga3032d030739551b19483701f0e4639d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: could not allocate due to exceeding bitmap capacity <br /></td></tr>
+<tr class="separator:ga3032d030739551b19483701f0e4639d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga51f5627f98104668f203a8b43c0c48a1"><td class="memItemLeft" align="right" valign="top"><a id="ga51f5627f98104668f203a8b43c0c48a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga51f5627f98104668f203a8b43c0c48a1">WT_STAT_CONN_CHUNKCACHE_EXCEEDED_CAPACITY</a></td></tr>
+<tr class="memdesc:ga51f5627f98104668f203a8b43c0c48a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: could not allocate due to exceeding capacity <br /></td></tr>
+<tr class="separator:ga51f5627f98104668f203a8b43c0c48a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e6b2616ae735ce9a5f9995d13e282b4"><td class="memItemLeft" align="right" valign="top"><a id="ga8e6b2616ae735ce9a5f9995d13e282b4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8e6b2616ae735ce9a5f9995d13e282b4">WT_STAT_CONN_CHUNKCACHE_LOOKUPS</a></td></tr>
+<tr class="memdesc:ga8e6b2616ae735ce9a5f9995d13e282b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: lookups <br /></td></tr>
+<tr class="separator:ga8e6b2616ae735ce9a5f9995d13e282b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3c448401d396111f0ffd12682568b99f"><td class="memItemLeft" align="right" valign="top"><a id="ga3c448401d396111f0ffd12682568b99f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3c448401d396111f0ffd12682568b99f">WT_STAT_CONN_CHUNKCACHE_CHUNKS_LOADED_FROM_FLUSHED_TABLES</a></td></tr>
+<tr class="memdesc:ga3c448401d396111f0ffd12682568b99f"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: number of chunks loaded from flushed tables in chunk cache <br /></td></tr>
+<tr class="separator:ga3c448401d396111f0ffd12682568b99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac910ff769c0ca8f1df8616378f4b6d8c"><td class="memItemLeft" align="right" valign="top"><a id="gac910ff769c0ca8f1df8616378f4b6d8c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac910ff769c0ca8f1df8616378f4b6d8c">WT_STAT_CONN_CHUNKCACHE_METADATA_WORK_UNITS_CREATED</a></td></tr>
+<tr class="memdesc:gac910ff769c0ca8f1df8616378f4b6d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: number of metadata inserts/deletes pushed to the worker thread <br /></td></tr>
+<tr class="separator:gac910ff769c0ca8f1df8616378f4b6d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f767774c92f8084641fe447c14f3884"><td class="memItemLeft" align="right" valign="top"><a id="ga2f767774c92f8084641fe447c14f3884"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2f767774c92f8084641fe447c14f3884">WT_STAT_CONN_CHUNKCACHE_METADATA_WORK_UNITS_DEQUEUED</a></td></tr>
+<tr class="memdesc:ga2f767774c92f8084641fe447c14f3884"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: number of metadata inserts/deletes read by the worker thread <br /></td></tr>
+<tr class="separator:ga2f767774c92f8084641fe447c14f3884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7ba2b921c64d9d85c5c41245d2972b36"><td class="memItemLeft" align="right" valign="top"><a id="ga7ba2b921c64d9d85c5c41245d2972b36"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7ba2b921c64d9d85c5c41245d2972b36">WT_STAT_CONN_CHUNKCACHE_MISSES</a></td></tr>
+<tr class="memdesc:ga7ba2b921c64d9d85c5c41245d2972b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: number of misses <br /></td></tr>
+<tr class="separator:ga7ba2b921c64d9d85c5c41245d2972b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa10badc7db8e1e1839aee4a89e736c37"><td class="memItemLeft" align="right" valign="top"><a id="gaa10badc7db8e1e1839aee4a89e736c37"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa10badc7db8e1e1839aee4a89e736c37">WT_STAT_CONN_CHUNKCACHE_IO_FAILED</a></td></tr>
+<tr class="memdesc:gaa10badc7db8e1e1839aee4a89e736c37"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: number of times a read from storage failed <br /></td></tr>
+<tr class="separator:gaa10badc7db8e1e1839aee4a89e736c37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga429fea2f2f71f3f43427bb371af84c07"><td class="memItemLeft" align="right" valign="top"><a id="ga429fea2f2f71f3f43427bb371af84c07"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga429fea2f2f71f3f43427bb371af84c07">WT_STAT_CONN_CHUNKCACHE_RETRIES</a></td></tr>
+<tr class="memdesc:ga429fea2f2f71f3f43427bb371af84c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: retried accessing a chunk while I/O was in progress <br /></td></tr>
+<tr class="separator:ga429fea2f2f71f3f43427bb371af84c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga12b89bdb3f365b57f7afe140ecd787f7"><td class="memItemLeft" align="right" valign="top"><a id="ga12b89bdb3f365b57f7afe140ecd787f7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga12b89bdb3f365b57f7afe140ecd787f7">WT_STAT_CONN_CHUNKCACHE_TOOMANY_RETRIES</a></td></tr>
+<tr class="memdesc:ga12b89bdb3f365b57f7afe140ecd787f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: timed out due to too many retries <br /></td></tr>
+<tr class="separator:ga12b89bdb3f365b57f7afe140ecd787f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0abc54e8578e979c51ed0fa3880b3839"><td class="memItemLeft" align="right" valign="top"><a id="ga0abc54e8578e979c51ed0fa3880b3839"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0abc54e8578e979c51ed0fa3880b3839">WT_STAT_CONN_CHUNKCACHE_BYTES_INUSE</a></td></tr>
+<tr class="memdesc:ga0abc54e8578e979c51ed0fa3880b3839"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total bytes used by the cache <br /></td></tr>
+<tr class="separator:ga0abc54e8578e979c51ed0fa3880b3839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6f91fb4800b7876d63aa6f82e1671d4"><td class="memItemLeft" align="right" valign="top"><a id="gaf6f91fb4800b7876d63aa6f82e1671d4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf6f91fb4800b7876d63aa6f82e1671d4">WT_STAT_CONN_CHUNKCACHE_BYTES_INUSE_PINNED</a></td></tr>
+<tr class="memdesc:gaf6f91fb4800b7876d63aa6f82e1671d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total bytes used by the cache for pinned chunks <br /></td></tr>
+<tr class="separator:gaf6f91fb4800b7876d63aa6f82e1671d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf57c0d3a111289885722c13ff58a1ae9"><td class="memItemLeft" align="right" valign="top"><a id="gaf57c0d3a111289885722c13ff58a1ae9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf57c0d3a111289885722c13ff58a1ae9">WT_STAT_CONN_CHUNKCACHE_CHUNKS_INUSE</a></td></tr>
+<tr class="memdesc:gaf57c0d3a111289885722c13ff58a1ae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total chunks held by the chunk cache <br /></td></tr>
+<tr class="separator:gaf57c0d3a111289885722c13ff58a1ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63ff0311ec65f171bf632fbe0dbee3f2"><td class="memItemLeft" align="right" valign="top"><a id="ga63ff0311ec65f171bf632fbe0dbee3f2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga63ff0311ec65f171bf632fbe0dbee3f2">WT_STAT_CONN_CHUNKCACHE_CREATED_FROM_METADATA</a></td></tr>
+<tr class="memdesc:ga63ff0311ec65f171bf632fbe0dbee3f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total number of chunks inserted on startup from persisted metadata. <br /></td></tr>
+<tr class="separator:ga63ff0311ec65f171bf632fbe0dbee3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa3e30dc4ce87daad41adfba9ceed071c"><td class="memItemLeft" align="right" valign="top"><a id="gaa3e30dc4ce87daad41adfba9ceed071c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa3e30dc4ce87daad41adfba9ceed071c">WT_STAT_CONN_CHUNKCACHE_CHUNKS_PINNED</a></td></tr>
+<tr class="memdesc:gaa3e30dc4ce87daad41adfba9ceed071c"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk-cache: total pinned chunks held by the chunk cache <br /></td></tr>
+<tr class="separator:gaa3e30dc4ce87daad41adfba9ceed071c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9db988882f3177840183ef1737a46335"><td class="memItemLeft" align="right" valign="top"><a id="ga9db988882f3177840183ef1737a46335"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9db988882f3177840183ef1737a46335">WT_STAT_CONN_COND_AUTO_WAIT_RESET</a></td></tr>
 <tr class="memdesc:ga9db988882f3177840183ef1737a46335"><td class="mdescLeft">&#160;</td><td class="mdescRight">connection: auto adjusting condition resets <br /></td></tr>
@@ -2195,94 +2211,126 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7f2ca67519476ca8fbc3eb9f7a7b6ad5">WT_STAT_CONN_LOG_CLOSE_YIELDS</a></td></tr>
 <tr class="memdesc:ga7f2ca67519476ca8fbc3eb9f7a7b6ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">log: yields waiting for previous log file close <br /></td></tr>
 <tr class="separator:ga7f2ca67519476ca8fbc3eb9f7a7b6ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f5063f81d022d7024bc26c63945c229"><td class="memItemLeft" align="right" valign="top"><a id="ga8f5063f81d022d7024bc26c63945c229"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8f5063f81d022d7024bc26c63945c229">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT10</a></td></tr>
+<tr class="memdesc:ga8f5063f81d022d7024bc26c63945c229"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 1) - 0-10ms <br /></td></tr>
+<tr class="separator:ga8f5063f81d022d7024bc26c63945c229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacf77e58a01ad4a4c316be3abb2eb0233"><td class="memItemLeft" align="right" valign="top"><a id="gacf77e58a01ad4a4c316be3abb2eb0233"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf77e58a01ad4a4c316be3abb2eb0233">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT50</a></td></tr>
-<tr class="memdesc:gacf77e58a01ad4a4c316be3abb2eb0233"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 1) - 10-49ms <br /></td></tr>
+<tr class="memdesc:gacf77e58a01ad4a4c316be3abb2eb0233"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 2) - 10-49ms <br /></td></tr>
 <tr class="separator:gacf77e58a01ad4a4c316be3abb2eb0233"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab69575a0f89fd8c413a7b183204be7b3"><td class="memItemLeft" align="right" valign="top"><a id="gab69575a0f89fd8c413a7b183204be7b3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab69575a0f89fd8c413a7b183204be7b3">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT100</a></td></tr>
-<tr class="memdesc:gab69575a0f89fd8c413a7b183204be7b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 2) - 50-99ms <br /></td></tr>
+<tr class="memdesc:gab69575a0f89fd8c413a7b183204be7b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 3) - 50-99ms <br /></td></tr>
 <tr class="separator:gab69575a0f89fd8c413a7b183204be7b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8d08caf353b0128f29f1ebfdfcc29c0b"><td class="memItemLeft" align="right" valign="top"><a id="ga8d08caf353b0128f29f1ebfdfcc29c0b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8d08caf353b0128f29f1ebfdfcc29c0b">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT250</a></td></tr>
-<tr class="memdesc:ga8d08caf353b0128f29f1ebfdfcc29c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 3) - 100-249ms <br /></td></tr>
+<tr class="memdesc:ga8d08caf353b0128f29f1ebfdfcc29c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 4) - 100-249ms <br /></td></tr>
 <tr class="separator:ga8d08caf353b0128f29f1ebfdfcc29c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga61097987bcab9ff220f9a597c10150c4"><td class="memItemLeft" align="right" valign="top"><a id="ga61097987bcab9ff220f9a597c10150c4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga61097987bcab9ff220f9a597c10150c4">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT500</a></td></tr>
-<tr class="memdesc:ga61097987bcab9ff220f9a597c10150c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 4) - 250-499ms <br /></td></tr>
+<tr class="memdesc:ga61097987bcab9ff220f9a597c10150c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 5) - 250-499ms <br /></td></tr>
 <tr class="separator:ga61097987bcab9ff220f9a597c10150c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabd633e671069ea7c5f567af6677e2edb"><td class="memItemLeft" align="right" valign="top"><a id="gabd633e671069ea7c5f567af6677e2edb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabd633e671069ea7c5f567af6677e2edb">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_LT1000</a></td></tr>
-<tr class="memdesc:gabd633e671069ea7c5f567af6677e2edb"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 5) - 500-999ms <br /></td></tr>
+<tr class="memdesc:gabd633e671069ea7c5f567af6677e2edb"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 6) - 500-999ms <br /></td></tr>
 <tr class="separator:gabd633e671069ea7c5f567af6677e2edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacc3e81183d0ba7224963618ba0f86f91"><td class="memItemLeft" align="right" valign="top"><a id="gacc3e81183d0ba7224963618ba0f86f91"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacc3e81183d0ba7224963618ba0f86f91">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_GT1000</a></td></tr>
-<tr class="memdesc:gacc3e81183d0ba7224963618ba0f86f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 6) - 1000ms+ <br /></td></tr>
+<tr class="memdesc:gacc3e81183d0ba7224963618ba0f86f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram (bucket 7) - 1000ms+ <br /></td></tr>
 <tr class="separator:gacc3e81183d0ba7224963618ba0f86f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacff2d880db32596a2f8bd7d2df03024f"><td class="memItemLeft" align="right" valign="top"><a id="gacff2d880db32596a2f8bd7d2df03024f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacff2d880db32596a2f8bd7d2df03024f">WT_STAT_CONN_PERF_HIST_FSREAD_LATENCY_TOTAL_MSECS</a></td></tr>
+<tr class="memdesc:gacff2d880db32596a2f8bd7d2df03024f"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system read latency histogram total (msecs) <br /></td></tr>
+<tr class="separator:gacff2d880db32596a2f8bd7d2df03024f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4c29dacb449a0efeadd136dd1c9723fc"><td class="memItemLeft" align="right" valign="top"><a id="ga4c29dacb449a0efeadd136dd1c9723fc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4c29dacb449a0efeadd136dd1c9723fc">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT10</a></td></tr>
+<tr class="memdesc:ga4c29dacb449a0efeadd136dd1c9723fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 1) - 0-10ms <br /></td></tr>
+<tr class="separator:ga4c29dacb449a0efeadd136dd1c9723fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad59d124a0e6bffb9919bc51697497df4"><td class="memItemLeft" align="right" valign="top"><a id="gad59d124a0e6bffb9919bc51697497df4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad59d124a0e6bffb9919bc51697497df4">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT50</a></td></tr>
-<tr class="memdesc:gad59d124a0e6bffb9919bc51697497df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 1) - 10-49ms <br /></td></tr>
+<tr class="memdesc:gad59d124a0e6bffb9919bc51697497df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 2) - 10-49ms <br /></td></tr>
 <tr class="separator:gad59d124a0e6bffb9919bc51697497df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3b9d70cff9680e4614c2dbe2c27a7c4c"><td class="memItemLeft" align="right" valign="top"><a id="ga3b9d70cff9680e4614c2dbe2c27a7c4c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3b9d70cff9680e4614c2dbe2c27a7c4c">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT100</a></td></tr>
-<tr class="memdesc:ga3b9d70cff9680e4614c2dbe2c27a7c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 2) - 50-99ms <br /></td></tr>
+<tr class="memdesc:ga3b9d70cff9680e4614c2dbe2c27a7c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 3) - 50-99ms <br /></td></tr>
 <tr class="separator:ga3b9d70cff9680e4614c2dbe2c27a7c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga339fdee8a1b559af384b994c0952c0ad"><td class="memItemLeft" align="right" valign="top"><a id="ga339fdee8a1b559af384b994c0952c0ad"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga339fdee8a1b559af384b994c0952c0ad">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT250</a></td></tr>
-<tr class="memdesc:ga339fdee8a1b559af384b994c0952c0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 3) - 100-249ms <br /></td></tr>
+<tr class="memdesc:ga339fdee8a1b559af384b994c0952c0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 4) - 100-249ms <br /></td></tr>
 <tr class="separator:ga339fdee8a1b559af384b994c0952c0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0128cef518080b49f6b708060211943c"><td class="memItemLeft" align="right" valign="top"><a id="ga0128cef518080b49f6b708060211943c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0128cef518080b49f6b708060211943c">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT500</a></td></tr>
-<tr class="memdesc:ga0128cef518080b49f6b708060211943c"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 4) - 250-499ms <br /></td></tr>
+<tr class="memdesc:ga0128cef518080b49f6b708060211943c"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 5) - 250-499ms <br /></td></tr>
 <tr class="separator:ga0128cef518080b49f6b708060211943c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9f2f8149523b1e6e4f64100ef198e050"><td class="memItemLeft" align="right" valign="top"><a id="ga9f2f8149523b1e6e4f64100ef198e050"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9f2f8149523b1e6e4f64100ef198e050">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_LT1000</a></td></tr>
-<tr class="memdesc:ga9f2f8149523b1e6e4f64100ef198e050"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 5) - 500-999ms <br /></td></tr>
+<tr class="memdesc:ga9f2f8149523b1e6e4f64100ef198e050"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 6) - 500-999ms <br /></td></tr>
 <tr class="separator:ga9f2f8149523b1e6e4f64100ef198e050"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga70303b938fe2949c13884c1660179c5a"><td class="memItemLeft" align="right" valign="top"><a id="ga70303b938fe2949c13884c1660179c5a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga70303b938fe2949c13884c1660179c5a">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_GT1000</a></td></tr>
-<tr class="memdesc:ga70303b938fe2949c13884c1660179c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 6) - 1000ms+ <br /></td></tr>
+<tr class="memdesc:ga70303b938fe2949c13884c1660179c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram (bucket 7) - 1000ms+ <br /></td></tr>
 <tr class="separator:ga70303b938fe2949c13884c1660179c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91ee4dcbbc7b255f670c5fb064ea9cd4"><td class="memItemLeft" align="right" valign="top"><a id="ga91ee4dcbbc7b255f670c5fb064ea9cd4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga91ee4dcbbc7b255f670c5fb064ea9cd4">WT_STAT_CONN_PERF_HIST_FSWRITE_LATENCY_TOTAL_MSECS</a></td></tr>
+<tr class="memdesc:ga91ee4dcbbc7b255f670c5fb064ea9cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: file system write latency histogram total (msecs) <br /></td></tr>
+<tr class="separator:ga91ee4dcbbc7b255f670c5fb064ea9cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4367f8c768b5670aae0e56bd2810c049"><td class="memItemLeft" align="right" valign="top"><a id="ga4367f8c768b5670aae0e56bd2810c049"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4367f8c768b5670aae0e56bd2810c049">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT100</a></td></tr>
+<tr class="memdesc:ga4367f8c768b5670aae0e56bd2810c049"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 1) - 0-100us <br /></td></tr>
+<tr class="separator:ga4367f8c768b5670aae0e56bd2810c049"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4d760a39df4232fb4c3e9308e21756a2"><td class="memItemLeft" align="right" valign="top"><a id="ga4d760a39df4232fb4c3e9308e21756a2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4d760a39df4232fb4c3e9308e21756a2">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT250</a></td></tr>
-<tr class="memdesc:ga4d760a39df4232fb4c3e9308e21756a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 1) - 100-249us <br /></td></tr>
+<tr class="memdesc:ga4d760a39df4232fb4c3e9308e21756a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 2) - 100-249us <br /></td></tr>
 <tr class="separator:ga4d760a39df4232fb4c3e9308e21756a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga74bd29055199ef15085d2b1c6fd82ff6"><td class="memItemLeft" align="right" valign="top"><a id="ga74bd29055199ef15085d2b1c6fd82ff6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga74bd29055199ef15085d2b1c6fd82ff6">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT500</a></td></tr>
-<tr class="memdesc:ga74bd29055199ef15085d2b1c6fd82ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 2) - 250-499us <br /></td></tr>
+<tr class="memdesc:ga74bd29055199ef15085d2b1c6fd82ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 3) - 250-499us <br /></td></tr>
 <tr class="separator:ga74bd29055199ef15085d2b1c6fd82ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf6f31e98a4b037443612d05c6f1442ab"><td class="memItemLeft" align="right" valign="top"><a id="gaf6f31e98a4b037443612d05c6f1442ab"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf6f31e98a4b037443612d05c6f1442ab">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT1000</a></td></tr>
-<tr class="memdesc:gaf6f31e98a4b037443612d05c6f1442ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 3) - 500-999us <br /></td></tr>
+<tr class="memdesc:gaf6f31e98a4b037443612d05c6f1442ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 4) - 500-999us <br /></td></tr>
 <tr class="separator:gaf6f31e98a4b037443612d05c6f1442ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4ab807fdce0ca362e3ad1ebef0e77507"><td class="memItemLeft" align="right" valign="top"><a id="ga4ab807fdce0ca362e3ad1ebef0e77507"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4ab807fdce0ca362e3ad1ebef0e77507">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_LT10000</a></td></tr>
-<tr class="memdesc:ga4ab807fdce0ca362e3ad1ebef0e77507"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 4) - 1000-9999us <br /></td></tr>
+<tr class="memdesc:ga4ab807fdce0ca362e3ad1ebef0e77507"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 5) - 1000-9999us <br /></td></tr>
 <tr class="separator:ga4ab807fdce0ca362e3ad1ebef0e77507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaa43ca231e73ce343409891029299872"><td class="memItemLeft" align="right" valign="top"><a id="gaaa43ca231e73ce343409891029299872"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaaa43ca231e73ce343409891029299872">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_GT10000</a></td></tr>
-<tr class="memdesc:gaaa43ca231e73ce343409891029299872"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 5) - 10000us+ <br /></td></tr>
+<tr class="memdesc:gaaa43ca231e73ce343409891029299872"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram (bucket 6) - 10000us+ <br /></td></tr>
 <tr class="separator:gaaa43ca231e73ce343409891029299872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae655cd26dc942c3571063a7b728c184c"><td class="memItemLeft" align="right" valign="top"><a id="gae655cd26dc942c3571063a7b728c184c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae655cd26dc942c3571063a7b728c184c">WT_STAT_CONN_PERF_HIST_OPREAD_LATENCY_TOTAL_USECS</a></td></tr>
+<tr class="memdesc:gae655cd26dc942c3571063a7b728c184c"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation read latency histogram total (usecs) <br /></td></tr>
+<tr class="separator:gae655cd26dc942c3571063a7b728c184c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9330b528c3418019c611174c6fe59f3b"><td class="memItemLeft" align="right" valign="top"><a id="ga9330b528c3418019c611174c6fe59f3b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9330b528c3418019c611174c6fe59f3b">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT100</a></td></tr>
+<tr class="memdesc:ga9330b528c3418019c611174c6fe59f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 1) - 0-100us <br /></td></tr>
+<tr class="separator:ga9330b528c3418019c611174c6fe59f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaff213856daa75fe9fa8c3fc46ed24141"><td class="memItemLeft" align="right" valign="top"><a id="gaff213856daa75fe9fa8c3fc46ed24141"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaff213856daa75fe9fa8c3fc46ed24141">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT250</a></td></tr>
-<tr class="memdesc:gaff213856daa75fe9fa8c3fc46ed24141"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 1) - 100-249us <br /></td></tr>
+<tr class="memdesc:gaff213856daa75fe9fa8c3fc46ed24141"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 2) - 100-249us <br /></td></tr>
 <tr class="separator:gaff213856daa75fe9fa8c3fc46ed24141"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8251dd1f2fcdb83e3924d3db24beac92"><td class="memItemLeft" align="right" valign="top"><a id="ga8251dd1f2fcdb83e3924d3db24beac92"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8251dd1f2fcdb83e3924d3db24beac92">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT500</a></td></tr>
-<tr class="memdesc:ga8251dd1f2fcdb83e3924d3db24beac92"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 2) - 250-499us <br /></td></tr>
+<tr class="memdesc:ga8251dd1f2fcdb83e3924d3db24beac92"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 3) - 250-499us <br /></td></tr>
 <tr class="separator:ga8251dd1f2fcdb83e3924d3db24beac92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga73cac68702f3143f2146822c7398200a"><td class="memItemLeft" align="right" valign="top"><a id="ga73cac68702f3143f2146822c7398200a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga73cac68702f3143f2146822c7398200a">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT1000</a></td></tr>
-<tr class="memdesc:ga73cac68702f3143f2146822c7398200a"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 3) - 500-999us <br /></td></tr>
+<tr class="memdesc:ga73cac68702f3143f2146822c7398200a"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 4) - 500-999us <br /></td></tr>
 <tr class="separator:ga73cac68702f3143f2146822c7398200a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga10569cd0fb0f341aafb831504e182ec2"><td class="memItemLeft" align="right" valign="top"><a id="ga10569cd0fb0f341aafb831504e182ec2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga10569cd0fb0f341aafb831504e182ec2">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_LT10000</a></td></tr>
-<tr class="memdesc:ga10569cd0fb0f341aafb831504e182ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 4) - 1000-9999us <br /></td></tr>
+<tr class="memdesc:ga10569cd0fb0f341aafb831504e182ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 5) - 1000-9999us <br /></td></tr>
 <tr class="separator:ga10569cd0fb0f341aafb831504e182ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4f2167c286f1f726286b2f20657dce63"><td class="memItemLeft" align="right" valign="top"><a id="ga4f2167c286f1f726286b2f20657dce63"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4f2167c286f1f726286b2f20657dce63">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_GT10000</a></td></tr>
-<tr class="memdesc:ga4f2167c286f1f726286b2f20657dce63"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 5) - 10000us+ <br /></td></tr>
+<tr class="memdesc:ga4f2167c286f1f726286b2f20657dce63"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram (bucket 6) - 10000us+ <br /></td></tr>
 <tr class="separator:ga4f2167c286f1f726286b2f20657dce63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga977eb7237d403489c5202816c3215367"><td class="memItemLeft" align="right" valign="top"><a id="ga977eb7237d403489c5202816c3215367"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga977eb7237d403489c5202816c3215367">WT_STAT_CONN_PERF_HIST_OPWRITE_LATENCY_TOTAL_USECS</a></td></tr>
+<tr class="memdesc:ga977eb7237d403489c5202816c3215367"><td class="mdescLeft">&#160;</td><td class="mdescRight">perf: operation write latency histogram total (usecs) <br /></td></tr>
+<tr class="separator:ga977eb7237d403489c5202816c3215367"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab286bff3609830a92b4077ab871d515c"><td class="memItemLeft" align="right" valign="top"><a id="gab286bff3609830a92b4077ab871d515c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab286bff3609830a92b4077ab871d515c">WT_STAT_CONN_REC_VLCS_EMPTIED_PAGES</a></td></tr>
 <tr class="memdesc:gab286bff3609830a92b4077ab871d515c"><td class="mdescLeft">&#160;</td><td class="mdescRight">reconciliation: VLCS pages explicitly reconciled as empty <br /></td></tr>
@@ -2591,6 +2639,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafd41e8c590a5891d6c62887951bae24d">WT_STAT_CONN_THREAD_WRITE_ACTIVE</a></td></tr>
 <tr class="memdesc:gafd41e8c590a5891d6c62887951bae24d"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-state: active filesystem write calls <br /></td></tr>
 <tr class="separator:gafd41e8c590a5891d6c62887951bae24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab6c8e4ab80bea3deb8c5ea89f5a6957c"><td class="memItemLeft" align="right" valign="top"><a id="gab6c8e4ab80bea3deb8c5ea89f5a6957c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab6c8e4ab80bea3deb8c5ea89f5a6957c">WT_STAT_CONN_APPLICATION_EVICT_SNAPSHOT_REFRESHED</a></td></tr>
+<tr class="memdesc:gab6c8e4ab80bea3deb8c5ea89f5a6957c"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread snapshot refreshed for eviction <br /></td></tr>
+<tr class="separator:gab6c8e4ab80bea3deb8c5ea89f5a6957c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabfab50036b67c8e5040831954b8d7dd6"><td class="memItemLeft" align="right" valign="top"><a id="gabfab50036b67c8e5040831954b8d7dd6"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabfab50036b67c8e5040831954b8d7dd6">WT_STAT_CONN_APPLICATION_EVICT_TIME</a></td></tr>
 <tr class="memdesc:gabfab50036b67c8e5040831954b8d7dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread time evicting (usecs) <br /></td></tr>

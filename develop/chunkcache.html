@@ -99,7 +99,10 @@ Pinned Content</h1>
 <p>Example Configuration: </p><div class="fragment"><div class="line">chunk_cache=[enabled=<span class="keyword">true</span>,chunk_size=512KB,capacity=20GB,pinned=(<span class="stringliteral">&quot;table:chunkcache01&quot;</span>, <span class="stringliteral">&quot;table:chunkcache02&quot;</span>)]</div>
 </div><!-- fragment --><p>In the configuration above, the pinned configuration array contains the names of tables to be pinned. In this example, the tables <b>chunkcache01</b> and <b>chunkcache02</b> are specified. By marking tables as pinned in the chunk cache, all chunks belonging to these tables (when read into chunkcache) remain in the cache. These chunks won't be evicted, regardless of how infrequently they might be accessed.</p>
 <p><b>Note:</b> There could be circumstances when the pinned chunks can become unpinned (and evicted) for internal reasons.</p>
-<p>This ensures that the pinned tables are always relatively cheap to access, minimizing the performance overhead of accessing these tables. </p>
+<p>This ensures that the pinned tables are always relatively cheap to access, minimizing the performance overhead of accessing these tables.</p>
+<h1><a class="anchor" id="inserts"></a>
+Newly inserted or modified content</h1>
+<p>Newer content is more likely to be accessed again, so we insert freshly-flushed data into the chunkcache. This minimizes latency and reduces resource usage (disk bandwidth and API access). This saves the chunkcache from having to read freshly-flushed data back from the object store soon after it was put there. When a tiered object is flushed and before it is deleted locally, we make an ingest call and the new or modified table will be inserted into the chunkcache. This function will also check for outdated pinned content in the chunk cache, ensuring the older versions of the pinned content can be cleaned up by chunk cache's eviction process. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
