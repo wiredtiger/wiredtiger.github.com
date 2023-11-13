@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"tune_page_size_and_comp.html#memory_page_max":[0,3,59,1,0],
 "tune_page_size_and_comp.html#split_pct":[0,3,59,1,5],
 "tune_page_size_and_comp.html#table_compress":[0,3,59,2,0],
 "tune_read_only.html":[0,3,60],

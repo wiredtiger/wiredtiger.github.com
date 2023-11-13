@@ -249,5 +249,5 @@ var NAVTREEINDEX1 =
 "ex_cursor_8c-example.html":[4,5],
 "ex_encrypt_8c-example.html":[4,6],
 "ex_extending_8c-example.html":[4,7],
-"ex_extractor_8c-example.html":[4,8]
+"ex_extra_diagnostics_8c-example.html":[4,8]
 };

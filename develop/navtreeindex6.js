@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"group__wt.html#gaf89bca0695e239432f65d6c3cb97f111":[1,0,738],
 "group__wt.html#gaf8f0e2e86dee76423a1a51f6aee74018":[1,0,232],
 "group__wt.html#gaf8fe1bb48348a1229b884bd86c06844d":[1,0,801],
 "group__wt.html#gaf93e21bedf01a85cdfb72e4e1878a70d":[1,0,336],
@@ -99,8 +100,8 @@ var NAVTREEINDEX6 =
 "group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8aefe46c7fefa38ef06a32a8357791f852":[1,1,20,2],
 "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k":[1,1,7],
 "home.html":[0,5,0],
-"huffman.html":[0,3,19,3],
 "huffman.html":[0,9,9,1],
+"huffman.html":[0,3,19,3],
 "in_memory.html":[0,3,32],
 "index.html":[0],
 "index.html":[],
@@ -132,7 +133,7 @@ var NAVTREEINDEX6 =
 "namespace.html#namespace_env":[0,3,26,0],
 "namespace.html#namespace_error":[0,3,26,3],
 "namespace.html#namespace_filesystem":[0,3,26,2],
-"nop_encrypt_8c-example.html":[4,16],
+"nop_encrypt_8c-example.html":[4,17],
 "operation_tracking.html":[0,3,36],
 "overview.html":[0,0],
 "overview.html#cache":[0,0,3],
@@ -150,7 +151,7 @@ var NAVTREEINDEX6 =
 "readonly.html#readonly_logging":[0,3,27,2],
 "readonly.html#readonly_lsm":[0,3,27,3],
 "readonly.html#readonly_recovery":[0,3,27,1],
-"rotn_encrypt_8c-example.html":[4,17],
+"rotn_encrypt_8c-example.html":[4,18],
 "schema.html":[0,3,3],
 "schema.html#schema_column_groups":[0,3,3,6],
 "schema.html#schema_column_types":[0,3,3,1],
@@ -170,7 +171,7 @@ var NAVTREEINDEX6 =
 "security.html#file_permissions":[0,5,3,2],
 "shared_cache.html":[0,3,37],
 "signals.html":[0,3,28],
-"sodium_encrypt_8c-example.html":[4,18],
+"sodium_encrypt_8c-example.html":[4,19],
 "statistics.html":[0,3,38],
 "statistics.html#statistics_log":[0,3,38,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html":[1,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4f8baf9dba6309b6051f79c9cbbb10e2":[1,1,2,9],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a68491dde82170031c6526fe140ea39eb":[1,1,2,3],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a817b5bc96a33010a1caca4a745a9d16d":[1,1,2,10],
-"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e":[1,1,2,6],
-"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a8eae397273ef872bc8da6743aa9824cb":[1,1,2,2]
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e":[1,1,2,6]
 };
