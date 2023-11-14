@@ -177,6 +177,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_EVICTION_BLOCKED_OOO_CHECKPOINT_RACE_4", "group__wt.html#gaf28a544870259a4d6a265d789681f461", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_CHECKPOINT", "group__wt.html#gad4a6cc370550ba33a15edf6070d15546", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_CLEAN", "group__wt.html#ga036a87a790eb07ac0d83fc2f3f7c1be5", null ],
+    [ "WT_STAT_CONN_CACHE_EVICTION_CLEAR_ORDINARY", "group__wt.html#gac9e2f980fd4ad5babc0062896c38e8ff", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_DEEPEN", "group__wt.html#ga64209e3be0f53337b5c2f01346cf92fd", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_DIRTY", "group__wt.html#gae05b171e43c7d814284ee4db9d77c995", null ],
     [ "WT_STAT_CONN_CACHE_EVICTION_EMPTY_SCORE", "group__wt.html#gac102bdcb189a5e5444e7f3d9b6dcd6ad", null ],
