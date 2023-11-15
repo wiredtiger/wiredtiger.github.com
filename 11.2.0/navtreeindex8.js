@@ -1,0 +1,27 @@
+var NAVTREEINDEX8 =
+{
+"tune_page_size_and_comp.html#memory_page_max":[0,3,59,1,0],
+"tune_page_size_and_comp.html#split_pct":[0,3,59,1,5],
+"tune_page_size_and_comp.html#table_compress":[0,3,59,2,0],
+"tune_read_only.html":[0,3,60],
+"tune_statistics.html":[0,3,46],
+"tune_system_buffer_cache.html":[0,3,61],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io":[0,3,61,0],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max":[0,3,61,1],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,3,61,2],
+"tune_transparent_huge_pages.html":[0,3,62],
+"tune_zone_reclaim.html":[0,3,63],
+"upgrade.html":[0,3,39],
+"upgrading.html":[0,6],
+"upgrading.html#pre_1100":[0,6,3],
+"upgrading.html#version_1100":[0,6,2],
+"upgrading.html#version_1110":[0,6,1],
+"upgrading.html#version_1120":[0,6,0],
+"verbose_messaging.html":[0,3,23],
+"verbose_messaging.html#verbosity_categories":[0,3,23,1],
+"verbose_messaging.html#verbosity_configuration":[0,3,23,1,0],
+"verbose_messaging.html#verbosity_levels":[0,3,23,0],
+"wtperf.html":[0,3,47],
+"wtperf.html#config":[0,3,47,1],
+"wtperf.html#monitor":[0,3,47,0]
+};
