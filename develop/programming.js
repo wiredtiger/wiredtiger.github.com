@@ -175,7 +175,8 @@ var programming =
     ] ],
     [ "Chunkcache", "chunkcache.html", [
       [ "Pinned Content", "chunkcache.html#pinned", null ],
-      [ "Newly inserted or modified content", "chunkcache.html#inserts", null ]
+      [ "Newly inserted or modified content", "chunkcache.html#inserts", null ],
+      [ "Persisted content", "chunkcache.html#persistence", null ]
     ] ],
     [ "Compaction", "compact.html", null ],
     [ "In-memory databases", "in_memory.html", null ],

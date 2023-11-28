@@ -1,5 +1,10 @@
 var NAVTREEINDEX8 =
 {
+"tune_page_size_and_comp.html#data_life_cycle":[0,3,59,0],
+"tune_page_size_and_comp.html#internal_page_max":[0,3,59,1,1],
+"tune_page_size_and_comp.html#key_val_max":[0,3,59,1,4],
+"tune_page_size_and_comp.html#leaf_page_max":[0,3,59,1,2],
+"tune_page_size_and_comp.html#memory_page_max":[0,3,59,1,0],
 "tune_page_size_and_comp.html#split_pct":[0,3,59,1,5],
 "tune_page_size_and_comp.html#table_compress":[0,3,59,2,0],
 "tune_read_only.html":[0,3,60],

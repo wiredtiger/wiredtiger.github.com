@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"command_line.html#util_backup_options":[0,9,7,1,4,1],
 "command_line.html#util_backup_synopsis":[0,4,4,0],
 "command_line.html#util_backup_synopsis":[0,9,7,1,4,0],
 "command_line.html#util_compact":[0,4,5],
@@ -60,14 +61,14 @@ var NAVTREEINDEX1 =
 "command_line.html#util_loadtext":[0,9,7,1,13],
 "command_line.html#util_loadtext_options":[0,4,13,1],
 "command_line.html#util_loadtext_options":[0,9,7,1,13,1],
-"command_line.html#util_loadtext_synopsis":[0,4,13,0],
 "command_line.html#util_loadtext_synopsis":[0,9,7,1,13,0],
-"command_line.html#util_printlog":[0,4,14],
+"command_line.html#util_loadtext_synopsis":[0,4,13,0],
 "command_line.html#util_printlog":[0,9,7,1,14],
-"command_line.html#util_printlog_options":[0,4,14,1],
+"command_line.html#util_printlog":[0,4,14],
 "command_line.html#util_printlog_options":[0,9,7,1,14,1],
-"command_line.html#util_printlog_synopsis":[0,9,7,1,14,0],
+"command_line.html#util_printlog_options":[0,4,14,1],
 "command_line.html#util_printlog_synopsis":[0,4,14,0],
+"command_line.html#util_printlog_synopsis":[0,9,7,1,14,0],
 "command_line.html#util_read":[0,9,7,1,15],
 "command_line.html#util_read":[0,4,15],
 "command_line.html#util_read_options":[0,9,7,1,15,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "ex_col_store_8c-example.html":[4,4],
 "ex_cursor_8c-example.html":[4,5],
 "ex_encrypt_8c-example.html":[4,6],
-"ex_extending_8c-example.html":[4,7],
-"ex_extra_diagnostics_8c-example.html":[4,8]
+"ex_extending_8c-example.html":[4,7]
 };
