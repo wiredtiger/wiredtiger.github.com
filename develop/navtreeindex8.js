@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"tune_file_alloc.html#tuning_system_file_block_grow":[0,3,56,0],
+"tune_memory_allocator.html":[0,3,57],
+"tune_mutex.html":[0,3,58],
+"tune_page_size_and_comp.html":[0,3,59],
+"tune_page_size_and_comp.html#allocation_size":[0,3,59,1,3],
+"tune_page_size_and_comp.html#compression_considerations":[0,3,59,2],
+"tune_page_size_and_comp.html#configurable_page_struct":[0,3,59,1],
 "tune_page_size_and_comp.html#data_life_cycle":[0,3,59,0],
 "tune_page_size_and_comp.html#internal_page_max":[0,3,59,1,1],
 "tune_page_size_and_comp.html#key_val_max":[0,3,59,1,4],

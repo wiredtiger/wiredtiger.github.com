@@ -7,7 +7,7 @@ var searchData=
   ['cursor_20',['Cursor',['../arch-cursor.html',1,'arch-toc-fundamentals']]],
   ['cross_2dplatform_20support_21',['Cross-Platform Support',['../arch-toc-platform.html',1,'arch-index']]],
   ['checkpoint_22',['checkpoint',['../struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0ab6e469464fa132901f3292934ad26c',1,'WT_DATA_SOURCE::checkpoint()'],['../struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf',1,'WT_SESSION::checkpoint()']]],
-  ['chunkcache_23',['Chunkcache',['../chunkcache.html',1,'programming']]],
+  ['chunk_20cache_23',['Chunk cache',['../chunkcache.html',1,'programming']]],
   ['close_24',['close',['../struct_w_t___f_i_l_e___h_a_n_d_l_e.html#aa4376c70336f8a0bbd8bf1c91749aeed',1,'WT_FILE_HANDLE::close()'],['../struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b',1,'WT_CURSOR::close()'],['../struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698',1,'WT_SESSION::close()'],['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545',1,'WT_CONNECTION::close()'],['../struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3',1,'WT_CONFIG_PARSER::close()']]],
   ['collate_25',['collate',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab34ce4a2511c0fb370f3ee46d8ffd880',1,'WT_EXTENSION_API']]],
   ['collator_5fconfig_26',['collator_config',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7ed2b2297783ea88c0f513721ff54b7c',1,'WT_EXTENSION_API']]],

@@ -241,6 +241,7 @@ var NAVTREEINDEX0 =
 "chunkcache.html#inserts":[0,3,30,1],
 "chunkcache.html#persistence":[0,3,30,2],
 "chunkcache.html#pinned":[0,3,30,0],
+"chunkcache.html#troubleshooting":[0,3,30,3],
 "command_line.html":[0,4],
 "command_line.html":[0,9,7,1],
 "command_line.html#util_alter":[0,4,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "command_line.html#util_alter_synopsis":[0,4,3,0],
 "command_line.html#util_alter_synopsis":[0,9,7,1,3,0],
 "command_line.html#util_backup":[0,4,4],
-"command_line.html#util_backup":[0,9,7,1,4],
-"command_line.html#util_backup_options":[0,4,4,1]
+"command_line.html#util_backup":[0,9,7,1,4]
 };

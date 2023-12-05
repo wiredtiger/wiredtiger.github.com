@@ -223,6 +223,9 @@ Support functions</h2></td></tr>
 <tr class="memitem:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="memItemLeft" align="right" valign="top">uint32_t(*)(const void *, size_t)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a> (void)</td></tr>
 <tr class="memdesc:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to a function that calculates a CRC32C checksum.  <a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">More...</a><br /></td></tr>
 <tr class="separator:ga205f45ca53fdac610f8a9c59c84b5e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga483078a911ef0dac0d42e71db4e9c054"><td class="memItemLeft" align="right" valign="top">uint32_t(*)(uint32_t seed, const void *, size_t)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a> (void)</td></tr>
+<tr class="memdesc:ga483078a911ef0dac0d42e71db4e9c054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed.  <a href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">More...</a><br /></td></tr>
+<tr class="separator:ga483078a911ef0dac0d42e71db4e9c054"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacb2cb3b5e55a85a481a3175f37de3a29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">wiredtiger_calc_modify</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *oldv, const <a class="el" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *newv, size_t maxdiff, <a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a> *entries, int *nentriesp)</td></tr>
 <tr class="memdesc:gacb2cb3b5e55a85a481a3175f37de3a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate a set of <a class="el" href="group__wt.html#struct_w_t___m_o_d_i_f_y" title="A set of modifications for a value, including a pointer to new data and a length, plus a target offse...">WT_MODIFY</a> operations to represent an update.  <a href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">More...</a><br /></td></tr>
 <tr class="separator:gacb2cb3b5e55a85a481a3175f37de3a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1347,10 +1350,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa4888d9d85ae38e48607616351a03172">WT_STAT_CONN_CHECKPOINT_TIME_RECENT</a></td></tr>
 <tr class="memdesc:gaa4888d9d85ae38e48607616351a03172"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: most recent time (msecs) <br /></td></tr>
 <tr class="separator:gaa4888d9d85ae38e48607616351a03172"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga96bdb2161f6adffa0fe96f95c2fefaeb"><td class="memItemLeft" align="right" valign="top"><a id="ga96bdb2161f6adffa0fe96f95c2fefaeb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga96bdb2161f6adffa0fe96f95c2fefaeb">WT_STAT_CONN_CHECKPOINTS</a></td></tr>
-<tr class="memdesc:ga96bdb2161f6adffa0fe96f95c2fefaeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of checkpoints started <br /></td></tr>
-<tr class="separator:ga96bdb2161f6adffa0fe96f95c2fefaeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad7c3ff27e17f48b7ee5d877b7e3f2007"><td class="memItemLeft" align="right" valign="top"><a id="gad7c3ff27e17f48b7ee5d877b7e3f2007"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad7c3ff27e17f48b7ee5d877b7e3f2007">WT_STAT_CONN_CHECKPOINTS_API</a></td></tr>
+<tr class="memdesc:gad7c3ff27e17f48b7ee5d877b7e3f2007"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of checkpoints started by api <br /></td></tr>
+<tr class="separator:gad7c3ff27e17f48b7ee5d877b7e3f2007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6d7172e9bd093ded3b3aacc0a094314f"><td class="memItemLeft" align="right" valign="top"><a id="ga6d7172e9bd093ded3b3aacc0a094314f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6d7172e9bd093ded3b3aacc0a094314f">WT_STAT_CONN_CHECKPOINTS_COMPACT</a></td></tr>
 <tr class="memdesc:ga6d7172e9bd093ded3b3aacc0a094314f"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: number of checkpoints started by compaction <br /></td></tr>
@@ -1423,10 +1426,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaba2dbf0887c59558644c1e2ac9cc8210">WT_STAT_CONN_CHECKPOINT_SCRUB_TARGET</a></td></tr>
 <tr class="memdesc:gaba2dbf0887c59558644c1e2ac9cc8210"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: scrub dirty target <br /></td></tr>
 <tr class="separator:gaba2dbf0887c59558644c1e2ac9cc8210"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga146fd5134d6a599284b808e8994309b2"><td class="memItemLeft" align="right" valign="top"><a id="ga146fd5134d6a599284b808e8994309b2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga146fd5134d6a599284b808e8994309b2">WT_STAT_CONN_CHECKPOINT_SCRUB_TIME</a></td></tr>
-<tr class="memdesc:ga146fd5134d6a599284b808e8994309b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: scrub time (msecs) <br /></td></tr>
-<tr class="separator:ga146fd5134d6a599284b808e8994309b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga519af88cf14d8852730940ed8195bb70"><td class="memItemLeft" align="right" valign="top"><a id="ga519af88cf14d8852730940ed8195bb70"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga519af88cf14d8852730940ed8195bb70">WT_STAT_CONN_CHECKPOINT_SCRUB_MAX</a></td></tr>
+<tr class="memdesc:ga519af88cf14d8852730940ed8195bb70"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: scrub max time (msecs) <br /></td></tr>
+<tr class="separator:ga519af88cf14d8852730940ed8195bb70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae50b1d92886bda1eb2a41724c8b55dac"><td class="memItemLeft" align="right" valign="top"><a id="gae50b1d92886bda1eb2a41724c8b55dac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae50b1d92886bda1eb2a41724c8b55dac">WT_STAT_CONN_CHECKPOINT_SCRUB_MIN</a></td></tr>
+<tr class="memdesc:gae50b1d92886bda1eb2a41724c8b55dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: scrub min time (msecs) <br /></td></tr>
+<tr class="separator:gae50b1d92886bda1eb2a41724c8b55dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac6fde8a9cef46036c580c5949605d1b2"><td class="memItemLeft" align="right" valign="top"><a id="gac6fde8a9cef46036c580c5949605d1b2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac6fde8a9cef46036c580c5949605d1b2">WT_STAT_CONN_CHECKPOINT_SCRUB_RECENT</a></td></tr>
+<tr class="memdesc:gac6fde8a9cef46036c580c5949605d1b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: scrub most recent time (msecs) <br /></td></tr>
+<tr class="separator:gac6fde8a9cef46036c580c5949605d1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb0e8ab71412a075fc26ca721d500b2a"><td class="memItemLeft" align="right" valign="top"><a id="gaeb0e8ab71412a075fc26ca721d500b2a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaeb0e8ab71412a075fc26ca721d500b2a">WT_STAT_CONN_CHECKPOINT_SCRUB_TOTAL</a></td></tr>
+<tr class="memdesc:gaeb0e8ab71412a075fc26ca721d500b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: scrub total time (msecs) <br /></td></tr>
+<tr class="separator:gaeb0e8ab71412a075fc26ca721d500b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa8fa86a15607f1bc706a0b4b414dab49"><td class="memItemLeft" align="right" valign="top"><a id="gaa8fa86a15607f1bc706a0b4b414dab49"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa8fa86a15607f1bc706a0b4b414dab49">WT_STAT_CONN_CHECKPOINT_STOP_STRESS_ACTIVE</a></td></tr>
 <tr class="memdesc:gaa8fa86a15607f1bc706a0b4b414dab49"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: stop timing stress active <br /></td></tr>
@@ -1435,6 +1450,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabcee3f936eb834b30b3e4577743b1908">WT_STAT_CONN_CHECKPOINT_TREE_DURATION</a></td></tr>
 <tr class="memdesc:gabcee3f936eb834b30b3e4577743b1908"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: time spent on per-tree checkpoint work (usecs) <br /></td></tr>
 <tr class="separator:gabcee3f936eb834b30b3e4577743b1908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6d6c88204f1c5d8025e08673c246a47e"><td class="memItemLeft" align="right" valign="top"><a id="ga6d6c88204f1c5d8025e08673c246a47e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6d6c88204f1c5d8025e08673c246a47e">WT_STAT_CONN_CHECKPOINTS_TOTAL_FAILED</a></td></tr>
+<tr class="memdesc:ga6d6c88204f1c5d8025e08673c246a47e"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: total failed number of checkpoints <br /></td></tr>
+<tr class="separator:ga6d6c88204f1c5d8025e08673c246a47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6f9aaa1fe50142bec2dbe6df32d4106"><td class="memItemLeft" align="right" valign="top"><a id="gad6f9aaa1fe50142bec2dbe6df32d4106"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad6f9aaa1fe50142bec2dbe6df32d4106">WT_STAT_CONN_CHECKPOINTS_TOTAL_SUCCEED</a></td></tr>
+<tr class="memdesc:gad6f9aaa1fe50142bec2dbe6df32d4106"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: total succeed number of checkpoints <br /></td></tr>
+<tr class="separator:gad6f9aaa1fe50142bec2dbe6df32d4106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacf4d1e6a06091c7effd7a4326ff0e597"><td class="memItemLeft" align="right" valign="top"><a id="gacf4d1e6a06091c7effd7a4326ff0e597"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf4d1e6a06091c7effd7a4326ff0e597">WT_STAT_CONN_CHECKPOINT_TIME_TOTAL</a></td></tr>
 <tr class="memdesc:gacf4d1e6a06091c7effd7a4326ff0e597"><td class="mdescLeft">&#160;</td><td class="mdescRight">checkpoint: total time (msecs) <br /></td></tr>
@@ -5953,6 +5976,35 @@ Packing Examples</h1>
 
 </div>
 </div>
+<a id="ga483078a911ef0dac0d42e71db4e9c054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga483078a911ef0dac0d42e71db4e9c054">&#9670;&nbsp;</a></span>wiredtiger_crc32c_with_seed_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t(*)(uint32_t seed, const void *, size_t) wiredtiger_crc32c_with_seed_func(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed. </p>
+<p>The WiredTiger library CRC32C checksum function uses hardware support where available, else it falls back to a software implementation. Selecting a CRC32C checksum function can be slow, so the return value should be cached by the caller for repeated use. This version returns a function that accepts a starting seed value for the CRC. This version is useful where an application wants to calculate the CRC of a large buffer in smaller incremental pieces. The starting seed to calculate the CRC of a piece is then the cumulative CRC of all the previous pieces.</p>
+<div class="fragment"><div class="line">        uint32_t crc32c, (*func_with_seed)(uint32_t, <span class="keyword">const</span> <span class="keywordtype">void</span> *, size_t);</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *buffer = <span class="stringliteral">&quot;some other larger string&quot;</span>;</div>
+<div class="line"> </div>
+<div class="line">        func_with_seed = <a class="code" href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a>();</div>
+<div class="line">        chunk1 = strlen(<span class="stringliteral">&quot;some &quot;</span>);</div>
+<div class="line">        chunk2 = strlen(<span class="stringliteral">&quot;other larger &quot;</span>);</div>
+<div class="line">        chunk3 = strlen(<span class="stringliteral">&quot;string&quot;</span>);</div>
+<div class="line">        crc32c = 0;</div>
+<div class="line">        crc32c = func_with_seed(crc32c, buffer, chunk1);</div>
+<div class="line">        crc32c = func_with_seed(crc32c, buffer + chunk1, chunk2);</div>
+<div class="line">        crc32c = func_with_seed(crc32c, buffer + chunk1 + chunk2, chunk3);</div>
+</div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>a pointer to a function that takes a starting seed, a buffer and length and returns the CRC32C checksum </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="agroup__wt_html_a57f5e62aa968275d7e398cfa70e49450"><div class="ttname"><a href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">WT_ITEM::data</a></div><div class="ttdeci">const void * data</div><div class="ttdoc">The memory reference of the data item.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:99</div></div>
@@ -5966,6 +6018,7 @@ Packing Examples</h1>
 <div class="ttc" id="agroup__wt_html_ga1b29826f4b418891d67e86850f7cbcf4"><div class="ttname"><a href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a></div><div class="ttdeci">const char * wiredtiger_version(int *majorp, int *minorp, int *patchp)</div><div class="ttdoc">Get version information.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___i_t_e_m"><div class="ttname"><a href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></div><div class="ttdoc">A raw item of data to be managed, including a pointer to the data and a length.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:91</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3845</div></div>
+<div class="ttc" id="agroup__wt_html_ga483078a911ef0dac0d42e71db4e9c054"><div class="ttname"><a href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a></div><div class="ttdeci">uint32_t(*)(uint32_t seed, const void *, size_t) wiredtiger_crc32c_with_seed_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3923</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="agroup__wt_html_ga512297da65ccc30ac91bf6adf95f043f"><div class="ttname"><a href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a></div><div class="ttdeci">int wiredtiger_config_parser_open(WT_SESSION *session, const char *config, size_t len, WT_CONFIG_PARSER **config_parserp)</div><div class="ttdoc">Create a handle that can be used to parse or create configuration strings compatible with the WiredTi...</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>

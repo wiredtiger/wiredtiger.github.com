@@ -387,8 +387,11 @@ var group__wt =
     [ "WT_STAT_CONN_CHECKPOINT_PREP_RUNNING", "group__wt.html#ga517694dbe1e9eacfca9bae5e38ed030f", null ],
     [ "WT_STAT_CONN_CHECKPOINT_PREP_TOTAL", "group__wt.html#ga530353b5b7c8de1f087695253e924645", null ],
     [ "WT_STAT_CONN_CHECKPOINT_PRESYNC", "group__wt.html#ga804d25cd7257dfac3cebbebf322142d3", null ],
+    [ "WT_STAT_CONN_CHECKPOINT_SCRUB_MAX", "group__wt.html#ga519af88cf14d8852730940ed8195bb70", null ],
+    [ "WT_STAT_CONN_CHECKPOINT_SCRUB_MIN", "group__wt.html#gae50b1d92886bda1eb2a41724c8b55dac", null ],
+    [ "WT_STAT_CONN_CHECKPOINT_SCRUB_RECENT", "group__wt.html#gac6fde8a9cef46036c580c5949605d1b2", null ],
     [ "WT_STAT_CONN_CHECKPOINT_SCRUB_TARGET", "group__wt.html#gaba2dbf0887c59558644c1e2ac9cc8210", null ],
-    [ "WT_STAT_CONN_CHECKPOINT_SCRUB_TIME", "group__wt.html#ga146fd5134d6a599284b808e8994309b2", null ],
+    [ "WT_STAT_CONN_CHECKPOINT_SCRUB_TOTAL", "group__wt.html#gaeb0e8ab71412a075fc26ca721d500b2a", null ],
     [ "WT_STAT_CONN_CHECKPOINT_SKIPPED", "group__wt.html#ga893aa524f7f226e6e1bd5e3f81ed60c4", null ],
     [ "WT_STAT_CONN_CHECKPOINT_SNAPSHOT_ACQUIRED", "group__wt.html#gabfb3caf8d6a26d5876ca01aa6cf18a70", null ],
     [ "WT_STAT_CONN_CHECKPOINT_STATE", "group__wt.html#ga4124a8271895f0c6fc3de03224a10ea4", null ],
@@ -400,8 +403,10 @@ var group__wt =
     [ "WT_STAT_CONN_CHECKPOINT_TIME_TOTAL", "group__wt.html#gacf4d1e6a06091c7effd7a4326ff0e597", null ],
     [ "WT_STAT_CONN_CHECKPOINT_TREE_DURATION", "group__wt.html#gabcee3f936eb834b30b3e4577743b1908", null ],
     [ "WT_STAT_CONN_CHECKPOINT_WAIT_REDUCE_DIRTY", "group__wt.html#ga0a2d18fd296aba5c61e85bf79eccce91", null ],
-    [ "WT_STAT_CONN_CHECKPOINTS", "group__wt.html#ga96bdb2161f6adffa0fe96f95c2fefaeb", null ],
+    [ "WT_STAT_CONN_CHECKPOINTS_API", "group__wt.html#gad7c3ff27e17f48b7ee5d877b7e3f2007", null ],
     [ "WT_STAT_CONN_CHECKPOINTS_COMPACT", "group__wt.html#ga6d7172e9bd093ded3b3aacc0a094314f", null ],
+    [ "WT_STAT_CONN_CHECKPOINTS_TOTAL_FAILED", "group__wt.html#ga6d6c88204f1c5d8025e08673c246a47e", null ],
+    [ "WT_STAT_CONN_CHECKPOINTS_TOTAL_SUCCEED", "group__wt.html#gad6f9aaa1fe50142bec2dbe6df32d4106", null ],
     [ "WT_STAT_CONN_CHILD_MODIFY_BLOCKED_PAGE", "group__wt.html#ga8658fc3d52503f3228eac6ba33f2dec8", null ],
     [ "WT_STAT_CONN_CHUNKCACHE_BYTES_INUSE", "group__wt.html#ga0abc54e8578e979c51ed0fa3880b3839", null ],
     [ "WT_STAT_CONN_CHUNKCACHE_BYTES_INUSE_PINNED", "group__wt.html#gaf6f91fb4800b7876d63aa6f82e1671d4", null ],
@@ -1151,5 +1156,6 @@ var group__wt =
     [ "wiredtiger_unpack_str", "group__wt.html#gacf46b9dd314c216293141b26341b7b0e", null ],
     [ "wiredtiger_unpack_uint", "group__wt.html#gad8d121ab997028a85598e73771609bb4", null ],
     [ "wiredtiger_version", "group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4", null ],
-    [ "wiredtiger_crc32c_func", "group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12", null ]
+    [ "wiredtiger_crc32c_func", "group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12", null ],
+    [ "wiredtiger_crc32c_with_seed_func", "group__wt.html#ga483078a911ef0dac0d42e71db4e9c054", null ]
 ];

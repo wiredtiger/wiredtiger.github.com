@@ -173,10 +173,11 @@ var programming =
       [ "Export tables using backup cursor", "backup.html#backup_export", null ],
       [ "Backup and O_DIRECT", "backup.html#backup_o_direct", null ]
     ] ],
-    [ "Chunkcache", "chunkcache.html", [
+    [ "Chunk cache", "chunkcache.html", [
       [ "Pinned Content", "chunkcache.html#pinned", null ],
       [ "Newly inserted or modified content", "chunkcache.html#inserts", null ],
-      [ "Persisted content", "chunkcache.html#persistence", null ]
+      [ "Persisted content", "chunkcache.html#persistence", null ],
+      [ "Troubleshooting", "chunkcache.html#troubleshooting", null ]
     ] ],
     [ "Compaction", "compact.html", null ],
     [ "In-memory databases", "in_memory.html", null ],
