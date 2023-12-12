@@ -7,6 +7,11 @@ var index =
       [ "Hot caches", "overview.html#cache", null ],
       [ "Making I/O more valuable", "overview.html#io", null ]
     ] ],
+    [ "General information on portability", "portability.html", [
+      [ "Supported CPU architectures", "portability.html#cpu", null ],
+      [ "POSIX compliance", "portability.html#posix", null ],
+      [ "Testing", "portability.html#testing", null ]
+    ] ],
     [ "Building and installing WiredTiger on POSIX (Linux, *BSD, OS X):", "build-posix.html", [
       [ "Building using Git and GitHub", "build-posix.html#posix_github", null ],
       [ "Building WiredTiger", "build-posix.html#posix_building", null ],

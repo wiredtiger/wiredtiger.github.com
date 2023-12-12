@@ -8,5 +8,6 @@ var searchData=
   ['get_5fkey_115',['get_key',['../struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f',1,'WT_CURSOR']]],
   ['get_5fraw_5fkey_5fvalue_116',['get_raw_key_value',['../struct_w_t___c_u_r_s_o_r.html#a74b676b408570e1feb981a37166fc6fa',1,'WT_CURSOR']]],
   ['get_5fvalue_117',['get_value',['../struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01',1,'WT_CURSOR']]],
-  ['gcc_2fclang_20build_20options_118',['gcc/clang build options',['../tune_build_options.html',1,'programming']]]
+  ['general_20information_20on_20portability_118',['General information on portability',['../portability.html',1,'index']]],
+  ['gcc_2fclang_20build_20options_119',['gcc/clang build options',['../tune_build_options.html',1,'programming']]]
 ];

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: Reference Guide</title>
+<title>WiredTiger: General information on portability</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('portability.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,60 +89,26 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Reference Guide </div>  </div>
+<div class="title">General information on portability </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger is a production quality, high performance, scalable, NoSQL, Open Source extensible platform for data management. WiredTiger is developed and maintained by MongoDB, Inc., where it is the principal database storage engine.</p>
-<p>WiredTiger supports row-oriented storage (where all columns of a row are stored together), column-oriented storage (where columns are stored in groups, allowing for more efficient access and storage of column subsets) and log-structured merge trees (LSM), for sustained throughput under random insert workloads.</p>
-<p>WiredTiger includes ACID transactions with standard isolation levels and durability at both checkpoint and commit-level granularity.</p>
-<p>WiredTiger can be used as a simple key/value store, but also has a complete schema layer, including indices and projections.</p>
-<p>WiredTiger should be generally portable to any 64-bit system supporting the ANSI C11 and POSIX 1003.1 standards.</p>
-<p>For more information on the WiredTiger architecture and why it might be right for your project, see:</p>
-<ul>
-<li><a class="el" href="overview.html">WiredTiger Overview and Features</a></li>
-</ul>
-<p>For more information about building and installing WiredTiger, see:</p>
-<ul>
-<li><a class="el" href="portability.html">General information on portability</a></li>
-<li><a class="el" href="build-posix.html">Building and installing WiredTiger on POSIX (Linux, *BSD, OS X):</a></li>
-<li><a class="el" href="build-windows.html">Building and installing WiredTiger on Windows</a></li>
-</ul>
-<p>For more information about writing WiredTiger applications, see:</p>
-<ul>
-<li><a class="el" href="programming.html">Writing WiredTiger applications</a></li>
-<li><a class="el" href="group__wt.html">WiredTiger API reference manual</a></li>
-</ul>
-<p>For more information about administrating WiredTiger databases, see:</p>
-<ul>
-<li><a class="el" href="command_line.html">WiredTiger command line utility</a></li>
-<li><a class="el" href="admin.html">Managing WiredTiger databases</a></li>
-</ul>
-<p>For release upgrading information, see:</p>
-<ul>
-<li><a class="el" href="upgrading.html">Upgrading WiredTiger applications</a></li>
-</ul>
-<p>WiredTiger is distributed under Open Source licenses; for more information, see:</p>
-<ul>
-<li><a class="el" href="license.html">WiredTiger licensing</a></li>
-</ul>
-<p>For more information on tools and techniques used during WiredTiger development, see:</p>
-<ul>
-<li><a class="el" href="tool-index.html">Tools and Techniques</a></li>
-</ul>
-<p>For more information about the architecture and internals of WiredTiger, see:</p>
-<ul>
-<li><a class="el" href="arch-index.html">WiredTiger Architecture Guide</a></li>
-</ul>
-<p>To browse the WiredTiger source code repository or contact us, see:</p>
-<ul>
-<li><a class="el" href="community.html">WiredTiger community and contact information</a> </li>
-</ul>
-</div></div><!-- PageDoc -->
-</div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="cpu"></a>
+Supported CPU architectures</h1>
+<p>The supported list of CPU target architectures may be found by inspecting the <code>WT_ARCH</code> variable present in the <code>cmake</code> configuration. Note that the <code>loongarch64</code> platform is community-supported.</p>
+<h1><a class="anchor" id="posix"></a>
+POSIX compliance</h1>
+<p>WiredTiger aims to be generally portable to any 64-bit system supporting the ANSI C11 and POSIX 1003.1 standards. Unfortunately, the real world is a little messier than the standards dictate, so WiredTiger may not compile (or work correctly) on every POSIX platform.</p>
+<p>If WiredTiger does fail to compile (or work correctly) on your platform, we welcome either a <a href="https://github.com/wiredtiger/wiredtiger/wiki/Creating-tickets-that-are-likely-to-be-actioned">bug report</a> or a <a href="https://github.com/wiredtiger/wiredtiger/wiki/Contributing-to-WiredTiger">pull request</a>.</p>
+<h1><a class="anchor" id="testing"></a>
+Testing</h1>
+<p>To see a list of the CPU and operating system combinations WiredTiger is currently tested on, please visit <a href="https://evergreen.mongodb.com/waterfall/wiredtiger">our test results page</a>. This list is determined by the availability of suitable machines. The lack of an operating system or CPU architecture on this page does not make it unsupported. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="index.html">Reference Guide</a></li>
     <li class="footer">Copyright (c) 2008-present MongoDB, Inc.  All rights reserved.  Contact <a href="mailto:info@wiredtiger.com">info@wiredtiger.com</a> for more information.</li>
   </ul>
 </div>

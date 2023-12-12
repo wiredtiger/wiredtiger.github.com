@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['join_20cursors_131',['Join cursors',['../cursor_join.html',1,'programming']]],
-  ['join_132',['join',['../struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84',1,'WT_SESSION']]]
+  ['join_20cursors_132',['Join cursors',['../cursor_join.html',1,'programming']]],
+  ['join_133',['join',['../struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84',1,'WT_SESSION']]]
 ];
