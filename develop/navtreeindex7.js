@@ -1,5 +1,10 @@
 var NAVTREEINDEX7 =
 {
+"struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c":[1,0,2,22],
+"struct_w_t___c_u_r_s_o_r.html#a1f31636c1cf31f72df576b82b03a4c44":[1,0,2,0],
+"struct_w_t___c_u_r_s_o_r.html#a21f35d032987318a8c3b9eb1b0c6a1dc":[1,0,2,21],
+"struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c":[1,0,2,19],
+"struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738":[1,0,2,9],
 "struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6":[1,0,2,14],
 "struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76":[1,0,2,11],
 "struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f":[1,0,2,20],
@@ -244,10 +249,5 @@ var NAVTREEINDEX7 =
 "tool-xray.html#autotoc_md59":[0,9,4,1,0],
 "tool-xray.html#autotoc_md60":[0,9,4,1,1],
 "tool-xray.html#autotoc_md61":[0,9,4,1,2],
-"transactions.html":[0,4,5],
-"transactions_api.html":[0,4,6],
-"transactions_api.html#cursors_transactions":[0,4,6,4],
-"transactions_api.html#isolation_levels":[0,4,6,3],
-"transactions_api.html#snapshot_reset":[0,4,6,5],
-"transactions_api.html#transactions_concurrency":[0,4,6,2]
+"transactions.html":[0,4,5]
 };
