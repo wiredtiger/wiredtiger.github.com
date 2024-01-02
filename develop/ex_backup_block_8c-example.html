@@ -168,17 +168,13 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line"><span class="comment">     * directory.</span></div>
 <div class="line"><span class="comment">     */</span></div>
 <div class="line">    <span class="keywordflow">if</span> (i == 0)</div>
-<div class="line">        (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;../../wt -R -h %s dump main &gt; %s.%d&quot;</span>, home, full_out, i);</div>
+<div class="line">        testutil_system(<span class="stringliteral">&quot;../../wt -R -h %s dump main &gt; %s.%d&quot;</span>, home, full_out, i);</div>
 <div class="line">    <span class="keywordflow">else</span></div>
-<div class="line">        (<span class="keywordtype">void</span>)snprintf(</div>
-<div class="line">          buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;../../wt -R -h %s.%d dump main &gt; %s.%d&quot;</span>, home_full, i, full_out, i);</div>
-<div class="line">    error_check(system(buf));</div>
+<div class="line">        testutil_system(<span class="stringliteral">&quot;../../wt -R -h %s.%d dump main &gt; %s.%d&quot;</span>, home_full, i, full_out, i);</div>
 <div class="line">    <span class="comment">/*</span></div>
 <div class="line"><span class="comment">     * Now run dump on the incremental directory.</span></div>
 <div class="line"><span class="comment">     */</span></div>
-<div class="line">    (void)snprintf(</div>
-<div class="line">      buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;../../wt -R -h %s.%d dump main &gt; %s.%d&quot;</span>, home_incr, i, incr_out, i);</div>
-<div class="line">    error_check(system(buf));</div>
+<div class="line">    testutil_system(<span class="stringliteral">&quot;../../wt -R -h %s.%d dump main &gt; %s.%d&quot;</span>, home_incr, i, incr_out, i);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/*</span></div>
 <div class="line"><span class="comment">     * Compare the files.</span></div>
@@ -198,9 +194,8 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line"><span class="comment">     * If they compare successfully, clean up.</span></div>
 <div class="line"><span class="comment">     */</span></div>
 <div class="line">    <span class="keywordflow">if</span> (i != 0) {</div>
-<div class="line">        (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;rm -rf %s.%d %s.%d %s.%d %s.%d&quot;</span>, home_full, i, home_incr,</div>
-<div class="line">          i, full_out, i, incr_out, i);</div>
-<div class="line">        error_check(system(buf));</div>
+<div class="line">        testutil_system(</div>
+<div class="line">          <span class="stringliteral">&quot;rm -rf %s.%d %s.%d %s.%d %s.%d&quot;</span>, home_full, i, home_incr, i, full_out, i, incr_out, i);</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> (ret);</div>
 <div class="line">}</div>
@@ -214,24 +209,19 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">setup_directories(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> i;</div>
-<div class="line">    <span class="keywordtype">char</span> buf[1024];</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (i = 0; i &lt; MAX_ITERATIONS; i++) {</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * For incremental backups we need 0-N. The 0 incremental directory will compare with the</span></div>
 <div class="line"><span class="comment">         * original at the end.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;rm -rf %s.%d &amp;&amp; mkdir -p %s.%d/%s&quot;</span>, home_incr, i,</div>
-<div class="line">          home_incr, i, logpath);</div>
-<div class="line">        error_check(system(buf));</div>
+<div class="line">        testutil_system(<span class="stringliteral">&quot;rm -rf %s.%d &amp;&amp; mkdir -p %s.%d/%s&quot;</span>, home_incr, i, home_incr, i, logpath);</div>
 <div class="line">        <span class="keywordflow">if</span> (i == 0)</div>
 <div class="line">            <span class="keywordflow">continue</span>;</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * For full backups we need 1-N.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;rm -rf %s.%d &amp;&amp; mkdir -p %s.%d/%s&quot;</span>, home_full, i,</div>
-<div class="line">          home_full, i, logpath);</div>
-<div class="line">        error_check(system(buf));</div>
+<div class="line">        testutil_system(<span class="stringliteral">&quot;rm -rf %s.%d &amp;&amp; mkdir -p %s.%d/%s&quot;</span>, home_full, i, home_full, i, logpath);</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -274,7 +264,6 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">finalize_files(FILELIST *flistp, <span class="keywordtype">size_t</span> count)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">size_t</span> i;</div>
-<div class="line">    <span class="keywordtype">char</span> buf[512];</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/*</span></div>
 <div class="line"><span class="comment">     * Process files that were removed. Any file that is not marked in the previous list as existing</span></div>
@@ -285,10 +274,9 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">        <span class="keywordflow">if</span> (last_flist[i].name == NULL)</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">if</span> (!last_flist[i].exist) {</div>
-<div class="line">            (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;rm WT_BLOCK_LOG_*/%s%s&quot;</span>,</div>
+<div class="line">            testutil_system(<span class="stringliteral">&quot;rm WT_BLOCK_LOG_*/%s%s&quot;</span>,</div>
 <div class="line">              strncmp(last_flist[i].name, WTLOG, WTLOGLEN) == 0 ? <span class="stringliteral">&quot;logpath/&quot;</span> : <span class="stringliteral">&quot;&quot;</span>,</div>
 <div class="line">              last_flist[i].name);</div>
-<div class="line">            error_check(system(buf));</div>
 <div class="line">        }</div>
 <div class="line">        free((<span class="keywordtype">void</span> *)last_flist[i].name);</div>
 <div class="line">    }</div>
@@ -390,21 +378,19 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line"><span class="comment">             */</span></div>
 <div class="line">            <span class="keywordflow">for</span> (j = 0; j &lt; MAX_ITERATIONS; j++) {</div>
 <div class="line">                (void)snprintf(h, <span class="keyword">sizeof</span>(h), <span class="stringliteral">&quot;%s.%d&quot;</span>, home_incr, j);</div>
-<div class="line">                (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, f, h, f);</div>
+<div class="line">                testutil_system(<span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, f, h, f);</div>
 <div class="line"><span class="preprocessor">#if 0</span></div>
 <div class="line">                printf(<span class="stringliteral">&quot;FULL: Copy: %s\n&quot;</span>, buf);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line">                error_check(system(buf));</div>
 <div class="line">            }</div>
 <div class="line">        <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="preprocessor">#if 0</span></div>
 <div class="line">            (void)snprintf(h, <span class="keyword">sizeof</span>(h), <span class="stringliteral">&quot;%s.%d&quot;</span>, home_full, i);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line">            (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, f, hdir, f);</div>
+<div class="line">            testutil_system(<span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, f, hdir, f);</div>
 <div class="line"><span class="preprocessor">#if 0</span></div>
 <div class="line">            printf(<span class="stringliteral">&quot;FULL %d: Copy: %s\n&quot;</span>, i, buf);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line">            error_check(system(buf));</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    scan_end_check(ret == <a name="a9"></a><a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
@@ -447,14 +433,12 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">        error_check(process_file(&amp;flist, &amp;count, &amp;alloc, filename));</div>
 <div class="line">        (void)snprintf(h, <span class="keyword">sizeof</span>(h), <span class="stringliteral">&quot;%s.0&quot;</span>, home_incr);</div>
 <div class="line">        <span class="keywordflow">if</span> (strncmp(filename, WTLOG, WTLOGLEN) == 0)</div>
-<div class="line">            (<span class="keywordtype">void</span>)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp %s/%s/%s %s/%s/%s&quot;</span>, home, logpath, filename, h,</div>
-<div class="line">              logpath, filename);</div>
+<div class="line">            testutil_system(<span class="stringliteral">&quot;cp %s/%s/%s %s/%s/%s&quot;</span>, home, logpath, filename, h, logpath, filename);</div>
 <div class="line">        <span class="keywordflow">else</span></div>
-<div class="line">            (<span class="keywordtype">void</span>)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, filename, h, filename);</div>
+<div class="line">            testutil_system(<span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, filename, h, filename);</div>
 <div class="line"><span class="preprocessor">#if 0</span></div>
 <div class="line">        printf(<span class="stringliteral">&quot;Copying backup: %s\n&quot;</span>, buf);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line">        error_check(system(buf));</div>
 <div class="line">        first = <span class="keyword">true</span>;</div>
 <div class="line"> </div>
 <div class="line">        (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;incremental=(file=%s)&quot;</span>, filename);</div>
@@ -505,14 +489,13 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">                testutil_assert(first == <span class="keyword">true</span>);</div>
 <div class="line">                rfd = wfd = -1;</div>
 <div class="line">                <span class="keywordflow">if</span> (strncmp(filename, WTLOG, WTLOGLEN) == 0)</div>
-<div class="line">                    (void)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp %s/%s/%s %s/%s/%s&quot;</span>, home, logpath,</div>
-<div class="line">                      filename, h, logpath, filename);</div>
+<div class="line">                    testutil_system(</div>
+<div class="line">                      <span class="stringliteral">&quot;cp %s/%s/%s %s/%s/%s&quot;</span>, home, logpath, filename, h, logpath, filename);</div>
 <div class="line">                <span class="keywordflow">else</span></div>
-<div class="line">                    (<span class="keywordtype">void</span>)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, filename, h, filename);</div>
+<div class="line">                    testutil_system(<span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, filename, h, filename);</div>
 <div class="line"><span class="preprocessor">#if 0</span></div>
 <div class="line">                printf(<span class="stringliteral">&quot;Incremental: Whole file copy: %s\n&quot;</span>, buf);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line">                error_check(system(buf));</div>
 <div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line">        scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
@@ -532,11 +515,10 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">        <span class="keywordflow">for</span> (j = i; j &lt; MAX_ITERATIONS; j++) {</div>
 <div class="line">            (void)snprintf(h, <span class="keyword">sizeof</span>(h), <span class="stringliteral">&quot;%s.%d&quot;</span>, home_incr, j);</div>
 <div class="line">            <span class="keywordflow">if</span> (strncmp(filename, WTLOG, WTLOGLEN) == 0)</div>
-<div class="line">                (<span class="keywordtype">void</span>)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp %s/%s/%s %s/%s/%s&quot;</span>, home, logpath, filename, h,</div>
-<div class="line">                  logpath, filename);</div>
+<div class="line">                testutil_system(</div>
+<div class="line">                  <span class="stringliteral">&quot;cp %s/%s/%s %s/%s/%s&quot;</span>, home, logpath, filename, h, logpath, filename);</div>
 <div class="line">            <span class="keywordflow">else</span></div>
-<div class="line">                (<span class="keywordtype">void</span>)snprintf(buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, filename, h, filename);</div>
-<div class="line">            error_check(system(buf));</div>
+<div class="line">                testutil_system(<span class="stringliteral">&quot;cp %s/%s %s/%s&quot;</span>, home, filename, h, filename);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
@@ -560,8 +542,7 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">    (void)argc; <span class="comment">/* Unused variable */</span></div>
 <div class="line">    (void)testutil_set_progname(argv);</div>
 <div class="line"> </div>
-<div class="line">    (void)snprintf(cmd_buf, <span class="keyword">sizeof</span>(cmd_buf), <span class="stringliteral">&quot;rm -rf %s &amp;&amp; mkdir -p %s/%s&quot;</span>, home, home, logpath);</div>
-<div class="line">    error_check(system(cmd_buf));</div>
+<div class="line">    testutil_system(<span class="stringliteral">&quot;rm -rf %s &amp;&amp; mkdir -p %s/%s&quot;</span>, home, home, logpath);</div>
 <div class="line">    error_check(<a name="a13"></a><a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL, CONN_CONFIG, &amp;wt_conn));</div>
 <div class="line"> </div>
 <div class="line">    setup_directories();</div>

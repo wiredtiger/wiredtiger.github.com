@@ -327,16 +327,14 @@ $(document).ready(function(){initNavTree('ex_log_8c-example.html',''); initResiz
 <div class="line">    <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *cursor;</div>
 <div class="line">    <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
 <div class="line">    <span class="keywordtype">int</span> count_min, i, record_count;</div>
-<div class="line">    <span class="keywordtype">char</span> cmd_buf[256], k[32], v[32];</div>
+<div class="line">    <span class="keywordtype">char</span> k[32], v[32];</div>
 <div class="line"> </div>
 <div class="line">    (void)argc; <span class="comment">/* Unused variable */</span></div>
 <div class="line">    (void)testutil_set_progname(argv);</div>
 <div class="line"> </div>
 <div class="line">    count_min = 0;</div>
 <div class="line"> </div>
-<div class="line">    (void)snprintf(</div>
-<div class="line">      cmd_buf, <span class="keyword">sizeof</span>(cmd_buf), <span class="stringliteral">&quot;rm -rf %s %s &amp;&amp; mkdir %s %s&quot;</span>, home1, home2, home1, home2);</div>
-<div class="line">    error_check(system(cmd_buf));</div>
+<div class="line">    testutil_system(<span class="stringliteral">&quot;rm -rf %s %s &amp;&amp; mkdir %s %s&quot;</span>, home1, home2, home1, home2);</div>
 <div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home1, NULL, CONN_CONFIG, &amp;wt_conn));</div>
 <div class="line"> </div>
 <div class="line">    error_check(wt_conn-&gt;<a name="a25"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0">open_session</a>(wt_conn, NULL, NULL, &amp;session));</div>

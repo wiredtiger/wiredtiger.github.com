@@ -121,9 +121,7 @@ Backup from an application</h1>
 <div class="line">    <span class="comment">/* Copy the list of files. */</span></div>
 <div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
 <div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;filename));</div>
-<div class="line">        (void)snprintf(</div>
-<div class="line">          buf, <span class="keyword">sizeof</span>(buf), <span class="stringliteral">&quot;cp /path/database/%s /path/database.backup/%s&quot;</span>, filename, filename);</div>
-<div class="line">        error_check(system(buf));</div>
+<div class="line">        testutil_system(<span class="stringliteral">&quot;cp /path/database/%s /path/database.backup/%s&quot;</span>, filename, filename);</div>
 <div class="line">    }</div>
 <div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
 <div class="line"> </div>
