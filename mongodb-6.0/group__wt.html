@@ -1061,6 +1061,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf8f0e2e86dee76423a1a51f6aee74018">WT_STAT_CONN_CACHE_OVERHEAD</a></td></tr>
 <tr class="memdesc:gaf8f0e2e86dee76423a1a51f6aee74018"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: percentage overhead <br /></td></tr>
 <tr class="separator:gaf8f0e2e86dee76423a1a51f6aee74018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92ee226063766a4cf595ff741e340a39"><td class="memItemLeft" align="right" valign="top"><a id="ga92ee226063766a4cf595ff741e340a39"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga92ee226063766a4cf595ff741e340a39">WT_STAT_CONN_CACHE_EVICTION_SERVER_SKIP_DIRTY_PAGES_DURING_CHECKPOINT</a></td></tr>
+<tr class="memdesc:ga92ee226063766a4cf595ff741e340a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: skip dirty pages during a running checkpoint <br /></td></tr>
+<tr class="separator:ga92ee226063766a4cf595ff741e340a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b37117677b07b63e9c7761b7a9b74bc"><td class="memItemLeft" align="right" valign="top"><a id="ga5b37117677b07b63e9c7761b7a9b74bc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5b37117677b07b63e9c7761b7a9b74bc">WT_STAT_CONN_CACHE_EVICTION_SERVER_SKIP_PAGES_LAST_RUNNING</a></td></tr>
+<tr class="memdesc:ga5b37117677b07b63e9c7761b7a9b74bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: skip pages that are written with transactions greater than the last running <br /></td></tr>
+<tr class="separator:ga5b37117677b07b63e9c7761b7a9b74bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga193b22946b4bc64725847fc41422a829"><td class="memItemLeft" align="right" valign="top"><a id="ga193b22946b4bc64725847fc41422a829"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga193b22946b4bc64725847fc41422a829">WT_STAT_CONN_CACHE_EVICTION_SERVER_SKIP_PAGES_RETRY</a></td></tr>
+<tr class="memdesc:ga193b22946b4bc64725847fc41422a829"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: skip pages that previously failed eviction and likely will again <br /></td></tr>
+<tr class="separator:ga193b22946b4bc64725847fc41422a829"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2082bb6c7a1393ca76e0979ca3684776"><td class="memItemLeft" align="right" valign="top"><a id="ga2082bb6c7a1393ca76e0979ca3684776"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2082bb6c7a1393ca76e0979ca3684776">WT_STAT_CONN_CACHE_HS_INSERT_FULL_UPDATE</a></td></tr>
 <tr class="memdesc:ga2082bb6c7a1393ca76e0979ca3684776"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: the number of times full update inserted to history store <br /></td></tr>
@@ -2169,6 +2181,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga646dde52877a49e163f75704a6cf6815">WT_STAT_CONN_TXN_PREPARED_UPDATES_ROLLEDBACK</a></td></tr>
 <tr class="memdesc:ga646dde52877a49e163f75704a6cf6815"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: Number of prepared updates rolled back <br /></td></tr>
 <tr class="separator:ga646dde52877a49e163f75704a6cf6815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a32b8dc6f765eed857ba6486ce35927"><td class="memItemLeft" align="right" valign="top"><a id="ga1a32b8dc6f765eed857ba6486ce35927"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1a32b8dc6f765eed857ba6486ce35927">WT_STAT_CONN_TXN_READ_RACE_PREPARE_COMMIT</a></td></tr>
+<tr class="memdesc:ga1a32b8dc6f765eed857ba6486ce35927"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: a reader raced with a prepared transaction commit and skipped an update or updates <br /></td></tr>
+<tr class="separator:ga1a32b8dc6f765eed857ba6486ce35927"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5e652cb8ab201ddf9962de830eca5318"><td class="memItemLeft" align="right" valign="top"><a id="ga5e652cb8ab201ddf9962de830eca5318"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5e652cb8ab201ddf9962de830eca5318">WT_STAT_CONN_TXN_CHECKPOINT_SNAPSHOT_ACQUIRED</a></td></tr>
 <tr class="memdesc:ga5e652cb8ab201ddf9962de830eca5318"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: checkpoint has acquired a snapshot for its transaction <br /></td></tr>
@@ -3330,6 +3346,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4ba04ac772339dd5be439d80d2f3af19">WT_STAT_DSRC_TIERED_RETENTION</a></td></tr>
 <tr class="memdesc:ga4ba04ac772339dd5be439d80d2f3af19"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: tiered storage local retention time (secs) <br /></td></tr>
 <tr class="separator:ga4ba04ac772339dd5be439d80d2f3af19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15bdd5eb87a65f1f5b0b3beed164bfd5"><td class="memItemLeft" align="right" valign="top"><a id="ga15bdd5eb87a65f1f5b0b3beed164bfd5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga15bdd5eb87a65f1f5b0b3beed164bfd5">WT_STAT_DSRC_TXN_READ_RACE_PREPARE_COMMIT</a></td></tr>
+<tr class="memdesc:ga15bdd5eb87a65f1f5b0b3beed164bfd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: a reader raced with a prepared transaction commit and skipped an update or updates <br /></td></tr>
+<tr class="separator:ga15bdd5eb87a65f1f5b0b3beed164bfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga26627527d50799d69c3373de7c013bcd"><td class="memItemLeft" align="right" valign="top"><a id="ga26627527d50799d69c3373de7c013bcd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga26627527d50799d69c3373de7c013bcd">WT_STAT_DSRC_TXN_CHECKPOINT_SNAPSHOT_ACQUIRED</a></td></tr>
 <tr class="memdesc:ga26627527d50799d69c3373de7c013bcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: checkpoint has acquired a snapshot for its transaction <br /></td></tr>

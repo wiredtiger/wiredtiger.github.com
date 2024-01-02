@@ -1,5 +1,10 @@
 var NAVTREEINDEX7 =
 {
+"transactions.html":[0,3,5],
+"transactions_api.html":[0,3,6],
+"transactions_api.html#cursors_transactions":[0,3,6,4],
+"transactions_api.html#isolation_levels":[0,3,6,3],
+"transactions_api.html#snapshot_reset":[0,3,6,5],
 "transactions_api.html#transactions_concurrency":[0,3,6,2],
 "transactions_api.html#transactions_grouping":[0,3,6,0],
 "transactions_api.html#transactions_implicit":[0,3,6,1],
