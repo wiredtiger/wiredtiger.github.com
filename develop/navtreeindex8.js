@@ -1,5 +1,9 @@
 var NAVTREEINDEX8 =
 {
+"tool-statistics.html#autotoc_md52":[0,9,1,3,1],
+"tool-statistics.html#autotoc_md53":[0,9,1,4],
+"tool-xray.html":[0,9,4],
+"tool-xray.html#autotoc_md54":[0,9,4,0],
 "tool-xray.html#autotoc_md55":[0,9,4,0,0],
 "tool-xray.html#autotoc_md56":[0,9,4,0,1],
 "tool-xray.html#autotoc_md57":[0,9,4,0,2],
