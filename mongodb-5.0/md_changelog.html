@@ -1777,7 +1777,7 @@ WiredTiger release 1.3.4, 2012-10-19</h1>
 <li>Tweaks to file handle flags for out-of-cache read performance on Linux (disable read-ahead and access time updates).</li>
 <li>Replace the WT_SESSION::dumpfile method with configuration strings to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table or file.">WT_SESSION::verify</a>.</li>
 <li>Fix a bug where we weren't skipping unnecessary default checkpoints because we weren't handling the generational number included in the internal checkpoint name.</li>
-<li>Add a "force" configuration flag to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of objects.">WT_SESSION::checkpoint</a>, object compaction needs it because the work it wants done is done by the block manager.</li>
+<li>Add a "force" configuration flag to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of individual objects.">WT_SESSION::checkpoint</a>, object compaction needs it because the work it wants done is done by the block manager.</li>
 <li>Make compact and checkpoint operate on a table's indices.</li>
 <li>When doing a page truncate, lock down the page before we unpack the on-page cell &ndash; it's possible the page could be instantiated, modified and reconciled while we're sleeping, in which case the WT_REF.addr field would no longer point on-page.</li>
 </ul>
