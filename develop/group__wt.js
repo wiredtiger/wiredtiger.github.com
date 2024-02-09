@@ -39,6 +39,7 @@ var group__wt =
     [ "WT_SESSION", "struct_w_t___s_e_s_s_i_o_n.html", [
       [ "alter", "struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701", null ],
       [ "begin_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf", null ],
+      [ "bind_configuration", "struct_w_t___s_e_s_s_i_o_n.html#aedd139d6424440d5300e88c4fa061f41", null ],
       [ "checkpoint", "struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf", null ],
       [ "close", "struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698", null ],
       [ "commit_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2", null ],
@@ -74,6 +75,7 @@ var group__wt =
       [ "add_encryptor", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949", null ],
       [ "add_extractor", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903", null ],
       [ "close", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545", null ],
+      [ "compile_configuration", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a476b94edd7babeba038ec877b3277291", null ],
       [ "configure_method", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137", null ],
       [ "get_extension_api", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d", null ],
       [ "get_home", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a488fcba6b5abcdfca439d456564e8640", null ],
@@ -94,14 +96,16 @@ var group__wt =
       [ "handle_progress", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b", null ]
     ] ],
     [ "WT_CONFIG_ITEM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html", [
-      [ "WT_CONFIG_ITEM_STRING", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0aaf3e84e05814a538b630d161edba9c2d", null ],
-      [ "WT_CONFIG_ITEM_BOOL", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0af17eadafa19dbf7e4679c9268289494d", null ],
-      [ "WT_CONFIG_ITEM_ID", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0ad4cc6c35b608ec98a207cfd1d3a13922", null ],
-      [ "WT_CONFIG_ITEM_NUM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0a0d98189cee0438cd6c91bec663233085", null ],
-      [ "WT_CONFIG_ITEM_STRUCT", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a215d5ce41e53aa467dd940bace3f25f0aa60d34a8a1fb1c7468cbd747a117fa8b", null ],
+      [ "WT_CONFIG_ITEM_TYPE", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adaabb12100bf0f3c5d9639999f14b518", [
+        [ "WT_CONFIG_ITEM_STRING", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adaabb12100bf0f3c5d9639999f14b518aaf3e84e05814a538b630d161edba9c2d", null ],
+        [ "WT_CONFIG_ITEM_BOOL", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adaabb12100bf0f3c5d9639999f14b518af17eadafa19dbf7e4679c9268289494d", null ],
+        [ "WT_CONFIG_ITEM_ID", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adaabb12100bf0f3c5d9639999f14b518ad4cc6c35b608ec98a207cfd1d3a13922", null ],
+        [ "WT_CONFIG_ITEM_NUM", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adaabb12100bf0f3c5d9639999f14b518a0d98189cee0438cd6c91bec663233085", null ],
+        [ "WT_CONFIG_ITEM_STRUCT", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adaabb12100bf0f3c5d9639999f14b518aa60d34a8a1fb1c7468cbd747a117fa8b", null ]
+      ] ],
       [ "len", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14", null ],
       [ "str", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#aa0ce7d30a32600e16824966c638ee45f", null ],
-      [ "type", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a522b293b25db519b105556273f9f84c9", null ],
+      [ "type", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#ab1e66e04e835cc29fb412f41e7c06a26", null ],
       [ "val", "struct_w_t___c_o_n_f_i_g___i_t_e_m.html#a4aefab7843f434e5a5cc18203e9fec5f", null ]
     ] ],
     [ "WT_CONFIG_PARSER", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html", [

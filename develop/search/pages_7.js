@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['history_20store_1701',['History Store',['../arch-hs.html',1,'arch-toc-on-disk']]],
-  ['huffman_20encoding_1702',['Huffman Encoding',['../huffman.html',1,'file_formats']]]
+  ['history_20store_1711',['History Store',['../arch-hs.html',1,'arch-toc-on-disk']]],
+  ['huffman_20encoding_1712',['Huffman Encoding',['../huffman.html',1,'file_formats']]]
 ];

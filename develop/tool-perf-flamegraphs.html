@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('tool-perf-flamegraphs.html',''); initR
 <div class="title">CPU Flame Graphs </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md39"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md40"></a>
 Introduction</h1>
 <p><a href="http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html">FlameGraphs</a>, invented by <a href="http://www.brendangregg.com">Brendan Gregg</a>, help visually summarize on-CPU call stacks.</p>
 <p>Below is an image of a FlameGraph generated from a 10-second run of the evict-btree-stress-multi wtperf job:</p>
@@ -106,7 +106,7 @@ Introduction</h1>
 <li>The width of the box shows the total time it was on-CPU or part of an ancestry that was on-CPU (based on sample count). Functions with wide boxes may consume more CPU per execution than those with narrow boxes, or, they may simply be called more often. The call count is not shown (or known via sampling).</li>
 </ul>
 <p><b>Note:</b> If you generate a FlameGraph yourself and then open it in a browser, the image will be interactive, allowing you to hover over the functions to see their full names.</p>
-<h1><a class="anchor" id="autotoc_md40"></a>
+<h1><a class="anchor" id="autotoc_md41"></a>
 Generating FlameGraphs</h1>
 <p>To generate FlameGraphs, you first need to run perf and generate a perf.data file using the <code>perf record -g</code> command. <a class="el" href="tool-perf.html">Click here</a> for instructions explaining how to do this with WiredTiger. Don't forget the <code>-g</code> option: you need it in order to record the call stacks! </p><pre class="fragment"># Clone the FlameGraph repository
 git clone https://github.com/brendangregg/FlameGraph

@@ -30,6 +30,7 @@ var NAVTREE =
       [ "All", "functions.html", null ],
       [ "Functions", "functions_func.html", null ],
       [ "Variables", "functions_vars.html", null ],
+      [ "Enumerations", "functions_enum.html", null ],
       [ "Enumerator", "functions_eval.html", null ]
     ] ],
     [ "Examples", "examples.html", "examples" ],
@@ -41,14 +42,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "admin.html",
-"command_line.html#util_backup_options",
-"ex_extending_8c-example.html",
-"group__wt.html#ga37f2eac516cdecb655dc5d8ca9851a57",
-"group__wt.html#ga75e67aeb18efafb45ecee561e65e1486",
-"group__wt.html#gaae519abcc3809b0c8c261a8193810e07",
-"group__wt.html#gaef9d66fc30c30e5ecc2a775bdfc1e8b3",
-"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545",
-"tool-xray.html#autotoc_md60"
+"build-windows.html#windows_ctest",
+"error_handling.html#error_ebusy",
+"group__wt.html#ga32c545f7c61a032d70754a0382cff472",
+"group__wt.html#ga72438b4f111172b1e86e8e0f3039e417",
+"group__wt.html#gaaa0285e2524dfb34262a7a8637a86713",
+"group__wt.html#gaeb0e8ab71412a075fc26ca721d500b2a",
+"struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#ad0b4eef618f34b00edfbac44b24c5c16",
+"tool-perf.html#autotoc_md43"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,6 +1,7 @@
 var arch_index =
 [
     [ "Fundamentals", "arch-toc-fundamentals.html", "arch-toc-fundamentals" ],
+    [ "API", "arch-toc-api.html", "arch-toc-api" ],
     [ "Data Organization", "arch-toc-data-org.html", "arch-toc-data-org" ],
     [ "Data Sources", "arch-toc-data-src.html", "arch-toc-data-src" ],
     [ "In Memory Concepts", "arch-toc-in-mem.html", "arch-toc-in-mem" ],

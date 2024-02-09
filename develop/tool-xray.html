@@ -92,10 +92,10 @@ $(document).ready(function(){initNavTree('tool-xray.html',''); initResizable(); 
 <div class="title">Instrumentation and introspection with XRay </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md54"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md55"></a>
 Instrumenting with XRay</h1>
 <p>XRay is a tool, originally developed at Google and now integrated in LLVM, that instruments the program such that when it runs it produces a trace of executed functions and their timestamps. This article explains how to instrument WiredTiger, collect the XRay traces, and analyze them. As an example, we will show how to trace <code>wtperf</code>.</p>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 Step 1: Install LLVM and graphviz</h2>
 <p>LLVM and graphviz packages are needed to build and run <code>llvm-xray</code> command inside the wtperf_xray.sh script.</p>
 <div class="fragment"><div class="line">$ sudo apt-get install llvm</div>
@@ -104,13 +104,13 @@ Step 1: Install LLVM and graphviz</h2>
 <div class="fragment"><div class="line">$ llvm-config -version</div>
 </div><!-- fragment --><p>If your distribution's default <code>llvm-config</code> isn't from the 10 or higher series, you'll need to move one with a major version of 10 or higher into the <code>$PATH</code> such that it gets invoked instead.</p>
 <p>The <code>llvm-config</code> command line tool is used to supply the required compiler and linker flags to build programs such like <code>xray_to_optrack</code> on top of LLVM.</p>
-<h2><a class="anchor" id="autotoc_md56"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 Step 2: Configure and compile WiredTiger with XRay instrumentation</h2>
 <div class="fragment"><div class="line">$ mkdir build</div>
 <div class="line">$ cd build</div>
 <div class="line">$ cmake -DCMAKE_C_FLAGS=-fxray-instrument -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang.cmake -DCLANG_C_VERSION=<span class="stringliteral">&quot;10&quot;</span> -DCLANG_CXX_VERSION=<span class="stringliteral">&quot;10&quot;</span> -G Ninja ../.</div>
 <div class="line">$ ninja</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md57"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md58"></a>
 Step 3: Run wtperf</h2>
 <p>Use the script <code>wtperf_xray.sh</code> to launch <code>wtperf</code> from the directory containing the <code>wtperf</code> binary. The first argument to the script must be the benchmark configuration file. For example:</p>
 <div class="fragment"><div class="line">$ cd bench/wtperf</div>
@@ -129,21 +129,21 @@ Step 3: Run wtperf</h2>
 <li><code>XRAY_BINARY:</code> The binary to use to inspect the XRay log. The script defaults to using <code>llvm-xray</code> however, if you compiled with a particular <code>clang</code> version, you should use the corresponding <code>llvm-xray</code> version. For example, if you selected <code>clang-10</code> like the configuration above, you should set <code>XRAY_BINARY</code> to <code>llvm-xray-10</code>.</li>
 <li><code>FLAME_GRAPH_PATH:</code> As part of the script's analysis phase, it can optionally produce a FlameGraph. The <code>FLAME_GRAPH_PATH</code> variable must be set to your copy of Brendan Gregg's FlameGraph script (<code>flamegraph.pl</code>).</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md58"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 Convert XRay logs to the Operation Tracking format (optional)</h1>
 <p>After running a program instrumented with XRay, a log file will be produced containing performance information. There is a tool called <code>xray_to_optrack</code> which is designed to convert this log to the <a class="el" href="tool-optrack.html">Operation Tracking</a> format.</p>
-<h2><a class="anchor" id="autotoc_md59"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Step 1: Take a copy of the wtperf binary and the XRay log</h2>
 <p>To build the <code>xray_to_optrack</code> utility, we'll need to reconfigure and build with a new set of flags. Before doing that, we'll need to keep a copy of the XRay log and the <code>wtperf</code> binary that we used to generate it.</p>
 <div class="fragment"><div class="line">$ cp &lt;wtperf&gt; &lt;xray_log&gt; .</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md60"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md61"></a>
 Step 2: Configure and build WiredTiger with LLVM flags</h2>
 <p>Supply <code>-DENABLE_LLVM=1</code> to your configuration and have a clang toolchain installed in order to build.</p>
 <div class="fragment"><div class="line">$ cd build</div>
 <div class="line">$ cmake -DENABLE_LLVM=1 -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang.cmake -DCLANG_C_VERSION=<span class="stringliteral">&quot;10&quot;</span> -DCLANG_CXX_VERSION=<span class="stringliteral">&quot;10&quot;</span> -G Ninja ../.</div>
 <div class="line">$ ninja</div>
 </div><!-- fragment --><p>Take care NOT to customize <code>CC</code> or <code>CXX</code>. Customizing either of these variables will cause C++ programs such as <code>workgen</code> or <code>xray_to_optrack</code> to be skipped since we can't reliably link object files emitted by C and C++ compilers unless they are the system's default <code>cc</code> and <code>c++</code>.</p>
-<h2><a class="anchor" id="autotoc_md61"></a>
+<h2><a class="anchor" id="autotoc_md62"></a>
 Step 3: Process the traces</h2>
 <p>To process the traces, use the <code>xray_to_optrack</code> tool in the <code>tools/xray_to_optrack</code> directory.</p>
 <p>Then, run the tool like this:</p>

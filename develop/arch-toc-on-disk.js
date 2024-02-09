@@ -26,5 +26,7 @@ var arch_toc_on_disk =
       [ "Log-based incremental backup", "arch-backup.html#autotoc_md3", null ],
       [ "Target backup", "arch-backup.html#autotoc_md4", null ]
     ] ],
-    [ "Compaction", "arch-compact.html", null ]
+    [ "Compaction", "arch-compact.html", [
+      [ "Background compaction", "arch-compact.html#autotoc_md10", null ]
+    ] ]
 ];

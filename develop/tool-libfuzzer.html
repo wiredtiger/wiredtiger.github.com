@@ -92,21 +92,21 @@ $(document).ready(function(){initNavTree('tool-libfuzzer.html',''); initResizabl
 <div class="title">Testing with LLVM LibFuzzer </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md10"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md11"></a>
 Building and running an LLVM LibFuzzer fuzzer</h1>
 <p>LLVM LibFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine. It feeds a series of fuzzed inputs via a user-provided "target" function and attempts to trigger crashes, memory bugs and undefined behavior.</p>
 <p>A fuzzer is a program that consists of the aforementioned target function linked against the LibFuzzer runtime. The LibFuzzer runtime provides the entry-point to the program and repeatedly calls the target function with generated inputs.</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Step 1: Configure with Clang as your C compiler and enable LibFuzzer</h2>
 <p>Support for LibFuzzer is implemented as a compiler flag in Clang. WiredTiger's build configuration checks whether the compiler in use supports <code>-fsanitize=fuzzer-no-link</code> and if so, elects to build the tests.</p>
 <p>Compiling with Clang's Address Sanitizer isn't mandatory but it is recommended since fuzzing often exposes memory bugs.</p>
 <div class="fragment"><div class="line">$ mkdir build</div>
 <div class="line">$ cd build</div>
 <div class="line">$ cmake -DENABLE_LLVM=1 -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang.cmake -DCLANG_C_VERSION=<span class="stringliteral">&quot;8&quot;</span> -DCLANG_CXX_VERSION=<span class="stringliteral">&quot;8&quot;</span> -DCMAKE_BUILD_TYPE=ASan ../.</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 Step 2: Build as usual</h2>
 <div class="fragment"><div class="line">$ make</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 Step 3: Run a fuzzer</h2>
 <p>Each fuzzer is a program under <code>build/test/fuzz/</code>. WiredTiger provides the <code>test/fuzz/fuzz_run.sh</code> script to quickly get started using a fuzzer. It performs a limited number of runs, automatically cleans up after itself in between runs and provides a sensible set of parameters which users can add to. For example:</p>
 <div class="fragment"><div class="line">$ cd build/test/fuzz/</div>
@@ -120,23 +120,23 @@ Step 3: Run a fuzzer</h2>
 <li><code>WT_TEST_&lt;pid&gt;</code>: The home directory for a given worker process.</li>
 <li><code>WT_TEST_&lt;pid&gt;.profraw:</code> If the fuzzer is running with Clang coverage (more on this later), files containing profiling data for a given worker will be produced. These will be used by <code>fuzz_coverage</code>.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md15"></a>
 Corpus</h3>
 <p>LibFuzzer is a coverage based fuzzer meaning that it notices when a particular input hits a new code path and adds it to a corpus of interesting data inputs. It then uses existing data in the corpus to mutate and come up with new inputs.</p>
 <p>While LibFuzzer will automatically add to its corpus when it finds an interesting input, some fuzz targets (especially those that expect data in a certain format) require a corpus to start things off in order to be effective. The fuzzer <code>fuzz_config</code> is one example of this as it expects its data sliced with a separator so the fuzzing engine needs some examples to guide it. The corpus is supplied as the first positional argument to both <code>fuzz_run.sh</code> and the underlying fuzzer itself. For example:</p>
 <div class="fragment"><div class="line">$ cd build/test/fuzz/</div>
 <div class="line">$ bash ../../../test/fuzz/fuzz_run.sh ./test_fuzz_config ../../../test/fuzz/config/corpus/</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
 Implementing an LLVM LibFuzzer fuzzer</h1>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Overview</h2>
 <p>Creating a fuzzer with LLVM LibFuzzer requires an implementation of a single function called <code>LLVMFuzzerTestOneInput</code>. It has the following prototype:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> LLVMFuzzerTestOneInput(<span class="keyword">const</span> uint8_t *data, <span class="keywordtype">size_t</span> size);</div>
 </div><!-- fragment --><p>When supplied with the <code>-fsanitize=fuzzer</code> flag, Clang will use its own <code>main</code> function and repeatedly call the provided <code>LLVMFuzzerTestOneInput</code> with various inputs. There is a lot of information online about best practices when writing fuzzing targets but to summarize, the requirements are much like those for writing unit tests: they should be fast, deterministic and stateless (as possible). The <a href="https://llvm.org/docs/LibFuzzer.html">LLVM LibFuzzer reference page</a> is a good place to start to learn more.</p>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Fuzz Utilities</h2>
 <p>WiredTiger has a small fuzz utilities library containing common functionality required for writing fuzz targets. Most of the important functions here are about manipulating fuzz input into something that targets can use with the WiredTiger API.</p>
-<h3><a class="anchor" id="autotoc_md18"></a>
+<h3><a class="anchor" id="autotoc_md19"></a>
 Slicing inputs</h3>
 <p>If the function that a target is testing can accept a binary blob of data, then the target will be straightforward as it'll more or less just pass the input to the function under test. But for functions that require more structured input, this can pose a challenge. As an example, the <code>fuzz_config</code> target requires two inputs that can be variable length: a configuration string and a key to search for. In order to do this, the target can use an arbitrary separator sequence to split the input into multiple parts with the following API:</p>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
@@ -153,19 +153,19 @@ Slicing inputs</h3>
 <div class="fragment"><div class="line">allocation_size|key_format=u,value_format=u,allocation_size=512,log=(enabled)</div>
 </div><!-- fragment --><p>But for data where there is no distinct character that can be used as a sentinel, we can provide a byte sequence such as <code>0xdeadbeef</code>. So in that case, a valid input may look like this:</p>
 <div class="fragment"><div class="line">0xaa 0xaa 0xde 0xad 0xbe 0xef 0xff 0xff</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
 Viewing code coverage for an LLVM LibFuzzer fuzzer</h1>
 <p>After implementing a new fuzzing target, developers typically want to validate that it's doing something useful. If the fuzzer is not producing failures, it's either because the code under test is robust or the fuzzing target isn't doing a good job of exercising different code paths.</p>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 Step 1: Configure your build to compile with Clang coverage</h2>
 <p>In order to view code coverage information, the build will need to be configured with the <code>-fprofile-instr-generate</code> and <code>-fcoverage-mapping</code> flags to tell Clang to instrument WiredTiger with profiling information. It's important that these are added to both the <code>CFLAGS</code> and <code>LINKFLAGS</code> variables.</p>
 <div class="fragment"><div class="line">$ mkdir build</div>
 <div class="line">$ cd build</div>
 <div class="line">$ cmake -DENABLE_LLVM=1 -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang.cmake -DCLANG_C_VERSION=<span class="stringliteral">&quot;8&quot;</span> -DCLANG_CXX_VERSION=<span class="stringliteral">&quot;8&quot;</span> -DCMAKE_BUILD_TYPE=Coverage ../.</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
 Step 2: Build and run fuzzer</h2>
 <p>Build and invoke <code>fuzz_run.sh</code> for the desired fuzzer as described in the section above.</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 Step 3: Generate code coverage information</h2>
 <p>After running the fuzzer with Clang coverage switched on, there should be a number of <code>profraw</code> files in the working directory.</p>
 <p>Those files contain the raw profiling data however, some post-processing is required to get it into a readable form. WiredTiger provides a script called <code>fuzz_coverage.sh</code> that handles this. It expects to be called from the same directory that the fuzzer was executed in.</p>

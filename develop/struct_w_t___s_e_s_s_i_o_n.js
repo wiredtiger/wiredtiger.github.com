@@ -2,6 +2,7 @@ var struct_w_t___s_e_s_s_i_o_n =
 [
     [ "alter", "struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701", null ],
     [ "begin_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf", null ],
+    [ "bind_configuration", "struct_w_t___s_e_s_s_i_o_n.html#aedd139d6424440d5300e88c4fa061f41", null ],
     [ "checkpoint", "struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf", null ],
     [ "close", "struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698", null ],
     [ "commit_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2", null ],

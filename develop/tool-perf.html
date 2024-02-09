@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('tool-perf.html',''); initResizable(); 
 <div class="title">Performance Monitoring </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md41"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md42"></a>
 Overview</h1>
 <p>Linux <code>perf</code> is a tool that allows counting and sampling of various events in the hardware and in the kernel. Hardware events are available via performance monitoring units (PMU); they measure CPU cycles, cache misses, branches, etc. Kernel events include scheduling context switches, page faults, block I/O, etc.</p>
 <p><code>perf</code> is good for answering these and similar questions:</p>
@@ -106,7 +106,7 @@ Overview</h1>
 </ul>
 <p>Despite <a href="https://perf.wiki.kernel.org/index.php/Tutorial#Profiling_sleep_times">claims that perf can also tell you where and why your program was blocking</a>, I was not able to get it to do so after many attempts. For alternative ways to perform off-CPU analysis, read <a href="http://www.brendangregg.com/offcpuanalysis.html">this post by Brendan Gregg</a> or use WiredTiger's <a class="el" href="tool-optrack.html">Operation Tracking</a>.</p>
 <p>What follows is a quick cheat sheet of how to use <code>perf</code> with WiredTiger. Most of the information in this cheat sheet comes from <a href="http://www.brendangregg.com/perf.html">this excellent tutorial by Brendan Gregg</a>. If you need more information, please refer to that source.</p>
-<h1><a class="anchor" id="autotoc_md42"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 Running perf with WiredTiger</h1>
 <p>Build WiredTiger as usual. You do not need to add any special compilation flags.</p>
 <p>To run <code>perf</code> with WiredTiger, you simply insert the name of the <code>perf</code> command before the WiredTiger executable. For example, if you want to record default <code>perf</code> statistics for a <code>wtperf</code> job, you'd run: </p><pre class="fragment">perf stat wtperf &lt;wtperf options&gt;
@@ -114,7 +114,7 @@ Running perf with WiredTiger</h1>
 </pre><p>Any environment variables you care about will go before the <code>perf</code> command.</p>
 <p>If you wanted to run <code>perf</code> on an already running WiredTiger process, you supply a <code>-p &lt;PID&gt;</code> option to either of these commands: </p><pre class="fragment">perf record -p &lt;PID&gt;
 </pre><p>or </p><pre class="fragment">perf stat -p &lt;PID&gt;
-</pre><h1><a class="anchor" id="autotoc_md43"></a>
+</pre><h1><a class="anchor" id="autotoc_md44"></a>
 Counting events</h1>
 <p>The command <code>perf stat</code> will report the total count of events for the entire execution. </p><pre class="fragment">perf stat wtperf &lt;wtperf options&gt;
 </pre><p>By default it will report things like clock cycles, context switches, CPU migrations, page faults, cycles, instructions, branches and branch misses.</p>
@@ -132,11 +132,11 @@ Counting events</h1>
 </pre><p>Or if you wanted all default events and all cache events, run: </p><pre class="fragment">perf stat -d wtperf &lt;wtperf options&gt;
 </pre><p>To learn about all events you can count or sample with perf, use the command: </p><pre class="fragment">perf list
 </pre><p>To count all system calls by type, run: </p><pre class="fragment">perf stat -e 'syscalls:sys_enter_*'
-</pre><h1><a class="anchor" id="autotoc_md44"></a>
+</pre><h1><a class="anchor" id="autotoc_md45"></a>
 Sampling events (profiling)</h1>
 <p>Unlike <code>perf stat</code>, which counts all events, <code>perf record</code> samples events. The simplest way to invoke it is like so: </p><pre class="fragment">perf record &lt;command&gt;
 </pre><p>This will sample on-CPU functions.</p>
-<h1><a class="anchor" id="autotoc_md45"></a>
+<h1><a class="anchor" id="autotoc_md46"></a>
 Examining the output</h1>
 <p>By default, the output will be placed into a file named <code>perf.data</code>. To examine it, run: </p><pre class="fragment">perf report
 </pre><p><code>perf report</code> will show, for each sampled event, the call stacks that were recorded at the time of sampling. The call stacks will be sorted from the most frequently occurring to the least frequently occurring.</p>
@@ -144,7 +144,7 @@ Examining the output</h1>
 </pre><p>If you want to change the output file, use the <code>-o</code> option: </p><pre class="fragment">perf record -o &lt;new_output_file&gt; &lt;command&gt;
 </pre><p>And run the reporting with the <code>-i</code> option: </p><pre class="fragment">perf report -i &lt;new_output_file&gt;
 </pre><p>Here is a way to look at the output with all the call stacks expanded: </p><pre class="fragment">perf report -n --stdio
-</pre><h1><a class="anchor" id="autotoc_md46"></a>
+</pre><h1><a class="anchor" id="autotoc_md47"></a>
 More examples</h1>
 <p>Sample on-cpu functions with call stacks: </p><pre class="fragment">perf record -g &lt;command&gt;
 </pre><p>Sample as above, but using a specific sampling frequency (99 hertz): </p><pre class="fragment">perf record -F 99 -g &lt;command&gt;
