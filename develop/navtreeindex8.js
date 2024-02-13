@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"tool-optrack.html#autotoc_md38":[0,9,2,4],
+"tool-optrack.html#autotoc_md39":[0,9,2,5],
+"tool-perf-flamegraphs.html":[0,9,5],
+"tool-perf-flamegraphs.html#autotoc_md40":[0,9,5,0],
+"tool-perf-flamegraphs.html#autotoc_md41":[0,9,5,1],
+"tool-perf.html":[0,9,3],
+"tool-perf.html#autotoc_md42":[0,9,3,0],
 "tool-perf.html#autotoc_md43":[0,9,3,1],
 "tool-perf.html#autotoc_md44":[0,9,3,2],
 "tool-perf.html#autotoc_md45":[0,9,3,3],
