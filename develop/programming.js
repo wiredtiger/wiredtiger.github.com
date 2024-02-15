@@ -179,7 +179,10 @@ var programming =
       [ "Persisted content", "chunkcache.html#persistence", null ],
       [ "Troubleshooting", "chunkcache.html#troubleshooting", null ]
     ] ],
-    [ "Compaction", "compact.html", null ],
+    [ "Compaction", "compact.html", [
+      [ "Foreground compaction", "compact.html#foreground", null ],
+      [ "Background compaction", "compact.html#background", null ]
+    ] ],
     [ "In-memory databases", "in_memory.html", null ],
     [ "Eviction", "eviction.html", [
       [ "Eviction overview", "eviction.html#eviction_overview", null ],

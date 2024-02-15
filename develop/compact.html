@@ -92,12 +92,37 @@ $(document).ready(function(){initNavTree('compact.html',''); initResizable(); })
 <div class="title">Compaction </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> method can be used to compact data sources.</p>
-<p>The data source does not have to be quiescent, compaction may be performed on an active data source.</p>
-<p>Because checkpoints named by the application are not discarded until explicitly removed or replaced, they may prevent <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> from accomplishing anything. </p>
+<div class="textblock"><p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> method can be used to compact data sources. Parallel activity can happen on the data sources while compaction is running but it might affect the efficiency of compaction. Furthermore, it is not possible to run compaction from multiple sessions on the same data source at the same time.</p>
+<p><b>Note:</b> Because checkpoints named by the application are not discarded until explicitly removed or replaced, they may prevent <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> from accomplishing anything.</p>
+<h1><a class="anchor" id="foreground"></a>
+Foreground compaction</h1>
+<p>Foreground compaction is executed when a specific URI is given to the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> method. The call returns once compaction has been executed on the specified URI.</p>
+<p>Example: </p><div class="fragment"><div class="line"><span class="preprocessor"># Execute compaction on &quot;mytable&quot; with the default parameters.</span></div>
+<div class="line"><span class="keywordtype">int</span> ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL);</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor"># Execute compaction on &quot;mytable&quot; if at least 20MB of free space can be theoretically reclaimed by compaction.</span></div>
+<div class="line"><span class="preprocessor">int ret = session-&gt;compact(session, &quot;table:mytable&quot;, &quot;free_space_target=20MB&quot;);</span></div>
+</div><!-- fragment --><h1><a class="anchor" id="background"></a>
+Background compaction</h1>
+<p>The "background" configuration item can be used to interact with background compaction when calling the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a> method. The call immediately returns to the application but does not guarantee compaction will be enabled/disabled at the same time. A successful call simply means the request has been submitted to WiredTiger. For instance, if background compaction is disabled while it is compacting a table, compaction will be stopped as soon as it is safe to do so.</p>
+<p>When background compaction is enabled, WiredTiger autonomously compacts the eligible files in the database. You can read more about eligible files on the following page: <a class="el" href="arch-compact.html">Compaction</a>.</p>
+<p><b>Note:</b> When interacting with background compaction, NULL should be assigned to the argument corresponding to the URI.</p>
+<p>Example: </p><div class="fragment"><div class="line"><span class="preprocessor"># Enable background compaction with the default parameters.</span></div>
+<div class="line"><span class="keywordtype">int</span> ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a>(session, NULL, <span class="stringliteral">&quot;background=true&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor"># Enable background compaction and compact tables that have at least 20MB of free space that can be theoretically reclaimed by compaction.</span></div>
+<div class="line"><span class="keywordtype">int</span> ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a>(session, NULL, <span class="stringliteral">&quot;background=true,free_space_target=20MB&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor"># Enable background compaction and exclude the table &quot;mytable&quot;.</span></div>
+<div class="line"><span class="keywordtype">int</span> ret = session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a>(session, NULL, <span class="stringliteral">&quot;background=true,free_space_target=20MB,exclude=[\&quot;table:mytable.wt\&quot;]&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor"># Disable background compaction.</span></div>
+<div class="line"><span class="preprocessor">int ret = session-&gt;compact(session, NULL, &quot;background=false&quot;);</span></div>
+</div><!-- fragment --><p>More information about compaction can be read here: <a class="el" href="arch-compact.html">Compaction</a>. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aafa7a12a4891a5bfdc98673a5b8f9c69"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">WT_SESSION::compact</a></div><div class="ttdeci">int compact(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Compact a live row- or column-store btree or LSM tree.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
