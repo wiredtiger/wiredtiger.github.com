@@ -680,6 +680,7 @@ var group__wt =
     [ "WT_STAT_CONN_REC_MAXIMUM_IMAGE_BUILD_MILLISECONDS", "group__wt.html#ga450fc31c6799eb85d2db345e9553a42f", null ],
     [ "WT_STAT_CONN_REC_MAXIMUM_MILLISECONDS", "group__wt.html#ga460480e2546d203dee08d08bffac9be6", null ],
     [ "WT_STAT_CONN_REC_OVERFLOW_KEY_LEAF", "group__wt.html#ga38ef7862fb425a9e1a86c5a552bfd866", null ],
+    [ "WT_STAT_CONN_REC_OVERFLOW_VALUE", "group__wt.html#ga7a360d8d687b34ca85b94e38412d3b67", null ],
     [ "WT_STAT_CONN_REC_PAGE_DELETE", "group__wt.html#gae9a8a4250603ba105328c7a0a2dc6d7c", null ],
     [ "WT_STAT_CONN_REC_PAGE_DELETE_FAST", "group__wt.html#ga56aba145afb1b81789e11557a37dabc9", null ],
     [ "WT_STAT_CONN_REC_PAGES", "group__wt.html#ga75e67aeb18efafb45ecee561e65e1486", null ],
