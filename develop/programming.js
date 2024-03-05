@@ -116,7 +116,11 @@ var programming =
         [ "Named checkpoints", "lsm.html#lsm_checkpoints", null ]
       ] ]
     ] ],
-    [ "File formats and compression", "file_formats.html", "file_formats" ],
+    [ "File formats and compression", "file_formats.html", [
+      [ "File formats", "file_formats.html#file_formats_formats", null ],
+      [ "Choosing a file format", "file_formats.html#file_formats_choice", null ],
+      [ "File formats and compression", "file_formats.html#file_formats_compression", null ]
+    ] ],
     [ "Compressors", "compression.html", [
       [ "Using LZ4 compression", "compression.html#compression_lz4", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],

@@ -261,13 +261,6 @@ Dictionary configuration: <br  />
 Specified using the <code>dictionary</code> configuration option to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>, which specifies the maximum number of unique values remembered in the B-Tree row-store leaf page value dictionary. An example of such a configuration string is as follows: <pre>
 "key_format=S,value_format=S,dictionary=1000"
 </pre></li>
-<li>Huffman <br  />
-Reduces the size requirement by compressing individual value items, and can be configured for values. The additional CPU cost of Huffman encoding can be high, and should be considered. (See <a class="el" href="huffman.html">Huffman Encoding</a> for details.) <br  />
-<br  />
-Huffman configuration: <br  />
-Specified using the <code>huffman_value</code> configuration options to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. These options can take values of "english" (to use a built-in English language frequency table), "utf8&lt;file&gt;" or "utf16&lt;file&gt;" (to use a custom UTF-8 or UTF-16 symbol frequency table file). An example of such a configuration string is as follows: <pre>
-"key_format=S,value_format=S,huffman_value=english"
-</pre></li>
 <li>Block Compression <br  />
 Reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The additional CPU cost of block compression can be high, and should be considered. When block compression has been configured, configured page sizes will not match the actual size of the page on disk. <br  />
 When block compression is configured, chunks of data are given to the compression system, then returned as a compressed block of data. The amount of data chosen to compress is based on previous compression results. When compressed, the size written to disk will vary depending on the compressibility of the stored data. <br  />
@@ -287,8 +280,6 @@ Table summarizing compression in WiredTiger</h2>
 <td>Key-prefix</td><td>yes</td><td>no</td><td>no</td><td>disabled</td><td>yes</td><td>yes</td><td>minor </td></tr>
 <tr>
 <td>Dictionary</td><td>yes</td><td>yes</td><td>no</td><td>disabled</td><td>yes</td><td>yes</td><td>minor </td></tr>
-<tr>
-<td>Huffman</td><td>yes</td><td>yes</td><td>no</td><td>disabled</td><td>yes</td><td>yes</td><td>can be high </td></tr>
 <tr>
 <td>Block</td><td>yes</td><td>yes</td><td>yes</td><td>disabled</td><td>no</td><td>yes</td><td>can be high </td></tr>
 </table>
