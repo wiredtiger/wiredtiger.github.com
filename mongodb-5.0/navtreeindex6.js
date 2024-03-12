@@ -1,5 +1,12 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0":[1,0,4,11],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39":[1,0,4,9],
+"struct_w_t___c_u_r_s_o_r.html":[1,0,2],
+"struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b":[1,0,2,8],
+"struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c":[1,0,2,20],
+"struct_w_t___c_u_r_s_o_r.html#a21f35d032987318a8c3b9eb1b0c6a1dc":[1,0,2,19],
+"struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c":[1,0,2,17],
 "struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738":[1,0,2,7],
 "struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6":[1,0,2,12],
 "struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76":[1,0,2,9],
@@ -242,12 +249,5 @@ var NAVTREEINDEX6 =
 "transactions.html#timestamp_transactions":[0,3,3,5,1],
 "transactions.html#transaction_isolation":[0,3,3,4],
 "transactions.html#transaction_timestamps":[0,3,3,5],
-"transactions.html#transactions_acid":[0,3,3,0],
-"transactions.html#transactions_api":[0,3,3,1],
-"transactions.html#transactions_concurrency":[0,3,3,3],
-"transactions.html#transactions_implicit":[0,3,3,2],
-"tune_build_options.html":[0,3,34],
-"tune_bulk_load.html":[0,3,35],
-"tune_cache.html":[0,3,36],
-"tune_cache.html#cache_eviction":[0,3,36,2]
+"transactions.html#transactions_acid":[0,3,3,0]
 };

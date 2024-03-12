@@ -1,5 +1,12 @@
 var NAVTREEINDEX7 =
 {
+"transactions.html#transactions_api":[0,3,3,1],
+"transactions.html#transactions_concurrency":[0,3,3,3],
+"transactions.html#transactions_implicit":[0,3,3,2],
+"tune_build_options.html":[0,3,34],
+"tune_bulk_load.html":[0,3,35],
+"tune_cache.html":[0,3,36],
+"tune_cache.html#cache_eviction":[0,3,36,2],
 "tune_cache.html#tuning_cache_resident":[0,3,36,1],
 "tune_cache.html#tuning_cache_size":[0,3,36,0],
 "tune_capacity.html":[0,3,37],
