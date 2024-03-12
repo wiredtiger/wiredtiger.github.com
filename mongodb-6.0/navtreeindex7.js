@@ -1,5 +1,12 @@
 var NAVTREEINDEX7 =
 {
+"tool-xray.html#autotoc_md56":[0,9,4,0,0],
+"tool-xray.html#autotoc_md57":[0,9,4,0,1],
+"tool-xray.html#autotoc_md58":[0,9,4,1],
+"tool-xray.html#autotoc_md59":[0,9,4,1,0],
+"tool-xray.html#autotoc_md60":[0,9,4,1,1],
+"tool-xray.html#autotoc_md61":[0,9,4,1,2],
+"tool-xray.html#autotoc_md62":[0,9,4,1,3],
 "transactions.html":[0,3,5],
 "transactions_api.html":[0,3,6],
 "transactions_api.html#cursors_transactions":[0,3,6,4],

@@ -1,5 +1,12 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28":[1,0,4,14],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d":[1,0,4,7],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68":[1,0,4,10],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137":[1,0,4,6],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512":[1,0,4,16],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0":[1,0,4,11],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39":[1,0,4,9],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545":[1,0,4,5],
 "struct_w_t___c_u_r_s_o_r.html":[1,0,2],
 "struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b":[1,0,2,8],
@@ -242,12 +249,5 @@ var NAVTREEINDEX6 =
 "tool-statistics.html#autotoc_md53":[0,9,1,3,1],
 "tool-statistics.html#autotoc_md54":[0,9,1,4],
 "tool-xray.html":[0,9,4],
-"tool-xray.html#autotoc_md55":[0,9,4,0],
-"tool-xray.html#autotoc_md56":[0,9,4,0,0],
-"tool-xray.html#autotoc_md57":[0,9,4,0,1],
-"tool-xray.html#autotoc_md58":[0,9,4,1],
-"tool-xray.html#autotoc_md59":[0,9,4,1,0],
-"tool-xray.html#autotoc_md60":[0,9,4,1,1],
-"tool-xray.html#autotoc_md61":[0,9,4,1,2],
-"tool-xray.html#autotoc_md62":[0,9,4,1,3]
+"tool-xray.html#autotoc_md55":[0,9,4,0]
 };
