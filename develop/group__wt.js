@@ -852,6 +852,7 @@ var group__wt =
     [ "WT_STAT_DSRC_BTREE_COLUMN_RLE", "group__wt.html#ga03aec170331a03e12754616b16ffd9ab", null ],
     [ "WT_STAT_DSRC_BTREE_COLUMN_TWS", "group__wt.html#ga7dfa03c48cad46c56e995522f2545d49", null ],
     [ "WT_STAT_DSRC_BTREE_COLUMN_VARIABLE", "group__wt.html#gaf1c9b55ff1771c3c66455b7fd4ed26bb", null ],
+    [ "WT_STAT_DSRC_BTREE_COMPACT_BYTES_REWRITTEN_EXPECTED", "group__wt.html#ga68a9a2617f88f58a9fcf5bbe9355e630", null ],
     [ "WT_STAT_DSRC_BTREE_COMPACT_PAGES_REVIEWED", "group__wt.html#gafe8e6cb359f19845131b38b6e14580d8", null ],
     [ "WT_STAT_DSRC_BTREE_COMPACT_PAGES_REWRITTEN", "group__wt.html#gaf338c180f10f9a08e369e8ef6fb1d9fb", null ],
     [ "WT_STAT_DSRC_BTREE_COMPACT_PAGES_REWRITTEN_EXPECTED", "group__wt.html#gae796a682af0718916566caad052cd751", null ],

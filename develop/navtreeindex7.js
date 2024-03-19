@@ -1,13 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"sodium_encrypt_8c-example.html":[4,19],
-"statistics.html":[0,4,38],
-"statistics.html#statistics_log":[0,4,38,0],
-"struct_w_t___c_o_l_l_a_t_o_r.html":[1,1,0],
-"struct_w_t___c_o_l_l_a_t_o_r.html#a8b187a50a9830bfb63390ee5bf9b6cd0":[1,1,0,0],
-"struct_w_t___c_o_l_l_a_t_o_r.html#adc24bc0e035643b8e2b596022c84b6e0":[1,1,0,1],
-"struct_w_t___c_o_l_l_a_t_o_r.html#af85a41db9b4d5919303cdb8c80039717":[1,1,0,2],
-"struct_w_t___c_o_m_p_r_e_s_s_o_r.html":[1,1,1],
 "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a075294c61c5d29abd55fc4603afe431f":[1,1,1,0],
 "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a12e35ffbbe63b041c0571fb622b7f9da":[1,1,1,1],
 "struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a8b72f263db4faea37d8362ebc4725990":[1,1,1,2],
@@ -249,5 +241,13 @@ var NAVTREEINDEX7 =
 "tool-libfuzzer.html#autotoc_md17":[0,9,6,1,0],
 "tool-libfuzzer.html#autotoc_md18":[0,9,6,1,1],
 "tool-libfuzzer.html#autotoc_md19":[0,9,6,1,1,0],
-"tool-libfuzzer.html#autotoc_md20":[0,9,6,2]
+"tool-libfuzzer.html#autotoc_md20":[0,9,6,2],
+"tool-libfuzzer.html#autotoc_md21":[0,9,6,2,0],
+"tool-libfuzzer.html#autotoc_md22":[0,9,6,2,1],
+"tool-libfuzzer.html#autotoc_md23":[0,9,6,2,2],
+"tool-optrack.html":[0,9,2],
+"tool-optrack.html#autotoc_md24":[0,9,2,0],
+"tool-optrack.html#autotoc_md25":[0,9,2,0,0],
+"tool-optrack.html#autotoc_md26":[0,9,2,0,1],
+"tool-optrack.html#autotoc_md27":[0,9,2,0,2]
 };

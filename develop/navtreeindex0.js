@@ -181,15 +181,14 @@ var NAVTREEINDEX0 =
 "arch-rts.html#rts-overview":[0,10,0,6,0],
 "arch-rts.html#rts-page-skip":[0,10,0,6,2],
 "arch-schema.html":[0,10,2,0],
-"arch-schema.html#schema_alter":[0,10,2,0,3,3],
+"arch-schema.html#schema_alter":[0,10,2,0,3,2],
 "arch-schema.html#schema_api":[0,10,2,0,3],
 "arch-schema.html#schema_create":[0,10,2,0,3,0],
 "arch-schema.html#schema_data_formats":[0,10,2,0,0],
 "arch-schema.html#schema_drop":[0,10,2,0,3,1],
 "arch-schema.html#schema_files":[0,10,2,0,1],
 "arch-schema.html#schema_integrity":[0,10,2,0,2],
-"arch-schema.html#schema_rename":[0,10,2,0,3,2],
-"arch-schema.html#schema_truncate":[0,10,2,0,3,4],
+"arch-schema.html#schema_truncate":[0,10,2,0,3,3],
 "arch-session.html":[0,10,0,1],
 "arch-session.html#arch_session_closure":[0,10,0,1,5],
 "arch-session.html#arch_session_cur":[0,10,0,1,3],
@@ -249,5 +248,6 @@ var NAVTREEINDEX0 =
 "build-posix.html#posix_installing":[0,2,2],
 "build-windows.html":[0,3],
 "build-windows.html#windows_building":[0,3,1],
-"build-windows.html#windows_configure":[0,3,3]
+"build-windows.html#windows_configure":[0,3,3],
+"build-windows.html#windows_ctest":[0,3,4]
 };
