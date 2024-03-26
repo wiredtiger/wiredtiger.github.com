@@ -153,6 +153,19 @@ Cursor types</h1>
 <li><a class="el" href="cursor_log.html">Log cursors</a></li>
 <li><a class="el" href="cursor_join.html">Join cursors</a></li>
 </ul>
+<h1><a class="anchor" id="cursor_projections"></a>
+Projections</h1>
+<p>Cursors on tables and indices can return a subset of columns. This is done by listing the column names in parenthesis in the <code>uri</code> parameter to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a>. Only the fields from the listed columns are returned by <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a>.</p>
+<p>The <a class="el" href="ex_schema_8c-example.html">ex_schema.c</a> example creates a table where the value format is <code>"5sHq"</code>, where the initial string is the country, the short is a year, and the long is a population. The following example lists just the country and year columns from the table record values:</p>
+<div class="fragment"><div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Use a projection to return just the table&#39;s country and year columns.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:poptable(country,year)&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year));</div>
+<div class="line">        printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
+<div class="line">    }</div>
+</div><!-- fragment --><p> This is particularly useful with index cursors, because if all columns in the projection are available in the index (including primary key columns, which are the values of the index), the data can be read from the index without accessing any column groups. See <a class="el" href="schema.html#schema_index_projections">Index cursor projections</a> for more information.</p>
 <h1><a class="anchor" id="cursors_eviction"></a>
 Cursors and Eviction</h1>
 <p>Cursor positions hold resources that can inhibit the eviction of memory pages. If a cursor is active on a page being considered for eviction, the eviction will defer until the cursor is moved or reset. To avoid this and to keep resources freed in general, an application should call <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor.">WT_CURSOR::reset</a> during times it does not need to keep the cursor positioned. A cursor that has been reset is not active and will not inhibit eviction.</p>
@@ -177,6 +190,21 @@ Raw mode</h1>
 <div class="line">          session, value.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>, value.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, <span class="stringliteral">&quot;5sHQ&quot;</span>, &amp;country, &amp;year, &amp;population));</div>
 <div class="line">        printf(</div>
 <div class="line">          <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>, country, year, population);</div>
+<div class="line">    }</div>
+<div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+</div><!-- fragment --><p> Raw mode can be used in combination with projections. The following example lists just the country and year columns from the table record values, using raw mode:</p>
+<div class="fragment"><div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Use a projection to return just the table&#39;s country and year columns, using raw mode.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    error_check(</div>
+<div class="line">      session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:poptable(country,year)&quot;</span>, NULL, <span class="stringliteral">&quot;raw&quot;</span>, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> value;</div>
+<div class="line"> </div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value));</div>
+<div class="line">        error_check(</div>
+<div class="line">          <a class="code" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a>(session, value.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>, value.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, <span class="stringliteral">&quot;5sH&quot;</span>, &amp;country, &amp;year));</div>
+<div class="line">        printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
 <div class="line">    }</div>
 <div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
 </div><!-- fragment --> <h1><a class="anchor" id="metadata"></a>

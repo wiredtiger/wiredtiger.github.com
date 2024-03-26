@@ -271,6 +271,72 @@ $(document).ready(function(){initNavTree('ex_schema_8c-example.html',''); initRe
 <div class="line">      <span class="stringliteral">&quot;US 1900: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;, population %&quot;</span> PRIu64 <span class="stringliteral">&quot;\n&quot;</span>, country, year, population);</div>
 <div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
 <div class="line"> </div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Use a projection to return just the table&#39;s country and year columns.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:poptable(country,year)&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;country, &amp;year));</div>
+<div class="line">        printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
+<div class="line">    }</div>
+<div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Use a projection to return just the table&#39;s country and year columns, using raw mode.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    error_check(</div>
+<div class="line">      session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;table:poptable(country,year)&quot;</span>, NULL, <span class="stringliteral">&quot;raw&quot;</span>, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> value;</div>
+<div class="line"> </div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;value));</div>
+<div class="line">        error_check(</div>
+<div class="line">          <a class="code" href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a>(session, value.<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>, value.<a class="code" href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">size</a>, <span class="stringliteral">&quot;5sH&quot;</span>, &amp;country, &amp;year));</div>
+<div class="line">        printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
+<div class="line">    }</div>
+<div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Use a projection to return just the table&#39;s record number key from an index.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    error_check(</div>
+<div class="line">      session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;index:poptable:country_plus_year(id)&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year));</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;recno));</div>
+<div class="line">        printf(<span class="stringliteral">&quot;row ID %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, recno, country, year);</div>
+<div class="line">    }</div>
+<div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Use a projection to return just the population column from an index.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">      session, <span class="stringliteral">&quot;index:poptable:country_plus_year(population)&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year));</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, &amp;population));</div>
+<div class="line">        printf(<span class="stringliteral">&quot;population %&quot;</span> PRIu64 <span class="stringliteral">&quot;: country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, population, country, year);</div>
+<div class="line">    }</div>
+<div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Use a projection to avoid accessing any other column groups when using an index: supply an</span></div>
+<div class="line"><span class="comment">     * empty list of value columns.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    error_check(</div>
+<div class="line">      session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;index:poptable:country_plus_year()&quot;</span>, NULL, NULL, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;country, &amp;year));</div>
+<div class="line">        printf(<span class="stringliteral">&quot;country %s, year %&quot;</span> PRIu16 <span class="stringliteral">&quot;\n&quot;</span>, country, year);</div>
+<div class="line">    }</div>
+<div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
+<div class="line"> </div>
 <div class="line">    <span class="comment">/* Open cursors needed by the join. */</span></div>
 <div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;join:table:poptable&quot;</span>, NULL, NULL, &amp;join_cursor));</div>
 <div class="line">    error_check(</div>

@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"tool-libfuzzer.html#autotoc_md22":[0,9,6,2,1],
+"tool-libfuzzer.html#autotoc_md23":[0,9,6,2,2],
+"tool-optrack.html":[0,9,2],
+"tool-optrack.html#autotoc_md24":[0,9,2,0],
+"tool-optrack.html#autotoc_md25":[0,9,2,0,0],
+"tool-optrack.html#autotoc_md26":[0,9,2,0,1],
+"tool-optrack.html#autotoc_md27":[0,9,2,0,2],
 "tool-optrack.html#autotoc_md28":[0,9,2,1],
 "tool-optrack.html#autotoc_md29":[0,9,2,1,0],
 "tool-optrack.html#autotoc_md30":[0,9,2,1,1],
