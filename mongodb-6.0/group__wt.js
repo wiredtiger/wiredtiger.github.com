@@ -346,6 +346,7 @@ var group__wt =
     [ "WT_STAT_CONN_COND_AUTO_WAIT_SKIPPED", "group__wt.html#gabba9fb5f4ad86215b8dedb44830aa2bc", null ],
     [ "WT_STAT_CONN_COND_WAIT", "group__wt.html#ga138063fbf1faaff0fd3b868244cb35a1", null ],
     [ "WT_STAT_CONN_CONN_CLOSE_BLOCKED_LSM", "group__wt.html#ga7674ef83c36ef3703ad71503ad7193c5", null ],
+    [ "WT_STAT_CONN_CURSOR_BULK_COUNT", "group__wt.html#ga00dfacf3b49ff3199bea73a4c0bc331e", null ],
     [ "WT_STAT_CONN_CURSOR_CACHE", "group__wt.html#ga0648ab0a447dbfca1fab2808d3bcf579", null ],
     [ "WT_STAT_CONN_CURSOR_CACHED_COUNT", "group__wt.html#ga90bdf09ee9b231ffde052d753e0ff59d", null ],
     [ "WT_STAT_CONN_CURSOR_CREATE", "group__wt.html#ga4621505f48ba6399902a137ec0af556c", null ],
