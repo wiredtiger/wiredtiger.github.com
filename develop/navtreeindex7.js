@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"sodium_encrypt_8c-example.html":[4,19],
 "statistics.html":[0,4,38],
 "statistics.html#statistics_log":[0,4,38,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html":[1,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "tool-libfuzzer.html#autotoc_md17":[0,9,6,1,0],
 "tool-libfuzzer.html#autotoc_md18":[0,9,6,1,1],
 "tool-libfuzzer.html#autotoc_md19":[0,9,6,1,1,0],
-"tool-libfuzzer.html#autotoc_md20":[0,9,6,2],
-"tool-libfuzzer.html#autotoc_md21":[0,9,6,2,0]
+"tool-libfuzzer.html#autotoc_md20":[0,9,6,2]
 };
