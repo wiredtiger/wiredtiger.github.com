@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"security.html#environment_variables":[0,6,3,3],
+"security.html#file_permissions":[0,6,3,2],
+"shared_cache.html":[0,4,37],
+"signals.html":[0,4,28],
 "sodium_encrypt_8c-example.html":[4,19],
 "statistics.html":[0,4,38],
 "statistics.html#statistics_log":[0,4,38,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX7 =
 "tool-libfuzzer.html#autotoc_md13":[0,9,6,0,1],
 "tool-libfuzzer.html#autotoc_md14":[0,9,6,0,2],
 "tool-libfuzzer.html#autotoc_md15":[0,9,6,0,2,0],
-"tool-libfuzzer.html#autotoc_md16":[0,9,6,1],
-"tool-libfuzzer.html#autotoc_md17":[0,9,6,1,0],
-"tool-libfuzzer.html#autotoc_md18":[0,9,6,1,1],
-"tool-libfuzzer.html#autotoc_md19":[0,9,6,1,1,0],
-"tool-libfuzzer.html#autotoc_md20":[0,9,6,2]
+"tool-libfuzzer.html#autotoc_md16":[0,9,6,1]
 };
