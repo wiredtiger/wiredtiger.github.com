@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"schema.html#schema_key_and_value_formats":[0,4,3,3],
+"security.html":[0,6,3],
+"security.html#absolute_path":[0,6,3,1],
+"security.html#directory_permissions":[0,6,3,0],
 "security.html#environment_variables":[0,6,3,3],
 "security.html#file_permissions":[0,6,3,2],
 "shared_cache.html":[0,4,37],
@@ -245,9 +249,5 @@ var NAVTREEINDEX7 =
 "tool-index.html#tool-other":[0,9,0],
 "tool-libfuzzer.html":[0,9,6],
 "tool-libfuzzer.html#autotoc_md11":[0,9,6,0],
-"tool-libfuzzer.html#autotoc_md12":[0,9,6,0,0],
-"tool-libfuzzer.html#autotoc_md13":[0,9,6,0,1],
-"tool-libfuzzer.html#autotoc_md14":[0,9,6,0,2],
-"tool-libfuzzer.html#autotoc_md15":[0,9,6,0,2,0],
-"tool-libfuzzer.html#autotoc_md16":[0,9,6,1]
+"tool-libfuzzer.html#autotoc_md12":[0,9,6,0,0]
 };
