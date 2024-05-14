@@ -137,6 +137,7 @@ var group__wt =
     [ "WT_ROLLBACK", "group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8", null ],
     [ "WT_RUN_RECOVERY", "group__wt.html#ga76bb44d946fbe56ddb93470ab95a1e78", null ],
     [ "WT_STAT_CONN_APPLICATION_CACHE_TIME", "group__wt.html#ga82db17f977dfe8bb1b1caf2b594a33b8", null ],
+    [ "WT_STAT_CONN_APPLICATION_EVICT_SNAPSHOT_REFRESHED", "group__wt.html#gab6c8e4ab80bea3deb8c5ea89f5a6957c", null ],
     [ "WT_STAT_CONN_APPLICATION_EVICT_TIME", "group__wt.html#gabfab50036b67c8e5040831954b8d7dd6", null ],
     [ "WT_STAT_CONN_AUTOCOMMIT_READONLY_RETRY", "group__wt.html#ga207db7eacadb2f15745a56ce64754a10", null ],
     [ "WT_STAT_CONN_AUTOCOMMIT_UPDATE_RETRY", "group__wt.html#ga2dd059923563070b2a4a1e696e10149f", null ],
