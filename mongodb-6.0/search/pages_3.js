@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['data_20file_20format_1462',['Data File Format',['../arch-data-file.html',1,'arch-toc-mem-disk']]],
-  ['data_20handles_1463',['Data Handles',['../arch-dhandle.html',1,'arch-toc-data-src']]],
-  ['data_20organization_1464',['Data Organization',['../arch-toc-data-org.html',1,'arch-index']]],
-  ['data_20sources_1465',['Data Sources',['../arch-toc-data-src.html',1,'arch-index']]],
-  ['data_20sources_1466',['Data Sources',['../data_sources.html',1,'cursors']]],
-  ['database_20configuration_1467',['Database Configuration',['../database_config.html',1,'admin']]],
-  ['dump_20formats_1468',['Dump Formats',['../dump_formats.html',1,'command_line']]],
-  ['durability_20overview_1469',['Durability overview',['../durability_overview.html',1,'programming']]],
-  ['database_20home_20directory_1470',['Database Home Directory',['../home.html',1,'admin']]],
-  ['database_20read_2donly_20mode_1471',['Database read-only mode',['../readonly.html',1,'programming']]]
+  ['data_20file_20format_1466',['Data File Format',['../arch-data-file.html',1,'arch-toc-mem-disk']]],
+  ['data_20handles_1467',['Data Handles',['../arch-dhandle.html',1,'arch-toc-data-src']]],
+  ['data_20organization_1468',['Data Organization',['../arch-toc-data-org.html',1,'arch-index']]],
+  ['data_20sources_1469',['Data Sources',['../arch-toc-data-src.html',1,'arch-index']]],
+  ['data_20sources_1470',['Data Sources',['../data_sources.html',1,'cursors']]],
+  ['database_20configuration_1471',['Database Configuration',['../database_config.html',1,'admin']]],
+  ['dump_20formats_1472',['Dump Formats',['../dump_formats.html',1,'command_line']]],
+  ['durability_20overview_1473',['Durability overview',['../durability_overview.html',1,'programming']]],
+  ['database_20home_20directory_1474',['Database Home Directory',['../home.html',1,'admin']]],
+  ['database_20read_2donly_20mode_1475',['Database read-only mode',['../readonly.html',1,'programming']]]
 ];
