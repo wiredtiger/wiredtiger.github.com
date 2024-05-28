@@ -1,5 +1,8 @@
 var NAVTREEINDEX7 =
 {
+"schema.html#schema_index_projections":[0,4,3,9],
+"schema.html#schema_indices":[0,4,3,7],
+"schema.html#schema_intro":[0,4,3,0],
 "schema.html#schema_key_and_value_formats":[0,4,3,3],
 "security.html":[0,6,3],
 "security.html#absolute_path":[0,6,3,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX7 =
 "timestamp_txn_api.html#timestamp_txn_api_read_timestamp":[0,4,12,3],
 "timestamp_txn_api.html#timestamp_txn_api_timestamp_transaction":[0,4,12,8],
 "tool-index.html":[0,9],
-"tool-index.html#tool-other":[0,9,0],
-"tool-libfuzzer.html":[0,9,6],
-"tool-libfuzzer.html#autotoc_md11":[0,9,6,0],
-"tool-libfuzzer.html#autotoc_md12":[0,9,6,0,0]
+"tool-index.html#tool-other":[0,9,0]
 };
