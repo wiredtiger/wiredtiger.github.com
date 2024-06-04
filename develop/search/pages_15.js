@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['wiredtiger_20architecture_20guide_1813',['WiredTiger Architecture Guide',['../arch-index.html',1,'index']]],
-  ['wiredtiger_20command_20line_20utility_1814',['WiredTiger command line utility',['../command_line.html',1,'index']]],
-  ['wiredtiger_20community_20and_20contact_20information_1815',['WiredTiger community and contact information',['../community.html',1,'index']]],
-  ['wiredtiger_20licensing_1816',['WiredTiger licensing',['../license.html',1,'index']]],
-  ['wiredtiger_20overview_20and_20features_1817',['WiredTiger Overview and Features',['../overview.html',1,'index']]],
-  ['writing_20wiredtiger_20applications_1818',['Writing WiredTiger applications',['../programming.html',1,'index']]]
+  ['wiredtiger_20concurrency_20management_1820',['WiredTiger concurrency management',['../arch-concurrency.html',1,'arch-toc-int-wt-dev']]],
+  ['wiredtiger_20architecture_20guide_1821',['WiredTiger Architecture Guide',['../arch-index.html',1,'index']]],
+  ['wiredtiger_20command_20line_20utility_1822',['WiredTiger command line utility',['../command_line.html',1,'index']]],
+  ['wiredtiger_20community_20and_20contact_20information_1823',['WiredTiger community and contact information',['../community.html',1,'index']]],
+  ['wiredtiger_20licensing_1824',['WiredTiger licensing',['../license.html',1,'index']]],
+  ['wiredtiger_20overview_20and_20features_1825',['WiredTiger Overview and Features',['../overview.html',1,'index']]],
+  ['writing_20wiredtiger_20applications_1826',['Writing WiredTiger applications',['../programming.html',1,'index']]]
 ];
