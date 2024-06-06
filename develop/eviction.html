@@ -100,7 +100,11 @@ Eviction overview</h1>
 <p>1) The eviction server thread walks the btrees and adds the least recently used pages to the eviction queues until the queues are full. 2) The eviction workers continuously remove pages from the eviction queue and try to evict them.</p>
 <p>Eviction has to obtain exclusive access to the page as there may be application threads still reading content on the page that is being evicted.</p>
 <p>There are three types of eviction in WiredTiger:</p>
-<p>1) Clean eviction 2) History store eviction 3) Update restore eviction</p>
+<ol type="1">
+<li>Clean eviction</li>
+<li>History store eviction</li>
+<li>Update restore eviction</li>
+</ol>
 <h1><a class="anchor" id="clean_eviction"></a>
 Clean eviction</h1>
 <p>In the case of clean eviction, there is no dirty content on the page and it is directly removed from the memory. After that, the page remains solely on the disk unchanged.</p>

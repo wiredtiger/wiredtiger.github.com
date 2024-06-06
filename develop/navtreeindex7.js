@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"pages.html":[],
+"portability.html":[0,1],
 "portability.html#aggregated-writes":[0,1,3,1],
 "portability.html#atomic-reads-writes":[0,1,3,0],
 "portability.html#cache-lines":[0,1,3,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp":[0,4,11,0,2],
 "timestamp_global_api.html#timestamp_global_setting_timestamps":[0,4,11,0],
 "timestamp_misc.html":[0,4,15],
-"timestamp_misc.html#timestamp_misc_rts":[0,4,15,1],
-"timestamp_misc.html#timestamp_read_roundup":[0,4,15,0],
-"timestamp_misc.html#timestamps_misc_in_memory":[0,4,15,2]
+"timestamp_misc.html#timestamp_misc_rts":[0,4,15,1]
 };

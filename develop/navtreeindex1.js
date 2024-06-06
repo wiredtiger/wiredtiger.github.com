@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"backup.html#backup_util":[0,4,29,2],
+"basic_api.html":[0,4,0],
 "basic_api.html#basic_close":[0,4,0,3],
 "basic_api.html#basic_connection":[0,4,0,0],
 "basic_api.html#basic_create_table":[0,4,0,1],
@@ -132,8 +134,8 @@ var NAVTREEINDEX1 =
 "command_line.html#util_upgrade_synopsis":[0,5,19,0],
 "command_line.html#util_verify":[0,10,9,1,20],
 "command_line.html#util_verify":[0,5,20],
-"command_line.html#util_verify_options":[0,10,9,1,20,1],
 "command_line.html#util_verify_options":[0,5,20,1],
+"command_line.html#util_verify_options":[0,10,9,1,20,1],
 "command_line.html#util_verify_synopsis":[0,10,9,1,20,0],
 "command_line.html#util_verify_synopsis":[0,5,20,0],
 "command_line.html#util_write":[0,10,9,1,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "durability_overview.html#explain_durability_checkpoint":[0,4,7,1],
 "durability_overview.html#explain_durability_commit":[0,4,7,2],
 "durability_overview.html#explain_durability_in_memory":[0,4,7,0],
-"durability_overview.html#explain_durability_timestamp":[0,4,7,3],
-"encryption.html":[0,4,21],
-"encryption.html#encryption_config":[0,4,21,2]
+"durability_overview.html#explain_durability_timestamp":[0,4,7,3]
 };

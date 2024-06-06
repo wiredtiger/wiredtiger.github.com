@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"group__wt.html#gade470cf41e9e9e8d086178ed154033e8":[1,0,94],
+"group__wt.html#gade710ac8febe12adefabcfaa119a54f5":[1,0,422],
 "group__wt.html#gade96c761e77521b46ba9d5fc455b3486":[1,0,1072],
 "group__wt.html#gadea27e5ef93a5f8479c1bfb1ea2186f9":[1,0,298],
 "group__wt.html#gadec6138949f97907cf825bd1cf853d1b":[1,0,805],
@@ -211,8 +213,8 @@ var NAVTREEINDEX6 =
 "index.html":[],
 "index.html":[0],
 "keyvalue.html":[0,4,3,11],
-"license.html":[0,8],
 "license.html":[6],
+"license.html":[0,8],
 "license.html#license_crc32-power8":[0,8,1],
 "license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "overview.html#nosql":[0,0,1],
 "overview.html#quality":[0,0,0],
 "packing.html":[0,4,3,12],
-"packing.html#config_examples":[0,4,3,12,0],
-"pages.html":[],
-"portability.html":[0,1]
+"packing.html#config_examples":[0,4,3,12,0]
 };

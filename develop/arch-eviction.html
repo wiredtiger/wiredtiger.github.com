@@ -141,7 +141,8 @@ Clean vs dirty eviction</h1>
 <li>In the case of dirty eviction, the dirty page goes through reconciliation. The obsolete content on the page is thrown out, the latest value goes to the data store and older values go to the history store.</li>
 </ul>
 <p>Sometimes the workload generates enough new data that eviction is unable to reduce the cache content and more new content is put into cache that can be removed by eviction. In such a case application threads are also forced to do the work of eviction workers threads, before they can read or write more data.</p>
-<p>Eviction triggers and targets</p>
+<h1><a class="anchor" id="eviction_triggers"></a>
+Eviction triggers and targets</h1>
 <p>WiredTiger provides several configuration options for tuning how pages are evicted from the cache.</p>
 <p>WiredTiger eviction tuning options can be configured when first opening a database via <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>, or changed after open with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4" title="Reconfigure a connection handle.">WT_CONNECTION::reconfigure</a>.</p>
 <p>The <code>eviction_target</code> configuration value is the level at which WiredTiger attempts to keep the overall cache usage. Eviction worker threads are active when the cache contains at least this much content, expressed as a percentage of the total cache size.</p>
@@ -149,7 +150,52 @@ Clean vs dirty eviction</h1>
 <p>The <code>eviction_dirty_target</code> and <code>eviction_dirty_trigger</code> operate in a similar way to the overall targets but only apply to dirty data in cache. In particular, application threads will be throttled if the percentage of dirty data reaches the <code>eviction_dirty_trigger</code>. Any page that has been modified since it was read from disk is considered dirty.</p>
 <p>The <code>eviction_updates_target</code> perform eviction in worker threads when the cache contains at least this many bytes of updates</p>
 <p>The <code>eviction_updates_trigger</code> trigger application threads to perform eviction when the cache contains at least this many bytes of updates.</p>
-<p>It is worth noting that for all eviction target and trigger sizes, the target size must be lower than its trigger size counterpart. </p>
+<p>It is worth noting that for all eviction target and trigger sizes, the target size must be lower than its trigger size counterpart.</p>
+<h1><a class="anchor" id="eviction_locking"></a>
+Locking</h1>
+<p>Internally eviction uses the following locks:</p>
+<ul>
+<li><code>cache-&gt;evict_pass_lock</code> - Guarantees that only one eviction server is running at most.</li>
+<li><code>cache-&gt;evict_walk_lock</code> - Locked when eviction walks a tree.</li>
+<li><code>cache-&gt;evict_queue_lock</code> - Access to cache-&gt;evict_queues.</li>
+<li><code>queue-&gt;evict_lock</code> - Access to a specific eviction queue.</li>
+</ul>
+<p>Locking order:</p>
+<ul>
+<li>Eviction server:<ul>
+<li>lock <code>cache-&gt;evict_pass_lock</code> <ul>
+<li>trylock <code>cache-&gt;evict_walk_lock</code> <ul>
+<li>lock <code>cache-&gt;evict_queue_lock</code> <ul>
+<li>lock <code>queue-&gt;evict_lock</code> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Non-eviction server threads:<ul>
+<li>lock <code>cache-&gt;evict_walk_lock</code> <ul>
+<li>lock <code>cache-&gt;evict_pass_lock</code> <ul>
+<li>lock <code>cache-&gt;evict_queue_lock</code> <ul>
+<li>lock <code>queue-&gt;evict_lock</code> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Eviction queue access:<ul>
+<li>lock <code>cache-&gt;evict_queue_lock</code> <ul>
+<li>lock <code>queue-&gt;evict_lock</code> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

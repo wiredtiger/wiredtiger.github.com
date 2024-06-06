@@ -115,7 +115,9 @@ var NAVTREEINDEX0 =
 "arch-eviction.html":[0,10,4,1],
 "arch-eviction.html#clean_dirty_data":[0,10,4,1,1],
 "arch-eviction.html#clean_dirty_eviction":[0,10,4,1,2],
+"arch-eviction.html#eviction_locking":[0,10,4,1,4],
 "arch-eviction.html#eviction_overall":[0,10,4,1,0],
+"arch-eviction.html#eviction_triggers":[0,10,4,1,3],
 "arch-fast-truncate.html":[0,10,0,7],
 "arch-fast-truncate.html#ft_deleted_generation":[0,10,0,7,7],
 "arch-fast-truncate.html#ft_deleted_pages":[0,10,0,7,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "backup.html#backup_incremental":[0,4,29,4],
 "backup.html#backup_incremental-block":[0,4,29,3],
 "backup.html#backup_o_direct":[0,4,29,6],
-"backup.html#backup_process":[0,4,29,0],
-"backup.html#backup_util":[0,4,29,2],
-"basic_api.html":[0,4,0]
+"backup.html#backup_process":[0,4,29,0]
 };
