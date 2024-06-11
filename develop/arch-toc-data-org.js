@@ -19,6 +19,7 @@ var arch_toc_data_org =
         [ "\"metadata:\" cursor", "arch-metadata.html#metadata_cursor", null ],
         [ "\"metadata:create\" cursor", "arch-metadata.html#metadata_create_cursor", null ],
         [ "Printing metadata with the wt utility", "arch-metadata.html#metadata_wt_util", null ]
-      ] ]
+      ] ],
+      [ "Example Metadata", "arch-metadata.html#metadata_example", null ]
     ] ]
 ];

@@ -1,7 +1,9 @@
 var arch_toc_mem_disk =
 [
     [ "Block Manager", "arch-block.html", [
-      [ "What is a block?", "arch-block.html#block", null ],
+      [ "What is a block?", "arch-block.html#block_what", [
+        [ "Address Cookies", "arch-block.html#block_address_cookie", null ]
+      ] ],
       [ "Block manager implementation details", "arch-block.html#block_implementation", [
         [ "Writing", "arch-block.html#write_once", null ],
         [ "Descriptor blocks", "arch-block.html#desc_block", null ],
@@ -36,5 +38,27 @@ var arch_toc_mem_disk =
       [ "Messaging and Statistics", "arch-cloud-storage-extension.html#extension_log_stat", null ],
       [ "S3 Storage source", "arch-cloud-storage-extension.html#s3_store", null ],
       [ "Azure and GCP Storage Source", "arch-cloud-storage-extension.html#azure_gcp_store", null ]
+    ] ],
+    [ "Tiered Storage", "arch-tiered-storage.html", [
+      [ "Introduction and Definitions", "arch-tiered-storage.html#ts_intro", null ],
+      [ "Object IDs", "arch-tiered-storage.html#ts_objectid", null ],
+      [ "Checkpoints", "arch-tiered-storage.html#ts_checkpoints", null ],
+      [ "Block Manager", "arch-tiered-storage.html#ts_block_manager", [
+        [ "Cookies in Tiered Storage", "arch-tiered-storage.html#ts_cookies", null ],
+        [ "Files in the Block Manager", "arch-tiered-storage.html#ts_block_files", null ],
+        [ "Local File Removal", "arch-tiered-storage.html#ts_block_local_file_removal", null ]
+      ] ],
+      [ "Tiered Server and Work Queue", "arch-tiered-storage.html#ts_server", null ],
+      [ "Metadata and Associated Data Structures", "arch-tiered-storage.html#ts_metadata", null ],
+      [ "Storage Sources, Buckets, and Prefixes", "arch-tiered-storage.html#ts_buckets", null ],
+      [ "Flush Checkpoint Operations", "arch-tiered-storage.html#ts_flush", [
+        [ "Checkpoint Prepare Phase", "arch-tiered-storage.html#ts_checkpoint_prepare", null ],
+        [ "Data file checkpoint", "arch-tiered-storage.html#ts_checkpoint_data_file", null ],
+        [ "Flush actions", "arch-tiered-storage.html#ts_checkpoint_flush", null ]
+      ] ],
+      [ "Future", "arch-tiered-storage.html#ts_future", [
+        [ "Sharing of Tiered Objects", "arch-tiered-storage.html#ts_future_sharing", null ],
+        [ "Garbage Collection", "arch-tiered-storage.html#ts_future_garbage", null ]
+      ] ]
     ] ]
 ];

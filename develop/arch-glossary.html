@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('arch-glossary.html',''); initResizable
 <div class="contents">
 <div class="textblock"><p>WiredTiger has a lot of domain specific nomenclature - this page attempts to decode it. This is intended for those navigating the WiredTiger source tree - it describes terms internal to the storage engine.</p>
 <p>The definitions list how the terms are used in WiredTiger, which may not match how they are used in other settings.</p>
-<h1><a class="anchor" id="arch-glossary-transactions"></a>
+<h1><a class="anchor" id="arch-glossary-entries"></a>
 Glossary</h1>
 <p>(click headings to sort)</p>
 <table class="doxtable sortable">
@@ -274,6 +274,8 @@ Glossary</h1>
 <td>thread</td><td>general</td><td>a thread of control. WiredTiger uses pthreads for POSIX systems. </td></tr>
 <tr>
 <td>thread group</td><td>general</td><td>a group of threads that perform a common task. Eviction is performed by a thread group. </td></tr>
+<tr>
+<td>tiered storage</td><td>general</td><td>an experimental option to store a single Btree across multiple local files and/or objects in cloud storage. </td></tr>
 <tr>
 <td>time window</td><td>durable history</td><td>a set of start and stop transaction ids and timestamps which determine when an update is visible. </td></tr>
 <tr>

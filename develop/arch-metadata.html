@@ -148,7 +148,30 @@ Reading Metadata</h1>
 <p>Additionally, to only read strings relating to creation configurations of the various <code>uri</code> keys present, a cursor can be opened with a <code>uri</code> equal to <code>"metadata:create"</code>. This type of cursor causes WiredTiger to strip out internal metadata when querying.</p>
 <h2><a class="anchor" id="metadata_wt_util"></a>
 Printing metadata with the wt utility</h2>
-<p>Lastly the metadata in the <code>WiredTiger.wt</code> table can be dumped using the <code>wt</code> utility. A command option for specifically printing the metadata is <code>"wt list -v"</code>. This will display the various <code>uri</code> key strings with their associated configuration strings. </p>
+<p>Lastly the metadata in the <code>WiredTiger.wt</code> table can be dumped using the <code>wt</code> utility. A command option for specifically printing the metadata is <code>"wt list -v"</code>. This will display the various <code>uri</code> key strings with their associated configuration strings.</p>
+<h1><a class="anchor" id="metadata_example"></a>
+Example Metadata</h1>
+<p>When table <code>A</code> is created (without named column groups), there are three entries in the metadata file, having these keys:</p><ul>
+<li><code>"table:A"</code> </li>
+<li><code>"colgroup:A"</code> </li>
+<li><code>"file:A.wt"</code> </li>
+</ul>
+<p>For brevity, just the keys are shown; the values in the metadata btree are configuration strings that would show information about key/value format and other creation options, checkpoints associated with the table, etc.</p>
+<p>The <code>"table:A"</code> represents the table interface that the API caller uses, and the associated data structure in memory for the table is <code>WT_TABLE</code>. If there were column groups or indices, there may be multiple btrees associated with the table, and listed in the metadata, but in this example there is just one.</p>
+<p>Every table has one or more <code>"colgroup:"</code> entries. The column group entry's metadata references the <code>"file:"</code> entry that stores the btree, in this case it would reference <code>"file:A.wt"</code>. Column groups do not have an explicit data structure associated with them, but their associated btrees are referenced via an array in the <code>WT_TABLE</code>.</p>
+<p>The <code>"file:"</code> entry represents the btree stored on disk, as well as parts cached in memory. The data structure implied by this entry is a <code>WT_BTREE</code>.</p>
+<p>In summary, the relationship between prefixes and data structures is as follows:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">URI prefix </th><th class="markdownTableHeadNone">struct type </th><th class="markdownTableHeadNone">has dhandle? </th><th class="markdownTableHeadNone">notes  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>table:</code>  </td><td class="markdownTableBodyNone">WT_TABLE </td><td class="markdownTableBodyNone">yes </td><td class="markdownTableBodyNone">the dhandle is cast to (WT_TABLE *)  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>file:</code>  </td><td class="markdownTableBodyNone">WT_BTREE </td><td class="markdownTableBodyNone">yes </td><td class="markdownTableBodyNone">dhandle-&gt;handle is a (WT_BTREE *)  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>colgroup:</code>  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">no </td><td class="markdownTableBodyNone">stored in an array in the WT_TABLE  </td></tr>
+</table>
+<p>See <a class="el" href="arch-dhandle.html">Data Handles</a> for more information about data handles (dhandles). </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

@@ -66,10 +66,6 @@ var command_line =
       [ "Synopsis", "command_line.html#util_truncate_synopsis", null ],
       [ "Options", "command_line.html#util_truncate_options", null ]
     ] ],
-    [ "wt upgrade", "command_line.html#util_upgrade", [
-      [ "Synopsis", "command_line.html#util_upgrade_synopsis", null ],
-      [ "Options", "command_line.html#util_upgrade_options", null ]
-    ] ],
     [ "wt verify", "command_line.html#util_verify", [
       [ "Synopsis", "command_line.html#util_verify_synopsis", null ],
       [ "Options", "command_line.html#util_verify_options", null ]

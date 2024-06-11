@@ -12,6 +12,6 @@ var arch_index =
     [ "Tools", "arch-toc-tools.html", "arch-toc-tools" ],
     [ "Cross-Platform Support", "arch-toc-platform.html", "arch-toc-platform" ],
     [ "Glossary of Terms", "arch-glossary.html", [
-      [ "Glossary", "arch-glossary.html#arch-glossary-transactions", null ]
+      [ "Glossary", "arch-glossary.html#arch-glossary-entries", null ]
     ] ]
 ];

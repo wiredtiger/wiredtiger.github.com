@@ -127,13 +127,15 @@ src/block/</code></code></td></tr>
 </table>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
 <p>The WiredTiger block manager subsystem manages the reading and writing of data from the disk. It is designed to facilitate high performance, economic use of disk space and customizability.</p>
-<h1><a class="anchor" id="block"></a>
+<h1><a class="anchor" id="block_what"></a>
 What is a block?</h1>
 <p>A block is a chunk of data that is stored on the disk and operated on as a single unit. Each WiredTiger data file (any file in the home directory with the <code></code>.wt suffix) is made up of these blocks. Each block consists of a page header, a block header and contains a single page of the btree from which it was generated. WiredTiger is a no-overwrite storage engine, and when blocks are re-written, they are written to new locations in the file. The size of a block is a multiple of the allocation size which is set during creation of the associated WiredTiger data file see: <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</p>
+<h2><a class="anchor" id="block_address_cookie"></a>
+Address Cookies</h2>
 <p>Once a block is written an address cookie is returned. This address cookie is stored as the <code>addr</code> on the associated page ref. The <code>WT_REF</code> structure can be found in <code>btmem.h</code>. The address cookie is opaque to other parts of the system and cannot be interpreted meaningfully.</p>
 <p>The address cookie is made up of 4 components:</p><ul>
 <li>offset: The offset in the file. In order to avoid storing large offsets this value is divided by the allocation size.</li>
-<li>file_id: Optional and only relevant to the tiered storage type, the file_id is maintained in the address.</li>
+<li>object_id: Optional and only relevant to the tiered storage type, the object_id is maintained in the address. When it is missing, it indicates that the reference is to the same object as where the cookie was stored.</li>
 <li>size: The size of the block, also divided by the allocation size.</li>
 <li>checksum: The checksum of the block for validation purposes.</li>
 </ul>
@@ -196,7 +198,7 @@ Checkpoint</h3>
 <p>During a checkpoint new blocks are only written out for dirty pages. A block can be included in multiple checkpoints. Assuming a page <code>X</code> is dirty and gets checkpointed in checkpoint <code>A</code>, it will be created as a new block on disk. Now the same page <code>X</code> isn't modified and another checkpoint is taken. The page is clean and as such will not require a new block to be written for it. The address of the original block is still valid.</p>
 <p>Checkpoints are created in depth first order, leaf blocks are created, then the parent blocks. This is a requirement as the parent blocks contain the addresses of the leaf blocks.</p>
 <p>The block manager doesn't guarantee that calling <code>bm-&gt;write</code> will result in the data being flushed to disk. In the checkpoint scenario WiredTiger will also call <code>bm-&gt;sync</code> once all blocks have been written which will call the file system dependent flush function.</p>
-<p>Checkpoint deletion and merging *</p>
+<p><b>Checkpoint deletion and merging</b></p>
 <p>As a checkpoint progresses it takes a snapshot of the three extent lists kept by the block manager, these extent lists are written out to disk as part of the checkpoint in blocks. Between checkpoints these extent lists are being updated via normal operation of WiredTiger.</p>
 <p>Suppose we have a checkpoint <code>A</code>, which has an alloc list which contains 3 blocks <code>I</code>, <code>J</code>, <code>K</code> as such its extent lists are as follows:</p>
 <p>Alloc: <code>I</code>, <code>J</code>, <code>K</code> Avail: <code>L</code>, <code>M</code> Discard: Empty</p>
@@ -208,6 +210,17 @@ Checkpoint</h3>
 <p>And the following lists for checkpoint <code>B:</code> Alloc: <code>I</code>, <code>K</code>, <code>L</code> Avail: <code>J</code> Discard: Empty</p>
 <p>These extent lists are written out with the checkpoint <code>C</code>. Anything on the avail list is considered free space and can be reused as of the completion of checkpoint <code>C</code>.</p>
 <p>We don't want to list each block individually in the extent lists, so instead of listing each block separately in the list, we use extents, which can describe a range in the file, that is, any number of contiguous blocks.</p>
+<p><b>Checkpoint cookies</b></p>
+<p>After a checkpoint is written, the block manager creates a <em>checkpoint cookie</em> to describe it. Similar to an <em>address cookie</em>, a checkpoint cookie is a sequence of bytes that is encoded and decoded by the block manager, and is opaque to other parts of the system. A checkpoint cookie is composed of four address cookies and two additional values:</p><ul>
+<li>an address cookie for the root page</li>
+<li>an address cookie for the extent list with allocated entries</li>
+<li>an address cookie for the extent list with available entries</li>
+<li>an address cookie for the extent list with discarded entries</li>
+<li>the file size for the checkpoint, the first byte position past the end of the checkpoint data</li>
+<li>the checkpoint size, a byte size of all written checkpoint data</li>
+</ul>
+<p>As described in <a class="el" href="arch-block.html#block_address_cookie">Address Cookies</a>, an address cookie used with a tiered storage has an additional value (the <code>object_id</code>). As a result, the checkpoint cookie for a tiered btree will include four additional <code>object_id</code> values that are not in other checkpoints.</p>
+<p>The program in <code>tools/wt_ckpt_decode.py</code> can be used to unpack a set of bytes representing a checkpoint cookie and show its values.</p>
 <h3><a class="anchor" id="Eviction"></a>
 Eviction</h3>
 <p>For more detail on how WiredTiger eviction works see: <a class="el" href="arch-eviction.html">Eviction</a>.</p>
