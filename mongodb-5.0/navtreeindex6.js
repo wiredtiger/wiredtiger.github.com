@@ -1,5 +1,9 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6":[1,0,4,5],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68":[1,0,4,10],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137":[1,0,4,6],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512":[1,0,4,16],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0":[1,0,4,11],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39":[1,0,4,9],
 "struct_w_t___c_u_r_s_o_r.html":[1,0,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX6 =
 "transactions.html#timestamp_connection":[0,3,3,5,3],
 "transactions.html#timestamp_extensions":[0,3,3,5,4],
 "transactions.html#timestamp_overview":[0,3,3,5,0],
-"transactions.html#timestamp_roundup":[0,3,3,5,2],
-"transactions.html#timestamp_transactions":[0,3,3,5,1],
-"transactions.html#transaction_isolation":[0,3,3,4],
-"transactions.html#transaction_timestamps":[0,3,3,5],
-"transactions.html#transactions_acid":[0,3,3,0]
+"transactions.html#timestamp_roundup":[0,3,3,5,2]
 };
