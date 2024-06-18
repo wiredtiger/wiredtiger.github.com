@@ -54,6 +54,10 @@ var command_line =
       [ "Synopsis", "command_line.html#util_read_synopsis", null ],
       [ "Options", "command_line.html#util_read_options", null ]
     ] ],
+    [ "wt rename", "command_line.html#util_rename", [
+      [ "Synopsis", "command_line.html#util_rename_synopsis", null ],
+      [ "Options", "command_line.html#util_rename_options", null ]
+    ] ],
     [ "wt salvage", "command_line.html#util_salvage", [
       [ "Synopsis", "command_line.html#util_salvage_synopsis", null ],
       [ "Options", "command_line.html#util_salvage_options", null ]

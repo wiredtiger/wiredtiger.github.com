@@ -151,50 +151,10 @@ Eviction triggers and targets</h1>
 <p>The <code>eviction_updates_target</code> perform eviction in worker threads when the cache contains at least this many bytes of updates</p>
 <p>The <code>eviction_updates_trigger</code> trigger application threads to perform eviction when the cache contains at least this many bytes of updates.</p>
 <p>It is worth noting that for all eviction target and trigger sizes, the target size must be lower than its trigger size counterpart.</p>
-<h1><a class="anchor" id="eviction_locking"></a>
-Locking</h1>
-<p>Internally eviction uses the following locks:</p>
+<h1><a class="anchor" id="eviction_related"></a>
+Related pages</h1>
 <ul>
-<li><code>cache-&gt;evict_pass_lock</code> - Guarantees that only one eviction server is running at most.</li>
-<li><code>cache-&gt;evict_walk_lock</code> - Locked when eviction walks a tree.</li>
-<li><code>cache-&gt;evict_queue_lock</code> - Access to cache-&gt;evict_queues.</li>
-<li><code>queue-&gt;evict_lock</code> - Access to a specific eviction queue.</li>
-</ul>
-<p>Locking order:</p>
-<ul>
-<li>Eviction server:<ul>
-<li>lock <code>cache-&gt;evict_pass_lock</code> <ul>
-<li>trylock <code>cache-&gt;evict_walk_lock</code> <ul>
-<li>lock <code>cache-&gt;evict_queue_lock</code> <ul>
-<li>lock <code>queue-&gt;evict_lock</code> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Non-eviction server threads:<ul>
-<li>lock <code>cache-&gt;evict_walk_lock</code> <ul>
-<li>lock <code>cache-&gt;evict_pass_lock</code> <ul>
-<li>lock <code>cache-&gt;evict_queue_lock</code> <ul>
-<li>lock <code>queue-&gt;evict_lock</code> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Eviction queue access:<ul>
-<li>lock <code>cache-&gt;evict_queue_lock</code> <ul>
-<li>lock <code>queue-&gt;evict_lock</code> </li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="el" href="arch-locking-hierarchy.html#arch-locking-hierarchy-cache-and-eviction">Cache and Eviction locks</a> </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

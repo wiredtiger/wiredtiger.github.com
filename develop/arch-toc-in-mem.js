@@ -11,6 +11,6 @@ var arch_toc_in_mem =
       [ "Clean vs dirty data", "arch-eviction.html#clean_dirty_data", null ],
       [ "Clean vs dirty eviction", "arch-eviction.html#clean_dirty_eviction", null ],
       [ "Eviction triggers and targets", "arch-eviction.html#eviction_triggers", null ],
-      [ "Locking", "arch-eviction.html#eviction_locking", null ]
+      [ "Related pages", "arch-eviction.html#eviction_related", null ]
     ] ]
 ];
