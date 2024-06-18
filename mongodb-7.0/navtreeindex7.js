@@ -1,5 +1,11 @@
 var NAVTREEINDEX7 =
 {
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aa6b38740c7216fa7b63b21902858bee1":[1,1,8,25],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aae6af390efb79e1c9b9259e32853f9a3":[1,1,8,22],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aaf38b597d369fd073a4501aba3b14954":[1,1,8,19],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ab34ce4a2511c0fb370f3ee46d8ffd880":[1,1,8,0],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aba527dfba833b01bb7c70ede18b45990":[1,1,8,33],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ac55b0c42dc2eda2774cc2cf8668961fe":[1,1,8,16],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#acac24b7ad23022698ee8ef64be164727":[1,1,8,3],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae498b02cf83cdb644c2665c37917e785":[1,1,8,5],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae87ae081fa676db65a7e06fe03a20fc6":[1,1,8,32],
