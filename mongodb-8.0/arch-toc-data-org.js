@@ -7,6 +7,7 @@ var arch_toc_data_org =
       [ "Schema Manipulation", "arch-schema.html#schema_api", [
         [ "Create", "arch-schema.html#schema_create", null ],
         [ "Drop", "arch-schema.html#schema_drop", null ],
+        [ "Rename", "arch-schema.html#schema_rename", null ],
         [ "Alter", "arch-schema.html#schema_alter", null ],
         [ "Truncate", "arch-schema.html#schema_truncate", null ]
       ] ]

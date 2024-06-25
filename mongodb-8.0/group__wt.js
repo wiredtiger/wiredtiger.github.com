@@ -691,6 +691,7 @@ var group__wt =
     [ "WT_STAT_CONN_PREFETCH_PAGES_READ", "group__wt.html#ga761cf26b361877d3e55f47f4d02d8b4c", null ],
     [ "WT_STAT_CONN_PREFETCH_SKIPPED", "group__wt.html#gafbfa7d7aa08734d6fa0e7548d86e1146", null ],
     [ "WT_STAT_CONN_PREFETCH_SKIPPED_DISK_READ_COUNT", "group__wt.html#ga5e3af0ec24d9e73356ce829c07e0b3d6", null ],
+    [ "WT_STAT_CONN_PREFETCH_SKIPPED_ERROR_OK", "group__wt.html#gaa1a8465ace9f6a8c9a990301dcec1a5a", null ],
     [ "WT_STAT_CONN_PREFETCH_SKIPPED_INTERNAL_PAGE", "group__wt.html#ga116043519c8380620ccff1a13cb2f41b", null ],
     [ "WT_STAT_CONN_PREFETCH_SKIPPED_INTERNAL_SESSION", "group__wt.html#ga7b7ac14ee3e584be6585ef74da8d5569", null ],
     [ "WT_STAT_CONN_PREFETCH_SKIPPED_NO_FLAG_SET", "group__wt.html#ga19686749c6362ba41c5d8a981e01ce3b", null ],

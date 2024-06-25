@@ -1,5 +1,13 @@
 var NAVTREEINDEX7 =
 {
+"schema.html#schema_columns":[0,4,3,5],
+"schema.html#schema_cursor_formats":[0,4,3,4],
+"schema.html#schema_examples":[0,4,3,10],
+"schema.html#schema_format_types":[0,4,3,2],
+"schema.html#schema_index_immutable":[0,4,3,8],
+"schema.html#schema_index_projections":[0,4,3,9],
+"schema.html#schema_indices":[0,4,3,7],
+"schema.html#schema_intro":[0,4,3,0],
 "schema.html#schema_key_and_value_formats":[0,4,3,3],
 "security.html":[0,6,3],
 "security.html#absolute_path":[0,6,3,1],
@@ -241,13 +249,5 @@ var NAVTREEINDEX7 =
 "timestamp_txn_api.html#timestamp_txn_api_commit_multi_timestamp":[0,4,12,2],
 "timestamp_txn_api.html#timestamp_txn_api_commit_timestamp":[0,4,12,1],
 "timestamp_txn_api.html#timestamp_txn_api_configure":[0,4,12,0],
-"timestamp_txn_api.html#timestamp_txn_api_prepare":[0,4,12,7],
-"timestamp_txn_api.html#timestamp_txn_api_query":[0,4,12,4],
-"timestamp_txn_api.html#timestamp_txn_api_read_timestamp":[0,4,12,3],
-"timestamp_txn_api.html#timestamp_txn_api_timestamp_transaction":[0,4,12,8],
-"tool-index.html":[0,9],
-"tool-index.html#tool-other":[0,9,0],
-"tool-libfuzzer.html":[0,9,6],
-"tool-libfuzzer.html#autotoc_md11":[0,9,6,0],
-"tool-libfuzzer.html#autotoc_md12":[0,9,6,0,0]
+"timestamp_txn_api.html#timestamp_txn_api_prepare":[0,4,12,7]
 };
