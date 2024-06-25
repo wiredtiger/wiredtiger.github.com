@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['locks_20hierarchy_1773',['Locks hierarchy',['../arch-locking-hierarchy.html',1,'arch-toc-int-wt-dev']]],
-  ['log_20file_20format_1774',['Log File Format',['../arch-log-file.html',1,'arch-toc-recovery']]],
-  ['logging_1775',['Logging',['../arch-logging.html',1,'arch-toc-recovery']]],
-  ['log_20cursors_1776',['Log cursors',['../cursor_log.html',1,'programming']]],
-  ['log_2dstructured_20merge_20trees_1777',['Log-Structured Merge Trees',['../lsm.html',1,'programming']]],
-  ['linux_20transparent_20huge_20pages_1778',['Linux transparent huge pages',['../tune_transparent_huge_pages.html',1,'programming']]],
-  ['linux_20zone_20reclamation_20memory_20management_1779',['Linux zone reclamation memory management',['../tune_zone_reclaim.html',1,'programming']]]
+  ['locks_20hierarchy_1779',['Locks hierarchy',['../arch-locking-hierarchy.html',1,'arch-toc-int-wt-dev']]],
+  ['log_20file_20format_1780',['Log File Format',['../arch-log-file.html',1,'arch-toc-recovery']]],
+  ['logging_1781',['Logging',['../arch-logging.html',1,'arch-toc-recovery']]],
+  ['log_20cursors_1782',['Log cursors',['../cursor_log.html',1,'programming']]],
+  ['log_2dstructured_20merge_20trees_1783',['Log-Structured Merge Trees',['../lsm.html',1,'programming']]],
+  ['linux_20transparent_20huge_20pages_1784',['Linux transparent huge pages',['../tune_transparent_huge_pages.html',1,'programming']]],
+  ['linux_20zone_20reclamation_20memory_20management_1785',['Linux zone reclamation memory management',['../tune_zone_reclaim.html',1,'programming']]]
 ];

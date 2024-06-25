@@ -1,5 +1,11 @@
 var NAVTREEINDEX7 =
 {
+"index.html":[0],
+"index.html":[],
+"keyvalue.html":[0,4,3,11],
+"license.html":[0,8],
+"license.html":[6],
+"license.html#license_crc32-power8":[0,8,1],
 "license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
 "license.html#license_library":[0,8,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX7 =
 "struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d":[1,0,3,24],
 "struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614":[1,0,3,16],
 "struct_w_t___s_e_s_s_i_o_n.html#a1d4d22f14aef710c0c3ac6a543004686":[1,0,3,23],
-"struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59":[1,0,3,18],
-"struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6":[1,0,3,28],
-"struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787":[1,0,3,17],
-"struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb":[1,0,3,7],
-"struct_w_t___s_e_s_s_i_o_n.html#a480525d3881dfcb90060af823a7f4a52":[1,0,3,27],
-"struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6":[1,0,3,15],
-"struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf":[1,0,3,3]
+"struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59":[1,0,3,18]
 };
