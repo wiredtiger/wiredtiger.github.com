@@ -157,6 +157,7 @@ var group__wt =
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_INTERRUPTED", "group__wt.html#gad2f7248c7e937e76289610fafdf54e38", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_RUNNING", "group__wt.html#ga52f6cafb671f29bd0e0836e77ed4e283", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_SKIPPED", "group__wt.html#ga26758727845a4bfd106b8411cbb16494", null ],
+    [ "WT_STAT_CONN_BACKGROUND_COMPACT_SLEEP_CACHE_PRESSURE", "group__wt.html#gaaca547b89c9506d43c72b22c89c7b4b9", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_SUCCESS", "group__wt.html#gaee0c4a515047c98dbaa595cbe292b713", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_TIMEOUT", "group__wt.html#ga8e5d70b3d7ceb7066b372f264aac4634", null ],
     [ "WT_STAT_CONN_BACKUP_BLOCKS", "group__wt.html#ga87f26dc75420135044d71175676c438d", null ],

@@ -12,9 +12,7 @@ var index =
       [ "POSIX compliance", "portability.html#posix", null ],
       [ "Testing", "portability.html#testing", null ],
       [ "Hardware requirements of WiredTiger", "portability.html#hardware-requirements", [
-        [ "Atomic reads and writes", "portability.html#atomic-reads-writes", null ],
-        [ "No Aggregated Writes of Adjacent Memory Locations", "portability.html#aggregated-writes", null ],
-        [ "Writes Across Cache Lines", "portability.html#cache-lines", null ]
+        [ "Atomic reads and writes", "portability.html#atomic-reads-writes", null ]
       ] ]
     ] ],
     [ "Building and installing WiredTiger on POSIX (Linux, *BSD, OS X):", "build-posix.html", [

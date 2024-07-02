@@ -1,10 +1,11 @@
 var NAVTREEINDEX7 =
 {
+"in_memory.html":[0,4,33],
 "index.html":[0],
 "index.html":[],
 "keyvalue.html":[0,4,3,11],
-"license.html":[0,8],
 "license.html":[6],
+"license.html":[0,8],
 "license.html#license_crc32-power8":[0,8,1],
 "license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
@@ -42,9 +43,7 @@ var NAVTREEINDEX7 =
 "packing.html#config_examples":[0,4,3,12,0],
 "pages.html":[],
 "portability.html":[0,1],
-"portability.html#aggregated-writes":[0,1,3,1],
 "portability.html#atomic-reads-writes":[0,1,3,0],
-"portability.html#cache-lines":[0,1,3,2],
 "portability.html#cpu":[0,1,0],
 "portability.html#hardware-requirements":[0,1,3],
 "portability.html#posix":[0,1,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX7 =
 "struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d":[1,0,3,24],
 "struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614":[1,0,3,16],
 "struct_w_t___s_e_s_s_i_o_n.html#a1d4d22f14aef710c0c3ac6a543004686":[1,0,3,23],
-"struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59":[1,0,3,18]
+"struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59":[1,0,3,18],
+"struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6":[1,0,3,28]
 };

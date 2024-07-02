@@ -144,7 +144,11 @@ Background compaction</h1>
 <li>it belongs to a tiered table or,</li>
 <li>it is a part of the exclude list that can be configured when enabling background compaction.</li>
 </ul>
-<p>Background compaction retrieves the files to compact by walking the metadata file. To limit disruption, background compaction reduces the number of checkpoints by skipping the first one described in the section above. Furthermore, background compaction gathers statistics over time to keep track of tables where compaction is successful. Using those statistics, the service focuses on tables where compaction is likely to reclaim space and avoids unnecessary attempts.</p>
+<p>Background compaction retrieves the files to compact by walking the metadata file. To limit disruption, background compaction reduces the number of checkpoints by skipping the first one described in the section above. Furthermore, background compaction gathers statistics over time to keep track of tables where compaction is successful. Using those statistics, the service focuses on tables where compaction is likely to reclaim space and avoids unnecessary attempts. Finally, the thread makes sure that the following conditions are met before processing the next table:</p>
+<ul>
+<li>the dirty content in the cache (without considering updates) is below the <code>eviction_dirty_trigger</code> threshold and,</li>
+<li>the overall cache content is less than the <code>eviction_trigger</code> threshold.</li>
+</ul>
 <p>Background compaction can be enabled, configured, and disabled through the same API <code><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree or LSM tree.">WT_SESSION::compact</a></code>. When disabled, background compaction turns off as soon as possible and when re-enabled, it starts from the last processed table. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
