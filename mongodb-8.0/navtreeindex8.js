@@ -1,5 +1,8 @@
 var NAVTREEINDEX8 =
 {
+"timestamp_txn_api.html#timestamp_txn_api_commit_timestamp":[0,4,12,1],
+"timestamp_txn_api.html#timestamp_txn_api_configure":[0,4,12,0],
+"timestamp_txn_api.html#timestamp_txn_api_prepare":[0,4,12,7],
 "timestamp_txn_api.html#timestamp_txn_api_query":[0,4,12,4],
 "timestamp_txn_api.html#timestamp_txn_api_read_timestamp":[0,4,12,3],
 "timestamp_txn_api.html#timestamp_txn_api_timestamp_transaction":[0,4,12,8],

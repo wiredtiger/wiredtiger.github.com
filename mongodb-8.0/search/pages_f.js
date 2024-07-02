@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['python_20api_1776',['Python API',['../arch-python.html',1,'arch-toc-tools']]],
-  ['packing_20and_20unpacking_20data_1777',['Packing and Unpacking Data',['../packing.html',1,'schema']]],
-  ['per_2dprocess_20shared_20caches_1778',['Per-process shared caches',['../shared_cache.html',1,'programming']]],
-  ['performance_20monitoring_1779',['Performance Monitoring',['../tool-perf.html',1,'tool-index']]],
-  ['performance_20monitoring_20with_20statistics_1780',['Performance monitoring with statistics',['../tune_statistics.html',1,'programming']]]
+  ['python_20api_1779',['Python API',['../arch-python.html',1,'arch-toc-tools']]],
+  ['packing_20and_20unpacking_20data_1780',['Packing and Unpacking Data',['../packing.html',1,'schema']]],
+  ['per_2dprocess_20shared_20caches_1781',['Per-process shared caches',['../shared_cache.html',1,'programming']]],
+  ['performance_20monitoring_1782',['Performance Monitoring',['../tool-perf.html',1,'tool-index']]],
+  ['performance_20monitoring_20with_20statistics_1783',['Performance monitoring with statistics',['../tune_statistics.html',1,'programming']]]
 ];
