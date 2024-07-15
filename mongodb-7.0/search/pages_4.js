@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['eviction_1619',['Eviction',['../arch-eviction.html',1,'arch-toc-in-mem'],['../eviction.html',1,'programming']]],
-  ['encryptors_1620',['Encryptors',['../encryption.html',1,'programming']]],
-  ['error_20handling_1621',['Error handling',['../error_handling.html',1,'programming']]],
-  ['extending_20wiredtiger_1622',['Extending WiredTiger',['../extensions.html',1,'encryption']]]
+  ['eviction_1620',['Eviction',['../arch-eviction.html',1,'arch-toc-in-mem'],['../eviction.html',1,'programming']]],
+  ['encryptors_1621',['Encryptors',['../encryption.html',1,'programming']]],
+  ['error_20handling_1622',['Error handling',['../error_handling.html',1,'programming']]],
+  ['extending_20wiredtiger_1623',['Extending WiredTiger',['../extensions.html',1,'encryption']]]
 ];

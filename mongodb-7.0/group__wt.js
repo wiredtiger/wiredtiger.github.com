@@ -117,6 +117,7 @@ var group__wt =
     [ "WT_ERROR", "group__wt.html#gafdfe4d6ca06cb7337272f883f60c991e", null ],
     [ "WT_INTPACK32_MAXSIZE", "group__wt.html#ga56fdfd15cc3721bcb251cfc859a915ad", null ],
     [ "WT_INTPACK64_MAXSIZE", "group__wt.html#ga562d6f7fd9a3ffdb4089c1469b1609f8", null ],
+    [ "WT_LOGOP_BACKUP_ID", "group__wt.html#ga92aceb7dee1ce41fca673416a3923875", null ],
     [ "WT_LOGOP_CHECKPOINT_START", "group__wt.html#ga079e6a0b20affec5374bcc34e770ac0f", null ],
     [ "WT_LOGOP_COL_MODIFY", "group__wt.html#ga69f6ee78c9d3e9d5105d255778113f99", null ],
     [ "WT_LOGOP_COL_PUT", "group__wt.html#ga60f5a86dcf273140cf03b3b0211b52b0", null ],
