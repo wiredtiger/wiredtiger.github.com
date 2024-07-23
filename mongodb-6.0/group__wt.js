@@ -698,6 +698,7 @@ var group__wt =
     [ "WT_STAT_DSRC_BLOOM_PAGE_READ", "group__wt.html#ga253b2126413546418ce7555c91641ffd", null ],
     [ "WT_STAT_DSRC_BLOOM_SIZE", "group__wt.html#ga0b5b20ddddd005d15c565c106fc888b9", null ],
     [ "WT_STAT_DSRC_BTREE_CHECKPOINT_GENERATION", "group__wt.html#gaf83dad08fcd70c19041768e4d4dbbb84", null ],
+    [ "WT_STAT_DSRC_BTREE_CHECKPOINT_PAGES_RECONCILED", "group__wt.html#gaffc5ad6fd134ae6d631543f685bafbd9", null ],
     [ "WT_STAT_DSRC_BTREE_CLEAN_CHECKPOINT_TIMER", "group__wt.html#ga6ae5688a420cb0cbdd4b7f367662bd63", null ],
     [ "WT_STAT_DSRC_BTREE_COLUMN_DELETED", "group__wt.html#gabbadad28b5762d9a5cd01aa51730ed4c", null ],
     [ "WT_STAT_DSRC_BTREE_COLUMN_FIX", "group__wt.html#ga838949652c9baebee9d2d96382bdc1f7", null ],
