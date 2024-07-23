@@ -28,5 +28,29 @@ var arch_toc_int_wt_dev =
         [ "Eviction (full)", "arch-locking-hierarchy.html#arch-locking-hierarchy-examples-eviction", null ],
         [ "Log", "arch-locking-hierarchy.html#arch-locking-hierarchy-examples-log", null ]
       ] ]
+    ] ],
+    [ "Usage Patterns", "arch-usage-patterns.html", [
+      [ "Message passing with acquire and release", "arch-usage-patterns.html#message-passing", null ],
+      [ "Slotted arrays", "arch-usage-patterns.html#slotted-arrays", [
+        [ "Overview", "arch-usage-patterns.html#slotted-arrays-overview", [
+          [ "Use cases", "arch-usage-patterns.html#slotted-arrays-use-cases", null ],
+          [ "Writing", "arch-usage-patterns.html#slotted-arrays-writing", null ],
+          [ "Reading", "arch-usage-patterns.html#slotted-arrays-reading", null ],
+          [ "Correctness of allowing reading while allowing writes", "arch-usage-patterns.html#slotted-arrays-correctness", null ]
+        ] ],
+        [ "Growable arrays", "arch-usage-patterns.html#growable-arrays", [
+          [ "Writing", "arch-usage-patterns.html#growable-arrays-writing", null ],
+          [ "Reading", "arch-usage-patterns.html#growable-arrays-reading", null ],
+          [ "Further details", "arch-usage-patterns.html#growable-arrays-further-details", null ]
+        ] ]
+      ] ],
+      [ "Write While stable (WwS)", "arch-usage-patterns.html#write-while-stable", [
+        [ "Pseudocode", "arch-usage-patterns.html#write-while-stable-pseudocode", null ],
+        [ "Example WT implementation", "arch-usage-patterns.html#write-while-stable-wt-implementation", null ]
+      ] ],
+      [ "Win the Race", "arch-usage-patterns.html#win-the-race", [
+        [ "Example", "arch-usage-patterns.html#win-the-race-example", null ],
+        [ "Example Pseudocode", "arch-usage-patterns.html#win-the-race-pseudocode", null ]
+      ] ]
     ] ]
 ];

@@ -39,6 +39,23 @@ var arch_toc_mem_disk =
       [ "S3 Storage source", "arch-cloud-storage-extension.html#s3_store", null ],
       [ "Azure and GCP Storage Source", "arch-cloud-storage-extension.html#azure_gcp_store", null ]
     ] ],
+    [ "Pre-fetch", "arch-prefetch.html", [
+      [ "What is pre-fetching? When is pre-fetching useful?", "arch-prefetch.html#prefetch_overview", null ],
+      [ "Pre-fetch Algorithm", "arch-prefetch.html#prefetch_algorithm", [
+        [ "Finding Candidate Pages", "arch-prefetch.html#prefetch_algorithm_find_pages", null ],
+        [ "Populating the Pre-fetch Queue", "arch-prefetch.html#prefetch_algorithm_populate_queue", null ],
+        [ "Pre-fetching Content Into the Cache", "arch-prefetch.html#prefetch_algorithm_process_pages", null ]
+      ] ],
+      [ "Pre-fetch API", "arch-prefetch.html#prefetch_api", [
+        [ "Connection-Level Configuration", "arch-prefetch.html#prefetch_api_connection", null ],
+        [ "Session-Level Configuration", "arch-prefetch.html#prefetch_api_session", null ]
+      ] ],
+      [ "Interaction With Other Components", "arch-prefetch.html#prefetch_other", [
+        [ "Considering Current Cache Busyness", "arch-prefetch.html#prefetch_other_cache_busyness", null ],
+        [ "Ensuring References on the Pre-fetch Queue Remain Valid", "arch-prefetch.html#prefetch_other_refs", null ],
+        [ "Concurrency", "arch-prefetch.html#prefetch_other_concurrency", null ]
+      ] ]
+    ] ],
     [ "Tiered Storage", "arch-tiered-storage.html", [
       [ "Introduction and Definitions", "arch-tiered-storage.html#ts_intro", null ],
       [ "Object IDs", "arch-tiered-storage.html#ts_objectid", null ],
