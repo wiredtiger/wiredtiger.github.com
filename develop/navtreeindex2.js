@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"custom_data_sources.html#custom_ds_config_parsing":[0,4,44,4,0],
 "custom_data_sources.html#custom_ds_create":[0,4,44,0,0],
 "custom_data_sources.html#custom_ds_cursor_collator":[0,4,44,5],
 "custom_data_sources.html#custom_ds_cursor_fields":[0,4,44,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga1b0c81ef9431dc6fc3a27f4880d579a9":[1,0,400],
 "group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4":[1,0,1094],
 "group__wt.html#ga1b3eab15ec9a83ee174e0c9e2601fc9b":[1,0,762],
-"group__wt.html#ga1c04e13dc9c190826191813aa4a081ba":[1,0,528],
-"group__wt.html#ga1c10b7149fc49d50a0e48cbd03279d38":[1,0,1001]
+"group__wt.html#ga1c04e13dc9c190826191813aa4a081ba":[1,0,528]
 };

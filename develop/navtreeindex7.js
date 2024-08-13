@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8778a2d19f830c86ecef2103ba3cd43b":[1,0,1074,25],
 "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8a7edd91839deb27bd3944e91449e22b":[1,0,1074,23],
 "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa91d90eec055823a1e7531f6e6f5627be":[1,0,1074,2],
 "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa9bf5f06571fffaa893cc57048d698f18":[1,0,1074,9],
@@ -40,11 +41,11 @@ var NAVTREEINDEX7 =
 "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k":[1,1,7],
 "home.html":[0,6,0],
 "in_memory.html":[0,4,33],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "keyvalue.html":[0,4,3,11],
-"license.html":[6],
 "license.html":[0,8],
+"license.html":[6],
 "license.html#license_crc32-power8":[0,8,1],
 "license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae498b02cf83cdb644c2665c37917e785":[1,1,8,5],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ae87ae081fa676db65a7e06fe03a20fc6":[1,1,8,32],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554":[1,1,8,11],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af0256206a330cf5b8ec738c1ec60c6a9":[1,1,8,28],
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f":[1,1,8,9]
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#af0256206a330cf5b8ec738c1ec60c6a9":[1,1,8,28]
 };

@@ -242,12 +242,12 @@ var NAVTREEINDEX0 =
 "arch-snapshot.html":[0,10,0,5],
 "arch-snapshot.html#snapshot_checkpoint":[0,10,0,5,3],
 "arch-snapshot.html#snapshot_internals":[0,10,0,5,1],
+"arch-snapshot.html#snapshot_read_uncommitted":[0,10,0,5,4],
 "arch-snapshot.html#snapshot_transaction":[0,10,0,5,0],
 "arch-snapshot.html#snapshot_visibility":[0,10,0,5,2],
 "arch-tiered-storage.html":[0,10,6,4],
 "arch-tiered-storage.html#ts_block_files":[0,10,6,4,3,1],
 "arch-tiered-storage.html#ts_block_local_file_removal":[0,10,6,4,3,2],
 "arch-tiered-storage.html#ts_block_manager":[0,10,6,4,3],
-"arch-tiered-storage.html#ts_buckets":[0,10,6,4,6],
-"arch-tiered-storage.html#ts_checkpoint_data_file":[0,10,6,4,7,1]
+"arch-tiered-storage.html#ts_buckets":[0,10,6,4,6]
 };
