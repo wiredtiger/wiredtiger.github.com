@@ -130,7 +130,10 @@ src/block/</code></code></td></tr>
 <h1><a class="anchor" id="block_what"></a>
 What is a block?</h1>
 <p>A block is a chunk of data that is stored on the disk and operated on as a single unit. Each WiredTiger data file (any file in the home directory with the <code></code>.wt suffix) is made up of these blocks. Each block consists of a page header, a block header and contains a single page of the btree from which it was generated. WiredTiger is a no-overwrite storage engine, and when blocks are re-written, they are written to new locations in the file. The size of a block is a multiple of the allocation size which is set during creation of the associated WiredTiger data file see: <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</p>
-<h2><a class="anchor" id="block_address_cookie"></a>
+<div class="image">
+<img src="block.png" alt=""/>
+</div>
+ <h2><a class="anchor" id="block_address_cookie"></a>
 Address Cookies</h2>
 <p>Once a block is written an address cookie is returned. This address cookie is stored as the <code>addr</code> on the associated page ref. The <code>WT_REF</code> structure can be found in <code>btmem.h</code>. The address cookie is opaque to other parts of the system and cannot be interpreted meaningfully.</p>
 <p>The address cookie is made up of 4 components:</p><ul>
