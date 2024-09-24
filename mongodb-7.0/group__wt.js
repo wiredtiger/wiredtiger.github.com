@@ -633,6 +633,7 @@ var group__wt =
     [ "WT_STAT_CONN_SESSION_TABLE_ALTER_TRIGGER_CHECKPOINT", "group__wt.html#ga34028521bcf99457da1a440145411f9c", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_COMPACT_FAIL", "group__wt.html#ga152fab37c0855fa5e935580b11e72a69", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_COMPACT_FAIL_CACHE_PRESSURE", "group__wt.html#gae662274be650057f3eb36e987bc81308", null ],
+    [ "WT_STAT_CONN_SESSION_TABLE_COMPACT_PASSES", "group__wt.html#ga78228cf847cca8b4c408f4f06978b48e", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_COMPACT_RUNNING", "group__wt.html#ga2a9c003fbed3feeea7ed766258fff1ea", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_COMPACT_SKIPPED", "group__wt.html#gadcbde70fd60cd09e2109b2d2699542a0", null ],
     [ "WT_STAT_CONN_SESSION_TABLE_COMPACT_SUCCESS", "group__wt.html#gabbd575d4f3a21c0965dca5ee6d78af9b", null ],
