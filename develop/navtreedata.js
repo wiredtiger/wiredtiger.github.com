@@ -44,10 +44,10 @@ var NAVTREEINDEX =
 "admin.html",
 "arch-tiered-storage.html#ts_checkpoint_data_file",
 "custom_data_sources.html#custom_ds_config_parsing",
-"group__wt.html#ga1c4fc802f652b03f185994f34c8063cd",
-"group__wt.html#ga58af084ac45e0367be4492c50ffaadce",
-"group__wt.html#ga8f6c39d714b2a99e809d6186cc0d4248",
-"group__wt.html#gacb44b88acd3b00bee3236f9196f1b22e",
+"group__wt.html#ga1c04e13dc9c190826191813aa4a081ba",
+"group__wt.html#ga59c334734c52660ffd64a718aee0a5ae",
+"group__wt.html#ga9157770ca2e9d3c9c201c190927f4ad3",
+"group__wt.html#gacc7e9c0245fc171cd71aa6923f911144",
 "group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaa9d0daaac5a8ffe5a2f68777b23031d4",
 "struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a1e0b90f0a4fcf943e81b22b94069738b"
 ];
