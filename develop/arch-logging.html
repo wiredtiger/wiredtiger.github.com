@@ -120,9 +120,7 @@ $(document).ready(function(){initNavTree('arch-logging.html',''); initResizable(
 WT_LOG<br  />
 WT_LOGSLOT<br  />
 WT_LOG_RECORD<br  />
-WT_LSN</code></code></td><td><code><code>src/include/log.h<br  />
-src/include/log_inline.h<br  />
-src/log/</code></code></td></tr>
+WT_LSN</code></code></td><td><code><code>src/log/</code></code></td></tr>
 </table>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
 <p>The WiredTiger logging subsystem implements a write-ahead log when configured. It is a central resource recording changes made to different tables, by different threads, into a file on disk. Its purpose is so that changes made since the most recent checkpoint are not lost and can be recovered on restart after a crash (unclean shutdown).</p>
