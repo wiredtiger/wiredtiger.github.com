@@ -45,11 +45,11 @@ var NAVTREEINDEX =
 "build-windows.html#windows_ctest",
 "encryption.html#encryption_use",
 "group__wt.html#ga2f69defe9f4a1711da1377a079fe9754",
-"group__wt.html#ga6c06ff72a5c930d81e2e840cfbdf17a2",
-"group__wt.html#gaa0e2f6a54ff799ab0f250a851547c1c8",
-"group__wt.html#gadf3e911d0f21e349e5ed0c9031dc3f8e",
-"programming.html",
-"timestamp_prepare.html"
+"group__wt.html#ga6d7172e9bd093ded3b3aacc0a094314f",
+"group__wt.html#gaa1a8465ace9f6a8c9a990301dcec1a5a",
+"group__wt.html#gae1780a049aff4e3bd2d18d565fd067c4",
+"schema.html",
+"timestamp_txn_api.html#timestamp_txn_api_commit_multi_timestamp"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
