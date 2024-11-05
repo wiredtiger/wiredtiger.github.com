@@ -125,6 +125,8 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="preprocessor">#include &lt;test_util.h&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> total_ranges = 0;</div>
+<div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> home = <span class="stringliteral">&quot;WT_BLOCK&quot;</span>;</div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> home_full = <span class="stringliteral">&quot;WT_BLOCK_LOG_FULL&quot;</span>;</div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> home_incr = <span class="stringliteral">&quot;WT_BLOCK_LOG_INCR&quot;</span>;</div>
@@ -405,7 +407,7 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">    <a class="code" href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a> *backup_cur, *incr_cur;</div>
 <div class="line">    uint64_t offset, size, type;</div>
 <div class="line">    <span class="keywordtype">size_t</span> alloc, count, rdsize, tmp_sz;</div>
-<div class="line">    <span class="keywordtype">int</span> j, ret, rfd, wfd;</div>
+<div class="line">    <span class="keywordtype">int</span> j, nranges, ret, rfd, wfd;</div>
 <div class="line">    <span class="keywordtype">char</span> buf[1024], h[256], *tmp;</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *filename, *idstr;</div>
 <div class="line">    <span class="keywordtype">bool</span> first;</div>
@@ -427,6 +429,7 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">    alloc = FLIST_INIT;</div>
 <div class="line">    flist = calloc(alloc, <span class="keyword">sizeof</span>(FILELIST));</div>
 <div class="line">    testutil_assert(flist != NULL);</div>
+<div class="line">    nranges = 0;</div>
 <div class="line">    <span class="comment">/* For each file listed, open a duplicate backup cursor and copy the blocks. */</span></div>
 <div class="line">    <span class="keywordflow">while</span> ((ret = backup_cur-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(backup_cur)) == 0) {</div>
 <div class="line">        error_check(backup_cur-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(backup_cur, &amp;filename));</div>
@@ -458,6 +461,7 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line"><span class="comment">                 * We should never get a range key after a whole file so the read file descriptor</span></div>
 <div class="line"><span class="comment">                 * should be valid. If the read descriptor is valid, so is the write one.</span></div>
 <div class="line"><span class="comment">                 */</span></div>
+<div class="line">                ++nranges;</div>
 <div class="line">                <span class="keywordflow">if</span> (tmp_sz &lt; size) {</div>
 <div class="line">                    tmp = realloc(tmp, size);</div>
 <div class="line">                    testutil_assert(tmp != NULL);</div>
@@ -526,6 +530,7 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">    <span class="comment">/* Done processing all files. Close backup cursor. */</span></div>
 <div class="line">    error_check(backup_cur-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(backup_cur));</div>
 <div class="line">    error_check(finalize_files(flist, count));</div>
+<div class="line">    total_ranges += nranges;</div>
 <div class="line">    free(tmp);</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -620,6 +625,7 @@ $(document).ready(function(){initNavTree('ex_backup_block_8c-example.html',''); 
 <div class="line">    error_check(wt_conn-&gt;close(wt_conn, NULL));</div>
 <div class="line"> </div>
 <div class="line">    printf(<span class="stringliteral">&quot;Final comparison: dumping and comparing data\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Total backup ranges copied: %d\n&quot;</span>, total_ranges);</div>
 <div class="line">    error_check(compare_backups(0));</div>
 <div class="line">    <span class="keywordflow">for</span> (i = 0; i &lt; (int)filelist_count; ++i) {</div>
 <div class="line">        <span class="keywordflow">if</span> (last_flist[i].name == NULL)</div>
