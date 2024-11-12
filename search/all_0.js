@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['wiredtiger_20community_20and_20contact_20information_0',['WiredTiger community and contact information',['../community.html',1,'']]],
-  ['wiredtiger_20developer_20site_1',['WiredTiger Developer Site',['../index.html',1,'']]],
-  ['wiredtiger_20licensing_2',['WiredTiger licensing',['../license.html',1,'index']]]
+  ['3rd_20party_20software_20always_20included_20in_20the_20wiredtiger_20library_0',['3rd party software always included in the WiredTiger library',['../license.html#license_library',1,'']]],
+  ['3rd_20party_20software_20included_20in_20the_20wiredtiger_20distribution_1',['3rd party software included in the WiredTiger distribution',['../license.html#license_distribution',1,'']]],
+  ['3rd_20party_20software_20optionally_20included_20in_20the_20wiredtiger_20library_3a_20ppc64_2',['3rd party software optionally included in the WiredTiger library: PPC64',['../license.html#license_crc32-power8',1,'']]],
+  ['3rd_20party_20software_20optionally_20included_20in_20the_20wiredtiger_20library_3a_20s390x_3',['3rd party software optionally included in the WiredTiger library: s390x',['../license.html#license_crc32-zseries',1,'']]]
 ];
