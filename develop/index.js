@@ -34,6 +34,7 @@ var index =
     [ "WiredTiger command line utility", "command_line.html", "command_line" ],
     [ "Managing WiredTiger databases", "admin.html", "admin" ],
     [ "Upgrading WiredTiger applications", "upgrading.html", [
+      [ "Upgrading to Version 11.3.0", "upgrading.html#version_1130", null ],
       [ "Upgrading to Version 11.2.0", "upgrading.html#version_1120", null ],
       [ "Upgrading to Version 11.1.0", "upgrading.html#version_1110", null ],
       [ "Upgrading to Version 11.0.0", "upgrading.html#version_1100", null ],

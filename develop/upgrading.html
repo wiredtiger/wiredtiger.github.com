@@ -92,7 +92,32 @@ $(document).ready(function(){initNavTree('upgrading.html',''); initResizable(); 
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_1120"></a>
+<div class="textblock"><h1><a class="anchor" id="version_1130"></a>
+Upgrading to Version 11.3.0</h1>
+<dl>
+<dt>Per-file configuration "huffman_value" </dt>
+<dd><p class="startdd">Huffman encoding is no longer supported for values or keys (support for keys was removed in a previous release). </p>
+<p class="enddd"></p>
+</dd>
+<dt>Connection configuration "checkpoint_cleanup" </dt>
+<dd><p class="startdd">The checkpoint_cleanup configuration now uses a sub-configuration "method" to control how aggressively obsolete content is removed when creating checkpoints: "checkpoint_cleanup=[method=[none|reclaim_space]]" </p>
+<p class="enddd"></p>
+</dd>
+<dt>Connection configuration "verbose" </dt>
+<dd><p class="startdd">Three eviction-related verbose config values ('evict', 'evict_stuck', and 'evictserver') have been merged into the 'eviction' config. </p>
+<p class="enddd"></p>
+</dd>
+<dt><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION.verify</a> configuration "dump_app_data" </dt>
+<dd><p class="startdd">The 'dump_app_data' configuration of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3" title="Verify a table.">WT_SESSION.verify</a> command has been renamed to 'dump_all_data'. </p>
+<p class="enddd"></p>
+</dd>
+<dt>WT_SESSION.set_timestamp configuration "oldest_timestamp" and "stable_timestamp" </dt>
+<dd><p class="startdd">An invalid oldest_timestamp or stable_timestamp value is no longer silently ignored, and now returns an error. The stable timestamp should always be greater than the oldest timestamp and neither can be set to a value older than the current one. </p>
+<p class="enddd"></p>
+</dd>
+</dl>
+<hr  />
+ <h1><a class="anchor" id="version_1120"></a>
 Upgrading to Version 11.2.0</h1>
 <dl>
 <dt>Connection configuration "operation_timeout_ms" </dt>
