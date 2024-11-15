@@ -209,7 +209,7 @@ var NAVTREEINDEX8 =
 "upgrading.html#version_1100":[0,7,3],
 "upgrading.html#version_1110":[0,7,2],
 "upgrading.html#version_1120":[0,7,1],
-"upgrading.html#version_1130":[0,7,0],
+"upgrading.html#version_1131":[0,7,0],
 "verbose_messaging.html":[0,4,24],
 "verbose_messaging.html#verbosity_categories":[0,4,24,1],
 "verbose_messaging.html#verbosity_configuration":[0,4,24,1,0],
