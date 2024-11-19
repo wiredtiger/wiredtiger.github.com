@@ -142,7 +142,11 @@ The checkpoint algorithm</h1>
 <p>A new entry into the metadata file is created for every data file checkpointed, including the history store. As such the metadata file is the last file to be checkpointed. As WiredTiger maintains two checkpoints, the location of the most recent checkpoint is written to the turtle file.</p>
 <h1><a class="anchor" id="autotoc_md7"></a>
 Skipping checkpoints</h1>
-<p>It is possible that a checkpoint will be skipped. If no modifications to the database have been made since the last checkpoint, and the last checkpoint timestamp is equal to the current stable timestamp then a checkpoint will not be taken. This logic can be overridden by forcing a checkpoint via configuration.</p>
+<p>It is possible that a checkpoint will be skipped. A checkpoint will be skipped when:</p><ul>
+<li>No modifications to the database have been made since the last checkpoint.</li>
+<li>The last checkpoint timestamp is equal to the current stable timestamp.</li>
+<li>There is no available space at the end of the file. This logic can be overridden by forcing a checkpoint via configuration.</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Checkpoint generations</h1>
 <p>The checkpoint generation indicates which iteration of checkpoint a file has undergone, at the start of a checkpoint the generation is incremented. Then after processing any b-tree its <code>checkpoint_gen</code> is set to the latest checkpoint generation. Checkpoint generations impact visibility checks within WiredTiger, essentially if a b-tree is behind a checkpoint, i.e. its checkpoint generation is less than the current checkpoint generation, then the checkpoint transaction id and checkpoint timestamp are included in certain visibility checks. This prevents eviction from evicting updates from a given b-tree ahead of the checkpoint.</p>

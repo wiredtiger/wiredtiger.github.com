@@ -160,6 +160,7 @@ var group__wt =
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_SLEEP_CACHE_PRESSURE", "group__wt.html#gaaca547b89c9506d43c72b22c89c7b4b9", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_SUCCESS", "group__wt.html#gaee0c4a515047c98dbaa595cbe292b713", null ],
     [ "WT_STAT_CONN_BACKGROUND_COMPACT_TIMEOUT", "group__wt.html#ga8e5d70b3d7ceb7066b372f264aac4634", null ],
+    [ "WT_STAT_CONN_BACKUP_BITS_CLR", "group__wt.html#ga3e421e377a4f01a72d62dba4d4772f57", null ],
     [ "WT_STAT_CONN_BACKUP_BLOCKS", "group__wt.html#ga87f26dc75420135044d71175676c438d", null ],
     [ "WT_STAT_CONN_BACKUP_BLOCKS_COMPRESSED", "group__wt.html#ga033b2c34643c9e7cba2a9719bfbc4116", null ],
     [ "WT_STAT_CONN_BACKUP_BLOCKS_UNCOMPRESSED", "group__wt.html#ga8ac55ddfa7aac3147a5aae7d62431ebc", null ],
