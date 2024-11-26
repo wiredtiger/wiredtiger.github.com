@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['next_1500',['next',['../struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b',1,'WT_CURSOR::next()'],['../struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f',1,'WT_CONFIG_PARSER::next()']]]
+  ['open_5fcursor_1485',['open_cursor',['../struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d',1,'WT_SESSION']]],
+  ['open_5fsession_1486',['open_session',['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0',1,'WT_CONNECTION']]]
 ];

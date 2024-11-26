@@ -105,8 +105,6 @@ Builtin data sources</h1>
 <td><code>colgroup:&lt;table name&gt;:&lt;column group name&gt;</code></td><td>column group cursor</td><td>table key, column group value(s) </td></tr>
 <tr>
 <td><code>index:&lt;table name&gt;:&lt;index name&gt;[&lt;projection&gt;]</code></td><td>index cursor</td><td>key=index key, value=table value(s) with optional projection of columns </td></tr>
-<tr>
-<td><code>join:table:&lt;table name&gt;[&lt;projection&gt;]</code></td><td>join cursor</td><td>key=table key, value=table value(s) with optional projection of columns </td></tr>
 </table>
 <p>Some administrative tasks can be accomplished using the following special cursor types that give access to data managed by WiredTiger: </p><table class="doxtable">
 <tr>
@@ -127,7 +125,7 @@ Builtin data sources</h1>
 <td><code>metadata:[create]</code></td><td>metadata cursor (optionally only returning configuration strings for <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> if <code>create</code> is appended)</td><td>key=<code>string</code>, value=<code>string</code>,<br  />
  see <a class="el" href="cursors.html#metadata">Reading WiredTiger Metadata</a> for details </td></tr>
 <tr>
-<td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database, data source, join or session statistics cursor</td><td>key=<code>int id</code>,<br  />
+<td><code>statistics:[&lt;data source URI&gt;]</code></td><td>database, data source\ or session statistics cursor</td><td>key=<code>int id</code>,<br  />
  value=<code>(string description, string value, uint64_t value)</code>,<br  />
  see <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for details </td></tr>
 </table>
@@ -147,10 +145,10 @@ Raw Files</h2>
 <h2><a class="anchor" id="data_indices"></a>
 Table Index data</h2>
 <p>When an index is created for a table, records are inserted into the index whenever the table is updated. These records use a different key to the primary table, as specified when the index is created with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> method.</p>
-<p>A cursor opened on an index has the specified index columns as its key, accessed by <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>. The value columns default to returning the value columns from the table, but this can be overridden by configuring a projection cursor (see <a class="el" href="cursors.html#cursor_projections">Projections</a>), which can access the table key columns or a subset of the value columns.</p>
+<p>A cursor opened on an index has the specified index columns as its key, accessed by <a class="el" href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc" title="Set the key for the next operation.">WT_CURSOR::set_key</a> and <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f" title="Get the key for the current record.">WT_CURSOR::get_key</a>. The value columns default to returning the value columns from the table.</p>
 <h2><a class="anchor" id="data_statistics"></a>
 Statistics Data</h2>
-<p>Statistics cursors can be used to retrieve run-time statistics about a WiredTiger database as well as statistics for individual data sources. The statistics are at two levels: per-database and per-individual data source. Database-wide statistics are retrieved with the <code>"statistics:"</code> URI; individual data source statistics are available by specifying <code>"statistics:&lt;data source URI&gt;"</code>. Statistics about a join cursor can be retrieved by specifying <code>"statistics:join"</code> and supplying the join cursor as an argument in the SESSION::open_cursor call. Statistics about a session can be retrieved by specifying <code>"statistics:session"</code>.</p>
+<p>Statistics cursors can be used to retrieve run-time statistics about a WiredTiger database as well as statistics for individual data sources. The statistics are at two levels: per-database and per-individual data source. Database-wide statistics are retrieved with the <code>"statistics:"</code> URI; individual data source statistics are available by specifying <code>"statistics:&lt;data source URI&gt;"</code>. Statistics about a session can be retrieved by specifying <code>"statistics:session"</code>.</p>
 <p>The statistic key is an integer from the list of keys in <a class="el" href="group__wt.html#statistics_keys">Statistics Keys</a>. Statistics cursors return three values from the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01" title="Get the value for the current record.">WT_CURSOR::get_value</a> call: a printable description of the statistic, a printable version of the entry's value, and the entry's unsigned 64-bit integral value, respectively.</p>
 <p>The cursor's statistics values are loaded when the cursor is opened and remain unchanged for the life of the cursor, unless the cursor is reset by calling the <a class="el" href="struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565" title="Reset the cursor.">WT_CURSOR::reset</a> method, which reloads the values. A reset call on session statistics cursor would set the statistics values to zero.</p>
 <p>The following is an example of printing run-time statistics about the WiredTiger engine:</p>
@@ -163,11 +161,6 @@ Statistics Data</h2>
 <div class="line"> </div>
 <div class="line">    print_cursor(cursor);</div>
 <div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
-</div><!-- fragment --><p> The following is an example of printing statistics about a join cursor:</p>
-<div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;statistics:join&quot;</span>, join_cursor, NULL, &amp;stat_cursor));</div>
-<div class="line"> </div>
-<div class="line">    print_cursor(stat_cursor);</div>
-<div class="line">    error_check(stat_cursor-&gt;close(stat_cursor));</div>
 </div><!-- fragment --><p> The following is an example of printing statistics about a session cursor:</p>
 <div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;statistics:session&quot;</span>, NULL, NULL, &amp;stat_cursor));</div>
 <div class="line"> </div>
@@ -206,14 +199,14 @@ Statistics Data</h2>
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_afb5b4a69c2c5cafe411b2b04fdc1c75d"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">WT_SESSION::open_cursor</a></div><div class="ttdeci">int open_cursor(WT_SESSION *session, const char *uri, WT_CURSOR *to_dup, const char *config, WT_CURSOR **cursorp)</div><div class="ttdoc">Open a new cursor on a data source or duplicate an existing cursor.</div></div>
-<div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></div><div class="ttdoc">A WT_CURSOR handle is the interface to a cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:199</div></div>
+<div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></div><div class="ttdoc">A WT_CURSOR handle is the interface to a cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:197</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a7e25b2ced2cf3ec68bd5429bf921c79f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">WT_CURSOR::search</a></div><div class="ttdeci">int search(WT_CURSOR *cursor)</div><div class="ttdoc">Return the record matching the key.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a0503f16bd8f3d05aa3552f229b3a8e1b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">WT_CURSOR::next</a></div><div class="ttdeci">int next(WT_CURSOR *cursor)</div><div class="ttdoc">Return the next record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_af85364a5af50b95bbc46c82e72f75c01"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">WT_CURSOR::get_value</a></div><div class="ttdeci">int get_value(WT_CURSOR *cursor,...)</div><div class="ttdoc">Get the value for the current record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aeea071f192cab12245a50fbe71c3460b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">WT_CURSOR::close</a></div><div class="ttdeci">int close(WT_CURSOR *cursor)</div><div class="ttdoc">Close the cursor.</div></div>
-<div class="ttc" id="agroup__wt_html_ga079f2d70ac0826f54e36b8535d7194e5"><div class="ttname"><a href="group__wt.html#ga079f2d70ac0826f54e36b8535d7194e5">WT_STAT_DSRC_BTREE_OVERFLOW</a></div><div class="ttdeci">#define WT_STAT_DSRC_BTREE_OVERFLOW</div><div class="ttdoc">btree: overflow pages, only reported if tree_walk or all statistics are enabled</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:7360</div></div>
+<div class="ttc" id="agroup__wt_html_ga079f2d70ac0826f54e36b8535d7194e5"><div class="ttname"><a href="group__wt.html#ga079f2d70ac0826f54e36b8535d7194e5">WT_STAT_DSRC_BTREE_OVERFLOW</a></div><div class="ttdeci">#define WT_STAT_DSRC_BTREE_OVERFLOW</div><div class="ttdoc">btree: overflow pages, only reported if tree_walk or all statistics are enabled</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:7177</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4140</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4013</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

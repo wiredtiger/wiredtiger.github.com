@@ -24,7 +24,6 @@ var arch_toc_fundamentals =
       [ "Projections and plans", "arch-cursor.html#arch_cursor_projections", null ],
       [ "Dump cursors", "arch-cursor.html#arch_cursor_dump", null ],
       [ "Backup cursors", "arch-cursor.html#arch_cursor_backup", null ],
-      [ "Join cursors", "arch-cursor.html#arch_cursor_join", null ],
       [ "Duplicating cursors", "arch-cursor.html#arch_cursor_duplicate", null ],
       [ "File cursors, Btrees and data handles", "arch-cursor.html#arch_cursor_dhandle", null ],
       [ "Cursor caching", "arch-cursor.html#arch_cursor_caching", null ],

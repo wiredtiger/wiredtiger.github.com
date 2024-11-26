@@ -1,11 +1,11 @@
 var arch_toc_on_disk =
 [
     [ "Checkpoint", "arch-checkpoint.html", [
-      [ "Overview", "arch-checkpoint.html#autotoc_md5", null ],
-      [ "The checkpoint algorithm", "arch-checkpoint.html#autotoc_md6", null ],
-      [ "Skipping checkpoints", "arch-checkpoint.html#autotoc_md7", null ],
-      [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md8", null ],
-      [ "Garbage collection", "arch-checkpoint.html#autotoc_md9", null ]
+      [ "Overview", "arch-checkpoint.html#autotoc_md4", null ],
+      [ "The checkpoint algorithm", "arch-checkpoint.html#autotoc_md5", null ],
+      [ "Skipping checkpoints", "arch-checkpoint.html#autotoc_md6", null ],
+      [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md7", null ],
+      [ "Garbage collection", "arch-checkpoint.html#autotoc_md8", null ]
     ] ],
     [ "History Store", "arch-hs.html", [
       [ "History store table structure", "arch-hs.html#arch_hs_table", [
@@ -23,10 +23,9 @@ var arch_toc_on_disk =
       [ "Overview", "arch-backup.html#autotoc_md0", null ],
       [ "Full database", "arch-backup.html#autotoc_md1", null ],
       [ "Block-based incremental backup", "arch-backup.html#autotoc_md2", null ],
-      [ "Log-based incremental backup", "arch-backup.html#autotoc_md3", null ],
-      [ "Target backup", "arch-backup.html#autotoc_md4", null ]
+      [ "Target backup", "arch-backup.html#autotoc_md3", null ]
     ] ],
     [ "Compaction", "arch-compact.html", [
-      [ "Background compaction", "arch-compact.html#autotoc_md10", null ]
+      [ "Background compaction", "arch-compact.html#autotoc_md9", null ]
     ] ]
 ];

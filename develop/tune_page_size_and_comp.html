@@ -179,7 +179,7 @@ allocation_size</h2>
 <li>default : 4 KB</li>
 <li>Motivation to tune the value: <br  />
  Most applications should not need to tune the allocation size.<ul>
-<li>To be compatible with virtual memory page sizes and direct I/O requirements on the platform (4KB for most common server platforms)</li>
+<li>To be compatible with virtual memory page sizes on the platform (4KB for most common server platforms).</li>
 <li>Smaller values decrease the file space required by overflow items.</li>
 <li>For example, if the allocation size is set to 4KB, an overflow item of 18,000 bytes requires 5 allocation units and wastes about 2KB of space. If the allocation size is 16KB, the same overflow item would waste more than 10KB.</li>
 </ul>

@@ -11,7 +11,6 @@ var annotated =
     [ "WT_EVENT_HANDLER", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html", "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r" ],
     [ "WT_EXTENSION_API", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html", "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i" ],
     [ "WT_EXTENSION_SPINLOCK", "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k", "group__wt__ext_struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k" ],
-    [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", "struct_w_t___e_x_t_r_a_c_t_o_r" ],
     [ "WT_FILE_HANDLE", "struct_w_t___f_i_l_e___h_a_n_d_l_e.html", "struct_w_t___f_i_l_e___h_a_n_d_l_e" ],
     [ "WT_FILE_SYSTEM", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html", "struct_w_t___f_i_l_e___s_y_s_t_e_m" ],
     [ "WT_ITEM", "group__wt.html#struct_w_t___i_t_e_m", "group__wt_struct_w_t___i_t_e_m" ],

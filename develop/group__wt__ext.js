@@ -34,11 +34,6 @@ var group__wt__ext =
       [ "sizing", "struct_w_t___e_n_c_r_y_p_t_o_r.html#ac965990f0d81b99fc10ec0b13b9df162", null ],
       [ "terminate", "struct_w_t___e_n_c_r_y_p_t_o_r.html#ad9337c89e540be05d207995c33bbe993", null ]
     ] ],
-    [ "WT_EXTRACTOR", "struct_w_t___e_x_t_r_a_c_t_o_r.html", [
-      [ "customize", "struct_w_t___e_x_t_r_a_c_t_o_r.html#aead7ade6a5c1ea31917ed8cd0ef841aa", null ],
-      [ "extract", "struct_w_t___e_x_t_r_a_c_t_o_r.html#a4db101f00fce80af9ebd4f29f56f7b6a", null ],
-      [ "terminate", "struct_w_t___e_x_t_r_a_c_t_o_r.html#ad73a6c0903ad726e029ec25201ef12ae", null ]
-    ] ],
     [ "WT_FILE_SYSTEM", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html", [
       [ "fs_directory_list", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a461137686ca8dc659b314b29f7c98299", null ],
       [ "fs_directory_list_free", "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a96913fda6ff35e7543fabb02b76d71eb", null ],
@@ -115,7 +110,6 @@ var group__wt__ext =
     [ "WT_FS_OPEN_ACCESS_RAND", "group__wt__ext.html#gab975daa8226fa0fe422176afc3677ab0", null ],
     [ "WT_FS_OPEN_ACCESS_SEQ", "group__wt__ext.html#ga19767a9a6283ce3c69a6d92be86d0c56", null ],
     [ "WT_FS_OPEN_CREATE", "group__wt__ext.html#gaf336409aa954d371159b0e9d78785179", null ],
-    [ "WT_FS_OPEN_DIRECTIO", "group__wt__ext.html#ga33e13fa2f6113176ff3ea355c96749a3", null ],
     [ "WT_FS_OPEN_DURABLE", "group__wt__ext.html#ga6ff865a494747bc27525b6b9e1a61ae6", null ],
     [ "WT_FS_OPEN_EXCLUSIVE", "group__wt__ext.html#gab29effbad63261153d59ad01fcaf7d25", null ],
     [ "WT_FS_OPEN_READONLY", "group__wt__ext.html#ga91e49502eb5f12a2e4c12a78d93bf4bd", null ],

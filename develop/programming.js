@@ -34,9 +34,7 @@ var programming =
     ] ],
     [ "Checkpoint-level durability", "durability_checkpoint.html", [
       [ "Checkpoints vs. snapshots", "durability_checkpoint.html#checkpoint_snapshot", null ],
-      [ "Checkpoints", "durability_checkpoint.html#checkpoint_checkpoints", [
-        [ "Checkpointing specific objects", "durability_checkpoint.html#checkpoint_target", null ]
-      ] ],
+      [ "Checkpoints", "durability_checkpoint.html#checkpoint_checkpoints", null ],
       [ "Checkpoint cursors", "durability_checkpoint.html#checkpoint_cursors", null ],
       [ "Checkpoint naming", "durability_checkpoint.html#checkpoint_naming", null ],
       [ "Checkpoint durability and backups", "durability_checkpoint.html#checkpoint_backup", null ],
@@ -178,9 +176,7 @@ var programming =
       [ "Duplicate backup cursors", "backup.html#backup_duplicate", null ],
       [ "Backup from the command line", "backup.html#backup_util", null ],
       [ "Block-based Incremental backup", "backup.html#backup_incremental-block", null ],
-      [ "Log-based Incremental backup", "backup.html#backup_incremental", null ],
-      [ "Export tables using backup cursor", "backup.html#backup_export", null ],
-      [ "Backup and O_DIRECT", "backup.html#backup_o_direct", null ]
+      [ "Export tables using backup cursor", "backup.html#backup_export", null ]
     ] ],
     [ "Chunk cache", "chunkcache.html", [
       [ "Pinned Content", "chunkcache.html#pinned", null ],
@@ -200,7 +196,6 @@ var programming =
       [ "Update restore eviction", "eviction.html#update_restore_eviction", null ],
       [ "Exceptions", "eviction.html#exceptions", null ]
     ] ],
-    [ "Join cursors", "cursor_join.html", null ],
     [ "Log cursors", "cursor_log.html", null ],
     [ "Track function calls", "operation_tracking.html", null ],
     [ "Per-process shared caches", "shared_cache.html", null ],
@@ -217,11 +212,6 @@ var programming =
       [ "Introduction to Custom Collators", "custom_collators.html#custom_collators_intro", null ],
       [ "Custom Collators and Recovery", "custom_collators.html#custom_collators_recovery", null ],
       [ "Custom Collators for Indices", "custom_collators.html#custom_collators_indices", null ]
-    ] ],
-    [ "Custom Extractors", "custom_extractors.html", [
-      [ "Introduction to Custom Extractors", "custom_extractors.html#custom_extractors_intro", null ],
-      [ "Implementation notes", "custom_extractors.html#custom_extractors_notes", null ],
-      [ "Custom Collators in raw mode", "custom_extractors.html#custom_extractors_raw", null ]
     ] ],
     [ "Custom Data Sources", "custom_data_sources.html", [
       [ "WT_DATA_SOURCE methods", "custom_data_sources.html#custom_ds_methods", [
@@ -284,7 +274,7 @@ var programming =
     ] ],
     [ "Read-only objects", "tune_read_only.html", null ],
     [ "System buffer cache", "tune_system_buffer_cache.html", [
-      [ "Direct I/O", "tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io", null ],
+      [ "write_through", "tune_system_buffer_cache.html#write_through", null ],
       [ "os_cache_dirty_max", "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max", null ],
       [ "os_cache_max", "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max", null ]
     ] ],

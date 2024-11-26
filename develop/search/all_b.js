@@ -1,16 +1,20 @@
 var searchData=
 [
-  ['locks_20hierarchy_141',['Locks hierarchy',['../arch-locking-hierarchy.html',1,'arch-toc-int-wt-dev']]],
-  ['log_20file_20format_142',['Log File Format',['../arch-log-file.html',1,'arch-toc-recovery']]],
-  ['logging_143',['Logging',['../arch-logging.html',1,'arch-toc-recovery']]],
-  ['log_20cursors_144',['Log cursors',['../cursor_log.html',1,'programming']]],
-  ['largest_5fkey_145',['largest_key',['../struct_w_t___c_u_r_s_o_r.html#a49f70806bf693462e5644edbbb864c1b',1,'WT_CURSOR']]],
-  ['len_146',['len',['../struct_w_t___c_o_n_f_i_g___i_t_e_m.html#adff0f6e5a3f781f0228015e8336f1a14',1,'WT_CONFIG_ITEM']]],
-  ['load_5fextension_147',['load_extension',['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68',1,'WT_CONNECTION']]],
-  ['log_5fflush_148',['log_flush',['../struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817',1,'WT_SESSION']]],
-  ['log_5fprintf_149',['log_printf',['../struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5',1,'WT_SESSION']]],
-  ['log_2dstructured_20merge_20trees_150',['Log-Structured Merge Trees',['../lsm.html',1,'programming']]],
-  ['lsm_5fpre_5fmerge_151',['lsm_pre_merge',['../struct_w_t___d_a_t_a___s_o_u_r_c_e.html#afe905b28d7831df185f9623c62f40e35',1,'WT_DATA_SOURCE']]],
-  ['linux_20transparent_20huge_20pages_152',['Linux transparent huge pages',['../tune_transparent_huge_pages.html',1,'programming']]],
-  ['linux_20zone_20reclamation_20memory_20management_153',['Linux zone reclamation memory management',['../tune_zone_reclaim.html',1,'programming']]]
+  ['managing_20wiredtiger_20databases_149',['Managing WiredTiger databases',['../admin.html',1,'index']]],
+  ['metadata_150',['Metadata',['../arch-metadata.html',1,'arch-toc-data-org']]],
+  ['moving_20data_20between_20memory_20and_20disk_151',['Moving Data Between Memory and Disk',['../arch-toc-mem-disk.html',1,'arch-index']]],
+  ['map_5fwindows_5ferror_152',['map_windows_error',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a638754053ec9ed74ded16e97b78849ca',1,'WT_EXTENSION_API']]],
+  ['message_20handling_153',['Message handling',['../message_handling.html',1,'programming']]],
+  ['metadata_5finsert_154',['metadata_insert',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#afeaf9e7dd804c528633a5570a4409c7f',1,'WT_EXTENSION_API']]],
+  ['metadata_5fremove_155',['metadata_remove',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420',1,'WT_EXTENSION_API']]],
+  ['metadata_5fsearch_156',['metadata_search',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aed6f5e9fe8c4193d35d074b589c70554',1,'WT_EXTENSION_API']]],
+  ['metadata_5fupdate_157',['metadata_update',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a7c47cf55646794f9e5cc3d185128ef3b',1,'WT_EXTENSION_API']]],
+  ['modify_158',['modify',['../struct_w_t___c_u_r_s_o_r.html#a349b739f9f1d4fc50497682527a4d738',1,'WT_CURSOR']]],
+  ['msg_5fprintf_159',['msg_printf',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a29c953af95d4c4c374bcc0310c3e62b1',1,'WT_EXTENSION_API']]],
+  ['multithreading_160',['Multithreading',['../threads.html',1,'programming']]],
+  ['managing_20the_20global_20timestamp_20state_161',['Managing the global timestamp state',['../timestamp_global_api.html',1,'programming']]],
+  ['miscellaneous_20timestamp_20topics_162',['Miscellaneous timestamp topics',['../timestamp_misc.html',1,'programming']]],
+  ['managing_20the_20transaction_20timestamp_20state_163',['Managing the transaction timestamp state',['../timestamp_txn_api.html',1,'programming']]],
+  ['memory_20allocator_164',['Memory allocator',['../tune_memory_allocator.html',1,'programming']]],
+  ['mutexes_165',['Mutexes',['../tune_mutex.html',1,'programming']]]
 ];

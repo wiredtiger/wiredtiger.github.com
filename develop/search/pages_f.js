@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['pre_2dfetch_1802',['Pre-fetch',['../arch-prefetch.html',1,'arch-toc-mem-disk']]],
-  ['python_20api_1803',['Python API',['../arch-python.html',1,'arch-toc-tools']]],
-  ['packing_20and_20unpacking_20data_1804',['Packing and Unpacking Data',['../packing.html',1,'schema']]],
-  ['per_2dprocess_20shared_20caches_1805',['Per-process shared caches',['../shared_cache.html',1,'programming']]],
-  ['performance_20monitoring_1806',['Performance Monitoring',['../tool-perf.html',1,'tool-index']]],
-  ['performance_20monitoring_20with_20statistics_1807',['Performance monitoring with statistics',['../tune_statistics.html',1,'programming']]]
+  ['row_20store_20and_20column_20store_1788',['Row Store and Column Store',['../arch-row-column.html',1,'arch-toc-data-src']]],
+  ['rollback_20to_20stable_20_28rts_29_1789',['Rollback to Stable (RTS)',['../arch-rts.html',1,'arch-toc-fundamentals']]],
+  ['recovery_1790',['Recovery',['../arch-toc-recovery.html',1,'arch-index']]],
+  ['reference_20guide_1791',['Reference Guide',['../index.html',1,'']]],
+  ['read_2donly_20objects_1792',['Read-only objects',['../tune_read_only.html',1,'programming']]]
 ];

@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['reconfigure_1506',['reconfigure',['../struct_w_t___c_u_r_s_o_r.html#ad6a97a309e2c1ada7ca32a422c46612a',1,'WT_CURSOR::reconfigure()'],['../struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6',1,'WT_SESSION::reconfigure()'],['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a579141678af06217b22869cbc604c6d4',1,'WT_CONNECTION::reconfigure()']]],
-  ['remove_1507',['remove',['../struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455',1,'WT_CURSOR']]],
-  ['rename_1508',['rename',['../struct_w_t___s_e_s_s_i_o_n.html#a1d24b02549009f78b7c6463da0247614',1,'WT_SESSION']]],
-  ['reserve_1509',['reserve',['../struct_w_t___c_u_r_s_o_r.html#a3acc1fd180c4a4220b459734305c90a6',1,'WT_CURSOR']]],
-  ['reset_1510',['reset',['../struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565',1,'WT_CURSOR::reset()'],['../struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787',1,'WT_SESSION::reset()']]],
-  ['reset_5fsnapshot_1511',['reset_snapshot',['../struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59',1,'WT_SESSION']]],
-  ['rollback_5fto_5fstable_1512',['rollback_to_stable',['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28',1,'WT_CONNECTION']]],
-  ['rollback_5ftransaction_1513',['rollback_transaction',['../struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1',1,'WT_SESSION']]]
+  ['salvage_1497',['salvage',['../struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e',1,'WT_SESSION']]],
+  ['search_1498',['search',['../struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f',1,'WT_CURSOR']]],
+  ['search_5fnear_1499',['search_near',['../struct_w_t___c_u_r_s_o_r.html#a8068ddce20d0775f26f6dac6e5eb209c',1,'WT_CURSOR']]],
+  ['set_5ffile_5fsystem_1500',['set_file_system',['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a7c9d5b40133a6ba1cbc4a6b1d8e1e86b',1,'WT_CONNECTION']]],
+  ['set_5fkey_1501',['set_key',['../struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc',1,'WT_CURSOR']]],
+  ['set_5ftimestamp_1502',['set_timestamp',['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512',1,'WT_CONNECTION']]],
+  ['set_5fvalue_1503',['set_value',['../struct_w_t___c_u_r_s_o_r.html#a27f7cbd0cd3e561f6a145704813ad64c',1,'WT_CURSOR']]],
+  ['strerror_1504',['strerror',['../struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9',1,'WT_SESSION']]]
 ];

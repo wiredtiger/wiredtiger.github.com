@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['join_20cursors_137',['Join cursors',['../cursor_join.html',1,'programming']]],
-  ['join_138',['join',['../struct_w_t___s_e_s_s_i_o_n.html#ae0ab118df83d173c6a20eb1ea3f3fd84',1,'WT_SESSION']]]
+  ['key_5fformat_134',['key_format',['../struct_w_t___c_u_r_s_o_r.html#a21f35d032987318a8c3b9eb1b0c6a1dc',1,'WT_CURSOR']]],
+  ['key_2fvalue_20pairs_135',['Key/Value pairs',['../keyvalue.html',1,'schema']]]
 ];

@@ -4,7 +4,6 @@ var struct_w_t___c_o_n_n_e_c_t_i_o_n =
     [ "add_compressor", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783", null ],
     [ "add_data_source", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a459c1b71346bbcecb552ad73d43f27ea", null ],
     [ "add_encryptor", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a59d203f4474780ca34bd3e07b8064949", null ],
-    [ "add_extractor", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a2d65a70a305838e2a2a728fe5cb54903", null ],
     [ "close", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545", null ],
     [ "compile_configuration", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a476b94edd7babeba038ec877b3277291", null ],
     [ "configure_method", "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137", null ],

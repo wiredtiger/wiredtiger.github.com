@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_1526',['update',['../struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f',1,'WT_CURSOR']]]
+  ['verify_1510',['verify',['../struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3',1,'WT_SESSION']]]
 ];
