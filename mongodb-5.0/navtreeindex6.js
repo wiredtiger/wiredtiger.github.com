@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28":[1,0,4,14],
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a99df5b3a17564eb5b3e4ec076590133d":[1,0,4,7],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab2bfe8a5f92c932cbe5aad2f4e603ca6":[1,0,4,5],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68":[1,0,4,10],
 "struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab81828b0c9dccc1ccf3d8ef863804137":[1,0,4,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "tool-xray.html#autotoc_md121":[0,10,4,1,4],
 "transactions.html":[0,3,3],
 "transactions.html#timestamp_connection":[0,3,3,5,3],
-"transactions.html#timestamp_extensions":[0,3,3,5,4],
-"transactions.html#timestamp_overview":[0,3,3,5,0],
-"transactions.html#timestamp_roundup":[0,3,3,5,2]
+"transactions.html#timestamp_extensions":[0,3,3,5,4]
 };
