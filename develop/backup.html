@@ -160,7 +160,6 @@ For <code>WT_BACKUP_FILE</code>, the user can choose to copy the entire file in 
 <li>Repeat steps 2-7 as often as desired.</li>
 </ol>
 <p>Full and incremental backups may be repeated as long as the backup database directory has not been opened and recovery run. Once recovery has run in a backup directory, you can no longer back up to that database directory.</p>
-<p>Block-based incremental backup does not work with LSM trees. An error will be returned in that case.</p>
 <p>An example of opening the backup data source for block-based incremental backup:</p>
 <div class="fragment"><div class="line">    <span class="comment">/* Open the backup data source for block-based incremental backup. */</span></div>
 <div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
@@ -184,7 +183,7 @@ Export tables using backup cursor</h1>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></div><div class="ttdoc">A WT_CURSOR handle is the interface to a cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:197</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a0503f16bd8f3d05aa3552f229b3a8e1b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">WT_CURSOR::next</a></div><div class="ttdeci">int next(WT_CURSOR *cursor)</div><div class="ttdoc">Return the next record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aeea071f192cab12245a50fbe71c3460b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">WT_CURSOR::close</a></div><div class="ttdeci">int close(WT_CURSOR *cursor)</div><div class="ttdoc">Close the cursor.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4043</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3976</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

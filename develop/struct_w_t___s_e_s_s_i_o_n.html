@@ -126,7 +126,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a358ca4141d59c345f401c58501276bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a table, column group, index or file.  <a href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">More...</a><br /></td></tr>
 <tr class="separator:a358ca4141d59c345f401c58501276bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
-<tr class="memdesc:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact a live row- or column-store btree or LSM tree.  <a href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">More...</a><br /></td></tr>
+<tr class="memdesc:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compact a live row- or column-store btree.  <a href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">More...</a><br /></td></tr>
 <tr class="separator:aafa7a12a4891a5bfdc98673a5b8f9c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf785ef53c16d9dcc77e22cc04c87b70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">drop</a> (<a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, const char *config)</td></tr>
 <tr class="memdesc:adf785ef53c16d9dcc77e22cc04c87b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop (delete) a table.  <a href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70">More...</a><br /></td></tr>
@@ -257,7 +257,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache. Not compatible with LSM tables; see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache, see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>log = (</code></td><td>the transaction log configuration for this object. Only valid if <code>log</code> is enabled in <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
@@ -511,7 +511,7 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <tr>
 <td><code>force</code></td><td>if false (the default), checkpoints may be skipped if the underlying object has not been modified. If true, this option forces the checkpoint.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>name</code></td><td>if set, specify a name for the checkpoint (note that checkpoints including LSM trees may not be named).</td><td>a string; default empty. </td></tr>
+<td><code>name</code></td><td>if set, specify a name for the checkpoint.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>use_timestamp</code></td><td>if true (the default), create the checkpoint as of the last stable timestamp if timestamps are in use, or with all committed updates if there is no stable timestamp set. If false, always generate a checkpoint with all committed updates, ignoring any stable timestamp.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 </table>
@@ -684,7 +684,7 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
       </table>
 </div><div class="memdoc">
 
-<p>Compact a live row- or column-store btree or LSM tree. </p>
+<p>Compact a live row- or column-store btree. </p>
 <div class="fragment"><div class="line">        error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">compact</a>(session, <span class="stringliteral">&quot;table:mytable&quot;</span>, NULL));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -775,7 +775,7 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <tr>
 <td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are <code>"none"</code> or a custom compression engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>. If WiredTiger has builtin support for <code>"lz4"</code>, <code>"snappy"</code>, <code>"zlib"</code> or <code>"zstd"</code> compression, these names are also available. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
-<td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache. Not compatible with LSM tables; see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache, see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>checksum</code></td><td>configure block checksums; the permitted values are <code>on</code>, <code>off</code>, <code>uncompressed</code> and <code>unencrypted</code>. The default is <code>on</code>, in which case all block writes include a checksum subsequently verified when the block is read. The <code>off</code> setting does no checksums, the <code>uncompressed</code> setting only checksums blocks that are not compressed, and the <code>unencrypted</code> setting only checksums blocks that are not encrypted. See <a class="el" href="tune_checksum.html">Checksums</a> for more information.</td><td>a string, chosen from the following options: <code>"on"</code>, <code>"off"</code>, <code>"uncompressed"</code>, <code>"unencrypted"</code>; default <code>on</code>. </td></tr>
 <tr>
@@ -841,45 +841,9 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>lsm = (</code></td><td>options only relevant for LSM data sources.</td><td>a set of related configuration options defined as follows. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;auto_throttle</code></td><td>Throttle inserts into LSM trees if flushing to disk isn't keeping up.</td><td>a boolean flag; default <code>true</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;bloom</code></td><td>create Bloom filters on LSM tree chunks as they are merged.</td><td>a boolean flag; default <code>true</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;bloom_bit_count</code></td><td>the number of bits used per item for LSM Bloom filters.</td><td>an integer between <code>2</code> and <code>1000</code>; default <code>16</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;bloom_config</code></td><td>config string used when creating Bloom filter files, passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</td><td>a string; default empty. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;bloom_hash_count</code></td><td>the number of hash values per item used for LSM Bloom filters.</td><td>an integer between <code>2</code> and <code>100</code>; default <code>8</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;bloom_oldest</code></td><td>create a Bloom filter on the oldest LSM tree chunk. Only supported if Bloom filters are enabled.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;chunk_count_limit</code></td><td>the maximum number of chunks to allow in an LSM tree. This option automatically times out old data. As new chunks are added old chunks will be removed. Enabling this option disables LSM background merges.</td><td>an integer; default <code>0</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;chunk_max</code></td><td>the maximum size a single chunk can be. Chunks larger than this size are not considered for further merges. This is a soft limit, and chunks larger than this value can be created. Must be larger than chunk_size.</td><td>an integer between <code>100MB</code> and <code>10TB</code>; default <code>5GB</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160; chunk_size</code></td><td>the maximum size of the in-memory chunk of an LSM tree. This limit is soft, it is possible for chunks to be temporarily larger than this value. This overrides the <code>memory_page_max</code> setting.</td><td>an integer between <code>512K</code> and <code>500MB</code>; default <code>10MB</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;merge_custom = (</code></td><td>configure the tree to merge into a custom data source.</td><td>a set of related configuration options defined as follows. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;prefix</code></td><td>custom data source prefix instead of <code>"file"</code>.</td><td>a string; default empty. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;start_generation</code></td><td>merge generation at which the custom data source is used (zero indicates no custom data source).</td><td>an integer between <code>0</code> and <code>10</code>; default <code>0</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;suffix</code></td><td>custom data source suffix instead of <code>".lsm"</code>.</td><td>a string; default empty. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160; )</code></td><td></td><td></td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;merge_max</code></td><td>the maximum number of chunks to include in a merge operation.</td><td>an integer between <code>2</code> and <code>100</code>; default <code>15</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;merge_min</code></td><td>the minimum number of chunks to include in a merge operation. If set to 0 or 1 half the value of merge_max is used.</td><td>an integer no more than <code>100</code>; default <code>0</code>. </td></tr>
-<tr>
-<td><code> )</code></td><td></td><td></td></tr>
-<tr>
 <td><code>memory_page_image_max</code></td><td>the maximum in-memory page image represented by a single storage block. Depending on compression efficiency, compression can create storage blocks which require significant resources to re-instantiate in the cache, penalizing the performance of future point updates. The value limits the maximum in-memory page image a storage block will need. If set to 0, a default of 4 times <code>leaf_page_max</code> is used.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>leaf_page_max</code>, and an upper bound of <code>cache_size / 10</code>. This limit is soft - it is possible for pages to be temporarily larger than this value. This setting is ignored for LSM trees, see <code>chunk_size</code>.</td><td>an integer between <code>512B</code> and <code>10TB</code>; default <code>5MB</code>. </td></tr>
+<td><code>memory_page_max</code></td><td>the maximum size a page can grow to in memory before being reconciled to disk. The specified size will be adjusted to a lower bound of <code>leaf_page_max</code>, and an upper bound of <code>cache_size / 10</code>. This limit is soft - it is possible for pages to be temporarily larger than this value.</td><td>an integer between <code>512B</code> and <code>10TB</code>; default <code>5MB</code>. </td></tr>
 <tr>
 <td><code>os_cache_dirty_max</code></td><td>maximum dirty system buffer cache usage, in bytes. If non-zero, schedule writes for dirty blocks belonging to this object in the system buffer cache after that many bytes from this object are written into the buffer cache.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
 <tr>
@@ -909,7 +873,7 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
-<td><code>type</code></td><td>set the type of data source used to store a column group, index or simple table. By default, a <code>"file:"</code> URI is derived from the object name. The <code>type</code> configuration can be used to switch to a different data source, such as LSM or an extension configured by the application.</td><td>a string; default <code>file</code>. </td></tr>
+<td><code>type</code></td><td>set the type of data source used to store a column group, index or simple table. By default, a <code>"file:"</code> URI is derived from the object name. The <code>type</code> configuration can be used to switch to a different data source or an extension configured by the application.</td><td>a string; default <code>file</code>. </td></tr>
 <tr>
 <td><code>value_format</code></td><td>the format of the data packed into value items. See <a class="el" href="schema.html#schema_format_types">Format types</a> for details. By default, the value_format is <code>'u'</code> and applications use a <a class="el" href="group__wt.html#struct_w_t___i_t_e_m" title="A raw item of data to be managed, including a pointer to the data and a length.">WT_ITEM</a> structure to manipulate raw byte arrays. Value items of type 't' are bitfields, and when configured with record number type keys, will be stored using a fixed-length store.</td><td>a format string; default <code>u</code>. </td></tr>
 <tr>
@@ -1179,9 +1143,6 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <th>URI</th><th>Type</th><th>Notes </th></tr>
 <tr>
 <td><code>file:&lt;file name&gt;</code></td><td>file cursor</td><td>file key, file value(s) </td></tr>
-<tr>
-<td><code>lsm:&lt;name&gt;</code></td><td>LSM cursor (key=LSM key, value=LSM value)</td><td>LSM key, LSM value,<br  />
- see <a class="el" href="lsm.html">Log-Structured Merge Trees</a> </td></tr>
 </table>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1993,9 +1954,9 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a96f25dfa6447034aea1f67ab02ab5698"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">WT_SESSION::close</a></div><div class="ttdeci">int close(WT_SESSION *session, const char *config)</div><div class="ttdoc">Close the session handle.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a358ca4141d59c345f401c58501276bbb"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">WT_SESSION::create</a></div><div class="ttdeci">int create(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Create a table, column group, index or file.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aa449082ce4de7ee86a773595c416a69f"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">WT_SESSION::timestamp_transaction</a></div><div class="ttdeci">int timestamp_transaction(WT_SESSION *session, const char *config)</div><div class="ttdoc">Set a timestamp on a transaction.</div></div>
-<div class="ttc" id="agroup__wt_html_ga5ee3c6fcd074e11efd118f3e68e91db8"><div class="ttname"><a href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a></div><div class="ttdeci">#define WT_ROLLBACK</div><div class="ttdoc">Conflict between concurrent operations.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4022</div></div>
+<div class="ttc" id="agroup__wt_html_ga5ee3c6fcd074e11efd118f3e68e91db8"><div class="ttname"><a href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a></div><div class="ttdeci">#define WT_ROLLBACK</div><div class="ttdoc">Conflict between concurrent operations.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3955</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_afb5b4a69c2c5cafe411b2b04fdc1c75d"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">WT_SESSION::open_cursor</a></div><div class="ttdeci">int open_cursor(WT_SESSION *session, const char *uri, WT_CURSOR *to_dup, const char *config, WT_CURSOR **cursorp)</div><div class="ttdoc">Open a new cursor on a data source or duplicate an existing cursor.</div></div>
-<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aafa7a12a4891a5bfdc98673a5b8f9c69"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">WT_SESSION::compact</a></div><div class="ttdeci">int compact(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Compact a live row- or column-store btree or LSM tree.</div></div>
+<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aafa7a12a4891a5bfdc98673a5b8f9c69"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">WT_SESSION::compact</a></div><div class="ttdeci">int compact(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Compact a live row- or column-store btree.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></div><div class="ttdoc">A WT_CURSOR handle is the interface to a cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:197</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a7e25b2ced2cf3ec68bd5429bf921c79f"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a7e25b2ced2cf3ec68bd5429bf921c79f">WT_CURSOR::search</a></div><div class="ttdeci">int search(WT_CURSOR *cursor)</div><div class="ttdoc">Return the record matching the key.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a712226eca5ade5bd123026c624468fa2"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2">WT_SESSION::commit_transaction</a></div><div class="ttdeci">int commit_transaction(WT_SESSION *session, const char *config)</div><div class="ttdoc">Commit the current transaction.</div></div>

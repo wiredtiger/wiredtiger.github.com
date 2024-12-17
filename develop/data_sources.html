@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('data_sources.html',''); initResizable(
 <div class="title">Data Sources </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>WiredTiger provides access to data from a variety of sources. At the lowest level, data may be stored in a file using a tree structure. A relational schema supporting tables, indices and column groups is layered on top of file. Additional sources include LSM trees and statistics, and applications can further extend the supported types by implementing the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class.">WT_DATA_SOURCE</a> interface.</p>
+<div class="textblock"><p>WiredTiger provides access to data from a variety of sources. At the lowest level, data may be stored in a file using a tree structure. A relational schema supporting tables, indices and column groups is layered on top of file. Additional sources include statistics, log files and backups. Applications can further extend the supported types by implementing the <a class="el" href="struct_w_t___d_a_t_a___s_o_u_r_c_e.html" title="Applications can extend WiredTiger by providing new implementations of the WT_DATA_SOURCE class.">WT_DATA_SOURCE</a> interface.</p>
 <p>Common operations on all data sources are performed using <a class="el" href="struct_w_t___c_u_r_s_o_r.html" title="A WT_CURSOR handle is the interface to a cursor.">WT_CURSOR</a> handles. See <a class="el" href="cursor_ops.html">Cursor operations</a> for a description of how to use cursors.</p>
 <h1><a class="anchor" id="data_builtin"></a>
 Builtin data sources</h1>
@@ -134,9 +134,6 @@ Builtin data sources</h1>
 <th>URI</th><th>Type</th><th>Notes </th></tr>
 <tr>
 <td><code>file:&lt;file name&gt;</code></td><td>file cursor</td><td>file key, file value(s) </td></tr>
-<tr>
-<td><code>lsm:&lt;name&gt;</code></td><td>LSM cursor (key=LSM key, value=LSM value)</td><td>LSM key, LSM value,<br  />
- see <a class="el" href="lsm.html">Log-Structured Merge Trees</a> </td></tr>
 </table>
 <h2><a class="anchor" id="data_files"></a>
 Raw Files</h2>
@@ -204,9 +201,9 @@ Statistics Data</h2>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_a0503f16bd8f3d05aa3552f229b3a8e1b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">WT_CURSOR::next</a></div><div class="ttdeci">int next(WT_CURSOR *cursor)</div><div class="ttdoc">Return the next record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_af85364a5af50b95bbc46c82e72f75c01"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">WT_CURSOR::get_value</a></div><div class="ttdeci">int get_value(WT_CURSOR *cursor,...)</div><div class="ttdoc">Get the value for the current record.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_aeea071f192cab12245a50fbe71c3460b"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">WT_CURSOR::close</a></div><div class="ttdeci">int close(WT_CURSOR *cursor)</div><div class="ttdoc">Close the cursor.</div></div>
-<div class="ttc" id="agroup__wt_html_ga079f2d70ac0826f54e36b8535d7194e5"><div class="ttname"><a href="group__wt.html#ga079f2d70ac0826f54e36b8535d7194e5">WT_STAT_DSRC_BTREE_OVERFLOW</a></div><div class="ttdeci">#define WT_STAT_DSRC_BTREE_OVERFLOW</div><div class="ttdoc">btree: overflow pages, only reported if tree_walk or all statistics are enabled</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:7207</div></div>
+<div class="ttc" id="agroup__wt_html_ga079f2d70ac0826f54e36b8535d7194e5"><div class="ttname"><a href="group__wt.html#ga079f2d70ac0826f54e36b8535d7194e5">WT_STAT_DSRC_BTREE_OVERFLOW</a></div><div class="ttdeci">#define WT_STAT_DSRC_BTREE_OVERFLOW</div><div class="ttdoc">btree: overflow pages, only reported if tree_walk or all statistics are enabled</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:7120</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
-<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4043</div></div>
+<div class="ttc" id="agroup__wt_html_ga3c9e1b494d95cf34404ab7a974af6bf8"><div class="ttname"><a href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a></div><div class="ttdeci">#define WT_NOTFOUND</div><div class="ttdoc">Item not found.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3976</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

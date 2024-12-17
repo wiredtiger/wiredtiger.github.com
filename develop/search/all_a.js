@@ -9,8 +9,6 @@ var searchData=
   ['load_5fextension_142',['load_extension',['../struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ab6a56facfd217e5ff687aa4c012e8d68',1,'WT_CONNECTION']]],
   ['log_5fflush_143',['log_flush',['../struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817',1,'WT_SESSION']]],
   ['log_5fprintf_144',['log_printf',['../struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5',1,'WT_SESSION']]],
-  ['log_2dstructured_20merge_20trees_145',['Log-Structured Merge Trees',['../lsm.html',1,'programming']]],
-  ['lsm_5fpre_5fmerge_146',['lsm_pre_merge',['../struct_w_t___d_a_t_a___s_o_u_r_c_e.html#afe905b28d7831df185f9623c62f40e35',1,'WT_DATA_SOURCE']]],
-  ['linux_20transparent_20huge_20pages_147',['Linux transparent huge pages',['../tune_transparent_huge_pages.html',1,'programming']]],
-  ['linux_20zone_20reclamation_20memory_20management_148',['Linux zone reclamation memory management',['../tune_zone_reclaim.html',1,'programming']]]
+  ['linux_20transparent_20huge_20pages_145',['Linux transparent huge pages',['../tune_transparent_huge_pages.html',1,'programming']]],
+  ['linux_20zone_20reclamation_20memory_20management_146',['Linux zone reclamation memory management',['../tune_zone_reclaim.html',1,'programming']]]
 ];

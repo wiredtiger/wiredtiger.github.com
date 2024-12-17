@@ -137,7 +137,7 @@ Processing the log files</h2>
 Preparing data for viewing</h2>
 <p>There are two ways to view operation tracking data, besides manually plowing through the log files. The quickest way is to generate CSV files viewable with <code>t2</code> &ndash; MongoDB's internal tool. With <code>t2</code>, you can view the frequency of tracked operations across time and across threads, like this:</p>
 <div class="image">
-<img src="optrack-t2-slow-lsm-worker-thread.png" alt=""/>
+<img src="optrack-t2-slow-worker-thread.png" alt=""/>
 <div class="caption">
 Perf output visualized with t2</div></div>
    <p>To produce a CSV file that can be loaded directly into <code>t2</code>, run the following command: </p><pre class="fragment">% WT/tools/optrack/optrack_to_t2.py optrack.0000025660.00000000*.txt

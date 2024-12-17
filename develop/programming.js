@@ -15,6 +15,7 @@ var programming =
     [ "Error handling", "error_handling.html", [
       [ "EBUSY errors", "error_handling.html#error_ebusy", null ],
       [ "WiredTiger-specific errors", "error_handling.html#error_list", null ],
+      [ "WiredTiger-specific sub-level errors", "error_handling.html#sub_error_list", null ],
       [ "Translating errors", "error_handling.html#error_translation", null ]
     ] ],
     [ "Transactional applications", "transactions.html", null ],
@@ -102,18 +103,6 @@ var programming =
     ] ],
     [ "Tutorial: transactions and ACID properties", "explain_acid.html", null ],
     [ "Tutorial: isolation levels", "explain_isolation.html", null ],
-    [ "Log-Structured Merge Trees", "lsm.html", [
-      [ "Background", "lsm.html#lsm_background", null ],
-      [ "Description of LSM trees", "lsm.html#lsm_description", null ],
-      [ "Interface to LSM trees", "lsm.html#lsm_api", null ],
-      [ "Merging", "lsm.html#lsm_merge", null ],
-      [ "Bloom filters", "lsm.html#lsm_bloom", null ],
-      [ "Creating tables using LSM trees", "lsm.html#lsm_schema", null ],
-      [ "Caveats", "lsm.html#lsm_caveats", [
-        [ "Key_format configuration", "lsm.html#lsm_key_format", null ],
-        [ "Named checkpoints", "lsm.html#lsm_checkpoints", null ]
-      ] ]
-    ] ],
     [ "File formats and compression", "file_formats.html", [
       [ "File formats", "file_formats.html#file_formats_formats", null ],
       [ "Choosing a file format", "file_formats.html#file_formats_choice", null ],
@@ -167,7 +156,6 @@ var programming =
       [ "Database read-only configuration considerations", "readonly.html#readonly_config", null ],
       [ "Readonly configuration and recovery", "readonly.html#readonly_recovery", null ],
       [ "Readonly configuration and logging", "readonly.html#readonly_logging", null ],
-      [ "Readonly configuration and LSM trees", "readonly.html#readonly_lsm", null ],
       [ "Readonly configuration and multiple database handles", "readonly.html#readonly_handles", null ]
     ] ],
     [ "Signal handling", "signals.html", null ],

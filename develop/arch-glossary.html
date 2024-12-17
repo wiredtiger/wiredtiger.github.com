@@ -115,7 +115,7 @@ Glossary</h1>
 <tr>
 <td>block manager</td><td>block manager</td><td>an internal API that abstracts writing, reading and allocating blocks to and from files. A block manager is associated with a Btree. </td></tr>
 <tr>
-<td>Bloom filter</td><td>lsm</td><td>a data structure that identifies that a key cannot be present. Used by LSM. </td></tr>
+<td>Bloom filter</td><td>general</td><td>a data structure that identifies that a key cannot be present. </td></tr>
 <tr>
 <td>btcur</td><td>btree</td><td>a b-tree cursor. </td></tr>
 <tr>
@@ -126,8 +126,6 @@ Glossary</h1>
 <td>cell</td><td>file format</td><td>a key or value packed as it appears on disk for a Btree. </td></tr>
 <tr>
 <td>checkpoint</td><td>checkpoint</td><td>a stable point that bounds how much work recovery must do. Data committed before a checkpoint is guaranteed to reside in data files. Thus, recovery must replay log files starting at the last completed checkpoint. </td></tr>
-<tr>
-<td>chunk</td><td>lsm</td><td>a single file within an LSM tree. </td></tr>
 <tr>
 <td>collator</td><td>general</td><td>a comparison function that determines how keys will be ordered in a Btree. The default collator is byte oriented. A custom collator may be packaged as an extension and attached to a Btree. </td></tr>
 <tr>
@@ -200,10 +198,6 @@ Glossary</h1>
 <td>kv or k/v</td><td>btree</td><td>a key/value pair in a Btree. </td></tr>
 <tr>
 <td>leaf page</td><td>btree</td><td>either in-memory or on disk, a page in a Btree that has a pairs of keys and values, and no pages beneath it. </td></tr>
-<tr>
-<td>log structured merge tree (or LSM tree)</td><td>lsm</td><td>a data structure that stores keys and values (as a Btree), but composed of potentially many trees (Btrees in WiredTiger). </td></tr>
-<tr>
-<td>LSM</td><td>lsm</td><td>see log structured merge tree </td></tr>
 <tr>
 <td>merge</td><td>btree</td><td>the process of making a single page out of two adjacent smaller pages in a Btree. This can occur with leaf pages or internal pages. </td></tr>
 <tr>

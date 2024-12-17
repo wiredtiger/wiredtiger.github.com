@@ -120,7 +120,6 @@ $(document).ready(function(){initNavTree('arch-rts.html',''); initResizable(); }
 </table>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
 <p>RTS is an operation that retains only the modifications that are considered <em>stable</em>. A modification is considered <em>unstable</em> if it has a durable timestamp greater than the stable timestamp or its transaction id is not committed according to the recovery checkpoint snapshot. The recovery checkpoint snapshot corresponds to the checkpoint transaction snapshot details saved at the end of every checkpoint.</p>
-<p>RTS works for all storage types except for LSM trees.</p>
 <h1><a class="anchor" id="rts-overview"></a>
 Overview of RTS</h1>
 <p>RTS scans tables in the database to remove any unstable modifications. A table is selected by RTS if it meets one of the following conditions:</p>

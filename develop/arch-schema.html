@@ -118,11 +118,9 @@ $(document).ready(function(){initNavTree('arch-schema.html',''); initResizable()
 <tr>
 <td><code><code>WT_COLGROUP<br  />
 WT_INDEX<br  />
-WT_LSM_TREE<br  />
 WT_TABLE</code></code></td><td><code><code>src/include/intpack_inline.h<br  />
 src/include/packing_inline.h<br  />
 src/include/schema.h<br  />
-src/lsm/<br  />
 src/packing/<br  />
 src/schema/</code></code></td></tr>
 </table>
@@ -141,8 +139,6 @@ Data Files</h1>
 <li>A row-oriented table keeps all the data in one file called <code>"&lt;table name&gt;.wt"</code>, where <code>"&lt;table name&gt;"</code> is the name that was passed as a part of the <code>name</code> parameter to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>.</li>
 <li>A column-oriented table stores the data in multiple files. One for each column group. The filename will be as follows <code>"&lt;table name&gt;_&lt;colgroup name&gt;.wt"</code>. Where <code>"&lt;table name&gt;"</code> is the name that was specified as a part of the <code>name</code> parameter to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. And <code>"&lt;colgroup name&gt;"</code> is the column group name defined in the <code>colgroups</code> entry during the definition of the table format. See this example of how column groups can be configured in WiredTiger <a class="el" href="ex_col_store_8c-example.html">ex_col_store.c</a>. <a class="el" href="arch-row-column.html">Row Store and Column Store</a> describes in more detail how row and column stores work.</li>
 <li>Each table index is stored in a separate file <code>"&lt;table name&gt;_&lt;index name&gt;.wti"</code>. Where <code>"&lt;table name&gt;"</code> is the table name passed into <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. And <code>"&lt;index name&gt;"</code> is the index name defined during index creation. See <a class="el" href="schema.html#schema_indices">Indices</a> for more information on how to create a table index.</li>
-<li>LSM trees are store on the file system in <code>"&lt;table name&gt;-&lt;chunk id&gt;.lsm"</code> files. Where <code>"&lt;table name&gt;"</code> is the name that was specified as a part of the <code>name</code> parameter to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a>. <code>"&lt;chunk id&gt;"</code> is the chunk index managed by WiredTiger. More information on LSM trees can be found on this page <a class="el" href="lsm.html">Log-Structured Merge Trees</a>.</li>
-<li>Bloom filters for LSM trees are stored in the files with the same name as the LSM tree chunk, but with a different extension: "&lt;table name&gt;-&lt;chunk id&gt;.bf". See <a class="el" href="lsm.html#lsm_bloom">Bloom filters</a> for more details.</li>
 </ul>
 <h1><a class="anchor" id="schema_integrity"></a>
 Schema Integrity</h1>

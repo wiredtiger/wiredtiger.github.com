@@ -17,7 +17,6 @@ var group__wt__ext =
       [ "compact", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a8eae397273ef872bc8da6743aa9824cb", null ],
       [ "create", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a68491dde82170031c6526fe140ea39eb", null ],
       [ "drop", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4569fa21343c2681357dedb4dd5facc1", null ],
-      [ "lsm_pre_merge", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#afe905b28d7831df185f9623c62f40e35", null ],
       [ "open_cursor", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e", null ],
       [ "range_truncate", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf57e661895f06a479dc359d51819d7c", null ],
       [ "rename", "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0522ef61652b275fa4aadab7fd1ac884", null ],

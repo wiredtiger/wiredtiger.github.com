@@ -269,6 +269,17 @@ Error returns</h2></td></tr>
 <tr class="separator:ga848dbb8ea23d57d22e8103ce70a08f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Sub-level error returns</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp6af33dfb6314be92467facb96db1552a"></a>Along with error returns, WiredTiger can return an integer code indicating a more specific error.</p>
+<p>A return of -32,000 indicates that there is no more specific error; all other return values indicate a more specific error which provides greater context into the failure.</p>
+<p>WiredTiger reserves all values from -32,000 to -32,199 as possible sub-level error return values.</p>
+<p>The following are all of the WiredTiger-specific sub-level error returns: </p>
+</td></tr>
+<tr class="memitem:ga108c20338bb1aab96c926c8e0e929a47"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga108c20338bb1aab96c926c8e0e929a47">WT_NONE</a></td></tr>
+<tr class="memdesc:ga108c20338bb1aab96c926c8e0e929a47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last API call was successful.  <a href="group__wt.html#ga108c20338bb1aab96c926c8e0e929a47">More...</a><br /></td></tr>
+<tr class="separator:ga108c20338bb1aab96c926c8e0e929a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Incremental backup types</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpb92727ecc808ec0fd1ab412bde4dfd42"></a><a class="anchor" id="backup_types"></a></p>
 </td></tr>
@@ -366,46 +377,6 @@ Log record and operation types</h2></td></tr>
 Connection statistics</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp0d9397794d2c87537349cf396b2e3fa2"></a><a class="anchor" id="statistics_keys"></a><a class="anchor" id="statistics_conn"></a>Statistics are accessed through cursors with <code>"statistics:"</code> URIs. Individual statistics can be queried through the cursor using the following keys. See <a class="el" href="data_sources.html#data_statistics">Statistics Data</a> for more information. </p>
 </td></tr>
-<tr class="memitem:ga0e12508a9320cac53ecccf4d2e17d3c1"><td class="memItemLeft" align="right" valign="top"><a id="ga0e12508a9320cac53ecccf4d2e17d3c1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0e12508a9320cac53ecccf4d2e17d3c1">WT_STAT_CONN_LSM_WORK_QUEUE_APP</a></td></tr>
-<tr class="memdesc:ga0e12508a9320cac53ecccf4d2e17d3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: application work units currently queued. <br /></td></tr>
-<tr class="separator:ga0e12508a9320cac53ecccf4d2e17d3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeb78dd962f65dd4e9839906fd8d484dd"><td class="memItemLeft" align="right" valign="top"><a id="gaeb78dd962f65dd4e9839906fd8d484dd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaeb78dd962f65dd4e9839906fd8d484dd">WT_STAT_CONN_LSM_WORK_QUEUE_MANAGER</a></td></tr>
-<tr class="memdesc:gaeb78dd962f65dd4e9839906fd8d484dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: merge work units currently queued. <br /></td></tr>
-<tr class="separator:gaeb78dd962f65dd4e9839906fd8d484dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga865e5dbf22bd284f5697222b8374b99e"><td class="memItemLeft" align="right" valign="top"><a id="ga865e5dbf22bd284f5697222b8374b99e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga865e5dbf22bd284f5697222b8374b99e">WT_STAT_CONN_LSM_ROWS_MERGED</a></td></tr>
-<tr class="memdesc:ga865e5dbf22bd284f5697222b8374b99e"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: rows merged in an LSM tree. <br /></td></tr>
-<tr class="separator:ga865e5dbf22bd284f5697222b8374b99e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga97c4acda5623ec001833a75ed12f8d1d"><td class="memItemLeft" align="right" valign="top"><a id="ga97c4acda5623ec001833a75ed12f8d1d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga97c4acda5623ec001833a75ed12f8d1d">WT_STAT_CONN_LSM_CHECKPOINT_THROTTLE</a></td></tr>
-<tr class="memdesc:ga97c4acda5623ec001833a75ed12f8d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: sleep for LSM checkpoint throttle. <br /></td></tr>
-<tr class="separator:ga97c4acda5623ec001833a75ed12f8d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga976d439a0d290b96cc454ab2b7b02af8"><td class="memItemLeft" align="right" valign="top"><a id="ga976d439a0d290b96cc454ab2b7b02af8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga976d439a0d290b96cc454ab2b7b02af8">WT_STAT_CONN_LSM_MERGE_THROTTLE</a></td></tr>
-<tr class="memdesc:ga976d439a0d290b96cc454ab2b7b02af8"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: sleep for LSM merge throttle. <br /></td></tr>
-<tr class="separator:ga976d439a0d290b96cc454ab2b7b02af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7bcd2dd3505b1b93a9c484cd3391e313"><td class="memItemLeft" align="right" valign="top"><a id="ga7bcd2dd3505b1b93a9c484cd3391e313"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7bcd2dd3505b1b93a9c484cd3391e313">WT_STAT_CONN_LSM_WORK_QUEUE_SWITCH</a></td></tr>
-<tr class="memdesc:ga7bcd2dd3505b1b93a9c484cd3391e313"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: switch work units currently queued. <br /></td></tr>
-<tr class="separator:ga7bcd2dd3505b1b93a9c484cd3391e313"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga836d31f4520c78455627bdc702a4b76e"><td class="memItemLeft" align="right" valign="top"><a id="ga836d31f4520c78455627bdc702a4b76e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga836d31f4520c78455627bdc702a4b76e">WT_STAT_CONN_LSM_WORK_UNITS_DISCARDED</a></td></tr>
-<tr class="memdesc:ga836d31f4520c78455627bdc702a4b76e"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: tree maintenance operations discarded. <br /></td></tr>
-<tr class="separator:ga836d31f4520c78455627bdc702a4b76e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1a25bfa8943aeb8e739f92ace929c30d"><td class="memItemLeft" align="right" valign="top"><a id="ga1a25bfa8943aeb8e739f92ace929c30d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1a25bfa8943aeb8e739f92ace929c30d">WT_STAT_CONN_LSM_WORK_UNITS_DONE</a></td></tr>
-<tr class="memdesc:ga1a25bfa8943aeb8e739f92ace929c30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: tree maintenance operations executed. <br /></td></tr>
-<tr class="separator:ga1a25bfa8943aeb8e739f92ace929c30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc40da314a490dffb02625de19626c49"><td class="memItemLeft" align="right" valign="top"><a id="gabc40da314a490dffb02625de19626c49"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabc40da314a490dffb02625de19626c49">WT_STAT_CONN_LSM_WORK_UNITS_CREATED</a></td></tr>
-<tr class="memdesc:gabc40da314a490dffb02625de19626c49"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: tree maintenance operations scheduled. <br /></td></tr>
-<tr class="separator:gabc40da314a490dffb02625de19626c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab31549ae67b2f248d41a9d4214575b3f"><td class="memItemLeft" align="right" valign="top"><a id="gab31549ae67b2f248d41a9d4214575b3f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab31549ae67b2f248d41a9d4214575b3f">WT_STAT_CONN_LSM_WORK_QUEUE_MAX</a></td></tr>
-<tr class="memdesc:gab31549ae67b2f248d41a9d4214575b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: tree queue hit maximum. <br /></td></tr>
-<tr class="separator:gab31549ae67b2f248d41a9d4214575b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga207db7eacadb2f15745a56ce64754a10"><td class="memItemLeft" align="right" valign="top"><a id="ga207db7eacadb2f15745a56ce64754a10"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga207db7eacadb2f15745a56ce64754a10">WT_STAT_CONN_AUTOCOMMIT_READONLY_RETRY</a></td></tr>
 <tr class="memdesc:ga207db7eacadb2f15745a56ce64754a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">autocommit: retries for readonly operations <br /></td></tr>
@@ -2142,6 +2113,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga506b01e54296946c10cfb35aebb530ca">WT_STAT_CONN_DH_SESSION_SWEEPS</a></td></tr>
 <tr class="memdesc:ga506b01e54296946c10cfb35aebb530ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">data-handle: session sweep attempts <br /></td></tr>
 <tr class="separator:ga506b01e54296946c10cfb35aebb530ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga928802e00feebab82f5f1b634ddc00a2"><td class="memItemLeft" align="right" valign="top"><a id="ga928802e00feebab82f5f1b634ddc00a2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga928802e00feebab82f5f1b634ddc00a2">WT_STAT_CONN_LIVE_RESTORE_STATE</a></td></tr>
+<tr class="memdesc:ga928802e00feebab82f5f1b634ddc00a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">live-restore: live restore state <br /></td></tr>
+<tr class="separator:ga928802e00feebab82f5f1b634ddc00a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7a75165a9378b73f112c04cce61e0e83"><td class="memItemLeft" align="right" valign="top"><a id="ga7a75165a9378b73f112c04cce61e0e83"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7a75165a9378b73f112c04cce61e0e83">WT_STAT_CONN_LIVE_RESTORE_QUEUE_LENGTH</a></td></tr>
+<tr class="memdesc:ga7a75165a9378b73f112c04cce61e0e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">live-restore: the number of files remaining for live restore completion <br /></td></tr>
+<tr class="separator:ga7a75165a9378b73f112c04cce61e0e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadb60eb8b792b5917bfc4023154f2d40f"><td class="memItemLeft" align="right" valign="top"><a id="gadb60eb8b792b5917bfc4023154f2d40f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadb60eb8b792b5917bfc4023154f2d40f">WT_STAT_CONN_LOCK_BTREE_PAGE_COUNT</a></td></tr>
 <tr class="memdesc:gadb60eb8b792b5917bfc4023154f2d40f"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock: btree page lock acquisitions <br /></td></tr>
@@ -2938,10 +2917,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga52df57d3185b8f38832d3a38584ef6a0">WT_STAT_CONN_TXN_RELEASE_BLOCKED</a></td></tr>
 <tr class="memdesc:ga52df57d3185b8f38832d3a38584ef6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: connection close blocked waiting for transaction state stabilization <br /></td></tr>
 <tr class="separator:ga52df57d3185b8f38832d3a38584ef6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7674ef83c36ef3703ad71503ad7193c5"><td class="memItemLeft" align="right" valign="top"><a id="ga7674ef83c36ef3703ad71503ad7193c5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7674ef83c36ef3703ad71503ad7193c5">WT_STAT_CONN_CONN_CLOSE_BLOCKED_LSM</a></td></tr>
-<tr class="memdesc:ga7674ef83c36ef3703ad71503ad7193c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: connection close yielded for lsm manager shutdown <br /></td></tr>
-<tr class="separator:ga7674ef83c36ef3703ad71503ad7193c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac2b7bf415b251f0299803960b2ba82e3"><td class="memItemLeft" align="right" valign="top"><a id="gac2b7bf415b251f0299803960b2ba82e3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac2b7bf415b251f0299803960b2ba82e3">WT_STAT_CONN_DHANDLE_LOCK_BLOCKED</a></td></tr>
 <tr class="memdesc:gac2b7bf415b251f0299803960b2ba82e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: data handle lock yielded <br /></td></tr>
@@ -3219,54 +3194,6 @@ Connection statistics</h2></td></tr>
 Statistics for data sources</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp230e61a861a98ff5c2c96de5e7b639be"></a><a class="anchor" id="statistics_dsrc"></a></p>
 </td></tr>
-<tr class="memitem:gaf4e29af6bd032b4b0969e4626b3b3bda"><td class="memItemLeft" align="right" valign="top"><a id="gaf4e29af6bd032b4b0969e4626b3b3bda"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf4e29af6bd032b4b0969e4626b3b3bda">WT_STAT_DSRC_BLOOM_FALSE_POSITIVE</a></td></tr>
-<tr class="memdesc:gaf4e29af6bd032b4b0969e4626b3b3bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: bloom filter false positives. <br /></td></tr>
-<tr class="separator:gaf4e29af6bd032b4b0969e4626b3b3bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad86254b0417818d40617c5c26af2b300"><td class="memItemLeft" align="right" valign="top"><a id="gad86254b0417818d40617c5c26af2b300"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad86254b0417818d40617c5c26af2b300">WT_STAT_DSRC_BLOOM_HIT</a></td></tr>
-<tr class="memdesc:gad86254b0417818d40617c5c26af2b300"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: bloom filter hits. <br /></td></tr>
-<tr class="separator:gad86254b0417818d40617c5c26af2b300"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2458b00913566edeb44734eb4db24d9d"><td class="memItemLeft" align="right" valign="top"><a id="ga2458b00913566edeb44734eb4db24d9d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2458b00913566edeb44734eb4db24d9d">WT_STAT_DSRC_BLOOM_MISS</a></td></tr>
-<tr class="memdesc:ga2458b00913566edeb44734eb4db24d9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: bloom filter misses. <br /></td></tr>
-<tr class="separator:ga2458b00913566edeb44734eb4db24d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga938bad149669551b3f0e921dd1bde5d5"><td class="memItemLeft" align="right" valign="top"><a id="ga938bad149669551b3f0e921dd1bde5d5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga938bad149669551b3f0e921dd1bde5d5">WT_STAT_DSRC_BLOOM_PAGE_EVICT</a></td></tr>
-<tr class="memdesc:ga938bad149669551b3f0e921dd1bde5d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: bloom filter pages evicted from cache. <br /></td></tr>
-<tr class="separator:ga938bad149669551b3f0e921dd1bde5d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga253b2126413546418ce7555c91641ffd"><td class="memItemLeft" align="right" valign="top"><a id="ga253b2126413546418ce7555c91641ffd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga253b2126413546418ce7555c91641ffd">WT_STAT_DSRC_BLOOM_PAGE_READ</a></td></tr>
-<tr class="memdesc:ga253b2126413546418ce7555c91641ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: bloom filter pages read into cache. <br /></td></tr>
-<tr class="separator:ga253b2126413546418ce7555c91641ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9efff35e3dd928596ac41c4200f7bb5c"><td class="memItemLeft" align="right" valign="top"><a id="ga9efff35e3dd928596ac41c4200f7bb5c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9efff35e3dd928596ac41c4200f7bb5c">WT_STAT_DSRC_BLOOM_COUNT</a></td></tr>
-<tr class="memdesc:ga9efff35e3dd928596ac41c4200f7bb5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: bloom filters in the LSM tree. <br /></td></tr>
-<tr class="separator:ga9efff35e3dd928596ac41c4200f7bb5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabadc7e6950a7172e26769381f005057c"><td class="memItemLeft" align="right" valign="top"><a id="gabadc7e6950a7172e26769381f005057c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabadc7e6950a7172e26769381f005057c">WT_STAT_DSRC_LSM_CHUNK_COUNT</a></td></tr>
-<tr class="memdesc:gabadc7e6950a7172e26769381f005057c"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: chunks in the LSM tree. <br /></td></tr>
-<tr class="separator:gabadc7e6950a7172e26769381f005057c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4c19ab1ef445199ac3199c8e8d473ebb"><td class="memItemLeft" align="right" valign="top"><a id="ga4c19ab1ef445199ac3199c8e8d473ebb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4c19ab1ef445199ac3199c8e8d473ebb">WT_STAT_DSRC_LSM_GENERATION_MAX</a></td></tr>
-<tr class="memdesc:ga4c19ab1ef445199ac3199c8e8d473ebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: highest merge generation in the LSM tree. <br /></td></tr>
-<tr class="separator:ga4c19ab1ef445199ac3199c8e8d473ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga48436e2598c916692af2860cfcfb65e5"><td class="memItemLeft" align="right" valign="top"><a id="ga48436e2598c916692af2860cfcfb65e5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga48436e2598c916692af2860cfcfb65e5">WT_STAT_DSRC_LSM_LOOKUP_NO_BLOOM</a></td></tr>
-<tr class="memdesc:ga48436e2598c916692af2860cfcfb65e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: queries that could have benefited from a Bloom filter that did not exist. <br /></td></tr>
-<tr class="separator:ga48436e2598c916692af2860cfcfb65e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7d0e581b55bbad522805efa6208c4e37"><td class="memItemLeft" align="right" valign="top"><a id="ga7d0e581b55bbad522805efa6208c4e37"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7d0e581b55bbad522805efa6208c4e37">WT_STAT_DSRC_LSM_CHECKPOINT_THROTTLE</a></td></tr>
-<tr class="memdesc:ga7d0e581b55bbad522805efa6208c4e37"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: sleep for LSM checkpoint throttle. <br /></td></tr>
-<tr class="separator:ga7d0e581b55bbad522805efa6208c4e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1e88f88bc99694bc1b7de7469c8c82ff"><td class="memItemLeft" align="right" valign="top"><a id="ga1e88f88bc99694bc1b7de7469c8c82ff"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1e88f88bc99694bc1b7de7469c8c82ff">WT_STAT_DSRC_LSM_MERGE_THROTTLE</a></td></tr>
-<tr class="memdesc:ga1e88f88bc99694bc1b7de7469c8c82ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: sleep for LSM merge throttle. <br /></td></tr>
-<tr class="separator:ga1e88f88bc99694bc1b7de7469c8c82ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0b5b20ddddd005d15c565c106fc888b9"><td class="memItemLeft" align="right" valign="top"><a id="ga0b5b20ddddd005d15c565c106fc888b9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0b5b20ddddd005d15c565c106fc888b9">WT_STAT_DSRC_BLOOM_SIZE</a></td></tr>
-<tr class="memdesc:ga0b5b20ddddd005d15c565c106fc888b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">LSM: total size of bloom filters. <br /></td></tr>
-<tr class="separator:ga0b5b20ddddd005d15c565c106fc888b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa45d12416c45decf2c00a0f3ebac389d"><td class="memItemLeft" align="right" valign="top"><a id="gaa45d12416c45decf2c00a0f3ebac389d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa45d12416c45decf2c00a0f3ebac389d">WT_STAT_DSRC_AUTOCOMMIT_READONLY_RETRY</a></td></tr>
 <tr class="memdesc:gaa45d12416c45decf2c00a0f3ebac389d"><td class="mdescLeft">&#160;</td><td class="mdescRight">autocommit: retries for readonly operations <br /></td></tr>
@@ -4485,35 +4412,32 @@ Verbose categories</h2></td></tr>
 <br />
 &#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa15cd23c3e415138701f3fb4312074c7d">WT_VERB_HS_ACTIVITY</a>, 
 <a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaa45045cbb53310aa033774e625e553fe">WT_VERB_LOG</a>, 
-<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaba06c857a5c528828b18ddcf8af600c2">WT_VERB_LSM</a>, 
-<b>WT_VERB_LSM_MANAGER</b>, 
-<br />
-&#160;&#160;<b>WT_VERB_MUTEX</b>, 
+<b>WT_VERB_MUTEX</b>, 
 <a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaa248364229f454c9da1c0908e1e89a85">WT_VERB_METADATA</a>, 
-<b>WT_VERB_OUT_OF_ORDER</b>, 
+<br />
+&#160;&#160;<b>WT_VERB_OUT_OF_ORDER</b>, 
 <b>WT_VERB_OVERFLOW</b>, 
-<br />
-&#160;&#160;<b>WT_VERB_PREFETCH</b>, 
+<b>WT_VERB_PREFETCH</b>, 
 <b>WT_VERB_READ</b>, 
-<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaa9d0daaac5a8ffe5a2f68777b23031d4">WT_VERB_RECONCILE</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaa9d0daaac5a8ffe5a2f68777b23031d4">WT_VERB_RECONCILE</a>, 
 <a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaab7957644f0bd9a8567a3d8dbb92d86d">WT_VERB_RECOVERY</a>, 
-<br />
-&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa44720d507f58e8b70a482a1be939142c">WT_VERB_RECOVERY_PROGRESS</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa44720d507f58e8b70a482a1be939142c">WT_VERB_RECOVERY_PROGRESS</a>, 
 <a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaf94478716f77447b487412f650955b66">WT_VERB_RTS</a>, 
-<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa12e3aade522045b1a304cd5f45111ae0">WT_VERB_SALVAGE</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa12e3aade522045b1a304cd5f45111ae0">WT_VERB_SALVAGE</a>, 
 <b>WT_VERB_SHARED_CACHE</b>, 
-<br />
-&#160;&#160;<b>WT_VERB_SPLIT</b>, 
+<b>WT_VERB_SPLIT</b>, 
 <b>WT_VERB_TEMPORARY</b>, 
-<b>WT_VERB_THREAD_GROUP</b>, 
+<br />
+&#160;&#160;<b>WT_VERB_THREAD_GROUP</b>, 
 <a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa220f3ef6ea799f241a8d72f52795edb3">WT_VERB_TIERED</a>, 
-<br />
-&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8a7edd91839deb27bd3944e91449e22b">WT_VERB_TIMESTAMP</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8a7edd91839deb27bd3944e91449e22b">WT_VERB_TIMESTAMP</a>, 
 <a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa5449cc4e93639aa509653ab9cd067d65">WT_VERB_TRANSACTION</a>, 
-<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8778a2d19f830c86ecef2103ba3cd43b">WT_VERB_VERIFY</a>, 
-<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa4d0b758c4b88e428ce69b85f76d754da">WT_VERB_VERSION</a>, 
 <br />
-&#160;&#160;<b>WT_VERB_WRITE</b>, 
+&#160;&#160;<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa8778a2d19f830c86ecef2103ba3cd43b">WT_VERB_VERIFY</a>, 
+<a class="el" href="group__wt.html#gga559a8cfb19158a0647c28a2748d5284aa4d0b758c4b88e428ce69b85f76d754da">WT_VERB_VERSION</a>, 
+<b>WT_VERB_WRITE</b>, 
 <b>WT_VERB_NUM_CATEGORIES</b>
 <br />
  }</td></tr>
@@ -4706,6 +4630,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>The maximum packed size of a 64-bit integer. </p>
 <p>The <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer.">wiredtiger_struct_pack</a> function will pack single long integers into at most this many bytes. </p>
+
+</div>
+</div>
+<a id="ga108c20338bb1aab96c926c8e0e929a47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga108c20338bb1aab96c926c8e0e929a47">&#9670;&nbsp;</a></span>WT_NONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_NONE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Last API call was successful. </p>
+<p>This is the default sub-level error code that should be used when there is no sub-level error to pair with an error. It indicates that no further context exists or is necessary. </p>
 
 </div>
 </div>
@@ -4924,8 +4865,6 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aa15cd23c3e415138701f3fb4312074c7d"></a>WT_VERB_HS_ACTIVITY&#160;</td><td class="fielddoc"><p>History store activity messages. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaa45045cbb53310aa033774e625e553fe"></a>WT_VERB_LOG&#160;</td><td class="fielddoc"><p>Log messages. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaba06c857a5c528828b18ddcf8af600c2"></a>WT_VERB_LSM&#160;</td><td class="fielddoc"><p>LSM messages. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga559a8cfb19158a0647c28a2748d5284aaa248364229f454c9da1c0908e1e89a85"></a>WT_VERB_METADATA&#160;</td><td class="fielddoc"><p>Metadata messages. </p>
 </td></tr>
@@ -5417,7 +5356,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the path to the backup that will be restored from.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; threads_max</code></td><td>maximum number of threads WiredTiger will start to migrate data from the backup to the running WiredTiger database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between <code>1</code> and <code>12</code>; default <code>8</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; threads_max</code></td><td>maximum number of threads WiredTiger will start to migrate data from the backup to the running WiredTiger database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between <code>0</code> and <code>12</code>; default <code>8</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -5442,14 +5381,6 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <td><code>&#160;&#160;&#160;&#160;remove</code></td><td>automatically remove unneeded log files.</td><td>a boolean flag; default <code>true</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;zero_fill</code></td><td>manually write zeroes into log files.</td><td>a boolean flag; default <code>false</code>. </td></tr>
-<tr>
-<td><code> )</code></td><td></td><td></td></tr>
-<tr>
-<td><code>lsm_manager = (</code></td><td>configure database wide options for LSM tree management. The LSM manager is started automatically the first time an LSM tree is opened. The LSM manager uses a session from the configured session_max.</td><td>a set of related configuration options defined as follows. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;merge</code></td><td>merge LSM chunks where possible.</td><td>a boolean flag; default <code>true</code>. </td></tr>
-<tr>
-<td><code>&#160;&#160;&#160;&#160;worker_thread_max</code></td><td>Configure a set of threads to manage merging LSM trees in the database. Each worker thread uses a session handle from the configured session_max.</td><td>an integer between <code>3</code> and <code>20</code>; default <code>4</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
@@ -5513,7 +5444,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;path</code></td><td>the name of a directory into which statistics files are written. The directory must already exist. If the value is not an absolute path, the path is relative to the database home (see <a class="el" href="security.html#absolute_path">Absolute paths</a> for more information).</td><td>a string; default <code>"."</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;sources</code></td><td>if non-empty, include statistics for the list of "file:" and "lsm:" data source URIs, if they are open at the time of the statistics logging.</td><td>a list of strings; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;sources</code></td><td>if non-empty, include statistics for the list of "file:" data source URIs, if they are open at the time of the statistics logging.</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;timestamp</code></td><td>a timestamp prepended to each log record. May contain <code>strftime</code> conversion specifications. When <code>json</code> is configured, defaults to <code>"%Y-%m-%dT%H:%M:%S.000Z"</code>.</td><td>a string; default <code>"%b %d %H:%M:%S"</code>. </td></tr>
 <tr>
@@ -5533,7 +5464,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>use_environment_priv</code></td><td>use the <code>WIREDTIGER_CONFIG</code> and <code>WIREDTIGER_HOME</code> environment variables even if the process is running with special privileges. See <a class="el" href="home.html">Database Home Directory</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>verbose</code></td><td>enable messages for various subsystems and operations. Options are given as a list, where each message type can optionally define an associated verbosity level, such as <code>"verbose=[eviction,read:1,rts:0]"</code>. Verbosity levels that can be provided include <code>0</code> (INFO) and <code>1</code> through <code>5</code>, corresponding to (DEBUG_1) to (DEBUG_5). <code>all</code> is a special case that defines the verbosity level for all categories not explicitly set in the config string.</td><td>a list, with values chosen from the following options: <code>"all"</code>, <code>"api"</code>, <code>"backup"</code>, <code>"block"</code>, <code>"block_cache"</code>, <code>"checkpoint"</code>, <code>"checkpoint_cleanup"</code>, <code>"checkpoint_progress"</code>, <code>"chunkcache"</code>, <code>"compact"</code>, <code>"compact_progress"</code>, <code>"configuration"</code>, <code>"error_returns"</code>, <code>"eviction"</code>, <code>"fileops"</code>, <code>"generation"</code>, <code>"handleops"</code>, <code>"history_store"</code>, <code>"history_store_activity"</code>, <code>"log"</code>, <code>"lsm"</code>, <code>"lsm_manager"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"out_of_order"</code>, <code>"overflow"</code>, <code>"prefetch"</code>, <code>"read"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"rts"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"tiered"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default <code></code>[]. </td></tr>
+<td><code>verbose</code></td><td>enable messages for various subsystems and operations. Options are given as a list, where each message type can optionally define an associated verbosity level, such as <code>"verbose=[eviction,read:1,rts:0]"</code>. Verbosity levels that can be provided include <code>0</code> (INFO) and <code>1</code> through <code>5</code>, corresponding to (DEBUG_1) to (DEBUG_5). <code>all</code> is a special case that defines the verbosity level for all categories not explicitly set in the config string.</td><td>a list, with values chosen from the following options: <code>"all"</code>, <code>"api"</code>, <code>"backup"</code>, <code>"block"</code>, <code>"block_cache"</code>, <code>"checkpoint"</code>, <code>"checkpoint_cleanup"</code>, <code>"checkpoint_progress"</code>, <code>"chunkcache"</code>, <code>"compact"</code>, <code>"compact_progress"</code>, <code>"configuration"</code>, <code>"error_returns"</code>, <code>"eviction"</code>, <code>"fileops"</code>, <code>"generation"</code>, <code>"handleops"</code>, <code>"history_store"</code>, <code>"history_store_activity"</code>, <code>"log"</code>, <code>"metadata"</code>, <code>"mutex"</code>, <code>"out_of_order"</code>, <code>"overflow"</code>, <code>"prefetch"</code>, <code>"read"</code>, <code>"reconcile"</code>, <code>"recovery"</code>, <code>"recovery_progress"</code>, <code>"rts"</code>, <code>"salvage"</code>, <code>"shared_cache"</code>, <code>"split"</code>, <code>"temporary"</code>, <code>"thread_group"</code>, <code>"tiered"</code>, <code>"timestamp"</code>, <code>"transaction"</code>, <code>"verify"</code>, <code>"version"</code>, <code>"write"</code>; default <code></code>[]. </td></tr>
 <tr>
 <td><code>verify_metadata</code></td><td>open connection and verify any WiredTiger metadata. Not supported when opening a connection from a backup. This API allows verification and detection of corruption in WiredTiger metadata.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -6343,20 +6274,20 @@ Packing Examples</h1>
 <div class="ttc" id="agroup__wt_html_gae8bf720ddb4a7a7390b70424594c40fd"><div class="ttname"><a href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a></div><div class="ttdeci">const char * wiredtiger_strerror(int error)</div><div class="ttdoc">Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...</div></div>
 <div class="ttc" id="agroup__wt_html_gacb2cb3b5e55a85a481a3175f37de3a29"><div class="ttname"><a href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">wiredtiger_calc_modify</a></div><div class="ttdeci">int wiredtiger_calc_modify(WT_SESSION *session, const WT_ITEM *oldv, const WT_ITEM *newv, size_t maxdiff, WT_MODIFY *entries, int *nentriesp)</div><div class="ttdoc">Calculate a set of WT_MODIFY operations to represent an update.</div></div>
 <div class="ttc" id="agroup__wt_html_abd8b1299dfb5c54dc049fa42a4680b55"><div class="ttname"><a href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">WT_ITEM::size</a></div><div class="ttdeci">size_t size</div><div class="ttdoc">The number of bytes in the data item.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:107</div></div>
-<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3922</div></div>
+<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3855</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html_a44eea5e27a4da10006ab444ee7cf00f3"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">WT_CONFIG_PARSER::close</a></div><div class="ttdeci">int close(WT_CONFIG_PARSER *config_parser)</div><div class="ttdoc">Close the configuration scanner releasing any resources.</div></div>
 <div class="ttc" id="agroup__wt_html_ga7cdc8c688f2c15303188ed6999dcc1b4"><div class="ttname"><a href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a></div><div class="ttdeci">int wiredtiger_struct_unpack(WT_SESSION *session, const void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Unpack a structure from a buffer.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___m_o_d_i_f_y"><div class="ttname"><a href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a></div><div class="ttdoc">A set of modifications for a value, including a pointer to new data and a length, plus a target offse...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:131</div></div>
 <div class="ttc" id="agroup__wt_html_ga1b29826f4b418891d67e86850f7cbcf4"><div class="ttname"><a href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a></div><div class="ttdeci">const char * wiredtiger_version(int *majorp, int *minorp, int *patchp)</div><div class="ttdoc">Get version information.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___i_t_e_m"><div class="ttname"><a href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></div><div class="ttdoc">A raw item of data to be managed, including a pointer to the data and a length.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:90</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3862</div></div>
-<div class="ttc" id="agroup__wt_html_ga483078a911ef0dac0d42e71db4e9c054"><div class="ttname"><a href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a></div><div class="ttdeci">uint32_t(*)(uint32_t seed, const void *, size_t) wiredtiger_crc32c_with_seed_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3940</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3795</div></div>
+<div class="ttc" id="agroup__wt_html_ga483078a911ef0dac0d42e71db4e9c054"><div class="ttname"><a href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a></div><div class="ttdeci">uint32_t(*)(uint32_t seed, const void *, size_t) wiredtiger_crc32c_with_seed_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3873</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="agroup__wt_html_ga512297da65ccc30ac91bf6adf95f043f"><div class="ttname"><a href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a></div><div class="ttdeci">int wiredtiger_config_parser_open(WT_SESSION *session, const char *config, size_t len, WT_CONFIG_PARSER **config_parserp)</div><div class="ttdoc">Create a handle that can be used to parse or create configuration strings compatible with the WiredTi...</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
 <div class="ttc" id="agroup__wt_html_ga156e7993d370495e1e52c29b2bb6b7d4"><div class="ttname"><a href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a></div><div class="ttdeci">int wiredtiger_struct_size(WT_SESSION *session, size_t *lenp, const char *format,...)</div><div class="ttdoc">Calculate the size required to pack a structure.</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3730</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:3663</div></div>
 <div class="ttc" id="agroup__wt_html_gab3d8a22e243360ece67baf33926d80fa"><div class="ttname"><a href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a></div><div class="ttdeci">int wiredtiger_struct_pack(WT_SESSION *session, void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Pack a structure into a buffer.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

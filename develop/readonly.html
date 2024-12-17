@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('readonly.html',''); initResizable(); }
 <p>When a database is opened in read-only mode, the database directory and content must already exist and have been shutdown cleanly.</p>
 <h1><a class="anchor" id="readonly_config"></a>
 Database read-only configuration considerations</h1>
-<p>The <code>readonly</code> configuration affects other configuration settings. Where a default setting contradicts read-only operation, WiredTiger defaults are overridden to perform in a read-only mode. For example, LSM tree merges are turned off when LSM trees are configured, and log file removal is disabled when logging is configured.</p>
+<p>The <code>readonly</code> configuration affects other configuration settings. Where a default setting contradicts read-only operation, WiredTiger defaults are overridden to perform in a read-only mode. For example, log file removal is disabled when logging is configured.</p>
 <p>Where a user configured setting contradicts read-only operation, WiredTiger will return an error. For example, zero-filling log files is not allowed in read-only mode, and attempting to configure them will return an error.</p>
 <h1><a class="anchor" id="readonly_recovery"></a>
 Readonly configuration and recovery</h1>
@@ -104,9 +104,6 @@ Readonly configuration and recovery</h1>
 <h1><a class="anchor" id="readonly_logging"></a>
 Readonly configuration and logging</h1>
 <p>If logging is enabled on the database when opened in read-only mode, log file removal and log file pre-allocation are disabled and the log files will not be modified any way.</p>
-<h1><a class="anchor" id="readonly_lsm"></a>
-Readonly configuration and LSM trees</h1>
-<p>If LSM trees are in use, read-only mode turns off all modification. Internal LSM operations such as merging, creating new chunks, creating bloom filters and dropping old chunks are disabled.</p>
 <h1><a class="anchor" id="readonly_handles"></a>
 Readonly configuration and multiple database handles</h1>
 <p>One unusual affect of read-only operations is the potential for multiple read-only database handles open on the same database at the same time. WiredTiger prevents multiple connection handles by writing a lock file, and this locking is done even in read-only mode. However, if the lock file cannot be written, that is, if the WiredTiger home directory does not have write permission, opening in read-only mode is still allowed to proceed. For that reason, multiple read-only connection handles could be open at the same time. Normal locking occurs if the lock file can be written in read-only mode, preventing multiple database connections. </p>

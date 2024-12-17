@@ -102,7 +102,7 @@ Cache size</h1>
 </div><!-- fragment --><p> The effectiveness of the chosen cache size can be measured by reviewing the page eviction statistics for the database.</p>
 <h1><a class="anchor" id="tuning_cache_resident"></a>
 Cache resident objects</h1>
-<p>Objects can be created as cache resident - that is their contents will remain in cache and never be considered for the purposes of cache eviction. Cache residence can be configured with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> "cache_resident" configuration string. LSM tree objects do not support the "cache_resident" setting.</p>
+<p>Objects can be created as cache resident - that is their contents will remain in cache and never be considered for the purposes of cache eviction. Cache residence can be configured with the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb" title="Create a table, column group, index or file.">WT_SESSION::create</a> "cache_resident" configuration string.</p>
 <p>Configuring a cache resident object has several effects:</p>
 <ul>
 <li>Once the object's pages have been created or instantiated in memory no further I/O cost is ever paid for object access, minimizing potential latency.</li>
