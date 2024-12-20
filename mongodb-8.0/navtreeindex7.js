@@ -1,5 +1,10 @@
 var NAVTREEINDEX7 =
 {
+"readonly.html#readonly_handles":[0,4,27,4],
+"readonly.html#readonly_logging":[0,4,27,2],
+"readonly.html#readonly_lsm":[0,4,27,3],
+"readonly.html#readonly_recovery":[0,4,27,1],
+"rotn_encrypt_8c-example.html":[4,18],
 "schema.html":[0,4,3],
 "schema.html#schema_column_groups":[0,4,3,6],
 "schema.html#schema_column_types":[0,4,3,1],
@@ -244,10 +249,5 @@ var NAVTREEINDEX7 =
 "timestamp_model.html#timestamps_global":[0,4,10,0],
 "timestamp_prepare.html":[0,4,13],
 "timestamp_prepare.html#timestamp_prepare_ignore_prepare":[0,4,13,0],
-"timestamp_prepare_roundup.html":[0,4,14],
-"timestamp_prepare_roundup.html#timestamp_prepare_roundup_replay":[0,4,14,0],
-"timestamp_prepare_roundup.html#timestamp_prepare_roundup_safety":[0,4,14,1],
-"timestamp_txn_api.html":[0,4,12],
-"timestamp_txn_api.html#timestamp_txn_api_begin":[0,4,12,5],
-"timestamp_txn_api.html#timestamp_txn_api_commit":[0,4,12,6]
+"timestamp_prepare_roundup.html":[0,4,14]
 };
