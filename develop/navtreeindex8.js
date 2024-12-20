@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"timestamp_global_api.html#timestamp_global_query_api_oldest_timestamp":[0,4,11,1,3],
+"timestamp_global_api.html#timestamp_global_query_api_pinned":[0,4,11,1,4],
 "timestamp_global_api.html#timestamp_global_query_api_recovery":[0,4,11,1,5],
 "timestamp_global_api.html#timestamp_global_query_api_stable_timestamp":[0,4,11,1,6],
 "timestamp_global_api.html#timestamp_global_querying_timestamps":[0,4,11,1],
