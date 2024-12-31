@@ -112,7 +112,18 @@ WiredTiger-specific errors</h1>
 <h1><a class="anchor" id="sub_error_list"></a>
 WiredTiger-specific sub-level errors</h1>
 <p>WiredTiger-specific error codes are allocated from -32,000 to -32,199, inclusive. The following is a list of the WiredTiger-specific return values:</p>
-<dl class="section user"><dt><code>WT_NONE</code> </dt><dd>This is the default sub-level error code that should be used when there is no sub-level error to pair with an error. It indicates that no further context exists or is necessary.</dd></dl>
+<dl class="section user"><dt><code>WT_NONE</code> </dt><dd>This sub-level error code is returned by default and indicates that no further context exists or is necessary.</dd></dl>
+<dl class="section user"><dt><code>WT_COMPACTION_ALREADY_RUNNING</code> </dt><dd>This sub-level error returns when the user tries to reconfigure compaction while it is already running.</dd></dl>
+<dl class="section user"><dt><code>WT_SESSION_MAX</code> </dt><dd>This sub-level error returns when the user has created more than the maximum number of sessions configured (including internal sessions).</dd></dl>
+<dl class="section user"><dt><code>WT_CACHE_OVERFLOW</code> </dt><dd>This sub-level error indicates that the configured cache has exceeded full capacity.</dd></dl>
+<dl class="section user"><dt><code>WT_WRITE_CONFLICT</code> </dt><dd>This sub-level error indicates that there is a write conflict on the same page between concurrent operations.</dd></dl>
+<dl class="section user"><dt><code>WT_OLDEST_FOR_EVICTION</code> </dt><dd>This sub-level error indicates that a given transaction has the oldest transaction ID and needs to be rolled back.</dd></dl>
+<dl class="section user"><dt><code>WT_CONFLICT_BACKUP</code> </dt><dd>This sub-level error indicates that there is conflict perform the operation because of a running backup in the system.</dd></dl>
+<dl class="section user"><dt><code>WT_CONFLICT_DHANDLE</code> </dt><dd>This sub-level error indicates that a concurrent operation is holding the data handle of the table.</dd></dl>
+<dl class="section user"><dt><code>WT_CONFLICT_SCHEMA_LOCK</code> </dt><dd>This sub-level error indicates that a concurrent operation is performing a schema type operation or currently holds the schema lock.</dd></dl>
+<dl class="section user"><dt><code>WT_UNCOMMITTED_DATA</code> </dt><dd>This sub-level error returns when the table has uncommitted data.</dd></dl>
+<dl class="section user"><dt><code>WT_DIRTY_DATA</code> </dt><dd>This sub-level error returns when the table has dirty content.</dd></dl>
+<dl class="section user"><dt><code>WT_CONFLICT_TABLE_LOCK</code> </dt><dd>This sub-level error indicates that a concurrent operation is performing a table operation.</dd></dl>
 <h1><a class="anchor" id="error_translation"></a>
 Translating errors</h1>
 <p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string.">WT_SESSION::strerror</a> and <a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd" title="Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...">wiredtiger_strerror</a> functions return the standard text message associated with any WiredTiger, ISO C, or POSIX standard API.</p>

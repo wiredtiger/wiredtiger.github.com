@@ -276,8 +276,41 @@ Sub-level error returns</h2></td></tr>
 <p>The following are all of the WiredTiger-specific sub-level error returns: </p>
 </td></tr>
 <tr class="memitem:ga108c20338bb1aab96c926c8e0e929a47"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga108c20338bb1aab96c926c8e0e929a47">WT_NONE</a></td></tr>
-<tr class="memdesc:ga108c20338bb1aab96c926c8e0e929a47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last API call was successful.  <a href="group__wt.html#ga108c20338bb1aab96c926c8e0e929a47">More...</a><br /></td></tr>
+<tr class="memdesc:ga108c20338bb1aab96c926c8e0e929a47"><td class="mdescLeft">&#160;</td><td class="mdescRight">No additional context.  <a href="group__wt.html#ga108c20338bb1aab96c926c8e0e929a47">More...</a><br /></td></tr>
 <tr class="separator:ga108c20338bb1aab96c926c8e0e929a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6b98cf1b8d447ce18251c3c21c89c04"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa6b98cf1b8d447ce18251c3c21c89c04">WT_COMPACTION_ALREADY_RUNNING</a></td></tr>
+<tr class="memdesc:gaa6b98cf1b8d447ce18251c3c21c89c04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compaction is already running.  <a href="group__wt.html#gaa6b98cf1b8d447ce18251c3c21c89c04">More...</a><br /></td></tr>
+<tr class="separator:gaa6b98cf1b8d447ce18251c3c21c89c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1ad49ce316d235ad06931f223686e831"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1ad49ce316d235ad06931f223686e831">WT_SESSION_MAX</a></td></tr>
+<tr class="memdesc:ga1ad49ce316d235ad06931f223686e831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max capacity of configured sessions reached.  <a href="group__wt.html#ga1ad49ce316d235ad06931f223686e831">More...</a><br /></td></tr>
+<tr class="separator:ga1ad49ce316d235ad06931f223686e831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad02d23110576beb2ba427f5e05716f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad02d23110576beb2ba427f5e05716f17">WT_CACHE_OVERFLOW</a></td></tr>
+<tr class="memdesc:gad02d23110576beb2ba427f5e05716f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cache capacity has overflown.  <a href="group__wt.html#gad02d23110576beb2ba427f5e05716f17">More...</a><br /></td></tr>
+<tr class="separator:gad02d23110576beb2ba427f5e05716f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacad413b5ac59622e56e4386a2ba53294"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacad413b5ac59622e56e4386a2ba53294">WT_WRITE_CONFLICT</a></td></tr>
+<tr class="memdesc:gacad413b5ac59622e56e4386a2ba53294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write conflict between concurrent operations.  <a href="group__wt.html#gacad413b5ac59622e56e4386a2ba53294">More...</a><br /></td></tr>
+<tr class="separator:gacad413b5ac59622e56e4386a2ba53294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f40e42843d2ae4c29d068cd8fe8d993"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9f40e42843d2ae4c29d068cd8fe8d993">WT_OLDEST_FOR_EVICTION</a></td></tr>
+<tr class="memdesc:ga9f40e42843d2ae4c29d068cd8fe8d993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transaction has the oldest pinned transaction ID.  <a href="group__wt.html#ga9f40e42843d2ae4c29d068cd8fe8d993">More...</a><br /></td></tr>
+<tr class="separator:ga9f40e42843d2ae4c29d068cd8fe8d993"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a375c690e9c95999f63d879058912be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2a375c690e9c95999f63d879058912be">WT_CONFLICT_BACKUP</a></td></tr>
+<tr class="memdesc:ga2a375c690e9c95999f63d879058912be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict performing operation due to running backup.  <a href="group__wt.html#ga2a375c690e9c95999f63d879058912be">More...</a><br /></td></tr>
+<tr class="separator:ga2a375c690e9c95999f63d879058912be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3c2e076daa0b4d269c54e38397b7fa7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3c2e076daa0b4d269c54e38397b7fa7c">WT_CONFLICT_DHANDLE</a></td></tr>
+<tr class="memdesc:ga3c2e076daa0b4d269c54e38397b7fa7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Another thread currently holds the data handle of the table.  <a href="group__wt.html#ga3c2e076daa0b4d269c54e38397b7fa7c">More...</a><br /></td></tr>
+<tr class="separator:ga3c2e076daa0b4d269c54e38397b7fa7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae8981bcbdb5925983a5bf87c7b7c731c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae8981bcbdb5925983a5bf87c7b7c731c">WT_CONFLICT_SCHEMA_LOCK</a></td></tr>
+<tr class="memdesc:gae8981bcbdb5925983a5bf87c7b7c731c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict performing schema operation.  <a href="group__wt.html#gae8981bcbdb5925983a5bf87c7b7c731c">More...</a><br /></td></tr>
+<tr class="separator:gae8981bcbdb5925983a5bf87c7b7c731c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab55ba638633767b0f813588ababae36b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab55ba638633767b0f813588ababae36b">WT_UNCOMMITTED_DATA</a></td></tr>
+<tr class="memdesc:gab55ba638633767b0f813588ababae36b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table has uncommitted data.  <a href="group__wt.html#gab55ba638633767b0f813588ababae36b">More...</a><br /></td></tr>
+<tr class="separator:gab55ba638633767b0f813588ababae36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga09e34d65ecd8c488ed78018251f5ca0c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga09e34d65ecd8c488ed78018251f5ca0c">WT_DIRTY_DATA</a></td></tr>
+<tr class="memdesc:ga09e34d65ecd8c488ed78018251f5ca0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table has dirty data.  <a href="group__wt.html#ga09e34d65ecd8c488ed78018251f5ca0c">More...</a><br /></td></tr>
+<tr class="separator:ga09e34d65ecd8c488ed78018251f5ca0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17867c8705c1aef7c3029d11e2ce7fc0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga17867c8705c1aef7c3029d11e2ce7fc0">WT_CONFLICT_TABLE_LOCK</a></td></tr>
+<tr class="memdesc:ga17867c8705c1aef7c3029d11e2ce7fc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Another thread currently holds the table lock.  <a href="group__wt.html#ga17867c8705c1aef7c3029d11e2ce7fc0">More...</a><br /></td></tr>
+<tr class="separator:ga17867c8705c1aef7c3029d11e2ce7fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Incremental backup types</h2></td></tr>
@@ -4563,6 +4596,125 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 </div>
 </div>
+<a id="gad02d23110576beb2ba427f5e05716f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad02d23110576beb2ba427f5e05716f17">&#9670;&nbsp;</a></span>WT_CACHE_OVERFLOW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_CACHE_OVERFLOW</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cache capacity has overflown. </p>
+<p>This sub-level error indicates that the configured cache has exceeded full capacity. </p>
+
+</div>
+</div>
+<a id="gaa6b98cf1b8d447ce18251c3c21c89c04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa6b98cf1b8d447ce18251c3c21c89c04">&#9670;&nbsp;</a></span>WT_COMPACTION_ALREADY_RUNNING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_COMPACTION_ALREADY_RUNNING</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compaction is already running. </p>
+<p>This sub-level error returns when the user tries to reconfigure compaction while it is already running. </p>
+
+</div>
+</div>
+<a id="ga2a375c690e9c95999f63d879058912be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2a375c690e9c95999f63d879058912be">&#9670;&nbsp;</a></span>WT_CONFLICT_BACKUP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_CONFLICT_BACKUP</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conflict performing operation due to running backup. </p>
+<p>This sub-level error indicates that there is conflict perform the operation because of a running backup in the system. </p>
+
+</div>
+</div>
+<a id="ga3c2e076daa0b4d269c54e38397b7fa7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3c2e076daa0b4d269c54e38397b7fa7c">&#9670;&nbsp;</a></span>WT_CONFLICT_DHANDLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_CONFLICT_DHANDLE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Another thread currently holds the data handle of the table. </p>
+<p>This sub-level error indicates that a concurrent operation is holding the data handle of the table. </p>
+
+</div>
+</div>
+<a id="gae8981bcbdb5925983a5bf87c7b7c731c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae8981bcbdb5925983a5bf87c7b7c731c">&#9670;&nbsp;</a></span>WT_CONFLICT_SCHEMA_LOCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_CONFLICT_SCHEMA_LOCK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conflict performing schema operation. </p>
+<p>This sub-level error indicates that a concurrent operation is performing a schema type operation or currently holds the schema lock. </p>
+
+</div>
+</div>
+<a id="ga17867c8705c1aef7c3029d11e2ce7fc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga17867c8705c1aef7c3029d11e2ce7fc0">&#9670;&nbsp;</a></span>WT_CONFLICT_TABLE_LOCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_CONFLICT_TABLE_LOCK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Another thread currently holds the table lock. </p>
+<p>This sub-level error indicates that a concurrent operation is performing a table operation. </p>
+
+</div>
+</div>
+<a id="ga09e34d65ecd8c488ed78018251f5ca0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga09e34d65ecd8c488ed78018251f5ca0c">&#9670;&nbsp;</a></span>WT_DIRTY_DATA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_DIRTY_DATA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Table has dirty data. </p>
+<p>This sub-level error returns when the table has dirty content. </p>
+
+</div>
+</div>
 <a id="gaeca1f3c4a70b8b71b56d2c2fc99a469c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaeca1f3c4a70b8b71b56d2c2fc99a469c">&#9670;&nbsp;</a></span>WT_DUPLICATE_KEY</h2>
 
@@ -4645,8 +4797,8 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
       </table>
 </div><div class="memdoc">
 
-<p>Last API call was successful. </p>
-<p>This is the default sub-level error code that should be used when there is no sub-level error to pair with an error. It indicates that no further context exists or is necessary. </p>
+<p>No additional context. </p>
+<p>This sub-level error code is returned by default and indicates that no further context exists or is necessary. </p>
 
 </div>
 </div>
@@ -4666,6 +4818,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <p>This error indicates an operation did not find a value to return. This includes cursor search and other operations where no record matched the cursor's search key such as <a class="el" href="struct_w_t___c_u_r_s_o_r.html#a444cdc0952e7f8d55d23173516c7037f" title="Update an existing record and optionally insert a record.">WT_CURSOR::update</a> or <a class="el" href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455" title="Remove a record.">WT_CURSOR::remove</a>. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_access_8c-example.html#a14">ex_access.c</a>, <a class="el" href="ex_backup_8c-example.html#a9">ex_backup.c</a>, <a class="el" href="ex_col_store_8c-example.html#a6">ex_col_store.c</a>, <a class="el" href="ex_cursor_8c-example.html#a4">ex_cursor.c</a>, <a class="el" href="ex_encrypt_8c-example.html#a24">ex_encrypt.c</a>, <a class="el" href="ex_file_system_8c-example.html#a15">ex_file_system.c</a>, <a class="el" href="ex_log_8c-example.html#a8">ex_log.c</a>, <a class="el" href="ex_schema_8c-example.html#a14">ex_schema.c</a>, <a class="el" href="ex_stat_8c-example.html#a4">ex_stat.c</a>, <a class="el" href="ex_thread_8c-example.html#a8">ex_thread.c</a>, and <a class="el" href="rotn_encrypt_8c-example.html#a10">rotn_encrypt.c</a>.</dd>
 </dl>
+
+</div>
+</div>
+<a id="ga9f40e42843d2ae4c29d068cd8fe8d993"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f40e42843d2ae4c29d068cd8fe8d993">&#9670;&nbsp;</a></span>WT_OLDEST_FOR_EVICTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_OLDEST_FOR_EVICTION</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transaction has the oldest pinned transaction ID. </p>
+<p>This sub-level error indicates that a given transaction has the oldest transaction ID and needs to be rolled back. </p>
 
 </div>
 </div>
@@ -4737,6 +4906,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 </div>
 </div>
+<a id="ga1ad49ce316d235ad06931f223686e831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1ad49ce316d235ad06931f223686e831">&#9670;&nbsp;</a></span>WT_SESSION_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_SESSION_MAX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Max capacity of configured sessions reached. </p>
+<p>This sub-level error returns when the user has created more than the maximum number of sessions configured (including internal sessions). </p>
+
+</div>
+</div>
 <a id="ga848dbb8ea23d57d22e8103ce70a08f50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga848dbb8ea23d57d22e8103ce70a08f50">&#9670;&nbsp;</a></span>WT_TRY_SALVAGE</h2>
 
@@ -4751,6 +4937,40 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>Database corruption detected. </p>
 <p>This error is generated when corruption is detected in an on-disk file. During normal operations, this may occur in rare circumstances as a result of a system crash. The application may choose to salvage the file or retry wiredtiger_open with the 'salvage=true' configuration setting. </p>
+
+</div>
+</div>
+<a id="gab55ba638633767b0f813588ababae36b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab55ba638633767b0f813588ababae36b">&#9670;&nbsp;</a></span>WT_UNCOMMITTED_DATA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_UNCOMMITTED_DATA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Table has uncommitted data. </p>
+<p>This sub-level error returns when the table has uncommitted data. </p>
+
+</div>
+</div>
+<a id="gacad413b5ac59622e56e4386a2ba53294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacad413b5ac59622e56e4386a2ba53294">&#9670;&nbsp;</a></span>WT_WRITE_CONFLICT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_WRITE_CONFLICT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write conflict between concurrent operations. </p>
+<p>This sub-level error indicates that there is a write conflict on the same page between concurrent operations. </p>
 
 </div>
 </div>
