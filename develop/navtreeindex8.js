@@ -1,6 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d":[1,0,3,12],
 "threads.html":[0,4,25],
 "threads.html#threads_example":[0,4,25,0],
 "tiered_storage.html":[0,4,19],

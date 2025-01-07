@@ -20,7 +20,6 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "reset_snapshot", "struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59", null ],
     [ "rollback_transaction", "struct_w_t___s_e_s_s_i_o_n.html#ab45f521464ad9e54d9b15efc2ffe20a1", null ],
     [ "salvage", "struct_w_t___s_e_s_s_i_o_n.html#ab3399430e474f7005bd5ea20e6ec7a8e", null ],
-    [ "set_last_error", "struct_w_t___s_e_s_s_i_o_n.html#a43a5fe720b6268aaf8e93857712261d4", null ],
     [ "strerror", "struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9", null ],
     [ "timestamp_transaction", "struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f", null ],
     [ "timestamp_transaction_uint", "struct_w_t___s_e_s_s_i_o_n.html#a1d4d22f14aef710c0c3ac6a543004686", null ],

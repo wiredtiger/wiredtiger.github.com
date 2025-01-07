@@ -248,6 +248,6 @@ var NAVTREEINDEX6 =
 "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k":[1,1,6],
 "home.html":[0,6,0],
 "in_memory.html":[0,4,32],
-"index.html":[0],
-"index.html":[]
+"index.html":[],
+"index.html":[0]
 };
