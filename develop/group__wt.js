@@ -110,12 +110,12 @@ var group__wt =
       [ "get", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#ad0b4eef618f34b00edfbac44b24c5c16", null ],
       [ "next", "struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a2033bdd009b0a75ade51305f00a7dc8f", null ]
     ] ],
+    [ "WT_BACKGROUND_COMPACT_ALREADY_RUNNING", "group__wt.html#gab77da842c3a2af4352bec43d95848a06", null ],
     [ "WT_BACKUP_FILE", "group__wt.html#ga1dd7fafb4ceb01bc9abb3eb75d6d4de9", null ],
     [ "WT_BACKUP_INVALID", "group__wt.html#ga82f1acce741fdac529ff1b6d83f2d65e", null ],
     [ "WT_BACKUP_RANGE", "group__wt.html#ga9d6d9a86e8a5b970cfaced5708cbc801", null ],
     [ "WT_CACHE_FULL", "group__wt.html#ga528be8ed3402d370b51aa5f6d70e15f4", null ],
     [ "WT_CACHE_OVERFLOW", "group__wt.html#gad02d23110576beb2ba427f5e05716f17", null ],
-    [ "WT_COMPACTION_ALREADY_RUNNING", "group__wt.html#gaa6b98cf1b8d447ce18251c3c21c89c04", null ],
     [ "WT_CONFLICT_BACKUP", "group__wt.html#ga2a375c690e9c95999f63d879058912be", null ],
     [ "WT_CONFLICT_DHANDLE", "group__wt.html#ga3c2e076daa0b4d269c54e38397b7fa7c", null ],
     [ "WT_CONFLICT_SCHEMA_LOCK", "group__wt.html#gae8981bcbdb5925983a5bf87c7b7c731c", null ],
@@ -151,6 +151,10 @@ var group__wt =
     [ "WT_ROLLBACK", "group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8", null ],
     [ "WT_RUN_RECOVERY", "group__wt.html#ga76bb44d946fbe56ddb93470ab95a1e78", null ],
     [ "WT_SESSION_MAX", "group__wt.html#ga1ad49ce316d235ad06931f223686e831", null ],
+    [ "WT_STAT_CONN_APPLICATION_CACHE_BUSY_OPS", "group__wt.html#ga3237b8e496768b67291459a195db913f", null ],
+    [ "WT_STAT_CONN_APPLICATION_CACHE_BUSY_TIME", "group__wt.html#ga8d21de7a693c8c923e24eb09fbd5d5c5", null ],
+    [ "WT_STAT_CONN_APPLICATION_CACHE_IDLE_OPS", "group__wt.html#ga1a27a1de10c13f6a76e9c7537057c7c6", null ],
+    [ "WT_STAT_CONN_APPLICATION_CACHE_IDLE_TIME", "group__wt.html#ga8bc218003ce1a93c47191dc4dd224eb2", null ],
     [ "WT_STAT_CONN_APPLICATION_CACHE_OPS", "group__wt.html#gaa07eb0ca3a177b6c0cb7ff4854f12736", null ],
     [ "WT_STAT_CONN_APPLICATION_CACHE_TIME", "group__wt.html#ga82db17f977dfe8bb1b1caf2b594a33b8", null ],
     [ "WT_STAT_CONN_APPLICATION_EVICT_SNAPSHOT_REFRESHED", "group__wt.html#gab6c8e4ab80bea3deb8c5ea89f5a6957c", null ],
@@ -582,8 +586,8 @@ var group__wt =
     [ "WT_STAT_CONN_FSYNC_ALL_FH_TOTAL", "group__wt.html#gaada001075b64f3573b321b1b83ec4841", null ],
     [ "WT_STAT_CONN_FSYNC_ALL_TIME", "group__wt.html#ga3631a9b0759fd78b61d82ef55df93d01", null ],
     [ "WT_STAT_CONN_FSYNC_IO", "group__wt.html#ga43f1791f227e58e339d7bbc740b360dc", null ],
-    [ "WT_STAT_CONN_LIVE_RESTORE_QUEUE_LENGTH", "group__wt.html#ga7a75165a9378b73f112c04cce61e0e83", null ],
     [ "WT_STAT_CONN_LIVE_RESTORE_STATE", "group__wt.html#ga928802e00feebab82f5f1b634ddc00a2", null ],
+    [ "WT_STAT_CONN_LIVE_RESTORE_WORK_REMAINING", "group__wt.html#ga3d1e550a284ee732de352e950c532aa9", null ],
     [ "WT_STAT_CONN_LOCAL_OBJECTS_INUSE", "group__wt.html#ga51001494567e2f8c08a86777779ef9ba", null ],
     [ "WT_STAT_CONN_LOCAL_OBJECTS_REMOVED", "group__wt.html#ga3d79c578b4a21a3fccdddb8d0b1ec473", null ],
     [ "WT_STAT_CONN_LOCK_BTREE_PAGE_COUNT", "group__wt.html#gadb60eb8b792b5917bfc4023154f2d40f", null ],
@@ -1144,6 +1148,8 @@ var group__wt =
     [ "WT_STAT_SESSION_BYTES_READ", "group__wt.html#gaba9fd64d8afd0a74cc11c7beca22d937", null ],
     [ "WT_STAT_SESSION_BYTES_WRITE", "group__wt.html#ga7d23847c7c45598457e3261366247c0f", null ],
     [ "WT_STAT_SESSION_CACHE_TIME", "group__wt.html#ga5ca0953043527edcb10365c34a179444", null ],
+    [ "WT_STAT_SESSION_CACHE_TIME_BUSY", "group__wt.html#gade11b1115a6be1618db83975939da5de", null ],
+    [ "WT_STAT_SESSION_CACHE_TIME_IDLE", "group__wt.html#ga09d3024c9fe84d828ba17b85a8cf676c", null ],
     [ "WT_STAT_SESSION_LOCK_DHANDLE_WAIT", "group__wt.html#gada474b3090ea94c26fb8e471d889dc8d", null ],
     [ "WT_STAT_SESSION_LOCK_SCHEMA_WAIT", "group__wt.html#ga829a05c9b54db3526c723bfba5a10012", null ],
     [ "WT_STAT_SESSION_READ_TIME", "group__wt.html#gaac44a45afb2985b39de9de136ad3e468", null ],
@@ -1156,7 +1162,8 @@ var group__wt =
     [ "WT_EVENT_TYPE", "group__wt.html#ga418f8fac44f030fb265f1a6a118bd254", [
       [ "WT_EVENT_COMPACT_CHECK", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254af41b2383baccffd1bcb42da6c39fd0d2", null ],
       [ "WT_EVENT_CONN_CLOSE", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254abae25fac53b09d7896f42f8be5f91b94", null ],
-      [ "WT_EVENT_CONN_READY", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254aad1390dabd56140107505c4b5509c889", null ]
+      [ "WT_EVENT_CONN_READY", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254aad1390dabd56140107505c4b5509c889", null ],
+      [ "WT_EVENT_EVICTION", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254a6707ac6081513bf883131058492c677e", null ]
     ] ],
     [ "WT_TS_TXN_TYPE", "group__wt.html#ga3307ac01d47089125814f62e90b6ef6e", [
       [ "WT_TS_TXN_TYPE_COMMIT", "group__wt.html#gga3307ac01d47089125814f62e90b6ef6ea20ed2533cb281af4aa546fd73303e3c5", null ],

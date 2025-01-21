@@ -113,7 +113,7 @@ WiredTiger-specific errors</h1>
 WiredTiger-specific sub-level errors</h1>
 <p>WiredTiger-specific error codes are allocated from -32,000 to -32,199, inclusive. The following is a list of the WiredTiger-specific return values:</p>
 <dl class="section user"><dt><code>WT_NONE</code> </dt><dd>This sub-level error code is returned by default and indicates that no further context exists or is necessary.</dd></dl>
-<dl class="section user"><dt><code>WT_COMPACTION_ALREADY_RUNNING</code> </dt><dd>This sub-level error returns when the user tries to reconfigure compaction while it is already running.</dd></dl>
+<dl class="section user"><dt><code>WT_BACKGROUND_COMPACT_ALREADY_RUNNING</code> </dt><dd>This sub-level error returns when the user tries to reconfigure background compaction while it is already running.</dd></dl>
 <dl class="section user"><dt><code>WT_SESSION_MAX</code> </dt><dd>This sub-level error returns when the user has created more than the maximum number of sessions configured (including internal sessions).</dd></dl>
 <dl class="section user"><dt><code>WT_CACHE_OVERFLOW</code> </dt><dd>This sub-level error indicates that the configured cache has exceeded full capacity.</dd></dl>
 <dl class="section user"><dt><code>WT_WRITE_CONFLICT</code> </dt><dd>This sub-level error indicates that there is a write conflict on the same page between concurrent operations.</dd></dl>

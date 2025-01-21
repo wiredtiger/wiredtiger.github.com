@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a":[1,0,3,24],
+"struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701":[1,0,3,0],
+"struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5":[1,0,3,11],
+"struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70":[1,0,3,8],
+"struct_w_t___s_e_s_s_i_o_n.html#aedd139d6424440d5300e88c4fa061f41":[1,0,3,2],
+"struct_w_t___s_e_s_s_i_o_n.html#aeec1349581b7f97fc90573550fff8b6b":[1,0,3,14],
+"struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d":[1,0,3,12],
 "threads.html":[0,4,25],
 "threads.html#threads_example":[0,4,25,0],
 "tiered_storage.html":[0,4,19],
