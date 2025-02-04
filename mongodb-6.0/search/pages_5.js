@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['file_20system_20interface_20and_20operating_20system_20support_1486',['File System Interface and Operating System Support',['../arch-fs-os.html',1,'arch-toc-platform']]],
-  ['fundamentals_1487',['Fundamentals',['../arch-toc-fundamentals.html',1,'arch-index']]],
-  ['file_20formats_20and_20compression_1488',['File formats and compression',['../file_formats.html',1,'programming']]],
-  ['filesystems_1489',['Filesystems',['../filesystems.html',1,'admin']]],
-  ['file_20allocation_1490',['File allocation',['../tune_file_alloc.html',1,'programming']]]
+  ['file_20system_20interface_20and_20operating_20system_20support_1487',['File System Interface and Operating System Support',['../arch-fs-os.html',1,'arch-toc-platform']]],
+  ['fundamentals_1488',['Fundamentals',['../arch-toc-fundamentals.html',1,'arch-index']]],
+  ['file_20formats_20and_20compression_1489',['File formats and compression',['../file_formats.html',1,'programming']]],
+  ['filesystems_1490',['Filesystems',['../filesystems.html',1,'admin']]],
+  ['file_20allocation_1491',['File allocation',['../tune_file_alloc.html',1,'programming']]]
 ];

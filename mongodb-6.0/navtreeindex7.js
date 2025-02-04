@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"tool-perf.html#autotoc_md45":[0,9,3,3],
 "tool-perf.html#autotoc_md46":[0,9,3,4],
 "tool-perf.html#autotoc_md47":[0,9,3,5],
 "tool-statistics.html":[0,9,1],
