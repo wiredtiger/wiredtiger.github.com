@@ -312,6 +312,9 @@ Sub-level error returns</h2></td></tr>
 <tr class="memitem:ga17867c8705c1aef7c3029d11e2ce7fc0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga17867c8705c1aef7c3029d11e2ce7fc0">WT_CONFLICT_TABLE_LOCK</a></td></tr>
 <tr class="memdesc:ga17867c8705c1aef7c3029d11e2ce7fc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Another thread currently holds the table lock.  <a href="group__wt.html#ga17867c8705c1aef7c3029d11e2ce7fc0">More...</a><br /></td></tr>
 <tr class="separator:ga17867c8705c1aef7c3029d11e2ce7fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb5bc198ee9c3e9bf12a1272ecc804a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacb5bc198ee9c3e9bf12a1272ecc804a7">WT_CONFLICT_CHECKPOINT_LOCK</a></td></tr>
+<tr class="memdesc:gacb5bc198ee9c3e9bf12a1272ecc804a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Another thread currently holds the checkpoint lock.  <a href="group__wt.html#gacb5bc198ee9c3e9bf12a1272ecc804a7">More...</a><br /></td></tr>
+<tr class="separator:gacb5bc198ee9c3e9bf12a1272ecc804a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Incremental backup types</h2></td></tr>
@@ -607,6 +610,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga178a70adb0b784ec0675071df67379b9">WT_STAT_CONN_BLOCK_BYTE_READ</a></td></tr>
 <tr class="memdesc:ga178a70adb0b784ec0675071df67379b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes read <br /></td></tr>
 <tr class="separator:ga178a70adb0b784ec0675071df67379b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3372b9248cf425b5f3f06d405cf459ad"><td class="memItemLeft" align="right" valign="top"><a id="ga3372b9248cf425b5f3f06d405cf459ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3372b9248cf425b5f3f06d405cf459ad">WT_STAT_CONN_BLOCK_BYTE_READ_INTL</a></td></tr>
+<tr class="memdesc:ga3372b9248cf425b5f3f06d405cf459ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes read for internal pages <br /></td></tr>
+<tr class="separator:ga3372b9248cf425b5f3f06d405cf459ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50525494373cf377c1cb63f6367db181"><td class="memItemLeft" align="right" valign="top"><a id="ga50525494373cf377c1cb63f6367db181"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga50525494373cf377c1cb63f6367db181">WT_STAT_CONN_BLOCK_BYTE_READ_INTL_DISK</a></td></tr>
+<tr class="memdesc:ga50525494373cf377c1cb63f6367db181"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes read for internal pages before decompression and decryption <br /></td></tr>
+<tr class="separator:ga50525494373cf377c1cb63f6367db181"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf2b1ddc88923381792eb7df42e3a421"><td class="memItemLeft" align="right" valign="top"><a id="gacf2b1ddc88923381792eb7df42e3a421"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf2b1ddc88923381792eb7df42e3a421">WT_STAT_CONN_BLOCK_BYTE_READ_LEAF</a></td></tr>
+<tr class="memdesc:gacf2b1ddc88923381792eb7df42e3a421"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes read for leaf pages <br /></td></tr>
+<tr class="separator:gacf2b1ddc88923381792eb7df42e3a421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab74ce1926c8d5239718372529d6338d"><td class="memItemLeft" align="right" valign="top"><a id="gaab74ce1926c8d5239718372529d6338d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaab74ce1926c8d5239718372529d6338d">WT_STAT_CONN_BLOCK_BYTE_READ_LEAF_DISK</a></td></tr>
+<tr class="memdesc:gaab74ce1926c8d5239718372529d6338d"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes read for leaf pages before decompression and decryption <br /></td></tr>
+<tr class="separator:gaab74ce1926c8d5239718372529d6338d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7d17efd4e712fa3e83900a6e0042877c"><td class="memItemLeft" align="right" valign="top"><a id="ga7d17efd4e712fa3e83900a6e0042877c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7d17efd4e712fa3e83900a6e0042877c">WT_STAT_CONN_BLOCK_BYTE_READ_MMAP</a></td></tr>
 <tr class="memdesc:ga7d17efd4e712fa3e83900a6e0042877c"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes read via memory map API <br /></td></tr>
@@ -627,6 +646,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac5127bd7c3c642935a02547c455b0614">WT_STAT_CONN_BLOCK_BYTE_WRITE_CHECKPOINT</a></td></tr>
 <tr class="memdesc:gac5127bd7c3c642935a02547c455b0614"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes written for checkpoint <br /></td></tr>
 <tr class="separator:gac5127bd7c3c642935a02547c455b0614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c52445f042a68b26cdf8221d80cfe03"><td class="memItemLeft" align="right" valign="top"><a id="ga7c52445f042a68b26cdf8221d80cfe03"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7c52445f042a68b26cdf8221d80cfe03">WT_STAT_CONN_BLOCK_BYTE_WRITE_INTL_DISK</a></td></tr>
+<tr class="memdesc:ga7c52445f042a68b26cdf8221d80cfe03"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes written for internal pages after compression and encryption <br /></td></tr>
+<tr class="separator:ga7c52445f042a68b26cdf8221d80cfe03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae416cb7c84df3e59df434d999da86d0b"><td class="memItemLeft" align="right" valign="top"><a id="gae416cb7c84df3e59df434d999da86d0b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae416cb7c84df3e59df434d999da86d0b">WT_STAT_CONN_BLOCK_BYTE_WRITE_INTL</a></td></tr>
+<tr class="memdesc:gae416cb7c84df3e59df434d999da86d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes written for internal pages before compression and encryption <br /></td></tr>
+<tr class="separator:gae416cb7c84df3e59df434d999da86d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga766550535a4feb37fb091e17a290d636"><td class="memItemLeft" align="right" valign="top"><a id="ga766550535a4feb37fb091e17a290d636"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga766550535a4feb37fb091e17a290d636">WT_STAT_CONN_BLOCK_BYTE_WRITE_LEAF_DISK</a></td></tr>
+<tr class="memdesc:ga766550535a4feb37fb091e17a290d636"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes written for leaf pages after compression and encryption <br /></td></tr>
+<tr class="separator:ga766550535a4feb37fb091e17a290d636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga35c50917930af0b3aeebb79cf372c8a4"><td class="memItemLeft" align="right" valign="top"><a id="ga35c50917930af0b3aeebb79cf372c8a4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga35c50917930af0b3aeebb79cf372c8a4">WT_STAT_CONN_BLOCK_BYTE_WRITE_LEAF</a></td></tr>
+<tr class="memdesc:ga35c50917930af0b3aeebb79cf372c8a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes written for leaf pages before compression and encryption <br /></td></tr>
+<tr class="separator:ga35c50917930af0b3aeebb79cf372c8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga027d009369699f78ab6af7f1d7896076"><td class="memItemLeft" align="right" valign="top"><a id="ga027d009369699f78ab6af7f1d7896076"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga027d009369699f78ab6af7f1d7896076">WT_STAT_CONN_BLOCK_BYTE_WRITE_MMAP</a></td></tr>
 <tr class="memdesc:ga027d009369699f78ab6af7f1d7896076"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: bytes written via memory map API <br /></td></tr>
@@ -4672,6 +4707,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>Conflict performing operation due to running backup. </p>
 <p>This sub-level error indicates that there is conflict perform the operation because of a running backup in the system. </p>
+
+</div>
+</div>
+<a id="gacb5bc198ee9c3e9bf12a1272ecc804a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacb5bc198ee9c3e9bf12a1272ecc804a7">&#9670;&nbsp;</a></span>WT_CONFLICT_CHECKPOINT_LOCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_CONFLICT_CHECKPOINT_LOCK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Another thread currently holds the checkpoint lock. </p>
+<p>This sub-level error indicates that a concurrent operation is performing a checkpoint. </p>
 
 </div>
 </div>

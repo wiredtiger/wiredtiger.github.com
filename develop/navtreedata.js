@@ -45,11 +45,11 @@ var NAVTREEINDEX =
 "arch-tiered-storage.html#ts_checkpoints",
 "data_sources.html",
 "group__wt.html#ga2060ceb5580a617d35daec85092f11cf",
-"group__wt.html#ga5e3af0ec24d9e73356ce829c07e0b3d6",
-"group__wt.html#ga96cd2be3af5ecaf8e8de987cbc1ed109",
-"group__wt.html#gad4c8b0e5d4df39dd0310bb4bbde0f6c3",
-"group__wt__ext.html#ggae93ff9285c3e44f34ffd98ed54ff69c8ad96f702fb4cff2391a0b5601a5c2bb08",
-"struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a"
+"group__wt.html#ga5d6bf13f851480cef8726527ba59db01",
+"group__wt.html#ga9547e882337c739657bb67e6769874d6",
+"group__wt.html#gad203d1f2492062b40b1b31d614f9743c",
+"group__wt__ext.html#ga93dc8e06b256a13bc46cd04b71b92d45",
+"struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
