@@ -686,6 +686,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga13e390a627fdce06053f487b6eb27826">WT_STAT_CONN_BLOCK_REMAP_FILE_WRITE</a></td></tr>
 <tr class="memdesc:ga13e390a627fdce06053f487b6eb27826"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: number of times the region was remapped via write <br /></td></tr>
 <tr class="separator:ga13e390a627fdce06053f487b6eb27826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37ee83bb6e22241433bbb89355e6b5a7"><td class="memItemLeft" align="right" valign="top"><a id="ga37ee83bb6e22241433bbb89355e6b5a7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga37ee83bb6e22241433bbb89355e6b5a7">WT_STAT_CONN_EVICTION_INTERUPTED_BY_APP</a></td></tr>
+<tr class="memdesc:ga37ee83bb6e22241433bbb89355e6b5a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application requested eviction interrupt <br /></td></tr>
+<tr class="separator:ga37ee83bb6e22241433bbb89355e6b5a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf72ba1fb56458f51d8140ab7d8f41233"><td class="memItemLeft" align="right" valign="top"><a id="gaf72ba1fb56458f51d8140ab7d8f41233"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf72ba1fb56458f51d8140ab7d8f41233">WT_STAT_CONN_EVICTION_APP_TIME</a></td></tr>
 <tr class="memdesc:gaf72ba1fb56458f51d8140ab7d8f41233"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application thread time evicting (usecs) <br /></td></tr>
@@ -2974,14 +2978,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa07eb0ca3a177b6c0cb7ff4854f12736">WT_STAT_CONN_APPLICATION_CACHE_OPS</a></td></tr>
 <tr class="memdesc:gaa07eb0ca3a177b6c0cb7ff4854f12736"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread operations waiting for cache <br /></td></tr>
 <tr class="separator:gaa07eb0ca3a177b6c0cb7ff4854f12736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1a27a1de10c13f6a76e9c7537057c7c6"><td class="memItemLeft" align="right" valign="top"><a id="ga1a27a1de10c13f6a76e9c7537057c7c6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1a27a1de10c13f6a76e9c7537057c7c6">WT_STAT_CONN_APPLICATION_CACHE_IDLE_OPS</a></td></tr>
-<tr class="memdesc:ga1a27a1de10c13f6a76e9c7537057c7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread operations waiting for cache eviction while idle <br /></td></tr>
-<tr class="separator:ga1a27a1de10c13f6a76e9c7537057c7c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3237b8e496768b67291459a195db913f"><td class="memItemLeft" align="right" valign="top"><a id="ga3237b8e496768b67291459a195db913f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3237b8e496768b67291459a195db913f">WT_STAT_CONN_APPLICATION_CACHE_BUSY_OPS</a></td></tr>
-<tr class="memdesc:ga3237b8e496768b67291459a195db913f"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread operations waiting for mandatory cache eviction <br /></td></tr>
-<tr class="separator:ga3237b8e496768b67291459a195db913f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6f619f5b5b2e455a9b25ea44adc4caff"><td class="memItemLeft" align="right" valign="top"><a id="ga6f619f5b5b2e455a9b25ea44adc4caff"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6f619f5b5b2e455a9b25ea44adc4caff">WT_STAT_CONN_APPLICATION_CACHE_INTERRUPTIBLE_OPS</a></td></tr>
+<tr class="memdesc:ga6f619f5b5b2e455a9b25ea44adc4caff"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread operations waiting for interruptible cache eviction <br /></td></tr>
+<tr class="separator:ga6f619f5b5b2e455a9b25ea44adc4caff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e2a03ee900421b39bde36d8c53c99ab"><td class="memItemLeft" align="right" valign="top"><a id="ga6e2a03ee900421b39bde36d8c53c99ab"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6e2a03ee900421b39bde36d8c53c99ab">WT_STAT_CONN_APPLICATION_CACHE_UNINTERRUPTIBLE_OPS</a></td></tr>
+<tr class="memdesc:ga6e2a03ee900421b39bde36d8c53c99ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread operations waiting for mandatory cache eviction <br /></td></tr>
+<tr class="separator:ga6e2a03ee900421b39bde36d8c53c99ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab6c8e4ab80bea3deb8c5ea89f5a6957c"><td class="memItemLeft" align="right" valign="top"><a id="gab6c8e4ab80bea3deb8c5ea89f5a6957c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab6c8e4ab80bea3deb8c5ea89f5a6957c">WT_STAT_CONN_APPLICATION_EVICT_SNAPSHOT_REFRESHED</a></td></tr>
 <tr class="memdesc:gab6c8e4ab80bea3deb8c5ea89f5a6957c"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread snapshot refreshed for eviction <br /></td></tr>
@@ -2990,14 +2994,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga82db17f977dfe8bb1b1caf2b594a33b8">WT_STAT_CONN_APPLICATION_CACHE_TIME</a></td></tr>
 <tr class="memdesc:ga82db17f977dfe8bb1b1caf2b594a33b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread time waiting for cache (usecs) <br /></td></tr>
 <tr class="separator:ga82db17f977dfe8bb1b1caf2b594a33b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8bc218003ce1a93c47191dc4dd224eb2"><td class="memItemLeft" align="right" valign="top"><a id="ga8bc218003ce1a93c47191dc4dd224eb2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8bc218003ce1a93c47191dc4dd224eb2">WT_STAT_CONN_APPLICATION_CACHE_IDLE_TIME</a></td></tr>
-<tr class="memdesc:ga8bc218003ce1a93c47191dc4dd224eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread time waiting for cache eviction while idle (usecs) <br /></td></tr>
-<tr class="separator:ga8bc218003ce1a93c47191dc4dd224eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8d21de7a693c8c923e24eb09fbd5d5c5"><td class="memItemLeft" align="right" valign="top"><a id="ga8d21de7a693c8c923e24eb09fbd5d5c5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8d21de7a693c8c923e24eb09fbd5d5c5">WT_STAT_CONN_APPLICATION_CACHE_BUSY_TIME</a></td></tr>
-<tr class="memdesc:ga8d21de7a693c8c923e24eb09fbd5d5c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread time waiting for mandatory cache eviction (usecs) <br /></td></tr>
-<tr class="separator:ga8d21de7a693c8c923e24eb09fbd5d5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga562b531084c3f40f84e32ed6c8d49e6a"><td class="memItemLeft" align="right" valign="top"><a id="ga562b531084c3f40f84e32ed6c8d49e6a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga562b531084c3f40f84e32ed6c8d49e6a">WT_STAT_CONN_APPLICATION_CACHE_INTERRUPTIBLE_TIME</a></td></tr>
+<tr class="memdesc:ga562b531084c3f40f84e32ed6c8d49e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread time waiting for interruptible cache eviction (usecs) <br /></td></tr>
+<tr class="separator:ga562b531084c3f40f84e32ed6c8d49e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd059a16fb6386951a970e0f99ab854f"><td class="memItemLeft" align="right" valign="top"><a id="gadd059a16fb6386951a970e0f99ab854f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadd059a16fb6386951a970e0f99ab854f">WT_STAT_CONN_APPLICATION_CACHE_UNINTERRUPTIBLE_TIME</a></td></tr>
+<tr class="memdesc:gadd059a16fb6386951a970e0f99ab854f"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: application thread time waiting for mandatory cache eviction (usecs) <br /></td></tr>
+<tr class="separator:gadd059a16fb6386951a970e0f99ab854f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga52df57d3185b8f38832d3a38584ef6a0"><td class="memItemLeft" align="right" valign="top"><a id="ga52df57d3185b8f38832d3a38584ef6a0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga52df57d3185b8f38832d3a38584ef6a0">WT_STAT_CONN_TXN_RELEASE_BLOCKED</a></td></tr>
 <tr class="memdesc:ga52df57d3185b8f38832d3a38584ef6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread-yield: connection close blocked waiting for transaction state stabilization <br /></td></tr>
@@ -4464,14 +4468,14 @@ Statistics for session</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5ca0953043527edcb10365c34a179444">WT_STAT_SESSION_CACHE_TIME</a></td></tr>
 <tr class="memdesc:ga5ca0953043527edcb10365c34a179444"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: time waiting for cache (usecs) <br /></td></tr>
 <tr class="separator:ga5ca0953043527edcb10365c34a179444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga09d3024c9fe84d828ba17b85a8cf676c"><td class="memItemLeft" align="right" valign="top"><a id="ga09d3024c9fe84d828ba17b85a8cf676c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga09d3024c9fe84d828ba17b85a8cf676c">WT_STAT_SESSION_CACHE_TIME_IDLE</a></td></tr>
-<tr class="memdesc:ga09d3024c9fe84d828ba17b85a8cf676c"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: time waiting for cache eviction while idle (usecs) <br /></td></tr>
-<tr class="separator:ga09d3024c9fe84d828ba17b85a8cf676c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gade11b1115a6be1618db83975939da5de"><td class="memItemLeft" align="right" valign="top"><a id="gade11b1115a6be1618db83975939da5de"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gade11b1115a6be1618db83975939da5de">WT_STAT_SESSION_CACHE_TIME_BUSY</a></td></tr>
-<tr class="memdesc:gade11b1115a6be1618db83975939da5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: time waiting for mandatory cache eviction (usecs) <br /></td></tr>
-<tr class="separator:gade11b1115a6be1618db83975939da5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89fa8258fb4d6869bafe71a4e347eeed"><td class="memItemLeft" align="right" valign="top"><a id="ga89fa8258fb4d6869bafe71a4e347eeed"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga89fa8258fb4d6869bafe71a4e347eeed">WT_STAT_SESSION_CACHE_TIME_INTERRUPTIBLE</a></td></tr>
+<tr class="memdesc:ga89fa8258fb4d6869bafe71a4e347eeed"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: time waiting for cache interruptible eviction (usecs) <br /></td></tr>
+<tr class="separator:ga89fa8258fb4d6869bafe71a4e347eeed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29c55d2780afe9fc1e33a7fd44584702"><td class="memItemLeft" align="right" valign="top"><a id="ga29c55d2780afe9fc1e33a7fd44584702"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga29c55d2780afe9fc1e33a7fd44584702">WT_STAT_SESSION_CACHE_TIME_MANDATORY</a></td></tr>
+<tr class="memdesc:ga29c55d2780afe9fc1e33a7fd44584702"><td class="mdescLeft">&#160;</td><td class="mdescRight">session: time waiting for mandatory cache eviction (usecs) <br /></td></tr>
+<tr class="separator:ga29c55d2780afe9fc1e33a7fd44584702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Verbose categories</h2></td></tr>
