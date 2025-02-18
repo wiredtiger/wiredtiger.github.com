@@ -14,6 +14,7 @@ var programming =
     [ "Schema, Columns, Column Groups, Indices and Projections", "schema.html", "schema" ],
     [ "Error handling", "error_handling.html", [
       [ "EBUSY errors", "error_handling.html#error_ebusy", null ],
+      [ "Sub-level errors", "error_handling.html#error_sub_level", null ],
       [ "WiredTiger-specific errors", "error_handling.html#error_list", null ],
       [ "WiredTiger-specific sub-level errors", "error_handling.html#sub_error_list", null ],
       [ "Translating errors", "error_handling.html#error_translation", null ]

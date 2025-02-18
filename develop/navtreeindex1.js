@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"arch-tiered-storage.html#ts_checkpoint_flush":[0,10,6,4,7,2],
+"arch-tiered-storage.html#ts_checkpoint_prepare":[0,10,6,4,7,0],
 "arch-tiered-storage.html#ts_checkpoints":[0,10,6,4,2],
 "arch-tiered-storage.html#ts_cookies":[0,10,6,4,3,0],
 "arch-tiered-storage.html#ts_flush":[0,10,6,4,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "custom_data_sources.html#custom_ds_methods":[0,4,41,0],
 "custom_file_systems.html":[0,4,42],
 "custom_storage_sources.html":[0,4,43],
-"custom_storage_sources.html#storage_examples":[0,4,43,2],
-"custom_storage_sources.html#storage_overview":[0,4,43,0],
-"custom_storage_sources.html#storage_parameters":[0,4,43,1]
+"custom_storage_sources.html#storage_examples":[0,4,43,2]
 };

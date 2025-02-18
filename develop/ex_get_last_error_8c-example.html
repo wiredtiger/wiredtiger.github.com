@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>WiredTiger: ex_extending.c</title>
+<title>WiredTiger: ex_get_last_error.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('ex_extending_8c-example.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('ex_get_last_error_8c-example.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,10 +89,10 @@ $(document).ready(function(){initNavTree('ex_extending_8c-example.html',''); ini
 
 <div class="header">
   <div class="headertitle">
-<div class="title">ex_extending.c</div>  </div>
+<div class="title">ex_get_last_error.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<p>Shows how to extend WiredTiger with application-specific collations and cursor types.</p>
+<p>Demonstrates how to get more verbose information about the last session error in WiredTiger.</p>
 <div class="fragment"><div class="line"><span class="comment">/*-</span></div>
 <div class="line"><span class="comment"> * Public Domain 2014-present MongoDB, Inc.</span></div>
 <div class="line"><span class="comment"> * Public Domain 2008-2014 WiredTiger, Inc.</span></div>
@@ -120,84 +120,45 @@ $(document).ready(function(){initNavTree('ex_extending_8c-example.html',''); ini
 <div class="line"><span class="comment"> * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span></div>
 <div class="line"><span class="comment"> * OTHER DEALINGS IN THE SOFTWARE.</span></div>
 <div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> * ex_extending.c</span></div>
-<div class="line"><span class="comment"> *      This is an example demonstrating ways to extend WiredTiger with</span></div>
-<div class="line"><span class="comment"> *      collators and loadable modules.</span></div>
+<div class="line"><span class="comment"> * ex_get_last_error.c</span></div>
+<div class="line"><span class="comment"> *      Demonstrate how to get more verbose information about the last session error in WiredTiger.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="preprocessor">#include &lt;test_util.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *home;</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/* A simple case insensitive comparator. */</span></div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">__compare_nocase(</div>
-<div class="line">  <a name="_a0"></a><a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a name="_a1"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keyword">const</span> <a name="_a2"></a><a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *v1, <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *v2, <span class="keywordtype">int</span> *cmp)</div>
-<div class="line">{</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *s1 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)v1-&gt;<a name="a3"></a><a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *s2 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)v2-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
-<div class="line"> </div>
-<div class="line">    (void)session;  <span class="comment">/* unused variable */</span></div>
-<div class="line">    (void)collator; <span class="comment">/* unused variable */</span></div>
-<div class="line"> </div>
-<div class="line">    *cmp = strcasecmp(s1, s2);</div>
-<div class="line">    <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> nocasecoll = {__compare_nocase, NULL, NULL};</div>
-<div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * Comparator that only compares the first N prefix characters of the string. This has associated</span></div>
-<div class="line"><span class="comment"> * data, so we need to extend WT_COLLATOR.</span></div>
-<div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line">    <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> iface;</div>
-<div class="line">    uint32_t maxlen;</div>
-<div class="line">} PREFIX_COLLATOR;</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">__compare_prefixes(</div>
-<div class="line">  <a class="code" href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a> *collator, <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *v1, <span class="keyword">const</span> <a class="code" href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a> *v2, <span class="keywordtype">int</span> *cmp)</div>
-<div class="line">{</div>
-<div class="line">    PREFIX_COLLATOR *pcoll = (PREFIX_COLLATOR *)collator;</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *s1 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)v1-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *s2 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)v2-&gt;<a class="code" href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">data</a>;</div>
-<div class="line"> </div>
-<div class="line">    (void)session; <span class="comment">/* unused */</span></div>
-<div class="line"> </div>
-<div class="line">    *cmp = strncmp(s1, s2, pcoll-&gt;maxlen);</div>
-<div class="line">    <span class="keywordflow">return</span> (0);</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">static</span> PREFIX_COLLATOR pcoll10 = {{__compare_prefixes, NULL, NULL}, 10};</div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
 <div class="line">{</div>
-<div class="line">    <a name="_a4"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
-<div class="line">    <a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
-<div class="line"> </div>
 <div class="line">    home = example_setup(argc, argv);</div>
 <div class="line"> </div>
+<div class="line">    <a name="_a0"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *conn;</div>
+<div class="line">    <a name="_a1"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session;</div>
+<div class="line"> </div>
 <div class="line">    <span class="comment">/* Open a connection to the database, creating it if necessary. */</span></div>
-<div class="line">    error_check(<a name="a5"></a><a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn));</div>
+<div class="line">    error_check(<a name="a2"></a><a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create&quot;</span>, &amp;conn));</div>
 <div class="line"> </div>
-<div class="line">    error_check(conn-&gt;<a name="a6"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8">add_collator</a>(conn, <span class="stringliteral">&quot;nocase&quot;</span>, &amp;nocasecoll, NULL));</div>
-<div class="line">    error_check(conn-&gt;<a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8">add_collator</a>(conn, <span class="stringliteral">&quot;prefix10&quot;</span>, &amp;pcoll10.iface, NULL));</div>
+<div class="line">    <span class="comment">/* Prepare return arguments. */</span></div>
+<div class="line">    <span class="keywordtype">int</span> err, sub_level_err;</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *err_msg;</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">/* Open a session for the current thread&#39;s work. */</span></div>
-<div class="line">    error_check(conn-&gt;<a name="a7"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0">open_session</a>(conn, NULL, NULL, &amp;session));</div>
+<div class="line">    <span class="comment">/* Call the API and log the returned error codes and error message. */</span></div>
+<div class="line">    printf(<span class="stringliteral">&quot;ex_get_last_error: expect verbose information about the last session error:\n&quot;</span>);</div>
+<div class="line">    error_check(conn-&gt;<a name="a3"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0">open_session</a>(conn, NULL, NULL, &amp;session));</div>
+<div class="line">    session-&gt;<a name="a4"></a><a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a914a644c3a6418a1ffe29f117a2b1f85">get_last_error</a>(session, &amp;err, &amp;sub_level_err, &amp;err_msg);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Error code: %d\n&quot;</span>, err);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Sub-level error code: %d\n&quot;</span>, sub_level_err);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Error message: &#39;%s&#39;\n&quot;</span>, err_msg);</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">/* Do some work... */</span></div>
+<div class="line">    error_check(conn-&gt;<a name="a5"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL));</div>
 <div class="line"> </div>
-<div class="line">    error_check(conn-&gt;<a name="a8"></a><a class="code" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">close</a>(conn, NULL));</div>
 <div class="line">    <span class="keywordflow">return</span> (EXIT_SUCCESS);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="agroup__wt_html_a57f5e62aa968275d7e398cfa70e49450"><div class="ttname"><a href="group__wt.html#a57f5e62aa968275d7e398cfa70e49450">WT_ITEM::data</a></div><div class="ttdeci">const void * data</div><div class="ttdoc">The memory reference of the data item.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:98</div></div>
-<div class="ttc" id="astruct_w_t___c_o_l_l_a_t_o_r_html"><div class="ttname"><a href="struct_w_t___c_o_l_l_a_t_o_r.html">WT_COLLATOR</a></div><div class="ttdoc">The interface implemented by applications to provide custom ordering of records.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4183</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_adad5965cd4a60f65b5ac01f7ca6d1fc0"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#adad5965cd4a60f65b5ac01f7ca6d1fc0">WT_CONNECTION::open_session</a></div><div class="ttdeci">int open_session(WT_CONNECTION *connection, WT_EVENT_HANDLER *event_handler, const char *config, WT_SESSION **sessionp)</div><div class="ttdoc">Open a session.</div></div>
-<div class="ttc" id="agroup__wt_html_struct_w_t___i_t_e_m"><div class="ttname"><a href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></div><div class="ttdoc">A raw item of data to be managed, including a pointer to the data and a length.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:90</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_a89290382c55f20e5a4e1bc9216c7a8c8"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a89290382c55f20e5a4e1bc9216c7a8c8">WT_CONNECTION::add_collator</a></div><div class="ttdeci">int add_collator(WT_CONNECTION *connection, const char *name, WT_COLLATOR *collator, const char *config)</div><div class="ttdoc">Add a custom collation function.</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a></div><div class="ttdoc">A connection to a WiredTiger database.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:1990</div></div>
+<div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a914a644c3a6418a1ffe29f117a2b1f85"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a914a644c3a6418a1ffe29f117a2b1f85">WT_SESSION::get_last_error</a></div><div class="ttdeci">void get_last_error(WT_SESSION *session, int *err, int *sub_level_err, const char **err_msg)</div><div class="ttdoc">Return verbose information about the last session API call.</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a></div><div class="ttdoc">All data operations are performed in the context of a WT_SESSION.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:819</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_n_e_c_t_i_o_n_html_af535c517df851eeac8ebf3594d40b545"><div class="ttname"><a href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545">WT_CONNECTION::close</a></div><div class="ttdeci">int close(WT_CONNECTION *connection, const char *config)</div><div class="ttdoc">Close a connection.</div></div>

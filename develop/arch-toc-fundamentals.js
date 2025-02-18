@@ -15,7 +15,10 @@ var arch_toc_fundamentals =
       [ "Cursors", "arch-session.html#arch_session_cur", null ],
       [ "Data Handles", "arch-session.html#arch_session_dhandles", null ],
       [ "Closure", "arch-session.html#arch_session_closure", null ],
-      [ "Multithreading", "arch-session.html#arch_session_thread", null ]
+      [ "Multithreading", "arch-session.html#arch_session_thread", null ],
+      [ "Error and Sub-level Errors Handling", "arch-session.html#arch_session_error", [
+        [ "Sub-level Errors - External & Internal Sessions", "arch-session.html#arch_session_error_sessions", null ]
+      ] ]
     ] ],
     [ "Cursor", "arch-cursor.html", [
       [ "Data translation", "arch-cursor.html#arch_cursor_raw", null ],

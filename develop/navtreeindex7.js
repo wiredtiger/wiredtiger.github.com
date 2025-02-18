@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3":[1,1,19],
+"group__wt__ext.html#ga6d6c6913fd2d03910419f8e20f0026a4":[1,1,8],
+"group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4":[1,1,17],
+"group__wt__ext.html#ga6ff865a494747bc27525b6b9e1a61ae6":[1,1,14],
 "group__wt__ext.html#ga91e49502eb5f12a2e4c12a78d93bf4bd":[1,1,16],
 "group__wt__ext.html#ga93dc8e06b256a13bc46cd04b71b92d45":[1,1,10],
 "group__wt__ext.html#gaa4979ed3f2610368e392be059390b62f":[1,1,9],
@@ -15,8 +19,8 @@ var NAVTREEINDEX7 =
 "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k":[1,1,6],
 "home.html":[0,6,0],
 "in_memory.html":[0,4,32],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "keyvalue.html":[0,4,3,10],
 "license.html":[0,8],
 "license.html":[6],
@@ -35,7 +39,7 @@ var NAVTREEINDEX7 =
 "namespace.html#namespace_env":[0,4,26,0],
 "namespace.html#namespace_error":[0,4,26,3],
 "namespace.html#namespace_filesystem":[0,4,26,2],
-"nop_encrypt_8c-example.html":[4,15],
+"nop_encrypt_8c-example.html":[4,16],
 "operation_tracking.html":[0,4,35],
 "overview.html":[0,0],
 "overview.html#cache":[0,0,3],
@@ -58,7 +62,7 @@ var NAVTREEINDEX7 =
 "readonly.html#readonly_handles":[0,4,27,3],
 "readonly.html#readonly_logging":[0,4,27,2],
 "readonly.html#readonly_recovery":[0,4,27,1],
-"rotn_encrypt_8c-example.html":[4,16],
+"rotn_encrypt_8c-example.html":[4,17],
 "schema.html":[0,4,3],
 "schema.html#schema_column_groups":[0,4,3,6],
 "schema.html#schema_column_types":[0,4,3,1],
@@ -77,7 +81,7 @@ var NAVTREEINDEX7 =
 "security.html#file_permissions":[0,6,3,2],
 "shared_cache.html":[0,4,36],
 "signals.html":[0,4,28],
-"sodium_encrypt_8c-example.html":[4,17],
+"sodium_encrypt_8c-example.html":[4,18],
 "statistics.html":[0,4,37],
 "statistics.html#statistics_log":[0,4,37,0],
 "struct_w_t___c_o_l_l_a_t_o_r.html":[1,1,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX7 =
 "struct_w_t___s_e_s_s_i_o_n.html#a1d4d22f14aef710c0c3ac6a543004686":[1,0,3,22],
 "struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59":[1,0,3,17],
 "struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6":[1,0,3,27],
-"struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787":[1,0,3,16],
-"struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb":[1,0,3,7],
-"struct_w_t___s_e_s_s_i_o_n.html#a480525d3881dfcb90060af823a7f4a52":[1,0,3,26],
-"struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6":[1,0,3,15],
-"struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf":[1,0,3,3]
+"struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787":[1,0,3,16]
 };

@@ -233,6 +233,8 @@ var NAVTREEINDEX0 =
 "arch-session.html#arch_session_cur":[0,10,0,1,3],
 "arch-session.html#arch_session_def":[0,10,0,1,0],
 "arch-session.html#arch_session_dhandles":[0,10,0,1,4],
+"arch-session.html#arch_session_error":[0,10,0,1,7],
+"arch-session.html#arch_session_error_sessions":[0,10,0,1,7,0],
 "arch-session.html#arch_session_ops":[0,10,0,1,1],
 "arch-session.html#arch_session_thread":[0,10,0,1,6],
 "arch-session.html#arch_session_txn":[0,10,0,1,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "arch-tiered-storage.html#ts_block_local_file_removal":[0,10,6,4,3,2],
 "arch-tiered-storage.html#ts_block_manager":[0,10,6,4,3],
 "arch-tiered-storage.html#ts_buckets":[0,10,6,4,6],
-"arch-tiered-storage.html#ts_checkpoint_data_file":[0,10,6,4,7,1],
-"arch-tiered-storage.html#ts_checkpoint_flush":[0,10,6,4,7,2],
-"arch-tiered-storage.html#ts_checkpoint_prepare":[0,10,6,4,7,0]
+"arch-tiered-storage.html#ts_checkpoint_data_file":[0,10,6,4,7,1]
 };
