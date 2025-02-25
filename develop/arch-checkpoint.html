@@ -127,34 +127,58 @@ src/meta/meta_ckpt.c</code></code></td></tr>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Overview</h1>
-<p>A checkpoint is a known point in time from which WiredTiger can recover in the event of a crash or unexpected shutdown. WiredTiger checkpoints are created either via the API <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of individual objects.">WT_SESSION::checkpoint</a>, or internally. Internally checkpoints are created on startup, shutdown and during compaction.</p>
-<p>A checkpoint is performed within the context of snapshot isolation transaction as such the checkpoint has a consistent view of the database from beginning to end. Typically when running a checkpoint the configuration <code>"use_timestamp=true"</code> is specified. This instructs WiredTiger to set the <code>checkpoint_timestamp</code> to be the current <code>stable_timestamp</code>. As of the latest version of WiredTiger the <code>checkpoint_timestamp</code> timestamp is not used as a <code>read_timestamp</code> for the checkpoint transaction. The <code>checkpoint_timestamp</code> is written out with the metadata information for the checkpoint. On startup WiredTiger will set the <code>stable_timestamp</code> internally to the timestamp contained in the metadata, and rollback updates which are newer to the <code>stable_timestamp</code> see: <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a>.</p>
+<p>A checkpoint is a known point in time from which WiredTiger can recover in the event of a crash or unexpected shutdown. Both checkpoints and <a class="el" href="arch-logging.html">logging</a> provide durability guarantees. During recovery WiredTiger can start up from the last known checkpoint and replay the log, recovering the lost operations. WiredTiger checkpoints are created either via the API <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of individual objects.">WT_SESSION::checkpoint</a>, or internally. See <a class="el" href="arch-checkpoint.html#checkpoint-internal-callers">Internal Callers</a> for when checkpoint can be called internally by WiredTiger.</p>
+<p>A checkpoint is performed within the context of a <a class="el" href="arch-snapshot.html">snapshot isolation</a> transaction, as such the checkpoint has a consistent view of the database from beginning to end. Typically when running a checkpoint the configuration <code>"use_timestamp=true"</code> is specified. This instructs WiredTiger to set the <code>checkpoint_timestamp</code> to be the current <code>stable_timestamp</code>. As of the latest version of WiredTiger the <code>checkpoint_timestamp</code> timestamp is not used as a <code>read_timestamp</code> for the checkpoint transaction. The <code>checkpoint_timestamp</code> is written out with the metadata information for the checkpoint. On startup WiredTiger will set the <code>stable_timestamp</code> internally to the timestamp contained in the metadata, and rollback updates which are newer to the <code>stable_timestamp</code> see: <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a>.</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
 The checkpoint algorithm</h1>
-<p>A checkpoint can be broken up into 5 main stages:</p>
-<p><em>The prepare stage:</em></p>
-<p>Checkpoint prepare sets up the checkpoint, it begins the checkpoint transaction, updates the global checkpoint state and gathers a list of handles to be checkpointed. A global schema lock wraps checkpoint prepare to avoid any tables being created or dropped during this phase, additionally the global transaction lock is taken during this process as it must modify the global transaction state, and to ensure the <code>stable_timestamp</code> doesn't move ahead of the snapshot taken by the checkpoint transaction. Each handle gathered refers to a specific b-tree. The set of b-trees gathered by the checkpoint varies based off configuration. Additionally clean b-trees, i.e. b-trees without any modifications are excluded from the list, with an exception for specific checkpoint configuration scenarios.</p>
-<p><em>The data files checkpoint:</em></p>
-<p>Data files in this instance refer to all the user created files. The main work of checkpoint is done here, the array of b-tree's collected in the prepare stage are iterated over. For each b-tree, the tree is walked and all the dirty pages are reconciled. Clean pages are skipped to avoid unnecessary work. Pages made clean ahead of the checkpoint by eviction are still skipped regardless of whether the update written by eviction is visible to the checkpoint transaction. The checkpoint guarantees that a clean version of every page in the tree exists and can be written to disk.</p>
-<p><em>The history store checkpoint:</em></p>
-<p>The history store is checkpointed after the data files intentionally as during the reconciliation of the data files additional writes may be created in the history store and its important to include them in the checkpoint.</p>
-<p><em>Flushing the files to disk:</em></p>
-<p>All the b-trees checkpointed and the history are flushed to disk at this stage, WiredTiger will wait until that process has completed to continue with the checkpoint.</p>
-<p><em>The metadata checkpoint:</em></p>
+<p>The checkpoint algorithm can be considered as a coordinator of multiple aspects of the system. It relies on the <a class="el" href="arch-btree.html">btree subsystem</a> for traversing in memory pages, the <a class="el" href="arch-block.html">block manager subsystem</a> for handling on-disk blocks and the <a class="el" href="arch-metadata.html">metadata subsystem</a> for constructing and interpreting the metadata information.</p>
+<p>A checkpoint can be broken up into the following stages:</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Locking</h2>
+<p>The first stage of checkpoint is to gather the necessary checkpoint locks. The <code>checkpoint_lock</code> has the highest precedent ensuring only one checkpoint takes place at time. Other locks such as, dhandle, schema and flush locks are taken throughout the checkpoint process.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Eviction</h2>
+<p>Before the checkpoint transaction begins (pinning content), the <a class="el" href="arch-eviction.html">eviction subsystem</a> is leveraged to reduce the dirty content in the cache. Using eviction has the benefit of taking advantage of the multi-threaded functionality of eviction and reduces the work required during the critical section of the checkpoint. The thread performing the checkpoint operation will wait for eviction to reach the target dirty content ratio unless no progress is made.</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Prepare</h2>
+<p>Checkpoint prepare sets up the checkpoint, it begins the checkpoint transaction, updates the global checkpoint state and gathers a list of handles to be checkpointed. A global schema lock wraps checkpoint prepare to avoid any tables being created or dropped during this phase, additionally the global transaction lock is taken during this process as it must modify the global transaction state, and to ensure the <code>stable_timestamp</code> doesn't move ahead of the snapshot taken by the checkpoint transaction. The connection dhandle list is walked one handle at a time, where each handle gathered refers to a specific btree. Additionally clean btrees, i.e. btrees without any modifications, are excluded from the list, with an exception for specific checkpoint configuration scenarios. See <a class="el" href="arch-checkpoint.html#skipping-checkpoints">Skipping checkpoints</a> for scenarios where btrees are skipped during checkpoint. Btrees included in the checkpoint list then delete earlier checkpoints when possible. Previous checkpoints can only be discarded if the associated blocks are no longer used.</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Data files checkpoint</h2>
+<p>Data files in this instance refer to all the user created files. The main work of checkpoint is done here, the array of btree's collected in the prepare stage are iterated over. For each btree, the tree is walked and all the dirty pages are reconciled. Clean pages are skipped to avoid unnecessary work. Pages made clean ahead of the checkpoint by eviction are still skipped regardless of whether the update written by eviction is visible to the checkpoint transaction. The checkpoint guarantees that a clean version of every page in the tree exists and can be written to disk. The <a class="el" href="arch-block.html">block manager subsystem</a> is then responsible for managing the extent lists modified by the checkpoint (see <a class="el" href="arch-block.html#block-checkpoint">block-checkpoint</a>) and deleting old checkpoints.</p>
+<h2><a class="anchor" id="autotoc_md10"></a>
+History store checkpoint</h2>
+<p>The <a class="el" href="arch-hs.html">history store</a> is checkpointed after the data files intentionally as during the reconciliation of the data files additional writes may be created in the history store and its important to include them in the checkpoint. The history store will follow the same checkpoint process as data files.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Flushing the files to disk</h2>
+<p>All the btrees checkpointed and the history are flushed to disk at this stage, WiredTiger will wait until that process has completed to continue with the checkpoint.</p>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Metadata checkpoint</h2>
 <p>A new entry into the metadata file is created for every data file checkpointed, including the history store. As such the metadata file is the last file to be checkpointed. As WiredTiger maintains two checkpoints, the location of the most recent checkpoint is written to the turtle file.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<p><a class="anchor" id="skipping-checkpoints"></a></p>
+<h1><a class="anchor" id="autotoc_md13"></a>
 Skipping checkpoints</h1>
 <p>It is possible that a checkpoint will be skipped. A checkpoint will be skipped when:</p><ul>
 <li>No modifications to the database have been made since the last checkpoint.</li>
 <li>The last checkpoint timestamp is equal to the current stable timestamp.</li>
 <li>There is no available space at the end of the file. This logic can be overridden by forcing a checkpoint via configuration.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Checkpoint generations</h1>
-<p>The checkpoint generation indicates which iteration of checkpoint a file has undergone, at the start of a checkpoint the generation is incremented. Then after processing any b-tree its <code>checkpoint_gen</code> is set to the latest checkpoint generation. Checkpoint generations impact visibility checks within WiredTiger, essentially if a b-tree is behind a checkpoint, i.e. its checkpoint generation is less than the current checkpoint generation, then the checkpoint transaction id and checkpoint timestamp are included in certain visibility checks. This prevents eviction from evicting updates from a given b-tree ahead of the checkpoint.</p>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<p>The checkpoint generation indicates which iteration of checkpoint a file has undergone, at the start of a checkpoint the generation is incremented. Then after processing any btree its <code>checkpoint_gen</code> is set to the latest checkpoint generation. Checkpoint generations impact visibility checks within WiredTiger, essentially if a btree is behind a checkpoint, i.e. its checkpoint generation is less than the current checkpoint generation, then the checkpoint transaction id and checkpoint timestamp are included in certain visibility checks. This prevents eviction from evicting updates from a given btree ahead of the checkpoint.</p>
+<h1><a class="anchor" id="autotoc_md15"></a>
 Garbage collection</h1>
-<p>While processing a b-tree, checkpoint can mark pages as obsolete. Any page that has an aggregated stop time pair which is globally visible will no longer be required by any reader and can be marked as deleted. This occurs prior to the page being reconciled, allowing for the page to be removed during the reconciliation. However this does not mean that the deleted page is available for re-use as it may be referenced by older checkpoints, once the older checkpoint is deleted the page is free to be used. Given the freed pages exist at the end of the file the file can be truncated. Otherwise compaction will need to be initiated to shrink the file, see: <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree.">WT_SESSION::compact</a>. </p>
+<p>While processing a btree, checkpoint can mark pages as obsolete. Any page that has an aggregated stop time pair which is globally visible will no longer be required by any reader and can be marked as deleted. This occurs prior to the page being reconciled, allowing for the page to be removed during the reconciliation. However this does not mean that the deleted page is available for re-use as it may be referenced by older checkpoints, once the older checkpoint is deleted the page is free to be used. If the freed pages exist at the end of the file the file can be truncated. Otherwise compaction will need to be initiated to shrink the file, see: <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree.">WT_SESSION::compact</a>.</p>
+<p><a class="anchor" id="checkpoint-internal-callers"></a></p>
+<h1><a class="anchor" id="autotoc_md16"></a>
+Internal callers</h1>
+<p>WiredTiger may call checkpoint internally at any time. These can occur during:</p><ul>
+<li>Recovery</li>
+<li><a class="el" href="arch-backup.html">Backup</a></li>
+<li><a class="el" href="arch-compact.html">Compaction</a></li>
+<li><a class="el" href="arch-schema.html#schema_alter">Schema alter</a></li>
+<li>Internal checkpoint thread (controlled by configuration option to <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>)</li>
+<li>Startup/shutdown </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

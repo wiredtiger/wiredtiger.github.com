@@ -282,9 +282,6 @@ Sub-level error returns</h2></td></tr>
 <tr class="memitem:gab77da842c3a2af4352bec43d95848a06"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab77da842c3a2af4352bec43d95848a06">WT_BACKGROUND_COMPACT_ALREADY_RUNNING</a></td></tr>
 <tr class="memdesc:gab77da842c3a2af4352bec43d95848a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Background compaction is already running.  <a href="group__wt.html#gab77da842c3a2af4352bec43d95848a06">More...</a><br /></td></tr>
 <tr class="separator:gab77da842c3a2af4352bec43d95848a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1ad49ce316d235ad06931f223686e831"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1ad49ce316d235ad06931f223686e831">WT_SESSION_MAX</a></td></tr>
-<tr class="memdesc:ga1ad49ce316d235ad06931f223686e831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max capacity of configured sessions reached.  <a href="group__wt.html#ga1ad49ce316d235ad06931f223686e831">More...</a><br /></td></tr>
-<tr class="separator:ga1ad49ce316d235ad06931f223686e831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad02d23110576beb2ba427f5e05716f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad02d23110576beb2ba427f5e05716f17">WT_CACHE_OVERFLOW</a></td></tr>
 <tr class="memdesc:gad02d23110576beb2ba427f5e05716f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cache capacity has overflown.  <a href="group__wt.html#gad02d23110576beb2ba427f5e05716f17">More...</a><br /></td></tr>
 <tr class="separator:gad02d23110576beb2ba427f5e05716f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -4990,23 +4987,6 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 </div>
 </div>
-<a id="ga1ad49ce316d235ad06931f223686e831"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1ad49ce316d235ad06931f223686e831">&#9670;&nbsp;</a></span>WT_SESSION_MAX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define WT_SESSION_MAX</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Max capacity of configured sessions reached. </p>
-<p>This sub-level error returns when the user has created more than the maximum number of sessions configured (including internal sessions). </p>
-
-</div>
-</div>
 <a id="ga848dbb8ea23d57d22e8103ce70a08f50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga848dbb8ea23d57d22e8103ce70a08f50">&#9670;&nbsp;</a></span>WT_TRY_SALVAGE</h2>
 
@@ -5487,7 +5467,7 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;method</code></td><td>control how aggressively obsolete content is removed by reading the internal pages. Default to none, which means no additional work is done to find obsolete content.</td><td>a string, chosen from the following options: <code>"none"</code>, <code>"reclaim_space"</code>; default <code>none</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each checkpoint cleanup.</td><td>an integer between <code>60</code> and <code>100000</code>; default <code>300</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;wait</code></td><td>seconds to wait between each checkpoint cleanup.</td><td>an integer between <code>1</code> and <code>100000</code>; default <code>300</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>

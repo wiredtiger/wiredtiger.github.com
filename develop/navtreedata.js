@@ -42,14 +42,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "admin.html",
-"arch-tiered-storage.html#ts_checkpoint_flush",
-"custom_storage_sources.html#storage_overview",
-"group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12",
-"group__wt.html#ga5c3e671ee3f7d9efead3f663e653fadb",
-"group__wt.html#ga9330b528c3418019c611174c6fe59f3b",
-"group__wt.html#gad1032e0373cec4a298507825c42586a7",
-"group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3",
-"struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb"
+"arch-snapshot.html#snapshot_transaction",
+"custom_data_sources.html#custom_ds_cursor_fields",
+"group__wt.html#ga1da57ec10967864ae25334130e96550f",
+"group__wt.html#ga59fa64f2848c2346b1d2bfe0b5c9b619",
+"group__wt.html#ga92729ab65a1a8bbb800c192f9762c835",
+"group__wt.html#gacf4d1e6a06091c7effd7a4326ff0e597",
+"group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaf94478716f77447b487412f650955b66",
+"struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

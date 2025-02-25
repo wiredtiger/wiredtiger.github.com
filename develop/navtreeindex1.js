@@ -1,5 +1,13 @@
 var NAVTREEINDEX1 =
 {
+"arch-snapshot.html#snapshot_transaction":[0,10,0,5,0],
+"arch-snapshot.html#snapshot_visibility":[0,10,0,5,2],
+"arch-tiered-storage.html":[0,10,6,4],
+"arch-tiered-storage.html#ts_block_files":[0,10,6,4,3,1],
+"arch-tiered-storage.html#ts_block_local_file_removal":[0,10,6,4,3,2],
+"arch-tiered-storage.html#ts_block_manager":[0,10,6,4,3],
+"arch-tiered-storage.html#ts_buckets":[0,10,6,4,6],
+"arch-tiered-storage.html#ts_checkpoint_data_file":[0,10,6,4,7,1],
 "arch-tiered-storage.html#ts_checkpoint_flush":[0,10,6,4,7,2],
 "arch-tiered-storage.html#ts_checkpoint_prepare":[0,10,6,4,7,0],
 "arch-tiered-storage.html#ts_checkpoints":[0,10,6,4,2],
@@ -241,13 +249,5 @@ var NAVTREEINDEX1 =
 "custom_data_sources.html#custom_ds_config_add":[0,4,41,4,1],
 "custom_data_sources.html#custom_ds_config_parsing":[0,4,41,4,0],
 "custom_data_sources.html#custom_ds_create":[0,4,41,0,0],
-"custom_data_sources.html#custom_ds_cursor_collator":[0,4,41,5],
-"custom_data_sources.html#custom_ds_cursor_fields":[0,4,41,2],
-"custom_data_sources.html#custom_ds_cursor_insert":[0,4,41,1,0],
-"custom_data_sources.html#custom_ds_cursor_methods":[0,4,41,1],
-"custom_data_sources.html#custom_ds_error_handling":[0,4,41,3],
-"custom_data_sources.html#custom_ds_methods":[0,4,41,0],
-"custom_file_systems.html":[0,4,42],
-"custom_storage_sources.html":[0,4,43],
-"custom_storage_sources.html#storage_examples":[0,4,43,2]
+"custom_data_sources.html#custom_ds_cursor_collator":[0,4,41,5]
 };

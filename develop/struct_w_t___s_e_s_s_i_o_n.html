@@ -1413,7 +1413,7 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 </div><div class="memdoc">
 
 <p>Reconfigure a session handle. </p>
-<p>Only configurations listed in the method arguments are modified, other configurations remain in their current state. This method additionally resets the cursors associated with the session. <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6" title="Reconfigure a session handle.">WT_SESSION::reconfigure</a> will fail if a transaction is in progress in the session.</p>
+<p>Only configurations listed in the method arguments are modified, other configurations remain in their current state. This method additionally resets the cursors associated with the session. Transaction-related configurations can only be modified when no transaction is active.</p>
 <div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6">reconfigure</a>(session, <span class="stringliteral">&quot;isolation=snapshot&quot;</span>));</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

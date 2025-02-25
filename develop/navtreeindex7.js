@@ -1,5 +1,12 @@
 var NAVTREEINDEX7 =
 {
+"group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaf94478716f77447b487412f650955b66":[1,0,1068,18],
+"group__wt.html#struct_w_t___i_t_e_m":[1,0,0],
+"group__wt.html#struct_w_t___m_o_d_i_f_y":[1,0,1],
+"group__wt__ext.html":[1,1],
+"group__wt__ext.html#a26928fd4ccc55207a2c06145b181d4b2":[1,1,6,0],
+"group__wt__ext.html#ga19767a9a6283ce3c69a6d92be86d0c56":[1,1,12],
+"group__wt__ext.html#ga3b904ac0bedaa0d1d59d04baaf915f7f":[1,1,20],
 "group__wt__ext.html#ga5ed14c916d5dcfe0e81aea9d9ccb7fe3":[1,1,19],
 "group__wt__ext.html#ga6d6c6913fd2d03910419f8e20f0026a4":[1,1,8],
 "group__wt__ext.html#ga6fa5797cf581d18dc843e07333a497e4":[1,1,17],
@@ -19,11 +26,11 @@ var NAVTREEINDEX7 =
 "group__wt__ext.html#struct_w_t___e_x_t_e_n_s_i_o_n___s_p_i_n_l_o_c_k":[1,1,6],
 "home.html":[0,6,0],
 "in_memory.html":[0,4,32],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "keyvalue.html":[0,4,3,10],
-"license.html":[0,8],
 "license.html":[6],
+"license.html":[0,8],
 "license.html#license_crc32-power8":[0,8,1],
 "license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
@@ -242,12 +249,5 @@ var NAVTREEINDEX7 =
 "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a86d9e245b3e20bb3faae46767c11df99":[1,1,4,3],
 "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a96913fda6ff35e7543fabb02b76d71eb":[1,1,4,1],
 "struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3":[1,1,4,7],
-"struct_w_t___s_e_s_s_i_o_n.html":[1,0,3],
-"struct_w_t___s_e_s_s_i_o_n.html#a0334da4c85fe8af4197c9a7de27467d3":[1,0,3,25],
-"struct_w_t___s_e_s_s_i_o_n.html#a1843292630960309129dcfe00e1a3817":[1,0,3,10],
-"struct_w_t___s_e_s_s_i_o_n.html#a1d108fab498cfddbb09ee23e3321a88d":[1,0,3,23],
-"struct_w_t___s_e_s_s_i_o_n.html#a1d4d22f14aef710c0c3ac6a543004686":[1,0,3,22],
-"struct_w_t___s_e_s_s_i_o_n.html#a2117021276bad0e6f541e61a5459ec59":[1,0,3,17],
-"struct_w_t___s_e_s_s_i_o_n.html#a28a33717c138b4c481019947e230f8f6":[1,0,3,27],
-"struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787":[1,0,3,16]
+"struct_w_t___s_e_s_s_i_o_n.html":[1,0,3]
 };

@@ -196,7 +196,7 @@ Writing</h2>
 <p>Two cases exist for writing out data using the block manager: checkpoint and eviction. When a page image is written out the block manager the <code>bm-&gt;write</code> API is called. See <code>bt_io.c</code> for more detail.</p>
 <h3><a class="anchor" id="Checkpoint"></a>
 Checkpoint</h3>
-<p>For details on checkpoint at the WiredTiger level see: <a class="el" href="arch-checkpoint.html">Checkpoint</a>.</p>
+<p><a class="anchor" id="block-checkpoint"></a> For details on checkpoint at the WiredTiger level see: <a class="el" href="arch-checkpoint.html">Checkpoint</a>.</p>
 <p>At the block manager level, a checkpoint corresponds with a set of blocks that are stored in the file associated with the given URI. Typically each file will contain a minimum of two checkpoints. Upon opening an existing file the most recent checkpoint is read.</p>
 <p>During a checkpoint new blocks are only written out for dirty pages. A block can be included in multiple checkpoints. Assuming a page <code>X</code> is dirty and gets checkpointed in checkpoint <code>A</code>, it will be created as a new block on disk. Now the same page <code>X</code> isn't modified and another checkpoint is taken. The page is clean and as such will not require a new block to be written for it. The address of the original block is still valid.</p>
 <p>Checkpoints are created in depth first order, leaf blocks are created, then the parent blocks. This is a requirement as the parent blocks contain the addresses of the leaf blocks.</p>
