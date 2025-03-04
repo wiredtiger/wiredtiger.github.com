@@ -1,5 +1,13 @@
 var NAVTREEINDEX7 =
 {
+"pages.html":[],
+"portability.html":[0,1],
+"portability.html#cpu":[0,1,0],
+"portability.html#posix":[0,1,1],
+"portability.html#testing":[0,1,2],
+"programming.html":[0,4],
+"readonly.html":[0,4,27],
+"readonly.html#readonly_config":[0,4,27,0],
 "readonly.html#readonly_handles":[0,4,27,4],
 "readonly.html#readonly_logging":[0,4,27,2],
 "readonly.html#readonly_lsm":[0,4,27,3],
@@ -241,13 +249,5 @@ var NAVTREEINDEX7 =
 "timestamp_misc.html#timestamp_misc_rts":[0,4,15,1],
 "timestamp_misc.html#timestamp_read_roundup":[0,4,15,0],
 "timestamp_misc.html#timestamps_misc_in_memory":[0,4,15,2],
-"timestamp_model.html":[0,4,10],
-"timestamp_model.html#timestamp_transactions":[0,4,10,1],
-"timestamp_model.html#timestamps_durability_checkpoint":[0,4,10,4],
-"timestamp_model.html#timestamps_durability_commit":[0,4,10,3],
-"timestamp_model.html#timestamps_format":[0,4,10,2],
-"timestamp_model.html#timestamps_global":[0,4,10,0],
-"timestamp_prepare.html":[0,4,13],
-"timestamp_prepare.html#timestamp_prepare_ignore_prepare":[0,4,13,0],
-"timestamp_prepare_roundup.html":[0,4,14]
+"timestamp_model.html":[0,4,10]
 };
