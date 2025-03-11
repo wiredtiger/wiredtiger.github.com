@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"timestamp_model.html":[0,4,10],
 "timestamp_model.html#timestamp_transactions":[0,4,10,1],
 "timestamp_model.html#timestamps_durability_checkpoint":[0,4,10,4],
 "timestamp_model.html#timestamps_durability_commit":[0,4,10,3],
