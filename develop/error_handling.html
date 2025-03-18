@@ -100,7 +100,7 @@ EBUSY errors</h1>
 <h1><a class="anchor" id="error_sub_level"></a>
 Sub-level errors</h1>
 <p>From the addition of <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a914a644c3a6418a1ffe29f117a2b1f85" title="Return verbose information about the last session API call.">WT_SESSION::get_last_error</a> function and sub-level error codes, users can get more detailed information about the last session API call. The information includes an error code, a sub-level error code and message. The intended usage of the sub-level error code is to allow users to programmatically make decisions on the application level.</p>
-<p>The sub-level error code and error messages are optional and default to WT_NONE and an empty string respectively. The error message string is owned by the session, and is invalidated after each session API call.</p>
+<p>The sub-level error code is optional and defaults to WT_NONE. When the prior API call succeeds or no other API call has been made a default success message is returned. When the prior API call fails, the error message is optional and defaults to an empty message. The error message string is owned by the session, and is invalidated after each session API call.</p>
 <h1><a class="anchor" id="error_list"></a>
 WiredTiger-specific errors</h1>
 <p>WiredTiger-specific error codes are allocated from -31,800 to -31,999, inclusive. The following is a list of the WiredTiger-specific return values:</p>
