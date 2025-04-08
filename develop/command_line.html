@@ -234,11 +234,12 @@ wt list</h1>
 <p>By default, the <code>list</code> command prints out the tables stored in the database. If a URI is specified as an argument, only information about that data source is printed.</p>
 <h2><a class="anchor" id="util_list_synopsis"></a>
 Synopsis</h2>
-<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [uri]</code></p>
+<p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] list [-cv] [-f output] [uri]</code></p>
 <h2><a class="anchor" id="util_list_options"></a>
 Options</h2>
 <p>The following are command-specific options for the <code>list</code> command:</p>
 <dl class="section user"><dt><code>-c</code> </dt><dd>If the <code>-c</code> option is specified, the data source's checkpoints are printed in a human-readable format.</dd></dl>
+<dl class="section user"><dt><code>-f</code> </dt><dd>By default, the <code>list</code> command output is written to the standard output; the <code>-f</code> option re-directs the output to the specified file.</dd></dl>
 <dl class="section user"><dt><code>-v</code> </dt><dd>If the <code>-v</code> option is specified, the data source's complete schema table value is printed.</dd></dl>
 <hr  />
  <h1><a class="anchor" id="util_load"></a>
