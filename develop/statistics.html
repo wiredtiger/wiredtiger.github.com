@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('statistics.html',''); initResizable();
 </div><!-- fragment --> <h1><a class="anchor" id="statistics_log"></a>
 Statistics logging</h1>
 <p>WiredTiger will optionally log database statistics into files when the the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>statistics_log</code> configuration is set.</p>
-<p>The log files are named <code>WiredTiger</code>.%d.%H, where <code>%d</code> is replaced with the day of the month as a decimal number (01-31), and <code>%H</code> is replaced by the hour (24-hour clock) as a decimal number (00-23). Each log file contains the statistics for the hour specified in its name.</p>
+<p>The log files are named <code>WiredTigerStat</code>.%d.%H, where <code>%d</code> is replaced with the day of the month as a decimal number (01-31), and <code>%H</code> is replaced by the hour (24-hour clock) as a decimal number (00-23). Each log file contains the statistics for the hour specified in its name.</p>
 <p>The location of the log files may be changed with the <code>statistics_log.path</code> configuration string.</p>
 <p>The following example logs statistics every 30 seconds:</p>
 <div class="fragment"><div class="line">    error_check(<a class="code" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a>(home, NULL, <span class="stringliteral">&quot;create,statistics_log=(wait=30)&quot;</span>, &amp;conn));</div>
