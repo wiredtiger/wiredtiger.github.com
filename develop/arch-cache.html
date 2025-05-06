@@ -128,8 +128,8 @@ WT_ROW<br  />
 WT_UPDATE</code></code></td><td><code><code>src/include/btmem.h<br  />
 src/include/cache.h<br  />
 src/include/cache_inline.h<br  />
-src/conn/conn_cache.c<br  />
-src/conn/conn_cache_pool.c</code></code></td></tr>
+src/cache/cache.c<br  />
+src/cache/cache_pool.c</code></code></td></tr>
 </table>
 </div><p> <b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
 <p>The WiredTiger cache is memory used to hold copies of recently accessed or modified data. WiredTiger reads Btree pages into the cache on demand. When the cache runs low on space, Eviction removes unneeded pages. Updates modify data in the cache and are flushed to storage asynchronously, either by <a class="el" href="arch-checkpoint.html">Checkpoint</a> or <a class="el" href="arch-eviction.html">Eviction</a>.</p>
