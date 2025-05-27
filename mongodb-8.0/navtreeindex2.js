@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"encryption.html#encryption_sodium":[0,4,21,6],
 "encryption.html#encryption_use":[0,4,21,1],
 "error_handling.html":[0,4,4],
 "error_handling.html#error_ebusy":[0,4,4,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "group__wt.html#ga2d6e5e26059dfdd298130338aa7b6eb7":[1,0,1007],
 "group__wt.html#ga2d746771b67008f25e5fd466d04f2e7a":[1,0,851],
 "group__wt.html#ga2da77cd00dfa6016ed4b37ac085cf875":[1,0,1068],
-"group__wt.html#ga2dd059923563070b2a4a1e696e10149f":[1,0,43],
-"group__wt.html#ga2e37e107151feb344091a5ee0ef26670":[1,0,90]
+"group__wt.html#ga2dd059923563070b2a4a1e696e10149f":[1,0,43]
 };

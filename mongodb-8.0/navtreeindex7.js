@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"packing.html":[0,4,3,12],
 "packing.html#config_examples":[0,4,3,12,0],
 "pages.html":[],
 "portability.html":[0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "timestamp_global_api.html#timestamp_global_setting_timestamps":[0,4,11,0],
 "timestamp_misc.html":[0,4,15],
 "timestamp_misc.html#timestamp_misc_rts":[0,4,15,1],
-"timestamp_misc.html#timestamp_read_roundup":[0,4,15,0],
-"timestamp_misc.html#timestamps_misc_in_memory":[0,4,15,2]
+"timestamp_misc.html#timestamp_read_roundup":[0,4,15,0]
 };

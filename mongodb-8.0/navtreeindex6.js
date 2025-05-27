@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"group__wt.html#gade470cf41e9e9e8d086178ed154033e8":[1,0,95],
 "group__wt.html#gade710ac8febe12adefabcfaa119a54f5":[1,0,425],
 "group__wt.html#gade96c761e77521b46ba9d5fc455b3486":[1,0,1083],
 "group__wt.html#gadea27e5ef93a5f8479c1bfb1ea2186f9":[1,0,301],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "overview.html#io":[0,0,4],
 "overview.html#multi_core":[0,0,2],
 "overview.html#nosql":[0,0,1],
-"overview.html#quality":[0,0,0],
-"packing.html":[0,4,3,12]
+"overview.html#quality":[0,0,0]
 };

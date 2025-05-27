@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"build-windows.html#windows_configure":[0,3,3],
 "build-windows.html#windows_ctest":[0,3,4],
 "build-windows.html#windows_github":[0,3,0],
 "build-windows.html#windows_installing":[0,3,2],
@@ -102,8 +103,8 @@ var NAVTREEINDEX1 =
 "command_line.html#util_salvage":[0,10,8,1,17],
 "command_line.html#util_salvage_options":[0,5,17,1],
 "command_line.html#util_salvage_options":[0,10,8,1,17,1],
-"command_line.html#util_salvage_synopsis":[0,10,8,1,17,0],
 "command_line.html#util_salvage_synopsis":[0,5,17,0],
+"command_line.html#util_salvage_synopsis":[0,10,8,1,17,0],
 "command_line.html#util_stat":[0,10,8,1,18],
 "command_line.html#util_stat":[0,5,18],
 "command_line.html#util_stat_options":[0,10,8,1,18,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "encryption.html#encryption_nop":[0,4,21,7],
 "encryption.html#encryption_overview":[0,4,21,0],
 "encryption.html#encryption_rotn":[0,4,21,8],
-"encryption.html#encryption_secretkey":[0,4,21,4],
-"encryption.html#encryption_sodium":[0,4,21,6]
+"encryption.html#encryption_secretkey":[0,4,21,4]
 };

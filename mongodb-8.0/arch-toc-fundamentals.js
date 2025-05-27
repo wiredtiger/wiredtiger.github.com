@@ -54,7 +54,8 @@ var arch_toc_fundamentals =
       [ "Transactions using Snapshots", "arch-snapshot.html#snapshot_transaction", null ],
       [ "Snapshot Internals", "arch-snapshot.html#snapshot_internals", null ],
       [ "Snapshot Visibility", "arch-snapshot.html#snapshot_visibility", null ],
-      [ "Snapshots & Checkpoints", "arch-snapshot.html#snapshot_checkpoint", null ]
+      [ "Snapshots & Checkpoints", "arch-snapshot.html#snapshot_checkpoint", null ],
+      [ "Snapshot Read-uncommitted & Modifies", "arch-snapshot.html#snapshot_read_uncommitted", null ]
     ] ],
     [ "Rollback to Stable (RTS)", "arch-rts.html", [
       [ "Overview of RTS", "arch-rts.html#rts-overview", null ],

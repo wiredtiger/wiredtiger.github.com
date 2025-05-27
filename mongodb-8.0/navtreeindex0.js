@@ -201,6 +201,7 @@ var NAVTREEINDEX0 =
 "arch-snapshot.html":[0,10,0,5],
 "arch-snapshot.html#snapshot_checkpoint":[0,10,0,5,3],
 "arch-snapshot.html#snapshot_internals":[0,10,0,5,1],
+"arch-snapshot.html#snapshot_read_uncommitted":[0,10,0,5,4],
 "arch-snapshot.html#snapshot_transaction":[0,10,0,5,0],
 "arch-snapshot.html#snapshot_visibility":[0,10,0,5,2],
 "arch-timestamp.html":[0,10,0,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "build-posix.html#posix_github":[0,2,0],
 "build-posix.html#posix_installing":[0,2,2],
 "build-windows.html":[0,3],
-"build-windows.html#windows_building":[0,3,1],
-"build-windows.html#windows_configure":[0,3,3]
+"build-windows.html#windows_building":[0,3,1]
 };
