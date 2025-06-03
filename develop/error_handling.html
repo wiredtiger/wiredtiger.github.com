@@ -128,6 +128,7 @@ WiredTiger-specific sub-level errors</h1>
 <dl class="section user"><dt><code>WT_DIRTY_DATA</code> </dt><dd>This sub-level error returns when the table has dirty content.</dd></dl>
 <dl class="section user"><dt><code>WT_CONFLICT_TABLE_LOCK</code> </dt><dd>This sub-level error indicates that a concurrent operation is performing a table operation.</dd></dl>
 <dl class="section user"><dt><code>WT_CONFLICT_CHECKPOINT_LOCK</code> </dt><dd>This sub-level error indicates that a concurrent operation is performing a checkpoint.</dd></dl>
+<dl class="section user"><dt><code>WT_MODIFY_READ_UNCOMMITTED</code> </dt><dd>This sub-level error indicates that a reader with uncommitted isolation is trying to reconstruct a record with modifies. This is not supported.</dd></dl>
 <dl class="section user"><dt><code>WT_CONFLICT_LIVE_RESTORE</code> </dt><dd>This sub-level error indicates that there is a conflict performing the operation because of a running live restore in the system.</dd></dl>
 <h1><a class="anchor" id="error_translation"></a>
 Translating errors</h1>

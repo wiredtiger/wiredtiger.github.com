@@ -312,6 +312,9 @@ Sub-level error returns</h2></td></tr>
 <tr class="memitem:gacb5bc198ee9c3e9bf12a1272ecc804a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacb5bc198ee9c3e9bf12a1272ecc804a7">WT_CONFLICT_CHECKPOINT_LOCK</a></td></tr>
 <tr class="memdesc:gacb5bc198ee9c3e9bf12a1272ecc804a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Another thread currently holds the checkpoint lock.  <a href="group__wt.html#gacb5bc198ee9c3e9bf12a1272ecc804a7">More...</a><br /></td></tr>
 <tr class="separator:gacb5bc198ee9c3e9bf12a1272ecc804a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0efe127b12c582c5bc3cf8cac6a331d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab0efe127b12c582c5bc3cf8cac6a331d">WT_MODIFY_READ_UNCOMMITTED</a></td></tr>
+<tr class="memdesc:gab0efe127b12c582c5bc3cf8cac6a331d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read-uncommitted readers do not support reconstructing a record with modifies.  <a href="group__wt.html#gab0efe127b12c582c5bc3cf8cac6a331d">More...</a><br /></td></tr>
+<tr class="separator:gab0efe127b12c582c5bc3cf8cac6a331d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga805ade45694811ebae3f9ba6444260ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga805ade45694811ebae3f9ba6444260ba">WT_CONFLICT_LIVE_RESTORE</a></td></tr>
 <tr class="memdesc:ga805ade45694811ebae3f9ba6444260ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict performing operation due to an in-progress live restore.  <a href="group__wt.html#ga805ade45694811ebae3f9ba6444260ba">More...</a><br /></td></tr>
 <tr class="separator:ga805ade45694811ebae3f9ba6444260ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -736,6 +739,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf72ba1fb56458f51d8140ab7d8f41233">WT_STAT_CONN_EVICTION_APP_TIME</a></td></tr>
 <tr class="memdesc:gaf72ba1fb56458f51d8140ab7d8f41233"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application thread time evicting (usecs) <br /></td></tr>
 <tr class="separator:gaf72ba1fb56458f51d8140ab7d8f41233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabb75019e0ddec469c2d0ecfdd2562141"><td class="memItemLeft" align="right" valign="top"><a id="gabb75019e0ddec469c2d0ecfdd2562141"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabb75019e0ddec469c2d0ecfdd2562141">WT_STAT_CONN_CACHE_EVICTION_APP_THREADS_FILL_RATIO_LT_25</a></td></tr>
+<tr class="memdesc:gabb75019e0ddec469c2d0ecfdd2562141"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads eviction requested with cache fill ratio &lt; 25% <br /></td></tr>
+<tr class="separator:gabb75019e0ddec469c2d0ecfdd2562141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a2b6774c67df2e386c1a593c203f5a1"><td class="memItemLeft" align="right" valign="top"><a id="ga1a2b6774c67df2e386c1a593c203f5a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1a2b6774c67df2e386c1a593c203f5a1">WT_STAT_CONN_CACHE_EVICTION_APP_THREADS_FILL_RATIO_25_50</a></td></tr>
+<tr class="memdesc:ga1a2b6774c67df2e386c1a593c203f5a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads eviction requested with cache fill ratio &gt;= 25% and &lt; 50% <br /></td></tr>
+<tr class="separator:ga1a2b6774c67df2e386c1a593c203f5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac96bcd5aeea075c7ba803583741b8948"><td class="memItemLeft" align="right" valign="top"><a id="gac96bcd5aeea075c7ba803583741b8948"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac96bcd5aeea075c7ba803583741b8948">WT_STAT_CONN_CACHE_EVICTION_APP_THREADS_FILL_RATIO_50_75</a></td></tr>
+<tr class="memdesc:gac96bcd5aeea075c7ba803583741b8948"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads eviction requested with cache fill ratio &gt;= 50% and &lt; 75% <br /></td></tr>
+<tr class="separator:gac96bcd5aeea075c7ba803583741b8948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabffd86f4b916da13aaadd7ebdec0495b"><td class="memItemLeft" align="right" valign="top"><a id="gabffd86f4b916da13aaadd7ebdec0495b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabffd86f4b916da13aaadd7ebdec0495b">WT_STAT_CONN_CACHE_EVICTION_APP_THREADS_FILL_RATIO_GT_75</a></td></tr>
+<tr class="memdesc:gabffd86f4b916da13aaadd7ebdec0495b"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads eviction requested with cache fill ratio &gt;= 75% <br /></td></tr>
+<tr class="separator:gabffd86f4b916da13aaadd7ebdec0495b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8a73d792b5990146fb55d9e5ab336c01"><td class="memItemLeft" align="right" valign="top"><a id="ga8a73d792b5990146fb55d9e5ab336c01"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8a73d792b5990146fb55d9e5ab336c01">WT_STAT_CONN_CACHE_READ_APP_COUNT</a></td></tr>
 <tr class="memdesc:ga8a73d792b5990146fb55d9e5ab336c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads page read from disk to cache count <br /></td></tr>
@@ -1236,6 +1255,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga044eb536050b5a40d7fc38e98fb8ecb4">WT_STAT_CONN_NPOS_READ_WALK_MAX</a></td></tr>
 <tr class="memdesc:ga044eb536050b5a40d7fc38e98fb8ecb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: npos read - had to walk this many pages <br /></td></tr>
 <tr class="separator:ga044eb536050b5a40d7fc38e98fb8ecb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga159ddf6853a8a5ff67cbcc131c91a051"><td class="memItemLeft" align="right" valign="top"><a id="ga159ddf6853a8a5ff67cbcc131c91a051"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga159ddf6853a8a5ff67cbcc131c91a051">WT_STAT_CONN_CACHE_EVICTION_TRIGGER_DIRTY_REACHED</a></td></tr>
+<tr class="memdesc:ga159ddf6853a8a5ff67cbcc131c91a051"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: number of times dirty trigger was reached <br /></td></tr>
+<tr class="separator:ga159ddf6853a8a5ff67cbcc131c91a051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e4765ee2d78c8b4671fd8a4865216b1"><td class="memItemLeft" align="right" valign="top"><a id="ga9e4765ee2d78c8b4671fd8a4865216b1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9e4765ee2d78c8b4671fd8a4865216b1">WT_STAT_CONN_CACHE_EVICTION_TRIGGER_REACHED</a></td></tr>
+<tr class="memdesc:ga9e4765ee2d78c8b4671fd8a4865216b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: number of times eviction trigger was reached <br /></td></tr>
+<tr class="separator:ga9e4765ee2d78c8b4671fd8a4865216b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga08d521b9710d57918601b4e543d0cae5"><td class="memItemLeft" align="right" valign="top"><a id="ga08d521b9710d57918601b4e543d0cae5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga08d521b9710d57918601b4e543d0cae5">WT_STAT_CONN_CACHE_EVICTION_TRIGGER_UPDATES_REACHED</a></td></tr>
+<tr class="memdesc:ga08d521b9710d57918601b4e543d0cae5"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: number of times updates trigger was reached <br /></td></tr>
+<tr class="separator:ga08d521b9710d57918601b4e543d0cae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga287d60e464e79307c1039bbc70c58b06"><td class="memItemLeft" align="right" valign="top"><a id="ga287d60e464e79307c1039bbc70c58b06"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga287d60e464e79307c1039bbc70c58b06">WT_STAT_CONN_EVICTION_TIMED_OUT_OPS</a></td></tr>
 <tr class="memdesc:ga287d60e464e79307c1039bbc70c58b06"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: operations timed out waiting for space in cache <br /></td></tr>
@@ -3682,6 +3713,22 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad68b0d8aebe130afacb0f8702389991d">WT_STAT_DSRC_BTREE_ROW_LEAF</a></td></tr>
 <tr class="memdesc:gad68b0d8aebe130afacb0f8702389991d"><td class="mdescLeft">&#160;</td><td class="mdescRight">btree: row-store leaf pages, only reported if tree_walk or all statistics are enabled <br /></td></tr>
 <tr class="separator:gad68b0d8aebe130afacb0f8702389991d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04daa21930c1d9a58a348f8ae827c4d9"><td class="memItemLeft" align="right" valign="top"><a id="ga04daa21930c1d9a58a348f8ae827c4d9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga04daa21930c1d9a58a348f8ae827c4d9">WT_STAT_DSRC_CACHE_EVICTION_APP_THREADS_FILL_RATIO_LT_25</a></td></tr>
+<tr class="memdesc:ga04daa21930c1d9a58a348f8ae827c4d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads eviction requested with cache fill ratio &lt; 25% <br /></td></tr>
+<tr class="separator:ga04daa21930c1d9a58a348f8ae827c4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad23e20d4b5689ed813786c4aaa059415"><td class="memItemLeft" align="right" valign="top"><a id="gad23e20d4b5689ed813786c4aaa059415"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad23e20d4b5689ed813786c4aaa059415">WT_STAT_DSRC_CACHE_EVICTION_APP_THREADS_FILL_RATIO_25_50</a></td></tr>
+<tr class="memdesc:gad23e20d4b5689ed813786c4aaa059415"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads eviction requested with cache fill ratio &gt;= 25% and &lt; 50% <br /></td></tr>
+<tr class="separator:gad23e20d4b5689ed813786c4aaa059415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e9d6c66f40462b714ddbfce36f89803"><td class="memItemLeft" align="right" valign="top"><a id="ga4e9d6c66f40462b714ddbfce36f89803"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4e9d6c66f40462b714ddbfce36f89803">WT_STAT_DSRC_CACHE_EVICTION_APP_THREADS_FILL_RATIO_50_75</a></td></tr>
+<tr class="memdesc:ga4e9d6c66f40462b714ddbfce36f89803"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads eviction requested with cache fill ratio &gt;= 50% and &lt; 75% <br /></td></tr>
+<tr class="separator:ga4e9d6c66f40462b714ddbfce36f89803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb428d2785a5926788dcd09d682c32ff"><td class="memItemLeft" align="right" valign="top"><a id="gadb428d2785a5926788dcd09d682c32ff"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadb428d2785a5926788dcd09d682c32ff">WT_STAT_DSRC_CACHE_EVICTION_APP_THREADS_FILL_RATIO_GT_75</a></td></tr>
+<tr class="memdesc:gadb428d2785a5926788dcd09d682c32ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application threads eviction requested with cache fill ratio &gt;= 75% <br /></td></tr>
+<tr class="separator:gadb428d2785a5926788dcd09d682c32ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7721a9136f75f6ddda7818421a4c2ea4"><td class="memItemLeft" align="right" valign="top"><a id="ga7721a9136f75f6ddda7818421a4c2ea4"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7721a9136f75f6ddda7818421a4c2ea4">WT_STAT_DSRC_CACHE_BYTES_INUSE</a></td></tr>
 <tr class="memdesc:ga7721a9136f75f6ddda7818421a4c2ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: bytes currently in the cache <br /></td></tr>
@@ -3870,6 +3917,18 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga77a230ea02b250b9ef669368fe81364d">WT_STAT_DSRC_CACHE_EVICTION_BLOCKED_MULTI_BLOCK_RECONCILIATION_DURING_CHECKPOINT</a></td></tr>
 <tr class="memdesc:ga77a230ea02b250b9ef669368fe81364d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: multi-block reconciliation blocked whilst checkpoint is running <br /></td></tr>
 <tr class="separator:ga77a230ea02b250b9ef669368fe81364d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga71fed87a96d058e0b013a75a8fb6de95"><td class="memItemLeft" align="right" valign="top"><a id="ga71fed87a96d058e0b013a75a8fb6de95"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga71fed87a96d058e0b013a75a8fb6de95">WT_STAT_DSRC_CACHE_EVICTION_TRIGGER_DIRTY_REACHED</a></td></tr>
+<tr class="memdesc:ga71fed87a96d058e0b013a75a8fb6de95"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: number of times dirty trigger was reached <br /></td></tr>
+<tr class="separator:ga71fed87a96d058e0b013a75a8fb6de95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad04274eeddc2bc0789cfeb631e72f07a"><td class="memItemLeft" align="right" valign="top"><a id="gad04274eeddc2bc0789cfeb631e72f07a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad04274eeddc2bc0789cfeb631e72f07a">WT_STAT_DSRC_CACHE_EVICTION_TRIGGER_REACHED</a></td></tr>
+<tr class="memdesc:gad04274eeddc2bc0789cfeb631e72f07a"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: number of times eviction trigger was reached <br /></td></tr>
+<tr class="separator:gad04274eeddc2bc0789cfeb631e72f07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaeba266e41f5b31cd1fceeb5206cda65"><td class="memItemLeft" align="right" valign="top"><a id="gaaeba266e41f5b31cd1fceeb5206cda65"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaaeba266e41f5b31cd1fceeb5206cda65">WT_STAT_DSRC_CACHE_EVICTION_TRIGGER_UPDATES_REACHED</a></td></tr>
+<tr class="memdesc:gaaeba266e41f5b31cd1fceeb5206cda65"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: number of times updates trigger was reached <br /></td></tr>
+<tr class="separator:gaaeba266e41f5b31cd1fceeb5206cda65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae41242e33afea9e3f7e042427fceab46"><td class="memItemLeft" align="right" valign="top"><a id="gae41242e33afea9e3f7e042427fceab46"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae41242e33afea9e3f7e042427fceab46">WT_STAT_DSRC_CACHE_EVICTION_BLOCKED_OVERFLOW_KEYS</a></td></tr>
 <tr class="memdesc:gae41242e33afea9e3f7e042427fceab46"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: overflow keys on a multiblock row-store page blocked its eviction <br /></td></tr>
@@ -5123,6 +5182,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>The maximum packed size of a 64-bit integer. </p>
 <p>The <a class="el" href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa" title="Pack a structure into a buffer.">wiredtiger_struct_pack</a> function will pack single long integers into at most this many bytes. </p>
+
+</div>
+</div>
+<a id="gab0efe127b12c582c5bc3cf8cac6a331d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab0efe127b12c582c5bc3cf8cac6a331d">&#9670;&nbsp;</a></span>WT_MODIFY_READ_UNCOMMITTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_MODIFY_READ_UNCOMMITTED</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read-uncommitted readers do not support reconstructing a record with modifies. </p>
+<p>This sub-level error indicates that a reader with uncommitted isolation is trying to reconstruct a record with modifies. This is not supported. </p>
 
 </div>
 </div>

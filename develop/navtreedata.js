@@ -44,12 +44,13 @@ var NAVTREEINDEX =
 "admin.html",
 "arch-snapshot.html#snapshot_transaction",
 "custom_data_sources.html#custom_ds_cursor_fields",
-"group__wt.html#ga1c04e13dc9c190826191813aa4a081ba",
-"group__wt.html#ga53a850a8251e847cf2a174a0be57e185",
-"group__wt.html#ga8a73d792b5990146fb55d9e5ab336c01",
-"group__wt.html#gac581a4d69e1e8a4ce1c3d29e892dd667",
-"group__wt.html#gafcec268457390a466878772052110af0",
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1a46e4d4a21195c00fb20cf5b3b2768c"
+"group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4",
+"group__wt.html#ga530353b5b7c8de1f087695253e924645",
+"group__wt.html#ga89801a753e5773b5ed80f023cbf62df5",
+"group__wt.html#gac2c87f9368b81a15314fbd9aa0a09db4",
+"group__wt.html#gaf93e21bedf01a85cdfb72e4e1878a70d",
+"struct_w_t___e_n_c_r_y_p_t_o_r.html#abad5447ebeb99d06b9024df435cffc26",
+"tune_zone_reclaim.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
