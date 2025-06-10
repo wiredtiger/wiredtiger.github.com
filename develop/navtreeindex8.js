@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"struct_w_t___e_n_c_r_y_p_t_o_r.html#a947e253ec628a29b62e4b6656eb7b92a":[1,1,3,0],
 "struct_w_t___e_n_c_r_y_p_t_o_r.html#abad5447ebeb99d06b9024df435cffc26":[1,1,3,1],
 "struct_w_t___e_n_c_r_y_p_t_o_r.html#ac965990f0d81b99fc10ec0b13b9df162":[1,1,3,3],
 "struct_w_t___e_n_c_r_y_p_t_o_r.html#ad9337c89e540be05d207995c33bbe993":[1,1,3,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "tune_system_buffer_cache.html":[0,4,59],
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max":[0,4,59,1],
 "tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,4,59,2],
-"tune_system_buffer_cache.html#write_through":[0,4,59,0],
-"tune_transparent_huge_pages.html":[0,4,60]
+"tune_system_buffer_cache.html#write_through":[0,4,59,0]
 };
