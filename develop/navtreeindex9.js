@@ -1,5 +1,10 @@
 var NAVTREEINDEX9 =
 {
+"tune_statistics.html":[0,4,44],
+"tune_system_buffer_cache.html":[0,4,59],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max":[0,4,59,1],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,4,59,2],
+"tune_system_buffer_cache.html#write_through":[0,4,59,0],
 "tune_transparent_huge_pages.html":[0,4,60],
 "tune_zone_reclaim.html":[0,4,61],
 "upgrade.html":[0,4,38],
