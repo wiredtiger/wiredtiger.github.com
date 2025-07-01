@@ -44,13 +44,13 @@ var NAVTREEINDEX =
 "admin.html",
 "arch-snapshot.html#snapshot_transaction",
 "custom_data_sources.html#custom_ds_cursor_fields",
-"group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4",
-"group__wt.html#ga52f6cafb671f29bd0e0836e77ed4e283",
-"group__wt.html#ga893aa524f7f226e6e1bd5e3f81ed60c4",
-"group__wt.html#gac15ad9e9464b9609e0612614296d39bb",
-"group__wt.html#gaf88ca5cfe05451ef90eb3b4be6633337",
-"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ab398845845f8e36fe5a212e1c25f3426",
-"tune_statistics.html"
+"group__wt.html#ga1a2b6774c67df2e386c1a593c203f5a1",
+"group__wt.html#ga4e9d6c66f40462b714ddbfce36f89803",
+"group__wt.html#ga8224cac70fa4a0fb2c1cdb637d2e7d96",
+"group__wt.html#gab33d53b5c787f3ea35af0d11fb669d3c",
+"group__wt.html#gae829496f506b23b5caa7995b5ae5a77b",
+"struct_w_t___c_o_l_l_a_t_o_r.html#a8b187a50a9830bfb63390ee5bf9b6cd0",
+"tool-optrack.html#autotoc_md34"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

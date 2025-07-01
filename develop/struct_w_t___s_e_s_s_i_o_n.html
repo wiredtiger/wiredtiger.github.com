@@ -781,6 +781,8 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <tr>
 <td><code>block_compressor</code></td><td>configure a compressor for file blocks. Permitted values are <code>"none"</code> or a custom compression engine name created with <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a4f26bfa799ae5e72b536ac93d6200783" title="Add a compression function.">WT_CONNECTION::add_compressor</a>. If WiredTiger has builtin support for <code>"lz4"</code>, <code>"snappy"</code>, <code>"zlib"</code> or <code>"zstd"</code> compression, these names are also available. See <a class="el" href="compression.html">Compressors</a> for more information.</td><td>a string; default <code>none</code>. </td></tr>
 <tr>
+<td><code>block_manager</code></td><td>configure a manager for file blocks. Permitted values are <code>"default"</code> or the disaggregated storage block manager backed by <code>PALI</code>.</td><td>a string, chosen from the following options: <code>"default"</code>, <code>"disagg"</code>; default <code>default</code>. </td></tr>
+<tr>
 <td><code>cache_resident</code></td><td>do not ever evict the object's pages from cache, see <a class="el" href="tune_cache.html#tuning_cache_resident">Cache resident objects</a> for more information.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>checksum</code></td><td>configure block checksums; the permitted values are <code>on</code>, <code>off</code>, <code>uncompressed</code> and <code>unencrypted</code>. The default is <code>on</code>, in which case all block writes include a checksum subsequently verified when the block is read. The <code>off</code> setting does no checksums, the <code>uncompressed</code> setting only checksums blocks that are not compressed, and the <code>unencrypted</code> setting only checksums blocks that are not encrypted. See <a class="el" href="tune_checksum.html">Checksums</a> for more information.</td><td>a string, chosen from the following options: <code>"on"</code>, <code>"off"</code>, <code>"uncompressed"</code>, <code>"unencrypted"</code>; default <code>on</code>. </td></tr>
@@ -792,6 +794,10 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <td><code>columns</code></td><td>list of the column names. Comma-separated list of the form <code>(column[,...])</code>. For tables, the number of entries must match the total number of values in <code>key_format</code> and <code>value_format</code>. For colgroups and indices, all column names must appear in the list of columns for the table.</td><td>a list of strings; default empty. </td></tr>
 <tr>
 <td><code>dictionary</code></td><td>the maximum number of unique values remembered in the row-store/variable-length column-store leaf page value dictionary; see <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> for more information.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
+<tr>
+<td><code>disaggregated = (</code></td><td>configure disaggregated storage for this file.</td><td>a set of related configuration options defined as follows. </td></tr>
+<tr>
+<td><code> )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>encryption = (</code></td><td>configure an encryptor for file blocks. When a table is created, its encryptor is not implicitly used for any related indices or column groups.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
@@ -1220,7 +1226,9 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <tr>
 <td><code>debug = (</code></td><td>configure debug specific behavior on a cursor. Generally only used for internal testing purposes.</td><td>a set of related configuration options defined as follows. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;dump_version</code></td><td>open a version cursor, which is a debug cursor on a table that enables iteration through the history of values for a given key.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;dump_version = (</code></td><td>open a version cursor, which is a debug cursor on a table that enables iteration through the history of values for all the keys.</td><td>a set of related configuration options defined as follows. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160; )</code></td><td></td><td></td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;release_evict</code></td><td>Configure the cursor to evict the page positioned on when the reset API call is used.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
@@ -1598,6 +1606,8 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <th>Name</th><th>Effect</th><th>Values </th></tr>
 <tr>
 <td><code>operation_timeout_ms</code></td><td>when non-zero, a requested limit on the time taken to complete operations in this transaction. Time is measured in real time milliseconds from the start of each WiredTiger API call. There is no guarantee any operation will not take longer than this amount of time. If WiredTiger notices the limit has been exceeded, an operation may return a WT_ROLLBACK error. Default is to have no limit.</td><td>an integer greater than or equal to <code>0</code>; default <code>0</code>. </td></tr>
+<tr>
+<td><code>rollback_timestamp</code></td><td>set the rollback timestamp for the current transaction. This is valid only for prepared transactions under the preserve_prepared config. For prepared transactions, a rollback timestamp is required, must not be older than the prepare timestamp, and can be set only once. See <a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a> and <a class="el" href="timestamp_prepare.html">Using transaction prepare with timestamps</a>.</td><td>a string; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -1755,6 +1765,8 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <td><code>prepare_timestamp</code></td><td>set the prepare timestamp for the updates of the current transaction. The value must not be older than any active read timestamps, and must be newer than the current stable timestamp. Can be set only once per transaction. Setting the prepare timestamp does not by itself prepare the transaction, but does oblige the application to eventually prepare the transaction before committing it. See <a class="el" href="timestamp_prepare.html">Using transaction prepare with timestamps</a>.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code>read_timestamp</code></td><td>read using the specified timestamp. The value must not be older than the current oldest timestamp. This can only be set once for a transaction. See <a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a>.</td><td>a string; default empty. </td></tr>
+<tr>
+<td><code>rollback_timestamp</code></td><td>set the rollback timestamp for the current transaction. This is valid only for prepared transactions under the preserve_prepared config. For prepared transactions, a rollback timestamp is required, must not be older than the prepare timestamp, and can be set only once. See <a class="el" href="timestamp_txn_api.html">Managing the transaction timestamp state</a> and <a class="el" href="timestamp_prepare.html">Using transaction prepare with timestamps</a>.</td><td>a string; default empty. </td></tr>
 </table>
 </td></tr>
   </table>
@@ -2016,7 +2028,7 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a96f25dfa6447034aea1f67ab02ab5698"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698">WT_SESSION::close</a></div><div class="ttdeci">int close(WT_SESSION *session, const char *config)</div><div class="ttdoc">Close the session handle.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_a358ca4141d59c345f401c58501276bbb"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#a358ca4141d59c345f401c58501276bbb">WT_SESSION::create</a></div><div class="ttdeci">int create(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Create a table, column group, index or file.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aa449082ce4de7ee86a773595c416a69f"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aa449082ce4de7ee86a773595c416a69f">WT_SESSION::timestamp_transaction</a></div><div class="ttdeci">int timestamp_transaction(WT_SESSION *session, const char *config)</div><div class="ttdoc">Set a timestamp on a transaction.</div></div>
-<div class="ttc" id="agroup__wt_html_ga5ee3c6fcd074e11efd118f3e68e91db8"><div class="ttname"><a href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a></div><div class="ttdeci">#define WT_ROLLBACK</div><div class="ttdoc">Conflict between concurrent operations.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4034</div></div>
+<div class="ttc" id="agroup__wt_html_ga5ee3c6fcd074e11efd118f3e68e91db8"><div class="ttname"><a href="group__wt.html#ga5ee3c6fcd074e11efd118f3e68e91db8">WT_ROLLBACK</a></div><div class="ttdeci">#define WT_ROLLBACK</div><div class="ttdoc">Conflict between concurrent operations.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:4055</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_afb5b4a69c2c5cafe411b2b04fdc1c75d"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">WT_SESSION::open_cursor</a></div><div class="ttdeci">int open_cursor(WT_SESSION *session, const char *uri, WT_CURSOR *to_dup, const char *config, WT_CURSOR **cursorp)</div><div class="ttdoc">Open a new cursor on a data source or duplicate an existing cursor.</div></div>
 <div class="ttc" id="astruct_w_t___s_e_s_s_i_o_n_html_aafa7a12a4891a5bfdc98673a5b8f9c69"><div class="ttname"><a href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69">WT_SESSION::compact</a></div><div class="ttdeci">int compact(WT_SESSION *session, const char *name, const char *config)</div><div class="ttdoc">Compact a live row- or column-store btree.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html">WT_CURSOR</a></div><div class="ttdoc">A WT_CURSOR handle is the interface to a cursor.</div><div class="ttdef"><b>Definition:</b> wiredtiger.in:203</div></div>
