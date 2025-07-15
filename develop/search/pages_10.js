@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['storage_20source_2075',['Storage Source',['../arch-cloud-storage-extension.html',1,'arch-toc-mem-disk']]],
-  ['schema_2076',['Schema',['../arch-schema.html',1,'arch-toc-data-org'],['../schema.html',1,'programming']]],
-  ['session_2077',['Session',['../arch-session.html',1,'arch-toc-fundamentals']]],
-  ['snapshot_2078',['Snapshot',['../arch-snapshot.html',1,'arch-toc-fundamentals']]],
-  ['security_2079',['Security',['../security.html',1,'admin']]],
-  ['signal_20handling_2080',['Signal handling',['../signals.html',1,'programming']]],
-  ['statistics_2081',['Statistics',['../statistics.html',1,'programming']]],
-  ['statistics_20logging_2082',['Statistics Logging',['../tool-statistics.html',1,'tool-index']]],
-  ['system_20buffer_20cache_2083',['System buffer cache',['../tune_system_buffer_cache.html',1,'programming']]],
-  ['simulating_20workloads_20with_20wtperf_2084',['Simulating workloads with wtperf',['../wtperf.html',1,'programming']]]
+  ['storage_20source_2076',['Storage Source',['../arch-cloud-storage-extension.html',1,'arch-toc-mem-disk']]],
+  ['schema_2077',['Schema',['../arch-schema.html',1,'arch-toc-data-org'],['../schema.html',1,'programming']]],
+  ['session_2078',['Session',['../arch-session.html',1,'arch-toc-fundamentals']]],
+  ['snapshot_2079',['Snapshot',['../arch-snapshot.html',1,'arch-toc-fundamentals']]],
+  ['security_2080',['Security',['../security.html',1,'admin']]],
+  ['signal_20handling_2081',['Signal handling',['../signals.html',1,'programming']]],
+  ['statistics_2082',['Statistics',['../statistics.html',1,'programming']]],
+  ['statistics_20logging_2083',['Statistics Logging',['../tool-statistics.html',1,'tool-index']]],
+  ['system_20buffer_20cache_2084',['System buffer cache',['../tune_system_buffer_cache.html',1,'programming']]],
+  ['simulating_20workloads_20with_20wtperf_2085',['Simulating workloads with wtperf',['../wtperf.html',1,'programming']]]
 ];
