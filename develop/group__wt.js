@@ -565,6 +565,7 @@ var group__wt =
     [ "WT_STAT_CONN_DISAGG_BLOCK_HS_PUT", "group__wt.html#ga926be8941a59244511bed8de92bde4ae", null ],
     [ "WT_STAT_CONN_DISAGG_BLOCK_PAGE_DISCARD", "group__wt.html#gae01f89105d22a26928f75c9dab2128e9", null ],
     [ "WT_STAT_CONN_DISAGG_BLOCK_PUT", "group__wt.html#ga868a3014204e61450f3d97a571fb97b8", null ],
+    [ "WT_STAT_CONN_DISAGG_ROLE_LEADER", "group__wt.html#ga063e0e788a3b96d5289e0537891be282", null ],
     [ "WT_STAT_CONN_EVICTION_ACTIVE_WORKERS", "group__wt.html#ga49140d60c4139ede893017c5d24b2f35", null ],
     [ "WT_STAT_CONN_EVICTION_AGGRESSIVE_SET", "group__wt.html#ga9f04303ca7d51852247da189fefc065a", null ],
     [ "WT_STAT_CONN_EVICTION_APP_ATTEMPT", "group__wt.html#gac7e6e1f48d2671d00aa875cb1094eec1", null ],
