@@ -1121,9 +1121,9 @@ Public Member Functions</h2></td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160; legacy_page_visit_strategy</code></td><td>Use legacy page visit strategy for eviction. Using this option is highly discouraged as it will re-introduce the bug described in WT-9121.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between <code>1</code> and <code>20</code>; default <code>8</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from the configured session_max.</td><td>an integer between <code>1</code> and <code>64</code>; default <code>8</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between <code>1</code> and <code>20</code>; default <code>1</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;threads_min</code></td><td>minimum number of threads WiredTiger will start to help evict pages from cache. The number of threads currently running will vary depending on the current eviction load.</td><td>an integer between <code>1</code> and <code>64</code>; default <code>1</code>. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
