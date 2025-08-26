@@ -11,8 +11,10 @@ var searchData=
   ['packing_20and_20unpacking_20data_181',['Packing and Unpacking Data',['../packing.html',1,'schema']]],
   ['pre_5fsize_182',['pre_size',['../struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a8b72f263db4faea37d8362ebc4725990',1,'WT_COMPRESSOR']]],
   ['prepare_5ftransaction_183',['prepare_transaction',['../struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008',1,'WT_SESSION']]],
-  ['prev_184',['prev',['../struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76',1,'WT_CURSOR']]],
-  ['per_2dprocess_20shared_20caches_185',['Per-process shared caches',['../shared_cache.html',1,'programming']]],
-  ['performance_20monitoring_186',['Performance Monitoring',['../tool-perf.html',1,'tool-index']]],
-  ['performance_20monitoring_20with_20statistics_187',['Performance monitoring with statistics',['../tune_statistics.html',1,'programming']]]
+  ['prepared_5fid_5ftransaction_184',['prepared_id_transaction',['../struct_w_t___s_e_s_s_i_o_n.html#acf5d973bdf98ef19b7a192a4a065d863',1,'WT_SESSION']]],
+  ['prepared_5fid_5ftransaction_5fuint_185',['prepared_id_transaction_uint',['../struct_w_t___s_e_s_s_i_o_n.html#a5c228b846a2d3cb78bc6d76dd4c435d1',1,'WT_SESSION']]],
+  ['prev_186',['prev',['../struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76',1,'WT_CURSOR']]],
+  ['per_2dprocess_20shared_20caches_187',['Per-process shared caches',['../shared_cache.html',1,'programming']]],
+  ['performance_20monitoring_188',['Performance Monitoring',['../tool-perf.html',1,'tool-index']]],
+  ['performance_20monitoring_20with_20statistics_189',['Performance monitoring with statistics',['../tune_statistics.html',1,'programming']]]
 ];
