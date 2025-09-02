@@ -1450,6 +1450,9 @@ var group__wt =
     [ "WT_UNCOMMITTED_DATA", "group__wt.html#gab55ba638633767b0f813588ababae36b", null ],
     [ "WT_WRITE_CONFLICT", "group__wt.html#gacad413b5ac59622e56e4386a2ba53294", null ],
     [ "WT_PACK_STREAM", "group__wt.html#gac4f8b4621bcafad9db744e87be24a798", null ],
+    [ "WT_CONTEXT_TYPE", "group__wt.html#gac887ebad5efd5362eb79706fbce6bbbd", [
+      [ "WT_CONTEXT_TYPE_LAST_MATERIALIZED_LSN", "group__wt.html#ggac887ebad5efd5362eb79706fbce6bbbda048b573b35e4d1caa0e574deda38e1f3", null ]
+    ] ],
     [ "WT_EVENT_TYPE", "group__wt.html#ga418f8fac44f030fb265f1a6a118bd254", [
       [ "WT_EVENT_COMPACT_CHECK", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254af41b2383baccffd1bcb42da6c39fd0d2", null ],
       [ "WT_EVENT_CONN_CLOSE", "group__wt.html#gga418f8fac44f030fb265f1a6a118bd254abae25fac53b09d7896f42f8be5f91b94", null ],
