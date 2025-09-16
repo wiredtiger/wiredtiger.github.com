@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['pre_2dfetch_2080',['Pre-fetch',['../arch-prefetch.html',1,'arch-toc-mem-disk']]],
-  ['python_20api_2081',['Python API',['../arch-python.html',1,'arch-toc-tools']]],
-  ['packing_20and_20unpacking_20data_2082',['Packing and Unpacking Data',['../packing.html',1,'schema']]],
-  ['per_2dprocess_20shared_20caches_2083',['Per-process shared caches',['../shared_cache.html',1,'programming']]],
-  ['performance_20monitoring_2084',['Performance Monitoring',['../tool-perf.html',1,'tool-index']]],
-  ['performance_20monitoring_20with_20statistics_2085',['Performance monitoring with statistics',['../tune_statistics.html',1,'programming']]]
+  ['pre_2dfetch_2081',['Pre-fetch',['../arch-prefetch.html',1,'arch-toc-mem-disk']]],
+  ['python_20api_2082',['Python API',['../arch-python.html',1,'arch-toc-tools']]],
+  ['packing_20and_20unpacking_20data_2083',['Packing and Unpacking Data',['../packing.html',1,'schema']]],
+  ['per_2dprocess_20shared_20caches_2084',['Per-process shared caches',['../shared_cache.html',1,'programming']]],
+  ['performance_20monitoring_2085',['Performance Monitoring',['../tool-perf.html',1,'tool-index']]],
+  ['performance_20monitoring_20with_20statistics_2086',['Performance monitoring with statistics',['../tune_statistics.html',1,'programming']]]
 ];

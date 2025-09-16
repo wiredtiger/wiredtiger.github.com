@@ -326,6 +326,9 @@ Sub-level error returns</h2></td></tr>
 <tr class="memitem:ga805ade45694811ebae3f9ba6444260ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga805ade45694811ebae3f9ba6444260ba">WT_CONFLICT_LIVE_RESTORE</a></td></tr>
 <tr class="memdesc:ga805ade45694811ebae3f9ba6444260ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict performing operation due to an in-progress live restore.  <a href="group__wt.html#ga805ade45694811ebae3f9ba6444260ba">More...</a><br /></td></tr>
 <tr class="separator:ga805ade45694811ebae3f9ba6444260ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa74723f4cbc1b8280e88e63467f7d42a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa74723f4cbc1b8280e88e63467f7d42a">WT_CONFLICT_DISAGG</a></td></tr>
+<tr class="memdesc:gaa74723f4cbc1b8280e88e63467f7d42a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict with disaggregated storage.  <a href="group__wt.html#gaa74723f4cbc1b8280e88e63467f7d42a">More...</a><br /></td></tr>
+<tr class="separator:gaa74723f4cbc1b8280e88e63467f7d42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Incremental backup types</h2></td></tr>
@@ -1551,10 +1554,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf8f0e2e86dee76423a1a51f6aee74018">WT_STAT_CONN_CACHE_OVERHEAD</a></td></tr>
 <tr class="memdesc:gaf8f0e2e86dee76423a1a51f6aee74018"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: percentage overhead <br /></td></tr>
 <tr class="separator:gaf8f0e2e86dee76423a1a51f6aee74018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa943249647295897d14a0ccba5fe67e9"><td class="memItemLeft" align="right" valign="top"><a id="gaa943249647295897d14a0ccba5fe67e9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa943249647295897d14a0ccba5fe67e9">WT_STAT_CONN_CACHE_EVICTION_BLOCKED_CHECKPOINT_PRECISE</a></td></tr>
-<tr class="memdesc:gaa943249647295897d14a0ccba5fe67e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: precise checkpoint caused an eviction to be skipped because any dirty content needs to remain in cache <br /></td></tr>
-<tr class="separator:gaa943249647295897d14a0ccba5fe67e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad666e3eed0c2799f6721615e357292f1"><td class="memItemLeft" align="right" valign="top"><a id="gad666e3eed0c2799f6721615e357292f1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad666e3eed0c2799f6721615e357292f1">WT_STAT_CONN_CACHE_EVICTION_BLOCKED_PRECISE_CHECKPOINT</a></td></tr>
+<tr class="memdesc:gad666e3eed0c2799f6721615e357292f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: precise checkpoint caused an eviction to be skipped because any dirty content needs to remain in cache <br /></td></tr>
+<tr class="separator:gad666e3eed0c2799f6721615e357292f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4fccc63d1b59e9db6d384b522ebeb72e"><td class="memItemLeft" align="right" valign="top"><a id="ga4fccc63d1b59e9db6d384b522ebeb72e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4fccc63d1b59e9db6d384b522ebeb72e">WT_STAT_CONN_CACHE_EVICT_SPLIT_FAILED_LOCK</a></td></tr>
 <tr class="memdesc:ga4fccc63d1b59e9db6d384b522ebeb72e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: realizing in-memory split after reconciliation failed due to internal lock busy <br /></td></tr>
@@ -4605,10 +4608,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7430f63be721622674b32f35e50ec8a9">WT_STAT_DSRC_CACHE_WRITE_RESTORE</a></td></tr>
 <tr class="memdesc:ga7430f63be721622674b32f35e50ec8a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages written requiring in-memory restoration <br /></td></tr>
 <tr class="separator:ga7430f63be721622674b32f35e50ec8a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1ba6b38908f9e629840d6e207fbb97fa"><td class="memItemLeft" align="right" valign="top"><a id="ga1ba6b38908f9e629840d6e207fbb97fa"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1ba6b38908f9e629840d6e207fbb97fa">WT_STAT_DSRC_CACHE_EVICTION_BLOCKED_CHECKPOINT_PRECISE</a></td></tr>
-<tr class="memdesc:ga1ba6b38908f9e629840d6e207fbb97fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: precise checkpoint caused an eviction to be skipped because any dirty content needs to remain in cache <br /></td></tr>
-<tr class="separator:ga1ba6b38908f9e629840d6e207fbb97fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f671ac70522b443d3eeda3d59def231"><td class="memItemLeft" align="right" valign="top"><a id="ga1f671ac70522b443d3eeda3d59def231"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1f671ac70522b443d3eeda3d59def231">WT_STAT_DSRC_CACHE_EVICTION_BLOCKED_PRECISE_CHECKPOINT</a></td></tr>
+<tr class="memdesc:ga1f671ac70522b443d3eeda3d59def231"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: precise checkpoint caused an eviction to be skipped because any dirty content needs to remain in cache <br /></td></tr>
+<tr class="separator:ga1f671ac70522b443d3eeda3d59def231"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga58fe77d42ee7fa912f73e2a3d3aefc4c"><td class="memItemLeft" align="right" valign="top"><a id="ga58fe77d42ee7fa912f73e2a3d3aefc4c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga58fe77d42ee7fa912f73e2a3d3aefc4c">WT_STAT_DSRC_CACHE_EVICT_SPLIT_FAILED_LOCK</a></td></tr>
 <tr class="memdesc:ga58fe77d42ee7fa912f73e2a3d3aefc4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: realizing in-memory split after reconciliation failed due to internal lock busy <br /></td></tr>
@@ -5880,6 +5883,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>Another thread currently holds the data handle of the table. </p>
 <p>This sub-level error indicates that a concurrent operation is holding the data handle of the table. </p>
+
+</div>
+</div>
+<a id="gaa74723f4cbc1b8280e88e63467f7d42a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa74723f4cbc1b8280e88e63467f7d42a">&#9670;&nbsp;</a></span>WT_CONFLICT_DISAGG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_CONFLICT_DISAGG</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conflict with disaggregated storage. </p>
+<p>This sub-level error indicates that an operation or configuration conflicts with disaggregated storage. </p>
 
 </div>
 </div>
