@@ -26,6 +26,15 @@ var NAVTREE =
 [
   [ "WiredTiger", "index.html", [
     [ "Reference Guide", "index.html", "index" ],
+    [ "Modules", "modules.html", "modules" ],
+    [ "Class List", "annotated.html", "annotated" ],
+    [ "Class Members", "functions.html", [
+      [ "All", "functions.html", null ],
+      [ "Functions", "functions_func.html", null ],
+      [ "Variables", "functions_vars.html", null ],
+      [ "Enumerations", "functions_enum.html", null ],
+      [ "Enumerator", "functions_eval.html", null ]
+    ] ],
     [ "Examples", "examples.html", "examples" ],
     [ "Community", "community.html", null ],
     [ "License", "license.html", null ]
@@ -35,9 +44,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "admin.html",
-"arch-tiered-storage.html#ts_checkpoint_flush",
-"custom_data_sources.html#custom_ds_create",
-"tool-libfuzzer.html#autotoc_md15"
+"arch-tiered-storage.html#ts_checkpoint_data_file",
+"custom_data_sources.html#custom_ds_config_parsing",
+"group__wt.html#ga1c10b7149fc49d50a0e48cbd03279d38",
+"group__wt.html#ga59c334734c52660ffd64a718aee0a5ae",
+"group__wt.html#ga9157770ca2e9d3c9c201c190927f4ad3",
+"group__wt.html#gaccb8b58a0c10c4c30f6537394bb5d84c",
+"group__wt.html#gga559a8cfb19158a0647c28a2748d5284aaab7957644f0bd9a8567a3d8dbb92d86d",
+"struct_w_t___f_i_l_e___h_a_n_d_l_e.html#a2479acb713a211b2d7cc84aaada4b29b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

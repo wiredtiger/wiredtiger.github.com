@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['1_0',['1',['../arch-rts.html#rts-example-1',1,'Example 1'],['../tool-optrack.html#autotoc_md36',1,'Looking at the data: Part 1'],['../upgrading.html#version_1131',1,'Upgrading to Version 11.3.1']]],
-  ['1_200_1',['Upgrading to Version 11.1.0',['../upgrading.html#version_1110',1,'']]],
-  ['11_200_200_2',['11 0 0',['../upgrading.html#version_1100',1,'Upgrading to Version 11.0.0'],['../upgrading.html#pre_1100',1,'Upgrading to Version older than 11.0.0']]],
-  ['11_201_200_3',['Upgrading to Version 11.1.0',['../upgrading.html#version_1110',1,'']]],
-  ['11_202_200_4',['Upgrading to Version 11.2.0',['../upgrading.html#version_1120',1,'']]],
-  ['11_203_201_5',['Upgrading to Version 11.3.1',['../upgrading.html#version_1131',1,'']]],
-  ['1_3a_20configure_20with_20clang_20as_20your_20c_20compiler_20and_20enable_20libfuzzer_6',['Step 1: Configure with Clang as your C compiler and enable LibFuzzer',['../tool-libfuzzer.html#autotoc_md12',1,'']]],
-  ['1_3a_20configure_20your_20build_20to_20compile_20with_20clang_20coverage_7',['Step 1: Configure your build to compile with Clang coverage',['../tool-libfuzzer.html#autotoc_md21',1,'']]],
-  ['1_3a_20install_20llvm_20and_20graphviz_8',['Step 1: Install LLVM and graphviz',['../tool-xray.html#autotoc_md56',1,'']]],
-  ['1_3a_20take_20a_20copy_20of_20the_20wtperf_20binary_20and_20the_20xray_20log_9',['Step 1: Take a copy of the wtperf binary and the XRay log',['../tool-xray.html#autotoc_md60',1,'']]]
+  ['b_2dtrees_9',['B-Trees',['../arch-btree.html',1,'arch-toc-data-src']]],
+  ['backup_10',['Backup',['../arch-backup.html',1,'arch-toc-on-disk']]],
+  ['backups_11',['Backups',['../backup.html',1,'programming']]],
+  ['begin_5ftransaction_12',['begin_transaction',['../struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf',1,'WT_SESSION']]],
+  ['bind_5fconfiguration_13',['bind_configuration',['../struct_w_t___s_e_s_s_i_o_n.html#aedd139d6424440d5300e88c4fa061f41',1,'WT_SESSION']]],
+  ['block_20manager_14',['Block Manager',['../arch-block.html',1,'arch-toc-mem-disk']]],
+  ['bound_15',['bound',['../struct_w_t___c_u_r_s_o_r.html#a1f31636c1cf31f72df576b82b03a4c44',1,'WT_CURSOR']]],
+  ['building_20and_20installing_20wiredtiger_20on_20posix_20_28linux_2c_20_2absd_2c_20os_20x_29_3a_16',['Building and installing WiredTiger on POSIX (Linux, *BSD, OS X):',['../build-posix.html',1,'index']]],
+  ['building_20and_20installing_20wiredtiger_20on_20windows_17',['Building and installing WiredTiger on Windows',['../build-windows.html',1,'index']]],
+  ['bulk_2dload_18',['Bulk-load',['../tune_bulk_load.html',1,'programming']]]
 ];

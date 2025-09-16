@@ -1,16 +1,18 @@
 var searchData=
 [
-  ['key_0',['key',['../encryption.html#encryption_secretkey',1,'Keys via explicit secret key'],['../cursor_ops.html#cursor_largest',1,'Returning the largest key']]],
-  ['key_20and_20value_20formats_1',['Key and value formats',['../schema.html#schema_key_and_value_formats',1,'']]],
-  ['key_20id_2',['Keys via key ID',['../encryption.html#encryption_keyid',1,'']]],
-  ['key_20in_20history_20store_3',['Searching for older versions of a key in History Store',['../arch-hs.html#arch_hs_read',1,'']]],
-  ['key_20value_20fields_4',['WT_CURSOR key/value fields',['../custom_data_sources.html#custom_ds_cursor_fields',1,'']]],
-  ['key_20value_20max_5',['internal/leaf key/value max',['../tune_page_size_and_comp.html#key_val_max',1,'']]],
-  ['key_20value_20memory_20scoping_6',['Cursor key/value memory scoping',['../cursor_ops.html#cursor_memory_scoping',1,'']]],
-  ['key_20value_20pairs_7',['Key/Value pairs',['../keyvalue.html',1,'schema']]],
-  ['key_5fformat_8',['key_format',['../struct_w_t___c_u_r_s_o_r.html#a21f35d032987318a8c3b9eb1b0c6a1dc',1,'WT_CURSOR']]],
-  ['key_5fformat_20configuration_9',['Key_format configuration',['../lsm.html#lsm_key_format',1,'']]],
-  ['keys_10',['Syntactic Sugar and Composite Keys',['../arch-config-compile.html#compile_composite',1,'']]],
-  ['keys_20via_20explicit_20secret_20key_11',['Keys via explicit secret key',['../encryption.html#encryption_secretkey',1,'']]],
-  ['keys_20via_20key_20id_12',['Keys via key ID',['../encryption.html#encryption_keyid',1,'']]]
+  ['pack_5fclose_178',['pack_close',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a6793729220ccd2bec82a52e949cd63ca',1,'WT_EXTENSION_API']]],
+  ['pack_5fint_179',['pack_int',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a5ec2af7659fe872ba1a65f4f05b961ca',1,'WT_EXTENSION_API']]],
+  ['pack_5fitem_180',['pack_item',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#ac55b0c42dc2eda2774cc2cf8668961fe',1,'WT_EXTENSION_API']]],
+  ['pack_5fstart_181',['pack_start',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aa465dc00b4fdcb127963da236f322652',1,'WT_EXTENSION_API']]],
+  ['pack_5fstr_182',['pack_str',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a1a46e4d4a21195c00fb20cf5b3b2768c',1,'WT_EXTENSION_API']]],
+  ['pack_5fuint_183',['pack_uint',['../struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#aaf38b597d369fd073a4501aba3b14954',1,'WT_EXTENSION_API']]],
+  ['packing_20and_20unpacking_20data_184',['Packing and Unpacking Data',['../packing.html',1,'schema']]],
+  ['per_2dprocess_20shared_20caches_185',['Per-process shared caches',['../shared_cache.html',1,'programming']]],
+  ['performance_20monitoring_186',['Performance Monitoring',['../tool-perf.html',1,'tool-index']]],
+  ['performance_20monitoring_20with_20statistics_187',['Performance monitoring with statistics',['../tune_statistics.html',1,'programming']]],
+  ['pre_2dfetch_188',['Pre-fetch',['../arch-prefetch.html',1,'arch-toc-mem-disk']]],
+  ['pre_5fsize_189',['pre_size',['../struct_w_t___c_o_m_p_r_e_s_s_o_r.html#a8b72f263db4faea37d8362ebc4725990',1,'WT_COMPRESSOR']]],
+  ['prepare_5ftransaction_190',['prepare_transaction',['../struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008',1,'WT_SESSION']]],
+  ['prev_191',['prev',['../struct_w_t___c_u_r_s_o_r.html#a43d6664d2f68902aa63f933864242e76',1,'WT_CURSOR']]],
+  ['python_20api_192',['Python API',['../arch-python.html',1,'arch-toc-tools']]]
 ];

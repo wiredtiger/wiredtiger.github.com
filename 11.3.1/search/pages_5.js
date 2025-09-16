@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['encryptors_0',['Encryptors',['../encryption.html',1,'programming']]],
-  ['error_20handling_1',['Error handling',['../error_handling.html',1,'programming']]],
-  ['eviction_2',['Eviction',['../arch-eviction.html',1,'Eviction'],['../eviction.html',1,'Eviction']]],
-  ['eviction_20tuning_3',['Cache and eviction tuning',['../tune_cache.html',1,'programming']]],
-  ['extending_20wiredtiger_4',['Extending WiredTiger',['../extensions.html',1,'encryption']]],
-  ['extractors_5',['Custom Extractors',['../custom_extractors.html',1,'programming']]]
+  ['file_20allocation_1763',['File allocation',['../tune_file_alloc.html',1,'programming']]],
+  ['file_20formats_20and_20compression_1764',['File formats and compression',['../file_formats.html',1,'programming']]],
+  ['file_20system_20interface_20and_20operating_20system_20support_1765',['File System Interface and Operating System Support',['../arch-fs-os.html',1,'arch-toc-platform']]],
+  ['filesystems_1766',['Filesystems',['../filesystems.html',1,'admin']]],
+  ['fundamentals_1767',['Fundamentals',['../arch-toc-fundamentals.html',1,'arch-index']]]
 ];

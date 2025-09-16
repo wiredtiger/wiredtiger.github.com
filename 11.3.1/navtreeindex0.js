@@ -1,6 +1,7 @@
 var NAVTREEINDEX0 =
 {
 "admin.html":[0,6],
+"annotated.html":[2],
 "arch-backup.html":[0,10,7,2],
 "arch-backup.html#autotoc_md0":[0,10,7,2,0],
 "arch-backup.html#autotoc_md1":[0,10,7,2,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "arch-tiered-storage.html#ts_block_files":[0,10,6,4,3,1],
 "arch-tiered-storage.html#ts_block_local_file_removal":[0,10,6,4,3,2],
 "arch-tiered-storage.html#ts_block_manager":[0,10,6,4,3],
-"arch-tiered-storage.html#ts_buckets":[0,10,6,4,6],
-"arch-tiered-storage.html#ts_checkpoint_data_file":[0,10,6,4,7,1]
+"arch-tiered-storage.html#ts_buckets":[0,10,6,4,6]
 };

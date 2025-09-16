@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['handles_0',['Data Handles',['../arch-dhandle.html',1,'arch-toc-data-src']]],
-  ['handling_1',['handling',['../error_handling.html',1,'Error handling'],['../message_handling.html',1,'Message handling'],['../signals.html',1,'Signal handling']]],
-  ['hierarchy_2',['Locks hierarchy',['../arch-locking-hierarchy.html',1,'arch-toc-int-wt-dev']]],
-  ['history_20store_3',['History Store',['../arch-hs.html',1,'arch-toc-on-disk']]],
-  ['home_20directory_4',['Database Home Directory',['../home.html',1,'admin']]],
-  ['huge_20pages_5',['Linux transparent huge pages',['../tune_transparent_huge_pages.html',1,'programming']]]
+  ['in_20memory_20concepts_1773',['In Memory Concepts',['../arch-toc-in-mem.html',1,'arch-index']]],
+  ['in_2dmemory_20databases_1774',['In-memory databases',['../in_memory.html',1,'programming']]],
+  ['instrumentation_20and_20introspection_20with_20xray_1775',['Instrumentation and introspection with XRay',['../tool-xray.html',1,'tool-index']]],
+  ['internal_20wiredtiger_20development_1776',['Internal WiredTiger Development',['../arch-toc-int-wt-dev.html',1,'arch-index']]]
 ];

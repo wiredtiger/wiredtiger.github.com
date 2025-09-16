@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"arch-tiered-storage.html#ts_checkpoint_data_file":[0,10,6,4,7,1],
 "arch-tiered-storage.html#ts_checkpoint_flush":[0,10,6,4,7,2],
 "arch-tiered-storage.html#ts_checkpoint_prepare":[0,10,6,4,7,0],
 "arch-tiered-storage.html#ts_checkpoints":[0,10,6,4,2],
@@ -206,7 +207,7 @@ var NAVTREEINDEX1 =
 "command_line.html#util_write_options":[0,10,9,1,21,1],
 "command_line.html#util_write_synopsis":[0,5,21,0],
 "command_line.html#util_write_synopsis":[0,10,9,1,21,0],
-"community.html":[2],
+"community.html":[5],
 "community.html":[0,11],
 "compact.html":[0,4,32],
 "compact.html#background":[0,4,32,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "custom_data_sources.html#custom_data_source_cursor_serialize":[0,4,44,6],
 "custom_data_sources.html#custom_data_source_transactions":[0,4,44,7],
 "custom_data_sources.html#custom_ds_config":[0,4,44,4],
-"custom_data_sources.html#custom_ds_config_add":[0,4,44,4,1],
-"custom_data_sources.html#custom_ds_config_parsing":[0,4,44,4,0]
+"custom_data_sources.html#custom_ds_config_add":[0,4,44,4,1]
 };

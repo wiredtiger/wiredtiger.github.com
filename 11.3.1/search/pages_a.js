@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['join_20cursors_0',['Join cursors',['../cursor_join.html',1,'programming']]]
+  ['key_2fvalue_20pairs_1778',['Key/Value pairs',['../keyvalue.html',1,'schema']]]
 ];
