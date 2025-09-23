@@ -1,5 +1,12 @@
 var NAVTREEINDEX1 =
 {
+"arch-session.html#arch_session_ops":[0,10,0,1,1],
+"arch-session.html#arch_session_thread":[0,10,0,1,6],
+"arch-session.html#arch_session_txn":[0,10,0,1,2],
+"arch-snapshot.html":[0,10,0,5],
+"arch-snapshot.html#snapshot_checkpoint":[0,10,0,5,3],
+"arch-snapshot.html#snapshot_internals":[0,10,0,5,1],
+"arch-snapshot.html#snapshot_read_uncommitted":[0,10,0,5,4],
 "arch-snapshot.html#snapshot_transaction":[0,10,0,5,0],
 "arch-snapshot.html#snapshot_visibility":[0,10,0,5,2],
 "arch-tiered-storage.html":[0,10,6,4],
@@ -28,6 +35,7 @@ var NAVTREEINDEX1 =
 "arch-toc-api.html":[0,10,1],
 "arch-toc-data-org.html":[0,10,2],
 "arch-toc-data-src.html":[0,10,3],
+"arch-toc-disaggregated-storage.html":[0,10,11],
 "arch-toc-fundamentals.html":[0,10,0],
 "arch-toc-in-mem.html":[0,10,4],
 "arch-toc-int-wt-dev.html":[0,10,5],
@@ -241,13 +249,5 @@ var NAVTREEINDEX1 =
 "custom_collators.html":[0,4,40],
 "custom_collators.html#custom_collators_indices":[0,4,40,2],
 "custom_collators.html#custom_collators_intro":[0,4,40,0],
-"custom_collators.html#custom_collators_recovery":[0,4,40,1],
-"custom_data_sources.html":[0,4,41],
-"custom_data_sources.html#custom_data_source_cursor_serialize":[0,4,41,6],
-"custom_data_sources.html#custom_data_source_transactions":[0,4,41,7],
-"custom_data_sources.html#custom_ds_config":[0,4,41,4],
-"custom_data_sources.html#custom_ds_config_add":[0,4,41,4,1],
-"custom_data_sources.html#custom_ds_config_parsing":[0,4,41,4,0],
-"custom_data_sources.html#custom_ds_create":[0,4,41,0,0],
-"custom_data_sources.html#custom_ds_cursor_collator":[0,4,41,5]
+"custom_collators.html#custom_collators_recovery":[0,4,40,1]
 };

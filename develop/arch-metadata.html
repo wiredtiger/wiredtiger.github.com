@@ -160,6 +160,7 @@ Example Metadata</h1>
 <p>The <code>"table:A"</code> represents the table interface that the API caller uses, and the associated data structure in memory for the table is <code>WT_TABLE</code>. If there were column groups or indices, there may be multiple btrees associated with the table, and listed in the metadata, but in this example there is just one.</p>
 <p>Every table has one or more <code>"colgroup:"</code> entries. The column group entry's metadata references the <code>"file:"</code> entry that stores the btree, in this case it would reference <code>"file:A.wt"</code>. Column groups do not have an explicit data structure associated with them, but their associated btrees are referenced via an array in the <code>WT_TABLE</code>.</p>
 <p>The <code>"file:"</code> entry represents the btree stored on disk, as well as parts cached in memory. The data structure implied by this entry is a <code>WT_BTREE</code>.</p>
+<p>The <code>"layered:"</code> entry represents the layered table, which is a table that persists data in shared storage. Every layered table also has two <code>"file:"</code> prefixed metadata entries for its constituents. See <a class="el" href="arch-disagg-layered.html">Layered Tables</a> for more information about layered tables.</p>
 <p>In summary, the relationship between prefixes and data structures is as follows:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -170,6 +171,8 @@ Example Metadata</h1>
 <td class="markdownTableBodyNone"><code>file:</code>  </td><td class="markdownTableBodyNone">WT_BTREE </td><td class="markdownTableBodyNone">yes </td><td class="markdownTableBodyNone">dhandle-&gt;handle is a (WT_BTREE *)  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>colgroup:</code>  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">no </td><td class="markdownTableBodyNone">stored in an array in the WT_TABLE  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>layered:</code>  </td><td class="markdownTableBodyNone">WT_LAYERED_TABLE </td><td class="markdownTableBodyNone">yes </td><td class="markdownTableBodyNone">the dhandle is cast to (WT_LAYERED_TABLE *)  </td></tr>
 </table>
 <p>See <a class="el" href="arch-dhandle.html">Data Handles</a> for more information about data handles (dhandles). </p>
 </div></div><!-- contents -->

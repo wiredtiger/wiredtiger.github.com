@@ -11,6 +11,7 @@ var arch_index =
     [ "Recovery", "arch-toc-recovery.html", "arch-toc-recovery" ],
     [ "Tools", "arch-toc-tools.html", "arch-toc-tools" ],
     [ "Cross-Platform Support", "arch-toc-platform.html", "arch-toc-platform" ],
+    [ "Disaggregated Storage", "arch-toc-disaggregated-storage.html", "arch-toc-disaggregated-storage" ],
     [ "Glossary of Terms", "arch-glossary.html", [
       [ "Glossary", "arch-glossary.html#arch-glossary-entries", null ]
     ] ]

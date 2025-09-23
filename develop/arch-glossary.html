@@ -173,6 +173,8 @@ Glossary</h1>
 <tr>
 <td>FLCS</td><td>general</td><td>fixed-length column store. </td></tr>
 <tr>
+<td>follower</td><td>disaggregated storage</td><td>a node in the disaggregated storage cluster that is responsible for backing up the leader. </td></tr>
+<tr>
 <td>frag</td><td>verify</td><td>in verify, a part of a file that is the minimum allocation size and aligned the same. The smallest blocks may be the same as a frag, other blocks may be composed of multiple contiguous frags. </td></tr>
 <tr>
 <td>hazard pointer</td><td>general</td><td>a data structure that assists in lock free algorithms, used by WiredTiger Btrees </td></tr>
@@ -187,6 +189,8 @@ Glossary</h1>
 <tr>
 <td>index</td><td>schema</td><td>a Btree with records having values that are keys to another Btree. An index (or set of indices) become associated with a primary Btree via the table construct. </td></tr>
 <tr>
+<td>ingest table</td><td>disaggregated storage</td><td>a constituent of a layered table that is a regular table and is responsible for storing non-checkpointed content. </td></tr>
+<tr>
 <td>insert</td><td>btree</td><td>an in-memory structure holding a key and a set of updates for a Btree. </td></tr>
 <tr>
 <td>internal page</td><td>btree</td><td>either in-memory or on disk, a page in a Btree that has a set of keys that reference pages beneath it. </td></tr>
@@ -196,6 +200,10 @@ Glossary</h1>
 <td>key prefix compression</td><td>btree</td><td>a technique to store identical key prefixes only once per page. See <a class="el" href="file_formats.html#file_formats_compression">File formats and compression</a> </td></tr>
 <tr>
 <td>kv or k/v</td><td>btree</td><td>a key/value pair in a Btree. </td></tr>
+<tr>
+<td>layered table</td><td>disaggregated storage</td><td>a table that separates the storage of non-checkpointed and checkpointed content between two constituents: stable and ingest tables. </td></tr>
+<tr>
+<td>leader</td><td>disaggregated storage</td><td>a single node in the disaggregated storage cluster responsible for writing new incoming data to shared tables. </td></tr>
 <tr>
 <td>leaf page</td><td>btree</td><td>either in-memory or on disk, a page in a Btree that has a pairs of keys and values, and no pages beneath it. </td></tr>
 <tr>
@@ -255,11 +263,15 @@ Glossary</h1>
 <tr>
 <td>session</td><td>general</td><td>an encapsulation of information stored for single thread of control in the application. This encapsulation is kept in a handle that is used in the API. Sessions manage transactions and performs the transactional operations. </td></tr>
 <tr>
+<td>shared table</td><td>disaggregated storage</td><td>a table whose data is stored in a shared storage back-end. </td></tr>
+<tr>
 <td>skip list</td><td>general</td><td>a variation of a sorted linked list that allows for faster (O(log(N))) searching. It is used in WiredTiger as a lock-free data structure for keys inserted on a page. </td></tr>
 <tr>
 <td>spin lock</td><td>general</td><td>a simple locking algorithm that continually attempts to acquire a lock, appropriate for resources that are likely to be available and may be held for a short time. This lock is CPU intensive while it is waiting. Contrast with mutex </td></tr>
 <tr>
 <td>split</td><td>btree</td><td>see page split </td></tr>
+<tr>
+<td>stable table</td><td>disaggregated storage</td><td>a constituent of a layered table that is a shared table and is responsible for storing checkpointed content. </td></tr>
 <tr>
 <td>stable timestamp</td><td>transactions</td><td>a connection-wide value. Checkpoints will not include commits newer than this value. </td></tr>
 <tr>
