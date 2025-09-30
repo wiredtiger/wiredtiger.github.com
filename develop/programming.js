@@ -4,6 +4,7 @@ var programming =
       [ "Connecting to a database", "basic_api.html#basic_connection", null ],
       [ "Creating a table", "basic_api.html#basic_create_table", null ],
       [ "Accessing data with cursors", "basic_api.html#basic_cursors", null ],
+      [ "Access to Internal Data Structures", "basic_api.html#internal_access", null ],
       [ "Closing handles", "basic_api.html#basic_close", null ]
     ] ],
     [ "Configuration Strings", "config_strings.html", [

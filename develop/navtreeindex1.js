@@ -78,10 +78,11 @@ var NAVTREEINDEX1 =
 "backup.html#backup_process":[0,4,29,0],
 "backup.html#backup_util":[0,4,29,2],
 "basic_api.html":[0,4,0],
-"basic_api.html#basic_close":[0,4,0,3],
+"basic_api.html#basic_close":[0,4,0,4],
 "basic_api.html#basic_connection":[0,4,0,0],
 "basic_api.html#basic_create_table":[0,4,0,1],
 "basic_api.html#basic_cursors":[0,4,0,2],
+"basic_api.html#internal_access":[0,4,0,3],
 "build-posix.html":[0,2],
 "build-posix.html#posix_building":[0,2,1],
 "build-posix.html#posix_compiler":[0,2,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "cursors.html#metadata":[0,4,2,3],
 "custom_collators.html":[0,4,40],
 "custom_collators.html#custom_collators_indices":[0,4,40,2],
-"custom_collators.html#custom_collators_intro":[0,4,40,0],
-"custom_collators.html#custom_collators_recovery":[0,4,40,1]
+"custom_collators.html#custom_collators_intro":[0,4,40,0]
 };
