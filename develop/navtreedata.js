@@ -45,13 +45,13 @@ var NAVTREEINDEX =
 "arch-session.html#arch_session_ops",
 "custom_collators.html#custom_collators_recovery",
 "group__wt.html#ga138063fbf1faaff0fd3b868244cb35a1",
-"group__wt.html#ga44a57c8644e46c023f23cc3417f5351e",
-"group__wt.html#ga73a00a04bc731b845dcfc46c7e381a65",
-"group__wt.html#ga9f04303ca7d51852247da189fefc065a",
-"group__wt.html#gacd4fe8b42f7751c385647773dc20cda2",
-"group__wt.html#gafd864b722a640f34f6590152fbde49d3",
-"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45",
-"verbose_messaging.html#verbosity_configuration"
+"group__wt.html#ga444f33af556b4f82d215f8e84b473199",
+"group__wt.html#ga729620daa8e9df7d8fad25fb87829871",
+"group__wt.html#ga9eba47111e567b975009d98332212d20",
+"group__wt.html#gaccf07d13d2642a2de253fdd62c84d2bd",
+"group__wt.html#gafd4fdd5305b1427566a814f8b307cdf3",
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420",
+"verbose_messaging.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

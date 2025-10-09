@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a023474f4927199ece13c4bc6bca9f420":[1,1,7,10],
+"struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0aecfc732fe1a43d6b2ff3792a654c0f":[1,1,7,35],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a0d3aae2ceac28f7b45188bcfa4306d45":[1,1,7,2],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a13b8f3c923c8b0f8bb683ed3b192ee73":[1,1,7,21],
 "struct_w_t___e_x_t_e_n_s_i_o_n___a_p_i.html#a18438824d6782a7e73c00e09e5e69066":[1,1,7,24],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "upgrading.html#version_1100":[0,7,3],
 "upgrading.html#version_1110":[0,7,2],
 "upgrading.html#version_1120":[0,7,1],
-"upgrading.html#version_1131":[0,7,0],
-"verbose_messaging.html":[0,4,23],
-"verbose_messaging.html#verbosity_categories":[0,4,23,1]
+"upgrading.html#version_1131":[0,7,0]
 };
