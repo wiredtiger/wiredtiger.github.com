@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"license.html":[6],
+"license.html":[0,8],
+"license.html#license_crc32-power8":[0,8,1],
+"license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
 "license.html#license_library":[0,8,0],
 "lsm.html":[0,4,18],
@@ -245,9 +249,5 @@ var NAVTREEINDEX7 =
 "struct_w_t___s_e_s_s_i_o_n.html#a480525d3881dfcb90060af823a7f4a52":[1,0,3,28],
 "struct_w_t___s_e_s_s_i_o_n.html#a556046adc68a33bd317865c6a8d9ad69":[1,0,3,26],
 "struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6":[1,0,3,15],
-"struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf":[1,0,3,3],
-"struct_w_t___s_e_s_s_i_o_n.html#a712226eca5ade5bd123026c624468fa2":[1,0,3,5],
-"struct_w_t___s_e_s_s_i_o_n.html#a7e26b16b26b5870498752322fad790bf":[1,0,3,1],
-"struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008":[1,0,3,13],
-"struct_w_t___s_e_s_s_i_o_n.html#a96f25dfa6447034aea1f67ab02ab5698":[1,0,3,4]
+"struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf":[1,0,3,3]
 };
