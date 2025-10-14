@@ -329,6 +329,9 @@ Sub-level error returns</h2></td></tr>
 <tr class="memitem:gaa74723f4cbc1b8280e88e63467f7d42a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa74723f4cbc1b8280e88e63467f7d42a">WT_CONFLICT_DISAGG</a></td></tr>
 <tr class="memdesc:gaa74723f4cbc1b8280e88e63467f7d42a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conflict with disaggregated storage.  <a href="group__wt.html#gaa74723f4cbc1b8280e88e63467f7d42a">More...</a><br /></td></tr>
 <tr class="separator:gaa74723f4cbc1b8280e88e63467f7d42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7112614cdce7059560a2fb96303ac119"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7112614cdce7059560a2fb96303ac119">WT_DISAGG_BAD_LSN</a></td></tr>
+<tr class="memdesc:ga7112614cdce7059560a2fb96303ac119"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempt to operate on a wrong LSN number.  <a href="group__wt.html#ga7112614cdce7059560a2fb96303ac119">More...</a><br /></td></tr>
+<tr class="separator:ga7112614cdce7059560a2fb96303ac119"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Incremental backup types</h2></td></tr>
@@ -1350,18 +1353,38 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1fcf0c7313ec964431509e60b4e57db8">WT_STAT_CONN_CACHE_BYTES_MAX</a></td></tr>
 <tr class="memdesc:ga1fcf0c7313ec964431509e60b4e57db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum bytes configured <br /></td></tr>
 <tr class="separator:ga1fcf0c7313ec964431509e60b4e57db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga688b52631102beb0230ec2b59d3fe67c"><td class="memItemLeft" align="right" valign="top"><a id="ga688b52631102beb0230ec2b59d3fe67c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga688b52631102beb0230ec2b59d3fe67c">WT_STAT_CONN_EVICTION_MAXIMUM_GEN_GAP</a></td></tr>
-<tr class="memdesc:ga688b52631102beb0230ec2b59d3fe67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum gap between page and connection evict pass generation seen at eviction <br /></td></tr>
-<tr class="separator:ga688b52631102beb0230ec2b59d3fe67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb95dd53acd6b414edf2e886440ee1b8"><td class="memItemLeft" align="right" valign="top"><a id="gadb95dd53acd6b414edf2e886440ee1b8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadb95dd53acd6b414edf2e886440ee1b8">WT_STAT_CONN_EVICTION_MAXIMUM_UNVISITED_GEN_GAP</a></td></tr>
+<tr class="memdesc:gadb95dd53acd6b414edf2e886440ee1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum gap between unvisited page and connection evict pass generation seen at eviction <br /></td></tr>
+<tr class="separator:gadb95dd53acd6b414edf2e886440ee1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7025593c27099b3c3988c0e3d4d2b15d"><td class="memItemLeft" align="right" valign="top"><a id="ga7025593c27099b3c3988c0e3d4d2b15d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga7025593c27099b3c3988c0e3d4d2b15d">WT_STAT_CONN_EVICTION_MAXIMUM_UNVISITED_GEN_GAP_PER_CHECKPOINT</a></td></tr>
+<tr class="memdesc:ga7025593c27099b3c3988c0e3d4d2b15d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum gap between unvisited page and connection evict pass generation seen at eviction per checkpoint <br /></td></tr>
+<tr class="separator:ga7025593c27099b3c3988c0e3d4d2b15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafdd228d2cf27dceee46aeccfe931ec77"><td class="memItemLeft" align="right" valign="top"><a id="gafdd228d2cf27dceee46aeccfe931ec77"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafdd228d2cf27dceee46aeccfe931ec77">WT_STAT_CONN_EVICTION_MAXIMUM_VISITED_GEN_GAP</a></td></tr>
+<tr class="memdesc:gafdd228d2cf27dceee46aeccfe931ec77"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum gap between visited page and connection evict pass generation seen at eviction <br /></td></tr>
+<tr class="separator:gafdd228d2cf27dceee46aeccfe931ec77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga741f67097634ae27f46f5f908d0bcb33"><td class="memItemLeft" align="right" valign="top"><a id="ga741f67097634ae27f46f5f908d0bcb33"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga741f67097634ae27f46f5f908d0bcb33">WT_STAT_CONN_EVICTION_MAXIMUM_VISITED_GEN_GAP_PER_CHECKPOINT</a></td></tr>
+<tr class="memdesc:ga741f67097634ae27f46f5f908d0bcb33"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum gap between visited page and connection evict pass generation seen at eviction per checkpoint <br /></td></tr>
+<tr class="separator:ga741f67097634ae27f46f5f908d0bcb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga08a39cf8db6725b4e7b8b16f49db9876"><td class="memItemLeft" align="right" valign="top"><a id="ga08a39cf8db6725b4e7b8b16f49db9876"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga08a39cf8db6725b4e7b8b16f49db9876">WT_STAT_CONN_EVICTION_MAXIMUM_MILLISECONDS</a></td></tr>
 <tr class="memdesc:ga08a39cf8db6725b4e7b8b16f49db9876"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum milliseconds spent at a single eviction <br /></td></tr>
 <tr class="separator:ga08a39cf8db6725b4e7b8b16f49db9876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67a35efa112e5915f1427435604d60ae"><td class="memItemLeft" align="right" valign="top"><a id="ga67a35efa112e5915f1427435604d60ae"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga67a35efa112e5915f1427435604d60ae">WT_STAT_CONN_EVICTION_MAXIMUM_MILLISECONDS_PER_CHECKPOINT</a></td></tr>
+<tr class="memdesc:ga67a35efa112e5915f1427435604d60ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum milliseconds spent at a single eviction per checkpoint <br /></td></tr>
+<tr class="separator:ga67a35efa112e5915f1427435604d60ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac63e039818486f00463b725334422d6d"><td class="memItemLeft" align="right" valign="top"><a id="gac63e039818486f00463b725334422d6d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac63e039818486f00463b725334422d6d">WT_STAT_CONN_EVICTION_MAXIMUM_PAGE_SIZE</a></td></tr>
 <tr class="memdesc:gac63e039818486f00463b725334422d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum page size seen at eviction <br /></td></tr>
 <tr class="separator:gac63e039818486f00463b725334422d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d3fab40c5c203da62395110bbf3b3ac"><td class="memItemLeft" align="right" valign="top"><a id="ga3d3fab40c5c203da62395110bbf3b3ac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3d3fab40c5c203da62395110bbf3b3ac">WT_STAT_CONN_EVICTION_MAXIMUM_PAGE_SIZE_PER_CHECKPOINT</a></td></tr>
+<tr class="memdesc:ga3d3fab40c5c203da62395110bbf3b3ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: maximum page size seen at eviction per checkpoint <br /></td></tr>
+<tr class="separator:ga3d3fab40c5c203da62395110bbf3b3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf5082bc4ca625c0cb2161817a12867c0"><td class="memItemLeft" align="right" valign="top"><a id="gaf5082bc4ca625c0cb2161817a12867c0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf5082bc4ca625c0cb2161817a12867c0">WT_STAT_CONN_EVICTION_APP_DIRTY_ATTEMPT</a></td></tr>
 <tr class="memdesc:gaf5082bc4ca625c0cb2161817a12867c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: modified page evict attempts by application threads <br /></td></tr>
@@ -2582,14 +2605,6 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad2ba5a3f1dd70938ae0c607cf69b0cfb">WT_STAT_CONN_LAYERED_TABLE_MANAGER_TABLES</a></td></tr>
 <tr class="memdesc:gad2ba5a3f1dd70938ae0c607cf69b0cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: the number of tables the layered table manager has open <br /></td></tr>
 <tr class="separator:gad2ba5a3f1dd70938ae0c607cf69b0cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad42a8db1ea497559a83dfcd345d677f9"><td class="memItemLeft" align="right" valign="top"><a id="gad42a8db1ea497559a83dfcd345d677f9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad42a8db1ea497559a83dfcd345d677f9">WT_STAT_CONN_LAYERED_TABLE_MANAGER_RUNNING</a></td></tr>
-<tr class="memdesc:gad42a8db1ea497559a83dfcd345d677f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: whether the layered table manager thread has been started <br /></td></tr>
-<tr class="separator:gad42a8db1ea497559a83dfcd345d677f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaae6355ce88ed162d10a1d4c3550bf062"><td class="memItemLeft" align="right" valign="top"><a id="gaae6355ce88ed162d10a1d4c3550bf062"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaae6355ce88ed162d10a1d4c3550bf062">WT_STAT_CONN_LAYERED_TABLE_MANAGER_ACTIVE</a></td></tr>
-<tr class="memdesc:gaae6355ce88ed162d10a1d4c3550bf062"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: whether the layered table manager thread is currently busy doing work <br /></td></tr>
-<tr class="separator:gaae6355ce88ed162d10a1d4c3550bf062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5cc4a88618d0bd9a9759afec441b0afb"><td class="memItemLeft" align="right" valign="top"><a id="ga5cc4a88618d0bd9a9759afec441b0afb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5cc4a88618d0bd9a9759afec441b0afb">WT_STAT_CONN_LIVE_RESTORE_BYTES_COPIED</a></td></tr>
 <tr class="memdesc:ga5cc4a88618d0bd9a9759afec441b0afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">live-restore: number of bytes copied from the source to the destination <br /></td></tr>
@@ -3934,6 +3949,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga383c6857d8a70a747f2f5584b5cca035">WT_STAT_CONN_TXN_READ_RACE_PREPARE_UPDATE</a></td></tr>
 <tr class="memdesc:ga383c6857d8a70a747f2f5584b5cca035"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: race to read prepared update retry <br /></td></tr>
 <tr class="separator:ga383c6857d8a70a747f2f5584b5cca035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec9d883a70764884912445f3fae578cf"><td class="memItemLeft" align="right" valign="top"><a id="gaec9d883a70764884912445f3fae578cf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaec9d883a70764884912445f3fae578cf">WT_STAT_CONN_TXN_RTS_BTREES_APPLIED</a></td></tr>
+<tr class="memdesc:gaec9d883a70764884912445f3fae578cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable applied btrees <br /></td></tr>
+<tr class="separator:gaec9d883a70764884912445f3fae578cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1c5c3f035c634a9a53dfd09bb21f7944"><td class="memItemLeft" align="right" valign="top"><a id="ga1c5c3f035c634a9a53dfd09bb21f7944"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1c5c3f035c634a9a53dfd09bb21f7944">WT_STAT_CONN_TXN_RTS</a></td></tr>
 <tr class="memdesc:ga1c5c3f035c634a9a53dfd09bb21f7944"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable calls <br /></td></tr>
@@ -3978,6 +3997,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga041fac52b835da32c8820c2710494ace">WT_STAT_CONN_TXN_RTS_HS_RESTORE_UPDATES</a></td></tr>
 <tr class="memdesc:ga041fac52b835da32c8820c2710494ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable restored updates from history store <br /></td></tr>
 <tr class="separator:ga041fac52b835da32c8820c2710494ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaddd59ef3ff8bf70386cec3cac92d163b"><td class="memItemLeft" align="right" valign="top"><a id="gaddd59ef3ff8bf70386cec3cac92d163b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaddd59ef3ff8bf70386cec3cac92d163b">WT_STAT_CONN_TXN_RTS_BTREES_SKIPPED</a></td></tr>
+<tr class="memdesc:gaddd59ef3ff8bf70386cec3cac92d163b"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable skipped btrees <br /></td></tr>
+<tr class="separator:gaddd59ef3ff8bf70386cec3cac92d163b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac58101476ffd82b2d6b5e1a83a5a3009"><td class="memItemLeft" align="right" valign="top"><a id="gac58101476ffd82b2d6b5e1a83a5a3009"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac58101476ffd82b2d6b5e1a83a5a3009">WT_STAT_CONN_TXN_RTS_DELETE_RLE_SKIPPED</a></td></tr>
 <tr class="memdesc:gac58101476ffd82b2d6b5e1a83a5a3009"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable skipping delete rle <br /></td></tr>
@@ -5568,6 +5591,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4ce7485574d7923e0f5355759d2b4da3">WT_STAT_DSRC_TXN_READ_RACE_PREPARE_UPDATE</a></td></tr>
 <tr class="memdesc:ga4ce7485574d7923e0f5355759d2b4da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: race to read prepared update retry <br /></td></tr>
 <tr class="separator:ga4ce7485574d7923e0f5355759d2b4da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4ce7d10ada95be48217d1ebb070a46a"><td class="memItemLeft" align="right" valign="top"><a id="gab4ce7d10ada95be48217d1ebb070a46a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab4ce7d10ada95be48217d1ebb070a46a">WT_STAT_DSRC_TXN_RTS_BTREES_APPLIED</a></td></tr>
+<tr class="memdesc:gab4ce7d10ada95be48217d1ebb070a46a"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable applied btrees <br /></td></tr>
+<tr class="separator:gab4ce7d10ada95be48217d1ebb070a46a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga76b3dd1a34b058fba573e8f209646b94"><td class="memItemLeft" align="right" valign="top"><a id="ga76b3dd1a34b058fba573e8f209646b94"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga76b3dd1a34b058fba573e8f209646b94">WT_STAT_DSRC_TXN_RTS_SWEEP_HS_KEYS_DRYRUN</a></td></tr>
 <tr class="memdesc:ga76b3dd1a34b058fba573e8f209646b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable history store keys that would have been swept in non-dryrun mode <br /></td></tr>
@@ -5604,6 +5631,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga046fb5dda65c9229dc50487b43f39fd7">WT_STAT_DSRC_TXN_RTS_HS_RESTORE_UPDATES</a></td></tr>
 <tr class="memdesc:ga046fb5dda65c9229dc50487b43f39fd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable restored updates from history store <br /></td></tr>
 <tr class="separator:ga046fb5dda65c9229dc50487b43f39fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2146564f49e3f624b32900d65e7810b8"><td class="memItemLeft" align="right" valign="top"><a id="ga2146564f49e3f624b32900d65e7810b8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2146564f49e3f624b32900d65e7810b8">WT_STAT_DSRC_TXN_RTS_BTREES_SKIPPED</a></td></tr>
+<tr class="memdesc:ga2146564f49e3f624b32900d65e7810b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable skipped btrees <br /></td></tr>
+<tr class="separator:ga2146564f49e3f624b32900d65e7810b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad1ca757307c821f7abee416640e30648"><td class="memItemLeft" align="right" valign="top"><a id="gad1ca757307c821f7abee416640e30648"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad1ca757307c821f7abee416640e30648">WT_STAT_DSRC_TXN_RTS_DELETE_RLE_SKIPPED</a></td></tr>
 <tr class="memdesc:gad1ca757307c821f7abee416640e30648"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: rollback to stable skipping delete rle <br /></td></tr>
@@ -6044,6 +6075,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 <p>Table has dirty data. </p>
 <p>This sub-level error returns when the table has dirty content. </p>
+
+</div>
+</div>
+<a id="ga7112614cdce7059560a2fb96303ac119"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7112614cdce7059560a2fb96303ac119">&#9670;&nbsp;</a></span>WT_DISAGG_BAD_LSN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_DISAGG_BAD_LSN</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attempt to operate on a wrong LSN number. </p>
+<p>This sub-level error indicates that an operation with a bad LSN number was attempted. </p>
 
 </div>
 </div>

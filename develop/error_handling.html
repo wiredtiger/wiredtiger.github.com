@@ -131,6 +131,7 @@ WiredTiger-specific sub-level errors</h1>
 <dl class="section user"><dt><code>WT_MODIFY_READ_UNCOMMITTED</code> </dt><dd>This sub-level error indicates that a reader with uncommitted isolation is trying to reconstruct a record with modifies. This is not supported.</dd></dl>
 <dl class="section user"><dt><code>WT_CONFLICT_LIVE_RESTORE</code> </dt><dd>This sub-level error indicates that there is a conflict performing the operation because of a running live restore in the system.</dd></dl>
 <dl class="section user"><dt><code>WT_CONFLICT_DISAGG</code> </dt><dd>This sub-level error indicates that an operation or configuration conflicts with disaggregated storage.</dd></dl>
+<dl class="section user"><dt><code>WT_DISAGG_BAD_LSN</code> </dt><dd>This sub-level error indicates that an operation with a bad LSN number was attempted.</dd></dl>
 <h1><a class="anchor" id="error_translation"></a>
 Translating errors</h1>
 <p>The <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9" title="Return information about an error as a string.">WT_SESSION::strerror</a> and <a class="el" href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd" title="Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...">wiredtiger_strerror</a> functions return the standard text message associated with any WiredTiger, ISO C, or POSIX standard API.</p>
