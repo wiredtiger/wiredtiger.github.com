@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"tune_system_buffer_cache.html#write_through":[0,4,59,0],
+"tune_transparent_huge_pages.html":[0,4,60],
 "tune_zone_reclaim.html":[0,4,61],
 "upgrade.html":[0,4,38],
 "upgrading.html":[0,7],
