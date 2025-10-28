@@ -107,13 +107,13 @@ Message passing with acquire and release</h1>
 <p>This pattern is used in many places in WiredTiger but they are not listed here as the list will become stale.</p>
 <p><b> Example pseudocode: </b> </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> write {</div>
 <div class="line">    s-&gt;payload = 5;</div>
-<div class="line">    WT_RELEASE_WRITE(s-&gt;ready, <span class="keyword">true</span>);</div>
+<div class="line">    __wt_atomic_store_bool_release(&amp;s-&gt;ready, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> read {</div>
 <div class="line">    <span class="keywordtype">bool</span> ready;</div>
 <div class="line"> </div>
-<div class="line">    WT_ACQUIRE_READ(ready, s-&gt;ready);</div>
+<div class="line">    ready = __wt_atomic_load_bool_acquire(&amp;s-&gt;ready);</div>
 <div class="line">    <span class="keywordflow">if</span> (ready) {</div>
 <div class="line">        var = s-&gt;payload;</div>
 <div class="line">    }</div>
@@ -168,7 +168,7 @@ Write While stable (WwS)</h1>
 Pseudocode</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> example_WwS(<span class="keywordtype">int</span> *W, <span class="keywordtype">int</span> *S) {</div>
 <div class="line">    <span class="comment">// The initial read from S must take place before the write to W.</span></div>
-<div class="line">    WT_ACQUIRE_READ(initial_s_value, *S);</div>
+<div class="line">    initial_s_value = __wt_atomic_load_int32_acquire(S);</div>
 <div class="line">    *W = new_value;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// This full barrier ensures the write to W is visible to other threads *before*</span></div>
@@ -197,7 +197,7 @@ Win the Race</h1>
 <p>To implement this usage pattern all threads attempt to set some shared flag <code>F</code> via a <code>compare_and_swap</code>. On success the winning thread is allowed to continue into the critical section. When the thread leaves the critical section it unsets the flag for the other threads to claim. Threads that fail to claim the flag <code>F</code> must decide whether to continue, abort or retry.</p>
 <h2><a class="anchor" id="win-the-race-example"></a>
 Example</h2>
-<p>In <code>__wt_cache_pool_server</code> all threads attempt to set the <code>pool_managed</code> flag with a call to <code>__wt_atomic_cas8</code>(&amp;cp-&gt;pool_managed, 0, 1) and only the successful thread is allowed then to set the <code>WT_CACHE_POOL_MANAGER</code> flag and perform the duties of the pool manager.</p>
+<p>In <code>__wt_cache_pool_server</code> all threads attempt to set the <code>pool_managed</code> flag with a call to <code>__wt_atomic_cas_uint8_relaxed</code>(&amp;cp-&gt;pool_managed, 0, 1) and only the successful thread is allowed then to set the <code>WT_CACHE_POOL_MANAGER</code> flag and perform the duties of the pool manager.</p>
 <h2><a class="anchor" id="win-the-race-pseudocode"></a>
 Example Pseudocode</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> win_the_race(<span class="keywordtype">int</span> *F) {</div>
