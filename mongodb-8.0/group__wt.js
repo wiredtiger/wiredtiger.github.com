@@ -200,6 +200,7 @@ var group__wt =
     [ "WT_STAT_CONN_BLOCK_CACHE_LOOKUPS", "group__wt.html#ga8d4ef501c4c277afced651d435d38158", null ],
     [ "WT_STAT_CONN_BLOCK_CACHE_MISSES", "group__wt.html#gab898dd9f3447c3cb214b1451147ce97d", null ],
     [ "WT_STAT_CONN_BLOCK_CACHE_NOT_EVICTED_OVERHEAD", "group__wt.html#gaac3418cd9533fccb6a60768c1d1c72bb", null ],
+    [ "WT_STAT_CONN_BLOCK_FIRST_SRCH_WALK_TIME", "group__wt.html#ga4586970530f9ebd44df04c8874902151", null ],
     [ "WT_STAT_CONN_BLOCK_MAP_READ", "group__wt.html#gade470cf41e9e9e8d086178ed154033e8", null ],
     [ "WT_STAT_CONN_BLOCK_PRELOAD", "group__wt.html#ga8ecf265dba023ad13a6cdf3e02fa9d50", null ],
     [ "WT_STAT_CONN_BLOCK_READ", "group__wt.html#ga53e57feada7f17a1693b69f37d9830fc", null ],
