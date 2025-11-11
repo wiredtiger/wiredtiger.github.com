@@ -1,5 +1,12 @@
 var NAVTREEINDEX9 =
 {
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0522ef61652b275fa4aadab7fd1ac884":[1,1,2,7],
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0ab6e469464fa132901f3292934ad26c":[1,1,2,1],
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a1a7b6f26d733bd91ad8d205d8cb3482d":[1,1,2,0],
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4569fa21343c2681357dedb4dd5facc1":[1,1,2,4],
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a4f8baf9dba6309b6051f79c9cbbb10e2":[1,1,2,8],
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a68491dde82170031c6526fe140ea39eb":[1,1,2,3],
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a817b5bc96a33010a1caca4a745a9d16d":[1,1,2,9],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e":[1,1,2,5],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a8eae397273ef872bc8da6743aa9824cb":[1,1,2,2],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf57e661895f06a479dc359d51819d7c":[1,1,2,6],
@@ -242,12 +249,5 @@ var NAVTREEINDEX9 =
 "tune_file_alloc.html#tuning_system_file_block_allocation":[0,4,54,1],
 "tune_file_alloc.html#tuning_system_file_block_grow":[0,4,54,0],
 "tune_memory_allocator.html":[0,4,55],
-"tune_mutex.html":[0,4,56],
-"tune_page_size_and_comp.html":[0,4,57],
-"tune_page_size_and_comp.html#allocation_size":[0,4,57,1,3],
-"tune_page_size_and_comp.html#compression_considerations":[0,4,57,2],
-"tune_page_size_and_comp.html#configurable_page_struct":[0,4,57,1],
-"tune_page_size_and_comp.html#data_life_cycle":[0,4,57,0],
-"tune_page_size_and_comp.html#internal_page_max":[0,4,57,1,1],
-"tune_page_size_and_comp.html#key_val_max":[0,4,57,1,4]
+"tune_mutex.html":[0,4,56]
 };
