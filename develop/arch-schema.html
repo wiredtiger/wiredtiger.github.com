@@ -162,9 +162,11 @@ Create</h2>
 <h2><a class="anchor" id="schema_drop"></a>
 Drop</h2>
 <p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70" title="Drop (delete) a table.">WT_SESSION::drop</a> operation drops the specified <code>uri</code>. The method will delete all related files and metadata entries. It is possible to keep the underlying files by specifying <code>"remove_files=false"</code> in the config string.</p>
+<p>Although the drop operation is non-transactional, if it fails, it will force the current transaction to roll back to avoid potential disruption to the data written by the transaction.</p>
 <h2><a class="anchor" id="schema_alter"></a>
 Alter</h2>
 <p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701" title="Alter a table.">WT_SESSION::alter</a> allows modification of some table settings after creation.</p>
+<p>Although the alter operation is non-transactional, if it fails, it will force the current transaction to roll back to avoid potential disruption to the data written by the transaction.</p>
 <h2><a class="anchor" id="schema_truncate"></a>
 Truncate</h2>
 <p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a" title="Truncate a file, table, cursor range, or backup cursor.">WT_SESSION::truncate</a> truncates a file, table, cursor range, or backup cursor. If <code>start</code> and <code>stop</code> cursors are not specified all the data stored in the <code>uri</code> will be wiped out. When a range truncate is in progress, and another transaction inserts a key into that range, the behavior is not well defined. It is best to avoid this type of situations. See <a class="el" href="arch-btree.html#btree_truncate_operation">Truncate Operation</a> for more details. </p>

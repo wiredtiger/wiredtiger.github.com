@@ -45,13 +45,13 @@ var NAVTREEINDEX =
 "arch-session.html#arch_session_ops",
 "custom_collators.html#custom_collators_recovery",
 "group__wt.html#ga137a377eb425db82f14662f0252a9f85",
-"group__wt.html#ga433eb322ce1cfe4115a113407c243318",
-"group__wt.html#ga7059354cea12adf838b65b69ba0219de",
-"group__wt.html#ga9c363f1dee7ff3ce2d4663e939ed20c3",
-"group__wt.html#gacb0dfedaab0183271e30afaad6646d75",
-"group__wt.html#gaf88ca5cfe05451ef90eb3b4be6633337",
-"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0522ef61652b275fa4aadab7fd1ac884",
-"tune_page_size_and_comp.html"
+"group__wt.html#ga42c0304e959ce5786e8d4f6787465a08",
+"group__wt.html#ga7025593c27099b3c3988c0e3d4d2b15d",
+"group__wt.html#ga9c1c8514b06afe6e8a1bf17fe383e999",
+"group__wt.html#gacad413b5ac59622e56e4386a2ba53294",
+"group__wt.html#gaf8772c6001a4a94d3a7c6107692064e3",
+"struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565",
+"tune_memory_allocator.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

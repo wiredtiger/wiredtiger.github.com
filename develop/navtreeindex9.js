@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565":[1,0,2,15],
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html":[1,1,2],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0522ef61652b275fa4aadab7fd1ac884":[1,1,2,7],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a0ab6e469464fa132901f3292934ad26c":[1,1,2,1],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a1a7b6f26d733bd91ad8d205d8cb3482d":[1,1,2,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "tune_durability.html#tune_durability_group_commit":[0,4,53,0],
 "tune_file_alloc.html":[0,4,54],
 "tune_file_alloc.html#tuning_system_file_block_allocation":[0,4,54,1],
-"tune_file_alloc.html#tuning_system_file_block_grow":[0,4,54,0],
-"tune_memory_allocator.html":[0,4,55],
-"tune_mutex.html":[0,4,56]
+"tune_file_alloc.html#tuning_system_file_block_grow":[0,4,54,0]
 };
