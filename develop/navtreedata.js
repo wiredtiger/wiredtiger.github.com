@@ -42,16 +42,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "admin.html",
-"arch-session.html#arch_session_ops",
-"custom_collators.html#custom_collators_recovery",
-"group__wt.html#ga137a377eb425db82f14662f0252a9f85",
-"group__wt.html#ga42c0304e959ce5786e8d4f6787465a08",
-"group__wt.html#ga7025593c27099b3c3988c0e3d4d2b15d",
-"group__wt.html#ga9c1c8514b06afe6e8a1bf17fe383e999",
-"group__wt.html#gacad413b5ac59622e56e4386a2ba53294",
-"group__wt.html#gaf8772c6001a4a94d3a7c6107692064e3",
-"struct_w_t___c_u_r_s_o_r.html#afc1b42c22c9c85e1ba08ce3b34437565",
-"tune_memory_allocator.html"
+"arch-session.html#arch_session_error",
+"custom_collators.html#custom_collators_indices",
+"group__wt.html#ga12898028fc8022ea0da57ecb00e67d47",
+"group__wt.html#ga415f3a82334782e4fe8c262d7c7da8a0",
+"group__wt.html#ga6d6c88204f1c5d8025e08673c246a47e",
+"group__wt.html#ga99702821df60ac2845a9c89a7c9bc1cb",
+"group__wt.html#gac80f4d772c21331eea472cff5d82697c",
+"group__wt.html#gaf57c0d3a111289885722c13ff58a1ae9",
+"struct_w_t___c_u_r_s_o_r.html#a21f35d032987318a8c3b9eb1b0c6a1dc",
+"transactions_api.html#isolation_levels"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

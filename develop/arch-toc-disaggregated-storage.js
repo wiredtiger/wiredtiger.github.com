@@ -8,5 +8,11 @@ var arch_toc_disaggregated_storage =
         [ "Leader vs Follower", "arch-disagg-layered.html#layered-leader-follower", null ],
         [ "Layered tables metadata representation and related files", "arch-disagg-layered.html#layered-metadata", null ]
       ] ]
+    ] ],
+    [ "Layered Cursor", "arch-disagg-layered-cursor.html", [
+      [ "Implementation aspects", "arch-disagg-layered-cursor.html#layered-cursor-implementation", [
+        [ "Underlying cursors", "arch-disagg-layered-cursor.html#layered-cursor-underlying", null ],
+        [ "Keeping a position", "arch-disagg-layered-cursor.html#layered-cursor-positioning", null ]
+      ] ]
     ] ]
 ];

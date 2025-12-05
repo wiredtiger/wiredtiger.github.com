@@ -218,7 +218,7 @@ Iterating over pages</h1>
 <p>One final note is that we deliberately do not call RTS for internal pages, as they do not have updates. They are still read into the cache in order to navigate to their leaf pages.</p>
 <h1><a class="anchor" id="iterating-over-updates"></a>
 Iterating over updates</h1>
-<p>While the details of what happens here depends on the page type (row-store, VLCS or FLCS), the overall idea is the same: we start by looking at the insert list (i.e. any items inserted before the first key on the page), iterate over all of the keys on the page, then look at the append list (i.e. any items inserted after the last key on the page). We mark the page as dirty so that we reconcile it in future.</p>
+<p>While the details of what happens here depends on the page type (row-store or VLCS), the overall idea is the same: we start by looking at the insert list (i.e. any items inserted before the first key on the page), iterate over all of the keys on the page, then look at the append list (i.e. any items inserted after the last key on the page). We mark the page as dirty so that we reconcile it in future.</p>
 <p>The mechanics of deleting items (or inserting tombstones) from these places are quite involved, and out of scope for the architecture guide.</p>
 <h1><a class="anchor" id="interaction-with-checkpoints-and-eviction"></a>
 Interaction with checkpoints and eviction</h1>
