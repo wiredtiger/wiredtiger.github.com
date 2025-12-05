@@ -185,6 +185,7 @@ var NAVTREEINDEX0 =
 "arch-snapshot.html":[0,9,0,5],
 "arch-snapshot.html#snapshot_checkpoint":[0,9,0,5,3],
 "arch-snapshot.html#snapshot_internals":[0,9,0,5,1],
+"arch-snapshot.html#snapshot_read_uncommitted":[0,9,0,5,4],
 "arch-snapshot.html#snapshot_transaction":[0,9,0,5,0],
 "arch-snapshot.html#snapshot_visibility":[0,9,0,5,2],
 "arch-timestamp.html":[0,9,0,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "command_line.html#util_backup_options":[0,9,7,1,4,1],
 "command_line.html#util_backup_synopsis":[0,4,4,0],
 "command_line.html#util_backup_synopsis":[0,9,7,1,4,0],
-"command_line.html#util_compact":[0,4,5],
-"command_line.html#util_compact":[0,9,7,1,5]
+"command_line.html#util_compact":[0,4,5]
 };

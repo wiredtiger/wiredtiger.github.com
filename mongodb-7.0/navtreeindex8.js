@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"upgrading.html#version_1100":[0,6,0],
 "verbose_messaging.html":[0,3,23],
 "verbose_messaging.html#verbosity_categories":[0,3,23,1],
 "verbose_messaging.html#verbosity_configuration":[0,3,23,1,0],

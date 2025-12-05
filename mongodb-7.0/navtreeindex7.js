@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#a9531a89513becfdee205675cdc0d6f9e":[1,0,5,0],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ab515fb2e5dc49a7a49962b901e508120":[1,0,5,2],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#abfed93b043bdf1d715be6f7af431d90f":[1,0,5,1],
 "struct_w_t___e_v_e_n_t___h_a_n_d_l_e_r.html#ad45e36ca496da5f15bb87ba5bfdecc2b":[1,0,5,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "tune_transparent_huge_pages.html":[0,3,61],
 "tune_zone_reclaim.html":[0,3,62],
 "upgrade.html":[0,3,38],
-"upgrading.html":[0,6],
-"upgrading.html#version_1100":[0,6,0]
+"upgrading.html":[0,6]
 };
