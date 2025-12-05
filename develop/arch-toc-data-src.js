@@ -18,6 +18,7 @@ var arch_toc_data_src =
       [ "Definition", "arch-row-column.html#row_column_definition", null ],
       [ "Row-stores", "arch-row-column.html#row_column_rs", null ],
       [ "Variable length column-stores", "arch-row-column.html#row_column_vlcs", null ],
+      [ "Fixed length column-stores", "arch-row-column.html#row_column_flcs", null ],
       [ "Internal usage", "arch-row-column.html#row_column_internal_use", null ]
     ] ]
 ];

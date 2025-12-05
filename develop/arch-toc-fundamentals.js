@@ -90,6 +90,7 @@ var arch_toc_fundamentals =
       [ "Generation of other deleted pages", "arch-fast-truncate.html#ft_deleted_generation", null ],
       [ "Skipping deleted pages", "arch-fast-truncate.html#ft_page_skip", null ],
       [ "VLCS considerations", "arch-fast-truncate.html#ft_vlcs", null ],
+      [ "FLCS and deleted pages", "arch-fast-truncate.html#ft_flcs", null ],
       [ "Notes on visibility", "arch-fast-truncate.html#ft_visibility", null ],
       [ "Miscellaneous other notes", "arch-fast-truncate.html#ft_misc", null ],
       [ "Pointers to pieces of the implementation", "arch-fast-truncate.html#ft_pointers", null ]

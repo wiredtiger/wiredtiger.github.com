@@ -153,7 +153,7 @@ internal_page_max</h2>
 </pre><h2><a class="anchor" id="leaf_page_max"></a>
 leaf_page_max</h2>
 <p>The maximum page size for the reconciled on-disk leaf pages of the B-Tree, in bytes. When a leaf page grows past this size, it splits into multiple pages.</p><ul>
-<li>An integer, with acceptable values between 512B and 512MB</li>
+<li>An integer, with acceptable values between 512B and 512MB (fixed-length column store pages are limited to 128KB; the configured size does not include the additional size of timestamp information when timestamps are in use)</li>
 <li>Default size: 32 KB (*appropriate for applications with relatively small keys and values)</li>
 <li>Additionally constrained by the condition: must be a multiple of the allocation size</li>
 <li>Motivation to tune the value: <br  />
@@ -161,6 +161,8 @@ leaf_page_max</h2>
 <li>Should be sized to maximize I/O performance (when reading from disk, it is usually desirable to read a large amount of data, assuming some locality of reference in the application's access pattern).</li>
 <li>Applications doing full-table scans through out-of-cache workloads might increase leaf_page_max to transfer more data per I/O.</li>
 <li>Applications focused on read/write amplification might decrease the page size to better match the underlying storage block size.</li>
+<li>In fixed-length column stores, a relatively large number of items fit on a single page; this can occasionally lead to contention issues that can be mitigated by making the pages smaller.</li>
+<li>For fixed-length column stores, the much-larger size of in-memory pending changes relative to on-disk values can lead to adverse eviction behavior if a large number of uncommitted changes are present on the same page. Applications that expect to update large numbers of adjacent values at once, especially in long-running transactions, may want to decrease <code>leaf_page_max</code> or, alternatively, increase <code>memory_page_max</code>.</li>
 </ul>
 </li>
 <li>Configuration: <br  />
@@ -273,13 +275,13 @@ Specified using the <code>block_compressor</code> configuration option to <a cla
 Table summarizing compression in WiredTiger</h2>
 <table class="doxtable">
 <tr>
-<th>Compression Type</th><th>Supported by row-store</th><th>Supported by variable col-store</th><th>Default config</th><th>Reduces in-mem size</th><th>Reduces on-disk size</th><th>CPU and Memory cost </th></tr>
+<th>Compression Type</th><th>Supported by row-store</th><th>Supported by variable col-store</th><th>Supported by fixed col-store</th><th>Default config</th><th>Reduces in-mem size</th><th>Reduces on-disk size</th><th>CPU and Memory cost </th></tr>
 <tr>
-<td>Key-prefix</td><td>yes</td><td>no</td><td>disabled</td><td>yes</td><td>yes</td><td>minor </td></tr>
+<td>Key-prefix</td><td>yes</td><td>no</td><td>no</td><td>disabled</td><td>yes</td><td>yes</td><td>minor </td></tr>
 <tr>
-<td>Dictionary</td><td>yes</td><td>yes</td><td>disabled</td><td>yes</td><td>yes</td><td>minor </td></tr>
+<td>Dictionary</td><td>yes</td><td>yes</td><td>no</td><td>disabled</td><td>yes</td><td>yes</td><td>minor </td></tr>
 <tr>
-<td>Block</td><td>yes</td><td>yes</td><td>disabled</td><td>no</td><td>yes</td><td>can be high </td></tr>
+<td>Block</td><td>yes</td><td>yes</td><td>yes</td><td>disabled</td><td>no</td><td>yes</td><td>can be high </td></tr>
 </table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -92,21 +92,7 @@ $(document).ready(function(){initNavTree('upgrading.html',''); initResizable(); 
 <div class="title">Upgrading WiredTiger applications </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="version_develop"></a>
-Upgrading to Version 12.0.0</h1>
-<dl>
-<dt>Fixed-length column-store is removed </dt>
-<dd><p class="startdd">The storage format fixed-length column-store is no longer supported. This means that if you have a fixed-length column-store table it will not be readable as of 12.0.0, opening the database will return an error. In order to upgrade to this release you must re-write the table as either variable-length column-store, or row-store. However we will also be removing support for variable-length column-store so it is recommended to re-write the table as row-store.</p>
-<p class="interdd">The steps are as follows:</p><ol type="1">
-<li>Create a row store table with integer keys (key_format=i), and fixed-length bit values.</li>
-<li>Open a cursor on your FLCS table.</li>
-<li>For every key in the FLCS table read it in, and write it back to the row store table.</li>
-<li>Finally drop the FLCS table.</li>
-</ol>
-<p class="enddd"></p>
-</dd>
-</dl>
-<h1><a class="anchor" id="version_1131"></a>
+<div class="textblock"><h1><a class="anchor" id="version_1131"></a>
 Upgrading to Version 11.3.1</h1>
 <dl>
 <dt>Per-file configuration "huffman_value" </dt>
