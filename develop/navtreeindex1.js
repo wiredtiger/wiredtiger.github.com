@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"arch-session.html#arch_session_def":[0,10,0,1,0],
-"arch-session.html#arch_session_dhandles":[0,10,0,1,4],
 "arch-session.html#arch_session_error":[0,10,0,1,7],
 "arch-session.html#arch_session_error_sessions":[0,10,0,1,7,0],
 "arch-session.html#arch_session_ops":[0,10,0,1,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX1 =
 "cursors.html":[0,4,2],
 "cursors.html#cursor_raw":[0,4,2,2],
 "cursors.html#cursor_types":[0,4,2,0],
-"cursors.html#cursors_eviction":[0,4,2,1]
+"cursors.html#cursors_eviction":[0,4,2,1],
+"cursors.html#metadata":[0,4,2,3],
+"custom_collators.html":[0,4,40]
 };

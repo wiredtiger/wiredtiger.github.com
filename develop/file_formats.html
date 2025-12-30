@@ -94,11 +94,10 @@ $(document).ready(function(){initNavTree('file_formats.html',''); initResizable(
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="file_formats_formats"></a>
 File formats</h1>
-<p>WiredTiger supports three underlying file formats: row-store and column-store, with an underlying special case of column-store for bit-field values. All three formats are B+tree implementations of key/value stores. In addition, there is experimental support for <a class="el" href="tiered_storage.html">Tiered Storage</a>, allowing a B+tree to span multiple files and cloud objects.</p>
-<p>In a row-store, both keys and data are variable-length byte strings. In a column-store, keys are 64-bit record numbers (key_format type 'r'), and values are variable-length byte strings, except for the special case format for bit-field values, where the values are a fixed number of bits between 1 and 8. The two flavors of column-store are accordingly called "variable-length" and "fixed-length".</p>
+<p>WiredTiger supports two underlying file formats: row-store and column-store. In the past WiredTiger also supported a third storage format which was column-store combined with fixed length values suitably referred to as "fixed-length column-store". This storage format is now deprecated. Row-store and column-store are both B+tree implementations of key/value stores. In addition, there is experimental support for <a class="el" href="tiered_storage.html">Tiered Storage</a>, allowing a B+tree to span multiple files and cloud objects.</p>
+<p>In a row-store, both keys and data are variable-length byte strings. In a column-store, keys are 64-bit record numbers (key_format type 'r'), and values are variable-length byte strings, this is referred to as "variable-length column-store"</p>
 <p>Generally, row-stores are faster for queries where all of the columns are required by every lookup (because there's only a single set of meta-data pages to read into the cache and search). Column-stores are faster when most queries require only a subset of the columns (because columns can be separated into multiple files and only the columns being returned need be present in the cache).</p>
 <p>Row-store keys and values, and variable-length column-store values, can be up to (4GB - 512B) in length. Keys and values too large to fit on a normal page are stored as overflow items in the file, and are likely to require additional file I/O to access.</p>
-<p>Fixed-length column-store values (value_format type 't') are limited to 8 bits. Thus, at most values between 0 and 255 may be stored. Additionally, there is no out-of-band fixed-length "deleted" value, and deleting a value is the same as storing a value of 0.</p>
 <p>WiredTiger does not support duplicate data items: there can be only a single value associated with any given key, and applications are responsible for creating unique key/value pairs.</p>
 <p>WiredTiger allocates space from the underlying files in block units. The minimum file allocation unit WiredTiger supports is 512B and the maximum is 512MB. File offsets are signed 8B values, making the maximum file size very, very large.</p>
 <h1><a class="anchor" id="file_formats_choice"></a>
@@ -134,9 +133,6 @@ File formats and compression</h1>
 <li><p class="startli">Block compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of block compression can be high, and should be considered. (See <a class="el" href="tune_page_size_and_comp.html#compression_considerations">Compression considerations</a> for details.)</p>
 <p class="startli">Block compression is disabled by default.</p>
 </li>
-</ul>
-<p>Fixed-length column stores support a single type of compression: block compression.</p>
-<ul>
 <li><p class="startli">Block compression reduces the size requirement of on-disk objects by compressing blocks of the backing object's file. The cost is additional CPU and memory use when reading and writing pages to disk. Note the additional CPU cost of block compression can be high, and should be considered. (See <a class="el" href="tune_page_size_and_comp.html#compression_considerations">Compression considerations</a> for details.)</p>
 <p class="startli">Block compression is disabled by default. </p>
 </li>

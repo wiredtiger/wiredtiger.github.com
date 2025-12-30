@@ -42,16 +42,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "admin.html",
-"arch-session.html#arch_session_def",
-"cursors.html#metadata",
-"group__wt.html#ga11fcb1886aab32727c922a4d37b55eb4",
-"group__wt.html#ga4124a8271895f0c6fc3de03224a10ea4",
-"group__wt.html#ga6ce7370b84af2b9901576e269d571fce",
-"group__wt.html#ga982937d74badce7cc20cfbf32c5b4cab",
+"arch-session.html#arch_session_error",
+"custom_collators.html#custom_collators_indices",
+"group__wt.html#ga12b89bdb3f365b57f7afe140ecd787f7",
+"group__wt.html#ga418f8fac44f030fb265f1a6a118bd254",
+"group__wt.html#ga6d7172e9bd093ded3b3aacc0a094314f",
+"group__wt.html#ga98adcf9506cee6fcf35da23d891d39a0",
 "group__wt.html#gac7d26951a877b07bbcefdc663c22e5ff",
-"group__wt.html#gaf4ebaf8a947df722bd68d864e9c7f635",
-"struct_w_t___c_u_r_s_o_r.html",
-"tool-xray.html#autotoc_md69"
+"group__wt.html#gaf46a43e2681c42438a64db4bde33a20f",
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ae2bacefe9777b8ab32d8b22c292c4f39",
+"tool-xray.html#autotoc_md67"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
