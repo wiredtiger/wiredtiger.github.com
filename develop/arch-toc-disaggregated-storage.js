@@ -14,5 +14,9 @@ var arch_toc_disaggregated_storage =
         [ "Underlying cursors", "arch-disagg-layered-cursor.html#layered-cursor-underlying", null ],
         [ "Keeping a position", "arch-disagg-layered-cursor.html#layered-cursor-positioning", null ]
       ] ]
+    ] ],
+    [ "Key Provider", "arch-disagg-key-provider.html", [
+      [ "Header information", "arch-disagg-key-provider.html#key-provider-header", null ],
+      [ "API expectations", "arch-disagg-key-provider.html#key-provider-api", null ]
     ] ]
 ];

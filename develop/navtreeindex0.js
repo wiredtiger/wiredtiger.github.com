@@ -119,6 +119,9 @@ var NAVTREEINDEX0 =
 "arch-dhandle.html#dhandle_data_handle_reference_counts":[0,10,3,1,2],
 "arch-dhandle.html#dhandle_dhandle_session_cache_sweep":[0,10,3,1,4],
 "arch-dhandle.html#dhandle_sweep_server_dhandle_sweep":[0,10,3,1,3],
+"arch-disagg-key-provider.html":[0,10,11,2],
+"arch-disagg-key-provider.html#key-provider-api":[0,10,11,2,1],
+"arch-disagg-key-provider.html#key-provider-header":[0,10,11,2,0],
 "arch-disagg-layered-cursor.html":[0,10,11,1],
 "arch-disagg-layered-cursor.html#layered-cursor-implementation":[0,10,11,1,0],
 "arch-disagg-layered-cursor.html#layered-cursor-positioning":[0,10,11,1,0,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "arch-schema.html#schema_integrity":[0,10,2,0,2],
 "arch-schema.html#schema_truncate":[0,10,2,0,3,3],
 "arch-session.html":[0,10,0,1],
-"arch-session.html#arch_session_closure":[0,10,0,1,5],
-"arch-session.html#arch_session_cur":[0,10,0,1,3],
-"arch-session.html#arch_session_def":[0,10,0,1,0],
-"arch-session.html#arch_session_dhandles":[0,10,0,1,4]
+"arch-session.html#arch_session_closure":[0,10,0,1,5]
 };
