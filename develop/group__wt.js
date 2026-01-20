@@ -392,6 +392,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_REVERSE_SPLITS", "group__wt.html#ga8f20eea9e08085d93afcbd5863cd9e16", null ],
     [ "WT_STAT_CONN_CACHE_REVERSE_SPLITS_SKIPPED_VLCS", "group__wt.html#ga872aeda18a5af08521f615aedd8a6dfc", null ],
     [ "WT_STAT_CONN_CACHE_SCRUB_RESTORE", "group__wt.html#ga2e600386553353ba224460012e9f49d4", null ],
+    [ "WT_STAT_CONN_CACHE_TOLERANCE_LEVEL", "group__wt.html#gaf18aa0ac17e7cc0f1435a6decb81afce", null ],
     [ "WT_STAT_CONN_CACHE_UPDATES_TXN_UNCOMMITTED_BYTES", "group__wt.html#gac3d93377f3f067af64c4dba30f05bb81", null ],
     [ "WT_STAT_CONN_CACHE_UPDATES_TXN_UNCOMMITTED_COUNT", "group__wt.html#ga195b0b91027aaf1e20dcfd6aab5e46d1", null ],
     [ "WT_STAT_CONN_CACHE_WRITE", "group__wt.html#ga94f3c473b10646f7ed3d047e275786db", null ],

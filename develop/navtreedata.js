@@ -49,9 +49,9 @@ var NAVTREEINDEX =
 "group__wt.html#ga6d7172e9bd093ded3b3aacc0a094314f",
 "group__wt.html#ga98adcf9506cee6fcf35da23d891d39a0",
 "group__wt.html#gac7e5bdbc5f9b7d60d5021d9f72dbda8a",
-"group__wt.html#gaf4ebaf8a947df722bd68d864e9c7f635",
-"struct_w_t___c_u_r_s_o_r.html",
-"tool-xray.html#autotoc_md69"
+"group__wt.html#gaf4c873335df57a5dbfa6a6303c62ea74",
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545",
+"tool-xray.html#autotoc_md68"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

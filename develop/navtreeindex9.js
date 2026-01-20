@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"struct_w_t___c_o_n_n_e_c_t_i_o_n.html#af535c517df851eeac8ebf3594d40b545":[1,0,4,4],
 "struct_w_t___c_u_r_s_o_r.html":[1,0,2],
 "struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b":[1,0,2,10],
 "struct_w_t___c_u_r_s_o_r.html#a050e8dfd68303048921e528fa591a00c":[1,0,2,22],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "tool-xray.html#autotoc_md64":[0,9,4,0,1],
 "tool-xray.html#autotoc_md65":[0,9,4,0,2],
 "tool-xray.html#autotoc_md66":[0,9,4,1],
-"tool-xray.html#autotoc_md67":[0,9,4,1,0],
-"tool-xray.html#autotoc_md68":[0,9,4,1,1]
+"tool-xray.html#autotoc_md67":[0,9,4,1,0]
 };
