@@ -1,5 +1,13 @@
 var NAVTREEINDEX8 =
 {
+"tune_system_buffer_cache.html":[0,3,60],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_direct_io":[0,3,60,0],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_dirty_max":[0,3,60,1],
+"tune_system_buffer_cache.html#tuning_system_buffer_cache_os_cache_max":[0,3,60,2],
+"tune_transparent_huge_pages.html":[0,3,61],
+"tune_zone_reclaim.html":[0,3,62],
+"upgrade.html":[0,3,38],
+"upgrading.html":[0,6],
 "upgrading.html#version_1100":[0,6,0],
 "verbose_messaging.html":[0,3,23],
 "verbose_messaging.html#verbosity_categories":[0,3,23,1],
