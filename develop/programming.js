@@ -168,12 +168,6 @@ var programming =
       [ "Block-based Incremental backup", "backup.html#backup_incremental-block", null ],
       [ "Export tables using backup cursor", "backup.html#backup_export", null ]
     ] ],
-    [ "Chunk cache", "chunkcache.html", [
-      [ "Pinned Content", "chunkcache.html#pinned", null ],
-      [ "Newly inserted or modified content", "chunkcache.html#inserts", null ],
-      [ "Persisted content", "chunkcache.html#persistence", null ],
-      [ "Troubleshooting", "chunkcache.html#troubleshooting", null ]
-    ] ],
     [ "Compaction", "compact.html", [
       [ "Foreground compaction", "compact.html#foreground", null ],
       [ "Background compaction", "compact.html#background", null ]

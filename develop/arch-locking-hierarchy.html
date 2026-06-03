@@ -161,14 +161,6 @@ Miscellaneous locks</h1>
 <tr>
 <td>WRITE <code>table_lock</code> </td><td>&rarr;</td><td>WRITE <code>dhandle_lock</code>  </td></tr>
 </table>
-<table class="lock-hierarchy">
-<tr>
-<td><code>reconfig_lock</code> </td><td>&rarr;</td><td>WRITE <code>chunkcache-&gt;pinned_objects.array_lock</code>  </td></tr>
-</table>
-<table class="lock-hierarchy">
-<tr>
-<td><code>reconfig_lock</code> </td><td>&rarr;</td><td><code>chunkcache-&gt;hashtable</code>[*].bucket_lock</td><td>&rarr;</td><td>READ <code>chunkcache-&gt;pinned_objects.array_lock</code>  </td></tr>
-</table>
 <h1><a class="anchor" id="arch-locking-hierarchy-examples"></a>
 Examples</h1>
 <h2><a class="anchor" id="arch-locking-hierarchy-examples-eviction0"></a>

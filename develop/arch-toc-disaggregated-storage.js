@@ -1,5 +1,17 @@
 var arch_toc_disaggregated_storage =
 [
+    [ "Page Deltas", "arch-page-delta.html", [
+      [ "Goals and high-level model", "arch-page-delta.html#pd_goals", null ],
+      [ "Configuration", "arch-page-delta.html#pd_config", null ],
+      [ "Generating deltas (reconciliation)", "arch-page-delta.html#pd_generation", [
+        [ "Leaf page deltas", "arch-page-delta.html#pd_leaf", null ],
+        [ "Internal page deltas", "arch-page-delta.html#pd_internal", null ]
+      ] ],
+      [ "Key files", "arch-page-delta.html#pd_key_files", null ],
+      [ "On-disk layout and chain tracking", "arch-page-delta.html#pd_on_disk", null ],
+      [ "Reconstruction on read", "arch-page-delta.html#pd_reconstruction", null ],
+      [ "Tuning", "arch-page-delta.html#pd_tuning", null ]
+    ] ],
     [ "Layered Tables", "arch-disagg-layered.html", [
       [ "Shared vs local tables", "arch-disagg-layered.html#shared-tables", null ],
       [ "High-level architecture", "arch-disagg-layered.html#layered-arch", null ],

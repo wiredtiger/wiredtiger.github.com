@@ -164,7 +164,7 @@ Ensuring References on the Pre-fetch Queue Remain Valid</h2>
 <h2><a class="anchor" id="prefetch_other_concurrency"></a>
 Concurrency</h2>
 <p>Pre-fetch is a highly concurrent module and we rely on a few mechanisms to ensure that it runs smoothly with the rest of the system.</p><ul>
-<li>A connection level lock <code>prefetch_lock</code> is used for the pre-fetch queue, and is needed when adding and removing <code>WT_PREFETCH_QUEUE_ENTRY</code> items from it.</li>
+<li>A connection level lock <code>prefetch.lock</code> is used for the pre-fetch queue, and is needed when adding and removing <code>WT_PREFETCH_QUEUE_ENTRY</code> items from it.</li>
 <li>Whenever we modify a <code>ref</code> structure, e.g. when adding it to the pre-fetch queue and setting the corresponding <code>WT_REF_FLAG_PREFETCH</code> flag, it must be in the <code>WT_REF_LOCKED</code> state.</li>
 <li>There are scenarios which fall outside of the typical eviction flow, where pages can be forcibly removed from the cache if eviction has exclusive eviction access to that file (see <code>__wt_evict_file_exclusive_on</code>). When this occurs, we need to remove all page references associated with that file's tree from the pre-fetch queue because the system may evict internal pages which still have child pages present on the queue. The <code>prefetch_busy</code> variable on the <code>WT_BTREE</code> data structure keeps track of pre-fetch threads operating on that tree. When clearing pages from the pre-fetch queue belonging to a certain tree, we wait for any other concurrent pre-fetch activity to drain to prevent invalid ref accesses. </li>
 </ul>

@@ -136,7 +136,7 @@ Shared vs local tables</h1>
 High-level architecture</h1>
 <p>These semantics are achieved by using two underlying constituents: a shared stable table and an ingest table. The node responsible for writing to shared storage operates directly on a single shared table and has the guarantee that no other node will perform writes to that table. All other nodes will also have an ingest table, which holds a short-term view of recent changes.</p>
 <p>The ingest table's view is layered over the shared stable table, so any read operations on a node with both an ingest and stable table will first look for a result in the ingest table, and if no result is found, fall back on the shared table.</p>
-<p>Layered tables are primarily for Disaggregated Storage Clusters (DSC) but can also be used outside of DSC for testing purposes, in particular, via local Page and Log Mock (PALM) infrastructure.</p>
+<p>Layered tables are primarily for Disaggregated Storage Clusters (DSC) but can also be used outside of DSC for testing purposes, in particular, via local PALI Mock (PALite) infrastructure.</p>
 <div class="image">
 <img src="shared_cluster.png" alt=""/>
 </div>
@@ -184,7 +184,7 @@ Leader vs Follower</h2>
 Layered tables metadata representation and related files</h2>
 <p>Each layered table contains three related entries in metadata:</p>
 <div class="fragment"><div class="line">layered:foo.wt</div>
-<div class="line">    disaggregated=(page_log=palm),ingest=<span class="stringliteral">&quot;file:foo.wt_ingest&quot;</span>,log=(enabled=<span class="keyword">false</span>),stable=<span class="stringliteral">&quot;file:foo.wt_stable&quot;</span></div>
+<div class="line">    disaggregated=(page_log=palite),ingest=<span class="stringliteral">&quot;file:foo.wt_ingest&quot;</span>,log=(enabled=<span class="keyword">false</span>),stable=<span class="stringliteral">&quot;file:foo.wt_stable&quot;</span></div>
 <div class="line">file:foo.wt_ingest</div>
 <div class="line">file:foo.wt_stable</div>
 </div><!-- fragment --><p>The ingest and stable table could also have table: prefixed metadata entries if the table was created with the <code>block_manager=disagg,type=layered</code> config.</p>

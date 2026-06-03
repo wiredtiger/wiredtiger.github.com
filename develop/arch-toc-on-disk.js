@@ -11,10 +11,11 @@ var arch_toc_on_disk =
         [ "Flushing the files to disk", "arch-checkpoint.html#autotoc_md11", null ],
         [ "Metadata checkpoint", "arch-checkpoint.html#autotoc_md12", null ]
       ] ],
-      [ "Skipping checkpoints", "arch-checkpoint.html#autotoc_md13", null ],
-      [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md14", null ],
-      [ "Garbage collection", "arch-checkpoint.html#autotoc_md15", null ],
-      [ "Internal callers", "arch-checkpoint.html#autotoc_md16", null ]
+      [ "Multi-threaded checkpoints", "arch-checkpoint.html#autotoc_md13", null ],
+      [ "Skipping checkpoints", "arch-checkpoint.html#autotoc_md14", null ],
+      [ "Checkpoint generations", "arch-checkpoint.html#autotoc_md15", null ],
+      [ "Garbage collection", "arch-checkpoint.html#autotoc_md16", null ],
+      [ "Internal callers", "arch-checkpoint.html#autotoc_md17", null ]
     ] ],
     [ "History Store", "arch-hs.html", [
       [ "History store table structure", "arch-hs.html#arch_hs_table", [
@@ -35,6 +36,6 @@ var arch_toc_on_disk =
       [ "Target backup", "arch-backup.html#autotoc_md3", null ]
     ] ],
     [ "Compaction", "arch-compact.html", [
-      [ "Background compaction", "arch-compact.html#autotoc_md17", null ]
+      [ "Background compaction", "arch-compact.html#autotoc_md18", null ]
     ] ]
 ];

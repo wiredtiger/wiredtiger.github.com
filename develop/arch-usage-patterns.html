@@ -102,8 +102,9 @@ Message passing with acquire and release</h1>
 <li>A struct with any number of fields</li>
 <li>A single variable in memory</li>
 </ul>
-<p>For the writer to share this payload with readers it needs to perform two steps in the correct order. Firstly it writes the payload, then writes a signal variable with a release write. The reader threads will read the signal variable to know if the payload is safe to read. The release write must use the <code>WT_RELEASE_WRITE</code> macro described in <a class="el" href="arch-concurrency.html#rel-marked">Release</a>.</p>
-<p>The reader threads must read with the opposite order, to do so they read the signal variable using the acquire read macro <code>WT_ACQUIRE_READ</code>. Then they read the payload, the <code>WT_ACQUIRE_READ</code> macro provides the required ordering semantics. The macro is described in <a class="el" href="arch-concurrency.html#acq-marked">Acquire</a>. If the signal variable indicates the payload is safe to read the reader thread can read the payload.</p>
+<p>For the writer to share this payload with readers it needs to perform two steps in the correct order. Firstly it writes the payload, then writes a signal variable with a release write. The reader threads will read the signal variable to know if the payload is safe to read.</p>
+<p>The reader threads must read with the opposite order, to do so they read the signal variable using an acquire read. Then they read the payload, the acquire read provides the required ordering semantics. If the signal variable indicates the payload is safe to read the reader thread can read the payload.</p>
+<p>Acquire/release semantics in WiredTiger work in exactly the same way as the acquire/release semantics provided by C standard library atomics. Read more about WiredTiger atomics in <a class="el" href="arch-concurrency.html#lock-free">Lock-free synchronization primitives</a>.</p>
 <p>This pattern is used in many places in WiredTiger but they are not listed here as the list will become stale.</p>
 <p><b> Example pseudocode: </b> </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> write {</div>
 <div class="line">    s-&gt;payload = 5;</div>
@@ -151,10 +152,10 @@ Growable arrays</h2>
 <p><b>Note:</b> <a class="el" href="arch-concurrency.html#generations">Generations</a> handle the life cycle, creation and freeing of the growable array and that will not be covered here.</p>
 <h3><a class="anchor" id="growable-arrays-writing"></a>
 Writing</h3>
-<p>If a new slot is required in the array, but all slots are in use and <code>slot_count</code> is equal to the size <code>Z</code> of the array then the array must grow. The variable <code>slot_count</code> has additional ordering defined when swapping in the array. The array pointer swap must happen before <code>slot_count</code> is incremented. This requires a <a class="el" href="arch-concurrency.html#rel-marked">Release</a>.</p>
+<p>If a new slot is required in the array, but all slots are in use and <code>slot_count</code> is equal to the size <code>Z</code> of the array then the array must grow. The variable <code>slot_count</code> has additional ordering defined when swapping in the array. The array pointer swap must happen before <code>slot_count</code> is incremented. This requires a release store.</p>
 <h3><a class="anchor" id="growable-arrays-reading"></a>
 Reading</h3>
-<p>Readers must respect the writer side ordering. The <code>slot_count</code> must be read prior to reading the array pointer. This requires an <a class="el" href="arch-concurrency.html#acq-marked">Acquire</a>. If this ordering is not respected the reader could read an old array pointer but a new <code>slot_count</code> and encounter an array index out of bounds exception.</p>
+<p>Readers must respect the writer side ordering. The <code>slot_count</code> must be read prior to reading the array pointer. This requires an acquire read. If this ordering is not respected the reader could read an old array pointer but a new <code>slot_count</code> and encounter an array index out of bounds exception.</p>
 <h3><a class="anchor" id="growable-arrays-further-details"></a>
 Further details</h3>
 <p>The fixed size version of this pattern is used to maintain the <a class="el" href="arch-connection.html">Connection</a>'s sessions array. The dynamically growing version of this pattern is used to maintain the hazard pointer array for a <a class="el" href="arch-session.html">Session</a>.</p>
@@ -175,14 +176,14 @@ Pseudocode</h2>
 <div class="line">    <span class="comment">// we re-read the contents of S to verify it hasn&#39;t changed.</span></div>
 <div class="line">    FULL_BARRIER();</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span>(*S != initial_s) {</div>
+<div class="line">    <span class="keywordflow">if</span>(*S != initial_s_value) {</div>
 <div class="line">        <span class="comment">// The write was unsuccessful. Rollback or retry.</span></div>
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="write-while-stable-wt-implementation"></a>
 Example WT implementation</h2>
 <p><b>Note:</b> The following example assumes familiarity with WiredTiger's <a class="el" href="arch-concurrency.html#generations">Generations</a>.</p>
-<p>In the generation code the <code>__wt_session_gen_enter</code> function the current value of the <code>connection-&gt;generation</code> (<code>S</code>) and writes it to <code>session-&gt;generation</code> (<code>W</code>). Independently a second thread executing <code>__gen_oldest</code> will first read <code>connection-&gt;generation</code> and then walk all <code>session-&gt;generations</code>, reporting the smallest generation seen.</p>
+<p>In the generation code, the <code>__wt_session_gen_enter</code> function reads the current value of the <code>connection-&gt;generation</code> (<code>S</code>) and writes it to <code>session-&gt;generation</code> (<code>W</code>). Independently a second thread executing <code>__gen_oldest</code> will first read <code>connection-&gt;generation</code> and then walk all <code>session-&gt;generations</code>, reporting the smallest generation seen.</p>
 <p>Without this pattern <code>__wt_session_gen_enter</code> could enter a generation <code>G</code>, the <code>connection-&gt;generation</code> could be advanced to <code>G+1</code>, and the <code>__gen_oldest</code> thread would see the update to <code>connection-&gt;generation</code> <code>G+1</code> but not the write to the <code>session-&gt;generation</code> <code>G</code>. This would incorrectly report the oldest generation as <code>G+1</code> while the <code>session-&gt;generation</code> <code>G</code> is still active.</p>
 <p>On a successful <code>WwS</code> the write to <code>session-&gt;generation</code> must be visible before advancing the <code>connection-&gt;generation</code>. If the <code>connection-&gt;generation</code> has not been advanced the new <code>session-&gt;generation</code> is visible and the oldest generation will be equal to it.</p>
 <p>On a failed <code>WwS</code> <code>__wt_session_gen_enter</code> must retry and enter the new generation <code>G+1</code>. If <code>__gen_oldest</code> sees the "invalid" <code>session-&gt;generation</code> of <code>G</code> it will report an older generation that the actual oldest generation. This is considered acceptable as it temporarily delays freeing a resource which has no impact on correctness.</p>

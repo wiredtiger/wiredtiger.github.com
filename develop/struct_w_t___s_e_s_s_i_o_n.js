@@ -16,6 +16,7 @@ var struct_w_t___s_e_s_s_i_o_n =
     [ "prepare_transaction", "struct_w_t___s_e_s_s_i_o_n.html#a96b8a369610c8cbb08b8a7c504fd1008", null ],
     [ "prepared_id_transaction", "struct_w_t___s_e_s_s_i_o_n.html#acf5d973bdf98ef19b7a192a4a065d863", null ],
     [ "prepared_id_transaction_uint", "struct_w_t___s_e_s_s_i_o_n.html#a5c228b846a2d3cb78bc6d76dd4c435d1", null ],
+    [ "publish", "struct_w_t___s_e_s_s_i_o_n.html#aa8cbb9ef00da3aa224206dc9a64b5656", null ],
     [ "query_timestamp", "struct_w_t___s_e_s_s_i_o_n.html#aeec1349581b7f97fc90573550fff8b6b", null ],
     [ "reconfigure", "struct_w_t___s_e_s_s_i_o_n.html#a578f0fbd8a83339f1f9c00e135f006e6", null ],
     [ "reset", "struct_w_t___s_e_s_s_i_o_n.html#a307800663ed211447a18c46863c28787", null ],

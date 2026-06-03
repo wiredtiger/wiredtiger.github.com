@@ -93,10 +93,7 @@ $(document).ready(function(){initNavTree('arch-concurrency.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><b>Caution: the Architecture Guide is not updated in lockstep with the code base and is not necessarily correct or complete for any specific release.</b></p>
-<p>WiredTiger is a multi-threaded application and needs to manage concurrent access to memory locations. Many mechanisms are defined in WiredTiger to allow for safe concurrent access to memory locations. This page describes what those mechanisms are and the intended usage of them in the code base.</p>
-<h1><a class="anchor" id="volatile"></a>
-Volatile</h1>
-<p>WiredTiger utilizes volatile for one reason, managing compiler optimization. Leveraging the definitions from "Is Parallel Programming Hard, And, If So, What Can You Do About It?", Paul E. McKenney, WiredTiger utilizes volatile to prevent the following type of compiler optimizations: Load fusing, store fusing, invented loads, invented stores and code reordering. WiredTiger defines the following macros WT_READ_ONCE and WT_WRITE_ONCE which, if used correctly, prevent the prescribed forms of compiler optimization. Additionally some variables in WiredTiger are defined with the volatile keyword if it is known that they will be frequently accessed in a concurrent context.</p>
+<p>WiredTiger supports multi-threaded execution: application threads may call its APIs concurrently, and WiredTiger utilizes internal threads for operations such as checkpointing and eviction. This page describes the mechanisms WiredTiger defines to safely manage concurrent access to shared memory. The <a class="el" href="arch-concurrency.html#locking">Locking</a> and <a class="el" href="arch-concurrency.html#generations">Generations</a> sections cover mutual exclusion and shared-object lifecycle management. The <a class="el" href="arch-concurrency.html#lock-free">Lock-free synchronization primitives</a> section covers atomic operations and memory barriers used for synchronization without locks. The <a class="el" href="arch-concurrency.html#volatile">Volatile</a> section covers the use of the <code>volatile</code> qualifier and related macros to prevent the compiler from applying optimizations that are unsafe in a concurrent context.</p>
 <h1><a class="anchor" id="locking"></a>
 Locking</h1>
 <p>There are two types of locks in WiredTiger:</p><ul>
@@ -111,40 +108,31 @@ Lock usage</h2>
 Generations</h1>
 <p>Shared objects, including the page index, WT_REFs, etc. have their lifecycles managed using the WiredTiger generations system. In general, when a reader thread accesses an object that could be concurrently freed, it enters a "generation". After entering that generation it accesses the object. A generation is a monotonically increasing integer which denotes times at which a given object must exist.</p>
 <p>Writer threads are then able to replace that object but cannot free it until the reader thread has left or released the generation. Instead the writer thread adds the object to a "stash" and it marks the stashed object with the generation indicating the point at which it was added to the stash. When no reader in the system holds a generation which is older than or equal to the stashed object's generation it can be freed.</p>
-<h1><a class="anchor" id="atomics"></a>
-Atomics</h1>
-<p>As mentioned in <a class="el" href="portability.html">General information on portability</a> WiredTiger expects loads and stores of specific sizes to be atomic and prevent tearing. WiredTiger also relies on atomic RMW operations, these include:</p><ul>
-<li>Compare and Swap</li>
-<li>Fetch add / sub</li>
-<li>Add / sub fetch</li>
-</ul>
-<h1><a class="anchor" id="memory-barriers"></a>
-Memory Barriers</h1>
-<p>WiredTiger utilizes memory barriers in a number of places to manage CPU instruction reordering and compiler reordering. Specifically CPUs are allowed to reorder load and store instructions. If this occurs when two threads are reading or writing to the same shared memory locations it can result in those threads seeing what would otherwise be incorrect state.</p>
-<p>WiredTiger defines barriers by describing which kind of reordering they prevent, for example a LoadLoad barrier prevents load instructions before the barrier from being reordered with load instructions after the barrier. Using this definition we can define 4 types of reorderings, LoadLoad, StoreStore, LoadStore and StoreLoad. To simplify the barrier semantics further WiredTiger defines acquire and release barriers.</p>
-<h2><a class="anchor" id="acq-bar"></a>
-Acquire barrier</h2>
-<p>The acquire barrier prevents LoadLoad and LoadStore reorderings. It is accessible through two macros.</p>
-<p>Firstly <code>WT_ACQUIRE_BARRIER</code> which is a standalone barrier. This barrier enforces an ordering between all reads prior to the barrier, and all reads or writes following the barrier. Oftentimes this barrier is used to provide ordering between a single prior read and all subsequent read and writes, in which case <code>WT_ACQUIRE_READ_WITH_BARRIER</code> can be used. While <code>WT_ACQUIRE_READ_WITH_BARRIER</code> can be thought of as ordering a single read with all subsequent instructions, mechanically it is still a <code>WT_ACQUIRE_BARRIER</code> and has the same semantics. It is better to use <code>WT_ACQUIRE_READ</code> to order a single prior read, described below.</p>
-<h2><a class="anchor" id="rel-bar"></a>
-Release barrier</h2>
-<p>The release barrier prevents StoreStore and LoadStore reorderings. <code>WT_RELEASE_BARRIER</code> behaves similarly to <code>WT_ACQUIRE_BARRIER</code>, but orders all subsequent writes against all prior reads and writes. <code>WT_RELEASE_WRITE_WITH_BARRIER</code> has a similar intent to the <code>WT_ACQUIRE_READ_WITH_BARRIER</code>. It can be thought of as ordering a single write with respect to all prior reads and writes. However it is semantically the same as the <code>WT_RELEASE_BARRIER</code>. These barriers should be used as pairs. If one location requires an acquire barrier then there must be another location that requires a release barrier. It is better to use <code>WT_RELEASE_WRITE</code> to order a single write, described below.</p>
-<p>Previously WiredTiger defined a <code>WT_PUBLISH</code> macro which prevented StoreStore reordering, this macro has since been removed however the term publish still exists in the code base. The term publish is used to refer to writing a value to a shared memory location. It doesn't define any memory ordering semantics.</p>
-<h2><a class="anchor" id="full-bar"></a>
-Full barrier</h2>
-<p>The full barrier prevents all 4 described types of reorderings and is accessible via the <code>WT_FULL_BARRIER</code> macro. It is the only way to prevent StoreLoad reordering.</p>
-<h2><a class="anchor" id="com-bar"></a>
-Compiler barrier</h2>
-<p>The compiler barrier prevents compiler optimization and reordering across the compiler barrier. This barrier is accessed via the <code>WT_COMPILER_BARRIER</code>. It does not impact CPU reordering. Additionally all memory barriers described are also compiler barriers.</p>
-<h1><a class="anchor" id="marked-access"></a>
-Marked Access</h1>
-<p>Barriers are a heavy hammer for situations that only need to prevent reordering of instructions on one side of a load or store. To reduce the amount of reorderings prevented WiredTiger defines two marked access macros. These are loads and stores that prevent reordering from one direction across that load or store. The macro then achieve the intended semantics of <code>WT_ACQUIRE_READ_WITH_BARRIER</code> and <code>WT_RELEASE_WRITE_WITH_BARRIER</code> without added side effects.</p>
-<h2><a class="anchor" id="acq-marked"></a>
-Acquire</h2>
-<p><code>WT_ACQUIRE_READ</code>, this macro prevents loads and stores following the load from being reordered with it. Ensuring they happen after the marked load.</p>
-<h2><a class="anchor" id="rel-marked"></a>
-Release</h2>
-<p><code>The</code> WT_RELEASE_WRITE macro prevents loads and stores prior to the store from being reordered with it. Ensuring the store happens after the given loads and stores. As with the acquire and release barriers these marked access macros should be paired together to function correctly. </p>
+<h1><a class="anchor" id="lock-free"></a>
+Lock-free synchronization primitives</h1>
+<p>WiredTiger defines a set of APIs, such as atomic-marked accesses and standalone memory fences (memory barriers), and uses them in many places to ensure lock-free memory synchronization. Most of these interfaces are expected to behave exactly the same as their equivalents in the C standard library.</p>
+<p>For example:</p>
+<table class="doxtable">
+<tr>
+<th>WiredTiger API</th><th>C standard library equivalent </th></tr>
+<tr>
+<td><code>WT_ACQUIRE_BARRIER</code></td><td><code>atomic_thread_fence(memory_order_acquire)</code> </td></tr>
+<tr>
+<td><code>WT_COMPILER_BARRIER</code></td><td><code>atomic_signal_fence(memory_order_seq_cst)</code> </td></tr>
+<tr>
+<td><code>__wt_atomic_load_&lt;type&gt;_&lt;order&gt;</code></td><td><code>atomic_load_explicit(&lt;order&gt;)</code> </td></tr>
+<tr>
+<td><code>__wt_atomic_cas_&lt;type&gt;</code></td><td><code>atomic_compare_exchange_strong_explicit(memory_order_seq_cst)</code> </td></tr>
+<tr>
+<td><code>__wt_atomic_or_generic_relaxed</code></td><td><code>atomic_fetch_or_explicit(memory_order_relaxed)</code> </td></tr>
+</table>
+<p>Some WiredTiger interfaces do not explicitly mirror any API from the C standard library, but can be implemented through a combination of C-compatible API calls. There are only two types of such interfaces: <code>WT_[READ|WRITE]_ONCE</code> and <code>WT_[ACQUIRE_READ|RELEASE_WRITE]_WITH_BARRIER</code>.</p>
+<p><code>WT_[READ|WRITE]_ONCE</code> is effectively a relaxed atomic load or store, combined with a cast to <code>volatile</code> to prevent unsafe compiler optimizations. It is described in more detail earlier in <a class="el" href="arch-concurrency.html#volatile">Volatile</a>.</p>
+<p><code>WT_[ACQUIRE_READ|RELEASE_WRITE]_WITH_BARRIER</code> is a relaxed atomic load or store combined with an acquire or release barrier. However, note that these interfaces have been deprecated and should not be used in newly developed code.</p>
+<p>Given that all WiredTiger lock-free primitives behave in accordance with the C standard library primitives, any data races in WiredTiger constitute undefined behavior and must be avoided.</p>
+<h1><a class="anchor" id="volatile"></a>
+Volatile</h1>
+<p>WiredTiger utilizes volatile for one reason, managing compiler optimization. Leveraging the definitions from "Is Parallel Programming Hard, And, If So, What Can You Do About It?", Paul E. McKenney, WiredTiger utilizes volatile to prevent the following type of compiler optimizations: Load fusing, store fusing, invented loads, invented stores and code reordering. WiredTiger defines the <code>WT_[READ|WRITE]_ONCE</code> macros which, if used correctly, prevent the prescribed forms of compiler optimization. Additionally some variables in WiredTiger are defined with the volatile keyword if it is known that they will be frequently accessed in a concurrent context. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

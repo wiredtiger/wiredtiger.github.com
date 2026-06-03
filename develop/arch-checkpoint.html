@@ -154,22 +154,28 @@ Flushing the files to disk</h2>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Metadata checkpoint</h2>
 <p>A new entry into the metadata file is created for every data file checkpointed, including the history store. As such the metadata file is the last file to be checkpointed. As WiredTiger maintains two checkpoints, the location of the most recent checkpoint is written to the turtle file.</p>
-<p><a class="anchor" id="skipping-checkpoints"></a></p>
 <h1><a class="anchor" id="autotoc_md13"></a>
+Multi-threaded checkpoints</h1>
+<p>By default, WiredTiger checkpoints are single-threaded: they walk each B-tree one page at a time and reconcile dirty pages sequentially. Parallel checkpoints improve throughput by handing leaf pages off to a pool of worker threads that reconcile them concurrently, while the main checkpoint thread continues the tree walk and handles internal pages. Parallel checkpoints are enabled by setting the <code>checkpoint_threads</code> connection configuration option to a value greater than 1 when calling <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a>.</p>
+<p>The main checkpoint thread and the workers communicate through two queues: a work queue of pages to reconcile and a done queue of completed items. For each leaf page encountered during the B-tree walk, the main thread duplicates the walk position (giving the copy of its own hazard pointer), wraps it in a work item, and pushes it onto the work queue. Workers pick up items, reconcile the page, and push the result onto the done queue, posting a semaphore. Workers must return completed pages to the main thread via the done queue because hazard pointers cannot be transferred between sessions: a worker cannot release a hazard pointer that was acquired by the main checkpoint thread. The done queue also carries each worker's return code, allowing errors to propagate to the caller. A semaphore rather than a condition variable is used so that a post issued by a worker before the main thread calls wait is not lost.</p>
+<p>Internal pages are never handed to workers. Before checking whether an internal page is dirty, the main thread drains the done queue by waiting on the semaphore until every outstanding work item has completed. Only then does it reconcile the internal page, ensuring it can collect the correct on-disk address cookies of its children. The main thread releases each page's hazard pointer as it drains the done queue.</p>
+<p>Each worker uses its own session, since sessions are not thread-safe. Workers are identified by the session flags <code>WT_SESSION_CHECKPOINT</code> and <code>WT_SESSION_CHECKPOINT_WORKER</code>; the latter distinguishes them from the main checkpoint session. To produce a consistent checkpoint, each worker imports a private copy of the main checkpoint session's transaction snapshot before reconciling its first page. At the end of the checkpoint, the main thread commits each worker's transaction.</p>
+<p><a class="anchor" id="skipping-checkpoints"></a></p>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Skipping checkpoints</h1>
 <p>It is possible that a checkpoint will be skipped. A checkpoint will be skipped when:</p><ul>
 <li>No modifications to the database have been made since the last checkpoint.</li>
 <li>The last checkpoint timestamp is equal to the current stable timestamp.</li>
 <li>There is no available space at the end of the file. This logic can be overridden by forcing a checkpoint via configuration.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 Checkpoint generations</h1>
 <p>The checkpoint generation indicates which iteration of checkpoint a file has undergone, at the start of a checkpoint the generation is incremented. Then after processing any btree its <code>checkpoint_gen</code> is set to the latest checkpoint generation. Checkpoint generations impact visibility checks within WiredTiger, essentially if a btree is behind a checkpoint, i.e. its checkpoint generation is less than the current checkpoint generation, then the checkpoint transaction id and checkpoint timestamp are included in certain visibility checks. This prevents eviction from evicting updates from a given btree ahead of the checkpoint.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 Garbage collection</h1>
 <p>While processing a btree, checkpoint can mark pages as obsolete. Any page that has an aggregated stop time pair which is globally visible will no longer be required by any reader and can be marked as deleted. This occurs prior to the page being reconciled, allowing for the page to be removed during the reconciliation. However this does not mean that the deleted page is available for re-use as it may be referenced by older checkpoints, once the older checkpoint is deleted the page is free to be used. If the freed pages exist at the end of the file the file can be truncated. Otherwise compaction will need to be initiated to shrink the file, see: <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aafa7a12a4891a5bfdc98673a5b8f9c69" title="Compact a live row- or column-store btree.">WT_SESSION::compact</a>.</p>
 <p><a class="anchor" id="checkpoint-internal-callers"></a></p>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 Internal callers</h1>
 <p>WiredTiger may call checkpoint internally at any time. These can occur during:</p><ul>
 <li>Recovery</li>

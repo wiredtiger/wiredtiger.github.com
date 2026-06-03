@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['row_20store_20and_20column_20store_2163',['Row Store and Column Store',['../arch-row-column.html',1,'arch-toc-data-src']]],
-  ['rollback_20to_20stable_20_28rts_29_2164',['Rollback to Stable (RTS)',['../arch-rts.html',1,'arch-toc-fundamentals']]],
-  ['recovery_2165',['Recovery',['../arch-toc-recovery.html',1,'arch-index']]],
-  ['reference_20guide_2166',['Reference Guide',['../index.html',1,'']]],
-  ['read_2donly_20objects_2167',['Read-only objects',['../tune_read_only.html',1,'programming']]]
+  ['row_20store_20and_20column_20store_2235',['Row Store and Column Store',['../arch-row-column.html',1,'arch-toc-data-src']]],
+  ['rollback_20to_20stable_20_28rts_29_2236',['Rollback to Stable (RTS)',['../arch-rts.html',1,'arch-toc-fundamentals']]],
+  ['recovery_2237',['Recovery',['../arch-toc-recovery.html',1,'arch-index']]],
+  ['reference_20guide_2238',['Reference Guide',['../index.html',1,'']]],
+  ['read_2donly_20objects_2239',['Read-only objects',['../tune_read_only.html',1,'programming']]]
 ];

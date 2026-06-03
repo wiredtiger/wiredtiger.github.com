@@ -134,7 +134,6 @@ Configuring WiredTiger</h1>
 <p>The WiredTiger software supports some additional configuration options:</p>
 <dl class="section user"><dt><code>-DHAVE_ATTACH=1</code> </dt><dd>Configure WiredTiger to sleep and wait for a debugger to attach on failure. <b>DO NOT</b> configure this option in production environments.</dd></dl>
 <dl class="section user"><dt><code>-DHAVE_DIAGNOSTIC=1</code> </dt><dd>Configure WiredTiger to perform various run-time diagnostic tests (enabled by default for non Release build types). <b>DO NOT</b> configure this option in production environments.</dd></dl>
-<dl class="section user"><dt><code>-DNON_BARRIER_DIAGNOSTIC_YIELDS=1</code> </dt><dd>Configure WiredTiger to not use memory barriers when yielding threads for diagnostic purposes. Requires that HAVE_DIAGNOSTIC is also enabled. <b>DO NOT</b> configure this option in production environments.</dd></dl>
 <dl class="section user"><dt><code>-DENABLE_LZ4=1</code> </dt><dd>Configure WiredTiger for <a href="https://github.com/Cyan4973/lz4">LZ4</a> compression (enabled by default if the LZ4 library is present); see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
 <dl class="section user"><dt><code>-DENABLE_PYTHON=1</code> </dt><dd>Build the WiredTiger <a href="http://www.python.org">Python</a> API; requires <a href="http://swig.org">SWIG</a> (enabled by default if python is available).</dd></dl>
 <dl class="section user"><dt><code>-DENABLE_SNAPPY=1</code> </dt><dd>Configure WiredTiger for <a href="http://code.google.com/p/snappy/">snappy</a> compression (enabled by default if the SNAPPY library is present); see <a class="el" href="compression.html">Compressors</a> for more information.</dd></dl>
@@ -145,11 +144,11 @@ Configuring WiredTiger</h1>
 <dl class="section user"><dt><code>-DSPINLOCK_TYPE</code>[=pthread, pthread_adaptive, gcc]</dt><dd>Configure WiredTiger to use a specific mutex type for serialization; options are <code>pthread</code> (the default, which configures WiredTiger to use POSIX 1003.1c pthread mutexes), <code>pthread_adaptive</code> (which configures WiredTiger to use POSIX 1003.1c pthread mutexes configured to be adaptive (where that functionality is available), or <code>gcc</code> (which configures WiredTiger to use gcc-based spinlocks).</dd></dl>
 <h1><a class="anchor" id="posix_compiler"></a>
 Changing compiler or loader options</h1>
-<p>By default CMake will use your default system compiler (<code>cc</code>). If you want to use a specific toolchain you can pass a toolchain file. We have provided a toolchain file for both GCC (<code>cmake/toolchains/gcc.cmake</code>) and Clang (<code>cmake/toolchains/clang.cmake</code>). To use either toolchain you can pass the <code>-DCMAKE_TOOLCHAIN_FILE=</code> to the CMake configuration step. For example:</p>
-<p>For example, to explicitly specify the GCC toolchain:</p>
-<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/gcc.cmake ../.</div>
-</div><!-- fragment --><p>To explicitly specify the Clang toolchain:</p>
-<div class="fragment"><div class="line">cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/clang.cmake ../.</div>
+<p>By default CMake will use your default system compiler (<code>cc</code>). Select a specific compiler by setting the <code>CC</code> and <code>CXX</code> environment variables before invoking CMake.</p>
+<p>To explicitly specify GCC:</p>
+<div class="fragment"><div class="line">CC=gcc CXX=g++ cmake ../.</div>
+</div><!-- fragment --><p>To explicitly specify Clang:</p>
+<div class="fragment"><div class="line">CC=clang CXX=clang++ cmake ../.</div>
 </div><!-- fragment --><p>By default, WiredTiger builds with the <code>-O3</code> compiler optimization flag unless manually specified through the <code>-DCC_OPTIMIZE_LEVEL</code> configuration option. For example, to specify a different level of optimization:</p>
 <div class="fragment"><div class="line">cmake -DCC_OPTIMIZE_LEVEL=-O1 ../.</div>
 </div><!-- fragment --><h1><a class="anchor" id="posix_ctest"></a>

@@ -30,15 +30,6 @@ var arch_toc_mem_disk =
       [ "Page Types", "arch-data-file.html#data_file_page_types", null ],
       [ "Data File Functions", "arch-data-file.html#data_file_functions", null ]
     ] ],
-    [ "Storage Source", "arch-cloud-storage-extension.html", [
-      [ "Cloud Storage Source Implementation", "arch-cloud-storage-extension.html#extension_storage_source", null ],
-      [ "Connection class", "arch-cloud-storage-extension.html#extension_connection", null ],
-      [ "Cloud File System Interface", "arch-cloud-storage-extension.html#extension_cloud_file_system", null ],
-      [ "Cloud File Handle Interface", "arch-cloud-storage-extension.html#extension_cloud_file_handle", null ],
-      [ "Messaging and Statistics", "arch-cloud-storage-extension.html#extension_log_stat", null ],
-      [ "S3 Storage source", "arch-cloud-storage-extension.html#s3_store", null ],
-      [ "Azure and GCP Storage Source", "arch-cloud-storage-extension.html#azure_gcp_store", null ]
-    ] ],
     [ "Pre-fetch", "arch-prefetch.html", [
       [ "What is pre-fetching? When is pre-fetching useful?", "arch-prefetch.html#prefetch_overview", null ],
       [ "Pre-fetch Algorithm", "arch-prefetch.html#prefetch_algorithm", [

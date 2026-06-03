@@ -122,6 +122,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a2e97ea38029d156f3ead1cea90652c47"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a2e97ea38029d156f3ead1cea90652c47">fs_size</a> )(<a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *file_system, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *name, wt_off_t *sizep)</td></tr>
 <tr class="memdesc:a2e97ea38029d156f3ead1cea90652c47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the size of a named file system object.  <a href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a2e97ea38029d156f3ead1cea90652c47">More...</a><br /></td></tr>
 <tr class="separator:a2e97ea38029d156f3ead1cea90652c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a09b343a93b62508a9af708ad188801"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a3a09b343a93b62508a9af708ad188801">fs_free_space</a> )(<a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *file_system, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *path, wt_off_t *freep)</td></tr>
+<tr class="memdesc:a3a09b343a93b62508a9af708ad188801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the free disk space for the filesystem.  <a href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#a3a09b343a93b62508a9af708ad188801">More...</a><br /></td></tr>
+<tr class="separator:a3a09b343a93b62508a9af708ad188801"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff641cfd86a92a170d1bb17eb33c6cf3"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3">terminate</a> )(<a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *file_system, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session)</td></tr>
 <tr class="memdesc:aff641cfd86a92a170d1bb17eb33c6cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A callback performed when the file system is closed and will no longer be accessed by the WiredTiger database.  <a href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html#aff641cfd86a92a170d1bb17eb33c6cf3">More...</a><br /></td></tr>
 <tr class="separator:aff641cfd86a92a170d1bb17eb33c6cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -231,6 +234,32 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ex_file_system_8c-example.html#a19">ex_file_system.c</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a3a09b343a93b62508a9af708ad188801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a09b343a93b62508a9af708ad188801">&#9670;&nbsp;</a></span>fs_free_space</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* WT_FILE_SYSTEM::fs_free_space) (<a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html">WT_FILE_SYSTEM</a> *file_system, <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html">WT_SESSION</a> *session, const char *path, wt_off_t *freep)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the free disk space for the filesystem. </p>
+<dl class="section return"><dt>Returns</dt><dd>zero on success and a non-zero error code on failure. See <a class="el" href="error_handling.html">Error handling</a> for details.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">file_system</td><td>the <a class="el" href="struct_w_t___f_i_l_e___s_y_s_t_e_m.html" title="The interface implemented by applications to provide a custom file system implementation.">WT_FILE_SYSTEM</a> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">session</td><td>the current WiredTiger session </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">path</td><td>the path to check free space for </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">freep</td><td>the free space in bytes </td></tr>
+  </table>
+  </dd>
 </dl>
 
 </div>
