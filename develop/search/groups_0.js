@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['wiredtiger_20api_2143',['WiredTiger API',['../group__wt.html',1,'']]],
-  ['wiredtiger_20extension_20api_2144',['WiredTiger Extension API',['../group__wt__ext.html',1,'']]]
+  ['wiredtiger_20api_2146',['WiredTiger API',['../group__wt.html',1,'']]],
+  ['wiredtiger_20extension_20api_2147',['WiredTiger Extension API',['../group__wt__ext.html',1,'']]]
 ];

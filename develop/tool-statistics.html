@@ -145,8 +145,8 @@ A complete example</h1>
  $ ./configure &amp;&amp; make -j 12
  $ echo "Run an application that will generate statistics"
  $ mkdir WT_TEST &amp;&amp; ./bench/wtperf/wtperf \
-    -O bench/wtperf/runners/update-btree.wtperf \
-    -o "conn_config=\"cache_size=1G,statistics=[fast,clear],statistics_log=(wait=30)\""
+-O bench/wtperf/runners/update-btree.wtperf \
+-o "conn_config=\"cache_size=1G,statistics=[fast,clear],statistics_log=(wait=30)\""
  $ echo "Now generate a graph from the statistics"
  $ python ./tools/wtstats.py WT_TEST/WiredTigerStat.*
 </pre><p>The above steps will have generated a file called <code>wtstats.html</code> open this file in a web browser and review the statistics. The page you see should look something like:</p>
