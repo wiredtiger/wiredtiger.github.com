@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"overview.html#nosql":[0,0,1],
+"overview.html#quality":[0,0,0],
 "packing.html":[0,4,3,11],
 "packing.html#config_examples":[0,4,3,11,0],
 "pages.html":[],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "timestamp_global_api.html#timestamp_global_set_api_oldest_timestamp":[0,4,11,0,1],
 "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp":[0,4,11,0,2],
 "timestamp_global_api.html#timestamp_global_setting_timestamps":[0,4,11,0],
-"timestamp_misc.html":[0,4,15],
-"timestamp_misc.html#timestamp_misc_rts":[0,4,15,1],
-"timestamp_misc.html#timestamp_read_roundup":[0,4,15,0]
+"timestamp_misc.html":[0,4,15]
 };

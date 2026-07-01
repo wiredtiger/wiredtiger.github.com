@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['backup_2159',['Backup',['../arch-backup.html',1,'arch-toc-on-disk'],['../backup.html',1,'programming']]],
-  ['block_20manager_2160',['Block Manager',['../arch-block.html',1,'arch-toc-mem-disk']]],
-  ['b_2dtrees_2161',['B-Trees',['../arch-btree.html',1,'arch-toc-data-src']]],
-  ['building_20and_20installing_20wiredtiger_20on_20posix_20_28linux_2c_20_2absd_2c_20os_20x_29_3a_2162',['Building and installing WiredTiger on POSIX (Linux, *BSD, OS X):',['../build-posix.html',1,'index']]],
-  ['building_20and_20installing_20wiredtiger_20on_20windows_2163',['Building and installing WiredTiger on Windows',['../build-windows.html',1,'index']]],
-  ['bulk_2dload_2164',['Bulk-load',['../tune_bulk_load.html',1,'programming']]]
+  ['backup_2161',['Backup',['../arch-backup.html',1,'arch-toc-on-disk'],['../backup.html',1,'programming']]],
+  ['block_20manager_2162',['Block Manager',['../arch-block.html',1,'arch-toc-mem-disk']]],
+  ['b_2dtrees_2163',['B-Trees',['../arch-btree.html',1,'arch-toc-data-src']]],
+  ['building_20and_20installing_20wiredtiger_20on_20posix_20_28linux_2c_20_2absd_2c_20os_20x_29_3a_2164',['Building and installing WiredTiger on POSIX (Linux, *BSD, OS X):',['../build-posix.html',1,'index']]],
+  ['building_20and_20installing_20wiredtiger_20on_20windows_2165',['Building and installing WiredTiger on Windows',['../build-windows.html',1,'index']]],
+  ['bulk_2dload_2166',['Bulk-load',['../tune_bulk_load.html',1,'programming']]]
 ];

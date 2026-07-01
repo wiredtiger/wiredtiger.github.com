@@ -1,16 +1,16 @@
 var searchData=
 [
-  ['data_20file_20format_2192',['Data File Format',['../arch-data-file.html',1,'arch-toc-mem-disk']]],
-  ['data_20handles_2193',['Data Handles',['../arch-dhandle.html',1,'arch-toc-data-src']]],
-  ['deleted_20pages_20and_20fast_2dtruncate_2194',['Deleted Pages and Fast-Truncate',['../arch-fast-truncate.html',1,'arch-toc-fundamentals']]],
-  ['data_20organization_2195',['Data Organization',['../arch-toc-data-org.html',1,'arch-index']]],
-  ['data_20sources_2196',['Data Sources',['../arch-toc-data-src.html',1,'arch-index']]],
-  ['disaggregated_20storage_2197',['Disaggregated Storage',['../arch-toc-disaggregated-storage.html',1,'arch-index']]],
-  ['data_20sources_2198',['Data Sources',['../data_sources.html',1,'cursors']]],
-  ['database_20configuration_2199',['Database Configuration',['../database_config.html',1,'admin']]],
-  ['debugging_2200',['Debugging',['../debugging.html',1,'programming']]],
-  ['dump_20formats_2201',['Dump Formats',['../dump_formats.html',1,'command_line']]],
-  ['durability_20overview_2202',['Durability overview',['../durability_overview.html',1,'programming']]],
-  ['database_20home_20directory_2203',['Database Home Directory',['../home.html',1,'admin']]],
-  ['database_20read_2donly_20mode_2204',['Database read-only mode',['../readonly.html',1,'programming']]]
+  ['data_20file_20format_2194',['Data File Format',['../arch-data-file.html',1,'arch-toc-mem-disk']]],
+  ['data_20handles_2195',['Data Handles',['../arch-dhandle.html',1,'arch-toc-data-src']]],
+  ['deleted_20pages_20and_20fast_2dtruncate_2196',['Deleted Pages and Fast-Truncate',['../arch-fast-truncate.html',1,'arch-toc-fundamentals']]],
+  ['data_20organization_2197',['Data Organization',['../arch-toc-data-org.html',1,'arch-index']]],
+  ['data_20sources_2198',['Data Sources',['../arch-toc-data-src.html',1,'arch-index']]],
+  ['disaggregated_20storage_2199',['Disaggregated Storage',['../arch-toc-disaggregated-storage.html',1,'arch-index']]],
+  ['data_20sources_2200',['Data Sources',['../data_sources.html',1,'cursors']]],
+  ['database_20configuration_2201',['Database Configuration',['../database_config.html',1,'admin']]],
+  ['debugging_2202',['Debugging',['../debugging.html',1,'programming']]],
+  ['dump_20formats_2203',['Dump Formats',['../dump_formats.html',1,'command_line']]],
+  ['durability_20overview_2204',['Durability overview',['../durability_overview.html',1,'programming']]],
+  ['database_20home_20directory_2205',['Database Home Directory',['../home.html',1,'admin']]],
+  ['database_20read_2donly_20mode_2206',['Database read-only mode',['../readonly.html',1,'programming']]]
 ];
