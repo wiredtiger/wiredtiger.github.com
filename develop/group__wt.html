@@ -241,6 +241,9 @@ Support functions</h2></td></tr>
 <tr class="memitem:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a> (int *majorp, int *minorp, int *patchp)</td></tr>
 <tr class="memdesc:ga1b29826f4b418891d67e86850f7cbcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get version information.  <a href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">More...</a><br /></td></tr>
 <tr class="separator:ga1b29826f4b418891d67e86850f7cbcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2e40b12512eafbe8484e322ecc45d98"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf2e40b12512eafbe8484e322ecc45d98">wiredtiger_repair</a> (<a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *connection, const char *config)</td></tr>
+<tr class="memdesc:gaf2e40b12512eafbe8484e322ecc45d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">repair entry point.  <a href="group__wt.html#gaf2e40b12512eafbe8484e322ecc45d98">More...</a><br /></td></tr>
+<tr class="separator:gaf2e40b12512eafbe8484e322ecc45d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Error returns</h2></td></tr>
@@ -1713,6 +1716,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga89e79b225e2111da42464c52667fd96c">WT_STAT_CONN_EVICTION_PAGES_QUEUED_URGENT_HS_DIRTY</a></td></tr>
 <tr class="memdesc:ga89e79b225e2111da42464c52667fd96c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages queued for urgent eviction from history store due to high dirty content <br /></td></tr>
 <tr class="separator:ga89e79b225e2111da42464c52667fd96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b00c2d4370db6216a7aaa7b7a6101d3"><td class="memItemLeft" align="right" valign="top"><a id="ga9b00c2d4370db6216a7aaa7b7a6101d3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9b00c2d4370db6216a7aaa7b7a6101d3">WT_STAT_CONN_CACHE_READ</a></td></tr>
+<tr class="memdesc:ga9b00c2d4370db6216a7aaa7b7a6101d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache <br /></td></tr>
+<tr class="separator:ga9b00c2d4370db6216a7aaa7b7a6101d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6c8dd12c4309ce389014a84cd1105f4e"><td class="memItemLeft" align="right" valign="top"><a id="ga6c8dd12c4309ce389014a84cd1105f4e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6c8dd12c4309ce389014a84cd1105f4e">WT_STAT_CONN_CACHE_READ_DELETED</a></td></tr>
 <tr class="memdesc:ga6c8dd12c4309ce389014a84cd1105f4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache after truncate <br /></td></tr>
@@ -1729,6 +1736,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga09819627d7f067ec06aceac31f6dd11c">WT_STAT_CONN_EVICTION_CLEAR_ORDINARY</a></td></tr>
 <tr class="memdesc:ga09819627d7f067ec06aceac31f6dd11c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages removed from the ordinary queue to be queued for urgent eviction <br /></td></tr>
 <tr class="separator:ga09819627d7f067ec06aceac31f6dd11c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac6812aa29e782b53d31cb94d6bb39ae2"><td class="memItemLeft" align="right" valign="top"><a id="gac6812aa29e782b53d31cb94d6bb39ae2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac6812aa29e782b53d31cb94d6bb39ae2">WT_STAT_CONN_CACHE_PAGES_REQUESTED</a></td></tr>
+<tr class="memdesc:gac6812aa29e782b53d31cb94d6bb39ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages requested from the cache <br /></td></tr>
+<tr class="separator:gac6812aa29e782b53d31cb94d6bb39ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga46f411e7927f6a927b419bc7af877d11"><td class="memItemLeft" align="right" valign="top"><a id="ga46f411e7927f6a927b419bc7af877d11"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga46f411e7927f6a927b419bc7af877d11">WT_STAT_CONN_CACHE_PAGES_PREFETCH</a></td></tr>
 <tr class="memdesc:ga46f411e7927f6a927b419bc7af877d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages requested from the cache due to pre-fetch <br /></td></tr>
@@ -1825,6 +1836,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga872aeda18a5af08521f615aedd8a6dfc">WT_STAT_CONN_CACHE_REVERSE_SPLITS_SKIPPED_VLCS</a></td></tr>
 <tr class="memdesc:ga872aeda18a5af08521f615aedd8a6dfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: reverse splits skipped because of VLCS namespace gap restrictions <br /></td></tr>
 <tr class="separator:ga872aeda18a5af08521f615aedd8a6dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacff8c1fe7f3807f315006b48e7794b78"><td class="memItemLeft" align="right" valign="top"><a id="gacff8c1fe7f3807f315006b48e7794b78"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacff8c1fe7f3807f315006b48e7794b78">WT_STAT_CONN_CACHE_SHARED_DSK_LOCK_CONTENTION</a></td></tr>
+<tr class="memdesc:gacff8c1fe7f3807f315006b48e7794b78"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: shared disk bucket lock contention count <br /></td></tr>
+<tr class="separator:gacff8c1fe7f3807f315006b48e7794b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga887e25378cc9c50dce19dc77b02d99d5"><td class="memItemLeft" align="right" valign="top"><a id="ga887e25378cc9c50dce19dc77b02d99d5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga887e25378cc9c50dce19dc77b02d99d5">WT_STAT_CONN_CACHE_SHARED_DSK_BYTES_DUPLICATE</a></td></tr>
 <tr class="memdesc:ga887e25378cc9c50dce19dc77b02d99d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: shared disk bytes saved by sharing duplicate disk images <br /></td></tr>
@@ -2837,6 +2852,22 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0990f208a207e694040f7532b0e8aa76">WT_STAT_CONN_LAYERED_CURS_UPDATE</a></td></tr>
 <tr class="memdesc:ga0990f208a207e694040f7532b0e8aa76"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor update operations <br /></td></tr>
 <tr class="separator:ga0990f208a207e694040f7532b0e8aa76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe64d298779348ccf4063e05f29ceb61"><td class="memItemLeft" align="right" valign="top"><a id="gafe64d298779348ccf4063e05f29ceb61"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafe64d298779348ccf4063e05f29ceb61">WT_STAT_CONN_LAYERED_CURS_STABLE_VALUE_TOMBSTONE_PREFIX</a></td></tr>
+<tr class="memdesc:gafe64d298779348ccf4063e05f29ceb61"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table stable values beginning with the tombstone byte sequence and ending with a non-tombstone byte <br /></td></tr>
+<tr class="separator:gafe64d298779348ccf4063e05f29ceb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6937e6ed4d73b0c20b91781c22960001"><td class="memItemLeft" align="right" valign="top"><a id="ga6937e6ed4d73b0c20b91781c22960001"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6937e6ed4d73b0c20b91781c22960001">WT_STAT_CONN_LAYERED_CURS_STABLE_VALUE_TOMBSTONE_SUFFIX</a></td></tr>
+<tr class="memdesc:ga6937e6ed4d73b0c20b91781c22960001"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table stable values beginning with the tombstone byte sequence and ending with a tombstone byte <br /></td></tr>
+<tr class="separator:ga6937e6ed4d73b0c20b91781c22960001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec88bf0146fc51830f988149fd46e54e"><td class="memItemLeft" align="right" valign="top"><a id="gaec88bf0146fc51830f988149fd46e54e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaec88bf0146fc51830f988149fd46e54e">WT_STAT_CONN_LAYERED_CURS_STABLE_VALUE_TOMBSTONE</a></td></tr>
+<tr class="memdesc:gaec88bf0146fc51830f988149fd46e54e"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table stable values equal to the tombstone byte sequence <br /></td></tr>
+<tr class="separator:gaec88bf0146fc51830f988149fd46e54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6e4b8fa9a73c43272fdee44c66d5df6"><td class="memItemLeft" align="right" valign="top"><a id="gaf6e4b8fa9a73c43272fdee44c66d5df6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf6e4b8fa9a73c43272fdee44c66d5df6">WT_STAT_CONN_LAYERED_CURS_STABLE_VALUE_TOMBSTONE_X3</a></td></tr>
+<tr class="memdesc:gaf6e4b8fa9a73c43272fdee44c66d5df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table stable values equal to three tombstone bytes <br /></td></tr>
+<tr class="separator:gaf6e4b8fa9a73c43272fdee44c66d5df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga45430530fac5ebdf7313cfaa0e514b1e"><td class="memItemLeft" align="right" valign="top"><a id="ga45430530fac5ebdf7313cfaa0e514b1e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga45430530fac5ebdf7313cfaa0e514b1e">WT_STAT_CONN_LAYERED_TABLE_MANAGER_CHECKPOINTS</a></td></tr>
 <tr class="memdesc:ga45430530fac5ebdf7313cfaa0e514b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: checkpoints performed on this table by the layered table manager <br /></td></tr>
@@ -5098,6 +5129,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8ea3bd7876566dafd782a981853b5147">WT_STAT_DSRC_CACHE_EVICTION_AHEAD_OF_LAST_MATERIALIZED_LSN</a></td></tr>
 <tr class="memdesc:ga8ea3bd7876566dafd782a981853b5147"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages evicted ahead of the page materialization frontier <br /></td></tr>
 <tr class="separator:ga8ea3bd7876566dafd782a981853b5147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga42c0304e959ce5786e8d4f6787465a08"><td class="memItemLeft" align="right" valign="top"><a id="ga42c0304e959ce5786e8d4f6787465a08"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga42c0304e959ce5786e8d4f6787465a08">WT_STAT_DSRC_CACHE_READ</a></td></tr>
+<tr class="memdesc:ga42c0304e959ce5786e8d4f6787465a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache <br /></td></tr>
+<tr class="separator:ga42c0304e959ce5786e8d4f6787465a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4ed3e961b29792b394e782b502f81e7c"><td class="memItemLeft" align="right" valign="top"><a id="ga4ed3e961b29792b394e782b502f81e7c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4ed3e961b29792b394e782b502f81e7c">WT_STAT_DSRC_CACHE_READ_DELETED</a></td></tr>
 <tr class="memdesc:ga4ed3e961b29792b394e782b502f81e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache after truncate <br /></td></tr>
@@ -5110,6 +5145,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3c245ea524c5edfb22f3f11edb5a0375">WT_STAT_DSRC_CACHE_READ_CHECKPOINT</a></td></tr>
 <tr class="memdesc:ga3c245ea524c5edfb22f3f11edb5a0375"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages read into cache by checkpoint <br /></td></tr>
 <tr class="separator:ga3c245ea524c5edfb22f3f11edb5a0375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52a8e522caf9ce090d9a8b2708ff1d92"><td class="memItemLeft" align="right" valign="top"><a id="ga52a8e522caf9ce090d9a8b2708ff1d92"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga52a8e522caf9ce090d9a8b2708ff1d92">WT_STAT_DSRC_CACHE_PAGES_REQUESTED</a></td></tr>
+<tr class="memdesc:ga52a8e522caf9ce090d9a8b2708ff1d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages requested from the cache <br /></td></tr>
+<tr class="separator:ga52a8e522caf9ce090d9a8b2708ff1d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga87424211f80057994959c7535ad93400"><td class="memItemLeft" align="right" valign="top"><a id="ga87424211f80057994959c7535ad93400"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga87424211f80057994959c7535ad93400">WT_STAT_DSRC_CACHE_PAGES_PREFETCH</a></td></tr>
 <tr class="memdesc:ga87424211f80057994959c7535ad93400"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages requested from the cache due to pre-fetch <br /></td></tr>
@@ -5766,6 +5805,22 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga93525737a32097c39deb63600b1e5663">WT_STAT_DSRC_LAYERED_CURS_UPDATE</a></td></tr>
 <tr class="memdesc:ga93525737a32097c39deb63600b1e5663"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor update operations <br /></td></tr>
 <tr class="separator:ga93525737a32097c39deb63600b1e5663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga409a280923a416e4002654669a03a68f"><td class="memItemLeft" align="right" valign="top"><a id="ga409a280923a416e4002654669a03a68f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga409a280923a416e4002654669a03a68f">WT_STAT_DSRC_LAYERED_CURS_STABLE_VALUE_TOMBSTONE_PREFIX</a></td></tr>
+<tr class="memdesc:ga409a280923a416e4002654669a03a68f"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table stable values beginning with the tombstone byte sequence and ending with a non-tombstone byte <br /></td></tr>
+<tr class="separator:ga409a280923a416e4002654669a03a68f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabb104f095cb83380eb3261164ca57499"><td class="memItemLeft" align="right" valign="top"><a id="gabb104f095cb83380eb3261164ca57499"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabb104f095cb83380eb3261164ca57499">WT_STAT_DSRC_LAYERED_CURS_STABLE_VALUE_TOMBSTONE_SUFFIX</a></td></tr>
+<tr class="memdesc:gabb104f095cb83380eb3261164ca57499"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table stable values beginning with the tombstone byte sequence and ending with a tombstone byte <br /></td></tr>
+<tr class="separator:gabb104f095cb83380eb3261164ca57499"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafd7101c902fc06c6235cf76347b341a1"><td class="memItemLeft" align="right" valign="top"><a id="gafd7101c902fc06c6235cf76347b341a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafd7101c902fc06c6235cf76347b341a1">WT_STAT_DSRC_LAYERED_CURS_STABLE_VALUE_TOMBSTONE</a></td></tr>
+<tr class="memdesc:gafd7101c902fc06c6235cf76347b341a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table stable values equal to the tombstone byte sequence <br /></td></tr>
+<tr class="separator:gafd7101c902fc06c6235cf76347b341a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab5c63896e9e08d7d77c32ecd1a533f96"><td class="memItemLeft" align="right" valign="top"><a id="gab5c63896e9e08d7d77c32ecd1a533f96"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab5c63896e9e08d7d77c32ecd1a533f96">WT_STAT_DSRC_LAYERED_CURS_STABLE_VALUE_TOMBSTONE_X3</a></td></tr>
+<tr class="memdesc:gab5c63896e9e08d7d77c32ecd1a533f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table stable values equal to three tombstone bytes <br /></td></tr>
+<tr class="separator:gab5c63896e9e08d7d77c32ecd1a533f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9fbaaecd345edede4365821a334e9194"><td class="memItemLeft" align="right" valign="top"><a id="ga9fbaaecd345edede4365821a334e9194"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9fbaaecd345edede4365821a334e9194">WT_STAT_DSRC_LAYERED_TABLE_MANAGER_CHECKPOINTS</a></td></tr>
 <tr class="memdesc:ga9fbaaecd345edede4365821a334e9194"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: checkpoints performed on this table by the layered table manager <br /></td></tr>
@@ -7900,6 +7955,45 @@ Additionally, if files named <code>WiredTiger.config</code> or <code>WiredTiger.
 
 </div>
 </div>
+<a id="gaf2e40b12512eafbe8484e322ecc45d98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf2e40b12512eafbe8484e322ecc45d98">&#9670;&nbsp;</a></span>wiredtiger_repair()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* wiredtiger_repair </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html">WT_CONNECTION</a> *&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>repair entry point. </p>
+<p>For the config string definition, see <code>conn/api_repair.c</code> for more details. This function is not thread-safe and should not be called concurrently on the same connection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>the connection on which to perform the work </td></tr>
+    <tr><td class="paramname">config</td><td>the configuration string (must be non-NULL and non-empty) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a library-owned diagnostic string (never NULL; do not free); valid until the next wiredtiger_repair call on the same connection (not thread-safe) </dd></dl>
+
+</div>
+</div>
 <a id="gae8bf720ddb4a7a7390b70424594c40fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gae8bf720ddb4a7a7390b70424594c40fd">&#9670;&nbsp;</a></span>wiredtiger_strerror()</h2>
 
@@ -8443,20 +8537,20 @@ Packing Examples</h1>
 <div class="ttc" id="agroup__wt_html_gae8bf720ddb4a7a7390b70424594c40fd"><div class="ttname"><a href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a></div><div class="ttdeci">const char * wiredtiger_strerror(int error)</div><div class="ttdoc">Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...</div></div>
 <div class="ttc" id="agroup__wt_html_gacb2cb3b5e55a85a481a3175f37de3a29"><div class="ttname"><a href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">wiredtiger_calc_modify</a></div><div class="ttdeci">int wiredtiger_calc_modify(WT_SESSION *session, const WT_ITEM *oldv, const WT_ITEM *newv, size_t maxdiff, WT_MODIFY *entries, int *nentriesp)</div><div class="ttdoc">Calculate a set of WT_MODIFY operations to represent an update.</div></div>
 <div class="ttc" id="agroup__wt_html_abd8b1299dfb5c54dc049fa42a4680b55"><div class="ttname"><a href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">WT_ITEM::size</a></div><div class="ttdeci">size_t size</div><div class="ttdoc">The number of bytes in the data item.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:125</div></div>
-<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4197</div></div>
+<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4198</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html_a44eea5e27a4da10006ab444ee7cf00f3"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">WT_CONFIG_PARSER::close</a></div><div class="ttdeci">int close(WT_CONFIG_PARSER *config_parser)</div><div class="ttdoc">Close the configuration scanner releasing any resources.</div></div>
 <div class="ttc" id="agroup__wt_html_ga7cdc8c688f2c15303188ed6999dcc1b4"><div class="ttname"><a href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a></div><div class="ttdeci">int wiredtiger_struct_unpack(WT_SESSION *session, const void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Unpack a structure from a buffer.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___m_o_d_i_f_y"><div class="ttname"><a href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a></div><div class="ttdoc">A set of modifications for a value, including a pointer to new data and a length, plus a target offse...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:149</div></div>
 <div class="ttc" id="agroup__wt_html_ga1b29826f4b418891d67e86850f7cbcf4"><div class="ttname"><a href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a></div><div class="ttdeci">const char * wiredtiger_version(int *majorp, int *minorp, int *patchp)</div><div class="ttdoc">Get version information.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___i_t_e_m"><div class="ttname"><a href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></div><div class="ttdoc">A raw item of data to be managed, including a pointer to the data and a length.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:108</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4137</div></div>
-<div class="ttc" id="agroup__wt_html_ga483078a911ef0dac0d42e71db4e9c054"><div class="ttname"><a href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a></div><div class="ttdeci">uint32_t(*)(uint32_t seed, const void *, size_t) wiredtiger_crc32c_with_seed_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4215</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4138</div></div>
+<div class="ttc" id="agroup__wt_html_ga483078a911ef0dac0d42e71db4e9c054"><div class="ttname"><a href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a></div><div class="ttdeci">uint32_t(*)(uint32_t seed, const void *, size_t) wiredtiger_crc32c_with_seed_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4216</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="agroup__wt_html_ga512297da65ccc30ac91bf6adf95f043f"><div class="ttname"><a href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a></div><div class="ttdeci">int wiredtiger_config_parser_open(WT_SESSION *session, const char *config, size_t len, WT_CONFIG_PARSER **config_parserp)</div><div class="ttdoc">Create a handle that can be used to parse or create configuration strings compatible with the WiredTi...</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
 <div class="ttc" id="agroup__wt_html_ga156e7993d370495e1e52c29b2bb6b7d4"><div class="ttname"><a href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a></div><div class="ttdeci">int wiredtiger_struct_size(WT_SESSION *session, size_t *lenp, const char *format,...)</div><div class="ttdoc">Calculate the size required to pack a structure.</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4005</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4006</div></div>
 <div class="ttc" id="agroup__wt_html_gab3d8a22e243360ece67baf33926d80fa"><div class="ttname"><a href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a></div><div class="ttdeci">int wiredtiger_struct_pack(WT_SESSION *session, void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Pack a structure into a buffer.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
