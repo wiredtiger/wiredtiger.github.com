@@ -12,6 +12,13 @@ var arch_toc_disaggregated_storage =
       [ "Reconstruction on read", "arch-page-delta.html#pd_reconstruction", null ],
       [ "Tuning", "arch-page-delta.html#pd_tuning", null ]
     ] ],
+    [ "Cross-Checkpoint Caching", "arch-disagg-cross-checkpoint-caching.html", [
+      [ "Key files", "arch-disagg-cross-checkpoint-caching.html#ccc_key_files", null ],
+      [ "Lifecycle of the cache", "arch-disagg-cross-checkpoint-caching.html#ccc_lifecycle", null ],
+      [ "Cache Operation Implementations", "arch-disagg-cross-checkpoint-caching.html#ccc_ops", null ],
+      [ "Data structures", "arch-disagg-cross-checkpoint-caching.html#ccc_data_structures", null ],
+      [ "State machine", "arch-disagg-cross-checkpoint-caching.html#ccc_states", null ]
+    ] ],
     [ "Layered Tables", "arch-disagg-layered.html", [
       [ "Shared vs local tables", "arch-disagg-layered.html#shared-tables", null ],
       [ "High-level architecture", "arch-disagg-layered.html#layered-arch", null ],
