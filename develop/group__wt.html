@@ -335,6 +335,9 @@ Sub-level error returns</h2></td></tr>
 <tr class="memitem:ga4d30995ef44f93d9a0d437acfb3e4e62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4d30995ef44f93d9a0d437acfb3e4e62">WT_STEP_DOWN</a></td></tr>
 <tr class="memdesc:ga4d30995ef44f93d9a0d437acfb3e4e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write transaction straddled the step-down timestamp setting boundary.  <a href="group__wt.html#ga4d30995ef44f93d9a0d437acfb3e4e62">More...</a><br /></td></tr>
 <tr class="separator:ga4d30995ef44f93d9a0d437acfb3e4e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd69662309d987e3736c44ac9141524a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadd69662309d987e3736c44ac9141524a">WT_TXN_TOO_LARGE_FOR_CACHE</a></td></tr>
+<tr class="memdesc:gadd69662309d987e3736c44ac9141524a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transaction dirty content alone exceeds the eviction updates or dirty trigger.  <a href="group__wt.html#gadd69662309d987e3736c44ac9141524a">More...</a><br /></td></tr>
+<tr class="separator:gadd69662309d987e3736c44ac9141524a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Incremental backup types</h2></td></tr>
@@ -867,6 +870,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4586970530f9ebd44df04c8874902151">WT_STAT_CONN_BLOCK_FIRST_SRCH_WALK_TIME</a></td></tr>
 <tr class="memdesc:ga4586970530f9ebd44df04c8874902151"><td class="mdescLeft">&#160;</td><td class="mdescRight">block-manager: time spent(usecs) on the most recent linear walk of extents during first-fit allocation <br /></td></tr>
 <tr class="separator:ga4586970530f9ebd44df04c8874902151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81aea778e07cf51cc41bb71782a8d2b6"><td class="memItemLeft" align="right" valign="top"><a id="ga81aea778e07cf51cc41bb71782a8d2b6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga81aea778e07cf51cc41bb71782a8d2b6">WT_STAT_CONN_EVICTION_APP_BOUNDED_WAIT_EXCEEDED</a></td></tr>
+<tr class="memdesc:ga81aea778e07cf51cc41bb71782a8d2b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application eviction assists stopped when the bounded wait was exhausted <br /></td></tr>
+<tr class="separator:ga81aea778e07cf51cc41bb71782a8d2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga37ee83bb6e22241433bbb89355e6b5a7"><td class="memItemLeft" align="right" valign="top"><a id="ga37ee83bb6e22241433bbb89355e6b5a7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga37ee83bb6e22241433bbb89355e6b5a7">WT_STAT_CONN_EVICTION_INTERUPTED_BY_APP</a></td></tr>
 <tr class="memdesc:ga37ee83bb6e22241433bbb89355e6b5a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: application requested eviction interrupt <br /></td></tr>
@@ -951,6 +958,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1d3fe9c675cec7e6aed401db2a1266a3">WT_STAT_CONN_CACHE_BYTES_OTHER</a></td></tr>
 <tr class="memdesc:ga1d3fe9c675cec7e6aed401db2a1266a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: bytes not belonging to page images in the cache <br /></td></tr>
 <tr class="separator:ga1d3fe9c675cec7e6aed401db2a1266a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad13d8ddeb91a47d681a2d04f8920ffa1"><td class="memItemLeft" align="right" valign="top"><a id="gad13d8ddeb91a47d681a2d04f8920ffa1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad13d8ddeb91a47d681a2d04f8920ffa1">WT_STAT_CONN_CACHE_SCRUB_IMAGE_BYTES</a></td></tr>
+<tr class="memdesc:gad13d8ddeb91a47d681a2d04f8920ffa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: bytes of clean re-instantiation images retained by checkpoint scrub <br /></td></tr>
+<tr class="separator:gad13d8ddeb91a47d681a2d04f8920ffa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad2c8d2f65106a89c5582149626a62c23"><td class="memItemLeft" align="right" valign="top"><a id="gad2c8d2f65106a89c5582149626a62c23"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad2c8d2f65106a89c5582149626a62c23">WT_STAT_CONN_CACHE_BYTES_READ</a></td></tr>
 <tr class="memdesc:gad2c8d2f65106a89c5582149626a62c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: bytes read into cache <br /></td></tr>
@@ -971,6 +982,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf3a3bcf21e9d9701695b789744f28191">WT_STAT_CONN_CACHE_EVICTION_BLOCKED_CHECKPOINT_HS</a></td></tr>
 <tr class="memdesc:gaf3a3bcf21e9d9701695b789744f28191"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint of history store file blocked non-history store page eviction <br /></td></tr>
 <tr class="separator:gaf3a3bcf21e9d9701695b789744f28191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe2e1bb9532ea7849a6ed73ec61cff78"><td class="memItemLeft" align="right" valign="top"><a id="gafe2e1bb9532ea7849a6ed73ec61cff78"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gafe2e1bb9532ea7849a6ed73ec61cff78">WT_STAT_CONN_CACHE_WRITE_RESTORE_SCRUB_SKIPPED_DIRTY</a></td></tr>
+<tr class="memdesc:gafe2e1bb9532ea7849a6ed73ec61cff78"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint scrub skipped because the page will be left dirty <br /></td></tr>
+<tr class="separator:gafe2e1bb9532ea7849a6ed73ec61cff78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac15ad9e9464b9609e0612614296d39bb"><td class="memItemLeft" align="right" valign="top"><a id="gac15ad9e9464b9609e0612614296d39bb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac15ad9e9464b9609e0612614296d39bb">WT_STAT_CONN_CACHE_BYTES_HS_DIRTY</a></td></tr>
 <tr class="memdesc:gac15ad9e9464b9609e0612614296d39bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: dirty bytes belonging to the history store table in the cache <br /></td></tr>
@@ -1319,6 +1334,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga624cdb12b2fb39fa067fba380113ca9d">WT_STAT_CONN_EVICTION_STABLE_STATE_WORKERS</a></td></tr>
 <tr class="memdesc:ga624cdb12b2fb39fa067fba380113ca9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction worker thread stable number <br /></td></tr>
 <tr class="separator:ga624cdb12b2fb39fa067fba380113ca9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3e6dda0024b10ff1eb8cf5c0e32890cb"><td class="memItemLeft" align="right" valign="top"><a id="ga3e6dda0024b10ff1eb8cf5c0e32890cb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga3e6dda0024b10ff1eb8cf5c0e32890cb">WT_STAT_CONN_EVICTION_CKPT_SNAPSHOT_DECLINED</a></td></tr>
+<tr class="memdesc:ga3e6dda0024b10ff1eb8cf5c0e32890cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: evictions that found no snapshot published by the running checkpoint <br /></td></tr>
+<tr class="separator:ga3e6dda0024b10ff1eb8cf5c0e32890cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5b7642a8f2904e8cf2763ce056f653b3"><td class="memItemLeft" align="right" valign="top"><a id="ga5b7642a8f2904e8cf2763ce056f653b3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga5b7642a8f2904e8cf2763ce056f653b3">WT_STAT_CONN_EVICTION_WALKS_ACTIVE</a></td></tr>
 <tr class="memdesc:ga5b7642a8f2904e8cf2763ce056f653b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: files with active eviction walks <br /></td></tr>
@@ -1799,6 +1818,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gad5183cad820126c8fa48d2c894b3796e">WT_STAT_CONN_EVICTION_WALK</a></td></tr>
 <tr class="memdesc:gad5183cad820126c8fa48d2c894b3796e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages walked for eviction <br /></td></tr>
 <tr class="separator:gad5183cad820126c8fa48d2c894b3796e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga10302aa408357921cebf4e0250de8b95"><td class="memItemLeft" align="right" valign="top"><a id="ga10302aa408357921cebf4e0250de8b95"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga10302aa408357921cebf4e0250de8b95">WT_STAT_CONN_CACHE_SCRUB_IMAGE_PAGES</a></td></tr>
+<tr class="memdesc:ga10302aa408357921cebf4e0250de8b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages with a clean re-instantiation image retained by checkpoint scrub <br /></td></tr>
+<tr class="separator:ga10302aa408357921cebf4e0250de8b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa9da8e0b13713d606b5255515f8e60b9"><td class="memItemLeft" align="right" valign="top"><a id="gaa9da8e0b13713d606b5255515f8e60b9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa9da8e0b13713d606b5255515f8e60b9">WT_STAT_CONN_CACHE_EVICTION_MULTIBLOCK_CHECKPOINT_FLAGGED</a></td></tr>
 <tr class="memdesc:gaa9da8e0b13713d606b5255515f8e60b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages with an unresolved multiblock split flagged by checkpoint to be evicted soon <br /></td></tr>
@@ -1811,6 +1834,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga94f3c473b10646f7ed3d047e275786db">WT_STAT_CONN_CACHE_WRITE</a></td></tr>
 <tr class="memdesc:ga94f3c473b10646f7ed3d047e275786db"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages written from cache <br /></td></tr>
 <tr class="separator:ga94f3c473b10646f7ed3d047e275786db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed2b435d70b30bd805b9cb176ccb2454"><td class="memItemLeft" align="right" valign="top"><a id="gaed2b435d70b30bd805b9cb176ccb2454"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaed2b435d70b30bd805b9cb176ccb2454">WT_STAT_CONN_CACHE_WRITE_RESTORE_SCRUB_CHECKPOINT</a></td></tr>
+<tr class="memdesc:gaed2b435d70b30bd805b9cb176ccb2454"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages written requiring in-memory restoration due to checkpoint scrub <br /></td></tr>
+<tr class="separator:gaed2b435d70b30bd805b9cb176ccb2454"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8eea9d858dce22d175606130eb85b601"><td class="memItemLeft" align="right" valign="top"><a id="ga8eea9d858dce22d175606130eb85b601"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8eea9d858dce22d175606130eb85b601">WT_STAT_CONN_CACHE_WRITE_RESTORE_INVISIBLE</a></td></tr>
 <tr class="memdesc:ga8eea9d858dce22d175606130eb85b601"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages written requiring in-memory restoration due to invisible updates <br /></td></tr>
@@ -2395,6 +2422,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa2c972e3f9b3c8ea664abbc3f1ff54c4">WT_STAT_CONN_CURSOR_SEARCH_NEAR_PREFIX_FAST_PATHS</a></td></tr>
 <tr class="memdesc:gaa2c972e3f9b3c8ea664abbc3f1ff54c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of times a search near has exited due to prefix config <br /></td></tr>
 <tr class="separator:gaa2c972e3f9b3c8ea664abbc3f1ff54c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf9ce5dca9136ad992179c4bdf5770381"><td class="memItemLeft" align="right" valign="top"><a id="gaf9ce5dca9136ad992179c4bdf5770381"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf9ce5dca9136ad992179c4bdf5770381">WT_STAT_CONN_CURSOR_TREE_WALK_SKIP_LOCK_CONTENDED</a></td></tr>
+<tr class="memdesc:gaf9ce5dca9136ad992179c4bdf5770381"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of times a tree walk waited for the page lock during the page skip check <br /></td></tr>
+<tr class="separator:gaf9ce5dca9136ad992179c4bdf5770381"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0fd1b4edcd4cc26d7a5d98cea04e7c8f"><td class="memItemLeft" align="right" valign="top"><a id="ga0fd1b4edcd4cc26d7a5d98cea04e7c8f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0fd1b4edcd4cc26d7a5d98cea04e7c8f">WT_STAT_CONN_CURSOR_REPOSITION_FAILED</a></td></tr>
 <tr class="memdesc:ga0fd1b4edcd4cc26d7a5d98cea04e7c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of times cursor fails to temporarily release pinned page to encourage eviction of hot or large page <br /></td></tr>
@@ -2759,6 +2790,26 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaad3447473d5b12a24515e6e53fa2d7f7">WT_STAT_CONN_DISAGG_APPLY_CHECKPOINT_META_TIME</a></td></tr>
 <tr class="memdesc:gaad3447473d5b12a24515e6e53fa2d7f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: apply checkpoint metadata most recent time (msecs) <br /></td></tr>
 <tr class="separator:gaad3447473d5b12a24515e6e53fa2d7f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac25905df10fbc940adf31641062211a4"><td class="memItemLeft" align="right" valign="top"><a id="gac25905df10fbc940adf31641062211a4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac25905df10fbc940adf31641062211a4">WT_STAT_CONN_DISAGG_CHECKPOINT_STORAGE_COMPATIBLE_VERSION</a></td></tr>
+<tr class="memdesc:gac25905df10fbc940adf31641062211a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: checkpoint metadata compatible version of the most recently picked up checkpoint: 0 none <br /></td></tr>
+<tr class="separator:gac25905df10fbc940adf31641062211a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8eac4aa0963744e7a61446ab655cef21"><td class="memItemLeft" align="right" valign="top"><a id="ga8eac4aa0963744e7a61446ab655cef21"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8eac4aa0963744e7a61446ab655cef21">WT_STAT_CONN_DISAGG_CHECKPOINT_BINARY_COMPATIBLE_VERSION</a></td></tr>
+<tr class="memdesc:ga8eac4aa0963744e7a61446ab655cef21"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: checkpoint metadata compatible version this binary supports <br /></td></tr>
+<tr class="separator:ga8eac4aa0963744e7a61446ab655cef21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e8e367e9737e40d197847a3929835a1"><td class="memItemLeft" align="right" valign="top"><a id="ga4e8e367e9737e40d197847a3929835a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4e8e367e9737e40d197847a3929835a1">WT_STAT_CONN_DISAGG_CHECKPOINT_STORAGE_VERSION</a></td></tr>
+<tr class="memdesc:ga4e8e367e9737e40d197847a3929835a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: checkpoint metadata version of the most recently picked up checkpoint: 0 none <br /></td></tr>
+<tr class="separator:ga4e8e367e9737e40d197847a3929835a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b5e246cb050aade0a795b4e2d17fed8"><td class="memItemLeft" align="right" valign="top"><a id="ga8b5e246cb050aade0a795b4e2d17fed8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8b5e246cb050aade0a795b4e2d17fed8">WT_STAT_CONN_DISAGG_CHECKPOINT_BINARY_VERSION</a></td></tr>
+<tr class="memdesc:ga8b5e246cb050aade0a795b4e2d17fed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: checkpoint metadata version this binary writes <br /></td></tr>
+<tr class="separator:ga8b5e246cb050aade0a795b4e2d17fed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76f00b1afc90da08a8244584d194e2de"><td class="memItemLeft" align="right" valign="top"><a id="ga76f00b1afc90da08a8244584d194e2de"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga76f00b1afc90da08a8244584d194e2de">WT_STAT_CONN_DISAGG_CHECKPOINT_DEFER</a></td></tr>
+<tr class="memdesc:ga76f00b1afc90da08a8244584d194e2de"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: checkpoint pick-ups deferred for active transaction snapshots <br /></td></tr>
+<tr class="separator:ga76f00b1afc90da08a8244584d194e2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9d24d13f7f14df1529cd603de93cbcda"><td class="memItemLeft" align="right" valign="top"><a id="ga9d24d13f7f14df1529cd603de93cbcda"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9d24d13f7f14df1529cd603de93cbcda">WT_STAT_CONN_DISAGG_CONN_RECONFIG</a></td></tr>
 <tr class="memdesc:ga9d24d13f7f14df1529cd603de93cbcda"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: connection reconfiguration <br /></td></tr>
@@ -2771,6 +2822,18 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaa4cc8418df2d007a4e79f8b3d73264ad">WT_STAT_CONN_DISAGG_PICK_UP_FILE_META_UPDATED</a></td></tr>
 <tr class="memdesc:gaa4cc8418df2d007a4e79f8b3d73264ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: existing file metadata entries updated during checkpoint pick- up <br /></td></tr>
 <tr class="separator:gaa4cc8418df2d007a4e79f8b3d73264ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac6256ebb398189eeeed872a03000627a"><td class="memItemLeft" align="right" valign="top"><a id="gac6256ebb398189eeeed872a03000627a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac6256ebb398189eeeed872a03000627a">WT_STAT_CONN_DISAGG_INGEST_STABLE_TOMBSTONE_STRIPPED</a></td></tr>
+<tr class="memdesc:gac6256ebb398189eeeed872a03000627a"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: ingest-to-stable tombstone escape bytes stripped <br /></td></tr>
+<tr class="separator:gac6256ebb398189eeeed872a03000627a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf29b45c3f60780835859c0943541482b"><td class="memItemLeft" align="right" valign="top"><a id="gaf29b45c3f60780835859c0943541482b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaf29b45c3f60780835859c0943541482b">WT_STAT_CONN_DISAGG_CHECKPOINT_META_LSN</a></td></tr>
+<tr class="memdesc:gaf29b45c3f60780835859c0943541482b"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: most recently adopted checkpoint metadata LSN <br /></td></tr>
+<tr class="separator:gaf29b45c3f60780835859c0943541482b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga364df2a6bedc23d092e04406fc9ddf87"><td class="memItemLeft" align="right" valign="top"><a id="ga364df2a6bedc23d092e04406fc9ddf87"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga364df2a6bedc23d092e04406fc9ddf87">WT_STAT_CONN_DISAGG_CHECKPOINT_DELIVERED_LSN</a></td></tr>
+<tr class="memdesc:ga364df2a6bedc23d092e04406fc9ddf87"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: most recently delivered checkpoint metadata LSN <br /></td></tr>
+<tr class="separator:ga364df2a6bedc23d092e04406fc9ddf87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1f4e8b3474169d0571a9f2d3cecbcb9d"><td class="memItemLeft" align="right" valign="top"><a id="ga1f4e8b3474169d0571a9f2d3cecbcb9d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1f4e8b3474169d0571a9f2d3cecbcb9d">WT_STAT_CONN_DISAGG_PICK_UP_FILE_META_INSERTED</a></td></tr>
 <tr class="memdesc:ga1f4e8b3474169d0571a9f2d3cecbcb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: new file metadata entries inserted during checkpoint pick-up <br /></td></tr>
@@ -2783,6 +2846,14 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga063e0e788a3b96d5289e0537891be282">WT_STAT_CONN_DISAGG_ROLE_LEADER</a></td></tr>
 <tr class="memdesc:ga063e0e788a3b96d5289e0537891be282"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: role leader <br /></td></tr>
 <tr class="separator:ga063e0e788a3b96d5289e0537891be282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga87c70aab3b4164ebcf8c595a87dd28d9"><td class="memItemLeft" align="right" valign="top"><a id="ga87c70aab3b4164ebcf8c595a87dd28d9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga87c70aab3b4164ebcf8c595a87dd28d9">WT_STAT_CONN_DISAGG_SNAPSHOT_REBUILD</a></td></tr>
+<tr class="memdesc:ga87c70aab3b4164ebcf8c595a87dd28d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: snapshots rebuilt after racing a checkpoint pick-up or role change <br /></td></tr>
+<tr class="separator:ga87c70aab3b4164ebcf8c595a87dd28d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga57b815e44e4b8cac2655acaa4de4b29a"><td class="memItemLeft" align="right" valign="top"><a id="ga57b815e44e4b8cac2655acaa4de4b29a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga57b815e44e4b8cac2655acaa4de4b29a">WT_STAT_CONN_DISAGG_STABLE_TOMBSTONE_ENCODING</a></td></tr>
+<tr class="memdesc:ga57b815e44e4b8cac2655acaa4de4b29a"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: stable tombstone encoding mode: 0 not yet determined, 1 legacy escaped, 2 unescaped <br /></td></tr>
+<tr class="separator:ga57b815e44e4b8cac2655acaa4de4b29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacf82754ea4bd6d962589e4a35031b982"><td class="memItemLeft" align="right" valign="top"><a id="gacf82754ea4bd6d962589e4a35031b982"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacf82754ea4bd6d962589e4a35031b982">WT_STAT_CONN_DISAGG_STEP_DOWN_IN_PROGRESS</a></td></tr>
 <tr class="memdesc:gacf82754ea4bd6d962589e4a35031b982"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: step down in progress <br /></td></tr>
@@ -2799,6 +2870,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga608e9160e2495de8898a56486a7cfa98">WT_STAT_CONN_DISAGG_STEP_UP_TIME</a></td></tr>
 <tr class="memdesc:ga608e9160e2495de8898a56486a7cfa98"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: step up most recent time (msecs) <br /></td></tr>
 <tr class="separator:ga608e9160e2495de8898a56486a7cfa98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga100f879f80684cd7b08a4749172d8a8e"><td class="memItemLeft" align="right" valign="top"><a id="ga100f879f80684cd7b08a4749172d8a8e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga100f879f80684cd7b08a4749172d8a8e">WT_STAT_CONN_DISAGG_STEP_DOWN_WINDOW_CREATES</a></td></tr>
+<tr class="memdesc:ga100f879f80684cd7b08a4749172d8a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">disagg: tables created without a stable constituent while the step- down timestamp is set <br /></td></tr>
+<tr class="separator:ga100f879f80684cd7b08a4749172d8a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga62071610d789f6899274d21ae234aea9"><td class="memItemLeft" align="right" valign="top"><a id="ga62071610d789f6899274d21ae234aea9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga62071610d789f6899274d21ae234aea9">WT_STAT_CONN_LAYERED_CURS_INSERT</a></td></tr>
 <tr class="memdesc:ga62071610d789f6899274d21ae234aea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor insert operations <br /></td></tr>
@@ -2867,6 +2942,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac9dbe642344f56748fe6b257380eed41">WT_STAT_CONN_LAYERED_CURS_SEARCH_STABLE</a></td></tr>
 <tr class="memdesc:gac9dbe642344f56748fe6b257380eed41"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor search operations from the stable btrees <br /></td></tr>
 <tr class="separator:gac9dbe642344f56748fe6b257380eed41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae0167dec3738df11c53ddd8067571b27"><td class="memItemLeft" align="right" valign="top"><a id="gae0167dec3738df11c53ddd8067571b27"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae0167dec3738df11c53ddd8067571b27">WT_STAT_CONN_LAYERED_CURS_OPEN_STABLE_REFUSED</a></td></tr>
+<tr class="memdesc:gae0167dec3738df11c53ddd8067571b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor stable open refused to preserve a transaction snapshot <br /></td></tr>
+<tr class="separator:gae0167dec3738df11c53ddd8067571b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0990f208a207e694040f7532b0e8aa76"><td class="memItemLeft" align="right" valign="top"><a id="ga0990f208a207e694040f7532b0e8aa76"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0990f208a207e694040f7532b0e8aa76">WT_STAT_CONN_LAYERED_CURS_UPDATE</a></td></tr>
 <tr class="memdesc:ga0990f208a207e694040f7532b0e8aa76"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor update operations <br /></td></tr>
@@ -4603,6 +4682,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gac59719438965d6f2f0c89df53676680b">WT_STAT_CONN_TXN_ROLLBACK</a></td></tr>
 <tr class="memdesc:gac59719438965d6f2f0c89df53676680b"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions rolled back <br /></td></tr>
 <tr class="separator:gac59719438965d6f2f0c89df53676680b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a94f368860d77591301f26bbf4a0c2a"><td class="memItemLeft" align="right" valign="top"><a id="ga6a94f368860d77591301f26bbf4a0c2a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga6a94f368860d77591301f26bbf4a0c2a">WT_STAT_CONN_TXN_ROLLBACK_TOO_LARGE_FOR_CACHE</a></td></tr>
+<tr class="memdesc:ga6a94f368860d77591301f26bbf4a0c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: transactions rolled back because their own dirty content exceeds the eviction updates or dirty trigger <br /></td></tr>
+<tr class="separator:ga6a94f368860d77591301f26bbf4a0c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga540949dc6759add7e477d27dad6ff82d"><td class="memItemLeft" align="right" valign="top"><a id="ga540949dc6759add7e477d27dad6ff82d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga540949dc6759add7e477d27dad6ff82d">WT_STAT_CONN_TXN_UPDATE_CONFLICT</a></td></tr>
 <tr class="memdesc:ga540949dc6759add7e477d27dad6ff82d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transaction: update conflicts <br /></td></tr>
@@ -4952,6 +5035,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaac5d3524e70bc1ebfa55751aef98c678">WT_STAT_DSRC_CACHE_EVICTION_BLOCKED_CHECKPOINT_HS</a></td></tr>
 <tr class="memdesc:gaac5d3524e70bc1ebfa55751aef98c678"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint of history store file blocked non-history store page eviction <br /></td></tr>
 <tr class="separator:gaac5d3524e70bc1ebfa55751aef98c678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44d220bfb80595df7057e009e8362105"><td class="memItemLeft" align="right" valign="top"><a id="ga44d220bfb80595df7057e009e8362105"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga44d220bfb80595df7057e009e8362105">WT_STAT_DSRC_CACHE_WRITE_RESTORE_SCRUB_SKIPPED_DIRTY</a></td></tr>
+<tr class="memdesc:ga44d220bfb80595df7057e009e8362105"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: checkpoint scrub skipped because the page will be left dirty <br /></td></tr>
+<tr class="separator:ga44d220bfb80595df7057e009e8362105"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab5e7a042dfca9256340cdccf17361789"><td class="memItemLeft" align="right" valign="top"><a id="gab5e7a042dfca9256340cdccf17361789"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab5e7a042dfca9256340cdccf17361789">WT_STAT_DSRC_EVICTION_FAIL</a></td></tr>
 <tr class="memdesc:gab5e7a042dfca9256340cdccf17361789"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: data source pages selected for eviction unable to be evicted <br /></td></tr>
@@ -5288,6 +5375,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga4797cf2942d2c243f1341aa78dc50999">WT_STAT_DSRC_CACHE_WRITE</a></td></tr>
 <tr class="memdesc:ga4797cf2942d2c243f1341aa78dc50999"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages written from cache <br /></td></tr>
 <tr class="separator:ga4797cf2942d2c243f1341aa78dc50999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab07e9fb72f97d1b7f3680245f3f8a0ba"><td class="memItemLeft" align="right" valign="top"><a id="gab07e9fb72f97d1b7f3680245f3f8a0ba"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gab07e9fb72f97d1b7f3680245f3f8a0ba">WT_STAT_DSRC_CACHE_WRITE_RESTORE_SCRUB_CHECKPOINT</a></td></tr>
+<tr class="memdesc:gab07e9fb72f97d1b7f3680245f3f8a0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages written requiring in-memory restoration due to checkpoint scrub <br /></td></tr>
+<tr class="separator:gab07e9fb72f97d1b7f3680245f3f8a0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae6e9f15aac47b4493713f25125e42898"><td class="memItemLeft" align="right" valign="top"><a id="gae6e9f15aac47b4493713f25125e42898"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae6e9f15aac47b4493713f25125e42898">WT_STAT_DSRC_CACHE_WRITE_RESTORE_INVISIBLE</a></td></tr>
 <tr class="memdesc:gae6e9f15aac47b4493713f25125e42898"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: pages written requiring in-memory restoration due to invisible updates <br /></td></tr>
@@ -5584,6 +5675,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga8eac2073822ae363fed963f4ddfad665">WT_STAT_DSRC_CURSOR_SEARCH_NEAR_PREFIX_FAST_PATHS</a></td></tr>
 <tr class="memdesc:ga8eac2073822ae363fed963f4ddfad665"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of times a search near has exited due to prefix config <br /></td></tr>
 <tr class="separator:ga8eac2073822ae363fed963f4ddfad665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada26874e96093b93fd579e9bf11f17ba"><td class="memItemLeft" align="right" valign="top"><a id="gada26874e96093b93fd579e9bf11f17ba"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gada26874e96093b93fd579e9bf11f17ba">WT_STAT_DSRC_CURSOR_TREE_WALK_SKIP_LOCK_CONTENDED</a></td></tr>
+<tr class="memdesc:gada26874e96093b93fd579e9bf11f17ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of times a tree walk waited for the page lock during the page skip check <br /></td></tr>
+<tr class="separator:gada26874e96093b93fd579e9bf11f17ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacc7e9c0245fc171cd71aa6923f911144"><td class="memItemLeft" align="right" valign="top"><a id="gacc7e9c0245fc171cd71aa6923f911144"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gacc7e9c0245fc171cd71aa6923f911144">WT_STAT_DSRC_CURSOR_REPOSITION_FAILED</a></td></tr>
 <tr class="memdesc:gacc7e9c0245fc171cd71aa6923f911144"><td class="mdescLeft">&#160;</td><td class="mdescRight">cursor: Total number of times cursor fails to temporarily release pinned page to encourage eviction of hot or large page <br /></td></tr>
@@ -5908,6 +6003,10 @@ Statistics for data sources</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0eaa2ef1f0bebc96f265faa7ba2bb88d">WT_STAT_DSRC_LAYERED_CURS_SEARCH_STABLE</a></td></tr>
 <tr class="memdesc:ga0eaa2ef1f0bebc96f265faa7ba2bb88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor search operations from the stable btrees <br /></td></tr>
 <tr class="separator:ga0eaa2ef1f0bebc96f265faa7ba2bb88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c0db2705b5e7d476c11f9d9628b701d"><td class="memItemLeft" align="right" valign="top"><a id="ga0c0db2705b5e7d476c11f9d9628b701d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga0c0db2705b5e7d476c11f9d9628b701d">WT_STAT_DSRC_LAYERED_CURS_OPEN_STABLE_REFUSED</a></td></tr>
+<tr class="memdesc:ga0c0db2705b5e7d476c11f9d9628b701d"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor stable open refused to preserve a transaction snapshot <br /></td></tr>
+<tr class="separator:ga0c0db2705b5e7d476c11f9d9628b701d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga93525737a32097c39deb63600b1e5663"><td class="memItemLeft" align="right" valign="top"><a id="ga93525737a32097c39deb63600b1e5663"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga93525737a32097c39deb63600b1e5663">WT_STAT_DSRC_LAYERED_CURS_UPDATE</a></td></tr>
 <tr class="memdesc:ga93525737a32097c39deb63600b1e5663"><td class="mdescLeft">&#160;</td><td class="mdescRight">layered: Layered table cursor update operations <br /></td></tr>
@@ -7009,6 +7108,23 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 
 </div>
 </div>
+<a id="gadd69662309d987e3736c44ac9141524a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadd69662309d987e3736c44ac9141524a">&#9670;&nbsp;</a></span>WT_TXN_TOO_LARGE_FOR_CACHE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT_TXN_TOO_LARGE_FOR_CACHE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transaction dirty content alone exceeds the eviction updates or dirty trigger. </p>
+<p>This sub-level error indicates that a single transaction has dirtied more cache than the eviction updates trigger or the eviction dirty trigger allows. Eviction cannot reclaim content pinned by an uncommitted transaction, so the transaction cannot succeed against the configured cache size and has been rolled back. </p>
+
+</div>
+</div>
 <a id="gab55ba638633767b0f813588ababae36b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab55ba638633767b0f813588ababae36b">&#9670;&nbsp;</a></span>WT_UNCOMMITTED_DATA</h2>
 
@@ -7594,15 +7710,19 @@ The number of bytes in the value to be replaced. <p>If the size is zero, no byte
 <tr>
 <td><code>&#160;&#160;&#160;&#160;cache_tolerance_for_app_eviction</code></td><td>This setting establishes a tolerance level for the configured <code>eviction_dirty_trigger</code> and <code>eviction_update_trigger</code>. The value is a percentage between 0 and 100, with 0 treating <code>eviction_dirty_trigger</code> and <code>eviction_update_trigger</code> as hard limit. The configured percentage will be taken in increments of 10 only, by applying the floor to the given percentage value.</td><td>an integer between <code>0</code> and <code>100</code>; default <code>0</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;evict_sample_inmem</code></td><td>If no in-memory ref is found on the root page, attempt to locate a random in-memory page by examining all entries on the root page.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;checkpoint_scrub_eviction</code></td><td>Control whether checkpoint replaces a reconciled leaf page in cache with a clean copy of its just-written on-disk image. <code>on</code> always attempts the replacement, <code>off</code> never does, and <code>auto</code> lets eviction decide based on cache pressure. Most applications should leave this at <code>auto</code>.</td><td>a string, chosen from the following options: <code>"auto"</code>, <code>"off"</code>, <code>"on"</code>; default <code>auto</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160; incremental_app_eviction</code></td><td>Only a part of application threads will participate in cache management when a cache threshold reaches its trigger limit.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;checkpoint_scrub_image_max</code></td><td>maximum percentage of the cache that checkpoint may consume with the clean images it retains for that replacement. Checkpoint stops retaining new images once the limit is reached; a value of <code>0</code> disables retention entirely.</td><td>an integer between <code>0</code> and <code>100</code>; default <code>10</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160; evict_sample_inmem</code></td><td>If no in-memory ref is found on the root page, attempt to locate a random in-memory page by examining all entries on the root page.</td><td>a boolean flag; default <code>true</code>. </td></tr>
+<tr>
+<td><code>&#160;&#160;&#160;&#160;incremental_app_eviction</code></td><td>Only a part of application threads will participate in cache management when a cache threshold reaches its trigger limit.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;legacy_page_visit_strategy</code></td><td>Use legacy page visit strategy for eviction. Using this option is highly discouraged as it will re-introduce a bug where eviction can fail to find older cache content.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;prefer_scrub_eviction</code></td><td>Change the eviction strategy to scrub eviction when the cache usage is under half way between the target limit to the trigger limit.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;skip_update_obsolete_check</code></td><td>Skip checking for obsolete updates whenever an update operation is performed.</td><td>a boolean flag; default <code>false</code>. </td></tr>
+<td><code>&#160;&#160;&#160;&#160; skip_update_obsolete_check</code></td><td>Skip checking for obsolete updates whenever an update operation is performed.</td><td>a boolean flag; default <code>false</code>. </td></tr>
 <tr>
 <td><code>&#160;&#160;&#160;&#160;threads_max</code></td><td>maximum number of threads WiredTiger will start to help evict pages from cache. The number of threads started will vary depending on the current eviction load. Each eviction worker thread uses a session from a reserved pool of WT_EVICT_MAX_WORKERS (64) sessions.</td><td>an integer between <code>1</code> and <code>64</code>; default <code>8</code>. </td></tr>
 <tr>
@@ -8661,20 +8781,20 @@ Packing Examples</h1>
 <div class="ttc" id="agroup__wt_html_gae8bf720ddb4a7a7390b70424594c40fd"><div class="ttname"><a href="group__wt.html#gae8bf720ddb4a7a7390b70424594c40fd">wiredtiger_strerror</a></div><div class="ttdeci">const char * wiredtiger_strerror(int error)</div><div class="ttdoc">Return information about a WiredTiger error as a string (see WT_SESSION::strerror for a thread-safe A...</div></div>
 <div class="ttc" id="agroup__wt_html_gacb2cb3b5e55a85a481a3175f37de3a29"><div class="ttname"><a href="group__wt.html#gacb2cb3b5e55a85a481a3175f37de3a29">wiredtiger_calc_modify</a></div><div class="ttdeci">int wiredtiger_calc_modify(WT_SESSION *session, const WT_ITEM *oldv, const WT_ITEM *newv, size_t maxdiff, WT_MODIFY *entries, int *nentriesp)</div><div class="ttdoc">Calculate a set of WT_MODIFY operations to represent an update.</div></div>
 <div class="ttc" id="agroup__wt_html_abd8b1299dfb5c54dc049fa42a4680b55"><div class="ttname"><a href="group__wt.html#abd8b1299dfb5c54dc049fa42a4680b55">WT_ITEM::size</a></div><div class="ttdeci">size_t size</div><div class="ttdoc">The number of bytes in the data item.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:125</div></div>
-<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4219</div></div>
+<div class="ttc" id="agroup__wt_html_ga205f45ca53fdac610f8a9c59c84b5e12"><div class="ttname"><a href="group__wt.html#ga205f45ca53fdac610f8a9c59c84b5e12">wiredtiger_crc32c_func</a></div><div class="ttdeci">uint32_t(*)(const void *, size_t) wiredtiger_crc32c_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4240</div></div>
 <div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html_a44eea5e27a4da10006ab444ee7cf00f3"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html#a44eea5e27a4da10006ab444ee7cf00f3">WT_CONFIG_PARSER::close</a></div><div class="ttdeci">int close(WT_CONFIG_PARSER *config_parser)</div><div class="ttdoc">Close the configuration scanner releasing any resources.</div></div>
 <div class="ttc" id="agroup__wt_html_ga7cdc8c688f2c15303188ed6999dcc1b4"><div class="ttname"><a href="group__wt.html#ga7cdc8c688f2c15303188ed6999dcc1b4">wiredtiger_struct_unpack</a></div><div class="ttdeci">int wiredtiger_struct_unpack(WT_SESSION *session, const void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Unpack a structure from a buffer.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___m_o_d_i_f_y"><div class="ttname"><a href="group__wt.html#struct_w_t___m_o_d_i_f_y">WT_MODIFY</a></div><div class="ttdoc">A set of modifications for a value, including a pointer to new data and a length, plus a target offse...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:149</div></div>
 <div class="ttc" id="agroup__wt_html_ga1b29826f4b418891d67e86850f7cbcf4"><div class="ttname"><a href="group__wt.html#ga1b29826f4b418891d67e86850f7cbcf4">wiredtiger_version</a></div><div class="ttdeci">const char * wiredtiger_version(int *majorp, int *minorp, int *patchp)</div><div class="ttdoc">Get version information.</div></div>
 <div class="ttc" id="agroup__wt_html_struct_w_t___i_t_e_m"><div class="ttname"><a href="group__wt.html#struct_w_t___i_t_e_m">WT_ITEM</a></div><div class="ttdoc">A raw item of data to be managed, including a pointer to the data and a length.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:108</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4159</div></div>
-<div class="ttc" id="agroup__wt_html_ga483078a911ef0dac0d42e71db4e9c054"><div class="ttname"><a href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a></div><div class="ttdeci">uint32_t(*)(uint32_t seed, const void *, size_t) wiredtiger_crc32c_with_seed_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4237</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___p_a_r_s_e_r_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___p_a_r_s_e_r.html">WT_CONFIG_PARSER</a></div><div class="ttdoc">A handle that can be used to search and traverse configuration strings compatible with the WiredTiger...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4180</div></div>
+<div class="ttc" id="agroup__wt_html_ga483078a911ef0dac0d42e71db4e9c054"><div class="ttname"><a href="group__wt.html#ga483078a911ef0dac0d42e71db4e9c054">wiredtiger_crc32c_with_seed_func</a></div><div class="ttdeci">uint32_t(*)(uint32_t seed, const void *, size_t) wiredtiger_crc32c_with_seed_func(void)</div><div class="ttdoc">Return a pointer to a function that calculates a CRC32C checksum given a starting CRC seed.</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4258</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_abbba24fe607fee519c4c9c4669cd4455"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#abbba24fe607fee519c4c9c4669cd4455">WT_CURSOR::remove</a></div><div class="ttdeci">int remove(WT_CURSOR *cursor)</div><div class="ttdoc">Remove a record.</div></div>
 <div class="ttc" id="agroup__wt_html_ga512297da65ccc30ac91bf6adf95f043f"><div class="ttname"><a href="group__wt.html#ga512297da65ccc30ac91bf6adf95f043f">wiredtiger_config_parser_open</a></div><div class="ttdeci">int wiredtiger_config_parser_open(WT_SESSION *session, const char *config, size_t len, WT_CONFIG_PARSER **config_parserp)</div><div class="ttdoc">Create a handle that can be used to parse or create configuration strings compatible with the WiredTi...</div></div>
 <div class="ttc" id="agroup__wt_html_gacbe8d118f978f5bfc8ccb4c77c9e8813"><div class="ttname"><a href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813">wiredtiger_open</a></div><div class="ttdeci">int wiredtiger_open(const char *home, WT_EVENT_HANDLER *event_handler, const char *config, WT_CONNECTION **connectionp)</div><div class="ttdoc">Open a connection to a database.</div></div>
 <div class="ttc" id="astruct_w_t___c_u_r_s_o_r_html_ad1088d719df40babc1f57d086691ebdc"><div class="ttname"><a href="struct_w_t___c_u_r_s_o_r.html#ad1088d719df40babc1f57d086691ebdc">WT_CURSOR::set_key</a></div><div class="ttdeci">void set_key(WT_CURSOR *cursor,...)</div><div class="ttdoc">Set the key for the next operation.</div></div>
 <div class="ttc" id="agroup__wt_html_ga156e7993d370495e1e52c29b2bb6b7d4"><div class="ttname"><a href="group__wt.html#ga156e7993d370495e1e52c29b2bb6b7d4">wiredtiger_struct_size</a></div><div class="ttdeci">int wiredtiger_struct_size(WT_SESSION *session, size_t *lenp, const char *format,...)</div><div class="ttdoc">Calculate the size required to pack a structure.</div></div>
-<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4027</div></div>
+<div class="ttc" id="astruct_w_t___c_o_n_f_i_g___i_t_e_m_html"><div class="ttname"><a href="struct_w_t___c_o_n_f_i_g___i_t_e_m.html">WT_CONFIG_ITEM</a></div><div class="ttdoc">The configuration information returned by the WiredTiger configuration parsing functions in the WT_EX...</div><div class="ttdef"><b>Definition:</b> wiredtiger.h.in:4048</div></div>
 <div class="ttc" id="agroup__wt_html_gab3d8a22e243360ece67baf33926d80fa"><div class="ttname"><a href="group__wt.html#gab3d8a22e243360ece67baf33926d80fa">wiredtiger_struct_pack</a></div><div class="ttdeci">int wiredtiger_struct_pack(WT_SESSION *session, void *buffer, size_t len, const char *format,...)</div><div class="ttdoc">Pack a structure into a buffer.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
