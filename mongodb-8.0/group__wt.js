@@ -397,6 +397,7 @@ var group__wt =
     [ "WT_STAT_CONN_CACHE_REVERSE_SPLITS", "group__wt.html#ga8f20eea9e08085d93afcbd5863cd9e16", null ],
     [ "WT_STAT_CONN_CACHE_REVERSE_SPLITS_SKIPPED_VLCS", "group__wt.html#ga872aeda18a5af08521f615aedd8a6dfc", null ],
     [ "WT_STAT_CONN_CACHE_TIMED_OUT_OPS", "group__wt.html#ga5e0abcb34bbffff590eb7fd82d18f7aa", null ],
+    [ "WT_STAT_CONN_CACHE_TOLERANCE_LEVEL", "group__wt.html#gaf18aa0ac17e7cc0f1435a6decb81afce", null ],
     [ "WT_STAT_CONN_CACHE_WRITE", "group__wt.html#ga94f3c473b10646f7ed3d047e275786db", null ],
     [ "WT_STAT_CONN_CACHE_WRITE_APP_COUNT", "group__wt.html#ga41d28222646d7848863cab2799e09d0c", null ],
     [ "WT_STAT_CONN_CACHE_WRITE_APP_TIME", "group__wt.html#ga4349484e45f9de41b63a085d52f88757", null ],
