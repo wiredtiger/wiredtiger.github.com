@@ -186,6 +186,7 @@ Leaf (child) reconciliation</h1>
 <h1><a class="anchor" id="ft_on_disk_format"></a>
 On-disk format</h1>
 <p>Deleted pages are referred to on disk by a special address cell type, <code>WT_CELL_ADDR_DEL</code>. These contain three additional packed integers between the time aggregate and the cell data: the transaction ID, commit timestamp, and durable timestamp of the transaction that deleted the page. (Only committed truncations are written out. Prepared truncations cannot be represented on disk. Truncations that are globally visible do not result in a cell in the parent page at all.)</p>
+<p>The time aggregate packed in the cell describes the child page as it was before the truncate, so its stop information is stale. The effective aggregate for the deleted pages is the packed one with the truncate applied as its global stop point, and that is what the parent page's aggregate is built from.</p>
 <p>These fields are, however, only present if the page header includes the <code>WT_PAGE_FT_UPDATE</code> flag, whose value is 0x20. Proper support for timestamped fast-truncate only appeared in WT 11.0; earlier versions neither write these fields nor expect to find them. The explicit header flag is required to make compatibility guarantees function as needed. (MongoDB 6.x knows how to read pages with <code>WT_PAGE_FT_UPDATE</code> set, but does not write them. This is controlled in the WT library by the <code>__wt_process::fast_truncate_2022</code> flag, whose default setting is controlled by the build config.)</p>
 <h1><a class="anchor" id="ft_truncate"></a>
 Truncation</h1>
@@ -215,6 +216,8 @@ Skipping deleted pages</h1>
 <p>There are two separate skip functions for skipping deleted pages during tree walks. The basic skip function is <code>__wt_delete_page_skip</code> in <code>bt_delete.c</code>; it is always called in tree walks when <code>WT_READ_SEE_DELETED</code> is not set, which is all tree walks except <a class="el" href="arch-rts.html">Rollback to Stable (RTS)</a> and column-store appends. It checks for whether the ref state is <code>WT_REF_DELETED</code> and the truncation is visible to the caller.</p>
 <p>As in other cases (see <a class="el" href="arch-fast-truncate.html#ft_visibility">Notes on visibility</a>) we must treat prepared truncations as not visible; in order to generate prepare conflicts we cannot skip over truncations that are prepared but not yet committed.</p>
 <p>The other skip function is <code>__wt_btcur_skip_page</code> in <code>btree_inline.h</code>. This is used by cursor next and previous to skip over deleted pages in those traversals specifically, and in addition to checking for <code>WT_REF_DELETED</code> with visible <code>page_del</code>, it also inspects the address cell. If the page is in memory and unmodified and the address cell contains page-delete information, it checks for the visibility of that deletion. Failing that, it checks the time aggregate in case all the values on the page are no longer visible, e.g. because the page was slow-truncated and reconciled.</p>
+<p>In a disaggregated tree these checks also apply to an internal page, but only while it is still on disk, and skipping one skips its whole subtree. An internal page resident in memory cannot be judged by its aggregate, because a descendant may be dirty with newer data and reconciliation is what propagates that upwards; one still on disk has no resident descendants, so the aggregate in its address cell describes the entire subtree beneath it. That aggregate is only a useful bound because internal page reconciliation applies the truncate to each deleted child's aggregate before merging it into the parent (see <a class="el" href="arch-fast-truncate.html#ft_on_disk_format">On-disk format</a>).</p>
+<p>Trees on the local block manager do not take this shortcut. There, reading an internal page in is what marks it dirty for the deleted children it references, and the reconciliation that follows is what frees their blocks, so skipping the read would leave the space held until the checkpoint cleanup thread came around.</p>
 <p>For an unmodified in-memory page the deletion information in the address should be the same as present in the ref's <code>page_del</code> structure. However, inspecting the unpacked copy instead, which is free since we are unpacking the cell to look at the time aggregate anyway, makes this check independent of the lifecycle of the ref's <code>page_del</code>. This was more important in previous iterations of the code than it is now; however, in principle it's possible to drop the ref's <code>page_del</code> immediately upon instantiation in a read-only tree, since it is kept for internal page reconciliation and pages in read-only trees are never reconciled. Checking the unpacked information here avoids interfering with that option.</p>
 <p>Note that <code>__wt_btcur_skip_page</code> is passed to the tree-walk code as a custom skip function, which means that when it's used <em>both</em> it and <code>__wt_delete_page_skip</code> are checked. This is not optimal and probably ought to be tidied. Furthermore, it is unclear whether these functions really need to be different; that is, it may be that the additional time aggregate check in <code>__wt_btcur_skip_page</code> should be deployed for all tree walks. (If not, the reason should be discovered and documented.)</p>
 <h1><a class="anchor" id="ft_vlcs"></a>
@@ -303,7 +306,9 @@ Pointers to pieces of the implementation</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>timestamp_inline.h</td><td>Macro</td><td><code>WT_TIME_AGGREGATE_UPDATE_PAGE_DEL</code> </td><td><p class="starttd">Akin to <code>WT_TIME_AGGREGATE_UPDATE</code> but for a <code>WT_PAGE_DELETED</code>; used in internal page reconciliation.</p>
+<td>timestamp_inline.h</td><td>Macro</td><td><code>WT_TIME_AGGREGATE_UPDATE_PAGE_DEL</code> </td><td>Akin to <code>WT_TIME_AGGREGATE_UPDATE</code> but for a <code>WT_PAGE_DELETED</code>; used in internal page reconciliation. </td></tr>
+<tr>
+<td>timestamp_inline.h</td><td>Macro</td><td><code>WT_TIME_AGGREGATE_MERGE_PAGE_DEL</code> </td><td><p class="starttd">Replace the stop information in an aggregate unpacked from a <code>WT_CELL_ADDR_DEL</code> cell with the global stop point supplied by its <code>WT_PAGE_DELETED</code>; the unpacked stop information describes the child page before the truncate and cannot be used as-is. Used by internal page reconciliation and verification.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -403,9 +408,11 @@ Pointers to pieces of the implementation</h1>
 <tr>
 <td>bt_vrfy.c</td><td>Hook</td><td>in <code>__verify_tree</code> </td><td>Allow namespace gaps in VLCS. </td></tr>
 <tr>
-<td>bt_vrfy.c</td><td>Hook</td><td>in <code>__verify_page_content_int</code> </td><td><p class="starttd">Handle deleted-address cells.</p>
+<td>bt_vrfy.c</td><td>Hook</td><td>in <code>__verify_page_content_int</code> </td><td><p class="starttd">Handle deleted-address cells: validate the effective aggregate, that is, the unpacked aggregate with the page deletion applied as its stop point.</p>
 <p class="endtd"></p>
 </td></tr>
+<tr>
+<td>bt_vrfy_dsk.c</td><td>Hook</td><td>in <code>__verify_dsk_addr_validity</code> </td><td>Validate the effective aggregate for deleted-address cells rather than the stale stop information unpacked from the cell. </td></tr>
 <tr>
 <td>bt_vrfy_dsk.c</td><td>Function</td><td><code>__verify_dsk_addr_page_del</code> </td><td><p class="starttd">Validate and crosscheck the page deletion information discovered in on-disk address cells.</p>
 <p class="endtd"></p>
