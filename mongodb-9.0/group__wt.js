@@ -704,6 +704,8 @@ var group__wt =
     [ "WT_STAT_CONN_EVICTION_SERVER_SKIP_UNWANTED_PAGES", "group__wt.html#ga03ad6659923814281727249434afef8e", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_SKIP_UNWANTED_TREE", "group__wt.html#gaabef199204e28f943620c28ed64afdf3", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_SLEPT", "group__wt.html#ga1ca4eff28603915bf726b743020bd158", null ],
+    [ "WT_STAT_CONN_EVICTION_SERVER_WALK_DOMINATING_CACHE", "group__wt.html#ga62486a3f4f3ac30f2f55f20e87f4fdf4", null ],
+    [ "WT_STAT_CONN_EVICTION_SERVER_WALK_DOMINATING_CACHE_UNPRODUCTIVE", "group__wt.html#gaa58945621e3ccf63542c4e1cac2495ae", null ],
     [ "WT_STAT_CONN_EVICTION_SLOW", "group__wt.html#gaed236e4c034eae806e08f5629a258ce1", null ],
     [ "WT_STAT_CONN_EVICTION_STABLE_STATE_WORKERS", "group__wt.html#ga624cdb12b2fb39fa067fba380113ca9d", null ],
     [ "WT_STAT_CONN_EVICTION_STATE", "group__wt.html#gacb5ca116d9461d0e046d43d5e157e860", null ],

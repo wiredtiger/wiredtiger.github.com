@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"license.html":[6],
+"license.html":[0,8],
 "license.html#license_crc32-power8":[0,8,1],
 "license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701":[1,0,3,0],
 "struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5":[1,0,3,11],
 "struct_w_t___s_e_s_s_i_o_n.html#acf5d973bdf98ef19b7a192a4a065d863":[1,0,3,14],
-"struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70":[1,0,3,8],
-"struct_w_t___s_e_s_s_i_o_n.html#aedd139d6424440d5300e88c4fa061f41":[1,0,3,2],
-"struct_w_t___s_e_s_s_i_o_n.html#aeec1349581b7f97fc90573550fff8b6b":[1,0,3,17]
+"struct_w_t___s_e_s_s_i_o_n.html#adf785ef53c16d9dcc77e22cc04c87b70":[1,0,3,8]
 };
