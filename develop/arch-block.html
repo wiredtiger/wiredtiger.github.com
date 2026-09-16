@@ -138,7 +138,7 @@ Address Cookies</h2>
 <p>Once a block is written an address cookie is returned. This address cookie is stored as the <code>addr</code> on the associated page ref. The <code>WT_REF</code> structure can be found in <code>btmem.h</code>. The address cookie is opaque to other parts of the system and cannot be interpreted meaningfully.</p>
 <p>The address cookie is made up of 4 components:</p><ul>
 <li>offset: The offset in the file. In order to avoid storing large offsets this value is divided by the allocation size.</li>
-<li>object_id: Optional and only relevant to the tiered storage type, the object_id is maintained in the address. When it is missing, it indicates that the reference is to the same object as where the cookie was stored.</li>
+<li>object_id: Optional. Identifies which object holds the block. When it is missing, it indicates that the reference is to the same object as where the cookie was stored.</li>
 <li>size: The size of the block, also divided by the allocation size.</li>
 <li>checksum: The checksum of the block for validation purposes.</li>
 </ul>
@@ -222,7 +222,7 @@ Checkpoint</h3>
 <li>the file size for the checkpoint, the first byte position past the end of the checkpoint data</li>
 <li>the checkpoint size, a byte size of all written checkpoint data</li>
 </ul>
-<p>As described in <a class="el" href="arch-block.html#block_address_cookie">Address Cookies</a>, an address cookie used with a tiered storage has an additional value (the <code>object_id</code>). As a result, the checkpoint cookie for a tiered btree will include four additional <code>object_id</code> values that are not in other checkpoints.</p>
+<p>As described in <a class="el" href="arch-block.html#block_address_cookie">Address Cookies</a>, an address cookie may include an <code>object_id</code>. Checkpoint cookies do not store that value in each of the four address cookies. When an object id is present, it is appended once after the file and checkpoint sizes and applies to all four cookies.</p>
 <p>The program in <code>tools/wt_ckpt_decode.py</code> can be used to unpack a set of bytes representing a checkpoint cookie and show its values.</p>
 <h3><a class="anchor" id="Eviction"></a>
 Eviction</h3>

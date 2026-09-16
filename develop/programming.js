@@ -110,11 +110,6 @@ var programming =
       [ "Choosing a file format", "file_formats.html#file_formats_choice", null ],
       [ "File formats and compression", "file_formats.html#file_formats_compression", null ]
     ] ],
-    [ "Tiered Storage", "tiered_storage.html", [
-      [ "Background", "tiered_storage.html#tiered_background", null ],
-      [ "The flush_tier operation", "tiered_storage.html#flush_tier", null ],
-      [ "Example with timeline", "tiered_storage.html#example", null ]
-    ] ],
     [ "Compressors", "compression.html", [
       [ "Using LZ4 compression", "compression.html#compression_lz4", null ],
       [ "Using snappy compression", "compression.html#compression_snappy", null ],
@@ -215,7 +210,6 @@ var programming =
       [ "Transactions", "custom_data_sources.html#custom_data_source_transactions", null ]
     ] ],
     [ "Custom File Systems", "custom_file_systems.html", null ],
-    [ "Custom Tiered Storage sources", "custom_storage_sources.html", "custom_storage_sources" ],
     [ "Performance monitoring with statistics", "tune_statistics.html", null ],
     [ "Simulating workloads with wtperf", "wtperf.html", [
       [ "Monitoring wtperf", "wtperf.html#monitor", null ],

@@ -107,10 +107,16 @@ Upgrading to Version 12.0.0</h1>
 <li>For every key in the FLCS table read it in, and write it back to the row store table.</li>
 <li>Finally drop the FLCS table.</li>
 </ol>
+<p class="interdd"></p>
 <p class="enddd"></p>
 </dd>
+<dt>Tiered storage is removed </dt>
+<dd><p class="startdd">Tiered storage is no longer supported. Checkpoint configuration <code>flush_tier</code> is an unknown configuration key. Connection reconfigure <code>tiered_storage</code> is an unknown configuration key. The <code>WT_STORAGE_SOURCE</code> interface, <code>WT_CONNECTION.add_storage_source</code>, and <code>WT_CONNECTION.get_storage_source</code> have been removed. Opening a <code>tiered:</code>, <code>object:</code>, or <code>tier:</code> URI is refused. The connection verbose choice <code>tiered</code> is no longer recognized. The <code>dir_store</code> extension is no longer provided.</p>
+<p class="enddd"><code>wiredtiger_open</code> and table or file <code>tiered_storage</code> configuration, and the file <code>tiered_object</code> setting, still parse, so leftover keys in existing metadata do not cause an error. New table and file creates do not persist these keys.  </p>
+</dd>
 </dl>
-<h1><a class="anchor" id="version_1131"></a>
+<hr  />
+ <h1><a class="anchor" id="version_1131"></a>
 Upgrading to Version 11.3.1</h1>
 <dl>
 <dt>Per-file configuration "huffman_value" </dt>

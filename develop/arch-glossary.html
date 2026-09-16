@@ -213,7 +213,7 @@ Glossary</h1>
 <tr>
 <td>mutex</td><td>general</td><td>a locking algorithm that waits, allowing other threads to execute, when the lock cannot be immediately acquired, and is woken to retry when the lock is available. Although more heavyweight than a spin lock, it consumes fewer resources while waiting. Appropriate for resources that may be in contention and may be held for longer periods. </td></tr>
 <tr>
-<td>object id</td><td>tiered storage</td><td>an integer that indicates an individual file that is a part of a Btree. </td></tr>
+<td>object id</td><td>block manager</td><td>an integer identifying an object in an address cookie or checkpoint cookie. </td></tr>
 <tr>
 <td>oldest timestamp</td><td>transactions</td><td>a connection-wide value, specifies the oldest timestamp that must be tracked by the system. Values with stop timestamps older than this value do not have to be retained. </td></tr>
 <tr>
@@ -278,8 +278,6 @@ Glossary</h1>
 <td>thread</td><td>general</td><td>a thread of control. WiredTiger uses pthreads for POSIX systems. </td></tr>
 <tr>
 <td>thread group</td><td>general</td><td>a group of threads that perform a common task. Eviction is performed by a thread group. </td></tr>
-<tr>
-<td>tiered storage</td><td>general</td><td>an experimental option to store a single Btree across multiple local files and/or objects in cloud storage. </td></tr>
 <tr>
 <td>time window</td><td>durable history</td><td>a set of start and stop transaction ids and timestamps which determine when an update is visible. </td></tr>
 <tr>

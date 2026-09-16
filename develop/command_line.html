@@ -347,7 +347,7 @@ Options</h2>
  <h1><a class="anchor" id="util_verify"></a>
 wt verify</h1>
 <p>Check the structural integrity of a table.</p>
-<p>The <code>verify</code> command verifies the specified table if a URI argument is provided, exiting success if the data source is correct, and failure if the data source is corrupted. If no URI argument is provided, it verifies each table in the database, reporting on any that are damaged. If the abort on error option <code>-a</code> is specified, terminate the verification process if one of the tables is damaged. Currently, the verify operation is not supported with tiered tables and the history store file.</p>
+<p>The <code>verify</code> command verifies the specified table if a URI argument is provided, exiting success if the data source is correct, and failure if the data source is corrupted. If no URI argument is provided, it verifies each table in the database, reporting on any that are damaged. If the abort on error option <code>-a</code> is specified, terminate the verification process if one of the tables is damaged. Currently, the verify operation is not supported with the history store file.</p>
 <h2><a class="anchor" id="util_verify_synopsis"></a>
 Synopsis</h2>
 <p><code>wt [-BLmRrSVv] [-C config] [-E secretkey ] [-h directory] verify [-acSstu] [-d dump_address | dump_blocks | dump_layout | dump_offsets=#,# | dump_pages ] [uri]</code></p>
