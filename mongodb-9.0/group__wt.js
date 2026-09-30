@@ -701,6 +701,7 @@ var group__wt =
     [ "WT_STAT_CONN_EVICTION_SERVER_SKIP_TREES_READ_ONLY", "group__wt.html#ga9094fabddb1e404b946e2844e6a5e619", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_SKIP_TREES_STICK_IN_CACHE", "group__wt.html#ga224b5dc8589df0d9f802f0558fdd19e6", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_SKIP_TREES_TOO_MANY_ACTIVE_WALKS", "group__wt.html#gae37728a732ad005f9dfd84a494a8e14d", null ],
+    [ "WT_STAT_CONN_EVICTION_SERVER_SKIP_TREES_WALK_COMPLETE", "group__wt.html#gad2080a003769fc6fe9cf4ffbdbb6354a", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_SKIP_UNWANTED_PAGES", "group__wt.html#ga03ad6659923814281727249434afef8e", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_SKIP_UNWANTED_TREE", "group__wt.html#gaabef199204e28f943620c28ed64afdf3", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_SLEPT", "group__wt.html#ga1ca4eff28603915bf726b743020bd158", null ],

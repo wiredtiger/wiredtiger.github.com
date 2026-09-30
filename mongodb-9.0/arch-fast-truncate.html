@@ -303,7 +303,9 @@ Pointers to pieces of the implementation</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>timestamp_inline.h</td><td>Macro</td><td><code>WT_TIME_AGGREGATE_UPDATE_PAGE_DEL</code> </td><td><p class="starttd">Akin to <code>WT_TIME_AGGREGATE_UPDATE</code> but for a <code>WT_PAGE_DELETED</code>; used in internal page reconciliation.</p>
+<td>timestamp_inline.h</td><td>Macro</td><td><code>WT_TIME_AGGREGATE_UPDATE_PAGE_DEL</code> </td><td>Akin to <code>WT_TIME_AGGREGATE_UPDATE</code> but for a <code>WT_PAGE_DELETED</code>; used in internal page reconciliation. </td></tr>
+<tr>
+<td>timestamp_inline.h</td><td>Macro</td><td><code>WT_TIME_AGGREGATE_MERGE_PAGE_DEL</code> </td><td><p class="starttd">Replace the stop information in an aggregate unpacked from a <code>WT_CELL_ADDR_DEL</code> cell with the global stop point supplied by its <code>WT_PAGE_DELETED</code>; the unpacked stop information describes the child page before the truncate and cannot be used as-is.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -403,9 +405,11 @@ Pointers to pieces of the implementation</h1>
 <tr>
 <td>bt_vrfy.c</td><td>Hook</td><td>in <code>__verify_tree</code> </td><td>Allow namespace gaps in VLCS. </td></tr>
 <tr>
-<td>bt_vrfy.c</td><td>Hook</td><td>in <code>__verify_page_content_int</code> </td><td><p class="starttd">Handle deleted-address cells.</p>
+<td>bt_vrfy.c</td><td>Hook</td><td>in <code>__verify_page_content_int</code> </td><td><p class="starttd">Handle deleted-address cells: validate the effective aggregate, that is, the unpacked aggregate with the page deletion applied as its stop point.</p>
 <p class="endtd"></p>
 </td></tr>
+<tr>
+<td>bt_vrfy_dsk.c</td><td>Hook</td><td>in <code>__verify_dsk_addr_validity</code> </td><td>Validate the effective aggregate for deleted-address cells rather than the stale stop information unpacked from the cell. </td></tr>
 <tr>
 <td>bt_vrfy_dsk.c</td><td>Function</td><td><code>__verify_dsk_addr_page_del</code> </td><td><p class="starttd">Validate and crosscheck the page deletion information discovered in on-disk address cells.</p>
 <p class="endtd"></p>
