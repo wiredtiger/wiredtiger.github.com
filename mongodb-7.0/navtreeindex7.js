@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e":[1,1,2,6],
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a8eae397273ef872bc8da6743aa9824cb":[1,1,2,2],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf57e661895f06a479dc359d51819d7c":[1,1,2,7],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#ab398845845f8e36fe5a212e1c25f3426":[1,1,2,13],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#af5cd0560bbb44e348178bd9823f1d714":[1,1,2,11],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "tune_page_size_and_comp.html#configurable_page_struct":[0,3,58,1],
 "tune_page_size_and_comp.html#data_life_cycle":[0,3,58,0],
 "tune_page_size_and_comp.html#internal_page_max":[0,3,58,1,1],
-"tune_page_size_and_comp.html#key_val_max":[0,3,58,1,4],
-"tune_page_size_and_comp.html#leaf_page_max":[0,3,58,1,2],
-"tune_page_size_and_comp.html#memory_page_max":[0,3,58,1,0]
+"tune_page_size_and_comp.html#key_val_max":[0,3,58,1,4]
 };
