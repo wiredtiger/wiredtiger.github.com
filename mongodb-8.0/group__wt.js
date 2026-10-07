@@ -594,6 +594,8 @@ var group__wt =
     [ "WT_STAT_CONN_EVICTION_APP_FAIL", "group__wt.html#ga7bd79c4609808fbd7fdb3d8f9f6b3e54", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_EVICT_ATTEMPT", "group__wt.html#ga3887ccdc5a22e6f9616ac6e0ee3373e1", null ],
     [ "WT_STAT_CONN_EVICTION_SERVER_EVICT_FAIL", "group__wt.html#gaf1d975b185e71d1653e3a5b2176aeaf3", null ],
+    [ "WT_STAT_CONN_EVICTION_SERVER_WALK_DOMINATING_CACHE", "group__wt.html#ga62486a3f4f3ac30f2f55f20e87f4fdf4", null ],
+    [ "WT_STAT_CONN_EVICTION_SERVER_WALK_DOMINATING_CACHE_UNPRODUCTIVE", "group__wt.html#gaa58945621e3ccf63542c4e1cac2495ae", null ],
     [ "WT_STAT_CONN_EVICTION_WORKER_EVICT_ATTEMPT", "group__wt.html#gab0616937e63d1ea3effd46930303312c", null ],
     [ "WT_STAT_CONN_EVICTION_WORKER_EVICT_FAIL", "group__wt.html#gaf392144abebbcbb9aec54a77c55fa702", null ],
     [ "WT_STAT_CONN_FILE_OPEN", "group__wt.html#gacb44b88acd3b00bee3236f9196f1b22e", null ],
