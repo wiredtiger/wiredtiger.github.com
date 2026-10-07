@@ -1,8 +1,9 @@
 var NAVTREEINDEX9 =
 {
+"index.html":[0],
 "keyvalue.html":[0,4,3,10],
-"license.html":[6],
 "license.html":[0,8],
+"license.html":[6],
 "license.html#license_crc32-power8":[0,8,1],
 "license.html#license_crc32-zseries":[0,8,2],
 "license.html#license_distribution":[0,8,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "struct_w_t___s_e_s_s_i_o_n.html#abe03ccb716e097ed1bb4d42eb733c1f9":[1,0,3,23],
 "struct_w_t___s_e_s_s_i_o_n.html#ac2bad195e24710d52d730fe3a7c1756a":[1,0,3,27],
 "struct_w_t___s_e_s_s_i_o_n.html#ac6f0630cb70bb057aa4512f7888dc701":[1,0,3,0],
-"struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5":[1,0,3,11],
-"struct_w_t___s_e_s_s_i_o_n.html#acf5d973bdf98ef19b7a192a4a065d863":[1,0,3,14]
+"struct_w_t___s_e_s_s_i_o_n.html#ac85541ca42d7596857d9f50e03c78eb5":[1,0,3,11]
 };
