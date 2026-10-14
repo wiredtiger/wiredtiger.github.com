@@ -128,7 +128,37 @@ $(document).ready(function(){initNavTree('statistics.html',''); initResizable();
 <div class="line">    }</div>
 <div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
 <div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
-</div><!-- fragment --> <h1><a class="anchor" id="statistics_log"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="statistics_otel"></a>
+OpenTelemetry (OTel) statistic types</h1>
+<p>Every statistic has exactly one OTel type: <code>otel_counters</code>, <code>otel_gauges</code>, <code>otel_histograms</code>, or <code>otel_none</code>. The type is a tag on the statistic, not a separate set of statistics. A statistic tagged with an OTel type is still an ordinary statistic: it is exposed by statistics cursors like any other. <code>otel_none</code> is the type of statistics that are not used for OTel. Because every statistic has exactly one type, the four types partition the statistics, and their union is all statistics.</p>
+<p>The statistics configuration values control two independent things:</p>
+<ul>
+<li><b>Which values are gathered</b>: <code>all</code>, <code>fast</code>, <code>tree_walk</code>, <code>cache_walk</code> and <code>size</code>. These select how much work is done to compute statistic values. A statistic that is not gathered is still exposed by the cursor, with a value of 0.</li>
+<li><b>Which keys are exposed</b>: the <code>otel_*</code> values. These select which statistics the cursor iterates over, based on each statistic's OTel type.</li>
+</ul>
+<p>Since the two are independent, any combination is valid. Configuring more than one otel_* value for a statistic is an error, because a statistic can be of only one type.</p>
+<p>The following example opens a cursor that exposes only <code>otel_counters</code> statistics, gathering only the relatively inexpensive ones:</p>
+<div class="fragment"><div class="line">    error_check(session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(</div>
+<div class="line">      session, <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, <span class="stringliteral">&quot;statistics=(fast,otel_counters)&quot;</span>, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;stat_key));</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, NULL, NULL, &amp;stat_value));</div>
+<div class="line">    }</div>
+<div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
+</div><!-- fragment --><p> Configuring <code>otel_none</code> excludes every statistic that has an actual OTel type, exposing only those tagged with <code>otel_none</code>.</p>
+<p>The following example opens a cursor that exposes only statistics that do not have an OTel type:</p>
+<div class="fragment"><div class="line">    error_check(</div>
+<div class="line">      session-&gt;<a class="code" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d">open_cursor</a>(session, <span class="stringliteral">&quot;statistics:&quot;</span>, NULL, <span class="stringliteral">&quot;statistics=(otel_none)&quot;</span>, &amp;cursor));</div>
+<div class="line">    <span class="keywordflow">while</span> ((ret = cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#a0503f16bd8f3d05aa3552f229b3a8e1b">next</a>(cursor)) == 0) {</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af19f6f9d9c7fc248ab38879032620b2f">get_key</a>(cursor, &amp;stat_key));</div>
+<div class="line">        error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#af85364a5af50b95bbc46c82e72f75c01">get_value</a>(cursor, NULL, NULL, &amp;stat_value));</div>
+<div class="line">    }</div>
+<div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
+<div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
+</div><!-- fragment --><p> If no <code>otel_*</code> value is configured, no filtering by OTel type takes place and all statistics are exposed.</p>
+<p>As with other statistics configuration values, the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> function sets the default for all statistics cursors, which the configuration passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> then extends.</p>
+<h1><a class="anchor" id="statistics_log"></a>
 Statistics logging</h1>
 <p>WiredTiger will optionally log database statistics into files when the the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> <code>statistics_log</code> configuration is set.</p>
 <p>The log files are named <code>WiredTigerStat</code>.%d.%H, where <code>%d</code> is replaced with the day of the month as a decimal number (01-31), and <code>%H</code> is replaced by the hour (24-hour clock) as a decimal number (00-23). Each log file contains the statistics for the hour specified in its name.</p>
