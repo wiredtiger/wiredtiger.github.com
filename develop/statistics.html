@@ -157,6 +157,7 @@ OpenTelemetry (OTel) statistic types</h1>
 <div class="line">    scan_end_check(ret == <a class="code" href="group__wt.html#ga3c9e1b494d95cf34404ab7a974af6bf8">WT_NOTFOUND</a>);</div>
 <div class="line">    error_check(cursor-&gt;<a class="code" href="struct_w_t___c_u_r_s_o_r.html#aeea071f192cab12245a50fbe71c3460b">close</a>(cursor));</div>
 </div><!-- fragment --><p> If no <code>otel_*</code> value is configured, no filtering by OTel type takes place and all statistics are exposed.</p>
+<p>The <code>clear</code> configuration value only clears the statistics that the cursor exposes. When <code>clear</code> is configured together with <code>otel_counters</code>, <code>otel_gauges</code>, <code>otel_histograms</code>, or <code>otel_none</code> only statistics of that type are cleared, and statistics of every other type keep their values. Without one of these values, <code>clear</code> clears all statistics.</p>
 <p>As with other statistics configuration values, the <a class="el" href="group__wt.html#gacbe8d118f978f5bfc8ccb4c77c9e8813" title="Open a connection to a database.">wiredtiger_open</a> function sets the default for all statistics cursors, which the configuration passed to <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#afb5b4a69c2c5cafe411b2b04fdc1c75d" title="Open a new cursor on a data source or duplicate an existing cursor.">WT_SESSION::open_cursor</a> then extends.</p>
 <h1><a class="anchor" id="statistics_log"></a>
 Statistics logging</h1>

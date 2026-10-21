@@ -104,7 +104,9 @@ var programming =
       [ "In-memory configurations and timestamps", "timestamp_misc.html#timestamps_misc_in_memory", null ]
     ] ],
     [ "Tutorial: transactions and ACID properties", "explain_acid.html", null ],
-    [ "Tutorial: isolation levels", "explain_isolation.html", null ],
+    [ "Tutorial: isolation levels", "explain_isolation.html", [
+      [ "Write skew", "explain_isolation.html#explain_isolation_write_skew", null ]
+    ] ],
     [ "File formats and compression", "file_formats.html", [
       [ "File formats", "file_formats.html#file_formats_formats", null ],
       [ "Choosing a file format", "file_formats.html#file_formats_choice", null ],

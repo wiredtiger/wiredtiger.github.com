@@ -155,11 +155,13 @@ API restrictions</h1>
 <p>Layered tables support all the regular tables operations, with exceptions listed here:</p>
 <ul>
 <li>All writes, from all nodes, must be timestamped</li>
+<li>On followers, the commit timestamp of a non-prepared transaction and the prepare and durable timestamps of a prepared transaction must be after the latest adopted checkpoint timestamp. They are checked when the timestamp is set. Prepare discovery restores checkpointed transactions with their original prepare timestamps and is exempt from the prepare timestamp check.</li>
 <li>All nodes must use the same URI for the same table</li>
 <li>All nodes must use byte-wise identical keys, values, and timestamps for the same records.</li>
 <li>Table compaction is not supported on layered tables</li>
 <li>Backup cursors will not return information about layered tables</li>
 <li>Bulk cursors are not supported on layered tables</li>
+<li>A table backed by a layered table can only have a single, unnamed column group, whose source is the layered table with the same name</li>
 </ul>
 <h1><a class="anchor" id="layered-implementation"></a>
 Implementation aspects</h1>
@@ -187,7 +189,7 @@ Layered tables metadata representation and related files</h2>
 <div class="line">    disaggregated=(page_log=palite),ingest=<span class="stringliteral">&quot;file:foo.wt_ingest&quot;</span>,log=(enabled=<span class="keyword">false</span>),stable=<span class="stringliteral">&quot;file:foo.wt_stable&quot;</span></div>
 <div class="line">file:foo.wt_ingest</div>
 <div class="line">file:foo.wt_stable</div>
-</div><!-- fragment --><p>The ingest and stable table could also have table: prefixed metadata entries if the table was created with the <code>block_manager=disagg,type=layered</code> config.</p>
+</div><!-- fragment --><p>A layered table created through a <code>table:</code> URI with the <code>type=layered</code> config is that table's only column group, so it also has <code>table:foo</code> and <code>colgroup:foo</code> entries, and the column group's source is <code>layered:foo</code>.</p>
 <p>Since shared metadata and history store tables are shared but not layered tables, they both have <code>.wt_stable</code> suffixed metadata entries but no associated <code>layered:</code> ones:</p>
 <div class="fragment"><div class="line">file:WiredTigerShared.wt_stable</div>
 <div class="line">file:WiredTigerSharedHS.wt_stable</div>

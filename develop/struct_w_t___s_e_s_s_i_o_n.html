@@ -1234,7 +1234,7 @@ existed" and are visible regardless of timestamp. See <a class="el" href="timest
 <tr>
 <td><code>&#160;&#160;&#160;&#160;src_id</code></td><td>a string that identifies a previous checkpoint backup source as the source of this incremental backup. This identifier must have already been created by use of the 'this_id' configuration in an earlier backup. A source id is required to begin an incremental backup.</td><td>a string; default empty. </td></tr>
 <tr>
-<td><code>&#160;&#160;&#160;&#160;this_id</code></td><td>a string that identifies the current system state as a future backup source for an incremental backup via <code>src_id</code>. This identifier is required when opening an incremental backup cursor and an error will be returned if one is not provided. The identifiers can be any text string, but should be unique.</td><td>a string; default empty. </td></tr>
+<td><code>&#160;&#160;&#160;&#160;this_id</code></td><td>a string that identifies the current system state as a future backup source for an incremental backup via <code>src_id</code>. Supplying it starts tracking a new source; omitting it reads the changes since <code>src_id</code> without starting a new source. The identifiers can be any text string, but should be unique.</td><td>a string; default empty. </td></tr>
 <tr>
 <td><code> )</code></td><td></td><td></td></tr>
 <tr>
