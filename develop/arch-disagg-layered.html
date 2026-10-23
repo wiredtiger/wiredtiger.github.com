@@ -124,6 +124,7 @@ $(document).ready(function(){initNavTree('arch-disagg-layered.html',''); initRes
 <li>Follower nodes can serve read operations on recent data without needing to access the shared storage directly.</li>
 <li>Follower nodes can quickly transition to take over write responsibilities if the current leader (writer) becomes unavailable.</li>
 </ul>
+<p>See <a class="el" href="arch-disagg-roles.html">Disaggregated Storage Roles and Role Changes</a> for connection-wide roles and role changes.</p>
 <h1><a class="anchor" id="shared-tables"></a>
 Shared vs local tables</h1>
 <p>Tables can be distinguished by the backing storage mechanism. A shared table is a table whose data is stored in a shared storage back-end. Whereas a local or regular table is a table whose data is locally, either in-memory or on disk. In a layered table, the stable table is shared, and the ingest table is local.</p>
@@ -166,22 +167,6 @@ API restrictions</h1>
 <h1><a class="anchor" id="layered-implementation"></a>
 Implementation aspects</h1>
 <p><b>Note:</b> This section is closely tied to the source code and may become outdated if not maintained in sync with implementation changes.</p>
-<h2><a class="anchor" id="layered-leader-follower"></a>
-Leader vs Follower</h2>
-<ul>
-<li>Leader (Primary):<ul>
-<li>All operations (including writes) go directly to the stable table</li>
-<li>The ingest table remains empty</li>
-<li>Can create new checkpoints</li>
-</ul>
-</li>
-<li>Follower (Standby):<ul>
-<li>The stable table contains read-only checkpointed data from the leader</li>
-<li>The ingest table holds changes applied since the last checkpoint</li>
-<li>When a new checkpoint is fetched, the ingest table is cleaned up</li>
-</ul>
-</li>
-</ul>
 <h2><a class="anchor" id="layered-metadata"></a>
 Layered tables metadata representation and related files</h2>
 <p>Each layered table contains three related entries in metadata:</p>

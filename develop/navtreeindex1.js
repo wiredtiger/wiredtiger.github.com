@@ -1,5 +1,11 @@
 var NAVTREEINDEX1 =
 {
+"arch-schema.html#schema_data_formats":[0,10,2,0,0],
+"arch-schema.html#schema_drop":[0,10,2,0,3,1],
+"arch-schema.html#schema_files":[0,10,2,0,1],
+"arch-schema.html#schema_integrity":[0,10,2,0,2],
+"arch-schema.html#schema_truncate":[0,10,2,0,3,3],
+"arch-session.html":[0,10,0,1],
 "arch-session.html#arch_session_closure":[0,10,0,1,5],
 "arch-session.html#arch_session_cur":[0,10,0,1,3],
 "arch-session.html#arch_session_def":[0,10,0,1,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX1 =
 "custom_data_sources.html#custom_ds_create":[0,4,39,0,0],
 "custom_data_sources.html#custom_ds_cursor_collator":[0,4,39,5],
 "custom_data_sources.html#custom_ds_cursor_fields":[0,4,39,2],
-"custom_data_sources.html#custom_ds_cursor_insert":[0,4,39,1,0],
-"custom_data_sources.html#custom_ds_cursor_methods":[0,4,39,1],
-"custom_data_sources.html#custom_ds_error_handling":[0,4,39,3],
-"custom_data_sources.html#custom_ds_methods":[0,4,39,0],
-"custom_file_systems.html":[0,4,40],
-"data_sources.html":[0,4,2,5],
-"data_sources.html#data_builtin":[0,4,2,5,0]
+"custom_data_sources.html#custom_ds_cursor_insert":[0,4,39,1,0]
 };

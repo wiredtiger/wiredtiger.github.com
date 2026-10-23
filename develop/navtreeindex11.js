@@ -1,5 +1,11 @@
 var NAVTREEINDEX11 =
 {
+"tune_mutex.html":[0,4,53],
+"tune_page_size_and_comp.html":[0,4,54],
+"tune_page_size_and_comp.html#allocation_size":[0,4,54,1,3],
+"tune_page_size_and_comp.html#compression_considerations":[0,4,54,2],
+"tune_page_size_and_comp.html#configurable_page_struct":[0,4,54,1],
+"tune_page_size_and_comp.html#data_life_cycle":[0,4,54,0],
 "tune_page_size_and_comp.html#internal_page_max":[0,4,54,1,1],
 "tune_page_size_and_comp.html#key_val_max":[0,4,54,1,4],
 "tune_page_size_and_comp.html#leaf_page_max":[0,4,54,1,2],

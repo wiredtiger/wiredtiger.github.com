@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['key_20provider_2383',['Key Provider',['../arch-disagg-key-provider.html',1,'arch-toc-disaggregated-storage']]],
-  ['key_2fvalue_20pairs_2384',['Key/Value pairs',['../keyvalue.html',1,'schema']]]
+  ['key_20provider_2385',['Key Provider',['../arch-disagg-key-provider.html',1,'arch-toc-disaggregated-storage']]],
+  ['key_2fvalue_20pairs_2386',['Key/Value pairs',['../keyvalue.html',1,'schema']]]
 ];

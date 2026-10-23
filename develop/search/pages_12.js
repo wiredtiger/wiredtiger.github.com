@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['usage_20patterns_2438',['Usage Patterns',['../arch-usage-patterns.html',1,'arch-toc-int-wt-dev']]],
-  ['using_20transaction_20prepare_20with_20timestamps_2439',['Using transaction prepare with timestamps',['../timestamp_prepare.html',1,'programming']]],
-  ['upgrading_20and_20downgrading_20databases_2440',['Upgrading and downgrading databases',['../upgrade.html',1,'programming']]],
-  ['upgrading_20wiredtiger_20applications_2441',['Upgrading WiredTiger applications',['../upgrading.html',1,'index']]]
+  ['usage_20patterns_2440',['Usage Patterns',['../arch-usage-patterns.html',1,'arch-toc-int-wt-dev']]],
+  ['using_20transaction_20prepare_20with_20timestamps_2441',['Using transaction prepare with timestamps',['../timestamp_prepare.html',1,'programming']]],
+  ['upgrading_20and_20downgrading_20databases_2442',['Upgrading and downgrading databases',['../upgrade.html',1,'programming']]],
+  ['upgrading_20wiredtiger_20applications_2443',['Upgrading WiredTiger applications',['../upgrading.html',1,'index']]]
 ];
