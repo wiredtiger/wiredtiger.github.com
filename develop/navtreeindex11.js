@@ -1,5 +1,6 @@
 var NAVTREEINDEX11 =
 {
+"tune_memory_allocator.html":[0,4,52],
 "tune_mutex.html":[0,4,53],
 "tune_page_size_and_comp.html":[0,4,54],
 "tune_page_size_and_comp.html#allocation_size":[0,4,54,1,3],
