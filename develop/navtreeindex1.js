@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"arch-schema.html#schema_create":[0,10,2,0,3,0],
 "arch-schema.html#schema_data_formats":[0,10,2,0,0],
 "arch-schema.html#schema_drop":[0,10,2,0,3,1],
 "arch-schema.html#schema_files":[0,10,2,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "custom_data_sources.html#custom_ds_config_parsing":[0,4,39,4,0],
 "custom_data_sources.html#custom_ds_create":[0,4,39,0,0],
 "custom_data_sources.html#custom_ds_cursor_collator":[0,4,39,5],
-"custom_data_sources.html#custom_ds_cursor_fields":[0,4,39,2],
-"custom_data_sources.html#custom_ds_cursor_insert":[0,4,39,1,0]
+"custom_data_sources.html#custom_ds_cursor_fields":[0,4,39,2]
 };

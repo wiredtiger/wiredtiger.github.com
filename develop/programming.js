@@ -181,6 +181,9 @@ var programming =
     [ "Track function calls", "operation_tracking.html", null ],
     [ "Per-process shared caches", "shared_cache.html", null ],
     [ "Statistics", "statistics.html", [
+      [ "Statistics configuration", "statistics.html#statistics_config", null ],
+      [ "Accessing statistics", "statistics.html#statistics_cursors", null ],
+      [ "Clearing statistics", "statistics.html#statistics_clear", null ],
       [ "OpenTelemetry (OTel) statistic types", "statistics.html#statistics_otel", null ],
       [ "Statistics logging", "statistics.html#statistics_log", null ]
     ] ],

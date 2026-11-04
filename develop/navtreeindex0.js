@@ -44,6 +44,7 @@ var NAVTREEINDEX0 =
 "arch-checkpoint.html#autotoc_md15":[0,10,7,0,4],
 "arch-checkpoint.html#autotoc_md16":[0,10,7,0,5],
 "arch-checkpoint.html#autotoc_md17":[0,10,7,0,6],
+"arch-checkpoint.html#autotoc_md18":[0,10,7,0,7],
 "arch-checkpoint.html#autotoc_md4":[0,10,7,0,0],
 "arch-checkpoint.html#autotoc_md5":[0,10,7,0,1],
 "arch-checkpoint.html#autotoc_md6":[0,10,7,0,1,0],
@@ -51,7 +52,7 @@ var NAVTREEINDEX0 =
 "arch-checkpoint.html#autotoc_md8":[0,10,7,0,1,2],
 "arch-checkpoint.html#autotoc_md9":[0,10,7,0,1,3],
 "arch-compact.html":[0,10,7,3],
-"arch-compact.html#autotoc_md18":[0,10,7,3,0],
+"arch-compact.html#autotoc_md19":[0,10,7,3,0],
 "arch-concurrency.html":[0,10,5,0],
 "arch-concurrency.html#generations":[0,10,5,0,1],
 "arch-concurrency.html#lock-free":[0,10,5,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "arch-rts.html#rts-page-skip":[0,10,0,6,2],
 "arch-schema.html":[0,10,2,0],
 "arch-schema.html#schema_alter":[0,10,2,0,3,2],
-"arch-schema.html#schema_api":[0,10,2,0,3],
-"arch-schema.html#schema_create":[0,10,2,0,3,0]
+"arch-schema.html#schema_api":[0,10,2,0,3]
 };

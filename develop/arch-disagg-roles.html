@@ -138,6 +138,7 @@ Leader and follower</h1>
 </table>
 <p>A follower accepts writes to apply changes replicated from the leader. It writes those changes to the local ingest table, and read operations merge the stable table and ingest table views. For a key visible in both tables, the ingest table content always takes precedence.</p>
 <p>Followers eventually adopt new checkpoints produced by the leader. Adopting a checkpoint makes covered ingest table content eligible for removal once it is safe for readers. See <a class="el" href="arch-disagg-layered-cursor.html">Layered Cursor</a> for the merged view.</p>
+<p>A follower never takes a checkpoint of its own: a checkpoint call on a follower returns success without doing any work, so the only checkpoints it can adopt are the ones the leader produced. See <a class="el" href="arch-checkpoint.html">Checkpoint</a>.</p>
 <p>The table above describes steady state; the rules can differ during role transitions.</p>
 <p> 
 <style>@media print { .disagg-role-example { display:none; } }</style>
