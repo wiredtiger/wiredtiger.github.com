@@ -1,5 +1,9 @@
 var NAVTREEINDEX11 =
 {
+"tool-xray.html#autotoc_md66":[0,9,4,0,1],
+"tool-xray.html#autotoc_md67":[0,9,4,0,2],
+"tool-xray.html#autotoc_md68":[0,9,4,1],
+"tool-xray.html#autotoc_md69":[0,9,4,1,0],
 "tool-xray.html#autotoc_md70":[0,9,4,1,1],
 "tool-xray.html#autotoc_md71":[0,9,4,1,2],
 "transactions.html":[0,4,5],

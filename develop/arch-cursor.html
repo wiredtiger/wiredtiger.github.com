@@ -199,7 +199,7 @@ Cursor caching</h1>
 <li>Release the <em>strong</em> reference to the data handle (decrement <code>dhandle-&gt;session_inuse</code>).</li>
 <li>Determine the hash bucket needed (using the hash value in the cursor).</li>
 <li>Move the cursor from the session's open list to the list in the hash bucket.</li>
-<li>Increment statistics and decrement the connection's open cursor count.</li>
+<li>Increment statistics and decrement the session's open cursor count.</li>
 <li>Set the cache cursor flag.</li>
 <li>Unlock the dhandle.</li>
 </ul>
@@ -211,7 +211,7 @@ Cursor caching</h1>
 <li>If the dhandle is no longer open, release it and mark the reopen to fail (but continue).</li>
 <li>Get a "strong" reference to the data handle (increment <code>dhandle-&gt;session_inuse</code>).</li>
 <li>Release the "weak" reference to the data handle (decrement <code>dhandle-&gt;references</code>).</li>
-<li>Increment statistics and the connection's open cursor count.</li>
+<li>Increment statistics and the session's open cursor count.</li>
 <li>Move the handle from the hash bucket to the session's open list (the hash value was previously saved in the cursor)</li>
 <li>Clear the cache cursor flag.</li>
 <li>Update convenient pointers within the cursor to parts of the WT_BTREE that may have changed which the cursor was cached.</li>
