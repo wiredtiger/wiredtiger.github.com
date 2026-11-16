@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a817b5bc96a33010a1caca4a745a9d16d":[1,1,2,10],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a81e45e31dedcdeaf8ff970d3c118da2e":[1,1,2,6],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#a8eae397273ef872bc8da6743aa9824cb":[1,1,2,2],
 "struct_w_t___d_a_t_a___s_o_u_r_c_e.html#aaf57e661895f06a479dc359d51819d7c":[1,1,2,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "tune_page_size_and_comp.html#compression_considerations":[0,3,58,2],
 "tune_page_size_and_comp.html#configurable_page_struct":[0,3,58,1],
 "tune_page_size_and_comp.html#data_life_cycle":[0,3,58,0],
-"tune_page_size_and_comp.html#internal_page_max":[0,3,58,1,1],
-"tune_page_size_and_comp.html#key_val_max":[0,3,58,1,4]
+"tune_page_size_and_comp.html#internal_page_max":[0,3,58,1,1]
 };
