@@ -1157,6 +1157,10 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaabef199204e28f943620c28ed64afdf3">WT_STAT_CONN_EVICTION_SERVER_SKIP_UNWANTED_TREE</a></td></tr>
 <tr class="memdesc:gaabef199204e28f943620c28ed64afdf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server skips tree that we do not want to evict <br /></td></tr>
 <tr class="separator:gaabef199204e28f943620c28ed64afdf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb6f5c31ebd3ba4ecbd3cc0685111f1b"><td class="memItemLeft" align="right" valign="top"><a id="gadb6f5c31ebd3ba4ecbd3cc0685111f1b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gadb6f5c31ebd3ba4ecbd3cc0685111f1b">WT_STAT_CONN_EVICTION_SERVER_SKIP_UNWANTED_TREE_EARLY</a></td></tr>
+<tr class="memdesc:gadb6f5c31ebd3ba4ecbd3cc0685111f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server skips tree that we do not want to evict before releasing the handle list lock <br /></td></tr>
+<tr class="separator:gadb6f5c31ebd3ba4ecbd3cc0685111f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae37728a732ad005f9dfd84a494a8e14d"><td class="memItemLeft" align="right" valign="top"><a id="gae37728a732ad005f9dfd84a494a8e14d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gae37728a732ad005f9dfd84a494a8e14d">WT_STAT_CONN_EVICTION_SERVER_SKIP_TREES_TOO_MANY_ACTIVE_WALKS</a></td></tr>
 <tr class="memdesc:gae37728a732ad005f9dfd84a494a8e14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server skips trees because there are too many active walks <br /></td></tr>
@@ -1181,6 +1185,30 @@ Connection statistics</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga1ca4eff28603915bf726b743020bd158">WT_STAT_CONN_EVICTION_SERVER_SLEPT</a></td></tr>
 <tr class="memdesc:ga1ca4eff28603915bf726b743020bd158"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server slept, because we did not make progress with eviction <br /></td></tr>
 <tr class="separator:ga1ca4eff28603915bf726b743020bd158"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ba57331e93362c70150c68a2e2cbb19"><td class="memItemLeft" align="right" valign="top"><a id="ga9ba57331e93362c70150c68a2e2cbb19"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga9ba57331e93362c70150c68a2e2cbb19">WT_STAT_CONN_EVICTION_SERVER_PASS_TIME</a></td></tr>
+<tr class="memdesc:ga9ba57331e93362c70150c68a2e2cbb19"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server time in eviction passes, including backoff waits and server-driven eviction (usecs) <br /></td></tr>
+<tr class="separator:ga9ba57331e93362c70150c68a2e2cbb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d4581adb722eea3400535b7bcef75c9"><td class="memItemLeft" align="right" valign="top"><a id="ga2d4581adb722eea3400535b7bcef75c9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2d4581adb722eea3400535b7bcef75c9">WT_STAT_CONN_EVICTION_SERVER_REFILL_TIME</a></td></tr>
+<tr class="memdesc:ga2d4581adb722eea3400535b7bcef75c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server time refilling eviction queues (usecs) <br /></td></tr>
+<tr class="separator:ga2d4581adb722eea3400535b7bcef75c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga90ce9891e9b3b0707bff1a1eddf7efb2"><td class="memItemLeft" align="right" valign="top"><a id="ga90ce9891e9b3b0707bff1a1eddf7efb2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga90ce9891e9b3b0707bff1a1eddf7efb2">WT_STAT_CONN_EVICTION_SERVER_SLEPT_TIME</a></td></tr>
+<tr class="memdesc:ga90ce9891e9b3b0707bff1a1eddf7efb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server time sleeping because eviction made no progress (usecs) <br /></td></tr>
+<tr class="separator:ga90ce9891e9b3b0707bff1a1eddf7efb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e0e61627fe6f93deff2ef809ce2c327"><td class="memItemLeft" align="right" valign="top"><a id="ga2e0e61627fe6f93deff2ef809ce2c327"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#ga2e0e61627fe6f93deff2ef809ce2c327">WT_STAT_CONN_EVICTION_SERVER_OLDEST_ID_TIME</a></td></tr>
+<tr class="memdesc:ga2e0e61627fe6f93deff2ef809ce2c327"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server time updating the pinned timestamp and oldest transaction ID (usecs) <br /></td></tr>
+<tr class="separator:ga2e0e61627fe6f93deff2ef809ce2c327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeda0229a70b1d0ceb444bf8200a86e36"><td class="memItemLeft" align="right" valign="top"><a id="gaeda0229a70b1d0ceb444bf8200a86e36"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaeda0229a70b1d0ceb444bf8200a86e36">WT_STAT_CONN_EVICTION_SERVER_REFILL_HANDLE_LOCK_TIME</a></td></tr>
+<tr class="memdesc:gaeda0229a70b1d0ceb444bf8200a86e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server time waiting for the handle list lock during queue refills (usecs) <br /></td></tr>
+<tr class="separator:gaeda0229a70b1d0ceb444bf8200a86e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabf569a4608ecc05375df48e7f3792eca"><td class="memItemLeft" align="right" valign="top"><a id="gabf569a4608ecc05375df48e7f3792eca"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gabf569a4608ecc05375df48e7f3792eca">WT_STAT_CONN_EVICTION_SERVER_REFILL_TREE_WALK_TIME</a></td></tr>
+<tr class="memdesc:gabf569a4608ecc05375df48e7f3792eca"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server time walking trees during queue refills (usecs) <br /></td></tr>
+<tr class="separator:gabf569a4608ecc05375df48e7f3792eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaed236e4c034eae806e08f5629a258ce1"><td class="memItemLeft" align="right" valign="top"><a id="gaed236e4c034eae806e08f5629a258ce1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wt.html#gaed236e4c034eae806e08f5629a258ce1">WT_STAT_CONN_EVICTION_SLOW</a></td></tr>
 <tr class="memdesc:gaed236e4c034eae806e08f5629a258ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache: eviction server unable to reach eviction goal <br /></td></tr>

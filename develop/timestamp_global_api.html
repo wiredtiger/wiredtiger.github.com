@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('timestamp_global_api.html',''); initRe
 <p>The stable timestamp is the earliest time at which data is considered stable. (Data is said to be stable when it is not only durable, but additionally, transactions committed at or before the stable time cannot be rolled back by application-level transaction management.) The stable timestamp is saved along with every checkpoint, and that saved time is the point to which the database is recovered after a crash. It is also the earliest point to which the database can be returned via an explicit <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a> call. (See <a class="el" href="timestamp_misc.html#timestamp_misc_rts">Using rollback-to-stable with timestamps</a>.) All transactions must commit after the current <code>stable</code> timestamp.</p>
 <p>Applications are responsible for managing these timestamps and periodically updating them.</p>
 <p>Note that updating the stable timestamp does not itself trigger a database checkpoint or change data durability; updates before the new stable timestamp become stable (and thus visible after recovery) as part of the next checkpoint.</p>
+<p>For step-down timestamps and their application contract in disaggregated storage, see <a class="el" href="disagg_role_management.html">Managing disaggregated storage roles</a>.</p>
 <h1><a class="anchor" id="timestamp_global_setting_timestamps"></a>
 Setting global timestamps</h1>
 <p>The following table lists the global timestamps an application can set using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#ad082439541b1b95d6aae6c15026fe512" title="Set a global transaction timestamp.">WT_CONNECTION::set_timestamp</a> method, including constraints.</p>
@@ -109,6 +110,8 @@ Setting global timestamps</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">oldest_timestamp </td><td class="markdownTableBodyNone">&lt;= stable; may not move backward, set to the value as of the last checkpoint during recovery </td><td class="markdownTableBodyNone">Inform the system future reads and writes will never be earlier than the specified timestamp.  </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">stable_disaggregated_schema_epoch </td><td class="markdownTableBodyNone">may not move backward; on a leader, &gt;= the schema epoch of the last checkpoint; not restored on restart </td><td class="markdownTableBodyNone">Inform the system checkpoints should not include schema operations published at a later schema epoch. Disaggregated storage only.  </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">stable_timestamp </td><td class="markdownTableBodyNone">may not move backward, set to the stable timestamp during rollback-to-stable and recovery </td><td class="markdownTableBodyNone">Inform the system checkpoints should not include commits newer than the specified timestamp.  </td></tr>
 </table>
 <h2><a class="anchor" id="timestamp_global_set_api_durable_timestamp"></a>
@@ -129,6 +132,28 @@ Setting the "stable_timestamp" timestamp</h2>
 <p>It is possible to explicitly roll back to a time after, or equal to, the current <code>stable_timestamp</code> using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a93dbc74accb426582b3c5c2f69e04b28" title="Rollback tables to an earlier point in time, discarding all updates to checkpoint durable tables that...">WT_CONNECTION::rollback_to_stable</a> method. (See <a class="el" href="timestamp_misc.html#timestamp_misc_rts">Using rollback-to-stable with timestamps</a>.)</p>
 <p>The <code>stable_timestamp</code> should be updated frequently as it determines the amount of work required after recovery to bring the system online.</p>
 <p>Using the stable timestamp in the checkpoint is not required, and can be overridden using the <code>use_timestamp=false</code> configuration of the <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#a6550c9079198955c5071583941c85bbf" title="Write a transactionally consistent snapshot of a database or set of individual objects.">WT_SESSION::checkpoint</a> call. This is not intended for general use, but can be useful for backup scenarios where rolling back to a stable timestamp isn't possible and it's useful for a checkpoint to contain the most recent possible data.</p>
+<h2><a class="anchor" id="timestamp_global_set_api_stable_schema_epoch"></a>
+Setting the "stable_disaggregated_schema_epoch" timestamp</h2>
+<p>In disaggregated storage, the leader writes the creates and drops of layered tables to the shared metadata with each checkpoint, and other nodes learn about them from there. Schema epochs determine which of these operations a checkpoint includes: the application assigns each operation a schema epoch, and a checkpoint includes the operations at or below the <code>stable_disaggregated_schema_epoch</code>. Schema epochs use the same format as timestamps, but advance independently of the commit and stable timestamps.</p>
+<p>On every node, a create or drop of a layered table is pending until the shared metadata includes it. A pending operation is unpublished until the application assigns it a schema epoch with <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aa8cbb9ef00da3aa224206dc9a64b5656" title="Publish a table.">WT_SESSION::publish</a>, for example <code>disaggregated=(schema_epoch=20)</code>. When a checkpoint starts, it reads the current stable schema epoch. The checkpoint includes the pending operations published at or below that epoch and records the epoch. Operations published above it, and unpublished operations, stay pending for a later checkpoint.</p>
+<p>The application runs the same schema operations on followers and publishes them at the same schema epochs as on the leader. When a follower picks up a checkpoint, it discards its pending operations at or below the schema epoch recorded in that checkpoint. After a step-up, the new leader's pending operations are those the shared metadata does not include yet.</p>
+<p><a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aa8cbb9ef00da3aa224206dc9a64b5656" title="Publish a table.">WT_SESSION::publish</a> applies to <code>table:</code> and <code>layered:</code> URIs and assigns the given schema epoch to every unpublished operation for the table. It fails with <code>EINVAL</code> if:</p><ul>
+<li>the schema epoch is not later than the stable schema epoch;</li>
+<li>the schema epoch is not later than the schema epoch of the last checkpoint (see <a class="el" href="timestamp_global_api.html#timestamp_global_query_api_last_schema_epoch">Reading the "last_disaggregated_schema_epoch" timestamp</a>);</li>
+<li>the table has no pending operations.</li>
+</ul>
+<p>WiredTiger panics if the stable schema epoch is not set, or if the table was created before it was set. Dropping a table whose create is still unpublished cancels the create, and neither operation is published.</p>
+<p>A layered table created while the stable schema epoch is set stays in memory until a checkpoint includes the create. A checkpoint that does not include a table's create fails with <code>EINVAL</code> if the table holds data with a durable timestamp at or below the stable timestamp. Therefore, before the stable timestamp reaches the durable timestamp of the first update to the table:</p><ul>
+<li>publish the table at a schema epoch;</li>
+<li>advance the stable schema epoch to at least that epoch.</li>
+</ul>
+<p>The stable schema epoch has these constraints:</p><ul>
+<li>It may not move backward, even with <code>force=true</code>. Setting the current value again has no effect.</li>
+<li>On a leader, it may not be set below the schema epoch recorded in the shared metadata by the last checkpoint.</li>
+<li>Once set, it cannot be unset. It is not saved across restarts: the application must set it again after a restart.</li>
+<li>For a planned step-down, the application sets <code>step_down_disaggregated_schema_epoch</code> with <code>step_down_timestamp</code>. Operations issued before the step-down timestamp was set must be published at or below the step-down schema epoch, and operations issued after it above. The stable schema epoch may not pass the step-down schema epoch, and must equal it when the node steps down.</li>
+</ul>
+<p>If the stable schema epoch is not set, schema operations are not gated: each checkpoint includes the operations pending when it started, and <a class="el" href="struct_w_t___s_e_s_s_i_o_n.html#aa8cbb9ef00da3aa224206dc9a64b5656" title="Publish a table.">WT_SESSION::publish</a> is not used. A checkpoint with <code>use_timestamp=false</code> is not gated either, even when the stable schema epoch is set: it also includes unpublished operations. In both cases, the checkpoint keeps the schema epoch of the previous checkpoint in the shared metadata.</p>
 <h1><a class="anchor" id="timestamp_global_querying_timestamps"></a>
 Querying global timestamps</h1>
 <p>The following table lists the global timestamps an application can query using the <a class="el" href="struct_w_t___c_o_n_n_e_c_t_i_o_n.html#a607cf2781661d03ba50586133e02cc11" title="Query the global transaction timestamp state.">WT_CONNECTION::query_timestamp</a> method, including constraints. In all cases, a timestamp of 0 is returned if the timestamp is not available or has not been set, for example, the <code>last_checkpoint</code> timestamp if no checkpoints have run, or <code>oldest_reader</code> if there are no active transactions.</p>
@@ -140,13 +165,17 @@ Querying global timestamps</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">last_checkpoint </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The stable timestamp at which the last checkpoint ran.  </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">last_disaggregated_schema_epoch </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The schema epoch of the last checkpoint this node wrote or picked up.  </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">oldest_reader </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The timestamp of the oldest currently active read transaction.  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">oldest_timestamp </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The current application-set <code>oldest_timestamp</code> value.  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">pinned </td><td class="markdownTableBodyNone">&lt;= oldest </td><td class="markdownTableBodyNone">The minimum of the <code>oldest_timestamp</code> and the oldest active reader.  </td></tr>
+<td class="markdownTableBodyNone">oldest_timestamp </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The current application-set <code>oldest_timestamp</code> value.  </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">pinned </td><td class="markdownTableBodyNone">&lt;= oldest </td><td class="markdownTableBodyNone">The minimum of the <code>oldest_timestamp</code> and the oldest active reader.  </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">recovery </td><td class="markdownTableBodyNone">&lt;= stable </td><td class="markdownTableBodyNone">The stable timestamp used in the most recent checkpoint prior to the last shutdown.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">stable_disaggregated_schema_epoch </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The current application-set <code>stable_disaggregated_schema_epoch</code> value.  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">stable_timestamp </td><td class="markdownTableBodyNone">None </td><td class="markdownTableBodyNone">The current application-set <code>stable_timestamp</code> value.  </td></tr>
 </table>
@@ -170,6 +199,10 @@ The <code>all_durable</code> query is used by the MongoDB server and is generall
 Reading the "last_checkpoint" timestamp</h2>
 <p>The <code>last_checkpoint</code> timestamp is the stable timestamp of the previous checkpoint (or 0 if no checkpoints have run). This timestamp is a general case of the <code>recovery</code> timestamp. Generally, applications are expected to use the <code>recovery</code> timestamp and not the <code>last_checkpoint</code> timestamp.</p>
 <p>The <code>last_checkpoint</code> timestamp is read-only.</p>
+<h2><a class="anchor" id="timestamp_global_query_api_last_schema_epoch"></a>
+Reading the "last_disaggregated_schema_epoch" timestamp</h2>
+<p>The <code>last_disaggregated_schema_epoch</code> is the schema epoch of the last checkpoint this node wrote or picked up, or 0 after a checkpoint with <code>use_timestamp=false</code>. Read after a restart, before the first checkpoint, it is the minimum a leader may set the stable schema epoch to.</p>
+<p>The <code>last_disaggregated_schema_epoch</code> timestamp is read-only.</p>
 <h2><a class="anchor" id="timestamp_global_query_api_oldest_reader"></a>
 Reading the "oldest_reader" timestamp</h2>
 <p>The <code>oldest_reader</code> timestamp is the oldest transaction read timestamp active, including the read timestamp of any running checkpoint.</p>
@@ -185,6 +218,9 @@ Reading the "pinned" timestamp</h2>
 Reading the "recovery" timestamp</h2>
 <p>The <code>recovery</code> timestamp is the stable timestamp to which recovery was performed on startup. Applications can use the <code>recovery</code> timestamp to retrieve the value the stable timestamp had at system startup.</p>
 <p>The <code>recovery</code> timestamp is read-only.</p>
+<h2><a class="anchor" id="timestamp_global_query_api_stable_schema_epoch"></a>
+Reading the "stable_disaggregated_schema_epoch" timestamp</h2>
+<p>The <code>stable_disaggregated_schema_epoch</code> is the current <code>stable_disaggregated_schema_epoch</code> as set by the application, or 0 if it is not set.</p>
 <h2><a class="anchor" id="timestamp_global_query_api_stable_timestamp"></a>
 Reading the "stable_timestamp" timestamp</h2>
 <p>The <code>stable_timestamp</code> is the current <code>stable_timestamp</code> as set by the application. </p>

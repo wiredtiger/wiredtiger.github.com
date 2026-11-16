@@ -68,15 +68,18 @@ var programming =
       [ "Setting global timestamps", "timestamp_global_api.html#timestamp_global_setting_timestamps", [
         [ "Setting the global \"durable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_durable_timestamp", null ],
         [ "Setting the \"oldest_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_oldest_timestamp", null ],
-        [ "Setting the \"stable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp", null ]
+        [ "Setting the \"stable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_stable_timestamp", null ],
+        [ "Setting the \"stable_disaggregated_schema_epoch\" timestamp", "timestamp_global_api.html#timestamp_global_set_api_stable_schema_epoch", null ]
       ] ],
       [ "Querying global timestamps", "timestamp_global_api.html#timestamp_global_querying_timestamps", [
         [ "Reading the \"all_durable\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_all_durable", null ],
         [ "Reading the \"last_checkpoint\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_last_checkpoint", null ],
+        [ "Reading the \"last_disaggregated_schema_epoch\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_last_schema_epoch", null ],
         [ "Reading the \"oldest_reader\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_oldest_reader", null ],
         [ "Reading the \"oldest_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_oldest_timestamp", null ],
         [ "Reading the \"pinned\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_pinned", null ],
         [ "Reading the \"recovery\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_recovery", null ],
+        [ "Reading the \"stable_disaggregated_schema_epoch\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_stable_schema_epoch", null ],
         [ "Reading the \"stable_timestamp\" timestamp", "timestamp_global_api.html#timestamp_global_query_api_stable_timestamp", null ]
       ] ]
     ] ],
@@ -158,6 +161,27 @@ var programming =
       [ "Readonly configuration and multiple database handles", "readonly.html#readonly_handles", null ]
     ] ],
     [ "Signal handling", "signals.html", null ],
+    [ "Managing disaggregated storage roles", "disagg_role_management.html", [
+      [ "Leader and follower", "disagg_role_management.html#disagg_role_management_roles", null ],
+      [ "Changing a node's role", "disagg_role_management.html#disagg_role_management_changes", null ],
+      [ "Handing off shared writes", "disagg_role_management.html#disagg_role_management_handoff", null ],
+      [ "Step-up", "disagg_role_management.html#disagg_role_management_step_up", [
+        [ "Requirements", "disagg_role_management.html#disagg_role_management_step_up_requirements", null ],
+        [ "Usual flow", "disagg_role_management.html#disagg_role_management_step_up_flow", null ]
+      ] ],
+      [ "Step-down", "disagg_role_management.html#disagg_role_management_step_down", [
+        [ "Blocking step-down", "disagg_role_management.html#disagg_role_management_blocking", [
+          [ "Requirements", "disagg_role_management.html#disagg_role_management_blocking_requirements", null ],
+          [ "Usual flow", "disagg_role_management.html#disagg_role_management_blocking_flow", null ]
+        ] ],
+        [ "Asynchronous step-down", "disagg_role_management.html#disagg_role_management_async", [
+          [ "Requirements", "disagg_role_management.html#disagg_role_management_async_requirements", null ],
+          [ "Usual flow", "disagg_role_management.html#disagg_role_management_async_flow", null ],
+          [ "Rollbacks during step-down", "disagg_role_management.html#disagg_role_management_rollbacks", null ]
+        ] ],
+        [ "Schema operations during step-down", "disagg_role_management.html#disagg_role_management_schema", null ]
+      ] ]
+    ] ],
     [ "Backups", "backup.html", [
       [ "Backup from an application", "backup.html#backup_process", null ],
       [ "Duplicate backup cursors", "backup.html#backup_duplicate", null ],

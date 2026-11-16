@@ -2,11 +2,17 @@ var arch_toc_disaggregated_storage =
 [
     [ "Disaggregated Storage Roles and Role Changes", "arch-disagg-roles.html", [
       [ "Leader and follower", "arch-disagg-roles.html#disagg-roles-steady-state", null ],
-      [ "Coordinating a role change", "arch-disagg-roles.html#disagg-roles-coordination", null ],
+      [ "Role changes", "arch-disagg-roles.html#disagg-roles-coordination", null ],
       [ "Effects across WiredTiger", "arch-disagg-roles.html#disagg-roles-effects", null ],
-      [ "Role transitions diagram", "arch-disagg-roles.html#disagg-roles-transitions", null ],
       [ "Step-up", "arch-disagg-roles.html#disagg-roles-step-up", null ],
-      [ "Step-down", "arch-disagg-roles.html#disagg-roles-step-down", null ]
+      [ "Step-down", "arch-disagg-roles.html#disagg-roles-step-down", [
+        [ "Blocking step-down", "arch-disagg-roles.html#disagg-step-down-blocking", null ],
+        [ "Asynchronous step-down", "arch-disagg-roles.html#disagg-step-down-async", null ],
+        [ "Write routing", "arch-disagg-roles.html#disagg-step-down-routing", null ],
+        [ "Why straddling writers are rolled back", "arch-disagg-roles.html#disagg-step-down-transactions", null ],
+        [ "Reads during step-down", "arch-disagg-roles.html#disagg-step-down-reads", null ],
+        [ "Schema changes during step-down", "arch-disagg-roles.html#disagg-step-down-schema", null ]
+      ] ]
     ] ],
     [ "Page Deltas", "arch-page-delta.html", [
       [ "Goals and high-level model", "arch-page-delta.html#pd_goals", null ],
