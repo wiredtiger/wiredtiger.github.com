@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"schema.html#schema_format_types":[0,4,3,2],
 "schema.html#schema_index_immutable":[0,4,3,8],
 "schema.html#schema_indices":[0,4,3,7],
 "schema.html#schema_intro":[0,4,3,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "timestamp_txn_api.html#timestamp_txn_api_query":[0,4,12,4],
 "timestamp_txn_api.html#timestamp_txn_api_read_timestamp":[0,4,12,3],
 "timestamp_txn_api.html#timestamp_txn_api_timestamp_transaction":[0,4,12,8],
-"tool-index.html":[0,9],
-"tool-index.html#tool-other":[0,9,0]
+"tool-index.html":[0,9]
 };

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['glossary_20of_20terms_2182',['Glossary of Terms',['../arch-glossary.html',1,'arch-index']]],
-  ['getting_20started_20with_20the_20api_2183',['Getting Started with the API',['../basic_api.html',1,'programming']]],
-  ['general_20information_20on_20portability_2184',['General information on portability',['../portability.html',1,'index']]],
-  ['gcc_2fclang_20build_20options_2185',['gcc/clang build options',['../tune_build_options.html',1,'programming']]]
+  ['glossary_20of_20terms_2183',['Glossary of Terms',['../arch-glossary.html',1,'arch-index']]],
+  ['getting_20started_20with_20the_20api_2184',['Getting Started with the API',['../basic_api.html',1,'programming']]],
+  ['general_20information_20on_20portability_2185',['General information on portability',['../portability.html',1,'index']]],
+  ['gcc_2fclang_20build_20options_2186',['gcc/clang build options',['../tune_build_options.html',1,'programming']]]
 ];
